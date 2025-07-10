@@ -9,10 +9,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export const ContactForm: React.FC = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -24,9 +26,7 @@ export const ContactForm: React.FC = () => {
     message: '',
     newsletter: false,
     privacy: false
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  });  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.privacy) {
@@ -38,27 +38,63 @@ export const ContactForm: React.FC = () => {
       return;
     }
 
-    // Here you would typically send the data to your backend or email service
-    console.log('Form submitted:', formData);
-    
-    toast({
-      title: t('contact_success'),
-      description: t('contact_success_message'),
-    });
+    setIsLoading(true);
 
-    // Reset form
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      company: '',
-      jobTitle: '',
-      employees: '',
-      message: '',
-      newsletter: false,
-      privacy: false
-    });
+    try {
+      // EmailJS configuration - these values come from your .env.local file
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Please check your .env.local file.');
+      }
+
+      // Prepare the email template parameters
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        job_title: formData.jobTitle,
+        employees: formData.employees,
+        message: formData.message,
+        newsletter: formData.newsletter ? 'Yes' : 'No',
+        to_email: 'info@marsstein.com', // Your email where you want to receive messages
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      toast({
+        title: t('contact_success'),
+        description: t('contact_success_message'),
+      });
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        jobTitle: '',
+        employees: '',
+        message: '',
+        newsletter: false,
+        privacy: false
+      });
+
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: t('contact_error'),
+        description: 'Failed to send message. Please try again or contact us directly.',
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string | boolean) => {
@@ -79,7 +115,7 @@ export const ContactForm: React.FC = () => {
 
           <div className="space-y-6 mb-8">
             <h3 className="text-xl font-semibold text-primary mb-4">{t('contact_why_marsstein')}</h3>
-            
+
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
@@ -88,7 +124,7 @@ export const ContactForm: React.FC = () => {
                   <p className="text-muted-foreground text-sm">{t('contact_benefit_1_desc')}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
                 <div>
@@ -96,7 +132,7 @@ export const ContactForm: React.FC = () => {
                   <p className="text-muted-foreground text-sm">{t('contact_benefit_2_desc')}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
                 <div>
@@ -111,11 +147,7 @@ export const ContactForm: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-primary" />
-              <span>info@marsstein.com</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Phone className="h-5 w-5 text-primary" />
-              <span>+41 XX XXX XX XX</span>
+              <span>jayson.chen@marsstein.com</span>
             </div>
             <div className="flex items-center gap-3">
               <MapPin className="h-5 w-5 text-primary" />
@@ -131,7 +163,7 @@ export const ContactForm: React.FC = () => {
         {/* Right Column - Form */}
         <Card className="p-8">
           <h2 className="text-2xl font-bold mb-6">{t('contact_form_title')}</h2>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Personal Info */}
             <div className="grid md:grid-cols-2 gap-4">
@@ -196,7 +228,7 @@ export const ContactForm: React.FC = () => {
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">{t('contact_company_info')}</h3>
-              
+
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="company" className="text-sm font-medium">
@@ -284,12 +316,13 @@ export const ContactForm: React.FC = () => {
               </div>
             </div>
 
-            <Button 
-              type="submit" 
-              size="lg" 
+            <Button
+              type="submit"
+              size="lg"
               className="w-full bg-gradient-primary hover:opacity-90"
+              disabled={isLoading}
             >
-              {t('contact_submit')}
+              {isLoading ? 'Sending...' : t('contact_submit')}
             </Button>
           </form>
         </Card>

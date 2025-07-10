@@ -58,12 +58,13 @@ export const Footer: React.FC = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Logo */}
               <div className="flex items-center space-x-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary">
-                  <span className="text-lg font-bold text-primary-foreground">M</span>
-                </div>
-                <span className="text-xl font-bold text-foreground">Marsstein</span>
+                <img
+                  src="/src/assets/logo.jpeg"
+                  alt="Marsstein Logo"
+                  className="h-8 w-auto"
+                />
               </div>
-              
+
               <p className="text-muted-foreground leading-relaxed">
                 Your trusted partner for GDPR, ISO27001, and privacy compliance across Germany, Switzerland, and Europe.
               </p>
@@ -80,7 +81,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <MapPin className="h-4 w-4" />
-                  <span>Zurich, Switzerland</span>
+                  <span>Konstanz, Germany</span>
                 </div>
               </div>
             </div>

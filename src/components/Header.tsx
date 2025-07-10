@@ -21,10 +21,12 @@ export const Header: React.FC = () => {
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary">
-            <span className="text-lg font-bold text-primary-foreground">M</span>
-          </div>
-          <span className="text-xl font-bold text-foreground">Marsstein</span>
+          <img
+            src="/src/assets/logo.jpeg"
+            alt="Marsstein Logo"
+            className="h-8 w-auto"
+          />
+          <span className="text-xl font-bold text-foreground"></span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -115,7 +117,7 @@ export const Header: React.FC = () => {
                     </Link>
                   )
                 ))}
-                
+
                 <div className="pt-4 border-t">
                   <div className="flex items-center space-x-2 mb-4">
                     <Globe className="h-4 w-4" />
