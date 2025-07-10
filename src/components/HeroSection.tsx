@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Shield, Award, CheckCircle, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-image.jpg';
 
 export const HeroSection: React.FC = () => {
@@ -46,13 +47,17 @@ export const HeroSection: React.FC = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-opacity">
-                {t('hero_cta')}
-              </Button>
-              <Button size="lg" variant="outline" className="group">
-                <Play className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                {t('hero_cta_secondary')}
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-opacity">
+                  {t('hero_cta')}
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button size="lg" variant="outline" className="group">
+                  <Play className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  {t('hero_cta_secondary')}
+                </Button>
+              </Link>
             </div>
 
             {/* Social Proof */}

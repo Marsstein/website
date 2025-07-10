@@ -3,39 +3,50 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Globe, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Link } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
 
   const navItems = [
-    { key: 'nav_home', href: '#' },
+    { key: 'nav_home', href: '/' },
     { key: 'nav_features', href: '#features' },
-    { key: 'nav_pricing', href: '#pricing' },
-    { key: 'nav_academy', href: '#academy' },
-    { key: 'nav_contact', href: '#contact' },
+    { key: 'nav_pricing', href: '/pricing' },
+    { key: 'nav_academy', href: '/academy' },
+    { key: 'nav_contact', href: '/contact' },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <div className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center space-x-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary">
             <span className="text-lg font-bold text-primary-foreground">M</span>
           </div>
           <span className="text-xl font-bold text-foreground">Marsstein</span>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
-            <a
-              key={item.key}
-              href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t(item.key)}
-            </a>
+            item.href.startsWith('#') ? (
+              <a
+                key={item.key}
+                href={item.href}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {t(item.key)}
+              </a>
+            ) : (
+              <Link
+                key={item.key}
+                to={item.href}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {t(item.key)}
+              </Link>
+            )
           ))}
         </nav>
 
@@ -68,9 +79,11 @@ export const Header: React.FC = () => {
           <Button variant="ghost" size="sm">
             {t('nav_login')}
           </Button>
-          <Button size="sm" className="bg-gradient-primary hover:opacity-90">
-            {t('nav_demo')}
-          </Button>
+          <Link to="/contact">
+            <Button size="sm" className="bg-gradient-primary hover:opacity-90">
+              {t('nav_demo')}
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -84,13 +97,23 @@ export const Header: React.FC = () => {
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item) => (
-                  <a
-                    key={item.key}
-                    href={item.href}
-                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-                  >
-                    {t(item.key)}
-                  </a>
+                  item.href.startsWith('#') ? (
+                    <a
+                      key={item.key}
+                      href={item.href}
+                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                    >
+                      {t(item.key)}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.key}
+                      to={item.href}
+                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                    >
+                      {t(item.key)}
+                    </Link>
+                  )
                 ))}
                 
                 <div className="pt-4 border-t">
@@ -126,9 +149,11 @@ export const Header: React.FC = () => {
                   <Button variant="ghost" className="w-full justify-start">
                     {t('nav_login')}
                   </Button>
-                  <Button className="w-full bg-gradient-primary">
-                    {t('nav_demo')}
-                  </Button>
+                  <Link to="/contact" className="block">
+                    <Button className="w-full bg-gradient-primary">
+                      {t('nav_demo')}
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </SheetContent>
