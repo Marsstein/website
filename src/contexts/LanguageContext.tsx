@@ -15,7 +15,7 @@ const translations = {
   en: {
     // Navigation
     nav_home: 'Home',
-    nav_features: 'Features', 
+    nav_features: 'Features',
     nav_pricing: 'Pricing',
     nav_academy: 'Academy',
     nav_login: 'Login',
@@ -51,7 +51,7 @@ const translations = {
     contact_benefit_2_desc: 'With modern, efficient compliance management tools',
     contact_benefit_3_title: 'Avoid Penalties and Build Trust',
     contact_benefit_3_desc: 'By getting expert advice and acting legally compliant',
-    contact_address: 'Zurich, Switzerland',
+    contact_address: 'Konstanz, Germany',
     contact_hours: 'Mon-Fri 9:00-18:00',
 
     // Academy Page
@@ -92,14 +92,14 @@ const translations = {
     pricing_custom_title: 'Need a custom solution?',
     pricing_custom_desc: 'Contact our sales team for a tailored enterprise solution.',
     pricing_contact_sales: 'Contact Sales',
-    
+
     // Hero Section
     hero_headline: 'GDPR & ISO27001 Compliance Made Simple',
     hero_subheadline: 'Automated privacy audits, secure document management, and continuous compliance monitoring for Germany, Switzerland, and Europe.',
     hero_cta: 'Start Free Audit',
     hero_cta_secondary: 'Book Demo',
     hero_trust: 'Trusted by 500+ companies across Europe',
-    
+
     // Features
     features_title: 'Everything you need for compliance',
     feature_audit_title: 'AI-Powered Privacy Audit',
@@ -114,7 +114,7 @@ const translations = {
     feature_teams_desc: 'Role-based access, multi-tenancy, and team workflows for enterprise compliance management.',
     feature_pricing_title: 'Transparent Pricing',
     feature_pricing_desc: 'Flexible plans with no hidden costs and no vendor lock-in. Scale as you grow.',
-    
+
     // Benefits
     benefits_title: 'Why choose Marsstein?',
     benefit_risk_title: 'Minimize Risk',
@@ -129,7 +129,7 @@ const translations = {
     benefit_freedom_desc: 'Export your data anytime. Your compliance journey, your control.',
     benefit_future_title: 'Future-Proof',
     benefit_future_desc: 'Stay ahead of evolving privacy regulations with automatic updates.',
-    
+
     // How it works
     how_title: 'How it works',
     how_step1_title: 'Get to Know Us',
@@ -140,10 +140,10 @@ const translations = {
     how_step3_desc: 'Comprehensive AI-powered analysis of your compliance posture.',
     how_step4_title: 'Continuous Monitoring',
     how_step4_desc: 'Ongoing compliance monitoring and automatic updates.',
-    
+
     // Testimonials
     testimonials_title: 'What our customers say',
-    
+
     // FAQ
     faq_title: 'Frequently Asked Questions',
     faq_q1: 'What regulations does Marsstein cover?',
@@ -154,13 +154,13 @@ const translations = {
     faq_a3: 'Yes, we offer APIs and integrations with popular business tools and document management systems.',
     faq_q4: 'What support do you provide?',
     faq_a4: 'We provide 24/7 technical support and access to certified privacy professionals for legal guidance.',
-    
+
     // Newsletter
     newsletter_title: 'Stay Updated on Compliance',
     newsletter_desc: 'Get the latest updates on privacy regulations and compliance best practices.',
     newsletter_placeholder: 'Your email address',
     newsletter_cta: 'Subscribe',
-    
+
     // Footer
     footer_product: 'Product',
     footer_company: 'Company',
@@ -182,7 +182,7 @@ const translations = {
     contact_subtitle: 'Vielen Dank, dass du dich mit Marsstein auseinandersetzen möchtest - der umfassenden Compliance-Lösung, der über 1.500 Unternehmen in ganz Europa vertrauen.',
     contact_form_title: 'Kontaktinfos',
     contact_first_name: 'Vorname',
-    contact_last_name: 'Nachname', 
+    contact_last_name: 'Nachname',
     contact_email: 'Geschäftliche E-Mail',
     contact_phone: 'Telefon',
     contact_company_info: 'Firmeninformationen',
@@ -247,14 +247,14 @@ const translations = {
     pricing_custom_title: 'Individuelle Lösung benötigt?',
     pricing_custom_desc: 'Kontaktiere unser Sales-Team für eine maßgeschneiderte Enterprise-Lösung.',
     pricing_contact_sales: 'Sales kontaktieren',
-    
+
     // Hero Section
     hero_headline: 'DSGVO & ISO27001 Compliance leicht gemacht',
     hero_subheadline: 'Automatisierte Datenschutz-Audits, sichere Dokumentenverwaltung und kontinuierliche Compliance-Überwachung für Deutschland, Schweiz und Europa.',
     hero_cta: 'Kostenloses Audit starten',
     hero_cta_secondary: 'Demo buchen',
     hero_trust: 'Vertrauenswürdig für 500+ Unternehmen in Europa',
-    
+
     // Features
     features_title: 'Alles was Sie für Compliance brauchen',
     feature_audit_title: 'KI-gestütztes Datenschutz-Audit',
@@ -269,7 +269,7 @@ const translations = {
     feature_teams_desc: 'Rollenbasierter Zugriff, Mandantenfähigkeit und Team-Workflows für Enterprise-Compliance-Management.',
     feature_pricing_title: 'Transparente Preise',
     feature_pricing_desc: 'Flexible Pläne ohne versteckte Kosten und ohne Vendor-Lock-in. Skalieren Sie nach Bedarf.',
-    
+
     // Benefits
     benefits_title: 'Warum Marsstein wählen?',
     benefit_risk_title: 'Risiko minimieren',
@@ -284,7 +284,7 @@ const translations = {
     benefit_freedom_desc: 'Exportieren Sie Ihre Daten jederzeit. Ihre Compliance-Reise, Ihre Kontrolle.',
     benefit_future_title: 'Zukunftssicher',
     benefit_future_desc: 'Bleiben Sie den sich entwickelnden Datenschutzbestimmungen voraus mit automatischen Updates.',
-    
+
     // How it works
     how_title: 'So funktioniert es',
     how_step1_title: 'Lernen Sie uns kennen',
@@ -295,10 +295,10 @@ const translations = {
     how_step3_desc: 'Umfassende KI-gestützte Analyse Ihrer Compliance-Situation.',
     how_step4_title: 'Kontinuierliche Überwachung',
     how_step4_desc: 'Laufende Compliance-Überwachung und automatische Updates.',
-    
+
     // Testimonials
     testimonials_title: 'Das sagen unsere Kunden',
-    
+
     // FAQ
     faq_title: 'Häufig gestellte Fragen',
     faq_q1: 'Welche Vorschriften deckt Marsstein ab?',
@@ -309,13 +309,13 @@ const translations = {
     faq_a3: 'Ja, wir bieten APIs und Integrationen mit beliebten Business-Tools und Dokumentenmanagementsystemen.',
     faq_q4: 'Welchen Support bieten Sie?',
     faq_a4: 'Wir bieten 24/7 technischen Support und Zugang zu zertifizierten Datenschutzfachleuten für rechtliche Beratung.',
-    
+
     // Newsletter
     newsletter_title: 'Bleiben Sie über Compliance informiert',
     newsletter_desc: 'Erhalten Sie die neuesten Updates zu Datenschutzbestimmungen und Compliance-Best-Practices.',
     newsletter_placeholder: 'Ihre E-Mail-Adresse',
     newsletter_cta: 'Abonnieren',
-    
+
     // Footer
     footer_product: 'Produkt',
     footer_company: 'Unternehmen',
