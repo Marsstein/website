@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
           <img
-            src="/src/assets/logo.jpeg"
+            src="/logo.jpeg"
             alt="Marsstein Logo"
             className="h-8 w-auto"
           />

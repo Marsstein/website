@@ -65,7 +65,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Marsstein Brand Colors - Direct access
+				'brand-red': '#E53935',
+				'brand-charcoal': '#232323',
+				'brand-stone': '#474747',
+				'brand-light': '#F5F6F8',
+				'brand-green': '#39B37B',
+				'brand-white': '#FFFFFF'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -4,7 +4,6 @@ import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Shield, Award, CheckCircle, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import heroImage from '@/assets/hero-image.jpg';
 
 export const HeroSection: React.FC = () => {
   const { t } = useLanguage();
@@ -12,7 +11,7 @@ export const HeroSection: React.FC = () => {
   const trustBadges = [
     { icon: Shield, label: 'GDPR Compliant' },
     { icon: Award, label: 'ISO 27001' },
-    { icon: CheckCircle, label: 'Swiss DPA' },
+    { icon: CheckCircle, label: 'EU AI Act' },
   ];
 
   return (
@@ -27,7 +26,7 @@ export const HeroSection: React.FC = () => {
                 <Badge
                   key={index}
                   variant="secondary"
-                  className="flex items-center gap-1 px-3 py-1 bg-background/50 backdrop-blur"
+                  className="flex items-center gap-1 px-3 py-1 bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 hover:border-primary/30 transition-colors duration-200 backdrop-blur"
                 >
                   <badge.icon className="h-3 w-3" />
                   {badge.label}
@@ -84,7 +83,7 @@ export const HeroSection: React.FC = () => {
           <div className="relative animate-slide-up">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-extra">
               <img
-                src={heroImage}
+                src="/hero-image.png"
                 alt="Marsstein Dashboard"
                 className="w-full h-auto"
               />
