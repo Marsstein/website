@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
             alt="Marsstein Logo"
             className="h-8 w-auto"
           />
-          <span className="text-xl font-bold text-foreground">Marsstein</span>
+          <span className="text-xl font-bold text-foreground"></span>
         </Link>
 
         {/* Desktop Navigation */}
