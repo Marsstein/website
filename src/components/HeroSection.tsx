@@ -26,7 +26,7 @@ export const HeroSection: React.FC = () => {
                 <Badge
                   key={index}
                   variant="secondary"
-                  className="flex items-center gap-1 px-3 py-1 bg-background/50 backdrop-blur"
+                  className="flex items-center gap-1 px-3 py-1 bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 hover:border-primary/30 transition-colors duration-200 backdrop-blur"
                 >
                   <badge.icon className="h-3 w-3" />
                   {badge.label}
