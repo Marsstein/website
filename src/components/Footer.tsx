@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
   const trustBadges = [
     { icon: Shield, label: 'GDPR\nCompliant' },
     { icon: Award, label: 'ISO 27001\nCertified' },
-    { icon: CheckCircle, label: 'Swiss DPA\nApproved' }
+    { icon: CheckCircle, label: 'EU AI Act\nApproved' }
   ];
 
   return (

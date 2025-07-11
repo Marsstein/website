@@ -11,7 +11,7 @@ export const HeroSection: React.FC = () => {
   const trustBadges = [
     { icon: Shield, label: 'GDPR Compliant' },
     { icon: Award, label: 'ISO 27001' },
-    { icon: CheckCircle, label: 'Swiss DPA' },
+    { icon: CheckCircle, label: 'EU AI Act' },
   ];
 
   return (

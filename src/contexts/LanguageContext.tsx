@@ -147,7 +147,7 @@ const translations = {
     // FAQ
     faq_title: 'Frequently Asked Questions',
     faq_q1: 'What regulations does Marsstein cover?',
-    faq_a1: 'We specialize in GDPR, ISO27001, Swiss DPA, and EU AI Act compliance across Germany, Switzerland, and Europe.',
+    faq_a1: 'We specialize in GDPR, ISO27001 and EU AI Act compliance across Germany, Switzerland, and Europe.',
     faq_q2: 'How secure is the document vault?',
     faq_a2: 'All documents are encrypted and stored exclusively in EU/CH data centers with enterprise-grade security measures.',
     faq_q3: 'Can I integrate with existing systems?',
@@ -302,7 +302,7 @@ const translations = {
     // FAQ
     faq_title: 'Häufig gestellte Fragen',
     faq_q1: 'Welche Vorschriften deckt Marsstein ab?',
-    faq_a1: 'Wir spezialisieren uns auf DSGVO, ISO27001, Schweizer DSG und EU AI Act Compliance in Deutschland, der Schweiz und Europa.',
+    faq_a1: 'Wir spezialisieren uns auf DSGVO, ISO27001 und EU AI Act Compliance in Deutschland, der Schweiz und Europa.',
     faq_q2: 'Wie sicher ist der Dokumententresor?',
     faq_a2: 'Alle Dokumente sind verschlüsselt und werden ausschließlich in EU/CH-Rechenzentren mit Enterprise-Sicherheitsmaßnahmen gespeichert.',
     faq_q3: 'Kann ich mit bestehenden Systemen integrieren?',
