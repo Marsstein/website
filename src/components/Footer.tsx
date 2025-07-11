@@ -59,10 +59,11 @@ export const Footer: React.FC = () => {
               {/* Logo */}
               <div className="flex items-center space-x-2">
                 <img
-                  src="/src/assets/logo.jpeg"
+                  src="/logo.jpeg"
                   alt="Marsstein Logo"
                   className="h-8 w-auto"
                 />
+                <span className="text-xl font-bold text-foreground">Marsstein</span>
               </div>
 
               <p className="text-muted-foreground leading-relaxed">

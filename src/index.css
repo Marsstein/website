@@ -2,122 +2,122 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Marsstein SaaS Design System - Professional blue/green/white palette */
+/* Marsstein Professional Color Palette - Red/Gray/Green scheme */
 
 @layer base {
   :root {
-    /* Background colors */
-    --background: 0 0% 100%;
-    --foreground: 215 28% 17%;
+    /* Background colors - Soft White & Light Gray */
+    --background: 0 0% 100%; /* #FFFFFF - Soft White */
+    --foreground: 0 0% 14%; /* #232323 - Charcoal Black */
 
     /* Card and surface colors */
-    --card: 0 0% 100%;
-    --card-foreground: 215 28% 17%;
+    --card: 0 0% 100%; /* #FFFFFF - Soft White */
+    --card-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
 
     /* Popover colors */
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 17%;
+    --popover: 0 0% 100%; /* #FFFFFF - Soft White */
+    --popover-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
 
-    /* Primary brand colors - Professional blue */
-    --primary: 214 84% 56%;
-    --primary-foreground: 0 0% 98%;
-    --primary-light: 214 84% 66%;
-    --primary-dark: 214 84% 46%;
+    /* Primary brand colors - Professional Red */
+    --primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --primary-light: 4 82% 66%; /* Lighter red */
+    --primary-dark: 4 82% 46%; /* Darker red */
 
-    /* Secondary colors - Complementary green */
-    --secondary: 158 64% 52%;
-    --secondary-foreground: 0 0% 98%;
-    --secondary-light: 158 64% 62%;
-    --secondary-dark: 158 64% 42%;
+    /* Secondary colors - Success Green */
+    --secondary: 150 48% 49%; /* #39B37B - Success Green */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --secondary-light: 150 48% 59%; /* Lighter green */
+    --secondary-dark: 150 48% 39%; /* Darker green */
 
-    /* Neutral colors */
-    --muted: 210 40% 98%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Neutral colors - Gray palette */
+    --muted: 220 14% 96%; /* #F5F6F8 - Light Gray */
+    --muted-foreground: 0 0% 28%; /* #474747 - Stone Gray */
 
     /* Accent colors */
-    --accent: 210 40% 96%;
-    --accent-foreground: 215 28% 17%;
+    --accent: 220 14% 96%; /* #F5F6F8 - Light Gray */
+    --accent-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
 
     /* System colors */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 4 82% 56%; /* #E53935 - Primary Red for errors */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
 
     /* Border and input colors */
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 214 84% 56%;
+    --border: 220 14% 91%; /* Slightly darker Light Gray */
+    --input: 220 14% 91%; /* Slightly darker Light Gray */
+    --ring: 4 82% 56%; /* #E53935 - Primary Red for focus */
 
     --radius: 0.5rem;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-primary: linear-gradient(135deg, hsl(4 82% 56%), hsl(4 82% 66%)); /* Red gradient */
+    --gradient-secondary: linear-gradient(135deg, hsl(150 48% 49%), hsl(150 48% 59%)); /* Green gradient */
+    --gradient-hero: linear-gradient(135deg, hsl(220 14% 96%), hsl(0 0% 100%)); /* Light gradient */
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 14% 96%)); /* Card gradient */
 
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(var(--primary) / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(var(--primary) / 0.1), 0 2px 4px -1px hsl(var(--primary) / 0.06);
-    --shadow-lg: 0 10px 15px -3px hsl(var(--primary) / 0.1), 0 4px 6px -2px hsl(var(--primary) / 0.05);
-    --shadow-xl: 0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04);
+    /* Shadows - using subtle red tint */
+    --shadow-sm: 0 1px 2px 0 hsl(4 82% 56% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(4 82% 56% / 0.1), 0 2px 4px -1px hsl(4 82% 56% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(4 82% 56% / 0.1), 0 4px 6px -2px hsl(4 82% 56% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(4 82% 56% / 0.1), 0 10px 10px -5px hsl(4 82% 56% / 0.04);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar colors */
+    --sidebar-background: 220 14% 96%; /* #F5F6F8 - Light Gray */
+    --sidebar-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
+    --sidebar-primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --sidebar-accent: 220 14% 96%; /* #F5F6F8 - Light Gray */
+    --sidebar-accent-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
+    --sidebar-border: 220 14% 91%; /* Border color */
+    --sidebar-ring: 4 82% 56%; /* #E53935 - Primary Red */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode: Charcoal backgrounds with light text */
+    --background: 0 0% 14%; /* #232323 - Charcoal Black */
+    --foreground: 0 0% 100%; /* #FFFFFF - Soft White */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 18%; /* Slightly lighter than charcoal */
+    --card-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 18%; /* Slightly lighter than charcoal */
+    --popover-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primary red stays the same in dark mode */
+    --primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Success green stays the same in dark mode */
+    --secondary: 150 48% 49%; /* #39B37B - Success Green */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Muted colors for dark mode */
+    --muted: 0 0% 28%; /* #474747 - Stone Gray */
+    --muted-foreground: 220 14% 96%; /* #F5F6F8 - Light Gray */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 28%; /* #474747 - Stone Gray */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 4 82% 56%; /* #E53935 - Primary Red */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 0 0% 28%; /* #474747 - Stone Gray */
+    --input: 0 0% 28%; /* #474747 - Stone Gray */
+    --ring: 4 82% 56%; /* #E53935 - Primary Red */
+    
+    /* Dark mode sidebar */
+    --sidebar-background: 0 0% 14%; /* #232323 - Charcoal Black */
+    --sidebar-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --sidebar-primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --sidebar-accent: 0 0% 28%; /* #474747 - Stone Gray */
+    --sidebar-accent-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --sidebar-border: 0 0% 28%; /* #474747 - Stone Gray */
+    --sidebar-ring: 4 82% 56%; /* #E53935 - Primary Red */
   }
 }
 

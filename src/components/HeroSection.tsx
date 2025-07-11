@@ -4,7 +4,6 @@ import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Shield, Award, CheckCircle, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import heroImage from '@/assets/hero-image.jpg';
 
 export const HeroSection: React.FC = () => {
   const { t } = useLanguage();
@@ -84,7 +83,7 @@ export const HeroSection: React.FC = () => {
           <div className="relative animate-slide-up">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-extra">
               <img
-                src={heroImage}
+                src="/hero-image.png"
                 alt="Marsstein Dashboard"
                 className="w-full h-auto"
               />
