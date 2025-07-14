@@ -33,7 +33,10 @@ import {
   GitBranch,
   Calendar,
   Target,
-  Play
+  Play,
+  Mail,
+  Phone,
+  MapPin
 } from "lucide-react";
 import {
   Sidebar,
@@ -47,19 +50,19 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { NavLink, useLocation, Routes, Route, Navigate } from "react-router-dom";
+import { NavLink, useLocation, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 const sidebarItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
-  { title: "Documents", url: "/dashboard", icon: FileText },
-  { title: "AI Compliance Check", url: "/dashboard", icon: Brain },
-  { title: "Audits & Reports", url: "/dashboard", icon: ClipboardCheck },
-  { title: "Policies", url: "/dashboard", icon: FileCheck },
-  { title: "Frameworks", url: "/dashboard", icon: Target },
-  { title: "Integrations", url: "/dashboard", icon: GitBranch },
-  { title: "Teams", url: "/dashboard", icon: Users },
-  { title: "Settings", url: "/dashboard", icon: Settings },
-  { title: "Help", url: "/dashboard", icon: HelpCircle },
+  { title: "Documents", url: "/dashboard/documents", icon: FileText },
+  { title: "AI Compliance Check", url: "/dashboard/ai-check", icon: Brain },
+  { title: "Audits & Reports", url: "/dashboard/audits", icon: ClipboardCheck },
+  { title: "Policies", url: "/dashboard/policies", icon: FileCheck },
+  { title: "Frameworks", url: "/dashboard/frameworks", icon: Target },
+  { title: "Integrations", url: "/dashboard/integrations", icon: GitBranch },
+  { title: "Teams", url: "/dashboard/teams", icon: Users },
+  { title: "Settings", url: "/dashboard/settings", icon: Settings },
+  { title: "Help", url: "/dashboard/help", icon: HelpCircle },
 ];
 
 const frameworks = [
@@ -87,6 +90,7 @@ function DashboardMain() {
   const { language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [activeFramework, setActiveFramework] = useState("GDPR");
 
   const texts = {
@@ -177,16 +181,18 @@ function DashboardMain() {
   };
 
   const handleQuickUpload = () => {
+    navigate('/dashboard/documents');
     toast({
-      title: "Upload",
-      description: "Datei-Upload wird geöffnet...",
+      title: "Navigation",
+      description: "Redirecting to document management...",
     });
   };
 
   const handleRunCheck = () => {
+    navigate('/dashboard/ai-check');
     toast({
-      title: "AI Check",
-      description: "KI Compliance Check wird ausgeführt...",
+      title: "Navigation",
+      description: "Opening AI Compliance Check...",
     });
   };
 
@@ -263,7 +269,7 @@ function DashboardMain() {
         </Card>
 
         {/* Documents */}
-        <Card>
+        <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/documents')}>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Documents
@@ -281,7 +287,7 @@ function DashboardMain() {
         </Card>
 
         {/* Active Users */}
-        <Card>
+        <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/teams')}>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Active Users
@@ -302,7 +308,7 @@ function DashboardMain() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Framework Compliance */}
-        <Card className="lg:col-span-2">
+        <Card className="lg:col-span-2 cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/frameworks')}>
           <CardHeader>
             <CardTitle>{t.frameworkCompliance}</CardTitle>
           </CardHeader>
@@ -321,11 +327,17 @@ function DashboardMain() {
               ))}
             </div>
             <div className="mt-6 grid grid-cols-2 gap-4">
-              <Button variant="outline" className="flex items-center gap-2" onClick={handleDownloadDPIA}>
+              <Button variant="outline" className="flex items-center gap-2" onClick={(e) => {
+                e.stopPropagation();
+                handleDownloadDPIA();
+              }}>
                 <Download className="h-4 w-4" />
                 {t.downloadDPIA}
               </Button>
-              <Button variant="outline" className="flex items-center gap-2" onClick={handleExportReport}>
+              <Button variant="outline" className="flex items-center gap-2" onClick={(e) => {
+                e.stopPropagation();
+                handleExportReport();
+              }}>
                 <FileText className="h-4 w-4" />
                 {t.exportReport}
               </Button>
@@ -334,7 +346,7 @@ function DashboardMain() {
         </Card>
 
         {/* Risk Monitoring */}
-        <Card>
+        <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/audits')}>
           <CardHeader>
             <CardTitle>{t.riskMonitoring}</CardTitle>
           </CardHeader>
@@ -380,7 +392,7 @@ function DashboardMain() {
         </Card>
 
         {/* Upcoming Audits */}
-        <Card>
+        <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/audits')}>
           <CardHeader>
             <CardTitle>{t.upcomingAudits}</CardTitle>
           </CardHeader>
@@ -405,7 +417,7 @@ function DashboardMain() {
         </Card>
 
         {/* Integrations Health */}
-        <Card>
+        <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/integrations')}>
           <CardHeader>
             <CardTitle>{t.integrationsHealth}</CardTitle>
           </CardHeader>
@@ -438,21 +450,670 @@ function DashboardMain() {
 // Simple placeholder components for navigation
 function DocumentsPage() {
   const { toast } = useToast();
+  const { language } = useLanguage();
+  
+  const [documents, setDocuments] = useState([
+    { id: 1, name: "GDPR Privacy Policy", type: "Policy", status: "approved", date: "2024-01-15", size: "2.3 MB" },
+    { id: 2, name: "Data Processing Agreement", type: "Legal", status: "pending", date: "2024-01-14", size: "1.8 MB" },
+    { id: 3, name: "Cookie Policy", type: "Policy", status: "missing", date: "2024-01-12", size: "0.5 MB" },
+    { id: 4, name: "ISO 27001 Certificate", type: "Certificate", status: "approved", date: "2024-01-10", size: "3.2 MB" },
+    { id: 5, name: "Risk Assessment Report", type: "Report", status: "pending", date: "2024-01-08", size: "4.1 MB" },
+  ]);
+
+  const handleUpload = () => {
+    toast({ 
+      title: "File Upload", 
+      description: "File upload feature activated - ready for document upload" 
+    });
+    
+    // Simulate adding a new document
+    const newDoc = {
+      id: documents.length + 1,
+      name: "New Compliance Document.pdf",
+      type: "Report",
+      status: "pending",
+      date: new Date().toISOString().split('T')[0],
+      size: "2.1 MB"
+    };
+    setDocuments([newDoc, ...documents]);
+  };
+
+  const handleViewDocument = (docName: string) => {
+    toast({ 
+      title: "Document Viewer", 
+      description: `Opening ${docName} in document viewer` 
+    });
+  };
+
+  const handleDownload = (docName: string) => {
+    toast({ 
+      title: "Download Started", 
+      description: `Downloading ${docName}...` 
+    });
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "approved": return "text-green-600 bg-green-50";
+      case "pending": return "text-yellow-600 bg-yellow-50";
+      case "missing": return "text-red-600 bg-red-50";
+      default: return "text-gray-600 bg-gray-50";
+    }
+  };
   
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Documents</h1>
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Document Management</h1>
+        <Button onClick={handleUpload} className="flex items-center gap-2">
+          <Upload className="h-4 w-4" />
+          Upload Document
+        </Button>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <Card>
+          <CardContent className="p-4">
+            <div className="text-2xl font-bold text-green-600">{documents.filter(d => d.status === 'approved').length}</div>
+            <div className="text-sm text-muted-foreground">Approved Documents</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="text-2xl font-bold text-yellow-600">{documents.filter(d => d.status === 'pending').length}</div>
+            <div className="text-sm text-muted-foreground">Pending Review</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="text-2xl font-bold text-red-600">{documents.filter(d => d.status === 'missing').length}</div>
+            <div className="text-sm text-muted-foreground">Missing Documents</div>
+          </CardContent>
+        </Card>
+      </div>
+
       <Card>
-        <CardContent className="p-6">
-          <p>Document management features coming soon...</p>
-          <Button 
-            className="mt-4" 
-            onClick={() => toast({ title: "Documents", description: "Feature in development" })}
-          >
-            Upload Document
-          </Button>
+        <CardHeader>
+          <CardTitle>All Documents</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-3">
+            {documents.map((doc) => (
+              <div key={doc.id} className="flex items-center justify-between p-3 border rounded-lg">
+                <div className="flex items-center gap-3">
+                  <FileText className="h-5 w-5 text-muted-foreground" />
+                  <div>
+                    <p className="font-medium">{doc.name}</p>
+                    <p className="text-sm text-muted-foreground">{doc.type} • {doc.size} • {doc.date}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge className={getStatusColor(doc.status)}>
+                    {doc.status}
+                  </Badge>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => handleViewDocument(doc.name)}
+                  >
+                    View
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => handleDownload(doc.name)}
+                  >
+                    <Download className="h-3 w-3" />
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
         </CardContent>
       </Card>
+    </div>
+  );
+}
+
+function AICheckPage() {
+  const { toast } = useToast();
+  const [isRunning, setIsRunning] = useState(false);
+  const [lastScan, setLastScan] = useState("2024-01-15 14:30");
+  const [results, setResults] = useState({
+    passed: 15,
+    warnings: 3,
+    critical: 1,
+    score: 78
+  });
+
+  const handleRunScan = async () => {
+    setIsRunning(true);
+    toast({ title: "AI Compliance Scan", description: "Starting comprehensive compliance analysis..." });
+    
+    // Simulate scan progress
+    setTimeout(() => {
+      setResults({
+        passed: Math.floor(Math.random() * 20) + 10,
+        warnings: Math.floor(Math.random() * 5) + 1,
+        critical: Math.floor(Math.random() * 3),
+        score: Math.floor(Math.random() * 20) + 70
+      });
+      setLastScan(new Date().toLocaleString());
+      setIsRunning(false);
+      toast({ title: "Scan Complete", description: "AI compliance analysis finished successfully" });
+    }, 3000);
+  };
+
+  return (
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">AI Compliance Check</h1>
+        <Button onClick={handleRunScan} disabled={isRunning} className="flex items-center gap-2">
+          <Brain className="h-4 w-4" />
+          {isRunning ? "Scanning..." : "Run AI Scan"}
+        </Button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Card>
+          <CardContent className="p-4">
+            <div className="text-2xl font-bold text-green-600">{results.passed}</div>
+            <div className="text-sm text-muted-foreground">Controls Passed</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="text-2xl font-bold text-yellow-600">{results.warnings}</div>
+            <div className="text-sm text-muted-foreground">Warnings</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="text-2xl font-bold text-red-600">{results.critical}</div>
+            <div className="text-sm text-muted-foreground">Critical Issues</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="text-2xl font-bold text-primary">{results.score}%</div>
+            <div className="text-sm text-muted-foreground">Overall Score</div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Last Scan Results</CardTitle>
+          <p className="text-sm text-muted-foreground">Last updated: {lastScan}</p>
+        </CardHeader>
+        <CardContent>
+          {isRunning ? (
+            <div className="flex items-center justify-center py-8">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                <p>Running AI compliance analysis...</p>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span>GDPR Compliance</span>
+                  <span className="font-bold">92%</span>
+                </div>
+                <Progress value={92} className="h-2" />
+              </div>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span>Data Security</span>
+                  <span className="font-bold">87%</span>
+                </div>
+                <Progress value={87} className="h-2" />
+              </div>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span>Access Controls</span>
+                  <span className="font-bold">95%</span>
+                </div>
+                <Progress value={95} className="h-2" />
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function AuditsPage() {
+  const { toast } = useToast();
+  
+  const audits = [
+    { id: 1, name: "ISO 27001 Review", status: "scheduled", date: "2024-03-15", auditor: "TÜV SÜD" },
+    { id: 2, name: "GDPR Assessment", status: "in-progress", date: "2024-02-20", auditor: "Internal Team" },
+    { id: 3, name: "Annual Security Audit", status: "completed", date: "2024-01-10", auditor: "PwC" },
+  ];
+
+  const handleScheduleAudit = () => {
+    toast({ title: "Schedule Audit", description: "Audit scheduling form would open here" });
+  };
+
+  const handleGenerateReport = () => {
+    toast({ title: "Report Generation", description: "Generating comprehensive audit report..." });
+  };
+
+  return (
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Audits & Reports</h1>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={handleGenerateReport}>
+            <FileText className="h-4 w-4 mr-2" />
+            Generate Report
+          </Button>
+          <Button onClick={handleScheduleAudit}>
+            <Calendar className="h-4 w-4 mr-2" />
+            Schedule Audit
+          </Button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {audits.map((audit) => (
+          <Card key={audit.id}>
+            <CardHeader>
+              <CardTitle className="text-lg">{audit.name}</CardTitle>
+              <Badge className={
+                audit.status === 'completed' ? 'bg-green-100 text-green-800' :
+                audit.status === 'in-progress' ? 'bg-blue-100 text-blue-800' :
+                'bg-yellow-100 text-yellow-800'
+              }>
+                {audit.status}
+              </Badge>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-2">Date: {audit.date}</p>
+              <p className="text-sm text-muted-foreground mb-4">Auditor: {audit.auditor}</p>
+              <Button variant="outline" size="sm" className="w-full">
+                View Details
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PoliciesPage() {
+  const { toast } = useToast();
+  
+  const policies = [
+    { name: "Privacy Policy", status: "active", lastUpdated: "2024-01-15", version: "2.1" },
+    { name: "Data Retention Policy", status: "draft", lastUpdated: "2024-01-10", version: "1.3" },
+    { name: "Access Control Policy", status: "active", lastUpdated: "2024-01-05", version: "3.0" },
+    { name: "Incident Response Policy", status: "review", lastUpdated: "2023-12-20", version: "1.8" },
+  ];
+
+  const handleCreatePolicy = () => {
+    toast({ title: "Create Policy", description: "Policy creation wizard would open here" });
+  };
+
+  return (
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Policies</h1>
+        <Button onClick={handleCreatePolicy}>
+          <FileCheck className="h-4 w-4 mr-2" />
+          Create Policy
+        </Button>
+      </div>
+
+      <div className="grid gap-4">
+        {policies.map((policy, index) => (
+          <Card key={index}>
+            <CardContent className="p-4">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="font-medium">{policy.name}</h3>
+                  <p className="text-sm text-muted-foreground">Version {policy.version} • Updated {policy.lastUpdated}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge variant={
+                    policy.status === 'active' ? 'secondary' :
+                    policy.status === 'draft' ? 'outline' : 'destructive'
+                  }>
+                    {policy.status}
+                  </Badge>
+                  <Button variant="outline" size="sm">Edit</Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FrameworksPage() {
+  const { toast } = useToast();
+  
+  return (
+    <div className="p-6 space-y-6">
+      <h1 className="text-2xl font-bold">Compliance Frameworks</h1>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {frameworks.map((framework) => (
+          <Card key={framework.name}>
+            <CardHeader>
+              <CardTitle className="flex justify-between">
+                {framework.name}
+                <span className="text-2xl font-bold">{framework.progress}%</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Progress value={framework.progress} className="mb-4" />
+              <div className="flex justify-between items-center">
+                <Badge variant={
+                  framework.status === 'compliant' ? 'secondary' :
+                  framework.status === 'warning' ? 'outline' : 'destructive'
+                }>
+                  {framework.status}
+                </Badge>
+                <Button variant="outline" size="sm" onClick={() => 
+                  toast({ title: framework.name, description: `Opening ${framework.name} compliance details` })
+                }>
+                  View Details
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function IntegrationsPage() {
+  const { toast } = useToast();
+  
+  const integrations = [
+    { name: "AWS", status: "connected", icon: "☁️" },
+    { name: "Google Cloud", status: "connected", icon: "🌩️" },
+    { name: "GitHub", status: "pending", icon: "🐙" },
+    { name: "Azure", status: "error", icon: "⚡" },
+    { name: "Slack", status: "disconnected", icon: "💬" },
+    { name: "Jira", status: "connected", icon: "🎯" },
+  ];
+
+  const handleConnect = (name: string) => {
+    toast({ title: "Integration", description: `Connecting to ${name}...` });
+  };
+
+  return (
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Integrations</h1>
+        <Button onClick={() => toast({ title: "Add Integration", description: "Integration marketplace would open here" })}>
+          Add Integration
+        </Button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {integrations.map((integration) => (
+          <Card key={integration.name}>
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{integration.icon}</span>
+                  <div>
+                    <h3 className="font-medium">{integration.name}</h3>
+                    <Badge variant={
+                      integration.status === 'connected' ? 'secondary' :
+                      integration.status === 'pending' ? 'outline' : 
+                      integration.status === 'error' ? 'destructive' : 'outline'
+                    }>
+                      {integration.status}
+                    </Badge>
+                  </div>
+                </div>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => handleConnect(integration.name)}
+                >
+                  {integration.status === 'connected' ? 'Configure' : 'Connect'}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TeamsPage() {
+  const { toast } = useToast();
+  
+  const team = [
+    { name: "John Doe", role: "Compliance Manager", email: "john@marsstein.com", status: "active" },
+    { name: "Jane Smith", role: "Data Protection Officer", email: "jane@marsstein.com", status: "active" },
+    { name: "Mike Johnson", role: "Security Analyst", email: "mike@marsstein.com", status: "pending" },
+    { name: "Sarah Wilson", role: "Auditor", email: "sarah@marsstein.com", status: "active" },
+  ];
+
+  const handleInviteUser = () => {
+    toast({ title: "Invite User", description: "User invitation form would open here" });
+  };
+
+  return (
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Team Management</h1>
+        <Button onClick={handleInviteUser}>
+          <Users className="h-4 w-4 mr-2" />
+          Invite User
+        </Button>
+      </div>
+
+      <div className="grid gap-4">
+        {team.map((member, index) => (
+          <Card key={index}>
+            <CardContent className="p-4">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-4">
+                  <Avatar>
+                    <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h3 className="font-medium">{member.name}</h3>
+                    <p className="text-sm text-muted-foreground">{member.role}</p>
+                    <p className="text-sm text-muted-foreground">{member.email}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge variant={member.status === 'active' ? 'secondary' : 'outline'}>
+                    {member.status}
+                  </Badge>
+                  <Button variant="outline" size="sm">Manage</Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SettingsPage() {
+  const { toast } = useToast();
+  const { language, setLanguage } = useLanguage();
+  const { theme, setTheme } = useTheme();
+  
+  const handleSaveSettings = () => {
+    toast({ title: "Settings Saved", description: "Your preferences have been updated successfully" });
+  };
+
+  return (
+    <div className="p-6 space-y-6">
+      <h1 className="text-2xl font-bold">Settings</h1>
+      
+      <div className="grid gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>General Settings</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex justify-between items-center">
+              <div>
+                <h3 className="font-medium">Language</h3>
+                <p className="text-sm text-muted-foreground">Choose your preferred language</p>
+              </div>
+              <div className="flex gap-2">
+                <Button 
+                  variant={language === 'en' ? 'default' : 'outline'} 
+                  size="sm"
+                  onClick={() => setLanguage('en')}
+                >
+                  English
+                </Button>
+                <Button 
+                  variant={language === 'de' ? 'default' : 'outline'} 
+                  size="sm"
+                  onClick={() => setLanguage('de')}
+                >
+                  Deutsch
+                </Button>
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <div>
+                <h3 className="font-medium">Theme</h3>
+                <p className="text-sm text-muted-foreground">Choose light or dark mode</p>
+              </div>
+              <div className="flex gap-2">
+                <Button 
+                  variant={theme === 'light' ? 'default' : 'outline'} 
+                  size="sm"
+                  onClick={() => setTheme('light')}
+                >
+                  <Sun className="h-4 w-4 mr-1" />
+                  Light
+                </Button>
+                <Button 
+                  variant={theme === 'dark' ? 'default' : 'outline'} 
+                  size="sm"
+                  onClick={() => setTheme('dark')}
+                >
+                  <Moon className="h-4 w-4 mr-1" />
+                  Dark
+                </Button>
+              </div>
+            </div>
+            <Button onClick={handleSaveSettings}>Save Settings</Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Notifications</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex justify-between items-center">
+              <div>
+                <h3 className="font-medium">Email Notifications</h3>
+                <p className="text-sm text-muted-foreground">Receive email updates for compliance alerts</p>
+              </div>
+              <Button variant="outline" size="sm">Configure</Button>
+            </div>
+            <div className="flex justify-between items-center">
+              <div>
+                <h3 className="font-medium">Audit Reminders</h3>
+                <p className="text-sm text-muted-foreground">Get notified about upcoming audits</p>
+              </div>
+              <Button variant="outline" size="sm">Configure</Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+function HelpPage() {
+  const { toast } = useToast();
+  
+  const faqs = [
+    { question: "How do I upload documents?", answer: "Go to Documents section and click 'Upload Document' button" },
+    { question: "How often should I run compliance checks?", answer: "We recommend running checks weekly or after any system changes" },
+    { question: "How do I schedule an audit?", answer: "Visit the Audits & Reports section and click 'Schedule Audit'" },
+  ];
+
+  return (
+    <div className="p-6 space-y-6">
+      <h1 className="text-2xl font-bold">Help & Support</h1>
+      
+      <div className="grid gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>Contact Support</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Mail className="h-4 w-4" />
+              <span>support@marsstein.com</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              <span>+41 44 123 45 67</span>
+            </div>
+            <Button onClick={() => toast({ title: "Support", description: "Support chat would open here" })}>
+              Start Live Chat
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Frequently Asked Questions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div key={index} className="border-b pb-4 last:border-b-0">
+                  <h3 className="font-medium mb-2">{faq.question}</h3>
+                  <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Documentation</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2">
+              <Button variant="outline" className="w-full justify-start">
+                <FileText className="h-4 w-4 mr-2" />
+                User Guide
+              </Button>
+              <Button variant="outline" className="w-full justify-start">
+                <FileText className="h-4 w-4 mr-2" />
+                API Documentation
+              </Button>
+              <Button variant="outline" className="w-full justify-start">
+                <FileText className="h-4 w-4 mr-2" />
+                Compliance Templates
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
@@ -588,6 +1249,14 @@ export default function Dashboard() {
           <Routes>
             <Route index element={<DashboardMain />} />
             <Route path="documents" element={<DocumentsPage />} />
+            <Route path="ai-check" element={<AICheckPage />} />
+            <Route path="audits" element={<AuditsPage />} />
+            <Route path="policies" element={<PoliciesPage />} />
+            <Route path="frameworks" element={<FrameworksPage />} />
+            <Route path="integrations" element={<IntegrationsPage />} />
+            <Route path="teams" element={<TeamsPage />} />
+            <Route path="settings" element={<SettingsPage />} />
+            <Route path="help" element={<HelpPage />} />
             <Route path="*" element={<DashboardMain />} />
           </Routes>
         </main>

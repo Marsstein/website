@@ -166,6 +166,20 @@ const translations = {
     footer_company: 'Company',
     footer_support: 'Support',
     footer_legal: 'Legal',
+
+    // Thank You Page
+    thank_you_title: 'Thank You for Your Interest!',
+    thank_you_subtitle: 'We have received your request and will contact you within 24 hours.',
+    thank_you_next_steps: 'What happens next?',
+    thank_you_step_1: 'Our compliance experts will review your request',
+    thank_you_step_2: 'We will contact you within 24 hours to schedule a consultation',
+    thank_you_step_3: 'You will receive a personalized compliance assessment proposal',
+    thank_you_demo_question: 'Would you like to see a demo of our dashboard?',
+    thank_you_demo_description: 'Experience our compliance management platform with interactive demo featuring real compliance scenarios.',
+    thank_you_view_demo: 'View Interactive Demo',
+    thank_you_back_home: 'Back to Home',
+    thank_you_contact_info: 'Need immediate assistance?',
+    thank_you_response_time: 'Response time: Within 24 hours',
   },
   de: {
     // Navigation
@@ -321,6 +335,20 @@ const translations = {
     footer_company: 'Unternehmen',
     footer_support: 'Support',
     footer_legal: 'Rechtliches',
+
+    // Thank You Page
+    thank_you_title: 'Vielen Dank für Ihr Interesse!',
+    thank_you_subtitle: 'Wir haben Ihre Anfrage erhalten und werden Sie innerhalb von 24 Stunden kontaktieren.',
+    thank_you_next_steps: 'Was passiert als nächstes?',
+    thank_you_step_1: 'Unsere Compliance-Experten werden Ihre Anfrage prüfen',
+    thank_you_step_2: 'Wir kontaktieren Sie innerhalb von 24 Stunden, um eine Beratung zu vereinbaren',
+    thank_you_step_3: 'Sie erhalten einen personalisierten Compliance-Assessment-Vorschlag',
+    thank_you_demo_question: 'Möchten Sie eine Demo unseres Dashboards sehen?',
+    thank_you_demo_description: 'Erleben Sie unsere Compliance-Management-Plattform mit einer interaktiven Demo mit echten Compliance-Szenarien.',
+    thank_you_view_demo: 'Interaktive Demo ansehen',
+    thank_you_back_home: 'Zurück zur Startseite',
+    thank_you_contact_info: 'Benötigen Sie sofortige Hilfe?',
+    thank_you_response_time: 'Antwortzeit: Innerhalb von 24 Stunden',
   }
 };
 

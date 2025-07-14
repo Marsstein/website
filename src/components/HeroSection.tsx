@@ -46,12 +46,12 @@ export const HeroSection: React.FC = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact">
+              <Link to="/contact?demo=true">
                 <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-opacity">
                   {t('hero_cta')}
                 </Button>
               </Link>
-              <Link to="/contact">
+              <Link to="/contact?demo=true">
                 <Button size="lg" variant="outline" className="group">
                   <Play className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
                   {t('hero_cta_secondary')}

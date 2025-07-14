@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -8,12 +9,17 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Monitor } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-export const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  isDemoRequest?: boolean;
+}
+
+export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false }) => {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -23,9 +29,10 @@ export const ContactForm: React.FC = () => {
     company: '',
     jobTitle: '',
     employees: '',
-    message: '',
+    message: isDemoRequest ? 'I would like to request a demo of your compliance management platform.' : '',
     newsletter: false,
-    privacy: false
+    privacy: false,
+    isDemoRequest: isDemoRequest
   });  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -46,25 +53,40 @@ export const ContactForm: React.FC = () => {
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+      console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey ? 'Set' : 'Missing' });
+
       if (!serviceId || !templateId || !publicKey) {
+        console.error('EmailJS configuration missing:', { serviceId, templateId, publicKey });
         throw new Error('EmailJS configuration is missing. Please check your .env.local file.');
       }
 
-      // Prepare the email template parameters
+      // Initialize EmailJS with the public key
+      emailjs.init(publicKey);
+
+      // Prepare the email template parameters with simplified format
       const templateParams = {
-        from_name: `${formData.firstName} ${formData.lastName}`,
-        from_email: formData.email,
-        phone: formData.phone,
-        company: formData.company,
-        job_title: formData.jobTitle,
-        employees: formData.employees,
-        message: formData.message,
-        newsletter: formData.newsletter ? 'Yes' : 'No',
-        to_email: 'info@marsstein.com', // Your email where you want to receive messages
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        message: `
+Contact Details:
+- Name: ${formData.firstName} ${formData.lastName}
+- Email: ${formData.email}
+- Phone: ${formData.phone}
+- Company: ${formData.company}
+- Job Title: ${formData.jobTitle}
+- Employees: ${formData.employees}
+- Demo Request: ${formData.isDemoRequest ? 'YES' : 'NO'}
+- Newsletter: ${formData.newsletter ? 'YES' : 'NO'}
+
+Message:
+${formData.message}
+        `,
       };
 
       // Send email using EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('Sending email with params:', templateParams);
+      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('EmailJS result:', result);
 
       toast({
         title: t('contact_success'),
@@ -82,14 +104,36 @@ export const ContactForm: React.FC = () => {
         employees: '',
         message: '',
         newsletter: false,
-        privacy: false
+        privacy: false,
+        isDemoRequest: false
       });
 
+      // Navigate to thank you page after successful submission
+      setTimeout(() => {
+        navigate('/thank-you');
+      }, 1500); // Short delay to show the success toast
+
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Full error details:', error);
+      console.error('Error message:', error.message);
+      console.error('Error status:', error.status);
+      console.error('Error text:', error.text);
+      
+      let errorMessage = 'Failed to send message. Please try again or contact us directly.';
+      
+      if (error.status === 400) {
+        errorMessage = 'Invalid template parameters. Please check the form data.';
+      } else if (error.status === 401) {
+        errorMessage = 'EmailJS authentication failed. Please check your public key.';
+      } else if (error.status === 404) {
+        errorMessage = 'EmailJS service or template not found. Please check your service ID and template ID.';
+      } else if (error.text) {
+        errorMessage = `EmailJS error: ${error.text}`;
+      }
+      
       toast({
         title: t('contact_error'),
-        description: 'Failed to send message. Please try again or contact us directly.',
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -101,16 +145,50 @@ export const ContactForm: React.FC = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  // Test EmailJS setup
+  const testEmailJS = async () => {
+    console.log('Testing EmailJS configuration...');
+    console.log('Service ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    console.log('Template ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    console.log('Public Key:', import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+    
+    try {
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: 'Test User',
+          from_email: 'test@example.com',
+          message: 'This is a test message to verify EmailJS configuration.'
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+      console.log('Test email sent successfully:', result);
+      return true;
+    } catch (error) {
+      console.error('Test email failed:', error);
+      return false;
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
         {/* Left Column - Info */}
         <div>
+          {isDemoRequest && (
+            <div className="mb-4 p-4 bg-primary/10 border border-primary/20 rounded-lg">
+              <p className="text-primary font-medium flex items-center gap-2">
+                <Monitor className="h-5 w-5" />
+                Demo Request - Get a personalized demonstration of our platform
+              </p>
+            </div>
+          )}
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            {t('contact_title')}
+            {isDemoRequest ? 'Request Your Personal Demo' : t('contact_title')}
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            {t('contact_subtitle')}
+            {isDemoRequest ? 'Fill out the form below and we\'ll schedule a personalized demo of our compliance management platform for you.' : t('contact_subtitle')}
           </p>
 
           <div className="space-y-6 mb-8">
@@ -323,6 +401,24 @@ export const ContactForm: React.FC = () => {
               disabled={isLoading}
             >
               {isLoading ? 'Sending...' : t('contact_submit')}
+            </Button>
+            
+            {/* Test button for debugging EmailJS */}
+            <Button 
+              type="button" 
+              variant="outline"
+              size="lg"
+              onClick={async () => {
+                const success = await testEmailJS();
+                toast({
+                  title: success ? "Test Successful" : "Test Failed",
+                  description: success ? "EmailJS is configured correctly" : "Check console for details",
+                  variant: success ? "default" : "destructive"
+                });
+              }}
+              className="w-full mt-2"
+            >
+              Test EmailJS Configuration
             </Button>
           </form>
         </Card>
