@@ -1,5 +1,4 @@
 import React from 'react';
-import { LanguageProvider } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -114,15 +113,13 @@ const PricingContent = () => {
 
 const Pricing = () => {
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-background">
-        <Header />
-        <main>
-          <PricingContent />
-        </main>
-        <Footer />
-      </div>
-    </LanguageProvider>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <PricingContent />
+      </main>
+      <Footer />
+    </div>
   );
 };
 

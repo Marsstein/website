@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'en' | 'de';
 
@@ -353,7 +353,21 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  // Initialize language from localStorage or default to 'en'
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('marsstein-language');
+      return (saved === 'en' || saved === 'de') ? saved : 'en';
+    }
+    return 'en';
+  });
+
+  // Save language to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('marsstein-language', language);
+    }
+  }, [language]);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['en']] || key;
