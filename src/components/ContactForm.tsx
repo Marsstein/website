@@ -145,32 +145,6 @@ ${formData.message}
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  // Test EmailJS setup
-  const testEmailJS = async () => {
-    console.log('Testing EmailJS configuration...');
-    console.log('Service ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
-    console.log('Template ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-    console.log('Public Key:', import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-    
-    try {
-      const result = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: 'Test User',
-          from_email: 'test@example.com',
-          message: 'This is a test message to verify EmailJS configuration.'
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      );
-      console.log('Test email sent successfully:', result);
-      return true;
-    } catch (error) {
-      console.error('Test email failed:', error);
-      return false;
-    }
-  };
-
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -401,24 +375,6 @@ ${formData.message}
               disabled={isLoading}
             >
               {isLoading ? 'Sending...' : t('contact_submit')}
-            </Button>
-            
-            {/* Test button for debugging EmailJS */}
-            <Button 
-              type="button" 
-              variant="outline"
-              size="lg"
-              onClick={async () => {
-                const success = await testEmailJS();
-                toast({
-                  title: success ? "Test Successful" : "Test Failed",
-                  description: success ? "EmailJS is configured correctly" : "Check console for details",
-                  variant: success ? "default" : "destructive"
-                });
-              }}
-              className="w-full mt-2"
-            >
-              Test EmailJS Configuration
             </Button>
           </form>
         </Card>
