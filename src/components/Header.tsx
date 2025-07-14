@@ -3,10 +3,32 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Globe, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleFeaturesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      // Navigate to home page first, then scroll to features
+      navigate('/');
+      setTimeout(() => {
+        const featuresElement = document.getElementById('features');
+        if (featuresElement) {
+          featuresElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // Already on home page, just scroll to features
+      const featuresElement = document.getElementById('features');
+      if (featuresElement) {
+        featuresElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const navItems = [
     { key: 'nav_home', href: '/' },
@@ -33,13 +55,13 @@ export const Header: React.FC = () => {
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             item.href.startsWith('#') ? (
-              <a
+              <button
                 key={item.key}
-                href={item.href}
+                onClick={handleFeaturesClick}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {t(item.key)}
-              </a>
+              </button>
             ) : (
               <Link
                 key={item.key}
@@ -100,13 +122,13 @@ export const Header: React.FC = () => {
               <div className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item) => (
                   item.href.startsWith('#') ? (
-                    <a
+                    <button
                       key={item.key}
-                      href={item.href}
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                      onClick={handleFeaturesClick}
+                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
                     >
                       {t(item.key)}
-                    </a>
+                    </button>
                   ) : (
                     <Link
                       key={item.key}
