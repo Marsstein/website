@@ -224,7 +224,7 @@ const translations = {
     contact_hours: 'Mo-Fr 9:00-18:00',
 
     // Academy Page
-    academy_title: 'Marsstein Academy',
+    academy_title: 'Marsstein Akademie',
     academy_subtitle: 'Erweitere dein Wissen über Datenschutz, Compliance und Cybersicherheit mit unseren Expertenkursen und Zertifizierungen.',
     academy_cta: 'Frühzugang anfordern',
     academy_feature_1_title: 'Expertenkurse',
