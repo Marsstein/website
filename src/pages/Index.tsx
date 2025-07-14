@@ -1,5 +1,4 @@
 import React from 'react';
-import { LanguageProvider } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { FeaturesSection } from '@/components/FeaturesSection';
@@ -12,21 +11,19 @@ import { Footer } from '@/components/Footer';
 
 const Index = () => {
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-background">
-        <Header />
-        <main>
-          <HeroSection />
-          <FeaturesSection />
-          <BenefitsSection />
-          <HowItWorksSection />
-          <TestimonialsSection />
-          <FAQSection />
-          <NewsletterSection />
-        </main>
-        <Footer />
-      </div>
-    </LanguageProvider>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <HeroSection />
+        <FeaturesSection />
+        <BenefitsSection />
+        <HowItWorksSection />
+        <TestimonialsSection />
+        <FAQSection />
+        <NewsletterSection />
+      </main>
+      <Footer />
+    </div>
   );
 };
 
