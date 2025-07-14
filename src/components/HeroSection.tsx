@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Shield, Award, CheckCircle, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

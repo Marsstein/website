@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { BookOpen, Users, Award, Clock } from 'lucide-react';

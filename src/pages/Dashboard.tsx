@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "next-themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
