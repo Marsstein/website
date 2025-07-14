@@ -378,7 +378,7 @@ function DashboardMain() {
 // Simple placeholder components for navigation
 function DocumentsPage() {
   const { toast } = useToast();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   
   const [documents, setDocuments] = useState([
     { id: 1, name: "GDPR Privacy Policy", type: "Policy", status: "approved", date: "2024-01-15", size: "2.3 MB" },
@@ -505,6 +505,7 @@ function DocumentsPage() {
 
 function AICheckPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   const [isRunning, setIsRunning] = useState(false);
   const [lastScan, setLastScan] = useState("2024-01-15 14:30");
   const [results, setResults] = useState({
@@ -615,6 +616,7 @@ function AICheckPage() {
 
 function AuditsPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const audits = [
     { id: 1, name: "ISO 27001 Review", status: "scheduled", date: "2024-03-15", auditor: "TÜV SÜD" },
@@ -675,6 +677,7 @@ function AuditsPage() {
 
 function PoliciesPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const policies = [
     { name: "Privacy Policy", status: "active", lastUpdated: "2024-01-15", version: "2.1" },
@@ -726,6 +729,7 @@ function PoliciesPage() {
 
 function FrameworksPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   return (
     <div className="p-6 space-y-6">
@@ -765,6 +769,7 @@ function FrameworksPage() {
 
 function IntegrationsPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const integrations = [
     { name: "AWS", status: "connected", icon: "☁️" },
@@ -824,6 +829,7 @@ function IntegrationsPage() {
 
 function TeamsPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const team = [
     { name: "John Doe", role: "Compliance Manager", email: "john@marsstein.com", status: "active" },
@@ -878,7 +884,7 @@ function TeamsPage() {
 
 function SettingsPage() {
   const { toast } = useToast();
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const { theme, setTheme } = useTheme();
   
   const handleSaveSettings = () => {
@@ -973,6 +979,7 @@ function SettingsPage() {
 
 function HelpPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const faqs = [
     { question: "How do I upload documents?", answer: "Go to Documents section and click 'Upload Document' button" },
@@ -1048,38 +1055,9 @@ function HelpPage() {
 
 // Dashboard Layout Component
 export default function Dashboard() {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const { theme, setTheme } = useTheme();
   const location = useLocation();
-
-  const texts = {
-    en: {
-      dashboard: "Dashboard",
-      documents: "Documents",
-      aiCheck: "AI Compliance Check",
-      audits: "Audits & Reports",
-      policies: "Policies",
-      frameworks: "Frameworks",
-      integrations: "Integrations",
-      teams: "Teams",
-      settings: "Settings",
-      help: "Help",
-    },
-    de: {
-      dashboard: "Dashboard",
-      documents: "Dokumente",
-      aiCheck: "KI Compliance Check",
-      audits: "Audits & Berichte",
-      policies: "Richtlinien",
-      frameworks: "Frameworks",
-      integrations: "Integrationen",
-      teams: "Teams",
-      settings: "Einstellungen",
-      help: "Hilfe",
-    }
-  };
-
-  const t = texts[language];
 
   return (
     <SidebarProvider>
@@ -1096,7 +1074,7 @@ export default function Dashboard() {
               <SidebarGroupContent>
                 <SidebarMenu>
                   {sidebarItems.map((item) => (
-                    <SidebarMenuItem key={item.title}>
+                    <SidebarMenuItem key={item.titleKey}>
                       <SidebarMenuButton asChild>
                         <NavLink
                           to={item.url}
