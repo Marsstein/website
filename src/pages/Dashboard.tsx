@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "next-themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -53,16 +53,16 @@ import {
 import { NavLink, useLocation, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 const sidebarItems = [
-  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
-  { title: "Documents", url: "/dashboard/documents", icon: FileText },
-  { title: "AI Compliance Check", url: "/dashboard/ai-check", icon: Brain },
-  { title: "Audits & Reports", url: "/dashboard/audits", icon: ClipboardCheck },
-  { title: "Policies", url: "/dashboard/policies", icon: FileCheck },
-  { title: "Frameworks", url: "/dashboard/frameworks", icon: Target },
-  { title: "Integrations", url: "/dashboard/integrations", icon: GitBranch },
-  { title: "Teams", url: "/dashboard/teams", icon: Users },
-  { title: "Settings", url: "/dashboard/settings", icon: Settings },
-  { title: "Help", url: "/dashboard/help", icon: HelpCircle },
+  { titleKey: "dashboard_nav_dashboard", url: "/dashboard", icon: LayoutDashboard },
+  { titleKey: "dashboard_nav_documents", url: "/dashboard/documents", icon: FileText },
+  { titleKey: "dashboard_nav_ai_check", url: "/dashboard/ai-check", icon: Brain },
+  { titleKey: "dashboard_nav_audits", url: "/dashboard/audits", icon: ClipboardCheck },
+  { titleKey: "dashboard_nav_policies", url: "/dashboard/policies", icon: FileCheck },
+  { titleKey: "dashboard_nav_frameworks", url: "/dashboard/frameworks", icon: Target },
+  { titleKey: "dashboard_nav_integrations", url: "/dashboard/integrations", icon: GitBranch },
+  { titleKey: "dashboard_nav_teams", url: "/dashboard/teams", icon: Users },
+  { titleKey: "dashboard_nav_settings", url: "/dashboard/settings", icon: Settings },
+  { titleKey: "dashboard_nav_help", url: "/dashboard/help", icon: HelpCircle },
 ];
 
 const frameworks = [
@@ -87,96 +87,24 @@ const riskData = [
 
 // Dashboard Main Content Component
 function DashboardMain() {
-  const { language, setLanguage } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [activeFramework, setActiveFramework] = useState("GDPR");
 
-  const texts = {
-    en: {
-      complianceScore: "Overall Compliance Score",
-      compliant: "Compliant",
-      atRisk: "At Risk",
-      warning: "Warning",
-      frameworkCompliance: "Framework Compliance",
-      aiComplianceCheck: "AI Compliance Check",
-      noCriticalIssues: "No critical issues found",
-      runCheck: "Run Check",
-      documentsEvidence: "Documents & Evidence",
-      recentUploads: "Recent Uploads",
-      quickUpload: "Quick Upload",
-      upcomingAudits: "Upcoming Audits & Tasks",
-      nextAudit: "Next Audit",
-      riskMonitoring: "Risk Monitoring",
-      openRisks: "Open Risks by Severity",
-      integrationsHealth: "Integrations Health",
-      userTeamOverview: "User/Team Overview",
-      activeUsers: "Active Users",
-      recentActivity: "Recent Activity",
-      approved: "Approved",
-      pending: "Pending",
-      missing: "Missing",
-      downloadDPIA: "Download DPIA",
-      exportReport: "Export Compliance Report",
-      legalBasis: "Legal Basis Overview",
-      critical: "Critical",
-      high: "High",
-      medium: "Medium",
-      low: "Low",
-      controlsPassed: "controls passed",
-      warnings: "warnings",
-    },
-    de: {
-      complianceScore: "Gesamt Compliance Score",
-      compliant: "Konform",
-      atRisk: "Risiko",
-      warning: "Warnung",
-      frameworkCompliance: "Framework Compliance",
-      aiComplianceCheck: "KI Compliance Check",
-      noCriticalIssues: "Keine kritischen Probleme gefunden",
-      runCheck: "Check ausführen",
-      documentsEvidence: "Dokumente & Nachweise",
-      recentUploads: "Aktuelle Uploads",
-      quickUpload: "Schnell Upload",
-      upcomingAudits: "Anstehende Audits & Aufgaben",
-      nextAudit: "Nächstes Audit",
-      riskMonitoring: "Risiko Monitoring",
-      openRisks: "Offene Risiken nach Schweregrad",
-      integrationsHealth: "Integration Status",
-      userTeamOverview: "Benutzer/Team Übersicht",
-      activeUsers: "Aktive Benutzer",
-      recentActivity: "Letzte Aktivitäten",
-      approved: "Genehmigt",
-      pending: "Ausstehend",
-      missing: "Fehlend",
-      downloadDPIA: "DSFA herunterladen",
-      exportReport: "Compliance Bericht exportieren",
-      legalBasis: "Rechtsgrundlagen Übersicht",
-      critical: "Kritisch",
-      high: "Hoch",
-      medium: "Mittel",
-      low: "Niedrig",
-      controlsPassed: "Kontrollen bestanden",
-      warnings: "Warnungen",
-      issues: "Probleme"
-    }
-  };
-
-  const t = texts[language];
-
   // Button handlers
   const handleDownloadDPIA = () => {
     toast({
       title: "DSFA Download",
-      description: "Die Datenschutz-Folgenabschätzung wird heruntergeladen...",
+      description: language === 'de' ? "Die Datenschutz-Folgenabschätzung wird heruntergeladen..." : "Data Protection Impact Assessment is being downloaded...",
     });
   };
 
   const handleExportReport = () => {
     toast({
       title: "Report Export",
-      description: "Der Compliance-Bericht wird exportiert...",
+      description: language === 'de' ? "Der Compliance-Bericht wird exportiert..." : "Compliance report is being exported...",
     });
   };
 
@@ -184,7 +112,7 @@ function DashboardMain() {
     navigate('/dashboard/documents');
     toast({
       title: "Navigation",
-      description: "Redirecting to document management...",
+      description: language === 'de' ? "Weiterleitung zur Dokumentenverwaltung..." : "Redirecting to document management...",
     });
   };
 
@@ -192,7 +120,7 @@ function DashboardMain() {
     navigate('/dashboard/ai-check');
     toast({
       title: "Navigation",
-      description: "Opening AI Compliance Check...",
+      description: language === 'de' ? "KI Compliance Prüfung wird geöffnet..." : "Opening AI Compliance Check...",
     });
   };
 
@@ -223,7 +151,7 @@ function DashboardMain() {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              {t.complianceScore}
+              {t('dashboard_compliance_score')}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -236,7 +164,7 @@ function DashboardMain() {
               </div>
               <div>
                 <Badge variant="outline" className="text-warning border-warning">
-                  {t.warning}
+                  {t('dashboard_warning')}
                 </Badge>
               </div>
             </div>
@@ -247,22 +175,22 @@ function DashboardMain() {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              {t.aiComplianceCheck}
+              {t('dashboard_ai_compliance_check')}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-secondary" />
-                <span className="text-sm">15 {t.controlsPassed}</span>
+                <span className="text-sm">15 {t('dashboard_controls_passed')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <AlertCircle className="h-4 w-4 text-warning" />
-                <span className="text-sm">3 {t.warnings}</span>
+                <span className="text-sm">3 {t('dashboard_warnings')}</span>
               </div>
               <Button size="sm" onClick={handleRunCheck} className="w-full mt-2">
                 <Play className="h-3 w-3 mr-1" />
-                {t.runCheck}
+                {t('dashboard_run_check')}
               </Button>
             </div>
           </CardContent>
@@ -272,7 +200,7 @@ function DashboardMain() {
         <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/documents')}>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Documents
+              {t('dashboard_nav_documents')}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -290,7 +218,7 @@ function DashboardMain() {
         <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/teams')}>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Active Users
+              {t('dashboard_active_users')}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -310,7 +238,7 @@ function DashboardMain() {
         {/* Framework Compliance */}
         <Card className="lg:col-span-2 cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/frameworks')}>
           <CardHeader>
-            <CardTitle>{t.frameworkCompliance}</CardTitle>
+            <CardTitle>{t('dashboard_framework_compliance')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -332,14 +260,14 @@ function DashboardMain() {
                 handleDownloadDPIA();
               }}>
                 <Download className="h-4 w-4" />
-                {t.downloadDPIA}
+                {t('dashboard_download_dpia')}
               </Button>
               <Button variant="outline" className="flex items-center gap-2" onClick={(e) => {
                 e.stopPropagation();
                 handleExportReport();
               }}>
                 <FileText className="h-4 w-4" />
-                {t.exportReport}
+                {t('dashboard_export_report')}
               </Button>
             </div>
           </CardContent>
@@ -348,7 +276,7 @@ function DashboardMain() {
         {/* Risk Monitoring */}
         <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/audits')}>
           <CardHeader>
-            <CardTitle>{t.riskMonitoring}</CardTitle>
+            <CardTitle>{t('dashboard_risk_monitoring')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -356,7 +284,7 @@ function DashboardMain() {
                 <div key={risk.severity} className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-3 h-3 rounded-full ${risk.color}`} />
-                    <span className="text-sm font-medium">{t[risk.severity.toLowerCase()]}</span>
+                    <span className="text-sm font-medium">{t(`dashboard_${risk.severity.toLowerCase()}`)}</span>
                   </div>
                   <span className="text-sm font-bold">{risk.count}</span>
                 </div>
@@ -368,7 +296,7 @@ function DashboardMain() {
         {/* Recent Documents */}
         <Card>
           <CardHeader>
-            <CardTitle>{t.documentsEvidence}</CardTitle>
+            <CardTitle>{t('dashboard_documents_evidence')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -379,14 +307,14 @@ function DashboardMain() {
                     <p className="text-xs text-muted-foreground">{doc.date}</p>
                   </div>
                   <Badge variant={getStatusBadgeVariant(doc.status)}>
-                    {t[doc.status]}
+                    {t(`dashboard_${doc.status}`)}
                   </Badge>
                 </div>
               ))}
             </div>
             <Button className="w-full mt-4" variant="outline" onClick={handleQuickUpload}>
               <Upload className="h-4 w-4 mr-2" />
-              {t.quickUpload}
+              {t('dashboard_quick_upload')}
             </Button>
           </CardContent>
         </Card>
@@ -394,7 +322,7 @@ function DashboardMain() {
         {/* Upcoming Audits */}
         <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/audits')}>
           <CardHeader>
-            <CardTitle>{t.upcomingAudits}</CardTitle>
+            <CardTitle>{t('dashboard_upcoming_audits')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -419,7 +347,7 @@ function DashboardMain() {
         {/* Integrations Health */}
         <Card className="cursor-pointer transition-colors hover:bg-muted/50" onClick={() => navigate('/dashboard/integrations')}>
           <CardHeader>
-            <CardTitle>{t.integrationsHealth}</CardTitle>
+            <CardTitle>{t('dashboard_integrations_health')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -450,7 +378,7 @@ function DashboardMain() {
 // Simple placeholder components for navigation
 function DocumentsPage() {
   const { toast } = useToast();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   
   const [documents, setDocuments] = useState([
     { id: 1, name: "GDPR Privacy Policy", type: "Policy", status: "approved", date: "2024-01-15", size: "2.3 MB" },
@@ -577,6 +505,7 @@ function DocumentsPage() {
 
 function AICheckPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   const [isRunning, setIsRunning] = useState(false);
   const [lastScan, setLastScan] = useState("2024-01-15 14:30");
   const [results, setResults] = useState({
@@ -687,6 +616,7 @@ function AICheckPage() {
 
 function AuditsPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const audits = [
     { id: 1, name: "ISO 27001 Review", status: "scheduled", date: "2024-03-15", auditor: "TÜV SÜD" },
@@ -747,6 +677,7 @@ function AuditsPage() {
 
 function PoliciesPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const policies = [
     { name: "Privacy Policy", status: "active", lastUpdated: "2024-01-15", version: "2.1" },
@@ -798,6 +729,7 @@ function PoliciesPage() {
 
 function FrameworksPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   return (
     <div className="p-6 space-y-6">
@@ -837,6 +769,7 @@ function FrameworksPage() {
 
 function IntegrationsPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const integrations = [
     { name: "AWS", status: "connected", icon: "☁️" },
@@ -896,6 +829,7 @@ function IntegrationsPage() {
 
 function TeamsPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const team = [
     { name: "John Doe", role: "Compliance Manager", email: "john@marsstein.com", status: "active" },
@@ -950,7 +884,7 @@ function TeamsPage() {
 
 function SettingsPage() {
   const { toast } = useToast();
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const { theme, setTheme } = useTheme();
   
   const handleSaveSettings = () => {
@@ -1045,6 +979,7 @@ function SettingsPage() {
 
 function HelpPage() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
   
   const faqs = [
     { question: "How do I upload documents?", answer: "Go to Documents section and click 'Upload Document' button" },
@@ -1120,38 +1055,9 @@ function HelpPage() {
 
 // Dashboard Layout Component
 export default function Dashboard() {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const { theme, setTheme } = useTheme();
   const location = useLocation();
-
-  const texts = {
-    en: {
-      dashboard: "Dashboard",
-      documents: "Documents",
-      aiCheck: "AI Compliance Check",
-      audits: "Audits & Reports",
-      policies: "Policies",
-      frameworks: "Frameworks",
-      integrations: "Integrations",
-      teams: "Teams",
-      settings: "Settings",
-      help: "Help",
-    },
-    de: {
-      dashboard: "Dashboard",
-      documents: "Dokumente",
-      aiCheck: "KI Compliance Check",
-      audits: "Audits & Berichte",
-      policies: "Richtlinien",
-      frameworks: "Frameworks",
-      integrations: "Integrationen",
-      teams: "Teams",
-      settings: "Einstellungen",
-      help: "Hilfe",
-    }
-  };
-
-  const t = texts[language];
 
   return (
     <SidebarProvider>
@@ -1168,7 +1074,7 @@ export default function Dashboard() {
               <SidebarGroupContent>
                 <SidebarMenu>
                   {sidebarItems.map((item) => (
-                    <SidebarMenuItem key={item.title}>
+                    <SidebarMenuItem key={item.titleKey}>
                       <SidebarMenuButton asChild>
                         <NavLink
                           to={item.url}
@@ -1183,19 +1089,7 @@ export default function Dashboard() {
                         >
                           <item.icon className="h-5 w-5" />
                           <span className="font-medium">
-                            {language === 'de' ? 
-                              (item.title === 'Dashboard' ? t.dashboard :
-                               item.title === 'Documents' ? t.documents :
-                               item.title === 'AI Compliance Check' ? t.aiCheck :
-                               item.title === 'Audits & Reports' ? t.audits :
-                               item.title === 'Policies' ? t.policies :
-                               item.title === 'Frameworks' ? t.frameworks :
-                               item.title === 'Integrations' ? t.integrations :
-                               item.title === 'Teams' ? t.teams :
-                               item.title === 'Settings' ? t.settings :
-                               item.title === 'Help' ? t.help : item.title) 
-                              : item.title
-                            }
+                            {t(item.titleKey)}
                           </span>
                         </NavLink>
                       </SidebarMenuButton>
@@ -1213,7 +1107,7 @@ export default function Dashboard() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <SidebarTrigger />
-                <h2 className="text-2xl font-bold text-foreground">{t.dashboard}</h2>
+                <h2 className="text-2xl font-bold text-foreground">{t('dashboard_nav_dashboard')}</h2>
               </div>
               
               <div className="flex items-center gap-4">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Separator } from '@/components/ui/separator';
 import { Shield, Award, CheckCircle, Mail, Phone, MapPin } from 'lucide-react';
 

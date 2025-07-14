@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'en' | 'de';
 
@@ -9,6 +9,8 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export { LanguageContext };
 
 // Translation content
 const translations = {
@@ -180,6 +182,52 @@ const translations = {
     thank_you_back_home: 'Back to Home',
     thank_you_contact_info: 'Need immediate assistance?',
     thank_you_response_time: 'Response time: Within 24 hours',
+
+    // Dashboard Navigation
+    dashboard_nav_dashboard: 'Dashboard',
+    dashboard_nav_documents: 'Documents',
+    dashboard_nav_ai_check: 'AI Compliance Check',
+    dashboard_nav_audits: 'Audits & Reports',
+    dashboard_nav_policies: 'Policies',
+    dashboard_nav_frameworks: 'Frameworks',
+    dashboard_nav_integrations: 'Integrations',
+    dashboard_nav_teams: 'Teams',
+    dashboard_nav_settings: 'Settings',
+    dashboard_nav_help: 'Help',
+
+    // Dashboard Main
+    dashboard_compliance_score: 'Overall Compliance Score',
+    dashboard_compliant: 'Compliant',
+    dashboard_at_risk: 'At Risk',
+    dashboard_warning: 'Warning',
+    dashboard_framework_compliance: 'Framework Compliance',
+    dashboard_ai_compliance_check: 'AI Compliance Check',
+    dashboard_no_critical_issues: 'No critical issues found',
+    dashboard_run_check: 'Run Check',
+    dashboard_documents_evidence: 'Documents & Evidence',
+    dashboard_recent_uploads: 'Recent Uploads',
+    dashboard_quick_upload: 'Quick Upload',
+    dashboard_upcoming_audits: 'Upcoming Audits & Tasks',
+    dashboard_next_audit: 'Next Audit',
+    dashboard_risk_monitoring: 'Risk Monitoring',
+    dashboard_open_risks: 'Open Risks by Severity',
+    dashboard_integrations_health: 'Integrations Health',
+    dashboard_user_team_overview: 'User/Team Overview',
+    dashboard_active_users: 'Active Users',
+    dashboard_recent_activity: 'Recent Activity',
+    dashboard_approved: 'Approved',
+    dashboard_pending: 'Pending',
+    dashboard_missing: 'Missing',
+    dashboard_download_dpia: 'Download DPIA',
+    dashboard_export_report: 'Export Compliance Report',
+    dashboard_legal_basis: 'Legal Basis Overview',
+    dashboard_critical: 'Critical',
+    dashboard_high: 'High',
+    dashboard_medium: 'Medium',
+    dashboard_low: 'Low',
+    dashboard_controls_passed: 'controls passed',
+    dashboard_warnings: 'warnings',
+    dashboard_issues: 'issues',
   },
   de: {
     // Navigation
@@ -224,7 +272,7 @@ const translations = {
     contact_hours: 'Mo-Fr 9:00-18:00',
 
     // Academy Page
-    academy_title: 'Marsstein Academy',
+    academy_title: 'Marsstein Akademie',
     academy_subtitle: 'Erweitere dein Wissen über Datenschutz, Compliance und Cybersicherheit mit unseren Expertenkursen und Zertifizierungen.',
     academy_cta: 'Frühzugang anfordern',
     academy_feature_1_title: 'Expertenkurse',
@@ -349,11 +397,71 @@ const translations = {
     thank_you_back_home: 'Zurück zur Startseite',
     thank_you_contact_info: 'Benötigen Sie sofortige Hilfe?',
     thank_you_response_time: 'Antwortzeit: Innerhalb von 24 Stunden',
+
+    // Dashboard Navigation
+    dashboard_nav_dashboard: 'Dashboard',
+    dashboard_nav_documents: 'Dokumente',
+    dashboard_nav_ai_check: 'KI Compliance Prüfung',
+    dashboard_nav_audits: 'Audits & Berichte',
+    dashboard_nav_policies: 'Richtlinien',
+    dashboard_nav_frameworks: 'Frameworks',
+    dashboard_nav_integrations: 'Integrationen',
+    dashboard_nav_teams: 'Teams',
+    dashboard_nav_settings: 'Einstellungen',
+    dashboard_nav_help: 'Hilfe',
+
+    // Dashboard Main
+    dashboard_compliance_score: 'Gesamt Compliance Score',
+    dashboard_compliant: 'Konform',
+    dashboard_at_risk: 'Risiko',
+    dashboard_warning: 'Warnung',
+    dashboard_framework_compliance: 'Framework Compliance',
+    dashboard_ai_compliance_check: 'KI Compliance Prüfung',
+    dashboard_no_critical_issues: 'Keine kritischen Probleme gefunden',
+    dashboard_run_check: 'Prüfung starten',
+    dashboard_documents_evidence: 'Dokumente & Nachweise',
+    dashboard_recent_uploads: 'Aktuelle Uploads',
+    dashboard_quick_upload: 'Schnell-Upload',
+    dashboard_upcoming_audits: 'Anstehende Audits & Aufgaben',
+    dashboard_next_audit: 'Nächstes Audit',
+    dashboard_risk_monitoring: 'Risiko-Überwachung',
+    dashboard_open_risks: 'Offene Risiken nach Schweregrad',
+    dashboard_integrations_health: 'Integration Status',
+    dashboard_user_team_overview: 'Benutzer/Team Übersicht',
+    dashboard_active_users: 'Aktive Benutzer',
+    dashboard_recent_activity: 'Letzte Aktivitäten',
+    dashboard_approved: 'Genehmigt',
+    dashboard_pending: 'Ausstehend',
+    dashboard_missing: 'Fehlend',
+    dashboard_download_dpia: 'DSFA herunterladen',
+    dashboard_export_report: 'Compliance-Bericht exportieren',
+    dashboard_legal_basis: 'Rechtsgrundlagen Übersicht',
+    dashboard_critical: 'Kritisch',
+    dashboard_high: 'Hoch',
+    dashboard_medium: 'Mittel',
+    dashboard_low: 'Niedrig',
+    dashboard_controls_passed: 'Kontrollen bestanden',
+    dashboard_warnings: 'Warnungen',
+    dashboard_issues: 'Probleme',
   }
 };
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  // Initialize language from localStorage or default to 'en'
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('marsstein-language');
+      return (saved === 'en' || saved === 'de') ? saved : 'en';
+    }
+    return 'en';
+  });
+
+  // Save language to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('marsstein-language', language);
+    }
+  }, [language]);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['en']] || key;
@@ -364,12 +472,4 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
       {children}
     </LanguageContext.Provider>
   );
-};
-
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
 };

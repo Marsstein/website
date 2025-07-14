@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/hooks/useLanguage';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -21,6 +21,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
   const { toast } = useToast();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [lastSubmissionTime, setLastSubmissionTime] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -35,6 +36,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
     isDemoRequest: isDemoRequest
   });  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Rate limiting: prevent multiple submissions within 30 seconds
+    const now = Date.now();
+    if (lastSubmissionTime && now - lastSubmissionTime < 30000) {
+      toast({
+        title: t('contact_error'),
+        description: 'Please wait 30 seconds before submitting again.',
+        variant: "destructive",
+      });
+      return;
+    }
     
     if (!formData.privacy) {
       toast({
@@ -53,45 +65,82 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey ? 'Set' : 'Missing' });
+      // Development only logging
+      if (import.meta.env.DEV) {
+        console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey ? 'Set' : 'Missing' });
+      }
 
       if (!serviceId || !templateId || !publicKey) {
-        console.error('EmailJS configuration missing:', { serviceId, templateId, publicKey });
+        if (import.meta.env.DEV) {
+          console.error('EmailJS configuration missing:', { serviceId, templateId, publicKey });
+        }
         throw new Error('EmailJS configuration is missing. Please check your .env.local file.');
       }
 
       // Initialize EmailJS with the public key
       emailjs.init(publicKey);
 
-      // Prepare the email template parameters with simplified format
+      // Input sanitization and validation
+      const sanitizedData = {
+        firstName: formData.firstName.trim().slice(0, 50),
+        lastName: formData.lastName.trim().slice(0, 50),
+        email: formData.email.trim().toLowerCase(),
+        phone: formData.phone.trim().slice(0, 20),
+        company: formData.company.trim().slice(0, 100),
+        jobTitle: formData.jobTitle.trim().slice(0, 100),
+        employees: formData.employees,
+        message: formData.message.trim().slice(0, 2000),
+        isDemoRequest: formData.isDemoRequest,
+        newsletter: formData.newsletter
+      };
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(sanitizedData.email)) {
+        toast({
+          title: t('contact_error'),
+          description: 'Please enter a valid email address.',
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Prepare the email template parameters with sanitized data
       const templateParams = {
-        name: `${formData.firstName} ${formData.lastName}`,
-        email: formData.email,
+        name: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
+        email: sanitizedData.email,
         message: `
 Contact Details:
-- Name: ${formData.firstName} ${formData.lastName}
-- Email: ${formData.email}
-- Phone: ${formData.phone}
-- Company: ${formData.company}
-- Job Title: ${formData.jobTitle}
-- Employees: ${formData.employees}
-- Demo Request: ${formData.isDemoRequest ? 'YES' : 'NO'}
-- Newsletter: ${formData.newsletter ? 'YES' : 'NO'}
+- Name: ${sanitizedData.firstName} ${sanitizedData.lastName}
+- Email: ${sanitizedData.email}
+- Phone: ${sanitizedData.phone}
+- Company: ${sanitizedData.company}
+- Job Title: ${sanitizedData.jobTitle}
+- Employees: ${sanitizedData.employees}
+- Demo Request: ${sanitizedData.isDemoRequest ? 'YES' : 'NO'}
+- Newsletter: ${sanitizedData.newsletter ? 'YES' : 'NO'}
 
 Message:
-${formData.message}
+${sanitizedData.message}
         `,
       };
 
       // Send email using EmailJS
-      console.log('Sending email with params:', templateParams);
+      if (import.meta.env.DEV) {
+        console.log('Sending email with params:', templateParams);
+      }
       const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      console.log('EmailJS result:', result);
+      if (import.meta.env.DEV) {
+        console.log('EmailJS result:', result);
+      }
 
       toast({
         title: t('contact_success'),
         description: t('contact_success_message'),
       });
+
+      // Update last submission time
+      setLastSubmissionTime(Date.now());
 
       // Reset form
       setFormData({
@@ -114,10 +163,12 @@ ${formData.message}
       }, 1500); // Short delay to show the success toast
 
     } catch (error) {
-      console.error('Full error details:', error);
-      console.error('Error message:', error.message);
-      console.error('Error status:', error.status);
-      console.error('Error text:', error.text);
+      if (import.meta.env.DEV) {
+        console.error('Full error details:', error);
+        console.error('Error message:', error.message);
+        console.error('Error status:', error.status);
+        console.error('Error text:', error.text);
+      }
       
       let errorMessage = 'Failed to send message. Please try again or contact us directly.';
       
