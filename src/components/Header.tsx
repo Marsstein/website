@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
           <Button variant="ghost" size="sm">
             {t('nav_login')}
           </Button>
-          <Link to="/contact">
+          <Link to="/dashboard">
             <Button size="sm" className="bg-gradient-primary hover:opacity-90">
               {t('nav_demo')}
             </Button>
@@ -151,7 +151,7 @@ export const Header: React.FC = () => {
                   <Button variant="ghost" className="w-full justify-start">
                     {t('nav_login')}
                   </Button>
-                  <Link to="/contact" className="block">
+                  <Link to="/dashboard" className="block">
                     <Button className="w-full bg-gradient-primary">
                       {t('nav_demo')}
                     </Button>

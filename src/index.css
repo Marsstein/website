@@ -2,49 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Marsstein Professional Color Palette - Red/Gray/Green scheme */
+/* Marsstein Professional Color Palette - Compliance Dashboard */
 
 @layer base {
   :root {
-    /* Background colors - Soft White & Light Gray */
-    --background: 0 0% 100%; /* #FFFFFF - Soft White */
+    /* Background colors */
+    --background: 220 14% 96%; /* #F5F6F8 - Light Gray */
     --foreground: 0 0% 14%; /* #232323 - Charcoal Black */
 
     /* Card and surface colors */
-    --card: 0 0% 100%; /* #FFFFFF - Soft White */
+    --card: 0 0% 100%; /* #FFFFFF - White */
     --card-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
 
     /* Popover colors */
-    --popover: 0 0% 100%; /* #FFFFFF - Soft White */
+    --popover: 0 0% 100%; /* #FFFFFF - White */
     --popover-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
 
-    /* Primary brand colors - Professional Red */
+    /* Primary brand colors - Marsstein Red */
     --primary: 4 82% 56%; /* #E53935 - Primary Red */
-    --primary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - White */
     --primary-light: 4 82% 66%; /* Lighter red */
     --primary-dark: 4 82% 46%; /* Darker red */
 
     /* Secondary colors - Success Green */
     --secondary: 150 48% 49%; /* #39B37B - Success Green */
-    --secondary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF - White */
     --secondary-light: 150 48% 59%; /* Lighter green */
     --secondary-dark: 150 48% 39%; /* Darker green */
+
+    /* Accent blue for compliance */
+    --accent: 207 90% 54%; /* #1976D2 - Blue */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF - White */
 
     /* Neutral colors - Gray palette */
     --muted: 220 14% 96%; /* #F5F6F8 - Light Gray */
     --muted-foreground: 0 0% 28%; /* #474747 - Stone Gray */
 
-    /* Accent colors */
-    --accent: 220 14% 96%; /* #F5F6F8 - Light Gray */
-    --accent-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
-
     /* System colors */
     --destructive: 4 82% 56%; /* #E53935 - Primary Red for errors */
-    --destructive-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF - White */
+
+    /* Warning colors */
+    --warning: 45 93% 47%; /* #F57C00 - Orange */
+    --warning-foreground: 0 0% 100%; /* #FFFFFF - White */
 
     /* Border and input colors */
-    --border: 220 14% 91%; /* Slightly darker Light Gray */
-    --input: 220 14% 91%; /* Slightly darker Light Gray */
+    --border: 220 14% 91%; /* Border Gray */
+    --input: 220 14% 91%; /* Input Gray */
     --ring: 4 82% 56%; /* #E53935 - Primary Red for focus */
 
     --radius: 0.5rem;
