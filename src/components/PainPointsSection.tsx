@@ -17,7 +17,7 @@ export const PainPointsSection: React.FC = () => {
     {
       icon: Euro,
       title: 'Bußgelder bis zu 20 Mio. €',
-      description: 'Ein einziger DSGVO-Verstoß kann Ihr Unternehmen ruinieren. Die Behörden werden strenger.',
+      description: 'DSGVO-Verstöße können erhebliche finanzielle Auswirkungen haben. Aufsichtsbehörden intensivieren ihre Prüfungsaktivitäten.',
       stat: '4% des Jahresumsatzes',
       color: 'from-red-500 to-red-600',
       bgColor: 'bg-red-50 dark:bg-red-950/20',
@@ -78,18 +78,18 @@ export const PainPointsSection: React.FC = () => {
           <div className="text-center mb-16 space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 dark:bg-red-950/30 text-brand-red">
               <AlertTriangle className="h-4 w-4" />
-              <span className="text-sm font-medium">Die harte Realität</span>
+              <span className="text-sm font-medium">Herausforderungen</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Diese Probleme kosten Sie
+              Compliance-Herausforderungen
               <br />
               <span className="bg-gradient-to-r from-brand-red to-red-600 bg-clip-text text-transparent">
-                Millionen und Ihre Nerven
+                kosten Zeit und Ressourcen
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Compliance ohne die richtige Lösung ist wie ein Kampf gegen Windmühlen. 
-              Erkennen Sie sich wieder?
+              Unternehmen investieren erhebliche Ressourcen in manuelle Compliance-Prozesse. 
+              Diese Herausforderungen sind branchenübergreifend bekannt.
             </p>
           </div>
 
