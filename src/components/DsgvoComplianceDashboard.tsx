@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Shield, 
   FileText, 
@@ -512,4 +513,5 @@ const DsgvoComplianceDashboard: React.FC = () => {
   );
 };
 
+export { DsgvoComplianceDashboard };
 export default DsgvoComplianceDashboard;
