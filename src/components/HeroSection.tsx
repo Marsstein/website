@@ -78,7 +78,10 @@ export const HeroSection: React.FC = () => {
       </div>
 
       <div className="container px-4 relative">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8 text-center lg:text-left">
           {/* Problem rotator */}
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900">
             <AlertCircle className="h-5 w-5 text-brand-red animate-pulse" />
@@ -112,7 +115,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Main headline */}
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
               <span className="text-gray-900 dark:text-white">
                 Compliance
               </span>
@@ -121,11 +124,11 @@ export const HeroSection: React.FC = () => {
                 <span className="bg-gradient-to-r from-brand-red via-red-600 to-brand-red bg-clip-text text-transparent animate-gradient bg-300%">
                   automatisiert
                 </span>
-                <Sparkles className="absolute -top-6 -right-6 h-8 w-8 text-brand-red animate-pulse" />
+                <Sparkles className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 h-6 w-6 lg:h-8 lg:w-8 text-brand-red animate-pulse" />
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
               Die KI-gestützte Compliance-Plattform für europäische Unternehmen. 
               Transformieren Sie <span className="font-semibold text-gray-900 dark:text-white">komplexe Prozesse</span> in 
               effiziente, automatisierte Workflows.
@@ -133,7 +136,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Trust points */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-green-600" />
               <span className="text-gray-700 dark:text-gray-300">100% DSGVO-konform</span>
@@ -149,7 +152,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <Link to="/contact?demo=true">
               <Button 
                 size="lg" 
@@ -170,61 +173,79 @@ export const HeroSection: React.FC = () => {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-          </div>
+            </div>
 
-          {/* Live dashboard preview */}
-          <div className="pt-12 relative">
-            <Card className="relative overflow-hidden shadow-2xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 max-w-4xl mx-auto">
+            {/* Right Dashboard */}
+            <div className="relative animate-slide-in-right">
+              <Card className="relative overflow-hidden shadow-2xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-red via-red-500 to-brand-red animate-gradient bg-300%" />
               
               {/* Simulated dashboard */}
-              <div className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* Compliance Score */}
-                  <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 border-green-200 dark:border-green-800">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Compliance Score</span>
-                        <Shield className="h-5 w-5 text-green-600" />
+                <div className="p-6 lg:p-8">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Compliance Score */}
+                    <Card className={cn(
+                      "p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 border-green-200 dark:border-green-800 transition-all duration-500 hover:scale-105 hover:shadow-lg",
+                      isVisible && "animate-bounce-in"
+                    )} style={{ animationDelay: '100ms' }}>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Compliance Score</span>
+                          <Shield className="h-4 w-4 text-green-600 animate-pulse" />
+                        </div>
+                        <div className={cn(
+                          "text-2xl font-bold text-green-700 dark:text-green-400 transition-all duration-300",
+                          isVisible && "animate-count-up"
+                        )}>
+                          {complianceScore}%
+                        </div>
+                        <div className="text-xs text-green-600 flex items-center gap-1">
+                          <TrendingUp className="h-3 w-3" />
+                          +12% diese Woche
+                        </div>
                       </div>
-                      <div className={cn(
-                        "text-2xl font-bold text-green-700 dark:text-green-400 transition-all duration-300",
-                        isVisible && "animate-count-up"
-                      )}>
-                        {complianceScore}%
-                      </div>
-                      <div className="text-xs text-green-600">+12% diese Woche</div>
-                    </div>
-                  </Card>
+                    </Card>
 
-                  {/* Offene Audits */}
-                  <Card className="p-6 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900 border-amber-200 dark:border-amber-800">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Offene Audits</span>
-                        <AlertCircle className="h-5 w-5 text-amber-600" />
+                    {/* Offene Audits */}
+                    <Card className={cn(
+                      "p-4 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900 border-amber-200 dark:border-amber-800 transition-all duration-500 hover:scale-105 hover:shadow-lg",
+                      isVisible && "animate-bounce-in"
+                    )} style={{ animationDelay: '200ms' }}>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Offene Audits</span>
+                          <AlertCircle className="h-4 w-4 text-amber-600 animate-pulse" />
+                        </div>
+                        <div className="text-2xl font-bold text-amber-700 dark:text-amber-400">3</div>
+                        <div className="text-xs text-amber-600 flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          Nächstes in 2 Tagen
+                        </div>
                       </div>
-                      <div className="text-3xl font-bold text-amber-700 dark:text-amber-400">3</div>
-                      <div className="text-xs text-amber-600">Nächstes in 2 Tagen</div>
-                    </div>
-                  </Card>
+                    </Card>
 
-                  {/* Zeit gespart */}
-                  <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 border-purple-200 dark:border-purple-800">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Zeit gespart</span>
-                        <Clock className="h-5 w-5 text-purple-600" />
+                    {/* Zeit gespart */}
+                    <Card className={cn(
+                      "p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 border-purple-200 dark:border-purple-800 transition-all duration-500 hover:scale-105 hover:shadow-lg",
+                      isVisible && "animate-bounce-in"
+                    )} style={{ animationDelay: '300ms' }}>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Zeit gespart</span>
+                          <Clock className="h-4 w-4 text-purple-600 animate-pulse" />
+                        </div>
+                        <div className={cn(
+                          "text-2xl font-bold text-purple-700 dark:text-purple-400 transition-all duration-300",
+                          isVisible && "animate-count-up"
+                        )}>
+                          {timesSaved}h
+                        </div>
+                        <div className="text-xs text-purple-600 flex items-center gap-1">
+                          <Sparkles className="h-3 w-3" />
+                          Diesen Monat
+                        </div>
                       </div>
-                      <div className={cn(
-                        "text-2xl font-bold text-purple-700 dark:text-purple-400 transition-all duration-300",
-                        isVisible && "animate-count-up"
-                      )}>
-                        {timesSaved}h
-                      </div>
-                      <div className="text-xs text-purple-600">Diesen Monat</div>
-                    </div>
-                  </Card>
+                    </Card>
                 </div>
 
                 {/* Live activity feed */}
@@ -252,6 +273,7 @@ export const HeroSection: React.FC = () => {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-sm font-medium">Live-Monitoring aktiv</span>
+              </div>
               </div>
             </div>
           </div>
