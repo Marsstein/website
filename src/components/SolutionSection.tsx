@@ -199,18 +199,132 @@ export const SolutionSection: React.FC = () => {
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity animate-pulse" />
               </Card>
 
-              {/* Simple Transformation Indicator */}
-              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:block">
-                <div className="flex flex-col items-center gap-2">
-                  {/* Simple dots */}
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-brand-red rounded-full animate-pulse"></div>
-                    <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                    <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+            </div>
+
+            {/* Interactive Transformation Process */}
+            <div className="mt-12 mb-16">
+              <div className="relative max-w-4xl mx-auto">
+                {/* Process Header */}
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    Transformationsprozess
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    Von manuellen Prozessen zu intelligenter Automatisierung
+                  </p>
+                </div>
+
+                {/* Interactive Progress Bar */}
+                <div className="relative bg-gray-100 dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
+                  {/* Progress Track */}
+                  <div className="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-8">
+                    <div className="absolute inset-0 bg-gradient-to-r from-brand-red via-orange-500 to-green-500 rounded-full animate-progress-fill"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-brand-red/20 via-orange-500/20 to-green-500/20 rounded-full animate-shimmer"></div>
                   </div>
-                  {/* Transformation text */}
-                  <div className="bg-white dark:bg-gray-900 px-3 py-1 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
-                    <span className="text-xs font-medium text-gray-700 dark:text-gray-300">Transformation</span>
+
+                  {/* Process Steps */}
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    {/* Step 1: Current State */}
+                    <div className="relative group">
+                      <div className="bg-red-50 dark:bg-red-950/20 rounded-xl p-4 border-2 border-red-200 dark:border-red-800 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+                            <span className="text-white text-sm font-bold">1</span>
+                          </div>
+                          <h4 className="font-semibold text-red-700 dark:text-red-300">Ist-Zustand</h4>
+                        </div>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-gray-600 dark:text-gray-400">Zeit</span>
+                            <span className="font-bold text-red-600">120h</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600 dark:text-gray-400">Fehler</span>
+                            <span className="font-bold text-red-600">23%</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full animate-bounce opacity-60"></div>
+                    </div>
+
+                    {/* Step 2: Analysis */}
+                    <div className="relative group">
+                      <div className="bg-orange-50 dark:bg-orange-950/20 rounded-xl p-4 border-2 border-orange-200 dark:border-orange-800 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center animate-pulse" style={{ animationDelay: '0.5s' }}>
+                            <Brain className="h-4 w-4 text-white" />
+                          </div>
+                          <h4 className="font-semibold text-orange-700 dark:text-orange-300">KI-Analyse</h4>
+                        </div>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2">
+                            <div className="w-full h-1.5 bg-orange-200 dark:bg-orange-800 rounded-full overflow-hidden">
+                              <div className="h-full w-0 bg-orange-500 rounded-full animate-progress-bar" style={{ '--progress-width': '85%', animationDelay: '1s' }}></div>
+                            </div>
+                            <span className="text-xs font-medium text-orange-600">85%</span>
+                          </div>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">Prozesse werden analysiert</p>
+                        </div>
+                      </div>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full animate-bounce opacity-60" style={{ animationDelay: '0.5s' }}></div>
+                    </div>
+
+                    {/* Step 3: Automation */}
+                    <div className="relative group">
+                      <div className="bg-blue-50 dark:bg-blue-950/20 rounded-xl p-4 border-2 border-blue-200 dark:border-blue-800 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center animate-pulse" style={{ animationDelay: '1s' }}>
+                            <Zap className="h-4 w-4 text-white" />
+                          </div>
+                          <h4 className="font-semibold text-blue-700 dark:text-blue-300">Automation</h4>
+                        </div>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2">
+                            <RefreshCw className="h-3 w-3 text-blue-500 animate-spin-slow" />
+                            <span className="text-xs text-blue-600 font-medium">Implementierung läuft</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600 dark:text-gray-400">Fortschritt</span>
+                            <span className="font-bold text-blue-600">95%</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full animate-bounce opacity-60" style={{ animationDelay: '1s' }}></div>
+                    </div>
+
+                    {/* Step 4: Result */}
+                    <div className="relative group">
+                      <div className="bg-green-50 dark:bg-green-950/20 rounded-xl p-4 border-2 border-green-200 dark:border-green-800 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-pulse" style={{ animationDelay: '1.5s' }}>
+                            <CheckCircle className="h-4 w-4 text-white" />
+                          </div>
+                          <h4 className="font-semibold text-green-700 dark:text-green-300">Optimiert</h4>
+                        </div>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-gray-600 dark:text-gray-400">Zeit</span>
+                            <span className="font-bold text-green-600">30min</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600 dark:text-gray-400">Fehler</span>
+                            <span className="font-bold text-green-600">&lt;1%</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full animate-bounce opacity-60" style={{ animationDelay: '1.5s' }}></div>
+                    </div>
+                  </div>
+
+                  {/* Transformation Stats */}
+                  <div className="mt-8 text-center">
+                    <div className="inline-flex items-center gap-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 px-6 py-3 rounded-full border border-green-200 dark:border-green-800">
+                      <TrendingUp className="h-5 w-5 text-green-600 animate-bounce" />
+                      <span className="font-bold text-green-700 dark:text-green-300">400% Effizienzsteigerung</span>
+                      <span className="text-green-600">•</span>
+                      <span className="font-bold text-green-700 dark:text-green-300">240× schneller</span>
+                      <Sparkles className="h-5 w-5 text-green-600 animate-pulse" />
+                    </div>
                   </div>
                 </div>
               </div>
