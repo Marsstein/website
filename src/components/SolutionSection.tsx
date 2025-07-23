@@ -379,17 +379,65 @@ export const SolutionSection: React.FC = () => {
                             </div>
                           </div>
 
-                          {/* Key Benefits */}
-                          <div className="grid grid-cols-2 gap-3">
+                          {/* Enhanced Key Benefits */}
+                          <div className="grid grid-cols-2 gap-4">
                             {[
                               { label: index === 0 ? "Zeitersparnis" : index === 1 ? "Automation" : "Überwachung", 
-                                value: index === 0 ? "85%" : index === 1 ? "24/7" : "Real-time" },
+                                value: index === 0 ? "85%" : index === 1 ? "24/7" : "Real-time",
+                                color: index === 0 ? "from-blue-500 to-purple-600" : index === 1 ? "from-purple-500 to-pink-600" : "from-green-500 to-teal-600",
+                                icon: index === 0 ? Clock : index === 1 ? RefreshCw : Shield },
                               { label: index === 0 ? "Genauigkeit" : index === 1 ? "Integration" : "Alerts", 
-                                value: index === 0 ? "99%" : index === 1 ? "Nahtlos" : "Sofort" }
+                                value: index === 0 ? "99%" : index === 1 ? "Nahtlos" : "Sofort",
+                                color: index === 0 ? "from-emerald-500 to-cyan-600" : index === 1 ? "from-orange-500 to-red-600" : "from-yellow-500 to-orange-600",
+                                icon: index === 0 ? Target : index === 1 ? Zap : TrendingUp }
                             ].map((benefit, i) => (
-                              <div key={i} className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg text-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                                <div className="text-lg font-bold text-brand-red">{benefit.value}</div>
-                                <div className="text-xs text-gray-600 dark:text-gray-400">{benefit.label}</div>
+                              <div key={i} className="group relative overflow-hidden">
+                                <div className="p-4 bg-white dark:bg-gray-900 rounded-xl border-2 border-gray-100 dark:border-gray-800 hover:border-transparent transition-all duration-500 hover:scale-105 hover:shadow-xl relative z-10">
+                                  {/* Animated background gradient */}
+                                  <div className={cn(
+                                    "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-xl",
+                                    benefit.color
+                                  )} />
+                                  
+                                  {/* Icon */}
+                                  <div className={cn(
+                                    "w-8 h-8 rounded-lg bg-gradient-to-br flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform duration-300",
+                                    benefit.color
+                                  )}>
+                                    <benefit.icon className="h-4 w-4 text-white" />
+                                  </div>
+                                  
+                                  {/* Value with counter animation */}
+                                  <div className="text-center relative">
+                                    <div className={cn(
+                                      "text-2xl font-bold bg-gradient-to-r bg-clip-text text-transparent mb-1 group-hover:scale-110 transition-transform duration-300",
+                                      benefit.color
+                                    )}>
+                                      {benefit.value}
+                                    </div>
+                                    <div className="text-xs font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors">
+                                      {benefit.label}
+                                    </div>
+                                  </div>
+                                  
+                                  {/* Animated border glow */}
+                                  <div className={cn(
+                                    "absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r p-[2px]",
+                                    benefit.color
+                                  )}>
+                                    <div className="w-full h-full bg-white dark:bg-gray-900 rounded-xl" />
+                                  </div>
+                                </div>
+                                
+                                {/* Floating particles */}
+                                <div className={cn(
+                                  "absolute -top-1 -right-1 w-3 h-3 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-bounce transition-all duration-500",
+                                  `bg-gradient-to-r ${benefit.color.split(' ')[0]} ${benefit.color.split(' ')[1]}`
+                                )} />
+                                <div className={cn(
+                                  "absolute -bottom-1 -left-1 w-2 h-2 rounded-full opacity-0 group-hover:opacity-40 group-hover:animate-pulse transition-all duration-700",
+                                  `bg-gradient-to-r ${benefit.color.split(' ')[0]} ${benefit.color.split(' ')[1]}`
+                                )} />
                               </div>
                             ))}
                           </div>
@@ -425,7 +473,7 @@ export const SolutionSection: React.FC = () => {
                     {/* Dashboard Mockup */}
                     <div className={cn(
                       "w-5/12 flex items-center justify-center",
-                      index % 2 === 0 ? "pl-16" : "pr-16"
+                      index % 2 === 0 ? "pl-24" : "pr-24"
                     )}>
                       <div className="relative w-full max-w-sm">
                         {/* Step 1: KI-Analyse Dashboard */}
