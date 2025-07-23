@@ -199,21 +199,20 @@ export const SolutionSection: React.FC = () => {
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity animate-pulse" />
               </Card>
 
-              {/* Central Transform Arrow */}
+              {/* Simple Transformation Indicator */}
               <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:block">
-                <div className="relative">
-                  <div className="w-16 h-16 bg-gradient-to-r from-brand-red to-green-600 rounded-full flex items-center justify-center shadow-2xl animate-bounce">
-                    <ArrowRight className="h-8 w-8 text-white" />
+                <div className="flex flex-col items-center gap-2">
+                  {/* Simple dots */}
+                  <div className="flex items-center gap-1">
+                    <div className="w-2 h-2 bg-brand-red rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-brand-red to-green-600 rounded-full animate-ping opacity-30" />
+                  {/* Transformation text */}
+                  <div className="bg-white dark:bg-gray-900 px-3 py-1 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+                    <span className="text-xs font-medium text-gray-700 dark:text-gray-300">Transformation</span>
+                  </div>
                 </div>
-              </div>
-
-              {/* Improvement Indicators */}
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 hidden lg:flex items-center gap-2 bg-white dark:bg-gray-900 px-6 py-3 rounded-full shadow-xl border border-gray-200 dark:border-gray-700">
-                <Sparkles className="h-4 w-4 text-green-600 animate-pulse" />
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">400% Effizienzsteigerung</span>
-                <TrendingUp className="h-4 w-4 text-green-600" />
               </div>
             </div>
 
