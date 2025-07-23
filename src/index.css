@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Marsstein Professional Color Palette - Compliance Dashboard */
+
+@layer base {
+  :root {
+    /* Background colors */
+    --background: 220 14% 96%; /* #F5F6F8 - Light Gray */
+    --foreground: 0 0% 14%; /* #232323 - Charcoal Black */
+
+    /* Card and surface colors */
+    --card: 0 0% 100%; /* #FFFFFF - White */
+    --card-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
+
+    /* Popover colors */
+    --popover: 0 0% 100%; /* #FFFFFF - White */
+    --popover-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
+
+    /* Primary brand colors - Marsstein Red */
+    --primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - White */
+    --primary-light: 4 82% 66%; /* Lighter red */
+    --primary-dark: 4 82% 46%; /* Darker red */
+
+    /* Secondary colors - Success Green */
+    --secondary: 150 48% 49%; /* #39B37B - Success Green */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF - White */
+    --secondary-light: 150 48% 59%; /* Lighter green */
+    --secondary-dark: 150 48% 39%; /* Darker green */
+
+    /* Accent blue for compliance */
+    --accent: 207 90% 54%; /* #1976D2 - Blue */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF - White */
+
+    /* Neutral colors - Gray palette */
+    --muted: 220 14% 96%; /* #F5F6F8 - Light Gray */
+    --muted-foreground: 0 0% 28%; /* #474747 - Stone Gray */
+
+    /* System colors */
+    --destructive: 4 82% 56%; /* #E53935 - Primary Red for errors */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF - White */
+
+    /* Warning colors */
+    --warning: 45 93% 47%; /* #F57C00 - Orange */
+    --warning-foreground: 0 0% 100%; /* #FFFFFF - White */
+
+    /* Border and input colors */
+    --border: 220 14% 91%; /* Border Gray */
+    --input: 220 14% 91%; /* Input Gray */
+    --ring: 4 82% 56%; /* #E53935 - Primary Red for focus */
+
+    --radius: 0.5rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(4 82% 56%), hsl(4 82% 66%)); /* Red gradient */
+    --gradient-secondary: linear-gradient(135deg, hsl(150 48% 49%), hsl(150 48% 59%)); /* Green gradient */
+    --gradient-hero: linear-gradient(135deg, hsl(220 14% 96%), hsl(0 0% 100%)); /* Light gradient */
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 14% 96%)); /* Card gradient */
+
+    /* Shadows - using subtle red tint */
+    --shadow-sm: 0 1px 2px 0 hsl(4 82% 56% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(4 82% 56% / 0.1), 0 2px 4px -1px hsl(4 82% 56% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(4 82% 56% / 0.1), 0 4px 6px -2px hsl(4 82% 56% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(4 82% 56% / 0.1), 0 10px 10px -5px hsl(4 82% 56% / 0.04);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar colors */
+    --sidebar-background: 220 14% 96%; /* #F5F6F8 - Light Gray */
+    --sidebar-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
+    --sidebar-primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --sidebar-accent: 220 14% 96%; /* #F5F6F8 - Light Gray */
+    --sidebar-accent-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
+    --sidebar-border: 220 14% 91%; /* Border color */
+    --sidebar-ring: 4 82% 56%; /* #E53935 - Primary Red */
+  }
+
+  .dark {
+    /* Dark mode: Charcoal backgrounds with light text */
+    --background: 0 0% 14%; /* #232323 - Charcoal Black */
+    --foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+
+    --card: 0 0% 18%; /* Slightly lighter than charcoal */
+    --card-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+
+    --popover: 0 0% 18%; /* Slightly lighter than charcoal */
+    --popover-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+
+    /* Primary red stays the same in dark mode */
+    --primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+
+    /* Success green stays the same in dark mode */
+    --secondary: 150 48% 49%; /* #39B37B - Success Green */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+
+    /* Muted colors for dark mode */
+    --muted: 0 0% 28%; /* #474747 - Stone Gray */
+    --muted-foreground: 220 14% 96%; /* #F5F6F8 - Light Gray */
+
+    --accent: 0 0% 28%; /* #474747 - Stone Gray */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+
+    --destructive: 4 82% 56%; /* #E53935 - Primary Red */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+
+    --border: 0 0% 28%; /* #474747 - Stone Gray */
+    --input: 0 0% 28%; /* #474747 - Stone Gray */
+    --ring: 4 82% 56%; /* #E53935 - Primary Red */
+    
+    /* Dark mode sidebar */
+    --sidebar-background: 0 0% 14%; /* #232323 - Charcoal Black */
+    --sidebar-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --sidebar-primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --sidebar-accent: 0 0% 28%; /* #474747 - Stone Gray */
+    --sidebar-accent-foreground: 0 0% 100%; /* #FFFFFF - Soft White */
+    --sidebar-border: 0 0% 28%; /* #474747 - Stone Gray */
+    --sidebar-ring: 4 82% 56%; /* #E53935 - Primary Red */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
