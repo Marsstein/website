@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { DsgvoComplianceDashboard } from '@/components/DsgvoComplianceDashboard';
 import { cn } from '@/lib/utils';
 import { 
   Shield, 
@@ -321,7 +322,7 @@ const DsgvoCompliance = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
             {[
               {
@@ -368,25 +369,9 @@ const DsgvoCompliance = () => {
             ))}
           </div>
 
-          <div className="relative">
-            <div className="aspect-square bg-gradient-to-br from-[#a1251b]/10 to-purple-600/10 rounded-2xl p-8">
-              <img 
-                src="/api/placeholder/600/600" 
-                alt="DSGVO Compliance Dashboard" 
-                className="w-full h-full object-cover rounded-lg shadow-2xl"
-              />
-            </div>
-            <Card className="absolute -bottom-6 -left-6 p-4 shadow-xl">
-              <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
-                  <CheckCircle2 className="h-6 w-6 text-green-600" />
-                </div>
-                <div>
-                  <p className="font-semibold">Audit bestanden!</p>
-                  <p className="text-sm text-muted-foreground">Keine Beanstandungen</p>
-                </div>
-              </div>
-            </Card>
+          {/* Animated Dashboard Component */}
+          <div className="lg:sticky lg:top-24">
+            <DsgvoComplianceDashboard />
           </div>
         </div>
       </div>
