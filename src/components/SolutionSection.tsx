@@ -476,93 +476,70 @@ export const SolutionSection: React.FC = () => {
                       "w-5/12 flex items-center justify-center",
                       index % 2 === 0 ? "pl-32 xl:pl-40" : "pr-32 xl:pr-40"
                     )}>
-                      <div className="relative w-full max-w-md">
+                      <div className="relative w-full max-w-xl">
                         {/* Step 1: KI-Analyse Dashboard */}
                         {index === 0 && (
-                          <Card className="w-full aspect-[4/3] p-8 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] animate-slide-in-right opacity-0 overflow-hidden" style={{ animationDelay: `${index * 300 + 400}ms`, animationFillMode: 'forwards' }}>
-                            <div className="h-full flex flex-col space-y-6">
+                          <Card className="w-full p-6 lg:p-8 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] animate-slide-in-right opacity-0" style={{ animationDelay: `${index * 300 + 400}ms`, animationFillMode: 'forwards' }}>
+                            <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2">
                                   <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg animate-bounce-in" style={{ animationDelay: `${index * 300 + 600}ms` }}>
-                                    <Brain className="h-6 w-6 text-blue-600" />
+                                    <Brain className="h-5 w-5 text-blue-600" />
                                   </div>
-                                  <span className="text-lg font-semibold text-gray-900 dark:text-white">KI-Analyse Dashboard</span>
+                                  <span className="text-base font-semibold text-gray-900 dark:text-white">KI-Analyse Dashboard</span>
                                 </div>
-                                <div className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-full animate-slide-in-left" style={{ animationDelay: `${index * 300 + 700}ms` }}>
-                                  <div className="flex items-center gap-1.5">
+                                <div className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full animate-slide-in-left" style={{ animationDelay: `${index * 300 + 700}ms` }}>
+                                  <div className="flex items-center gap-1">
                                     <div className="w-2 h-2 bg-blue-500 rounded-full animate-blink"></div>
-                                    <span className="text-sm text-blue-600 font-medium">Live</span>
+                                    <span className="text-xs text-blue-600 font-medium">Live</span>
                                   </div>
                                 </div>
                               </div>
                               
-                              {/* Main Stats */}
-                              <div className="flex-1 grid grid-cols-2 gap-6">
-                                {/* Left Column - Document Progress */}
-                                <div className="space-y-6">
-                                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-5 backdrop-blur-sm border border-blue-100 dark:border-blue-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
-                                    <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-4">Dokumentenanalyse</h4>
-                                    <div className="space-y-3">
-                                      <div className="flex justify-between items-baseline">
-                                        <span className="text-3xl font-bold text-blue-600">
-                                          <span className="animate-count-to" data-target="127">0</span>
-                                        </span>
-                                        <span className="text-lg text-gray-500">/ 170</span>
-                                      </div>
-                                      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                        <div className="h-full w-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-progress-bar" style={{ animationDelay: `${index * 300 + 1000}ms`, '--progress-width': '75%' }}></div>
-                                      </div>
-                                      <p className="text-xs text-gray-500 dark:text-gray-400">75% abgeschlossen</p>
-                                    </div>
-                                  </div>
-
-                                  {/* AI Activity */}
-                                  <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-xl p-4 border border-blue-200 dark:border-blue-800 animate-slide-up" style={{ animationDelay: `${index * 300 + 1100}ms` }}>
-                                    <div className="flex items-center gap-2 mb-2">
-                                      <Zap className="h-4 w-4 text-blue-600 animate-spin-slow" />
-                                      <span className="text-xs font-medium text-blue-700 dark:text-blue-300">KI arbeitet...</span>
-                                    </div>
-                                    <div className="space-y-1">
-                                      <div className="h-1 bg-blue-200 dark:bg-blue-800 rounded-full overflow-hidden">
-                                        <div className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-shimmer"></div>
-                                      </div>
-                                    </div>
-                                  </div>
+                              {/* Document Progress */}
+                              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 backdrop-blur-sm border border-blue-100 dark:border-blue-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
+                                <div className="flex items-center justify-between mb-2">
+                                  <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">Dokumentenanalyse</h4>
+                                  <span className="text-xs text-gray-500">75%</span>
                                 </div>
-
-                                {/* Right Column - Issues & Recommendations */}
-                                <div className="space-y-4">
-                                  <div className="grid grid-cols-2 gap-3">
-                                    <div className="bg-red-50 dark:bg-red-950/20 rounded-xl p-4 text-center border border-red-200 dark:border-red-800 animate-scale-in hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: `${index * 300 + 900}ms` }}>
-                                      <TrendingUp className="h-5 w-5 text-red-600 mx-auto mb-2 animate-bounce-in" style={{ animationDelay: `${index * 300 + 1000}ms` }} />
-                                      <div className="text-2xl font-bold text-red-600 animate-count-to" data-target="23">0</div>
-                                      <div className="text-xs text-red-500 mt-1">Kritische Lücken</div>
-                                    </div>
-                                    <div className="bg-yellow-50 dark:bg-yellow-950/20 rounded-xl p-4 text-center border border-yellow-200 dark:border-yellow-800 animate-scale-in hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: `${index * 300 + 950}ms` }}>
-                                      <Target className="h-5 w-5 text-yellow-600 mx-auto mb-2 animate-bounce-in" style={{ animationDelay: `${index * 300 + 1050}ms` }} />
-                                      <div className="text-2xl font-bold text-yellow-600 animate-count-to" data-target="47">0</div>
-                                      <div className="text-xs text-yellow-500 mt-1">Empfehlungen</div>
-                                    </div>
+                                <div className="flex items-center gap-3 mb-2">
+                                  <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div className="h-full w-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-progress-bar" style={{ animationDelay: `${index * 300 + 1000}ms`, '--progress-width': '75%' }}></div>
                                   </div>
+                                  <span className="text-sm font-bold text-blue-600">127/170</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <Zap className="h-3 w-3 text-blue-600 animate-spin-slow" />
+                                  <span className="text-xs text-blue-600">KI analysiert Dokumente...</span>
+                                </div>
+                              </div>
 
-                                  {/* Live Recommendations Feed */}
-                                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm border border-gray-200 dark:border-gray-700 flex-1 animate-slide-up" style={{ animationDelay: `${index * 300 + 1200}ms` }}>
-                                    <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Live KI-Empfehlungen</h4>
-                                    <div className="space-y-2 max-h-32 overflow-y-auto">
-                                      <div className="flex items-start gap-2 p-2 bg-blue-50 dark:bg-blue-950/20 rounded-lg animate-recommendation-slide" style={{ animationDelay: `${index * 300 + 1300}ms` }}>
-                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-1 flex-shrink-0 animate-blink"></div>
-                                        <span className="text-xs text-gray-700 dark:text-gray-300">DSGVO Art. 32 - Technische Maßnahmen prüfen</span>
-                                      </div>
-                                      <div className="flex items-start gap-2 p-2 bg-green-50 dark:bg-green-950/20 rounded-lg animate-recommendation-slide" style={{ animationDelay: `${index * 300 + 1400}ms` }}>
-                                        <CheckCircle className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
-                                        <span className="text-xs text-gray-700 dark:text-gray-300">ISO 27001 - Vollständig konform</span>
-                                      </div>
-                                      <div className="flex items-start gap-2 p-2 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg animate-recommendation-slide" style={{ animationDelay: `${index * 300 + 1500}ms` }}>
-                                        <Target className="w-3 h-3 text-yellow-500 mt-0.5 flex-shrink-0" />
-                                        <span className="text-xs text-gray-700 dark:text-gray-300">Datenschutz-Folgenabschätzung empfohlen</span>
-                                      </div>
-                                    </div>
+                              {/* Issues Grid */}
+                              <div className="grid grid-cols-2 gap-3">
+                                <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-3 text-center border border-red-200 dark:border-red-800 animate-scale-in hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: `${index * 300 + 900}ms` }}>
+                                  <TrendingUp className="h-4 w-4 text-red-600 mx-auto mb-1" />
+                                  <div className="text-xl font-bold text-red-600">23</div>
+                                  <div className="text-xs text-red-500">Kritische Lücken</div>
+                                </div>
+                                <div className="bg-yellow-50 dark:bg-yellow-950/20 rounded-lg p-3 text-center border border-yellow-200 dark:border-yellow-800 animate-scale-in hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: `${index * 300 + 950}ms` }}>
+                                  <Target className="h-4 w-4 text-yellow-600 mx-auto mb-1" />
+                                  <div className="text-xl font-bold text-yellow-600">47</div>
+                                  <div className="text-xs text-yellow-500">Empfehlungen</div>
+                                </div>
+                              </div>
+
+                              {/* Live Recommendations */}
+                              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 backdrop-blur-sm border border-gray-200 dark:border-gray-700 animate-slide-up" style={{ animationDelay: `${index * 300 + 1200}ms` }}>
+                                <h4 className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Live KI-Empfehlungen</h4>
+                                <div className="space-y-1.5">
+                                  <div className="flex items-center gap-2 p-1.5 bg-blue-50 dark:bg-blue-950/20 rounded animate-recommendation-slide" style={{ animationDelay: `${index * 300 + 1300}ms` }}>
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-blink"></div>
+                                    <span className="text-xs text-gray-600 dark:text-gray-300">DSGVO Art. 32 prüfen</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 p-1.5 bg-green-50 dark:bg-green-950/20 rounded animate-recommendation-slide" style={{ animationDelay: `${index * 300 + 1400}ms` }}>
+                                    <CheckCircle className="w-3 h-3 text-green-500" />
+                                    <span className="text-xs text-gray-600 dark:text-gray-300">ISO 27001 konform</span>
                                   </div>
                                 </div>
                               </div>
@@ -572,111 +549,74 @@ export const SolutionSection: React.FC = () => {
 
                         {/* Step 2: Workflow Automation Dashboard */}
                         {index === 1 && (
-                          <Card className="w-full aspect-[4/3] p-8 bg-gradient-to-br from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] animate-slide-in-left opacity-0 overflow-hidden" style={{ animationDelay: `${index * 300 + 400}ms`, animationFillMode: 'forwards' }}>
-                            <div className="h-full flex flex-col space-y-6">
+                          <Card className="w-full p-6 lg:p-8 bg-gradient-to-br from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] animate-slide-in-left opacity-0" style={{ animationDelay: `${index * 300 + 400}ms`, animationFillMode: 'forwards' }}>
+                            <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2">
                                   <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg animate-bounce-in" style={{ animationDelay: `${index * 300 + 600}ms` }}>
-                                    <Zap className="h-6 w-6 text-purple-600" />
+                                    <Zap className="h-5 w-5 text-purple-600" />
                                   </div>
-                                  <span className="text-lg font-semibold text-gray-900 dark:text-white">Workflow Automation</span>
+                                  <span className="text-base font-semibold text-gray-900 dark:text-white">Workflow Automation</span>
                                 </div>
-                                <div className="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full animate-slide-in-right" style={{ animationDelay: `${index * 300 + 700}ms` }}>
-                                  <div className="flex items-center gap-1.5">
+                                <div className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 rounded-full animate-slide-in-right" style={{ animationDelay: `${index * 300 + 700}ms` }}>
+                                  <div className="flex items-center gap-1">
                                     <RefreshCw className="h-3 w-3 text-purple-600 animate-spin-slow" />
-                                    <span className="text-sm text-purple-600 font-medium">Aktiv</span>
+                                    <span className="text-xs text-purple-600 font-medium">Aktiv</span>
                                   </div>
                                 </div>
                               </div>
                               
-                              {/* Main Content Grid */}
-                              <div className="flex-1 grid grid-cols-2 gap-6">
-                                {/* Left Column - Automation Progress */}
-                                <div className="space-y-4">
-                                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-5 backdrop-blur-sm border border-purple-100 dark:border-purple-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
-                                    <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-4">Automatisierungsgrad</h4>
-                                    <div className="space-y-4">
-                                      <div className="flex justify-between items-center">
-                                        <span className="text-4xl font-bold text-purple-600">
-                                          <span className="animate-count-to" data-target="95">0</span>%
-                                        </span>
-                                        <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full animate-rotate-slow">
-                                          <RefreshCw className="h-6 w-6 text-purple-600" />
-                                        </div>
-                                      </div>
-                                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                        <div className="h-full w-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full animate-progress-bar" style={{ animationDelay: `${index * 300 + 1000}ms`, '--progress-width': '95%' }}></div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  {/* Active Processes */}
-                                  <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-xl p-4 border border-purple-200 dark:border-purple-800 animate-slide-up" style={{ animationDelay: `${index * 300 + 1100}ms` }}>
-                                    <h4 className="text-sm font-medium text-purple-700 dark:text-purple-300 mb-3">Aktive Prozesse</h4>
-                                    <div className="grid grid-cols-3 gap-2">
-                                      <div className="bg-white/70 dark:bg-gray-800/70 rounded-lg p-3 text-center animate-scale-in" style={{ animationDelay: `${index * 300 + 1200}ms` }}>
-                                        <div className="text-xl font-bold text-green-600 animate-count-to" data-target="12">0</div>
-                                        <div className="text-xs text-green-500">Berichte</div>
-                                      </div>
-                                      <div className="bg-white/70 dark:bg-gray-800/70 rounded-lg p-3 text-center animate-scale-in" style={{ animationDelay: `${index * 300 + 1250}ms` }}>
-                                        <div className="text-xl font-bold text-blue-600 animate-count-to" data-target="8">0</div>
-                                        <div className="text-xs text-blue-500">Audits</div>
-                                      </div>
-                                      <div className="bg-white/70 dark:bg-gray-800/70 rounded-lg p-3 text-center animate-scale-in" style={{ animationDelay: `${index * 300 + 1300}ms` }}>
-                                        <div className="text-xl font-bold text-orange-600 animate-count-to" data-target="3">0</div>
-                                        <div className="text-xs text-orange-500">Reviews</div>
-                                      </div>
-                                    </div>
-                                  </div>
+                              {/* Automation Progress */}
+                              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 backdrop-blur-sm border border-purple-100 dark:border-purple-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
+                                <div className="flex items-center justify-between mb-2">
+                                  <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">Automatisierungsgrad</h4>
+                                  <RefreshCw className="h-4 w-4 text-purple-600 animate-rotate-slow" />
                                 </div>
+                                <div className="flex items-center gap-3 mb-2">
+                                  <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div className="h-full w-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full animate-progress-bar" style={{ animationDelay: `${index * 300 + 1000}ms`, '--progress-width': '95%' }}></div>
+                                  </div>
+                                  <span className="text-xl font-bold text-purple-600">95%</span>
+                                </div>
+                              </div>
 
-                                {/* Right Column - Live Timeline */}
-                                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-5 backdrop-blur-sm border border-gray-200 dark:border-gray-700 animate-slide-up" style={{ animationDelay: `${index * 300 + 900}ms` }}>
-                                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Live Workflow Timeline</h4>
-                                  <div className="space-y-3">
-                                    <div className="flex items-start gap-3 animate-workflow-item" style={{ animationDelay: `${index * 300 + 1100}ms` }}>
-                                      <div className="relative">
-                                        <div className="w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
-                                        <div className="absolute top-3 left-1/2 w-0.5 h-12 bg-gradient-to-b from-green-500 to-transparent -translate-x-1/2"></div>
-                                      </div>
-                                      <div className="flex-1">
-                                        <div className="flex items-center justify-between mb-1">
-                                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Dokumentenerstellung</span>
-                                          <CheckCircle className="h-4 w-4 text-green-500" />
-                                        </div>
-                                        <p className="text-xs text-gray-500 dark:text-gray-400">Abgeschlossen vor 2 Min.</p>
-                                      </div>
-                                    </div>
-                                    
-                                    <div className="flex items-start gap-3 animate-workflow-item" style={{ animationDelay: `${index * 300 + 1200}ms` }}>
-                                      <div className="relative">
-                                        <div className="w-3 h-3 bg-purple-500 rounded-full animate-spin-pulse"></div>
-                                        <div className="absolute top-3 left-1/2 w-0.5 h-12 bg-gradient-to-b from-purple-500 to-transparent -translate-x-1/2"></div>
-                                      </div>
-                                      <div className="flex-1">
-                                        <div className="flex items-center justify-between mb-1">
-                                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Audit-Bericht generiert</span>
-                                          <RefreshCw className="h-4 w-4 text-purple-500 animate-spin-slow" />
-                                        </div>
-                                        <div className="mt-1 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                          <div className="h-full w-3/4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-progress-pulse"></div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    
-                                    <div className="flex items-start gap-3 animate-workflow-item opacity-50" style={{ animationDelay: `${index * 300 + 1300}ms` }}>
-                                      <div className="relative">
-                                        <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
-                                      </div>
-                                      <div className="flex-1">
-                                        <div className="flex items-center justify-between mb-1">
-                                          <span className="text-sm font-medium text-gray-400">Compliance-Review</span>
-                                          <Clock className="h-4 w-4 text-gray-400" />
-                                        </div>
-                                        <p className="text-xs text-gray-400">Geplant für 14:30 Uhr</p>
-                                      </div>
-                                    </div>
+                              {/* Active Processes */}
+                              <div className="grid grid-cols-3 gap-2">
+                                <div className="bg-green-50 dark:bg-green-950/20 rounded-lg p-3 text-center border border-green-200 dark:border-green-800 animate-scale-in" style={{ animationDelay: `${index * 300 + 1100}ms` }}>
+                                  <div className="text-lg font-bold text-green-600">12</div>
+                                  <div className="text-xs text-green-500">Berichte</div>
+                                </div>
+                                <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-3 text-center border border-blue-200 dark:border-blue-800 animate-scale-in" style={{ animationDelay: `${index * 300 + 1150}ms` }}>
+                                  <div className="text-lg font-bold text-blue-600">8</div>
+                                  <div className="text-xs text-blue-500">Audits</div>
+                                </div>
+                                <div className="bg-orange-50 dark:bg-orange-950/20 rounded-lg p-3 text-center border border-orange-200 dark:border-orange-800 animate-scale-in" style={{ animationDelay: `${index * 300 + 1200}ms` }}>
+                                  <div className="text-lg font-bold text-orange-600">3</div>
+                                  <div className="text-xs text-orange-500">Reviews</div>
+                                </div>
+                              </div>
+
+                              {/* Live Timeline */}
+                              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 backdrop-blur-sm border border-gray-200 dark:border-gray-700 animate-slide-up" style={{ animationDelay: `${index * 300 + 900}ms` }}>
+                                <h4 className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Live Workflow Timeline</h4>
+                                <div className="space-y-2">
+                                  <div className="flex items-center gap-2 animate-workflow-item" style={{ animationDelay: `${index * 300 + 1100}ms` }}>
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span className="text-xs text-gray-600 dark:text-gray-300 flex-1">Dokumentenerstellung</span>
+                                    <CheckCircle className="h-3 w-3 text-green-500" />
+                                  </div>
+                                  
+                                  <div className="flex items-center gap-2 animate-workflow-item" style={{ animationDelay: `${index * 300 + 1200}ms` }}>
+                                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-spin-pulse"></div>
+                                    <span className="text-xs text-gray-600 dark:text-gray-300 flex-1">Audit-Bericht wird generiert</span>
+                                    <RefreshCw className="h-3 w-3 text-purple-500 animate-spin-slow" />
+                                  </div>
+                                  
+                                  <div className="flex items-center gap-2 animate-workflow-item opacity-50" style={{ animationDelay: `${index * 300 + 1300}ms` }}>
+                                    <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                    <span className="text-xs text-gray-400 flex-1">Compliance-Review</span>
+                                    <Clock className="h-3 w-3 text-gray-400" />
                                   </div>
                                 </div>
                               </div>
@@ -686,99 +626,67 @@ export const SolutionSection: React.FC = () => {
 
                         {/* Step 3: Monitoring Dashboard */}
                         {index === 2 && (
-                          <Card className="w-full aspect-[4/3] p-8 bg-gradient-to-br from-white via-green-50 to-white dark:from-gray-900 dark:via-green-950/20 dark:to-gray-900 border-2 border-green-200 dark:border-green-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] animate-slide-in-right opacity-0 overflow-hidden" style={{ animationDelay: `${index * 300 + 400}ms`, animationFillMode: 'forwards' }}>
-                            <div className="h-full flex flex-col space-y-6">
+                          <Card className="w-full p-6 lg:p-8 bg-gradient-to-br from-white via-green-50 to-white dark:from-gray-900 dark:via-green-950/20 dark:to-gray-900 border-2 border-green-200 dark:border-green-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] animate-slide-in-right opacity-0" style={{ animationDelay: `${index * 300 + 400}ms`, animationFillMode: 'forwards' }}>
+                            <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2">
                                   <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg animate-bounce-in" style={{ animationDelay: `${index * 300 + 600}ms` }}>
-                                    <Shield className="h-6 w-6 text-green-600" />
+                                    <Shield className="h-5 w-5 text-green-600" />
                                   </div>
-                                  <span className="text-lg font-semibold text-gray-900 dark:text-white">Live Monitoring</span>
+                                  <span className="text-base font-semibold text-gray-900 dark:text-white">Live Monitoring</span>
                                 </div>
-                                <div className="px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full animate-slide-in-left" style={{ animationDelay: `${index * 300 + 700}ms` }}>
-                                  <div className="flex items-center gap-1.5">
+                                <div className="px-2 py-1 bg-green-100 dark:bg-green-900/30 rounded-full animate-slide-in-left" style={{ animationDelay: `${index * 300 + 700}ms` }}>
+                                  <div className="flex items-center gap-1">
                                     <div className="w-2 h-2 bg-green-500 rounded-full animate-blink"></div>
-                                    <span className="text-sm text-green-600 font-medium">24/7 Aktiv</span>
+                                    <span className="text-xs text-green-600 font-medium">24/7</span>
                                   </div>
                                 </div>
                               </div>
                               
-                              {/* Main Content */}
-                              <div className="flex-1 space-y-6">
-                                {/* Compliance Score Visualization */}
-                                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-green-100 dark:border-green-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
-                                  <div className="flex items-center justify-between">
-                                    <div>
-                                      <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Compliance Score</h4>
-                                      <div className="text-5xl font-bold text-green-600 animate-count-to" data-target="98">0</div>
-                                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Exzellenter Status</p>
-                                    </div>
-                                    <div className="relative w-32 h-32">
-                                      <svg className="w-32 h-32 transform -rotate-90">
-                                        <circle cx="64" cy="64" r="56" stroke="currentColor" strokeWidth="8" fill="none" className="text-gray-200 dark:text-gray-700" />
-                                        <circle cx="64" cy="64" r="56" stroke="currentColor" strokeWidth="8" fill="none" 
-                                          className="text-green-500 animate-circle-progress" 
-                                          strokeDasharray="351.86" 
-                                          strokeDashoffset="7.04"
-                                          style={{ animationDelay: `${index * 300 + 1000}ms` }}
-                                        />
-                                      </svg>
-                                      <div className="absolute inset-0 flex items-center justify-center">
-                                        <TrendingUp className="h-8 w-8 text-green-600 animate-bounce-in" style={{ animationDelay: `${index * 300 + 1200}ms` }} />
-                                      </div>
-                                    </div>
-                                  </div>
+                              {/* Compliance Score */}
+                              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 backdrop-blur-sm border border-green-100 dark:border-green-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
+                                <div className="flex items-center justify-between mb-2">
+                                  <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">Compliance Score</h4>
+                                  <TrendingUp className="h-4 w-4 text-green-600" />
                                 </div>
-
-                                {/* Status Grid & Activity Feed */}
-                                <div className="grid grid-cols-2 gap-4 flex-1">
-                                  {/* Status Cards */}
-                                  <div className="space-y-3">
-                                    <div className="bg-green-50 dark:bg-green-950/20 rounded-xl p-4 border border-green-200 dark:border-green-800 animate-slide-up hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: `${index * 300 + 900}ms` }}>
-                                      <div className="flex items-center justify-between mb-2">
-                                        <CheckCircle className="h-5 w-5 text-green-500" />
-                                        <span className="text-xs text-green-600 font-medium">Optimal</span>
-                                      </div>
-                                      <h5 className="text-sm font-semibold text-green-700 dark:text-green-300">Audit Ready</h5>
-                                      <p className="text-xs text-green-600 mt-1">Alle Prüfungen bestanden</p>
-                                      <div className="mt-2 h-1 bg-green-200 dark:bg-green-800 rounded-full overflow-hidden">
-                                        <div className="h-full bg-green-500 rounded-full animate-shimmer"></div>
-                                      </div>
-                                    </div>
-
-                                    <div className="bg-blue-50 dark:bg-blue-950/20 rounded-xl p-4 border border-blue-200 dark:border-blue-800 animate-slide-up hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: `${index * 300 + 1000}ms` }}>
-                                      <div className="flex items-center justify-between mb-2">
-                                        <Eye className="h-5 w-5 text-blue-500" />
-                                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-blink"></div>
-                                      </div>
-                                      <h5 className="text-sm font-semibold text-blue-700 dark:text-blue-300">Überwachung</h5>
-                                      <p className="text-xs text-blue-600 mt-1">127 Prüfpunkte aktiv</p>
-                                      <div className="mt-2 flex items-center gap-1">
-                                        {[...Array(5)].map((_, i) => (
-                                          <div key={i} className="flex-1 h-1 bg-blue-500 rounded-full animate-monitoring-wave" style={{ animationDelay: `${i * 100}ms` }}></div>
-                                        ))}
-                                      </div>
-                                    </div>
+                                <div className="flex items-center gap-3 mb-2">
+                                  <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div className="h-full w-0 bg-gradient-to-r from-green-500 to-teal-600 rounded-full animate-progress-bar" style={{ animationDelay: `${index * 300 + 1000}ms`, '--progress-width': '98%' }}></div>
                                   </div>
+                                  <span className="text-2xl font-bold text-green-600">98%</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <Shield className="h-3 w-3 text-green-600" />
+                                  <span className="text-xs text-green-600">Exzellenter Status</span>
+                                </div>
+                              </div>
 
-                                  {/* Live Activity Feed */}
-                                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm border border-gray-200 dark:border-gray-700 animate-slide-up" style={{ animationDelay: `${index * 300 + 1100}ms` }}>
-                                    <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Live Aktivitäten</h4>
-                                    <div className="space-y-2 max-h-40 overflow-y-auto">
-                                      {[
-                                        { icon: CheckCircle, color: 'green', text: 'Richtlinie automatisch geprüft', time: '1m' },
-                                        { icon: Shield, color: 'blue', text: 'Sicherheits-Backup erstellt', time: '5m' },
-                                        { icon: TrendingUp, color: 'purple', text: 'Performance optimiert', time: '12m' },
-                                        { icon: Clock, color: 'orange', text: 'Review geplant', time: '1h' }
-                                      ].map((activity, i) => (
-                                        <div key={i} className="flex items-start gap-2 p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors animate-activity-feed" style={{ animationDelay: `${index * 300 + 1200 + i * 100}ms` }}>
-                                          <activity.icon className={`h-3 w-3 text-${activity.color}-500 mt-0.5 flex-shrink-0`} />
-                                          <span className="text-xs text-gray-600 dark:text-gray-300 flex-1">{activity.text}</span>
-                                          <span className={`text-xs text-${activity.color}-600 font-medium`}>{activity.time}</span>
-                                        </div>
-                                      ))}
-                                    </div>
+                              {/* Status Grid */}
+                              <div className="grid grid-cols-2 gap-3">
+                                <div className="bg-green-50 dark:bg-green-950/20 rounded-lg p-3 text-center border border-green-200 dark:border-green-800 animate-scale-in hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: `${index * 300 + 900}ms` }}>
+                                  <CheckCircle className="h-4 w-4 text-green-600 mx-auto mb-1" />
+                                  <div className="text-xl font-bold text-green-600">15</div>
+                                  <div className="text-xs text-green-500">Audits OK</div>
+                                </div>
+                                <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-3 text-center border border-blue-200 dark:border-blue-800 animate-scale-in hover:scale-105 transition-transform cursor-pointer" style={{ animationDelay: `${index * 300 + 950}ms` }}>
+                                  <Eye className="h-4 w-4 text-blue-600 mx-auto mb-1" />
+                                  <div className="text-xl font-bold text-blue-600">127</div>
+                                  <div className="text-xs text-blue-500">Prüfpunkte</div>
+                                </div>
+                              </div>
+
+                              {/* Live Activity */}
+                              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 backdrop-blur-sm border border-gray-200 dark:border-gray-700 animate-slide-up" style={{ animationDelay: `${index * 300 + 1200}ms` }}>
+                                <h4 className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Live Aktivitäten</h4>
+                                <div className="space-y-1.5">
+                                  <div className="flex items-center gap-2 p-1.5 bg-green-50 dark:bg-green-950/20 rounded animate-recommendation-slide" style={{ animationDelay: `${index * 300 + 1300}ms` }}>
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-blink"></div>
+                                    <span className="text-xs text-gray-600 dark:text-gray-300">Audit erfolgreich</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 p-1.5 bg-blue-50 dark:bg-blue-950/20 rounded animate-recommendation-slide" style={{ animationDelay: `${index * 300 + 1400}ms` }}>
+                                    <Shield className="w-3 h-3 text-blue-500" />
+                                    <span className="text-xs text-gray-600 dark:text-gray-300">Backup erstellt</span>
                                   </div>
                                 </div>
                               </div>
