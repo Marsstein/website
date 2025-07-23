@@ -476,7 +476,7 @@ export const SolutionSection: React.FC = () => {
                       "w-5/12 flex items-center justify-center",
                       index % 2 === 0 ? "pl-32 xl:pl-40" : "pr-32 xl:pr-40"
                     )}>
-                      <div className="relative w-full max-w-xl">
+                      <div className="relative w-full max-w-4xl">
                         {/* Step 1: KI-Analyse Dashboard */}
                         {index === 0 && (
                           <Card className="w-full p-6 lg:p-8 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] animate-slide-in-right opacity-0" style={{ animationDelay: `${index * 300 + 400}ms`, animationFillMode: 'forwards' }}>
