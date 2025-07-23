@@ -12,58 +12,14 @@ import {
   Clock,
   Target,
   TrendingUp,
-  RefreshCw
+  RefreshCw,
+  Euro,
+  Users
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 export const SolutionSection: React.FC = () => {
-  const [activeComparison, setActiveComparison] = useState(0);
-
-  const transformations = [
-    {
-      before: {
-        icon: Clock,
-        problem: 'Statt 120+ Stunden Audit-Vorbereitung',
-        painIcon: RefreshCw,
-        color: 'text-red-600'
-      },
-      after: {
-        solution: 'In 30 Minuten audit-ready',
-        icon: CheckCircle,
-        color: 'text-green-600'
-      },
-      improvement: '95% Zeitersparnis'
-    },
-    {
-      before: {
-        icon: Shield,
-        problem: 'Statt Bußgeld-Angst',
-        painIcon: RefreshCw,
-        color: 'text-red-600'
-      },
-      after: {
-        solution: '100% DSGVO-Sicherheit',
-        icon: CheckCircle,
-        color: 'text-green-600'
-      },
-      improvement: 'Vollständige Compliance'
-    },
-    {
-      before: {
-        icon: Brain,
-        problem: 'Statt unstrukturierter Dokumentation',
-        painIcon: RefreshCw,
-        color: 'text-red-600'
-      },
-      after: {
-        solution: 'Alles zentral & aktuell',
-        icon: CheckCircle,
-        color: 'text-green-600'
-      },
-      improvement: 'Strukturierte Verwaltung'
-    }
-  ];
 
   const steps = [
     {
@@ -118,133 +74,105 @@ export const SolutionSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Modern Before/After Transformation */}
+          {/* Before/After Transformation */}
           <div className="mb-20">
-            <div className="relative">
-              {/* Main transformation showcase */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Before State - Left Side */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Before State - Left Side */}
+              <Card className="p-8 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 border-2 border-red-200 dark:border-red-800">
                 <div className="space-y-6">
-                  <div className="text-center lg:text-left">
+                  <div className="text-center">
                     <Badge variant="destructive" className="mb-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800">
-                      <RefreshCw className="h-3 w-3 mr-2" />
-                      Aktuell
+                      Vorher
                     </Badge>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                      Manuelle Compliance-Prozesse
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                      Manuelle Prozesse
                     </h3>
                   </div>
                   
                   <div className="space-y-4">
-                    {transformations.map((transformation, index) => (
-                      <Card 
-                        key={index}
-                        className="p-4 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 border-2 border-red-200 dark:border-red-800 hover:shadow-lg transition-all duration-300 animate-slide-up opacity-0"
-                        style={{ 
-                          animationDelay: `${index * 150}ms`,
-                          animationFillMode: 'forwards'
-                        }}
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg flex-shrink-0">
-                            <transformation.before.painIcon className="h-5 w-5 text-red-600" />
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-gray-700 dark:text-gray-300 font-medium">
-                              {transformation.before.problem}
-                            </p>
-                          </div>
-                          <div className="text-red-600 font-semibold text-sm">
-                            Zeitaufwändig
-                          </div>
-                        </div>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Transformation Arrow - Center */}
-                <div className="flex justify-center lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:z-10">
-                  <div className="relative">
-                    <div className="p-6 bg-gradient-to-r from-brand-red to-red-600 rounded-full shadow-2xl animate-pulse">
-                      <ArrowRight className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                      <Badge className="bg-gradient-to-r from-brand-red to-red-600 text-white border-0">
-                        <Sparkles className="h-3 w-3 mr-1" />
-                        KI-Transformation
-                      </Badge>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Audit-Vorbereitung</p>
+                        <p className="text-2xl font-bold text-red-600">120+ Stunden</p>
+                      </div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Manuelle Prozesse</p>
+                        <p className="text-2xl font-bold text-red-600">85%</p>
+                      </div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Fehlerrate</p>
+                        <p className="text-2xl font-bold text-red-600">23%</p>
+                      </div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Stress-Level</p>
+                        <p className="text-lg font-bold text-red-600">Maximum</p>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </Card>
 
-                {/* After State - Right Side */}
+              {/* After State - Right Side */}
+              <Card className="p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border-2 border-green-200 dark:border-green-800">
                 <div className="space-y-6">
-                  <div className="text-center lg:text-left">
+                  <div className="text-center">
                     <Badge className="mb-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800">
-                      <CheckCircle className="h-3 w-3 mr-2" />
-                      Mit Marsstein
+                      Nachher
                     </Badge>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                      Automatisierte Compliance
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                      Mit Marsstein
                     </h3>
                   </div>
                   
                   <div className="space-y-4">
-                    {transformations.map((transformation, index) => (
-                      <Card 
-                        key={index}
-                        className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border-2 border-green-200 dark:border-green-800 hover:shadow-lg transition-all duration-300 animate-slide-up opacity-0"
-                        style={{ 
-                          animationDelay: `${(index + 3) * 150}ms`,
-                          animationFillMode: 'forwards'
-                        }}
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg flex-shrink-0">
-                            <transformation.after.icon className="h-5 w-5 text-green-600" />
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-gray-700 dark:text-gray-300 font-medium">
-                              {transformation.after.solution}
-                            </p>
-                          </div>
-                          <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                            {transformation.improvement}
-                          </div>
-                        </div>
-                      </Card>
-                    ))}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Audit-Vorbereitung</p>
+                        <p className="text-2xl font-bold text-green-600">30 Minuten</p>
+                      </div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Automatisierung</p>
+                        <p className="text-2xl font-bold text-green-600">95%</p>
+                      </div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Fehlerrate</p>
+                        <p className="text-2xl font-bold text-green-600">&lt;1%</p>
+                      </div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Stress-Level</p>
+                        <p className="text-lg font-bold text-green-600">Minimal</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Card>
+            </div>
 
-              {/* Success metrics */}
-              <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="p-6 text-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-2 border-blue-200 dark:border-blue-800 hover:scale-105 transition-all duration-300">
-                  <div className="inline-flex p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-                    <Clock className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">95%</div>
-                  <p className="text-gray-600 dark:text-gray-400">Zeitersparnis bei Audits</p>
-                </Card>
-                
-                <Card className="p-6 text-center bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border-2 border-green-200 dark:border-green-800 hover:scale-105 transition-all duration-300">
-                  <div className="inline-flex p-3 bg-green-100 dark:bg-green-900/30 rounded-full mb-4">
-                    <Shield className="h-6 w-6 text-green-600" />
-                  </div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
-                  <p className="text-gray-600 dark:text-gray-400">DSGVO-Konformität</p>
-                </Card>
-                
-                <Card className="p-6 text-center bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 border-2 border-purple-200 dark:border-purple-800 hover:scale-105 transition-all duration-300">
-                  <div className="inline-flex p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full mb-4">
-                    <Brain className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">0</div>
-                  <p className="text-gray-600 dark:text-gray-400">Manuelle Fehler</p>
-                </Card>
-              </div>
+            {/* Benefits */}
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="inline-flex p-4 rounded-full mb-4 bg-green-100 dark:bg-green-900/30">
+                  <TrendingUp className="h-8 w-8 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">400% Effizienzsteigerung</h3>
+                <p className="text-gray-600 dark:text-gray-400">Automatisierte Prozesse steigern die Produktivität um das Vierfache</p>
+              </Card>
+              
+              <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="inline-flex p-4 rounded-full mb-4 bg-blue-100 dark:bg-blue-900/30">
+                  <Euro className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">€50k+ Kostenoptimierung/Jahr</h3>
+                <p className="text-gray-600 dark:text-gray-400">Reduzierte Personalkosten, minimierte Compliance-Risiken, weniger externe Beratung</p>
+              </Card>
+              
+              <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="inline-flex p-4 rounded-full mb-4 bg-purple-100 dark:bg-purple-900/30">
+                  <Users className="h-8 w-8 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Strategischer Fokus</h3>
+                <p className="text-gray-600 dark:text-gray-400">Mitarbeiter können sich auf wertschöpfende Tätigkeiten konzentrieren</p>
+              </Card>
             </div>
           </div>
 
