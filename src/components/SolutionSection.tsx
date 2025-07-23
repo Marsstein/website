@@ -74,7 +74,7 @@ export const SolutionSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Before/After Transformation */}
+          {/* Before/After Transformation - Abschnitt B */}
           <div className="mb-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Before State - Left Side */}
@@ -175,7 +175,7 @@ export const SolutionSection: React.FC = () => {
               </div>
             </div>
 
-            {/* ROI Calculator */}
+            {/* ROI Section - Integrated as part of transformation */}
             <div className="mt-16">
               <div className="rounded-lg bg-card text-card-foreground shadow-sm p-8 bg-gradient-to-r from-brand-red/5 to-green-500/5 border-2 border-brand-red/20">
                 <div className="text-center space-y-6">
