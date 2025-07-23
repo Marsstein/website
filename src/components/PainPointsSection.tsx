@@ -116,10 +116,7 @@ export const PainPointsSection: React.FC = () => {
                     "inline-flex p-3 rounded-xl mb-4",
                     point.bgColor
                   )}>
-                    <point.icon className={cn(
-                      "h-6 w-6",
-                      `bg-gradient-to-r ${point.color} bg-clip-text text-transparent`
-                    )} />
+                    <point.icon className="h-6 w-6 text-gray-700 dark:text-gray-300" />
                   </div>
 
                   {/* Content */}
