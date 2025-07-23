@@ -35,6 +35,7 @@ export const Header: React.FC = () => {
     { key: 'nav_features', href: '#features' },
     { key: 'nav_pricing', href: '/pricing' },
     { key: 'nav_academy', href: '/academy' },
+    { key: 'nav_resources', href: '/resources' },
     { key: 'nav_contact', href: '/contact' },
   ];
 
