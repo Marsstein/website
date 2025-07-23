@@ -425,12 +425,12 @@ export const SolutionSection: React.FC = () => {
                     {/* Dashboard Mockup */}
                     <div className={cn(
                       "w-5/12 flex items-center justify-center",
-                      index % 2 === 0 ? "pl-12" : "pr-12"
+                      index % 2 === 0 ? "pl-16" : "pr-16"
                     )}>
-                      <div className="relative">
+                      <div className="relative w-full max-w-sm">
                         {/* Step 1: KI-Analyse Dashboard */}
                         {index === 0 && (
-                          <Card className="w-80 h-64 p-6 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105">
+                          <Card className="w-full h-auto min-h-[300px] p-6 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
                             <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
@@ -483,7 +483,7 @@ export const SolutionSection: React.FC = () => {
 
                         {/* Step 2: Workflow Automation Dashboard */}
                         {index === 1 && (
-                          <Card className="w-80 h-64 p-6 bg-gradient-to-br from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105">
+                          <Card className="w-full h-auto min-h-[300px] p-6 bg-gradient-to-br from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
                             <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
@@ -544,7 +544,7 @@ export const SolutionSection: React.FC = () => {
 
                         {/* Step 3: Monitoring Dashboard */}
                         {index === 2 && (
-                          <Card className="w-80 h-64 p-6 bg-gradient-to-br from-white via-green-50 to-white dark:from-gray-900 dark:via-green-950/20 dark:to-gray-900 border-2 border-green-200 dark:border-green-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105">
+                          <Card className="w-full h-auto min-h-[300px] p-6 bg-gradient-to-br from-white via-green-50 to-white dark:from-gray-900 dark:via-green-950/20 dark:to-gray-900 border-2 border-green-200 dark:border-green-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
                             <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
