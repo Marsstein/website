@@ -21,7 +21,7 @@ export const HeroSection: React.FC = () => {
 
   const problems = [
     { text: "DSGVO-Bußgelder", icon: Euro, color: "text-red-600" },
-    { text: "Audit-Chaos", icon: AlertCircle, color: "text-orange-600" },
+    { text: "Audit-Aufwand", icon: AlertCircle, color: "text-orange-600" },
     { text: "Zeitverlust", icon: Clock, color: "text-purple-600" },
     { text: "Datenlecks", icon: TrendingDown, color: "text-red-700" }
   ];

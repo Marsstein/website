@@ -39,7 +39,7 @@ export const TransformationSection: React.FC = () => {
       before: {
         icon: Clock,
         title: 'Vorher',
-        subtitle: 'Compliance-Chaos',
+        subtitle: 'Manuelle Prozesse',
         stats: [
           { label: 'Audit-Vorbereitung', value: '120+ Stunden', color: 'text-red-600' },
           { label: 'Manuelle Prozesse', value: '85%', color: 'text-red-600' },
@@ -125,14 +125,14 @@ export const TransformationSection: React.FC = () => {
               <span className="text-sm font-medium">Die Transformation</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Ihr Unternehmen
+              Prozessoptimierung
               <span className="bg-gradient-to-r from-brand-red to-green-600 bg-clip-text text-transparent mx-2">
-                vor und nach
+                durch Marsstein
               </span>
-              Marsstein
+              sichtbar gemacht
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Sehen Sie, wie sich Ihr Arbeitsalltag dramatisch verbessert
+              Quantifizierbare Verbesserungen in Effizienz und Compliance-Qualität
             </p>
           </div>
 

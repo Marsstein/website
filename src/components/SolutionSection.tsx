@@ -28,7 +28,7 @@ export const SolutionSection: React.FC = () => {
       color: 'text-blue-600'
     },
     {
-      problem: 'Statt Dokumenten-Chaos',
+      problem: 'Statt unstrukturierter Dokumentation',
       solution: 'Alles zentral & aktuell',
       icon: Brain,
       color: 'text-purple-600'
