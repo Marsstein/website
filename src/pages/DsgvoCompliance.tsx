@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { DsgvoComplianceDashboard } from '@/components/DsgvoComplianceDashboard';
+import { CompactDsgvoDashboard } from '@/components/CompactDsgvoDashboard';
 import { cn } from '@/lib/utils';
 import { 
   Shield, 
@@ -369,9 +369,9 @@ const DsgvoCompliance = () => {
             ))}
           </div>
 
-          {/* Animated Dashboard Component */}
+          {/* Compact Dashboard Component */}
           <div className="lg:sticky lg:top-24">
-            <DsgvoComplianceDashboard />
+            <CompactDsgvoDashboard />
           </div>
         </div>
       </div>
