@@ -328,7 +328,7 @@ export const SolutionSection: React.FC = () => {
                     {/* Content Card */}
                     <div className={cn(
                       "w-5/12 relative group",
-                      index % 2 === 0 ? "pr-12" : "pl-12"
+                      index % 2 === 0 ? "pr-8" : "pl-8"
                     )}>
                       <Card className="p-8 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-2 hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] group-hover:border-brand-red/30">
                         <div className="space-y-6">
@@ -473,10 +473,10 @@ export const SolutionSection: React.FC = () => {
 
                     {/* Dashboard Mockup */}
                     <div className={cn(
-                      "w-5/12 flex items-center justify-center",
-                      index % 2 === 0 ? "pl-32 xl:pl-40" : "pr-32 xl:pr-40"
+                      "w-7/12 flex items-center justify-center",
+                      index % 2 === 0 ? "pl-16 xl:pl-20" : "pr-16 xl:pr-20"
                     )}>
-                      <div className="relative w-full max-w-4xl">
+                      <div className="relative w-full">
                         {/* Step 1: KI-Analyse Dashboard */}
                         {index === 0 && (
                           <Card className="w-full p-6 lg:p-8 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] animate-slide-in-right opacity-0" style={{ animationDelay: `${index * 300 + 400}ms`, animationFillMode: 'forwards' }}>
