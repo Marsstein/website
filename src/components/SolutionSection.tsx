@@ -444,7 +444,7 @@ export const SolutionSection: React.FC = () => {
                               </div>
                               
                               {/* Document Analysis */}
-                              <div className="space-y-3">
+                              <div className="space-y-2">
                                 <div className="text-xs text-gray-500 dark:text-gray-400">Dokumente analysiert</div>
                                 <div className="flex items-center gap-2">
                                   <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
@@ -455,26 +455,27 @@ export const SolutionSection: React.FC = () => {
                               </div>
 
                               {/* Compliance Issues */}
-                              <div className="grid grid-cols-2 gap-3">
-                                <div className="p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-center">
-                                  <div className="text-lg font-bold text-red-600">23</div>
+                              <div className="grid grid-cols-2 gap-2">
+                                <div className="p-2 bg-red-50 dark:bg-red-950/20 rounded-lg text-center">
+                                  <div className="text-base font-bold text-red-600">23</div>
                                   <div className="text-xs text-red-500">Kritische Lücken</div>
                                 </div>
-                                <div className="p-3 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg text-center">
-                                  <div className="text-lg font-bold text-yellow-600">47</div>
+                                <div className="p-2 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg text-center">
+                                  <div className="text-base font-bold text-yellow-600">47</div>
                                   <div className="text-xs text-yellow-500">Empfehlungen</div>
                                 </div>
                               </div>
 
                               {/* AI Recommendations */}
-                              <div className="space-y-2">
+                              <div className="space-y-1.5">
+                                <div className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">KI-Empfehlungen</div>
                                 <div className="flex items-center gap-2 p-2 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
                                   <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                                  <span className="text-xs text-gray-600 dark:text-gray-400">DSGVO Art. 32 - Sicherheit prüfen</span>
+                                  <span className="text-xs text-gray-600 dark:text-gray-400">DSGVO Art. 32 prüfen</span>
                                 </div>
                                 <div className="flex items-center gap-2 p-2 bg-green-50 dark:bg-green-950/20 rounded-lg">
                                   <CheckCircle className="w-3 h-3 text-green-500" />
-                                  <span className="text-xs text-gray-600 dark:text-gray-400">ISO 27001 - Vollständig compliant</span>
+                                  <span className="text-xs text-gray-600 dark:text-gray-400">ISO 27001 compliant</span>
                                 </div>
                               </div>
                             </div>
@@ -497,7 +498,7 @@ export const SolutionSection: React.FC = () => {
                               </div>
                               
                               {/* Workflow Status */}
-                              <div className="space-y-3">
+                              <div className="space-y-2">
                                 <div className="flex items-center justify-between">
                                   <span className="text-xs text-gray-500 dark:text-gray-400">Automatisierungsgrad</span>
                                   <span className="text-sm font-bold text-purple-600">95%</span>
@@ -508,34 +509,35 @@ export const SolutionSection: React.FC = () => {
                               </div>
 
                               {/* Active Workflows */}
-                              <div className="grid grid-cols-3 gap-2">
+                              <div className="grid grid-cols-3 gap-1.5">
                                 <div className="p-2 bg-green-50 dark:bg-green-950/20 rounded-lg text-center">
-                                  <div className="text-sm font-bold text-green-600">12</div>
+                                  <div className="text-base font-bold text-green-600">12</div>
                                   <div className="text-xs text-green-500">Berichte</div>
                                 </div>
                                 <div className="p-2 bg-blue-50 dark:bg-blue-950/20 rounded-lg text-center">
-                                  <div className="text-sm font-bold text-blue-600">8</div>
+                                  <div className="text-base font-bold text-blue-600">8</div>
                                   <div className="text-xs text-blue-500">Audits</div>
                                 </div>
                                 <div className="p-2 bg-orange-50 dark:bg-orange-950/20 rounded-lg text-center">
-                                  <div className="text-sm font-bold text-orange-600">3</div>
+                                  <div className="text-base font-bold text-orange-600">3</div>
                                   <div className="text-xs text-orange-500">Reviews</div>
                                 </div>
                               </div>
 
                               {/* Automation Timeline */}
-                              <div className="space-y-2">
+                              <div className="space-y-1.5">
+                                <div className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Aktuelle Workflows</div>
                                 <div className="flex items-center gap-2">
                                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                  <span className="text-xs text-gray-600 dark:text-gray-400">Dokumentenerstellung abgeschlossen</span>
+                                  <span className="text-xs text-gray-600 dark:text-gray-400 truncate">Dokumentenerstellung ✓</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                                  <span className="text-xs text-gray-600 dark:text-gray-400">Audit-Bericht wird generiert...</span>
+                                  <span className="text-xs text-gray-600 dark:text-gray-400 truncate">Audit-Bericht generiert...</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                                  <span className="text-xs text-gray-400">Compliance-Review geplant</span>
+                                  <span className="text-xs text-gray-400 truncate">Review geplant</span>
                                 </div>
                               </div>
                             </div>
@@ -567,41 +569,41 @@ export const SolutionSection: React.FC = () => {
                               </div>
 
                               {/* Status Grid */}
-                              <div className="grid grid-cols-2 gap-3">
-                                <div className="p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
-                                  <div className="flex items-center gap-2 mb-1">
+                              <div className="grid grid-cols-2 gap-2">
+                                <div className="p-2 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                                  <div className="flex items-center gap-1 mb-1">
                                     <CheckCircle className="w-3 h-3 text-green-500" />
                                     <span className="text-xs font-medium text-green-700 dark:text-green-300">Audit Ready</span>
                                   </div>
-                                  <div className="text-xs text-green-600">Alle Checks bestanden</div>
+                                  <div className="text-xs text-green-600">Alle Checks ✓</div>
                                 </div>
-                                <div className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
-                                  <div className="flex items-center gap-2 mb-1">
+                                <div className="p-2 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                                  <div className="flex items-center gap-1 mb-1">
                                     <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                                    <span className="text-xs font-medium text-blue-700 dark:text-blue-300">Monitoring</span>
+                                    <span className="text-xs font-medium text-blue-700 dark:text-blue-300">24/7 Live</span>
                                   </div>
-                                  <div className="text-xs text-blue-600">Real-time Überwachung</div>
+                                  <div className="text-xs text-blue-600">Überwachung aktiv</div>
                                 </div>
                               </div>
 
                               {/* Alert Feed */}
-                              <div className="space-y-2">
+                              <div className="space-y-1.5">
                                 <div className="text-xs font-medium text-gray-700 dark:text-gray-300">Letzte Aktivitäten</div>
                                 <div className="space-y-1">
                                   <div className="flex items-center gap-2 text-xs">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                                    <span className="text-gray-600 dark:text-gray-400">Richtlinie automatisch geprüft</span>
-                                    <span className="text-green-600 ml-auto">1m</span>
+                                    <span className="text-gray-600 dark:text-gray-400 flex-1 truncate">Richtlinie geprüft</span>
+                                    <span className="text-green-600">1m</span>
                                   </div>
                                   <div className="flex items-center gap-2 text-xs">
                                     <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                                    <span className="text-gray-600 dark:text-gray-400">Backup erfolgreich</span>
-                                    <span className="text-blue-600 ml-auto">5m</span>
+                                    <span className="text-gray-600 dark:text-gray-400 flex-1 truncate">Backup erfolgreich</span>
+                                    <span className="text-blue-600">5m</span>
                                   </div>
                                   <div className="flex items-center gap-2 text-xs">
                                     <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                    <span className="text-gray-600 dark:text-gray-400">Review geplant</span>
-                                    <span className="text-orange-600 ml-auto">1h</span>
+                                    <span className="text-gray-600 dark:text-gray-400 flex-1 truncate">Review geplant</span>
+                                    <span className="text-orange-600">1h</span>
                                   </div>
                                 </div>
                               </div>
