@@ -143,9 +143,8 @@ export const PainPointsSection: React.FC = () => {
 
                   {/* Hover effect */}
                   <div className={cn(
-                    "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                    `bg-gradient-to-br ${point.color}`,
-                    "opacity-5"
+                    "absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 -z-10",
+                    `bg-gradient-to-br ${point.color}`
                   )} />
                 </CardContent>
               </Card>
