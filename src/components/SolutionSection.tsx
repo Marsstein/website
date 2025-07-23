@@ -78,7 +78,7 @@ export const SolutionSection: React.FC = () => {
           <div className="mb-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Before State - Left Side */}
-              <Card className="p-8 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 border-2 border-red-200 dark:border-red-800">
+              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-8 relative overflow-hidden transition-all duration-500 border-2 border-red-200 dark:border-red-800 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20">
                 <div className="space-y-6">
                   <div className="text-center">
                     <Badge variant="destructive" className="mb-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800">
@@ -110,10 +110,10 @@ export const SolutionSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
 
               {/* After State - Right Side */}
-              <Card className="p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border-2 border-green-200 dark:border-green-800">
+              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-8 relative overflow-hidden transition-all duration-500 border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20">
                 <div className="space-y-6">
                   <div className="text-center">
                     <Badge className="mb-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800">
@@ -145,34 +145,77 @@ export const SolutionSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
             </div>
 
             {/* Benefits */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="inline-flex p-4 rounded-full mb-4 bg-green-100 dark:bg-green-900/30">
                   <TrendingUp className="h-8 w-8 text-green-600" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">400% Effizienzsteigerung</h3>
                 <p className="text-gray-600 dark:text-gray-400">Automatisierte Prozesse steigern die Produktivität um das Vierfache</p>
-              </Card>
+              </div>
               
-              <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="inline-flex p-4 rounded-full mb-4 bg-blue-100 dark:bg-blue-900/30">
                   <Euro className="h-8 w-8 text-blue-600" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">€50k+ Kostenoptimierung/Jahr</h3>
                 <p className="text-gray-600 dark:text-gray-400">Reduzierte Personalkosten, minimierte Compliance-Risiken, weniger externe Beratung</p>
-              </Card>
+              </div>
               
-              <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="inline-flex p-4 rounded-full mb-4 bg-purple-100 dark:bg-purple-900/30">
                   <Users className="h-8 w-8 text-purple-600" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Strategischer Fokus</h3>
                 <p className="text-gray-600 dark:text-gray-400">Mitarbeiter können sich auf wertschöpfende Tätigkeiten konzentrieren</p>
-              </Card>
+              </div>
+            </div>
+
+            {/* ROI Calculator */}
+            <div className="mt-16">
+              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-8 bg-gradient-to-r from-brand-red/5 to-green-500/5 border-2 border-brand-red/20">
+                <div className="text-center space-y-6">
+                  <h3 className="text-3xl font-bold">
+                    Return on Investment
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="space-y-2">
+                      <div className="text-4xl font-bold text-brand-red">
+                        300%
+                      </div>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">ROI im ersten Jahr</p>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-4xl font-bold text-green-600">
+                        €75k
+                      </div>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Durchschnittliche Ersparnis</p>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-4xl font-bold text-blue-600">
+                        6 Monate
+                      </div>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Break-Even Point</p>
+                    </div>
+                  </div>
+
+                  <Link to="/contact?demo=true">
+                    <Button 
+                      size="lg" 
+                      className="bg-brand-red hover:bg-brand-red/90 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
+                    >
+                      <Target className="mr-2 h-5 w-5" />
+                      ROI-Analyse anfordern
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
