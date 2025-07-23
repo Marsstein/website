@@ -19,10 +19,10 @@
     --popover-foreground: 0 0% 14%; /* #232323 - Charcoal Black */
 
     /* Primary brand colors - Marsstein Red */
-    --primary: 4 82% 56%; /* #E53935 - Primary Red */
+    --primary: 5 77% 36%; /* #a1251b - Primary Red */
     --primary-foreground: 0 0% 100%; /* #FFFFFF - White */
-    --primary-light: 4 82% 66%; /* Lighter red */
-    --primary-dark: 4 82% 46%; /* Darker red */
+    --primary-light: 5 77% 46%; /* Lighter red */
+    --primary-dark: 5 77% 26%; /* Darker red */
 
     /* Secondary colors - Success Green */
     --secondary: 150 48% 49%; /* #39B37B - Success Green */

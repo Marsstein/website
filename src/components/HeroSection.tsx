@@ -1,170 +1,212 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { useLanguage } from '@/hooks/useLanguage';
 import { 
-  Shield, 
-  Award, 
-  CheckCircle, 
-  ArrowRight, 
-  Play,
+  ArrowRight,
   Sparkles,
-  Lock,
-  Zap,
-  BarChart3
+  AlertCircle,
+  TrendingDown,
+  Clock,
+  Euro,
+  Shield,
+  CheckCircle2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 export const HeroSection: React.FC = () => {
   const { t } = useLanguage();
-  const [isVideoHovered, setIsVideoHovered] = useState(false);
+  const [currentProblem, setCurrentProblem] = useState(0);
 
-  const trustBadges = [
-    { icon: Shield, label: 'DSGVO konform', color: 'text-green-600' },
-    { icon: Award, label: 'ISO 27001', color: 'text-blue-600' },
-    { icon: CheckCircle, label: 'EU AI Act ready', color: 'text-purple-600' },
+  const problems = [
+    { text: "DSGVO-Bußgelder", icon: Euro, color: "text-red-600" },
+    { text: "Audit-Chaos", icon: AlertCircle, color: "text-orange-600" },
+    { text: "Zeitverlust", icon: Clock, color: "text-purple-600" },
+    { text: "Datenlecks", icon: TrendingDown, color: "text-red-700" }
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentProblem((prev) => (prev + 1) % problems.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-background via-background/95 to-background pt-32 pb-24 md:pt-40 md:pb-32">
-      {/* Background decoration */}
+    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-20 md:pt-28 md:pb-28">
+      {/* Animated background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-brand-red/10 to-purple-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-brand-red/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-brand-red/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-brand-red/5 to-transparent rounded-full blur-3xl animate-pulse delay-500" />
       </div>
 
       <div className="container px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          {/* Trust indicators */}
-          <div className="flex justify-center mb-8 animate-fade-in">
-            <div className="flex flex-wrap gap-3">
-              {trustBadges.map((badge, index) => (
-                <Badge
-                  key={index}
-                  variant="secondary"
-                  className={cn(
-                    "flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm",
-                    "border-2 hover:scale-105 transition-all duration-300 shadow-lg",
-                    "animate-slide-up",
-                    badge.color
-                  )}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <badge.icon className="h-4 w-4" />
-                  <span className="font-medium">{badge.label}</span>
-                </Badge>
-              ))}
+        <div className="max-w-5xl mx-auto text-center space-y-8">
+          {/* Problem rotator */}
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900">
+            <AlertCircle className="h-5 w-5 text-brand-red animate-pulse" />
+            <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              Schluss mit
+            </span>
+            <div className="relative h-6 w-32 overflow-hidden">
+              {problems.map((problem, index) => {
+                const Icon = problem.icon;
+                return (
+                  <div
+                    key={index}
+                    className={cn(
+                      "absolute inset-0 flex items-center gap-2 transition-all duration-500",
+                      currentProblem === index 
+                        ? "translate-y-0 opacity-100" 
+                        : index < currentProblem 
+                          ? "-translate-y-full opacity-0"
+                          : "translate-y-full opacity-0"
+                    )}
+                  >
+                    <Icon className={cn("h-4 w-4", problem.color)} />
+                    <span className={cn("font-semibold", problem.color)}>
+                      {problem.text}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
-          {/* Main content */}
-          <div className="text-center space-y-8">
-            {/* Headline */}
-            <div className="space-y-4 animate-fade-in">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                <span className="bg-gradient-to-r from-brand-charcoal via-brand-red to-brand-charcoal bg-clip-text text-transparent animate-gradient bg-300%">
-                  Compliance
+          {/* Main headline */}
+          <div className="space-y-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+              <span className="text-gray-900 dark:text-white">
+                Compliance wird
+              </span>
+              <br />
+              <span className="relative">
+                <span className="bg-gradient-to-r from-brand-red via-red-600 to-brand-red bg-clip-text text-transparent animate-gradient bg-300%">
+                  unfassbar einfach
                 </span>
-                <br />
-                <span className="text-foreground">so einfach wie nie</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Machen Sie Datenschutz, IT-Sicherheit und KI-Regulierung zum Wettbewerbsvorteil – 
-                mit der führenden All-in-One Compliance-Plattform für Europa.
-              </p>
-            </div>
+                <Sparkles className="absolute -top-6 -right-6 h-8 w-8 text-brand-red animate-pulse" />
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Die KI-gestützte Plattform, die aus Ihrem Compliance-Albtraum 
+              einen <span className="font-semibold text-gray-900 dark:text-white">automatisierten Workflow</span> macht. 
+              In Minuten statt Monaten.
+            </p>
+          </div>
 
-            {/* Value propositions */}
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Zap className="h-4 w-4 text-brand-red" />
-                <span>90% schnellere Audits</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Lock className="h-4 w-4 text-brand-red" />
-                <span>100% DSGVO-konform</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <BarChart3 className="h-4 w-4 text-brand-red" />
-                <span>50% weniger Compliance-Kosten</span>
-              </div>
+          {/* Trust points */}
+          <div className="flex flex-wrap justify-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5 text-green-600" />
+              <span className="text-gray-700 dark:text-gray-300">100% DSGVO-konform</span>
             </div>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link to="/contact?demo=true">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red/70 text-white px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 group"
-                >
-                  <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                  Kostenlose Demo buchen
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <Link to="/features">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="group px-8 py-6 text-lg border-2 hover:bg-primary/5"
-                  onMouseEnter={() => setIsVideoHovered(true)}
-                  onMouseLeave={() => setIsVideoHovered(false)}
-                >
-                  <Play className={cn(
-                    "mr-2 h-5 w-5 transition-all duration-300",
-                    isVideoHovered && "scale-110 text-brand-red"
-                  )} />
-                  Plattform-Tour ansehen
-                </Button>
-              </Link>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5 text-green-600" />
+              <span className="text-gray-700 dark:text-gray-300">EU AI Act ready</span>
             </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5 text-green-600" />
+              <span className="text-gray-700 dark:text-gray-300">ISO 27001 zertifiziert</span>
+            </div>
+          </div>
 
-            {/* Demo preview */}
-            <div className="pt-12 animate-slide-up">
-              <Card className="relative mx-auto max-w-5xl overflow-hidden shadow-2xl border-2 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-red to-transparent" />
-                <div className="p-2">
-                  <div className="relative rounded-lg overflow-hidden">
-                    <img
-                      src="/dashboard-preview.png"
-                      alt="Marsstein Compliance Dashboard"
-                      className="w-full h-auto"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-                    
-                    {/* Floating feature cards */}
-                    <div className="absolute top-4 right-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg p-3 shadow-xl animate-float">
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                        <span className="text-sm font-medium">Live-Monitoring aktiv</span>
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Link to="/contact?demo=true">
+              <Button 
+                size="lg" 
+                className="bg-brand-red hover:bg-brand-red/90 text-white px-8 py-6 text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
+              >
+                <Sparkles className="mr-2 h-5 w-5 animate-pulse" />
+                Live-Demo erleben
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link to="#pain-points">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="group px-8 py-6 text-lg border-2 border-gray-300 hover:border-brand-red hover:text-brand-red transition-all duration-300"
+              >
+                Ihre Herausforderungen?
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
+
+          {/* Live dashboard preview */}
+          <div className="pt-12 relative">
+            <Card className="relative overflow-hidden shadow-2xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 max-w-4xl mx-auto">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-red via-red-500 to-brand-red animate-gradient bg-300%" />
+              
+              {/* Simulated dashboard */}
+              <div className="p-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Compliance Score */}
+                  <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 border-green-200 dark:border-green-800">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Compliance Score</span>
+                        <Shield className="h-5 w-5 text-green-600" />
                       </div>
+                      <div className="text-3xl font-bold text-green-700 dark:text-green-400">98%</div>
+                      <div className="text-xs text-green-600">+12% diese Woche</div>
                     </div>
-                    
-                    <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg p-3 shadow-xl animate-float" style={{ animationDelay: '1s' }}>
-                      <div className="flex items-center gap-2">
-                        <Shield className="h-4 w-4 text-brand-red" />
-                        <span className="text-sm font-medium">Vollständig geschützt</span>
+                  </Card>
+
+                  {/* Offene Audits */}
+                  <Card className="p-6 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900 border-amber-200 dark:border-amber-800">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Offene Audits</span>
+                        <AlertCircle className="h-5 w-5 text-amber-600" />
                       </div>
+                      <div className="text-3xl font-bold text-amber-700 dark:text-amber-400">3</div>
+                      <div className="text-xs text-amber-600">Nächstes in 2 Tagen</div>
                     </div>
+                  </Card>
+
+                  {/* Zeit gespart */}
+                  <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 border-purple-200 dark:border-purple-800">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Zeit gespart</span>
+                        <Clock className="h-5 w-5 text-purple-600" />
+                      </div>
+                      <div className="text-3xl font-bold text-purple-700 dark:text-purple-400">127h</div>
+                      <div className="text-xs text-purple-600">Diesen Monat</div>
+                    </div>
+                  </Card>
+                </div>
+
+                {/* Live activity feed */}
+                <div className="mt-6 space-y-2">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 animate-slide-up">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      DSGVO-Audit erfolgreich abgeschlossen
+                    </span>
+                    <span className="text-xs text-gray-500 ml-auto">vor 2 Min.</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 animate-slide-up" style={{ animationDelay: '200ms' }}>
+                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      Neue Datenschutzrichtlinie hochgeladen
+                    </span>
+                    <span className="text-xs text-gray-500 ml-auto">vor 5 Min.</span>
                   </div>
                 </div>
-              </Card>
-            </div>
+              </div>
+            </Card>
 
-            {/* Social proof */}
-            <div className="pt-12 animate-fade-in">
-              <p className="text-sm text-muted-foreground mb-6">
-                Vertrauen von über 500+ Unternehmen in Europa
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="/logos/company-1.svg" alt="Company 1" className="h-8" />
-                <img src="/logos/company-2.svg" alt="Company 2" className="h-8" />
-                <img src="/logos/company-3.svg" alt="Company 3" className="h-8" />
-                <img src="/logos/company-4.svg" alt="Company 4" className="h-8" />
-                <img src="/logos/company-5.svg" alt="Company 5" className="h-8" />
+            {/* Floating badges */}
+            <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-900 rounded-full px-4 py-2 shadow-xl border-2 border-brand-red animate-float">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-sm font-medium">Live-Monitoring aktiv</span>
               </div>
             </div>
           </div>

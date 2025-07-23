@@ -68,7 +68,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				// Marsstein Brand Colors - Direct access
-				'brand-red': '#E53935',
+				'brand-red': '#a1251b',
 				'brand-charcoal': '#232323',
 				'brand-stone': '#474747',
 				'brand-light': '#F5F6F8',

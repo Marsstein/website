@@ -1,34 +1,28 @@
 import React from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
-import { TrustSection } from '@/components/TrustSection';
-import { FeaturesSection } from '@/components/FeaturesSection';
-import { VisionSection } from '@/components/VisionSection';
-import { BenefitsSection } from '@/components/BenefitsSection';
-import { HowItWorksSection } from '@/components/HowItWorksSection';
-import { TestimonialsSection } from '@/components/TestimonialsSection';
-import { StatsSection } from '@/components/StatsSection';
+import { PainPointsSection } from '@/components/PainPointsSection';
+import { SolutionSection } from '@/components/SolutionSection';
+import { FeaturesShowcase } from '@/components/FeaturesShowcase';
+import { TransformationSection } from '@/components/TransformationSection';
+import { TrustIndicators } from '@/components/TrustIndicators';
 import { CTASection } from '@/components/CTASection';
 import { FAQSection } from '@/components/FAQSection';
-import { NewsletterSection } from '@/components/NewsletterSection';
 import { Footer } from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
       <Header />
-      <main>
+      <main className="overflow-hidden">
         <HeroSection />
-        <TrustSection />
-        <VisionSection />
-        <FeaturesSection />
-        <StatsSection />
-        <BenefitsSection />
-        <HowItWorksSection />
-        <TestimonialsSection />
+        <PainPointsSection />
+        <SolutionSection />
+        <FeaturesShowcase />
+        <TransformationSection />
+        <TrustIndicators />
         <CTASection />
         <FAQSection />
-        <NewsletterSection />
       </main>
       <Footer />
     </div>
