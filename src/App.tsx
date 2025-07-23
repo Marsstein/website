@@ -20,6 +20,7 @@ import { DataPrivacyReadinessAssessment } from "./pages/resources/DataPrivacyRea
 import { BreachResponseChecklist } from "./pages/resources/BreachResponseChecklist";
 import { CookieComplianceAudit } from "./pages/resources/CookieComplianceAudit";
 import { VendorAssessmentTemplate } from "./pages/resources/VendorAssessmentTemplate";
+import DsgvoCompliance from "./pages/DsgvoCompliance";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ const App = () => (
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/academy" element={<Academy />} />
                 <Route path="/pricing" element={<Pricing />} />
+                <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
                 
@@ -55,6 +57,9 @@ const App = () => (
                 <Route path="/resources/breach-response-checklist" element={<BreachResponseChecklist />} />
                 <Route path="/resources/cookie-compliance-audit" element={<CookieComplianceAudit />} />
                 <Route path="/resources/vendor-assessment-template" element={<VendorAssessmentTemplate />} />
+                
+                {/* DSGVO Compliance Product Page */}
+                <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
