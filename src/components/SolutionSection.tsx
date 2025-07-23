@@ -201,129 +201,179 @@ export const SolutionSection: React.FC = () => {
 
             </div>
 
-            {/* Interactive Transformation Process */}
+            {/* Impact Visualization */}
             <div className="mt-12 mb-16">
-              <div className="relative max-w-4xl mx-auto">
-                {/* Process Header */}
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                    Transformationsprozess
+              <div className="relative max-w-5xl mx-auto">
+                {/* Header */}
+                <div className="text-center mb-10">
+                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                    Der Marsstein-Effekt
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    Von manuellen Prozessen zu intelligenter Automatisierung
+                  <p className="text-lg text-gray-600 dark:text-gray-400">
+                    Wie sich Ihr Arbeitsalltag mit intelligenter Automatisierung verändert
                   </p>
                 </div>
 
-                {/* Interactive Progress Bar */}
-                <div className="relative bg-gray-100 dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-                  {/* Progress Track */}
-                  <div className="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-8">
-                    <div className="absolute inset-0 bg-gradient-to-r from-brand-red via-orange-500 to-green-500 rounded-full animate-progress-fill"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-brand-red/20 via-orange-500/20 to-green-500/20 rounded-full animate-shimmer"></div>
+                {/* Impact Timeline */}
+                <div className="relative bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
+                  
+                  {/* Timeline Visualization */}
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+                    
+                    {/* Woche 1-2: Einführung */}
+                    <div className="relative group">
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-2xl p-6 border-2 border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all duration-500 hover:scale-[1.02]">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+                            <span className="text-white font-bold text-lg">1-2</span>
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-blue-800 dark:text-blue-200">Woche 1-2</h4>
+                            <p className="text-sm text-blue-600 dark:text-blue-400">Onboarding & Setup</p>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 text-sm">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span className="text-gray-700 dark:text-gray-300">Erste Dokumente analysiert</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span className="text-gray-700 dark:text-gray-300">KI lernt Ihre Prozesse</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span className="text-gray-700 dark:text-gray-300">Team-Schulung abgeschlossen</span>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Zeitersparnis</span>
+                            <span className="text-lg font-bold text-blue-600">15%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Woche 3-4: Optimierung */}
+                    <div className="relative group">
+                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-2xl p-6 border-2 border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all duration-500 hover:scale-[1.02]">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                            <span className="text-white font-bold text-lg">3-4</span>
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-purple-800 dark:text-purple-200">Woche 3-4</h4>
+                            <p className="text-sm text-purple-600 dark:text-purple-400">Vollautomatisierung</p>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 text-sm">
+                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                            <span className="text-gray-700 dark:text-gray-300">Workflows automatisiert</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm">
+                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                            <span className="text-gray-700 dark:text-gray-300">Berichte generieren sich</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm">
+                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                            <span className="text-gray-700 dark:text-gray-300">Proaktive Warnungen aktiv</span>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Zeitersparnis</span>
+                            <span className="text-lg font-bold text-purple-600">75%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Ab Woche 5: Optimaler Betrieb */}
+                    <div className="relative group">
+                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-2xl p-6 border-2 border-green-200 dark:border-green-800 hover:shadow-xl transition-all duration-500 hover:scale-[1.02]">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
+                            <CheckCircle className="h-6 w-6 text-white" />
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-green-800 dark:text-green-200">Ab Woche 5</h4>
+                            <p className="text-sm text-green-600 dark:text-green-400">Optimaler Betrieb</p>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 text-sm">
+                            <CheckCircle className="w-4 h-4 text-green-500" />
+                            <span className="text-gray-700 dark:text-gray-300">Audit-Ready jederzeit</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm">
+                            <CheckCircle className="w-4 h-4 text-green-500" />
+                            <span className="text-gray-700 dark:text-gray-300">Kontinuierliche Überwachung</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm">
+                            <CheckCircle className="w-4 h-4 text-green-500" />
+                            <span className="text-gray-700 dark:text-gray-300">Strategische Beratung</span>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-medium text-green-700 dark:text-green-300">Zeitersparnis</span>
+                            <span className="text-lg font-bold text-green-600">95%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Process Steps */}
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    {/* Step 1: Current State */}
-                    <div className="relative group">
-                      <div className="bg-red-50 dark:bg-red-950/20 rounded-xl p-4 border-2 border-red-200 dark:border-red-800 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
-                            <span className="text-white text-sm font-bold">1</span>
-                          </div>
-                          <h4 className="font-semibold text-red-700 dark:text-red-300">Ist-Zustand</h4>
-                        </div>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-gray-600 dark:text-gray-400">Zeit</span>
-                            <span className="font-bold text-red-600">120h</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-600 dark:text-gray-400">Fehler</span>
-                            <span className="font-bold text-red-600">23%</span>
-                          </div>
-                        </div>
+                  {/* ROI Development Chart */}
+                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between mb-6">
+                      <h4 className="text-xl font-bold text-gray-900 dark:text-white">ROI-Entwicklung</h4>
+                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <TrendingUp className="h-4 w-4" />
+                        <span>Break-Even nach 6 Monaten</span>
                       </div>
-                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full animate-bounce opacity-60"></div>
                     </div>
-
-                    {/* Step 2: Analysis */}
-                    <div className="relative group">
-                      <div className="bg-orange-50 dark:bg-orange-950/20 rounded-xl p-4 border-2 border-orange-200 dark:border-orange-800 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center animate-pulse" style={{ animationDelay: '0.5s' }}>
-                            <Brain className="h-4 w-4 text-white" />
-                          </div>
-                          <h4 className="font-semibold text-orange-700 dark:text-orange-300">KI-Analyse</h4>
-                        </div>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex items-center gap-2">
-                            <div className="w-full h-1.5 bg-orange-200 dark:bg-orange-800 rounded-full overflow-hidden">
-                              <div className="h-full w-0 bg-orange-500 rounded-full animate-progress-bar" style={{ '--progress-width': '85%', animationDelay: '1s' }}></div>
-                            </div>
-                            <span className="text-xs font-medium text-orange-600">85%</span>
-                          </div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Prozesse werden analysiert</p>
-                        </div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div className="text-2xl font-bold text-blue-600 mb-1">1. Monat</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Investition</div>
+                        <div className="text-lg font-bold text-red-500">-€15k</div>
                       </div>
-                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full animate-bounce opacity-60" style={{ animationDelay: '0.5s' }}></div>
-                    </div>
-
-                    {/* Step 3: Automation */}
-                    <div className="relative group">
-                      <div className="bg-blue-50 dark:bg-blue-950/20 rounded-xl p-4 border-2 border-blue-200 dark:border-blue-800 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center animate-pulse" style={{ animationDelay: '1s' }}>
-                            <Zap className="h-4 w-4 text-white" />
-                          </div>
-                          <h4 className="font-semibold text-blue-700 dark:text-blue-300">Automation</h4>
-                        </div>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex items-center gap-2">
-                            <RefreshCw className="h-3 w-3 text-blue-500 animate-spin-slow" />
-                            <span className="text-xs text-blue-600 font-medium">Implementierung läuft</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-600 dark:text-gray-400">Fortschritt</span>
-                            <span className="font-bold text-blue-600">95%</span>
-                          </div>
-                        </div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div className="text-2xl font-bold text-purple-600 mb-1">3. Monat</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Erste Einsparungen</div>
+                        <div className="text-lg font-bold text-orange-500">-€5k</div>
                       </div>
-                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full animate-bounce opacity-60" style={{ animationDelay: '1s' }}></div>
-                    </div>
-
-                    {/* Step 4: Result */}
-                    <div className="relative group">
-                      <div className="bg-green-50 dark:bg-green-950/20 rounded-xl p-4 border-2 border-green-200 dark:border-green-800 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-pulse" style={{ animationDelay: '1.5s' }}>
-                            <CheckCircle className="h-4 w-4 text-white" />
-                          </div>
-                          <h4 className="font-semibold text-green-700 dark:text-green-300">Optimiert</h4>
-                        </div>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-gray-600 dark:text-gray-400">Zeit</span>
-                            <span className="font-bold text-green-600">30min</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-600 dark:text-gray-400">Fehler</span>
-                            <span className="font-bold text-green-600">&lt;1%</span>
-                          </div>
-                        </div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div className="text-2xl font-bold text-green-600 mb-1">6. Monat</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Break-Even</div>
+                        <div className="text-lg font-bold text-green-600">€0</div>
                       </div>
-                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full animate-bounce opacity-60" style={{ animationDelay: '1.5s' }}></div>
+                      <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div className="text-2xl font-bold text-emerald-600 mb-1">12. Monat</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Gewinn</div>
+                        <div className="text-lg font-bold text-emerald-600">+€75k</div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Transformation Stats */}
+                  {/* Key Insight */}
                   <div className="mt-8 text-center">
-                    <div className="inline-flex items-center gap-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 px-6 py-3 rounded-full border border-green-200 dark:border-green-800">
-                      <TrendingUp className="h-5 w-5 text-green-600 animate-bounce" />
-                      <span className="font-bold text-green-700 dark:text-green-300">400% Effizienzsteigerung</span>
-                      <span className="text-green-600">•</span>
-                      <span className="font-bold text-green-700 dark:text-green-300">240× schneller</span>
-                      <Sparkles className="h-5 w-5 text-green-600 animate-pulse" />
+                    <div className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-red/10 to-green-500/10 px-8 py-4 rounded-2xl border-2 border-brand-red/20">
+                      <Sparkles className="h-6 w-6 text-brand-red animate-pulse" />
+                      <span className="text-lg font-bold text-gray-900 dark:text-white">
+                        Ihre Compliance-Abteilung wird vom Kostenverursacher zum Werttreiber
+                      </span>
+                      <TrendingUp className="h-6 w-6 text-green-600 animate-bounce" />
                     </div>
                   </div>
                 </div>
