@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -20,6 +20,38 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 export const SolutionSection: React.FC = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const timelineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+      
+      const timelineElement = timelineRef.current;
+      const rect = timelineElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Calculate when timeline is in view
+      const timelineTop = rect.top;
+      const timelineHeight = rect.height;
+      
+      // Start progress when timeline enters viewport, complete when it leaves
+      const startPoint = windowHeight;
+      const endPoint = -timelineHeight;
+      
+      if (timelineTop <= startPoint && timelineTop >= endPoint) {
+        const progress = Math.max(0, Math.min(100, 
+          ((startPoint - timelineTop) / (startPoint - endPoint)) * 100
+        ));
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const steps = [
     {
@@ -275,12 +307,14 @@ export const SolutionSection: React.FC = () => {
             </div>
 
             {/* Vertical Timeline */}
-            <div className="relative">
+            <div ref={timelineRef} className="relative">
               {/* Central Timeline Line */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full">
                 <div className="w-full h-full bg-gradient-to-b from-brand-red via-purple-500 to-green-500 rounded-full opacity-20"></div>
-                <div className="absolute top-0 w-full bg-gradient-to-b from-brand-red via-purple-500 to-green-500 rounded-full animate-pulse" 
-                     style={{ height: '0%', animation: 'timeline-progress 4s ease-in-out infinite' }}></div>
+                <div 
+                  className="absolute top-0 w-full bg-gradient-to-b from-brand-red via-purple-500 to-green-500 rounded-full transition-all duration-300" 
+                  style={{ height: `${scrollProgress}%` }}
+                ></div>
               </div>
 
               {/* Timeline Steps */}
@@ -388,20 +422,194 @@ export const SolutionSection: React.FC = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-brand-red to-red-600 rounded-full animate-ping opacity-30"></div>
                     </div>
 
-                    {/* Visual Enhancement */}
+                    {/* Dashboard Mockup */}
                     <div className={cn(
                       "w-5/12 flex items-center justify-center",
                       index % 2 === 0 ? "pl-12" : "pr-12"
                     )}>
                       <div className="relative">
-                        <div className={cn(
-                          "w-32 h-32 rounded-3xl bg-gradient-to-br flex items-center justify-center shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-110 group cursor-pointer",
-                          step.color
-                        )}>
-                          <step.icon className="h-16 w-16 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
-                        </div>
+                        {/* Step 1: KI-Analyse Dashboard */}
+                        {index === 0 && (
+                          <Card className="w-80 h-64 p-6 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105">
+                            <div className="space-y-4">
+                              {/* Header */}
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <Brain className="h-5 w-5 text-blue-600" />
+                                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">KI-Analyse</span>
+                                </div>
+                                <div className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                                  <span className="text-xs text-blue-600 font-medium">Live</span>
+                                </div>
+                              </div>
+                              
+                              {/* Document Analysis */}
+                              <div className="space-y-3">
+                                <div className="text-xs text-gray-500 dark:text-gray-400">Dokumente analysiert</div>
+                                <div className="flex items-center gap-2">
+                                  <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+                                    <div className="h-full w-3/4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-pulse"></div>
+                                  </div>
+                                  <span className="text-sm font-bold text-blue-600">127/170</span>
+                                </div>
+                              </div>
+
+                              {/* Compliance Issues */}
+                              <div className="grid grid-cols-2 gap-3">
+                                <div className="p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-center">
+                                  <div className="text-lg font-bold text-red-600">23</div>
+                                  <div className="text-xs text-red-500">Kritische Lücken</div>
+                                </div>
+                                <div className="p-3 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg text-center">
+                                  <div className="text-lg font-bold text-yellow-600">47</div>
+                                  <div className="text-xs text-yellow-500">Empfehlungen</div>
+                                </div>
+                              </div>
+
+                              {/* AI Recommendations */}
+                              <div className="space-y-2">
+                                <div className="flex items-center gap-2 p-2 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                                  <span className="text-xs text-gray-600 dark:text-gray-400">DSGVO Art. 32 - Sicherheit prüfen</span>
+                                </div>
+                                <div className="flex items-center gap-2 p-2 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                                  <CheckCircle className="w-3 h-3 text-green-500" />
+                                  <span className="text-xs text-gray-600 dark:text-gray-400">ISO 27001 - Vollständig compliant</span>
+                                </div>
+                              </div>
+                            </div>
+                          </Card>
+                        )}
+
+                        {/* Step 2: Workflow Automation Dashboard */}
+                        {index === 1 && (
+                          <Card className="w-80 h-64 p-6 bg-gradient-to-br from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105">
+                            <div className="space-y-4">
+                              {/* Header */}
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <Zap className="h-5 w-5 text-purple-600" />
+                                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Workflow Automation</span>
+                                </div>
+                                <div className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 rounded-full">
+                                  <span className="text-xs text-purple-600 font-medium">Aktiv</span>
+                                </div>
+                              </div>
+                              
+                              {/* Workflow Status */}
+                              <div className="space-y-3">
+                                <div className="flex items-center justify-between">
+                                  <span className="text-xs text-gray-500 dark:text-gray-400">Automatisierungsgrad</span>
+                                  <span className="text-sm font-bold text-purple-600">95%</span>
+                                </div>
+                                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+                                  <div className="h-full w-[95%] bg-gradient-to-r from-purple-500 to-pink-600 rounded-full"></div>
+                                </div>
+                              </div>
+
+                              {/* Active Workflows */}
+                              <div className="grid grid-cols-3 gap-2">
+                                <div className="p-2 bg-green-50 dark:bg-green-950/20 rounded-lg text-center">
+                                  <div className="text-sm font-bold text-green-600">12</div>
+                                  <div className="text-xs text-green-500">Berichte</div>
+                                </div>
+                                <div className="p-2 bg-blue-50 dark:bg-blue-950/20 rounded-lg text-center">
+                                  <div className="text-sm font-bold text-blue-600">8</div>
+                                  <div className="text-xs text-blue-500">Audits</div>
+                                </div>
+                                <div className="p-2 bg-orange-50 dark:bg-orange-950/20 rounded-lg text-center">
+                                  <div className="text-sm font-bold text-orange-600">3</div>
+                                  <div className="text-xs text-orange-500">Reviews</div>
+                                </div>
+                              </div>
+
+                              {/* Automation Timeline */}
+                              <div className="space-y-2">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                  <span className="text-xs text-gray-600 dark:text-gray-400">Dokumentenerstellung abgeschlossen</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                                  <span className="text-xs text-gray-600 dark:text-gray-400">Audit-Bericht wird generiert...</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                  <span className="text-xs text-gray-400">Compliance-Review geplant</span>
+                                </div>
+                              </div>
+                            </div>
+                          </Card>
+                        )}
+
+                        {/* Step 3: Monitoring Dashboard */}
+                        {index === 2 && (
+                          <Card className="w-80 h-64 p-6 bg-gradient-to-br from-white via-green-50 to-white dark:from-gray-900 dark:via-green-950/20 dark:to-gray-900 border-2 border-green-200 dark:border-green-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105">
+                            <div className="space-y-4">
+                              {/* Header */}
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <Shield className="h-5 w-5 text-green-600" />
+                                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Live Monitoring</span>
+                                </div>
+                                <div className="px-2 py-1 bg-green-100 dark:bg-green-900/30 rounded-full">
+                                  <span className="text-xs text-green-600 font-medium">24/7</span>
+                                </div>
+                              </div>
+                              
+                              {/* Compliance Score */}
+                              <div className="text-center">
+                                <div className="text-3xl font-bold text-green-600 mb-1">98%</div>
+                                <div className="text-xs text-gray-500 dark:text-gray-400">Compliance Score</div>
+                                <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full mt-2">
+                                  <div className="h-full w-[98%] bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"></div>
+                                </div>
+                              </div>
+
+                              {/* Status Grid */}
+                              <div className="grid grid-cols-2 gap-3">
+                                <div className="p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <CheckCircle className="w-3 h-3 text-green-500" />
+                                    <span className="text-xs font-medium text-green-700 dark:text-green-300">Audit Ready</span>
+                                  </div>
+                                  <div className="text-xs text-green-600">Alle Checks bestanden</div>
+                                </div>
+                                <div className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <span className="text-xs font-medium text-blue-700 dark:text-blue-300">Monitoring</span>
+                                  </div>
+                                  <div className="text-xs text-blue-600">Real-time Überwachung</div>
+                                </div>
+                              </div>
+
+                              {/* Alert Feed */}
+                              <div className="space-y-2">
+                                <div className="text-xs font-medium text-gray-700 dark:text-gray-300">Letzte Aktivitäten</div>
+                                <div className="space-y-1">
+                                  <div className="flex items-center gap-2 text-xs">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-gray-600 dark:text-gray-400">Richtlinie automatisch geprüft</span>
+                                    <span className="text-green-600 ml-auto">1m</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-xs">
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                    <span className="text-gray-600 dark:text-gray-400">Backup erfolgreich</span>
+                                    <span className="text-blue-600 ml-auto">5m</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-xs">
+                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                                    <span className="text-gray-600 dark:text-gray-400">Review geplant</span>
+                                    <span className="text-orange-600 ml-auto">1h</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </Card>
+                        )}
                         
-                        {/* Floating particles */}
+                        {/* Floating particles around dashboard */}
                         <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-400 rounded-full animate-bounce opacity-60" />
                         <div className="absolute -bottom-1 -left-2 w-3 h-3 bg-green-400 rounded-full animate-pulse opacity-50" />
                         <div className="absolute top-1/2 -left-4 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-40" />
