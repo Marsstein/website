@@ -422,7 +422,7 @@ export const SolutionSection: React.FC = () => {
                                   
                                   {/* Animated border glow */}
                                   <div className={cn(
-                                    "absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r p-[2px]",
+                                    "absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r p-[2px] -z-10",
                                     benefit.color
                                   )}>
                                     <div className="w-full h-full bg-white dark:bg-gray-900 rounded-xl" />
@@ -473,12 +473,12 @@ export const SolutionSection: React.FC = () => {
                     {/* Dashboard Mockup */}
                     <div className={cn(
                       "w-5/12 flex items-center justify-center",
-                      index % 2 === 0 ? "pl-24" : "pr-24"
+                      index % 2 === 0 ? "pl-32 xl:pl-40" : "pr-32 xl:pr-40"
                     )}>
-                      <div className="relative w-full max-w-sm">
+                      <div className="relative w-full max-w-md">
                         {/* Step 1: KI-Analyse Dashboard */}
                         {index === 0 && (
-                          <Card className="w-full h-auto min-h-[300px] p-6 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
+                          <Card className="w-full h-auto min-h-[400px] p-8 bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.03] animate-fade-in opacity-0" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
                             <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
@@ -492,25 +492,27 @@ export const SolutionSection: React.FC = () => {
                               </div>
                               
                               {/* Document Analysis */}
-                              <div className="space-y-2">
-                                <div className="text-xs text-gray-500 dark:text-gray-400">Dokumente analysiert</div>
-                                <div className="flex items-center gap-2">
-                                  <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
-                                    <div className="h-full w-3/4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-pulse"></div>
+                              <div className="space-y-3">
+                                <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">Dokumente analysiert</div>
+                                <div className="flex items-center gap-3">
+                                  <div className="flex-1 h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div className="h-full w-3/4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full relative animate-progress-fill" style={{ animationDuration: '2s' }}>
+                                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-50 animate-pulse"></div>
+                                    </div>
                                   </div>
-                                  <span className="text-sm font-bold text-blue-600">127/170</span>
+                                  <span className="text-lg font-bold text-blue-600 animate-count-up">127/170</span>
                                 </div>
                               </div>
 
                               {/* Compliance Issues */}
-                              <div className="grid grid-cols-2 gap-2">
-                                <div className="p-2 bg-red-50 dark:bg-red-950/20 rounded-lg text-center">
-                                  <div className="text-base font-bold text-red-600">23</div>
-                                  <div className="text-xs text-red-500">Kritische Lücken</div>
+                              <div className="grid grid-cols-2 gap-3">
+                                <div className="p-4 bg-red-50 dark:bg-red-950/20 rounded-xl text-center hover:scale-105 transition-transform duration-300 cursor-pointer group">
+                                  <div className="text-2xl font-bold text-red-600 animate-count-up group-hover:animate-pulse">23</div>
+                                  <div className="text-sm text-red-500">Kritische Lücken</div>
                                 </div>
-                                <div className="p-2 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg text-center">
-                                  <div className="text-base font-bold text-yellow-600">47</div>
-                                  <div className="text-xs text-yellow-500">Empfehlungen</div>
+                                <div className="p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-xl text-center hover:scale-105 transition-transform duration-300 cursor-pointer group">
+                                  <div className="text-2xl font-bold text-yellow-600 animate-count-up group-hover:animate-pulse">47</div>
+                                  <div className="text-sm text-yellow-500">Empfehlungen</div>
                                 </div>
                               </div>
 
@@ -532,7 +534,7 @@ export const SolutionSection: React.FC = () => {
 
                         {/* Step 2: Workflow Automation Dashboard */}
                         {index === 1 && (
-                          <Card className="w-full h-auto min-h-[300px] p-6 bg-gradient-to-br from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
+                          <Card className="w-full h-auto min-h-[400px] p-8 bg-gradient-to-br from-white via-purple-50 to-white dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.03] animate-fade-in opacity-0" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
                             <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
@@ -546,13 +548,15 @@ export const SolutionSection: React.FC = () => {
                               </div>
                               
                               {/* Workflow Status */}
-                              <div className="space-y-2">
+                              <div className="space-y-3">
                                 <div className="flex items-center justify-between">
-                                  <span className="text-xs text-gray-500 dark:text-gray-400">Automatisierungsgrad</span>
-                                  <span className="text-sm font-bold text-purple-600">95%</span>
+                                  <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">Automatisierungsgrad</span>
+                                  <span className="text-lg font-bold text-purple-600 animate-count-up">95%</span>
                                 </div>
-                                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
-                                  <div className="h-full w-[95%] bg-gradient-to-r from-purple-500 to-pink-600 rounded-full"></div>
+                                <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                  <div className="h-full w-[95%] bg-gradient-to-r from-purple-500 to-pink-600 rounded-full relative animate-progress-fill" style={{ animationDuration: '2.5s', width: '95%' }}>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 opacity-50 animate-pulse"></div>
+                                  </div>
                                 </div>
                               </div>
 
@@ -594,7 +598,7 @@ export const SolutionSection: React.FC = () => {
 
                         {/* Step 3: Monitoring Dashboard */}
                         {index === 2 && (
-                          <Card className="w-full h-auto min-h-[300px] p-6 bg-gradient-to-br from-white via-green-50 to-white dark:from-gray-900 dark:via-green-950/20 dark:to-gray-900 border-2 border-green-200 dark:border-green-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
+                          <Card className="w-full h-auto min-h-[400px] p-8 bg-gradient-to-br from-white via-green-50 to-white dark:from-gray-900 dark:via-green-950/20 dark:to-gray-900 border-2 border-green-200 dark:border-green-800 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.03] animate-fade-in opacity-0" style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}>
                             <div className="space-y-4">
                               {/* Header */}
                               <div className="flex items-center justify-between">
