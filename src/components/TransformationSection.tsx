@@ -69,19 +69,19 @@ export const TransformationSection: React.FC = () => {
     {
       icon: TrendingUp,
       title: '400% Effizienzsteigerung',
-      description: 'Automatisierung macht Ihre Teams 4x produktiver',
+      description: 'Automatisierte Prozesse steigern die Produktivität um das Vierfache',
       color: 'text-green-600'
     },
     {
       icon: Euro,
-      title: '€50k+ Kostenersparnis/Jahr',
-      description: 'Weniger Personalkosten, keine Bußgelder, keine Berater',
+      title: '€50k+ Kostenoptimierung/Jahr',
+      description: 'Reduzierte Personalkosten, minimierte Compliance-Risiken, weniger externe Beratung',
       color: 'text-blue-600'
     },
     {
       icon: Users,
-      title: 'Glücklichere Teams',
-      description: 'Fokus auf strategische Arbeit statt Routine-Tasks',
+      title: 'Strategischer Fokus',
+      description: 'Mitarbeiter können sich auf wertschöpfende Tätigkeiten konzentrieren',
       color: 'text-purple-600'
     }
   ];
@@ -256,7 +256,7 @@ export const TransformationSection: React.FC = () => {
           <Card className="p-8 bg-gradient-to-r from-brand-red/5 to-green-500/5 border-2 border-brand-red/20">
             <div className="text-center space-y-6">
               <h3 className="text-3xl font-bold">
-                Ihr ROI mit Marsstein
+                Return on Investment
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -286,7 +286,7 @@ export const TransformationSection: React.FC = () => {
                   className="bg-brand-red hover:bg-brand-red/90 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
                 >
                   <Target className="mr-2 h-5 w-5" />
-                  Jetzt Ihr ROI berechnen
+                  ROI-Analyse anfordern
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>

@@ -89,21 +89,21 @@ export const TrustIndicators: React.FC = () => {
 
   const testimonialHighlights = [
     {
-      quote: "Marsstein hat unsere Audit-Zeit von 3 Monaten auf 2 Wochen reduziert.",
+      quote: "Marsstein hat unsere Audit-Vorbereitungszeit von 3 Monaten auf 2 Wochen reduziert.",
       author: "Dr. Sarah Weber",
       role: "Datenschutzbeauftragte",
       company: "TechCorp GmbH",
       rating: 5
     },
     {
-      quote: "Endlich können wir uns auf Strategie fokussieren statt auf Compliance-Papierkram.",
+      quote: "Die Automatisierung ermöglicht es uns, strategische Initiativen zu priorisieren.",
       author: "Michael Schmidt",
       role: "IT-Leiter",
       company: "MedHealth AG",
       rating: 5
     },
     {
-      quote: "Die KI-Audits sind so präzise - wir finden Lücken, die uns nie aufgefallen wären.",
+      quote: "Die KI-gestützte Analyse identifiziert Compliance-Lücken, die manuell übersehen wurden.",
       author: "Lisa Chen",
       role: "Compliance Officer",
       company: "FinanceFirst",
@@ -126,10 +126,10 @@ export const TrustIndicators: React.FC = () => {
               <span className="bg-gradient-to-r from-brand-red to-green-600 bg-clip-text text-transparent mx-2">
                 500+ Unternehmen
               </span>
-              vertrauen uns
+              setzen auf Marsstein
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Höchste Sicherheitsstandards, transparente Prozesse und bewährte Ergebnisse
+              Zertifizierte Sicherheitsstandards, nachvollziehbare Prozesse und messbare Resultate
             </p>
           </div>
 
@@ -234,7 +234,7 @@ export const TrustIndicators: React.FC = () => {
           {/* Customer Logos */}
           <div className="text-center">
             <h3 className="text-lg font-semibold mb-8 text-gray-600 dark:text-gray-400">
-              Vertrauen von führenden Unternehmen verschiedener Branchen
+              Partnerschaft mit führenden Unternehmen verschiedener Branchen
             </h3>
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
               {customerLogos.map((logo, index) => (
@@ -264,7 +264,7 @@ export const TrustIndicators: React.FC = () => {
                   <Shield className="h-8 w-8 text-green-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Unser Sicherheitsversprechen
+                  Sicherheits- und Compliance-Standards
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                   <div className="flex items-center gap-3">

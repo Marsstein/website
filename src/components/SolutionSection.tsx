@@ -52,15 +52,15 @@ export const SolutionSection: React.FC = () => {
               <span className="text-sm font-medium">Die Lösung</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Willkommen in der Zukunft
+              Intelligente Compliance-Lösung
               <br />
               <span className="bg-gradient-to-r from-brand-red to-red-600 bg-clip-text text-transparent">
-                der mühelosen Compliance
+                für moderne Unternehmen
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Marsstein transformiert Ihren Compliance-Albtraum in einen automatisierten, 
-              KI-gestützten Prozess, der einfach funktioniert.
+              Marsstein automatisiert komplexe Compliance-Prozesse durch KI-gestützte 
+              Technologie und ermöglicht effiziente, skalierbare Workflows.
             </p>
           </div>
 
@@ -95,8 +95,8 @@ export const SolutionSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <h3 className="text-3xl font-bold">
-                So macht Marsstein 
-                <span className="text-brand-red"> Compliance kinderleicht</span>
+                Marsstein Compliance-Plattform:
+                <span className="text-brand-red"> Automatisiert und effizient</span>
               </h3>
               
               <div className="space-y-6">
@@ -107,9 +107,9 @@ export const SolutionSection: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg mb-2">KI analysiert in Sekunden</h4>
+                    <h4 className="font-bold text-lg mb-2">KI-gestützte Analyse</h4>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Unsere KI scannt Ihre Dokumente, findet Lücken und gibt konkrete Handlungsempfehlungen.
+                      Automatisierte Dokumentenanalyse identifiziert Compliance-Lücken und generiert präzise Handlungsempfehlungen.
                     </p>
                   </div>
                 </div>
@@ -121,9 +121,9 @@ export const SolutionSection: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg mb-2">Automatisierte Workflows</h4>
+                    <h4 className="font-bold text-lg mb-2">Integrierte Workflow-Automation</h4>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Von der Dokumentenerstellung bis zum Audit-Report - alles läuft automatisch.
+                      Nahtlose Automatisierung von der Dokumentenerstellung bis zur Audit-Berichterstattung.
                     </p>
                   </div>
                 </div>
@@ -135,9 +135,9 @@ export const SolutionSection: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg mb-2">24/7 Monitoring</h4>
+                    <h4 className="font-bold text-lg mb-2">Kontinuierliches Monitoring</h4>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Echtzeit-Überwachung hält Sie immer compliant. Keine bösen Überraschungen mehr.
+                      Proaktive Überwachung gewährleistet kontinuierliche Compliance-Konformität.
                     </p>
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export const SolutionSection: React.FC = () => {
                   className="bg-brand-red hover:bg-brand-red/90 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
                 >
                   <Zap className="mr-2 h-5 w-5" />
-                  Jetzt Demo buchen
+                  Demo vereinbaren
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>

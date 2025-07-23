@@ -158,10 +158,10 @@ export const PainPointsSection: React.FC = () => {
                 </div>
                 <div className="text-left">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                    Genug vom Compliance-Stress?
+                    Effizientere Compliance-Prozesse benötigt?
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Es gibt einen besseren Weg. Marsstein macht Schluss mit dem Chaos.
+                    Marsstein bietet automatisierte Lösungen für diese Herausforderungen.
                   </p>
                 </div>
                 <ArrowRight className="h-6 w-6 text-brand-red animate-pulse" />

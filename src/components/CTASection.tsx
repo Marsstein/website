@@ -52,13 +52,13 @@ export const CTASection: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                   Bereit für 
                   <span className="bg-gradient-to-r from-brand-red to-purple-600 bg-clip-text text-transparent mx-2">
-                    mühelose Compliance?
+                    automatisierte Compliance?
                   </span>
                 </h2>
                 
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Erleben Sie, wie Marsstein Ihre Compliance-Prozesse revolutioniert. 
-                  Buchen Sie jetzt Ihre persönliche Demo mit unseren Expert:innen.
+                  Erfahren Sie, wie Marsstein Ihre Compliance-Prozesse optimiert. 
+                  Vereinbaren Sie eine persönliche Demonstration mit unseren Fachexperten.
                 </p>
               </div>
 
@@ -90,7 +90,7 @@ export const CTASection: React.FC = () => {
                     className="bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red/70 text-white px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 group w-full sm:w-auto"
                   >
                     <Calendar className="mr-2 h-5 w-5" />
-                    Demo-Termin vereinbaren
+                    Demo vereinbaren
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -102,7 +102,7 @@ export const CTASection: React.FC = () => {
                     className="group px-8 py-6 text-lg border-2 hover:bg-primary/5 w-full sm:w-auto"
                   >
                     <MessageSquare className="mr-2 h-5 w-5" />
-                    Fragen? Kontaktieren Sie uns
+                    Beratung anfordern
                   </Button>
                 </Link>
               </div>
@@ -111,7 +111,7 @@ export const CTASection: React.FC = () => {
               <div className="text-center pt-4">
                 <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
                   <Sparkles className="h-4 w-4 text-yellow-500" />
-                  Über 500+ Unternehmen vertrauen bereits auf Marsstein
+                  Über 500 Unternehmen nutzen bereits Marsstein
                 </p>
               </div>
             </div>

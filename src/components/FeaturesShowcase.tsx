@@ -31,12 +31,12 @@ export const FeaturesShowcase: React.FC = () => {
       icon: Brain,
       title: 'KI-Audits',
       subtitle: 'Automatisierte Compliance-Analyse',
-      description: 'Unsere KI analysiert Ihre Dokumente in Sekunden und gibt konkrete Handlungsempfehlungen.',
+      description: 'Automatisierte KI-Analyse identifiziert Compliance-Lücken und erstellt präzise Handlungspläne.',
       benefits: [
         '90% weniger Vorbereitungszeit',
         'Automatische Lückenerkennung',
         'Priorisierte To-Do-Listen',
-        'Experten-validierte Empfehlungen'
+        'Fachlich geprüfte Empfehlungen'
       ],
       color: 'from-blue-500 to-purple-600',
       bgColor: 'bg-blue-50 dark:bg-blue-950/20'
@@ -46,7 +46,7 @@ export const FeaturesShowcase: React.FC = () => {
       icon: Shield,
       title: 'Dokument-Vault',
       subtitle: 'Sicher & DSGVO-konform',
-      description: 'Verschlüsselte Speicherung all Ihrer Compliance-Dokumente in europäischen Rechenzentren.',
+      description: 'Sichere, DSGVO-konforme Dokumentenverwaltung in europaweit zertifizierten Rechenzentren.',
       benefits: [
         'Ende-zu-Ende Verschlüsselung',
         'Automatische Versionierung',
@@ -61,7 +61,7 @@ export const FeaturesShowcase: React.FC = () => {
       icon: Scan,
       title: 'Monitoring',
       subtitle: '24/7 Compliance-Überwachung',
-      description: 'Kontinuierliche Überwachung Ihrer Compliance mit sofortigen Warnungen bei Abweichungen.',
+      description: 'Proaktive Compliance-Überwachung mit automatisierten Benachrichtigungen und Risikoanalyse.',
       benefits: [
         'Echtzeit-Benachrichtigungen',
         'Risiko-Dashboard',
@@ -76,12 +76,12 @@ export const FeaturesShowcase: React.FC = () => {
       icon: GraduationCap,
       title: 'Academy',
       subtitle: 'Schulungen & Zertifizierungen',
-      description: 'Interaktive Lernmodule machen Ihr Team zu Compliance-Experten.',
+      description: 'Strukturierte Weiterbildungsprogramme für systematische Compliance-Kompetenzentwicklung.',
       benefits: [
         'Zertifizierte Kurse',
         'Interaktive Simulationen',
         'Fortschritts-Tracking',
-        'Praxisnahe Webinare'
+        'Anwendungsorientierte Schulungen'
       ],
       color: 'from-purple-500 to-pink-600',
       bgColor: 'bg-purple-50 dark:bg-purple-950/20'
@@ -325,13 +325,13 @@ export const FeaturesShowcase: React.FC = () => {
               <span className="text-sm font-medium">Kraftvolle Features</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Ihre neue
+              Umfassende
               <span className="bg-gradient-to-r from-brand-red to-red-600 bg-clip-text text-transparent mx-2">
-                Compliance-Superkraft
+                Compliance-Plattform
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Vier mächtige Module, die aus Ihrem Compliance-Team Superhelden machen
+              Vier integrierte Module für professionelles Compliance-Management
             </p>
           </div>
 

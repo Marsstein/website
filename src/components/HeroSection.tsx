@@ -79,21 +79,21 @@ export const HeroSection: React.FC = () => {
           <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
               <span className="text-gray-900 dark:text-white">
-                Compliance wird
+                Compliance
               </span>
               <br />
               <span className="relative">
                 <span className="bg-gradient-to-r from-brand-red via-red-600 to-brand-red bg-clip-text text-transparent animate-gradient bg-300%">
-                  unfassbar einfach
+                  automatisiert
                 </span>
                 <Sparkles className="absolute -top-6 -right-6 h-8 w-8 text-brand-red animate-pulse" />
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Die KI-gestützte Plattform, die aus Ihrem Compliance-Albtraum 
-              einen <span className="font-semibold text-gray-900 dark:text-white">automatisierten Workflow</span> macht. 
-              In Minuten statt Monaten.
+              Die KI-gestützte Compliance-Plattform für europäische Unternehmen. 
+              Transformieren Sie <span className="font-semibold text-gray-900 dark:text-white">komplexe Prozesse</span> in 
+              effiziente, automatisierte Workflows.
             </p>
           </div>
 
@@ -121,7 +121,7 @@ export const HeroSection: React.FC = () => {
                 className="bg-brand-red hover:bg-brand-red/90 text-white px-8 py-6 text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
               >
                 <Sparkles className="mr-2 h-5 w-5 animate-pulse" />
-                Live-Demo erleben
+                Demo anfordern
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
@@ -131,7 +131,7 @@ export const HeroSection: React.FC = () => {
                 variant="outline" 
                 className="group px-8 py-6 text-lg border-2 border-gray-300 hover:border-brand-red hover:text-brand-red transition-all duration-300"
               >
-                Ihre Herausforderungen?
+                Mehr erfahren
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
