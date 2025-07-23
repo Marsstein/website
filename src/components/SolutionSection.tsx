@@ -474,7 +474,7 @@ export const SolutionSection: React.FC = () => {
                     {/* Dashboard Mockup */}
                     <div className={cn(
                       "w-7/12 flex items-center justify-center",
-                      index % 2 === 0 ? "pl-16 xl:pl-20" : "pr-16 xl:pr-20"
+                      index % 2 === 0 ? "pl-24 xl:pl-32" : "pr-24 xl:pr-32"
                     )}>
                       <div className="relative w-full">
                         {/* Step 1: KI-Analyse Dashboard */}
