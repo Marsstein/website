@@ -76,74 +76,104 @@ export const SolutionSection: React.FC = () => {
 
           {/* Before/After Transformation - Abschnitt B */}
           <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Before State - Left Side */}
-              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-8 relative overflow-hidden transition-all duration-500 border-2 border-red-200 dark:border-red-800 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20">
-                <div className="space-y-6">
-                  <div className="text-center">
-                    <Badge variant="destructive" className="mb-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800">
-                      Vorher
-                    </Badge>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                      Manuelle Prozesse
-                    </h3>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Audit-Vorbereitung</p>
-                        <p className="text-2xl font-bold text-red-600">120+ Stunden</p>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Manuelle Prozesse</p>
-                        <p className="text-2xl font-bold text-red-600">85%</p>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Fehlerrate</p>
-                        <p className="text-2xl font-bold text-red-600">23%</p>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Stress-Level</p>
-                        <p className="text-lg font-bold text-red-600">Maximum</p>
-                      </div>
+            {/* Enhanced Table-like Comparison */}
+            <div className="relative rounded-lg bg-card text-card-foreground shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+              {/* Header Row */}
+              <div className="grid grid-cols-3 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border-b border-gray-200 dark:border-gray-600">
+                <div className="p-6 text-left">
+                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">Kennzahlen</h3>
+                </div>
+                <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600">
+                  <Badge variant="destructive" className="mb-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800">
+                    Vorher
+                  </Badge>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                    Manuelle Prozesse
+                  </h3>
+                </div>
+                <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600">
+                  <Badge className="mb-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800">
+                    Nachher
+                  </Badge>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                    Mit Marsstein
+                  </h3>
+                </div>
+              </div>
+
+              {/* Data Rows */}
+              <div className="divide-y divide-gray-200 dark:divide-gray-600">
+                {/* Audit-Vorbereitung Row */}
+                <div className="grid grid-cols-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200">
+                  <div className="p-6 flex items-center">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span className="text-gray-900 dark:text-white font-medium">Audit-Vorbereitung</span>
                     </div>
+                  </div>
+                  <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600 bg-red-50/50 dark:bg-red-950/20">
+                    <span className="text-3xl font-bold text-red-600">120+ Stunden</span>
+                  </div>
+                  <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600 bg-green-50/50 dark:bg-green-950/20">
+                    <span className="text-3xl font-bold text-green-600">30 Minuten</span>
+                  </div>
+                </div>
+
+                {/* Automatisierung Row */}
+                <div className="grid grid-cols-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200">
+                  <div className="p-6 flex items-center">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      <span className="text-gray-900 dark:text-white font-medium">Automatisierung</span>
+                    </div>
+                  </div>
+                  <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600 bg-red-50/50 dark:bg-red-950/20">
+                    <span className="text-3xl font-bold text-red-600">15%</span>
+                    <p className="text-sm text-gray-500 mt-1">Manuelle Prozesse</p>
+                  </div>
+                  <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600 bg-green-50/50 dark:bg-green-950/20">
+                    <span className="text-3xl font-bold text-green-600">95%</span>
+                    <p className="text-sm text-gray-500 mt-1">Automatisiert</p>
+                  </div>
+                </div>
+
+                {/* Fehlerrate Row */}
+                <div className="grid grid-cols-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200">
+                  <div className="p-6 flex items-center">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                      <span className="text-gray-900 dark:text-white font-medium">Fehlerrate</span>
+                    </div>
+                  </div>
+                  <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600 bg-red-50/50 dark:bg-red-950/20">
+                    <span className="text-3xl font-bold text-red-600">23%</span>
+                  </div>
+                  <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600 bg-green-50/50 dark:bg-green-950/20">
+                    <span className="text-3xl font-bold text-green-600">&lt;1%</span>
+                  </div>
+                </div>
+
+                {/* Stress-Level Row */}
+                <div className="grid grid-cols-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200">
+                  <div className="p-6 flex items-center">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                      <span className="text-gray-900 dark:text-white font-medium">Stress-Level</span>
+                    </div>
+                  </div>
+                  <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600 bg-red-50/50 dark:bg-red-950/20">
+                    <span className="text-2xl font-bold text-red-600">Maximum</span>
+                  </div>
+                  <div className="p-6 text-center border-l border-gray-200 dark:border-gray-600 bg-green-50/50 dark:bg-green-950/20">
+                    <span className="text-2xl font-bold text-green-600">Minimal</span>
                   </div>
                 </div>
               </div>
 
-              {/* After State - Right Side */}
-              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-8 relative overflow-hidden transition-all duration-500 border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20">
-                <div className="space-y-6">
-                  <div className="text-center">
-                    <Badge className="mb-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800">
-                      Nachher
-                    </Badge>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                      Mit Marsstein
-                    </h3>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Audit-Vorbereitung</p>
-                        <p className="text-2xl font-bold text-green-600">30 Minuten</p>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Automatisierung</p>
-                        <p className="text-2xl font-bold text-green-600">95%</p>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Fehlerrate</p>
-                        <p className="text-2xl font-bold text-green-600">&lt;1%</p>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Stress-Level</p>
-                        <p className="text-lg font-bold text-green-600">Minimal</p>
-                      </div>
-                    </div>
-                  </div>
+              {/* Visual Enhancement Arrow */}
+              <div className="absolute right-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
+                <div className="bg-gradient-to-r from-brand-red to-green-600 rounded-full p-3 shadow-lg animate-pulse">
+                  <ArrowRight className="h-6 w-6 text-white" />
                 </div>
               </div>
             </div>
