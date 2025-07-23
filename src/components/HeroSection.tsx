@@ -18,6 +18,9 @@ import { cn } from '@/lib/utils';
 export const HeroSection: React.FC = () => {
   const { t } = useLanguage();
   const [currentProblem, setCurrentProblem] = useState(0);
+  const [complianceScore, setComplianceScore] = useState(0);
+  const [timesSaved, setTimesSaved] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   const problems = [
     { text: "DSGVO-Bußgelder", icon: Euro, color: "text-red-600" },
@@ -31,6 +34,38 @@ export const HeroSection: React.FC = () => {
       setCurrentProblem((prev) => (prev + 1) % problems.length);
     }, 2000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    // Start animations after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+      
+      // Animate compliance score
+      const scoreInterval = setInterval(() => {
+        setComplianceScore(prev => {
+          if (prev >= 98) {
+            clearInterval(scoreInterval);
+            return 98;
+          }
+          return prev + 2;
+        });
+      }, 50);
+      
+      // Animate time saved
+      const timeInterval = setInterval(() => {
+        setTimesSaved(prev => {
+          if (prev >= 127) {
+            clearInterval(timeInterval);
+            return 127;
+          }
+          return prev + 3;
+        });
+      }, 40);
+      
+    }, 500);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -152,7 +187,12 @@ export const HeroSection: React.FC = () => {
                         <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Compliance Score</span>
                         <Shield className="h-5 w-5 text-green-600" />
                       </div>
-                      <div className="text-3xl font-bold text-green-700 dark:text-green-400">98%</div>
+                      <div className={cn(
+                        "text-2xl font-bold text-green-700 dark:text-green-400 transition-all duration-300",
+                        isVisible && "animate-count-up"
+                      )}>
+                        {complianceScore}%
+                      </div>
                       <div className="text-xs text-green-600">+12% diese Woche</div>
                     </div>
                   </Card>
@@ -176,7 +216,12 @@ export const HeroSection: React.FC = () => {
                         <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Zeit gespart</span>
                         <Clock className="h-5 w-5 text-purple-600" />
                       </div>
-                      <div className="text-3xl font-bold text-purple-700 dark:text-purple-400">127h</div>
+                      <div className={cn(
+                        "text-2xl font-bold text-purple-700 dark:text-purple-400 transition-all duration-300",
+                        isVisible && "animate-count-up"
+                      )}>
+                        {timesSaved}h
+                      </div>
                       <div className="text-xs text-purple-600">Diesen Monat</div>
                     </div>
                   </Card>
