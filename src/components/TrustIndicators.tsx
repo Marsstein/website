@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
+import {
   Shield,
   Award,
   Users,
@@ -81,10 +81,7 @@ export const TrustIndicators: React.FC = () => {
   const customerLogos = [
     { name: 'TechCorp', sector: 'Technology' },
     { name: 'MedHealth', sector: 'Healthcare' },
-    { name: 'FinanceFirst', sector: 'Financial Services' },
-    { name: 'EduLearn', sector: 'Education' },
-    { name: 'RetailMax', sector: 'Retail' },
-    { name: 'ManufactureIT', sector: 'Manufacturing' }
+    { name: 'FinanceFirst', sector: 'Financial Services' }
   ];
 
   const testimonialHighlights = [
@@ -136,7 +133,7 @@ export const TrustIndicators: React.FC = () => {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 group"
               >
@@ -163,7 +160,7 @@ export const TrustIndicators: React.FC = () => {
           {/* Certifications */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {certifications.map((cert, index) => (
-              <Card 
+              <Card
                 key={index}
                 className={cn(
                   "p-6 hover:shadow-xl transition-all duration-300 hover:scale-105",
@@ -180,7 +177,7 @@ export const TrustIndicators: React.FC = () => {
                   )}>
                     <cert.icon className="h-6 w-6" />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                       {cert.title}
@@ -202,7 +199,7 @@ export const TrustIndicators: React.FC = () => {
             <h3 className="text-2xl font-bold text-center mb-8">Was unsere Kunden sagen</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {testimonialHighlights.map((testimonial, index) => (
-                <Card 
+                <Card
                   key={index}
                   className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
@@ -212,11 +209,11 @@ export const TrustIndicators: React.FC = () => {
                         <Star key={i} className="h-5 w-5 text-yellow-500 fill-current" />
                       ))}
                     </div>
-                    
+
                     <blockquote className="text-gray-700 dark:text-gray-300 italic">
                       "{testimonial.quote}"
                     </blockquote>
-                    
+
                     <div className="space-y-1">
                       <p className="font-semibold text-gray-900 dark:text-white">
                         {testimonial.author}
@@ -238,7 +235,7 @@ export const TrustIndicators: React.FC = () => {
             </h3>
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
               {customerLogos.map((logo, index) => (
-                <div 
+                <div
                   key={index}
                   className="flex flex-col items-center p-4 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 >
