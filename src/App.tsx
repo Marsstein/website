@@ -22,6 +22,7 @@ import { CookieComplianceAudit } from "./pages/resources/CookieComplianceAudit";
 import { VendorAssessmentTemplate } from "./pages/resources/VendorAssessmentTemplate";
 import DsgvoCompliance from "./pages/DsgvoCompliance";
 import Iso27001Compliance from "./pages/Iso27001Compliance";
+import EuAiActCompliance from "./pages/EuAiActCompliance";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,6 +50,7 @@ const App = () => (
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
                 <Route path="/iso-27001-compliance" element={<Iso27001Compliance />} />
+                <Route path="/eu-ai-act-compliance" element={<EuAiActCompliance />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
                 
