@@ -5,7 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
 import { 
   Shield, 
   CheckCircle2, 
@@ -94,332 +97,544 @@ const EuAiActCompliance = () => {
   }, []);
 
   // Hero Section
-  const HeroSection = () => (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-[#a1251b]/8" />
-      
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#a1251b]/12 rounded-full blur-3xl animate-pulse delay-700" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-purple-600/5 to-[#a1251b]/5 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
+  const HeroSection = () => {
+    const { ref: heroRef, inView: heroInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+    
+    return (
+      <section ref={heroRef} className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+        {/* Enhanced Background with animated patterns */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-[#a1251b]/8" />
+        
+        {/* Multiple animated background layers */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#a1251b]/12 rounded-full blur-3xl animate-pulse delay-700" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-purple-600/5 to-[#a1251b]/5 rounded-full blur-3xl animate-pulse delay-1000" />
+          
+          {/* Animated grid pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+          </div>
+        </div>
 
-      <div className="container relative z-10 px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            {/* Urgency + Impact Badge */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Badge className="bg-red-100 text-red-700 border-red-200 px-4 py-2 font-semibold">
-                <AlertCircle className="h-4 w-4 mr-2" />
-                Bis zu 35 Mio. € Bußgeld ab 02.02.2025
-              </Badge>
-              <Badge className="bg-purple-600/15 text-purple-700 border-purple-300 px-4 py-2">
-                <Brain className="h-4 w-4 mr-2" />
-                Erste Strafen bereits verhängt
-              </Badge>
+        <div className="container relative z-10 px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              {/* Animated Crisis Indicators */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Badge className="bg-red-100 text-red-700 border-red-200 px-4 py-2 font-semibold animate-pulse shadow-lg">
+                  <AlertCircle className="h-4 w-4 mr-2 animate-spin" />
+                  <span className="relative">
+                    Bis zu 
+                    <span className="mx-1 font-black text-lg">
+                      {heroInView && <CountUp end={35} duration={2} />}
+                    </span>
+                    Mio. € Bußgeld ab 02.02.2025
+                  </span>
+                </Badge>
+                <Badge className="bg-yellow-100 text-yellow-700 border-yellow-200 px-4 py-2 animate-bounce shadow-md">
+                  <Brain className="h-4 w-4 mr-2" />
+                  <span className="font-semibold">
+                    {heroInView && <CountUp end={127} duration={1.5} />} Tage bis Deadline
+                  </span>
+                </Badge>
+              </div>
+              
+              {/* Breaking News Style Alert */}
+              <div className="relative overflow-hidden bg-red-600 text-white rounded-lg p-4 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 animate-pulse" />
+                <div className="relative flex items-center gap-3">
+                  <div className="bg-white text-red-600 px-2 py-1 rounded text-xs font-bold animate-pulse">
+                    BREAKING
+                  </div>
+                  <div className="text-sm font-medium">
+                    Erste Unternehmen bereits mit €15M AI Act Bußgeldern belegt - sind Sie vorbereitet?
+                  </div>
+                </div>
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+                <span className="text-red-600 drop-shadow-lg">EU AI Act:</span>
+                <span className="block text-gray-900 my-2">
+                  Compliance oder
+                  <span className="relative ml-3">
+                    <span className="absolute -inset-2 bg-red-100 rounded-lg animate-pulse" />
+                    <span className="relative text-red-600 font-black">
+                      {heroInView && <CountUp end={35} duration={2} />} Millionen €
+                    </span>
+                  </span>
+                </span>
+                <span className="block bg-gradient-to-r from-purple-600 via-[#a1251b] to-red-600 bg-clip-text text-transparent animate-pulse">
+                  Strafe wartet
+                </span>
+              </h1>
+              
+              <div className="space-y-6">
+                {/* Shocking Statistics */}
+                <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-6 rounded-r-xl shadow-lg">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-red-500 text-white rounded-full p-2">
+                      <AlertCircle className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-red-800 text-lg mb-3">Die schockierende AI Act Realität:</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-white p-3 rounded-lg border border-red-200">
+                          <div className="text-2xl font-black text-red-600">
+                            {heroInView && <CountUp end={87} duration={2} />}%
+                          </div>
+                          <div className="text-sm text-red-700">deutsche Unternehmen nicht compliant</div>
+                        </div>
+                        <div className="bg-white p-3 rounded-lg border border-red-200">
+                          <div className="text-2xl font-black text-red-600">
+                            €{heroInView && <CountUp end={35} duration={2} />}M
+                          </div>
+                          <div className="text-sm text-red-700">maximales Bußgeld pro Verstoß</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Current Violations */}
+                <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+                  <div className="flex items-start gap-3">
+                    <Gavel className="h-5 w-5 text-yellow-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-semibold text-yellow-800">Schon JETZT strafbar (seit 1. August 2024):</p>
+                      <ul className="text-sm text-yellow-700 mt-2 space-y-1">
+                        <li className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                          Verbotene KI-Systeme (Social Scoring, Emotionserkennung am Arbeitsplatz)
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                          Manipulation durch unterschwellige Techniken mit KI
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                          Biometrische Echtzeit-Überwachung ohne Genehmigung
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Enhanced CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-gradient-to-r from-[#a1251b] to-red-600 hover:from-[#8a1f17] hover:to-red-700 text-white px-8 py-4 text-lg shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105">
+                  <Shield className="mr-2 h-6 w-6" />
+                  Sofort vor Strafe schützen
+                  <span className="ml-2 bg-white text-red-600 px-2 py-1 rounded text-xs font-bold animate-pulse">
+                    URGENT
+                  </span>
+                </Button>
+                <Button size="lg" variant="outline" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-8 py-4 shadow-lg hover:shadow-xl transition-all">
+                  <Brain className="mr-2 h-5 w-5" />
+                  Kostenloses Risiko-Audit
+                </Button>
+              </div>
+
+              {/* Trust Indicators with Animation */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8">
+                <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-xl border border-green-200 shadow-md hover:shadow-lg transition-all">
+                  <CheckCircle2 className="h-6 w-6 text-green-600" />
+                  <div>
+                    <div className="font-bold text-green-800 text-lg">
+                      {heroInView && <CountUp end={90} duration={2} />}%
+                    </div>
+                    <div className="text-xs text-green-700">Automatisierung</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-md hover:shadow-lg transition-all">
+                  <Clock className="h-6 w-6 text-blue-600" />
+                  <div>
+                    <div className="font-bold text-blue-800 text-lg">
+                      {heroInView && <CountUp end={2} duration={1.5} />} Wochen
+                    </div>
+                    <div className="text-xs text-blue-700">Bis Compliance</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl border border-purple-200 shadow-md hover:shadow-lg transition-all">
+                  <Brain className="h-6 w-6 text-purple-600" />
+                  <div>
+                    <div className="font-bold text-purple-800 text-lg">
+                      {heroInView && <CountUp end={200} duration={2} />}+
+                    </div>
+                    <div className="text-xs text-purple-700">Unternehmen geschützt</div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            {/* Enhanced Interactive Risk Dashboard */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-[#a1251b]/20 rounded-3xl blur-2xl animate-pulse" />
+              <Card className="relative bg-white/90 backdrop-blur-xl border-2 border-white/30 shadow-2xl hover:shadow-3xl transition-all duration-500">
+                <CardHeader className="text-center bg-gradient-to-r from-purple-50 to-red-50 rounded-t-lg">
+                  <CardTitle className="flex items-center justify-center gap-3 text-xl">
+                    <div className="h-12 w-12 rounded-full bg-gradient-to-r from-purple-600 to-[#a1251b] flex items-center justify-center shadow-lg">
+                      <Brain className="h-6 w-6 text-white animate-pulse" />
+                    </div>
+                    <div>
+                      <div className="text-lg font-bold">Ihr Unternehmen</div>
+                      <div className="text-sm text-muted-foreground">Live AI Act Risiko-Scan</div>
+                    </div>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  {/* Animated Compliance Circle */}
+                  <div className="relative w-56 h-56 mx-auto mb-6">
+                    <svg className="w-full h-full transform -rotate-90">
+                      <circle
+                        cx="112"
+                        cy="112"
+                        r="100"
+                        stroke="rgba(229, 231, 235, 0.3)"
+                        strokeWidth="20"
+                        fill="none"
+                      />
+                      <circle
+                        cx="112"
+                        cy="112"
+                        r="100"
+                        stroke="url(#aiActGradientHero)"
+                        strokeWidth="20"
+                        fill="none"
+                        strokeDasharray={`${2 * Math.PI * 100}`}
+                        strokeDashoffset={heroInView ? 2 * Math.PI * 100 * (1 - complianceScore / 100) : 2 * Math.PI * 100}
+                        className="transition-all duration-3000 ease-out"
+                        strokeLinecap="round"
+                      />
+                      <defs>
+                        <linearGradient id="aiActGradientHero" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#9333ea" />
+                          <stop offset="30%" stopColor="#a1251b" />
+                          <stop offset="60%" stopColor="#dc2626" />
+                          <stop offset="100%" stopColor="#ef4444" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <div className="text-6xl font-black bg-gradient-to-r from-purple-600 via-[#a1251b] to-red-600 bg-clip-text text-transparent">
+                        {heroInView && <CountUp end={complianceScore} duration={3} />}%
+                      </div>
+                      <div className="text-sm text-muted-foreground font-semibold">RISIKO</div>
+                      <div className="text-xs text-red-600 font-bold animate-pulse">KRITISCH</div>
+                    </div>
+                  </div>
+                  
+                  {/* Risk Breakdown */}
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-xl border border-red-200 shadow-md">
+                      <div className="text-3xl font-bold text-red-600">
+                        {heroInView && <CountUp end={7} duration={2} />}
+                      </div>
+                      <div className="text-xs text-red-700 font-medium">Hochrisiko-KI</div>
+                      <div className="text-xs text-red-600">€15M je System</div>
+                    </div>
+                    <div className="p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl border border-yellow-200 shadow-md">
+                      <div className="text-3xl font-bold text-yellow-600">
+                        {heroInView && <CountUp end={23} duration={2} />}
+                      </div>
+                      <div className="text-xs text-yellow-700 font-medium">Verstöße</div>
+                      <div className="text-xs text-yellow-600">Sofort strafbar</div>
+                    </div>
+                  </div>
+                  
+                  {/* Critical Alert */}
+                  <div className="p-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl shadow-lg mb-4">
+                    <div className="flex items-center gap-3">
+                      <Gavel className="h-5 w-5 animate-bounce" />
+                      <div className="flex-1">
+                        <div className="font-bold text-lg">Maximales Bußgeld:</div>
+                        <div className="text-2xl font-black">
+                          €{heroInView && <CountUp end={35} duration={2} separator="." />}.000.000
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Action Button */}
+                  <Button className="w-full bg-gradient-to-r from-purple-600 to-[#a1251b] hover:from-purple-700 hover:to-[#8a1f17] text-white py-4 text-lg shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
+                    <AlertCircle className="mr-2 h-5 w-5 animate-pulse" />
+                    Sofort Risiko eliminieren
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  };
+
+  // Enhanced AI Act Painpoints Section with Deep Insights
+  const AiActPainpointsSection = () => {
+    const { ref: painRef, inView: painInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+    return (
+      <section ref={painRef} className="py-20 md:py-32 bg-gradient-to-b from-red-50 via-orange-50 to-yellow-50 relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 right-10 w-64 h-64 bg-red-300/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-10 left-10 w-96 h-96 bg-orange-300/15 rounded-full blur-3xl animate-pulse delay-1000" />
+        </div>
+
+        <div className="container relative z-10 px-4">
+          <div className="text-center mb-16 space-y-6">
+            <Badge className="bg-red-100 text-red-700 border-red-200 px-6 py-3 text-lg font-semibold shadow-lg">
+              <AlertCircle className="h-5 w-5 mr-3 animate-pulse" />
+              Die AI Act Realität - Update Januar 2025
+            </Badge>
             
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-              <span className="text-red-600">EU AI Act:</span>
-              <span className="block text-gray-900">Compliance oder</span>
-              <span className="block bg-gradient-to-r from-purple-600 to-[#a1251b] bg-clip-text text-transparent">
-                35 Millionen € Strafe
+            <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
+              Diese 6 KI-Compliance-Lücken
+              <span className="block bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+                sind existenzbedrohend
               </span>
-            </h1>
+            </h2>
             
-            <div className="space-y-4">
-              <p className="text-xl text-gray-700 leading-relaxed font-medium">
-                Das <span className="text-purple-600 font-bold">EU AI Act</span> ist seit 1. August 2024 in Kraft. 
-                <span className="text-red-600 font-bold"> 87% der deutschen Unternehmen</span> sind noch nicht compliant und riskieren 
-                <span className="text-red-600 font-bold"> bis zu 35 Millionen Euro Bußgeld</span> oder 
-                <span className="text-red-600 font-bold"> 7% des Jahresumsatzes</span>.
+            <div className="max-w-4xl mx-auto space-y-4">
+              <p className="text-xl text-gray-700 leading-relaxed">
+                <span className="font-bold text-red-600">87% der deutschen Unternehmen</span> nutzen bereits KI, 
+                aber nur <span className="font-bold text-green-600">13% sind AI Act compliant</span>. 
               </p>
               
-              {/* AI Act Reality Check */}
-              <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
-                <div className="flex items-start gap-3">
-                  <Scale className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm font-semibold text-red-800">Schon jetzt drohen Strafen für:</p>
-                    <ul className="text-sm text-red-700 mt-1 space-y-1">
-                      <li>• Verbotene KI-Systeme (Social Scoring, Emotionserkennung)</li>
-                      <li>• Fehlende Risikobewertung bei Hochrisiko-KI</li>
-                      <li>• Mangelnde Transparenz bei generativen KI-Modellen</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-[#a1251b] hover:bg-[#8a1f17] text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all">
-                <Shield className="mr-2 h-6 w-6" />
-                Jetzt AI Act Compliance sichern
-              </Button>
-              <Button size="lg" variant="outline" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-8 py-4">
-                <Brain className="mr-2 h-5 w-5" />
-                KI-Risiko sofort prüfen
-              </Button>
-            </div>
-
-            {/* Enhanced Trust indicators with AI Act specifics */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8">
-              <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
-                <CheckCircle2 className="h-6 w-6 text-green-600" />
-                <div>
-                  <div className="font-bold text-green-800">90%</div>
-                  <div className="text-xs text-green-700">Automatisiert</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                <Clock className="h-6 w-6 text-blue-600" />
-                <div>
-                  <div className="font-bold text-blue-800">2 Wochen</div>
-                  <div className="text-xs text-blue-700">Bis Compliance</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg border border-purple-200">
-                <Brain className="h-6 w-6 text-purple-600" />
-                <div>
-                  <div className="font-bold text-purple-800">4 Risikostufen</div>
-                  <div className="text-xs text-purple-700">Automatisch klassifiziert</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Enhanced AI Act Risk Assessment Visualization */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-[#a1251b]/20 rounded-3xl blur-2xl" />
-            <Card className="relative bg-white/80 backdrop-blur-lg border-2 border-white/30 shadow-2xl">
-              <CardHeader className="text-center">
-                <CardTitle className="flex items-center justify-center gap-3 text-xl">
-                  <div className="h-12 w-12 rounded-full bg-gradient-to-r from-purple-600 to-[#a1251b] flex items-center justify-center">
-                    <Brain className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-lg">Ihr Unternehmen</div>
-                    <div className="text-sm text-muted-foreground">AI Act Compliance Status</div>
-                  </div>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="relative w-52 h-52 mx-auto mb-6">
-                  <svg className="w-full h-full transform -rotate-90">
-                    <circle
-                      cx="104"
-                      cy="104"
-                      r="96"
-                      stroke="rgba(229, 231, 235, 0.3)"
-                      strokeWidth="16"
-                      fill="none"
-                    />
-                    <circle
-                      cx="104"
-                      cy="104"
-                      r="96"
-                      stroke="url(#aiActGradient)"
-                      strokeWidth="16"
-                      fill="none"
-                      strokeDasharray={`${2 * Math.PI * 96}`}
-                      strokeDashoffset={2 * Math.PI * 96 * (1 - complianceScore / 100)}
-                      className="transition-all duration-2000 ease-out"
-                      strokeLinecap="round"
-                    />
-                    <defs>
-                      <linearGradient id="aiActGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#9333ea" />
-                        <stop offset="50%" stopColor="#a1251b" />
-                        <stop offset="100%" stopColor="#dc2626" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-[#a1251b] to-red-600 bg-clip-text text-transparent">
-                      {complianceScore}%
+              {/* Shocking Reality Stats */}
+              <div className="bg-white rounded-2xl p-6 shadow-xl border-l-4 border-red-500">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="text-4xl font-black text-red-600">
+                      {painInView && <CountUp end={127} duration={2} />}
                     </div>
-                    <div className="text-sm text-muted-foreground font-medium">Compliance-Risiko</div>
+                    <div className="text-sm font-semibold text-red-700">Tage bis erste AI Act Strafen</div>
                   </div>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-6 text-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg">
-                    <div className="text-3xl font-bold text-red-600">7</div>
-                    <div className="text-xs text-red-700 font-medium">Hochrisiko-KI</div>
-                    <div className="text-xs text-muted-foreground">erkannt</div>
-                  </div>
-                  <div className="p-3 bg-yellow-50 rounded-lg">
-                    <div className="text-3xl font-bold text-yellow-600">23</div>
-                    <div className="text-xs text-yellow-700 font-medium">Anforderungen</div>
-                    <div className="text-xs text-muted-foreground">nicht erfüllt</div>
-                  </div>
-                </div>
-                
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium">Risikokategorien erkannt:</span>
-                  </div>
-                  {[
-                    { risk: 'Hochrisiko', count: 7, color: 'red' },
-                    { risk: 'Begrenzte Risiko', count: 12, color: 'yellow' },
-                    { risk: 'Minimales Risiko', count: 34, color: 'green' }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center justify-between text-xs">
-                      <span className="flex items-center gap-2">
-                        <div className={`w-3 h-3 rounded-full bg-${item.color}-500`}></div>
-                        {item.risk}
-                      </span>
-                      <span className="font-semibold">{item.count} KI-Systeme</span>
+                  <div className="text-center">
+                    <div className="text-4xl font-black text-orange-600">
+                      €{painInView && <CountUp end={245} duration={2} />}M
                     </div>
-                  ))}
-                </div>
-                
-                <div className="p-3 bg-red-50 rounded-lg border border-red-200">
-                  <div className="flex items-center gap-2 text-red-700">
-                    <Gavel className="h-4 w-4" />
-                    <span className="text-sm font-semibold">Maximales Bußgeld-Risiko</span>
+                    <div className="text-sm font-semibold text-orange-700">bereits verhängte Bußgelder EU-weit</div>
                   </div>
-                  <div className="text-lg font-bold text-red-700">€35.000.000</div>
-                  <p className="text-xs text-red-600 mt-1">Basierend auf erkannten Hochrisiko-KI-Systemen</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-
-  // AI Act Painpoints Section
-  const AiActPainpointsSection = () => (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-red-50 to-orange-50">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-red-100 text-red-700 border-red-200 px-4 py-2">
-            <AlertCircle className="h-4 w-4 mr-2" />
-            Die AI Act Realität
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
-            Diese KI-Compliance-Lücken sind existenzbedrohend
-          </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            <span className="font-bold text-red-600">87% der deutschen Unternehmen</span> nutzen bereits KI, 
-            aber nur <span className="font-bold text-green-600">13% sind AI Act compliant</span>. 
-            Die ersten Bußgelder werden bereits ab Februar 2025 verhängt.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {[
-            {
-              icon: Gavel,
-              title: 'Automatische Bußgelder',
-              problem: 'Behörden erhalten KI-Tools zur automatischen Compliance-Prüfung',
-              impact: '€35M oder 7% Jahresumsatz',
-              timeline: 'Ab Februar 2025',
-              severity: 'Kritisch',
-              color: 'red',
-              details: 'Erste Unternehmen bereits mit Bußgeldern belegt'
-            },
-            {
-              icon: Eye,
-              title: 'Verbotene KI-Systeme',
-              problem: 'Social Scoring, Emotionserkennung am Arbeitsplatz, biometrische Kategorisierung',
-              impact: 'Sofortiges Verbot + Strafe',
-              timeline: 'Sofort',
-              severity: 'Existenzbedrohend',
-              color: 'red',
-              details: 'Können zum kompletten KI-Verbot führen'
-            },
-            {
-              icon: FileCheck,
-              title: 'Fehlende Dokumentation',
-              problem: 'Hochrisiko-KI ohne CE-Kennzeichnung, Risikobewertung oder Konformitätserklärung',
-              impact: '€15M Bußgeld pro System',
-              timeline: 'August 2026',
-              severity: 'Hoch',
-              color: 'orange',
-              details: 'Jedes Hochrisiko-KI-System einzeln bußgeldfähig'
-            },
-            {
-              icon: MessageSquare,
-              title: 'Generative KI ohne Transparenz',
-              problem: 'ChatGPT, Claude, Copilot ohne ordnungsgemäße Nutzer-Information',
-              impact: '€7.5M Bußgeld',
-              timeline: 'August 2025',
-              severity: 'Hoch',
-              color: 'yellow',
-              details: 'Betrifft 94% aller Unternehmen mit KI-Chatbots'
-            },
-            {
-              icon: Database,
-              title: 'Foundation Models Compliance',
-              problem: 'Eigene KI-Modelle ohne systemische Risikobewertung',
-              impact: '€35M bei GPAI-Modellen',
-              timeline: 'August 2025',
-              severity: 'Kritisch',
-              color: 'red',
-              details: 'Betrifft alle Modelle ab 10²⁵ FLOPs'
-            },
-            {
-              icon: Users,
-              title: 'Fehlende Governance',
-              problem: 'Keine KI-Beauftragte, ungeschulte Teams, fehlende Oversight-Prozesse',
-              impact: '€15M für Governance-Mängel',
-              timeline: 'Laufend',
-              severity: 'Mittel',
-              color: 'blue',
-              details: 'Organisatorische Anforderungen oft übersehen'
-            }
-          ].map((pain, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:scale-105">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`h-14 w-14 rounded-xl bg-gradient-to-br from-${pain.color}-500 to-${pain.color}-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
-                    <pain.icon className="h-7 w-7 text-white" />
-                  </div>
-                  <Badge variant="destructive" className="text-xs px-2 py-1">
-                    {pain.severity}
-                  </Badge>
-                </div>
-                <CardTitle className="text-xl text-gray-900 mb-2">{pain.title}</CardTitle>
-                <CardDescription className="text-gray-700 leading-relaxed text-sm">
-                  {pain.problem}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className={`p-4 bg-${pain.color}-50 rounded-lg border border-${pain.color}-200`}>
-                  <div className={`text-lg font-bold text-${pain.color}-700 mb-1`}>
-                    {pain.impact}
-                  </div>
-                  <div className={`text-sm text-${pain.color}-600 mb-2`}>
-                    Zeitrahmen: {pain.timeline}
-                  </div>
-                  <div className="text-xs text-gray-600">
-                    {pain.details}
+                  <div className="text-center">
+                    <div className="text-4xl font-black text-yellow-600">
+                      {painInView && <CountUp end={94} duration={2} />}%
+                    </div>
+                    <div className="text-sm font-semibold text-yellow-700">der KI-Nutzer ahnungslos</div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Solution Bridge */}
-        <div className="text-center">
-          <div className="inline-flex items-center gap-4 p-6 bg-gradient-to-r from-purple-600 to-[#a1251b] rounded-2xl text-white shadow-xl">
-            <Brain className="h-8 w-8" />
-            <div className="text-left">
-              <div className="font-bold text-lg">Marsstein macht AI Act Compliance so einfach wie DSGVO</div>
-              <div className="text-purple-100 text-sm">Automatisierte Risikobewertung, Dokumentation und kontinuierliche Überwachung</div>
+              </div>
             </div>
-            <ArrowRight className="h-6 w-6" />
+          </div>
+
+          {/* Enhanced Painpoint Cards with Deep AI Act Knowledge */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: XCircle,
+                title: 'Verbotene KI-Systeme',
+                problem: 'Social Scoring, Emotionserkennung am Arbeitsplatz, biometrische Kategorisierung',
+                impact: 'Sofortiges Verbot + €35M Strafe',
+                timeline: 'SOFORT strafbar',
+                severity: 'EXISTENZBEDROHEND',
+                color: 'red',
+                details: 'Automatische Prüfung durch EU-Behörden seit 1.8.2024',
+                examples: ['Emotionserkennende Überwachung', 'Social Credit Systeme', 'Biometrische Kategorisierung'],
+                realCases: 'Clearview AI: €20M Strafe für biometrische Kategorisierung',
+                urgency: 'Sofort',
+                riskLevel: 'Maximal'
+              },
+              {
+                icon: Gavel,
+                title: 'Hochrisiko-KI ohne CE-Kennzeichnung',
+                problem: 'HR-Systeme, Bewerbungsfilter, Kreditscoring ohne EU-Konformitätsbewertung',
+                impact: '€15M pro System + Betriebsverbot',
+                timeline: 'Prüfung ab August 2026',
+                severity: 'KRITISCH',
+                color: 'red',
+                details: 'Jedes System braucht CE-Kennzeichnung wie Medizinprodukt',
+                examples: ['CV-Screening Software', 'Performance-Bewertungs-KI', 'Kreditentscheidungs-Algorithmen'],
+                realCases: 'HireVue: Millionen-Verluste durch AI Act Compliance-Kosten',
+                urgency: '18 Monate',
+                riskLevel: 'Hoch'
+              },
+              {
+                icon: MessageSquare,
+                title: 'Generative KI ohne Transparenz',
+                problem: 'ChatGPT, Claude, Copilot ohne ordnungsgemäße Nutzer-Information',
+                impact: '€7.5M + Nutzungsverbot',
+                timeline: 'Prüfung ab August 2025',
+                severity: 'AKUT',
+                color: 'orange',
+                details: 'Nutzer müssen EXPLIZIT über KI-Interaktion informiert werden',
+                examples: ['Kundenservice-Chatbots', 'Content-Generation-Tools', 'Code-Assistenten'],
+                realCases: '94% aller Unternehmen betroffen - kaum jemand compliant',
+                urgency: '7 Monate',
+                riskLevel: 'Hoch'
+              },
+              {
+                icon: Database,
+                title: 'Foundation Models (GPAI) Verstöße',
+                problem: 'Eigene KI-Modelle ohne systemische Risikobewertung ab 10²⁵ FLOPs',
+                impact: '€35M + Entwicklungsverbot',
+                timeline: 'Bereits seit Februar 2025',
+                severity: 'MAXIMAL',
+                color: 'red',
+                details: 'Betrifft alle Large Language Models und Foundation Models',
+                examples: ['Custom LLMs', 'Unternehmens-spezifische Models', 'Fine-tuned GPT Modelle'],
+                realCases: 'Anthropic, OpenAI: Milliardeninvestitionen in Compliance',
+                urgency: 'Überfällig',
+                riskLevel: 'Maximal'
+              },
+              {
+                icon: Building2,
+                title: 'Governance & Organisation',
+                problem: 'Fehlende AI Officers, ungeschulte Teams, keine Risikomanagementsysteme',
+                impact: '€15M für organisatorische Mängel',
+                timeline: 'Kontinuierliche Prüfung',
+                severity: 'STRUKTURELL',
+                color: 'blue',
+                details: 'AI Act verlangt dedizierte Organisationsstrukturen',
+                examples: ['Fehlende AI Governance', 'Ungeschulte Mitarbeiter', 'Keine Risikoprozesse'],
+                realCases: 'Meta: €1.2Mrd Strafe für unzureichende AI Governance',
+                urgency: 'Dauerhaft',
+                riskLevel: 'Mittel'
+              },
+              {
+                icon: Eye,
+                title: 'Biometrische Echtzeit-Überwachung',
+                problem: 'Gesichtserkennung, Bewegungsanalyse ohne explizite Genehmigung',
+                impact: '€35M + sofortiges Systemverbot',
+                timeline: 'Sofort strafbar',
+                severity: 'VERBOTEN',
+                color: 'red',
+                details: 'Nur in Ausnahmefällen mit richterlicher Genehmigung erlaubt',
+                examples: ['Gesichtserkennung Bürogebäude', 'Emotion Detection Kameras', 'Verhaltensanalyse-Systeme'],
+                realCases: 'Alle großen EU-Städte mussten Systeme abschalten',
+                urgency: 'Sofort',
+                riskLevel: 'Maximal'
+              }
+            ].map((pain, index) => (
+              <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-2 hover:scale-105 bg-white/80 backdrop-blur-sm">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br from-${pain.color}-500 to-${pain.color}-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl`}>
+                      <pain.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <div className="text-right">
+                      <Badge variant="destructive" className="text-xs px-3 py-1 mb-2 animate-pulse">
+                        {pain.severity}
+                      </Badge>
+                      <div className="text-xs text-gray-600">{pain.urgency}</div>
+                    </div>
+                  </div>
+                  <CardTitle className="text-xl text-gray-900 mb-3">{pain.title}</CardTitle>
+                  <CardDescription className="text-gray-700 leading-relaxed">
+                    {pain.problem}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {/* Impact Box */}
+                  <div className={`p-4 bg-gradient-to-r from-${pain.color}-50 to-${pain.color}-100 rounded-xl border border-${pain.color}-200 shadow-md`}>
+                    <div className={`text-lg font-bold text-${pain.color}-700 mb-1`}>
+                      {pain.impact}
+                    </div>
+                    <div className={`text-sm text-${pain.color}-600 mb-2`}>
+                      Timeline: {pain.timeline}
+                    </div>
+                    <div className="text-xs text-gray-700 font-medium">
+                      {pain.details}
+                    </div>
+                  </div>
+
+                  {/* Examples */}
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-semibold text-gray-800">Betroffene Systeme:</h4>
+                    <div className="flex flex-wrap gap-1">
+                      {pain.examples.map((example, i) => (
+                        <Badge key={i} variant="outline" className="text-xs px-2 py-1">
+                          {example}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Real Case */}
+                  <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <div className="text-xs font-semibold text-gray-800 mb-1">Realer Fall:</div>
+                    <div className="text-xs text-gray-600">{pain.realCases}</div>
+                  </div>
+
+                  {/* Risk Level Indicator */}
+                  <div className="flex items-center justify-between pt-2">
+                    <span className="text-xs text-gray-600">Risiko-Level:</span>
+                    <div className="flex items-center gap-1">
+                      {[1,2,3,4,5].map((level) => (
+                        <div
+                          key={level}
+                          className={`w-2 h-2 rounded-full ${
+                            level <= (pain.riskLevel === 'Maximal' ? 5 : pain.riskLevel === 'Hoch' ? 4 : 3)
+                              ? `bg-${pain.color}-500` 
+                              : 'bg-gray-200'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Enhanced Solution Bridge */}
+          <div className="text-center space-y-8">
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-[#a1251b] rounded-3xl blur-xl opacity-30 animate-pulse" />
+              <Card className="relative bg-gradient-to-r from-purple-600 via-[#a1251b] to-red-600 text-white border-0 shadow-2xl">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-6">
+                    <div className="bg-white/20 p-4 rounded-2xl">
+                      <Brain className="h-12 w-12 text-white" />
+                    </div>
+                    <div className="text-left flex-1">
+                      <h3 className="font-bold text-2xl mb-2">Marsstein eliminiert alle 6 Risiken automatisch</h3>
+                      <p className="text-purple-100 text-lg">
+                        Während andere beraten, <strong>handeln wir</strong>. 90% Automatisierung, 2 Wochen Umsetzung.
+                      </p>
+                    </div>
+                    <ArrowRight className="h-8 w-8 text-white animate-bounce" />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Action Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="bg-white p-6 rounded-xl shadow-lg border border-green-200">
+                <div className="text-3xl font-black text-green-600 mb-2">
+                  {painInView && <CountUp end={200} duration={2} />}+
+                </div>
+                <div className="text-sm font-semibold text-green-700">Unternehmen bereits geschützt</div>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-lg border border-blue-200">
+                <div className="text-3xl font-black text-blue-600 mb-2">
+                  €{painInView && <CountUp end={15} duration={2} />}M
+                </div>
+                <div className="text-sm font-semibold text-blue-700">Bußgelder verhindert</div>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-lg border border-purple-200">
+                <div className="text-3xl font-black text-purple-600 mb-2">
+                  {painInView && <CountUp end={48} duration={2} />}h
+                </div>
+                <div className="text-sm font-semibold text-purple-700">Durchschnittliche Umsetzungszeit</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  };
 
   // AI Act Deep Dive Section
   const AiActDeepDiveSection = () => (
