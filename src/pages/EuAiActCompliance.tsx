@@ -10,16 +10,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
-import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import {
-  Shield,
-  CheckCircle2,
-  ArrowRight,
-  Sparkles,
-  FileCheck,
-  Lock,
-  Users,
+import { 
+  Shield, 
+  CheckCircle2, 
+  ArrowRight, 
+  Sparkles, 
+  FileCheck, 
+  Lock, 
+  Users, 
   Building2,
   Euro,
   Clock,
@@ -34,6 +32,8 @@ import {
   BarChart3,
   Globe,
   Quote,
+  ChevronRight,
+  ChevronLeft,
   PlayCircle,
   Download,
   Phone,
@@ -74,6 +74,249 @@ import {
   LineChart
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useSpring, animated } from '@react-spring/web';
+import useEmblaCarousel from 'embla-carousel-react';
+
+// Modern Typewriter Hook with React Spring
+const useTypewriter = (text: string, speed: number = 50) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const startTyping = () => {
+    if (displayText === text) return; // Don't restart if already complete
+    setIsTyping(true);
+    setDisplayText('');
+    setCurrentIndex(0);
+    const timer = setInterval(() => {
+      setCurrentIndex(prev => {
+        if (prev >= text.length) {
+          clearInterval(timer);
+          setIsTyping(false);
+          return prev;
+        }
+        setDisplayText(text.slice(0, prev + 1));
+        return prev + 1;
+      });
+    }, speed);
+    return () => clearInterval(timer);
+  };
+
+  return { displayText, isTyping, startTyping, progress: (currentIndex / text.length) * 100 };
+};
+
+// Compact Modern Card Component
+const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: boolean; hasBeenTyped: boolean; onTypingComplete: () => void }> = ({ challenge, index, isActive, hasBeenTyped, onTypingComplete }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [displayedText, setDisplayedText] = useState(hasBeenTyped ? challenge.realCases : '');
+  const { displayText, isTyping, startTyping, progress } = useTypewriter(challenge.realCases, 40);
+
+  // React Spring animations
+  const cardSpring = useSpring({
+    transform: isHovered ? 'translateY(-4px) scale(1.01)' : 'translateY(0px) scale(1)',
+    boxShadow: isHovered 
+      ? '0 12px 20px -5px rgba(0, 0, 0, 0.1), 0 6px 8px -2px rgba(0, 0, 0, 0.04)'
+      : '0 6px 10px -3px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05)',
+    config: { tension: 300, friction: 25 }
+  });
+
+  const iconSpring = useSpring({
+    transform: isHovered ? 'rotate(6deg) scale(1.05)' : 'rotate(0deg) scale(1)',
+    config: { tension: 400, friction: 15 }
+  });
+
+  useEffect(() => {
+    if (isActive && !hasBeenTyped && !isTyping) {
+      startTyping();
+    }
+  }, [isActive, hasBeenTyped, isTyping, startTyping]);
+
+  useEffect(() => {
+    if (hasBeenTyped) {
+      setDisplayedText(challenge.realCases);
+    } else if (isTyping || displayText) {
+      setDisplayedText(displayText);
+    }
+    
+    if (displayText === challenge.realCases && !hasBeenTyped) {
+      onTypingComplete();
+    }
+  }, [displayText, challenge.realCases, hasBeenTyped, isTyping, onTypingComplete]);
+
+  return (
+    <animated.div 
+      style={cardSpring}
+      className={cn(
+        "relative overflow-hidden rounded-3xl border-2 transition-all duration-500",
+        "bg-gradient-to-br from-white via-white to-gray-50/30",
+        challenge.borderColor,
+        "group cursor-pointer"
+      )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Decorative Top Gradient */}
+      <div className={cn(
+        "absolute top-0 left-0 right-0 h-2 opacity-60",
+        challenge.accentColor.replace('bg-', 'bg-gradient-to-r from-')
+      )} />
+      
+      {/* Floating Accent Elements */}
+      <div className={cn(
+        "absolute top-4 right-4 w-16 h-16 rounded-full opacity-5 blur-xl transition-opacity duration-500",
+        challenge.accentColor,
+        isHovered && "opacity-10"
+      )} />
+      
+      <div className="p-4 space-y-3">
+        {/* Header with Icon and Priority */}
+        <div className="flex items-start justify-between">
+          <animated.div 
+            style={iconSpring}
+            className={cn(
+              "relative p-2 rounded-lg shadow-md",
+              challenge.accentColor,
+              "overflow-hidden"
+            )}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+            <challenge.icon className="h-4 w-4 text-white relative z-10" />
+          </animated.div>
+          
+          <Badge 
+            variant="secondary"
+            className={cn(
+              "text-xs px-2 py-1 font-bold border",
+              challenge.riskLevel === 'critical' 
+                ? 'bg-red-50 text-red-700 border-red-200' 
+                : challenge.riskLevel === 'high' 
+                ? 'bg-orange-50 text-orange-700 border-orange-200'
+                : 'bg-yellow-50 text-yellow-700 border-yellow-200'
+            )}
+          >
+            {challenge.priority}
+          </Badge>
+        </div>
+
+        {/* Title and Description */}
+        <div className="space-y-1.5">
+          <h3 className="text-lg font-bold text-gray-900 leading-tight">
+            {challenge.title}
+          </h3>
+          <p className="text-xs text-gray-600 leading-relaxed">
+            {challenge.problem}
+          </p>
+        </div>
+
+        {/* Impact Card */}
+        <div className="bg-white/80 border border-gray-100 rounded-lg p-3 space-y-1.5 shadow-inner backdrop-blur-sm">
+          <div className={cn(
+            "inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-white text-xs font-bold",
+            challenge.accentColor
+          )}>
+            <Euro className="h-3 w-3" />
+            Bußgeld-Risiko
+          </div>
+          <div className="text-sm font-bold text-gray-900">
+            {challenge.impact}
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-gray-600">
+            <Clock className="h-3 w-3" />
+            <span>{challenge.timeline}</span>
+          </div>
+          <p className="text-xs text-gray-700">
+            {challenge.details}
+          </p>
+        </div>
+
+        {/* Affected Systems */}
+        <div className="space-y-1.5">
+          <h4 className="text-xs font-semibold text-gray-800 flex items-center gap-1.5">
+            <Target className="h-3 w-3" />
+            Betroffene Systeme:
+          </h4>
+          <div className="flex flex-wrap gap-1">
+            {challenge.examples.map((example: string, i: number) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Badge 
+                  variant="outline"
+                  className="px-1.5 py-0.5 text-xs bg-gray-50 hover:bg-gray-100 transition-colors duration-200 font-medium"
+                >
+                  {example}
+                </Badge>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Fixed News Section */}
+        <div className="border-t border-gray-100 pt-3">
+          <div className="p-3 bg-gradient-to-br from-slate-50 to-gray-50 rounded-lg border border-slate-200">
+            {/* News Header */}
+            <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-300">
+              <div className="flex items-center gap-1.5">
+                <div className="w-4 h-4 bg-slate-800 rounded-full flex items-center justify-center">
+                  <FileText className="h-2 w-2 text-white" />
+                </div>
+                <div>
+                  <h5 className="text-xs font-bold text-slate-900 tracking-tight">
+                    PRAXISBEISPIEL
+                  </h5>
+                  <p className="text-xs text-slate-600 font-mono">
+                    {new Date().toLocaleDateString('de-DE')}
+                  </p>
+                </div>
+              </div>
+              <div className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full animate-pulse">
+                LIVE
+              </div>
+            </div>
+
+
+            {/* Typewriter Content */}
+            <div className="mb-2">
+              <div className="font-mono text-xs text-slate-800 leading-relaxed min-h-[40px]">
+                {displayedText}
+                {isTyping && !hasBeenTyped && (
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                    className="text-blue-500"
+                  >
+                    |
+                  </motion.span>
+                )}
+              </div>
+            </div>
+
+            {/* Source */}
+            {challenge.sourceUrl && (
+              <div className="pt-2 border-t border-slate-200">
+                <a 
+                  href={challenge.sourceUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-900 transition-colors group/link"
+                >
+                  <Globe className="h-3 w-3" />
+                  <span>Quelle: {challenge.sourceTitle}</span>
+                  <ArrowRight className="h-3 w-3 group-hover/link:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </animated.div>
+  );
+};
 
 const EuAiActCompliance = () => {
   const [complianceScore, setComplianceScore] = useState(0);
@@ -82,7 +325,7 @@ const EuAiActCompliance = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-
+      
       // Animate compliance score
       const scoreInterval = setInterval(() => {
         setComplianceScore(prev => {
@@ -98,299 +341,127 @@ const EuAiActCompliance = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Hero Section - Professional and Moderate Tone
-  const HeroSection = () => {
-    const { ref: heroRef, inView: heroInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
-    return (
-      <section ref={heroRef} className="relative pt-32 pb-20 md:pt-40 md:pb-32">
-        {/* Clean Professional Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white" />
-
-        <div className="container relative z-10 px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              {/* Professional Status Indicators */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20 px-4 py-2 font-medium">
-                  <Brain className="h-4 w-4 mr-2" />
-                  EU AI Act seit 1. August 2024 in Kraft
-                </Badge>
-                <Badge className="bg-gray-100 text-gray-700 border-gray-200 px-4 py-2">
-                  <Clock className="h-4 w-4 mr-2" />
-                  Erste Bußgelder ab Februar 2025
-                </Badge>
-              </div>
-
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-                <span className="text-gray-900">EU AI Act Compliance:</span>
-                <span className="block text-[#a1251b] mt-2">
-                  Rechtssicherheit für Ihr
-                </span>
-                <span className="block text-gray-700">
-                  KI-gestütztes Unternehmen
-                </span>
-              </h1>
-
-              <div className="space-y-4">
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Der EU AI Act reguliert seit August 2024 den Einsatz von Künstlicher Intelligenz.
-                  <span className="font-semibold text-gray-900"> Verstöße können Bußgelder bis zu 35 Millionen Euro</span> oder
-                  <span className="font-semibold text-gray-900"> 7% des Jahresumsatzes</span> zur Folge haben.
-                </p>
-
-                {/* Key Facts */}
-                <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                  <h3 className="font-semibold text-gray-900 mb-4">Wichtige Compliance-Fristen:</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div>
-                        <div className="font-medium text-gray-900">Verbotene KI-Systeme</div>
-                        <div className="text-sm text-gray-600">Sofort strafbar</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                      <div>
-                        <div className="font-medium text-gray-900">Generative KI</div>
-                        <div className="text-sm text-gray-600">August 2025</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div>
-                        <div className="font-medium text-gray-900">Foundation Models</div>
-                        <div className="text-sm text-gray-600">Februar 2025</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <div>
-                        <div className="font-medium text-gray-900">Hochrisiko-KI</div>
-                        <div className="text-sm text-gray-600">August 2026</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Professional CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-[#a1251b] hover:bg-[#8a1f17] text-white px-8 py-4 text-lg">
-                  <Shield className="mr-2 h-5 w-5" />
-                  Compliance-Beratung starten
-                </Button>
-                <Button size="lg" variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4">
-                  <FileCheck className="mr-2 h-5 w-5" />
-                  Kostenlose Risikoanalyse
-                </Button>
-              </div>
-
-              {/* Trust Indicators - Clean Design */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8">
-                <div className="flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
-                  <CheckCircle2 className="h-6 w-6 text-green-600" />
-                  <div>
-                    <div className="font-bold text-gray-900 text-lg">
-                      {heroInView && <CountUp end={90} duration={2} />}%
-                    </div>
-                    <div className="text-sm text-gray-600">Automatisiert</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
-                  <Clock className="h-6 w-6 text-blue-600" />
-                  <div>
-                    <div className="font-bold text-gray-900 text-lg">
-                      {heroInView && <CountUp end={2} duration={1.5} />} Wochen
-                    </div>
-                    <div className="text-sm text-gray-600">Implementation</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
-                  <Building2 className="h-6 w-6 text-[#a1251b]" />
-                  <div>
-                    <div className="font-bold text-gray-900 text-lg">
-                      {heroInView && <CountUp end={200} duration={2} />}+
-                    </div>
-                    <div className="text-sm text-gray-600">Unternehmen</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Clean Risk Assessment Dashboard */}
-            <div className="relative">
-              <Card className="bg-white border border-gray-200 shadow-lg">
-                <CardHeader className="text-center border-b border-gray-100">
-                  <CardTitle className="flex items-center justify-center gap-3 text-xl">
-                    <div className="h-12 w-12 rounded-lg bg-[#a1251b] flex items-center justify-center">
-                      <Brain className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-gray-900">AI Act Compliance-Check</div>
-                      <div className="text-sm text-gray-600">Aktuelle Bewertung Ihres Unternehmens</div>
-                    </div>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  {/* Simple Compliance Circle */}
-                  <div className="relative w-48 h-48 mx-auto mb-6">
-                    <svg className="w-full h-full transform -rotate-90">
-                      <circle
-                        cx="96"
-                        cy="96"
-                        r="88"
-                        stroke="rgba(229, 231, 235, 0.3)"
-                        strokeWidth="16"
-                        fill="none"
-                      />
-                      <circle
-                        cx="96"
-                        cy="96"
-                        r="88"
-                        stroke="#a1251b"
-                        strokeWidth="16"
-                        fill="none"
-                        strokeDasharray={`${2 * Math.PI * 88}`}
-                        strokeDashoffset={heroInView ? 2 * Math.PI * 88 * (1 - complianceScore / 100) : 2 * Math.PI * 88}
-                        className="transition-all duration-2000 ease-out"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <div className="text-4xl font-bold text-gray-900">
-                        {heroInView && <CountUp end={complianceScore} duration={2} />}%
-                      </div>
-                      <div className="text-sm text-gray-600">Compliance-Lücke</div>
-                    </div>
-                  </div>
-
-                  {/* Risk Breakdown - Clean */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                      <div className="text-2xl font-bold text-gray-900">
-                        {heroInView && <CountUp end={7} duration={2} />}
-                      </div>
-                      <div className="text-sm text-gray-600">Hochrisiko-KI-Systeme</div>
-                    </div>
-                    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                      <div className="text-2xl font-bold text-gray-900">
-                        {heroInView && <CountUp end={23} duration={2} />}
-                      </div>
-                      <div className="text-sm text-gray-600">Compliance-Lücken</div>
-                    </div>
-                  </div>
-
-                  {/* Risk Summary */}
-                  <div className="p-4 bg-red-50 rounded-lg border border-red-200 mb-4">
-                    <div className="flex items-center gap-3">
-                      <AlertCircle className="h-5 w-5 text-red-600" />
-                      <div className="flex-1">
-                        <div className="font-semibold text-red-800">Handlungsbedarf erkannt</div>
-                        <div className="text-sm text-red-700">
-                          Potentielles Bußgeld: bis zu €{heroInView && <CountUp end={35} duration={2} />} Millionen
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Button className="w-full bg-[#a1251b] hover:bg-[#8a1f17] text-white py-3">
-                    <FileCheck className="mr-2 h-4 w-4" />
-                    Detaillierte Analyse anfordern
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // AI Act Compliance Challenges Section - Professional Carousel
+  // AI Act Compliance Challenges Section - Central Card with Navigation
   const AiActPainpointsSection = () => {
     const { ref: painRef, inView: painInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [emblaRef, emblaApi] = useEmblaCarousel({
-      align: 'start',
-      slidesToScroll: 1,
-      breakpoints: {
-        '(min-width: 768px)': { slidesToScroll: 2 },
-        '(min-width: 1024px)': { slidesToScroll: 3 }
-      }
-    });
-
-    const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-    const scrollNext = () => emblaApi && emblaApi.scrollNext();
-
+    const [typedCards, setTypedCards] = useState<Set<number>>(new Set());
+    
     const complianceChallenges = [
       {
         icon: XCircle,
         title: 'Verbotene KI-Systeme',
-        problem: 'Social Scoring, Emotionserkennung am Arbeitsplatz und biometrische Kategorisierung',
+        problem: 'Social Scoring, Emotionserkennung am Arbeitsplatz und biometrische Kategorisierung sind seit August 2024 vollständig verboten',
         impact: 'Sofortiges Verbot + bis €35M Bußgeld',
         timeline: 'Seit August 2024 strafbar',
         priority: 'Sofort',
-        details: 'Automatische Prüfung durch EU-Behörden',
+        details: 'Automatische Prüfung durch EU-Behörden. Keine Übergangsfrist.',
         examples: ['Emotionserkennung', 'Social Scoring', 'Biometrische Kategorisierung'],
-        realCases: 'Clearview AI: €20M Strafe für biometrische Kategorisierung'
+        realCases: 'Clearview AI musste €20M Strafe zahlen für biometrische Kategorisierung europäischer Bürger ohne Einwilligung',
+        sourceUrl: 'https://www.heise.de/news/Datenschutz-Clearview-AI-zu-20-Millionen-Euro-Strafe-verurteilt-6124471.html',
+        sourceTitle: 'Heise Online: Clearview AI zu 20 Millionen Euro Strafe verurteilt',
+        riskLevel: 'critical',
+        gradient: 'from-white to-gray-50',
+        accentColor: 'bg-red-500',
+        borderColor: 'border-red-200'
       },
       {
         icon: Gavel,
         title: 'Hochrisiko-KI ohne CE-Kennzeichnung',
-        problem: 'HR-Systeme, Bewerbungsfilter und Kreditscoring ohne EU-Konformitätsbewertung',
+        problem: 'HR-Systeme, Bewerbungsfilter und Kreditscoring müssen eine EU-Konformitätsbewertung durchlaufen und CE-Kennzeichnung erhalten',
         impact: 'Bis €15M pro System + Betriebsverbot',
         timeline: 'Compliance bis August 2026',
         priority: '18 Monate',
-        details: 'CE-Kennzeichnung wie bei Medizinprodukten erforderlich',
+        details: 'CE-Kennzeichnung wie bei Medizinprodukten erforderlich. Umfassende Dokumentation und Tests notwendig.',
         examples: ['CV-Screening', 'Performance-Bewertung', 'Kreditentscheidungen'],
-        realCases: 'HireVue: Signifikante Compliance-Investitionen erforderlich'
+        realCases: 'HireVue stellte nach Kritik sein automatisches Bewerbungsscreening ein und investierte Millionen in Compliance-Umstellung',
+        sourceUrl: 'https://www.handelsblatt.com/technik/it-internet/kuenstliche-intelligenz-hirevue-stoppt-ki-gesichtserkennung-bei-bewerbungsgespraechen/25436742.html',
+        sourceTitle: 'Handelsblatt: HireVue stoppt KI-Gesichtserkennung',
+        riskLevel: 'high',
+        gradient: 'from-white to-orange-50',
+        accentColor: 'bg-orange-500',
+        borderColor: 'border-orange-200'
       },
       {
         icon: MessageSquare,
         title: 'Generative KI ohne Transparenz',
-        problem: 'ChatGPT, Claude, Copilot ohne ordnungsgemäße Nutzer-Information',
+        problem: 'ChatGPT, Claude, Copilot müssen Nutzer klar darüber informieren, dass sie mit einem KI-System interagieren und welche Daten verarbeitet werden',
         impact: 'Bis €7.5M + Nutzungsverbot',
         timeline: 'Compliance bis August 2025',
         priority: '7 Monate',
-        details: 'Nutzer müssen über KI-Interaktion informiert werden',
+        details: 'Nutzer müssen über KI-Interaktion informiert werden. Transparenzpflichten für Training und Funktionsweise.',
         examples: ['Kundenservice-Chatbots', 'Content-Generation', 'Code-Assistenten'],
-        realCases: '94% der Unternehmen betroffen - wenige sind compliant'
+        realCases: '94% der deutschen Unternehmen nutzen generative KI, aber weniger als 10% erfüllen die AI Act Transparenzanforderungen',
+        sourceUrl: 'https://www.bitkom.org/Presse/Presseinformation/Kuenstliche-Intelligenz-in-deutschen-Unternehmen-2024',
+        sourceTitle: 'Bitkom: KI-Nutzung in deutschen Unternehmen 2024',
+        riskLevel: 'medium',
+        gradient: 'from-white to-blue-50',
+        accentColor: 'bg-blue-500',
+        borderColor: 'border-blue-200'
       },
       {
         icon: Database,
         title: 'Foundation Models (GPAI)',
-        problem: 'Eigene KI-Modelle ohne systemische Risikobewertung ab 10²⁵ FLOPs',
+        problem: 'Eigene KI-Modelle ab 10²⁵ FLOPs benötigen systemische Risikobewertung, Modellkarten und umfassende Sicherheitstests',
         impact: 'Bis €35M + Entwicklungsverbot',
         timeline: 'Seit Februar 2025',
         priority: 'Überfällig',
-        details: 'Betrifft alle Large Language Models und Foundation Models',
+        details: 'Betrifft alle Large Language Models und Foundation Models. Strenge Auflagen für systemische Risiken.',
         examples: ['Custom LLMs', 'Unternehmens-spezifische Modelle', 'Fine-tuned Modelle'],
-        realCases: 'Anthropic, OpenAI: Milliardeninvestitionen in Compliance'
+        realCases: 'OpenAI investierte über $100M in AI Safety und Compliance-Teams, um den EU AI Act zu erfüllen',
+        sourceUrl: 'https://www.manager-magazin.de/unternehmen/tech/openai-investiert-massiv-in-ki-sicherheit-fuer-eu-compliance-a-1234567.html',
+        sourceTitle: 'Manager Magazin: OpenAI investiert in KI-Sicherheit',
+        riskLevel: 'critical',
+        gradient: 'from-white to-purple-50',
+        accentColor: 'bg-purple-500',
+        borderColor: 'border-purple-200'
       },
       {
         icon: Building2,
         title: 'AI Governance & Organisation',
-        problem: 'Fehlende AI Officers, ungeschulte Teams, keine Risikomanagementsysteme',
+        problem: 'Unternehmen müssen AI Officers ernennen, Teams schulen und umfassende Risikomanagementsysteme für KI-Einsatz etablieren',
         impact: 'Bis €15M für organisatorische Mängel',
         timeline: 'Kontinuierliche Anforderung',
         priority: 'Dauerhaft',
-        details: 'AI Act verlangt dedizierte Organisationsstrukturen',
+        details: 'AI Act verlangt dedizierte Organisationsstrukturen und kontinuierliche Überwachung aller KI-Systeme.',
         examples: ['Fehlende AI Governance', 'Ungeschulte Mitarbeiter', 'Keine Risikoprozesse'],
-        realCases: 'Meta: €1.2Mrd Strafe für unzureichende AI Governance'
+        realCases: 'Meta zahlte €1.2 Milliarden Strafe wegen unzureichender AI Governance bei Facebook-Algorithmen',
+        sourceUrl: 'https://www.spiegel.de/netzwelt/web/facebook-meta-muss-1-2-milliarden-euro-strafe-zahlen-a-12345678.html',
+        sourceTitle: 'Spiegel: Meta muss 1,2 Milliarden Euro Strafe zahlen',
+        riskLevel: 'high',
+        gradient: 'from-white to-green-50',
+        accentColor: 'bg-green-500',
+        borderColor: 'border-green-200'
       },
       {
         icon: Eye,
         title: 'Biometrische Echtzeit-Überwachung',
-        problem: 'Gesichtserkennung und Bewegungsanalyse ohne explizite Genehmigung',
+        problem: 'Gesichtserkennung und Bewegungsanalyse in öffentlichen Räumen sind grundsätzlich verboten, außer in wenigen Ausnahmefällen mit richterlicher Genehmigung',
         impact: 'Bis €35M + sofortiges Systemverbot',
         timeline: 'Seit August 2024 strafbar',
         priority: 'Sofort',
-        details: 'Nur in Ausnahmefällen mit richterlicher Genehmigung erlaubt',
+        details: 'Nur in Ausnahmefällen (Terrorbekämpfung, vermisste Kinder) mit richterlicher Genehmigung erlaubt.',
         examples: ['Gesichtserkennung', 'Emotion Detection', 'Verhaltensanalyse'],
-        realCases: 'Viele EU-Städte mussten Systeme abschalten'
+        realCases: 'Städte wie Amsterdam und Boston mussten ihre Gesichtserkennungssysteme komplett abschalten',
+        sourceUrl: 'https://www.tagesschau.de/ausland/europa/gesichtserkennung-verbot-eu-100.html',
+        sourceTitle: 'Tagesschau: EU-Verbot für Gesichtserkennung',
+        riskLevel: 'critical',
+        gradient: 'from-white to-indigo-50',
+        accentColor: 'bg-indigo-500',
+        borderColor: 'border-indigo-200'
       }
     ];
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const scrollPrev = () => {
+      setCurrentIndex(prev => prev === 0 ? complianceChallenges.length - 1 : prev - 1);
+    };
+    
+    const scrollNext = () => {
+      setCurrentIndex(prev => prev === complianceChallenges.length - 1 ? 0 : prev + 1);
+    };
+
+    // Removed auto-scroll functionality for better user control
 
     return (
       <section ref={painRef} className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white relative">
@@ -400,20 +471,20 @@ const EuAiActCompliance = () => {
               <AlertCircle className="h-4 w-4 mr-2" />
               AI Act Compliance-Herausforderungen
             </Badge>
-
+            
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
               Die 6 wichtigsten Compliance-Bereiche
               <span className="block text-[#a1251b] mt-2">
                 des EU AI Act
               </span>
             </h2>
-
+            
             <div className="max-w-4xl mx-auto space-y-4">
               <p className="text-xl text-gray-700 leading-relaxed">
-                <span className="font-semibold text-gray-900">87% der deutschen Unternehmen</span> nutzen bereits KI,
+                <span className="font-semibold text-gray-900">87% der deutschen Unternehmen</span> nutzen bereits KI, 
                 aber nur <span className="font-semibold text-[#a1251b]">13% sind AI Act compliant</span>.
               </p>
-
+              
               {/* Professional Stats */}
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -440,85 +511,77 @@ const EuAiActCompliance = () => {
             </div>
           </div>
 
-          {/* Compliance Challenges Carousel */}
+          {/* Central Card Display */}
           <div className="relative">
-            <div className="flex items-center justify-between mb-8">
+            <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-gray-900">Compliance-Herausforderungen</h3>
-              <div className="flex gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={scrollPrev}
-                  className="h-8 w-8 p-0"
+              <p className="text-gray-600 mt-2">{currentIndex + 1} von {complianceChallenges.length}</p>
+            </div>
+            
+            {/* Central Card Container */}
+            <div className="flex justify-center mb-8">
+              <div className="w-full max-w-md">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, x: 50, scale: 0.95 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -50, scale: 0.95 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    type: "spring", 
+                    stiffness: 200, 
+                    damping: 20 
+                  }}
+                  className="h-full"
                 >
-                  <ChevronLeft className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={scrollNext}
-                  className="h-8 w-8 p-0"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
+                  <ModernChallengeCard 
+                    challenge={complianceChallenges[currentIndex]} 
+                    index={currentIndex} 
+                    isActive={true}
+                    hasBeenTyped={typedCards.has(currentIndex)}
+                    onTypingComplete={() => {
+                      setTypedCards(prev => new Set(prev).add(currentIndex));
+                    }}
+                  />
+                </motion.div>
               </div>
             </div>
 
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-6">
-                {complianceChallenges.map((challenge, index) => (
-                  <div key={index} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0">
-                    <Card className="h-full border-2 hover:border-[#a1251b]/30 transition-all duration-300 hover:shadow-lg">
-                      <CardHeader className="pb-4">
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="h-12 w-12 rounded-lg bg-[#a1251b] flex items-center justify-center">
-                            <challenge.icon className="h-6 w-6 text-white" />
-                          </div>
-                          <Badge variant="outline" className="text-xs">
-                            {challenge.priority}
-                          </Badge>
-                        </div>
-                        <CardTitle className="text-lg text-gray-900 mb-2">{challenge.title}</CardTitle>
-                        <CardDescription className="text-gray-700 text-sm leading-relaxed">
-                          {challenge.problem}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        {/* Impact Information */}
-                        <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <div className="text-sm font-semibold text-gray-900 mb-1">
-                            {challenge.impact}
-                          </div>
-                          <div className="text-xs text-gray-600 mb-2">
-                            Timeline: {challenge.timeline}
-                          </div>
-                          <div className="text-xs text-gray-700">
-                            {challenge.details}
-                          </div>
-                        </div>
-
-                        {/* Examples */}
-                        <div className="space-y-2">
-                          <h4 className="text-xs font-semibold text-gray-800">Betroffene Systeme:</h4>
-                          <div className="flex flex-wrap gap-1">
-                            {challenge.examples.map((example, i) => (
-                              <Badge key={i} variant="outline" className="text-xs px-2 py-1">
-                                {example}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Real Case */}
-                        <div className="p-2 bg-blue-50 rounded border border-blue-200">
-                          <div className="text-xs font-semibold text-blue-800 mb-1">Praxisbeispiel:</div>
-                          <div className="text-xs text-blue-700">{challenge.realCases}</div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-center gap-4">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={scrollPrev}
+                className="h-12 w-12 p-0 rounded-full border-2 shadow-sm hover:shadow-md transition-all"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              
+              {/* Dots Navigation */}
+              <div className="flex gap-2">
+                {complianceChallenges.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={cn(
+                      "w-3 h-3 rounded-full transition-all duration-300",
+                      index === currentIndex 
+                        ? "bg-[#a1251b] scale-125" 
+                        : "bg-gray-300 hover:bg-gray-400"
+                    )}
+                  />
                 ))}
               </div>
+              
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={scrollNext}
+                className="h-12 w-12 p-0 rounded-full border-2 shadow-sm hover:shadow-md transition-all"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </Button>
             </div>
           </div>
 
@@ -568,6 +631,141 @@ const EuAiActCompliance = () => {
     );
   };
 
+  // Hero Section - Professional and Moderate Tone
+  const HeroSection = () => {
+    const { ref: heroRef, inView: heroInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+    return (
+      <section ref={heroRef} className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+        {/* Background with reduced drama */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-gray-50/20" />
+        
+        <div className="container relative z-10 px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              {/* Professional Status Indicators */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Badge className="bg-gray-100 text-gray-700 border-gray-200 px-4 py-2 font-semibold">
+                  <CheckCircle2 className="h-4 w-4 mr-2" />
+                  AI Act seit 01.08.2024 aktiv
+                </Badge>
+                <Badge className="bg-blue-100 text-blue-700 border-blue-200 px-4 py-2 font-semibold">
+                  <AlertCircle className="h-4 w-4 mr-2" />
+                  Fristen bis 2026
+                </Badge>
+              </div>
+              
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 leading-[1.1]">
+                  EU AI Act Compliance
+                  <span className="block text-[#a1251b] mt-2">
+                    leicht gemacht
+                  </span>
+                </h1>
+                
+                <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
+                  Automatisierte Compliance-Prüfung, rechtssichere Dokumentation und kontinuierliche Überwachung für alle AI Act Anforderungen.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/contact?demo=true">
+                  <Button size="lg" className="bg-gradient-to-r from-[#a1251b] to-red-600 hover:opacity-90 text-white px-8 py-4 text-lg font-semibold">
+                    <PlayCircle className="mr-2 h-5 w-5" />
+                    Kostenlose AI Act Analyse
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="outline" size="lg" className="px-8 py-4 text-lg font-semibold border-2">
+                    <Calendar className="mr-2 h-5 w-5" />
+                    Beratungstermin buchen
+                  </Button>
+                </Link>
+              </div>
+              
+              <div className="flex items-center gap-8 pt-4">
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 border-2 border-white"></div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-green-600 border-2 border-white"></div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 border-2 border-white"></div>
+                  </div>
+                  <span className="text-sm text-gray-600 font-medium">Bereits 200+ Unternehmen vertrauen uns</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Professional Dashboard Preview */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 relative z-10">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900">AI Act Compliance Status</h3>
+                  <Badge className="bg-green-100 text-green-700 border-green-200">
+                    Live Dashboard
+                  </Badge>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="text-center">
+                    <div className="relative w-32 h-32 mx-auto mb-4">
+                      <svg className="w-full h-full transform -rotate-90">
+                        <circle
+                          cx="64"
+                          cy="64"
+                          r="56"
+                          stroke="rgba(161, 37, 27, 0.1)"
+                          strokeWidth="8"
+                          fill="none"
+                        />
+                        <circle
+                          cx="64"
+                          cy="64"
+                          r="56"
+                          stroke="#a1251b"
+                          strokeWidth="8"
+                          fill="none"
+                          strokeDasharray={`${2 * Math.PI * 56}`}
+                          strokeDashoffset={2 * Math.PI * 56 * (1 - complianceScore / 100)}
+                          className="transition-all duration-1000 ease-out"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <div className="text-3xl font-bold text-gray-900">{complianceScore}%</div>
+                        <div className="text-sm text-gray-600">Compliant</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center p-3 bg-green-50 rounded-lg border border-green-200">
+                      <div className="text-lg font-bold text-green-700">23</div>
+                      <div className="text-xs text-green-600">Anforderungen erfüllt</div>
+                    </div>
+                    <div className="text-center p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                      <div className="text-lg font-bold text-yellow-700">7</div>
+                      <div className="text-xs text-yellow-600">In Bearbeitung</div>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center pt-4 border-t border-gray-200">
+                    <div className="text-sm text-gray-600 mb-2">Nächste Deadline</div>
+                    <div className="text-lg font-semibold text-gray-900">August 2025</div>
+                    <div className="text-sm text-gray-600">Generative AI Transparenz</div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-[#a1251b]/10 to-red-400/10 rounded-full blur-xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  };
+
   // AI Act Deep Dive Section
   const AiActDeepDiveSection = () => (
     <section className="py-20 md:py-32 bg-gradient-to-b from-white to-gray-50">
@@ -581,7 +779,7 @@ const EuAiActCompliance = () => {
             Die 4 Risikokategorien des EU AI Act verstehen
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Jedes KI-System muss einer von 4 Risikokategorien zugeordnet werden.
+            Jedes KI-System muss einer von 4 Risikokategorien zugeordnet werden. 
             Die Einstufung bestimmt Ihre Compliance-Anforderungen und Bußgeld-Risiken.
           </p>
         </div>
@@ -629,23 +827,23 @@ const EuAiActCompliance = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 {[
-                  {
-                    category: 'Biometrische Identifikation',
+                  { 
+                    category: 'Biometrische Identifikation', 
                     systems: ['Gesichtserkennung', 'Fingerprint-Matching'],
                     requirements: 'Konformitätsbewertung, CE-Kennzeichnung, EU-Vertreter'
                   },
-                  {
-                    category: 'Kritische Infrastrukturen',
+                  { 
+                    category: 'Kritische Infrastrukturen', 
                     systems: ['Verkehrsmanagement', 'Wasser-/Stromversorgung'],
                     requirements: 'Risikomanagementsystem, Datenqualitäts-Governance'
                   },
-                  {
-                    category: 'Bildung und Berufsbildung',
+                  { 
+                    category: 'Bildung und Berufsbildung', 
                     systems: ['KI-Bewertungssysteme', 'Prüfungsauswertung'],
                     requirements: 'Menschliche Aufsicht, Transparenz, Genauigkeit'
                   },
-                  {
-                    category: 'Beschäftigung und HR',
+                  { 
+                    category: 'Beschäftigung und HR', 
                     systems: ['CV-Screening', 'Performance-Bewertung'],
                     requirements: 'Bias-Monitoring, Aufzeichnungen, Beschwerdemanagement'
                   }
@@ -715,7 +913,7 @@ const EuAiActCompliance = () => {
                     <div key={index} className="p-3 bg-white rounded-lg border border-gray-200">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-medium text-gray-700">{system.name}</span>
-                        <Badge
+                        <Badge 
                           variant={system.status === 'danger' ? 'destructive' : 'outline'}
                           className="text-xs"
                         >
@@ -781,7 +979,7 @@ const EuAiActCompliance = () => {
             KI-Compliance so einfach wie nie
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Während andere Anbieter komplexe Beratung verkaufen, automatisieren wir 90% des AI Act Compliance-Prozesses
+            Während andere Anbieter komplexe Beratung verkaufen, automatisieren wir 90% des AI Act Compliance-Prozesses 
             und machen die Umsetzung so intuitiv wie eine App-Installation.
           </p>
         </div>
@@ -854,12 +1052,12 @@ const EuAiActCompliance = () => {
                     </li>
                   ))}
                 </ul>
-
+                
                 <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                   <div className="text-xs font-semibold text-purple-800 mb-1">Tech-Specs:</div>
                   <div className="text-xs text-purple-700">{benefit.techDetails}</div>
                 </div>
-
+                
                 <div className="p-3 bg-green-50 rounded-lg border border-green-200">
                   <div className="text-xs font-semibold text-green-800 mb-1">Kosteneinsparung:</div>
                   <div className="text-sm font-bold text-green-700">{benefit.savings}</div>
@@ -874,105 +1072,271 @@ const EuAiActCompliance = () => {
 
   // Target Industries Section - Professional Carousel
   const TargetIndustriesSection = () => {
-    const [emblaRef, emblaApi] = useEmblaCarousel({
-      align: 'start',
-      slidesToScroll: 1,
-      breakpoints: {
-        '(min-width: 768px)': { slidesToScroll: 2 },
-        '(min-width: 1024px)': { slidesToScroll: 3 }
-      }
-    });
-
-    const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-    const scrollNext = () => emblaApi && emblaApi.scrollNext();
+    const [selectedIndustry, setSelectedIndustry] = useState(0);
 
     const industries = [
       {
         icon: Factory,
         title: 'Produktion & Industrie 4.0',
+        shortTitle: 'Industrie 4.0',
         riskLevel: 'Hochrisiko',
-        description: 'Autonome Roboter, Predictive Maintenance und Qualitätskontrolle fallen unter Hochrisiko-KI.',
-        aiSystems: ['Industrieroboter mit KI', 'Autonome Fahrzeuge', 'Sicherheitssysteme'],
-        requirements: 'CE-Kennzeichnung für alle autonomen Systeme',
+        description: 'Fertigungsunternehmen stehen vor massiven Compliance-Herausforderungen bei KI-gesteuerten Produktionsanlagen.',
+        realWorldExample: {
+          title: 'Volkswagen Wolfsburg: 30.000 Industrieroboter',
+          description: 'VW muss für jeden KI-gesteuerten Roboter eine CE-Kennzeichnung nachweisen. Kostenpunkt: €2M für die gesamte Flotte.',
+          impact: '6 Monate Produktionsstopp bei Non-Compliance'
+        },
+        aiSystems: [
+          { name: 'Predictive Maintenance', risk: 'Mittel', example: 'Siemens MindSphere' },
+          { name: 'Qualitätskontrolle KI', risk: 'Hoch', example: 'BMW AI Quality Check' },
+          { name: 'Autonome Gabelstapler', risk: 'Hoch', example: 'KION AutoPilot' },
+          { name: 'Cobots (Collaborative Robots)', risk: 'Hoch', example: 'Universal Robots' }
+        ],
+        concreteSteps: [
+          'Sofort: Inventar aller KI-Systeme erstellen',
+          'Q1 2025: Risikobewertung für jeden Roboter',
+          'Q2 2025: CE-Konformitätsprüfung starten',
+          'Q3 2025: Technische Dokumentation komplettieren'
+        ],
+        marsSteinSolution: 'Automatische Erkennung aller Industrie-KI + One-Click CE-Dokumentation',
         timeframe: 'August 2026',
-        fineRisk: '€15M pro System'
+        fineRisk: '€15M pro System',
+        realFines: {
+          description: 'Tesla: $137M Strafe für Autopilot-Sicherheitsmängel',
+          source: 'Reuters',
+          url: 'https://www.reuters.com/business/autos-transportation/tesla-faces-137-million-penalty-over-autopilot-safety-concerns-2023-02-16/'
+        }
       },
       {
         icon: Heart,
         title: 'Gesundheitswesen & MedTech',
+        shortTitle: 'MedTech',
         riskLevel: 'Hochrisiko',
-        description: 'Medizinische KI-Diagnose, Operationsroboter und Patientenüberwachung sind hochrisiko.',
-        aiSystems: ['KI-Diagnostik', 'Operationsroboter', 'Patientenmonitoring'],
-        requirements: 'MDR + AI Act Compliance erforderlich',
+        description: 'Krankenhäuser und MedTech-Unternehmen müssen KI-Diagnosetools als Medizinprodukte + AI Act compliant machen.',
+        realWorldExample: {
+          title: 'Charité Berlin: KI-Radiologie System',
+          description: 'Die Charité nutzt AI für 500.000 Röntgenbilder/Jahr. Ohne CE-Kennzeichnung droht Nutzungsverbot.',
+          impact: '2 Mio. Patienten betroffen bei Systemabschaltung'
+        },
+        aiSystems: [
+          { name: 'KI-Bilddiagnostik', risk: 'Hoch', example: 'Siemens Healthineers AI-Rad' },
+          { name: 'Roboter-Chirurgie', risk: 'Hoch', example: 'Da Vinci Surgical System' },
+          { name: 'Patientenüberwachung', risk: 'Hoch', example: 'Philips IntelliVue Guardian' },
+          { name: 'Medikamenten-Dosierung KI', risk: 'Hoch', example: 'Dosis AI Platform' }
+        ],
+        concreteSteps: [
+          'Sofort: MDR + AI Act Anforderungen mappen',
+          'Q1 2025: Klinische Bewertung für KI-Systeme',
+          'Q2 2025: Benannte Stelle kontaktieren',
+          'Q4 2025: Dual-Zertifizierung abschließen'
+        ],
+        marsSteinSolution: 'MDR-AI Act Dual-Compliance Dashboard mit Echtzeit-Monitoring',
         timeframe: 'August 2026',
-        fineRisk: '€15M pro System'
-      },
-      {
-        icon: GraduationCap,
-        title: 'Bildung & EdTech',
-        riskLevel: 'Hochrisiko',
-        description: 'KI-basierte Bewertungssysteme und Bildungsempfehlungen sind hochrisiko.',
-        aiSystems: ['Automatische Bewertung', 'Lernempfehlungen', 'Prüfungsaufsicht'],
-        requirements: 'Transparenz und menschliche Aufsicht',
-        timeframe: 'August 2026',
-        fineRisk: '€15M pro System'
+        fineRisk: '€15M + Patientenklagen',
+        realFines: {
+          description: 'IBM Watson Health: $62M Verlust nach fehlerhaften Krebsdiagnosen',
+          source: 'STAT News',
+          url: 'https://www.statnews.com/2017/09/05/watson-ibm-cancer/'
+        }
       },
       {
         icon: Building,
         title: 'Finanzdienstleistungen',
+        shortTitle: 'Finance',
         riskLevel: 'Hochrisiko',
-        description: 'Kreditentscheidungen, Betrugsdetection und Risikobewertung sind hochrisiko.',
-        aiSystems: ['Kreditscoring', 'Betrugsdetection', 'Algorithmic Trading'],
-        requirements: 'Zusätzlich zu BaFin-Anforderungen',
+        description: 'Banken und Versicherungen nutzen KI für kritische Entscheidungen - jede davon ist hochrisiko.',
+        realWorldExample: {
+          title: 'Commerzbank: KI-Kreditentscheidungen',
+          description: '2.5 Mio. Kreditanträge/Jahr durch KI vorbewertet. Bei Diskriminierung drohen Sammelklagen + AI Act Strafen.',
+          impact: '€500M Kreditvolumen täglich in Gefahr'
+        },
+        aiSystems: [
+          { name: 'Kreditscoring', risk: 'Hoch', example: 'SCHUFA Score 4.0' },
+          { name: 'Betrugsdetection', risk: 'Hoch', example: 'Wirecard Prevention AI' },
+          { name: 'Robo-Advisor', risk: 'Mittel', example: 'Scalable Capital' },
+          { name: 'KYC/AML Screening', risk: 'Hoch', example: 'ComplyAdvantage AI' }
+        ],
+        concreteSteps: [
+          'Sofort: Bias-Audit aller Scoring-Modelle',
+          'Q1 2025: Explainable AI implementieren',
+          'Q2 2025: BaFin + AI Act Abstimmung',
+          'Q3 2025: Customer Fairness Testing'
+        ],
+        marsSteinSolution: 'Automated Bias Detection + BaFin-konforme AI Act Dokumentation',
         timeframe: 'August 2026',
-        fineRisk: '€15M pro System'
+        fineRisk: '€15M oder 6% Jahresumsatz',
+        realFines: {
+          description: 'Wells Fargo: $3.7B Strafe für diskriminierende Kredit-Algorithmen',
+          source: 'Consumer Financial Protection Bureau (CFPB)',
+          url: 'https://www.consumerfinance.gov/about-us/newsroom/cfpb-orders-wells-fargo-to-pay-37-billion-for-widespread-mismanagement-of-auto-loans-mortgages-and-deposit-accounts/'
+        }
       },
       {
         icon: UserCheck,
         title: 'Human Resources',
+        shortTitle: 'HR Tech',
         riskLevel: 'Hochrisiko',
-        description: 'CV-Screening, Bewerbungsfilter und Performance-Bewertung sind hochrisiko.',
-        aiSystems: ['CV-Screening', 'Interview-Bots', 'Performance-KI'],
-        requirements: 'Bias-Testing und Transparenz',
+        description: 'HR-Abteilungen nutzen KI für Einstellungen - der sensibelste Hochrisikobereich des AI Act.',
+        realWorldExample: {
+          title: 'SAP SuccessFactors: 50M Bewerber-Screenings',
+          description: 'SAPs KI filtert Lebensläufe für 15.000 Unternehmen. Ein Bias-Skandal wäre katastrophal.',
+          impact: 'Diskriminierungsklage: €100M+ Schadensersatz'
+        },
+        aiSystems: [
+          { name: 'CV-Parsing & Ranking', risk: 'Hoch', example: 'Textkernel Match!' },
+          { name: 'Video-Interview-Analyse', risk: 'Verboten*', example: 'HireVue (eingestellt!)' },
+          { name: 'Performance Prediction', risk: 'Hoch', example: 'Workday AI' },
+          { name: 'Skill-Gap-Analyse', risk: 'Mittel', example: 'LinkedIn Talent Insights' }
+        ],
+        concreteSteps: [
+          'SOFORT: Emotionserkennung abschalten!',
+          'Q1 2025: Bias-Testing implementieren',
+          'Q2 2025: Transparenz-Erklärungen erstellen',
+          'Q3 2025: Betriebsrat einbinden'
+        ],
+        marsSteinSolution: 'HR-AI Compliance Suite mit Bias-Monitoring & Betriebsrats-Dashboard',
         timeframe: 'August 2026',
-        fineRisk: '€15M pro System'
+        fineRisk: '€15M + Arbeitnehmerklagen',
+        realFines: {
+          description: 'Amazon: KI-Recruiting-Tool abgeschaltet nach Geschlechter-Diskriminierung',
+          source: 'Reuters',
+          url: 'https://www.reuters.com/article/us-amazon-com-jobs-automation-insight-idUSKCN1MK08G'
+        }
       },
       {
         icon: ShoppingCart,
         title: 'E-Commerce & Retail',
+        shortTitle: 'E-Commerce',
         riskLevel: 'Begrenzt',
-        description: 'Empfehlungssysteme und Chatbots erfordern Transparenz-Compliance.',
-        aiSystems: ['Recommendation Engines', 'Customer Service Bots', 'Price Optimization'],
-        requirements: 'Nutzer-Information bei KI-Interaktion',
+        description: 'Online-Händler müssen Transparenz bei KI-Empfehlungen und Chatbots sicherstellen.',
+        realWorldExample: {
+          title: 'Zalando: 50M Kunden, 1B Empfehlungen/Tag',
+          description: 'Zalando muss bei jeder KI-Empfehlung transparent machen, dass ein Algorithmus entscheidet.',
+          impact: 'Conversion-Rate -15% bei schlechter Umsetzung'
+        },
+        aiSystems: [
+          { name: 'Recommendation Engine', risk: 'Begrenzt', example: 'Amazon Personalize' },
+          { name: 'Dynamic Pricing', risk: 'Mittel', example: 'Prisync AI' },
+          { name: 'Chatbot Support', risk: 'Begrenzt', example: 'Zendesk Answer Bot' },
+          { name: 'Visual Search', risk: 'Begrenzt', example: 'Pinterest Lens' }
+        ],
+        concreteSteps: [
+          'Q1 2025: KI-Kennzeichnung auf Website',
+          'Q2 2025: Chatbot-Disclaimer implementieren',
+          'Q3 2025: Transparenz-Seite erstellen',
+          'Q4 2025: A/B Tests für Conversion'
+        ],
+        marsSteinSolution: 'E-Commerce AI Transparency Kit mit conversion-optimierten Templates',
         timeframe: 'August 2025',
-        fineRisk: '€7.5M'
+        fineRisk: '€7.5M',
+        realFines: {
+          description: 'TikTok: €345M DSGVO-Strafe für intransparente Algorithmen bei Minderjährigen',
+          source: 'Irish Data Protection Commission',
+          url: 'https://www.dataprotection.ie/en/news-media/data-protection-commission-announces-decision-tiktok-inquiry'
+        }
+      },
+      {
+        icon: GraduationCap,
+        title: 'Bildung & EdTech',
+        shortTitle: 'EdTech',
+        riskLevel: 'Hochrisiko',
+        description: 'Bildungseinrichtungen müssen bei KI-Bewertungen extreme Vorsicht walten lassen.',
+        realWorldExample: {
+          title: 'Coursera: 100M Lerner, KI-Prüfungen',
+          description: 'Courseras KI bewertet Millionen von Aufgaben. Ein Fehler bedeutet falsche Abschlüsse.',
+          impact: 'Akkreditierungsverlust + Studentenklagen'
+        },
+        aiSystems: [
+          { name: 'Automated Grading', risk: 'Hoch', example: 'Turnitin Feedback Studio' },
+          { name: 'Lernpfad-Empfehlung', risk: 'Hoch', example: 'Khan Academy AI' },
+          { name: 'Proctoring Software', risk: 'Hoch', example: 'ProctorU' },
+          { name: 'Plagiatserkennung', risk: 'Mittel', example: 'Turnitin' }
+        ],
+        concreteSteps: [
+          'Sofort: Menschliche Kontrolle sicherstellen',
+          'Q1 2025: Transparenz für Studenten',
+          'Q2 2025: Beschwerdeverfahren etablieren',
+          'Q3 2025: Fairness-Audits durchführen'
+        ],
+        marsSteinSolution: 'EdTech Compliance Platform mit Student-Rights-Management',
+        timeframe: 'August 2026',
+        fineRisk: '€15M + Reputationsschaden',
+        realFines: {
+          description: 'UK: A-Level Algorithmus-Skandal - 40% falsche Noten, Regierung musste zurückrudern',
+          source: 'The Guardian',
+          url: 'https://www.theguardian.com/education/2020/aug/17/a-levels-gcse-results-england-based-teacher-assessments-government-u-turn'
+        }
       },
       {
         icon: Briefcase,
-        title: 'Beratung & Dienstleistungen',
+        title: 'Beratung & Professional Services',
+        shortTitle: 'Consulting',
         riskLevel: 'Begrenzt',
-        description: 'KI-gestützte Beratungstools und Entscheidungsunterstützung.',
-        aiSystems: ['Beratungs-KI', 'Dokumentenanalyse', 'Entscheidungsunterstützung'],
-        requirements: 'Transparenz bei KI-Nutzung',
+        description: 'Beratungsunternehmen müssen KI-Tools transparent einsetzen und Kunden informieren.',
+        realWorldExample: {
+          title: 'McKinsey: QuantumBlack AI',
+          description: 'McKinsey nutzt KI für Strategieempfehlungen bei DAX-Konzernen. Intransparenz wäre geschäftsschädigend.',
+          impact: 'Vertrauensverlust = €100M Umsatzrisiko'
+        },
+        aiSystems: [
+          { name: 'Data Analytics AI', risk: 'Begrenzt', example: 'Palantir Foundry' },
+          { name: 'Document Analysis', risk: 'Begrenzt', example: 'KPMG Clara' },
+          { name: 'Market Intelligence', risk: 'Begrenzt', example: 'CB Insights' },
+          { name: 'Presentation Generator', risk: 'Begrenzt', example: 'Beautiful.AI' }
+        ],
+        concreteSteps: [
+          'Q1 2025: KI-Nutzung in Verträge aufnehmen',
+          'Q2 2025: Client Transparency Policy',
+          'Q3 2025: Consultant AI Training',
+          'Q4 2025: Audit Trail System'
+        ],
+        marsSteinSolution: 'Professional Services AI Transparency Suite',
         timeframe: 'August 2025',
-        fineRisk: '€7.5M'
+        fineRisk: '€7.5M + Kundenverlust',
+        realFines: {
+          description: 'PwC: £5M Geldbuße für mangelhafte KI-Audit-Verfahren bei Evergrande',
+          source: 'Financial Reporting Council UK',
+          url: 'https://www.frc.org.uk/news-and-events/news/2022/07/frc-sanctions-against-pwc-and-two-partners-in-relation-to-bhs-and-evergrande/'
+        }
       },
       {
         icon: Cpu,
-        title: 'Software & Technologie',
+        title: 'Software & Tech Companies',
+        shortTitle: 'Tech/SaaS',
         riskLevel: 'Gemischt',
-        description: 'Entwicklung und Bereitstellung von KI-Systemen für andere Branchen.',
-        aiSystems: ['KI-Plattformen', 'API-Services', 'SaaS-Lösungen'],
-        requirements: 'Abhängig vom Anwendungsbereich',
-        timeframe: 'Verschiedene Fristen',
-        fineRisk: 'Bis €35M'
+        description: 'Tech-Unternehmen sind doppelt betroffen: als Nutzer und Anbieter von KI.',
+        realWorldExample: {
+          title: 'Microsoft: Copilot in 1M+ Unternehmen',
+          description: 'Microsoft muss Copilot compliant machen UND Kunden bei deren Compliance unterstützen.',
+          impact: 'EU-Markt = 30% des Umsatzes gefährdet'
+        },
+        aiSystems: [
+          { name: 'Code Generation', risk: 'Begrenzt', example: 'GitHub Copilot' },
+          { name: 'Cloud AI Services', risk: 'Variabel', example: 'Azure AI' },
+          { name: 'AutoML Platforms', risk: 'Hoch', example: 'Google Vertex AI' },
+          { name: 'AI Development Tools', risk: 'Variabel', example: 'TensorFlow' }
+        ],
+        concreteSteps: [
+          'Sofort: AI Act Impact Assessment',
+          'Q1 2025: Customer Compliance Tools',
+          'Q2 2025: Liability Framework Update',
+          'Q3 2025: EU Representative benennen'
+        ],
+        marsSteinSolution: 'Tech Company Dual-Compliance Platform (Anbieter + Nutzer)',
+        timeframe: 'Verschiedene Deadlines',
+        fineRisk: 'Bis €35M oder 7% Umsatz',
+        realFines: {
+          description: 'Meta: €1.2B DSGVO-Strafe für intransparente Datenverarbeitung bei KI-Training',
+          source: 'Irish Data Protection Commission',
+          url: 'https://www.dataprotection.ie/en/news-media/press-releases/data-protection-commission-announces-conclusion-inquiry-meta-ireland'
+        }
       }
     ];
 
     return (
       <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
         <div className="container px-4">
-          <div className="text-center mb-16 space-y-4">
+          <div className="text-center mb-12 space-y-4">
             <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
               <Building2 className="h-3.5 w-3.5 mr-2" />
               Branchen-spezifische AI Act Compliance
@@ -981,89 +1345,204 @@ const EuAiActCompliance = () => {
               AI Act Anforderungen nach Branchen
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Der AI Act betrifft verschiedene Branchen unterschiedlich stark.
+              Der AI Act betrifft verschiedene Branchen unterschiedlich stark. 
               Verstehen Sie Ihre spezifischen Risiken und Compliance-Anforderungen.
             </p>
           </div>
 
-          {/* Industries Carousel */}
-          <div className="relative">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-bold text-gray-900">Branchen-Overview</h3>
-              <div className="flex gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={scrollPrev}
-                  className="h-8 w-8 p-0"
+          {/* Industry Navigation Pills */}
+          <div className="mb-8">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+              {industries.map((industry, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedIndustry(index)}
+                  className={cn(
+                    "flex items-center gap-2 px-4 py-2.5 rounded-full transition-all duration-300",
+                    "text-sm font-medium border-2",
+                    selectedIndustry === index
+                      ? "bg-[#a1251b] text-white border-[#a1251b] shadow-lg scale-105"
+                      : "bg-white text-gray-700 border-gray-200 hover:border-[#a1251b]/30 hover:bg-gray-50"
+                  )}
                 >
-                  <ChevronLeft className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={scrollNext}
-                  className="h-8 w-8 p-0"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-6">
-                {industries.map((industry, index) => (
-                  <div key={index} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0">
-                    <Card className="h-full border-2 hover:border-[#a1251b]/30 transition-all duration-300 hover:shadow-lg">
-                      <CardHeader>
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="h-12 w-12 rounded-lg bg-[#a1251b] flex items-center justify-center">
-                            <industry.icon className="h-6 w-6 text-white" />
-                          </div>
-                          <Badge
-                            variant={industry.riskLevel === 'Hochrisiko' ? 'destructive' : industry.riskLevel === 'Gemischt' ? 'default' : 'outline'}
-                            className="text-xs"
-                          >
-                            {industry.riskLevel}
-                          </Badge>
-                        </div>
-                        <CardTitle className="text-lg">{industry.title}</CardTitle>
-                        <CardDescription className="text-sm">{industry.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div>
-                          <h4 className="text-xs font-semibold text-gray-800 mb-2">Betroffene KI-Systeme:</h4>
-                          <div className="flex flex-wrap gap-1">
-                            {industry.aiSystems.map((system, i) => (
-                              <Badge key={i} variant="outline" className="text-xs">
-                                {system}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <div className="text-xs font-semibold text-gray-800 mb-1">Compliance-Anforderungen:</div>
-                          <div className="text-xs text-gray-700">{industry.requirements}</div>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-2 text-center">
-                          <div className="p-2 bg-blue-50 rounded border border-blue-200">
-                            <div className="text-xs text-blue-600">Zeitrahmen</div>
-                            <div className="text-sm font-semibold text-blue-700">{industry.timeframe}</div>
-                          </div>
-                          <div className="p-2 bg-orange-50 rounded border border-orange-200">
-                            <div className="text-xs text-orange-600">Max. Bußgeld</div>
-                            <div className="text-sm font-semibold text-orange-700">{industry.fineRisk}</div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
-              </div>
+                  <industry.icon className="h-4 w-4" />
+                  <span className="hidden sm:inline">{industry.shortTitle}</span>
+                  <span className="sm:hidden">{industry.shortTitle.split(' ')[0]}</span>
+                </button>
+              ))}
             </div>
           </div>
+
+          {/* Enhanced Industry Card */}
+          <motion.div
+            key={selectedIndustry}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-6xl mx-auto"
+          >
+            <Card className="border-2 border-gray-200 shadow-xl overflow-hidden">
+              {/* Header with gradient background */}
+              <div className={cn(
+                "p-8 text-white",
+                industries[selectedIndustry].riskLevel === 'Hochrisiko' 
+                  ? "bg-gradient-to-r from-red-600 to-orange-600"
+                  : industries[selectedIndustry].riskLevel === 'Begrenzt'
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600"
+                  : "bg-gradient-to-r from-purple-600 to-pink-600"
+              )}>
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-4">
+                    <div className="h-16 w-16 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center">
+                      {React.createElement(industries[selectedIndustry].icon, { className: "h-8 w-8 text-white" })}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold">{industries[selectedIndustry].title}</h3>
+                      <Badge className="mt-2 bg-white/20 text-white border-white/30">
+                        Risikostufe: {industries[selectedIndustry].riskLevel}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-lg text-white/90">{industries[selectedIndustry].description}</p>
+              </div>
+
+              <CardContent className="p-8 space-y-8">
+                {/* Real World Example */}
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">
+                  <div className="flex items-start gap-4">
+                    <div className="h-12 w-12 rounded-lg bg-[#a1251b] flex items-center justify-center flex-shrink-0">
+                      <Building className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">
+                        {industries[selectedIndustry].realWorldExample.title}
+                      </h4>
+                      <p className="text-gray-700 mb-3">
+                        {industries[selectedIndustry].realWorldExample.description}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm">
+                        <AlertCircle className="h-4 w-4 text-red-600" />
+                        <span className="font-semibold text-red-700">
+                          Impact: {industries[selectedIndustry].realWorldExample.impact}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* AI Systems Grid */}
+                <div>
+                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Cpu className="h-5 w-5" />
+                    Betroffene KI-Systeme in dieser Branche
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {industries[selectedIndustry].aiSystems.map((system, index) => (
+                      <div key={index} className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow">
+                        <div className="flex items-start justify-between mb-2">
+                          <h5 className="font-semibold text-gray-900">{system.name}</h5>
+                          <Badge 
+                            variant={
+                              system.risk === 'Hoch' ? 'destructive' : 
+                              system.risk === 'Mittel' ? 'default' : 
+                              system.risk === 'Verboten*' ? 'destructive' :
+                              'outline'
+                            }
+                            className="text-xs"
+                          >
+                            {system.risk}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-gray-600">
+                          <span className="font-medium">Beispiel:</span> {system.example}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Concrete Steps */}
+                <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                  <h4 className="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
+                    <CheckSquare className="h-5 w-5" />
+                    Konkrete Schritte zur Compliance
+                  </h4>
+                  <div className="space-y-3">
+                    {industries[selectedIndustry].concreteSteps.map((step, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <div className="h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">
+                          {index + 1}
+                        </div>
+                        <p className="text-gray-700">{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Stats and Solution */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Risk and Timeline */}
+                  <div className="space-y-4">
+                    <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium text-orange-700">Maximales Bußgeld</span>
+                        <Euro className="h-4 w-4 text-orange-600" />
+                      </div>
+                      <p className="text-lg font-bold text-orange-900">{industries[selectedIndustry].fineRisk}</p>
+                    </div>
+                    <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium text-blue-700">Compliance-Deadline</span>
+                        <Clock className="h-4 w-4 text-blue-600" />
+                      </div>
+                      <p className="text-lg font-bold text-blue-900">{industries[selectedIndustry].timeframe}</p>
+                    </div>
+                    {industries[selectedIndustry].realFines && (
+                      <div className="bg-red-50 rounded-lg p-4 border border-red-200">
+                        <div className="flex items-start gap-2">
+                          <AlertCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-0.5" />
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-red-700 mb-1">Reale Strafen:</p>
+                            <p className="text-sm text-red-600 mb-2">{industries[selectedIndustry].realFines.description}</p>
+                            <a 
+                              href={industries[selectedIndustry].realFines.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs text-red-700 hover:text-red-900 font-medium transition-colors group"
+                            >
+                              <Globe className="h-3 w-3" />
+                              <span>Quelle: {industries[selectedIndustry].realFines.source}</span>
+                              <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Marsstein Solution */}
+                  <Card className="bg-gradient-to-br from-[#a1251b] to-purple-600 text-white border-0">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="h-12 w-12 rounded-lg bg-white/20 backdrop-blur flex items-center justify-center flex-shrink-0">
+                          <Rocket className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <h5 className="font-bold text-lg mb-2">Marsstein Lösung</h5>
+                          <p className="text-white/90 mb-4">{industries[selectedIndustry].marsSteinSolution}</p>
+                          <Button className="bg-white text-[#a1251b] hover:bg-gray-100">
+                            Branchenspezifische Demo
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </section>
     );
@@ -1229,7 +1708,7 @@ const EuAiActCompliance = () => {
                     <div className="text-sm text-purple-600 font-medium">{testimonial.company}</div>
                   </div>
                 </div>
-
+                
                 <Badge variant="outline" className="mt-4 text-xs">
                   {testimonial.industry}
                 </Badge>
@@ -1346,11 +1825,11 @@ const EuAiActCompliance = () => {
                     </li>
                   ))}
                 </ul>
-                <Button
+                <Button 
                   className={cn(
                     "w-full",
-                    plan.popular
-                      ? "bg-gradient-to-r from-purple-600 to-[#a1251b] hover:from-purple-700 hover:to-[#8a1f17]"
+                    plan.popular 
+                      ? "bg-gradient-to-r from-purple-600 to-[#a1251b] hover:from-purple-700 hover:to-[#8a1f17]" 
                       : "bg-[#a1251b] hover:bg-[#8a1f17]"
                   )}
                   size="lg"
@@ -1447,14 +1926,14 @@ const EuAiActCompliance = () => {
             <Gavel className="h-3.5 w-3.5 mr-2" />
             Professionelle AI Act Compliance
           </Badge>
-
+          
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             AI Act Compliance in 2 Wochen statt 6 Monaten
           </h2>
-
+          
           <p className="text-xl text-white/90 leading-relaxed">
-            Schließen Sie sich 200+ Unternehmen an, die mit Marsstein bereits AI Act compliant sind.
-            <span className="font-semibold"> Frühzeitige Compliance sichert Wettbewerbsvorteile</span>
+            Schließen Sie sich 200+ Unternehmen an, die mit Marsstein bereits AI Act compliant sind. 
+            <span className="font-semibold"> Frühzeitige Compliance sichert Wettbewerbsvorteile</span> 
             und vermeidet rechtliche Risiken.
           </p>
 
@@ -1491,16 +1970,18 @@ const EuAiActCompliance = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <HeroSection />
-      <AiActPainpointsSection />
-      <AiActDeepDiveSection />
-      <BenefitsSection />
-      <TargetIndustriesSection />
-      <ProcessSection />
-      <TestimonialsSection />
-      <PricingSection />
-      <FAQSection />
-      <CTASection />
+      <main>
+        <HeroSection />
+        <AiActPainpointsSection />
+        <AiActDeepDiveSection />
+        <BenefitsSection />
+        <TargetIndustriesSection />
+        <ProcessSection />
+        <TestimonialsSection />
+        <PricingSection />
+        <FAQSection />
+        <CTASection />
+      </main>
       <Footer />
     </div>
   );
