@@ -43,7 +43,7 @@ export const Header: React.FC = () => {
   const frameworksDropdown = (
     <DropdownMenu>
       <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-        {t('Rahmenwerke')}
+        {t('nav_frameworks')}
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>

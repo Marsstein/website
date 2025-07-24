@@ -17,6 +17,7 @@ const translations = {
   en: {
     // Navigation
     nav_home: 'Home',
+    nav_frameworks: 'Frameworks',
     nav_features: 'Features',
     nav_pricing: 'Pricing',
     nav_academy: 'Academy',
@@ -236,6 +237,7 @@ const translations = {
   de: {
     // Navigation
     nav_home: 'Startseite',
+    nav_frameworks: 'Rahmenwerke',
     nav_features: 'Funktionen',
     nav_pricing: 'Preise',
     nav_academy: 'Akademie',

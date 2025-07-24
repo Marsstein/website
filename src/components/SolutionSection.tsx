@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { 
+import {
   Sparkles,
   ArrowRight,
   CheckCircle,
@@ -27,21 +27,21 @@ export const SolutionSection: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (!timelineRef.current) return;
-      
+
       const timelineElement = timelineRef.current;
       const rect = timelineElement.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
+
       // Calculate when timeline is in view
       const timelineTop = rect.top;
       const timelineHeight = rect.height;
-      
+
       // Start progress when timeline enters viewport, complete when it leaves
       const startPoint = windowHeight;
       const endPoint = -timelineHeight;
-      
+
       if (timelineTop <= startPoint && timelineTop >= endPoint) {
-        const progress = Math.max(0, Math.min(100, 
+        const progress = Math.max(0, Math.min(100,
           ((startPoint - timelineTop) / (startPoint - endPoint)) * 100
         ));
         setScrollProgress(progress);
@@ -50,7 +50,7 @@ export const SolutionSection: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial call
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -102,7 +102,7 @@ export const SolutionSection: React.FC = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Marsstein automatisiert komplexe Compliance-Prozesse durch KI-gestützte 
+              Marsstein automatisiert komplexe Compliance-Prozesse durch KI-gestützte
               Technologie und ermöglicht effiziente, skalierbare Workflows.
             </p>
           </div>
@@ -150,7 +150,7 @@ export const SolutionSection: React.FC = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 {/* Floating decoration */}
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity animate-pulse" />
               </Card>
@@ -194,260 +194,10 @@ export const SolutionSection: React.FC = () => {
                     ))}
                   </div>
                 </div>
-                
-                {/* Floating decoration */}
+
+                Floating decoration
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity animate-pulse" />
               </Card>
-
-            </div>
-
-            {/* Impact Visualization */}
-            <div className="mt-12 mb-16">
-              <div className="relative max-w-5xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-10">
-                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
-                    Der Marsstein-Effekt
-                  </h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400">
-                    Wie sich Ihr Arbeitsalltag mit intelligenter Automatisierung verändert
-                  </p>
-                </div>
-
-                {/* Impact Timeline */}
-                <div className="relative bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
-                  
-                  {/* Timeline Visualization */}
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
-                    
-                    {/* Woche 1-2: Einführung */}
-                    <div className="relative group">
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-2xl p-6 border-2 border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all duration-500 hover:scale-[1.02]">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <span className="text-white font-bold text-lg">1-2</span>
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-blue-800 dark:text-blue-200">Woche 1-2</h4>
-                            <p className="text-sm text-blue-600 dark:text-blue-400">Onboarding & Setup</p>
-                          </div>
-                        </div>
-                        
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 text-sm">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                            <span className="text-gray-700 dark:text-gray-300">Erste Dokumente analysiert</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                            <span className="text-gray-700 dark:text-gray-300">KI lernt Ihre Prozesse</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                            <span className="text-gray-700 dark:text-gray-300">Team-Schulung abgeschlossen</span>
-                          </div>
-                        </div>
-                        
-                        <div className="mt-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Zeitersparnis</span>
-                            <span className="text-lg font-bold text-blue-600">15%</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Woche 3-4: Optimierung */}
-                    <div className="relative group">
-                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-2xl p-6 border-2 border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all duration-500 hover:scale-[1.02]">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <span className="text-white font-bold text-lg">3-4</span>
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-purple-800 dark:text-purple-200">Woche 3-4</h4>
-                            <p className="text-sm text-purple-600 dark:text-purple-400">Vollautomatisierung</p>
-                          </div>
-                        </div>
-                        
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 text-sm">
-                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                            <span className="text-gray-700 dark:text-gray-300">Workflows automatisiert</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                            <span className="text-gray-700 dark:text-gray-300">Berichte generieren sich</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                            <span className="text-gray-700 dark:text-gray-300">Proaktive Warnungen aktiv</span>
-                          </div>
-                        </div>
-                        
-                        <div className="mt-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Zeitersparnis</span>
-                            <span className="text-lg font-bold text-purple-600">75%</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Ab Woche 5: Optimaler Betrieb */}
-                    <div className="relative group">
-                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-2xl p-6 border-2 border-green-200 dark:border-green-800 hover:shadow-xl transition-all duration-500 hover:scale-[1.02]">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <CheckCircle className="h-6 w-6 text-white" />
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-green-800 dark:text-green-200">Ab Woche 5</h4>
-                            <p className="text-sm text-green-600 dark:text-green-400">Optimaler Betrieb</p>
-                          </div>
-                        </div>
-                        
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 text-sm">
-                            <CheckCircle className="w-4 h-4 text-green-500" />
-                            <span className="text-gray-700 dark:text-gray-300">Audit-Ready jederzeit</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <CheckCircle className="w-4 h-4 text-green-500" />
-                            <span className="text-gray-700 dark:text-gray-300">Kontinuierliche Überwachung</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <CheckCircle className="w-4 h-4 text-green-500" />
-                            <span className="text-gray-700 dark:text-gray-300">Strategische Beratung</span>
-                          </div>
-                        </div>
-                        
-                        <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-green-700 dark:text-green-300">Zeitersparnis</span>
-                            <span className="text-lg font-bold text-green-600">95%</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* ROI Development Chart */}
-                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
-                    <div className="flex items-center justify-between mb-6">
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white">ROI-Entwicklung</h4>
-                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                        <TrendingUp className="h-4 w-4" />
-                        <span>Break-Even nach 6 Monaten</span>
-                      </div>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                        <div className="text-2xl font-bold text-blue-600 mb-1">1. Monat</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">Investition</div>
-                        <div className="text-lg font-bold text-red-500">-€15k</div>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                        <div className="text-2xl font-bold text-purple-600 mb-1">3. Monat</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">Erste Einsparungen</div>
-                        <div className="text-lg font-bold text-orange-500">-€5k</div>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                        <div className="text-2xl font-bold text-green-600 mb-1">6. Monat</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">Break-Even</div>
-                        <div className="text-lg font-bold text-green-600">€0</div>
-                      </div>
-                      <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                        <div className="text-2xl font-bold text-emerald-600 mb-1">12. Monat</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">Gewinn</div>
-                        <div className="text-lg font-bold text-emerald-600">+€75k</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Key Insight */}
-                  <div className="mt-8 text-center">
-                    <div className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-red/10 to-green-500/10 px-8 py-4 rounded-2xl border-2 border-brand-red/20">
-                      <Sparkles className="h-6 w-6 text-brand-red animate-pulse" />
-                      <span className="text-lg font-bold text-gray-900 dark:text-white">
-                        Ihre Compliance-Abteilung wird vom Kostenverursacher zum Werttreiber
-                      </span>
-                      <TrendingUp className="h-6 w-6 text-green-600 animate-bounce" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Benefits */}
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="inline-flex p-4 rounded-full mb-4 bg-green-100 dark:bg-green-900/30">
-                  <TrendingUp className="h-8 w-8 text-green-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">400% Effizienzsteigerung</h3>
-                <p className="text-gray-600 dark:text-gray-400">Automatisierte Prozesse steigern die Produktivität um das Vierfache</p>
-              </div>
-              
-              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="inline-flex p-4 rounded-full mb-4 bg-blue-100 dark:bg-blue-900/30">
-                  <Euro className="h-8 w-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">€50k+ Kostenoptimierung/Jahr</h3>
-                <p className="text-gray-600 dark:text-gray-400">Reduzierte Personalkosten, minimierte Compliance-Risiken, weniger externe Beratung</p>
-              </div>
-              
-              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="inline-flex p-4 rounded-full mb-4 bg-purple-100 dark:bg-purple-900/30">
-                  <Users className="h-8 w-8 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Strategischer Fokus</h3>
-                <p className="text-gray-600 dark:text-gray-400">Mitarbeiter können sich auf wertschöpfende Tätigkeiten konzentrieren</p>
-              </div>
-            </div>
-
-            {/* ROI Section - Integrated as part of transformation */}
-            <div className="mt-16">
-              <div className="rounded-lg bg-card text-card-foreground shadow-sm p-8 bg-gradient-to-r from-brand-red/5 to-green-500/5 border-2 border-brand-red/20">
-                <div className="text-center space-y-6">
-                  <h3 className="text-3xl font-bold">
-                    Return on Investment
-                  </h3>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="space-y-2">
-                      <div className="text-4xl font-bold text-brand-red">
-                        300%
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">ROI im ersten Jahr</p>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-4xl font-bold text-green-600">
-                        €75k
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">Durchschnittliche Ersparnis</p>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-4xl font-bold text-blue-600">
-                        6 Monate
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">Break-Even Point</p>
-                    </div>
-                  </div>
-
-                  <Link to="/contact?demo=true">
-                    <Button 
-                      size="lg" 
-                      className="bg-brand-red hover:bg-brand-red/90 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
-                    >
-                      <Target className="mr-2 h-5 w-5" />
-                      ROI-Analyse anfordern
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -461,7 +211,7 @@ export const SolutionSection: React.FC = () => {
               </div>
               <h3 className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
                 Marsstein Compliance-Plattform:
-                <span className="bg-gradient-to-r from-brand-red via-red-600 to-orange-500 bg-clip-text text-transparent block"> 
+                <span className="bg-gradient-to-r from-brand-red via-red-600 to-orange-500 bg-clip-text text-transparent block">
                   Automatisiert und effizient
                 </span>
               </h3>
@@ -475,8 +225,8 @@ export const SolutionSection: React.FC = () => {
               {/* Central Timeline Line */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full">
                 <div className="w-full h-full bg-gradient-to-b from-brand-red via-purple-500 to-green-500 rounded-full opacity-20"></div>
-                <div 
-                  className="absolute top-0 w-full bg-gradient-to-b from-brand-red via-purple-500 to-green-500 rounded-full transition-all duration-300" 
+                <div
+                  className="absolute top-0 w-full bg-gradient-to-b from-brand-red via-purple-500 to-green-500 rounded-full transition-all duration-300"
                   style={{ height: `${scrollProgress}%` }}
                 ></div>
               </div>
@@ -530,12 +280,12 @@ export const SolutionSection: React.FC = () => {
                               <span className="font-semibold text-brand-red">{Math.round((index + 1) / 3 * 100)}%</span>
                             </div>
                             <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                              <div 
+                              <div
                                 className={cn(
                                   "h-full bg-gradient-to-r transition-all duration-1000 ease-out rounded-full",
                                   step.color
                                 )}
-                                style={{ 
+                                style={{
                                   width: `${(index + 1) * 33.33}%`,
                                   boxShadow: `0 0 10px ${index === 0 ? '#3b82f6' : index === 1 ? '#8b5cf6' : '#10b981'}40`
                                 }}
@@ -546,11 +296,11 @@ export const SolutionSection: React.FC = () => {
                           {/* Enhanced Key Benefits */}
                           <div className="grid grid-cols-2 gap-4">
                             {[
-                              { label: index === 0 ? "Zeitersparnis" : index === 1 ? "Automation" : "Überwachung", 
+                              { label: index === 0 ? "Zeitersparnis" : index === 1 ? "Automation" : "Überwachung",
                                 value: index === 0 ? "85%" : index === 1 ? "24/7" : "Real-time",
                                 color: index === 0 ? "from-blue-500 to-purple-600" : index === 1 ? "from-purple-500 to-pink-600" : "from-green-500 to-teal-600",
                                 icon: index === 0 ? Clock : index === 1 ? RefreshCw : Shield },
-                              { label: index === 0 ? "Genauigkeit" : index === 1 ? "Integration" : "Alerts", 
+                              { label: index === 0 ? "Genauigkeit" : index === 1 ? "Integration" : "Alerts",
                                 value: index === 0 ? "99%" : index === 1 ? "Nahtlos" : "Sofort",
                                 color: index === 0 ? "from-emerald-500 to-cyan-600" : index === 1 ? "from-orange-500 to-red-600" : "from-yellow-500 to-orange-600",
                                 icon: index === 0 ? Target : index === 1 ? Zap : TrendingUp }
@@ -562,7 +312,7 @@ export const SolutionSection: React.FC = () => {
                                     "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-xl",
                                     benefit.color
                                   )} />
-                                  
+
                                   {/* Icon */}
                                   <div className={cn(
                                     "w-8 h-8 rounded-lg bg-gradient-to-br flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform duration-300",
@@ -570,7 +320,7 @@ export const SolutionSection: React.FC = () => {
                                   )}>
                                     <benefit.icon className="h-4 w-4 text-white" />
                                   </div>
-                                  
+
                                   {/* Value with counter animation */}
                                   <div className="text-center relative">
                                     <div className={cn(
@@ -583,7 +333,7 @@ export const SolutionSection: React.FC = () => {
                                       {benefit.label}
                                     </div>
                                   </div>
-                                  
+
                                   {/* Animated border glow */}
                                   <div className={cn(
                                     "absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r p-[2px] -z-10",
@@ -592,7 +342,7 @@ export const SolutionSection: React.FC = () => {
                                     <div className="w-full h-full bg-white dark:bg-gray-900 rounded-xl" />
                                   </div>
                                 </div>
-                                
+
                                 {/* Floating particles */}
                                 <div className={cn(
                                   "absolute -top-1 -right-1 w-3 h-3 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-bounce transition-all duration-500",
@@ -611,8 +361,8 @@ export const SolutionSection: React.FC = () => {
                         <div className={cn(
                           "absolute -top-4 w-8 h-8 rounded-full opacity-20 group-hover:opacity-40 transition-opacity animate-pulse",
                           index % 2 === 0 ? "-right-4" : "-left-4",
-                          index === 0 ? "bg-gradient-to-br from-blue-500 to-purple-500" : 
-                          index === 1 ? "bg-gradient-to-br from-purple-500 to-pink-500" : 
+                          index === 0 ? "bg-gradient-to-br from-blue-500 to-purple-500" :
+                          index === 1 ? "bg-gradient-to-br from-purple-500 to-pink-500" :
                           "bg-gradient-to-br from-green-500 to-teal-500"
                         )} />
                       </Card>
@@ -659,7 +409,7 @@ export const SolutionSection: React.FC = () => {
                                   </div>
                                 </div>
                               </div>
-                              
+
                               {/* Document Progress */}
                               <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 backdrop-blur-sm border border-blue-100 dark:border-blue-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
                                 <div className="flex items-center justify-between mb-2">
@@ -729,7 +479,7 @@ export const SolutionSection: React.FC = () => {
                                   </div>
                                 </div>
                               </div>
-                              
+
                               {/* Automation Progress */}
                               <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 backdrop-blur-sm border border-purple-100 dark:border-purple-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
                                 <div className="flex items-center justify-between mb-2">
@@ -769,13 +519,13 @@ export const SolutionSection: React.FC = () => {
                                     <span className="text-xs text-gray-600 dark:text-gray-300 flex-1">Dokumentenerstellung</span>
                                     <CheckCircle className="h-3 w-3 text-green-500" />
                                   </div>
-                                  
+
                                   <div className="flex items-center gap-2 animate-workflow-item" style={{ animationDelay: `${index * 300 + 1200}ms` }}>
                                     <div className="w-2 h-2 bg-purple-500 rounded-full animate-spin-pulse"></div>
                                     <span className="text-xs text-gray-600 dark:text-gray-300 flex-1">Audit-Bericht wird generiert</span>
                                     <RefreshCw className="h-3 w-3 text-purple-500 animate-spin-slow" />
                                   </div>
-                                  
+
                                   <div className="flex items-center gap-2 animate-workflow-item opacity-50" style={{ animationDelay: `${index * 300 + 1300}ms` }}>
                                     <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                                     <span className="text-xs text-gray-400 flex-1">Compliance-Review</span>
@@ -806,7 +556,7 @@ export const SolutionSection: React.FC = () => {
                                   </div>
                                 </div>
                               </div>
-                              
+
                               {/* Compliance Score */}
                               <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 backdrop-blur-sm border border-green-100 dark:border-green-900/30 animate-scale-in" style={{ animationDelay: `${index * 300 + 800}ms` }}>
                                 <div className="flex items-center justify-between mb-2">
@@ -856,7 +606,7 @@ export const SolutionSection: React.FC = () => {
                             </div>
                           </Card>
                         )}
-                        
+
                         {/* Floating particles around dashboard */}
                         <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-400 rounded-full animate-bounce opacity-60" />
                         <div className="absolute -bottom-1 -left-2 w-3 h-3 bg-green-400 rounded-full animate-pulse opacity-50" />
@@ -872,8 +622,8 @@ export const SolutionSection: React.FC = () => {
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full animate-pulse shadow-lg"></div>
                 <div className="pt-8">
                   <Link to="/contact?demo=true">
-                    <Button 
-                      size="lg" 
+                    <Button
+                      size="lg"
                       className="bg-gradient-to-r from-brand-red via-red-600 to-orange-500 hover:from-brand-red/90 hover:via-red-600/90 hover:to-orange-500/90 text-white shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-500 group px-12 py-6 text-xl rounded-2xl"
                     >
                       <Zap className="mr-3 h-6 w-6 animate-pulse" />
