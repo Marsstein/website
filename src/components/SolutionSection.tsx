@@ -75,6 +75,13 @@ export const SolutionSection: React.FC = () => {
       description: 'Proaktive Überwachung gewährleistet kontinuierliche Compliance-Konformität.',
       icon: Shield,
       color: 'from-green-500 to-teal-600'
+    },
+    {
+      number: '4',
+      title: 'Marsstein Integration',
+      description: 'Optimierte Integration für Marsstein.com, um Compliance-Prozesse nahtlos zu verbinden.',
+      icon: RefreshCw,
+      color: 'from-yellow-500 to-orange-600'
     }
   ];
 
@@ -108,11 +115,11 @@ export const SolutionSection: React.FC = () => {
           </div>
 
           {/* Slides Section */}
-          <div className="relative grid grid-cols-4 gap-8 items-center">
+          <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-center">
             {steps.map((step, index) => (
               <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-full flex items-center justify-center mb-4">
-                  <step.icon className={`h-8 w-8 bg-gradient-to-r ${step.color} bg-clip-text text-transparent`} aria-hidden="true" />
+                <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <step.icon className="h-8 w-8 text-brand-red" aria-hidden="true" />
                 </div>
                 <h4 className="text-lg font-semibold">{step.title}</h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">{step.description}</p>
