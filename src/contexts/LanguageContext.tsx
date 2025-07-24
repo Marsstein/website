@@ -17,8 +17,9 @@ const translations = {
   en: {
     // Navigation
     nav_home: 'Home',
-    nav_features: 'Features',
-    nav_pricing: 'Pricing',
+    nav_dsgvo: 'GDPR Compliance',
+    nav_iso27001: 'ISO 27001',
+    nav_ai_act: 'EU AI Act',
     nav_academy: 'Academy',
     nav_resources: 'Resources',
     nav_login: 'Login',
@@ -233,8 +234,9 @@ const translations = {
   de: {
     // Navigation
     nav_home: 'Startseite',
-    nav_features: 'Funktionen',
-    nav_pricing: 'Preise',
+    nav_dsgvo: 'DSGVO Compliance',
+    nav_iso27001: 'ISO 27001',
+    nav_ai_act: 'EU AI Act',
     nav_academy: 'Akademie',
     nav_resources: 'Ressourcen',
     nav_login: 'Anmelden',

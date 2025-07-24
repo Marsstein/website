@@ -32,8 +32,9 @@ export const Header: React.FC = () => {
 
   const navItems = [
     { key: 'nav_home', href: '/' },
-    { key: 'nav_features', href: '#features' },
-    { key: 'nav_pricing', href: '/pricing' },
+    { key: 'nav_dsgvo', href: '/dsgvo-compliance' },
+    { key: 'nav_iso27001', href: '/iso-27001-compliance' },
+    { key: 'nav_ai_act', href: '/eu-ai-act-compliance' },
     { key: 'nav_academy', href: '/academy' },
     { key: 'nav_resources', href: '/resources' },
     { key: 'nav_contact', href: '/contact' },
