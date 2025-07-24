@@ -15,6 +15,16 @@ import Dashboard from "./pages/Dashboard";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
+import { Resources } from "./pages/Resources";
+import { DSGVOComplianceChecklist } from "./pages/resources/DSGVOComplianceChecklist";
+import { DataPrivacyReadinessAssessment } from "./pages/resources/DataPrivacyReadinessAssessment";
+import { BreachResponseChecklist } from "./pages/resources/BreachResponseChecklist";
+import { CookieComplianceAudit } from "./pages/resources/CookieComplianceAudit";
+import { VendorAssessmentTemplate } from "./pages/resources/VendorAssessmentTemplate";
+import DsgvoCompliance from "./pages/DsgvoCompliance";
+import Iso27001Compliance from "./pages/Iso27001Compliance";
+import EuAiActCompliance from "./pages/EuAiActCompliance";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -41,6 +51,23 @@ const App = () => (
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
+                <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
+                <Route path="/iso-27001-compliance" element={<Iso27001Compliance />} />
+                <Route path="/eu-ai-act-compliance" element={<EuAiActCompliance />} />
+                <Route path="/dashboard/*" element={<Dashboard />} />
+                <Route path="/thank-you" element={<ThankYou />} />
+
+                {/* Resources Routes */}
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/resources/dsgvo-compliance-checklist" element={<DSGVOComplianceChecklist />} />
+                <Route path="/resources/datenschutz-readiness-assessment" element={<DataPrivacyReadinessAssessment />} />
+                <Route path="/resources/breach-response-checklist" element={<BreachResponseChecklist />} />
+                <Route path="/resources/cookie-compliance-audit" element={<CookieComplianceAudit />} />
+                <Route path="/resources/vendor-assessment-template" element={<VendorAssessmentTemplate />} />
+
+                {/* DSGVO Compliance Product Page */}
+                <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
+
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

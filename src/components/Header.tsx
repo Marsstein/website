@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/hooks/useLanguage';
-import { Globe, Menu } from 'lucide-react';
+import { Globe } from 'lucide-react';
+import { Menu as LucideMenu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
 export const Header: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -31,12 +33,37 @@ export const Header: React.FC = () => {
   };
 
   const navItems = [
-    { key: 'nav_home', href: '/' },
-    { key: 'nav_features', href: '#features' },
-    { key: 'nav_pricing', href: '/pricing' },
+    { key: 'nav_frameworks', href: '#' },
     { key: 'nav_academy', href: '/academy' },
+    { key: 'nav_pricing', href: '/pricing' },
+    { key: 'nav_resources', href: '/resources' }, // Resources is now a standalone link
     { key: 'nav_contact', href: '/contact' },
   ];
+
+  const frameworksDropdown = (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+        {t('Rahmenwerke')}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>
+          <Link to="/eu-ai-act-compliance" className="block w-full">
+            {t('nav_ai_act')}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/iso-27001-compliance" className="block w-full">
+            {t('nav_iso27001')}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/dsgvo-compliance" className="block w-full">
+            {t('nav_dsgvo')}
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -54,14 +81,8 @@ export const Header: React.FC = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
-            item.href.startsWith('#') ? (
-              <button
-                key={item.key}
-                onClick={handleFeaturesClick}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {t(item.key)}
-              </button>
+            item.key === 'nav_frameworks' ? (
+              <div key={item.key}>{frameworksDropdown}</div>
             ) : (
               <Link
                 key={item.key}
@@ -115,25 +136,40 @@ export const Header: React.FC = () => {
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
+                <LucideMenu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item) => (
-                  item.href.startsWith('#') ? (
-                    <button
-                      key={item.key}
-                      onClick={handleFeaturesClick}
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
-                    >
-                      {t(item.key)}
-                    </button>
+                  item.key === 'nav_frameworks' ? (
+                    <DropdownMenu key={item.key}>
+                      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                        {t('nav_frameworks')}
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem>
+                          <Link to="/eu-ai-act-compliance" className="block w-full">
+                            {t('nav_ai_act')}
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/iso-27001-compliance" className="block w-full">
+                            {t('nav_iso27001')}
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/dsgvo-compliance" className="block w-full">
+                            {t('nav_dsgvo')}
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   ) : (
                     <Link
                       key={item.key}
                       to={item.href}
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
                     >
                       {t(item.key)}
                     </Link>
