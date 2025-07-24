@@ -14,8 +14,11 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export const TrustIndicators: React.FC = () => {
+  const { language } = useLanguage();
+
   const certifications = [
     {
       icon: Shield,
@@ -86,23 +89,41 @@ export const TrustIndicators: React.FC = () => {
 
   const testimonialHighlights = [
     {
-      quote: "Marsstein hat unsere Audit-Vorbereitungszeit von 3 Monaten auf 2 Wochen reduziert.",
+      quote: {
+        en: "Marsstein's innovative approach to compliance is exactly what we needed to streamline our processes.",
+        de: "Marssteins innovativer Ansatz zur Compliance ist genau das, was wir brauchten, um unsere Prozesse zu optimieren."
+      },
       author: "Dr. Sarah Weber",
-      role: "Datenschutzbeauftragte",
+      role: {
+        en: "Data Protection Officer",
+        de: "Datenschutzbeauftragte"
+      },
       company: "TechCorp GmbH",
       rating: 5
     },
     {
-      quote: "Die Automatisierung ermöglicht es uns, strategische Initiativen zu priorisieren.",
+      quote: {
+        en: "The idea of automating compliance workflows is groundbreaking and saves us valuable time.",
+        de: "Die Idee, Compliance-Workflows zu automatisieren, ist bahnbrechend und spart uns wertvolle Zeit."
+      },
       author: "Michael Schmidt",
-      role: "IT-Leiter",
+      role: {
+        en: "IT Manager",
+        de: "IT-Leiter"
+      },
       company: "MedHealth AG",
       rating: 5
     },
     {
-      quote: "Die KI-gestützte Analyse identifiziert Compliance-Lücken, die manuell übersehen wurden.",
+      quote: {
+        en: "Marsstein's concept of AI-driven analysis is a game-changer for identifying compliance gaps.",
+        de: "Das Konzept der KI-gestützten Analyse von Marsstein ist ein Wendepunkt bei der Identifizierung von Compliance-Lücken."
+      },
       author: "Lisa Chen",
-      role: "Compliance Officer",
+      role: {
+        en: "Compliance Officer",
+        de: "Compliance-Beauftragte"
+      },
       company: "FinanceFirst",
       rating: 5
     }
@@ -211,7 +232,7 @@ export const TrustIndicators: React.FC = () => {
                     </div>
 
                     <blockquote className="text-gray-700 dark:text-gray-300 italic">
-                      "{testimonial.quote}"
+                      {testimonial.quote[language]}
                     </blockquote>
 
                     <div className="space-y-1">
@@ -219,7 +240,7 @@ export const TrustIndicators: React.FC = () => {
                         {testimonial.author}
                       </p>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {testimonial.role} • {testimonial.company}
+                        {testimonial.role[language]} • {testimonial.company}
                       </p>
                     </div>
                   </CardContent>
