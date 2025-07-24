@@ -36,7 +36,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
     isDemoRequest: isDemoRequest
   });  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Rate limiting: prevent multiple submissions within 30 seconds
     const now = Date.now();
     if (lastSubmissionTime && now - lastSubmissionTime < 30000) {
@@ -47,7 +47,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
       });
       return;
     }
-    
+
     if (!formData.privacy) {
       toast({
         title: t('contact_error'),
@@ -169,9 +169,9 @@ ${sanitizedData.message}
         console.error('Error status:', error.status);
         console.error('Error text:', error.text);
       }
-      
+
       let errorMessage = 'Failed to send message. Please try again or contact us directly.';
-      
+
       if (error.status === 400) {
         errorMessage = 'Invalid template parameters. Please check the form data.';
       } else if (error.status === 401) {
@@ -181,7 +181,7 @@ ${sanitizedData.message}
       } else if (error.text) {
         errorMessage = `EmailJS error: ${error.text}`;
       }
-      
+
       toast({
         title: t('contact_error'),
         description: errorMessage,
@@ -322,7 +322,7 @@ ${sanitizedData.message}
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  placeholder="+41 XX XXX XX XX"
+                  placeholder="+49 XXX XXXXXXXX"
                   className="mt-1"
                 />
               </div>

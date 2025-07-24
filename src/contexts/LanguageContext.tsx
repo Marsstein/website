@@ -276,7 +276,7 @@ const translations = {
     contact_benefit_2_desc: 'Mit modernen, effizienten Tools zur Compliance-Verwaltung',
     contact_benefit_3_title: 'Vermeide Strafen und baue Vertrauen auf',
     contact_benefit_3_desc: 'Indem du dich von Experten beraten lässt und rechtssicher agierst',
-    contact_address: 'Zürich, Schweiz',
+    contact_address: 'Bodensee, Deutschland',
     contact_hours: 'Mo-Fr 9:00-18:00',
 
     // Academy Page

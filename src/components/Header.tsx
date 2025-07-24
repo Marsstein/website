@@ -73,7 +73,7 @@ export const Header: React.FC = () => {
           <img
             src="/logomarsstein.png"
             alt="Marsstein Logo"
-            className="h-12 w-auto"
+            className="h-10 w-auto"
           />
           <span className="text-xl font-bold text-foreground"></span>
         </Link>

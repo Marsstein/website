@@ -7,14 +7,14 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Brain, 
-  ClipboardCheck, 
-  FileCheck, 
-  Settings, 
-  Users, 
+import {
+  LayoutDashboard,
+  FileText,
+  Brain,
+  ClipboardCheck,
+  FileCheck,
+  Settings,
+  Users,
   HelpCircle,
   Upload,
   AlertCircle,
@@ -379,7 +379,7 @@ function DashboardMain() {
 function DocumentsPage() {
   const { toast } = useToast();
   const { language, t } = useLanguage();
-  
+
   const [documents, setDocuments] = useState([
     { id: 1, name: "GDPR Privacy Policy", type: "Policy", status: "approved", date: "2024-01-15", size: "2.3 MB" },
     { id: 2, name: "Data Processing Agreement", type: "Legal", status: "pending", date: "2024-01-14", size: "1.8 MB" },
@@ -389,11 +389,11 @@ function DocumentsPage() {
   ]);
 
   const handleUpload = () => {
-    toast({ 
-      title: "File Upload", 
-      description: "File upload feature activated - ready for document upload" 
+    toast({
+      title: "File Upload",
+      description: "File upload feature activated - ready for document upload"
     });
-    
+
     // Simulate adding a new document
     const newDoc = {
       id: documents.length + 1,
@@ -407,16 +407,16 @@ function DocumentsPage() {
   };
 
   const handleViewDocument = (docName: string) => {
-    toast({ 
-      title: "Document Viewer", 
-      description: `Opening ${docName} in document viewer` 
+    toast({
+      title: "Document Viewer",
+      description: `Opening ${docName} in document viewer`
     });
   };
 
   const handleDownload = (docName: string) => {
-    toast({ 
-      title: "Download Started", 
-      description: `Downloading ${docName}...` 
+    toast({
+      title: "Download Started",
+      description: `Downloading ${docName}...`
     });
   };
 
@@ -428,7 +428,7 @@ function DocumentsPage() {
       default: return "text-gray-600 bg-gray-50";
     }
   };
-  
+
   return (
     <div className="p-6 space-y-6">
       <div className="flex justify-between items-center">
@@ -438,7 +438,7 @@ function DocumentsPage() {
           Upload Document
         </Button>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <Card>
           <CardContent className="p-4">
@@ -479,15 +479,15 @@ function DocumentsPage() {
                   <Badge className={getStatusColor(doc.status)}>
                     {doc.status}
                   </Badge>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="sm"
                     onClick={() => handleViewDocument(doc.name)}
                   >
                     View
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="sm"
                     onClick={() => handleDownload(doc.name)}
                   >
@@ -518,7 +518,7 @@ function AICheckPage() {
   const handleRunScan = async () => {
     setIsRunning(true);
     toast({ title: "AI Compliance Scan", description: "Starting comprehensive compliance analysis..." });
-    
+
     // Simulate scan progress
     setTimeout(() => {
       setResults({
@@ -617,7 +617,7 @@ function AICheckPage() {
 function AuditsPage() {
   const { toast } = useToast();
   const { language, t } = useLanguage();
-  
+
   const audits = [
     { id: 1, name: "ISO 27001 Review", status: "scheduled", date: "2024-03-15", auditor: "TÜV SÜD" },
     { id: 2, name: "GDPR Assessment", status: "in-progress", date: "2024-02-20", auditor: "Internal Team" },
@@ -678,7 +678,7 @@ function AuditsPage() {
 function PoliciesPage() {
   const { toast } = useToast();
   const { language, t } = useLanguage();
-  
+
   const policies = [
     { name: "Privacy Policy", status: "active", lastUpdated: "2024-01-15", version: "2.1" },
     { name: "Data Retention Policy", status: "draft", lastUpdated: "2024-01-10", version: "1.3" },
@@ -730,11 +730,11 @@ function PoliciesPage() {
 function FrameworksPage() {
   const { toast } = useToast();
   const { language, t } = useLanguage();
-  
+
   return (
     <div className="p-6 space-y-6">
       <h1 className="text-2xl font-bold">Compliance Frameworks</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {frameworks.map((framework) => (
           <Card key={framework.name}>
@@ -753,7 +753,7 @@ function FrameworksPage() {
                 }>
                   {framework.status}
                 </Badge>
-                <Button variant="outline" size="sm" onClick={() => 
+                <Button variant="outline" size="sm" onClick={() =>
                   toast({ title: framework.name, description: `Opening ${framework.name} compliance details` })
                 }>
                   View Details
@@ -770,7 +770,7 @@ function FrameworksPage() {
 function IntegrationsPage() {
   const { toast } = useToast();
   const { language, t } = useLanguage();
-  
+
   const integrations = [
     { name: "AWS", status: "connected", icon: "☁️" },
     { name: "Google Cloud", status: "connected", icon: "🌩️" },
@@ -804,15 +804,15 @@ function IntegrationsPage() {
                     <h3 className="font-medium">{integration.name}</h3>
                     <Badge variant={
                       integration.status === 'connected' ? 'secondary' :
-                      integration.status === 'pending' ? 'outline' : 
+                      integration.status === 'pending' ? 'outline' :
                       integration.status === 'error' ? 'destructive' : 'outline'
                     }>
                       {integration.status}
                     </Badge>
                   </div>
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   onClick={() => handleConnect(integration.name)}
                 >
@@ -830,7 +830,7 @@ function IntegrationsPage() {
 function TeamsPage() {
   const { toast } = useToast();
   const { language, t } = useLanguage();
-  
+
   const team = [
     { name: "John Doe", role: "Compliance Manager", email: "john@marsstein.com", status: "active" },
     { name: "Jane Smith", role: "Data Protection Officer", email: "jane@marsstein.com", status: "active" },
@@ -886,7 +886,7 @@ function SettingsPage() {
   const { toast } = useToast();
   const { language, setLanguage, t } = useLanguage();
   const { theme, setTheme } = useTheme();
-  
+
   const handleSaveSettings = () => {
     toast({ title: "Settings Saved", description: "Your preferences have been updated successfully" });
   };
@@ -894,7 +894,7 @@ function SettingsPage() {
   return (
     <div className="p-6 space-y-6">
       <h1 className="text-2xl font-bold">Settings</h1>
-      
+
       <div className="grid gap-6">
         <Card>
           <CardHeader>
@@ -907,15 +907,15 @@ function SettingsPage() {
                 <p className="text-sm text-muted-foreground">Choose your preferred language</p>
               </div>
               <div className="flex gap-2">
-                <Button 
-                  variant={language === 'en' ? 'default' : 'outline'} 
+                <Button
+                  variant={language === 'en' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setLanguage('en')}
                 >
                   English
                 </Button>
-                <Button 
-                  variant={language === 'de' ? 'default' : 'outline'} 
+                <Button
+                  variant={language === 'de' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setLanguage('de')}
                 >
@@ -929,16 +929,16 @@ function SettingsPage() {
                 <p className="text-sm text-muted-foreground">Choose light or dark mode</p>
               </div>
               <div className="flex gap-2">
-                <Button 
-                  variant={theme === 'light' ? 'default' : 'outline'} 
+                <Button
+                  variant={theme === 'light' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setTheme('light')}
                 >
                   <Sun className="h-4 w-4 mr-1" />
                   Light
                 </Button>
-                <Button 
-                  variant={theme === 'dark' ? 'default' : 'outline'} 
+                <Button
+                  variant={theme === 'dark' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setTheme('dark')}
                 >
@@ -980,7 +980,7 @@ function SettingsPage() {
 function HelpPage() {
   const { toast } = useToast();
   const { language, t } = useLanguage();
-  
+
   const faqs = [
     { question: "How do I upload documents?", answer: "Go to Documents section and click 'Upload Document' button" },
     { question: "How often should I run compliance checks?", answer: "We recommend running checks weekly or after any system changes" },
@@ -990,7 +990,7 @@ function HelpPage() {
   return (
     <div className="p-6 space-y-6">
       <h1 className="text-2xl font-bold">Help & Support</h1>
-      
+
       <div className="grid gap-6">
         <Card>
           <CardHeader>
@@ -999,12 +999,12 @@ function HelpPage() {
           <CardContent className="space-y-4">
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4" />
-              <span>support@marsstein.com</span>
+              <span>jayson.chen@marsstein.com</span>
             </div>
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
-              <span>+41 44 123 45 67</span>
-            </div>
+              <span>+49 44 123 45 67</span>
+            </div> */}
             <Button onClick={() => toast({ title: "Support", description: "Support chat would open here" })}>
               Start Live Chat
             </Button>
@@ -1109,7 +1109,7 @@ export default function Dashboard() {
                 <SidebarTrigger />
                 <h2 className="text-2xl font-bold text-foreground">{t('dashboard_nav_dashboard')}</h2>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 {/* Language Toggle */}
                 <Button

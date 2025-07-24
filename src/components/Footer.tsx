@@ -61,25 +61,25 @@ export const Footer: React.FC = () => {
                 <img
                   src="/logomarsstein.png"
                   alt="Marsstein Logo"
-                  className="h-12 w-auto"
+                  className="h-10 w-auto"
                 />
                 <span className="text-xl font-bold text-foreground"></span>
               </div>
 
               <p className="text-muted-foreground leading-relaxed">
-                Your trusted partner for GDPR, ISO27001, and privacy compliance across Germany, Switzerland, and Europe.
+                Your trusted partner for GDPR, ISO27001, EU AI Act and privacy compliance across Germany, Switzerland, and Europe.
               </p>
 
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4" />
-                  <span>contact@marsstein.com</span>
+                  <span>jayson.chen@marsstein.com</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                {/* <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4" />
                   <span>+41 44 123 45 67</span>
-                </div>
+                </div> */}
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <MapPin className="h-4 w-4" />
                   <span>Konstanz, Germany</span>
