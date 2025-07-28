@@ -29,8 +29,8 @@ export const Resources: React.FC = () => {
       title: 'DSGVO-Compliance-Checkliste 2025',
       description: '47-Punkte Selbstaudit für vollständige DSGVO-Konformität',
       details: 'Systematische Überprüfung aller Compliance-Anforderungen',
-      downloadCount: '2.847',
-      rating: 4.9,
+      downloadCount: 'Verfügbar',
+      rating: 'Professionell',
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-50 dark:bg-blue-950/20',
       borderColor: 'border-blue-200 dark:border-blue-800',
@@ -43,8 +43,8 @@ export const Resources: React.FC = () => {
       title: 'Datenschutz-Readiness-Assessment',
       description: 'Interaktiver Score mit personalisierten Empfehlungen',
       details: 'Ermitteln Sie Ihren Compliance-Reifegrad in 5 Minuten',
-      downloadCount: '1.923',
-      rating: 4.8,
+      downloadCount: 'Interaktiv',
+      rating: 'Strukturiert',
       color: 'from-purple-500 to-pink-500',
       bgColor: 'bg-purple-50 dark:bg-purple-950/20',
       borderColor: 'border-purple-200 dark:border-purple-800',
@@ -57,8 +57,8 @@ export const Resources: React.FC = () => {
       title: 'Breach-Response-Checklist',
       description: '72h-Notfallplan bei Datenpannen und Sicherheitsvorfällen',
       details: 'Schritt-für-Schritt Anleitung für den Ernstfall',
-      downloadCount: '3.156',
-      rating: 4.9,
+      downloadCount: 'Notfallplan',
+      rating: 'Essentiell',
       color: 'from-red-500 to-orange-500',
       bgColor: 'bg-red-50 dark:bg-red-950/20',
       borderColor: 'border-red-200 dark:border-red-800',
@@ -71,8 +71,8 @@ export const Resources: React.FC = () => {
       title: 'Cookie-Compliance-Audit',
       description: 'Website-Prüfliste für rechtskonforme Cookie-Nutzung',
       details: 'Vollständige Analyse Ihrer Website-Compliance',
-      downloadCount: '4.234',
-      rating: 4.7,
+      downloadCount: 'Website-Audit',
+      rating: 'Rechtssicher',
       color: 'from-green-500 to-teal-500',
       bgColor: 'bg-green-50 dark:bg-green-950/20',
       borderColor: 'border-green-200 dark:border-green-800',
@@ -85,8 +85,8 @@ export const Resources: React.FC = () => {
       title: 'Vendor-Assessment-Template',
       description: 'Bewertung und Auswahl DSGVO-konformer Auftragsverarbeiter',
       details: 'Systematische Bewertung Ihrer Dienstleister und Partner',
-      downloadCount: '1.678',
-      rating: 4.8,
+      downloadCount: 'Template',
+      rating: 'Systematisch',
       color: 'from-indigo-500 to-blue-500',
       bgColor: 'bg-indigo-50 dark:bg-indigo-950/20',
       borderColor: 'border-indigo-200 dark:border-indigo-800',
@@ -96,10 +96,10 @@ export const Resources: React.FC = () => {
   ];
 
   const stats = [
-    { label: 'Downloads', value: '12.5k+', icon: Download },
-    { label: 'Unternehmen', value: '850+', icon: Users },
-    { label: 'Durchschnittsbewertung', value: '4.8★', icon: Star },
-    { label: 'Aktualisiert', value: '2025', icon: TrendingUp }
+    { label: 'Tools verfügbar', value: '5', icon: Download },
+    { label: 'Kategorien', value: '4', icon: Users },
+    { label: 'Expertenwissen', value: 'Aktuell', icon: Star },
+    { label: 'Updates', value: '2025', icon: TrendingUp }
   ];
 
   return (
@@ -118,22 +118,22 @@ export const Resources: React.FC = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red/10 text-brand-red border border-brand-red/20 mb-6 animate-fade-in">
               <Shield className="h-4 w-4" />
-              <span className="text-sm font-medium">Kostenlose DSGVO-Resources</span>
+              <span className="text-sm font-medium">Assessment-Center</span>
             </div>
 
             {/* Main heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              Compliance-Tools für
+              Assessment-Tools für
               <br />
               <span className="bg-gradient-to-r from-brand-red via-red-600 to-orange-500 bg-clip-text text-transparent">
-                rechtssichere Unternehmen
+                professionelle Compliance
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              Professionelle Checklisten, Assessments und Templates für DSGVO-Compliance. 
-              Kostenlos, sofort verfügbar und von Datenschutz-Experten entwickelt.
+              Professionelle Assessments, Checklisten und Templates für DSGVO-Compliance. 
+              Sofort verfügbar und von Datenschutz-Experten entwickelt.
             </p>
 
             {/* Stats */}
@@ -159,10 +159,10 @@ export const Resources: React.FC = () => {
             {/* Section Header */}
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Kostenlose Compliance-Tools
+                Assessment-Tools im Überblick
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Sofortiger Download, keine Registrierung erforderlich. Alle Tools werden regelmäßig aktualisiert.
+                Alle Assessment-Tools werden regelmäßig aktualisiert und von Datenschutz-Experten gepflegt.
               </p>
             </div>
 
@@ -202,7 +202,7 @@ export const Resources: React.FC = () => {
                             </span>
                           </div>
                           <div className="text-xs text-gray-500">
-                            {magnet.downloadCount} Downloads
+                            {magnet.downloadCount}
                           </div>
                         </div>
                       </div>
@@ -233,7 +233,7 @@ export const Resources: React.FC = () => {
                       </div>
 
                       {/* CTA Button */}
-                      <Link to={`/resources/${magnet.id}`}>
+                      <Link to={`/assessment-center/${magnet.id}`}>
                         <Button 
                           className={cn(
                             "w-full bg-gradient-to-r text-white shadow-lg hover:shadow-xl group-hover:scale-105 transition-all duration-300",
@@ -242,7 +242,7 @@ export const Resources: React.FC = () => {
                           size="lg"
                         >
                           <Download className="mr-2 h-4 w-4" />
-                          Jetzt kostenlos herunterladen
+                          Assessment starten
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </Link>

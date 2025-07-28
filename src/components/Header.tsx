@@ -33,32 +33,154 @@ export const Header: React.FC = () => {
   };
 
   const navItems = [
-    { key: 'nav_frameworks', href: '#' },
-    { key: 'nav_academy', href: '/academy' },
-    { key: 'nav_pricing', href: '/pricing' },
-    { key: 'nav_resources', href: '/resources' }, // Resources is now a standalone link
+    { key: 'nav_regulations', href: '#' },
+    { key: 'nav_certifications', href: '#' },
+    { key: 'nav_tools', href: '/tools' },
+    { key: 'nav_knowledge', href: '#' },
+    { key: 'nav_resources', href: '/assessment-center' },
+    { key: 'nav_industries', href: '/branchen' },
     { key: 'nav_contact', href: '/contact' },
   ];
 
-  const frameworksDropdown = (
+  const regulationsDropdown = (
     <DropdownMenu>
       <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-        {t('nav_frameworks')}
+        Regulierungen
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Link to="/eu-ai-act-compliance" className="block w-full">
-            {t('nav_ai_act')}
+          <Link to="/regulierung/eu-ai-act" className="block w-full">
+            EU AI Act
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/iso-27001-compliance" className="block w-full">
-            {t('nav_iso27001')}
+          <Link to="/regulierung/dsgvo" className="block w-full">
+            DSGVO
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/dsgvo-compliance" className="block w-full">
-            {t('nav_dsgvo')}
+          <Link to="/regulierung/nis2" className="block w-full">
+            NIS2-Richtlinie
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/regulierung/hinweisgeberschutzgesetz" className="block w-full">
+            Hinweisgeberschutzgesetz
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  const certificationsDropdown = (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+        Zertifizierungen
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>
+          <Link to="/zertifizierung/iso-27001" className="block w-full">
+            ISO 27001
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/zertifizierung/soc2" className="block w-full">
+            SOC 2
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/zertifizierung/iso-27017" className="block w-full">
+            ISO 27017 Cloud Security
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/zertifizierung/iso-27018" className="block w-full">
+            ISO 27018 Cloud Privacy
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/zertifizierung/tisax" className="block w-full">
+            TISAX® Automotive Security
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  const toolsDropdown = (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+        Tools
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>
+          <Link to="/tools" className="block w-full">
+            Tools Übersicht
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/tools/cookie-management-tool" className="block w-full">
+            Cookie Management
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/tools/whistleblower-system-tool" className="block w-full">
+            Hinweisgebersystem
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/tools/dsgvo-email-template-generator" className="block w-full">
+            DSGVO Email Templates
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/tools/compliance-ai-assistant" className="block w-full">
+            Compliance AI Assistant
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/tools/dsgvo-compliance-scorecard" className="block w-full">
+            DSGVO Compliance Scorecard
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  const knowledgeDropdown = (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+        Wissen
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>
+          <Link to="/wissen" className="block w-full">
+            Wissen Übersicht
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/wissen/dsgvo" className="block w-full">
+            DSGVO & Datenschutz
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/wissen/ki-compliance" className="block w-full">
+            KI & Compliance
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/wissen/cybersecurity" className="block w-full">
+            Cybersecurity
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/wissen/zertifizierungen" className="block w-full">
+            Zertifizierungen
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/wissen/branchen" className="block w-full">
+            Branchenwissen
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -81,8 +203,14 @@ export const Header: React.FC = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
-            item.key === 'nav_frameworks' ? (
-              <div key={item.key}>{frameworksDropdown}</div>
+            item.key === 'nav_regulations' ? (
+              <div key={item.key}>{regulationsDropdown}</div>
+            ) : item.key === 'nav_certifications' ? (
+              <div key={item.key}>{certificationsDropdown}</div>
+            ) : item.key === 'nav_tools' ? (
+              <div key={item.key}>{toolsDropdown}</div>
+            ) : item.key === 'nav_knowledge' ? (
+              <div key={item.key}>{knowledgeDropdown}</div>
             ) : (
               <Link
                 key={item.key}
@@ -142,25 +270,139 @@ export const Header: React.FC = () => {
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item) => (
-                  item.key === 'nav_frameworks' ? (
+                  item.key === 'nav_regulations' ? (
                     <DropdownMenu key={item.key}>
                       <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                        {t('nav_frameworks')}
+                        Regulierungen
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>
                         <DropdownMenuItem>
-                          <Link to="/eu-ai-act-compliance" className="block w-full">
-                            {t('nav_ai_act')}
+                          <Link to="/regulierung/eu-ai-act" className="block w-full">
+                            EU AI Act
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/iso-27001-compliance" className="block w-full">
-                            {t('nav_iso27001')}
+                          <Link to="/regulierung/dsgvo" className="block w-full">
+                            DSGVO
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/dsgvo-compliance" className="block w-full">
-                            {t('nav_dsgvo')}
+                          <Link to="/regulierung/nis2" className="block w-full">
+                            NIS2-Richtlinie
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/regulierung/hinweisgeberschutzgesetz" className="block w-full">
+                            Hinweisgeberschutzgesetz
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : item.key === 'nav_certifications' ? (
+                    <DropdownMenu key={item.key}>
+                      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                        Zertifizierungen
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem>
+                          <Link to="/zertifizierung/iso-27001" className="block w-full">
+                            ISO 27001
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/zertifizierung/soc2" className="block w-full">
+                            SOC 2
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/zertifizierung/iso-27017" className="block w-full">
+                            ISO 27017 Cloud Security
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/zertifizierung/iso-27018" className="block w-full">
+                            ISO 27018 Cloud Privacy
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/zertifizierung/tisax" className="block w-full">
+                            TISAX® Automotive Security
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : item.key === 'nav_tools' ? (
+                    <DropdownMenu key={item.key}>
+                      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                        Tools
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem>
+                          <Link to="/tools" className="block w-full">
+                            Alle Tools
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/tools/cookie-management-tool" className="block w-full">
+                            Cookie Management
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/tools/whistleblower-system-tool" className="block w-full">
+                            Hinweisgebersystem
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/tools/dsgvo-email-template-generator" className="block w-full">
+                            DSGVO Email Templates
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/tools/dsgvo-compliance-scorecard" className="block w-full">
+                            DSGVO Compliance Scorecard
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/tools/compliance-ai-assistant" className="block w-full">
+                            Compliance AI Assistant
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : item.key === 'nav_knowledge' ? (
+                    <DropdownMenu key={item.key}>
+                      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                        Wissen
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem>
+                          <Link to="/wissen" className="block w-full">
+                            Wissen Übersicht
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/wissen/dsgvo-leitfaeden" className="block w-full">
+                            DSGVO-Leitfäden
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/wissen/leitfaden/dsgvo-grundlagen" className="block w-full">
+                            DSGVO Grundlagen
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/wissen/leitfaden/dsgvo-30-tage" className="block w-full">
+                            DSGVO in 30 Tagen
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/wissen/leitfaden/website-dsgvo" className="block w-full">
+                            Website DSGVO-konform
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/wissen/leitfaden/data-breach-notfall" className="block w-full">
+                            Data Breach Notfallplan
                           </Link>
                         </DropdownMenuItem>
                       </DropdownMenuContent>
