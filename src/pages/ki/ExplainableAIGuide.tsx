@@ -1,0 +1,1876 @@
+import React, { useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Progress } from '@/components/ui/progress';
+import { 
+  Eye,
+  Lightbulb, 
+  Shield, 
+  FileText, 
+  Users,
+  Building2,
+  CheckCircle2,
+  ArrowRight,
+  Download,
+  BookOpen,
+  Euro,
+  Calendar,
+  Activity,
+  Brain,
+  Lock,
+  Database,
+  UserCheck,
+  Clipboard,
+  FileCheck,
+  Zap,
+  Settings,
+  Globe,
+  TrendingUp,
+  Clock,
+  Star,
+  Target,
+  Smartphone,
+  Wifi,
+  Server,
+  Code,
+  Award,
+  Scale,
+  Fingerprint,
+  Key,
+  Monitor,
+  Tablet,
+  Headphones,
+  Mail,
+  Phone,
+  Search,
+  Package,
+  Truck,
+  AlertCircle,
+  Cookie,
+  MousePointer,
+  BarChart,
+  MessageSquare,
+  Layers,
+  GitBranch,
+  RefreshCw,
+  Upload,
+  HardDrive,
+  Network,
+  Cpu,
+  MemoryStick,
+  Webhook,
+  Terminal,
+  Boxes,
+  Construction,
+  Wrench,
+  Bot,
+  CircuitBoard,
+  Sparkles,
+  Ban,
+  CheckSquare,
+  X,
+  ChevronDown,
+  ExternalLink,
+  Timer,
+  PieChart,
+  LineChart,
+  BarChart3,
+  ShieldCheck,
+  FileX,
+  UserX,
+  Square,
+  ThumbsUp,
+  ThumbsDown,
+  Plus,
+  Minus,
+  Play,
+  Pause,
+  RotateCcw,
+  Save,
+  Edit3,
+  Trash2,
+  Copy,
+  HelpCircle,
+  Info,
+  Filter,
+  Trash,
+  Sliders,
+  Workflow,
+  TreePine,
+  Map,
+  Radar,
+  Layers3
+} from 'lucide-react';
+
+const ExplainableAIGuide = () => {
+  const [activeMethod, setActiveMethod] = useState('lime');
+  const [completedSteps, setCompletedSteps] = useState({});
+  const [expandedSections, setExpandedSections] = useState({});
+  const [selectedScenario, setSelectedScenario] = useState('credit-scoring');
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({ container: containerRef });
+  const headerY = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.8]);
+
+  const xaiMethods = [
+    {
+      title: "LIME",
+      subtitle: "Local Interpretable Model-Agnostic Explanations",
+      icon: Lightbulb,
+      color: "bg-yellow-500",
+      description: "Lokale Erklärungen für einzelne Vorhersagen",
+      strengths: ["Model-agnostic", "Intuitive Erklärungen", "Schnelle Implementierung"],
+      weaknesses: ["Nur lokale Sicht", "Sampling-abhängig", "Instabilität"],
+      use_cases: ["Einzelfallprüfung", "Bias-Detection", "Regulatory Compliance"],
+      complexity: "Niedrig",
+      article22_compliance: "Hoch"
+    },
+    {
+      title: "SHAP",
+      subtitle: "SHapley Additive exPlanations",
+      icon: BarChart3,
+      color: "bg-blue-500",
+      description: "Feature-basierte Beitragsanalyse mit Shapley-Werten",
+      strengths: ["Theoretisch fundiert", "Konsistente Erklärungen", "Globale + lokale Sicht"],
+      weaknesses: ["Rechenintensiv", "Komplexe Interpretation", "Korrelationseffekte"],
+      use_cases: ["Feature-Analyse", "Model Debugging", "Fairness-Assessment"],
+      complexity: "Mittel",
+      article22_compliance: "Sehr Hoch"
+    },
+    {
+      title: "Attention Maps",
+      subtitle: "Neural Network Attention Mechanisms",
+      icon: Eye,
+      color: "bg-purple-500",
+      description: "Visualisierung der Aufmerksamkeit in neuronalen Netzen",
+      strengths: ["Natürliche Integration", "Detaillierte Einblicke", "Echtzeit-fähig"],
+      weaknesses: ["Nur für Attention-Modelle", "Interpretationsaufwand", "Technisches Know-how"],
+      use_cases: ["NLP-Modelle", "Computer Vision", "Sequence-Modelling"],
+      complexity: "Hoch",
+      article22_compliance: "Mittel"
+    },
+    {
+      title: "Counterfactual Explanations",
+      subtitle: "Was-wäre-wenn Szenarien",
+      icon: GitBranch,
+      color: "bg-green-500",
+      description: "Alternative Szenarien für andere Entscheidungen",
+      strengths: ["Actionable Insights", "Benutzerfreundlich", "Direkte Handlungsempfehlungen"],
+      weaknesses: ["Rechenaufwendig", "Realitätsbezug", "Mehrere Lösungen möglich"],
+      use_cases: ["Kreditentscheidungen", "Personalauswahl", "Medizinische Diagnose"],
+      complexity: "Mittel",
+      article22_compliance: "Sehr Hoch"
+    }
+  ];
+
+  const art22Requirements = {
+    legal_framework: {
+      title: "DSGVO Art. 22 - Automatisierte Entscheidungsfindung",
+      paragraphs: [
+        {
+          section: "Art. 22 (1)",
+          text: "Die betroffene Person hat das Recht, nicht einer ausschließlich auf einer automatisierten Verarbeitung [...] beruhenden Entscheidung unterworfen zu werden",
+          ai_implication: "KI-Systeme müssen explainable sein, wenn sie autonome Entscheidungen treffen"
+        },
+        {
+          section: "Art. 22 (3)",
+          text: "Angemessene Maßnahmen zum Schutz der Rechte und Freiheiten sowie der berechtigten Interessen der betroffenen Person",
+          ai_implication: "XAI-Methoden als technische Schutzmaßnahme implementieren"
+        },
+        {
+          section: "Erwägungsgrund 71",
+          text: "Aussagekräftige Informationen über die involvierte Logik sowie die Tragweite und die angestrebten Auswirkungen",
+          ai_implication: "Detaillierte Erklärungen der ML-Modelllogik erforderlich"
+        }
+      ]
+    },
+    implementation_requirements: [
+      {
+        requirement: "Meaningful Information",
+        description: "Aussagekräftige Informationen über die Entscheidungslogik",
+        xai_methods: ["SHAP", "LIME", "Counterfactuals"],
+        implementation: "Feature-Importance + lokale Erklärungen",
+        documentation: "Algorithmus-Dokumentation mit Beispielen"
+      },
+      {
+        requirement: "Human Oversight",
+        description: "Menschliche Aufsicht und Überprüfungsmöglichkeit",
+        xai_methods: ["Attention Maps", "Decision Trees"],
+        implementation: "Human-in-the-Loop Interface",
+        documentation: "Eskalationsprozesse definieren"
+      },
+      {
+        requirement: "Contest Mechanism",
+        description: "Möglichkeit der Anfechtung automatisierter Entscheidungen",
+        xai_methods: ["Counterfactual Explanations"],
+        implementation: "Appeal-Process mit XAI-Begründungen",
+        documentation: "Widerspruchsverfahren dokumentieren"
+      },
+      {
+        requirement: "Impact Assessment",
+        description: "Bewertung der Tragweite und Auswirkungen",
+        xai_methods: ["Global Feature Importance", "Bias Detection"],
+        implementation: "Regelmäßige Fairness-Audits",
+        documentation: "Impact-Monitoring Dashboard"
+      }
+    ]
+  };
+
+  const implementationScenarios = {
+    'credit-scoring': {
+      title: "Kreditscoring System",
+      description: "Automatisierte Kreditwürdigkeitsprüfung mit DSGVO Art. 22 Compliance",
+      risk_level: "Hoch",
+      affected_rights: ["Vertragsabschluss", "Finanzielle Auswirkungen", "Diskriminierungsrisiko"],
+      required_xai: ["SHAP für Feature-Importance", "LIME für Einzelerklärungen", "Counterfactuals für Appeals"],
+      implementation: {
+        data_requirements: [
+          "Vollständige Feature-Dokumentation",
+          "Bias-Monitoring für geschützte Merkmale",
+          "Historische Entscheidungsdaten"
+        ],
+        technical_setup: [
+          "SHAP-Pipeline für globale Erklärungen",
+          "LIME-Integration für Kundenanfragen",
+          "Counterfactual-Generator für Ablehnungen",
+          "Human-Review Dashboard"
+        ],
+        compliance_measures: [
+          "Quarterly Fairness Audits",
+          "Automated Bias Detection",
+          "Human Appeal Process",
+          "Regulatory Reporting"
+        ]
+      },
+      code_example: `# Kreditscoring XAI Pipeline
+import shap
+import lime
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+
+class CreditScoringXAI:
+    def __init__(self, model, training_data):
+        self.model = model
+        self.training_data = training_data
+        
+        # SHAP Explainer für globale Erklärungen
+        self.shap_explainer = shap.TreeExplainer(model)
+        
+        # LIME Explainer für lokale Erklärungen
+        self.lime_explainer = lime.lime_tabular.LimeTabularExplainer(
+            training_data.values,
+            feature_names=training_data.columns,
+            class_names=['Abgelehnt', 'Genehmigt'],
+            mode='classification'
+        )
+    
+    def explain_decision(self, customer_data, explanation_type='both'):
+        """
+        DSGVO Art. 22 konforme Entscheidungserklärung
+        """
+        prediction = self.model.predict_proba([customer_data])[0]
+        decision = 'Genehmigt' if prediction[1] > 0.5 else 'Abgelehnt'
+        
+        explanation = {
+            'decision': decision,
+            'confidence': max(prediction),
+            'customer_id': customer_data.get('customer_id'),
+            'timestamp': datetime.now()
+        }
+        
+        if explanation_type in ['both', 'global']:
+            # SHAP Werte für Feature-Importance
+            shap_values = self.shap_explainer.shap_values(customer_data)
+            explanation['global_factors'] = {
+                'top_positive_factors': self.get_top_factors(shap_values[1], positive=True),
+                'top_negative_factors': self.get_top_factors(shap_values[1], positive=False),
+                'feature_importance': dict(zip(self.training_data.columns, shap_values[1]))
+            }
+        
+        if explanation_type in ['both', 'local']:
+            # LIME Erklärung für spezifischen Fall
+            lime_exp = self.lime_explainer.explain_instance(
+                customer_data.values,
+                self.model.predict_proba,
+                num_features=10
+            )
+            explanation['local_explanation'] = {
+                'key_factors': lime_exp.as_list(),
+                'prediction_confidence': lime_exp.predict_proba[1]
+            }
+        
+        # Counterfactual für Ablehnungen (Art. 22 Anforderung)
+        if decision == 'Abgelehnt':
+            explanation['counterfactual'] = self.generate_counterfactual(customer_data)
+        
+        return explanation
+    
+    def generate_counterfactual(self, rejected_customer):
+        """
+        Was müsste sich ändern für positive Entscheidung?
+        Erfüllt DSGVO Art. 22 Anforderung nach aussagekräftigen Informationen
+        """
+        # Vereinfachtes Counterfactual - in Praxis komplexerer Algorithmus
+        feature_changes = []
+        
+        # Iteriere durch Features und teste Auswirkungen
+        for feature in self.training_data.columns:
+            if feature == 'customer_id':
+                continue
+                
+            original_value = rejected_customer[feature]
+            
+            # Teste verschiedene Werte
+            test_ranges = self.get_reasonable_feature_range(feature)
+            
+            for test_value in test_ranges:
+                modified_customer = rejected_customer.copy()
+                modified_customer[feature] = test_value
+                
+                new_prediction = self.model.predict_proba([modified_customer])[0]
+                
+                if new_prediction[1] > 0.5:  # Würde zu Genehmigung führen
+                    change = {
+                        'feature': feature,
+                        'current_value': original_value,
+                        'required_value': test_value,
+                        'impact': new_prediction[1] - self.model.predict_proba([rejected_customer])[0][1]
+                    }
+                    feature_changes.append(change)
+                    break
+        
+        return {
+            'possible_changes': sorted(feature_changes, key=lambda x: x['impact'], reverse=True)[:3],
+            'explanation': "Um eine Kreditgenehmigung zu erhalten, könnten folgende Änderungen hilfreich sein:"
+        }
+    
+    def generate_compliance_report(self, decisions_batch):
+        """
+        Generiert DSGVO-Compliance Report für Batch von Entscheidungen
+        """
+        report = {
+            'total_decisions': len(decisions_batch),
+            'approval_rate': sum(1 for d in decisions_batch if d['decision'] == 'Genehmigt') / len(decisions_batch),
+            'bias_analysis': self.analyze_bias(decisions_batch),
+            'explanation_coverage': self.check_explanation_completeness(decisions_batch),
+            'human_review_cases': [d for d in decisions_batch if d['confidence'] < 0.7]
+        }
+        
+        return report`
+    },
+    'hiring-ai': {
+      title: "AI-basierte Personalauswahl",
+      description: "Automatisierte Bewerbungsscreening mit Fairness-Anforderungen",
+      risk_level: "Sehr Hoch",
+      affected_rights: ["Berufliche Chancen", "Gleichbehandlung", "Persönlichkeitsrechte"],
+      required_xai: ["Bias-Detection", "Attention Maps für CV-Analyse", "Decision Trees"],
+      implementation: {
+        data_requirements: [
+          "Anonymisierte Bewerberdaten",
+          "Geschützte Merkmale-Monitoring",
+          "Erfolgs-Tracking für Validierung"
+        ],
+        technical_setup: [
+          "Multi-Stage Explanation Pipeline",
+          "Fairness-Constraints in Model",
+          "Human-Recruiter Interface",
+          "Appeal-Mechanism"
+        ],
+        compliance_measures: [
+          "AGG-Compliance Monitoring",
+          "Quarterly Bias Audits",
+          "Candidate Feedback System",
+          "Transparent Criteria Communication"
+        ]
+      }
+    },
+    'medical-diagnosis': {
+      title: "KI-unterstützte Medizinische Diagnose",
+      description: "Automatisierte Diagnoseunterstützung mit Life-or-Death Implications",
+      risk_level: "Kritisch",
+      affected_rights: ["Gesundheit", "Leben", "Medizinische Selbstbestimmung"],
+      required_xai: ["Attention Maps für Bildanalyse", "SHAP für Symptom-Gewichtung", "Uncertainty Quantification"],
+      implementation: {
+        data_requirements: [
+          "Vollständige Patientenhistorie",
+          "Bildgebungsdaten mit Annotations",
+          "Outcome-Tracking für Validierung"
+        ],
+        technical_setup: [
+          "Multi-Modal Explanation System",
+          "Uncertainty-Aware Predictions",
+          "Doctor-AI Collaboration Interface",
+          "Second-Opinion Triggers"
+        ],
+        compliance_measures: [
+          "Medical Device Regulation",
+          "Continuous Model Validation",
+          "Clinical Trial Documentation",
+          "Patient Consent Management"
+        ]
+      }
+    }
+  };
+
+  const xaiTechniques = {
+    'lime': {
+      name: "LIME Implementation",
+      description: "Local Interpretable Model-Agnostic Explanations für DSGVO Compliance",
+      code: `# LIME für DSGVO Art. 22 Compliance
+import lime
+import lime.lime_tabular
+import numpy as np
+import pandas as pd
+
+class DSGVOCompliantLIME:
+    def __init__(self, model, training_data, feature_names):
+        self.model = model
+        self.training_data = training_data
+        self.feature_names = feature_names
+        
+        # LIME Explainer initialisieren
+        self.explainer = lime.lime_tabular.LimeTabularExplainer(
+            training_data.values,
+            feature_names=feature_names,
+            class_names=['Negativ', 'Positiv'],
+            mode='classification',
+            discretize_continuous=True,
+            random_state=42
+        )
+    
+    def explain_decision(self, instance, num_features=10):
+        """
+        Generiert DSGVO-konforme Erklärung für automatisierte Entscheidung
+        """
+        # LIME Erklärung generieren
+        explanation = self.explainer.explain_instance(
+            instance.values,
+            self.model.predict_proba,
+            num_features=num_features,
+            top_labels=1
+        )
+        
+        # Strukturierte Ausgabe für DSGVO Compliance
+        result = {
+            'decision_factors': [],
+            'confidence': float(explanation.predict_proba[1]),
+            'local_accuracy': explanation.score,
+            'explanation_stability': self.measure_stability(instance)
+        }
+        
+        # Top Faktoren extrahieren
+        for feature, weight in explanation.as_list():
+            factor = {
+                'feature': feature,
+                'weight': float(weight),
+                'impact': 'Positiv' if weight > 0 else 'Negativ',
+                'importance': abs(float(weight))
+            }
+            result['decision_factors'].append(factor)
+        
+        # Sortiere nach Wichtigkeit
+        result['decision_factors'].sort(key=lambda x: x['importance'], reverse=True)
+        
+        return result
+    
+    def measure_stability(self, instance, num_samples=50):
+        """
+        Misst Stabilität der Erklärung für robuste DSGVO-Compliance
+        """
+        explanations = []
+        
+        for _ in range(num_samples):
+            exp = self.explainer.explain_instance(
+                instance.values,
+                self.model.predict_proba,
+                num_features=len(self.feature_names)
+            )
+            explanations.append(dict(exp.as_list()))
+        
+        # Berechne Stabilität als Konsistenz der Feature-Gewichte
+        feature_stabilities = {}
+        for feature in self.feature_names:
+            weights = [exp.get(feature, 0) for exp in explanations]
+            feature_stabilities[feature] = 1 - (np.std(weights) / (np.mean(np.abs(weights)) + 1e-8))
+        
+        return np.mean(list(feature_stabilities.values()))
+    
+    def generate_human_readable_explanation(self, explanation):
+        """
+        Wandelt technische Erklärung in verständliche Sprache um
+        Erfüllt DSGVO Art. 22 Anforderung nach "aussagekräftigen Informationen"
+        """
+        decision = 'positiv' if explanation['confidence'] > 0.5 else 'negativ'
+        confidence_level = 'sehr hoch' if explanation['confidence'] > 0.8 else 'hoch' if explanation['confidence'] > 0.6 else 'mittel'
+        
+        text = f"Die automatisierte Entscheidung fiel {decision} aus (Sicherheit: {confidence_level}).\\n\\n"
+        text += "Hauptfaktoren für diese Entscheidung:\\n"
+        
+        for i, factor in enumerate(explanation['decision_factors'][:5]):
+            impact_text = "sprach dafür" if factor['impact'] == 'Positiv' else "sprach dagegen"
+            text += f"{i+1}. {factor['feature']}: {impact_text} (Gewichtung: {factor['weight']:.3f})\\n"
+        
+        if explanation['explanation_stability'] < 0.7:
+            text += "\\nHinweis: Diese Erklärung zeigt geringe Stabilität. Eine menschliche Überprüfung wird empfohlen."
+        
+        return text
+
+# Verwendungsbeispiel
+def demonstrate_lime_compliance():
+    # Beispiel-Setup
+    training_data = pd.DataFrame({
+        'einkommen': np.random.normal(50000, 15000, 1000),
+        'alter': np.random.randint(18, 80, 1000),
+        'beschaeftigungsdauer': np.random.randint(0, 40, 1000),
+        'bestehende_kredite': np.random.randint(0, 5, 1000)
+    })
+    
+    # LIME Explainer initialisieren
+    lime_explainer = DSGVOCompliantLIME(
+        model=trained_model,  # Ihr ML-Model
+        training_data=training_data,
+        feature_names=training_data.columns
+    )
+    
+    # Neue Instanz erklären
+    new_customer = pd.Series({
+        'einkommen': 45000,
+        'alter': 35,
+        'beschaeftigungsdauer': 5,
+        'bestehende_kredite': 1
+    })
+    
+    explanation = lime_explainer.explain_decision(new_customer)
+    human_text = lime_explainer.generate_human_readable_explanation(explanation)
+    
+    print("DSGVO Art. 22 konforme Erklärung:")
+    print(human_text)
+    
+    return explanation`,
+      benefits: [
+        "Model-agnostisch - funktioniert mit jedem ML-Modell",
+        "Lokale Erklärungen für einzelne Entscheidungen",
+        "Intuitive Interpretation für Laien verständlich",
+        "Erfüllt DSGVO Art. 22 Anforderungen direkt"
+      ],
+      challenges: [
+        "Kann instabil sein bei wiederholten Erklärungen",
+        "Sampling-basiert - nicht deterministisch",
+        "Nur lokale Sicht, keine globalen Patterns",
+        "Computationally aufwendig für große Datensätze"
+      ]
+    },
+    'shap': {
+      name: "SHAP für Art. 22 Compliance",
+      description: "Shapley-basierte Erklärungen mit theoretischer Fundierung",
+      code: `# SHAP für DSGVO-konforme Entscheidungserklärungen
+import shap
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+class DSGVOCompliantSHAP:
+    def __init__(self, model, background_data):
+        self.model = model
+        self.background_data = background_data
+        
+        # SHAP Explainer je nach Modelltyp
+        if hasattr(model, 'predict_proba'):
+            # Für Tree-basierte Modelle
+            if hasattr(model, 'feature_importances_'):
+                self.explainer = shap.TreeExplainer(model)
+            else:
+                # Für andere Klassifizierer
+                self.explainer = shap.KernelExplainer(
+                    model.predict_proba, 
+                    background_data.sample(100)  # Sample für Performance
+                )
+        else:
+            # Für Regression
+            self.explainer = shap.KernelExplainer(model.predict, background_data.sample(100))
+    
+    def explain_individual_decision(self, instance):
+        """
+        Einzelne Entscheidung mit SHAP-Werten erklären
+        Erfüllt DSGVO Art. 22 Anforderung nach detaillierter Logik
+        """
+        # SHAP-Werte berechnen
+        shap_values = self.explainer.shap_values(instance.values.reshape(1, -1))
+        
+        # Für Klassifikation: nehme positive Klasse
+        if isinstance(shap_values, list):
+            shap_values_positive = shap_values[1]
+        else:
+            shap_values_positive = shap_values
+        
+        # Strukturierte Erklärung
+        explanation = {
+            'base_value': float(self.explainer.expected_value[1] if isinstance(self.explainer.expected_value, list) else self.explainer.expected_value),
+            'prediction': float(self.model.predict_proba(instance.values.reshape(1, -1))[0][1]),
+            'feature_contributions': {},
+            'summary': self.generate_summary(instance, shap_values_positive[0])
+        }
+        
+        # Feature-Beiträge
+        for i, feature in enumerate(instance.index):
+            explanation['feature_contributions'][feature] = {
+                'value': float(instance.iloc[i]),
+                'shap_value': float(shap_values_positive[0][i]),
+                'contribution_type': 'positiv' if shap_values_positive[0][i] > 0 else 'negativ',
+                'magnitude': abs(float(shap_values_positive[0][i]))
+            }
+        
+        return explanation
+    
+    def generate_summary(self, instance, shap_values):
+        """
+        Generiert verständliche Zusammenfassung der Entscheidungslogik
+        """
+        # Top positive und negative Faktoren
+        feature_impacts = [(instance.index[i], shap_values[i]) for i in range(len(shap_values))]
+        positive_factors = sorted([f for f in feature_impacts if f[1] > 0], key=lambda x: x[1], reverse=True)
+        negative_factors = sorted([f for f in feature_impacts if f[1] < 0], key=lambda x: x[1])
+        
+        summary = {
+            'top_positive_factors': positive_factors[:3],
+            'top_negative_factors': negative_factors[:3],
+            'net_contribution': sum(shap_values),
+            'decision_boundary': 0.5,
+            'explanation_text': self.create_explanation_text(positive_factors, negative_factors, sum(shap_values))
+        }
+        
+        return summary
+    
+    def create_explanation_text(self, positive_factors, negative_factors, net_contribution):
+        """
+        Erstellt menschenlesbare Erklärung für DSGVO Compliance
+        """
+        decision = "Genehmigung" if net_contribution > 0 else "Ablehnung"
+        
+        text = f"Entscheidung: {decision}\\n\\n"
+        text += "Faktoren die FÜR die Genehmigung sprechen:\\n"
+        
+        for factor, value in positive_factors[:3]:
+            text += f"• {factor}: Beitrag von {value:.3f}\\n"
+        
+        text += "\\nFaktoren die GEGEN die Genehmigung sprechen:\\n"
+        for factor, value in negative_factors[:3]:
+            text += f"• {factor}: Beitrag von {value:.3f}\\n"
+        
+        text += f"\\nGesamtbewertung: {net_contribution:.3f}"
+        text += f"\\nGrenzwert für Genehmigung: 0.0"
+        
+        return text
+    
+    def global_feature_importance(self, sample_size=1000):
+        """
+        Globale Feature-Wichtigkeit für Modell-Transparenz
+        Hilft bei DSGVO Art. 22 Compliance auf Systemebene
+        """
+        # Sample aus Background-Daten
+        sample_data = self.background_data.sample(min(sample_size, len(self.background_data)))
+        
+        # SHAP-Werte für Sample berechnen
+        shap_values = self.explainer.shap_values(sample_data.values)
+        
+        if isinstance(shap_values, list):
+            shap_values = shap_values[1]  # Positive Klasse
+        
+        # Globale Wichtigkeit als Mittelwert der absoluten SHAP-Werte
+        global_importance = np.mean(np.abs(shap_values), axis=0)
+        
+        feature_importance = {}
+        for i, feature in enumerate(sample_data.columns):
+            feature_importance[feature] = {
+                'global_importance': float(global_importance[i]),
+                'average_positive_impact': float(np.mean([val for val in shap_values[:, i] if val > 0] or [0])),
+                'average_negative_impact': float(np.mean([val for val in shap_values[:, i] if val < 0] or [0])),
+                'usage_frequency': float(np.mean(np.abs(shap_values[:, i]) > 0.001))  # Wie oft Feature relevant ist
+            }
+        
+        return feature_importance
+    
+    def compliance_report(self, decisions_data):
+        """
+        Generiert Compliance-Report für regulatorische Anforderungen
+        """
+        explanations = []
+        for _, instance in decisions_data.iterrows():
+            exp = self.explain_individual_decision(instance)
+            explanations.append(exp)
+        
+        report = {
+            'total_decisions': len(explanations),
+            'average_confidence': np.mean([exp['prediction'] for exp in explanations]),
+            'explanation_consistency': self.measure_explanation_consistency(explanations),
+            'feature_usage_stats': self.analyze_feature_usage(explanations),
+            'bias_indicators': self.detect_potential_bias(explanations, decisions_data)
+        }
+        
+        return report
+    
+    def measure_explanation_consistency(self, explanations):
+        """
+        Misst Konsistenz der Erklärungen für ähnliche Fälle
+        """
+        # Vereinfachte Konsistenzmessung
+        all_contributions = []
+        for exp in explanations:
+            contributions = list(exp['feature_contributions'].values())
+            all_contributions.append([c['shap_value'] for c in contributions])
+        
+        # Korrelation zwischen Erklärungen
+        if len(all_contributions) > 1:
+            correlations = []
+            for i in range(len(all_contributions)):
+                for j in range(i+1, len(all_contributions)):
+                    corr = np.corrcoef(all_contributions[i], all_contributions[j])[0, 1]
+                    if not np.isnan(corr):
+                        correlations.append(corr)
+            
+            return np.mean(correlations) if correlations else 0.0
+        
+        return 1.0
+
+# Demonstration der SHAP-basierten DSGVO Compliance
+def demonstrate_shap_compliance():
+    # Beispiel-Model und Daten
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.model_selection import train_test_split
+    
+    # Beispiel-Daten erstellen
+    data = pd.DataFrame({
+        'einkommen': np.random.normal(50000, 20000, 2000),
+        'alter': np.random.randint(18, 80, 2000),
+        'beschaeftigungsdauer': np.random.randint(0, 40, 2000),
+        'bestehende_kredite': np.random.randint(0, 5, 2000),
+        'eigenkapital': np.random.normal(10000, 5000, 2000)
+    })
+    
+    # Künstliches Target erstellen
+    y = (data['einkommen'] > 45000) & (data['alter'] > 25) & (data['beschaeftigungsdauer'] > 2)
+    
+    # Model trainieren
+    X_train, X_test, y_train, y_test = train_test_split(data, y, test_size=0.2)
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model.fit(X_train, y_train)
+    
+    # SHAP Explainer initialisieren
+    shap_explainer = DSGVOCompliantSHAP(model, X_train)
+    
+    # Einzelne Entscheidung erklären
+    test_instance = X_test.iloc[0]
+    explanation = shap_explainer.explain_individual_decision(test_instance)
+    
+    print("DSGVO Art. 22 konforme SHAP-Erklärung:")
+    print(explanation['summary']['explanation_text'])
+    
+    # Globale Feature-Wichtigkeit
+    global_importance = shap_explainer.global_feature_importance()
+    print("\\nGlobale Feature-Wichtigkeit:")
+    for feature, stats in global_importance.items():
+        print(f"{feature}: {stats['global_importance']:.3f}")
+    
+    return explanation, global_importance`,
+      benefits: [
+        "Theoretisch fundiert durch Shapley-Werte",
+        "Konsistente und faire Attributierung",
+        "Globale + lokale Erklärbarkeit",
+        "Starke mathematische Eigenschaften"
+      ],
+      challenges: [
+        "Rechenintensiv für große Modelle",
+        "Komplexe Interpretation für Laien",
+        "Korrelationseffekte können verwirrend sein",
+        "Requires domain expertise für Interpretation"
+      ]
+    },
+    'counterfactuals': {
+      name: "Counterfactual Explanations",
+      description: "Was-wäre-wenn Szenarien für actionable insights",
+      code: `# Counterfactual Explanations für DSGVO Art. 22
+import numpy as np
+import pandas as pd
+from sklearn.metrics import euclidean_distances
+from scipy.optimize import minimize
+
+class CounterfactualExplainer:
+    def __init__(self, model, training_data, categorical_features=None):
+        self.model = model
+        self.training_data = training_data
+        self.categorical_features = categorical_features or []
+        self.feature_ranges = self._compute_feature_ranges()
+    
+    def _compute_feature_ranges(self):
+        """Berechnet realistische Wertebereiche für Features"""
+        ranges = {}
+        for column in self.training_data.columns:
+            if column in self.categorical_features:
+                ranges[column] = list(self.training_data[column].unique())
+            else:
+                ranges[column] = {
+                    'min': float(self.training_data[column].min()),
+                    'max': float(self.training_data[column].max()),
+                    'std': float(self.training_data[column].std())
+                }
+        return ranges
+    
+    def generate_counterfactual(self, instance, desired_outcome=1, max_changes=3):
+        """
+        Generiert Counterfactual Explanation für DSGVO Art. 22 Compliance
+        
+        Args:
+            instance: Die zu erklärende Instanz
+            desired_outcome: Gewünschtes Ergebnis (0 oder 1)
+            max_changes: Maximale Anzahl zu ändernder Features
+        """
+        original_prediction = self.model.predict_proba([instance.values])[0]
+        
+        if (desired_outcome == 1 and original_prediction[1] > 0.5) or \
+           (desired_outcome == 0 and original_prediction[1] <= 0.5):
+            return {
+                'message': 'Gewünschtes Ergebnis bereits erreicht',
+                'current_prediction': float(original_prediction[1]),
+                'changes_needed': []
+            }
+        
+        # Optimierungsbasierte Counterfactual-Generierung
+        counterfactual = self._optimize_counterfactual(instance, desired_outcome, max_changes)
+        
+        if counterfactual is not None:
+            changes = self._identify_changes(instance, counterfactual)
+            validation = self._validate_counterfactual(counterfactual, desired_outcome)
+            
+            return {
+                'original_prediction': float(original_prediction[1]),
+                'counterfactual_prediction': float(validation['prediction']),
+                'changes_needed': changes,
+                'feasibility_score': self._assess_feasibility(changes),
+                'actionable_advice': self._generate_actionable_advice(changes),
+                'compliance_note': 'Diese Erklärung erfüllt DSGVO Art. 22 Anforderungen für aussagekräftige Informationen über alternative Entscheidungsszenarien.'
+            }
+        else:
+            return {
+                'message': 'Kein realistisches Counterfactual gefunden',
+                'suggestions': self._suggest_alternative_approach(instance, desired_outcome)
+            }
+    
+    def _optimize_counterfactual(self, instance, desired_outcome, max_changes):
+        """Optimiert Counterfactual mit Constraints"""
+        
+        def objective(x):
+            # Minimiere Distanz zum Original + Penalty für viele Änderungen
+            distance = np.sum((x - instance.values) ** 2)
+            prediction = self.model.predict_proba([x])[0]
+            
+            # Prediction Loss: wie weit vom gewünschten Outcome
+            if desired_outcome == 1:
+                pred_loss = max(0, 0.5 - prediction[1]) * 10
+            else:
+                pred_loss = max(0, prediction[1] - 0.5) * 10
+            
+            # Change Penalty: bestraft zu viele Änderungen
+            change_penalty = np.sum(np.abs(x - instance.values) > 1e-6) * 0.5
+            
+            return distance + pred_loss + change_penalty
+        
+        def constraint_prediction(x):
+            """Constraint: Prediction muss gewünschtes Outcome haben"""
+            prediction = self.model.predict_proba([x])[0]
+            if desired_outcome == 1:
+                return prediction[1] - 0.5  # >= 0.5
+            else:
+                return 0.5 - prediction[1]  # <= 0.5
+        
+        # Feature-Bounds basierend auf realistischen Werten
+        bounds = []
+        for i, feature in enumerate(instance.index):
+            if feature in self.categorical_features:
+                # Für kategoriale Features: nächste verfügbare Werte
+                bounds.append((instance.iloc[i], instance.iloc[i]))  # Erstmal unveränderlich
+            else:
+                feature_range = self.feature_ranges[feature]
+                # Erlaubt Änderungen innerhalb 2 Standardabweichungen
+                lower = max(feature_range['min'], instance.iloc[i] - 2 * feature_range['std'])
+                upper = min(feature_range['max'], instance.iloc[i] + 2 * feature_range['std'])
+                bounds.append((lower, upper))
+        
+        # Optimierung mit Constraints
+        constraints = [{'type': 'ineq', 'fun': constraint_prediction}]
+        
+        try:
+            result = minimize(
+                objective,
+                instance.values,
+                method='SLSQP',
+                bounds=bounds,
+                constraints=constraints,
+                options={'maxiter': 1000}
+            )
+            
+            if result.success:
+                return pd.Series(result.x, index=instance.index)
+            else:
+                return None
+        except:
+            return None
+    
+    def _identify_changes(self, original, counterfactual):
+        """Identifiziert und beschreibt notwendige Änderungen"""
+        changes = []
+        
+        for feature in original.index:
+            original_val = original[feature]
+            counter_val = counterfactual[feature]
+            
+            if abs(original_val - counter_val) > 1e-6:
+                change = {
+                    'feature': feature,
+                    'current_value': float(original_val),
+                    'required_value': float(counter_val),
+                    'change_magnitude': abs(float(counter_val - original_val)),
+                    'change_direction': 'increase' if counter_val > original_val else 'decrease',
+                    'relative_change': float((counter_val - original_val) / original_val) if original_val != 0 else float('inf')
+                }
+                changes.append(change)
+        
+        # Sortiere nach Änderungsgröße
+        changes.sort(key=lambda x: x['change_magnitude'], reverse=True)
+        return changes
+    
+    def _assess_feasibility(self, changes):
+        """Bewertet die Durchführbarkeit der vorgeschlagenen Änderungen"""
+        if not changes:
+            return 1.0
+        
+        feasibility_scores = []
+        
+        for change in changes:
+            feature = change['feature']
+            
+            # Feasibility basierend auf Feature-Typ
+            if feature in ['alter', 'geschlecht']:  # Unveränderliche Features
+                feasibility_scores.append(0.0)
+            elif feature in ['einkommen', 'beschaeftigungsdauer']:  # Schwer änderbar
+                relative_change = abs(change['relative_change'])
+                if relative_change < 0.1:  # <10% Änderung
+                    feasibility_scores.append(0.8)
+                elif relative_change < 0.3:  # <30% Änderung
+                    feasibility_scores.append(0.5)
+                else:
+                    feasibility_scores.append(0.2)
+            else:  # Einfacher änderbare Features
+                feasibility_scores.append(0.9)
+        
+        return np.mean(feasibility_scores)
+    
+    def _generate_actionable_advice(self, changes):
+        """Generiert handlungsrelevante Empfehlungen"""
+        if not changes:
+            return "Keine Änderungen erforderlich."
+        
+        advice = []
+        
+        for change in changes[:3]:  # Top 3 wichtigste Änderungen
+            feature = change['feature']
+            direction = change['change_direction']
+            magnitude = change['change_magnitude']
+            
+            if feature == 'einkommen':
+                if direction == 'increase':
+                    advice.append(f"Einkommen um {magnitude:.0f}€ erhöhen (z.B. durch Gehaltsverhandlung oder Nebentätigkeit)")
+                else:
+                    advice.append(f"Einkommen muss nicht reduziert werden")
+            elif feature == 'beschaeftigungsdauer':
+                if direction == 'increase':
+                    advice.append(f"Beschäftigungsdauer um {magnitude:.1f} Jahre verlängern (Jobwechsel vermeiden)")
+            elif feature == 'bestehende_kredite':
+                if direction == 'decrease':
+                    advice.append(f"Anzahl bestehender Kredite um {magnitude:.0f} reduzieren (Kredite ablösen)")
+            elif feature == 'eigenkapital':
+                if direction == 'increase':
+                    advice.append(f"Eigenkapital um {magnitude:.0f}€ erhöhen (Sparen oder Vermögensaufbau)")
+        
+        return advice
+    
+    def _validate_counterfactual(self, counterfactual, desired_outcome):
+        """Validiert das generierte Counterfactual"""
+        prediction = self.model.predict_proba([counterfactual.values])[0]
+        
+        success = (desired_outcome == 1 and prediction[1] > 0.5) or \
+                 (desired_outcome == 0 and prediction[1] <= 0.5)
+        
+        return {
+            'prediction': float(prediction[1]),
+            'success': success,
+            'confidence': float(max(prediction))
+        }
+    
+    def batch_counterfactuals(self, instances, desired_outcomes):
+        """Generiert Counterfactuals für Batch von Instanzen"""
+        results = []
+        
+        for i, (_, instance) in enumerate(instances.iterrows()):
+            desired = desired_outcomes[i] if isinstance(desired_outcomes, list) else desired_outcomes
+            counterfactual = self.generate_counterfactual(instance, desired)
+            
+            results.append({
+                'instance_id': i,
+                'counterfactual': counterfactual,
+                'success': 'changes_needed' in counterfactual
+            })
+        
+        return results
+
+# Demonstration für DSGVO Art. 22 Compliance
+def demonstrate_counterfactual_compliance():
+    # Beispiel-Setup
+    from sklearn.ensemble import RandomForestClassifier
+    
+    # Beispiel-Daten
+    data = pd.DataFrame({
+        'einkommen': np.random.normal(45000, 15000, 1000),
+        'alter': np.random.randint(25, 65, 1000),
+        'beschaeftigungsdauer': np.random.randint(1, 30, 1000),
+        'bestehende_kredite': np.random.randint(0, 4, 1000),
+        'eigenkapital': np.random.normal(8000, 4000, 1000)
+    })
+    
+    # Target: Kreditwürdigkeit
+    y = ((data['einkommen'] > 40000) & 
+         (data['beschaeftigungsdauer'] > 2) & 
+         (data['bestehende_kredite'] < 3)).astype(int)
+    
+    # Model trainieren
+    model = RandomForestClassifier(n_estimators=50, random_state=42)
+    model.fit(data, y)
+    
+    # Counterfactual Explainer
+    cf_explainer = CounterfactualExplainer(model, data)
+    
+    # Beispiel: Abgelehnter Kreditantrag
+    rejected_customer = pd.Series({
+        'einkommen': 35000,
+        'alter': 28,
+        'beschaeftigungsdauer': 1,
+        'bestehende_kredite': 3,
+        'eigenkapital': 2000
+    })
+    
+    # Counterfactual für Genehmigung generieren
+    counterfactual = cf_explainer.generate_counterfactual(rejected_customer, desired_outcome=1)
+    
+    print("DSGVO Art. 22 konforme Counterfactual Explanation:")
+    print(f"Aktuelle Vorhersage: {counterfactual['original_prediction']:.3f}")
+    print(f"Vorhersage nach Änderungen: {counterfactual['counterfactual_prediction']:.3f}")
+    print("\\nEmpfohlene Änderungen:")
+    
+    for change in counterfactual['changes_needed']:
+        print(f"• {change['feature']}: {change['current_value']:.1f} → {change['required_value']:.1f}")
+    
+    print("\\nHandlungsempfehlungen:")
+    for advice in counterfactual['actionable_advice']:
+        print(f"• {advice}")
+    
+    print(f"\\nDurchführbarkeit: {counterfactual['feasibility_score']:.1%}")
+    
+    return counterfactual`,
+      benefits: [
+        "Actionable insights für betroffene Personen",
+        "Direkte Erfüllung von DSGVO Art. 22 Anforderungen",
+        "Benutzerfreundliche 'Was-wäre-wenn' Szenarien",
+        "Unterstützt Widerspruchsverfahren"
+      ],
+      challenges: [
+        "Rechenaufwendige Optimierung",
+        "Realitätsnähe der Änderungsvorschläge",
+        "Multiple Lösungen möglich",
+        "Feasibility-Assessment schwierig"
+      ]
+    }
+  };
+
+  const toggleStep = (stepId) => {
+    setCompletedSteps(prev => ({
+      ...prev,
+      [stepId]: !prev[stepId]
+    }));
+  };
+
+  const toggleSection = (sectionId) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      
+      {/* Hero Section */}
+      <motion.div 
+        ref={containerRef}
+        className="relative bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-900 text-white overflow-hidden"
+        style={{ y: headerY, opacity: headerOpacity }}
+      >
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative container mx-auto px-6 py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
+              <Eye className="w-5 h-5" />
+              <span className="font-medium">Explainable AI Guide</span>
+            </div>
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-purple-100 bg-clip-text text-transparent">
+              Explainable AI für DSGVO Art. 22
+            </h1>
+            <p className="text-xl lg:text-2xl text-purple-100 mb-8 leading-relaxed">
+              Implementierung erklärbarer KI-Systeme zur vollständigen Compliance mit automatisierter Entscheidungsfindung nach DSGVO Artikel 22
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                <Scale className="w-4 h-4 mr-1" />
+                DSGVO Art. 22
+              </Badge>
+              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                <Brain className="w-4 h-4 mr-1" />
+                XAI Methods
+              </Badge>
+              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                <Shield className="w-4 h-4 mr-1" />
+                Legal Compliance
+              </Badge>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-6 py-16">
+        <Tabs defaultValue="methods" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5">
+            <TabsTrigger value="methods">XAI Methoden</TabsTrigger>
+            <TabsTrigger value="article22">Art. 22 Framework</TabsTrigger>
+            <TabsTrigger value="implementation">Implementation</TabsTrigger>
+            <TabsTrigger value="scenarios">Use Cases</TabsTrigger>
+            <TabsTrigger value="compliance">Compliance</TabsTrigger>
+          </TabsList>
+
+          {/* XAI Methods Overview */}
+          <TabsContent value="methods" className="space-y-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Explainable AI Methoden</h2>
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Überblick über die wichtigsten XAI-Techniken für DSGVO Art. 22 Compliance mit 
+                Bewertung ihrer Eignung für automatisierte Entscheidungssysteme.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {xaiMethods.map((method, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className={`p-3 rounded-lg ${method.color}`}>
+                          <method.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl">{method.title}</CardTitle>
+                          <p className="text-sm text-gray-500">{method.subtitle}</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-600">{method.description}</p>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-semibold mb-2 text-green-600">Stärken:</h4>
+                          <ul className="space-y-1">
+                            {method.strengths.map((strength, idx) => (
+                              <li key={idx} className="flex items-center gap-2 text-sm">
+                                <CheckCircle2 className="w-3 h-3 text-green-500" />
+                                {strength}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2 text-orange-600">Schwächen:</h4>
+                          <ul className="space-y-1">
+                            {method.weaknesses.map((weakness, idx) => (
+                              <li key={idx} className="flex items-center gap-2 text-sm">
+                                <X className="w-3 h-3 text-orange-500" />
+                                {weakness}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-semibold mb-2">Use Cases:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {method.use_cases.map((useCase, idx) => (
+                            <Badge key={idx} variant="secondary" className="text-xs">
+                              {useCase}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-3 border-t">
+                        <div className="text-sm">
+                          <span className="font-medium">Komplexität: </span>
+                          <Badge variant={method.complexity === 'Niedrig' ? 'secondary' : 
+                                        method.complexity === 'Mittel' ? 'default' : 'destructive'}>
+                            {method.complexity}
+                          </Badge>
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Art. 22 Eignung: </span>
+                          <Badge variant={method.article22_compliance === 'Sehr Hoch' ? 'default' :
+                                        method.article22_compliance === 'Hoch' ? 'secondary' : 'outline'}>
+                            {method.article22_compliance}
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Article 22 Framework */}
+          <TabsContent value="article22" className="space-y-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">DSGVO Art. 22 Framework</h2>
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Detaillierte Analyse der rechtlichen Anforderungen und deren technische Umsetzung 
+                durch Explainable AI Methoden für vollständige Compliance.
+              </p>
+            </div>
+
+            {/* Legal Framework */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Scale className="w-5 h-5 text-blue-500" />
+                  Rechtlicher Rahmen - DSGVO Art. 22
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {art22Requirements.legal_framework.paragraphs.map((paragraph, index) => (
+                  <div key={index} className="border-l-4 border-blue-500 pl-6">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-lg">{paragraph.section}</h4>
+                      <Badge variant="outline">Rechtlicher Text</Badge>
+                    </div>
+                    <blockquote className="text-gray-700 italic mb-3 bg-gray-50 p-3 rounded">
+                      "{paragraph.text}"
+                    </blockquote>
+                    <div className="bg-blue-50 p-3 rounded">
+                      <strong className="text-blue-800">KI-Implikation:</strong>
+                      <p className="text-blue-700 mt-1">{paragraph.ai_implication}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Implementation Requirements */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {art22Requirements.implementation_requirements.map((req, index) => (
+                <Card key={index}>
+                  <CardHeader>
+                    <CardTitle className="text-lg">{req.requirement}</CardTitle>
+                    <p className="text-gray-600">{req.description}</p>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Geeignete XAI-Methoden:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {req.xai_methods.map((method, idx) => (
+                          <Badge key={idx} variant="default" className="bg-purple-500">
+                            {method}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Technische Umsetzung:</h4>
+                      <p className="text-sm text-gray-600 bg-gray-50 p-3 rounded">
+                        {req.implementation}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Dokumentation:</h4>
+                      <p className="text-sm text-gray-600">
+                        {req.documentation}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Technical Implementation */}
+          <TabsContent value="implementation" className="space-y-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Technische Implementierung</h2>
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Praktische Code-Beispiele und Implementierungsanleitungen für 
+                DSGVO-konforme Explainable AI Systeme mit verschiedenen XAI-Methoden.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {Object.entries(xaiTechniques).map(([key, technique]) => (
+                <Button
+                  key={key}
+                  variant={activeMethod === key ? "default" : "outline"}
+                  onClick={() => setActiveMethod(key)}
+                  className="mb-2"
+                >
+                  {technique.name.split(' ')[0]}
+                </Button>
+              ))}
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Code className="w-5 h-5" />
+                  {xaiTechniques[activeMethod].name}
+                </CardTitle>
+                <p className="text-gray-600">{xaiTechniques[activeMethod].description}</p>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="bg-gray-900 rounded-lg p-4">
+                  <pre className="text-green-400 text-sm overflow-x-auto">
+                    <code>{xaiTechniques[activeMethod].code}</code>
+                  </pre>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold mb-3 text-green-600">Vorteile:</h4>
+                    <ul className="space-y-2">
+                      {xaiTechniques[activeMethod].benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5" />
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-3 text-orange-600">Herausforderungen:</h4>
+                    <ul className="space-y-2">
+                      {xaiTechniques[activeMethod].challenges.map((challenge, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm">
+                          <AlertCircle className="w-4 h-4 text-orange-500 mt-0.5" />
+                          {challenge}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Use Case Scenarios */}
+          <TabsContent value="scenarios" className="space-y-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Praxisszenarien & Use Cases</h2>
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Reale Anwendungsszenarien für Explainable AI in automatisierten 
+                Entscheidungssystemen mit spezifischen Compliance-Anforderungen.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {Object.entries(implementationScenarios).map(([key, scenario]) => (
+                <Button
+                  key={key}
+                  variant={selectedScenario === key ? "default" : "outline"}
+                  onClick={() => setSelectedScenario(key)}
+                  className="mb-2"
+                >
+                  {scenario.title}
+                </Button>
+              ))}
+            </div>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle className="text-2xl">{implementationScenarios[selectedScenario].title}</CardTitle>
+                    <p className="text-gray-600">{implementationScenarios[selectedScenario].description}</p>
+                  </div>
+                  <Badge 
+                    variant={implementationScenarios[selectedScenario].risk_level === 'Kritisch' ? 'destructive' :
+                            implementationScenarios[selectedScenario].risk_level === 'Sehr Hoch' ? 'destructive' :
+                            implementationScenarios[selectedScenario].risk_level === 'Hoch' ? 'default' : 'secondary'}
+                  >
+                    {implementationScenarios[selectedScenario].risk_level} Risiko
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <h4 className="font-semibold mb-3">Betroffene Rechte:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {implementationScenarios[selectedScenario].affected_rights.map((right, idx) => (
+                      <Badge key={idx} variant="outline" className="text-red-600 border-red-200">
+                        <AlertCircle className="w-3 h-3 mr-1" />
+                        {right}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-3">Erforderliche XAI-Methoden:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {implementationScenarios[selectedScenario].required_xai.map((method, idx) => (
+                      <Badge key={idx} variant="default" className="bg-blue-500">
+                        {method}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {implementationScenarios[selectedScenario].implementation && (
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div>
+                      <h4 className="font-semibold mb-3">Datenanforderungen:</h4>
+                      <ul className="space-y-1">
+                        {implementationScenarios[selectedScenario].implementation.data_requirements.map((req, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-sm">
+                            <Database className="w-3 h-3 text-blue-500" />
+                            {req}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold mb-3">Technisches Setup:</h4>
+                      <ul className="space-y-1">
+                        {implementationScenarios[selectedScenario].implementation.technical_setup.map((setup, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-sm">
+                            <Settings className="w-3 h-3 text-green-500" />
+                            {setup}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold mb-3">Compliance-Maßnahmen:</h4>
+                      <ul className="space-y-1">
+                        {implementationScenarios[selectedScenario].implementation.compliance_measures.map((measure, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-sm">
+                            <ShieldCheck className="w-3 h-3 text-purple-500" />
+                            {measure}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {/* Code Example for Credit Scoring */}
+                {selectedScenario === 'credit-scoring' && implementationScenarios[selectedScenario].code_example && (
+                  <div>
+                    <h4 className="font-semibold mb-3">Implementierungsbeispiel:</h4>
+                    <div className="bg-gray-900 rounded-lg p-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+                        <code>{implementationScenarios[selectedScenario].code_example}</code>
+                      </pre>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Compliance Dashboard */}
+          <TabsContent value="compliance" className="space-y-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Compliance Dashboard</h2>
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Überwachung und Validierung der DSGVO Art. 22 Compliance mit 
+                automatisierten Metriken und Reporting-Funktionen.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Explanation Quality Metrics */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Eye className="w-5 h-5 text-blue-500" />
+                    Erklärungsqualität
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Verständlichkeit</span>
+                      <Badge variant="default" className="bg-green-500">94%</Badge>
+                    </div>
+                    <Progress value={94} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      User Comprehension Score
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Stabilität</span>
+                      <Badge variant="default" className="bg-blue-500">87%</Badge>
+                    </div>
+                    <Progress value={87} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      Erklärungskonsistenz
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Vollständigkeit</span>
+                      <Badge variant="default" className="bg-purple-500">92%</Badge>
+                    </div>
+                    <Progress value={92} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      Feature Coverage
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Legal Compliance */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Scale className="w-5 h-5 text-green-500" />
+                    Art. 22 Compliance
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Meaningful Information</span>
+                      <Badge variant="default" className="bg-green-500">✓</Badge>
+                    </div>
+                    <Progress value={100} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      Aussagekräftige Erklärungen
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Human Oversight</span>
+                      <Badge variant="default" className="bg-green-500">✓</Badge>
+                    </div>
+                    <Progress value={100} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      Menschliche Aufsicht
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Contest Mechanism</span>
+                      <Badge variant="default" className="bg-green-500">✓</Badge>
+                    </div>
+                    <Progress value={100} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      Widerspruchsverfahren
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* System Performance */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-orange-500" />
+                    System Performance
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Explanation Latency</span>
+                      <Badge variant="secondary">125ms</Badge>
+                    </div>
+                    <Progress value={85} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      Durchschnittliche Antwortzeit
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Coverage Rate</span>
+                      <Badge variant="default" className="bg-blue-500">98.7%</Badge>
+                    </div>
+                    <Progress value={98.7} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      Erfolgreiche Erklärungen
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Human Appeals</span>
+                      <Badge variant="outline">2.3%</Badge>
+                    </div>
+                    <Progress value={2.3} className="h-2" />
+                    <div className="text-xs text-gray-500">
+                      Manuelle Überprüfungen
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Compliance Checklist */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileCheck className="w-5 h-5 text-green-500" />
+                  DSGVO Art. 22 Compliance Checkliste
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {[
+                    "Automatisierte Entscheidung identifiziert",
+                    "Bedeutsame Erklärungen implementiert",
+                    "Menschliche Aufsicht eingerichtet",
+                    "Widerspruchsverfahren definiert",
+                    "Dokumentation vollständig",
+                    "Betroffenenrechte respektiert",
+                    "XAI-Methoden validiert",
+                    "Performance-Monitoring aktiv",
+                    "Bias-Detection implementiert",
+                    "Appeal-Process dokumentiert",
+                    "Mitarbeiterschulungen durchgeführt",
+                    "Regulatorische Berichte erstellt"
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100"
+                      onClick={() => toggleStep(`compliance-${index}`)}
+                    >
+                      <div 
+                        className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
+                          completedSteps[`compliance-${index}`] 
+                            ? 'bg-green-500 border-green-500' 
+                            : 'border-gray-300'
+                        }`}
+                      >
+                        {completedSteps[`compliance-${index}`] && (
+                          <CheckCircle2 className="w-3 h-3 text-white" />
+                        )}
+                      </div>
+                      <span className={`text-sm ${
+                        completedSteps[`compliance-${index}`] 
+                          ? 'line-through text-gray-500' 
+                          : ''
+                      }`}>
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Automated Compliance Monitoring */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Monitor className="w-5 h-5 text-purple-500" />
+                  Automatisiertes Compliance Monitoring
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-gray-900 rounded-lg p-4">
+                  <pre className="text-green-400 text-sm overflow-x-auto">
+                    <code>{`# DSGVO Art. 22 Compliance Monitoring
+import logging
+from datetime import datetime
+import numpy as np
+import pandas as pd
+
+class Art22ComplianceMonitor:
+    def __init__(self):
+        self.compliance_metrics = {}
+        self.alerts = []
+        
+    def monitor_explanation_quality(self, explanations_batch):
+        """Überwacht Qualität der Erklärungen"""
+        
+        # Verständlichkeits-Score
+        comprehension_scores = [exp.get('comprehension_score', 0) for exp in explanations_batch]
+        avg_comprehension = np.mean(comprehension_scores)
+        
+        # Stabilitäts-Score
+        stability_scores = [exp.get('stability_score', 0) for exp in explanations_batch]
+        avg_stability = np.mean(stability_scores)
+        
+        # Vollständigkeits-Score
+        completeness_scores = [exp.get('completeness_score', 0) for exp in explanations_batch]
+        avg_completeness = np.mean(completeness_scores)
+        
+        metrics = {
+            'timestamp': datetime.now(),
+            'comprehension': avg_comprehension,
+            'stability': avg_stability,
+            'completeness': avg_completeness,
+            'batch_size': len(explanations_batch)
+        }
+        
+        # Alerts für schlechte Qualität
+        if avg_comprehension < 0.7:
+            self.create_alert("Verständlichkeit unter Grenzwert", metrics)
+        if avg_stability < 0.6:
+            self.create_alert("Instabile Erklärungen erkannt", metrics)
+        if avg_completeness < 0.8:
+            self.create_alert("Unvollständige Erklärungen", metrics)
+            
+        return metrics
+    
+    def validate_art22_compliance(self, decision_system):
+        """Validiert vollständige Art. 22 Compliance"""
+        
+        compliance_checks = {
+            'meaningful_information': self.check_meaningful_information(decision_system),
+            'human_oversight': self.check_human_oversight(decision_system),
+            'contest_mechanism': self.check_contest_mechanism(decision_system),
+            'impact_assessment': self.check_impact_assessment(decision_system),
+            'documentation': self.check_documentation(decision_system)
+        }
+        
+        compliance_score = sum(compliance_checks.values()) / len(compliance_checks)
+        
+        if compliance_score < 1.0:
+            failing_checks = [check for check, passed in compliance_checks.items() if not passed]
+            self.create_alert(f"Art. 22 Compliance Verletzung: {failing_checks}", compliance_checks)
+        
+        return {
+            'compliance_score': compliance_score,
+            'individual_checks': compliance_checks,
+            'status': 'COMPLIANT' if compliance_score == 1.0 else 'NON_COMPLIANT',
+            'timestamp': datetime.now()
+        }
+    
+    def generate_regulatory_report(self, period_start, period_end):
+        """Generiert regulatorischen Bericht für Aufsichtsbehörden"""
+        
+        report = {
+            'reporting_period': {'start': period_start, 'end': period_end},
+            'total_decisions': self.get_decision_count(period_start, period_end),
+            'explanation_coverage': self.get_explanation_coverage(period_start, period_end),
+            'human_review_rate': self.get_human_review_rate(period_start, period_end),
+            'appeal_statistics': self.get_appeal_statistics(period_start, period_end),
+            'bias_detection_results': self.get_bias_analysis(period_start, period_end),
+            'compliance_violations': self.get_violations(period_start, period_end),
+            'corrective_actions': self.get_corrective_actions(period_start, period_end)
+        }
+        
+        return report
+    
+    def real_time_monitoring(self):
+        """Echtzeit-Monitoring Dashboard"""
+        
+        current_metrics = {
+            'active_decisions_per_hour': self.get_current_decision_rate(),
+            'explanation_latency_p95': self.get_explanation_latency_percentile(95),
+            'human_review_queue_size': self.get_human_review_queue_size(),
+            'compliance_score_24h': self.get_24h_compliance_score(),
+            'alert_count_today': len([a for a in self.alerts if a['date'] == datetime.now().date()])
+        }
+        
+        # Dashboard Updates
+        self.update_compliance_dashboard(current_metrics)
+        
+        return current_metrics
+
+# Verwendung
+monitor = Art22ComplianceMonitor()
+
+# Tägliche Compliance-Prüfung
+daily_compliance = monitor.validate_art22_compliance(ai_decision_system)
+print(f"Compliance Status: {daily_compliance['status']}")
+
+# Echtzeit-Monitoring
+real_time_metrics = monitor.real_time_monitoring()
+print(f"Aktuelle Metriken: {real_time_metrics}")
+
+# Monatlicher Regulatory Report
+monthly_report = monitor.generate_regulatory_report(
+    datetime(2024, 1, 1), 
+    datetime(2024, 1, 31)
+)
+print(f"Monatsbericht erstellt: {len(monthly_report['total_decisions'])} Entscheidungen")`}</code>
+                  </pre>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center mt-16"
+        >
+          <h3 className="text-2xl font-bold mb-4">
+            Bereit für DSGVO-konforme Explainable AI?
+          </h3>
+          <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
+            Implementieren Sie vollständig compliant automatisierte Entscheidungssysteme mit 
+            aussagekräftigen Erklärungen nach DSGVO Art. 22 Standards.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button size="lg" variant="secondary">
+              <Download className="w-5 h-5 mr-2" />
+              XAI Implementation Guide
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-indigo-600">
+              <MessageSquare className="w-5 h-5 mr-2" />
+              Compliance Beratung
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default ExplainableAIGuide;

@@ -1,0 +1,741 @@
+import React, { useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { 
+  Shield, 
+  FileText, 
+  CheckCircle2, 
+  ArrowRight, 
+  Clock,
+  Users,
+  Star,
+  Download,
+  Eye,
+  Calendar,
+  Lightbulb,
+  AlertTriangle,
+  Target,
+  Settings,
+  Globe,
+  Lock,
+  Database,
+  Scale,
+  Gavel,
+  UserCheck,
+  Building2,
+  Search,
+  Filter,
+  SortAsc,
+  BookOpen,
+  Award,
+  TrendingUp,
+  Bookmark,
+  ExternalLink,
+  Play,
+  FileCheck,
+  AlertOctagon,
+  Zap,
+  Brain,
+  Rocket,
+  Code,
+  MonitorSpeaker
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { cn } from '@/lib/utils';
+
+const DsgvoGuides: React.FC = () => {
+  const [selectedDifficulty, setSelectedDifficulty] = useState('all');
+  const [selectedTopic, setSelectedTopic] = useState('all');
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  const difficulties = [
+    { id: 'all', name: 'Alle Level', count: 12 },
+    { id: 'beginner', name: 'Einsteiger', count: 4 },
+    { id: 'intermediate', name: 'Fortgeschritten', count: 5 },
+    { id: 'expert', name: 'Experte', count: 3 }
+  ];
+
+  const topics = [
+    { id: 'all', name: 'Alle Themen', icon: Shield },
+    { id: 'basics', name: 'Grundlagen', icon: Lightbulb },
+    { id: 'implementation', name: 'Implementierung', icon: Settings },
+    { id: 'website', name: 'Website', icon: Globe },
+    { id: 'crisis', name: 'Krisenmanagement', icon: AlertTriangle }
+  ];
+
+  const guides = [
+    {
+      id: 'dsgvo-grundlagen',
+      title: 'DSGVO in 10 Minuten verstehen',
+      subtitle: 'Die wichtigsten Prinzipien und Grundlagen',
+      description: 'Ein kompakter Überblick über die DSGVO-Grundlagen, Rechtsgrundlagen und die wichtigsten Prinzipien für Einsteiger.',
+      readTime: '10 Min',
+      difficulty: 'beginner',
+      topic: 'basics',
+      popular: true,
+      featured: true,
+      completions: 2847,
+      rating: 4.9,
+      lastUpdated: '2024-01-15',
+      color: 'from-green-500 to-emerald-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-green-900 to-slate-900',
+      link: '/wissen/leitfaden/dsgvo-grundlagen',
+      chapters: [
+        'Was ist die DSGVO?',
+        'Die 7 Grundprinzipien',
+        'Rechtsgrundlagen Art. 6',
+        'Betroffenenrechte',
+        'Sanktionen & Bußgelder'
+      ],
+      keyTakeaways: [
+        'Vollständiger DSGVO-Überblick',
+        'Praktische Beispiele',
+        'Sofort anwendbares Wissen'
+      ]
+    },
+    {
+      id: 'dsgvo-30-tage',
+      title: 'DSGVO in 30 Tagen umsetzen',
+      subtitle: 'Schritt-für-Schritt Implementation Plan',
+      description: 'Ein detaillierter 30-Tage-Plan zur vollständigen DSGVO-Implementierung mit Checklisten, Templates und Zeitplänen.',
+      readTime: '45 Min',
+      difficulty: 'intermediate',
+      topic: 'implementation',
+      featured: true,
+      completions: 1923,
+      rating: 4.8,
+      lastUpdated: '2024-01-20',
+      color: 'from-blue-500 to-indigo-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
+      link: '/wissen/leitfaden/dsgvo-30-tage',
+      chapters: [
+        'Woche 1: Bestandsaufnahme',
+        'Woche 2: Rechtsgrundlagen',
+        'Woche 3: TOM & Dokumentation',
+        'Woche 4: Schulung & Testing'
+      ],
+      keyTakeaways: [
+        'Strukturierter Implementierungsplan',
+        'Praxiserprobte Templates',
+        'Compliance in 30 Tagen'
+      ]
+    },
+    {
+      id: 'website-dsgvo',
+      title: 'Website DSGVO-konform gestalten',
+      subtitle: 'Cookie, Privacy Policy & Consent Management',
+      description: 'Vollständige Anleitung zur DSGVO-konformen Gestaltung Ihrer Website inkl. Cookie-Banner, Datenschutzerklärung und Consent Management.',
+      readTime: '35 Min',
+      difficulty: 'intermediate',
+      topic: 'website',
+      popular: true,
+      completions: 3156,
+      rating: 4.7,
+      lastUpdated: '2024-01-18',
+      color: 'from-purple-500 to-pink-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
+      link: '/wissen/leitfaden/website-dsgvo',
+      chapters: [
+        'Cookie-Banner Design',
+        'Datenschutzerklärung',
+        'Consent Management',
+        'Analytics & Tracking',
+        'Drittanbieter-Tools'
+      ],
+      keyTakeaways: [
+        'Rechtssichere Website',
+        'DSGVO-konforme Tools',
+        'Praktische Umsetzung'
+      ]
+    },
+    {
+      id: 'data-breach-notfall',
+      title: 'Data Breach Notfallplan',
+      subtitle: '72-Stunden-Response-Guide',
+      description: 'Kritischer Notfallplan für Datenschutzverletzungen mit Sofortmaßnahmen, Meldepflichten und Schadensbegrenzung.',
+      readTime: '25 Min',
+      difficulty: 'expert',
+      topic: 'crisis',
+      urgent: true,
+      completions: 1456,
+      rating: 4.9,
+      lastUpdated: '2024-01-22',
+      color: 'from-red-500 to-pink-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-red-900 to-slate-900',
+      link: '/wissen/leitfaden/data-breach-notfall',
+      chapters: [
+        'Erste 30 Minuten',
+        'Behördenmeldung',
+        'Betroffeneninformation',
+        'Schadensbegrenzung',
+        'Post-Incident Review'
+      ],
+      keyTakeaways: [
+        '72h-Compliance garantiert',
+        'Rechtssichere Kommunikation',
+        'Schadenminimierung'
+      ]
+    },
+    {
+      id: 'verarbeitungsverzeichnis',
+      title: 'Verarbeitungsverzeichnis erstellen',
+      subtitle: 'Art. 30 DSGVO praktisch umsetzen',
+      description: 'Detaillierte Anleitung zur Erstellung und Pflege eines DSGVO-konformen Verarbeitungsverzeichnisses mit Templates.',
+      readTime: '30 Min',
+      difficulty: 'intermediate',
+      topic: 'implementation',
+      completions: 2134,
+      rating: 4.6,
+      lastUpdated: '2024-01-16',
+      color: 'from-orange-500 to-red-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900',
+      link: '/wissen/leitfaden/verarbeitungsverzeichnis',
+      chapters: [
+        'Was gehört ins VVT?',
+        'Datenfluss-Mapping',
+        'Template-Nutzung',
+        'Kontinuierliche Pflege'
+      ],
+      keyTakeaways: [
+        'DSGVO Art. 30 konform',
+        'Praxiserprobte Templates',
+        'Effiziente Umsetzung'
+      ]
+    },
+    {
+      id: 'betroffenenrechte',
+      title: 'Betroffenenrechte umsetzen',
+      subtitle: 'Art. 15-22 DSGVO in der Praxis',
+      description: 'Komplette Anleitung zur Implementierung aller Betroffenenrechte mit Prozessen, Templates und Fristen.',
+      readTime: '40 Min',
+      difficulty: 'intermediate',
+      topic: 'implementation',
+      completions: 1789,
+      rating: 4.7,
+      lastUpdated: '2024-01-19',
+      color: 'from-teal-500 to-cyan-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900',
+      link: '/wissen/leitfaden/betroffenenrechte',
+      chapters: [
+        'Auskunftsrecht Art. 15',
+        'Löschung Art. 17',
+        'Datenportabilität',
+        'Widerspruchsrecht',
+        'Automatisierte Entscheidungen'
+      ],
+      keyTakeaways: [
+        'Alle Rechte abgedeckt',
+        'Prozess-Templates',
+        'Fristenmanagement'
+      ]
+    },
+    {
+      id: 'tom-technische-massnahmen',
+      title: 'TOM - Technische & organisatorische Maßnahmen',
+      subtitle: 'Art. 32 DSGVO Security Framework',
+      description: 'Umfassender Guide zu technischen und organisatorischen Maßnahmen für angemessene Datensicherheit.',
+      readTime: '50 Min',
+      difficulty: 'expert',
+      topic: 'implementation',
+      completions: 1234,
+      rating: 4.8,
+      lastUpdated: '2024-01-21',
+      color: 'from-indigo-500 to-purple-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900',
+      link: '/wissen/leitfaden/tom-massnahmen',
+      chapters: [
+        'Technische Maßnahmen',
+        'Organisatorische Maßnahmen',
+        'Angemessenheit bewerten',
+        'Dokumentation',
+        'Kontinuierliche Verbesserung'
+      ],
+      keyTakeaways: [
+        'Comprehensive Security',
+        'Risk-based Approach',
+        'Audit-ready Documentation'
+      ]
+    },
+    {
+      id: 'dsfa-durchfuehrung',
+      title: 'Datenschutz-Folgenabschätzung (DSFA)',
+      subtitle: 'Art. 35 DSGVO Step-by-Step',
+      description: 'Detaillierte Anleitung zur Durchführung einer DSFA mit Kriterien, Methodik und praktischen Beispielen.',
+      readTime: '55 Min',
+      difficulty: 'expert',
+      topic: 'implementation',
+      completions: 987,
+      rating: 4.9,
+      lastUpdated: '2024-01-17',
+      color: 'from-yellow-500 to-orange-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-yellow-900 to-slate-900',
+      link: '/wissen/leitfaden/dsfa-durchfuehrung',
+      chapters: [
+        'DSFA-Pflicht prüfen',
+        'Risiko-Assessment',
+        'Maßnahmen definieren',
+        'Konsultation DPO',
+        'Behörden-Konsultation'
+      ],
+      keyTakeaways: [
+        'Strukturierte DSFA-Methodik',
+        'Risiko-Management',
+        'Behörden-konforme Dokumentation'
+      ]
+    }
+  ];
+
+  const filteredGuides = guides.filter(guide => {
+    const difficultyMatch = selectedDifficulty === 'all' || guide.difficulty === selectedDifficulty;
+    const topicMatch = selectedTopic === 'all' || guide.topic === selectedTopic;
+    return difficultyMatch && topicMatch;
+  });
+
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'beginner': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100';
+      case 'intermediate': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100';
+      case 'expert': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100';
+      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100';
+    }
+  };
+
+  const getDifficultyLabel = (difficulty: string) => {
+    switch (difficulty) {
+      case 'beginner': return 'Einsteiger';
+      case 'intermediate': return 'Fortgeschritten';
+      case 'expert': return 'Experte';
+      default: return difficulty;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <Header />
+      
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-full blur-3xl animate-spin-slow" />
+      </div>
+
+      {/* Hero Section */}
+      <motion.section 
+        ref={heroRef}
+        style={{ y }}
+        className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      >
+        <div className="container mx-auto max-w-7xl relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <motion.div 
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+              className="inline-flex items-center gap-3 px-6 py-3 bg-blue-500/10 backdrop-blur-sm rounded-full mb-8 border border-blue-500/20"
+            >
+              <Shield className="h-5 w-5 text-blue-400 animate-pulse" />
+              <span className="text-sm font-semibold text-blue-300">DSGVO-Leitfäden</span>
+              <FileText className="h-5 w-5 text-indigo-400 animate-bounce" />
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8"
+            >
+              <span className="text-white">DSGVO</span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                Leitfäden
+              </span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12"
+            >
+              Praxiserprobte <span className="font-semibold text-blue-300">Schritt-für-Schritt Anleitungen</span> 
+              für erfolgreiche DSGVO-Implementierung - von Grundlagen bis Expertenwissen.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <Play className="mr-2 h-5 w-5" />
+                  Mit Grundlagen starten
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button size="lg" variant="outline" className="border-2 border-blue-500/30 hover:border-blue-400 text-blue-300 hover:bg-blue-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
+                  <Download className="mr-2 h-5 w-5" />
+                  Alle PDFs herunterladen
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Hero Stats */}
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+          >
+            {[
+              { value: '12', label: 'Detaillierte Leitfäden', sublabel: 'Von Basics bis Expert', icon: FileText, color: 'from-blue-500 to-indigo-500' },
+              { value: '8.5h', label: 'Gesamte Lesezeit', sublabel: 'Umfassender Content', icon: Clock, color: 'from-indigo-500 to-purple-500' },
+              { value: '12,500+', label: 'Erfolgreiche Umsetzungen', sublabel: 'Praxisbewährt', icon: CheckCircle2, color: 'from-purple-500 to-pink-500' },
+              { value: '4.8★', label: 'Durchschnittsbewertung', sublabel: 'Nutzer-Feedback', icon: Star, color: 'from-pink-500 to-red-500' }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2 + index * 0.1, duration: 0.6 }}
+                className="relative group"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
+                <div className="relative bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:transform hover:scale-105 transition-all duration-300">
+                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${stat.color} mb-4`}>
+                    <stat.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-sm font-semibold text-slate-200 mb-1">{stat.label}</div>
+                  <div className="text-xs text-slate-400">{stat.sublabel}</div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Filters */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            {/* Difficulty Filter */}
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <Target className="h-5 w-5 text-blue-400" />
+                Schwierigkeitsgrad
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {difficulties.map((difficulty, index) => (
+                  <motion.button
+                    key={difficulty.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedDifficulty(difficulty.id)}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-300 backdrop-blur-sm border",
+                      selectedDifficulty === difficulty.id
+                        ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-blue-500 shadow-lg"
+                        : "bg-slate-800/60 text-slate-300 border-slate-700/50 hover:border-blue-500/50 hover:text-blue-300"
+                    )}
+                  >
+                    <span>{difficulty.name}</span>
+                    <Badge className="bg-slate-700 text-slate-200 border-0 text-xs">
+                      {difficulty.count}
+                    </Badge>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            {/* Topic Filter */}
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <Filter className="h-5 w-5 text-blue-400" />
+                Themenbereich
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {topics.map((topic, index) => (
+                  <motion.button
+                    key={topic.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedTopic(topic.id)}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-300 backdrop-blur-sm border",
+                      selectedTopic === topic.id
+                        ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-indigo-500 shadow-lg"
+                        : "bg-slate-800/60 text-slate-300 border-slate-700/50 hover:border-indigo-500/50 hover:text-indigo-300"
+                    )}
+                  >
+                    <topic.icon className="h-4 w-4" />
+                    <span>{topic.name}</span>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Guides Grid */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-8">
+            {filteredGuides.map((guide, index) => (
+              <motion.div
+                key={guide.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                whileHover={{ y: -5 }}
+                className="group relative"
+              >
+                {/* Glow Effect */}
+                <div className={cn(
+                  "absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-500 -z-10",
+                  `bg-gradient-to-r ${guide.color}`,
+                  "opacity-0 group-hover:opacity-30"
+                )} />
+                
+                <Card className="relative h-full border-2 border-slate-700/50 transition-all duration-500 group-hover:shadow-2xl group-hover:border-slate-600/50 overflow-hidden">
+                  {/* Background Gradient */}
+                  <div className={cn("absolute inset-0", guide.bgColor)} />
+                  
+                  <CardContent className="relative p-8 h-full flex flex-col">
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex-grow">
+                        <div className="flex items-center gap-3 mb-4">
+                          {guide.featured && (
+                            <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
+                              <Star className="h-3 w-3 mr-1" />
+                              Featured
+                            </Badge>
+                          )}
+                          {guide.popular && (
+                            <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                              <TrendingUp className="h-3 w-3 mr-1" />
+                              Beliebt
+                            </Badge>
+                          )}
+                          {guide.urgent && (
+                            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 animate-pulse">
+                              <AlertOctagon className="h-3 w-3 mr-1" />
+                              Urgent
+                            </Badge>
+                          )}
+                        </div>
+                        <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-blue-300 transition-colors">{guide.title}</h3>
+                        <p className="text-lg text-blue-300 mb-3">{guide.subtitle}</p>
+                        <p className="text-slate-300 leading-relaxed">
+                          {guide.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Metadata */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 p-4 bg-slate-800/60 rounded-xl backdrop-blur-sm">
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-emerald-400">{guide.readTime}</div>
+                        <div className="text-xs text-slate-400">Lesezeit</div>
+                      </div>
+                      <div className="text-center">
+                        <Badge className={getDifficultyColor(guide.difficulty)}>
+                          {getDifficultyLabel(guide.difficulty)}
+                        </Badge>
+                      </div>
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-1">
+                          <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                          <span className="text-lg font-bold text-yellow-400">{guide.rating}</span>
+                        </div>
+                        <div className="text-xs text-slate-400">Rating</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-blue-400">{guide.completions.toLocaleString()}</div>
+                        <div className="text-xs text-slate-400">Abschlüsse</div>
+                      </div>
+                    </div>
+
+                    {/* Chapters Preview */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
+                        <BookOpen className="h-4 w-4" />
+                        Kapitel Übersicht:
+                      </h4>
+                      <div className="space-y-2">
+                        {guide.chapters.slice(0, 3).map((chapter, idx) => (
+                          <motion.div 
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx * 0.1, duration: 0.4 }}
+                            className="flex items-center gap-2"
+                          >
+                            <CheckCircle2 className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                            <span className="text-sm text-slate-300">{chapter}</span>
+                          </motion.div>
+                        ))}
+                        {guide.chapters.length > 3 && (
+                          <div className="text-sm text-slate-400 ml-6">
+                            +{guide.chapters.length - 3} weitere Kapitel
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Key Takeaways */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
+                        <Target className="h-4 w-4" />
+                        Key Takeaways:
+                      </h4>
+                      <div className="space-y-2">
+                        {guide.keyTakeaways.map((takeaway, idx) => (
+                          <motion.div 
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx * 0.1, duration: 0.4 }}
+                            className="flex items-center gap-2"
+                          >
+                            <Zap className="w-4 h-4 text-yellow-400 flex-shrink-0" />
+                            <span className="text-sm text-slate-300">{takeaway}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Progress Bar for Popular Guides */}
+                    {guide.popular && (
+                      <div className="mb-6">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm text-slate-300">Community Progress</span>
+                          <span className="text-sm text-blue-400">78% abgeschlossen</span>
+                        </div>
+                        <Progress value={78} className="h-2" />
+                      </div>
+                    )}
+
+                    {/* CTA */}
+                    <div className="mt-auto flex gap-3">
+                      <motion.div 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex-grow"
+                      >
+                        <Button asChild className={cn(
+                          "w-full bg-gradient-to-r text-white border-0 font-semibold py-3 shadow-lg hover:shadow-xl transition-all duration-300",
+                          guide.color
+                        )}>
+                          <Link to={guide.link} className="flex items-center justify-center gap-2">
+                            <span>Leitfaden lesen</span>
+                            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        </Button>
+                      </motion.div>
+                      
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <Button variant="outline" size="sm" className="px-3 border-slate-600 text-slate-300 hover:bg-slate-700">
+                          <Bookmark className="h-4 w-4" />
+                        </Button>
+                      </motion.div>
+                    </div>
+
+                    {/* Last Updated */}
+                    <div className="mt-4 text-xs text-slate-400 flex items-center gap-2">
+                      <Calendar className="h-3 w-3" />
+                      Zuletzt aktualisiert: {new Date(guide.lastUpdated).toLocaleDateString('de-DE')}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-indigo-900/10 to-blue-900/20" />
+        
+        <div className="container mx-auto max-w-5xl relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h2 className="text-4xl md:text-6xl font-black mb-6">
+              <span className="text-white">Bereit für</span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                DSGVO-Exzellenz?
+              </span>
+            </h2>
+            
+            <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Starten Sie mit unseren bewährten Leitfäden und werden Sie zum <span className="font-semibold text-blue-300">DSGVO-Experten</span>.
+            </p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-10 py-4 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-300"
+                >
+                  <Rocket className="mr-3 h-6 w-6" />
+                  Jetzt starten mit Grundlagen
+                  <ArrowRight className="ml-3 h-6 w-6" />
+                </Button>
+              </motion.div>
+              
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button size="lg" variant="outline" className="border-2 border-blue-500/30 hover:border-blue-400 text-blue-300 hover:bg-blue-500/10 px-10 py-4 text-lg font-bold backdrop-blur-sm">
+                  <Download className="mr-3 h-6 w-6" />
+                  PDF Bundle herunterladen
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default DsgvoGuides;

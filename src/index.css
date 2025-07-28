@@ -441,3 +441,15 @@
   from { content: "0"; }
   to { content: attr(data-target); }
 }
+@keyframes scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 30s linear infinite;
+}
