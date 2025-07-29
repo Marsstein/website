@@ -21,6 +21,11 @@ import { DataPrivacyReadinessAssessment } from "./pages/resources/DataPrivacyRea
 import { BreachResponseChecklist } from "./pages/resources/BreachResponseChecklist";
 import { CookieComplianceAudit } from "./pages/resources/CookieComplianceAudit";
 import { VendorAssessmentTemplate } from "./pages/resources/VendorAssessmentTemplate";
+
+// EU AI Act Assessment Tools
+import AIRiskAssessment from "./pages/assessment-center/AIRiskAssessment";
+import AlgorithmicImpactAssessment from "./pages/assessment-center/AlgorithmicImpactAssessment";
+import AIGovernanceCheck from "./pages/assessment-center/AIGovernanceCheck";
 import DsgvoCompliance from "./pages/DsgvoCompliance";
 import Iso27001Compliance from "./pages/Iso27001Compliance";
 import EuAiActCompliance from "./pages/EuAiActCompliance";
@@ -162,11 +167,18 @@ const App = () => (
 
                 {/* Assessment Center Routes */}
                 <Route path="/assessment-center" element={<Resources />} />
+                
+                {/* DSGVO Assessment Tools */}
                 <Route path="/assessment-center/dsgvo-compliance-checklist" element={<DSGVOComplianceChecklist />} />
                 <Route path="/assessment-center/datenschutz-readiness-assessment" element={<DataPrivacyReadinessAssessment />} />
                 <Route path="/assessment-center/breach-response-checklist" element={<BreachResponseChecklist />} />
                 <Route path="/assessment-center/cookie-compliance-audit" element={<CookieComplianceAudit />} />
                 <Route path="/assessment-center/vendor-assessment-template" element={<VendorAssessmentTemplate />} />
+                
+                {/* EU AI Act Assessment Tools */}
+                <Route path="/assessment-center/ai-risk-assessment" element={<AIRiskAssessment />} />
+                <Route path="/assessment-center/algorithmic-impact-assessment" element={<AlgorithmicImpactAssessment />} />
+                <Route path="/assessment-center/ai-governance-check" element={<AIGovernanceCheck />} />
 
                 {/* Industry Routes */}
                 <Route path="/branchen" element={<Industries />} />

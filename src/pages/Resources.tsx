@@ -16,89 +16,168 @@ import {
   Clock,
   Star,
   TrendingUp,
-  Zap
+  Zap,
+  Brain,
+  Lock,
+  Eye,
+  Settings,
+  Award,
+  Target,
+  Layers,
+  Database,
+  ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/Header';
 
 export const Resources: React.FC = () => {
-  const leadMagnets = [
+  // Assessment Categories
+  const assessmentCategories = [
     {
-      id: 'dsgvo-compliance-checklist',
-      icon: CheckSquare,
-      title: 'DSGVO-Compliance-Checkliste 2025',
-      description: '47-Punkte Selbstaudit für vollständige DSGVO-Konformität',
-      details: 'Systematische Überprüfung aller Compliance-Anforderungen',
-      downloadCount: 'Verfügbar',
-      rating: 'Professionell',
+      id: 'dsgvo',
+      title: 'DSGVO & Datenschutz',
+      subtitle: 'Europäische Datenschutz-Grundverordnung',
+      description: 'Umfassende Assessments für DSGVO-Compliance und Datenschutz-Management',
+      icon: Shield,
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-50 dark:bg-blue-950/20',
       borderColor: 'border-blue-200 dark:border-blue-800',
-      textColor: 'text-blue-700 dark:text-blue-300',
-      features: ['47 Prüfpunkte', 'Sofort-Bewertung', 'Handlungsempfehlungen', 'Excel & PDF']
+      assessments: [
+        {
+          id: 'dsgvo-compliance-checklist',
+          icon: CheckSquare,
+          title: 'DSGVO-Compliance-Checkliste 2025',
+          description: '47-Punkte Selbstaudit für vollständige DSGVO-Konformität',
+          features: ['47 Prüfpunkte', 'Sofort-Bewertung', 'Handlungsempfehlungen', 'Excel & PDF']
+        },
+        {
+          id: 'datenschutz-readiness-assessment',
+          icon: BarChart3,
+          title: 'Datenschutz-Readiness-Assessment',
+          description: 'Interaktiver Score mit personalisierten Empfehlungen',
+          features: ['Interaktiver Test', 'Sofort-Score', 'Roadmap-Erstellung', 'Benchmarking']
+        },
+        {
+          id: 'breach-response-checklist',
+          icon: AlertTriangle,
+          title: 'Breach-Response-Checklist',
+          description: '72h-Notfallplan bei Datenpannen und Sicherheitsvorfällen',
+          features: ['72h-Timeline', 'Meldepflichten', 'Kommunikation', 'Dokumentation']
+        },
+        {
+          id: 'cookie-compliance-audit',
+          icon: Cookie,
+          title: 'Cookie-Compliance-Audit',
+          description: 'Website-Prüfliste für rechtskonforme Cookie-Nutzung',
+          features: ['Cookie-Scanner', 'Consent-Check', 'Banner-Optimierung', 'Rechtssicherheit']
+        }
+      ]
     },
     {
-      id: 'datenschutz-readiness-assessment',
-      icon: BarChart3,
-      title: 'Datenschutz-Readiness-Assessment',
-      description: 'Interaktiver Score mit personalisierten Empfehlungen',
-      details: 'Ermitteln Sie Ihren Compliance-Reifegrad in 5 Minuten',
-      downloadCount: 'Interaktiv',
-      rating: 'Strukturiert',
+      id: 'ai-act',
+      title: 'EU AI Act',
+      subtitle: 'Europäische KI-Verordnung',
+      description: 'Spezialisierte Assessments für KI-Systeme und AI Act Compliance',
+      icon: Brain,
       color: 'from-purple-500 to-pink-500',
       bgColor: 'bg-purple-50 dark:bg-purple-950/20',
       borderColor: 'border-purple-200 dark:border-purple-800',
-      textColor: 'text-purple-700 dark:text-purple-300',
-      features: ['Interaktiver Test', 'Sofort-Score', 'Roadmap-Erstellung', 'Benchmarking']
+      assessments: [
+        {
+          id: 'ai-risk-assessment',
+          icon: Target,
+          title: 'AI Risk Assessment',
+          description: 'Klassifizierung Ihrer KI-Systeme nach EU AI Act Risikoebenen',
+          features: ['Risikoklassifizierung', 'Compliance-Check', 'Mitigation-Plan', 'Dokumentation']
+        },
+        {
+          id: 'algorithmic-impact-assessment',
+          icon: BarChart3,
+          title: 'Algorithmic Impact Assessment',
+          description: 'Bewertung gesellschaftlicher Auswirkungen Ihrer KI-Algorithmen',
+          features: ['Impact-Analyse', 'Bias-Detection', 'Fairness-Metrics', 'Reporting']
+        },
+        {
+          id: 'ai-governance-check',
+          icon: Settings,
+          title: 'AI Governance Check',
+          description: 'Überprüfung Ihrer AI Governance-Strukturen und -Prozesse',
+          features: ['Governance-Framework', 'Verantwortlichkeiten', 'Kontrollmechanismen', 'Audit-Trail']
+        }
+      ]
     },
     {
-      id: 'breach-response-checklist',
-      icon: AlertTriangle,
-      title: 'Breach-Response-Checklist',
-      description: '72h-Notfallplan bei Datenpannen und Sicherheitsvorfällen',
-      details: 'Schritt-für-Schritt Anleitung für den Ernstfall',
-      downloadCount: 'Notfallplan',
-      rating: 'Essentiell',
-      color: 'from-red-500 to-orange-500',
-      bgColor: 'bg-red-50 dark:bg-red-950/20',
-      borderColor: 'border-red-200 dark:border-red-800',
-      textColor: 'text-red-700 dark:text-red-300',
-      features: ['72h-Timeline', 'Meldepflichten', 'Kommunikation', 'Dokumentation']
-    },
-    {
-      id: 'cookie-compliance-audit',
-      icon: Cookie,
-      title: 'Cookie-Compliance-Audit',
-      description: 'Website-Prüfliste für rechtskonforme Cookie-Nutzung',
-      details: 'Vollständige Analyse Ihrer Website-Compliance',
-      downloadCount: 'Website-Audit',
-      rating: 'Rechtssicher',
+      id: 'iso27001',
+      title: 'ISO 27001',
+      subtitle: 'Informationssicherheits-Management',
+      description: 'Assessments für ISO 27001 Zertifizierung und Informationssicherheit',
+      icon: Lock,
       color: 'from-green-500 to-teal-500',
       bgColor: 'bg-green-50 dark:bg-green-950/20',
       borderColor: 'border-green-200 dark:border-green-800',
-      textColor: 'text-green-700 dark:text-green-300',
-      features: ['Cookie-Scanner', 'Consent-Check', 'Banner-Optimierung', 'Rechtssicherheit']
+      assessments: [
+        {
+          id: 'iso27001-readiness-check',
+          icon: CheckSquare,
+          title: 'ISO 27001 Readiness Check',
+          description: 'Bewertung Ihrer Bereitschaft für ISO 27001 Zertifizierung',
+          features: ['Gap-Analyse', 'Roadmap', 'Control-Assessment', 'Zeitplanung']
+        },
+        {
+          id: 'isms-maturity-assessment',
+          icon: Award,
+          title: 'ISMS Maturity Assessment',
+          description: 'Reifegrad-Bewertung Ihres Informationssicherheits-Management-Systems',
+          features: ['Maturity-Level', 'Verbesserungspotentiale', 'Benchmarking', 'Action-Plan']
+        },
+        {
+          id: 'security-controls-audit',
+          icon: Eye,
+          title: 'Security Controls Audit',
+          description: 'Systematische Überprüfung aller ISO 27001 Sicherheitskontrollen',
+          features: ['140+ Controls', 'Compliance-Status', 'Schwachstellen', 'Remediation']
+        }
+      ]
     },
     {
-      id: 'vendor-assessment-template',
-      icon: Users,
-      title: 'Vendor-Assessment-Template',
-      description: 'Bewertung und Auswahl DSGVO-konformer Auftragsverarbeiter',
-      details: 'Systematische Bewertung Ihrer Dienstleister und Partner',
-      downloadCount: 'Template',
-      rating: 'Systematisch',
-      color: 'from-indigo-500 to-blue-500',
-      bgColor: 'bg-indigo-50 dark:bg-indigo-950/20',
-      borderColor: 'border-indigo-200 dark:border-indigo-800',
-      textColor: 'text-indigo-700 dark:text-indigo-300',
-      features: ['Bewertungsmatrix', 'Vertragsprüfung', 'Risk-Assessment', 'Monitoring-Plan']
+      id: 'other-frameworks',
+      title: 'Weitere Frameworks',
+      subtitle: 'SOC2, NIS2, TISAX & mehr',
+      description: 'Assessments für zusätzliche Compliance-Frameworks und Zertifizierungen',
+      icon: Layers,
+      color: 'from-amber-500 to-orange-500',
+      bgColor: 'bg-amber-50 dark:bg-amber-950/20',
+      borderColor: 'border-amber-200 dark:border-amber-800',
+      assessments: [
+        {
+          id: 'soc2-readiness-assessment',
+          icon: Database,
+          title: 'SOC 2 Readiness Assessment',
+          description: 'Vorbereitung auf SOC 2 Type I/II Audits',
+          features: ['Trust Services', 'Control-Design', 'Evidence-Collection', 'Audit-Prep']
+        },
+        {
+          id: 'nis2-compliance-check',
+          icon: Shield,
+          title: 'NIS2 Compliance Check',
+          description: 'Bewertung für NIS2-Richtlinie Cybersicherheit',
+          features: ['Scope-Assessment', 'Risk-Management', 'Incident-Response', 'Reporting']
+        },
+        {
+          id: 'vendor-assessment-template',
+          icon: Users,
+          title: 'Vendor Assessment Template',
+          description: 'Bewertung und Auswahl DSGVO-konformer Auftragsverarbeiter',
+          features: ['Bewertungsmatrix', 'Vertragsprüfung', 'Risk-Assessment', 'Monitoring-Plan']
+        }
+      ]
     }
   ];
 
   const stats = [
-    { label: 'Tools verfügbar', value: '5', icon: Download },
+    { label: 'Assessment-Tools', value: '15', icon: Download },
     { label: 'Kategorien', value: '4', icon: Users },
-    { label: 'Expertenwissen', value: 'Aktuell', icon: Star },
+    { label: 'Frameworks', value: '8+', icon: Star },
     { label: 'Updates', value: '2025', icon: TrendingUp }
   ];
 
@@ -132,8 +211,8 @@ export const Resources: React.FC = () => {
 
             {/* Subtitle */}
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              Professionelle Assessments, Checklisten und Templates für DSGVO-Compliance. 
-              Sofort verfügbar und von Datenschutz-Experten entwickelt.
+              Umfassende Assessment-Tools für alle wichtigen Compliance-Frameworks. 
+              Kategorisiert nach DSGVO, EU AI Act, ISO 27001 und weiteren Standards.
             </p>
 
             {/* Stats */}
@@ -152,109 +231,109 @@ export const Resources: React.FC = () => {
         </div>
       </section>
 
-      {/* Lead Magnets Grid */}
+      {/* Assessment Categories */}
       <section className="py-16">
         <div className="container px-4">
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Assessment-Tools im Überblick
+                Assessment-Tools nach Kategorien
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Alle Assessment-Tools werden regelmäßig aktualisiert und von Datenschutz-Experten gepflegt.
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Spezialisierte Assessment-Tools für jeden Compliance-Bereich. Von DSGVO über EU AI Act bis ISO 27001 - 
+                alle wichtigen Frameworks abgedeckt.
               </p>
             </div>
 
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {leadMagnets.map((magnet, index) => (
-                <Card 
-                  key={magnet.id} 
-                  className={cn(
-                    "group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border-2",
-                    magnet.borderColor,
-                    "animate-fade-in opacity-0"
-                  )}
-                  style={{ 
-                    animationDelay: `${index * 150}ms`,
-                    animationFillMode: 'forwards'
-                  }}
-                >
-                  <CardContent className="p-0">
-                    {/* Header with gradient */}
+            {/* Categories */}
+            <div className="space-y-16">
+              {assessmentCategories.map((category, categoryIndex) => (
+                <div key={category.id} className="relative">
+                  {/* Category Header */}
+                  <div className={cn(
+                    "flex items-center gap-4 mb-8 p-6 rounded-2xl border-2 transition-all duration-300 hover:shadow-lg",
+                    category.bgColor,
+                    category.borderColor
+                  )}>
                     <div className={cn(
-                      "p-6 bg-gradient-to-br",
-                      magnet.bgColor
+                      "p-4 rounded-xl bg-gradient-to-r shadow-lg",
+                      category.color
                     )}>
-                      <div className="flex items-start justify-between mb-4">
-                        <div className={cn(
-                          "p-3 rounded-xl bg-gradient-to-r shadow-lg",
-                          magnet.color
-                        )}>
-                          <magnet.icon className="h-6 w-6 text-white" />
-                        </div>
-                        <div className="text-right">
-                          <div className="flex items-center gap-1 mb-1">
-                            <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                              {magnet.rating}
-                            </span>
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            {magnet.downloadCount}
-                          </div>
-                        </div>
-                      </div>
-
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-brand-red transition-colors">
-                        {magnet.title}
+                      <category.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                        {category.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mb-4">
-                        {magnet.description}
+                      <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
+                        {category.subtitle}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-500">
-                        {magnet.details}
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {category.description}
                       </p>
                     </div>
+                    <ChevronRight className="h-6 w-6 text-gray-400" />
+                  </div>
 
-                    {/* Features */}
-                    <div className="p-6">
-                      <div className="space-y-3 mb-6">
-                        {magnet.features.map((feature, i) => (
-                          <div key={i} className="flex items-center gap-2">
+                  {/* Category Assessments */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-8">
+                    {category.assessments.map((assessment, assessmentIndex) => (
+                      <Card 
+                        key={assessment.id} 
+                        className="group relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-gray-200 dark:border-gray-700"
+                      >
+                        <CardContent className="p-6">
+                          {/* Assessment Header */}
+                          <div className="flex items-start gap-4 mb-4">
                             <div className={cn(
-                              "w-2 h-2 rounded-full bg-gradient-to-r",
-                              magnet.color
-                            )} />
-                            <span className="text-sm text-gray-600 dark:text-gray-400">{feature}</span>
+                              "p-3 rounded-lg bg-gradient-to-r shadow-md",
+                              category.color
+                            )}>
+                              <assessment.icon className="h-5 w-5 text-white" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-brand-red transition-colors">
+                                {assessment.title}
+                              </h4>
+                              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                {assessment.description}
+                              </p>
+                            </div>
                           </div>
-                        ))}
-                      </div>
 
-                      {/* CTA Button */}
-                      <Link to={`/assessment-center/${magnet.id}`}>
-                        <Button 
-                          className={cn(
-                            "w-full bg-gradient-to-r text-white shadow-lg hover:shadow-xl group-hover:scale-105 transition-all duration-300",
-                            magnet.color
-                          )}
-                          size="lg"
-                        >
-                          <Download className="mr-2 h-4 w-4" />
-                          Assessment starten
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                    </div>
+                          {/* Features */}
+                          <div className="space-y-2 mb-6">
+                            {assessment.features.map((feature, i) => (
+                              <div key={i} className="flex items-center gap-2">
+                                <div className={cn(
+                                  "w-1.5 h-1.5 rounded-full bg-gradient-to-r",
+                                  category.color
+                                )} />
+                                <span className="text-xs text-gray-600 dark:text-gray-400">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
 
-                    {/* Hover effect overlay */}
-                    <div className={cn(
-                      "absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 bg-gradient-to-br -z-10",
-                      magnet.color
-                    )} />
-                  </CardContent>
-                </Card>
+                          {/* CTA Button */}
+                          <Link to={`/assessment-center/${assessment.id}`}>
+                            <Button 
+                              className={cn(
+                                "w-full bg-gradient-to-r text-white shadow-md hover:shadow-lg transition-all duration-300",
+                                category.color
+                              )}
+                              size="sm"
+                            >
+                              <Download className="mr-2 h-4 w-4" />
+                              Assessment starten
+                              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -272,11 +351,11 @@ export const Resources: React.FC = () => {
                 </div>
                 
                 <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                  Benötigen Sie individuelle Beratung?
+                  Benötigen Sie maßgeschneiderte Assessments?
                 </h3>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-                  Unsere DSGVO-Experten helfen Ihnen bei der Implementierung einer vollständigen 
-                  Compliance-Strategie für Ihr Unternehmen.
+                  Unsere Compliance-Experten entwickeln individuelle Assessment-Tools speziell für Ihre 
+                  Branche und Compliance-Anforderungen.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -286,7 +365,7 @@ export const Resources: React.FC = () => {
                       className="bg-brand-red hover:bg-brand-red/90 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
                     >
                       <FileText className="mr-2 h-5 w-5" />
-                      Kostenlose Beratung buchen
+                      Individuelles Assessment anfragen
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
