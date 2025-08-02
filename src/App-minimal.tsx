@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+
+// Import nur die Haupt-Seiten
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import Academy from "./pages/Academy";
@@ -14,17 +16,7 @@ import Dashboard from "./pages/Dashboard";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
-import { Resources } from "./pages/Resources";
-import { DSGVOComplianceChecklist } from "./pages/resources/DSGVOComplianceChecklist";
-import { DataPrivacyReadinessAssessment } from "./pages/resources/DataPrivacyReadinessAssessment";
-import { BreachResponseChecklist } from "./pages/resources/BreachResponseChecklist";
-import { CookieComplianceAudit } from "./pages/resources/CookieComplianceAudit";
-import { VendorAssessmentTemplate } from "./pages/resources/VendorAssessmentTemplate";
-
-// EU AI Act Assessment Tools
-import AIRiskAssessment from "./pages/assessment-center/AIRiskAssessment";
-import AlgorithmicImpactAssessment from "./pages/assessment-center/AlgorithmicImpactAssessment";
-import AIGovernanceCheck from "./pages/assessment-center/AIGovernanceCheck";
+// Compliance pages
 import DsgvoCompliance from "./pages/DsgvoCompliance";
 import Iso27001Compliance from "./pages/Iso27001Compliance";
 import EuAiActCompliance from "./pages/EuAiActCompliance";
@@ -35,6 +27,21 @@ import TisaxCompliance from "./pages/TisaxCompliance";
 import Nis2Compliance from "./pages/Nis2Compliance";
 import HinweisgeberschutzCompliance from "./pages/HinweisgeberschutzCompliance";
 import GeldwaeschegesetzCompliance from "./pages/GeldwaeschegesetzCompliance";
+
+// Tools and Resources
+import { Resources } from "./pages/Resources";
+import { DSGVOComplianceChecklist } from "./pages/resources/DSGVOComplianceChecklist";
+import { DataPrivacyReadinessAssessment } from "./pages/resources/DataPrivacyReadinessAssessment";
+import { BreachResponseChecklist } from "./pages/resources/BreachResponseChecklist";
+import { CookieComplianceAudit } from "./pages/resources/CookieComplianceAudit";
+import { VendorAssessmentTemplate } from "./pages/resources/VendorAssessmentTemplate";
+
+// Assessment Tools
+import AIRiskAssessment from "./pages/assessment-center/AIRiskAssessment";
+import AlgorithmicImpactAssessment from "./pages/assessment-center/AlgorithmicImpactAssessment";
+import AIGovernanceCheck from "./pages/assessment-center/AIGovernanceCheck";
+
+// Tools
 import Tools from "./pages/Tools";
 import CookieManagementTool from "./pages/CookieManagementTool";
 import WhistleblowerSystemTool from "./pages/WhistleblowerSystemTool";
@@ -43,6 +50,8 @@ import WhistleblowerSystemToolProduct from "./pages/WhistleblowerSystemToolProdu
 import DsgvoEmailTemplateGenerator from "./pages/DsgvoEmailTemplateGenerator";
 import DsgvoComplianceScorecard from "./pages/DsgvoComplianceScorecard";
 import ComplianceAIAssistant from "./pages/ComplianceAIAssistant";
+
+// Knowledge and Guides
 import Knowledge from "./pages/Knowledge";
 import DsgvoGuides from "./pages/DsgvoGuides";
 import ComplianceFrameworks from "./pages/ComplianceFrameworks";
@@ -100,8 +109,10 @@ import ModelPrivacyAttacks from "./pages/ki/ModelPrivacyAttacks";
 import DataMinimizationGuide from "./pages/ki/DataMinimizationGuide";
 import ExplainableAIGuide from "./pages/ki/ExplainableAIGuide";
 
-// Industry Pages
-import Industries from "./pages/Industries";
+// Industries - Using simple version (original has problematic imports)
+import IndustriesSimple from "./IndustriesSimple";
+
+// Add back all other industry pages
 import Healthcare from "./pages/industries/Healthcare";
 import FinancialServices from "./pages/industries/FinancialServices";
 import ECommerce from "./pages/industries/ECommerce";
@@ -137,7 +148,8 @@ const App = () => (
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
-                {/* Legacy routes (keep for backwards compatibility) */}
+                
+                {/* Legacy routes */}
                 <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
                 <Route path="/iso-27001-compliance" element={<Iso27001Compliance />} />
                 <Route path="/eu-ai-act-compliance" element={<EuAiActCompliance />} />
@@ -145,9 +157,8 @@ const App = () => (
                 <Route path="/iso-27017-compliance" element={<Iso27017Compliance />} />
                 <Route path="/iso-27018-compliance" element={<Iso27018Compliance />} />
                 <Route path="/tisax-compliance" element={<TisaxCompliance />} />
-
+                
                 {/* New structured routes */}
-                {/* Regulierungen */}
                 <Route path="/regulierung/dsgvo" element={<DsgvoCompliance />} />
                 <Route path="/regulierung/eu-ai-act" element={<EuAiActCompliance />} />
                 <Route path="/regulierung/nis2" element={<Nis2Compliance />} />
@@ -160,13 +171,9 @@ const App = () => (
                 <Route path="/zertifizierung/iso-27017" element={<Iso27017Compliance />} />
                 <Route path="/zertifizierung/iso-27018" element={<Iso27018Compliance />} />
                 <Route path="/zertifizierung/tisax" element={<TisaxCompliance />} />
-                <Route path="/dashboard/*" element={<Dashboard />} />
-                <Route path="/thank-you" element={<ThankYou />} />
-
+                
                 {/* Assessment Center Routes */}
                 <Route path="/assessment-center" element={<Resources />} />
-                
-                {/* DSGVO Assessment Tools */}
                 <Route path="/assessment-center/dsgvo-compliance-checklist" element={<DSGVOComplianceChecklist />} />
                 <Route path="/assessment-center/datenschutz-readiness-assessment" element={<DataPrivacyReadinessAssessment />} />
                 <Route path="/assessment-center/breach-response-checklist" element={<BreachResponseChecklist />} />
@@ -177,19 +184,7 @@ const App = () => (
                 <Route path="/assessment-center/ai-risk-assessment" element={<AIRiskAssessment />} />
                 <Route path="/assessment-center/algorithmic-impact-assessment" element={<AlgorithmicImpactAssessment />} />
                 <Route path="/assessment-center/ai-governance-check" element={<AIGovernanceCheck />} />
-
-                {/* Industry Routes */}
-                <Route path="/branchen" element={<Industries />} />
-                <Route path="/branchen/gesundheitswesen" element={<Healthcare />} />
-                <Route path="/branchen/finanzdienstleister" element={<FinancialServices />} />
-                <Route path="/branchen/e-commerce" element={<ECommerce />} />
-                <Route path="/branchen/saas-unternehmen" element={<SaaS />} />
-                <Route path="/branchen/produktion" element={<Manufacturing />} />
-                <Route path="/branchen/automotive" element={<Automotive />} />
-                <Route path="/branchen/energie" element={<Energy />} />
-                <Route path="/branchen/lebensmittel" element={<Food />} />
-                <Route path="/branchen/logistik" element={<Logistics />} />
-
+                
                 {/* Tools Routes */}
                 <Route path="/tools" element={<Tools />} />
                 <Route path="/tools/cookie-management" element={<CookieManagementTool />} />
@@ -199,8 +194,8 @@ const App = () => (
                 <Route path="/tools/dsgvo-email-template-generator" element={<DsgvoEmailTemplateGenerator />} />
                 <Route path="/tools/dsgvo-compliance-scorecard" element={<DsgvoComplianceScorecard />} />
                 <Route path="/tools/compliance-ai-assistant" element={<ComplianceAIAssistant />} />
-
-                {/* Knowledge/Wissen Routes */}
+                
+                {/* Knowledge Routes */}
                 <Route path="/wissen" element={<Knowledge />} />
                 <Route path="/wissen/dsgvo" element={<DsgvoGuides />} />
                 <Route path="/wissen/ki-compliance" element={<KiDatenschutz />} />
@@ -222,6 +217,20 @@ const App = () => (
                 <Route path="/wissen/leitfaden/website-dsgvo" element={<WebsiteDsgvoGuide />} />
                 <Route path="/wissen/leitfaden/dsgvo-30-tage" element={<Dsgvo30TageGuide />} />
                 <Route path="/wissen/leitfaden/data-breach-notfall" element={<DataBreachNotfallGuide />} />
+                
+                {/* Industry Routes */}
+                <Route path="/branchen" element={<IndustriesSimple />} />
+                <Route path="/branchen/gesundheitswesen" element={<Healthcare />} />
+                <Route path="/branchen/finanzdienstleister" element={<FinancialServices />} />
+                <Route path="/branchen/e-commerce" element={<ECommerce />} />
+                <Route path="/branchen/saas-unternehmen" element={<SaaS />} />
+                <Route path="/branchen/produktion" element={<Manufacturing />} />
+                <Route path="/branchen/automotive" element={<Automotive />} />
+                <Route path="/branchen/energie" element={<Energy />} />
+                <Route path="/branchen/lebensmittel" element={<Food />} />
+                <Route path="/branchen/logistik" element={<Logistics />} />
+                
+                {/* Crisis Management Routes */}
                 <Route path="/wissen/krisenmanagement" element={<CrisisManagement />} />
                 <Route path="/wissen/krisenmanagement/data-breach-72h" element={<DataBreach72hGuide />} />
                 <Route path="/wissen/krisenmanagement/security-incident" element={<SecurityIncidentGuide />} />
@@ -231,6 +240,8 @@ const App = () => (
                 <Route path="/wissen/krisenmanagement/vendor-data-breach" element={<VendorDataBreachGuide />} />
                 <Route path="/wissen/krisenmanagement/gdpr-fine-response" element={<GdprFineResponseGuide />} />
                 <Route path="/wissen/krisenmanagement/business-continuity" element={<BusinessContinuityGuide />} />
+                
+                {/* Legal/Rechtsprechung Routes */}
                 <Route path="/wissen/rechtsprechung" element={<Rechtsprechung />} />
                 <Route path="/wissen/rechtsprechung/schrems-ii" element={<SchremsIICase />} />
                 <Route path="/wissen/rechtsprechung/meta-irland-2024" element={<MetaIrlandCase />} />
@@ -242,14 +253,14 @@ const App = () => (
                 <Route path="/wissen/rechtsprechung/planet49-cookie" element={<Planet49CookieCase />} />
                 <Route path="/wissen/rechtsprechung/google-fonts-muenchen" element={<GoogleFontsMunichCase />} />
                 
-                {/* Branchen Wissen Routes - now part of main structure */}
+                {/* Branchen Wissen Routes */}
                 <Route path="/wissen/branchen/gesundheitswesen-dsgvo" element={<HealthcareDsgvoGuide />} />
                 <Route path="/wissen/branchen/fintech-compliance" element={<FintechComplianceGuide />} />
                 <Route path="/wissen/branchen/ecommerce-privacy" element={<EcommercePrivacyGuide />} />
                 <Route path="/wissen/branchen/saas-privacy-design" element={<SaasPrivacyDesignGuide />} />
                 <Route path="/wissen/branchen/industrie-40-datenschutz" element={<Industrie40DatenschutzGuide />} />
                 
-                {/* KI Compliance Routes - now part of main structure */}
+                {/* KI Compliance Routes */}
                 <Route path="/wissen/ki-datenschutz/risikoklassifizierung" element={<KiRisikoklassifizierung />} />
                 <Route path="/wissen/ki-datenschutz/algorithmic-impact-assessment" element={<KiAlgorithmicImpactAssessment />} />
                 <Route path="/wissen/ki-datenschutz/privacy-preserving-ai" element={<PrivacyPreservingAI />} />
@@ -259,10 +270,7 @@ const App = () => (
                 <Route path="/wissen/ki-datenschutz/model-privacy-attacks" element={<ModelPrivacyAttacks />} />
                 <Route path="/wissen/ki-datenschutz/data-minimization" element={<DataMinimizationGuide />} />
                 <Route path="/wissen/ki-datenschutz/explainable-ai" element={<ExplainableAIGuide />} />
-
-                {/* DSGVO Compliance Product Page */}
-                <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
-
+                
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

@@ -57,13 +57,10 @@ export const Footer: React.FC = () => {
             {/* Company Info */}
             <div className="lg:col-span-2 space-y-6">
               {/* Logo */}
-              <div className="flex items-center space-x-2">
-                <img
-                  src="/logomarsstein.png"
-                  alt="Marsstein Logo"
-                  className="h-10 w-auto"
-                />
-                <span className="text-xl font-bold text-foreground"></span>
+              <div className="flex items-center">
+                <span className="brand-name text-xl font-bold text-foreground">
+                  MAR<span className="brand-symbol">§</span>TEIN
+                </span>
               </div>
 
               <p className="text-muted-foreground leading-relaxed">

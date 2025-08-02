@@ -28,10 +28,16 @@ kill_port() {
     fi
 }
 
-# Kill common development ports
+# Kill common development ports and the configured port 8080
 kill_port 3000
 kill_port 5173
 kill_port 4173
+kill_port 8080
+kill_port 8081
+
+# Also kill any vite processes by name
+echo "🔄 Stopping any existing Vite processes..."
+pkill -f "vite" 2>/dev/null || echo "✅ No Vite processes found"
 
 echo ""
 echo "🧹 Clearing cache and temporary files..."
@@ -63,8 +69,8 @@ npm install
 
 echo ""
 echo "🌐 Starting development server..."
-echo "✨ Your app will be available at: http://localhost:5173"
-echo "🎯 Navigate to: http://localhost:5173/eu-ai-act-compliance"
+echo "✨ Your app will be available at: http://localhost:8080"
+echo "🌐 Network access will also be available"
 echo ""
 echo "Press Ctrl+C to stop the server"
 echo "================================================"

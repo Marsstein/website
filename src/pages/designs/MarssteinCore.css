@@ -1,0 +1,993 @@
+/* Marsstein Core Design - Mars Red (#E03A3E) + Basalt Grey (#1F1F24) + Granite Grey (#F5F6F8) */
+.marsstein-core {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #F5F6F8 0%, #FFFFFF 50%, #F5F6F8 100%);
+  color: #1F1F24;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Marsstein Core Color Palette */
+.marsstein-core {
+  --mars-red: #E03A3E;
+  --mars-red-light: #E85559;
+  --mars-red-dark: #C72B2F;
+  --basalt-grey: #1F1F24;
+  --basalt-grey-light: #2F2F34;
+  --granite-grey: #F5F6F8;
+  --orbit-blue: #2F60FF;
+  --orbit-blue-light: #5380FF;
+  --audit-green: #00B88C;
+  --amber-alert: #FFB200;
+  --pure-white: #FFFFFF;
+  --text-secondary: #6B7280;
+  --border-light: rgba(31, 31, 36, 0.1);
+  --border-medium: rgba(31, 31, 36, 0.2);
+  --shadow-light: rgba(31, 31, 36, 0.08);
+  --shadow-medium: rgba(31, 31, 36, 0.15);
+  --shadow-strong: rgba(31, 31, 36, 0.25);
+}
+
+/* Marsstein Core Background Effects */
+.marsstein-core::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(224, 58, 62, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(47, 96, 255, 0.015) 0%, transparent 50%);
+  z-index: -2;
+}
+
+.marsstein-core::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(31, 31, 36, 0.02) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(31, 31, 36, 0.02) 1px, transparent 1px);
+  background-size: 72px 72px;
+  animation: marsstein-core-geometric-drift 50s linear infinite;
+  z-index: -1;
+}
+
+@keyframes marsstein-core-geometric-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(72px, 72px); }
+}
+
+.marsstein-core-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Marsstein Core Header */
+.marsstein-core-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 20px var(--shadow-light);
+}
+
+.marsstein-core-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.marsstein-core-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.mars-shield {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shield-geometry {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shield-outer, .shield-middle, .shield-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid;
+  border-radius: 6px;
+  animation: shield-geometry-pulse 4s ease-in-out infinite;
+}
+
+.shield-outer {
+  width: 48px;
+  height: 48px;
+  border-color: var(--border-light);
+  animation-delay: 0s;
+}
+
+.shield-middle {
+  width: 36px;
+  height: 36px;
+  border-color: var(--border-medium);
+  animation-delay: 0.5s;
+}
+
+.shield-inner {
+  width: 24px;
+  height: 24px;
+  border-color: var(--mars-red);
+  animation-delay: 1s;
+}
+
+@keyframes shield-geometry-pulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+.shield-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: var(--mars-red);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 0 15px rgba(224, 58, 62, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  animation: shield-core-glow 3s ease-in-out infinite;
+}
+
+@keyframes shield-core-glow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 15px rgba(224, 58, 62, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 
+      0 0 25px rgba(224, 58, 62, 0.6),
+      inset 0 2px 4px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.check-mark {
+  color: var(--pure-white);
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.marsstein-core-brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--basalt-grey);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.marsstein-core-tagline {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  font-size: 0.65rem;
+  color: var(--mars-red);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.marsstein-core-nav-menu {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marsstein-core-nav-menu a {
+  color: var(--basalt-grey);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.marsstein-core-nav-menu a:hover {
+  color: var(--mars-red);
+}
+
+.marsstein-core-nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--mars-red), var(--orbit-blue));
+  transition: width 0.3s ease;
+}
+
+.marsstein-core-nav-menu a:hover::after {
+  width: 100%;
+}
+
+.marsstein-core-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.core-indicators {
+  text-align: right;
+}
+
+.status-segments {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+  height: 16px;
+  align-items: flex-end;
+}
+
+.segment {
+  width: 4px;
+  border-radius: 2px;
+  animation: segment-activity 3s ease-in-out infinite;
+}
+
+.segment.security {
+  height: 14px;
+  background: linear-gradient(0deg, var(--mars-red), var(--mars-red-light));
+  animation-delay: 0s;
+}
+
+.segment.clarity {
+  height: 12px;
+  background: linear-gradient(0deg, var(--orbit-blue), var(--orbit-blue-light));
+  animation-delay: 0.5s;
+}
+
+.segment.future {
+  height: 16px;
+  background: linear-gradient(0deg, var(--audit-green), #00D4AA);
+  animation-delay: 1s;
+}
+
+.segment.partnership {
+  height: 10px;
+  background: linear-gradient(0deg, var(--amber-alert), #FFD700);
+  animation-delay: 1.5s;
+}
+
+@keyframes segment-activity {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.7; transform: scaleY(0.8); }
+}
+
+.marsstein-core-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+/* Marsstein Core Hero Section */
+.marsstein-core-hero {
+  padding: 10rem 0 8rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--pure-white) 0%, var(--granite-grey) 100%);
+}
+
+.marsstein-core-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(224, 58, 62, 0.08);
+  border: 1px solid rgba(224, 58, 62, 0.2);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mars-red);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px var(--shadow-light);
+}
+
+.marsstein-core-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--basalt-grey);
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.marsstein-core-highlight {
+  color: var(--mars-red);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.5rem;
+  font-style: italic;
+  animation: marsstein-core-highlight-pulse 4s ease-in-out infinite;
+}
+
+@keyframes marsstein-core-highlight-pulse {
+  0%, 100% { 
+    color: var(--mars-red);
+  }
+  50% { 
+    color: var(--mars-red-light);
+  }
+}
+
+.marsstein-core-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.marsstein-core-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.marsstein-core-primary-btn {
+  background: var(--mars-red) !important;
+  color: var(--pure-white) !important;
+  border: none;
+  border-radius: 6px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(224, 58, 62, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.marsstein-core-primary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.marsstein-core-primary-btn:hover::before {
+  left: 100%;
+}
+
+.marsstein-core-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(224, 58, 62, 0.35);
+  background: var(--mars-red-light) !important;
+}
+
+.marsstein-core-secondary-btn {
+  border: 1px solid var(--border-medium) !important;
+  color: var(--basalt-grey) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 6px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+}
+
+.marsstein-core-secondary-btn:hover {
+  border-color: var(--mars-red) !important;
+  color: var(--mars-red) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-medium);
+  background: rgba(224, 58, 62, 0.04) !important;
+}
+
+.marsstein-core-metrics {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.marsstein-core-metric-display {
+  text-align: center;
+}
+
+.marsstein-core-metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--basalt-grey);
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.marsstein-core-metric-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+/* Marsstein Core Capabilities */
+.marsstein-core-capabilities {
+  padding: 8rem 0;
+  background: var(--pure-white);
+}
+
+.capabilities-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.marsstein-core-badge {
+  background: var(--mars-red) !important;
+  color: var(--pure-white) !important;
+  border: none;
+  border-radius: 20px !important;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(224, 58, 62, 0.2);
+}
+
+.capabilities-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--basalt-grey);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.capabilities-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.marsstein-core-capability-card {
+  background: var(--pure-white) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 12px !important;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.marsstein-core-capability-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mars-red), var(--orbit-blue), var(--audit-green));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.marsstein-core-capability-card:hover::before {
+  transform: scaleX(1);
+}
+
+.marsstein-core-capability-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px var(--shadow-medium);
+  border-color: var(--border-medium);
+}
+
+.marsstein-core-capability-card.security:hover {
+  box-shadow: 0 20px 40px rgba(224, 58, 62, 0.15);
+}
+
+.marsstein-core-capability-card.clarity:hover {
+  box-shadow: 0 20px 40px rgba(47, 96, 255, 0.15);
+}
+
+.marsstein-core-capability-card.future:hover {
+  box-shadow: 0 20px 40px rgba(0, 184, 140, 0.15);
+}
+
+.marsstein-core-capability-card.partnership:hover {
+  box-shadow: 0 20px 40px rgba(255, 178, 0, 0.15);
+}
+
+.capability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.capability-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(224, 58, 62, 0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mars-red);
+  border: 1px solid rgba(224, 58, 62, 0.15);
+}
+
+.security .capability-icon {
+  background: rgba(224, 58, 62, 0.08);
+  color: var(--mars-red);
+  border-color: rgba(224, 58, 62, 0.15);
+}
+
+.clarity .capability-icon {
+  background: rgba(47, 96, 255, 0.08);
+  color: var(--orbit-blue);
+  border-color: rgba(47, 96, 255, 0.15);
+}
+
+.future .capability-icon {
+  background: rgba(0, 184, 140, 0.08);
+  color: var(--audit-green);
+  border-color: rgba(0, 184, 140, 0.15);
+}
+
+.partnership .capability-icon {
+  background: rgba(255, 178, 0, 0.08);
+  color: var(--amber-alert);
+  border-color: rgba(255, 178, 0, 0.15);
+}
+
+.capability-progress {
+  position: relative;
+}
+
+.marsstein-core-progress-ring {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.progress-circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  stroke: var(--border-light);
+}
+
+.marsstein-core-circle {
+  stroke: var(--mars-red);
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.clarity .marsstein-core-circle {
+  stroke: var(--orbit-blue);
+}
+
+.future .marsstein-core-circle {
+  stroke: var(--audit-green);
+}
+
+.partnership .marsstein-core-circle {
+  stroke: var(--amber-alert);
+}
+
+.marsstein-core-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mars-red);
+  font-family: 'Inter', sans-serif;
+}
+
+.clarity .marsstein-core-progress-text {
+  color: var(--orbit-blue);
+}
+
+.future .marsstein-core-progress-text {
+  color: var(--audit-green);
+}
+
+.partnership .marsstein-core-progress-text {
+  color: var(--amber-alert);
+}
+
+.capability-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--basalt-grey);
+  margin-bottom: 1rem;
+}
+
+.capability-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.capability-footer {
+  margin-top: auto;
+}
+
+.marsstein-core-capability-bar {
+  height: 3px;
+  background: var(--border-light);
+}
+
+/* Marsstein Core Services */
+.marsstein-core-services {
+  padding: 6rem 0;
+  background: var(--granite-grey);
+}
+
+.marsstein-core-services-visualization {
+  background: var(--pure-white) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 12px !important;
+  padding: 3rem;
+  box-shadow: 0 8px 24px var(--shadow-medium);
+}
+
+.services-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.marsstein-core-services-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--mars-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pure-white);
+  box-shadow: 0 4px 16px rgba(224, 58, 62, 0.3);
+}
+
+.services-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--basalt-grey);
+  margin-bottom: 0.5rem;
+}
+
+.services-header p {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.marsstein-core-services-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.marsstein-core-service-node {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--granite-grey);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+.marsstein-core-service-node:hover {
+  background: rgba(224, 58, 62, 0.04);
+  border-color: var(--border-medium);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.marsstein-core-node-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.marsstein-core-node-status.security-active,
+.marsstein-core-node-status.security-scanning {
+  background: var(--mars-red);
+  animation: marsstein-security-pulse 2.5s ease-in-out infinite;
+}
+
+.marsstein-core-node-status.clarity-optimized,
+.marsstein-core-node-status.clarity-teaching {
+  background: var(--orbit-blue);
+  animation: marsstein-clarity-pulse 3s ease-in-out infinite;
+}
+
+.marsstein-core-node-status.future-processing {
+  background: var(--audit-green);
+  animation: marsstein-future-pulse 2s ease-in-out infinite;
+}
+
+.marsstein-core-node-status.partnership-connected {
+  background: var(--amber-alert);
+}
+
+@keyframes marsstein-security-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+@keyframes marsstein-clarity-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes marsstein-future-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.marsstein-core-service-name {
+  color: var(--basalt-grey);
+  font-weight: 600;
+  flex: 1;
+}
+
+.marsstein-core-service-metric {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+.marsstein-core-services-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.marsstein-core-services-btn {
+  border: 1px solid var(--border-light) !important;
+  color: var(--basalt-grey) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 6px !important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.marsstein-core-services-btn:hover {
+  border-color: var(--mars-red) !important;
+  color: var(--mars-red) !important;
+  background: rgba(224, 58, 62, 0.04) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+/* Marsstein Core CTA */
+.marsstein-core-cta {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, var(--basalt-grey) 0%, var(--basalt-grey-light) 100%);
+}
+
+.marsstein-core-cta-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(31, 31, 36, 0.2);
+}
+
+.marsstein-core-cta-content {
+  padding: 4rem;
+}
+
+.cta-content {
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--basalt-grey);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Marsstein Core Footer */
+.marsstein-core-footer {
+  background: var(--basalt-grey);
+  color: var(--pure-white);
+  padding: 4rem 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer-brand .marsstein-core-brand {
+  color: var(--pure-white);
+}
+
+.footer-tagline {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.marsstein-core-services-indicators {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.indicator {
+  text-align: center;
+}
+
+.indicator-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--mars-red);
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 0.25rem;
+}
+
+.indicator-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .marsstein-core-title {
+    font-size: 2.5rem;
+  }
+  
+  .marsstein-core-nav-menu {
+    display: none;
+  }
+  
+  .marsstein-core-hero-actions {
+    flex-direction: column;
+  }
+  
+  .marsstein-core-metrics {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .marsstein-core-services-stack {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .marsstein-core-services-indicators {
+    justify-content: center;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+  }
+  
+  .marsstein-core-services-actions {
+    flex-direction: column;
+  }
+}

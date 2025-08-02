@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
@@ -6,279 +6,287 @@ import { useLanguage } from '@/hooks/useLanguage';
 import {
   ArrowRight,
   Sparkles,
-  AlertCircle,
-  TrendingDown,
-  TrendingUp,
-  Clock,
-  Euro,
   Shield,
-  CheckCircle2
+  CheckCircle2,
+  Clock,
+  Building2,
+  Activity,
+  Brain,
+  Globe,
+  Award,
+  Play
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import CountUp from 'react-countup';
 
 export const HeroSection: React.FC = () => {
   const { t } = useLanguage();
-  const [currentProblem, setCurrentProblem] = useState(0);
-  const [complianceScore, setComplianceScore] = useState(0);
-  const [timesSaved, setTimesSaved] = useState(0);
+  const [activeMetric, setActiveMetric] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  const problems = [
-    { text: "Datenschutz", icon: Euro, color: "text-red-600" },
-    { text: "Audits", icon: AlertCircle, color: "text-orange-600" },
-    { text: "Zeitverlust", icon: Clock, color: "text-purple-600" },
-    { text: "Datenlecks", icon: TrendingDown, color: "text-red-700" }
+  const metrics = [
+    { value: 98, label: "Compliance Rate", icon: Shield, color: "text-emerald-400", bgColor: "bg-emerald-500/20", borderColor: "border-emerald-500/30" },
+    { value: 500, label: "Companies", icon: Building2, color: "text-blue-400", bgColor: "bg-blue-500/20", borderColor: "border-blue-500/30" },
+    { value: 10000, label: "Hours Saved", icon: Clock, color: "text-brand-red", bgColor: "bg-brand-red/20", borderColor: "border-brand-red/30" },
+    { value: 99.9, label: "Uptime", icon: Activity, color: "text-purple-400", bgColor: "bg-purple-500/20", borderColor: "border-purple-500/30" }
   ];
 
+  const features = [
+    { icon: Brain, title: "KI-gestützte Analyse", desc: "Automatische Compliance-Bewertung" },
+    { icon: Shield, title: "DSGVO Ready", desc: "100% EU-konform" },
+    { icon: Globe, title: "Multi-Regional", desc: "DACH & EU-weit" },
+    { icon: Award, title: "Zertifiziert", desc: "ISO 27001 & SOC 2" }
+  ];
+
+  // Intersection observer for fade-in animations
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProblem((prev) => (prev + 1) % problems.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [problems.length]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-
-      const scoreInterval = setInterval(() => {
-        setComplianceScore(prev => {
-          if (prev >= 98) {
-            clearInterval(scoreInterval);
-            return 98;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
           }
-          return prev + 2;
         });
-      }, 50);
+      },
+      { threshold: 0.1 }
+    );
 
-      const timeInterval = setInterval(() => {
-        setTimesSaved(prev => {
-          if (prev >= 127) {
-            clearInterval(timeInterval);
-            return 127;
-          }
-          return prev + 3;
-        });
-      }, 40);
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
 
-    }, 500);
-
-    return () => clearTimeout(timer);
+    return () => observer.disconnect();
   }, []);
 
+  // Auto-rotate metrics
+  useEffect(() => {
+    if (isVisible) {
+      const interval = setInterval(() => {
+        setActiveMetric(prev => (prev + 1) % metrics.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [isVisible, metrics.length]);
+
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden">
-      {/* Animated background */}
+    <section 
+      ref={heroRef}
+      className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden"
+    >
+      {/* Dark Blue Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-brand-red/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-brand-red/5 to-transparent rounded-full blur-3xl animate-pulse delay-500" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-600/30 to-indigo-600/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-cyan-600/20 to-blue-600/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-brand-red/15 to-orange-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }} />
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(147,197,253,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(147,197,253,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
       </div>
 
-      <div className="container px-4 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-8 text-center lg:text-left">
-              {/* Problem rotator */}
-              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900">
-                <AlertCircle className="h-5 w-5 text-brand-red animate-pulse" />
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                  Schluss mit
+      <div className="container mx-auto px-4 py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+          
+          {/* Left Column: Content */}
+          <div className={cn(
+            "space-y-8 transition-all duration-1000 ease-out",
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          )}>
+            
+            {/* Badge */}
+            <div className="inline-flex">
+              <Badge className="bg-brand-red/20 text-brand-red border-brand-red/30 px-4 py-2 text-sm font-medium backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 mr-2" />
+                KI-native Compliance Platform
+              </Badge>
+            </div>
+
+            {/* Main Headline */}
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+                Compliance{' '}
+                <span className="relative">
+                  <span className="bg-gradient-to-r from-brand-red to-orange-500 bg-clip-text text-transparent">
+                    Revolutioniert
+                  </span>
+                  <div className="absolute -top-2 -right-2 lg:-top-3 lg:-right-3">
+                    <Sparkles className="h-6 w-6 lg:h-8 lg:w-8 text-brand-red animate-pulse" />
+                  </div>
                 </span>
-                <div className="relative h-6 w-32 overflow-hidden">
-                  {problems.map((problem, index) => {
-                    const Icon = problem.icon;
+              </h1>
+              
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+                Die erste KI-native Compliance-Plattform für das digitale Zeitalter. 
+                Automatisieren Sie Ihre Compliance-Prozesse und sparen Sie bis zu 85% Zeit.
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Link to="/contact?demo=true">
+                <Button 
+                  size="lg"
+                  className="bg-gradient-to-r from-brand-red to-brand-red/90 hover:from-brand-red/90 hover:to-brand-red/80 text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+                >
+                  <Play className="mr-2 h-5 w-5" />
+                  Kostenlose Demo
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              
+              <Link to="/pricing">
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="px-8 py-4 text-lg border-2 border-gray-600 text-gray-300 hover:bg-white/10 hover:border-gray-400 hover:text-white transition-all duration-300"
+                >
+                  Preise ansehen
+                </Button>
+              </Link>
+            </div>
+
+            {/* Key Features */}
+            <div className="grid grid-cols-2 gap-4 pt-8">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div
+                    key={feature.title}
+                    className={cn(
+                      "flex items-start space-x-3 p-4 rounded-lg bg-slate-800/30 backdrop-blur-sm border border-blue-500/20 transition-all duration-500 hover:bg-slate-800/50 hover:shadow-lg",
+                      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    )}
+                    style={{ 
+                      transitionDelay: `${(index + 2) * 150}ms`
+                    }}
+                  >
+                    <div className="flex-shrink-0 p-2 rounded-lg bg-brand-red/20">
+                      <Icon className="h-5 w-5 text-brand-red" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-white text-sm">{feature.title}</h3>
+                      <p className="text-gray-300 text-xs">{feature.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Dashboard */}
+          <div className={cn(
+            "space-y-6 transition-all duration-1000 ease-out",
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          )} style={{ transitionDelay: '300ms' }}>
+            
+            {/* Main Dashboard Card */}
+            <Card className="p-6 bg-slate-900/60 backdrop-blur-sm border-blue-500/20 shadow-2xl">
+              <div className="space-y-6">
+                
+                {/* Header */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">Live Dashboard</h3>
+                    <p className="text-sm text-gray-300">Compliance Metrics in Echtzeit</p>
+                  </div>
+                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                    <Activity className="w-3 h-3 mr-1" />
+                    Live
+                  </Badge>
+                </div>
+
+                {/* Metrics Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  {metrics.map((metric, index) => {
+                    const Icon = metric.icon;
+                    const isActive = activeMetric === index;
+                    
                     return (
                       <div
-                        key={index}
+                        key={metric.label}
                         className={cn(
-                          "absolute inset-0 flex items-center gap-2 transition-all duration-500",
-                          currentProblem === index
-                            ? "translate-y-0 opacity-100"
-                            : index < currentProblem
-                              ? "-translate-y-full opacity-0"
-                              : "translate-y-full opacity-0"
+                          "p-4 rounded-lg border-2 transition-all duration-500 cursor-pointer",
+                          isActive 
+                            ? `${metric.bgColor} ${metric.borderColor} shadow-lg scale-105` 
+                            : "bg-slate-800/40 border-blue-500/20 hover:bg-slate-800/60"
                         )}
+                        onClick={() => setActiveMetric(index)}
                       >
-                        <Icon className={cn("h-4 w-4", problem.color)} />
-                        <span className={cn("font-semibold", problem.color)}>
-                          {problem.text}
-                        </span>
+                        <div className="flex items-center justify-between mb-2">
+                          <Icon className={cn("h-5 w-5", isActive ? metric.color : "text-gray-400")} />
+                          {metric.label === "Compliance Rate" && (
+                            <span className="text-xs text-green-400 font-medium">+5.2%</span>
+                          )}
+                        </div>
+                        
+                        <div className="space-y-1">
+                          <div className="text-2xl font-bold text-white">
+                            {isVisible ? (
+                              <>
+                                <CountUp
+                                  end={metric.value}
+                                  duration={2.5}
+                                  delay={index * 0.2}
+                                  decimals={metric.label === "Uptime" ? 1 : 0}
+                                />
+                                {metric.label === "Compliance Rate" || metric.label === "Uptime" ? "%" : ""}
+                                {metric.label === "Hours Saved" ? "h" : ""}
+                                {metric.label === "Companies" ? "+" : ""}
+                              </>
+                            ) : (
+                              "0"
+                            )}
+                          </div>
+                          <div className="text-xs text-gray-400">{metric.label}</div>
+                        </div>
                       </div>
                     );
                   })}
                 </div>
-              </div>
 
-              {/* Main headline */}
-              <div className="space-y-6">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
-                  <span className="text-gray-900 dark:text-white">
-                    Compliance
-                  </span>
-                  <br />
-                  <span className="relative">
-                    <span className="bg-gradient-to-r from-brand-red via-red-600 to-brand-red bg-clip-text text-transparent animate-gradient bg-300%">
-                      automatisiert
-                    </span>
-                    <Sparkles className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 h-6 w-6 lg:h-8 lg:w-8 text-brand-red animate-pulse" />
-                  </span>
-                </h1>
-
-                <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Die KI-gestützte Compliance-Plattform für europäische Unternehmen.
-                  Transformieren Sie <span className="font-semibold text-gray-900 dark:text-white">komplexe Prozesse</span> in
-                  effiziente, automatisierte Workflows.
-                </p>
-              </div>
-
-              {/* Trust points */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
-                  <span className="text-gray-700 dark:text-gray-300">100% DSGVO-konform</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
-                  <span className="text-gray-700 dark:text-gray-300">EU AI Act ready</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
-                  <span className="text-gray-700 dark:text-gray-300">ISO 27001 zertifiziert</span>
+                {/* Progress Indicator */}
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-400">Compliance Score</span>
+                    <span className="font-semibold text-white">98.7%</span>
+                  </div>
+                  <div className="w-full bg-slate-700/50 rounded-full h-2">
+                    <div 
+                      className="bg-gradient-to-r from-emerald-500 to-green-600 h-2 rounded-full transition-all duration-2000 ease-out"
+                      style={{ 
+                        width: isVisible ? '98.7%' : '0%',
+                        transitionDelay: '1s'
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
+            </Card>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                <Link to="/contact?demo=true">
-                  <Button
-                    size="lg"
-                    className="bg-brand-red hover:bg-brand-red/90 text-white px-8 py-6 text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
-                  >
-                    <Sparkles className="mr-2 h-5 w-5 animate-pulse" />
-                    Demo anfordern
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-                <Link to="#pain-points">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="group px-8 py-6 text-lg border-2 border-gray-300 hover:border-brand-red hover:text-brand-red transition-all duration-300"
-                  >
-                    Mehr erfahren
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-              </div>
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 gap-4">
+              <Card className="p-4 bg-slate-800/40 backdrop-blur-sm border-blue-500/20 text-center">
+                <CheckCircle2 className="h-6 w-6 text-green-400 mx-auto mb-2" />
+                <div className="text-sm font-semibold text-white">DSGVO</div>
+                <div className="text-xs text-gray-300">100% Konform</div>
+              </Card>
+              
+              <Card className="p-4 bg-slate-800/40 backdrop-blur-sm border-blue-500/20 text-center">
+                <Shield className="h-6 w-6 text-blue-400 mx-auto mb-2" />
+                <div className="text-sm font-semibold text-white">ISO 27001</div>
+                <div className="text-xs text-gray-300">Zertifiziert</div>
+              </Card>
             </div>
 
-            {/* Right Dashboard */}
-            <div className="relative animate-slide-in-right">
-              <Card className="relative overflow-hidden shadow-2xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-red via-red-500 to-brand-red animate-gradient bg-300%" />
-
-                {/* Simulated dashboard */}
-                <div className="p-6 lg:p-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Compliance Score */}
-                    <Card className={cn(
-                      "p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 border-green-200 dark:border-green-800 transition-all duration-500 hover:scale-105 hover:shadow-lg",
-                      isVisible && "animate-bounce-in"
-                    )} style={{ animationDelay: '100ms' }}>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Compliance Score</span>
-                          <Shield className="h-4 w-4 text-green-600 animate-pulse" />
-                        </div>
-                        <div className={cn(
-                          "text-2xl font-bold text-green-700 dark:text-green-400 transition-all duration-300",
-                          isVisible && "animate-count-up"
-                        )}>
-                          {complianceScore}%
-                        </div>
-                        <div className="text-xs text-green-600 flex items-center gap-1">
-                          <TrendingUp className="h-3 w-3" />
-                          +12% diese Woche
-                        </div>
-                      </div>
-                    </Card>
-
-                    {/* Offene Audits */}
-                    <Card className={cn(
-                      "p-4 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900 border-amber-200 dark:border-amber-800 transition-all duration-500 hover:scale-105 hover:shadow-lg",
-                      isVisible && "animate-bounce-in"
-                    )} style={{ animationDelay: '200ms' }}>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Offene Audits</span>
-                          <AlertCircle className="h-4 w-4 text-amber-600 animate-pulse" />
-                        </div>
-                        <div className="text-2xl font-bold text-amber-700 dark:text-amber-400">3</div>
-                        <div className="text-xs text-amber-600 flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
-                          Nächstes in 2 Tagen
-                        </div>
-                      </div>
-                    </Card>
-
-                    {/* Zeit gespart */}
-                    <Card className={cn(
-                      "p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 border-purple-200 dark:border-purple-800 transition-all duration-500 hover:scale-105 hover:shadow-lg",
-                      isVisible && "animate-bounce-in"
-                    )} style={{ animationDelay: '300ms' }}>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Zeit gespart</span>
-                          <Clock className="h-4 w-4 text-purple-600 animate-pulse" />
-                        </div>
-                        <div className={cn(
-                          "text-2xl font-bold text-purple-700 dark:text-purple-400 transition-all duration-300",
-                          isVisible && "animate-count-up"
-                        )}>
-                          {timesSaved}h
-                        </div>
-                        <div className="text-xs text-purple-600 flex items-center gap-1">
-                          <Sparkles className="h-3 w-3" />
-                          Diesen Monat
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
-
-                  {/* Live activity feed */}
-                  <div className="mt-6 space-y-2">
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 animate-slide-up">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
-                        DSGVO-Audit erfolgreich abgeschlossen
-                      </span>
-                      <span className="text-xs text-gray-500 ml-auto">vor 2 Min.</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 animate-slide-up" style={{ animationDelay: '200ms' }}>
-                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
-                        Neue Datenschutzrichtlinie hochgeladen
-                      </span>
-                      <span className="text-xs text-gray-500 ml-auto">vor 5 Min.</span>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Floating badges */}
-              <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-900 rounded-full px-4 py-2 shadow-xl border-2 border-brand-red animate-float">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium">Live-Monitoring aktiv</span>
-                </div>
-              </div>
-
-              {/* Additional floating elements */}
-              <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-brand-red to-red-600 rounded-full p-3 shadow-xl animate-float" style={{ animationDelay: '1s' }}>
-                <Sparkles className="h-6 w-6 text-white" />
+            {/* Social Proof */}
+            <div className="text-center">
+              <p className="text-sm text-gray-300 mb-2">
+                Vertrauen von über <strong className="text-white">500+ Unternehmen</strong>
+              </p>
+              <div className="flex justify-center space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-2 h-2 bg-brand-red rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
+                ))}
               </div>
             </div>
           </div>

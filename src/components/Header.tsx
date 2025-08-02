@@ -191,13 +191,10 @@ export const Header: React.FC = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <img
-            src="/logomarsstein.png"
-            alt="Marsstein Logo"
-            className="h-10 w-auto"
-          />
-          <span className="text-xl font-bold text-foreground"></span>
+        <Link to="/" className="flex items-center">
+          <span className="brand-name text-2xl font-bold tracking-tight">
+            MAR<span className="brand-symbol">§</span>TEIN
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -253,7 +250,7 @@ export const Header: React.FC = () => {
             {t('nav_login')}
           </Button>
           <Link to="/contact?demo=true">
-            <Button size="sm" className="bg-gradient-primary hover:opacity-90">
+            <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
               {t('nav_demo')}
             </Button>
           </Link>
@@ -452,7 +449,7 @@ export const Header: React.FC = () => {
                     {t('nav_login')}
                   </Button>
                   <Link to="/contact?demo=true" className="block">
-                    <Button className="w-full bg-gradient-primary">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                       {t('nav_demo')}
                     </Button>
                   </Link>

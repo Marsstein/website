@@ -1,0 +1,350 @@
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Mars Luxe Styles */
+.mars-luxe {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  color: #1F1F1F;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Custom Properties */
+.mars-luxe {
+  --mars-red: #B91C1C;
+  --mars-red-light: #DC2626;
+  --mars-red-dark: #7F1D1D;
+  --gold-accent: #D97706;
+  --charcoal: #1F1F1F;
+  --platinum: #F8FAFC;
+  --silver: #64748B;
+  --white: #FFFFFF;
+}
+
+.luxe-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+.luxe-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(185, 28, 28, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.luxe-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.luxe-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--charcoal);
+  text-decoration: none;
+}
+
+.luxe-logo .paragraph {
+  color: var(--mars-red);
+  font-size: 2.2rem;
+}
+
+.luxe-nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.luxe-nav-menu a {
+  color: var(--charcoal);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.luxe-nav-menu a:hover {
+  color: var(--mars-red);
+}
+
+.luxe-nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--mars-red);
+  transition: width 0.3s ease;
+}
+
+.luxe-nav-menu a:hover::after {
+  width: 100%;
+}
+
+.luxe-cta-button {
+  background: linear-gradient(135deg, var(--mars-red) 0%, var(--mars-red-light) 100%) !important;
+  color: var(--white) !important;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px !important;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.luxe-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(185, 28, 28, 0.3);
+}
+
+/* Hero Section */
+.luxe-hero {
+  padding: 6rem 0 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.luxe-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(185, 28, 28, 0.05) 0%, transparent 50%);
+  z-index: -1;
+}
+
+.luxe-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.luxe-hero .luxe-highlight {
+  color: var(--mars-red);
+  position: relative;
+}
+
+.luxe-hero .luxe-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mars-red), var(--gold-accent));
+  border-radius: 2px;
+}
+
+.luxe-hero p {
+  font-size: 1.1rem;
+  color: var(--silver);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-weight: 400;
+}
+
+/* Vision Section */
+.luxe-vision-section {
+  padding: 4rem 0;
+  background: var(--white);
+}
+
+.luxe-vision-section h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 1.5rem;
+}
+
+.luxe-vision-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--silver);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.luxe-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.luxe-vision-card {
+  background: linear-gradient(135deg, var(--white) 0%, var(--platinum) 100%);
+  border: 2px solid transparent;
+  border-radius: 15px;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.luxe-vision-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--mars-red), var(--gold-accent));
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.luxe-vision-card:hover::before {
+  opacity: 1;
+}
+
+.luxe-vision-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(185, 28, 28, 0.15);
+}
+
+.luxe-vision-number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--mars-red), var(--mars-red-light));
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.luxe-vision-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+
+.luxe-vision-card p {
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* Stats Section */
+.luxe-stats-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--charcoal) 0%, #374151 100%);
+  color: var(--white);
+  text-align: center;
+}
+
+.luxe-stats-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+.luxe-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2.5rem;
+}
+
+.luxe-stat-item {
+  position: relative;
+}
+
+.luxe-stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--mars-red);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.luxe-stat-label {
+  font-size: 1.1rem;
+  color: var(--platinum);
+  font-weight: 500;
+}
+
+/* Footer */
+.luxe-footer {
+  background: var(--charcoal);
+  color: var(--platinum);
+  padding: 4rem 0 2rem;
+  text-align: center;
+}
+
+.luxe-footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.luxe-footer-brand .paragraph {
+  color: var(--mars-red);
+}
+
+.luxe-footer-tagline {
+  font-size: 1.2rem;
+  color: var(--silver);
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+.luxe-footer p {
+  color: var(--silver);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .luxe-hero h1 {
+    font-size: 3rem;
+  }
+  
+  .luxe-nav-menu {
+    display: none;
+  }
+  
+  .luxe-vision-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .luxe-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}

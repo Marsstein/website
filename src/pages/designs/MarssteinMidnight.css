@@ -1,0 +1,1030 @@
+/* Marsstein Midnight Design - Midnight (#001B38) + Aurora (#00F0E4) */
+.marsstein-midnight {
+  font-family: 'Mars Grotesk', 'Space Grotesk', 'Inter', sans-serif;
+  background: linear-gradient(135deg, #001B38 0%, #00294F 25%, #003366 50%, #001B38 100%);
+  color: #00F0E4;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Marsstein Midnight Color Palette */
+.marsstein-midnight {
+  --midnight: #001B38;
+  --midnight-light: #00294F;
+  --midnight-dark: #000F1C;
+  --aurora: #00F0E4;
+  --aurora-light: #33F3E8;
+  --aurora-dark: #00C7BE;
+  --aurora-glow: #66F6EC;
+  --slice-blue: #0066CC;
+  --slice-teal: #0099B3;
+  --deep-space: #000812;
+  --star-white: #FFFFFF;
+  --northern-green: #00E6D6;
+  --polar-ice: #E6FCFA;
+  --shadow-aurora: rgba(0, 240, 228, 0.3);
+  --shadow-midnight: rgba(0, 27, 56, 0.5);
+  --glow-aurora: rgba(0, 240, 228, 0.8);
+  --glow-northern: rgba(0, 230, 214, 0.9);
+  --border-aurora: rgba(0, 240, 228, 0.2);
+  --border-midnight: rgba(0, 27, 56, 0.3);
+}
+
+/* Marsstein Midnight Background Effects */
+.marsstein-midnight::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 240, 228, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(0, 153, 179, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(0, 240, 228, 0.04) 0%, transparent 60%);
+  z-index: -2;
+}
+
+.marsstein-midnight::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(0, 240, 228, 0.02) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(0, 240, 228, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: marsstein-midnight-aurora-drift 40s linear infinite;
+  z-index: -1;
+}
+
+@keyframes marsstein-midnight-aurora-drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(60px, 60px) rotate(360deg); }
+}
+
+.marsstein-midnight-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Marsstein Midnight Header */
+.marsstein-midnight-header {
+  background: rgba(0, 27, 56, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-aurora);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 20px var(--shadow-midnight);
+}
+
+.marsstein-midnight-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.marsstein-midnight-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.midnight-stein {
+  width: 52px;
+  height: 52px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stein-orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid;
+  border-radius: 50%;
+  animation: orbit-rotation 8s linear infinite;
+}
+
+.outer-ring {
+  width: 50px;
+  height: 50px;
+  border-color: var(--border-aurora);
+  animation-duration: 12s;
+}
+
+.middle-ring {
+  width: 38px;
+  height: 38px;
+  border-color: var(--aurora-dark);
+  animation-duration: 8s;
+  animation-direction: reverse;
+}
+
+.inner-ring {
+  width: 26px;
+  height: 26px;
+  border-color: var(--aurora);
+  animation-duration: 6s;
+}
+
+@keyframes orbit-rotation {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.stein-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  background: var(--midnight);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 0 15px var(--glow-aurora),
+    inset 0 2px 4px rgba(0, 240, 228, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.aurora-slice {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(0deg, transparent, var(--aurora), transparent);
+  animation: slice-rotation 4s linear infinite;
+}
+
+.slice-1 {
+  left: 30%;
+  animation-delay: 0s;
+}
+
+.slice-2 {
+  left: 50%;
+  animation-delay: 1.3s;
+}
+
+.slice-3 {
+  left: 70%;
+  animation-delay: 2.6s;
+}
+
+@keyframes slice-rotation {
+  0% { opacity: 0; transform: scaleY(0.5); }
+  50% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(0.5); }
+}
+
+.midnight-paragraph {
+  color: var(--aurora);
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--glow-aurora);
+  z-index: 2;
+  position: relative;
+}
+
+.marsstein-midnight-brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--aurora);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 15px var(--glow-aurora);
+}
+
+.marsstein-midnight-tagline {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  font-size: 0.65rem;
+  color: var(--aurora-dark);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+.marsstein-midnight-nav-menu {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marsstein-midnight-nav-menu a {
+  color: var(--aurora);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.marsstein-midnight-nav-menu a:hover {
+  color: var(--aurora-glow);
+  text-shadow: 0 0 10px var(--glow-aurora);
+}
+
+.marsstein-midnight-nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--aurora), var(--northern-green));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.marsstein-midnight-nav-menu a:hover::after {
+  width: 100%;
+}
+
+.marsstein-midnight-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.midnight-indicators {
+  text-align: right;
+}
+
+.aurora-waves {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+  height: 16px;
+  align-items: flex-end;
+}
+
+.wave {
+  width: 3px;
+  border-radius: 2px;
+  animation: aurora-wave-dance 3s ease-in-out infinite;
+}
+
+.midnight-wave {
+  height: 12px;
+  background: linear-gradient(0deg, var(--midnight-light), var(--aurora-dark));
+  animation-delay: 0s;
+}
+
+.aurora-wave {
+  height: 16px;
+  background: linear-gradient(0deg, var(--aurora), var(--aurora-glow));
+  animation-delay: 0.5s;
+}
+
+.slice-wave {
+  height: 14px;
+  background: linear-gradient(0deg, var(--slice-teal), var(--aurora));
+  animation-delay: 1s;
+}
+
+.orbit-wave {
+  height: 10px;
+  background: linear-gradient(0deg, var(--slice-blue), var(--aurora-light));
+  animation-delay: 1.5s;
+}
+
+@keyframes aurora-wave-dance {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.7; transform: scaleY(0.8); }
+}
+
+.marsstein-midnight-label {
+  font-size: 0.75rem;
+  color: var(--aurora);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-shadow: 0 0 8px var(--shadow-aurora);
+}
+
+/* Marsstein Midnight Hero Section */
+.marsstein-midnight-hero {
+  padding: 10rem 0 8rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--midnight) 0%, var(--midnight-light) 50%, var(--midnight-dark) 100%);
+}
+
+.marsstein-midnight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 240, 228, 0.08);
+  border: 1px solid var(--border-aurora);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--aurora);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px var(--shadow-aurora);
+}
+
+.marsstein-midnight-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--aurora);
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 0 30px var(--glow-aurora);
+}
+
+.marsstein-midnight-highlight {
+  color: var(--aurora-glow);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.5rem;
+  font-style: italic;
+  animation: marsstein-midnight-highlight-aurora 4s ease-in-out infinite;
+}
+
+@keyframes marsstein-midnight-highlight-aurora {
+  0%, 100% { 
+    color: var(--aurora-glow);
+    text-shadow: 0 0 30px var(--glow-aurora);
+  }
+  50% { 
+    color: var(--northern-green);
+    text-shadow: 0 0 40px var(--glow-northern);
+  }
+}
+
+.marsstein-midnight-subtitle {
+  font-size: 1.25rem;
+  color: var(--polar-ice);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.marsstein-midnight-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.marsstein-midnight-primary-btn {
+  background: linear-gradient(135deg, var(--aurora), var(--northern-green)) !important;
+  color: var(--midnight) !important;
+  border: none;
+  border-radius: 6px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px var(--shadow-aurora);
+  position: relative;
+  overflow: hidden;
+}
+
+.marsstein-midnight-primary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.marsstein-midnight-primary-btn:hover::before {
+  left: 100%;
+}
+
+.marsstein-midnight-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-aurora);
+  background: linear-gradient(135deg, var(--aurora-glow), var(--northern-green)) !important;
+}
+
+.marsstein-midnight-secondary-btn {
+  border: 1px solid var(--border-aurora) !important;
+  color: var(--aurora) !important;
+  background: rgba(0, 27, 56, 0.8) !important;
+  border-radius: 6px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+}
+
+.marsstein-midnight-secondary-btn:hover {
+  border-color: var(--aurora-glow) !important;
+  color: var(--aurora-glow) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-aurora);
+  background: rgba(0, 240, 228, 0.04) !important;
+}
+
+.marsstein-midnight-metrics {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.marsstein-midnight-metric-display {
+  text-align: center;
+}
+
+.marsstein-midnight-metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--aurora);
+  font-family: 'Mars Grotesk', sans-serif;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px var(--glow-aurora);
+}
+
+.marsstein-midnight-metric-label {
+  font-size: 0.9rem;
+  color: var(--polar-ice);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* Marsstein Midnight Capabilities */
+.marsstein-midnight-capabilities {
+  padding: 8rem 0;
+  background: var(--midnight-light);
+}
+
+.capabilities-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.marsstein-midnight-badge {
+  background: linear-gradient(135deg, var(--aurora), var(--northern-green)) !important;
+  color: var(--midnight) !important;
+  border: none;
+  border-radius: 20px !important;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px var(--shadow-aurora);
+}
+
+.capabilities-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--aurora);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 25px var(--glow-aurora);
+}
+
+.capabilities-header p {
+  color: var(--polar-ice);
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.marsstein-midnight-capability-card {
+  background: var(--midnight) !important;
+  border: 1px solid var(--border-aurora) !important;
+  border-radius: 12px !important;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-midnight);
+}
+
+.marsstein-midnight-capability-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--aurora), var(--northern-green), var(--slice-teal));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.marsstein-midnight-capability-card:hover::before {
+  transform: scaleX(1);
+}
+
+.marsstein-midnight-capability-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px var(--shadow-aurora);
+  border-color: var(--aurora-glow);
+}
+
+.marsstein-midnight-capability-card.midnight:hover {
+  box-shadow: 0 20px 40px rgba(0, 240, 228, 0.15);
+}
+
+.marsstein-midnight-capability-card.aurora:hover {
+  box-shadow: 0 20px 40px rgba(0, 230, 214, 0.15);
+}
+
+.marsstein-midnight-capability-card.slice:hover {
+  box-shadow: 0 20px 40px rgba(0, 153, 179, 0.15);
+}
+
+.marsstein-midnight-capability-card.protection:hover {
+  box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+}
+
+.capability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.capability-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 240, 228, 0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aurora);
+  border: 1px solid var(--border-aurora);
+}
+
+.midnight .capability-icon {
+  background: rgba(0, 240, 228, 0.08);
+  color: var(--aurora);
+  border-color: var(--border-aurora);
+}
+
+.aurora .capability-icon {
+  background: rgba(0, 230, 214, 0.08);
+  color: var(--northern-green);
+  border-color: rgba(0, 230, 214, 0.15);
+}
+
+.slice .capability-icon {
+  background: rgba(0, 153, 179, 0.08);
+  color: var(--slice-teal);
+  border-color: rgba(0, 153, 179, 0.15);
+}
+
+.protection .capability-icon {
+  background: rgba(0, 102, 204, 0.08);
+  color: var(--slice-blue);
+  border-color: rgba(0, 102, 204, 0.15);
+}
+
+.capability-progress {
+  position: relative;
+}
+
+.marsstein-midnight-progress-ring {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.progress-circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  stroke: var(--border-aurora);
+}
+
+.marsstein-midnight-circle {
+  stroke: var(--aurora);
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.aurora .marsstein-midnight-circle {
+  stroke: var(--northern-green);
+}
+
+.slice .marsstein-midnight-circle {
+  stroke: var(--slice-teal);
+}
+
+.protection .marsstein-midnight-circle {
+  stroke: var(--slice-blue);
+}
+
+.marsstein-midnight-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--aurora);
+  font-family: 'Mars Grotesk', sans-serif;
+}
+
+.aurora .marsstein-midnight-progress-text {
+  color: var(--northern-green);
+}
+
+.slice .marsstein-midnight-progress-text {
+  color: var(--slice-teal);
+}
+
+.protection .marsstein-midnight-progress-text {
+  color: var(--slice-blue);
+}
+
+.capability-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--aurora);
+  margin-bottom: 1rem;
+}
+
+.capability-description {
+  color: var(--polar-ice);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.capability-footer {
+  margin-top: auto;
+}
+
+.marsstein-midnight-capability-bar {
+  height: 3px;
+  background: var(--border-aurora);
+}
+
+/* Marsstein Midnight Systems */
+.marsstein-midnight-systems {
+  padding: 6rem 0;
+  background: var(--midnight-dark);
+}
+
+.marsstein-midnight-systems-visualization {
+  background: var(--midnight) !important;
+  border: 1px solid var(--border-aurora) !important;
+  border-radius: 12px !important;
+  padding: 3rem;
+  box-shadow: 0 8px 24px var(--shadow-midnight);
+}
+
+.systems-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.marsstein-midnight-systems-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--aurora);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--midnight);
+  box-shadow: 0 4px 16px var(--shadow-aurora);
+}
+
+.systems-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--aurora);
+  margin-bottom: 0.5rem;
+}
+
+.systems-header p {
+  color: var(--polar-ice);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.marsstein-midnight-systems-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.marsstein-midnight-system-node {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--midnight-light);
+  border-radius: 8px;
+  border: 1px solid var(--border-aurora);
+  transition: all 0.3s ease;
+}
+
+.marsstein-midnight-system-node:hover {
+  background: rgba(0, 240, 228, 0.04);
+  border-color: var(--aurora-glow);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-aurora);
+}
+
+.marsstein-midnight-node-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.marsstein-midnight-node-status.midnight-active,
+.marsstein-midnight-node-status.midnight-secured {
+  background: var(--aurora);
+  animation: marsstein-midnight-pulse 2.5s ease-in-out infinite;
+}
+
+.marsstein-midnight-node-status.aurora-rotating,
+.marsstein-midnight-node-status.aurora-illuminating {
+  background: var(--northern-green);
+  animation: marsstein-aurora-pulse 3s ease-in-out infinite;
+}
+
+.marsstein-midnight-node-status.slice-processing {
+  background: var(--slice-teal);
+  animation: marsstein-slice-pulse 2s ease-in-out infinite;
+}
+
+.marsstein-midnight-node-status.protection-watching {
+  background: var(--slice-blue);
+}
+
+@keyframes marsstein-midnight-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+@keyframes marsstein-aurora-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes marsstein-slice-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.marsstein-midnight-system-name {
+  color: var(--aurora);
+  font-weight: 600;
+  flex: 1;
+}
+
+.marsstein-midnight-system-metric {
+  color: var(--polar-ice);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: 'Mars Grotesk', sans-serif;
+  opacity: 0.8;
+}
+
+.marsstein-midnight-systems-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.marsstein-midnight-systems-btn {
+  border: 1px solid var(--border-aurora) !important;
+  color: var(--aurora) !important;
+  background: rgba(0, 27, 56, 0.9) !important;
+  border-radius: 6px !important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.marsstein-midnight-systems-btn:hover {
+  border-color: var(--aurora-glow) !important;
+  color: var(--aurora-glow) !important;
+  background: rgba(0, 240, 228, 0.04) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-aurora);
+}
+
+/* Marsstein Midnight CTA */
+.marsstein-midnight-cta {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, var(--midnight-dark) 0%, var(--deep-space) 100%);
+}
+
+.marsstein-midnight-cta-card {
+  background: rgba(0, 27, 56, 0.95) !important;
+  border: 1px solid var(--border-aurora) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px var(--shadow-midnight);
+}
+
+.marsstein-midnight-cta-content {
+  padding: 4rem;
+}
+
+.cta-content {
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--aurora);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 25px var(--glow-aurora);
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  color: var(--polar-ice);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Marsstein Midnight Footer */
+.marsstein-midnight-footer {
+  background: var(--deep-space);
+  color: var(--aurora);
+  padding: 4rem 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer-brand .marsstein-midnight-brand {
+  color: var(--aurora);
+}
+
+.footer-tagline {
+  color: var(--polar-ice);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.marsstein-midnight-systems-indicators {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.indicator {
+  text-align: center;
+}
+
+.indicator-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--aurora);
+  font-family: 'Mars Grotesk', sans-serif;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 15px var(--glow-aurora);
+}
+
+.indicator-label {
+  font-size: 0.8rem;
+  color: var(--polar-ice);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-aurora);
+  color: var(--polar-ice);
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .marsstein-midnight-title {
+    font-size: 2.5rem;
+  }
+  
+  .marsstein-midnight-nav-menu {
+    display: none;
+  }
+  
+  .marsstein-midnight-hero-actions {
+    flex-direction: column;
+  }
+  
+  .marsstein-midnight-metrics {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .marsstein-midnight-systems-stack {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .marsstein-midnight-systems-indicators {
+    justify-content: center;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+  }
+  
+  .marsstein-midnight-systems-actions {
+    flex-direction: column;
+  }
+}

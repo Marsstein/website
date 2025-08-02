@@ -23,40 +23,36 @@ export const CTASection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
-      {/* Background decoration */}
+    <section className="py-12 relative overflow-hidden">
+      {/* Simplified Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-red/5 via-transparent to-purple-500/5" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-brand-red/10 to-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(185,28,28,0.03)_0%,transparent_50%)]" />
       </div>
 
       <div className="container px-4">
-        <div className="max-w-4xl mx-auto">
-          <Card className="relative overflow-hidden border-2 shadow-2xl bg-gradient-to-br from-background to-muted/20">
-            {/* Premium badge */}
-            <div className="absolute top-0 right-0 m-6">
-              <Badge className="px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-0">
+        <div className="max-w-3xl mx-auto">
+          <Card className="relative overflow-hidden bg-white/70 backdrop-blur-sm border-white/60 shadow-lg hover:shadow-xl transition-all duration-300">
+            {/* Compact badge */}
+            <div className="absolute top-0 right-0 m-4">
+              <Badge className="px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-0 text-xs">
                 <Star className="h-3 w-3 mr-1" />
                 Premium Demo
               </Badge>
             </div>
 
-            <div className="p-8 md:p-12 space-y-8">
-              {/* Header */}
-              <div className="text-center space-y-4">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
-                  <Rocket className="h-4 w-4 animate-bounce" />
+            <div className="p-6 md:p-8 space-y-6">
+              {/* Compact Header */}
+              <div className="text-center space-y-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-3">
+                  <Rocket className="h-4 w-4" />
                   <span className="text-sm font-medium">Limitiertes Angebot</span>
                 </div>
                 
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-                  Bereit für 
-                  <span className="bg-gradient-to-r from-brand-red to-purple-600 bg-clip-text text-transparent mx-2">
-                    automatisierte Compliance?
-                  </span>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+                  Bereit für <span className="text-brand-red">automatisierte Compliance?</span>
                 </h2>
                 
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-base text-muted-foreground max-w-xl mx-auto">
                   Erfahren Sie, wie Marsstein Ihre Compliance-Prozesse optimiert. 
                   Vereinbaren Sie eine persönliche Demonstration mit unseren Fachexperten.
                 </p>
@@ -107,18 +103,14 @@ export const CTASection: React.FC = () => {
                 </Link>
               </div>
 
-              {/* Trust indicator */}
-              <div className="text-center pt-4">
-                <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
-                  <Sparkles className="h-4 w-4 text-yellow-500" />
+              {/* Compact Trust indicator */}
+              <div className="text-center pt-2">
+                <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
+                  <Sparkles className="h-3 w-3 text-yellow-500" />
                   Über 500 Unternehmen nutzen bereits Marsstein
                 </p>
               </div>
             </div>
-
-            {/* Animated corner decorations */}
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-brand-red/20 to-transparent rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-purple-500/20 to-transparent rounded-tl-full" />
           </Card>
         </div>
       </div>
