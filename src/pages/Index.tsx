@@ -23,16 +23,26 @@ const Index = () => {
       <Header />
       <main className="overflow-hidden">
         <HeroSection />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <ScrollTransformation />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <TransformationCTA />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <DACHCompliance />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <ISO27001Section />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <EUAIActSection />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         
         <InteractiveShowcase />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <TrustSecurity />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <SmartFAQ />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <IntelligentNewsletter />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         
         <CTASection />
       </main>
