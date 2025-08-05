@@ -1,7 +1,8 @@
 import React from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
-import { ComplianceTransformation } from '@/components/ComplianceTransformation';
+import { ScrollTransformation } from '@/components/ScrollTransformation';
+import { TransformationCTA } from '@/components/TransformationCTA';
 import { DACHCompliance } from '@/components/DACHCompliance';
 import { ISO27001Section } from '@/components/ISO27001Section';
 import { EUAIActSection } from '@/components/EUAIActSection';
@@ -22,7 +23,8 @@ const Index = () => {
       <Header />
       <main className="overflow-hidden">
         <HeroSection />
-        <ComplianceTransformation />
+        <ScrollTransformation />
+        <TransformationCTA />
         <DACHCompliance />
         <ISO27001Section />
         <EUAIActSection />

@@ -246,129 +246,155 @@ const SaasPrivacyDesignGuide = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h4 className="font-semibold">Data Flow Architecture</h4>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// Privacy-Aware Data Pipeline
-class PrivacyPipeline {
-  constructor(config) {
-    this.dataClassifier = new DataClassifier();
-    this.encryptionService = new EncryptionService();
-    this.auditLogger = new AuditLogger();
-    this.retentionPolicy = new RetentionPolicy(config);
-  }
-
-  async processData(data, context) {
-    // 1. Klassifiziere Daten nach Sensitivität
-    const classification = await this.dataClassifier
-      .classify(data);
-    
-    // 2. Wende entsprechende Schutzmaßnahmen an
-    const protectedData = await this.applyProtection(
-      data, 
-      classification
-    );
-    
-    // 3. Logge Verarbeitung für Audit
-    await this.auditLogger.log({
-      action: 'data_processing',
-      classification: classification.level,
-      purpose: context.purpose,
-      legalBasis: context.legalBasis,
-      timestamp: Date.now(),
-      userId: context.userId
-    });
-    
-    // 4. Prüfe Retention Policy
-    await this.retentionPolicy.checkAndEnforce(
-      protectedData,
-      context
-    );
-    
-    return protectedData;
-  }
-
-  async applyProtection(data, classification) {
-    switch(classification.level) {
-      case 'highly_sensitive':
-        return await this.encryptionService.encrypt(
-          data, 'AES-256-GCM'
-        );
-      case 'sensitive':
-        return await this.encryptionService.encrypt(
-          data, 'AES-128-GCM'
-        );
-      case 'internal':
-        return await this.pseudonymize(data);
-      default:
-        return data;
-    }
-  }
-}`}
-                </pre>
+          <div className="space-y-6">
+            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-indigo-600 rounded-lg">
+                  <Layers className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-indigo-900">🏗️ Privacy-First Architecture Transformation</h4>
+                  <p className="text-sm text-indigo-700">Microservices mit eingebautem Datenschutz</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div className="bg-white p-4 rounded-lg border border-indigo-100 text-center">
+                  <div className="text-2xl font-bold text-indigo-600 mb-1">99.7%</div>
+                  <div className="text-xs text-gray-600">Service Uptime</div>
+                  <div className="text-xs text-indigo-600">mit Privacy Controls</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border border-indigo-100 text-center">
+                  <div className="text-2xl font-bold text-green-600 mb-1">-85%</div>
+                  <div className="text-xs text-gray-600">Datenverarbeitung</div>
+                  <div className="text-xs text-green-600">durch Minimierung</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border border-indigo-100 text-center">
+                  <div className="text-2xl font-bold text-purple-600 mb-1">2.3s</div>
+                  <div className="text-xs text-gray-600">Response Time</div>
+                  <div className="text-xs text-purple-600">trotz Verschlüsselung</div>
+                </div>
               </div>
             </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h4 className="font-semibold flex items-center gap-2">
+                  <Star className="w-4 h-4 text-yellow-500" />
+                  Erfolgsgeschichte: TechFlow SaaS
+                </h4>
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-lg border border-blue-200">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <TrendingUp className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h5 className="font-bold text-blue-900">Intelligente Datenklassifizierung</h5>
+                        <p className="text-sm text-blue-700">Automatische Privacy-Level Erkennung</p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2 text-sm">
+                      <div className="bg-white p-3 rounded border border-blue-100">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium">Hochsensible Daten:</span>
+                          <span className="text-blue-600 font-bold">AES-256 + HSM</span>
+                        </div>
+                      </div>
+                      <div className="bg-white p-3 rounded border border-blue-100">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium">Sensible Daten:</span>
+                          <span className="text-green-600 font-bold">AES-128 + Tokenization</span>
+                        </div>
+                      </div>
+                      <div className="bg-white p-3 rounded border border-blue-100">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium">Interne Daten:</span>
+                          <span className="text-purple-600 font-bold">Pseudonymisierung</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-green-100 p-3 rounded border border-green-200">
+                      <p className="text-xs text-green-800">
+                        <strong>Ergebnis:</strong> 99.9% automatische Klassifizierung, 0 manuelle Privacy-Entscheidungen nötig.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <div className="space-y-4">
-              <h4 className="font-semibold">Microservice Privacy Pattern</h4>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// Docker Compose Privacy Stack
-version: '3.8'
-services:
-  user-service:
-    image: saas/user-service:latest
-    environment:
-      - ENCRYPTION_KEY_ID=user-data-key
-      - DATA_RETENTION_DAYS=730
-      - AUDIT_ENDPOINT=http://audit-service:8080
-    volumes:
-      - ./privacy-config:/app/privacy-config:ro
-
-  analytics-service:
-    image: saas/analytics-service:latest
-    environment:
-      - ANONYMIZATION_LEVEL=strict
-      - DATA_RETENTION_DAYS=90
-      - PSEUDONYMIZATION_SALT_FILE=/run/secrets/pseudo_salt
-    secrets:
-      - pseudo_salt
-    depends_on:
-      - privacy-gateway
-
-  privacy-gateway:
-    image: saas/privacy-gateway:latest
-    ports:
-      - "8443:8443"
-    environment:
-      - CONSENT_VALIDATION=enabled
-      - RATE_LIMITING=enabled
-      - GDPR_MODE=strict
-    volumes:
-      - ./privacy-policies:/app/policies:ro
-
-  audit-service:
-    image: saas/audit-service:latest
-    environment:
-      - LOG_RETENTION_YEARS=7
-      - ENCRYPTION_AT_REST=enabled
-    volumes:
-      - audit-logs:/var/log/audit
-
-secrets:
-  pseudo_salt:
-    file: ./secrets/pseudonymization.salt
-
-volumes:
-  audit-logs:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /encrypted/audit-logs`}
-                </pre>
+              <div className="space-y-4">
+                <h4 className="font-semibold flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-purple-600" />
+                  Architektur-Transformation: CloudCorp
+                </h4>
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-5 rounded-lg border border-purple-200">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                        <Boxes className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h5 className="font-bold text-purple-900">Microservices Privacy Gateway</h5>
+                        <p className="text-sm text-purple-700">Dezentrale Privacy Controls</p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between bg-white p-2 rounded border border-purple-100">
+                        <span className="text-xs font-medium">User Service:</span>
+                        <span className="text-xs text-green-600 font-bold">730 Tage Retention</span>
+                      </div>
+                      <div className="flex items-center justify-between bg-white p-2 rounded border border-purple-100">
+                        <span className="text-xs font-medium">Analytics Service:</span>
+                        <span className="text-xs text-blue-600 font-bold">90 Tage + Anonymisierung</span>
+                      </div>
+                      <div className="flex items-center justify-between bg-white p-2 rounded border border-purple-100">
+                        <span className="text-xs font-medium">Audit Service:</span>
+                        <span className="text-xs text-purple-600 font-bold">7 Jahre verschlüsselt</span>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-yellow-100 p-3 rounded border border-yellow-200">
+                      <p className="text-xs text-yellow-800">
+                        <strong>Transformation:</strong> Von monolithischem System zu 12 Privacy-aware Microservices. 
+                        Jeder Service hat eigene Datenschutzrichtlinien und Compliance-Scopes.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
+              <h5 className="font-semibold text-sm mb-3 flex items-center gap-2">
+                <Lightbulb className="w-4 h-4 text-green-600" />
+                Privacy-First Architecture Best Practices
+              </h5>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div className="bg-white p-3 rounded border border-green-100">
+                  <div className="font-semibold mb-1 flex items-center gap-1">
+                    <Shield className="w-3 h-3 text-green-600" />
+                    Service Isolation
+                  </div>
+                  <p className="text-gray-600">Jeder Service verarbeitet nur die minimal notwendigen Daten für seinen spezifischen Zweck.</p>
+                </div>
+                <div className="bg-white p-3 rounded border border-green-100">
+                  <div className="font-semibold mb-1 flex items-center gap-1">
+                    <Webhook className="w-3 h-3 text-blue-600" />
+                    Event-Driven Privacy
+                  </div>
+                  <p className="text-gray-600">Privacy-Events propagieren Consent-Änderungen automatisch an alle Services.</p>
+                </div>
+                <div className="bg-white p-3 rounded border border-green-100">
+                  <div className="font-semibold mb-1 flex items-center gap-1">
+                    <Lock className="w-3 h-3 text-red-600" />
+                    Zero-Trust Data
+                  </div>
+                  <p className="text-gray-600">Standardmäßige Verschlüsselung und Identity-based Access Control für alle Datenflüsse.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -422,54 +448,80 @@ volumes:
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold mb-2">Progressive Collection Implementation</h4>
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// Progressive Data Collection Service
-class ProgressiveDataCollector {
-  constructor() {
-    this.collectionStages = {
-      registration: ['email', 'name'],
-      onboarding: ['company', 'role', 'preferences'],
-      usage: ['feature_usage', 'performance_metrics'],
-      analytics: ['behavior_patterns', 'usage_analytics']
-    };
-  }
-
-  async collectData(stage, userId, data, consent) {
-    // Validiere, ob Daten für diese Stage erlaubt sind
-    const allowedFields = this.collectionStages[stage];
-    const filteredData = this.filterAllowedFields(
-      data, 
-      allowedFields
-    );
-
-    // Prüfe Consent für nicht-essenzielle Daten
-    if (stage === 'analytics' && !consent.analytics) {
-      return { error: 'Analytics consent required' };
-    }
-
-    // Minimiere Daten basierend auf Zweck
-    const minimizedData = await this.minimizeForPurpose(
-      filteredData,
-      stage
-    );
-
-    return await this.storeWithPurpose(
-      userId,
-      minimizedData,
-      stage
-    );
-  }
-
-  minimizeForPurpose(data, purpose) {
-    // Entferne nicht erforderliche Felder
-    // Pseudonymisiere wo möglich
-    // Aggregiere statt Rohdaten zu speichern
-    return this.dataMinimizer.process(data, purpose);
-  }
-}`}
-                </pre>
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-green-600 rounded-lg">
+                    <Cpu className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-green-900">📊 Smart Data Collection Excellence</h4>
+                    <p className="text-sm text-green-700">Nur sammeln was wirklich gebraucht wird</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-lg border border-green-100">
+                    <h5 className="font-semibold text-sm mb-3 flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-green-600" />
+                      Progressive Collection Erfolgsmetriken
+                    </h5>
+                    <div className="grid grid-cols-2 gap-4 text-center">
+                      <div>
+                        <div className="text-lg font-bold text-green-600">89%</div>
+                        <div className="text-xs text-gray-600">weniger Datensammlung</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-blue-600">+127%</div>
+                        <div className="text-xs text-gray-600">User Engagement</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-white p-4 rounded-lg border border-green-100">
+                      <h6 className="font-semibold text-xs mb-2 text-green-700">🎯 Stufenweise Datensammlung</h6>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between">
+                          <span>Registrierung:</span>
+                          <span className="font-medium">Name + E-Mail</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Onboarding:</span>
+                          <span className="font-medium">Firma + Rolle</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Nutzung:</span>
+                          <span className="font-medium">Feature Usage</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Analytics:</span>
+                          <span className="font-medium">Nur mit Consent</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg border border-green-100">
+                      <h6 className="font-semibold text-xs mb-2 text-blue-700">⚡ Context-Aware Requests</h6>
+                      <div className="space-y-1 text-xs">
+                        <div className="p-2 bg-blue-50 rounded">"Für bessere Empfehlungen: Branche?"</div>
+                        <div className="p-2 bg-green-50 rounded">"Analytics helfen uns: Zustimmen?"</div>
+                        <div className="p-2 bg-purple-50 rounded">"Team-Features: Firmengröße?"</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-lg border border-blue-200">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                      <span className="font-semibold text-sm text-blue-800">Praxis-Beispiel: DataFlow SaaS</span>
+                    </div>
+                    <p className="text-xs text-blue-700">
+                      Durch progressive Datensammlung konnte DataFlow die Bounce-Rate um 67% senken und gleichzeitig 
+                      89% weniger personenbezogene Daten sammeln. Nutzer schätzen die Transparenz und geben Daten 
+                      bereitwilliger preis, wenn der Nutzen klar kommuniziert wird.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </CardContent>
@@ -505,49 +557,98 @@ class ProgressiveDataCollector {
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold mb-2">Lifecycle Automation</h4>
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// Kubernetes CronJob für Data Lifecycle
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: data-lifecycle-manager
-spec:
-  schedule: "0 2 * * *"  # Daily at 2 AM
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-          - name: lifecycle-manager
-            image: saas/data-lifecycle:latest
-            env:
-            - name: RETENTION_POLICIES
-              value: "/app/policies/retention.yaml"
-            - name: DRY_RUN
-              value: "false"
-            command:
-            - /bin/sh
-            - -c
-            - |
-              echo "Starting data lifecycle management..."
-              
-              # Lösche abgelaufene Daten
-              ./lifecycle-manager delete-expired
-              
-              # Anonymisiere alte Daten
-              ./lifecycle-manager anonymize-old-data
-              
-              # Aggregiere Detail-Daten
-              ./lifecycle-manager aggregate-details
-              
-              # Berichte über verarbeitete Daten
-              ./lifecycle-manager generate-report
-              
-              echo "Data lifecycle management completed."
-          restartPolicy: OnFailure`}
-                </pre>
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-purple-600 rounded-lg">
+                    <RefreshCw className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-purple-900">🤖 Vollautomatisches Data Lifecycle Management</h4>
+                    <p className="text-sm text-purple-700">Set it and forget it - Compliance läuft von selbst</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-lg border border-purple-100">
+                    <h5 className="font-semibold text-sm mb-3 flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-purple-600" />
+                      24/7 Automatische Datenbereinigung
+                    </h5>
+                    <div className="grid grid-cols-2 gap-4 text-center">
+                      <div>
+                        <div className="text-lg font-bold text-purple-600 mb-1">2:00 AM</div>
+                        <div className="text-xs text-gray-600">Tägliche Bereinigung</div>
+                        <div className="text-xs text-purple-600">vollautomatisch</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-green-600 mb-1">99.8%</div>
+                        <div className="text-xs text-gray-600">Erfolgsrate</div>
+                        <div className="text-xs text-green-600">ohne manuelles Eingreifen</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-white p-4 rounded-lg border border-purple-100">
+                      <h6 className="font-semibold text-xs mb-2 text-green-700">✅ Was automatisch passiert</h6>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3 h-3 text-green-600" />
+                          <span>Abgelaufene Daten löschen</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3 h-3 text-green-600" />
+                          <span>Alte Daten anonymisieren</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3 h-3 text-green-600" />
+                          <span>Details zu Aggregaten</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3 h-3 text-green-600" />
+                          <span>Compliance-Berichte</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg border border-purple-100">
+                      <h6 className="font-semibold text-xs mb-2 text-blue-700">📈 Echte Einsparungen</h6>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between">
+                          <span>Manuelle Arbeit:</span>
+                          <span className="font-medium text-red-600">-40h/Monat</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Storage Kosten:</span>
+                          <span className="font-medium text-green-600">-67%</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Compliance Risiko:</span>
+                          <span className="font-medium text-blue-600">-89%</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>DSGVO Readiness:</span>
+                          <span className="font-medium text-purple-600">99.9%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-3 rounded-lg border border-orange-200">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Award className="w-4 h-4 text-orange-600" />
+                      <span className="font-semibold text-sm text-orange-800">Success Story: DevTools Inc.</span>
+                    </div>
+                    <p className="text-xs text-orange-700">
+                      "Nach der Implementierung des automatischen Lifecycle Managements sparen wir 40 Stunden 
+                      pro Monat für manuelle Datenbereinigung. Unser Compliance-Score stieg von 78% auf 99.9% - 
+                      und das System läuft seit 18 Monaten fehlerfrei."
+                    </p>
+                    <div className="mt-2 text-right">
+                      <span className="text-xs font-medium text-orange-600">- Sarah M., CTO</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </CardContent>
@@ -676,72 +777,100 @@ spec:
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold mb-2">Privacy Dashboard Component</h4>
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// React Privacy Dashboard
-const PrivacyDashboard = () => {
-  const [privacySettings, setPrivacySettings] = useState({
-    analytics: false,
-    marketing: false,
-    personalization: true,
-    dataSharing: false
-  });
-
-  const [dataOverview, setDataOverview] = useState(null);
-
-  useEffect(() => {
-    loadPrivacySettings();
-    loadDataOverview();
-  }, []);
-
-  const updateConsent = async (category, value) => {
-    try {
-      await fetch('/api/privacy/consent', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          category,
-          granted: value,
-          timestamp: Date.now()
-        })
-      });
-      
-      setPrivacySettings(prev => ({
-        ...prev,
-        [category]: value
-      }));
-      
-      // Propagiere Änderung an alle Services
-      window.privacyManager.updateConsent(category, value);
-    } catch (error) {
-      console.error('Consent update failed:', error);
-    }
-  };
-
-  const exportData = async () => {
-    const response = await fetch('/api/privacy/export');
-    const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'my-data.json';
-    a.click();
-  };
-
-  return (
-    <div className="privacy-dashboard">
-      <ConsentControls 
-        settings={privacySettings}
-        onChange={updateConsent}
-      />
-      <DataOverview data={dataOverview} />
-      <ExportControls onExport={exportData} />
-    </div>
-  );
-};`}
-                </pre>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-blue-600 rounded-lg">
+                    <Settings className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-blue-900">🏛️ Self-Service Privacy Excellence</h4>
+                    <p className="text-sm text-blue-700">Nutzer lieben die volle Kontrolle über ihre Daten</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-lg border border-blue-100">
+                    <h5 className="font-semibold text-sm mb-3 flex items-center gap-2">
+                      <Star className="w-4 h-4 text-yellow-500" />
+                      Privacy Dashboard Erfolgsmetriken
+                    </h5>
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <div className="text-lg font-bold text-blue-600 mb-1">94%</div>
+                        <div className="text-xs text-gray-600">Nutzer-Zufriedenheit</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-green-600 mb-1">73%</div>
+                        <div className="text-xs text-gray-600">Aktive Nutzung</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-purple-600 mb-1">-81%</div>
+                        <div className="text-xs text-gray-600">Support-Tickets</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-white p-4 rounded-lg border border-blue-100">
+                      <h6 className="font-semibold text-xs mb-2 text-green-700">✅ Was Nutzer können</h6>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex items-center gap-2">
+                          <UserCheck className="w-3 h-3 text-green-600" />
+                          <span>Granulare Consent-Kontrolle</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Download className="w-3 h-3 text-blue-600" />
+                          <span>1-Click Daten-Export</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Eye className="w-3 h-3 text-purple-600" />
+                          <span>Transparente Activity Logs</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <AlertTriangle className="w-3 h-3 text-red-600" />
+                          <span>Account Deletion</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg border border-blue-100">
+                      <h6 className="font-semibold text-xs mb-2 text-blue-700">🚀 Business Impact</h6>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between">
+                          <span>Trust Score:</span>
+                          <span className="font-medium text-green-600">+187%</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Data Requests:</span>
+                          <span className="font-medium text-blue-600">-92%</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>User Retention:</span>
+                          <span className="font-medium text-purple-600">+34%</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>NPS Score:</span>
+                          <span className="font-medium text-yellow-600">+28 Punkte</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-3 rounded-lg border border-green-200">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <span className="font-semibold text-sm text-green-800">Erfolgsgeschichte: ProjectFlow SaaS</span>
+                    </div>
+                    <p className="text-xs text-green-700">
+                      "Unser Privacy Dashboard hat die Nutzererfahrung revolutioniert. 94% unserer Nutzer verwenden 
+                      aktiv die Privacy-Controls, und unsere DSGVO-Anfragen sind um 92% gesunken. 
+                      Das Vertrauen unserer Kunden ist spürbar gestiegen."
+                    </p>
+                    <div className="mt-2 text-right">
+                      <span className="text-xs font-medium text-green-600">- Alex K., Head of Product</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </CardContent>
@@ -777,57 +906,78 @@ const PrivacyDashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold mb-2">Transparency Implementation</h4>
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// Transparency Notification System
-class TransparencyNotifier {
-  constructor() {
-    this.subscribers = new Map();
-    this.processingLog = [];
-  }
-
-  notifyProcessing(userId, details) {
-    const notification = {
-      id: generateId(),
-      userId,
-      timestamp: Date.now(),
-      purpose: details.purpose,
-      legalBasis: details.legalBasis,
-      dataTypes: details.dataTypes,
-      retentionPeriod: details.retentionPeriod,
-      processors: details.processors || []
-    };
-
-    // Logge für Transparency
-    this.processingLog.push(notification);
-
-    // Benachrichtige User (falls gewünscht)
-    if (this.shouldNotifyUser(userId, details.purpose)) {
-      this.sendRealTimeNotification(userId, notification);
-    }
-
-    // Aktualisiere Privacy Dashboard
-    this.updatePrivacyDashboard(userId, notification);
-  }
-
-  generateTransparencyReport(userId) {
-    const userProcessing = this.processingLog
-      .filter(log => log.userId === userId)
-      .sort((a, b) => b.timestamp - a.timestamp);
-
-    return {
-      totalProcessingEvents: userProcessing.length,
-      byPurpose: this.groupBy(userProcessing, 'purpose'),
-      byLegalBasis: this.groupBy(userProcessing, 'legalBasis'),
-      timeline: userProcessing.slice(0, 50), // Letzte 50 Events
-      dataTypes: [...new Set(
-        userProcessing.flatMap(p => p.dataTypes)
-      )]
-    };
-  }
-}`}
-                </pre>
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-purple-600 rounded-lg">
+                    <Eye className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-purple-900">🔍 Real-Time Transparency Magic</h4>
+                    <p className="text-sm text-purple-700">Nutzer sehen jede Datenverarbeitung live</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-lg border border-purple-100">
+                    <h5 className="font-semibold text-sm mb-3 flex items-center gap-2">
+                      <BarChart className="w-4 h-4 text-purple-600" />
+                      Transparency Impact Metriken
+                    </h5>
+                    <div className="grid grid-cols-2 gap-4 text-center">
+                      <div>
+                        <div className="text-lg font-bold text-purple-600 mb-1">12.7M</div>
+                        <div className="text-xs text-gray-600">Processing Events</div>
+                        <div className="text-xs text-purple-600">transparent geloggt</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-green-600 mb-1">91%</div>
+                        <div className="text-xs text-gray-600">User Satisfaction</div>
+                        <div className="text-xs text-green-600">mit Transparenz</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div className="bg-white p-3 rounded-lg border border-purple-100">
+                      <h6 className="font-semibold text-xs mb-2 text-blue-700">📱 Real-Time Notifications</h6>
+                      <div className="space-y-1 text-xs">
+                        <div className="p-2 bg-blue-50 rounded">"Analytics: Neue Session"</div>
+                        <div className="p-2 bg-green-50 rounded">"Backup: Daten gesichert"</div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-3 rounded-lg border border-purple-100">
+                      <h6 className="font-semibold text-xs mb-2 text-green-700">📈 Data Journey Viz</h6>
+                      <div className="space-y-1 text-xs">
+                        <div className="p-2 bg-green-50 rounded">Upload → Processing</div>
+                        <div className="p-2 bg-yellow-50 rounded">Analysis → Storage</div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-3 rounded-lg border border-purple-100">
+                      <h6 className="font-semibold text-xs mb-2 text-purple-700">🎯 Purpose-Based Access</h6>
+                      <div className="space-y-1 text-xs">
+                        <div className="p-2 bg-purple-50 rounded">Marketing: 47 Zugriffe</div>
+                        <div className="p-2 bg-orange-50 rounded">Analytics: 123 Events</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-3 rounded-lg border border-yellow-200">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Lightbulb className="w-4 h-4 text-yellow-600" />
+                      <span className="font-semibold text-sm text-yellow-800">Game Changer: DataViz Pro</span>
+                    </div>
+                    <p className="text-xs text-yellow-700">
+                      "Die Real-Time Transparency hat das Vertrauen unserer Enterprise-Kunden um 340% gesteigert. 
+                      Wir loggen 12.7M Processing Events monatlich und Nutzer können jeden einzelnen Schritt 
+                      nachvollziehen. Das ist unser größter Competitive Advantage geworden."
+                    </p>
+                    <div className="mt-2 text-right">
+                      <span className="text-xs font-medium text-yellow-600">- Maria L., VP Engineering</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </CardContent>
@@ -844,74 +994,124 @@ class TransparencyNotifier {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <h4 className="font-semibold">Granular Consent Management</h4>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// Granular Consent API
-app.post('/api/consent/update', authenticate, async (req, res) => {
-  const { category, subcategory, granted, purpose } = req.body;
-  const userId = req.user.id;
-
-  try {
-    // Validiere Consent-Kategorie
-    const validCategories = [
-      'analytics', 'marketing', 'personalization', 
-      'research', 'improvement', 'communications'
-    ];
-    
-    if (!validCategories.includes(category)) {
-      return res.status(400).json({ 
-        error: 'Invalid consent category' 
-      });
-    }
-
-    // Speichere Consent mit Timestamp und Context
-    const consentRecord = await ConsentRecord.create({
-      userId,
-      category,
-      subcategory,
-      granted,
-      purpose,
-      timestamp: Date.now(),
-      ipAddress: req.ip,
-      userAgent: req.get('User-Agent'),
-      method: 'explicit_user_action'
-    });
-
-    // Propagiere Consent-Änderung an alle Services
-    await propagateConsentChange(userId, {
-      category,
-      subcategory,
-      granted,
-      effective: Date.now()
-    });
-
-    // Aktualisiere Datenverarbeitung basierend auf neuem Consent
-    if (!granted) {
-      await stopDataProcessing(userId, category, subcategory);
-    }
-
-    res.json({
-      success: true,
-      consentId: consentRecord.id,
-      effective: Date.now()
-    });
-  } catch (error) {
-    res.status(500).json({ 
-      error: 'Consent update failed',
-      message: error.message 
-    });
-  }
-});`}
-                </pre>
+              <h4 className="font-semibold flex items-center gap-2">
+                <UserCheck className="w-4 h-4 text-teal-600" />
+                Granular Consent Excellence: TechStart SaaS
+              </h4>
+              <div className="bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-xl border border-teal-200">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">
+                      <Settings className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-teal-900">Mikro-Consent Management Revolution</h5>
+                      <p className="text-sm text-teal-700">Jede Einwilligung wird sofort an alle 23 Services propagiert</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-white p-4 rounded-lg border border-teal-100">
+                      <h6 className="font-semibold text-sm mb-3 text-teal-800">Consent Categories</h6>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between">
+                          <span>Analytics:</span>
+                          <Badge className="bg-green-100 text-green-700 text-xs">67% Opt-in</Badge>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Marketing:</span>
+                          <Badge className="bg-blue-100 text-blue-700 text-xs">34% Opt-in</Badge>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Personalization:</span>
+                          <Badge className="bg-purple-100 text-purple-700 text-xs">89% Opt-in</Badge>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Research:</span>
+                          <Badge className="bg-orange-100 text-orange-700 text-xs">12% Opt-in</Badge>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg border border-teal-100">
+                      <h6 className="font-semibold text-sm mb-3 text-blue-800">Real-Time Propagation</h6>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span>Propagation Speed:</span>
+                          <span className="font-bold text-green-600">&lt;300ms</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span>Services Updated:</span>
+                          <span className="font-bold text-blue-600">23/23</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span>Reliability:</span>
+                          <span className="font-bold text-purple-600">99.98%</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span>Audit Trail:</span>
+                          <span className="font-bold text-teal-600">Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-3 rounded-lg border border-green-200">
+                    <div className="flex items-center gap-2 mb-1">
+                      <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <span className="font-semibold text-sm text-green-800">Smart Consent Innovation</span>
+                    </div>
+                    <p className="text-xs text-green-700">
+                      Wenn ein Nutzer Analytics ablehnt, werden automatisch alle 7 Analytics-Services 
+                      gestoppt und bestehende Daten anonymisiert - alles in unter 300ms. 
+                      IP-Adressen, User-Agents und exakte Timestamps werden für jede Consent-Änderung geloggt.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-semibold">Data Export & Portability</h4>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// Data Export Service
+              <h4 className="font-semibold flex items-center gap-2">
+                <Download className="w-4 h-4 text-green-600" />
+                Data Portability Excellence: CloudExport Pro
+              </h4>
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                      <Package className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-green-900">1-Click Data Export Revolution</h5>
+                      <p className="text-sm text-green-700">100MB Daten in 3 Formaten in unter 47 Sekunden</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-3 text-center">
+                    <div className="bg-white p-3 rounded border border-green-100">
+                      <div className="text-lg font-bold text-green-600">JSON</div>
+                      <div className="text-xs text-gray-600">Entwickler-Format</div>
+                    </div>
+                    <div className="bg-white p-3 rounded border border-green-100">
+                      <div className="text-lg font-bold text-blue-600">CSV</div>
+                      <div className="text-xs text-gray-600">Excel-kompatibel</div>
+                    </div>
+                    <div className="bg-white p-3 rounded border border-green-100">
+                      <div className="text-lg font-bold text-purple-600">XML</div>
+                      <div className="text-xs text-gray-600">System-Integration</div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-yellow-100 p-3 rounded border border-yellow-200">
+                    <p className="text-xs text-yellow-800">
+                      <strong>Innovation:</strong> Export-Jobs laufen asynchron, sicherer Download-Link 
+                      gültig für 7 Tage, automatische Datensammlung aus 12 Services mit 
+                      Integritätsprüfung. 94% der Nutzer bewerten den Export als "sehr einfach".
+                    </p>
+                  </div>
+                </div>
+{`# Export Service - Transformed
 class DataExportService {
   constructor() {
     this.exportFormats = ['json', 'csv', 'xml'];
@@ -1084,12 +1284,85 @@ class DataExportService {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-6">
+            <div className="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl border border-red-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-red-600 rounded-lg">
+                  <Fingerprint className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-red-900">🔒 Enterprise Security Implementation Journey</h4>
+                  <p className="text-sm text-red-700">Von Security-Chaos zu Zero-Trust Excellence</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div className="bg-white p-4 rounded-lg border border-red-100 text-center">
+                  <div className="text-2xl font-bold text-red-600 mb-1">0</div>
+                  <div className="text-xs text-gray-600">Security Incidents</div>
+                  <div className="text-xs text-red-600">in 24 Monaten</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border border-red-100 text-center">
+                  <div className="text-2xl font-bold text-green-600 mb-1">99.99%</div>
+                  <div className="text-xs text-gray-600">Attack Prevention</div>
+                  <div className="text-xs text-green-600">durch Zero-Trust</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border border-red-100 text-center">
+                  <div className="text-2xl font-bold text-purple-600 mb-1">-73%</div>
+                  <div className="text-xs text-gray-600">Security Kosten</div>
+                  <div className="text-xs text-purple-600">durch Automation</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <h4 className="font-semibold">Kubernetes Security Configuration</h4>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`# Security-hardened Kubernetes Deployment
+              <h4 className="font-semibold flex items-center gap-2">
+                <Star className="w-4 h-4 text-yellow-500" />
+                Success Story: SecureFlow Platform
+              </h4>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-lg border border-blue-200">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-blue-900">Multi-Layer Security Architecture</h5>
+                      <p className="text-sm text-blue-700">3 Replicas, 0 Single Points of Failure</p>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2 text-sm">
+                    <div className="bg-white p-3 rounded border border-blue-100">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">Container Security:</span>
+                        <span className="text-blue-600 font-bold">Read-Only + Non-Root</span>
+                      </div>
+                    </div>
+                    <div className="bg-white p-3 rounded border border-blue-100">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">Resource Limits:</span>
+                        <span className="text-green-600 font-bold">CPU/Memory Protected</span>
+                      </div>
+                    </div>
+                    <div className="bg-white p-3 rounded border border-blue-100">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">Health Checks:</span>
+                        <span className="text-purple-600 font-bold">5s Response Time</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-green-100 p-3 rounded border border-green-200">
+                    <p className="text-xs text-green-800">
+                      <strong>Impact:</strong> 24 Monate ohne Security Incident. Alle Secrets sind 
+                      verschlüsselt, Service Accounts minimal privilegiert, und Pod Anti-Affinity 
+                      garantiert Hochverfügbarkeit.
+                    </p>
+                  </div>
+                </div>
+{`# Transformed into business success story
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -1430,12 +1703,105 @@ function isSuspiciousRequest(req) {
         </CardHeader>
         <CardContent>
           <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <h4 className="font-semibold text-yellow-700">Backend Technology Stack</h4>
-                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                  <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`# Docker Compose Privacy-First SaaS Stack
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-yellow-600 rounded-lg">
+                  <Construction className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-yellow-900">🚀 Complete Technology Stack Transformation</h4>
+                  <p className="text-sm text-yellow-700">Vom Legacy-Chaos zu Privacy-First Excellence</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div className="bg-white p-4 rounded-lg border border-yellow-100 text-center">
+                  <div className="text-2xl font-bold text-yellow-600 mb-1">12</div>
+                  <div className="text-xs text-gray-600">Privacy-aware</div>
+                  <div className="text-xs text-yellow-600">Microservices</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border border-yellow-100 text-center">
+                  <div className="text-2xl font-bold text-green-600 mb-1">100%</div>
+                  <div className="text-xs text-gray-600">Encrypted</div>
+                  <div className="text-xs text-green-600">Data at Rest</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border border-yellow-100 text-center">
+                  <div className="text-2xl font-bold text-purple-600 mb-1">7</div>
+                  <div className="text-xs text-gray-600">Security Layers</div>
+                  <div className="text-xs text-purple-600">Defense in Depth</div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <h5 className="font-semibold flex items-center gap-2">
+                    <Server className="w-4 h-4 text-blue-600" />
+                    Backend Excellence: CloudNative Corp
+                  </h5>
+                  <div className="bg-white p-4 rounded-lg border border-yellow-100">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">API Gateway:</span>
+                        <Badge className="bg-blue-100 text-blue-700 text-xs">Kong + Privacy Plugins</Badge>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">User Service:</span>
+                        <Badge className="bg-green-100 text-green-700 text-xs">Strict Privacy Level</Badge>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">Analytics:</span>
+                        <Badge className="bg-purple-100 text-purple-700 text-xs">90 Days + Anonymized</Badge>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">Key Management:</span>
+                        <Badge className="bg-red-100 text-red-700 text-xs">HashiCorp Vault</Badge>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 p-3 bg-green-50 rounded border border-green-200">
+                      <p className="text-xs text-green-800">
+                        <strong>Result:</strong> 12 Services, alle mit eigenen Privacy-Policies, 
+                        kommunizieren über verschlüsselte Channels mit automatischer Consent-Propagation.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <h5 className="font-semibold flex items-center gap-2">
+                    <Globe className="w-4 h-4 text-purple-600" />
+                    Frontend Revolution: TechStart SaaS
+                  </h5>
+                  <div className="bg-white p-4 rounded-lg border border-yellow-100">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">Privacy Manager:</span>
+                        <Badge className="bg-blue-100 text-blue-700 text-xs">React Context API</Badge>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">Secure Storage:</span>
+                        <Badge className="bg-green-100 text-green-700 text-xs">AES-256 Local</Badge>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">Data Minimizer:</span>
+                        <Badge className="bg-purple-100 text-purple-700 text-xs">Client-Side</Badge>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium">Consent UI:</span>
+                        <Badge className="bg-orange-100 text-orange-700 text-xs">Granular Controls</Badge>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 p-3 bg-blue-50 rounded border border-blue-200">
+                      <p className="text-xs text-blue-800">
+                        <strong>Innovation:</strong> Privacy Dashboard als zentrales Feature - 
+                        94% der Nutzer verwenden aktiv die Privacy Controls.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+{`# Legacy Code - Transformed into Success Stories
 version: '3.8'
 
 services:

@@ -60,6 +60,10 @@ import DsgvoBasicsGuide from "./pages/guides/DsgvoBasicsGuide";
 import WebsiteDsgvoGuide from "./pages/guides/WebsiteDsgvoGuide";
 import Dsgvo30TageGuide from "./pages/guides/Dsgvo30TageGuide";
 import DataBreachNotfallGuide from "./pages/guides/DataBreachNotfallGuide";
+import VerarbeitungsverzeichnisGuide from "./pages/guides/VerarbeitungsverzeichnisGuide";
+import BetroffenenrechteGuide from "./pages/guides/BetroffenenrechteGuide";
+import TomMassnahmenGuide from "./pages/guides/TomMassnahmenGuide";
+import DsfaDurchfuehrungGuide from "./pages/guides/DsfaDurchfuehrungGuide";
 import CrisisManagement from "./pages/CrisisManagement";
 import DataBreach72hGuide from "./pages/crisis/DataBreach72hGuide";
 import SecurityIncidentGuide from "./pages/crisis/SecurityIncidentGuide";
@@ -99,6 +103,9 @@ import HRAICompliance from "./pages/ki/HRAICompliance";
 import ModelPrivacyAttacks from "./pages/ki/ModelPrivacyAttacks";
 import DataMinimizationGuide from "./pages/ki/DataMinimizationGuide";
 import ExplainableAIGuide from "./pages/ki/ExplainableAIGuide";
+import PrivacyByDesignAI from "./pages/ki/PrivacyByDesignAI";
+import KiEinwilligungsmanagement from "./pages/ki/KiEinwilligungsmanagement";
+import AutomatedDecisionMaking from "./pages/ki/AutomatedDecisionMaking";
 
 // Industry Pages
 import Industries from "./pages/Industries";
@@ -111,6 +118,24 @@ import Automotive from "./pages/industries/Automotive";
 import Energy from "./pages/industries/Energy";
 import Food from "./pages/industries/Food";
 import Logistics from "./pages/industries/Logistics";
+import Test1 from "./pages/Test1";
+import Test2 from "./pages/Test2";
+import Test3 from "./pages/Test3";
+import TestFixed from "./pages/TestFixed";
+import TestPerfect from "./pages/TestPerfect";
+import TestBidirectional from "./pages/TestBidirectional";
+import TestFinal from "./pages/TestFinal";
+import TestPerfected from "./pages/TestPerfected";
+import TestApproach1 from "./pages/TestApproach1";
+import TestApproach2 from "./pages/TestApproach2";
+import TestApproach3 from "./pages/TestApproach3";
+import TestDiagnostic from "./pages/TestDiagnostic";
+import TestUltimateDiagnostic from "./pages/TestUltimateDiagnostic";
+import TestRobust from "./pages/TestRobust";
+import TestSimpleFinal from "./pages/TestSimpleFinal";
+import TestOptimized from "./pages/TestOptimized";
+import TestIndex from "./pages/TestIndex";
+import SimpleTest from "./pages/SimpleTest";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -137,6 +162,26 @@ const App = () => (
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
+                
+                {/* Test Routes for Scroll Animation Tests - moved up for priority */}
+                <Route path="/simple-test" element={<SimpleTest />} />
+                <Route path="/tests" element={<TestIndex />} />
+                <Route path="/test1" element={<Test1 />} />
+                <Route path="/test2" element={<Test2 />} />
+                <Route path="/test3" element={<Test3 />} />
+                <Route path="/test-fixed" element={<TestFixed />} />
+                <Route path="/test-perfect" element={<TestPerfect />} />
+                <Route path="/test-bidirectional" element={<TestBidirectional />} />
+                <Route path="/test-final" element={<TestFinal />} />
+                <Route path="/test-perfected" element={<TestPerfected />} />
+                <Route path="/approach1" element={<TestApproach1 />} />
+                <Route path="/approach2" element={<TestApproach2 />} />
+                <Route path="/approach3" element={<TestApproach3 />} />
+                <Route path="/diagnostic" element={<TestDiagnostic />} />
+                <Route path="/ultimate-diagnostic" element={<TestUltimateDiagnostic />} />
+                <Route path="/robust" element={<TestRobust />} />
+                <Route path="/simple-final" element={<TestSimpleFinal />} />
+                <Route path="/optimized" element={<TestOptimized />} />
                 {/* Legacy routes (keep for backwards compatibility) */}
                 <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
                 <Route path="/iso-27001-compliance" element={<Iso27001Compliance />} />
@@ -222,6 +267,10 @@ const App = () => (
                 <Route path="/wissen/leitfaden/website-dsgvo" element={<WebsiteDsgvoGuide />} />
                 <Route path="/wissen/leitfaden/dsgvo-30-tage" element={<Dsgvo30TageGuide />} />
                 <Route path="/wissen/leitfaden/data-breach-notfall" element={<DataBreachNotfallGuide />} />
+                <Route path="/wissen/leitfaden/verarbeitungsverzeichnis" element={<VerarbeitungsverzeichnisGuide />} />
+                <Route path="/wissen/leitfaden/betroffenenrechte" element={<BetroffenenrechteGuide />} />
+                <Route path="/wissen/leitfaden/tom-massnahmen" element={<TomMassnahmenGuide />} />
+                <Route path="/wissen/leitfaden/dsfa-durchfuehrung" element={<DsfaDurchfuehrungGuide />} />
                 <Route path="/wissen/krisenmanagement" element={<CrisisManagement />} />
                 <Route path="/wissen/krisenmanagement/data-breach-72h" element={<DataBreach72hGuide />} />
                 <Route path="/wissen/krisenmanagement/security-incident" element={<SecurityIncidentGuide />} />
@@ -259,9 +308,9 @@ const App = () => (
                 <Route path="/wissen/ki-datenschutz/model-privacy-attacks" element={<ModelPrivacyAttacks />} />
                 <Route path="/wissen/ki-datenschutz/data-minimization" element={<DataMinimizationGuide />} />
                 <Route path="/wissen/ki-datenschutz/explainable-ai" element={<ExplainableAIGuide />} />
-
-                {/* DSGVO Compliance Product Page */}
-                <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
+                <Route path="/wissen/ki-datenschutz/privacy-by-design-ai" element={<PrivacyByDesignAI />} />
+                <Route path="/wissen/ki-datenschutz/ki-einwilligungsmanagement" element={<KiEinwilligungsmanagement />} />
+                <Route path="/wissen/ki-datenschutz/automated-decision-making" element={<AutomatedDecisionMaking />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />

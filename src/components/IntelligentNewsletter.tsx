@@ -275,30 +275,6 @@ export const IntelligentNewsletter: React.FC = () => {
               })}
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6">
-              {[
-                { label: 'Abonnenten', value: '25K+', icon: Users },
-                { label: 'Öffnungsrate', value: '68%', icon: Mail },
-                { label: 'Updates/Woche', value: '12+', icon: TrendingUp }
-              ].map((stat, index) => {
-                const StatIcon = stat.icon;
-                return (
-                  <div 
-                    key={stat.label}
-                    className="text-center p-4 rounded-lg bg-card/50 neomorphism-inset"
-                  >
-                    <StatIcon className="h-6 w-6 text-primary mx-auto mb-2" />
-                    <div className="text-lg font-bold text-card-foreground">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      {stat.label}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
 
           {/* Right: Newsletter Signup & Preview */}

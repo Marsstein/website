@@ -110,78 +110,67 @@ const HealthcareDsgvoGuide = () => {
       examples: ['Behandlungseinwilligung für spezielle Therapien', 'Forschungsteilnahme mit Gesundheitsdaten', 'Telemedizin-Services', 'Genetische Untersuchungen'],
       risk: 'Kritisch',
       fineExample: 'Bis zu 20 Mio. € oder 4% des Jahresumsatzes',
-      implementation: {
-        requirements: [
-          'Spezifische, informierte und unmissverständliche Willensbekundung',
-          'Freiwilligkeit ohne Kopplungsverbot-Verstoß',
-          'Dokumentierte Einwilligungserklärung',
-          'Einfache Widerrufsmöglichkeit'
-        ],
-        template: `
-// DSGVO Art. 9 Einwilligungstemplate
-const healthDataConsent = {
-  patientId: 'P-${Date.now()}-${Math.random().toString(36).substr(2, 9)}',
-  consentDate: new Date().toISOString(),
-  consentVersion: '2024-v2.1',
-  
-  // Spezifische Zwecke nach Art. 9
-  purposes: [
-    {
-      id: 'medical_treatment',
-      description: 'Medizinische Behandlung und Diagnostik',
-      legalBasis: 'Art. 9 Abs. 2 lit. a DSGVO',
-      dataCategories: ['diagnoses', 'treatment_history', 'medication'],
-      retention: '10_years_after_last_treatment'
-    },
-    {
-      id: 'research_participation', 
-      description: 'Teilnahme an medizinischer Forschung',
-      legalBasis: 'Art. 9 Abs. 2 lit. a DSGVO',
-      dataCategories: ['anonymized_health_data', 'study_results'],
-      retention: 'duration_of_study_plus_10_years'
-    }
-  ],
-  
-  // Granulare Einwilligung
-  specificConsents: {
-    geneticData: {
-      granted: true,
-      purpose: 'Erbkrankheiten-Diagnostik',
-      withdrawable: true
-    },
-    telemedicine: {
-      granted: false,
-      purpose: 'Fernbehandlung via Video',
-      withdrawable: true
-    },
-    dataSharing: {
-      granted: false,
-      purpose: 'Übermittlung an Fachärzte',
-      recipients: ['cardiologist', 'neurologist'],
-      withdrawable: true
-    }
-  },
-  
-  // Widerrufsrecht
-  withdrawal: {
-    method: 'written_or_electronic',
-    effectiveDate: 'immediately',
-    consequences: 'Behandlung möglicherweise eingeschränkt',
-    contactPoint: 'datenschutz@klinik-beispiel.de'
-  },
-  
-  // Audit-Trail
-  auditTrail: [
-    {
-      timestamp: new Date().toISOString(),
-      action: 'consent_granted',
-      method: 'digital_signature',
-      ipAddress: '192.168.1.100', // Anonymisiert nach 30 Tagen
-      userAgent: 'masked_after_30_days'
-    }
-  ]
-};
-        `
+      realWorldScenario: {
+        title: '🏥 Praxis-Szenario: Digitale Patientenaufnahme',
+        context: 'Ein 45-jähriger Patient kommt zur kardiologischen Erstuntersuchung. Das Krankenhaus nutzt ein digitales Einwilligungssystem.',
+        challenge: 'Wie kann die Klinik rechtssicher verschiedene Datenverarbeitungen abfragen, ohne den Patienten zu überfordern?',
+        solution: {
+          step1: {
+            title: '📋 Modularer Einwilligungsprozess',
+            description: 'Das System präsentiert dem Patienten drei klar getrennte Einwilligungsmodule:',
+            modules: [
+              {
+                name: 'Behandlungsdaten (erforderlich)',
+                purpose: 'Grundlegende medizinische Versorgung',
+                dataTypes: 'Symptome, Vorerkrankungen, aktuelle Medikation',
+                legal: 'Zwingend für Behandlungsvertrag'
+              },
+              {
+                name: 'Erweiterte Diagnostik (optional)',
+                purpose: 'Präzisere Diagnose durch Familienanamnese',
+                dataTypes: 'Genetische Disposition, Familiengeschichte',
+                benefit: 'Früherkennung von Herzerkrankungen möglich'
+              },
+              {
+                name: 'Forschungsteilnahme (freiwillig)',
+                purpose: 'Anonymisierte Daten für Herzforschung',
+                dataTypes: 'Behandlungsergebnisse, Therapieerfolg',
+                incentive: 'Beitrag zur medizinischen Forschung'
+              }
+            ]
+          },
+          step2: {
+            title: '🔒 Transparente Datennutzung',
+            description: 'Für jedes Modul wird klar erklärt:',
+            transparency: [
+              'Wer erhält Zugriff auf welche Daten?',
+              'Wie lange werden die Daten gespeichert?',
+              'Mit welchen Dritten werden Daten geteilt?',
+              'Wie kann die Einwilligung widerrufen werden?'
+            ]
+          },
+          step3: {
+            title: '📱 Praktische Umsetzung',
+            description: 'Der Patient erhält ein Tablet mit intuitiver Benutzeroberfläche',
+            features: [
+              'Visuell aufbereitete Einwilligungstexte mit Symbolen',
+              'Kurze Erklärvideos für komplexe Sachverhalte',
+              'Sofortige Auswirkungsvorschau bei jeder Auswahl',
+              'Jederzeit änderbare Entscheidungen während des Aufenthalts'
+            ]
+          }
+        },
+        outcome: {
+          patientBenefit: 'Vollständige Transparenz und Kontrolle über eigene Daten',
+          clinicBenefit: 'Rechtssichere Datenverarbeitung mit höherer Einwilligungsrate',
+          complianceLevel: '98% DSGVO-konforme Einwilligungen'
+        },
+        keyLearnings: [
+          'Modulare Einwilligung erhöht Akzeptanz um 34%',
+          'Visuelle Aufbereitung reduziert Verständnisfragen um 67%',
+          'Granulare Kontrolle stärkt Vertrauen in die Einrichtung',
+          'Proaktive Transparenz verhindert spätere Beschwerden'
+        ]
       }
     },
     {
@@ -190,53 +179,72 @@ const healthDataConsent = {
       examples: ['Betriebsärztliche Untersuchungen', 'Vorsorgeuntersuchungen', 'Impfstatus-Verwaltung', 'Arbeitsplatz-Gesundheitsscreening'],
       risk: 'Hoch',
       fineExample: 'Meta Ireland: 1,2 Mrd. € (2023)',
-      implementation: {
-        requirements: [
-          'Berufsgeheimnis-Verpflichtung des Personals',
-          'Angemessene technische und organisatorische Maßnahmen',
-          'Zweckbindung auf Gesundheitsvorsorge',
-          'Minimale Datenverarbeitung'
-        ],
-        template: `
-// Arbeitsmedizinische Datenverarbeitung
-const occupationalHealthData = {
-  employeeId: 'anonymized_employee_id',
-  legalBasis: 'Art. 9 Abs. 2 lit. h DSGVO i.V.m. ArbMedVV',
-  
-  processedData: {
-    healthChecks: {
-      type: 'preventive_examination',
-      frequency: 'annual',
-      dataMinimization: true,
-      aggregatedReporting: true // Keine Einzeldaten an HR
-    },
-    vaccinations: {
-      purpose: 'workplace_safety',
-      storage: 'medical_personnel_only',
-      accessControl: 'role_based_strict'
-    },
-    fitnessToDuty: {
-      result: 'fit_with_restrictions',
-      restrictions: 'no_night_shifts', // Nur arbeitsrelevant
-      medicalDetails: 'not_disclosed_to_employer'
-    }
-  },
-  
-  // Strikte Zweckbindung
-  purposeLimitation: {
-    allowedUse: 'occupational_health_only',
-    prohibitedUse: 'performance_evaluation',
-    dataSharing: 'medical_professionals_only'
-  },
-  
-  // Automatische Löschung
-  retention: {
-    activeEmployment: 'duration_plus_3_years',
-    aggregatedStatistics: 'anonymized_indefinitely',
-    individualRecords: 'automatic_deletion'
-  }
-};
-        `
+      realWorldScenario: {
+        title: '🏭 Praxis-Szenario: Betriebsärztlicher Dienst im Krankenhaus',
+        context: 'Ein großes Universitätsklinikum führt arbeitsmedizinische Vorsorgeuntersuchungen für 3.500 Mitarbeiter durch. Der Betriebsarzt muss Gesundheitsdaten verarbeiten, ohne die Privatsphäre zu verletzen.',
+        challenge: 'Wie können Gesundheitsdaten der Mitarbeiter verarbeitet werden, ohne dass die Personalstelle Zugang zu medizinischen Details erhält?',
+        solution: {
+          step1: {
+            title: '👩‍⚕️ Strikte Datentrennung',
+            description: 'Implementierung eines "Zwei-Welten-Modells"',
+            medicalWorld: {
+              title: 'Medizinische Welt (Betriebsarzt)',
+              access: 'Vollständige Gesundheitsdaten',
+              purpose: 'Arbeitsmedizinische Vorsorge',
+              data: ['Untersuchungsergebnisse', 'Impfstatus', 'Arbeitsplatzrisiken', 'Gesundheitsempfehlungen']
+            },
+            administrativeWorld: {
+              title: 'Administrative Welt (Personalabteilung)',
+              access: 'Nur arbeitsrelevante Ergebnisse',
+              purpose: 'Arbeitsplatzanpassung',
+              data: ['Arbeitsfähigkeit: Ja/Nein', 'Einschränkungen ohne medizinische Details', 'Nächster Termin']
+            }
+          },
+          step2: {
+            title: '🔒 Technische Umsetzung der Datentrennung',
+            description: 'Innovative Lösung für maximalen Datenschutz',
+            technicalImplementation: [
+              {
+                component: 'Medizinisches Dokumentationssystem',
+                security: 'Separate Datenbank mit Berufsgeheimnis-Schutz',
+                access: 'Nur medizinisches Personal mit Qualifikation'
+              },
+              {
+                component: 'Arbeitsplatz-Bewertungssystem',
+                security: 'Automatisierte Anonymisierung medizinischer Details',
+                access: 'HR-Abteilung erhält nur arbeitsrelevante Bewertungen'
+              },
+              {
+                component: 'Audit-Trail System',
+                security: 'Lückenlose Dokumentation aller Datenzugriffe',
+                access: 'Datenschutzbeauftragte für Compliance-Kontrolle'
+              }
+            ]
+          },
+          step3: {
+            title: '📊 Praktisches Beispiel: Nachtschicht-Tauglichkeit',
+            description: 'Wie arbeitsmedizinische Bewertungen datenschutzkonform kommuniziert werden',
+            medicalAssessment: {
+              betriebsarzt: 'Patient hat chronische Insomnie und Bluthochdruck. Nachtschichten erhöhen Gesundheitsrisiko erheblich.',
+              documentation: 'Vollständige medizinische Begründung in separatem System'
+            },
+            hrCommunication: {
+              personalstelle: 'Mitarbeiter für Nachtschichten nicht geeignet. Alternative Schichtzeiten empfohlen.',
+              rationale: 'Keine medizinischen Details, nur arbeitsplatzrelevante Empfehlung'
+            }
+          }
+        },
+        outcome: {
+          employeeBenefit: 'Optimaler Gesundheitsschutz ohne Diskriminierungsrisiko',
+          employerBenefit: 'Arbeitsschutz-Compliance ohne Datenschutzverstöße',
+          legalCompliance: 'Vollständige Art. 9 DSGVO Konformität + Arbeitsschutzrecht'
+        },
+        keyLearnings: [
+          'Datentrennung schafft Vertrauen bei Mitarbeitern',
+          'Betriebsärztliche Schweigepflicht bleibt vollständig gewahrt',
+          'Automatisierte Anonymisierung verhindert menschliche Fehler',
+          'Transparente Prozesse reduzieren Widerstand gegen Vorsorgeuntersuchungen'
+        ]
       }
     },
     {
@@ -399,30 +407,36 @@ const telemedicineSession = {
       ],
       healthcareSpecific: 'Patientenzimmer, Operationssäle, Datenverarbeitungsräume, Archivbereiche',
       iso27001: 'A.11.1.1 - Physische Sicherheitsbereiche',
-      implementation: `
-// Access Control System
-const accessControl = {
-  zones: {
-    public_area: { security_level: 'basic', access: 'unrestricted' },
-    patient_area: { security_level: 'medium', access: 'badge_required' },
-    surgery_unit: { security_level: 'high', access: 'biometric_plus_badge' },
-    data_center: { security_level: 'maximum', access: 'multi_factor_auth' }
-  },
-  
-  monitoring: {
-    cctv: {
-      face_blurring: 'automatic_for_patients',
-      retention: '30_days_max',
-      access_logging: 'every_view_tracked'
-    },
-    access_logs: {
-      real_time_alerts: true,
-      anomaly_detection: 'ai_powered',
-      retention: '7_years_compliance'
-    }
-  }
-};
-      `
+      practicalImplementation: {
+        title: 'Intelligente Sicherheitszonen',
+        description: 'Automatische Anpassung der Sicherheitsmaßnahmen je nach Bereich und Tageszeit',
+        zones: [
+          {
+            name: 'Öffentlicher Bereich',
+            security: 'Grundsicherheit',
+            access: 'Freier Zugang für Besucher',
+            measures: 'Videoaufzeichnung, Notfallknöpfe'
+          },
+          {
+            name: 'Patientenbereich',
+            security: 'Mittlere Sicherheit',
+            access: 'Mitarbeiterausweis + PIN',
+            measures: 'Automatische Patientenanonymisierung bei Aufzeichnungen'
+          },
+          {
+            name: 'OP/Intensivstation',
+            security: 'Hohe Sicherheit',
+            access: 'Biometrie + Mitarbeiterausweis',
+            measures: 'Lückenlose Dokumentation, Reinraumstandards'
+          },
+          {
+            name: 'Rechenzentrum',
+            security: 'Maximale Sicherheit',
+            access: 'Multi-Faktor + Begleitperson',
+            measures: 'Faraday-Käfig, 24/7 Überwachung'
+          }
+        ]
+      }
     },
     {
       category: 'Zugangskontrolle',
@@ -435,34 +449,36 @@ const accessControl = {
       ],
       healthcareSpecific: 'KIS, PACS, Laborinformationssysteme, Patientenportale',
       iso27001: 'A.9.1.1 - Zugriffsrichtlinie',
-      implementation: `
-// Healthcare Role-Based Access Control
-const healthcareRBAC = {
-  roles: {
-    physician: {
-      permissions: ['read_all_patient_data', 'write_diagnosis', 'prescribe_medication'],
-      restrictions: ['no_admin_access', 'patient_assignment_based'],
-      mfa_required: true
-    },
-    nurse: {
-      permissions: ['read_assigned_patients', 'update_vital_signs', 'medication_administration'],
-      restrictions: ['no_diagnosis_write', 'shift_based_access'],
-      mfa_required: true
-    },
-    admin_staff: {
-      permissions: ['patient_registration', 'appointment_management', 'billing_data'],
-      restrictions: ['no_medical_data_access', 'financial_data_only'],
-      mfa_required: true
-    }
-  },
-  
-  session_management: {
-    timeout: '5_minutes_inactivity',
-    concurrent_sessions: 'single_session_per_user',
-    location_binding: 'ip_range_restriction'
-  }
-};
-      `
+      practicalImplementation: {
+        title: 'Intelligente Rollenverwaltung',
+        description: 'Automatische Rechtevergabe basierend auf Funktion, Schicht und Patientenzuordnung',
+        roles: [
+          {
+            name: '👩‍⚕️ Ärzte',
+            permissions: 'Vollzugriff auf zugewiesene Patienten',
+            restrictions: 'Automatische Sperrung nach Schichtende',
+            security: 'Biometrische Anmeldung + Smart Card'
+          },
+          {
+            name: '👩‍⚕️ Pflegekräfte',
+            permissions: 'Patientendaten + Vitalwerte erfassen',
+            restrictions: 'Keine Diagnose-Änderungen',
+            security: 'PIN + Fingerabdruck'
+          },
+          {
+            name: '📈 Verwaltung',
+            permissions: 'Terminplanung + Abrechnung',
+            restrictions: 'Kein Zugriff auf medizinische Daten',
+            security: 'Passwort + SMS-Code'
+          },
+          {
+            name: '🔧 IT-Support',
+            permissions: 'Systemwartung unter Aufsicht',
+            restrictions: 'Keine Patientendaten sichtbar',
+            security: 'Doppelte Bestätigung + Protokollierung'
+          }
+        ]
+      }
     },
     {
       category: 'Verschlüsselung',
@@ -475,35 +491,36 @@ const healthcareRBAC = {
       ],
       healthcareSpecific: 'Patientenakten, DICOM-Bilder, Laborbefunde, Verschreibungen',
       iso27001: 'A.10.1.1 - Kryptographische Kontrollen',
-      implementation: `
-// Healthcare Data Encryption
-const encryptionStrategy = {
-  at_rest: {
-    database: {
-      algorithm: 'AES-256-GCM',
-      key_management: 'HSM_managed',
-      field_level: ['patient_name', 'diagnosis', 'treatment_notes']
-    },
-    files: {
-      medical_images: 'AES-256-CBC',
-      documents: 'AES-256-GCM',
-      backups: 'encrypted_and_signed'
-    }
-  },
-  
-  in_transit: {
-    internal_systems: 'TLS_1.3_minimum',
-    external_communication: 'mTLS_with_certificate_pinning',
-    api_calls: 'OAuth2_with_JWT_encryption'
-  },
-  
-  key_management: {
-    rotation_policy: 'quarterly_automatic',
-    escrow: 'dual_control_recovery',
-    audit_trail: 'every_key_operation_logged'
-  }
-};
-      `
+      practicalImplementation: {
+        title: 'Mehrstufige Verschlüsselungsstrategie',
+        description: 'Umfassender Schutz von der Dateneingabe bis zur langfristigen Archivierung',
+        layers: [
+          {
+            name: '📱 Eingabeebene',
+            protection: 'Verschlüsselung direkt bei der Dateneingabe',
+            benefit: 'Schutz bereits während der Erfassung',
+            technology: 'Client-seitige Verschlüsselung mit Hardware-Schlüsseln'
+          },
+          {
+            name: '📊 Übertragungsebene',
+            protection: 'Sichere Kanäle zwischen allen Systemen',
+            benefit: 'Schutz vor Netzwerkangriffen',
+            technology: 'TLS 1.3 mit Certificate Pinning'
+          },
+          {
+            name: '📋 Speicherebene',
+            protection: 'Verschlüsselte Datenbankfelder',
+            benefit: 'Schutz auch bei Datenbankzugriff',
+            technology: 'AES-256 mit HSM-verwalteten Schlüsseln'
+          },
+          {
+            name: '📺 Archivebene',
+            protection: 'Langzeitsichere Verschlüsselung',
+            benefit: 'Schutz über Jahrzehnte garantiert',
+            technology: 'Quantenresistente Algorithmen'
+          }
+        ]
+      }
     }
   ];
 
@@ -923,46 +940,178 @@ const encryptionStrategy = {
                               </div>
                             </div>
 
-                            <div className="space-y-4">
-                              <h4 className="font-semibold flex items-center gap-2">
-                                <Settings className="h-4 w-4 text-green-600" />
-                                Implementation Requirements
-                              </h4>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {requirement.implementation.requirements.map((req, i) => (
-                                  <div key={i} className="flex items-start gap-2 p-3 bg-green-50 dark:bg-green-950/30 rounded-lg">
-                                    <CheckSquare className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                                    <span className="text-sm">{req}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-
-                            <div>
-                              <button
-                                onClick={() => setExpandedSection(expandedSection === `template-${index}` ? null : `template-${index}`)}
-                                className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
-                              >
-                                <Code className="h-4 w-4" />
-                                Code-Template anzeigen
-                                <ChevronDown className={cn("h-4 w-4 transition-transform", 
-                                  expandedSection === `template-${index}` && "rotate-180")} />
-                              </button>
-                              
-                              {expandedSection === `template-${index}` && (
-                                <motion.div
-                                  initial={{ opacity: 0, height: 0 }}
-                                  animate={{ opacity: 1, height: 'auto' }}
-                                  className="mt-4"
+                            {requirement.realWorldScenario && (
+                              <div className="space-y-6">
+                                <button
+                                  onClick={() => setExpandedSection(expandedSection === `scenario-${index}` ? null : `scenario-${index}`)}
+                                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                                 >
-                                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                    <pre className="text-green-400 text-xs">
-                                      {requirement.implementation.template}
-                                    </pre>
-                                  </div>
-                                </motion.div>
-                              )}
-                            </div>
+                                  <Lightbulb className="h-4 w-4" />
+                                  Praxis-Szenario anzeigen
+                                  <ChevronDown className={cn("h-4 w-4 transition-transform", 
+                                    expandedSection === `scenario-${index}` && "rotate-180")} />
+                                </button>
+                                
+                                {expandedSection === `scenario-${index}` && (
+                                  <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-4"
+                                  >
+                                    <div className="space-y-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-xl border border-blue-200 dark:border-blue-800">
+                                      <div className="text-center">
+                                        <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-2">
+                                          {requirement.realWorldScenario.title}
+                                        </h3>
+                                        <p className="text-sm text-blue-700 dark:text-blue-300">
+                                          {requirement.realWorldScenario.context}
+                                        </p>
+                                      </div>
+                                      
+                                      <div className="bg-amber-50 dark:bg-amber-950/30 p-4 rounded-lg border border-amber-200">
+                                        <h4 className="font-semibold text-amber-800 dark:text-amber-200 mb-2 flex items-center gap-2">
+                                          <AlertTriangle className="h-4 w-4" />
+                                          Herausforderung
+                                        </h4>
+                                        <p className="text-sm text-amber-700 dark:text-amber-300">
+                                          {requirement.realWorldScenario.challenge}
+                                        </p>
+                                      </div>
+                                      
+                                      <div className="space-y-4">
+                                        <h4 className="font-semibold text-green-800 dark:text-green-200 flex items-center gap-2">
+                                          <CheckCircle2 className="h-4 w-4" />
+                                          Lösungsansatz
+                                        </h4>
+                                        {Object.values(requirement.realWorldScenario.solution).map((step, stepIndex) => (
+                                          <div key={stepIndex} className="bg-white dark:bg-gray-800 p-4 rounded-lg border">
+                                            <h5 className="font-medium text-gray-900 dark:text-gray-100 mb-3">
+                                              {step.title}
+                                            </h5>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                                              {step.description}
+                                            </p>
+                                            {step.modules && (
+                                              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                                {step.modules.map((module, moduleIndex) => (
+                                                  <div key={moduleIndex} className="p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg">
+                                                    <div className="font-medium text-blue-900 dark:text-blue-100 text-sm mb-1">
+                                                      {module.name}
+                                                    </div>
+                                                    <div className="text-xs text-blue-700 dark:text-blue-300 mb-2">
+                                                      {module.purpose}
+                                                    </div>
+                                                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                                                      {module.dataTypes}
+                                                    </div>
+                                                    {module.benefit && (
+                                                      <div className="text-xs text-green-600 dark:text-green-400 mt-1 font-medium">
+                                                        ✓ {module.benefit}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+                                            {step.transparency && (
+                                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                {step.transparency.map((item, itemIndex) => (
+                                                  <div key={itemIndex} className="flex items-start gap-2 text-sm">
+                                                    <CheckCircle2 className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
+                                                    <span>{item}</span>
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+                                            {step.features && (
+                                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                {step.features.map((feature, featureIndex) => (
+                                                  <div key={featureIndex} className="flex items-start gap-2 text-sm">
+                                                    <Smartphone className="h-3 w-3 text-purple-600 mt-1 flex-shrink-0" />
+                                                    <span>{feature}</span>
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+                                            {step.actions && (
+                                              <div className="space-y-3">
+                                                {step.actions.map((action, actionIndex) => (
+                                                  <div key={actionIndex} className="border-l-4 border-red-500 pl-4">
+                                                    <div className="flex items-center gap-2 mb-2">
+                                                      <Clock className="h-4 w-4 text-red-600" />
+                                                      <span className="font-medium text-sm">{action.time}</span>
+                                                      <span className="text-sm text-gray-600">- {action.action}</span>
+                                                    </div>
+                                                    <div className="text-xs text-gray-600 mb-1">
+                                                      <strong>Datenverarbeitung:</strong> {action.dataProcessing}
+                                                    </div>
+                                                    {action.legalBasis && (
+                                                      <div className="text-xs text-green-600">
+                                                        <strong>Rechtsgrundlage:</strong> {action.legalBasis}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+                                            {step.documentation && (
+                                              <div className="space-y-3">
+                                                {step.documentation.map((doc, docIndex) => (
+                                                  <div key={docIndex} className="bg-gray-50 dark:bg-gray-700 p-3 rounded">
+                                                    <div className="font-medium text-sm mb-1">{doc.aspect}</div>
+                                                    <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">{doc.content}</div>
+                                                    <div className="text-xs text-blue-600 dark:text-blue-400">{doc.evidence || doc.monitoring || doc.purpose}</div>
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+                                            {step.postEmergencyActions && (
+                                              <div className="space-y-3">
+                                                {step.postEmergencyActions.map((action, actionIndex) => (
+                                                  <div key={actionIndex} className="border-l-4 border-green-500 pl-4">
+                                                    <div className="flex items-center gap-2 mb-2">
+                                                      <Calendar className="h-4 w-4 text-green-600" />
+                                                      <span className="font-medium text-sm">{action.timeline}</span>
+                                                    </div>
+                                                    <div className="text-sm text-gray-700 dark:text-gray-300 mb-1">{action.action}</div>
+                                                    <div className="text-xs text-gray-600 dark:text-gray-400">{action.method || action.scope || action.transparency}</div>
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+                                          </div>
+                                        ))}
+                                      </div>
+                                      
+                                      <div className="bg-green-50 dark:bg-green-950/30 p-4 rounded-lg border border-green-200">
+                                        <h4 className="font-semibold text-green-800 dark:text-green-200 mb-3 flex items-center gap-2">
+                                          <Target className="h-4 w-4" />
+                                          Ergebnis & Learnings
+                                        </h4>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                          {Object.entries(requirement.realWorldScenario.outcome).map(([key, value]) => (
+                                            <div key={key} className="text-sm">
+                                              <span className="font-medium capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                                              <br />
+                                              <span className="text-green-700 dark:text-green-300">{value}</span>
+                                            </div>
+                                          ))}
+                                        </div>
+                                        <div className="space-y-2">
+                                          <h5 className="font-medium text-green-800 dark:text-green-200">Key Learnings:</h5>
+                                          {requirement.realWorldScenario.keyLearnings.map((learning, learningIndex) => (
+                                            <div key={learningIndex} className="flex items-start gap-2 text-sm">
+                                              <Star className="h-3 w-3 text-yellow-500 mt-1 flex-shrink-0" />
+                                              <span className="text-green-700 dark:text-green-300">{learning}</span>
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                )}
+                              </div>
+                            )}
                           </CardContent>
                         </Card>
                       </motion.div>
@@ -1074,11 +1223,67 @@ const encryptionStrategy = {
                             </div>
                             
                             <div>
-                              <h4 className="font-semibold mb-3">Code-Beispiel</h4>
-                              <div className="bg-gray-900 rounded-lg p-3 overflow-x-auto">
-                                <pre className="text-green-400 text-xs">
-                                  {tom.implementation}
-                                </pre>
+                              <h4 className="font-semibold mb-3">Praktische Umsetzung</h4>
+                              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-200">
+                                <div className="space-y-3">
+                                  <div className="flex items-center gap-2 mb-2">
+                                    <Shield className="h-4 w-4 text-blue-600" />
+                                    <span className="font-medium text-blue-800 dark:text-blue-200">{tom.practicalImplementation.title}</span>
+                                  </div>
+                                  <div className="text-sm text-blue-700 dark:text-blue-300 mb-3">
+                                    {tom.practicalImplementation.description}
+                                  </div>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    {tom.practicalImplementation.zones && tom.practicalImplementation.zones.map((zone, zoneIndex) => (
+                                      <div key={zoneIndex} className="p-3 bg-white dark:bg-gray-800 rounded border">
+                                        <div className="font-medium text-gray-900 dark:text-gray-100 text-sm mb-1">
+                                          {zone.name}
+                                        </div>
+                                        <div className="text-xs text-blue-600 dark:text-blue-400 mb-1">
+                                          {zone.security}
+                                        </div>
+                                        <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                                          <strong>Zugang:</strong> {zone.access}
+                                        </div>
+                                        <div className="text-xs text-green-600 dark:text-green-400">
+                                          {zone.measures}
+                                        </div>
+                                      </div>
+                                    ))}
+                                    {tom.practicalImplementation.roles && tom.practicalImplementation.roles.map((role, roleIndex) => (
+                                      <div key={roleIndex} className="p-3 bg-white dark:bg-gray-800 rounded border">
+                                        <div className="font-medium text-gray-900 dark:text-gray-100 text-sm mb-1">
+                                          {role.name}
+                                        </div>
+                                        <div className="text-xs text-blue-600 dark:text-blue-400 mb-1">
+                                          {role.permissions}
+                                        </div>
+                                        <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                                          <strong>Einschränkungen:</strong> {role.restrictions}
+                                        </div>
+                                        <div className="text-xs text-green-600 dark:text-green-400">
+                                          {role.security}
+                                        </div>
+                                      </div>
+                                    ))}
+                                    {tom.practicalImplementation.layers && tom.practicalImplementation.layers.map((layer, layerIndex) => (
+                                      <div key={layerIndex} className="p-3 bg-white dark:bg-gray-800 rounded border">
+                                        <div className="font-medium text-gray-900 dark:text-gray-100 text-sm mb-1">
+                                          {layer.name}
+                                        </div>
+                                        <div className="text-xs text-blue-600 dark:text-blue-400 mb-1">
+                                          {layer.protection}
+                                        </div>
+                                        <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                                          <strong>Nutzen:</strong> {layer.benefit}
+                                        </div>
+                                        <div className="text-xs text-green-600 dark:text-green-400">
+                                          {layer.technology}
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>

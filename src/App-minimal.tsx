@@ -109,8 +109,8 @@ import ModelPrivacyAttacks from "./pages/ki/ModelPrivacyAttacks";
 import DataMinimizationGuide from "./pages/ki/DataMinimizationGuide";
 import ExplainableAIGuide from "./pages/ki/ExplainableAIGuide";
 
-// Industries - Using simple version (original has problematic imports)
-import IndustriesSimple from "./IndustriesSimple";
+// Industries - Using full featured version
+import Industries from "./pages/Industries";
 
 // Add back all other industry pages
 import Healthcare from "./pages/industries/Healthcare";
@@ -219,7 +219,7 @@ const App = () => (
                 <Route path="/wissen/leitfaden/data-breach-notfall" element={<DataBreachNotfallGuide />} />
                 
                 {/* Industry Routes */}
-                <Route path="/branchen" element={<IndustriesSimple />} />
+                <Route path="/branchen" element={<Industries />} />
                 <Route path="/branchen/gesundheitswesen" element={<Healthcare />} />
                 <Route path="/branchen/finanzdienstleister" element={<FinancialServices />} />
                 <Route path="/branchen/e-commerce" element={<ECommerce />} />

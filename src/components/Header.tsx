@@ -192,9 +192,11 @@ export const Header: React.FC = () => {
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="brand-name text-2xl font-bold tracking-tight">
-            MAR<span className="brand-symbol">§</span>TEIN
-          </span>
+          <img 
+            src="/JLogoMarsstein.svg" 
+            alt="Marsstein Logo" 
+            className="h-8 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}

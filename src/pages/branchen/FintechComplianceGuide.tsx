@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Shield, Lock, Key, CreditCard, Globe, Database, AlertTriangle, CheckCircle, ArrowRight, Code, FileText, Users, TrendingUp, Layers, GitBranch, Server, Cloud, Zap, BookOpen } from 'lucide-react';
+import { Shield, Lock, Key, CreditCard, Globe, Database, AlertTriangle, CheckCircle, ArrowRight, Code, FileText, Users, TrendingUp, Layers, GitBranch, Server, Cloud, Zap, BookOpen, BarChart3 } from 'lucide-react';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 const FintechComplianceGuide = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -166,169 +168,234 @@ const FintechComplianceGuide = () => {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <h4 className="text-xl font-bold text-gray-900 mb-6">Secure Payment Architecture</h4>
-        <div className="bg-gray-900 rounded-lg p-6 overflow-x-auto">
-          <pre className="text-green-400 font-mono text-sm">
-{`// Tokenization Service für Kartendaten
-import { encrypt, generateToken } from '@secure/crypto';
-import { PCIVault } from '@secure/vault';
-
-class PaymentTokenizer {
-  private vault: PCIVault;
-  
-  constructor() {
-    this.vault = new PCIVault({
-      encryptionKey: process.env.PCI_MASTER_KEY,
-      hsmEnabled: true,
-      keyRotationDays: 90
-    });
-  }
-  
-  async tokenizeCard(cardData: CardInfo): Promise<PaymentToken> {
-    // Validierung
-    if (!this.validateCard(cardData)) {
-      throw new SecurityError('Invalid card data');
-    }
-    
-    // Verschlüsselung vor Speicherung
-    const encryptedData = await encrypt(cardData, {
-      algorithm: 'AES-256-GCM',
-      keyDerivation: 'PBKDF2'
-    });
-    
-    // Token Generation
-    const token = generateToken({
-      length: 32,
-      format: 'alphanumeric',
-      prefix: 'tok_'
-    });
-    
-    // Sichere Speicherung im PCI-konformen Vault
-    await this.vault.store({
-      token,
-      data: encryptedData,
-      expiresAt: Date.now() + 3600000, // 1 Stunde
-      metadata: {
-        lastFour: cardData.number.slice(-4),
-        brand: this.detectCardBrand(cardData.number)
-      }
-    });
-    
-    return {
-      token,
-      lastFour: cardData.number.slice(-4),
-      brand: this.detectCardBrand(cardData.number),
-      expiresAt: new Date(Date.now() + 3600000)
-    };
-  }
-  
-  private validateCard(card: CardInfo): boolean {
-    // Luhn Algorithm Implementation
-    const luhnCheck = (num: string): boolean => {
-      let sum = 0;
-      let isEven = false;
-      
-      for (let i = num.length - 1; i >= 0; i--) {
-        let digit = parseInt(num[i]);
-        
-        if (isEven) {
-          digit *= 2;
-          if (digit > 9) digit -= 9;
-        }
-        
-        sum += digit;
-        isEven = !isEven;
-      }
-      
-      return sum % 10 === 0;
-    };
-    
-    return luhnCheck(card.number) && 
-           this.validateExpiry(card.expiry) &&
-           this.validateCVV(card.cvv);
-  }
-}`}
-          </pre>
+        <h4 className="text-xl font-bold text-gray-900 mb-6">💳 Praxis-Szenario: Online-Payment bei E-Commerce Startup</h4>
+        <div className="space-y-6 p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200">
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-blue-900 mb-2">
+              🚀 Startup-Challenge: Von 0 auf PCI DSS Level 1
+            </h3>
+            <p className="text-sm text-blue-700">
+              Ein E-Commerce Startup verarbeitet plötzlich über 6 Millionen Transaktionen jährlich und muss 
+              binnen 90 Tagen PCI DSS Level 1 Compliance erreichen, um nicht den Payment Processor zu verlieren.
+            </p>
+          </div>
+          
+          <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+            <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              Die Herausforderung
+            </h4>
+            <p className="text-sm text-amber-700">
+              Kartendaten werden aktuell unverschlüsselt in der Hauptdatenbank gespeichert. 
+              Ein Data Breach würde das Unternehmen vernichten und Millionen von Kunden gefährden.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="font-semibold text-green-800 flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" />
+              Die 90-Tage-Transformation
+            </h4>
+            
+            {[
+              {
+                week: 'Woche 1-2: Sofortmaßnahmen',
+                title: '🛑 Schadensbegrenzung',
+                description: 'Kartendaten werden nicht mehr in der Hauptdatenbank gespeichert',
+                actions: [
+                  'Tokenization-Service implementiert: Echte Kartennummern durch sichere Tokens ersetzt',
+                  'Sofortige Segmentierung: Zahlungsverarbeitung in isolierte Umgebung verschoben',
+                  'Notfall-Monitoring: Echtzeit-Alerts bei verdächtigen Datenzugriffen'
+                ],
+                result: 'Akutes Risiko eliminiert - keine Vollkartennummern mehr im Hauptsystem'
+              },
+              {
+                week: 'Woche 3-6: Infrastruktur-Hardening',
+                title: '🏰 Festung errichten',
+                description: 'Aufbau einer PCI DSS-konformen Cardholder Data Environment (CDE)',
+                actions: [
+                  'Dedizierte Hardware: Isolierte Server nur für Zahlungsverarbeitung',
+                  'Netzwerk-Segmentierung: Firewalls trennen CDE vom Rest der Infrastruktur',
+                  'Verschlüsselung: Alle Daten at-rest und in-transit mit militärischen Standards'
+                ],
+                result: 'Sichere Zahlungsinfrastruktur - CDE vollständig isoliert und geschützt'
+              },
+              {
+                week: 'Woche 7-10: Prozess-Optimierung',
+                title: '🔄 Workflows perfektionieren',
+                description: 'Automatisierung und Mitarbeiterschulung für dauerhafte Security',
+                actions: [
+                  'Zero-Touch-Processing: Mitarbeiter haben nie direkten Zugang zu Kartendaten',
+                  'Automatische Compliance-Checks: System erkennt und verhindert Policy-Verstöße',
+                  'Schulung aller Teams: Jeder Mitarbeiter versteht PCI DSS Grundlagen'
+                ],
+                result: 'Nachhaltige Sicherheitskultur - Compliance wird zum Autopilot'
+              },
+              {
+                week: 'Woche 11-12: Zertifizierung',
+                title: '🏆 Der finale Durchbruch',
+                description: 'Erfolgreiche PCI DSS Assessment und Go-Live',
+                actions: [
+                  'QSA Assessment: Qualified Security Assessor bestätigt Level 1 Compliance',
+                  'Penetration Testing: Externe Hacker finden keine Schwachstellen',
+                  'Compliance-Zertifikat: Offizielle Bestätigung der PCI DSS Konformität'
+                ],
+                result: '🎉 Mission accomplished: PCI DSS Level 1 zertifiziert'
+              }
+            ].map((phase, phaseIndex) => (
+              <div key={phaseIndex} className="bg-white p-4 rounded-lg border border-gray-200">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-bold text-blue-600">
+                    {phaseIndex + 1}
+                  </div>
+                  <div>
+                    <div className="font-medium text-sm text-gray-600">{phase.week}</div>
+                    <div className="font-bold text-gray-900">{phase.title}</div>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-600 mb-3">{phase.description}</p>
+                <div className="space-y-2 mb-3">
+                  {phase.actions.map((action, actionIndex) => (
+                    <div key={actionIndex} className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
+                      <span>{action}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-green-50 p-2 rounded text-sm text-green-700 font-medium">
+                  ✓ {phase.result}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+              <TrendingUp className="h-4 w-4" />
+              Business Impact & ROI
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">$2.8M</div>
+                <div className="text-sm text-green-700">Verhinderte Schadenssumme bei Data Breach</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">15%</div>
+                <div className="text-sm text-green-700">Reduktion der Payment Processing Fees</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">99.99%</div>
+                <div className="text-sm text-green-700">Payment Uptime nach Implementierung</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="bg-gray-50 rounded-xl p-8">
-        <h4 className="text-xl font-bold text-gray-900 mb-6">3D Secure 2.0 Implementation</h4>
-        <div className="bg-gray-900 rounded-lg p-6 overflow-x-auto">
-          <pre className="text-green-400 font-mono text-sm">
-{`// 3DS 2.0 Authentication Flow
-class ThreeDSecureService {
-  async authenticateTransaction(payment: PaymentRequest): Promise<AuthResult> {
-    // Risk-Based Authentication
-    const riskScore = await this.calculateRiskScore(payment);
-    
-    if (riskScore < 30) {
-      // Frictionless Flow
-      return this.frictionlessAuth(payment);
-    }
-    
-    // Challenge Flow erforderlich
-    const authRequest = {
-      messageType: '01', // AReq
-      threeDSServerTransID: generateUUID(),
-      acsTransID: generateUUID(),
-      messageVersion: '2.2.0',
-      
-      // Device Information für bessere Fraud Detection
-      deviceChannel: '02', // Browser
-      deviceInfo: {
-        browserAcceptHeader: payment.headers['accept'],
-        browserIP: payment.clientIP,
-        browserJavaEnabled: false,
-        browserLanguage: payment.headers['accept-language'],
-        browserColorDepth: '24',
-        browserScreenHeight: payment.deviceInfo?.screenHeight || 1080,
-        browserScreenWidth: payment.deviceInfo?.screenWidth || 1920,
-        browserTZ: payment.deviceInfo?.timezone || -60,
-        browserUserAgent: payment.headers['user-agent']
-      },
-      
-      // Transaction Data
-      purchaseAmount: payment.amount,
-      purchaseCurrency: payment.currency,
-      purchaseDate: new Date().toISOString(),
-      
-      // Cardholder Information
-      cardholderInfo: {
-        accountNumber: payment.tokenizedCard,
-        email: payment.customerEmail,
-        mobilePhone: payment.customerPhone,
-        
-        // Account History für bessere Risikoanalyse
-        acctInfo: {
-          chAccAgeInd: '04', // 31-60 Tage
-          chAccChange: '20230101',
-          chAccPwChange: '20230615',
-          nbPurchaseAccount: 5,
-          provisionAttemptsDay: 0,
-          txnActivityDay: 1,
-          txnActivityYear: 25
-        }
-      }
-    };
-    
-    // Send to 3DS Server
-    const authResponse = await this.send3DSRequest(authRequest);
-    
-    if (authResponse.transStatus === 'Y') {
-      return {
-        authenticated: true,
-        eci: authResponse.eci,
-        cavv: authResponse.authenticationValue,
-        transactionId: authResponse.dsTransID
-      };
-    }
-    
-    // Challenge required
-    return this.initializeChallenge(authResponse);
-  }
-}`}
-          </pre>
+        <h4 className="text-xl font-bold text-gray-900 mb-6">🎯 3D Secure 2.0: Intelligente Fraud Prevention</h4>
+        <div className="space-y-6 p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-200">
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-purple-900 mb-2">
+              🧠 Smart Authentication: 94% weniger Kaufabbrüche
+            </h3>
+            <p className="text-sm text-purple-700">
+              Wie ein Online-Fashion-Retailer mit intelligenter 3DS 2.0 Implementierung 
+              die Conversion Rate um 23% steigerte und gleichzeitig Betrug um 87% reduzierte.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="font-semibold text-purple-800 flex items-center gap-2">
+              <Zap className="h-4 w-4" />
+              Der intelligente Authentifizierungsflow
+            </h4>
+            
+            {[
+              {
+                step: 'Schritt 1: Risiko-Analyse in Echtzeit',
+                icon: '🔍',
+                description: 'Sofortige Bewertung jeder Transaktion',
+                details: [
+                  'Geräte-Fingerprinting: Wiederkehrende Kunden werden erkannt',
+                  'Verhaltensanalyse: Normale vs. verdächtige Kaufmuster',
+                  'Geo-Location: Plausibilitätsprüfung der Kaufort',
+                  'ML-Algorithmen: 200+ Risikofaktoren in 50ms analysiert'
+                ],
+                outcome: 'Risiko-Score: 0-100 (niedrig bis hoch)'
+              },
+              {
+                step: 'Schritt 2: Adaptive Authentifizierung',
+                icon: '⚙️',
+                description: 'Maßgeschneiderte User Experience je nach Risiko',
+                details: [
+                  'Niedriges Risiko (0-30): Frictionless - keine Unterbrechung',
+                  'Mittleres Risiko (31-70): Soft Challenge - SMS oder App-Push',
+                  'Hohes Risiko (71-100): Strong Challenge - Biometrie oder komplexe Verifizierung',
+                  'Bekannte Geräte: Vereinfachte Authentifizierung für Stammkunden'
+                ],
+                outcome: 'Optimale Balance zwischen Sicherheit und User Experience'
+              },
+              {
+                step: 'Schritt 3: Nahtlose Integration',
+                icon: '🔗',
+                description: 'Unsichtbare Sicherheit für den Endkunden',
+                details: [
+                  'Single-Click für 73% aller Transaktionen (Frictionless)',
+                  'Mobile-first: Biometrische Authentifizierung auf Smartphones',
+                  'Fallback-Strategien: Alternative Methoden bei technischen Problemen',
+                  'Real-time Feedback: Sofortige Bestätigung für Kunden'
+                ],
+                outcome: 'Kaufprozess wird beschleunigt statt verlangsamt'
+              }
+            ].map((step, stepIndex) => (
+              <div key={stepIndex} className="bg-white p-4 rounded-lg border border-purple-200">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="text-2xl">{step.icon}</div>
+                  <div className="flex-1">
+                    <div className="font-bold text-gray-900 mb-1">{step.step}</div>
+                    <div className="text-sm text-gray-600 mb-3">{step.description}</div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-3">
+                  {step.details.map((detail, detailIndex) => (
+                    <div key={detailIndex} className="flex items-start gap-2 text-sm">
+                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
+                      <span>{detail}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-purple-50 p-2 rounded text-sm text-purple-700 font-medium">
+                  ✓ {step.outcome}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+              <BarChart3 className="h-4 w-4" />
+              Messbare Erfolge nach 6 Monaten
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">-87%</div>
+                <div className="text-sm text-green-700">Fraud Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">+23%</div>
+                <div className="text-sm text-green-700">Conversion Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">73%</div>
+                <div className="text-sm text-green-700">Frictionless Auth</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">1.2s</div>
+                <div className="text-sm text-green-700">Avg. Auth Time</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -387,119 +454,139 @@ class ThreeDSecureService {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <h4 className="text-xl font-bold text-gray-900 mb-6">Secure Banking API Integration</h4>
-        <div className="bg-gray-900 rounded-lg p-6 overflow-x-auto">
-          <pre className="text-green-400 font-mono text-sm">
-{`// Open Banking API Security Layer
-import { JWK, JWS, JWE } from 'node-jose';
-import { X509Certificate } from 'crypto';
-
-class OpenBankingSecurityLayer {
-  private signingKey: JWK.Key;
-  private encryptionKey: JWK.Key;
-  private mtlsCert: X509Certificate;
-  
-  async initializeSecureConnection(config: BankingConfig) {
-    // QWAC (Qualified Website Authentication Certificate)
-    this.mtlsCert = await this.loadCertificate(config.qwacPath);
-    
-    // QSEAL (Qualified Electronic Seal Certificate)
-    this.signingKey = await JWK.asKey(
-      fs.readFileSync(config.qsealPath),
-      'pem'
-    );
-    
-    // Setup mTLS connection
-    this.httpAgent = new https.Agent({
-      cert: this.mtlsCert,
-      key: config.privateKey,
-      ca: config.trustedCAs,
-      rejectUnauthorized: true,
-      securityOptions: 'SSL_OP_NO_TLSv1_0 | SSL_OP_NO_TLSv1_1'
-    });
-  }
-  
-  async makeSecureRequest(endpoint: string, payload: any): Promise<any> {
-    // JWS Signature für Request Integrity
-    const signedPayload = await this.signRequest(payload);
-    
-    // Request mit mTLS
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/jose+json',
-        'X-Request-ID': generateUUID(),
-        'TPP-Signature-Certificate': this.encodeCertificate(this.mtlsCert),
-        'Digest': await this.calculateDigest(signedPayload)
-      },
-      body: signedPayload,
-      agent: this.httpAgent
-    });
-    
-    // Verify Response Signature
-    return this.verifyAndDecryptResponse(await response.text());
-  }
-  
-  private async signRequest(payload: any): Promise<string> {
-    const jws = await JWS.createSign({
-      format: 'compact',
-      fields: {
-        alg: 'RS256',
-        kid: this.signingKey.kid,
-        typ: 'JOSE',
-        crit: ['b64', 'http://openbanking.org.uk/iat'],
-        'http://openbanking.org.uk/iat': Date.now(),
-        'http://openbanking.org.uk/iss': process.env.TPP_ID
-      }
-    }, this.signingKey)
-    .update(JSON.stringify(payload))
-    .final();
-    
-    return jws;
-  }
-  
-  async implementSCA(transactionRequest: TransactionRequest): Promise<SCAResult> {
-    // Dynamic Linking nach PSD2
-    const dynamicLinkingData = {
-      amount: transactionRequest.amount,
-      payee: transactionRequest.beneficiary,
-      reference: generateSecureReference()
-    };
-    
-    // Generate Authentication Code
-    const authCode = await this.generateDynamicLinkingCode(dynamicLinkingData);
-    
-    // Multi-Factor Authentication
-    const factors = [];
-    
-    // Faktor 1: Besitz (Device Binding)
-    factors.push(await this.verifyDeviceBinding(transactionRequest.deviceId));
-    
-    // Faktor 2: Wissen (PIN/Password)
-    factors.push(await this.verifyKnowledge(transactionRequest.credentials));
-    
-    // Faktor 3: Inhärenz (Biometrie) - Optional
-    if (transactionRequest.biometricData) {
-      factors.push(await this.verifyBiometric(transactionRequest.biometricData));
-    }
-    
-    // Validate all factors
-    const scaResult = factors.every(f => f.valid);
-    
-    if (scaResult) {
-      // Generate Confirmation of Funds Token
-      return {
-        authenticated: true,
-        authenticationCode: authCode,
-        confirmationToken: await this.generateConfirmationToken(transactionRequest),
-        validUntil: new Date(Date.now() + 300000) // 5 Minuten
-      };
-    }
-    
-    throw new AuthenticationError('SCA failed');
-  }
-}`}
-          </pre>
+        <h4 className="text-xl font-bold text-gray-900 mb-6">🏦 Praxis-Szenario: FinTech Bank API Integration</h4>
+        <div className="space-y-6 p-6 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl border border-indigo-200">
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-indigo-900 mb-2">
+              🔗 PSD2-konforme Multi-Bank Integration in 30 Tagen
+            </h3>
+            <p className="text-sm text-indigo-700">
+              Ein FinTech-Startup muss 47 europäische Banken über Open Banking APIs anbinden, 
+              um Kunden eine einheitliche Kontoverwaltung zu bieten - mit höchsten Sicherheitsstandards.
+            </p>
+          </div>
+          
+          <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+            <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              Die Komplexität
+            </h4>
+            <p className="text-sm text-amber-700">
+              Jede Bank hat unterschiedliche API-Standards, Sicherheitsanforderungen und Zertifikate. 
+              Ein einziger Fehler kann zur Sperrung des Zugangs oder zu regulatorischen Problemen führen.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="font-semibold text-indigo-800 flex items-center gap-2">
+              <Globe className="h-4 w-4" />
+              Die elegante Lösung: Unified Security Layer
+            </h4>
+            
+            {[
+              {
+                layer: 'Layer 1: Zertifikat-Management',
+                icon: '🛡️',
+                description: 'Automatisierte Verwaltung von 94 verschiedenen Zertifikaten',
+                challenge: 'Jede Bank benötigt spezielle QWAC und QSEAL Zertifikate',
+                solution: [
+                  'Centralized Certificate Store: Ein Vault für alle 94 Zertifikate',
+                  'Auto-Renewal: 90 Tage vor Ablauf automatische Verlängerung',
+                  'Health Monitoring: Tägliche Überprüfung aller Zertifikatsstatus',
+                'Fallback-Strategien: Backup-Zertifikate für kritische Verbindungen'
+                ],
+                result: '99.97% API Verfügbarkeit trotz komplexer Zertifikat-Landschaft'
+              },
+              {
+                layer: 'Layer 2: Strong Customer Authentication',
+                icon: '🔐',
+                description: 'Intelligente SCA-Implementierung für optimale User Experience',
+                challenge: 'Balance zwischen Sicherheit und Benutzerfreundlichkeit',
+                solution: [
+                  'Multi-Modal Auth: Biometrie, SMS, App-Push je nach Kontext',
+                  'Risk-Based Decisions: Häufige Operationen brauchen weniger Auth',
+                  'Device Binding: Bekannte Geräte erhalten vereinfachten Zugang',
+                  'Seamless Fallbacks: Alternative Methoden bei tech. Problemen'
+                ],
+                result: '89% der Transaktionen benötigen nur einen Auth-Faktor'
+              },
+              {
+                layer: 'Layer 3: API Orchestration',
+                icon: '⚙️',
+                description: 'Einheitliche Schnittstelle für 47 verschiedene Bank-APIs',
+                challenge: 'Jede Bank hat unterschiedliche Datenstrukturen und Workflows',
+                solution: [
+                  'Smart Mapping: Automatische Übersetzung zwischen API-Formaten',
+                  'Error Handling: Intelligente Retry-Logik für jede Bank',
+                  'Rate Limiting: Optimierte Anfrage-Verteilung pro Bank',
+                  'Real-time Monitoring: Sofortige Erkennung von API-Änderungen'
+                ],
+                result: 'Eine einzige API für Kunden - 47 Bank-APIs im Hintergrund'
+              },
+              {
+                layer: 'Layer 4: Compliance Automation',
+                icon: '📊',
+                description: 'Automatische Einhaltung aller PSD2 und GDPR Anforderungen',
+                challenge: 'Kontinuierliche Überwachung und Dokumentation der Compliance',
+                solution: [
+                  'Audit Trail: Lückenlose Protokollierung aller API-Interaktionen',
+                  'Consent Management: Automatische Verwaltung aller Einwilligungen',
+                  'Data Minimization: Nur notwendige Daten werden angefragt',
+                  'Regulatory Reporting: Automatische Berichte für Aufsichtsbehörden'
+                ],
+                result: '100% Compliance ohne manuellen Aufwand'
+              }
+            ].map((layer, layerIndex) => (
+              <div key={layerIndex} className="bg-white p-4 rounded-lg border border-indigo-200">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="text-2xl">{layer.icon}</div>
+                  <div className="flex-1">
+                    <div className="font-bold text-gray-900 mb-1">{layer.layer}</div>
+                    <div className="text-sm text-gray-600 mb-2">{layer.description}</div>
+                    <div className="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
+                      <strong>Challenge:</strong> {layer.challenge}
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-3">
+                  {layer.solution.map((solution, solutionIndex) => (
+                    <div key={solutionIndex} className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
+                      <span>{solution}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-indigo-50 p-2 rounded text-sm text-indigo-700 font-medium">
+                  ✓ {layer.result}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+              <TrendingUp className="h-4 w-4" />
+              Transformation in Zahlen
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">47</div>
+                <div className="text-sm text-green-700">Connected Banks</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">99.97%</div>
+                <div className="text-sm text-green-700">API Uptime</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">89%</div>
+                <div className="text-sm text-green-700">Single-Factor Auth</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">30 Tage</div>
+                <div className="text-sm text-green-700">Integration Time</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -541,34 +628,66 @@ class OpenBankingSecurityLayer {
         </div>
 
         <div className="bg-gray-50 rounded-xl p-6">
-          <h5 className="font-bold text-lg text-gray-900 mb-4">Consent Management</h5>
-          <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-            <pre className="text-green-400 font-mono text-sm">
-{`// Consent Lifecycle Management
-class ConsentManager {
-  async createConsent(request: ConsentRequest): Promise<Consent> {
-    const consent = {
-      id: generateUUID(),
-      status: 'AwaitingAuthorisation',
-      permissions: request.permissions,
-      validFrom: new Date(),
-      validUntil: this.calculateExpiry(request),
-      transactionLimit: request.limits,
-      frequency: request.frequency || 'Recurring'
-    };
-    
-    // Audit Trail
-    await this.auditLog.record({
-      action: 'CONSENT_CREATED',
-      consentId: consent.id,
-      tppId: request.tppId,
-      timestamp: new Date()
-    });
-    
-    return consent;
-  }
-}`}
-            </pre>
+          <h5 className="font-bold text-lg text-gray-900 mb-4">📋 Smart Consent Management</h5>
+          <div className="space-y-4 p-4 bg-gradient-to-br from-green-50 to-teal-50 rounded-lg border border-green-200">
+            <div className="text-center">
+              <h3 className="text-md font-bold text-green-900 mb-2">
+                🧠 Intelligente Einwilligungsverwaltung
+              </h3>
+              <p className="text-sm text-green-700">
+                Automatisierte Verwaltung von Kundenerläubnissen mit KI-gestützter Optimierung
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-white p-3 rounded border">
+                <div className="font-medium text-gray-900 text-sm mb-2">
+                  📅 Dynamische Laufzeiten
+                </div>
+                <div className="text-xs text-gray-600 mb-2">
+                  KI analysiert Nutzungsverhalten und schlägt optimale Consent-Dauer vor
+                </div>
+                <div className="text-xs text-green-600 font-medium">
+                  +34% längere Consent-Perioden durch bessere UX
+                </div>
+              </div>
+              
+              <div className="bg-white p-3 rounded border">
+                <div className="font-medium text-gray-900 text-sm mb-2">
+                  🔄 Auto-Renewal
+                </div>
+                <div className="text-xs text-gray-600 mb-2">
+                  Proaktive Erneuerung vor Ablauf mit benutzerfreundlichen Benachrichtigungen
+                </div>
+                <div className="text-xs text-green-600 font-medium">
+                  87% Renewal-Rate durch rechtzeitige Kommunikation
+                </div>
+              </div>
+              
+              <div className="bg-white p-3 rounded border">
+                <div className="font-medium text-gray-900 text-sm mb-2">
+                  📊 Granulare Kontrolle
+                </div>
+                <div className="text-xs text-gray-600 mb-2">
+                  Kunden wählen spezifische Berechtigungen statt "Alles-oder-Nichts"
+                </div>
+                <div className="text-xs text-green-600 font-medium">
+                  92% Zufriedenheit durch individuelle Anpassung
+                </div>
+              </div>
+              
+              <div className="bg-white p-3 rounded border">
+                <div className="font-medium text-gray-900 text-sm mb-2">
+                  🛡️ Compliance-Check
+                </div>
+                <div className="text-xs text-gray-600 mb-2">
+                  Automatische Überprüfung aller Consents auf regulatorische Konformität
+                </div>
+                <div className="text-xs text-green-600 font-medium">
+                  100% Compliance durch automatisierte Validierung
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -586,184 +705,249 @@ class ConsentManager {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <h4 className="text-xl font-bold text-gray-900 mb-6">Secure KYC Implementation</h4>
-        <div className="bg-gray-900 rounded-lg p-6 overflow-x-auto">
-          <pre className="text-green-400 font-mono text-sm">
-{`// Privacy-Preserving KYC System
-import { HomomorphicEncryption } from '@privacy/he';
-import { SecureMultipartyComputation } from '@privacy/smpc';
-
-class PrivacyPreservingKYC {
-  private heSystem: HomomorphicEncryption;
-  private smpcProtocol: SecureMultipartyComputation;
-  
-  async performKYCCheck(customer: CustomerData): Promise<KYCResult> {
-    // Data Minimization - nur notwendige Daten verarbeiten
-    const minimalData = this.extractMinimalKYCData(customer);
-    
-    // Encrypt PII data
-    const encryptedData = await this.encryptSensitiveData(minimalData);
-    
-    // Perform checks on encrypted data
-    const riskScore = await this.calculateRiskScoreOnEncryptedData(encryptedData);
-    
-    // Sanctions Screening with Privacy
-    const sanctionsCheck = await this.privacySanctionsScreening(encryptedData);
-    
-    // PEP (Politically Exposed Person) Check
-    const pepCheck = await this.performPEPCheck(encryptedData);
-    
-    // Store only necessary data with encryption
-    const kycRecord = {
-      customerId: this.generatePseudonymousId(customer),
-      riskScore: riskScore,
-      checkResults: {
-        sanctions: sanctionsCheck.passed,
-        pep: pepCheck.status,
-        verification: await this.verifyIdentity(customer)
-      },
-      dataRetention: {
-        createdAt: new Date(),
-        expiresAt: this.calculateRetentionPeriod(riskScore),
-        purpose: 'AML_COMPLIANCE'
-      }
-    };
-    
-    // Secure Storage with Audit Trail
-    await this.secureStore(kycRecord);
-    
-    return {
-      status: this.determineKYCStatus(kycRecord),
-      riskLevel: this.categorizeRisk(riskScore),
-      nextActions: this.determineNextActions(kycRecord)
-    };
-  }
-  
-  private async encryptSensitiveData(data: any): Promise<EncryptedData> {
-    // Field-level encryption für verschiedene Datentypen
-    const encryptionScheme = {
-      // Format Preserving Encryption für strukturierte Daten
-      ssn: await this.fpeEncrypt(data.ssn, 'SSN_FORMAT'),
-      phone: await this.fpeEncrypt(data.phone, 'PHONE_FORMAT'),
-      
-      // Standard encryption für unstrukturierte Daten
-      name: await this.standardEncrypt(data.name),
-      address: await this.standardEncrypt(data.address),
-      
-      // Tokenization für wiederverwendbare Identifikatoren
-      email: await this.tokenize(data.email)
-    };
-    
-    return encryptionScheme;
-  }
-  
-  async performTransactionMonitoring(transaction: Transaction): Promise<AMLAlert[]> {
-    const alerts = [];
-    
-    // Pattern Detection
-    const patterns = await this.detectSuspiciousPatterns(transaction);
-    
-    // Velocity Checks
-    const velocityCheck = await this.checkTransactionVelocity(
-      transaction.accountId,
-      transaction.amount
-    );
-    
-    // Geographic Risk
-    const geoRisk = await this.assessGeographicRisk(
-      transaction.originCountry,
-      transaction.destinationCountry
-    );
-    
-    // ML-based Anomaly Detection
-    const anomalyScore = await this.mlAnomalyDetection(transaction);
-    
-    // Generate Alerts
-    if (patterns.suspicious || velocityCheck.exceeded || 
-        geoRisk.high || anomalyScore > 0.8) {
-      alerts.push({
-        id: generateUUID(),
-        severity: this.calculateSeverity(patterns, velocityCheck, geoRisk, anomalyScore),
-        type: 'SUSPICIOUS_ACTIVITY',
-        transaction: transaction.id,
-        reasons: this.compileReasons(patterns, velocityCheck, geoRisk, anomalyScore),
-        requiredAction: 'MANUAL_REVIEW',
-        deadline: this.calculateDeadline(transaction)
-      });
-    }
-    
-    // SAR (Suspicious Activity Report) Generation wenn nötig
-    if (alerts.some(a => a.severity === 'CRITICAL')) {
-      await this.generateSAR(transaction, alerts);
-    }
-    
-    return alerts;
-  }
-}`}
-          </pre>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-xl p-6 border border-gray-200">
-          <h5 className="font-bold text-lg text-gray-900 mb-4">Data Protection Measures</h5>
-          <ul className="space-y-3">
-            <li className="flex items-start gap-2">
-              <Lock className="w-5 h-5 text-purple-600 mt-0.5" />
-              <div>
-                <p className="font-medium text-gray-900">Encryption at Rest</p>
-                <p className="text-sm text-gray-600">AES-256-GCM für alle PII-Daten</p>
-              </div>
-            </li>
-            <li className="flex items-start gap-2">
-              <Key className="w-5 h-5 text-purple-600 mt-0.5" />
-              <div>
-                <p className="font-medium text-gray-900">Key Management</p>
-                <p className="text-sm text-gray-600">HSM-basierte Schlüsselverwaltung</p>
-              </div>
-            </li>
-            <li className="flex items-start gap-2">
-              <Database className="w-5 h-5 text-purple-600 mt-0.5" />
-              <div>
-                <p className="font-medium text-gray-900">Data Retention</p>
-                <p className="text-sm text-gray-600">Automatische Löschung nach Ablauf</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-white rounded-xl p-6 border border-gray-200">
-          <h5 className="font-bold text-lg text-gray-900 mb-4">AML Risk Indicators</h5>
-          <div className="space-y-3">
+        <h4 className="text-xl font-bold text-gray-900 mb-6">🔍 Praxis-Szenario: KYC-Revolution bei Neo-Bank</h4>
+        <div className="space-y-6 p-6 bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl border border-purple-200">
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-purple-900 mb-2">
+              🏦 Privacy-First KYC: 90% weniger Datensammlung, 100% Compliance
+            </h3>
+            <p className="text-sm text-purple-700">
+              Eine Neo-Bank implementiert revolutionary Privacy-Preserving KYC und reduziert 
+              Datenspeicherung um 90% bei gleichzeitiger Erhöhung der Compliance-Rate auf 99.8%.
+            </p>
+          </div>
+          
+          <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+            <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              Das Problem
+            </h4>
+            <p className="text-sm text-amber-700">
+              Traditionelle KYC sammelt massive Datenmengen, schafft Datenschutzrisiken und führt zu 
+              15-20% Kundenabbruch während der langwierigen Verifizierung.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="font-semibold text-purple-800 flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" />
+              Die Privacy-First Transformation
+            </h4>
+            
             {[
-              { risk: 'High', color: 'text-red-600', indicators: ['Rapid movement', 'High-risk countries'] },
-              { risk: 'Medium', color: 'text-yellow-600', indicators: ['Unusual patterns', 'New account'] },
-              { risk: 'Low', color: 'text-green-600', indicators: ['Regular patterns', 'Verified source'] }
-            ].map((level, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <div className={`font-bold ${level.color}`}>{level.risk}</div>
-                <div className="text-sm text-gray-600">
-                  {level.indicators.join(', ')}
+              {
+                phase: 'Phase 1: Smart Data Minimization',
+                icon: '🧪',
+                description: 'Nur sammeln was wirklich nötig ist - mit KI-Unterstützung',
+                innovations: [
+                  'Risiko-basierte Datenerfassung: Niedriges Risiko = minimale Daten',
+                  'Progressive Verifizierung: Stufen-KYC statt Alles-auf-einmal',
+                  'Dokumenten-KI: Automatische Extraktion nur relevanter Informationen',
+                  'Anonymisierung in Echtzeit: PII sofort nach Verarbeitung pseudonymisiert'
+                ],
+                result: '85% weniger gespeicherte personenbezogene Daten',
+                metrics: { reduction: '85%', time: '3 Min', satisfaction: '94%' }
+              },
+              {
+                phase: 'Phase 2: Zero-Knowledge Verification',
+                icon: '🔐',
+                description: 'Identitätsprüfung ohne Preisgabe sensibler Daten',
+                innovations: [
+                  'Homomorphic Encryption: Berechnungen auf verschlüsselten Daten',
+                  'Zero-Knowledge Proofs: Alter bestätigen ohne Geburtsdatum zu zeigen',
+                  'Secure Multi-Party Computation: Sanctions-Check ohne Datenaustausch',
+                  'Biometrische Hashes: Gesichtserkennung ohne Gesichtsspeicherung'
+                ],
+                result: 'Vollständige Identitätsprüfung mit minimaler Datenspeicherung',
+                metrics: { privacy: '99%', accuracy: '97.8%', speed: '45s' }
+              },
+              {
+                phase: 'Phase 3: Intelligente Risikobewertung',
+                icon: '🤖',
+                description: 'KI erkennt verdachtige Muster ohne individuelle Profilerstellung',
+                innovations: [
+                  'Federated Learning: ML-Modelle lernen ohne zentrale Datenspeicherung',
+                  'Differential Privacy: Statistische Analysen ohne Einzelperson-Identifikation',
+                  'Behavioral Analytics: Muster erkennen ohne Nutzerverhalten zu speichern',
+                  'Real-time Anomaly Detection: Sofortige Erkennung ohne Datensammlung'
+                ],
+                result: 'Höhere Erkennungsrate bei niedrigerem Datenschutzrisiko',
+                metrics: { detection: '+34%', falsePositives: '-67%', privacy: '100%' }
+              },
+              {
+                phase: 'Phase 4: Adaptive Compliance',
+                icon: '📈',
+                description: 'Selbstlernende Compliance-Engine passt sich an Regulatorik an',
+                innovations: [
+                  'Regulatory Mapping: Automatische Anpassung an lokale Gesetze',
+                  'Audit Automation: Kontinuierliche Selbstüberprüfung und -dokumentation',
+                  'Proactive Alerts: Frühwarnsystem für neue regulatorische Anforderungen',
+                  'Evidence Generation: Automatische Compliance-Nachweise für Behörden'
+                ],
+                result: 'Immer aktuelle Compliance ohne manuellen Aufwand',
+                metrics: { automation: '96%', auditTime: '-89%', compliance: '99.8%' }
+              }
+            ].map((phase, phaseIndex) => (
+              <div key={phaseIndex} className="bg-white p-4 rounded-lg border border-purple-200">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="text-2xl">{phase.icon}</div>
+                  <div className="flex-1">
+                    <div className="font-bold text-gray-900 mb-1">{phase.phase}</div>
+                    <div className="text-sm text-gray-600 mb-3">{phase.description}</div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-3">
+                  {phase.innovations.map((innovation, innovationIndex) => (
+                    <div key={innovationIndex} className="flex items-start gap-2 text-sm">
+                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
+                      <span>{innovation}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-purple-50 p-3 rounded mb-3">
+                  <div className="text-sm text-purple-700 font-medium mb-2">
+                    ✓ {phase.result}
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    {Object.entries(phase.metrics).map(([key, value]) => (
+                      <div key={key}>
+                        <div className="text-lg font-bold text-purple-600">{value}</div>
+                        <div className="text-xs text-purple-500 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+          
+          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+              <TrendingUp className="h-4 w-4" />
+              Revolution in Zahlen: Nach 12 Monaten
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">-90%</div>
+                <div className="text-sm text-green-700">Datenspeicherung</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">+73%</div>
+                <div className="text-sm text-green-700">Conversion Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">99.8%</div>
+                <div className="text-sm text-green-700">Compliance Score</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">3 Min</div>
+                <div className="text-sm text-green-700">Avg. KYC Time</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div className="bg-white rounded-xl p-6 border border-gray-200">
-          <h5 className="font-bold text-lg text-gray-900 mb-4">Compliance Automation</h5>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-gray-700">Auto-Screening</span>
-              <span className="text-green-600 font-bold">Active</span>
+      <div className="bg-gray-50 rounded-xl p-8">
+        <h4 className="text-xl font-bold text-gray-900 mb-6">🎯 AML Transaction Monitoring: KI erkennt was Menschen übersehen</h4>
+        <div className="space-y-6 p-6 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl border border-red-200">
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-red-900 mb-2">
+              🚨 Real-time Fraud Detection: 99.7% Accuracy bei 0.1% False Positives
+            </h3>
+            <p className="text-sm text-red-700">
+              Intelligente Transaction Monitoring Engine erkennt Geldwäsche-Muster in Echtzeit 
+              und reduziert manuelle Prüfungen um 94%.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-lg p-4 border border-red-200">
+              <h5 className="font-bold text-red-800 mb-3 flex items-center gap-2">
+                <Shield className="h-4 w-4" />
+                Privacy-First Detection
+              </h5>
+              <div className="space-y-3">
+                <div className="border-l-4 border-red-500 pl-3">
+                  <div className="font-medium text-sm">Zero-Knowledge Analysis</div>
+                  <div className="text-xs text-gray-600">Muster erkennen ohne Einzeldaten zu sehen</div>
+                </div>
+                <div className="border-l-4 border-red-400 pl-3">
+                  <div className="font-medium text-sm">Federated Learning</div>
+                  <div className="text-xs text-gray-600">Branchenweites Lernen ohne Datenaustausch</div>
+                </div>
+                <div className="border-l-4 border-red-300 pl-3">
+                  <div className="font-medium text-sm">Differential Privacy</div>
+                  <div className="text-xs text-gray-600">Statistische Erkenntnisse ohne Risiko</div>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-gray-700">Real-time Monitoring</span>
-              <span className="text-green-600 font-bold">Active</span>
+            
+            <div className="bg-white rounded-lg p-4 border border-orange-200">
+              <h5 className="font-bold text-orange-800 mb-3 flex items-center gap-2">
+                <TrendingUp className="h-4 w-4" />
+                Smart Risk Scoring
+              </h5>
+              <div className="space-y-3">
+                {[
+                  { risk: 'High Risk', score: '85-100', color: 'text-red-600', action: 'Immediate Review' },
+                  { risk: 'Medium Risk', score: '50-84', color: 'text-yellow-600', action: 'Enhanced Monitoring' },
+                  { risk: 'Low Risk', score: '0-49', color: 'text-green-600', action: 'Standard Processing' }
+                ].map((level, index) => (
+                  <div key={index} className="flex items-center justify-between text-sm">
+                    <div className={`font-bold ${level.color}`}>{level.risk}</div>
+                    <div className="text-xs text-gray-500">{level.score}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-gray-700">ML Risk Scoring</span>
-              <span className="text-green-600 font-bold">Active</span>
+            
+            <div className="bg-white rounded-lg p-4 border border-green-200">
+              <h5 className="font-bold text-green-800 mb-3 flex items-center gap-2">
+                <CheckCircle className="h-4 w-4" />
+                Automation Status
+              </h5>
+              <div className="space-y-3">
+                {[
+                  { feature: 'Sanctions Screening', status: '99.9%', uptime: 'Active' },
+                  { feature: 'PEP Monitoring', status: '99.7%', uptime: 'Active' },
+                  { feature: 'Pattern Detection', status: '99.8%', uptime: 'Active' },
+                  { feature: 'SAR Generation', status: 'Auto', uptime: 'Active' }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center justify-between text-sm">
+                    <span className="text-gray-700">{item.feature}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-gray-500">{item.status}</span>
+                      <span className="text-green-600 font-bold text-xs">{item.uptime}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <h4 className="font-semibold text-blue-800 mb-3 flex items-center gap-2">
+              <BarChart3 className="h-4 w-4" />
+              Performance Metriken: Revolution der AML-Compliance
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">99.7%</div>
+                <div className="text-sm text-blue-700">Detection Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">0.1%</div>
+                <div className="text-sm text-blue-700">False Positives</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">-94%</div>
+                <div className="text-sm text-blue-700">Manual Reviews</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">15ms</div>
+                <div className="text-sm text-blue-700">Response Time</div>
+              </div>
             </div>
           </div>
         </div>
@@ -782,264 +966,237 @@ class PrivacyPreservingKYC {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <h4 className="text-xl font-bold text-gray-900 mb-6">Secure Wallet Architecture</h4>
-        <div className="bg-gray-900 rounded-lg p-6 overflow-x-auto">
-          <pre className="text-green-400 font-mono text-sm">
-{`// Multi-Signature HD Wallet Implementation
-import { BIP32Factory } from 'bip32';
-import * as bip39 from 'bip39';
-import { ECPairFactory } from 'ecpair';
-import * as bitcoin from 'bitcoinjs-lib';
-
-class SecureCryptoWallet {
-  private masterKey: BIP32Interface;
-  private network: bitcoin.Network;
-  
-  async createHDWallet(entropy?: Buffer): Promise<WalletInfo> {
-    // Generate secure entropy if not provided
-    if (!entropy) {
-      entropy = crypto.randomBytes(32);
-    }
-    
-    // Generate mnemonic phrase
-    const mnemonic = bip39.entropyToMnemonic(entropy);
-    
-    // Derive seed with additional passphrase
-    const seed = await bip39.mnemonicToSeed(
-      mnemonic, 
-      process.env.WALLET_PASSPHRASE
-    );
-    
-    // Create HD wallet
-    this.masterKey = BIP32Factory(ecc).fromSeed(seed, this.network);
-    
-    // Implement key derivation paths
-    const accounts = [];
-    for (let i = 0; i < 5; i++) {
-      const path = \`m/84'/0'/\${i}'/0/0\`; // BIP84 for SegWit
-      const child = this.masterKey.derivePath(path);
-      
-      accounts.push({
-        path,
-        address: this.getSegwitAddress(child),
-        publicKey: child.publicKey.toString('hex')
-      });
-    }
-    
-    return {
-      mnemonic: this.encryptMnemonic(mnemonic),
-      accounts,
-      backupRequired: true
-    };
-  }
-  
-  async createMultiSigWallet(
-    pubkeys: string[], 
-    m: number
-  ): Promise<MultiSigWallet> {
-    // Sort pubkeys for deterministic address generation
-    const sortedPubkeys = pubkeys
-      .map(hex => Buffer.from(hex, 'hex'))
-      .sort(Buffer.compare);
-    
-    // Create P2SH-P2WSH multisig
-    const p2ms = bitcoin.payments.p2ms({
-      m,
-      pubkeys: sortedPubkeys,
-      network: this.network
-    });
-    
-    const p2wsh = bitcoin.payments.p2wsh({
-      redeem: p2ms,
-      network: this.network
-    });
-    
-    const p2sh = bitcoin.payments.p2sh({
-      redeem: p2wsh,
-      network: this.network
-    });
-    
-    return {
-      address: p2sh.address!,
-      redeemScript: p2ms.output!.toString('hex'),
-      witnessScript: p2wsh.redeem!.output!.toString('hex'),
-      requiredSignatures: m,
-      totalSigners: pubkeys.length
-    };
-  }
-  
-  async secureKeyStorage(privateKey: string): Promise<EncryptedKey> {
-    // Hardware Security Module Integration
-    if (process.env.HSM_ENABLED === 'true') {
-      return this.storeInHSM(privateKey);
-    }
-    
-    // Software-based secure storage
-    const salt = crypto.randomBytes(32);
-    const iv = crypto.randomBytes(16);
-    
-    // Key derivation with high iteration count
-    const key = crypto.pbkdf2Sync(
-      process.env.MASTER_KEY!,
-      salt,
-      100000,
-      32,
-      'sha256'
-    );
-    
-    // Encrypt private key
-    const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
-    const encrypted = Buffer.concat([
-      cipher.update(privateKey, 'hex'),
-      cipher.final()
-    ]);
-    
-    const authTag = cipher.getAuthTag();
-    
-    // Store with metadata
-    return {
-      encrypted: encrypted.toString('base64'),
-      salt: salt.toString('base64'),
-      iv: iv.toString('base64'),
-      authTag: authTag.toString('base64'),
-      algorithm: 'AES-256-GCM',
-      kdf: 'PBKDF2',
-      iterations: 100000
-    };
-  }
-  
-  async implementColdStorage(): Promise<ColdStorageSetup> {
-    // Air-gapped key generation
-    const coldKeys = [];
-    
-    for (let i = 0; i < 3; i++) {
-      const keyPair = ECPairFactory(ecc).makeRandom({
-        network: this.network,
-        rng: this.secureRandom
-      });
-      
-      coldKeys.push({
-        publicKey: keyPair.publicKey.toString('hex'),
-        // Private key never touches online system
-        privateKeyHash: this.hashPrivateKey(keyPair.privateKey!)
-      });
-    }
-    
-    // Create 2-of-3 multisig for cold storage
-    const coldWallet = await this.createMultiSigWallet(
-      coldKeys.map(k => k.publicKey),
-      2
-    );
-    
-    // Generate QR codes for offline signing
-    const qrCodes = await this.generateSigningQRCodes(coldWallet);
-    
-    return {
-      wallet: coldWallet,
-      signers: coldKeys,
-      qrCodes,
-      backupInstructions: this.generateBackupInstructions()
-    };
-  }
-}`}
-          </pre>
+        <h4 className="text-xl font-bold text-gray-900 mb-6">🪙 Praxis-Szenario: Crypto Exchange Launch</h4>
+        <div className="space-y-6 p-6 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200">
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-indigo-900 mb-2">
+              🚀 MiCA-Ready: Von 0 auf Crypto Exchange in 6 Monaten
+            </h3>
+            <p className="text-sm text-indigo-700">
+              Ein FinTech startet eine MiCA-konforme Kryptowährungs-Exchange mit institutioneller 
+              Sicherheit und verwaltet nach 12 Monaten Assets im Wert von 500M EUR ohne Sicherheitsvorfalle.
+            </p>
+          </div>
+          
+          <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+            <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              Die Herausforderung
+            </h4>
+            <p className="text-sm text-amber-700">
+              98% aller Crypto-Verluste entstehen durch Sicherheitslücken, schlechtes Key Management 
+              oder unzureichende MiCA-Compliance. Ein Fehler kann Millionen kosten und das Vertrauen zerstören.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="font-semibold text-indigo-800 flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" />
+              Die Fort Knox-Strategie für Crypto Assets
+            </h4>
+            
+            {[
+              {
+                layer: 'Layer 1: Unbreakable Wallet Architecture',
+                icon: '🏰',
+                description: 'Multi-Signature Cold Storage mit Hardware-Security-Modules',
+                challenge: 'Private Keys sind der wertvollste und gefährdetste Asset',
+                approach: [
+                  'Air-Gapped Key Generation: Private Keys nie online erstellt oder gespeichert',
+                  '2-of-3 Multi-Sig: Drei Hardware-Wallets, zwei für Transaktionen erforderlich',
+                  'Geographische Verteilung: Keys in verschiedenen Hochsicherheitstresoren',
+                  'Quantum-Resistant Backup: Zukünftige Sicherheit bereits heute implementiert'
+                ],
+                result: 'Selbst bei Kompromittierung von 50% der Infrastruktur bleiben Assets sicher',
+                metrics: { security: '99.999%', recovery: '15 Min', locations: '3 Countries' }
+              },
+              {
+                layer: 'Layer 2: Intelligent Transaction Screening',
+                icon: '🧪',
+                description: 'KI-powered AML für Blockchain-Transaktionen',
+                challenge: 'Compliance bei pseudonymen Blockchain-Transaktionen',
+                approach: [
+                  'Address Intelligence: Risiko-Scoring für 50M+ Wallet-Adressen',
+                  'Transaction Graph Analysis: Geldfluss-Verfolgung über mehrere Hops',
+                  'Real-time Sanctions Screening: Sofortige Erkennung gelisteter Adressen',
+                  'Privacy-Coin Monitoring: Spezielle Überwachung für Monero, Zcash etc.'
+                ],
+                result: '99.9% Accuracy bei Compliance-Screening ohne False Positives',
+                metrics: { detection: '99.9%', speed: '50ms', coverage: '15 Blockchains' }
+              },
+              {
+                layer: 'Layer 3: MiCA-Compliance Automation',
+                icon: '🏡',
+                description: 'Vollautomatische Einhaltung aller MiCA-Anforderungen',
+                challenge: 'Komplexe und sich ändernde Regularien in 27 EU-Ländern',
+                approach: [
+                  'Dynamic Compliance Engine: Automatische Anpassung an neue Regularien',
+                  'Real-time Risk Assessment: Kontinuierliche Bewertung aller Asset-Klassen',
+                  'Automated Reporting: Tägliche Berichte an alle relevanten Behörden',
+                  'Customer Due Diligence: KI-gestütztes Enhanced KYC für Crypto'
+                ],
+                result: 'Vollständige MiCA-Compliance ohne manuellen Compliance-Aufwand',
+                metrics: { automation: '98%', reporting: 'Real-time', jurisdictions: '27 EU' }
+              },
+              {
+                layer: 'Layer 4: Institutional-Grade Operations',
+                icon: '🏦',
+                description: 'Banken-ähnliche Sicherheits- und Betriebsstandards',
+                challenge: 'Crypto-Volatiliät mit institutioneller Zuverlässigkeit verbinden',
+                approach: [
+                  '24/7 SOC: Dedicated Security Operations Center mit Crypto-Spezialisten',
+                  'Disaster Recovery: 15-Sekunden Failover zwischen Rechenzentren',
+                  'Insurance Coverage: 100% Asset-Versicherung durch Lloyd\'s of London',
+                  'Regulatory Liaison: Direkter Draht zu BaFin und anderen Aufsichtsbehörden'
+                ],
+                result: 'Banken-ähnliche Sicherheit und Verfügbarkeit für Crypto Assets',
+                metrics: { uptime: '99.99%', insurance: '100%', response: '15s' }
+              }
+            ].map((layer, layerIndex) => (
+              <div key={layerIndex} className="bg-white p-4 rounded-lg border border-indigo-200">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="text-2xl">{layer.icon}</div>
+                  <div className="flex-1">
+                    <div className="font-bold text-gray-900 mb-1">{layer.layer}</div>
+                    <div className="text-sm text-gray-600 mb-2">{layer.description}</div>
+                    <div className="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
+                      <strong>Challenge:</strong> {layer.challenge}
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-3">
+                  {layer.approach.map((approach, approachIndex) => (
+                    <div key={approachIndex} className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
+                      <span>{approach}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-indigo-50 p-3 rounded mb-3">
+                  <div className="text-sm text-indigo-700 font-medium mb-2">
+                    ✓ {layer.result}
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    {Object.entries(layer.metrics).map(([key, value]) => (
+                      <div key={key}>
+                        <div className="text-lg font-bold text-indigo-600">{value}</div>
+                        <div className="text-xs text-indigo-500 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+              <TrendingUp className="h-4 w-4" />
+              Mission Accomplished: Nach 12 Monaten
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">500M EUR</div>
+                <div className="text-sm text-green-700">Assets under Management</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">0</div>
+                <div className="text-sm text-green-700">Security Incidents</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">99.99%</div>
+                <div className="text-sm text-green-700">Platform Uptime</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">100%</div>
+                <div className="text-sm text-green-700">MiCA Compliance</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="bg-gray-50 rounded-xl p-8">
-        <h4 className="text-xl font-bold text-gray-900 mb-6">Blockchain Transaction Security</h4>
-        <div className="bg-gray-900 rounded-lg p-6 overflow-x-auto">
-          <pre className="text-green-400 font-mono text-sm">
-{`// Secure Transaction Processing
-class BlockchainTransactionProcessor {
-  async processTransaction(
-    request: TransactionRequest
-  ): Promise<TransactionResult> {
-    // Input validation
-    this.validateTransactionRequest(request);
-    
-    // AML checks for crypto
-    const amlCheck = await this.cryptoAMLScreening(request);
-    if (!amlCheck.passed) {
-      throw new ComplianceError('Transaction blocked by AML screening');
-    }
-    
-    // Fee estimation with safety margin
-    const feeEstimate = await this.estimateTransactionFee(request);
-    const totalAmount = request.amount + feeEstimate.recommended * 1.2;
-    
-    // Balance verification
-    const balance = await this.getBalance(request.from);
-    if (balance < totalAmount) {
-      throw new InsufficientFundsError();
-    }
-    
-    // Build transaction
-    const tx = await this.buildSecureTransaction({
-      ...request,
-      fee: feeEstimate.recommended,
-      nonce: await this.getSecureNonce(request.from)
-    });
-    
-    // Multi-party approval if required
-    if (request.requiresApproval) {
-      const approvals = await this.collectApprovals(tx);
-      if (approvals.length < request.minApprovals) {
-        throw new ApprovalError('Insufficient approvals');
-      }
-    }
-    
-    // Sign and broadcast
-    const signedTx = await this.signTransaction(tx);
-    const txHash = await this.broadcastTransaction(signedTx);
-    
-    // Monitor confirmation
-    return this.monitorTransaction(txHash);
-  }
-  
-  private async cryptoAMLScreening(
-    request: TransactionRequest
-  ): Promise<AMLResult> {
-    // Check against sanctioned addresses
-    const sanctionsCheck = await this.checkSanctionsList(
-      request.to,
-      request.from
-    );
-    
-    // Risk scoring based on address history
-    const riskScore = await this.calculateAddressRisk([
-      request.from,
-      request.to
-    ]);
-    
-    // Check for mixing service interaction
-    const mixerCheck = await this.detectMixerUsage(
-      request.from,
-      request.to
-    );
-    
-    // Travel Rule compliance
-    if (request.amount > TRAVEL_RULE_THRESHOLD) {
-      const travelRuleData = await this.collectTravelRuleData(request);
-      if (!travelRuleData.complete) {
-        return { passed: false, reason: 'Travel Rule data incomplete' };
-      }
-    }
-    
-    return {
-      passed: !sanctionsCheck.hits && 
-              riskScore < 0.7 && 
-              !mixerCheck.detected,
-      riskScore,
-      details: {
-        sanctions: sanctionsCheck,
-        mixer: mixerCheck,
-        addressRisk: riskScore
-      }
-    };
-  }
-}`}
-          </pre>
+        <h4 className="text-xl font-bold text-gray-900 mb-6">🔍 Travel Rule & Blockchain Compliance</h4>
+        <div className="space-y-6 p-6 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl border border-yellow-200">
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-yellow-900 mb-2">
+              🌍 Globale Compliance: Travel Rule für 40+ Länder automatisiert
+            </h3>
+            <p className="text-sm text-yellow-700">
+              Automatische Einhaltung der Travel Rule (FATF) für grenzüberschreitende 
+              Crypto-Transaktionen über 1.000 EUR mit 99.9% Accuracy.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-lg p-4 border border-yellow-200">
+              <h5 className="font-bold text-yellow-800 mb-3 flex items-center gap-2">
+                <Globe className="h-4 w-4" />
+                Intelligente Adress-Identifikation
+              </h5>
+              <div className="space-y-3">
+                <div className="border-l-4 border-yellow-500 pl-3">
+                  <div className="font-medium text-sm">VASP-Erkennung</div>
+                  <div className="text-xs text-gray-600">97% aller Exchange-Adressen identifiziert</div>
+                </div>
+                <div className="border-l-4 border-yellow-400 pl-3">
+                  <div className="font-medium text-sm">Jurisdiktions-Mapping</div>
+                  <div className="text-xs text-gray-600">Automatische Länder-Zuordnung für Compliance</div>
+                </div>
+                <div className="border-l-4 border-yellow-300 pl-3">
+                  <div className="font-medium text-sm">Risk-Scoring</div>
+                  <div className="text-xs text-gray-600">Echtzeit-Bewertung aller Counterparties</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg p-4 border border-orange-200">
+              <h5 className="font-bold text-orange-800 mb-3 flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                Automatische Datensammlung
+              </h5>
+              <div className="space-y-3">
+                <div className="border-l-4 border-orange-500 pl-3">
+                  <div className="font-medium text-sm">KYC-Integration</div>
+                  <div className="text-xs text-gray-600">Automatische Sender/Empfänger-Daten</div>
+                </div>
+                <div className="border-l-4 border-orange-400 pl-3">
+                  <div className="font-medium text-sm">Message Standards</div>
+                  <div className="text-xs text-gray-600">SWIFT, TRP, OpenVASP Kompatibilität</div>
+                </div>
+                <div className="border-l-4 border-orange-300 pl-3">
+                  <div className="font-medium text-sm">Encrypted Transfer</div>
+                  <div className="text-xs text-gray-600">Ende-zu-Ende verschlüsselte Übertragung</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <h4 className="font-semibold text-blue-800 mb-3 flex items-center gap-2">
+              <BarChart3 className="h-4 w-4" />
+              Travel Rule Performance: Branchenführende Automation
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">99.9%</div>
+                <div className="text-sm text-blue-700">Compliance Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">40+</div>
+                <div className="text-sm text-blue-700">Jurisdictions</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">2.3s</div>
+                <div className="text-sm text-blue-700">Avg. Processing</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">24/7</div>
+                <div className="text-sm text-blue-700">Automated</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1101,124 +1258,160 @@ class BlockchainTransactionProcessor {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <h4 className="text-xl font-bold text-gray-900 mb-6">Complete FinTech Security Stack</h4>
-        <div className="bg-gray-900 rounded-lg p-6 overflow-x-auto">
-          <pre className="text-green-400 font-mono text-sm">
-{`// Complete FinTech Security Architecture
-import { SecurityOrchestrator } from '@fintech/security';
-
-class FintechSecurityStack {
-  private components: Map<string, SecurityComponent>;
-  
-  async initialize(): Promise<void> {
-    // Layer 1: Infrastructure Security
-    this.components.set('infrastructure', {
-      waf: new WebApplicationFirewall({
-        rules: ['OWASP', 'Custom'],
-        mode: 'blocking'
-      }),
-      ddos: new DDoSProtection({
-        rateLimit: 1000,
-        burstLimit: 5000
-      }),
-      cdn: new ContentDeliveryNetwork({
-        geoBlocking: true,
-        tlsVersion: 'TLS1.3'
-      })
-    });
-    
-    // Layer 2: Application Security
-    this.components.set('application', {
-      authentication: new MultiFactorAuth({
-        factors: ['password', 'totp', 'biometric'],
-        riskBasedAuth: true
-      }),
-      authorization: new FineGrainedAuthz({
-        model: 'RBAC+ABAC',
-        policyEngine: 'OPA'
-      }),
-      sessionManagement: new SecureSessionManager({
-        tokenType: 'JWT',
-        refreshStrategy: 'sliding',
-        secureStorage: 'httpOnly+sameSite'
-      })
-    });
-    
-    // Layer 3: Data Security
-    this.components.set('data', {
-      encryption: new DataEncryption({
-        atRest: 'AES-256-GCM',
-        inTransit: 'TLS1.3',
-        keyManagement: 'AWS-KMS'
-      }),
-      tokenization: new Tokenizer({
-        vault: 'HashiCorp',
-        formats: ['PAN', 'SSN', 'Email']
-      }),
-      dlp: new DataLossPrevention({
-        patterns: this.loadDLPPatterns(),
-        actions: ['block', 'alert', 'quarantine']
-      })
-    });
-    
-    // Layer 4: Compliance & Monitoring
-    this.components.set('compliance', {
-      auditLog: new AuditLogger({
-        retention: 7 * 365, // 7 years
-        immutable: true,
-        encryption: true
-      }),
-      monitoring: new SecurityMonitoring({
-        siem: 'Splunk',
-        alerting: 'PagerDuty',
-        metrics: 'Prometheus'
-      }),
-      compliance: new ComplianceEngine({
-        frameworks: ['PCI-DSS', 'PSD2', 'GDPR', 'MiCA'],
-        automation: true
-      })
-    });
-  }
-  
-  async deploySecurityControls(): Promise<DeploymentResult> {
-    const deployment = new SecureDeployment();
-    
-    // Pre-deployment security checks
-    await deployment.runSecurityTests({
-      sast: true,
-      dast: true,
-      dependencyCheck: true,
-      containerScan: true
-    });
-    
-    // Infrastructure as Code security
-    const terraformConfig = {
-      backend: {
-        s3: {
-          bucket: 'fintech-tfstate',
-          encrypt: true,
-          kms_key_id: process.env.KMS_KEY
-        }
-      },
-      required_providers: {
-        aws: {
-          version: '~> 4.0',
-          configuration_aliases: ['aws.security']
-        }
-      }
-    };
-    
-    // Deploy with security hardening
-    return deployment.deploy({
-      environment: 'production',
-      securityGroups: this.createSecurityGroups(),
-      networkACLs: this.createNetworkACLs(),
-      wafRules: this.createWAFRules(),
-      monitoring: this.setupMonitoring()
-    });
-  }
-}`}
-          </pre>
+        <h4 className="text-xl font-bold text-gray-900 mb-6">🏢 Praxis-Szenario: Enterprise FinTech Transformation</h4>
+        <div className="space-y-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-blue-900 mb-2">
+              🚀 Zero-to-Hero: Von Legacy Banking zu FinTech Leader in 18 Monaten
+            </h3>
+            <p className="text-sm text-blue-700">
+              Eine traditionelle Bank transformiert ihre gesamte IT-Infrastruktur zu einer 
+              cloud-nativen, API-first FinTech-Plattform mit höchsten Sicherheits- und Compliance-Standards.
+            </p>
+          </div>
+          
+          <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+            <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              Die Ausgangslage
+            </h4>
+            <p className="text-sm text-amber-700">
+              35 Jahre alte Mainframe-Systeme, monolithische Architektur, 3-Wochen Deployment-Zyklen 
+              und Compliance-Prüfungen die 6 Monate dauern. Kunden wandern zu Neobanken ab.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="font-semibold text-blue-800 flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" />
+              Die 4-Layer Security-First Transformation
+            </h4>
+            
+            {[
+              {
+                layer: 'Layer 1: Cloud-Native Foundation',
+                icon: '☁️',
+                timeline: 'Monate 1-4',
+                description: 'Aufbau einer sicheren, skalierbaren Cloud-Infrastruktur',
+                challenges: 'Legacy-Integration ohne Betriebsunterbrechung',
+                solutions: [
+                  'Hybrid Cloud Setup: Schrittweise Migration ohne Downtime',
+                  'Infrastructure as Code: 100% automatisierte, wiederholbare Deployments',
+                  'Zero Trust Network: Jede Verbindung wird verifiziert und verschlüsselt',
+                  'Multi-Region Setup: Disaster Recovery und 99.99% SLA'
+                ],
+                outcome: 'Moderne Infrastruktur bereit für FinTech-Services',
+                metrics: { uptime: '99.99%', deployTime: '-95%', costs: '-40%' }
+              },
+              {
+                layer: 'Layer 2: API-First Architecture',
+                icon: '🔗',
+                timeline: 'Monate 5-8',
+                description: 'Microservices mit Banking-grade Security und Performance',
+                challenges: 'Granulare Services ohne Komplexitäts-Explosion',
+                solutions: [
+                  'Domain-Driven Design: Fachlich abgeschnittene, autonome Services',
+                  'API Gateway: Zentrale Sicherheit, Rate Limiting und Monitoring',
+                  'Service Mesh: Sichere Inter-Service Kommunikation',
+                  'Event-Driven Architecture: Lose gekoppelte, resiliente Services'
+                ],
+                outcome: 'Flexible, skalierbare Service-Landschaft',
+                metrics: { services: '47', responseTime: '< 100ms', availability: '99.9%' }
+              },
+              {
+                layer: 'Layer 3: Compliance Automation',
+                icon: '📈',
+                timeline: 'Monate 9-12',
+                description: 'Vollständig automatisierte Compliance für alle Regularien',
+                challenges: 'Kontinuierliche Compliance ohne manuelle Prozesse',
+                solutions: [
+                  'Policy as Code: Alle Compliance-Regeln in versioniertem Code',
+                  'Continuous Compliance: Automatische Prüfung bei jedem Deployment',
+                  'Real-time Monitoring: Sofortige Erkennung von Compliance-Verstößen',
+                  'Automated Reporting: Tägliche Berichte an alle Aufsichtsbehörden'
+                ],
+                outcome: 'Selbstüberwachende, immer konforme Plattform',
+                metrics: { automation: '94%', auditTime: '-87%', violations: '0' }
+              },
+              {
+                layer: 'Layer 4: Advanced Security & AI',
+                icon: '🤖',
+                timeline: 'Monate 13-18',
+                description: 'KI-gestützte Sicherheit und Fraud Prevention',
+                challenges: 'Proaktive Bedrohungserkennung ohne False Positives',
+                solutions: [
+                  'ML-Fraud Detection: 99.7% Accuracy bei 0.1% False Positive Rate',
+                  'Behavioral Analytics: Anomalie-Erkennung für User und System-Verhalten',
+                  'Threat Intelligence: Integration globaler Bedrohungsdaten',
+                  'Automated Response: Selbstheilende Systeme mit Incident Automation'
+                ],
+                outcome: 'Predictive Security mit minimalen manuellen Eingriffen',
+                metrics: { detection: '99.7%', responseTime: '< 5s', automation: '89%' }
+              }
+            ].map((layer, layerIndex) => (
+              <div key={layerIndex} className="bg-white p-4 rounded-lg border border-blue-200">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="text-2xl">{layer.icon}</div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="font-bold text-gray-900">{layer.layer}</div>
+                      <div className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">{layer.timeline}</div>
+                    </div>
+                    <div className="text-sm text-gray-600 mb-2">{layer.description}</div>
+                    <div className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3">
+                      <strong>Challenge:</strong> {layer.challenges}
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-3">
+                  {layer.solutions.map((solution, solutionIndex) => (
+                    <div key={solutionIndex} className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
+                      <span>{solution}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-blue-50 p-3 rounded mb-3">
+                  <div className="text-sm text-blue-700 font-medium mb-2">
+                    ✓ {layer.outcome}
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    {Object.entries(layer.metrics).map(([key, value]) => (
+                      <div key={key}>
+                        <div className="text-lg font-bold text-blue-600">{value}</div>
+                        <div className="text-xs text-blue-500 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+              <TrendingUp className="h-4 w-4" />
+              Transformation erfolgreich: Die Zahlen nach 18 Monaten
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">-73%</div>
+                <div className="text-sm text-green-700">Time to Market</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">+245%</div>
+                <div className="text-sm text-green-700">API Requests/s</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">99.99%</div>
+                <div className="text-sm text-green-700">Platform Uptime</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">0</div>
+                <div className="text-sm text-green-700">Compliance Issues</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1340,7 +1533,9 @@ class FintechSecurityStack {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Header */}
+      <Header />
+      
+      {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
@@ -1423,6 +1618,8 @@ class FintechSecurityStack {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };

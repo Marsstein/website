@@ -58,9 +58,11 @@ export const Footer: React.FC = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Logo */}
               <div className="flex items-center">
-                <span className="brand-name text-xl font-bold text-foreground">
-                  MAR<span className="brand-symbol">§</span>TEIN
-                </span>
+                <img 
+                  src="/JLogoMarsstein.svg" 
+                  alt="Marsstein Logo" 
+                  className="h-6 w-auto"
+                />
               </div>
 
               <p className="text-muted-foreground leading-relaxed">

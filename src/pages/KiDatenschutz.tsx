@@ -148,7 +148,7 @@ const KiDatenschutz = () => {
     {
       title: 'Data Minimization in ML Pipelines',
       description: 'Praktische Ansätze zur Datenminimierung in Machine Learning Workflows',
-      path: '/wissen/ki-datenschutz/data-minimization-ml',
+      path: '/wissen/ki-datenschutz/data-minimization',
       icon: Database,
       category: 'technical',
       tags: ['Datenminimierung', 'ML Pipeline', 'Best Practices'],
@@ -159,7 +159,7 @@ const KiDatenschutz = () => {
     {
       title: 'Explainable AI für DSGVO Art. 22',
       description: 'Transparenz und Erklärbarkeit automatisierter Entscheidungen nach DSGVO',
-      path: '/wissen/ki-datenschutz/explainable-ai-dsgvo',
+      path: '/wissen/ki-datenschutz/explainable-ai',
       icon: Eye,
       category: 'regulation',
       tags: ['XAI', 'DSGVO Art. 22', 'Transparenz'],

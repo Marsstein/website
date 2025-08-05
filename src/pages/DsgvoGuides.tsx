@@ -56,10 +56,10 @@ const DsgvoGuides: React.FC = () => {
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const difficulties = [
-    { id: 'all', name: 'Alle Level', count: 12 },
-    { id: 'beginner', name: 'Einsteiger', count: 4 },
-    { id: 'intermediate', name: 'Fortgeschritten', count: 5 },
-    { id: 'expert', name: 'Experte', count: 3 }
+    { id: 'all', name: 'Alle Level', count: 10 },
+    { id: 'beginner', name: 'Einsteiger', count: 1 },
+    { id: 'intermediate', name: 'Fortgeschritten', count: 7 },
+    { id: 'expert', name: 'Experte', count: 2 }
   ];
 
   const topics = [
@@ -264,6 +264,61 @@ const DsgvoGuides: React.FC = () => {
       ]
     },
     {
+      id: 'verarbeitungsverzeichnis',
+      title: 'Verarbeitungsverzeichnis erstellen',
+      subtitle: 'Art. 30 DSGVO praktisch umsetzen',
+      description: 'Detaillierte Anleitung zur Erstellung und Pflege eines DSGVO-konformen Verarbeitungsverzeichnisses mit Templates und Compliance-Checklisten.',
+      readTime: '30 Min',
+      difficulty: 'intermediate',
+      topic: 'implementation',
+      completions: 2134,
+      rating: 4.6,
+      lastUpdated: '2024-01-24',
+      color: 'from-orange-500 to-red-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900',
+      link: '/wissen/leitfaden/verarbeitungsverzeichnis',
+      chapters: [
+        'Einführung & Rechtliche Grundlagen',
+        'Pflichtangaben für Verantwortliche',
+        'Praktische Umsetzung',
+        'Häufige Fehler vermeiden',
+        'Tools und Vorlagen'
+      ],
+      keyTakeaways: [
+        'DSGVO Art. 30 konform',
+        'Praxiserprobte Templates',
+        'Effiziente Umsetzung'
+      ]
+    },
+    {
+      id: 'betroffenenrechte',
+      title: 'Betroffenenrechte umsetzen',
+      subtitle: 'Art. 15-22 DSGVO in der Praxis',
+      description: 'Komplette Anleitung zur Implementierung aller 8 Betroffenenrechte mit Prozessen, Templates und Fristen-Management.',
+      readTime: '40 Min',
+      difficulty: 'intermediate',
+      topic: 'implementation',
+      completions: 1789,
+      rating: 4.7,
+      lastUpdated: '2024-01-24',
+      color: 'from-teal-500 to-cyan-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900',
+      link: '/wissen/leitfaden/betroffenenrechte',
+      chapters: [
+        'Übersicht & Grundlagen',
+        'Informationsrecht Art. 13 & 14',
+        'Auskunftsrecht Art. 15',
+        'Löschung & Berichtigung',
+        'Weitere Betroffenenrechte',
+        'Praktische Umsetzung'
+      ],
+      keyTakeaways: [
+        'Alle 8 Rechte abgedeckt',
+        'Prozess-Templates',
+        'Fristenmanagement'
+      ]
+    },
+    {
       id: 'dsfa-durchfuehrung',
       title: 'Datenschutz-Folgenabschätzung (DSFA)',
       subtitle: 'Art. 35 DSGVO Step-by-Step',
@@ -403,10 +458,10 @@ const DsgvoGuides: React.FC = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
           >
             {[
-              { value: '12', label: 'Detaillierte Leitfäden', sublabel: 'Von Basics bis Expert', icon: FileText, color: 'from-blue-500 to-indigo-500' },
-              { value: '8.5h', label: 'Gesamte Lesezeit', sublabel: 'Umfassender Content', icon: Clock, color: 'from-indigo-500 to-purple-500' },
-              { value: '12,500+', label: 'Erfolgreiche Umsetzungen', sublabel: 'Praxisbewährt', icon: CheckCircle2, color: 'from-purple-500 to-pink-500' },
-              { value: '4.8★', label: 'Durchschnittsbewertung', sublabel: 'Nutzer-Feedback', icon: Star, color: 'from-pink-500 to-red-500' }
+              { value: '10', label: 'Detaillierte Leitfäden', sublabel: 'Von Basics bis Expert', icon: FileText, color: 'from-blue-500 to-indigo-500' },
+              { value: '8.8h', label: 'Gesamte Lesezeit', sublabel: 'Umfassender Content', icon: Clock, color: 'from-indigo-500 to-purple-500' },
+              { value: '15,800+', label: 'Erfolgreiche Umsetzungen', sublabel: 'Praxisbewährt', icon: CheckCircle2, color: 'from-purple-500 to-pink-500' },
+              { value: '4.7★', label: 'Durchschnittsbewertung', sublabel: 'Nutzer-Feedback', icon: Star, color: 'from-pink-500 to-red-500' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
