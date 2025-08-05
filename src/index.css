@@ -64,6 +64,8 @@
     --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); /* Glassmorphism card */
     --gradient-accent: linear-gradient(90deg, #e24e1b, #f97316, #ea580c); /* Multi-accent gradient */
     --gradient-tech: linear-gradient(135deg, #0f172a, #1e293b, #0f172a); /* Tech background */
+    --gradient-section-overlay: linear-gradient(0deg, rgba(226, 78, 27, 0.03) 0%, transparent 50%, rgba(226, 78, 27, 0.03) 100%); /* Section overlay */
+    --gradient-section-divider: linear-gradient(90deg, transparent 0%, rgba(226, 78, 27, 0.4) 20%, rgba(226, 78, 27, 0.8) 50%, rgba(226, 78, 27, 0.4) 80%, transparent 100%); /* Section divider */
 
     /* Shadows - using new accent color #e24e1b */
     --shadow-sm: 0 1px 2px 0 hsl(15 86% 49% / 0.05);
@@ -384,6 +386,8 @@
 
 .card-hover:hover {
   transform: translateY(-2px);
+  border-color: hsl(var(--primary));
+  box-shadow: 0 8px 32px rgba(226, 78, 27, 0.15);
 }
 
 .interactive-border {

@@ -52,7 +52,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             top: '8%',
             left: '4%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -66,7 +66,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             top: '5%',
             left: '45%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -82,7 +82,7 @@ export const TransformationCTA: React.FC = () => {
             right: '6%',
             width: '72px',
             height: '72px',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -96,7 +96,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             top: '30%',
             left: '8%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -110,7 +110,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             top: '45%',
             left: '2%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -124,7 +124,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             top: '35%',
             right: '12%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -138,7 +138,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             top: '55%',
             right: '4%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -152,7 +152,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             bottom: '35%',
             left: '10%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -168,7 +168,7 @@ export const TransformationCTA: React.FC = () => {
             left: '6%',
             width: '72px',
             height: '72px',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -182,7 +182,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             bottom: '8%',
             left: '42%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -196,7 +196,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             bottom: '12%',
             right: '8%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -210,7 +210,7 @@ export const TransformationCTA: React.FC = () => {
           style={{
             bottom: '30%',
             right: '10%',
-            backgroundImage: 'url("/Logo Marsstein.svg")',
+            backgroundImage: 'url("/JLogoMarsstein.svg")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
