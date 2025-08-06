@@ -46,6 +46,7 @@ import ComplianceAIAssistant from "./pages/ComplianceAIAssistant";
 import Knowledge from "./pages/Knowledge";
 import DsgvoGuides from "./pages/DsgvoGuides";
 import ComplianceFrameworks from "./pages/ComplianceFrameworks";
+import RiskManagement from "./pages/RiskManagement";
 import Iso27001Guide from "./pages/compliance/Iso27001Guide";
 import Soc2Guide from "./pages/compliance/Soc2Guide";
 import EuAiActGuide from "./pages/compliance/EuAiActGuide";
@@ -254,6 +255,8 @@ const App = () => (
                 <Route path="/wissen/cybersecurity" element={<CrisisManagement />} />
                 <Route path="/wissen/zertifizierungen" element={<ComplianceFrameworks />} />
                 <Route path="/wissen/branchen" element={<BranchenWissen />} />
+                <Route path="/wissen/dsgvo-leitfaeden" element={<DsgvoGuides />} />
+                <Route path="/wissen/risk-management" element={<RiskManagement />} />
                 <Route path="/wissen/compliance-frameworks" element={<ComplianceFrameworks />} />
                 <Route path="/compliance/iso-27001" element={<Iso27001Guide />} />
                 <Route path="/compliance/soc-2" element={<Soc2Guide />} />
