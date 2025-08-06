@@ -36,6 +36,8 @@ const Index = () => {
         {/* 1. Hero → ScrollTransformation: KI-Activation Network */}
         <KIActivationSeparator />
         
+        <div className="py-8"></div>
+        
         <div className="bg-gradient-to-b from-transparent to-orange-50/20">
           <ScrollTransformation />
         </div>
