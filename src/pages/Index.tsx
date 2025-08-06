@@ -23,7 +23,7 @@ import { RegulatoryBridgeSeparator } from '@/components/separators/RegulatoryBri
 import { SecurityStandardsMatrixSeparator } from '@/components/separators/SecurityStandardsMatrixSeparator';
 import { AIRiskSpectrumSeparator } from '@/components/separators/AIRiskSpectrumSeparator';
 import { GestureFlowSeparator } from '@/components/separators/GestureFlowSeparator';
-import { TrustShieldNetworkSeparator } from '@/components/separators/TrustShieldNetworkSeparator';
+import { QuantumShieldWaveSeparator } from '@/components/separators/QuantumShieldWaveSeparator';
 import { KnowledgeConstellationSeparator } from '@/components/separators/KnowledgeConstellationSeparator';
 
 const Index = () => {
@@ -74,8 +74,8 @@ const Index = () => {
         
         <InteractiveShowcase />
         
-        {/* 6. Interactive → Security: Trust Shield Network */}
-        <TrustShieldNetworkSeparator />
+        {/* 6. Interactive → Security: Quantum Shield Wave */}
+        <QuantumShieldWaveSeparator />
         
         <TrustSecurity />
         

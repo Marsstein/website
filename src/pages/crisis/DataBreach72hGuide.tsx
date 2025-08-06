@@ -9,6 +9,8 @@ import { Progress } from '@/components/ui/progress';
 import { 
   AlertTriangle, 
   CheckCircle2, 
+  CheckCircle,
+  Circle,
   ArrowRight, 
   ArrowLeft,
   Clock,
@@ -36,6 +38,7 @@ import {
   UserCheck,
   ShieldCheck,
   FileCheck,
+  Gavel,
   Timer,
   Rocket,
   Flag,

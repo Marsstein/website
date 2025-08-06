@@ -632,7 +632,7 @@ const VendorDataBreachGuide: React.FC = () => {
                         Wichtige Maßnahmen
                       </h4>
                       <div className="grid md:grid-cols-2 gap-3">
-                        {phase.keyActions.map((action, idx) => (
+                        {phase.keyActions?.map((action, idx) => (
                           <div key={idx} className="flex items-center gap-3 p-3 bg-slate-700/50 rounded-xl">
                             <CheckCircle2 className="w-5 h-5 text-indigo-400 flex-shrink-0" />
                             <span className="text-sm text-slate-300">{action}</span>

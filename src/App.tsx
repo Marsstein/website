@@ -46,6 +46,7 @@ import ComplianceAIAssistant from "./pages/ComplianceAIAssistant";
 import Knowledge from "./pages/Knowledge";
 import DsgvoGuides from "./pages/DsgvoGuides";
 import ComplianceFrameworks from "./pages/ComplianceFrameworks";
+import RiskManagement from "./pages/RiskManagement";
 import Iso27001Guide from "./pages/compliance/Iso27001Guide";
 import Soc2Guide from "./pages/compliance/Soc2Guide";
 import EuAiActGuide from "./pages/compliance/EuAiActGuide";
@@ -137,6 +138,7 @@ import TestOptimized from "./pages/TestOptimized";
 import TestIndex from "./pages/TestIndex";
 import SimpleTest from "./pages/SimpleTest";
 import DesignSeparatorTest from "./pages/DesignSeparatorTest";
+import SitemapSEO from "./pages/SitemapSEO";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -163,6 +165,7 @@ const App = () => (
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
+                <Route path="/sitemap-seo" element={<SitemapSEO />} />
                 
                 {/* Test Routes for Scroll Animation Tests - moved up for priority */}
                 <Route path="/design-separator-test" element={<DesignSeparatorTest />} />
@@ -254,6 +257,8 @@ const App = () => (
                 <Route path="/wissen/cybersecurity" element={<CrisisManagement />} />
                 <Route path="/wissen/zertifizierungen" element={<ComplianceFrameworks />} />
                 <Route path="/wissen/branchen" element={<BranchenWissen />} />
+                <Route path="/wissen/dsgvo-leitfaeden" element={<DsgvoGuides />} />
+                <Route path="/wissen/risk-management" element={<RiskManagement />} />
                 <Route path="/wissen/compliance-frameworks" element={<ComplianceFrameworks />} />
                 <Route path="/compliance/iso-27001" element={<Iso27001Guide />} />
                 <Route path="/compliance/soc-2" element={<Soc2Guide />} />

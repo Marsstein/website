@@ -155,32 +155,37 @@ export const Header: React.FC = () => {
       <DropdownMenuContent>
         <DropdownMenuItem>
           <Link to="/wissen" className="block w-full">
-            Wissen Übersicht
+            Übersicht
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link to="/wissen/dsgvo" className="block w-full">
-            DSGVO & Datenschutz
+            DSGVO
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/wissen/ki-compliance" className="block w-full">
-            KI & Compliance
+          <Link to="/wissen/compliance-frameworks" className="block w-full">
+            Frameworks
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/wissen/cybersecurity" className="block w-full">
-            Cybersecurity
+          <Link to="/wissen/rechtsprechung" className="block w-full">
+            Rechtsprechungen
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/wissen/zertifizierungen" className="block w-full">
-            Zertifizierungen
+          <Link to="/wissen/risk-management" className="block w-full">
+            Risk Management
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link to="/wissen/branchen" className="block w-full">
-            Branchenwissen
+            Branchen
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/wissen/krisenmanagement" className="block w-full">
+            Krisenmanagement
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -376,32 +381,37 @@ export const Header: React.FC = () => {
                       <DropdownMenuContent>
                         <DropdownMenuItem>
                           <Link to="/wissen" className="block w-full">
-                            Wissen Übersicht
+                            Übersicht
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/wissen/dsgvo-leitfaeden" className="block w-full">
-                            DSGVO-Leitfäden
+                          <Link to="/wissen/dsgvo" className="block w-full">
+                            DSGVO
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/wissen/leitfaden/dsgvo-grundlagen" className="block w-full">
-                            DSGVO Grundlagen
+                          <Link to="/wissen/compliance-frameworks" className="block w-full">
+                            Frameworks
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/wissen/leitfaden/dsgvo-30-tage" className="block w-full">
-                            DSGVO in 30 Tagen
+                          <Link to="/wissen/rechtsprechung" className="block w-full">
+                            Rechtsprechungen
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/wissen/leitfaden/website-dsgvo" className="block w-full">
-                            Website DSGVO-konform
+                          <Link to="/wissen/risk-management" className="block w-full">
+                            Risk Management
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/wissen/leitfaden/data-breach-notfall" className="block w-full">
-                            Data Breach Notfallplan
+                          <Link to="/wissen/branchen" className="block w-full">
+                            Branchen
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link to="/wissen/krisenmanagement" className="block w-full">
+                            Krisenmanagement
                           </Link>
                         </DropdownMenuItem>
                       </DropdownMenuContent>

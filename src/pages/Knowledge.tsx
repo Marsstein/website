@@ -70,7 +70,7 @@ const Knowledge: React.FC = () => {
       guides: 8,
       readTime: '15-45 Min',
       difficulty: 'Alle Level',
-      link: '/wissen/dsgvo-leitfaeden',
+      link: '/wissen/dsgvo',
       popular: true,
       featured: [
         'DSGVO in 10 Minuten verstehen',
