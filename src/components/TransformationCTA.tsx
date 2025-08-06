@@ -44,219 +44,69 @@ export const TransformationCTA: React.FC = () => {
         backgroundColor: '#ffffff'
       }}
     >
-      {/* Schwebende Logo Background Pattern - Mehr Logos mit höherer Deckkraft */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Logo 1 - Oben links */}
-        <div 
-          className="absolute opacity-70 w-20 h-20"
-          style={{
-            top: '8%',
-            left: '4%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatSlow 20s ease-in-out infinite'
-          }}
-        />
-        
-        {/* Logo 2 - Oben mitte */}
-        <div 
-          className="absolute opacity-55 w-16 h-16"
-          style={{
-            top: '5%',
-            left: '45%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatMedium 24s ease-in-out infinite'
-          }}
-        />
-        
-        {/* Logo 3 - Oben rechts */}
-        <div 
-          className="absolute opacity-65 w-18 h-18"
-          style={{
-            top: '12%',
-            right: '6%',
-            width: '72px',
-            height: '72px',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatFast 18s ease-in-out infinite reverse'
-          }}
-        />
-        
-        {/* Logo 4 - Mitte links oben */}
-        <div 
-          className="absolute opacity-60 w-14 h-14"
-          style={{
-            top: '30%',
-            left: '8%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatSlow 22s ease-in-out infinite reverse'
-          }}
-        />
-        
-        {/* Logo 5 - Mitte links */}
-        <div 
-          className="absolute opacity-75 w-24 h-24"
-          style={{
-            top: '45%',
-            left: '2%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatMedium 16s ease-in-out infinite'
-          }}
-        />
-        
-        {/* Logo 6 - Mitte rechts oben */}
-        <div 
-          className="absolute opacity-55 w-16 h-16"
-          style={{
-            top: '35%',
-            right: '12%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatFast 21s ease-in-out infinite'
-          }}
-        />
-        
-        {/* Logo 7 - Mitte rechts */}
-        <div 
-          className="absolute opacity-70 w-20 h-20"
-          style={{
-            top: '55%',
-            right: '4%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatSlow 19s ease-in-out infinite reverse'
-          }}
-        />
-        
-        {/* Logo 8 - Unten links oben */}
-        <div 
-          className="absolute opacity-60 w-14 h-14"
-          style={{
-            bottom: '35%',
-            left: '10%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatMedium 23s ease-in-out infinite'
-          }}
-        />
-        
-        {/* Logo 9 - Unten links */}
-        <div 
-          className="absolute opacity-65 w-18 h-18"
-          style={{
-            bottom: '15%',
-            left: '6%',
-            width: '72px',
-            height: '72px',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatFast 17s ease-in-out infinite reverse'
-          }}
-        />
-        
-        {/* Logo 10 - Unten mitte */}
-        <div 
-          className="absolute opacity-55 w-16 h-16"
-          style={{
-            bottom: '8%',
-            left: '42%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatSlow 25s ease-in-out infinite'
-          }}
-        />
-        
-        {/* Logo 11 - Unten rechts */}
-        <div 
-          className="absolute opacity-70 w-20 h-20"
-          style={{
-            bottom: '12%',
-            right: '8%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatMedium 20s ease-in-out infinite reverse'
-          }}
-        />
-        
-        {/* Logo 12 - Unten rechts oben */}
-        <div 
-          className="absolute opacity-60 w-14 h-14"
-          style={{
-            bottom: '30%',
-            right: '10%',
-            backgroundImage: 'url("/JLogoMarsstein.svg")',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            animation: 'floatFast 18s ease-in-out infinite'
-          }}
-        />
+      {/* Neural Network Synapses Background */}
+      <div className="absolute inset-0 overflow-hidden bg-gradient-to-r from-transparent via-gray-50/30 to-transparent" style={{top: '-10%', height: '120%'}}>
+        <svg className="w-full h-full" viewBox="0 0 1200 176" preserveAspectRatio="none">
+          <defs>
+            <radialGradient id="neuronGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#e24e1b" stopOpacity="0.8"/>
+              <stop offset="70%" stopColor="#ff6b3d" stopOpacity="0.3"/>
+              <stop offset="100%" stopColor="#e24e1b" stopOpacity="0"/>
+            </radialGradient>
+            <linearGradient id="synapseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#e24e1b" stopOpacity="0.2"/>
+              <stop offset="50%" stopColor="#e24e1b" stopOpacity="0.8"/>
+              <stop offset="100%" stopColor="#e24e1b" stopOpacity="0.2"/>
+            </linearGradient>
+          </defs>
+          
+          {/* Neural network connections */}
+          <g stroke="url(#synapseGrad)" strokeWidth="1.5" fill="none" className="animate-pulse">
+            <path d="M100,88 Q200,60 300,88 Q400,116 500,88"/>
+            <path d="M200,70 Q350,100 500,70 Q650,40 800,70"/>
+            <path d="M300,106 Q450,80 600,106 Q750,132 900,106"/>
+            <path d="M500,50 Q650,88 800,50 Q950,12 1100,50"/>
+            <path d="M600,126 Q750,98 900,126 Q1050,154 1100,126"/>
+          </g>
+          
+          {/* Neurons (main nodes) */}
+          <g>
+            <circle cx="100" cy="88" r="12" fill="url(#neuronGlow)" className="animate-ping">
+              <animate attributeName="r" values="12;18;12" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="300" cy="88" r="10" fill="#e24e1b" opacity="0.7"/>
+            <circle cx="500" cy="88" r="14" fill="url(#neuronGlow)" className="animate-ping" style={{animationDelay: '0.8s'}}>
+              <animate attributeName="r" values="14;20;14" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="700" cy="88" r="10" fill="#e24e1b" opacity="0.7"/>
+            <circle cx="900" cy="88" r="12" fill="url(#neuronGlow)" className="animate-ping" style={{animationDelay: '1.6s'}}>
+              <animate attributeName="r" values="12;18;12" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="1100" cy="88" r="10" fill="#e24e1b" opacity="0.7"/>
+          </g>
+          
+          {/* Synapse signals */}
+          <g>
+            <circle cx="150" cy="74" r="2" fill="#e24e1b" className="animate-bounce">
+              <animateMotion dur="4s" repeatCount="indefinite">
+                <mpath href="#path1"/>
+              </animateMotion>
+            </circle>
+            <circle cx="400" cy="100" r="2" fill="#ff6b3d" className="animate-bounce" style={{animationDelay: '1s'}}>
+              <animateMotion dur="5s" repeatCount="indefinite">
+                <mpath href="#path2"/>
+              </animateMotion>
+            </circle>
+          </g>
+          
+          {/* Hidden paths for motion */}
+          <defs>
+            <path id="path1" d="M100,88 Q200,60 300,88 Q400,116 500,88" fill="none"/>
+            <path id="path2" d="M300,106 Q450,80 600,106 Q750,132 900,106" fill="none"/>
+          </defs>
+        </svg>
       </div>
 
-      {/* CSS Animationen */}
-      <style jsx>{`
-        @keyframes floatSlow {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px);
-          }
-          50% {
-            transform: translateY(-10px) translateX(5px);
-          }
-        }
-        
-        @keyframes floatMedium {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px);
-          }
-          33% {
-            transform: translateY(-8px) translateX(-3px);
-          }
-          66% {
-            transform: translateY(6px) translateX(8px);
-          }
-        }
-        
-        @keyframes floatFast {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px);
-          }
-          25% {
-            transform: translateY(-6px) translateX(4px);
-          }
-          50% {
-            transform: translateY(8px) translateX(-6px);
-          }
-          75% {
-            transform: translateY(-4px) translateX(7px);
-          }
-        }
-      `}</style>
       
       <div className="container mx-auto max-w-4xl px-4 relative z-10">
         <div className="w-full max-w-2xl mx-auto">
@@ -280,17 +130,19 @@ export const TransformationCTA: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Link to="/contact?demo=true">
-                  <Button className="bg-gradient-to-r from-emerald-600 to-blue-600 text-white px-8 py-3 text-base font-semibold shadow-lg hover:shadow-xl transition-all w-full sm:w-auto">
-                    <Rocket className="mr-2 h-5 w-5" />
-                    Kostenlose Demo
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                  <Button className="bg-gradient-to-r from-brand-red to-orange-500 hover:from-brand-red/90 hover:to-orange-500/90 text-white px-8 py-3 text-base font-semibold shadow-lg hover:shadow-xl transition-all w-full sm:w-auto group hover:scale-105 transform relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <Rocket className="mr-2 h-5 w-5 relative z-10" />
+                    <span className="relative z-10">Kostenlose Demo</span>
+                    <ArrowRight className="ml-2 h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 
                 <Link to="/tools">
-                  <Button variant="outline" className="px-8 py-3 text-base font-semibold border-2 border-gray-300 bg-white hover:bg-gray-50 w-full sm:w-auto">
-                    <Eye className="mr-2 h-5 w-5" />
-                    Tools entdecken
+                  <Button variant="outline" className="px-8 py-3 text-base font-semibold border-2 border-brand-red/50 bg-white hover:bg-brand-red/10 hover:border-brand-red w-full sm:w-auto group hover:scale-105 transform relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-brand-red/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <Eye className="mr-2 h-5 w-5 text-brand-red relative z-10" />
+                    <span className="text-brand-red relative z-10">Tools entdecken</span>
                   </Button>
                 </Link>
               </div>

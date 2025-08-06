@@ -17,28 +17,71 @@ import { TrustSecurity } from '@/components/TrustSecurity';
 import { SmartFAQ } from '@/components/SmartFAQ';
 import { IntelligentNewsletter } from '@/components/IntelligentNewsletter';
 
+// Import separator components
+import { KIActivationSeparator } from '@/components/separators/KIActivationSeparator';
+import { RegulatoryBridgeSeparator } from '@/components/separators/RegulatoryBridgeSeparator';
+import { SecurityStandardsMatrixSeparator } from '@/components/separators/SecurityStandardsMatrixSeparator';
+import { AIRiskSpectrumSeparator } from '@/components/separators/AIRiskSpectrumSeparator';
+import { GestureFlowSeparator } from '@/components/separators/GestureFlowSeparator';
+import { TrustShieldNetworkSeparator } from '@/components/separators/TrustShieldNetworkSeparator';
+import { KnowledgeConstellationSeparator } from '@/components/separators/KnowledgeConstellationSeparator';
+
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-gray-50 dark:from-gray-950 dark:to-gray-900">
       <Header />
       <main className="overflow-hidden">
         <HeroSection />
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
-        <ScrollTransformation />
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
+        
+        {/* 1. Hero → ScrollTransformation: KI-Activation Network */}
+        <KIActivationSeparator />
+        
+        <div className="py-8"></div>
+        
+        <div className="bg-gradient-to-b from-transparent to-orange-50/20">
+          <ScrollTransformation />
+        </div>
+        
         <TransformationCTA />
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
-        <DACHCompliance />
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
-        <ISO27001Section />
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
-        <EUAIActSection />
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
+        
+        <div className="py-12"></div>
+        
+        {/* 2. TransformationCTA → DACH: Regulatory Bridge */}
+        <RegulatoryBridgeSeparator />
+        
+        <div className="py-8"></div>
+        
+        <div className="bg-gradient-to-b from-orange-50/20 via-white to-red-50/10">
+          <DACHCompliance />
+        </div>
+        
+        {/* 3. DACH → ISO: Security Standards Matrix */}
+        <SecurityStandardsMatrixSeparator />
+        
+        <div className="bg-gradient-to-b from-red-50/10 to-orange-50/15">
+          <ISO27001Section />
+        </div>
+        
+        {/* 4. ISO → AI Act: AI Risk Spectrum */}
+        <AIRiskSpectrumSeparator />
+        
+        <div className="bg-gradient-to-b from-orange-50/15 via-white to-gray-50">
+          <EUAIActSection />
+        </div>
+        
+        {/* 5. AI Act → Interactive: Gesture Flow */}
+        <GestureFlowSeparator />
         
         <InteractiveShowcase />
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
+        
+        {/* 6. Interactive → Security: Trust Shield Network */}
+        <TrustShieldNetworkSeparator />
+        
         <TrustSecurity />
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
+        
+        {/* 7. Security → FAQ: Knowledge Constellation */}
+        <KnowledgeConstellationSeparator />
+        
         <SmartFAQ />
         <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"></div>
         <IntelligentNewsletter />

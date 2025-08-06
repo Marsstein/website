@@ -126,11 +126,12 @@ export const HeroSection: React.FC = () => {
               <Link to="/contact?demo=true">
                 <Button 
                   size="lg"
-                  className="bg-gradient-to-r from-brand-red to-brand-red/90 hover:from-brand-red/90 hover:to-brand-red/80 text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  className="bg-gradient-to-r from-brand-red to-brand-red/90 hover:from-brand-red/90 hover:to-brand-red/80 text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105 transform relative overflow-hidden"
                 >
-                  <Play className="mr-2 h-5 w-5" />
-                  Kostenlose Demo
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <Play className="mr-2 h-5 w-5 relative z-10" />
+                  <span className="relative z-10">Kostenlose Demo</span>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 </Button>
               </Link>
               
@@ -138,9 +139,10 @@ export const HeroSection: React.FC = () => {
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="px-8 py-4 text-lg border-2 border-gray-600 text-gray-300 hover:bg-white/10 hover:border-gray-400 hover:text-white transition-all duration-300"
+                  className="px-8 py-4 text-lg border-2 border-gray-600 text-gray-300 hover:bg-brand-red/10 hover:border-brand-red/50 hover:text-white transition-all duration-300 group hover:scale-105 transform relative overflow-hidden"
                 >
-                  Preise ansehen
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-red/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative z-10">Preise ansehen</span>
                 </Button>
               </Link>
             </div>
@@ -153,19 +155,19 @@ export const HeroSection: React.FC = () => {
                   <div
                     key={feature.title}
                     className={cn(
-                      "flex items-start space-x-3 p-4 rounded-lg bg-slate-800/30 backdrop-blur-sm border border-blue-500/20 transition-all duration-500 hover:bg-slate-800/50 hover:shadow-lg",
+                      "flex items-start space-x-3 p-4 rounded-lg bg-white/10 backdrop-blur-sm border-2 border-brand-red/30 transition-all duration-500 hover:bg-white/20 hover:shadow-lg hover:border-brand-red/50 hover-lift group",
                       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                     )}
                     style={{ 
                       transitionDelay: `${(index + 2) * 150}ms`
                     }}
                   >
-                    <div className="flex-shrink-0 p-2 rounded-lg bg-brand-red/20">
-                      <Icon className="h-5 w-5 text-brand-red" />
+                    <div className="flex-shrink-0 p-2 rounded-lg bg-brand-red/30 group-hover:bg-brand-red/40 transition-colors duration-300">
+                      <Icon className="h-5 w-5 text-brand-red group-hover:text-white transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white text-sm">{feature.title}</h3>
-                      <p className="text-gray-300 text-xs">{feature.desc}</p>
+                      <h3 className="font-semibold text-white text-sm group-hover:text-orange-100 transition-colors duration-300">{feature.title}</h3>
+                      <p className="text-gray-300 text-xs group-hover:text-gray-200 transition-colors duration-300">{feature.desc}</p>
                     </div>
                   </div>
                 );
