@@ -33,6 +33,9 @@ import {
   Timer,
   Circle,
   CheckCircle,
+  Check,
+  X,
+  TrendingUp,
   FileText,
   FolderOpen,
   Download,
@@ -61,7 +64,8 @@ import {
   Filter,
   SortAsc,
   Trash2,
-  Lightbulb
+  Lightbulb,
+  Award
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';

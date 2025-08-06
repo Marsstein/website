@@ -138,6 +138,7 @@ import TestOptimized from "./pages/TestOptimized";
 import TestIndex from "./pages/TestIndex";
 import SimpleTest from "./pages/SimpleTest";
 import DesignSeparatorTest from "./pages/DesignSeparatorTest";
+import SitemapSEO from "./pages/SitemapSEO";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -164,6 +165,7 @@ const App = () => (
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
+                <Route path="/sitemap-seo" element={<SitemapSEO />} />
                 
                 {/* Test Routes for Scroll Animation Tests - moved up for priority */}
                 <Route path="/design-separator-test" element={<DesignSeparatorTest />} />

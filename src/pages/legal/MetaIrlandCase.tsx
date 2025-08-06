@@ -47,7 +47,8 @@ import {
   Database,
   MessageCircle,
   BarChart3,
-  PieChart
+  PieChart,
+  Bell
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';

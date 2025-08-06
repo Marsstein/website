@@ -82,7 +82,8 @@ import {
   Scissors,
   Bolt,
   CircuitBoard,
-  Laptop
+  Laptop,
+  Cloud
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
