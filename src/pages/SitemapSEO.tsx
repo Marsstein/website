@@ -85,36 +85,36 @@ const SitemapSEO = () => {
       items: [
         { 
           title: 'DSGVO', 
-          url: '/regulierung/dsgvo', 
-          description: 'Umfassender Guide zur Datenschutz-Grundverordnung (GDPR). Erfahren Sie alles über Betroffenenrechte, Verarbeitungsverzeichnisse, TOMs, Meldepflichten und praktische Umsetzungstipps für Ihr Unternehmen.', 
+          url: '/dsgvo', 
+          description: 'Premium DSGVO-Compliance Service. Umfassender Guide zur Datenschutz-Grundverordnung (GDPR). Erfahren Sie alles über Betroffenenrechte, Verarbeitungsverzeichnisse, TOMs, Meldepflichten und praktische Umsetzungstipps für Ihr Unternehmen.', 
           priority: 'high',
           available: true 
         },
         { 
           title: 'EU AI Act', 
-          url: '/regulierung/eu-ai-act', 
-          description: 'Kompletter Leitfaden zur EU-Verordnung über Künstliche Intelligenz. Verstehen Sie Risikoklassen, Konformitätsbewertungen, Transparenzpflichten und technische Dokumentationsanforderungen für KI-Systeme.', 
+          url: '/eu-ai-act', 
+          description: 'Premium EU AI Act Compliance Service. Kompletter Leitfaden zur EU-Verordnung über Künstliche Intelligenz. Verstehen Sie Risikoklassen, Konformitätsbewertungen, Transparenzpflichten und technische Dokumentationsanforderungen für KI-Systeme.', 
           priority: 'high',
           available: true 
         },
         { 
-          title: 'NIS-2', 
-          url: '/regulierung/nis2', 
-          description: 'Detaillierte Informationen zur Network and Information Security Directive 2.0. Prüfen Sie Ihre Betroffenheit, verstehen Sie Meldepflichten und implementieren Sie erforderliche Cybersecurity-Maßnahmen.', 
+          title: 'NIS-2 Compliance', 
+          url: '/nis2-compliance', 
+          description: 'NIS-2 Compliance Service. Detaillierte Informationen zur Network and Information Security Directive 2.0. Prüfen Sie Ihre Betroffenheit, verstehen Sie Meldepflichten und implementieren Sie erforderliche Cybersecurity-Maßnahmen.', 
           priority: 'medium',
           available: true 
         },
         { 
           title: 'Hinweisgeberschutzgesetz', 
-          url: '/regulierung/hinweisgeberschutzgesetz', 
-          description: 'Vollständiger Guide zum Whistleblower-Schutz in Deutschland. Erfahren Sie alles über interne Meldekanäle, Vertraulichkeitsanforderungen und Schutzmaßnahmen für Hinweisgeber nach HinSchG.', 
+          url: '/hinweisgeberschutzgesetz', 
+          description: 'Hinweisgeberschutz-Service. Vollständiger Guide zum Whistleblower-Schutz in Deutschland. Erfahren Sie alles über interne Meldekanäle, Vertraulichkeitsanforderungen und Schutzmaßnahmen für Hinweisgeber nach HinSchG.', 
           priority: 'medium',
           available: true 
         },
         { 
           title: 'Geldwäschegesetz', 
-          url: '/regulierung/geldwaeschegesetz', 
-          description: 'Praxisorientierter Leitfaden zu Anti-Geldwäsche-Bestimmungen (AML). Verstehen Sie Sorgfaltspflichten, Risikomanagement, Verdachtsmeldungen und interne Sicherungsmaßnahmen nach GwG.', 
+          url: '/geldwaeschegesetz', 
+          description: 'Anti-Geldwäsche-Service. Praxisorientierter Leitfaden zu Anti-Geldwäsche-Bestimmungen (AML). Verstehen Sie Sorgfaltspflichten, Risikomanagement, Verdachtsmeldungen und interne Sicherungsmaßnahmen nach GwG.', 
           priority: 'medium',
           available: true 
         },
@@ -126,37 +126,37 @@ const SitemapSEO = () => {
       title: 'Zertifizierungen',
       items: [
         { 
-          title: 'ISO 27001', 
-          url: '/zertifizierung/iso-27001', 
-          description: 'Der internationale Standard für Informationssicherheits-Managementsysteme (ISMS). Schritt-für-Schritt-Anleitung zur Implementierung, Zertifizierungsvorbereitung und kontinuierlichen Verbesserung Ihrer IT-Sicherheit.', 
+          title: 'ISO 27001 Zertifizierung', 
+          url: '/iso-27001-zertifizierung', 
+          description: 'Professionelle ISO 27001 Zertifizierungsberatung. Der internationale Standard für Informationssicherheits-Managementsysteme (ISMS). Schritt-für-Schritt-Anleitung zur Implementierung, Zertifizierungsvorbereitung und kontinuierlichen Verbesserung Ihrer IT-Sicherheit.', 
           priority: 'high',
           available: true 
         },
         { 
-          title: 'SOC 2', 
-          url: '/zertifizierung/soc2', 
-          description: 'System and Organization Controls 2 für Service-Provider. Meistern Sie die fünf Trust Service Principles (Sicherheit, Verfügbarkeit, Vertraulichkeit, Verarbeitungsintegrität, Datenschutz) für Ihre Cloud-Services.', 
+          title: 'SOC 2 Zertifizierung', 
+          url: '/soc2-zertifizierung', 
+          description: 'Professionelle SOC 2 Zertifizierungsberatung. System and Organization Controls 2 für Service-Provider. Meistern Sie die fünf Trust Service Principles (Sicherheit, Verfügbarkeit, Vertraulichkeit, Verarbeitungsintegrität, Datenschutz) für Ihre Cloud-Services.', 
           priority: 'high',
           available: true 
         },
         { 
-          title: 'ISO 27017', 
-          url: '/zertifizierung/iso-27017', 
-          description: 'Spezifische Sicherheitskontrollen für Cloud-Services. Erweitern Sie Ihr ISO 27001 ISMS um Cloud-spezifische Controls für Provider und Nutzer von Cloud-Diensten.', 
+          title: 'ISO 27017 Zertifizierung', 
+          url: '/iso-27017-zertifizierung', 
+          description: 'Cloud Security Zertifizierungsberatung. Spezifische Sicherheitskontrollen für Cloud-Services. Erweitern Sie Ihr ISO 27001 ISMS um Cloud-spezifische Controls für Provider und Nutzer von Cloud-Diensten.', 
           priority: 'medium',
           available: true 
         },
         { 
-          title: 'ISO 27018', 
-          url: '/zertifizierung/iso-27018', 
-          description: 'Datenschutz in der Cloud für personenbezogene Daten. Implementieren Sie spezielle Privacy-Controls für Public Cloud PII (Personally Identifiable Information) Prozessoren.', 
+          title: 'ISO 27018 Zertifizierung', 
+          url: '/iso-27018-zertifizierung', 
+          description: 'Cloud Privacy Zertifizierungsberatung. Datenschutz in der Cloud für personenbezogene Daten. Implementieren Sie spezielle Privacy-Controls für Public Cloud PII (Personally Identifiable Information) Prozessoren.', 
           priority: 'medium',
           available: true 
         },
         { 
-          title: 'TISAX', 
-          url: '/zertifizierung/tisax', 
-          description: 'Trusted Information Security Assessment Exchange für die Automobilindustrie. Erfüllen Sie die spezifischen Anforderungen der Automobilhersteller an Informationssicherheit und Datenschutz.', 
+          title: 'TISAX Zertifizierung', 
+          url: '/tisax-zertifizierung', 
+          description: 'Automotive Security Zertifizierungsberatung. Trusted Information Security Assessment Exchange für die Automobilindustrie. Erfüllen Sie die spezifischen Anforderungen der Automobilhersteller an Informationssicherheit und Datenschutz.', 
           priority: 'medium',
           available: true 
         },

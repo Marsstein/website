@@ -2,6 +2,83 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/regulierung/dsgvo",
+      "destination": "/dsgvo",
+      "statusCode": 301
+    },
+    {
+      "source": "/regulierung/eu-ai-act",
+      "destination": "/eu-ai-act",
+      "statusCode": 301
+    },
+    {
+      "source": "/regulierung/nis2",
+      "destination": "/nis2-compliance",
+      "statusCode": 301
+    },
+    {
+      "source": "/regulierung/hinweisgeberschutzgesetz",
+      "destination": "/hinweisgeberschutzgesetz",
+      "statusCode": 301
+    },
+    {
+      "source": "/regulierung/geldwaeschegesetz",
+      "destination": "/geldwaeschegesetz",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/iso-27001",
+      "destination": "/iso-27001-zertifizierung",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/soc2",
+      "destination": "/soc2-zertifizierung",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/iso-27017",
+      "destination": "/iso-27017-zertifizierung",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/iso-27018",
+      "destination": "/iso-27018-zertifizierung",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/tisax",
+      "destination": "/tisax-zertifizierung",
+      "statusCode": 301
+    },
+    {
+      "source": "/dsgvo-compliance",
+      "destination": "/dsgvo",
+      "statusCode": 301
+    },
+    {
+      "source": "/iso-27001-compliance",
+      "destination": "/iso-27001-zertifizierung",
+      "statusCode": 301
+    },
+    {
+      "source": "/eu-ai-act-compliance",
+      "destination": "/eu-ai-act",
+      "statusCode": 301
+    },
+    {
+      "source": "/tools/cookie-management-tool",
+      "destination": "/tools/cookie-management",
+      "statusCode": 301
+    },
+    {
+      "source": "/tools/whistleblower-system-tool",
+      "destination": "/tools/whistleblower-system",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

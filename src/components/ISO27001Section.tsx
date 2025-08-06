@@ -366,7 +366,7 @@ export const ISO27001Section: React.FC = () => {
                   </Button>
                 </Link>
                 
-                <Link to="/zertifizierung/iso-27001">
+                <Link to="/iso-27001-zertifizierung">
                   <Button 
                     variant="outline" 
                     className="px-6 py-2 font-semibold border border-gray-300 hover:bg-white hover:border-[#e24e1b] hover:text-[#e24e1b] transition-all duration-200"
