@@ -240,7 +240,7 @@ export const TrustVerificationFlow: React.FC = () => {
 
         {/* Über 500 Unternehmen vertrauen uns */}
         <div className="text-center bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-white">
-          <h3 className="text-2xl font-bold mb-4">Über 500 Unternehmen vertrauen uns</h3>
+          <h3 className="text-2xl font-bold mb-4">Compliance-Lösungen für Unternehmen</h3>
           <p className="text-lg opacity-90 mb-6">Werden Sie Teil der Compliance-Revolution</p>
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center">

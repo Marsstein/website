@@ -518,9 +518,9 @@ const WebsiteDsgvoGuide: React.FC = () => {
                     <div class="text-blue-300 font-semibold mb-2">2. Consent Management Platform (CMP) wählen</div>
                     <div class="grid md:grid-cols-3 gap-3">
                       ${[
-                        { name: 'Cookiebot', price: 'Ab 9€/Monat', features: 'Auto-Scanning, IAB TCF 2.0, 40+ Sprachen' },
+                        { name: 'Cookiebot', price: 'SaaS', features: 'Auto-Scanning, IAB TCF 2.0, 40+ Sprachen' },
                         { name: 'OneTrust', price: 'Enterprise', features: 'Enterprise-Level, Vollautomatisierung' },
-                        { name: 'Usercentrics', price: 'Ab 5€/Monat', features: 'DACH-fokussiert, einfache Integration' }
+                        { name: 'Usercentrics', price: 'SaaS', features: 'DACH-fokussiert, einfache Integration' }
                       ].map(tool => `
                         <div class="bg-slate-800/60 rounded p-3">
                           <div class="text-white font-semibold">${tool.name}</div>

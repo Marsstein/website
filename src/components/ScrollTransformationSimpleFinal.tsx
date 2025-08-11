@@ -35,9 +35,9 @@ const transformationCards = [
     solution: {
       icon: Shield,
       title: 'KI-gestützte Automatisierung',
-      description: 'Unsere KI-Plattform überwacht kontinuierlich alle datenschutzrelevanten Prozesse in Echtzeit. Intelligente Algorithmen erkennen Compliance-Lücken bevor sie zu Problemen werden. Automatische Dokumentation, präventive Warnungen und One-Click-Fixes sorgen dafür, dass Sie immer auf der sicheren Seite sind. Über 500 Unternehmen vertrauen bereits auf unseren Schutz.',
+      description: 'Unsere KI-Plattform überwacht kontinuierlich alle datenschutzrelevanten Prozesse in Echtzeit. Intelligente Algorithmen erkennen Compliance-Lücken bevor sie zu Problemen werden. Automatische Dokumentation, präventive Warnungen und One-Click-Fixes sorgen dafür, dass Sie immer auf der sicheren Seite sind. Entwickelt für moderne EU-Unternehmen.',
       benefit: '85% weniger Aufwand',
-      detail: 'Garantiert bußgeldfrei',
+      detail: 'Ziel: Bußgeld-Vermeidung',
       color: 'text-emerald-600',
       bgGradient: 'from-emerald-500/10 to-green-500/10'
     }
@@ -420,11 +420,11 @@ export const ScrollTransformationSimpleFinal: React.FC = () => {
             <div className="space-y-4">
               <Badge className="bg-white/20 text-white border-white/30 backdrop-blur-sm font-semibold text-sm">
                 <Rocket className="w-4 h-4 mr-2" />
-                Compliance-Revolution
+                Compliance-Innovation
               </Badge>
               
               <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                Bereit für die Compliance-Revolution?
+                Bereit für die Compliance-Innovation?
               </h2>
               
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">

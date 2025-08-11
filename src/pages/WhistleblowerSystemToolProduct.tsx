@@ -220,108 +220,8 @@ const WhistleblowerSystemToolProduct = () => {
     }
   ];
 
-  const pricingPlans = [
-    {
-      name: 'Essential',
-      price: '199',
-      originalPrice: '299',
-      period: '/Monat',
-      description: 'Ideal für Unternehmen 50-250 Mitarbeiter',
-      maxReports: '50',
-      maxUsers: '5',
-      features: [
-        'Web-Portal & Mobile App',
-        'E-Mail Integration',
-        'Basic Case Management',
-        'Standard-Templates',
-        'E-Mail Support',
-        'DSGVO-konforme Dokumentation'
-      ],
-      notIncluded: [
-        '24/7 Hotline',
-        'Custom Branding',
-        'Advanced Analytics'
-      ],
-      popular: false,
-      savings: '33%'
-    },
-    {
-      name: 'Professional',
-      price: '499',
-      originalPrice: '699',
-      period: '/Monat',
-      description: 'Für wachsende Unternehmen',
-      maxReports: '200',
-      maxUsers: '15',
-      features: [
-        'Alle Essential Features',
-        '24/7 Telefon-Hotline',
-        'Custom Branding & White-Label',
-        'Advanced Analytics Dashboard',
-        'Multi-Sprachen Support',
-        'Priority Support',
-        'Workflow-Automatisierung',
-        'Integration APIs'
-      ],
-      notIncluded: [
-        'Enterprise SSO',
-        'On-Premise Option'
-      ],
-      popular: true,
-      savings: '29%'
-    },
-    {
-      name: 'Enterprise',
-      price: '999',
-      originalPrice: '1499',
-      period: '/Monat',
-      description: 'Für Konzerne und Behörden',
-      maxReports: 'Unbegrenzt',
-      maxUsers: 'Unbegrenzt',
-      features: [
-        'Alle Professional Features',
-        'Enterprise SSO (SAML, OAuth)',
-        'On-Premise Installation möglich',
-        'Dedicated Success Manager',
-        'Custom SLA bis 99.99%',
-        'Legal Expert Consulting',
-        'Custom Feature Development',
-        'White-Glove Migration Service'
-      ],
-      notIncluded: [],
-      popular: false,
-      savings: '33%'
-    }
-  ];
 
-  const testimonials = [
-    {
-      company: 'Mittelständisches Produktionsunternehmen',
-      industry: 'Maschinenbau',
-      results: [
-        { metric: 'Setup-Zeit', before: '6 Monate', after: '2 Wochen', improvement: '+92%' },
-        { metric: 'Meldungen/Jahr', before: '3', after: '18', improvement: '+500%' },
-        { metric: 'Bearbeitungszeit', before: '45 Tage', after: '7 Tage', improvement: '+84%' },
-        { metric: 'Compliance-Score', before: '45%', after: '98%', improvement: '+118%' }
-      ],
-      quote: "Das System hat unsere Compliance-Prozesse revolutioniert. Wir sind jetzt nicht nur EU-konform, sondern haben auch das Vertrauen unserer Mitarbeiter gestärkt.",
-      avatar: Building2,
-      size: '200 Mitarbeiter'
-    },
-    {
-      company: 'Internationaler Automobilzulieferer',
-      industry: 'Automotive',
-      results: [
-        { metric: 'Länder-Abdeckung', before: '60%', after: '100%', improvement: '+67%' },
-        { metric: 'Systemkosten/Jahr', before: '€340k', after: '€89k', improvement: '+74%' },
-        { metric: 'Bearbeitungsqualität', before: '67%', after: '96%', improvement: '+43%' },
-        { metric: 'Audit-Bereitschaft', before: '3 Tage', after: 'Sofort', improvement: '+100%' }
-      ],
-      quote: "Die zentrale Plattform hat unsere 12 verschiedenen Systeme in 15 Ländern ersetzt. Endlich haben wir einheitliche Standards und Prozesse.",
-      avatar: Globe,
-      size: '15.000 Mitarbeiter weltweit'
-    }
-  ];
+  const testimonials = [];
 
   const complianceFeatures = [
     {
@@ -384,8 +284,8 @@ const WhistleblowerSystemToolProduct = () => {
       answer: 'KI kategorisiert eingehende Meldungen automatisch und weist sie den zuständigen Personen zu. Fristen werden automatisch überwacht, Eskalationen ausgelöst und Status-Updates an Hinweisgeber versandt. Der gesamte Prozess ist auditierbar dokumentiert.'
     },
     {
-      question: 'Gibt es eine Geld-zurück-Garantie?',
-      answer: 'Ja, 30 Tage Geld-zurück-Garantie ohne Fragen. Zusätzlich garantieren wir die erfolgreiche Implementierung und Compliance-Konformität oder Sie erhalten eine vollständige Rückerstattung plus Beratungskosten.'
+      question: 'Wie schnell ist die Implementierung?',
+      answer: 'Die Implementierung dauert typischerweise 1-2 Wochen. Wir garantieren die erfolgreiche Einrichtung und Compliance-Konformität Ihres Systems.'
     }
   ];
 
@@ -497,7 +397,7 @@ const WhistleblowerSystemToolProduct = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <PlayCircle className="w-5 h-5" />
-                  <span>Kostenlos testen (30 Tage)</span>
+                  <span>Jetzt starten</span>
                 </motion.button>
                 
                 <motion.button 
@@ -890,107 +790,6 @@ const WhistleblowerSystemToolProduct = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 px-6 bg-white">
-        <div className="container mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Transparente Preise
-            </h2>
-            <p className="text-xl text-gray-600 mb-8">
-              Sparen Sie bis zu 33% mit unserem Einführungsangebot
-            </p>
-            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-green-100 rounded-full">
-              <Star className="w-4 h-4 text-green-600" />
-              <span className="text-green-800 font-medium">Limitiert: 33% Rabatt für die ersten 6 Monate</span>
-            </div>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {pricingPlans.map((plan, index) => (
-              <motion.div
-                key={index}
-                className={`bg-white rounded-2xl p-8 shadow-xl relative ${
-                  plan.popular ? 'ring-2 ring-emerald-500 scale-105' : ''
-                }`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Empfohlen
-                    </span>
-                  </div>
-                )}
-                
-                {plan.savings && (
-                  <div className="absolute -top-2 -right-2">
-                    <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      -{plan.savings} Rabatt
-                    </div>
-                  </div>
-                )}
-                
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <div className="mb-4">
-                    <div className="flex items-center justify-center space-x-2">
-                      <span className="text-4xl font-bold text-gray-900">€{plan.price}</span>
-                      <div className="text-left">
-                        <div className="text-sm text-gray-400 line-through">€{plan.originalPrice}</div>
-                        <div className="text-sm text-gray-600">{plan.period}</div>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 mb-4">{plan.description}</p>
-                  <div className="text-sm text-gray-500">
-                    Bis zu {plan.maxReports} Meldungen • {plan.maxUsers} Nutzer
-                  </div>
-                </div>
-                
-                <div className="space-y-4 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                  {plan.notIncluded.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-3 opacity-50">
-                      <XCircle className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                      <span className="text-gray-500">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <motion.button
-                  className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
-                    plan.popular
-                      ? 'bg-emerald-500 text-white hover:shadow-xl'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {plan.name === 'Enterprise' ? 'Kontakt aufnehmen' : '30 Tage kostenlos testen'}
-                </motion.button>
-                
-                <div className="mt-4 text-center text-xs text-gray-500">
-                  {plan.name !== 'Enterprise' && 'Keine Kreditkarte erforderlich'}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-gray-50">
@@ -1040,8 +839,7 @@ const WhistleblowerSystemToolProduct = () => {
               Starten Sie heute mit professionellem Hinweisgeberschutz
             </h2>
             <p className="text-xl text-emerald-100 mb-12">
-              Über 2.000 Unternehmen vertrauen bereits auf unser System. 
-              Erfüllen Sie die EU-Richtlinien und schaffen Sie Vertrauen - in unter 24 Stunden.
+              Erfüllen Sie die EU-Richtlinien und schaffen Sie Vertrauen mit einem professionellen System - in unter 24 Stunden.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
@@ -1051,7 +849,7 @@ const WhistleblowerSystemToolProduct = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Rocket className="w-6 h-6" />
-                <span>Jetzt 30 Tage kostenlos testen</span>
+                <span>Jetzt starten</span>
               </motion.button>
               
               <motion.button

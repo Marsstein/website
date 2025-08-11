@@ -257,7 +257,7 @@ export const TrustExcellenceGrid: React.FC = () => {
 
         {/* Trust Statement with Customer Count */}
         <div className="text-center bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-8 text-white">
-          <h3 className="text-3xl font-bold mb-4">Über 500 Unternehmen vertrauen uns</h3>
+          <h3 className="text-3xl font-bold mb-4">Ihre Compliance-Plattform</h3>
           <p className="text-xl opacity-90 mb-6">Werden Sie Teil der Compliance-Revolution</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <div className="text-center">

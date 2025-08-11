@@ -138,7 +138,7 @@ const HeroSection = () => {
               </Badge>
               <Badge className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-0 px-4 py-2">
                 <Award className="h-4 w-4 mr-2" />
-                500+ erfolgreiche Zertifizierungen
+Professionelle Zertifizierung
               </Badge>
             </motion.div>
             
@@ -1455,195 +1455,8 @@ const BenefitsSection = () => (
     </section>
   );
 
-  // Testimonials Section
-  const TestimonialsSection = () => (
-    <section className="py-20 md:py-32">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-yellow-100 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-300">
-            <Star className="h-3.5 w-3.5 mr-2" />
-            Kundenstimmen
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Was unsere Kunden sagen
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              quote: "Marsstein hat unseren ISO 27001-Zertifizierungsprozess um Monate verkürzt. Die KI-gestützte Gap-Analyse war unglaublich präzise.",
-              author: "Dr. Sarah Weber",
-              role: "CISO",
-              company: "CloudTech Solutions",
-              avatar: "SW",
-              rating: 5
-            },
-            {
-              quote: "Als FinTech-Startup war ISO 27001 Pflicht für unsere Expansion. Marsstein machte es möglich - effizient und kostengünstig.",
-              author: "Michael Schmidt",
-              role: "Co-Founder & CTO",
-              company: "SecurePay GmbH",
-              avatar: "MS",
-              rating: 5
-            },
-            {
-              quote: "Die Expertise und Begleitung waren erstklassig. Wir haben nicht nur die Zertifizierung erhalten, sondern auch unsere Sicherheit drastisch verbessert.",
-              author: "Anna Müller",
-              role: "Head of Compliance",
-              company: "MedData Systems",
-              avatar: "AM",
-              rating: 5
-            }
-          ].map((testimonial, index) => (
-            <Card key={index} className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50 border-2">
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <Quote className="h-8 w-8 text-blue-600/30" />
-                </div>
-
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-
-                <blockquote className="text-foreground leading-relaxed mb-6">
-                  "{testimonial.quote}"
-                </blockquote>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-[#a1251b] rounded-full flex items-center justify-center text-white font-semibold">
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-sm text-blue-600 font-medium">{testimonial.company}</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
 
   // Pricing Section
-  const PricingSection = () => (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
-            <Euro className="h-3.5 w-3.5 mr-2" />
-            Transparente Preise
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Investition in Ihre internationale Zukunft
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {[
-            {
-              name: 'Starter',
-              price: '4.990',
-              description: 'Für kleine Unternehmen und Startups',
-              features: [
-                'Bis zu 50 Mitarbeiter',
-                'Basis-ISMS Implementation',
-                'Gap-Analyse & Roadmap',
-                'Standard-Dokumentation',
-                'E-Mail Support',
-                'Self-Service Portal'
-              ],
-              popular: false
-            },
-            {
-              name: 'Professional',
-              price: '9.990',
-              description: 'Für wachsende Unternehmen',
-              features: [
-                'Bis zu 250 Mitarbeiter',
-                'Vollständige ISMS-Implementierung',
-                'Umfassende Risikobewertung',
-                'Maßgeschneiderte Dokumentation',
-                'Mitarbeiterschulungen',
-                'Dedicated Customer Success Manager',
-                'Prioritäts-Support',
-                'Audit-Vorbereitung'
-              ],
-              popular: true
-            },
-            {
-              name: 'Enterprise',
-              price: 'Individuell',
-              description: 'Für Konzerne und komplexe Strukturen',
-              features: [
-                'Unbegrenzte Mitarbeiter',
-                'Multi-Site Implementation',
-                'Erweiterte Risikobewertung',
-                'Compliance-Dashboard',
-                'Kontinuierliche Überwachung',
-                'Dedicated Compliance Team',
-                '24/7 Premium Support',
-                'Custom Integrations',
-                'Executive Reporting'
-              ],
-              popular: false
-            }
-          ].map((plan, index) => (
-            <Card key={index} className={cn(
-              "relative overflow-hidden border-2 transition-all duration-300 hover:shadow-xl",
-              plan.popular ? "border-blue-600 shadow-lg scale-105" : "border-gray-200 hover:border-blue-600/30"
-            )}>
-              {plan.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-600 to-[#a1251b] text-white text-center py-2 text-sm font-medium">
-                  Beliebteste Wahl
-                </div>
-              )}
-              <CardHeader className={cn("text-center", plan.popular && "pt-16")}>
-                <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                <div className="text-4xl font-bold">
-                  {plan.price === 'Individuell' ? (
-                    <span className="text-2xl">Auf Anfrage</span>
-                  ) : (
-                    <>
-                      €{plan.price}
-                      <span className="text-lg font-normal text-muted-foreground">/einmalig</span>
-                    </>
-                  )}
-                </div>
-                <CardDescription>{plan.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <ul className="space-y-3">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button 
-                  className={cn(
-                    "w-full",
-                    plan.popular 
-                      ? "bg-gradient-to-r from-blue-600 to-[#a1251b] hover:from-blue-700 hover:to-[#8a1f17]" 
-                      : "bg-[#a1251b] hover:bg-[#8a1f17]"
-                  )}
-                  size="lg"
-                >
-                  {plan.price === 'Individuell' ? 'Beratung anfragen' : 'Jetzt starten'}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
 
   // FAQ Section
   const FAQSection = () => (
@@ -1717,8 +1530,8 @@ const BenefitsSection = () => (
           </h2>
           
           <p className="text-xl text-white/90 leading-relaxed">
-            Schließen Sie sich über 500+ Unternehmen an, die mit Marsstein erfolgreich 
-            ISO 27001-zertifiziert wurden und internationale Märkte erobert haben.
+            Starten Sie Ihre professionelle ISO 27001-Zertifizierung 
+            mit Marsstein und erschließen Sie internationale Märkte.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -1762,8 +1575,6 @@ const Iso27001Compliance = () => {
       <BenefitsSection />
       <TargetIndustriesSection />
       <ProcessSection />
-      <TestimonialsSection />
-      <PricingSection />
       <FAQSection />
       <CTASection />
       <Footer />

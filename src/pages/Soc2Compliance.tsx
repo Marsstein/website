@@ -698,7 +698,7 @@ const Soc2Compliance = () => {
                 <div className="mt-8 flex items-center justify-center gap-2 text-white/80">
                   <Sparkles className="h-4 w-4" />
                   <span className="text-sm">
-                    Über 200 SaaS-Unternehmen vertrauen bereits auf unsere SOC 2 Expertise
+                    Professionelle SOC 2 Compliance für SaaS-Unternehmen
                   </span>
                 </div>
               </motion.div>

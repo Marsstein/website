@@ -8,8 +8,10 @@ import {
   BookOpen,
   Unlock,
   Target,
-  Rocket
+  Rocket,
+  Construction
 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
 export const VisionSection: React.FC = () => {
@@ -17,38 +19,44 @@ export const VisionSection: React.FC = () => {
     {
       icon: Sparkles,
       title: 'Komplexität raus, Klarheit rein',
-      description: 'Automatisierte Audits analysieren Ihre Richtlinien in Sekunden, zeigen Lücken auf und liefern umsetzbare Empfehlungen – validiert von zertifizierten Expert:innen.',
-      gradient: 'from-purple-600 to-pink-600'
+      description: 'Unser Ziel: Automatisierte Audits, die Richtlinien analysieren und umsetzbare Empfehlungen liefern. In Entwicklung mit Beta-Partnern.',
+      gradient: 'from-purple-600 to-pink-600',
+      status: 'Beta'
     },
     {
       icon: ShieldCheck,
       title: 'Sichere Grundlage',
-      description: 'Verschlüsselter Dokument-Vault hostet Ihre Daten in Europa und der Schweiz. ISO 27001 zertifiziert mit höchsten DSGVO-Standards und EU AI Act Compliance.',
-      gradient: 'from-blue-600 to-cyan-600'
+      description: 'Vision: Verschlüsselter Dokument-Vault in Europa. Entwickelt nach ISO 27001 Standards, DSGVO-konform und EU AI Act ready.',
+      gradient: 'from-blue-600 to-cyan-600',
+      status: 'In Progress'
     },
     {
       icon: Zap,
       title: 'Kontinuierliche Compliance',
-      description: 'Echtzeit-Monitoring und automatisierte Scans halten Ihre Organisation wachsam, minimieren Risiken und dokumentieren jede Änderung für Behörden.',
-      gradient: 'from-green-600 to-emerald-600'
+      description: 'Roadmap: Echtzeit-Monitoring und automatisierte Scans für kontinuierliche Compliance-Überwachung mit vollständiger Dokumentation.',
+      gradient: 'from-green-600 to-emerald-600',
+      status: 'Roadmap 2025'
     },
     {
       icon: BookOpen,
       title: 'Wissen, das wirkt',
-      description: 'Die Marsstein Academy macht Ihr Team zum stärksten Glied in der Datenschutz-Kette mit interaktiven Lernmodulen und praxisnahen Webinaren.',
-      gradient: 'from-orange-600 to-red-600'
+      description: 'Geplant: Die Marsstein Academy mit interaktiven Lernmodulen und praxisnahen Webinaren für starke Compliance-Teams.',
+      gradient: 'from-orange-600 to-red-600',
+      status: 'Q3 2025'
     },
     {
       icon: Unlock,
       title: 'Transparenz ohne Vendor-Lock-in',
-      description: 'Klare Preise, exportierbare Daten und 24/7-Support geben Ihnen die volle Kontrolle über Ihre Compliance-Reise – egal ob Start-up oder Konzern.',
-      gradient: 'from-indigo-600 to-purple-600'
+      description: 'Unsere Werte: Klare Preise, exportierbare Daten und faire Support-Modelle für volle Kontrolle über Ihre Compliance-Reise.',
+      gradient: 'from-indigo-600 to-purple-600',
+      status: 'Core Value'
     },
     {
       icon: Globe,
       title: 'Europäische Werte',
-      description: 'Wir glauben an einen europäischen Digitalraum, in dem Vertrauen, Innovation und Rechtssicherheit Hand in Hand gehen.',
-      gradient: 'from-teal-600 to-blue-600'
+      description: 'Unsere Mission: Ein europäischer Digitalraum, in dem Vertrauen, Innovation und Rechtssicherheit Hand in Hand gehen.',
+      gradient: 'from-teal-600 to-blue-600',
+      status: 'Mission'
     }
   ];
 
@@ -76,9 +84,9 @@ export const VisionSection: React.FC = () => {
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Marsstein entwickelt die führende, KI-gestützte Plattform, die Privacy-, Sicherheits- und 
-              AI-Regulierung in einen nahtlosen Workflow übersetzt – von der ersten Bestandsaufnahme 
-              bis zur lückenlosen Audit-Spur.
+              Marsstein entwickelt eine innovative, KI-gestützte Compliance-Plattform für moderne Unternehmen. 
+              Unser Ziel: Privacy-, Sicherheits- und AI-Regulierung in nahtlose Workflows übersetzen.
+              <Badge variant="outline" className="ml-2 text-xs">In Development</Badge>
             </p>
           </div>
 
@@ -94,14 +102,19 @@ export const VisionSection: React.FC = () => {
                 style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
               >
                 <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className={cn(
-                      "p-3 rounded-lg bg-gradient-to-br text-white",
-                      point.gradient
-                    )}>
-                      <point.icon className="h-6 w-6" />
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-start gap-4">
+                      <div className={cn(
+                        "p-3 rounded-lg bg-gradient-to-br text-white",
+                        point.gradient
+                      )}>
+                        <point.icon className="h-6 w-6" />
+                      </div>
+                      <CardTitle className="text-xl">{point.title}</CardTitle>
                     </div>
-                    <CardTitle className="text-xl">{point.title}</CardTitle>
+                    <Badge variant="secondary" className="text-xs">
+                      {point.status}
+                    </Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -113,15 +126,18 @@ export const VisionSection: React.FC = () => {
             ))}
           </div>
 
-          {/* Call to action */}
+          {/* Beta Call to action */}
           <div className="mt-16 text-center">
             <Card className="inline-block p-8 bg-gradient-to-r from-primary/5 to-primary/10 border-2 border-primary/20">
               <div className="flex items-center gap-3 text-lg font-medium">
-                <Rocket className="h-6 w-6 text-primary" />
+                <Construction className="h-6 w-6 text-primary" />
                 <span>
-                  Bereit, Ihre Compliance-Reise zu transformieren?
+                  Werden Sie Teil unserer Beta-Community und formen Sie die Zukunft von Compliance mit
                 </span>
               </div>
+              <Badge variant="outline" className="mt-2">
+                Early Access verfügbar
+              </Badge>
             </Card>
           </div>
         </div>

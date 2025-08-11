@@ -121,7 +121,7 @@ export const TransformationCTA: React.FC = () => {
               </Badge>
               
               <h3 className="text-2xl font-bold text-gray-900">
-                Bereit für die <span className="text-emerald-600">Compliance-Revolution?</span>
+                Bereit für die <span className="text-emerald-600">Compliance-Innovation?</span>
               </h3>
               
               <p className="text-lg text-gray-700 max-w-xl mx-auto">

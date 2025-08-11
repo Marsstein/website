@@ -284,7 +284,7 @@ export const TrustInnovationHub: React.FC = () => {
 
         {/* Innovation Trust Statement */}
         <div className="text-center bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 rounded-2xl p-8 text-white">
-          <h3 className="text-3xl font-bold mb-4">Über 500 Unternehmen vertrauen uns</h3>
+          <h3 className="text-3xl font-bold mb-4">Vertrauen durch Transparenz</h3>
           <p className="text-xl opacity-90 mb-6">Werden Sie Teil der Compliance-Revolution</p>
           <div className="flex flex-wrap justify-center gap-8 text-sm mb-6">
             <div className="flex items-center">

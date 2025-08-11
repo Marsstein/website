@@ -24,14 +24,12 @@ import {
   AlertCircle,
   TrendingUp,
   Award,
-  Star,
   Zap,
   Database,
   FileText,
   Bot,
   BarChart3,
   Globe,
-  Quote,
   ChevronRight,
   ChevronLeft,
   PlayCircle,
@@ -690,7 +688,7 @@ const EuAiActCompliance = () => {
                     <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-green-600 border-2 border-white"></div>
                     <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 border-2 border-white"></div>
                   </div>
-                  <span className="text-sm text-gray-600 font-medium">Bereits 200+ Unternehmen vertrauen uns</span>
+                  <span className="text-sm text-gray-600 font-medium">Für professionelle AI Act Compliance</span>
                 </div>
               </div>
             </div>
@@ -1638,223 +1636,7 @@ const EuAiActCompliance = () => {
     </section>
   );
 
-  // Testimonials Section
-  const TestimonialsSection = () => (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
-            <Star className="h-3.5 w-3.5 mr-2" />
-            Kundenstimmen
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            AI Act Compliance in der Praxis
-          </h2>
-        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              quote: "Marsstein hat unsere 47 KI-Systeme in 3 Tagen klassifiziert. Ohne sie wären wir niemals rechtzeitig AI Act compliant geworden.",
-              author: "Dr. Lisa Weber",
-              role: "Chief AI Officer",
-              company: "AutoTech Industries",
-              avatar: "LW",
-              rating: 5,
-              industry: "Automotive"
-            },
-            {
-              quote: "Die automatische CE-Kennzeichnung für unsere MedTech-KI hat uns 6 Monate Anwaltsarbeit gespart. Absolut empfehlenswert.",
-              author: "Prof. Michael Schmidt",
-              role: "Regulatory Affairs",
-              company: "HealthAI Solutions",
-              avatar: "MS",
-              rating: 5,
-              industry: "MedTech"
-            },
-            {
-              quote: "Endlich eine AI Act Lösung, die auch Nicht-Juristen verstehen. Das Dashboard zeigt alles auf einen Blick - genial einfach.",
-              author: "Sarah Müller",
-              role: "Head of Compliance",
-              company: "FinanceBot GmbH",
-              avatar: "SM",
-              rating: 5,
-              industry: "FinTech"
-            }
-          ].map((testimonial, index) => (
-            <Card key={index} className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-purple-50 border-2">
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <Quote className="h-8 w-8 text-purple-600/30" />
-                </div>
-
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-
-                <blockquote className="text-foreground leading-relaxed mb-6">
-                  "{testimonial.quote}"
-                </blockquote>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-[#a1251b] rounded-full flex items-center justify-center text-white font-semibold">
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-sm text-purple-600 font-medium">{testimonial.company}</div>
-                  </div>
-                </div>
-                
-                <Badge variant="outline" className="mt-4 text-xs">
-                  {testimonial.industry}
-                </Badge>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-
-  // Pricing Section
-  const PricingSection = () => (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
-            <Euro className="h-3.5 w-3.5 mr-2" />
-            AI Act Compliance Preise
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Transparente Preise - keine versteckten Kosten
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Deutlich günstiger als traditionelle Rechtsberatung und 10x schneller
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {[
-            {
-              name: 'Starter',
-              price: '2.990',
-              description: 'Für kleine Unternehmen mit wenigen KI-Systemen',
-              features: [
-                'Bis zu 10 KI-Systeme',
-                'Automatische Risikobewertung',
-                'Basis-Dokumentation',
-                'Transparenz-Compliance (Chatbots)',
-                'E-Mail Support',
-                '12 Monate Updates'
-              ],
-              popular: false,
-              timeframe: '1 Woche Implementation'
-            },
-            {
-              name: 'Professional',
-              price: '7.990',
-              description: 'Für Unternehmen mit Hochrisiko-KI',
-              features: [
-                'Unbegrenzte KI-Systeme',
-                'CE-Kennzeichnung automatisch',
-                'Vollständige AI Act Dokumentation',
-                'Kontinuierliches Monitoring',
-                'Team-Schulungen (online)',
-                'Dedicated Customer Success Manager',
-                'Prioritäts-Support',
-                'Quartalsweise Compliance-Reviews'
-              ],
-              popular: true,
-              timeframe: '2 Wochen Implementation'
-            },
-            {
-              name: 'Enterprise',
-              price: 'Individuell',
-              description: 'Für Konzerne und komplexe KI-Landschaften',
-              features: [
-                'Multi-Site AI Act Compliance',
-                'Custom Regulatory Framework',
-                'Foundation Model Compliance (GPAI)',
-                'White-Label Dashboard',
-                'On-Site Schulungen',
-                'Dedicated Legal Team',
-                '24/7 Premium Support',
-                'Custom API Integrationen',
-                'Regulatory Change Management'
-              ],
-              popular: false,
-              timeframe: '4 Wochen Implementation'
-            }
-          ].map((plan, index) => (
-            <Card key={index} className={cn(
-              "relative overflow-hidden border-2 transition-all duration-300 hover:shadow-xl",
-              plan.popular ? "border-purple-600 shadow-lg scale-105" : "border-gray-200 hover:border-purple-600/30"
-            )}>
-              {plan.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-[#a1251b] text-white text-center py-2 text-sm font-medium">
-                  Beliebteste Wahl
-                </div>
-              )}
-              <CardHeader className={cn("text-center", plan.popular && "pt-16")}>
-                <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                <div className="text-4xl font-bold">
-                  {plan.price === 'Individuell' ? (
-                    <span className="text-2xl">Auf Anfrage</span>
-                  ) : (
-                    <>
-                      €{plan.price}
-                      <span className="text-lg font-normal text-muted-foreground">/einmalig</span>
-                    </>
-                  )}
-                </div>
-                <CardDescription>{plan.description}</CardDescription>
-                <Badge variant="outline" className="mt-2 text-xs">
-                  {plan.timeframe}
-                </Badge>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <ul className="space-y-3">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button 
-                  className={cn(
-                    "w-full",
-                    plan.popular 
-                      ? "bg-gradient-to-r from-purple-600 to-[#a1251b] hover:from-purple-700 hover:to-[#8a1f17]" 
-                      : "bg-[#a1251b] hover:bg-[#8a1f17]"
-                  )}
-                  size="lg"
-                >
-                  {plan.price === 'Individuell' ? 'Enterprise Demo' : 'AI Act Compliance starten'}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Value Proposition */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-6 p-6 bg-green-50 rounded-2xl border border-green-200">
-            <div className="text-left">
-              <div className="font-bold text-green-800 text-lg">Vergleich: Traditionelle Beratung vs. Marsstein</div>
-              <div className="text-green-700 text-sm">Anwaltskanzlei: €150.000+ | 6+ Monate | Unsicher</div>
-              <div className="text-green-700 text-sm">Marsstein: €7.990 | 2 Wochen | 99.7% Erfolgsquote</div>
-            </div>
-            <div className="text-3xl font-bold text-green-600">95% günstiger</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
 
   // FAQ Section
   const FAQSection = () => (
@@ -1932,7 +1714,7 @@ const EuAiActCompliance = () => {
           </h2>
           
           <p className="text-xl text-white/90 leading-relaxed">
-            Schließen Sie sich 200+ Unternehmen an, die mit Marsstein bereits AI Act compliant sind. 
+            Werden Sie frühzeitig AI Act compliant mit Marsstein. 
             <span className="font-semibold"> Frühzeitige Compliance sichert Wettbewerbsvorteile</span> 
             und vermeidet rechtliche Risiken.
           </p>
@@ -1977,8 +1759,6 @@ const EuAiActCompliance = () => {
         <BenefitsSection />
         <TargetIndustriesSection />
         <ProcessSection />
-        <TestimonialsSection />
-        <PricingSection />
         <FAQSection />
         <CTASection />
       </main>

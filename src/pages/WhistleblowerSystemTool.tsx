@@ -292,52 +292,6 @@ const WhistleblowerSystemTool = () => {
     { value: '24/7', label: 'Verfügbar', icon: Headphones }
   ];
 
-  const pricing = [
-    {
-      name: 'Essential',
-      price: '199€',
-      period: '/Monat',
-      description: 'Für Unternehmen 50-250 Mitarbeiter',
-      features: [
-        'Web-Portal & Mobile App',
-        'E-Mail & Telefon-Integration',
-        'Basis Case Management',
-        'DSGVO-konforme Abwicklung',
-        'Standard-Support'
-      ],
-      popular: false
-    },
-    {
-      name: 'Professional',
-      price: '499€',
-      period: '/Monat',
-      description: 'Für Unternehmen 250-1000 Mitarbeiter',
-      features: [
-        'Alle Essential Features',
-        '24/7 Hotline-Service',
-        'Erweiterte Workflows',
-        'Custom Branding',
-        'Analytics Dashboard',
-        'Priority Support'
-      ],
-      popular: true
-    },
-    {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: '',
-      description: 'Für Konzerne und spezielle Anforderungen',
-      features: [
-        'Alle Professional Features',
-        'Multi-Tenant Architektur',
-        'API-Integrationen',
-        'Dedicated Success Manager',
-        'On-Premise Option',
-        'Legal Expert Support'
-      ],
-      popular: false
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-emerald-50 to-teal-50">
@@ -873,77 +827,6 @@ const WhistleblowerSystemTool = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 px-6 bg-white">
-        <div className="container mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Transparente Preise
-            </h2>
-            <p className="text-xl text-gray-600">
-              Faire Preisgestaltung für jede Unternehmensgröße
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {pricing.map((plan, index) => (
-              <motion.div
-                key={index}
-                className={`bg-white rounded-2xl p-8 shadow-xl relative ${
-                  plan.popular ? 'ring-2 ring-emerald-500 scale-105' : ''
-                }`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Empfohlen
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                    <span className="text-gray-600">{plan.period}</span>
-                  </div>
-                  <p className="text-gray-600">{plan.description}</p>
-                </div>
-                
-                <div className="space-y-4 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <motion.button
-                  className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
-                    plan.popular
-                      ? 'bg-emerald-500 text-white hover:shadow-xl'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {plan.name === 'Enterprise' ? 'Kontakt aufnehmen' : 'Jetzt starten'}
-                </motion.button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-6 bg-gradient-to-br from-emerald-500 to-teal-600">
@@ -969,7 +852,7 @@ const WhistleblowerSystemTool = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Rocket className="w-5 h-5" />
-                <span>Kostenlos testen (30 Tage)</span>
+                <span>Demo anfordern</span>
               </motion.button>
               
               <motion.button

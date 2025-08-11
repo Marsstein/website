@@ -76,29 +76,7 @@ const DigitalTrust: React.FC = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      quote: "Marsstein hat unser Vertrauen in Compliance-Software wiederhergestellt. Absolute Transparenz und Kontrolle.",
-      author: "Dr. Sarah Mueller",
-      role: "Chief Privacy Officer",
-      company: "Deutsche Bank AG",
-      trustRating: 5
-    },
-    {
-      quote: "Endlich eine Lösung, die Vertrauen nicht nur verspricht, sondern täglich unter Beweis stellt.",
-      author: "Michael Weber",
-      role: "Head of Compliance",
-      company: "Siemens Healthcare",
-      trustRating: 5
-    },
-    {
-      quote: "Die Transparenz der Prozesse gibt uns die Sicherheit, die wir für unsere kritischen Systeme brauchen.",
-      author: "Anna Zimmermann",
-      role: "CISO",
-      company: "Credit Suisse",
-      trustRating: 5
-    }
-  ];
+  const testimonials = [];
 
   const securityBadges = [
     { name: "SOC 2 Type II", verified: true },

@@ -174,7 +174,7 @@ const CookieManagementTool = () => {
       solution: 'Automatische Geo-Lokalisierung und länderspezifische Banner',
       results: [
         { metric: 'Compliance-Score', before: '67%', after: '99%', improvement: '+48%' },
-        { metric: 'Legal-Aufwand', before: '40h/Monat', after: '2h/Monat', improvement: '-95%' },
+        { metric: 'Legal-Aufwand', before: '40h', after: '2h', improvement: '-95%' },
         { metric: 'Audit-Bereitschaft', before: '3 Tage', after: 'Sofort', improvement: '100%' },
         { metric: 'Bußgeld-Risiko', before: 'Hoch', after: 'Minimal', improvement: '-90%' }
       ],
@@ -254,52 +254,6 @@ const CookieManagementTool = () => {
     { value: '24/7', label: 'Support', icon: Settings }
   ];
 
-  const pricing = [
-    {
-      name: 'Starter',
-      price: '29€',
-      period: '/Monat',
-      description: 'Für kleine Websites bis 10.000 Besucher/Monat',
-      features: [
-        'Cookie-Scanner & Banner',
-        'DSGVO-konforme Templates',
-        'Basic Analytics',
-        'E-Mail Support',
-        '1 Domain'
-      ],
-      popular: false
-    },
-    {
-      name: 'Business',
-      price: '99€',
-      period: '/Monat',
-      description: 'Für wachsende Unternehmen bis 100.000 Besucher/Monat',
-      features: [
-        'Alle Starter Features',
-        'A/B-Testing',
-        'Multi-Domain Support (5)',
-        'Advanced Analytics',
-        'Custom Branding',
-        'Priority Support'
-      ],
-      popular: true
-    },
-    {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: '',
-      description: 'Für große Unternehmen mit individuellen Anforderungen',
-      features: [
-        'Alle Business Features',
-        'Unlimited Domains',
-        'White-Label Lösung',
-        'SLA Garantie',
-        'Dedicated Account Manager',
-        'Custom Integrations'
-      ],
-      popular: false
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-red-50">
@@ -767,77 +721,6 @@ const CookieManagementTool = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="container mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Transparent & Fair
-            </h2>
-            <p className="text-xl text-gray-600">
-              Preise, die mit Ihrem Erfolg skalieren
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {pricing.map((plan, index) => (
-              <motion.div
-                key={index}
-                className={`bg-white rounded-2xl p-8 shadow-xl relative ${
-                  plan.popular ? 'ring-2 ring-orange-500 scale-105' : ''
-                }`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Beliebteste Wahl
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                    <span className="text-gray-600">{plan.period}</span>
-                  </div>
-                  <p className="text-gray-600">{plan.description}</p>
-                </div>
-                
-                <div className="space-y-4 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <motion.button
-                  className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
-                    plan.popular
-                      ? 'bg-orange-500 text-white hover:shadow-xl'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {plan.name === 'Enterprise' ? 'Kontakt aufnehmen' : 'Jetzt starten'}
-                </motion.button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-6 bg-gradient-to-br from-orange-500 to-red-600">
@@ -863,7 +746,7 @@ const CookieManagementTool = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Rocket className="w-5 h-5" />
-                <span>Kostenlos testen (14 Tage)</span>
+                <span>Jetzt starten</span>
               </motion.button>
               
               <motion.button
