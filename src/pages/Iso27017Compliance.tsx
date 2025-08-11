@@ -698,7 +698,7 @@ const Iso27017Compliance = () => {
                 <div className="mt-8 flex items-center justify-center gap-2 text-white/80">
                   <Sparkles className="h-4 w-4" />
                   <span className="text-sm">
-                    Über 150 Unternehmen vertrauen bereits auf unsere ISO 27017 Cloud Security Expertise
+                    Professionelle ISO 27017 Cloud Security Expertise für Unternehmen
                   </span>
                 </div>
               </motion.div>

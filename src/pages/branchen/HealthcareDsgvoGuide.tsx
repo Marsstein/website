@@ -1564,7 +1564,7 @@ const telemedicineSession = {
 
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
                         {[
-                          { icon: Heart, title: '500+ Healthcare-Kunden', subtitle: 'Vertrauen auf unsere Expertise' },
+                          { icon: Heart, title: 'Healthcare-Expertise', subtitle: 'Spezialisiert auf Gesundheitswesen' },
                           { icon: Shield, title: 'DSGVO + EU AI Act Ready', subtitle: 'Zukunftssichere Compliance' },
                           { icon: Award, title: 'MDR & ISO 27001 Certified', subtitle: 'Höchste Sicherheitsstandards' }
                         ].map((item, index) => (

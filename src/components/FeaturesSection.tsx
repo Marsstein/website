@@ -42,64 +42,68 @@ export const FeaturesSection: React.FC = () => {
       icon: Brain,
       title: 'KI-gestützte Audits',
       shortTitle: 'KI-Audits',
-      description: 'Intelligente Analyse Ihrer Compliance-Dokumente',
+      description: 'Vision: Intelligente Analyse Ihrer Compliance-Dokumente',
       benefits: [
-        'Automatische Lückenanalyse in Sekunden',
-        'Priorisierte Handlungsempfehlungen',
-        'Kontinuierliche Verbesserungsvorschläge',
-        'Validierung durch Experten'
+        'Ziel: Automatische Lückenanalyse in Minuten',
+        'Geplant: Priorisierte Handlungsempfehlungen',
+        'Roadmap: Kontinuierliche Verbesserungsvorschläge',
+        'Partner: Validierung durch Compliance-Experten'
       ],
-      stats: { value: '90%', label: 'schneller als manuelle Audits' },
+      stats: { value: 'Bis 90%', label: 'Potenzial für Zeitersparnis' },
       color: 'from-blue-600 to-purple-600',
-      image: '/features/ai-audit.png'
+      image: '/features/ai-audit.png',
+      status: 'Beta'
     },
     {
       id: 'secure-vault',
       icon: Shield,
       title: 'Sicherer Dokument-Vault',
       shortTitle: 'Dokument-Vault',
-      description: 'Verschlüsselte Speicherung in Europa',
+      description: 'Standards: Verschlüsselte Speicherung in Europa geplant',
       benefits: [
-        'Ende-zu-Ende Verschlüsselung',
-        'ISO 27001 zertifizierte Rechenzentren',
-        'Automatische Versionierung',
-        'Granulare Zugriffsrechte'
+        'Ziel: Ende-zu-Ende Verschlüsselung',
+        'Roadmap: Nach ISO 27001 Standards',
+        'Geplant: Automatische Versionierung',
+        'Vision: Granulare Zugriffsrechte'
       ],
-      stats: { value: '100%', label: 'DSGVO-konform' },
+      stats: { value: 'DSGVO', label: 'Standards-konform entwickelt' },
       color: 'from-green-600 to-teal-600',
-      image: '/features/vault.png'
+      image: '/features/vault.png',
+      status: 'In Progress'
     },
     {
       id: 'monitoring',
       icon: Scan,
       title: 'Echtzeit-Monitoring',
       shortTitle: 'Monitoring',
-      description: 'Proaktive Überwachung Ihrer Compliance',
+      description: 'Roadmap: Proaktive Überwachung Ihrer Compliance',
       benefits: [
-        '24/7 automatische Scans',
-        'Sofortige Benachrichtigungen',
-        'Risiko-Dashboard',
-        'Trend-Analysen'
+        'Vision: Automatisierte Scans',
+        'Geplant: Intelligente Benachrichtigungen',
+        'Ziel: Risiko-Dashboard',
+        'Roadmap: Trend-Analysen'
       ],
-      stats: { value: '24/7', label: 'Überwachung aktiv' },
+      stats: { value: 'Continuous', label: 'Monitoring Vision' },
       color: 'from-orange-600 to-red-600',
-      image: '/features/monitoring.png'
+      image: '/features/monitoring.png',
+      status: 'Roadmap 2025'
     },
     {
       id: 'academy',
       icon: GraduationCap,
       title: 'Marsstein Academy',
       shortTitle: 'Academy',
-      description: 'Schulungen für Ihr gesamtes Team',
+      description: 'Konzept: Schulungen für Ihr gesamtes Team',
       benefits: [
-        'Interaktive Lernmodule',
-        'Zertifizierte Kurse',
-        'Praxisnahe Webinare',
-        'Fortschritts-Tracking'
+        'Geplant: Interaktive Lernmodule',
+        'Vision: Zertifizierte Kurse',
+        'Ziel: Praxisnahe Webinare',
+        'Konzept: Fortschritts-Tracking'
       ],
-      stats: { value: '95%', label: 'Erfolgsquote' },
+      stats: { value: 'Launch', label: 'Q3 2025 geplant' },
       color: 'from-purple-600 to-pink-600',
-      image: '/features/academy.png'
+      image: '/features/academy.png',
+      status: 'Q3 2025'
     }
   ];
 
@@ -107,38 +111,38 @@ export const FeaturesSection: React.FC = () => {
     {
       icon: BarChart3,
       title: 'Detaillierte Reports',
-      description: 'Audit-fertige Berichte auf Knopfdruck',
-      highlight: 'Neu'
+      description: 'Vision: Audit-fertige Berichte auf Knopfdruck',
+      highlight: 'In Dev'
     },
     {
       icon: Users,
       title: 'Team-Kollaboration',
-      description: 'Nahtlose Zusammenarbeit mit rollenbasiertem Zugriff',
-      highlight: null
+      description: 'Geplant: Nahtlose Zusammenarbeit mit rollenbasiertem Zugriff',
+      highlight: 'Beta'
     },
     {
       icon: Globe,
       title: 'Multi-Sprachen Support',
-      description: 'Verfügbar in 12 europäischen Sprachen',
-      highlight: null
+      description: 'Roadmap: Verfügbarkeit in europäischen Sprachen',
+      highlight: '2025'
     },
     {
       icon: Zap,
       title: 'API & Integrationen',
-      description: 'Verbinden Sie Ihre bestehenden Tools',
-      highlight: 'Beta'
+      description: 'Konzept: Integration bestehender Tools',
+      highlight: 'Roadmap'
     },
     {
       icon: Clock,
       title: 'Audit-Historie',
-      description: 'Lückenlose Dokumentation aller Änderungen',
-      highlight: null
+      description: 'Ziel: Lückenlose Dokumentation aller Änderungen',
+      highlight: 'Beta'
     },
     {
       icon: Database,
       title: 'Daten-Export',
-      description: 'Ihre Daten gehören Ihnen - jederzeit exportierbar',
-      highlight: null
+      description: 'Prinzip: Ihre Daten gehören Ihnen - jederzeit exportierbar',
+      highlight: 'Core Value'
     }
   ];
 
@@ -231,6 +235,9 @@ export const FeaturesSection: React.FC = () => {
                             {feature.stats.label}
                           </div>
                         </div>
+                        <Badge variant="outline" className="mt-2 text-xs">
+                          {feature.status}
+                        </Badge>
                       </Card>
 
                       {/* CTA */}

@@ -56,7 +56,7 @@ const transformationCards: TransformationCard[] = [
       icon: Shield,
       title: 'KI-gestützte Automatisierung',
       description: 'Vollautomatische Compliance-Überwachung und Dokumentation',
-      benefit: '85% Zeitersparnis',
+      benefit: 'Ziel: 85% Zeitersparnis',
       color: 'text-emerald-600',
       bgGradient: 'from-emerald-500/10 to-green-500/10'
     }
@@ -75,7 +75,7 @@ const transformationCards: TransformationCard[] = [
       icon: Zap,
       title: 'Proaktive Compliance',
       description: 'Frühzeitige Warnung vor Verstößen und automatische Korrekturmaßnahmen',
-      benefit: '99% Abdeckung',
+      benefit: 'Ziel: Umfassende Abdeckung',
       color: 'text-blue-600',
       bgGradient: 'from-blue-500/10 to-cyan-500/10'
     }
@@ -94,7 +94,7 @@ const transformationCards: TransformationCard[] = [
       icon: Brain,
       title: 'Kontinuierliche Verbesserung',
       description: 'Machine Learning optimiert Ihre Compliance-Prozesse kontinuierlich',
-      benefit: '300% Effizienz',
+      benefit: 'Kontinuierliche Verbesserung',
       color: 'text-purple-600',
       bgGradient: 'from-purple-500/10 to-pink-500/10'
     }
@@ -113,7 +113,7 @@ const transformationCards: TransformationCard[] = [
       icon: Database,
       title: 'Multi-Standard Support',
       description: 'DSGVO, ISO 27001, SOC 2, EU AI Act - alles in einer Plattform',
-      benefit: '15+ Standards',
+      benefit: 'Roadmap: 15+ Standards',
       color: 'text-indigo-600',
       bgGradient: 'from-indigo-500/10 to-blue-500/10'
     }
@@ -192,7 +192,7 @@ export const ScrollTransformation: React.FC = () => {
                 {scrollProgress < 0.5 ? (
                   <>Compliance kostet deutsche Unternehmen <span className="text-red-600">Milliarden</span></>
                 ) : (
-                  <>KI-Revolution für <span className="text-emerald-600">Compliance</span></>
+                  <>KI-gestützte <span className="text-emerald-600">Compliance</span>-Transformation</>
                 )}
               </h2>
               

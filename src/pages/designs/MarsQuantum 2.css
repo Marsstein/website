@@ -1,0 +1,922 @@
+/* Mars Quantum Design */
+.mars-quantum {
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+  background: linear-gradient(135deg, #0A0A0B 0%, #2A0E0E 30%, #1A1A2E 70%, #0F0F0F 100%);
+  color: #E2E8F0;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Mars Quantum Color Palette */
+.mars-quantum {
+  --mars-primary: #DC143C;
+  --mars-primary-light: #FF4757;
+  --mars-primary-dark: #B91C1C;
+  --mars-secondary: #FF6B6B;
+  --mars-accent: #FF8E53;
+  --mars-quantum: #00D4FF;
+  --mars-quantum-dark: #0099CC;
+  --mars-neural: #8B5CF6;
+  --mars-success: #10B981;
+  --mars-danger: #EF4444;
+  --mars-purple: #A855F7;
+  --mars-cyan: #06B6D4;
+  --mars-pink: #EC4899;
+  --mars-green: #22C55E;
+  --mars-orange: #F97316;
+  --mars-gray: #64748B;
+  --mars-gray-light: #F1F5F9;
+  --mars-gray-dark: #334155;
+  --mars-black: #0F172A;
+  --mars-white: #FFFFFF;
+  --mars-border: rgba(220, 20, 60, 0.15);
+  --mars-shadow: rgba(220, 20, 60, 0.3);
+  --mars-glow: rgba(220, 20, 60, 0.5);
+  --mars-quantum-glow: rgba(0, 212, 255, 0.3);
+}
+
+/* Mars Background Effects */
+.mars-quantum::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 15% 25%, rgba(220, 20, 60, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
+  z-index: -2;
+}
+
+.mars-quantum::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 48%, rgba(220, 20, 60, 0.008) 49%, rgba(220, 20, 60, 0.008) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(0, 212, 255, 0.005) 49%, rgba(0, 212, 255, 0.005) 51%, transparent 52%);
+  background-size: 50px 50px;
+  animation: mars-grid-move 25s linear infinite;
+  z-index: -1;
+}
+
+@keyframes mars-grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+.mars-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Mars Header */
+.mars-header {
+  background: rgba(10, 10, 11, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--mars-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.mars-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.mars-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.mars-core {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--mars-primary), var(--mars-secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 25px var(--mars-glow);
+}
+
+.mars-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.mars-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--mars-white);
+  border-radius: 50%;
+  animation: mars-quantum-orbit 4s linear infinite;
+}
+
+.mars-particle:nth-child(1) {
+  animation-delay: 0s;
+  transform: rotate(0deg) translateX(22px);
+}
+
+.mars-particle:nth-child(2) {
+  animation-delay: 1.3s;
+  transform: rotate(120deg) translateX(22px);
+}
+
+.mars-particle:nth-child(3) {
+  animation-delay: 2.6s;
+  transform: rotate(240deg) translateX(22px);
+}
+
+@keyframes mars-quantum-orbit {
+  0% { transform: rotate(0deg) translateX(22px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(22px) rotate(-360deg); }
+}
+
+.mars-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mars-white);
+  letter-spacing: -0.02em;
+}
+
+.mars-paragraph {
+  color: var(--mars-primary);
+  font-size: 1.7rem;
+  text-shadow: 0 0 15px var(--mars-glow);
+}
+
+.mars-tagline {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  font-size: 0.7rem;
+  color: var(--mars-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.mars-nav-menu {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mars-nav-menu a {
+  color: var(--mars-gray);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.mars-nav-menu a:hover {
+  color: var(--mars-primary);
+  text-shadow: 0 0 10px var(--mars-glow);
+}
+
+.mars-nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--mars-primary), var(--mars-quantum));
+  transition: width 0.3s ease;
+}
+
+.mars-nav-menu a:hover::after {
+  width: 100%;
+}
+
+.mars-status {
+  text-align: right;
+}
+
+.status-grid {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.status-dot.mars-active {
+  background: var(--mars-primary);
+  box-shadow: 0 0 12px var(--mars-primary);
+  animation: mars-pulse-red 2s ease-in-out infinite;
+}
+
+.status-dot.processing {
+  background: var(--mars-quantum);
+  box-shadow: 0 0 10px var(--mars-quantum);
+  animation: mars-pulse-cyan 1.5s ease-in-out infinite;
+}
+
+.status-dot.standby {
+  background: var(--mars-gray);
+  opacity: 0.5;
+}
+
+@keyframes mars-pulse-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes mars-pulse-cyan {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.mars-label {
+  font-size: 0.75rem;
+  color: var(--mars-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Mars Hero Section */
+.mars-hero {
+  padding: 10rem 0 8rem;
+  text-align: center;
+  position: relative;
+}
+
+.mars-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(220, 20, 60, 0.15);
+  border: 1px solid rgba(220, 20, 60, 0.4);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mars-primary);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(220, 20, 60, 0.2);
+}
+
+.mars-title {
+  font-size: 4.5rem;
+  font-weight: 300;
+  color: var(--mars-white);
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mars-highlight {
+  color: var(--mars-primary);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.5rem;
+  text-shadow: 0 0 25px var(--mars-glow);
+  animation: mars-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes mars-glow-pulse {
+  0%, 100% { text-shadow: 0 0 25px var(--mars-glow); }
+  50% { text-shadow: 0 0 35px var(--mars-glow), 0 0 50px var(--mars-glow); }
+}
+
+.mars-subtitle {
+  font-size: 1.25rem;
+  color: var(--mars-gray);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.mars-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.mars-primary-btn {
+  background: linear-gradient(135deg, var(--mars-primary), var(--mars-accent)) !important;
+  color: var(--mars-white) !important;
+  border: none;
+  border-radius: 8px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(220, 20, 60, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.mars-primary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+.mars-primary-btn:hover::before {
+  left: 100%;
+}
+
+.mars-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(220, 20, 60, 0.5);
+}
+
+.mars-secondary-btn {
+  border: 1px solid var(--mars-border) !important;
+  color: var(--mars-white) !important;
+  background: rgba(220, 20, 60, 0.05) !important;
+  border-radius: 8px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.mars-secondary-btn:hover {
+  border-color: var(--mars-primary) !important;
+  color: var(--mars-primary) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(220, 20, 60, 0.3);
+}
+
+.mars-metrics {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mars-metric-display {
+  text-align: center;
+}
+
+.mars-metric-value {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--mars-primary);
+  font-family: 'SF Mono', monospace;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px var(--mars-glow);
+}
+
+.mars-metric-label {
+  font-size: 0.9rem;
+  color: var(--mars-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* Mars Capabilities */
+.mars-capabilities {
+  padding: 8rem 0;
+}
+
+.capabilities-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.mars-badge {
+  background: linear-gradient(135deg, var(--mars-primary), var(--mars-quantum)) !important;
+  color: var(--mars-white) !important;
+  border: none;
+  border-radius: 20px !important;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.capabilities-header h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--mars-white);
+  margin-bottom: 1rem;
+}
+
+.capabilities-header p {
+  color: var(--mars-gray);
+  font-size: 1.2rem;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.mars-capability-card {
+  background: rgba(42, 14, 14, 0.4) !important;
+  border: 1px solid var(--mars-border) !important;
+  border-radius: 16px !important;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.mars-capability-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--mars-primary), var(--mars-quantum));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.mars-capability-card:hover::before {
+  transform: scaleX(1);
+}
+
+.mars-capability-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--mars-primary);
+  box-shadow: 0 20px 40px rgba(220, 20, 60, 0.2);
+}
+
+.mars-capability-card.mars:hover {
+  box-shadow: 0 20px 40px rgba(220, 20, 60, 0.25);
+}
+
+.mars-capability-card.quantum:hover {
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+}
+
+.mars-capability-card.network:hover {
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+}
+
+.capability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.capability-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(220, 20, 60, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mars-primary);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.mars .capability-icon {
+  background: rgba(220, 20, 60, 0.15);
+  color: var(--mars-primary);
+  border-color: rgba(220, 20, 60, 0.3);
+}
+
+.quantum .capability-icon {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--mars-quantum);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.network .capability-icon {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--mars-neural);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.capability-progress {
+  position: relative;
+}
+
+.mars-progress-ring {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.progress-circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  stroke: rgba(226, 232, 240, 0.1);
+}
+
+.mars-circle {
+  stroke: var(--mars-primary);
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.quantum .mars-circle {
+  stroke: var(--mars-quantum);
+}
+
+.network .mars-circle {
+  stroke: var(--mars-neural);
+}
+
+.mars-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--mars-primary);
+  font-family: 'SF Mono', monospace;
+}
+
+.quantum .mars-progress-text {
+  color: var(--mars-quantum);
+}
+
+.network .mars-progress-text {
+  color: var(--mars-neural);
+}
+
+.capability-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--mars-white);
+  margin-bottom: 1rem;
+}
+
+.capability-description {
+  color: var(--mars-gray);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.capability-footer {
+  margin-top: auto;
+}
+
+.mars-capability-bar {
+  height: 4px;
+  background: rgba(220, 20, 60, 0.1);
+}
+
+/* Mars Neural Network */
+.mars-network {
+  padding: 6rem 0;
+  background: rgba(42, 14, 14, 0.2);
+}
+
+.mars-network-visualization {
+  background: rgba(42, 14, 14, 0.4) !important;
+  border: 1px solid var(--mars-border) !important;
+  border-radius: 16px !important;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+}
+
+.network-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mars-network-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--mars-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mars-white);
+  box-shadow: 0 0 25px var(--mars-glow);
+}
+
+.network-header h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--mars-white);
+  margin-bottom: 0.5rem;
+}
+
+.network-header p {
+  color: var(--mars-gray);
+}
+
+.mars-tech-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mars-tech-node {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(220, 20, 60, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mars-tech-node:hover {
+  background: rgba(220, 20, 60, 0.08);
+  border-color: rgba(220, 20, 60, 0.3);
+}
+
+.mars-node-status {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mars-node-status.mars-active {
+  background: var(--mars-primary);
+  box-shadow: 0 0 10px var(--mars-primary);
+  animation: mars-pulse-red 2s ease-in-out infinite;
+}
+
+.mars-node-status.processing {
+  background: var(--mars-quantum);
+  box-shadow: 0 0 8px var(--mars-quantum);
+  animation: mars-pulse-cyan 1.5s ease-in-out infinite;
+}
+
+.mars-node-status.verified {
+  background: var(--mars-success);
+  box-shadow: 0 0 8px var(--mars-success);
+}
+
+.mars-node-status.distributed {
+  background: var(--mars-neural);
+  box-shadow: 0 0 8px var(--mars-neural);
+}
+
+.mars-node-status.training {
+  background: var(--mars-pink);
+  box-shadow: 0 0 8px var(--mars-pink);
+}
+
+.mars-node-status.encrypted {
+  background: var(--mars-green);
+  box-shadow: 0 0 8px var(--mars-green);
+}
+
+.mars-tech-name {
+  color: var(--mars-white);
+  font-weight: 500;
+  flex: 1;
+}
+
+.mars-node-count {
+  color: var(--mars-gray);
+  font-size: 0.85rem;
+  font-family: 'SF Mono', monospace;
+}
+
+.mars-network-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mars-network-btn {
+  border: 1px solid var(--mars-border) !important;
+  color: var(--mars-white) !important;
+  background: rgba(220, 20, 60, 0.05) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.mars-network-btn:hover {
+  border-color: var(--mars-primary) !important;
+  color: var(--mars-primary) !important;
+  background: rgba(220, 20, 60, 0.15) !important;
+}
+
+/* Mars CTA */
+.mars-cta {
+  padding: 8rem 0;
+}
+
+.mars-cta-hologram {
+  background: rgba(42, 14, 14, 0.4) !important;
+  border: 1px solid var(--mars-border) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.mars-hologram-effect {
+  position: relative;
+  padding: 4rem;
+}
+
+.mars-hologram-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(0deg, transparent 48%, rgba(220, 20, 60, 0.03) 49%, rgba(220, 20, 60, 0.03) 51%, transparent 52%);
+  background-size: 100% 25px;
+  animation: mars-hologram-scan 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes mars-hologram-scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(25px); }
+}
+
+.cta-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-content h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--mars-white);
+  margin-bottom: 1.5rem;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  color: var(--mars-gray);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Mars Footer */
+.mars-footer {
+  background: rgba(10, 10, 11, 0.9);
+  color: var(--mars-white);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--mars-border);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer-brand .mars-brand {
+  color: var(--mars-white);
+}
+
+.footer-tagline {
+  color: var(--mars-gray);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.mars-tech-indicators {
+  display: flex;
+  gap: 2rem;
+}
+
+.indicator {
+  text-align: center;
+}
+
+.indicator-value {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--mars-primary);
+  font-family: 'SF Mono', monospace;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 15px var(--mars-glow);
+}
+
+.indicator-label {
+  font-size: 0.8rem;
+  color: var(--mars-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(220, 20, 60, 0.1);
+  color: var(--mars-gray);
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mars-title {
+    font-size: 2.5rem;
+  }
+  
+  .mars-nav-menu {
+    display: none;
+  }
+  
+  .mars-hero-actions {
+    flex-direction: column;
+  }
+  
+  .mars-metrics {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mars-tech-stack {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .mars-tech-indicators {
+    justify-content: center;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+  }
+  
+  .mars-network-actions {
+    flex-direction: column;
+  }
+}

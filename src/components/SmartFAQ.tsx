@@ -37,62 +37,62 @@ interface FAQCategory {
 const faqs: FAQ[] = [
   {
     id: '1',
-    question: 'Wie funktioniert die KI-gestützte Compliance-Automatisierung?',
-    answer: 'Unsere KI analysiert kontinuierlich Ihre Datenflüsse, Prozesse und Dokumentation. Sie identifiziert automatisch Compliance-Lücken, schlägt Verbesserungen vor und erstellt rechtssichere Dokumentation. Der Machine Learning Algorithmus lernt dabei aus jeder Prüfung und wird kontinuierlich präziser.',
+    question: 'Wie soll die KI-gestützte Compliance-Automatisierung funktionieren?',
+    answer: 'Unsere Vision: KI, die Datenflüsse und Prozesse analysiert. Das Ziel ist die automatische Identifikation von Compliance-Lücken und Standards-konforme Empfehlungen. Status: Beta-Phase mit ausgewählten Partnern zur Entwicklung des Machine Learning Algorithmus.',
     category: 'technical',
-    relatedLink: { text: 'KI-Technologie entdecken', href: '/tools/compliance-ai-assistant' },
+    relatedLink: { text: 'KI-Roadmap entdecken', href: '/tools/compliance-ai-assistant' },
     isPopular: true
   },
   {
     id: '2',
-    question: 'Welche Compliance-Standards werden unterstützt?',
-    answer: 'Marsstein unterstützt über 12 internationale Standards: DSGVO, EU AI Act, ISO 27001, SOC 2, TISAX, NIS2, DORA, und weitere. Die Plattform passt sich automatisch an lokale Gesetze in über 50 Ländern an und berücksichtigt branchenspezifische Anforderungen.',
+    question: 'Welche Compliance-Standards sollen unterstützt werden?',
+    answer: 'Roadmap: Entwicklung für DSGVO, EU AI Act, ISO 27001, SOC 2 und weitere Standards. MVP startet mit DSGVO-Grundlagen. Vision: Automatische Anpassung an lokale Gesetze und branchenspezifische Anforderungen. Timeline: Schrittweise Erweiterung 2025.',
     category: 'compliance',
-    relatedLink: { text: 'Alle Standards ansehen', href: '/wissen/zertifizierungen' },
+    relatedLink: { text: 'Standards-Roadmap ansehen', href: '/wissen/zertifizierungen' },
     isPopular: true
   },
   {
     id: '3',
-    question: 'Wie sicher sind meine Daten bei Marsstein?',
-    answer: 'Ihre Daten werden mit AES-256 Verschlüsselung geschützt und ausschließlich in europäischen Rechenzentren verarbeitet. Wir sind ISO 27001 und SOC 2 zertifiziert, verwenden Zero-Trust Architektur und bieten 24/7 Security Monitoring. Alle Mitarbeiter unterliegen strengsten Sicherheitsrichtlinien.',
+    question: 'Wie sicher werden meine Daten bei Marsstein sein?',
+    answer: 'Sicherheitskonzept: AES-256 Verschlüsselung und ausschließlich europäische Rechenzentren. Ziel: ISO 27001 und SOC 2 Konformität mit Zero-Trust Architektur. Roadmap: Kontinuierliches Security Monitoring. Alle Entwicklungsprozesse folgen höchsten Sicherheitsstandards.',
     category: 'security',
-    relatedLink: { text: 'Sicherheitsdetails', href: '/branchen' },
+    relatedLink: { text: 'Sicherheitskonzept', href: '/branchen' },
     isPopular: true
   },
   {
     id: '4',
-    question: 'Wie lange dauert die Implementierung?',
-    answer: 'Die Grundimplementierung erfolgt in 2-4 Wochen. Dank unserer KI-gestützten Datenanalyse und vorkonfigurierten Compliance-Templates können Sie bereits nach wenigen Tagen erste Audits durchführen. Für komplexe Enterprise-Szenarien bieten wir dedizierte Onboarding-Teams.',
+    question: 'Wie soll die Implementierung ablaufen?',
+    answer: 'Geplante Implementierung: 2-4 Wochen für MVP-Features. Vision: KI-gestützte Datenanalyse und vorkonfigurierte Templates für schnelle erste Audits. Beta-Phase: Erprobung mit ausgewählten Partnern. Enterprise-Roadmap: Dedizierte Onboarding-Unterstützung.',
     category: 'technical',
-    relatedLink: { text: 'Implementierung planen', href: '/contact?demo=true' }
+    relatedLink: { text: 'Beta-Zugang anfragen', href: '/contact?demo=true' }
   },
   {
     id: '5',
-    question: 'Welche Kostenersparnis kann ich erwarten?',
-    answer: 'Unsere Kunden reduzieren ihre Compliance-Kosten um durchschnittlich 85%. Die Zeitersparnis bei Audits beträgt etwa 90%, während externe Beratungskosten um bis zu 70% sinken. Der ROI wird typischerweise bereits nach 3-6 Monaten erreicht.',
+    question: 'Welche Kostenersparnis ist das Ziel?',
+    answer: 'Vision: Signifikante Kostenreduktion bei Compliance-Prozessen durch Automatisierung. Ziel: Deutliche Zeitersparnis bei Routine-Audits. Potenzial: Reduzierte externe Beratungskosten. Status: Konzeptstudien in Vorbereitung.',
     category: 'pricing',
-    relatedLink: { text: 'ROI Calculator', href: '/pricing' }
+    relatedLink: { text: 'Potenzial-Rechner', href: '/pricing' }
   },
   {
     id: '6',
-    question: 'Unterstützt Marsstein Multi-Tenant Szenarien?',
-    answer: 'Ja, Marsstein bietet vollständige Multi-Tenant Unterstützung mit granularer Rechteverwaltung. Konzerne können verschiedene Geschäftsbereiche, Tochtergesellschaften oder Kunden separat verwalten, während zentrale Compliance-Teams übergreifende Einblicke erhalten.',
+    question: 'Wird Marsstein Multi-Tenant Szenarien unterstützen?',
+    answer: 'Roadmap: Vollständige Multi-Tenant Architektur mit granularer Rechteverwaltung. Ziel: Separate Verwaltung für Geschäftsbereiche und Tochtergesellschaften. Vision: Zentrale Compliance-Übersicht für Konzerne. Status: Entwicklung für Enterprise-Features.',
     category: 'technical',
-    relatedLink: { text: 'Enterprise Features', href: '/branchen' }
+    relatedLink: { text: 'Enterprise-Roadmap', href: '/branchen' }
   },
   {
     id: '7',
-    question: 'Wie aktuell sind die Compliance-Informationen?',
-    answer: 'Unsere KI überwacht kontinuierlich Gesetzesänderungen und regulatorische Updates aus über 50 Ländern. Änderungen werden automatisch in die Plattform integriert und relevante Kunden werden proaktiv benachrichtigt. Unser Legal-Team validiert alle Updates vor der Implementierung.',
+    question: 'Wie aktuell werden die Compliance-Informationen sein?',
+    answer: 'Vision: KI-Überwachung von Gesetzesänderungen aus europäischen Ländern. Ziel: Automatische Integration regulatorischer Updates. Geplant: Proaktive Benachrichtigungen für relevante Änderungen. Status: Legal-Team Aufbau für Update-Validierung.',
     category: 'compliance',
-    relatedLink: { text: 'Rechtsprechung verfolgen', href: '/wissen/rechtsprechung' }
+    relatedLink: { text: 'Legal-Roadmap', href: '/wissen/rechtsprechung' }
   },
   {
     id: '8',
-    question: 'Gibt es eine mobile App?',
-    answer: 'Ja, die Marsstein Mobile App ermöglicht Compliance-Management unterwegs. Sie können Audits durchführen, Benachrichtigungen erhalten, Dokumentation einsehen und kritische Workflows auch offline bearbeiten. Die App synchronisiert automatisch mit der Desktop-Plattform.',
+    question: 'Wird es eine mobile App geben?',
+    answer: 'Roadmap: Mobile App für Compliance-Management unterwegs. Geplante Features: Audit-Durchführung, Benachrichtigungen und Dokumentation. Vision: Offline-Workflows mit automatischer Synchronisation. Timeline: Mobile App-Entwicklung nach MVP-Launch.',
     category: 'technical',
-    relatedLink: { text: 'App herunterladen', href: '/tools' }
+    relatedLink: { text: 'Mobile Roadmap', href: '/tools' }
   }
 ];
 
@@ -275,7 +275,7 @@ export const SmartFAQ: React.FC = () => {
                   <MessageSquare className="h-5 w-5 text-primary" />
                 </div>
                 <Badge className="bg-secondary/10 text-secondary border-secondary/20 text-xs px-2 py-0.5">
-                  24/7 Support
+                  Beta Support
                 </Badge>
               </div>
               
@@ -283,8 +283,8 @@ export const SmartFAQ: React.FC = () => {
                 Ihre Frage nicht dabei?
               </h3>
               <p className="text-sm text-muted-foreground max-w-lg mx-auto">
-                Unser Expertenteam hilft Ihnen gerne weiter. Kontaktieren Sie uns 
-                für eine persönliche Beratung oder eine maßgeschneiderte Demo.
+                Unser Entwicklungsteam hilft Ihnen gerne weiter. Kontaktieren Sie uns 
+                für eine persönliche Beta-Beratung oder Roadmap-Demo.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

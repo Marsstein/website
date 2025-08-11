@@ -113,8 +113,8 @@ export const BenefitsSection: React.FC = () => {
         <div className="mt-20 bg-gradient-primary rounded-2xl p-8 md:p-12 text-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-primary-foreground">
             <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold">500+</div>
-              <div className="text-sm opacity-90">Trusted Companies</div>
+              <div className="text-3xl md:text-4xl font-bold">EU</div>
+              <div className="text-sm opacity-90">Compliance Ready</div>
             </div>
             <div className="space-y-2">
               <div className="text-3xl md:text-4xl font-bold">99.9%</div>

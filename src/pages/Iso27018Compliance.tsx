@@ -725,7 +725,7 @@ const Iso27018Compliance = () => {
                 <div className="mt-8 flex items-center justify-center gap-2 text-white/80">
                   <Sparkles className="h-4 w-4" />
                   <span className="text-sm">
-                    Über 100 Cloud-Service-Provider vertrauen bereits auf unsere ISO 27018 Privacy-Expertise
+                    Professionelle ISO 27018 Privacy-Expertise für Cloud-Service-Provider
                   </span>
                 </div>
               </motion.div>

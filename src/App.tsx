@@ -138,7 +138,9 @@ import TestOptimized from "./pages/TestOptimized";
 import TestIndex from "./pages/TestIndex";
 import SimpleTest from "./pages/SimpleTest";
 import DesignSeparatorTest from "./pages/DesignSeparatorTest";
+import FooterTest from "./pages/FooterTest";
 import SitemapSEO from "./pages/SitemapSEO";
+import FinalChecks from "./pages/FinalChecks";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -166,10 +168,12 @@ const App = () => (
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/sitemap-seo" element={<SitemapSEO />} />
+                <Route path="/final-checks" element={<FinalChecks />} />
                 
                 {/* Test Routes for Scroll Animation Tests - moved up for priority */}
                 <Route path="/design-separator-test" element={<DesignSeparatorTest />} />
                 <Route path="/simple-test" element={<SimpleTest />} />
+                <Route path="/test-footer" element={<FooterTest />} />
                 <Route path="/tests" element={<TestIndex />} />
                 <Route path="/test1" element={<Test1 />} />
                 <Route path="/test2" element={<Test2 />} />
@@ -197,14 +201,28 @@ const App = () => (
                 <Route path="/tisax-compliance" element={<TisaxCompliance />} />
 
                 {/* New structured routes */}
-                {/* Regulierungen */}
+                {/* New Product URLs - Regulierungen */}
+                <Route path="/dsgvo" element={<DsgvoCompliance />} />
+                <Route path="/eu-ai-act" element={<EuAiActCompliance />} />
+                <Route path="/nis2-compliance" element={<Nis2Compliance />} />
+                <Route path="/hinweisgeberschutzgesetz" element={<HinweisgeberschutzCompliance />} />
+                <Route path="/geldwaeschegesetz" element={<GeldwaeschegesetzCompliance />} />
+                
+                {/* Old Regulierungen URLs - Redirects will handle these */}
                 <Route path="/regulierung/dsgvo" element={<DsgvoCompliance />} />
                 <Route path="/regulierung/eu-ai-act" element={<EuAiActCompliance />} />
                 <Route path="/regulierung/nis2" element={<Nis2Compliance />} />
                 <Route path="/regulierung/hinweisgeberschutzgesetz" element={<HinweisgeberschutzCompliance />} />
                 <Route path="/regulierung/geldwaeschegesetz" element={<GeldwaeschegesetzCompliance />} />
                 
-                {/* Zertifizierungen */}
+                {/* New Product URLs - Zertifizierungen */}
+                <Route path="/iso-27001-zertifizierung" element={<Iso27001Compliance />} />
+                <Route path="/soc2-zertifizierung" element={<Soc2Compliance />} />
+                <Route path="/iso-27017-zertifizierung" element={<Iso27017Compliance />} />
+                <Route path="/iso-27018-zertifizierung" element={<Iso27018Compliance />} />
+                <Route path="/tisax-zertifizierung" element={<TisaxCompliance />} />
+                
+                {/* Old Zertifizierungen URLs - Redirects will handle these */}
                 <Route path="/zertifizierung/iso-27001" element={<Iso27001Compliance />} />
                 <Route path="/zertifizierung/soc2" element={<Soc2Compliance />} />
                 <Route path="/zertifizierung/iso-27017" element={<Iso27017Compliance />} />
@@ -244,8 +262,8 @@ const App = () => (
                 <Route path="/tools" element={<Tools />} />
                 <Route path="/tools/cookie-management" element={<CookieManagementTool />} />
                 <Route path="/tools/whistleblower-system" element={<WhistleblowerSystemTool />} />
-                <Route path="/tools/cookie-management-tool" element={<CookieManagementToolProduct />} />
-                <Route path="/tools/whistleblower-system-tool" element={<WhistleblowerSystemToolProduct />} />
+                <Route path="/tools/cookie-management-tool" element={<CookieManagementTool />} />
+                <Route path="/tools/whistleblower-system-tool" element={<WhistleblowerSystemTool />} />
                 <Route path="/tools/dsgvo-email-template-generator" element={<DsgvoEmailTemplateGenerator />} />
                 <Route path="/tools/dsgvo-compliance-scorecard" element={<DsgvoComplianceScorecard />} />
                 <Route path="/tools/compliance-ai-assistant" element={<ComplianceAIAssistant />} />

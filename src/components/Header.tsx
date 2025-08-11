@@ -49,22 +49,22 @@ export const Header: React.FC = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Link to="/regulierung/eu-ai-act" className="block w-full">
+          <Link to="/eu-ai-act" className="block w-full">
             EU AI Act
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/regulierung/dsgvo" className="block w-full">
+          <Link to="/dsgvo" className="block w-full">
             DSGVO
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/regulierung/nis2" className="block w-full">
+          <Link to="/nis2-compliance" className="block w-full">
             NIS2-Richtlinie
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/regulierung/hinweisgeberschutzgesetz" className="block w-full">
+          <Link to="/hinweisgeberschutzgesetz" className="block w-full">
             Hinweisgeberschutzgesetz
           </Link>
         </DropdownMenuItem>
@@ -79,27 +79,27 @@ export const Header: React.FC = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Link to="/zertifizierung/iso-27001" className="block w-full">
+          <Link to="/iso-27001-zertifizierung" className="block w-full">
             ISO 27001
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/zertifizierung/soc2" className="block w-full">
+          <Link to="/soc2-zertifizierung" className="block w-full">
             SOC 2
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/zertifizierung/iso-27017" className="block w-full">
+          <Link to="/iso-27017-zertifizierung" className="block w-full">
             ISO 27017 Cloud Security
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/zertifizierung/iso-27018" className="block w-full">
+          <Link to="/iso-27018-zertifizierung" className="block w-full">
             ISO 27018 Cloud Privacy
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/zertifizierung/tisax" className="block w-full">
+          <Link to="/tisax-zertifizierung" className="block w-full">
             TISAX® Automotive Security
           </Link>
         </DropdownMenuItem>
@@ -119,12 +119,12 @@ export const Header: React.FC = () => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/tools/cookie-management-tool" className="block w-full">
+          <Link to="/tools/cookie-management" className="block w-full">
             Cookie Management
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/tools/whistleblower-system-tool" className="block w-full">
+          <Link to="/tools/whistleblower-system" className="block w-full">
             Hinweisgebersystem
           </Link>
         </DropdownMenuItem>
@@ -281,22 +281,22 @@ export const Header: React.FC = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>
                         <DropdownMenuItem>
-                          <Link to="/regulierung/eu-ai-act" className="block w-full">
+                          <Link to="/eu-ai-act" className="block w-full">
                             EU AI Act
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/regulierung/dsgvo" className="block w-full">
+                          <Link to="/dsgvo" className="block w-full">
                             DSGVO
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/regulierung/nis2" className="block w-full">
+                          <Link to="/nis2-compliance" className="block w-full">
                             NIS2-Richtlinie
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/regulierung/hinweisgeberschutzgesetz" className="block w-full">
+                          <Link to="/hinweisgeberschutzgesetz" className="block w-full">
                             Hinweisgeberschutzgesetz
                           </Link>
                         </DropdownMenuItem>
@@ -309,27 +309,27 @@ export const Header: React.FC = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>
                         <DropdownMenuItem>
-                          <Link to="/zertifizierung/iso-27001" className="block w-full">
+                          <Link to="/iso-27001-zertifizierung" className="block w-full">
                             ISO 27001
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/zertifizierung/soc2" className="block w-full">
+                          <Link to="/soc2-zertifizierung" className="block w-full">
                             SOC 2
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/zertifizierung/iso-27017" className="block w-full">
+                          <Link to="/iso-27017-zertifizierung" className="block w-full">
                             ISO 27017 Cloud Security
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/zertifizierung/iso-27018" className="block w-full">
+                          <Link to="/iso-27018-zertifizierung" className="block w-full">
                             ISO 27018 Cloud Privacy
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/zertifizierung/tisax" className="block w-full">
+                          <Link to="/tisax-zertifizierung" className="block w-full">
                             TISAX® Automotive Security
                           </Link>
                         </DropdownMenuItem>
@@ -347,12 +347,12 @@ export const Header: React.FC = () => {
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/tools/cookie-management-tool" className="block w-full">
+                          <Link to="/tools/cookie-management" className="block w-full">
                             Cookie Management
                           </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link to="/tools/whistleblower-system-tool" className="block w-full">
+                          <Link to="/tools/whistleblower-system" className="block w-full">
                             Hinweisgebersystem
                           </Link>
                         </DropdownMenuItem>

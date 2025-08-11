@@ -841,7 +841,7 @@ const TisaxCompliance = () => {
                 <div className="mt-8 flex items-center justify-center gap-2 text-white/80">
                   <Sparkles className="h-4 w-4" />
                   <span className="text-sm">
-                    Über 80 Automotive-Unternehmen vertrauen bereits auf unsere TISAX® Expertise
+                    Professionelle TISAX® Expertise für die Automobilindustrie
                   </span>
                 </div>
               </motion.div>

@@ -69,65 +69,66 @@ const DsgvoCompliance = () => {
   const HeroSection = () => (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#a1251b]/5 via-transparent to-purple-600/5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#e24e1b]/5 via-transparent to-[#ea580c]/5" />
       
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#a1251b]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse delay-700" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[#e24e1b]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#ea580c]/10 rounded-full blur-3xl animate-pulse delay-700" />
       </div>
 
       <div className="container relative z-10 px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20 px-4 py-1.5">
+            <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20 px-4 py-1.5">
               <Shield className="h-3.5 w-3.5 mr-2" />
               DSGVO-Konform seit 2018
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#232323]">
               DSGVO-Compliance
-              <span className="block bg-gradient-to-r from-[#a1251b] to-purple-600 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#e24e1b] to-[#ea580c] bg-clip-text text-transparent">
                 Automatisiert & Rechtssicher
               </span>
             </h1>
             
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-[#474747] leading-relaxed">
               Schützen Sie Ihr Unternehmen vor Bußgeldern bis zu 20 Mio. € oder 4% des Jahresumsatzes. 
-              Mit unserer KI-gestützten Lösung erreichen Sie 100% DSGVO-Konformität in wenigen Wochen.
+              Unsere Vision: KI-gestützte Lösung für Standards-konforme DSGVO-Compliance.
+              <Badge variant="outline" className="ml-2 text-xs">Beta Phase</Badge>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-[#a1251b] hover:bg-[#8a1f17] text-white px-8">
+              <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316] text-white px-8">
                 Kostenlose Demo starten
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button size="lg" variant="outline" className="group">
-                <PlayCircle className="mr-2 h-5 w-5 group-hover:text-[#a1251b]" />
+                <PlayCircle className="mr-2 h-5 w-5 group-hover:text-[#e24e1b]" />
                 Video ansehen (2 Min)
               </Button>
             </div>
 
             <div className="flex items-center gap-6 pt-4">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <CheckCircle2 className="h-5 w-5 text-[#39B37B]" />
                 <span className="text-sm">30 Tage kostenlos testen</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <CheckCircle2 className="h-5 w-5 text-[#39B37B]" />
                 <span className="text-sm">Keine Kreditkarte erforderlich</span>
               </div>
             </div>
           </div>
 
           <div className="relative">
-            <Card className="border-2 border-[#a1251b]/20 shadow-2xl">
+            <Card className="border-2 border-[#e24e1b]/20 shadow-2xl">
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl">Ihr DSGVO-Compliance Score</CardTitle>
+                <CardTitle className="text-2xl text-[#232323]">Ihr DSGVO-Compliance Score</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="relative h-48 flex items-center justify-center">
-                  <div className="text-7xl font-bold text-[#a1251b]">
+                  <div className="text-7xl font-bold text-[#e24e1b]">
                     {complianceScore}%
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -139,7 +140,7 @@ const DsgvoCompliance = () => {
                         stroke="currentColor"
                         strokeWidth="8"
                         fill="none"
-                        className="text-gray-200"
+                        className="text-[#474747]/20"
                       />
                       <circle
                         cx="96"
@@ -150,37 +151,37 @@ const DsgvoCompliance = () => {
                         fill="none"
                         strokeDasharray={`${2 * Math.PI * 88}`}
                         strokeDashoffset={`${2 * Math.PI * 88 * (1 - complianceScore / 100)}`}
-                        className="text-[#a1251b] transition-all duration-1000 ease-out"
+                        className="text-[#e24e1b] transition-all duration-1000 ease-out"
                       />
                     </svg>
                   </div>
                 </div>
                 
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-[#39B37B]/10 rounded-lg">
                     <span className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                      <CheckCircle2 className="h-5 w-5 text-[#39B37B]" />
                       Datenschutzerklärung
                     </span>
-                    <Badge className="bg-green-600">Konform</Badge>
+                    <Badge className="bg-[#39B37B] text-white">Konform</Badge>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-[#39B37B]/10 rounded-lg">
                     <span className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                      <CheckCircle2 className="h-5 w-5 text-[#39B37B]" />
                       Verarbeitungsverzeichnis
                     </span>
-                    <Badge className="bg-green-600">Aktuell</Badge>
+                    <Badge className="bg-[#39B37B] text-white">Aktuell</Badge>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-[#F57C00]/10 rounded-lg">
                     <span className="flex items-center gap-2">
-                      <AlertCircle className="h-5 w-5 text-yellow-600" />
+                      <AlertCircle className="h-5 w-5 text-[#F57C00]" />
                       TOM-Dokumentation
                     </span>
-                    <Badge className="bg-yellow-600">In Prüfung</Badge>
+                    <Badge className="bg-[#F57C00] text-white">In Prüfung</Badge>
                   </div>
                 </div>
 
-                <Button className="w-full bg-[#a1251b] hover:bg-[#8a1f17]">
+                <Button className="w-full bg-[#e24e1b] hover:bg-[#f97316]">
                   Vollständige Analyse starten
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -194,33 +195,33 @@ const DsgvoCompliance = () => {
 
   // Trust Indicators Section
   const TrustSection = () => (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
+    <section className="py-16 bg-[#F5F6F8] dark:bg-gray-900/50">
       <div className="container px-4">
         <div className="text-center mb-12">
-          <h3 className="text-lg font-semibold text-muted-foreground mb-2">
-            Vertraut von über 500+ Unternehmen in Deutschland
+          <h3 className="text-lg font-semibold text-[#474747] mb-2">
+            Entwickelt für moderne Unternehmen in Deutschland
           </h3>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
-          {['SAP', 'Mercedes-Benz', 'Siemens', 'Volkswagen', 'Deutsche Bank', 'Lufthansa'].map((company) => (
-            <div key={company} className="flex items-center justify-center">
-              <span className="text-2xl font-bold text-gray-400">{company}</span>
+          {['Technology', 'Automotive', 'Engineering', 'Manufacturing', 'Finance', 'Aviation'].map((sector) => (
+            <div key={sector} className="flex items-center justify-center">
+              <span className="text-lg font-medium text-gray-400">{sector}</span>
             </div>
           ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
           {[
-            { number: '99,9%', label: 'DSGVO-Konformität', icon: Shield },
-            { number: '< 4 Wochen', label: 'Implementierung', icon: Clock },
-            { number: '0 €', label: 'Bußgelder seit 2018', icon: Euro },
-            { number: '24/7', label: 'Experten-Support', icon: Users }
+            { number: 'Standards', label: 'DSGVO-konforme Entwicklung', icon: Shield },
+            { number: 'Beta', label: 'Entwicklungsphase', icon: Clock },
+            { number: 'Security', label: 'First Approach', icon: Euro },
+            { number: 'Community', label: 'Beta-Support', icon: Users }
           ].map((stat, index) => (
-            <Card key={index} className="text-center p-6 border-[#a1251b]/20">
-              <stat.icon className="h-8 w-8 text-[#a1251b] mx-auto mb-4" />
-              <div className="text-3xl font-bold text-[#a1251b] mb-2">{stat.number}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+            <Card key={index} className="text-center p-6 border-[#e24e1b]/20">
+              <stat.icon className="h-8 w-8 text-[#e24e1b] mx-auto mb-4" />
+              <div className="text-3xl font-bold text-[#e24e1b] mb-2">{stat.number}</div>
+              <div className="text-sm text-[#474747]">{stat.label}</div>
             </Card>
           ))}
         </div>
@@ -240,9 +241,9 @@ const DsgvoCompliance = () => {
         icon: '🛒',
         description: 'Online-Handel & Webshops',
         color: 'from-blue-500 to-cyan-500',
-        bgColor: 'bg-blue-50 dark:bg-blue-950/20',
+        bgColor: 'bg-[#e24e1b]/5',
         borderColor: 'border-blue-200 dark:border-blue-800',
-        textColor: 'text-blue-900 dark:text-blue-100',
+        textColor: 'text-[#232323]',
         challenges: [
           'Cookie-Management & Tracking',
           'Kundendaten-Verarbeitung',
@@ -347,10 +348,10 @@ const DsgvoCompliance = () => {
         name: 'SaaS & Tech',
         icon: '💻',
         description: 'Software-Unternehmen & Cloud-Services',
-        color: 'from-purple-500 to-indigo-500',
-        bgColor: 'bg-purple-50 dark:bg-purple-950/20',
-        borderColor: 'border-purple-200 dark:border-purple-800',
-        textColor: 'text-purple-900 dark:text-purple-100',
+        color: 'from-[#e24e1b] to-[#ea580c]',
+        bgColor: 'bg-[#ea580c]/5',
+        borderColor: 'border-[#e24e1b]/20',
+        textColor: 'text-[#232323]',
         challenges: [
           'International Data Transfers',
           'Processor vs. Controller-Status',
@@ -462,7 +463,7 @@ const DsgvoCompliance = () => {
           {/* Animated geometric shapes */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
             <motion.div
-              className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-[#a1251b]/10 to-purple-500/10 rounded-full"
+              className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-[#e24e1b]/10 to-[#ea580c]/10 rounded-full"
               animate={{
                 scale: [1, 1.1, 1],
                 rotate: [0, 180, 360],
@@ -503,13 +504,13 @@ const DsgvoCompliance = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Badge className="bg-gradient-to-r from-[#a1251b] to-purple-600 text-white border-0 px-4 py-1.5 text-sm font-medium shadow-lg">
+              <Badge className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white border-0 px-4 py-1.5 text-sm font-medium shadow-lg">
                 <Building2 className="h-3.5 w-3.5 mr-2" />
                 Branchenspezifische DSGVO-Lösungen
               </Badge>
             </motion.div>
             <motion.h2 
-              className="text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-[#a1251b] to-purple-600 bg-clip-text text-transparent"
+              className="text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-[#232323] via-[#e24e1b] to-[#ea580c] bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -517,7 +518,7 @@ const DsgvoCompliance = () => {
               DSGVO-Compliance für Ihre Branche
             </motion.h2>
             <motion.p 
-              className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              className="text-lg text-[#474747] dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -542,8 +543,8 @@ const DsgvoCompliance = () => {
                 className={cn(
                   "group relative flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-500 backdrop-blur-sm border",
                   activeIndustry === index
-                    ? "bg-gradient-to-r from-[#a1251b] to-purple-600 text-white shadow-lg shadow-[#a1251b]/25 border-[#a1251b]/50 scale-105"
-                    : "bg-white/70 dark:bg-gray-800/70 text-gray-700 dark:text-gray-300 hover:bg-white/90 dark:hover:bg-gray-800/90 border-gray-200/50 dark:border-gray-700/50 hover:shadow-md hover:scale-105"
+                    ? "bg-gradient-to-r from-[#a1251b] to-purple-600 text-white shadow-lg shadow-[#a1251b]/25 border-[#e24e1b]/50 scale-105"
+                    : "bg-white/70 dark:bg-gray-800/70 text-[#474747] dark:text-gray-300 hover:bg-white/90 dark:hover:bg-gray-800/90 border-gray-200/50 dark:border-gray-700/50 hover:shadow-md hover:scale-105"
                 )}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -650,9 +651,9 @@ const DsgvoCompliance = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <h3 className="text-lg font-bold flex items-center gap-2 text-gray-900 dark:text-gray-100">
-                          <div className="p-1.5 bg-red-100 dark:bg-red-900/30 rounded-lg">
-                            <AlertCircle className="h-4 w-4 text-red-600" />
+                        <h3 className="text-lg font-semibold flex items-center gap-2 text-[#232323] dark:text-gray-100">
+                          <div className="p-1.5 bg-[#DC2626]/10 rounded-lg">
+                            <AlertCircle className="h-4 w-4 text-[#DC2626]" />
                           </div>
                           Herausforderungen
                         </h3>
@@ -660,14 +661,14 @@ const DsgvoCompliance = () => {
                           {industries[activeIndustry].challenges.slice(0, 3).map((challenge, idx) => (
                             <motion.div
                               key={idx}
-                              className="flex items-center gap-2 p-2 bg-red-50 dark:bg-red-950/20 rounded-lg border border-red-100 dark:border-red-900/30"
+                              className="flex items-center gap-2 p-2 bg-[#DC2626]/5 rounded-lg border border-[#DC2626]/20"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.2, delay: 0.4 + idx * 0.05 }}
                               whileHover={{ scale: 1.02 }}
                             >
-                              <XCircle className="h-3 w-3 text-red-500 flex-shrink-0" />
-                              <span className="text-xs font-medium text-gray-800 dark:text-gray-200">{challenge}</span>
+                              <XCircle className="h-3 w-3 text-[#DC2626] flex-shrink-0" />
+                              <span className="text-xs font-medium text-[#232323] dark:text-gray-200">{challenge}</span>
                             </motion.div>
                           ))}
                         </div>
@@ -680,9 +681,9 @@ const DsgvoCompliance = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <h3 className="text-lg font-bold flex items-center gap-2 text-gray-900 dark:text-gray-100">
-                          <div className="p-1.5 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                            <CheckSquare className="h-4 w-4 text-green-600" />
+                        <h3 className="text-lg font-semibold flex items-center gap-2 text-[#232323] dark:text-gray-100">
+                          <div className="p-1.5 bg-[#39B37B]/10 rounded-lg">
+                            <CheckSquare className="h-4 w-4 text-[#39B37B]" />
                           </div>
                           Lösungsschritte
                         </h3>
@@ -690,14 +691,14 @@ const DsgvoCompliance = () => {
                           {industries[activeIndustry].complianceSteps.slice(0, 3).map((step, idx) => (
                             <motion.div
                               key={idx}
-                              className="flex items-center gap-2 p-2 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-100 dark:border-green-900/30"
+                              className="flex items-center gap-2 p-2 bg-[#39B37B]/5 rounded-lg border border-[#39B37B]/20"
                               initial={{ opacity: 0, x: 10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.2, delay: 0.4 + idx * 0.05 }}
                               whileHover={{ scale: 1.02 }}
                             >
-                              <CheckCircle2 className="h-3 w-3 text-green-600 flex-shrink-0" />
-                              <span className="text-xs font-medium text-gray-800 dark:text-gray-200">{step}</span>
+                              <CheckCircle2 className="h-3 w-3 text-[#39B37B] flex-shrink-0" />
+                              <span className="text-xs font-medium text-[#232323] dark:text-gray-200">{step}</span>
                             </motion.div>
                           ))}
                         </div>
@@ -710,9 +711,9 @@ const DsgvoCompliance = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.4 }}
                       >
-                        <h3 className="text-lg font-bold flex items-center gap-2 text-red-900 dark:text-red-100">
-                          <div className="p-1.5 bg-red-100 dark:bg-red-900/30 rounded-lg">
-                            <Euro className="h-4 w-4 text-red-600" />
+                        <h3 className="text-lg font-semibold flex items-center gap-2 text-[#DC2626]">
+                          <div className="p-1.5 bg-[#DC2626]/10 rounded-lg">
+                            <Euro className="h-4 w-4 text-[#DC2626]" />
                           </div>
                           Reale Strafen
                         </h3>
@@ -720,20 +721,20 @@ const DsgvoCompliance = () => {
                           {industries[activeIndustry].realFines.slice(0, 2).map((fine, idx) => (
                             <motion.div 
                               key={idx} 
-                              className="p-3 bg-red-50 dark:bg-red-950/20 rounded-lg border border-red-100 dark:border-red-900/30"
+                              className="p-3 bg-[#DC2626]/5 rounded-lg border border-[#DC2626]/20"
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.2, delay: 0.5 + idx * 0.1 }}
                               whileHover={{ scale: 1.02 }}
                             >
-                              <p className="text-red-800 dark:text-red-200 font-semibold text-xs mb-1">
+                              <p className="text-[#DC2626] font-semibold text-xs mb-1">
                                 {fine.description}
                               </p>
                               <motion.a 
                                 href={fine.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 text-xs text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 font-medium hover:underline"
+                                className="inline-flex items-center gap-1 text-xs text-[#DC2626] hover:text-[#DC2626]/80 font-medium hover:underline"
                                 whileHover={{ x: 2 }}
                               >
                                 <span>📄 {fine.source}</span>
@@ -747,20 +748,20 @@ const DsgvoCompliance = () => {
 
                     {/* Compact Marsstein Solution */}
                     <motion.div 
-                      className="bg-gradient-to-r from-[#a1251b]/10 via-purple-600/10 to-[#a1251b]/10 rounded-xl p-4 border border-[#a1251b]/20 shadow-sm relative overflow-hidden"
+                      className="bg-gradient-to-r from-[#a1251b]/10 via-purple-600/10 to-[#a1251b]/10 rounded-xl p-4 border border-[#e24e1b]/20 shadow-sm relative overflow-hidden"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.5 }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#a1251b]/5 to-purple-600/5 animate-pulse" />
                       <div className="relative z-10">
-                        <h3 className="text-lg font-bold text-[#a1251b] mb-2 flex items-center gap-2">
-                          <div className="p-1.5 bg-[#a1251b]/10 rounded-lg">
+                        <h3 className="text-lg font-semibold text-[#e24e1b] mb-2 flex items-center gap-2">
+                          <div className="p-1.5 bg-[#e24e1b]/10 rounded-lg">
                             <Zap className="h-4 w-4" />
                           </div>
                           Marsstein-Lösung für {industries[activeIndustry].name}
                         </h3>
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                        <p className="text-[#474747] dark:text-gray-300 leading-relaxed text-sm">
                           {industries[activeIndustry].marsteinSolution}
                         </p>
                       </div>
@@ -777,7 +778,7 @@ const DsgvoCompliance = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Button size="lg" className="bg-gradient-to-r from-[#a1251b] to-purple-600 hover:from-[#8a1f17] hover:to-purple-700 text-white px-8 py-3 text-base font-semibold shadow-lg shadow-[#a1251b]/25 border-0">
+                        <Button size="lg" className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] hover:from-[#f97316] hover:to-[#ea580c] text-white px-8 py-3 text-base font-semibold shadow-lg shadow-[#e24e1b]/25 border-0">
                           Branchenspezifische Demo anfragen
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
@@ -798,14 +799,14 @@ const DsgvoCompliance = () => {
     <section className="py-20 md:py-32">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/20 dark:text-purple-300">
+          <Badge className="bg-[#ea580c]/10 text-[#ea580c]">
             <Sparkles className="h-3.5 w-3.5 mr-2" />
             Ihre Vorteile
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Warum Marsstein für DSGVO-Compliance?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-[#474747] max-w-2xl mx-auto">
             Reduzieren Sie Risiken, sparen Sie Zeit und schaffen Sie Vertrauen bei Ihren Kunden
           </p>
         </div>
@@ -814,42 +815,42 @@ const DsgvoCompliance = () => {
           {[
             {
               icon: Shield,
-              title: 'Rechtssicherheit garantiert',
-              description: 'Von Datenschutzexperten entwickelt und von Anwälten geprüft. Immer auf dem neuesten Stand der Gesetzgebung.',
-              benefits: ['Automatische Updates', 'Rechtsgutachten inklusive', 'Haftungsübernahme']
+              title: 'Standards-konforme Entwicklung',
+              description: 'Von Compliance-Experten entwickelt nach DSGVO-Standards. Kontinuierliche rechtliche Validierung geplant.',
+              benefits: ['Geplante Updates', 'Legal-Review-Prozess', 'Standards-Konformität']
             },
             {
               icon: Clock,
-              title: '90% Zeitersparnis',
-              description: 'Automatisieren Sie repetitive Aufgaben und konzentrieren Sie sich auf Ihr Kerngeschäft.',
-              benefits: ['KI-gestützte Dokumentation', 'Vorlagen & Workflows', 'One-Click Reports']
+              title: 'Potenzial: Bis 90% Zeitersparnis',
+              description: 'Vision: Automatisierung repetitiver Aufgaben für Fokus auf Kerngeschäft.',
+              benefits: ['Geplant: KI-Dokumentation', 'Roadmap: Workflows', 'Vision: One-Click Reports']
             },
             {
               icon: Euro,
-              title: 'Bußgeld-Vermeidung',
-              description: 'Schützen Sie sich vor Strafen bis zu 20 Mio. € oder 4% des Jahresumsatzes.',
-              benefits: ['Frühwarnsystem', 'Audit-Trail', 'Behörden-konform']
+              title: 'Risiko-Minimierung',
+              description: 'Ziel: Schutz vor DSGVO-Strafen durch Standards-konforme Prozesse.',
+              benefits: ['Roadmap: Warnsystem', 'Geplant: Audit-Trail', 'Vision: Behörden-konform']
             },
             {
               icon: Bot,
-              title: 'KI-Assistent 24/7',
-              description: 'Ihr persönlicher DSGVO-Experte beantwortet alle Fragen sofort und präzise.',
-              benefits: ['Multilingual', 'Rechtsberatung', 'Instant-Antworten']
+              title: 'KI-Assistent Vision',
+              description: 'Roadmap: DSGVO-Experte für sofortige, präzise Antworten.',
+              benefits: ['Geplant: Multilingual', 'Vision: Rechtsberatung', 'Beta: Basis-Antworten']
             },
             {
               icon: Database,
-              title: 'Zentrale Datenverwaltung',
-              description: 'Alle Dokumente, Prozesse und Nachweise an einem sicheren Ort.',
-              benefits: ['Ende-zu-Ende verschlüsselt', 'Cloud-Backup', 'Versionierung']
+              title: 'Sichere Datenverwaltung',
+              description: 'Konzept: Zentrale, sichere Dokumenten- und Prozessverwaltung.',
+              benefits: ['Ziel: Ende-zu-Ende Verschlüsselung', 'Geplant: Cloud-Backup', 'Vision: Versionierung']
             },
             {
               icon: BarChart3,
               title: 'Transparentes Reporting',
-              description: 'Beweisen Sie Compliance gegenüber Auditoren und Behörden mit einem Klick.',
-              benefits: ['Export-Funktionen', 'Dashboards', 'Audit-Reports']
+              description: 'Vision: Compliance-Nachweis gegenüber Auditoren mit einem Klick.',
+              benefits: ['Roadmap: Export-Funktionen', 'Geplant: Dashboards', 'Vision: Audit-Reports']
             }
           ].map((benefit, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-[#a1251b]/20">
+            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-[#e24e1b]/20">
               <CardHeader>
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-[#a1251b] to-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <benefit.icon className="h-6 w-6 text-white" />
@@ -879,11 +880,11 @@ const DsgvoCompliance = () => {
     <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 to-gray-950">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
+          <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
             <Zap className="h-3.5 w-3.5 mr-2" />
             Funktionen im Detail
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Alles was Sie für DSGVO-Compliance brauchen
           </h2>
         </div>
@@ -916,10 +917,10 @@ const DsgvoCompliance = () => {
                 status: 'Beta'
               }
             ].map((feature, index) => (
-              <div key={index} className="flex gap-4 p-6 rounded-xl bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-800 hover:border-[#a1251b]/30 transition-colors">
+              <div key={index} className="flex gap-4 p-6 rounded-xl bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-800 hover:border-[#e24e1b]/30 transition-colors">
                 <div className="flex-shrink-0">
-                  <div className="h-12 w-12 rounded-lg bg-[#a1251b]/10 flex items-center justify-center">
-                    <feature.icon className="h-6 w-6 text-[#a1251b]" />
+                  <div className="h-12 w-12 rounded-lg bg-[#e24e1b]/10 flex items-center justify-center">
+                    <feature.icon className="h-6 w-6 text-[#e24e1b]" />
                   </div>
                 </div>
                 <div className="flex-1">
@@ -929,7 +930,7 @@ const DsgvoCompliance = () => {
                       {feature.status}
                     </Badge>
                   </div>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <p className="text-[#474747]">{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -949,15 +950,15 @@ const DsgvoCompliance = () => {
     <section className="py-20 md:py-32">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-300">
+          <Badge className="bg-[#39B37B]/10 text-[#39B37B]">
             <Rocket className="h-3.5 w-3.5 mr-2" />
             So funktioniert's
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            In 4 Wochen zu 100% DSGVO-Compliance
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+            Roadmap zu DSGVO-Standards-konformer Compliance
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Unser bewährter Prozess führt Sie Schritt für Schritt zur vollständigen Compliance
+          <p className="text-lg text-[#474747] max-w-2xl mx-auto">
+            Unser geplanter Prozess: Schritt für Schritt zur Standards-konformen Compliance
           </p>
         </div>
 
@@ -965,30 +966,30 @@ const DsgvoCompliance = () => {
           {[
             {
               step: '1',
-              title: 'Analyse & Audit',
-              description: 'KI-gestützte Analyse Ihrer aktuellen Datenschutz-Situation',
-              duration: 'Tag 1-3',
+              title: 'Beta-Analyse',
+              description: 'Geplant: KI-gestützte Analyse Ihrer Datenschutz-Situation',
+              duration: 'Phase 1',
               icon: BarChart3
             },
             {
               step: '2',
-              title: 'Dokumentation',
-              description: 'Automatische Erstellung aller erforderlichen Dokumente',
-              duration: 'Woche 1-2',
+              title: 'Standards-Dokumentation',
+              description: 'Vision: Automatisierte Erstellung DSGVO-konformer Dokumente',
+              duration: 'Phase 2',
               icon: FileText
             },
             {
               step: '3',
-              title: 'Implementierung',
-              description: 'Integration der Prozesse in Ihren Arbeitsalltag',
-              duration: 'Woche 2-3',
+              title: 'Workflow-Integration',
+              description: 'Roadmap: Integration der Prozesse in bestehende Systeme',
+              duration: 'Phase 3',
               icon: Zap
             },
             {
               step: '4',
-              title: 'Zertifizierung',
-              description: 'Finale Prüfung und DSGVO-Zertifikat',
-              duration: 'Woche 4',
+              title: 'Compliance-Validierung',
+              description: 'Ziel: Standards-konforme Prüfung und Dokumentation',
+              duration: 'Phase 4',
               icon: Award
             }
           ].map((step, index) => (
@@ -996,10 +997,10 @@ const DsgvoCompliance = () => {
               {index < 3 && (
                 <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-[#a1251b] to-transparent" />
               )}
-              <Card className="relative h-full border-2 hover:border-[#a1251b]/30 transition-colors">
+              <Card className="relative h-full border-2 hover:border-[#e24e1b]/30 transition-colors">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="h-12 w-12 rounded-full bg-[#a1251b] text-white flex items-center justify-center font-bold text-xl">
+                    <div className="h-12 w-12 rounded-full bg-[#e24e1b] text-white flex items-center justify-center font-bold text-xl">
                       {step.step}
                     </div>
                     <Badge variant="outline" className="text-xs">
@@ -1010,7 +1011,7 @@ const DsgvoCompliance = () => {
                   <CardDescription>{step.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <step.icon className="h-8 w-8 text-[#a1251b] opacity-20" />
+                  <step.icon className="h-8 w-8 text-[#e24e1b] opacity-20" />
                 </CardContent>
               </Card>
             </div>
@@ -1018,7 +1019,7 @@ const DsgvoCompliance = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <Button size="lg" className="bg-[#a1251b] hover:bg-[#8a1f17]">
+          <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316]">
             Jetzt starten
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
@@ -1036,7 +1037,7 @@ const DsgvoCompliance = () => {
         icon: CheckSquare,
         features: ['174 Prüfpunkte', 'Rechtssicher', 'Sofort einsetzbar'],
         color: 'from-[#a1251b] to-red-600',
-        bgColor: 'bg-red-50 dark:bg-red-950/20',
+        bgColor: 'bg-[#DC2626]/5',
         borderColor: 'border-red-200 dark:border-red-800',
         href: '/resources#dsgvo-checkliste'
       },
@@ -1046,7 +1047,7 @@ const DsgvoCompliance = () => {
         icon: BarChart3,
         features: ['Automatische Bewertung', 'Handlungsempfehlungen', 'PDF-Report'],
         color: 'from-blue-600 to-indigo-600',
-        bgColor: 'bg-blue-50 dark:bg-blue-950/20',
+        bgColor: 'bg-[#e24e1b]/5',
         borderColor: 'border-blue-200 dark:border-blue-800',
         href: '/resources#readiness-assessment'
       },
@@ -1111,7 +1112,7 @@ const DsgvoCompliance = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Badge className="bg-[#a1251b]/10 backdrop-blur-sm text-[#a1251b] border-[#a1251b]/20 px-6 py-2.5 text-sm font-medium">
+              <Badge className="bg-[#e24e1b]/10 backdrop-blur-sm text-[#e24e1b] border-[#e24e1b]/20 px-6 py-2.5 text-sm font-medium">
                 <FileText className="h-4 w-4 mr-2" />
                 DSGVO Tools & Resources
               </Badge>
@@ -1127,7 +1128,7 @@ const DsgvoCompliance = () => {
             </motion.h2>
             
             <motion.p
-              className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
+              className="text-xl text-[#474747] dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -1157,18 +1158,18 @@ const DsgvoCompliance = () => {
                   
                   <CardHeader className="relative z-10 pb-4">
                     <motion.div
-                      className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${tool.color} flex items-center justify-center shadow-lg mb-4`}
+                      className={`h-16 w-16 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center shadow-lg mb-4`}
                       whileHover={{ rotate: 5, scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300, damping: 10 }}
                     >
                       <tool.icon className="h-8 w-8 text-white" />
                     </motion.div>
                     
-                    <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-[#a1251b] transition-colors">
+                    <CardTitle className="text-xl font-bold text-[#232323] dark:text-gray-100 mb-3 group-hover:text-[#e24e1b] transition-colors">
                       {tool.title}
                     </CardTitle>
                     
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                    <p className="text-sm text-[#474747] dark:text-gray-400 leading-relaxed mb-4">
                       {tool.description}
                     </p>
                   </CardHeader>
@@ -1185,7 +1186,7 @@ const DsgvoCompliance = () => {
                           transition={{ duration: 0.3, delay: 0.1 * featureIndex }}
                         >
                           <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                          <span className="text-sm text-[#474747] dark:text-gray-300">{feature}</span>
                         </motion.div>
                       ))}
                     </div>
@@ -1233,7 +1234,7 @@ const DsgvoCompliance = () => {
             >
               <Link
                 to="/resources"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#a1251b] via-red-600 to-[#a1251b] text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white font-bold text-lg rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 group"
               >
                 <span>Alle Tools & Resources anzeigen</span>
                 <motion.div
@@ -1251,244 +1252,21 @@ const DsgvoCompliance = () => {
   };
 
   // Pricing/CTA Section
-  const PricingSection = () => (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 to-gray-950">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
-            <Euro className="h-3.5 w-3.5 mr-2" />
-            Investition in Ihre Sicherheit
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Transparente Preise, keine versteckten Kosten
-          </h2>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {[
-            {
-              name: 'Starter',
-              price: '299',
-              description: 'Für kleine Unternehmen und Startups',
-              features: [
-                'Bis zu 50 Mitarbeiter',
-                'Basis-Dokumentation',
-                'E-Mail Support',
-                'Monatliche Updates',
-                'Standard-Vorlagen'
-              ],
-              popular: false
-            },
-            {
-              name: 'Professional',
-              price: '599',
-              description: 'Für wachsende Unternehmen',
-              features: [
-                'Bis zu 250 Mitarbeiter',
-                'Vollständige Dokumentation',
-                'Priority Support 24/7',
-                'Wöchentliche Updates',
-                'Anpassbare Vorlagen',
-                'KI-Assistent',
-                'API-Zugang'
-              ],
-              popular: true
-            },
-            {
-              name: 'Enterprise',
-              price: 'Custom',
-              description: 'Für Großunternehmen',
-              features: [
-                'Unbegrenzte Mitarbeiter',
-                'White-Label Option',
-                'Dedizierter Account Manager',
-                'Tägliche Updates',
-                'Custom Entwicklung',
-                'On-Premise Option',
-                'SLA-Garantien'
-              ],
-              popular: false
-            }
-          ].map((plan, index) => (
-            <Card 
-              key={index} 
-              className={cn(
-                "relative border-2 transition-all duration-300",
-                plan.popular ? "border-[#a1251b] shadow-2xl scale-105" : "hover:border-gray-300"
-              )}
-            >
-              {plan.popular && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-[#a1251b] text-white px-4 py-1">
-                    Beliebteste Wahl
-                  </Badge>
-                </div>
-              )}
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
-                <CardDescription>{plan.description}</CardDescription>
-                <div className="mt-6">
-                  {plan.price === 'Custom' ? (
-                    <div className="text-3xl font-bold">Individuell</div>
-                  ) : (
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-5xl font-bold">{plan.price}</span>
-                      <span className="text-2xl text-muted-foreground">€/Monat</span>
-                    </div>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-3">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button 
-                  className={cn(
-                    "w-full",
-                    plan.popular ? "bg-[#a1251b] hover:bg-[#8a1f17]" : "bg-gray-900 hover:bg-gray-800"
-                  )}
-                >
-                  {plan.price === 'Custom' ? 'Kontakt aufnehmen' : 'Kostenlos testen'}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-16 text-center space-y-4">
-          <p className="text-muted-foreground">
-            Alle Preise verstehen sich zzgl. MwSt. • Keine Einrichtungsgebühr • Jederzeit kündbar
-          </p>
-          <div className="flex items-center justify-center gap-8">
-            <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-green-600" />
-              <span className="text-sm">30 Tage Geld-zurück-Garantie</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Lock className="h-5 w-5 text-green-600" />
-              <span className="text-sm">Sichere Zahlung</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-
-  // Testimonials Section
-  const TestimonialsSection = () => (
-    <section className="py-20 md:py-32">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/20 dark:text-purple-300">
-            <Star className="h-3.5 w-3.5 mr-2" />
-            Kundenstimmen
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Was unsere Kunden sagen
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Über 500 Unternehmen vertrauen auf Marsstein für ihre DSGVO-Compliance
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              quote: "Marsstein hat unseren Compliance-Prozess revolutioniert. Was früher Wochen dauerte, erledigen wir jetzt in Stunden.",
-              author: "Dr. Sarah Weber",
-              role: "Datenschutzbeauftragte",
-              company: "TechCorp GmbH",
-              rating: 5,
-              avatar: "SW"
-            },
-            {
-              quote: "Die KI-gestützte Analyse hat Lücken aufgedeckt, die wir nie gefunden hätten. Die Experten-Beratung war Gold wert.",
-              author: "Michael Schmidt",
-              role: "Geschäftsführer",
-              company: "E-Commerce Solutions AG",
-              rating: 5,
-              avatar: "MS"
-            },
-            {
-              quote: "Endlich eine Lösung, die wirklich funktioniert! Der Support ist erstklassig und die Dokumentation immer aktuell.",
-              author: "Anna Müller",
-              role: "Compliance Manager",
-              company: "FinTech Innovations",
-              rating: 5,
-              avatar: "AM"
-            },
-            {
-              quote: "Das Preis-Leistungs-Verhältnis ist unschlagbar. Wir haben bereits zwei Audits ohne Beanstandungen bestanden.",
-              author: "Thomas Fischer",
-              role: "IT-Leiter",
-              company: "Logistik Plus GmbH",
-              rating: 5,
-              avatar: "TF"
-            },
-            {
-              quote: "Die automatischen Updates bei Gesetzesänderungen sind unbezahlbar. Wir sind immer auf dem neuesten Stand.",
-              author: "Lisa Chen",
-              role: "Legal Counsel",
-              company: "Global Trade Solutions",
-              rating: 5,
-              avatar: "LC"
-            },
-            {
-              quote: "Von der Implementierung bis zum Support - alles läuft reibungslos. Absolute Empfehlung!",
-              author: "Robert Wagner",
-              role: "CEO",
-              company: "Digital Marketing Pro",
-              rating: 5,
-              avatar: "RW"
-            }
-          ].map((testimonial, index) => (
-            <Card key={index} className="relative overflow-hidden">
-              <CardHeader>
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <Quote className="h-8 w-8 text-[#a1251b]/20 absolute top-4 right-4" />
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground italic">"{testimonial.quote}"</p>
-                <div className="flex items-center gap-3 pt-4 border-t">
-                  <div className="h-12 w-12 rounded-full bg-[#a1251b] text-white flex items-center justify-center font-semibold">
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
 
   // FAQ Section
   const FAQSection = () => (
-    <section className="py-20 md:py-32 bg-gray-50 dark:bg-gray-900/50">
+    <section className="py-20 md:py-32 bg-[#F5F6F8] dark:bg-gray-900/50">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
           <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300">
             <HelpCircle className="h-3.5 w-3.5 mr-2" />
             Häufige Fragen
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Fragen zu DSGVO-Compliance?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-[#474747] max-w-2xl mx-auto">
             Hier finden Sie Antworten auf die wichtigsten Fragen
           </p>
         </div>
@@ -1530,10 +1308,10 @@ const DsgvoCompliance = () => {
               }
             ].map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="bg-white dark:bg-gray-900 px-6 rounded-lg border-2">
-                <AccordionTrigger className="text-left hover:text-[#a1251b]">
+                <AccordionTrigger className="text-left hover:text-[#e24e1b]">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-[#474747]">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -1542,18 +1320,18 @@ const DsgvoCompliance = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-muted-foreground mb-4">Noch Fragen? Wir sind für Sie da!</p>
+          <p className="text-[#474747] mb-4">Noch Fragen? Wir sind für Sie da!</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" className="group">
-              <Phone className="mr-2 h-4 w-4 group-hover:text-[#a1251b]" />
+              <Phone className="mr-2 h-4 w-4 group-hover:text-[#e24e1b]" />
               +49 30 12345678
             </Button>
             <Button variant="outline" className="group">
-              <Mail className="mr-2 h-4 w-4 group-hover:text-[#a1251b]" />
+              <Mail className="mr-2 h-4 w-4 group-hover:text-[#e24e1b]" />
               compliance@marsstein.de
             </Button>
             <Button variant="outline" className="group">
-              <Calendar className="mr-2 h-4 w-4 group-hover:text-[#a1251b]" />
+              <Calendar className="mr-2 h-4 w-4 group-hover:text-[#e24e1b]" />
               Demo buchen
             </Button>
           </div>
@@ -1566,31 +1344,31 @@ const DsgvoCompliance = () => {
   const FinalCTASection = () => (
     <section className="py-20 md:py-32">
       <div className="container px-4">
-        <Card className="relative overflow-hidden border-2 border-[#a1251b]/20 bg-gradient-to-br from-[#a1251b]/5 to-purple-600/5">
+        <Card className="relative overflow-hidden border-2 border-[#e24e1b]/20 bg-gradient-to-br from-[#a1251b]/5 to-purple-600/5">
           <div className="absolute inset-0 bg-grid-black/5 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
           <CardContent className="relative z-10 p-12 md:p-20 text-center space-y-8">
-            <Badge className="bg-[#a1251b] text-white px-6 py-2 text-base">
+            <Badge className="bg-[#e24e1b] text-white px-6 py-2 text-base">
               <Sparkles className="h-4 w-4 mr-2" />
               Limitiertes Angebot: 50% Rabatt für die ersten 3 Monate
             </Badge>
             
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
               Schützen Sie Ihr Unternehmen
-              <span className="block text-[#a1251b]">noch heute</span>
+              <span className="block text-[#e24e1b]">noch heute</span>
             </h2>
             
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-[#474747] max-w-2xl mx-auto">
               Jeden Tag ohne vollständige DSGVO-Compliance ist ein Risiko. 
               Starten Sie jetzt und schlafen Sie ruhiger.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button size="lg" className="bg-[#a1251b] hover:bg-[#8a1f17] text-white px-10 py-6 text-lg">
+              <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316] text-white px-10 py-6 text-lg">
                 Jetzt kostenlos starten
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button size="lg" variant="outline" className="px-10 py-6 text-lg group">
-                <Phone className="mr-2 h-5 w-5 group-hover:text-[#a1251b]" />
+                <Phone className="mr-2 h-5 w-5 group-hover:text-[#e24e1b]" />
                 Experten-Beratung
               </Button>
             </div>
@@ -1627,8 +1405,6 @@ const DsgvoCompliance = () => {
         <FeaturesShowcase />
         <HowItWorksSection />
         <DsgvoToolsSection />
-        <PricingSection />
-        <TestimonialsSection />
         <FAQSection />
         <FinalCTASection />
       </main>

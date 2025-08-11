@@ -27,9 +27,9 @@ interface ShowcaseData {
 
 const showcaseData: ShowcaseData[] = [
   {
-    metric: 'Compliance Score',
-    value: '98.7%',
-    change: '+12.3%',
+    metric: 'Demo Score',
+    value: 'Preview',
+    change: 'Mode',
     icon: Shield,
     color: 'text-green-600'
   },
@@ -41,9 +41,9 @@ const showcaseData: ShowcaseData[] = [
     color: 'text-blue-600'
   },
   {
-    metric: 'Active Users',
-    value: '12.4K',
-    change: '+23.1%',
+    metric: 'Beta Community',
+    value: 'Early',
+    change: 'Adopter',
     icon: Users,
     color: 'text-purple-600'
   },
@@ -59,12 +59,12 @@ const showcaseData: ShowcaseData[] = [
 const benefits = [
   {
     title: 'KI-gestützte Automatisierung',
-    description: 'Intelligente Workflows reduzieren manuelle Arbeit um bis zu 85%',
+    description: 'Intelligente Workflows zur Reduzierung manueller Arbeit (in Entwicklung)',
     href: '/tools/compliance-ai-assistant'
   },
   {
     title: 'Echtzeit-Monitoring',
-    description: '24/7 Überwachung mit sofortigen Benachrichtigungen bei Anomalien',
+    description: 'Monitoring-System mit Benachrichtigungen (Roadmap 2025)',
     href: '/dashboard'
   },
   {
@@ -266,11 +266,11 @@ export const InteractiveShowcase: React.FC = () => {
                 <div className="flex items-center justify-center space-x-2">
                   <Sparkles className="h-4 w-4 text-primary" />
                   <span className="text-sm font-medium text-muted-foreground">
-                    Über 500 Unternehmen vertrauen uns
+                    Entwickelt für moderne EU-Unternehmen
                   </span>
                 </div>
                 <div className="text-lg font-bold text-primary">
-                  Werden Sie Teil der Compliance-Revolution
+                  Gestalten Sie Compliance-Innovation mit
                 </div>
               </div>
             </Card>

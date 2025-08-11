@@ -406,7 +406,7 @@ const CookieManagementToolProduct = () => {
     { feature: 'Consent-Optimierung', us: 'ML-basiert', others: 'Statisch' },
     { feature: 'Rechts-Updates', us: 'Automatisch', others: 'Manuell' },
     { feature: 'Performance Impact', us: '< 100ms', others: '300-500ms' },
-    { feature: 'Preis-Leistung', us: 'Ab 29€/Monat', others: 'Ab 99€/Monat' }
+    { feature: 'Support', us: '24/7 Live-Chat', others: 'E-Mail Support' }
   ];
 
   // Interactive Demo States
@@ -550,7 +550,7 @@ const CookieManagementToolProduct = () => {
                 className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 <Rocket className="mr-2 h-5 w-5" />
-                14 Tage kostenlos testen
+                Jetzt starten
               </Button>
               <Button
                 size="lg"
@@ -1095,7 +1095,7 @@ const CookieManagementToolProduct = () => {
                 className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 <Rocket className="mr-2 h-5 w-5" />
-                14 Tage kostenlos testen
+                Jetzt starten
               </Button>
               <Button
                 size="lg"

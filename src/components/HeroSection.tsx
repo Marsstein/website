@@ -27,17 +27,17 @@ export const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const metrics = [
-    { value: 98, label: "Compliance Rate", icon: Shield, color: "text-emerald-400", bgColor: "bg-emerald-500/20", borderColor: "border-emerald-500/30" },
-    { value: 500, label: "Companies", icon: Building2, color: "text-blue-400", bgColor: "bg-blue-500/20", borderColor: "border-blue-500/30" },
-    { value: 10000, label: "Hours Saved", icon: Clock, color: "text-brand-red", bgColor: "bg-brand-red/20", borderColor: "border-brand-red/30" },
-    { value: 99.9, label: "Uptime", icon: Activity, color: "text-purple-400", bgColor: "bg-purple-500/20", borderColor: "border-purple-500/30" }
+    { value: 98, label: "Compliance Ziel", icon: Shield, color: "text-emerald-400", bgColor: "bg-emerald-500/20", borderColor: "border-emerald-500/30", suffix: "%", isGoal: true },
+    { value: 500, label: "Zielgruppe", icon: Building2, color: "text-blue-400", bgColor: "bg-blue-500/20", borderColor: "border-blue-500/30", suffix: "k+", isGoal: true },
+    { value: 10000, label: "Einsparziel", icon: Clock, color: "text-brand-red", bgColor: "bg-brand-red/20", borderColor: "border-brand-red/30", suffix: "h", isGoal: true },
+    { value: 99.5, label: "Verfügbarkeitsziel", icon: Activity, color: "text-purple-400", bgColor: "bg-purple-500/20", borderColor: "border-purple-500/30", suffix: "%", isGoal: true }
   ];
 
   const features = [
-    { icon: Brain, title: "KI-gestützte Analyse", desc: "Automatische Compliance-Bewertung" },
-    { icon: Shield, title: "DSGVO Ready", desc: "100% EU-konform" },
-    { icon: Globe, title: "Multi-Regional", desc: "DACH & EU-weit" },
-    { icon: Award, title: "Zertifiziert", desc: "ISO 27001 & SOC 2" }
+    { icon: Brain, title: "KI-gestützte Analyse", desc: "Automatische Compliance-Bewertung", badge: "Beta" },
+    { icon: Shield, title: "DSGVO Ready", desc: "EU-konform nach aktuellen Standards", badge: "Ready" },
+    { icon: Globe, title: "Multi-Regional", desc: "DACH & EU-weit", badge: "Roadmap" },
+    { icon: Award, title: "ISO 27001 Ready", desc: "Zertifizierung in Planung", badge: "Q3 2025" }
   ];
 
   // Intersection observer for fade-in animations
@@ -94,10 +94,13 @@ export const HeroSection: React.FC = () => {
           )}>
             
             {/* Badge */}
-            <div className="inline-flex">
+            <div className="flex gap-2">
               <Badge className="bg-brand-red/20 text-brand-red border-brand-red/30 px-4 py-2 text-sm font-medium backdrop-blur-sm">
                 <Sparkles className="w-4 h-4 mr-2" />
                 KI-native Compliance Platform
+              </Badge>
+              <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-3 py-2 text-xs font-medium backdrop-blur-sm">
+                Beta Preview
               </Badge>
             </div>
 
@@ -107,7 +110,7 @@ export const HeroSection: React.FC = () => {
                 Compliance{' '}
                 <span className="relative">
                   <span className="bg-gradient-to-r from-brand-red to-orange-500 bg-clip-text text-transparent">
-                    Revolutioniert
+                    Modernisiert
                   </span>
                   <div className="absolute -top-2 -right-2 lg:-top-3 lg:-right-3">
                     <Sparkles className="h-6 w-6 lg:h-8 lg:w-8 text-brand-red animate-pulse" />
@@ -117,7 +120,7 @@ export const HeroSection: React.FC = () => {
               
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
                 Die erste KI-native Compliance-Plattform für das digitale Zeitalter. 
-                Automatisieren Sie Ihre Compliance-Prozesse und sparen Sie bis zu 85% Zeit.
+                Unser Ziel: Automatisierung Ihrer Compliance-Prozesse mit bis zu 85% Zeitersparnis.
               </p>
             </div>
 
@@ -166,7 +169,14 @@ export const HeroSection: React.FC = () => {
                       <Icon className="h-5 w-5 text-brand-red group-hover:text-white transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white text-sm group-hover:text-orange-100 transition-colors duration-300">{feature.title}</h3>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-orange-100 transition-colors duration-300">{feature.title}</h3>
+                        {feature.badge && (
+                          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-1 py-0">
+                            {feature.badge}
+                          </Badge>
+                        )}
+                      </div>
                       <p className="text-gray-300 text-xs group-hover:text-gray-200 transition-colors duration-300">{feature.desc}</p>
                     </div>
                   </div>
@@ -188,12 +198,12 @@ export const HeroSection: React.FC = () => {
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold text-white">Live Dashboard</h3>
-                    <p className="text-sm text-gray-300">Compliance Metrics in Echtzeit</p>
+                    <h3 className="text-lg font-semibold text-white">Demo Dashboard</h3>
+                    <p className="text-sm text-gray-300">Zukünftige Compliance Metriken</p>
                   </div>
-                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                  <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30">
                     <Activity className="w-3 h-3 mr-1" />
-                    Live
+                    Preview
                   </Badge>
                 </div>
 
@@ -216,8 +226,8 @@ export const HeroSection: React.FC = () => {
                       >
                         <div className="flex items-center justify-between mb-2">
                           <Icon className={cn("h-5 w-5", isActive ? metric.color : "text-gray-400")} />
-                          {metric.label === "Compliance Rate" && (
-                            <span className="text-xs text-green-400 font-medium">+5.2%</span>
+                          {metric.label === "Compliance Ziel" && (
+                            <span className="text-xs text-orange-400 font-medium">Roadmap</span>
                           )}
                         </div>
                         
@@ -229,17 +239,22 @@ export const HeroSection: React.FC = () => {
                                   end={metric.value}
                                   duration={2.5}
                                   delay={index * 0.2}
-                                  decimals={metric.label === "Uptime" ? 1 : 0}
+                                  decimals={metric.label === "Verfügbarkeitsziel" ? 1 : 0}
                                 />
-                                {metric.label === "Compliance Rate" || metric.label === "Uptime" ? "%" : ""}
-                                {metric.label === "Hours Saved" ? "h" : ""}
-                                {metric.label === "Companies" ? "+" : ""}
+                                {metric.suffix || ""}
                               </>
                             ) : (
                               "0"
                             )}
                           </div>
-                          <div className="text-xs text-gray-400">{metric.label}</div>
+                          <div className="flex items-center gap-2">
+                            <div className="text-xs text-gray-400">{metric.label}</div>
+                            {metric.isGoal && (
+                              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-1 py-0">
+                                Ziel
+                              </Badge>
+                            )}
+                          </div>
                         </div>
                       </div>
                     );
@@ -249,8 +264,13 @@ export const HeroSection: React.FC = () => {
                 {/* Progress Indicator */}
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Compliance Score</span>
-                    <span className="font-semibold text-white">98.7%</span>
+                    <span className="text-gray-400">Compliance Ziel</span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-white">98.7%</span>
+                      <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-1 py-0">
+                        Vision
+                      </Badge>
+                    </div>
                   </div>
                   <div className="w-full bg-slate-700/50 rounded-full h-2">
                     <div 
@@ -267,28 +287,39 @@ export const HeroSection: React.FC = () => {
 
             {/* Trust Indicators */}
             <div className="grid grid-cols-2 gap-4">
-              <Card className="p-4 bg-slate-800/40 backdrop-blur-sm border-blue-500/20 text-center">
+              <Card className="p-4 bg-slate-800/40 backdrop-blur-sm border-blue-500/20 text-center relative">
                 <CheckCircle2 className="h-6 w-6 text-green-400 mx-auto mb-2" />
                 <div className="text-sm font-semibold text-white">DSGVO</div>
-                <div className="text-xs text-gray-300">100% Konform</div>
+                <div className="text-xs text-gray-300">Standards-konform</div>
+                <Badge className="absolute -top-1 -right-1 bg-green-500/20 text-green-400 border-green-500/30 text-xs px-1 py-0">
+                  Ready
+                </Badge>
               </Card>
               
-              <Card className="p-4 bg-slate-800/40 backdrop-blur-sm border-blue-500/20 text-center">
-                <Shield className="h-6 w-6 text-blue-400 mx-auto mb-2" />
+              <Card className="p-4 bg-slate-800/40 backdrop-blur-sm border-blue-500/20 text-center relative">
+                <Shield className="h-6 w-6 text-orange-400 mx-auto mb-2" />
                 <div className="text-sm font-semibold text-white">ISO 27001</div>
-                <div className="text-xs text-gray-300">Zertifiziert</div>
+                <div className="text-xs text-gray-300">In Vorbereitung</div>
+                <Badge className="absolute -top-1 -right-1 bg-orange-500/20 text-orange-400 border-orange-500/30 text-xs px-1 py-0">
+                  Q3 2025
+                </Badge>
               </Card>
             </div>
 
-            {/* Social Proof */}
+            {/* Market Focus */}
             <div className="text-center">
               <p className="text-sm text-gray-300 mb-2">
-                Vertrauen von über <strong className="text-white">500+ Unternehmen</strong>
+                Entwickelt für <strong className="text-white">500k+ EU-Unternehmen</strong>
               </p>
-              <div className="flex justify-center space-x-1">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="w-2 h-2 bg-brand-red rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
-                ))}
+              <div className="flex justify-center items-center space-x-2">
+                <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-2 py-1">
+                  Beta-Programm
+                </Badge>
+                <div className="flex space-x-1">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="w-1.5 h-1.5 bg-brand-red rounded-full animate-pulse" style={{ animationDelay: `${i * 0.3}s` }} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>

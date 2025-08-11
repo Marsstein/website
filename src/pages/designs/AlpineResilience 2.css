@@ -1,0 +1,927 @@
+/* Alpine Resilience Design */
+.alpine-resilience {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
+  color: #393939;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Alpine Color Palette */
+.alpine-resilience {
+  --alpine-mars-red: #CC3333;
+  --alpine-glacier-blue: #3A6EA5;
+  --alpine-glacier-light: #5B8BC4;
+  --alpine-glacier-dark: #2A5286;
+  --alpine-pine-green: #2E5E4E;
+  --alpine-pine-light: #3E7E6E;
+  --alpine-pine-dark: #1E4E3E;
+  --alpine-granite-gray: #393939;
+  --alpine-granite-light: #595959;
+  --alpine-granite-dark: #292929;
+  --alpine-snow-white: #FFFFFF;
+  --alpine-mountain-gray: #64748B;
+  --alpine-success: #059669;
+  --alpine-warning: #D97706;
+  --alpine-info: #0284C7;
+  --alpine-border: rgba(58, 110, 165, 0.15);
+  --alpine-shadow: rgba(58, 110, 165, 0.2);
+  --alpine-glow: rgba(204, 51, 51, 0.3);
+}
+
+/* Alpine Background Effects */
+.alpine-resilience::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(58, 110, 165, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(46, 94, 78, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(204, 51, 51, 0.02) 0%, transparent 50%);
+  z-index: -2;
+}
+
+.alpine-resilience::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%233A6EA5' fill-opacity='0.03'%3E%3Cpath d='M20 0l20 20-20 20L0 20z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  animation: alpine-pattern-drift 30s linear infinite;
+  z-index: -1;
+}
+
+@keyframes alpine-pattern-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+.alpine-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Alpine Header */
+.alpine-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--alpine-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(58, 110, 165, 0.1);
+}
+
+.alpine-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.alpine-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.mountain-peak {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.peak-layers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.peak-snow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 15px solid var(--alpine-snow-white);
+  filter: drop-shadow(0 2px 4px rgba(58, 110, 165, 0.2));
+}
+
+.peak-rock {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 20px solid var(--alpine-granite-gray);
+}
+
+.peak-base {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid var(--alpine-glacier-blue);
+}
+
+.paragraph-peak {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--alpine-mars-red);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--alpine-glow);
+  z-index: 2;
+}
+
+.alpine-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--alpine-granite-gray);
+  letter-spacing: -0.02em;
+}
+
+.alpine-paragraph {
+  color: var(--alpine-mars-red);
+  font-size: 1.7rem;
+  text-shadow: 0 0 8px var(--alpine-glow);
+}
+
+.alpine-tagline {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  font-size: 0.7rem;
+  color: var(--alpine-glacier-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.alpine-nav-menu {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.alpine-nav-menu a {
+  color: var(--alpine-granite-gray);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.alpine-nav-menu a:hover {
+  color: var(--alpine-glacier-blue);
+}
+
+.alpine-nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--alpine-mars-red), var(--alpine-glacier-blue));
+  transition: width 0.3s ease;
+}
+
+.alpine-nav-menu a:hover::after {
+  width: 100%;
+}
+
+.alpine-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.alpine-indicators {
+  text-align: right;
+}
+
+.indicator-mountains {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.mountain-indicator {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 8px solid var(--alpine-mountain-gray);
+}
+
+.mountain-indicator.active {
+  border-bottom-color: var(--alpine-glacier-blue);
+  animation: alpine-active-pulse 2s ease-in-out infinite;
+}
+
+.mountain-indicator.processing {
+  border-bottom-color: var(--alpine-pine-green);
+  animation: alpine-processing-pulse 1.5s ease-in-out infinite;
+}
+
+.mountain-indicator.secured {
+  border-bottom-color: var(--alpine-mars-red);
+}
+
+@keyframes alpine-active-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes alpine-processing-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.alpine-label {
+  font-size: 0.75rem;
+  color: var(--alpine-mountain-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Alpine Hero Section */
+.alpine-hero {
+  padding: 10rem 0 8rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--alpine-snow-white) 0%, #F8FAFC 100%);
+}
+
+.alpine-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(58, 110, 165, 0.1);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--alpine-glacier-blue);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(58, 110, 165, 0.15);
+}
+
+.alpine-title {
+  font-size: 4.5rem;
+  font-weight: 300;
+  color: var(--alpine-granite-gray);
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alpine-highlight {
+  color: var(--alpine-mars-red);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.5rem;
+  text-shadow: 0 0 15px var(--alpine-glow);
+  animation: alpine-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes alpine-glow-pulse {
+  0%, 100% { 
+    text-shadow: 0 0 15px var(--alpine-glow);
+    color: var(--alpine-mars-red);
+  }
+  50% { 
+    text-shadow: 0 0 25px var(--alpine-glow);
+    color: var(--alpine-glacier-blue);
+  }
+}
+
+.alpine-subtitle {
+  font-size: 1.25rem;
+  color: var(--alpine-mountain-gray);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.alpine-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.alpine-primary-btn {
+  background: linear-gradient(135deg, var(--alpine-mars-red), var(--alpine-glacier-blue)) !important;
+  color: var(--alpine-snow-white) !important;
+  border: none;
+  border-radius: 8px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(204, 51, 51, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.alpine-primary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.alpine-primary-btn:hover::before {
+  left: 100%;
+}
+
+.alpine-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(204, 51, 51, 0.4);
+}
+
+.alpine-secondary-btn {
+  border: 1px solid var(--alpine-border) !important;
+  color: var(--alpine-granite-gray) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 8px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.alpine-secondary-btn:hover {
+  border-color: var(--alpine-glacier-blue) !important;
+  color: var(--alpine-glacier-blue) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(58, 110, 165, 0.2);
+}
+
+.alpine-metrics {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.alpine-metric-display {
+  text-align: center;
+}
+
+.alpine-metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--alpine-glacier-blue);
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(58, 110, 165, 0.3);
+}
+
+.alpine-metric-label {
+  font-size: 0.9rem;
+  color: var(--alpine-mountain-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* Alpine Capabilities */
+.alpine-capabilities {
+  padding: 8rem 0;
+  background: var(--alpine-snow-white);
+}
+
+.capabilities-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.alpine-badge {
+  background: linear-gradient(135deg, var(--alpine-glacier-blue), var(--alpine-pine-green)) !important;
+  color: var(--alpine-snow-white) !important;
+  border: none;
+  border-radius: 20px !important;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.capabilities-header h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--alpine-granite-gray);
+  margin-bottom: 1rem;
+}
+
+.capabilities-header p {
+  color: var(--alpine-mountain-gray);
+  font-size: 1.2rem;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.alpine-capability-card {
+  background: var(--alpine-snow-white) !important;
+  border: 1px solid var(--alpine-border) !important;
+  border-radius: 16px !important;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(58, 110, 165, 0.08);
+}
+
+.alpine-capability-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--alpine-mars-red), var(--alpine-glacier-blue), var(--alpine-pine-green));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.alpine-capability-card:hover::before {
+  transform: scaleX(1);
+}
+
+.alpine-capability-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(58, 110, 165, 0.15);
+}
+
+.alpine-capability-card.glacier:hover {
+  box-shadow: 0 20px 40px rgba(58, 110, 165, 0.2);
+}
+
+.alpine-capability-card.pine:hover {
+  box-shadow: 0 20px 40px rgba(46, 94, 78, 0.2);
+}
+
+.alpine-capability-card.pine-green:hover {
+  box-shadow: 0 20px 40px rgba(46, 94, 78, 0.25);
+}
+
+.alpine-capability-card.granite:hover {
+  box-shadow: 0 20px 40px rgba(57, 57, 57, 0.2);
+}
+
+.capability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.capability-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(58, 110, 165, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--alpine-glacier-blue);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+}
+
+.glacier .capability-icon {
+  background: rgba(58, 110, 165, 0.1);
+  color: var(--alpine-glacier-blue);
+  border-color: rgba(58, 110, 165, 0.2);
+}
+
+.pine .capability-icon,
+.pine-green .capability-icon {
+  background: rgba(46, 94, 78, 0.1);
+  color: var(--alpine-pine-green);
+  border-color: rgba(46, 94, 78, 0.2);
+}
+
+.granite .capability-icon {
+  background: rgba(57, 57, 57, 0.1);
+  color: var(--alpine-granite-gray);
+  border-color: rgba(57, 57, 57, 0.2);
+}
+
+.capability-progress {
+  position: relative;
+}
+
+.alpine-progress-ring {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.progress-circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  stroke: rgba(58, 110, 165, 0.1);
+}
+
+.alpine-circle {
+  stroke: var(--alpine-glacier-blue);
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.pine .alpine-circle,
+.pine-green .alpine-circle {
+  stroke: var(--alpine-pine-green);
+}
+
+.granite .alpine-circle {
+  stroke: var(--alpine-granite-gray);
+}
+
+.alpine-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--alpine-glacier-blue);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pine .alpine-progress-text,
+.pine-green .alpine-progress-text {
+  color: var(--alpine-pine-green);
+}
+
+.granite .alpine-progress-text {
+  color: var(--alpine-granite-gray);
+}
+
+.capability-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--alpine-granite-gray);
+  margin-bottom: 1rem;
+}
+
+.capability-description {
+  color: var(--alpine-mountain-gray);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.capability-footer {
+  margin-top: auto;
+}
+
+.alpine-capability-bar {
+  height: 4px;
+  background: rgba(58, 110, 165, 0.1);
+}
+
+/* Alpine Network */
+.alpine-network {
+  padding: 6rem 0;
+  background: #F8FAFC;
+}
+
+.alpine-network-visualization {
+  background: var(--alpine-snow-white) !important;
+  border: 1px solid var(--alpine-border) !important;
+  border-radius: 16px !important;
+  padding: 3rem;
+  box-shadow: 0 8px 24px rgba(58, 110, 165, 0.1);
+}
+
+.network-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.alpine-network-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--alpine-glacier-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--alpine-snow-white);
+  box-shadow: 0 4px 12px rgba(58, 110, 165, 0.3);
+}
+
+.network-header h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--alpine-granite-gray);
+  margin-bottom: 0.5rem;
+}
+
+.network-header p {
+  color: var(--alpine-mountain-gray);
+}
+
+.alpine-tech-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.alpine-tech-node {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 8px;
+  border: 1px solid var(--alpine-border);
+  transition: all 0.3s ease;
+}
+
+.alpine-tech-node:hover {
+  background: rgba(58, 110, 165, 0.05);
+  border-color: var(--alpine-glacier-blue);
+}
+
+.alpine-node-status {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.alpine-node-status.mountain-active {
+  background: var(--alpine-glacier-blue);
+  box-shadow: 0 0 8px var(--alpine-glacier-blue);
+  animation: alpine-active-pulse 2s ease-in-out infinite;
+}
+
+.alpine-node-status.glacier-processing {
+  background: var(--alpine-pine-green);
+  box-shadow: 0 0 8px var(--alpine-pine-green);
+  animation: alpine-processing-pulse 1.5s ease-in-out infinite;
+}
+
+.alpine-node-status.pine-learning {
+  background: var(--alpine-pine-green);
+  box-shadow: 0 0 8px var(--alpine-pine-green);
+}
+
+.alpine-node-status.granite-secured {
+  background: var(--alpine-granite-gray);
+  box-shadow: 0 0 8px var(--alpine-granite-gray);
+}
+
+.alpine-node-status.quantum-encrypted {
+  background: var(--alpine-mars-red);
+  box-shadow: 0 0 8px var(--alpine-mars-red);
+}
+
+.alpine-node-status.hydro-active {
+  background: var(--alpine-info);
+  box-shadow: 0 0 8px var(--alpine-info);
+}
+
+.alpine-tech-name {
+  color: var(--alpine-granite-gray);
+  font-weight: 600;
+  flex: 1;
+}
+
+.alpine-node-count {
+  color: var(--alpine-mountain-gray);
+  font-size: 0.85rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.alpine-network-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.alpine-network-btn {
+  border: 1px solid var(--alpine-border) !important;
+  color: var(--alpine-granite-gray) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.alpine-network-btn:hover {
+  border-color: var(--alpine-glacier-blue) !important;
+  color: var(--alpine-glacier-blue) !important;
+  background: rgba(58, 110, 165, 0.05) !important;
+}
+
+/* Alpine CTA */
+.alpine-cta {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, var(--alpine-glacier-blue) 0%, var(--alpine-pine-green) 100%);
+}
+
+.alpine-cta-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(58, 110, 165, 0.2);
+}
+
+.alpine-cta-content {
+  padding: 4rem;
+}
+
+.cta-content {
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--alpine-granite-gray);
+  margin-bottom: 1.5rem;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  color: var(--alpine-mountain-gray);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Alpine Footer */
+.alpine-footer {
+  background: var(--alpine-granite-gray);
+  color: var(--alpine-snow-white);
+  padding: 4rem 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer-brand .alpine-brand {
+  color: var(--alpine-snow-white);
+}
+
+.footer-tagline {
+  color: var(--alpine-mountain-gray);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.alpine-tech-indicators {
+  display: flex;
+  gap: 2rem;
+}
+
+.indicator {
+  text-align: center;
+}
+
+.indicator-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--alpine-glacier-blue);
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 10px rgba(58, 110, 165, 0.5);
+}
+
+.indicator-label {
+  font-size: 0.8rem;
+  color: var(--alpine-mountain-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(58, 110, 165, 0.2);
+  color: var(--alpine-mountain-gray);
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .alpine-title {
+    font-size: 2.5rem;
+  }
+  
+  .alpine-nav-menu {
+    display: none;
+  }
+  
+  .alpine-hero-actions {
+    flex-direction: column;
+  }
+  
+  .alpine-metrics {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .alpine-tech-stack {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .alpine-tech-indicators {
+    justify-content: center;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+  }
+  
+  .alpine-network-actions {
+    flex-direction: column;
+  }
+}

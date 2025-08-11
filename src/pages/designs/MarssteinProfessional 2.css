@@ -1,0 +1,1051 @@
+/* Marsstein Professional Design - Dunkelblau (#1A237E) + Violett (#6A1B9A) */
+.marsstein-professional {
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #1A237E 0%, #283593 25%, #3F51B5 50%, #1A237E 100%);
+  color: #C5CAE9;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Marsstein Professional Color Palette */
+.marsstein-professional {
+  --navy-blue: #1A237E;
+  --navy-light: #283593;
+  --navy-dark: #0D1142;
+  --royal-purple: #6A1B9A;
+  --purple-light: #7B1FA2;
+  --purple-dark: #4A148C;
+  --violet-accent: #9C27B0;
+  --amethyst: #AB47BC;
+  --royal-gold: #FFD700;
+  --platinum: #E5E5E5;
+  --silver: #C5CAE9;
+  --pearl-white: #F8F9FA;
+  --shadow-royal: rgba(106, 27, 154, 0.3);
+  --shadow-navy: rgba(26, 35, 126, 0.5);
+  --glow-royal: rgba(106, 27, 154, 0.8);
+  --glow-violet: rgba(156, 39, 176, 0.9);
+  --border-royal: rgba(106, 27, 154, 0.2);
+  --border-navy: rgba(26, 35, 126, 0.3);
+}
+
+/* Marsstein Professional Background Effects */
+.marsstein-professional::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(106, 27, 154, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(156, 39, 176, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(26, 35, 126, 0.04) 0%, transparent 60%);
+  z-index: -2;
+}
+
+.marsstein-professional::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(106, 27, 154, 0.02) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(156, 39, 176, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: marsstein-professional-royal-drift 50s linear infinite;
+  z-index: -1;
+}
+
+@keyframes marsstein-professional-royal-drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(80px, 80px) rotate(360deg); }
+}
+
+.marsstein-professional-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Marsstein Professional Header */
+.marsstein-professional-header {
+  background: rgba(26, 35, 126, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-royal);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 20px var(--shadow-navy);
+}
+
+.marsstein-professional-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.marsstein-professional-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.professional-crown {
+  width: 52px;
+  height: 52px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crown-structure {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.crown-base {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 8px;
+  background: linear-gradient(90deg, var(--royal-purple), var(--violet-accent));
+  border-radius: 4px;
+  box-shadow: 0 2px 8px var(--shadow-royal);
+}
+
+.crown-peaks {
+  position: absolute;
+  bottom: 23px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.peak {
+  width: 6px;
+  background: linear-gradient(0deg, var(--royal-purple), var(--amethyst));
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0 8px var(--glow-royal);
+}
+
+.peak-1, .peak-5 {
+  height: 12px;
+}
+
+.peak-2, .peak-4 {
+  height: 16px;
+}
+
+.peak-3 {
+  height: 20px;
+  background: linear-gradient(0deg, var(--royal-purple), var(--royal-gold));
+  box-shadow: 0 0 12px var(--glow-violet);
+}
+
+.crown-gems {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gem {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--royal-gold);
+  box-shadow: 0 0 6px var(--royal-gold);
+  animation: gem-sparkle 3s ease-in-out infinite;
+}
+
+.gem-center {
+  width: 6px;
+  height: 6px;
+  background: var(--platinum);
+  box-shadow: 0 0 8px var(--platinum);
+  animation-delay: 0s;
+}
+
+.gem-left {
+  animation-delay: 1s;
+}
+
+.gem-right {
+  animation-delay: 2s;
+}
+
+@keyframes gem-sparkle {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+    box-shadow: 0 0 6px currentColor;
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.2);
+    box-shadow: 0 0 12px currentColor;
+  }
+}
+
+.professional-paragraph {
+  color: var(--royal-gold);
+  font-size: 14px;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--royal-gold);
+  z-index: 2;
+  position: relative;
+  animation: paragraph-royal-glow 4s ease-in-out infinite;
+}
+
+@keyframes paragraph-royal-glow {
+  0%, 100% { 
+    text-shadow: 0 0 10px var(--royal-gold);
+    color: var(--royal-gold);
+  }
+  50% { 
+    text-shadow: 0 0 20px var(--glow-violet);
+    color: var(--amethyst);
+  }
+}
+
+.marsstein-professional-brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--silver);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 15px var(--glow-royal);
+}
+
+.marsstein-professional-tagline {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  font-size: 0.65rem;
+  color: var(--amethyst);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+.marsstein-professional-nav-menu {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marsstein-professional-nav-menu a {
+  color: var(--silver);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.marsstein-professional-nav-menu a:hover {
+  color: var(--amethyst);
+  text-shadow: 0 0 10px var(--glow-violet);
+}
+
+.marsstein-professional-nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--royal-purple), var(--violet-accent));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.marsstein-professional-nav-menu a:hover::after {
+  width: 100%;
+}
+
+.marsstein-professional-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.professional-indicators {
+  text-align: right;
+}
+
+.royal-bars {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+  height: 18px;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 4px;
+  border-radius: 2px;
+  animation: royal-bar-pulse 3s ease-in-out infinite;
+}
+
+.professional-bar {
+  height: 16px;
+  background: linear-gradient(0deg, var(--navy-blue), var(--navy-light));
+  animation-delay: 0s;
+}
+
+.authority-bar {
+  height: 18px;
+  background: linear-gradient(0deg, var(--royal-purple), var(--purple-light));
+  animation-delay: 0.5s;
+}
+
+.crown-bar {
+  height: 14px;
+  background: linear-gradient(0deg, var(--violet-accent), var(--amethyst));
+  animation-delay: 1s;
+}
+
+.navigation-bar {
+  height: 12px;
+  background: linear-gradient(0deg, var(--purple-dark), var(--royal-purple));
+  animation-delay: 1.5s;
+}
+
+@keyframes royal-bar-pulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.7; transform: scaleY(0.9); }
+}
+
+.marsstein-professional-label {
+  font-size: 0.75rem;
+  color: var(--silver);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-shadow: 0 0 8px var(--shadow-royal);
+}
+
+/* Marsstein Professional Hero Section */
+.marsstein-professional-hero {
+  padding: 10rem 0 8rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--navy-blue) 0%, var(--navy-light) 50%, var(--navy-dark) 100%);
+}
+
+.marsstein-professional-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(106, 27, 154, 0.08);
+  border: 1px solid var(--border-royal);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--amethyst);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px var(--shadow-royal);
+}
+
+.marsstein-professional-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--silver);
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 0 30px var(--glow-royal);
+}
+
+.marsstein-professional-highlight {
+  color: var(--amethyst);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.5rem;
+  font-style: italic;
+  animation: marsstein-professional-highlight-royal 4s ease-in-out infinite;
+}
+
+@keyframes marsstein-professional-highlight-royal {
+  0%, 100% { 
+    color: var(--amethyst);
+    text-shadow: 0 0 30px var(--glow-violet);
+  }
+  50% { 
+    color: var(--royal-gold);
+    text-shadow: 0 0 40px var(--royal-gold);
+  }
+}
+
+.marsstein-professional-subtitle {
+  font-size: 1.25rem;
+  color: var(--pearl-white);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.marsstein-professional-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.marsstein-professional-primary-btn {
+  background: linear-gradient(135deg, var(--royal-purple), var(--violet-accent)) !important;
+  color: var(--pearl-white) !important;
+  border: none;
+  border-radius: 6px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px var(--shadow-royal);
+  position: relative;
+  overflow: hidden;
+}
+
+.marsstein-professional-primary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.marsstein-professional-primary-btn:hover::before {
+  left: 100%;
+}
+
+.marsstein-professional-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-royal);
+  background: linear-gradient(135deg, var(--violet-accent), var(--amethyst)) !important;
+}
+
+.marsstein-professional-secondary-btn {
+  border: 1px solid var(--border-royal) !important;
+  color: var(--amethyst) !important;
+  background: rgba(26, 35, 126, 0.8) !important;
+  border-radius: 6px !important;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+}
+
+.marsstein-professional-secondary-btn:hover {
+  border-color: var(--violet-accent) !important;
+  color: var(--violet-accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-royal);
+  background: rgba(106, 27, 154, 0.04) !important;
+}
+
+.marsstein-professional-metrics {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.marsstein-professional-metric-display {
+  text-align: center;
+}
+
+.marsstein-professional-metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--silver);
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px var(--glow-royal);
+}
+
+.marsstein-professional-metric-label {
+  font-size: 0.9rem;
+  color: var(--pearl-white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* Marsstein Professional Capabilities */
+.marsstein-professional-capabilities {
+  padding: 8rem 0;
+  background: var(--navy-light);
+}
+
+.capabilities-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.marsstein-professional-badge {
+  background: linear-gradient(135deg, var(--royal-purple), var(--violet-accent)) !important;
+  color: var(--pearl-white) !important;
+  border: none;
+  border-radius: 20px !important;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px var(--shadow-royal);
+}
+
+.capabilities-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--silver);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 25px var(--glow-royal);
+}
+
+.capabilities-header p {
+  color: var(--pearl-white);
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.marsstein-professional-capability-card {
+  background: var(--navy-blue) !important;
+  border: 1px solid var(--border-royal) !important;
+  border-radius: 12px !important;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-navy);
+}
+
+.marsstein-professional-capability-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--royal-purple), var(--violet-accent), var(--amethyst));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.marsstein-professional-capability-card:hover::before {
+  transform: scaleX(1);
+}
+
+.marsstein-professional-capability-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px var(--shadow-royal);
+  border-color: var(--violet-accent);
+}
+
+.marsstein-professional-capability-card.professional:hover {
+  box-shadow: 0 20px 40px rgba(26, 35, 126, 0.15);
+}
+
+.marsstein-professional-capability-card.authority:hover {
+  box-shadow: 0 20px 40px rgba(106, 27, 154, 0.15);
+}
+
+.marsstein-professional-capability-card.crown:hover {
+  box-shadow: 0 20px 40px rgba(156, 39, 176, 0.15);
+}
+
+.marsstein-professional-capability-card.navigation:hover {
+  box-shadow: 0 20px 40px rgba(171, 71, 188, 0.15);
+}
+
+.capability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.capability-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(106, 27, 154, 0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--royal-purple);
+  border: 1px solid var(--border-royal);
+}
+
+.professional .capability-icon {
+  background: rgba(26, 35, 126, 0.08);
+  color: var(--navy-light);
+  border-color: var(--border-navy);
+}
+
+.authority .capability-icon {
+  background: rgba(106, 27, 154, 0.08);
+  color: var(--royal-purple);
+  border-color: var(--border-royal);
+}
+
+.crown .capability-icon {
+  background: rgba(156, 39, 176, 0.08);
+  color: var(--violet-accent);
+  border-color: rgba(156, 39, 176, 0.15);
+}
+
+.navigation .capability-icon {
+  background: rgba(171, 71, 188, 0.08);
+  color: var(--amethyst);
+  border-color: rgba(171, 71, 188, 0.15);
+}
+
+.capability-progress {
+  position: relative;
+}
+
+.marsstein-professional-progress-ring {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.progress-circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  stroke: var(--border-royal);
+}
+
+.marsstein-professional-circle {
+  stroke: var(--royal-purple);
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.authority .marsstein-professional-circle {
+  stroke: var(--royal-purple);
+}
+
+.crown .marsstein-professional-circle {
+  stroke: var(--violet-accent);
+}
+
+.navigation .marsstein-professional-circle {
+  stroke: var(--amethyst);
+}
+
+.marsstein-professional-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--royal-purple);
+  font-family: 'Inter', sans-serif;
+}
+
+.authority .marsstein-professional-progress-text {
+  color: var(--royal-purple);
+}
+
+.crown .marsstein-professional-progress-text {
+  color: var(--violet-accent);
+}
+
+.navigation .marsstein-professional-progress-text {
+  color: var(--amethyst);
+}
+
+.capability-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--silver);
+  margin-bottom: 1rem;
+}
+
+.capability-description {
+  color: var(--pearl-white);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.capability-footer {
+  margin-top: auto;
+}
+
+.marsstein-professional-capability-bar {
+  height: 3px;
+  background: var(--border-royal);
+}
+
+/* Marsstein Professional Systems */
+.marsstein-professional-systems {
+  padding: 6rem 0;
+  background: var(--navy-dark);
+}
+
+.marsstein-professional-systems-visualization {
+  background: var(--navy-blue) !important;
+  border: 1px solid var(--border-royal) !important;
+  border-radius: 12px !important;
+  padding: 3rem;
+  box-shadow: 0 8px 24px var(--shadow-navy);
+}
+
+.systems-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.marsstein-professional-systems-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--royal-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pearl-white);
+  box-shadow: 0 4px 16px var(--shadow-royal);
+}
+
+.systems-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--silver);
+  margin-bottom: 0.5rem;
+}
+
+.systems-header p {
+  color: var(--pearl-white);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.marsstein-professional-systems-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.marsstein-professional-system-node {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--navy-light);
+  border-radius: 8px;
+  border: 1px solid var(--border-royal);
+  transition: all 0.3s ease;
+}
+
+.marsstein-professional-system-node:hover {
+  background: rgba(106, 27, 154, 0.04);
+  border-color: var(--violet-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-royal);
+}
+
+.marsstein-professional-node-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.marsstein-professional-node-status.professional-active,
+.marsstein-professional-node-status.professional-processing {
+  background: var(--navy-light);
+  animation: marsstein-professional-pulse 2.5s ease-in-out infinite;
+}
+
+.marsstein-professional-node-status.authority-commanding,
+.marsstein-professional-node-status.authority-secured {
+  background: var(--royal-purple);
+  animation: marsstein-authority-pulse 3s ease-in-out infinite;
+}
+
+.marsstein-professional-node-status.crown-reigning {
+  background: var(--violet-accent);
+  animation: marsstein-crown-pulse 2s ease-in-out infinite;
+}
+
+.marsstein-professional-node-status.navigation-guiding {
+  background: var(--amethyst);
+}
+
+@keyframes marsstein-professional-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+@keyframes marsstein-authority-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes marsstein-crown-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.marsstein-professional-system-name {
+  color: var(--silver);
+  font-weight: 600;
+  flex: 1;
+}
+
+.marsstein-professional-system-metric {
+  color: var(--pearl-white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.8;
+}
+
+.marsstein-professional-systems-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.marsstein-professional-systems-btn {
+  border: 1px solid var(--border-royal) !important;
+  color: var(--amethyst) !important;
+  background: rgba(26, 35, 126, 0.9) !important;
+  border-radius: 6px !important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.marsstein-professional-systems-btn:hover {
+  border-color: var(--violet-accent) !important;
+  color: var(--violet-accent) !important;
+  background: rgba(106, 27, 154, 0.04) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-royal);
+}
+
+/* Marsstein Professional CTA */
+.marsstein-professional-cta {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-blue) 100%);
+}
+
+.marsstein-professional-cta-card {
+  background: rgba(26, 35, 126, 0.95) !important;
+  border: 1px solid var(--border-royal) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px var(--shadow-navy);
+}
+
+.marsstein-professional-cta-content {
+  padding: 4rem;
+}
+
+.cta-content {
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--silver);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 25px var(--glow-royal);
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  color: var(--pearl-white);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Marsstein Professional Footer */
+.marsstein-professional-footer {
+  background: var(--navy-dark);
+  color: var(--silver);
+  padding: 4rem 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer-brand .marsstein-professional-brand {
+  color: var(--silver);
+}
+
+.footer-tagline {
+  color: var(--pearl-white);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.marsstein-professional-systems-indicators {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.indicator {
+  text-align: center;
+}
+
+.indicator-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--amethyst);
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 15px var(--glow-violet);
+}
+
+.indicator-label {
+  font-size: 0.8rem;
+  color: var(--pearl-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-royal);
+  color: var(--pearl-white);
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .marsstein-professional-title {
+    font-size: 2.5rem;
+  }
+  
+  .marsstein-professional-nav-menu {
+    display: none;
+  }
+  
+  .marsstein-professional-hero-actions {
+    flex-direction: column;
+  }
+  
+  .marsstein-professional-metrics {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .marsstein-professional-systems-stack {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .marsstein-professional-systems-indicators {
+    justify-content: center;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+  }
+  
+  .marsstein-professional-systems-actions {
+    flex-direction: column;
+  }
+}

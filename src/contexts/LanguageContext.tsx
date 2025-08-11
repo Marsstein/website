@@ -107,7 +107,7 @@ const translations = {
     hero_subheadline: 'Automated privacy audits, secure document management, and continuous compliance monitoring for Germany, Switzerland, and Europe.',
     hero_cta: 'Start Free Audit',
     hero_cta_secondary: 'Book Demo',
-    hero_trust: 'Trusted by 500+ companies across Europe',
+    hero_trust: 'Professional compliance solutions for Europe',
 
     // Features
     features_title: 'Everything you need for compliance',
@@ -255,7 +255,7 @@ const translations = {
 
     // Contact Page
     contact_title: 'Dein zuverlässiger Partner für Compliance und Cybersicherheit',
-    contact_subtitle: 'Vielen Dank, dass du dich mit Marsstein auseinandersetzen möchtest - der umfassenden Compliance-Lösung, der über 1.500 Unternehmen in ganz Europa vertrauen.',
+    contact_subtitle: 'Vielen Dank, dass du dich mit Marsstein auseinandersetzen möchtest - der umfassenden Compliance-Lösung für professionelle Unternehmen in Europa.',
     contact_form_title: 'Kontaktinfos',
     contact_first_name: 'Vorname',
     contact_last_name: 'Nachname',
@@ -302,7 +302,7 @@ const translations = {
     academy_notify_me: 'Benachrichtigen',
 
     // Pricing Page
-    pricing_title: 'Transparente Preise, flexible Pläne',
+    pricing_title: 'Flexible Pläne für jedes Unternehmen',
     pricing_subtitle: 'Wähle den Plan, der am besten zu deinem Unternehmen passt. Alle Pläne beinhalten unseren erstklassigen Support.',
     pricing_popular: 'Beliebt',
     pricing_coming_soon_price: 'Bald verfügbar',
@@ -329,7 +329,7 @@ const translations = {
     hero_subheadline: 'Automatisierte Datenschutz-Audits, sichere Dokumentenverwaltung und kontinuierliche Compliance-Überwachung für Deutschland, Schweiz und Europa.',
     hero_cta: 'Kostenloses Audit starten',
     hero_cta_secondary: 'Demo buchen',
-    hero_trust: 'Vertrauenswürdig für 500+ Unternehmen in Europa',
+    hero_trust: 'Professionelle Compliance-Lösungen für Europa',
 
     // Features
     features_title: 'Alles was Sie für Compliance brauchen',
@@ -343,7 +343,7 @@ const translations = {
     feature_reports_desc: 'KI-Analyse unterstützt durch Rechtsexperten für umfassende Compliance-Berichterstattung.',
     feature_teams_title: 'Team-Zusammenarbeit',
     feature_teams_desc: 'Rollenbasierter Zugriff, Mandantenfähigkeit und Team-Workflows für Enterprise-Compliance-Management.',
-    feature_pricing_title: 'Transparente Preise',
+    feature_pricing_title: 'Flexible Lösungen',
     feature_pricing_desc: 'Flexible Pläne ohne versteckte Kosten und ohne Vendor-Lock-in. Skalieren Sie nach Bedarf.',
 
     // Benefits

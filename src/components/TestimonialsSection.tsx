@@ -6,30 +6,30 @@ import { Star, Quote } from 'lucide-react';
 export const TestimonialsSection: React.FC = () => {
   const { t } = useLanguage();
 
-  const testimonials = [
+  const visionStatements = [
     {
-      quote: "Marsstein transformed our compliance process. What used to take weeks now takes hours, and we have complete confidence in our GDPR compliance.",
-      author: "Sarah Weber",
-      role: "Data Protection Officer",
-      company: "TechCorp GmbH",
-      avatar: "SW",
-      rating: 5
+      quote: "Stellen Sie sich vor: Compliance-Prozesse, die Wochen statt Monate dauern. Automatisierte DSGVO-Audits, die Ihnen Zeit für strategische Arbeit geben.",
+      title: "Unsere Vision für",
+      role: "Compliance-Teams in Europa",
+      company: "Moderne Unternehmen",
+      avatar: "📋",
+      badge: "Beta"
     },
     {
-      quote: "The AI-powered audit identified gaps we didn't even know existed. The legal expert review gave us the confidence to move forward.",
-      author: "Michael Schmidt", 
-      role: "Compliance Manager",
-      company: "FinanceSecure AG",
-      avatar: "MS",
-      rating: 5
+      quote: "Compliance-Manager berichten uns häufig: 80% ihrer Zeit geht für manuelle Dokumentation drauf. Wir entwickeln KI-Tools, die diese Routinearbeit automatisieren.",
+      title: "Das Problem, das wir lösen für",
+      role: "Datenschutzbeauftragte",
+      company: "KMU bis Konzerne", 
+      avatar: "🤖",
+      badge: "In Entwicklung"
     },
     {
-      quote: "Excellent support and the document vault has streamlined our entire compliance workflow. Highly recommended for any European business.",
-      author: "Dr. Anna Müller",
-      role: "CEO",
-      company: "HealthTech Solutions",
-      avatar: "AM",
-      rating: 5
+      quote: "Unser Ziel: Eine Plattform, die Standards-konforme Dokumentation erstellt und kontinuierlich Gesetzesänderungen überwacht - entwickelt mit Compliance-Experten.",
+      title: "Entwickelt für",
+      role: "Rechtsabteilungen",
+      company: "Europäische Unternehmen",
+      avatar: "⚖️",
+      badge: "Roadmap 2025"
     }
   ];
 
@@ -38,45 +38,44 @@ export const TestimonialsSection: React.FC = () => {
       <div className="container px-4">
         {/* Section Header */}
         <div className="text-center mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
+            <span className="text-sm font-medium">🚧 Beta-Phase</span>
+          </div>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            {t('testimonials_title')}
+            Die Zukunft von Compliance
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Hear from compliance professionals who trust Marsstein for their privacy management needs.
+            Entwickelt für Compliance-Profis, die mehr Zeit für strategische Arbeit statt Dokumentation brauchen.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
+        {/* Vision Statements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {visionStatements.map((statement, index) => (
             <Card key={index} className="group relative overflow-hidden hover:shadow-large transition-all duration-300 bg-gradient-card border-0">
               <CardContent className="p-8">
-                {/* Quote Icon */}
-                <div className="mb-6">
-                  <Quote className="h-8 w-8 text-primary/30" />
-                </div>
-
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
+                {/* Badge */}
+                <div className="mb-6 flex justify-between items-start">
+                  <div className="text-4xl">{statement.avatar}</div>
+                  <div className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium">
+                    {statement.badge}
+                  </div>
                 </div>
 
                 {/* Quote */}
                 <blockquote className="text-foreground leading-relaxed mb-6">
-                  "{testimonial.quote}"
+                  "{statement.quote}"
                 </blockquote>
 
-                {/* Author */}
+                {/* Target Audience */}
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center text-primary-foreground font-semibold">
-                    {testimonial.avatar}
+                    🎯
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground">{testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-sm text-primary font-medium">{testimonial.company}</div>
+                    <div className="font-semibold text-foreground">{statement.title}</div>
+                    <div className="text-sm text-muted-foreground">{statement.role}</div>
+                    <div className="text-sm text-primary font-medium">{statement.company}</div>
                   </div>
                 </div>
 
@@ -87,15 +86,15 @@ export const TestimonialsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Customer Logos */}
+        {/* Target Industries */}
         <div className="mt-16">
           <p className="text-center text-sm text-muted-foreground mb-8">
-            Trusted by leading companies across Europe
+            Branchenspezifische Compliance-Lösungen in Entwicklung für:
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            {['Deutsche Bank', 'Siemens', 'Swisscom', 'BMW Group', 'SAP', 'Allianz'].map((company, index) => (
+            {['Finanzdienstleister', 'Technologie-Unternehmen', 'Gesundheitswesen', 'Consulting-Firmen', 'Rechtsanwaltskanzleien', 'Manufacturing'].map((industry, index) => (
               <div key={index} className="h-12 px-6 bg-muted rounded-lg flex items-center justify-center">
-                <span className="text-sm font-medium text-muted-foreground">{company}</span>
+                <span className="text-sm font-medium text-muted-foreground">{industry}</span>
               </div>
             ))}
           </div>

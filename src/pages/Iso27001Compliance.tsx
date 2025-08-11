@@ -84,11 +84,11 @@ const HeroSection = () => {
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
       {/* Modern background with animated elements */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F5F6F8] via-white to-[#e24e1b]/5" />
         
         {/* Animated geometric shapes */}
         <motion.div
-          className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-[#a1251b]/10 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-[#e24e1b]/10 to-[#ea580c]/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -100,7 +100,7 @@ const HeroSection = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-gradient-to-r from-[#a1251b]/10 to-purple-600/10 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-gradient-to-r from-[#e24e1b]/10 to-[#ea580c]/10 rounded-full blur-3xl"
           animate={{
             scale: [1.1, 1, 1.1],
             opacity: [0.4, 0.7, 0.4],
@@ -138,7 +138,7 @@ const HeroSection = () => {
               </Badge>
               <Badge className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-0 px-4 py-2">
                 <Award className="h-4 w-4 mr-2" />
-                500+ erfolgreiche Zertifizierungen
+Professionelle Zertifizierung
               </Badge>
             </motion.div>
             
@@ -148,8 +148,8 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <span className="block text-gray-900 dark:text-gray-100">ISO 27001-Zertifizierung</span>
-              <span className="block bg-gradient-to-r from-blue-600 via-[#a1251b] to-purple-600 bg-clip-text text-transparent">
+              <span className="block text-[#232323] dark:text-gray-100">ISO 27001-Zertifizierung</span>
+              <span className="block bg-gradient-to-r from-[#e24e1b] via-[#ea580c] to-[#f97316] bg-clip-text text-transparent">
                 Automatisiert & Rechtssicher
               </span>
             </motion.h1>
@@ -160,16 +160,16 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-xl text-[#474747] dark:text-gray-300 leading-relaxed">
                 Schützen Sie Ihr Unternehmen vor Cyber-Bedrohungen und erschließen Sie internationale Märkte. 
-                Mit unserer KI-gestützten Plattform erreichen Sie <span className="font-bold text-[#a1251b]">ISO 27001-Zertifizierung in nur 6 Monaten</span> 
+                Mit unserer KI-gestützten Plattform erreichen Sie <span className="font-bold text-[#e24e1b]">ISO 27001-Zertifizierung in nur 6 Monaten</span> 
                 – 75% schneller als herkömmliche Ansätze.
               </p>
               
               {/* Value proposition */}
               <div className="bg-gradient-to-r from-blue-50 to-[#a1251b]/5 dark:from-blue-950/20 dark:to-[#a1251b]/10 border-l-4 border-blue-500 p-4 rounded-r-lg">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="h-5 w-5 text-[#e24e1b] mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-sm font-semibold text-blue-900 dark:text-blue-100">Warum ISO 27001 für Ihr Unternehmen entscheidend ist:</p>
                     <ul className="text-sm text-blue-800 dark:text-blue-200 mt-1 space-y-1">
@@ -189,13 +189,13 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.7 }}
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="bg-gradient-to-r from-[#a1251b] to-purple-600 hover:from-[#8a1f17] hover:to-purple-700 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all">
+                <Button size="lg" className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] hover:from-[#f97316] hover:to-[#ea580c] text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all">
                   Kostenlose Beratung starten
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg">
+                <Button size="lg" variant="outline" className="border-2 border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b]/5 px-8 py-4 text-lg">
                   <PlayCircle className="mr-2 h-5 w-5" />
                   Demo ansehen (3 Min)
                 </Button>
@@ -239,7 +239,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-[#a1251b]/20 rounded-3xl blur-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/20 to-[#ea580c]/20 rounded-lg blur-2xl" />
             <Card className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-2 border-white/30 dark:border-gray-700/30 shadow-2xl">
               <CardHeader className="text-center">
                 <CardTitle className="flex items-center justify-center gap-3 text-xl">
@@ -252,7 +252,7 @@ const HeroSection = () => {
                   </motion.div>
                   <div>
                     <div className="text-lg">Ihr ISO 27001</div>
-                    <div className="text-sm text-muted-foreground">Compliance-Status</div>
+                    <div className="text-sm text-[#474747]">Compliance-Status</div>
                   </div>
                 </CardTitle>
               </CardHeader>
@@ -295,47 +295,47 @@ const HeroSection = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 1.5 }}
                   >
-                    <div className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-[#a1251b] to-purple-600 bg-clip-text text-transparent">
+                    <div className="text-5xl font-bold bg-gradient-to-r from-[#e24e1b] via-[#ea580c] to-[#f97316] bg-clip-text text-transparent">
                       {complianceScore}%
                     </div>
-                    <div className="text-sm text-muted-foreground font-medium">Readiness-Score</div>
+                    <div className="text-sm text-[#474747] font-medium">Readiness-Score</div>
                   </motion.div>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-6 text-center">
                   <motion.div 
-                    className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg"
+                    className="p-3 bg-[#e24e1b]/5 rounded-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 1.8 }}
                   >
-                    <div className="text-3xl font-bold text-blue-600">134</div>
+                    <div className="text-3xl font-bold text-[#e24e1b]">134</div>
                     <div className="text-xs text-blue-700 dark:text-blue-300 font-medium">Kontrollen</div>
-                    <div className="text-xs text-muted-foreground">von 174 implementiert</div>
+                    <div className="text-xs text-[#474747]">von 174 implementiert</div>
                   </motion.div>
                   <motion.div 
-                    className="p-3 bg-green-50 dark:bg-green-950/20 rounded-lg"
+                    className="p-3 bg-[#39B37B]/5 rounded-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 2 }}
                   >
                     <div className="text-3xl font-bold text-green-600">6</div>
                     <div className="text-xs text-green-700 dark:text-green-300 font-medium">Monate</div>
-                    <div className="text-xs text-muted-foreground">bis Zertifizierung</div>
+                    <div className="text-xs text-[#474747]">bis Zertifizierung</div>
                   </motion.div>
                 </div>
                 
                 <motion.div 
-                  className="mt-4 p-3 bg-gradient-to-r from-[#a1251b]/10 to-purple-600/10 rounded-lg border border-[#a1251b]/20"
+                  className="mt-4 p-3 bg-gradient-to-r from-[#e24e1b]/10 to-[#ea580c]/10 rounded-lg border border-[#e24e1b]/20"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 2.2 }}
                 >
-                  <div className="flex items-center gap-2 text-[#a1251b]">
+                  <div className="flex items-center gap-2 text-[#e24e1b]">
                     <Zap className="h-4 w-4" />
                     <span className="text-sm font-semibold">KI-gestützte Optimierung aktiv</span>
                   </div>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">Automatische Gap-Analyse und Empfehlungen</p>
+                  <p className="text-xs text-[#474747] dark:text-gray-400 mt-1">Automatische Gap-Analyse und Empfehlungen</p>
                 </motion.div>
               </CardContent>
             </Card>
@@ -363,7 +363,7 @@ const PainpointSection = () => {
       stats: '67% der B2B-Deals scheitern ohne Zertifizierung',
       urgency: 'Täglich',
       color: 'from-red-500 to-red-600',
-      bgColor: 'bg-red-50 dark:bg-red-950/20',
+      bgColor: 'bg-[#DC2626]/5',
       borderColor: 'border-red-200 dark:border-red-800',
       number: '2.3M€',
       description: 'Verlorene Deals ohne ISO 27001',
@@ -382,7 +382,7 @@ const PainpointSection = () => {
       stats: '287 Tage durchschnittliche Entdeckungszeit',
       urgency: 'Kontinuierlich',
       color: 'from-orange-500 to-red-500',
-      bgColor: 'bg-orange-50 dark:bg-orange-950/20',
+      bgColor: 'bg-[#F57C00]/5',
       borderColor: 'border-orange-200 dark:border-orange-800',
       number: '4.45M€',
       description: 'Durchschnittlicher Cyber-Schaden',
@@ -419,9 +419,9 @@ const PainpointSection = () => {
       impact: '89% höhere Durchfallrate bei ersten Audits',
       stats: 'Zusätzliche Nachzertifizierungskosten',
       urgency: 'Bei jedem Audit',
-      color: 'from-purple-500 to-indigo-500',
-      bgColor: 'bg-purple-50 dark:bg-purple-950/20',
-      borderColor: 'border-purple-200 dark:border-purple-800',
+      color: 'from-[#e24e1b] to-[#ea580c]',
+      bgColor: 'bg-[#ea580c]/5',
+      borderColor: 'border-[#e24e1b]/20',
       number: '89%',
       description: 'Höhere Durchfallrate',
       source: {
@@ -439,7 +439,7 @@ const PainpointSection = () => {
       stats: 'Oft keine Deckung bei grober Fahrlässigkeit',
       urgency: 'Jährlich',
       color: 'from-blue-500 to-cyan-500',
-      bgColor: 'bg-blue-50 dark:bg-blue-950/20',
+      bgColor: 'bg-[#e24e1b]/5',
       borderColor: 'border-blue-200 dark:border-blue-800',
       number: '40%',
       description: 'Versicherungsaufschlag',
@@ -519,7 +519,7 @@ const PainpointSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Badge className="bg-red-100/80 backdrop-blur-sm text-red-700 border-red-200/50 px-6 py-2.5 text-sm font-medium">
+            <Badge className="bg-[#DC2626]/10 backdrop-blur-sm text-[#DC2626] border-[#DC2626]/20 px-6 py-2.5 text-sm font-medium">
               <AlertCircle className="h-4 w-4 mr-2" />
               Die Realität ohne ISO 27001
             </Badge>
@@ -540,12 +540,12 @@ const PainpointSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-xl text-[#474747] dark:text-gray-300 leading-relaxed">
               Ohne systematisches Informationssicherheitsmanagement (ISMS) nach ISO 27001 entstehen Unternehmen messbare, 
               kontinuierliche Kosten. Aktuelle Studien zeigen:{' '}
-              <span className="font-bold text-red-600 bg-red-100 px-2 py-1 rounded-md">4,45 Millionen Euro durchschnittlicher Schaden pro Cyberangriff</span>{' '}
+              <span className="font-bold text-[#DC2626] bg-[#DC2626]/10 px-2 py-1 rounded-md">4,45 Millionen Euro durchschnittlicher Schaden pro Cyberangriff</span>{' '}
               und{' '}
-              <span className="font-bold text-orange-600 bg-orange-100 px-2 py-1 rounded-md">67% verlorene Enterprise-Deals</span>{' '}
+              <span className="font-bold text-[#F57C00] bg-[#F57C00]/10 px-2 py-1 rounded-md">67% verlorene Enterprise-Deals</span>{' '}
               aufgrund fehlender Zertifizierung.
             </p>
             
@@ -568,8 +568,8 @@ const PainpointSection = () => {
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
                 >
-                  <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">{stat.label}</div>
+                  <div className="text-2xl font-bold text-[#232323] dark:text-gray-100">{stat.value}</div>
+                  <div className="text-sm text-[#474747] dark:text-gray-400 mt-1">{stat.label}</div>
                   <div className="text-xs text-red-500 font-medium mt-2 flex items-center justify-center gap-1">
                     <TrendingUp className="h-3 w-3" />
                     {stat.trend}
@@ -621,7 +621,7 @@ const PainpointSection = () => {
                 <CardHeader className="relative z-10 pb-3">
                   <div className="flex items-start justify-between mb-4">
                     <motion.div
-                      className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${pain.color} flex items-center justify-center shadow-lg`}
+                      className={`h-16 w-16 rounded-lg bg-gradient-to-br ${pain.color} flex items-center justify-center shadow-lg`}
                       animate={{
                         scale: hoveredCard === index ? 1.1 : 1,
                         rotate: hoveredCard === index ? 5 : 0
@@ -636,13 +636,13 @@ const PainpointSection = () => {
                     </Badge>
                   </div>
                   
-                  <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                  <CardTitle className="text-xl font-bold text-[#232323] dark:text-gray-100 mb-2">
                     {pain.title}
                   </CardTitle>
                 </CardHeader>
 
                 <CardContent className="relative z-10 space-y-4">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="text-sm text-[#474747] dark:text-gray-400 leading-relaxed">
                     {pain.problem}
                   </p>
                   
@@ -664,17 +664,17 @@ const PainpointSection = () => {
                       <Euro className="h-5 w-5 text-red-600 flex-shrink-0" />
                       <div className="flex-1">
                         <div className="font-bold text-sm text-red-700">{pain.impact}</div>
-                        <div className="text-xs text-gray-600 mt-0.5">{pain.description}</div>
+                        <div className="text-xs text-[#474747] mt-0.5">{pain.description}</div>
                       </div>
                     </motion.div>
                     
                     <motion.div
-                      className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
+                      className="flex items-center gap-3 p-3 rounded-lg bg-[#F5F6F8] dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
                       <BarChart3 className="h-5 w-5 text-gray-500 flex-shrink-0" />
-                      <div className="text-sm text-gray-600 dark:text-gray-400">{pain.stats}</div>
+                      <div className="text-sm text-[#474747] dark:text-gray-400">{pain.stats}</div>
                     </motion.div>
                   </div>
 
@@ -685,7 +685,7 @@ const PainpointSection = () => {
                     transition={{ type: "spring", stiffness: 300, damping: 10 }}
                   >
                     <div className="flex items-start gap-3">
-                      <BookOpen className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <BookOpen className="h-4 w-4 text-[#e24e1b] flex-shrink-0 mt-0.5" />
                       <div className="flex-1">
                         <div className="text-xs font-medium text-blue-900 dark:text-blue-100 mb-1">
                           Quelle & Studie:
@@ -726,7 +726,7 @@ const PainpointSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <motion.div
-            className="inline-flex items-center gap-6 p-8 bg-gradient-to-r from-blue-600 via-[#a1251b] to-blue-600 rounded-3xl text-white shadow-2xl backdrop-blur-sm relative overflow-hidden"
+            className="inline-flex items-center gap-6 p-8 bg-gradient-to-r from-[#e24e1b] to-[#ea580c] rounded-lg text-white shadow-2xl backdrop-blur-sm relative overflow-hidden"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 10 }}
           >
@@ -772,7 +772,7 @@ const Iso27001DeepDiveSection = () => {
         controls: 2, 
         icon: FileText,
         color: 'from-blue-500 to-indigo-500',
-        bgColor: 'bg-blue-50 dark:bg-blue-950/20',
+        bgColor: 'bg-[#e24e1b]/5',
         critical: true,
         description: 'Grundlegende Sicherheitsrichtlinien und Management-Commitment',
         impact: 'Basis für alle weiteren Sicherheitsmaßnahmen'
@@ -796,7 +796,7 @@ const Iso27001DeepDiveSection = () => {
         controls: 6, 
         icon: UserCheck,
         color: 'from-purple-500 to-violet-500',
-        bgColor: 'bg-purple-50 dark:bg-purple-950/20',
+        bgColor: 'bg-[#ea580c]/5',
         critical: false,
         description: 'Mitarbeiter-Screening und Sensibilisierung',
         impact: 'Reduziert das Risiko durch interne Bedrohungen'
@@ -808,7 +808,7 @@ const Iso27001DeepDiveSection = () => {
         controls: 10, 
         icon: Database,
         color: 'from-orange-500 to-red-500',
-        bgColor: 'bg-orange-50 dark:bg-orange-950/20',
+        bgColor: 'bg-[#F57C00]/5',
         critical: true,
         description: 'Verwaltung und Schutz von Informationswerten',
         impact: 'Vollständige Transparenz über alle Assets'
@@ -820,7 +820,7 @@ const Iso27001DeepDiveSection = () => {
         controls: 14, 
         icon: Lock,
         color: 'from-red-500 to-pink-500',
-        bgColor: 'bg-red-50 dark:bg-red-950/20',
+        bgColor: 'bg-[#DC2626]/5',
         critical: true,
         description: 'Benutzer- und Systemzugriffe kontrollieren',
         impact: 'Verhindert unbefugten Zugriff auf kritische Systeme'
@@ -843,7 +843,7 @@ const Iso27001DeepDiveSection = () => {
       <section className="relative py-16 md:py-20 overflow-hidden">
         {/* Modern Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#F5F6F8] via-white to-[#e24e1b]/5" />
           
           {/* Animated shapes */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -903,7 +903,7 @@ const Iso27001DeepDiveSection = () => {
               Was bedeutet ISO 27001 wirklich für Ihr Unternehmen?
             </motion.h2>
             <motion.p 
-              className="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
+              className="text-lg text-[#474747] dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -928,8 +928,8 @@ const Iso27001DeepDiveSection = () => {
                 className={cn(
                   "group relative flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-500 backdrop-blur-sm border",
                   activeCategory === index
-                    ? "bg-gradient-to-r from-blue-600 to-[#a1251b] text-white shadow-lg shadow-blue-600/25 border-blue-600/50 scale-105"
-                    : "bg-white/70 dark:bg-gray-800/70 text-gray-700 dark:text-gray-300 hover:bg-white/90 dark:hover:bg-gray-800/90 border-gray-200/50 dark:border-gray-700/50 hover:shadow-md hover:scale-105"
+                    ? "bg-gradient-to-r from-blue-600 to-[#a1251b] text-white shadow-lg shadow-blue-600/25 border-[#e24e1b]/50 scale-105"
+                    : "bg-white/70 dark:bg-gray-800/70 text-[#474747] dark:text-gray-300 hover:bg-white/90 dark:hover:bg-gray-800/90 border-gray-200/50 dark:border-gray-700/50 hover:shadow-md hover:scale-105"
                 )}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -1028,11 +1028,11 @@ const Iso27001DeepDiveSection = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: 0.2 }}
                     >
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-[#232323] dark:text-gray-100 mb-3 flex items-center gap-2">
                         <TrendingUp className="h-5 w-5" />
                         Business Impact
                       </h3>
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      <p className="text-[#474747] dark:text-gray-300 leading-relaxed">
                         {controlCategories[activeCategory].impact}
                       </p>
                     </motion.div>
@@ -1046,8 +1046,8 @@ const Iso27001DeepDiveSection = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: 0.3 }}
                       >
-                        <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-gray-900 dark:text-gray-100">
-                          <Clock className="h-5 w-5 text-blue-600" />
+                        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-[#232323] dark:text-gray-100">
+                          <Clock className="h-5 w-5 text-[#e24e1b]" />
                           Implementierungs-Timeline
                         </h3>
                         <div className="space-y-3">
@@ -1063,7 +1063,7 @@ const Iso27001DeepDiveSection = () => {
                                 "flex items-center gap-3 p-3 rounded-lg border",
                                 item.status === 'completed' ? 'bg-green-50 border-green-200' :
                                 item.status === 'in-progress' ? 'bg-blue-50 border-blue-200' :
-                                'bg-gray-50 border-gray-200'
+                                'bg-[#F5F6F8] border-gray-200'
                               )}
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -1077,8 +1077,8 @@ const Iso27001DeepDiveSection = () => {
                                 'bg-gray-300'
                               )} />
                               <div className="flex-1">
-                                <div className="font-medium text-sm text-gray-900">{item.phase}</div>
-                                <div className="text-xs text-gray-600">{item.duration}</div>
+                                <div className="font-medium text-sm text-[#232323]">{item.phase}</div>
+                                <div className="text-xs text-[#474747]">{item.duration}</div>
                               </div>
                             </motion.div>
                           ))}
@@ -1092,7 +1092,7 @@ const Iso27001DeepDiveSection = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: 0.3 }}
                       >
-                        <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-gray-900 dark:text-gray-100">
+                        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-[#232323] dark:text-gray-100">
                           <Award className="h-5 w-5 text-green-600" />
                           Konkrete Vorteile
                         </h3>
@@ -1113,7 +1113,7 @@ const Iso27001DeepDiveSection = () => {
                             >
                               <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
                               <div className="flex-1">
-                                <div className="font-medium text-sm text-gray-900">{item.benefit}</div>
+                                <div className="font-medium text-sm text-[#232323]">{item.benefit}</div>
                                 <div className="text-xs text-green-700 font-medium">{item.impact}</div>
                               </div>
                             </motion.div>
@@ -1124,24 +1124,24 @@ const Iso27001DeepDiveSection = () => {
 
                     {/* Marsstein Advantage */}
                     <motion.div 
-                      className="bg-gradient-to-r from-[#a1251b]/10 via-blue-600/10 to-[#a1251b]/10 rounded-xl p-6 border border-[#a1251b]/20 shadow-sm relative overflow-hidden"
+                      className="bg-gradient-to-r from-[#a1251b]/10 via-blue-600/10 to-[#a1251b]/10 rounded-xl p-6 border border-[#e24e1b]/20 shadow-sm relative overflow-hidden"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.5 }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#a1251b]/5 to-blue-600/5 animate-pulse" />
                       <div className="relative z-10">
-                        <h3 className="text-lg font-bold text-[#a1251b] mb-3 flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-[#e24e1b] mb-3 flex items-center gap-2">
                           <Zap className="h-5 w-5" />
                           Marsstein-Vorteil für {controlCategories[activeCategory].title}
                         </h3>
                         <div className="grid md:grid-cols-2 gap-4">
                           <div>
-                            <div className="text-sm font-medium text-gray-700 mb-1">Traditioneller Ansatz:</div>
+                            <div className="text-sm font-medium text-[#474747] mb-1">Traditioneller Ansatz:</div>
                             <div className="text-xs text-red-600">8-12 Wochen manuell • €15.000 Beratung</div>
                           </div>
                           <div>
-                            <div className="text-sm font-medium text-gray-700 mb-1">Mit Marsstein:</div>
+                            <div className="text-sm font-medium text-[#474747] mb-1">Mit Marsstein:</div>
                             <div className="text-xs text-green-600">2-3 Wochen KI-gestützt • 75% Kosteneinsparung</div>
                           </div>
                         </div>
@@ -1159,7 +1159,7 @@ const Iso27001DeepDiveSection = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Button size="lg" className="bg-gradient-to-r from-blue-600 to-[#a1251b] hover:from-blue-700 hover:to-[#8a1f17] text-white px-8 py-3 text-base font-semibold shadow-lg shadow-blue-600/25 border-0">
+                        <Button size="lg" className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] hover:from-[#f97316] hover:to-[#ea580c] text-white px-8 py-3 text-base font-semibold shadow-lg shadow-[#e24e1b]/25 border-0">
                           <Shield className="mr-2 h-4 w-4" />
                           Kostenlose Gap-Analyse für {controlCategories[activeCategory].code}
                           <ArrowRight className="ml-2 h-4 w-4" />
@@ -1181,14 +1181,14 @@ const BenefitsSection = () => (
     <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
+          <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
             <Target className="h-3.5 w-3.5 mr-2" />
             Die Marsstein-Lösung
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             So lösen wir Ihre ISO 27001-Herausforderungen
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-[#474747] max-w-3xl mx-auto">
             Während andere Anbieter komplizierte Beratung verkaufen, automatisieren wir 80% des Zertifizierungsprozesses 
             und machen ISO 27001 so einfach wie eine Software-Installation.
           </p>
@@ -1245,7 +1245,7 @@ const BenefitsSection = () => (
               savings: '€50.000 Re-Audit Kosten alle 3 Jahre'
             }
           ].map((benefit, index) => (
-            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-2 hover:border-[#a1251b]/30 hover:scale-105">
+            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-2 hover:border-[#e24e1b]/30 hover:scale-105">
               <CardHeader>
                 <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-[#a1251b] to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
                   <benefit.icon className="h-7 w-7 text-white" />
@@ -1285,14 +1285,14 @@ const BenefitsSection = () => (
     <section className="py-20 md:py-32">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
+          <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
             <Building2 className="h-3.5 w-3.5 mr-2" />
             Branchen & Zielgruppen
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Wer braucht ISO 27001-Zertifizierung?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-[#474747] max-w-3xl mx-auto">
             ISO 27001 ist für Unternehmen unverzichtbar, bei denen Informationssicherheit geschäftskritisch ist.
           </p>
         </div>
@@ -1342,13 +1342,13 @@ const BenefitsSection = () => (
               examples: ['SAP', 'Siemens', 'Bosch']
             }
           ].map((industry, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-[#a1251b]/20">
+            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-[#e24e1b]/20">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
                   <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-[#a1251b] to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <industry.icon className="h-6 w-6 text-white" />
                   </div>
-                  <div className="text-lg font-bold text-[#a1251b]">
+                  <div className="text-lg font-bold text-[#e24e1b]">
                     {String(index + 1).padStart(2, '0')}
                   </div>
                 </div>
@@ -1356,7 +1356,7 @@ const BenefitsSection = () => (
                 <CardDescription className="text-base">{industry.description}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground">{industry.details}</p>
+                <p className="text-sm text-[#474747]">{industry.details}</p>
                 <div className="flex flex-wrap gap-2">
                   {industry.examples.map((example, i) => (
                     <Badge key={i} variant="outline" className="text-xs">
@@ -1381,10 +1381,10 @@ const BenefitsSection = () => (
             <Rocket className="h-3.5 w-3.5 mr-2" />
             Unser Prozess
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             In 6 Monaten zur ISO 27001-Zertifizierung
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-[#474747] max-w-2xl mx-auto">
             Unser bewährter Prozess führt Sie strukturiert und effizient zur Zertifizierung
           </p>
         </div>
@@ -1424,7 +1424,7 @@ const BenefitsSection = () => (
               {index < 3 && (
                 <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-blue-600 to-transparent" />
               )}
-              <Card className="relative h-full border-2 hover:border-blue-600/30 transition-colors">
+              <Card className="relative h-full border-2 hover:border-[#e24e1b]/30 transition-colors">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <div className="h-12 w-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xl">
@@ -1438,7 +1438,7 @@ const BenefitsSection = () => (
                   <CardDescription>{step.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <step.icon className="h-8 w-8 text-blue-600 opacity-20" />
+                  <step.icon className="h-8 w-8 text-[#e24e1b] opacity-20" />
                 </CardContent>
               </Card>
             </div>
@@ -1446,7 +1446,7 @@ const BenefitsSection = () => (
         </div>
 
         <div className="mt-16 text-center">
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+          <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316]">
             Kostenlose Gap-Analyse starten
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
@@ -1455,195 +1455,8 @@ const BenefitsSection = () => (
     </section>
   );
 
-  // Testimonials Section
-  const TestimonialsSection = () => (
-    <section className="py-20 md:py-32">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-yellow-100 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-300">
-            <Star className="h-3.5 w-3.5 mr-2" />
-            Kundenstimmen
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Was unsere Kunden sagen
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              quote: "Marsstein hat unseren ISO 27001-Zertifizierungsprozess um Monate verkürzt. Die KI-gestützte Gap-Analyse war unglaublich präzise.",
-              author: "Dr. Sarah Weber",
-              role: "CISO",
-              company: "CloudTech Solutions",
-              avatar: "SW",
-              rating: 5
-            },
-            {
-              quote: "Als FinTech-Startup war ISO 27001 Pflicht für unsere Expansion. Marsstein machte es möglich - effizient und kostengünstig.",
-              author: "Michael Schmidt",
-              role: "Co-Founder & CTO",
-              company: "SecurePay GmbH",
-              avatar: "MS",
-              rating: 5
-            },
-            {
-              quote: "Die Expertise und Begleitung waren erstklassig. Wir haben nicht nur die Zertifizierung erhalten, sondern auch unsere Sicherheit drastisch verbessert.",
-              author: "Anna Müller",
-              role: "Head of Compliance",
-              company: "MedData Systems",
-              avatar: "AM",
-              rating: 5
-            }
-          ].map((testimonial, index) => (
-            <Card key={index} className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50 border-2">
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <Quote className="h-8 w-8 text-blue-600/30" />
-                </div>
-
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-
-                <blockquote className="text-foreground leading-relaxed mb-6">
-                  "{testimonial.quote}"
-                </blockquote>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-[#a1251b] rounded-full flex items-center justify-center text-white font-semibold">
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-sm text-blue-600 font-medium">{testimonial.company}</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
 
   // Pricing Section
-  const PricingSection = () => (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container px-4">
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
-            <Euro className="h-3.5 w-3.5 mr-2" />
-            Transparente Preise
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Investition in Ihre internationale Zukunft
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {[
-            {
-              name: 'Starter',
-              price: '4.990',
-              description: 'Für kleine Unternehmen und Startups',
-              features: [
-                'Bis zu 50 Mitarbeiter',
-                'Basis-ISMS Implementation',
-                'Gap-Analyse & Roadmap',
-                'Standard-Dokumentation',
-                'E-Mail Support',
-                'Self-Service Portal'
-              ],
-              popular: false
-            },
-            {
-              name: 'Professional',
-              price: '9.990',
-              description: 'Für wachsende Unternehmen',
-              features: [
-                'Bis zu 250 Mitarbeiter',
-                'Vollständige ISMS-Implementierung',
-                'Umfassende Risikobewertung',
-                'Maßgeschneiderte Dokumentation',
-                'Mitarbeiterschulungen',
-                'Dedicated Customer Success Manager',
-                'Prioritäts-Support',
-                'Audit-Vorbereitung'
-              ],
-              popular: true
-            },
-            {
-              name: 'Enterprise',
-              price: 'Individuell',
-              description: 'Für Konzerne und komplexe Strukturen',
-              features: [
-                'Unbegrenzte Mitarbeiter',
-                'Multi-Site Implementation',
-                'Erweiterte Risikobewertung',
-                'Compliance-Dashboard',
-                'Kontinuierliche Überwachung',
-                'Dedicated Compliance Team',
-                '24/7 Premium Support',
-                'Custom Integrations',
-                'Executive Reporting'
-              ],
-              popular: false
-            }
-          ].map((plan, index) => (
-            <Card key={index} className={cn(
-              "relative overflow-hidden border-2 transition-all duration-300 hover:shadow-xl",
-              plan.popular ? "border-blue-600 shadow-lg scale-105" : "border-gray-200 hover:border-blue-600/30"
-            )}>
-              {plan.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-600 to-[#a1251b] text-white text-center py-2 text-sm font-medium">
-                  Beliebteste Wahl
-                </div>
-              )}
-              <CardHeader className={cn("text-center", plan.popular && "pt-16")}>
-                <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                <div className="text-4xl font-bold">
-                  {plan.price === 'Individuell' ? (
-                    <span className="text-2xl">Auf Anfrage</span>
-                  ) : (
-                    <>
-                      €{plan.price}
-                      <span className="text-lg font-normal text-muted-foreground">/einmalig</span>
-                    </>
-                  )}
-                </div>
-                <CardDescription>{plan.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <ul className="space-y-3">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button 
-                  className={cn(
-                    "w-full",
-                    plan.popular 
-                      ? "bg-gradient-to-r from-blue-600 to-[#a1251b] hover:from-blue-700 hover:to-[#8a1f17]" 
-                      : "bg-[#a1251b] hover:bg-[#8a1f17]"
-                  )}
-                  size="lg"
-                >
-                  {plan.price === 'Individuell' ? 'Beratung anfragen' : 'Jetzt starten'}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
 
   // FAQ Section
   const FAQSection = () => (
@@ -1654,7 +1467,7 @@ const BenefitsSection = () => (
             <BookOpen className="h-3.5 w-3.5 mr-2" />
             Häufige Fragen
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Alles was Sie über ISO 27001 wissen müssen
           </h2>
         </div>
@@ -1691,7 +1504,7 @@ const BenefitsSection = () => (
                 <AccordionTrigger className="text-left hover:no-underline">
                   <span className="font-semibold">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                <AccordionContent className="text-[#474747] leading-relaxed pb-6">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -1712,21 +1525,21 @@ const BenefitsSection = () => (
             Bereit für die internationale Bühne?
           </Badge>
           
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Starten Sie heute Ihre ISO 27001-Zertifizierung
           </h2>
           
           <p className="text-xl text-white/90 leading-relaxed">
-            Schließen Sie sich über 500+ Unternehmen an, die mit Marsstein erfolgreich 
-            ISO 27001-zertifiziert wurden und internationale Märkte erobert haben.
+            Starten Sie Ihre professionelle ISO 27001-Zertifizierung 
+            mit Marsstein und erschließen Sie internationale Märkte.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8">
+            <Button size="lg" className="bg-white text-[#e24e1b] hover:bg-[#F5F6F8]/80 px-8">
               <Shield className="mr-2 h-5 w-5" />
               Kostenlose Beratung buchen
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8">
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#e24e1b] px-8">
               <Download className="mr-2 h-5 w-5" />
               ISO 27001 Guide herunterladen
             </Button>
@@ -1762,8 +1575,6 @@ const Iso27001Compliance = () => {
       <BenefitsSection />
       <TargetIndustriesSection />
       <ProcessSection />
-      <TestimonialsSection />
-      <PricingSection />
       <FAQSection />
       <CTASection />
       <Footer />

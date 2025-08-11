@@ -31,42 +31,46 @@ export const StatsSection: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const stats = [
+  const visionStats = [
     {
       icon: TrendingUp,
       value: 90,
       suffix: '%',
-      label: 'Schnellere Audits',
-      description: 'Reduzierte Audit-Zeit',
+      label: 'Zeitersparnis',
+      description: 'Unser Ziel bei Audits',
       color: 'text-green-600',
-      bgColor: 'bg-green-100 dark:bg-green-900/20'
+      bgColor: 'bg-green-100 dark:bg-green-900/20',
+      badge: 'Ziel'
     },
     {
       icon: Clock,
       value: 24,
       suffix: '/7',
       label: 'Monitoring',
-      description: 'Rund um die Uhr aktiv',
+      description: 'Roadmap für 2025',
       color: 'text-blue-600',
-      bgColor: 'bg-blue-100 dark:bg-blue-900/20'
+      bgColor: 'bg-blue-100 dark:bg-blue-900/20',
+      badge: 'Geplant'
     },
     {
       icon: Shield,
       value: 100,
       suffix: '%',
-      label: 'Compliance',
-      description: 'DSGVO & EU AI Act',
+      label: 'Standards-Support',
+      description: 'Ziel: Umfassende Abdeckung',
       color: 'text-purple-600',
-      bgColor: 'bg-purple-100 dark:bg-purple-900/20'
+      bgColor: 'bg-purple-100 dark:bg-purple-900/20',
+      badge: 'Roadmap'
     },
     {
       icon: Users,
       value: 500,
-      suffix: '+',
-      label: 'Unternehmen',
-      description: 'Vertrauen Marsstein',
+      suffix: 'k+',
+      label: 'Zielgruppe',
+      description: 'EU-Unternehmen adressiert',
       color: 'text-orange-600',
-      bgColor: 'bg-orange-100 dark:bg-orange-900/20'
+      bgColor: 'bg-orange-100 dark:bg-orange-900/20',
+      badge: 'Potenzial'
     }
   ];
 
@@ -106,19 +110,19 @@ export const StatsSection: React.FC = () => {
           <div className="text-center mb-16 space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
               <BarChart3 className="h-4 w-4" />
-              <span className="text-sm font-medium">Zahlen & Fakten</span>
+              <span className="text-sm font-medium">🚧 Roadmap & Vision</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Messbare Ergebnisse für Ihr Unternehmen
+              Das Potenzial für Ihr Unternehmen
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Unsere KI-gestützte Plattform liefert konkrete Verbesserungen in allen Compliance-Bereichen
+              Unsere Vision: KI-gestützte Compliance-Automatisierung, die Zeit für strategische Arbeit schafft
             </p>
           </div>
 
-          {/* Stats Grid */}
+          {/* Vision Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+            {visionStats.map((stat, index) => (
               <Card 
                 key={index}
                 className={cn(
@@ -132,11 +136,16 @@ export const StatsSection: React.FC = () => {
                 }}
               >
                 <div className="p-8">
-                  <div className={cn(
-                    "inline-flex p-4 rounded-2xl mb-6",
-                    stat.bgColor
-                  )}>
-                    <stat.icon className={cn("h-8 w-8", stat.color)} />
+                  <div className="flex justify-between items-start mb-6">
+                    <div className={cn(
+                      "inline-flex p-4 rounded-2xl",
+                      stat.bgColor
+                    )}>
+                      <stat.icon className={cn("h-8 w-8", stat.color)} />
+                    </div>
+                    <div className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium">
+                      {stat.badge}
+                    </div>
                   </div>
                   
                   <div className="space-y-2">
@@ -174,7 +183,7 @@ export const StatsSection: React.FC = () => {
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20">
               <Zap className="h-5 w-5 text-primary animate-pulse" />
               <span className="text-lg font-medium">
-                Starten Sie noch heute und erleben Sie den Unterschied
+                Werden Sie Early Adopter und gestalten Sie die Zukunft mit
               </span>
             </div>
           </div>

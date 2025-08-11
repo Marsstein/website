@@ -22,110 +22,111 @@ export const TrustIndicators: React.FC = () => {
   const certifications = [
     {
       icon: Shield,
-      title: 'ISO 27001',
+      title: 'ISO 27001 Ready',
       subtitle: 'Informationssicherheit',
-      description: 'Zertifiziert für höchste Sicherheitsstandards',
+      description: 'Auf dem Weg zu ISO 27001 Zertifizierung',
       color: 'from-blue-500 to-blue-600',
-      bgColor: 'bg-blue-50 dark:bg-blue-950/20'
+      bgColor: 'bg-blue-50 dark:bg-blue-950/20',
+      badge: 'Roadmap'
     },
     {
       icon: Award,
-      title: 'SOC 2 Type II',
-      subtitle: 'Compliance Audit',
-      description: 'Jährliche Prüfung durch unabhängige Auditoren',
+      title: 'SOC 2 Framework',
+      subtitle: 'Compliance Standards',
+      description: 'Entwickelt nach SOC 2 Standards',
       color: 'from-green-500 to-green-600',
-      bgColor: 'bg-green-50 dark:bg-green-950/20'
+      bgColor: 'bg-green-50 dark:bg-green-950/20',
+      badge: 'In Progress'
     },
     {
       icon: FileCheck,
-      title: 'DSGVO Ready',
+      title: 'DSGVO Standards',
       subtitle: 'Datenschutz-Konformität',
-      description: '100% konform mit europäischen Datenschutzgesetzen',
+      description: 'Entwickelt nach DSGVO-Standards für EU-Unternehmen',
       color: 'from-purple-500 to-purple-600',
-      bgColor: 'bg-purple-50 dark:bg-purple-950/20'
+      bgColor: 'bg-purple-50 dark:bg-purple-950/20',
+      badge: 'Beta'
     },
     {
       icon: Globe,
-      title: 'EU AI Act',
-      subtitle: 'KI-Gesetz Compliance',
-      description: 'Bereit für die neuen KI-Regulierungen',
+      title: 'EU AI Act Ready',
+      subtitle: 'KI-Gesetz Vorbereitung',
+      description: 'Vorbereitet auf neue KI-Regulierungen',
       color: 'from-orange-500 to-orange-600',
-      bgColor: 'bg-orange-50 dark:bg-orange-950/20'
+      bgColor: 'bg-orange-50 dark:bg-orange-950/20',
+      badge: 'Q3 2025'
     }
   ];
 
   const stats = [
     {
       icon: Users,
-      value: '500+',
-      label: 'Vertrauende Unternehmen',
-      subtext: 'Von Startups bis DAX-Konzerne'
+      value: '500k+',
+      label: 'Zielgruppe EU-Unternehmen',
+      subtext: 'Entwickelt für moderne Compliance-Teams'
     },
     {
       icon: Building2,
-      value: '99.9%',
-      label: 'Verfügbarkeit',
-      subtext: 'SLA-garantiert'
+      value: '99.5%',
+      label: 'Ziel-Verfügbarkeit',
+      subtext: 'Enterprise-ready aufbauend'
     },
     {
       icon: Lock,
-      value: '0',
-      label: 'Datenlecks',
-      subtext: 'Seit Gründung 2019'
+      value: 'Security',
+      label: 'First Approach',
+      subtext: 'Built with compliance in mind'
     },
     {
       icon: TrendingUp,
-      value: '4.9/5',
-      label: 'Kundenzufriedenheit',
-      subtext: 'Basierend auf 200+ Reviews'
+      value: 'Beta',
+      label: 'Early Access',
+      subtext: 'Formen Sie die Zukunft mit'
     }
   ];
 
-  const customerLogos = [
-    { name: 'TechCorp', sector: 'Technology' },
-    { name: 'MedHealth', sector: 'Healthcare' },
-    { name: 'FinanceFirst', sector: 'Financial Services' }
+  const targetSectors = [
+    { name: 'Technology', description: 'SaaS & Software' },
+    { name: 'Healthcare', description: 'Medizin & Life Sciences' },
+    { name: 'Finance', description: 'Banking & Fintech' }
   ];
 
-  const testimonialHighlights = [
+  const visionStatements = [
     {
-      quote: {
-        en: "Marsstein's innovative approach to compliance is exactly what we needed to streamline our processes.",
-        de: "Marssteins innovativer Ansatz zur Compliance ist genau das, was wir brauchten, um unsere Prozesse zu optimieren."
+      vision: {
+        en: "Compliance-Managers dream of: Audits that take days, not months.",
+        de: "Compliance-Manager träumen von: Audits, die Tage dauern, nicht Monate."
       },
-      author: "Dr. Sarah Weber",
-      role: {
-        en: "Data Protection Officer",
-        de: "Datenschutzbeauftragte"
+      context: {
+        en: "The Vision",
+        de: "Die Vision"
       },
-      company: "TechCorp GmbH",
-      rating: 5
+      benefit: "90% Zeitersparnis bei Routine-Audits",
+      status: "In Development"
     },
     {
-      quote: {
-        en: "The idea of automating compliance workflows is groundbreaking and saves us valuable time.",
-        de: "Die Idee, Compliance-Workflows zu automatisieren, ist bahnbrechend und spart uns wertvolle Zeit."
+      vision: {
+        en: "What if compliance documentation created itself?",
+        de: "Was wäre, wenn sich Compliance-Dokumentation selbst erstellen würde?"
       },
-      author: "Michael Schmidt",
-      role: {
-        en: "IT Manager",
-        de: "IT-Leiter"
+      context: {
+        en: "The Goal",
+        de: "Das Ziel"
       },
-      company: "MedHealth AG",
-      rating: 5
+      benefit: "Automatisierte Rechtsdokumentation",
+      status: "Beta Feature"
     },
     {
-      quote: {
-        en: "Marsstein's concept of AI-driven analysis is a game-changer for identifying compliance gaps.",
-        de: "Das Konzept der KI-gestützten Analyse von Marsstein ist ein Wendepunkt bei der Identifizierung von Compliance-Lücken."
+      vision: {
+        en: "Imagine: Real-time compliance monitoring across all EU regulations.",
+        de: "Stellen Sie sich vor: Echtzeit-Compliance-Überwachung für alle EU-Verordnungen."
       },
-      author: "Lisa Chen",
-      role: {
-        en: "Compliance Officer",
-        de: "Compliance-Beauftragte"
+      context: {
+        en: "The Future",
+        de: "Die Zukunft"
       },
-      company: "FinanceFirst",
-      rating: 5
+      benefit: "Kontinuierliche Rechtskonformität",
+      status: "Roadmap 2025"
     }
   ];
 
@@ -140,14 +141,14 @@ export const TrustIndicators: React.FC = () => {
               <span className="text-sm font-medium">Vertrauen & Sicherheit</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Über
+              Entwickelt für
               <span className="bg-gradient-to-r from-brand-red to-green-600 bg-clip-text text-transparent mx-2">
-                500+ Unternehmen
+                moderne
               </span>
-              setzen auf Marsstein
+              Compliance-Teams
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Zertifizierte Sicherheitsstandards, nachvollziehbare Prozesse und messbare Resultate
+              Standards-konforme Entwicklung, transparente Roadmap und ehrliche Beta-Phase
             </p>
           </div>
 
@@ -191,12 +192,17 @@ export const TrustIndicators: React.FC = () => {
                 )}
               >
                 <CardContent className="p-0 space-y-4">
-                  <div className={cn(
-                    "inline-flex p-3 rounded-xl",
-                    `bg-gradient-to-r ${cert.color}`,
-                    "text-white"
-                  )}>
-                    <cert.icon className="h-6 w-6" />
+                  <div className="flex items-start justify-between">
+                    <div className={cn(
+                      "inline-flex p-3 rounded-xl",
+                      `bg-gradient-to-r ${cert.color}`,
+                      "text-white"
+                    )}>
+                      <cert.icon className="h-6 w-6" />
+                    </div>
+                    <Badge variant="outline" className="text-xs">
+                      {cert.badge}
+                    </Badge>
                   </div>
 
                   <div className="space-y-2">
@@ -215,32 +221,35 @@ export const TrustIndicators: React.FC = () => {
             ))}
           </div>
 
-          {/* Customer Testimonials */}
+          {/* Vision Statements */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-center mb-8">Was unsere Kunden sagen</h3>
+            <h3 className="text-2xl font-bold text-center mb-8">Unsere Vision für Compliance</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {testimonialHighlights.map((testimonial, index) => (
+              {visionStatements.map((statement, index) => (
                 <Card
                   key={index}
                   className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <CardContent className="p-0 space-y-4">
-                    <div className="flex gap-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-yellow-500 fill-current" />
-                      ))}
+                    <div className="flex justify-between items-start">
+                      <Badge variant="secondary" className="text-xs">
+                        {statement.context[language]}
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        {statement.status}
+                      </Badge>
                     </div>
 
-                    <blockquote className="text-gray-700 dark:text-gray-300 italic">
-                      {testimonial.quote[language]}
+                    <blockquote className="text-gray-700 dark:text-gray-300 italic text-lg">
+                      {statement.vision[language]}
                     </blockquote>
 
                     <div className="space-y-1">
                       <p className="font-semibold text-gray-900 dark:text-white">
-                        {testimonial.author}
+                        {statement.benefit}
                       </p>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {testimonial.role[language]} • {testimonial.company}
+                        Potenzial für Compliance-Teams
                       </p>
                     </div>
                   </CardContent>
@@ -249,25 +258,25 @@ export const TrustIndicators: React.FC = () => {
             </div>
           </div>
 
-          {/* Customer Logos */}
+          {/* Target Industries */}
           <div className="text-center">
             <h3 className="text-lg font-semibold mb-8 text-gray-600 dark:text-gray-400">
-              Partnerschaft mit führenden Unternehmen verschiedener Branchen
+              Entwickelt für moderne Unternehmen verschiedener Branchen
             </h3>
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
-              {customerLogos.map((logo, index) => (
+              {targetSectors.map((sector, index) => (
                 <div
                   key={index}
                   className="flex flex-col items-center p-4 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 >
-                  <div className="w-16 h-12 bg-gradient-to-r from-gray-400 to-gray-600 rounded flex items-center justify-center mb-2">
+                  <div className="w-16 h-12 bg-gradient-to-r from-brand-red to-green-600 rounded flex items-center justify-center mb-2">
                     <Building2 className="h-6 w-6 text-white" />
                   </div>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {logo.name}
+                    {sector.name}
                   </p>
                   <p className="text-xs text-gray-500">
-                    {logo.sector}
+                    {sector.description}
                   </p>
                 </div>
               ))}
