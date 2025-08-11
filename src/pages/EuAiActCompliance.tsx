@@ -146,7 +146,7 @@ const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: b
     <animated.div 
       style={cardSpring}
       className={cn(
-        "relative overflow-hidden rounded-3xl border-2 transition-all duration-500",
+        "relative overflow-hidden rounded-lg border-2 transition-all duration-500",
         "bg-gradient-to-br from-white via-white to-gray-50/30",
         challenge.borderColor,
         "group cursor-pointer"
@@ -187,10 +187,10 @@ const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: b
             className={cn(
               "text-xs px-2 py-1 font-bold border",
               challenge.riskLevel === 'critical' 
-                ? 'bg-red-50 text-red-700 border-red-200' 
+                ? 'bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20' 
                 : challenge.riskLevel === 'high' 
-                ? 'bg-orange-50 text-orange-700 border-orange-200'
-                : 'bg-yellow-50 text-yellow-700 border-yellow-200'
+                ? 'bg-[#f97316]/10 text-[#f97316] border-[#f97316]/20'
+                : 'bg-[#ea580c]/10 text-[#ea580c] border-[#ea580c]/20'
             )}
           >
             {challenge.priority}
@@ -199,16 +199,16 @@ const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: b
 
         {/* Title and Description */}
         <div className="space-y-1.5">
-          <h3 className="text-lg font-bold text-gray-900 leading-tight">
+          <h3 className="text-lg font-semibold text-[#232323] leading-tight">
             {challenge.title}
           </h3>
-          <p className="text-xs text-gray-600 leading-relaxed">
+          <p className="text-xs text-[#474747] leading-relaxed">
             {challenge.problem}
           </p>
         </div>
 
         {/* Impact Card */}
-        <div className="bg-white/80 border border-gray-100 rounded-lg p-3 space-y-1.5 shadow-inner backdrop-blur-sm">
+        <div className="bg-white/80 border border-[#474747]/10 rounded-lg p-3 space-y-1.5 shadow-inner backdrop-blur-sm">
           <div className={cn(
             "inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-white text-xs font-bold",
             challenge.accentColor
@@ -216,21 +216,21 @@ const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: b
             <Euro className="h-3 w-3" />
             Bußgeld-Risiko
           </div>
-          <div className="text-sm font-bold text-gray-900">
+          <div className="text-sm font-bold text-[#232323]">
             {challenge.impact}
           </div>
-          <div className="flex items-center gap-1.5 text-xs text-gray-600">
+          <div className="flex items-center gap-1.5 text-xs text-[#474747]">
             <Clock className="h-3 w-3" />
             <span>{challenge.timeline}</span>
           </div>
-          <p className="text-xs text-gray-700">
+          <p className="text-xs text-[#474747]">
             {challenge.details}
           </p>
         </div>
 
         {/* Affected Systems */}
         <div className="space-y-1.5">
-          <h4 className="text-xs font-semibold text-gray-800 flex items-center gap-1.5">
+          <h4 className="text-xs font-semibold text-[#232323] flex items-center gap-1.5">
             <Target className="h-3 w-3" />
             Betroffene Systeme:
           </h4>
@@ -245,7 +245,7 @@ const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: b
               >
                 <Badge 
                   variant="outline"
-                  className="px-1.5 py-0.5 text-xs bg-gray-50 hover:bg-gray-100 transition-colors duration-200 font-medium"
+                  className="px-1.5 py-0.5 text-xs bg-[#F5F6F8] hover:bg-[#F5F6F8]/80 transition-colors duration-200 font-medium text-[#474747]"
                 >
                   {example}
                 </Badge>
@@ -255,19 +255,19 @@ const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: b
         </div>
 
         {/* Fixed News Section */}
-        <div className="border-t border-gray-100 pt-3">
-          <div className="p-3 bg-gradient-to-br from-slate-50 to-gray-50 rounded-lg border border-slate-200">
+        <div className="border-t border-[#474747]/10 pt-3">
+          <div className="p-3 bg-gradient-to-br from-[#F5F6F8] to-[#F5F6F8]/60 rounded-lg border border-[#474747]/20">
             {/* News Header */}
-            <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-300">
+            <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-[#474747]/30">
               <div className="flex items-center gap-1.5">
-                <div className="w-4 h-4 bg-slate-800 rounded-full flex items-center justify-center">
+                <div className="w-4 h-4 bg-[#232323] rounded-full flex items-center justify-center">
                   <FileText className="h-2 w-2 text-white" />
                 </div>
                 <div>
-                  <h5 className="text-xs font-bold text-slate-900 tracking-tight">
+                  <h5 className="text-xs font-bold text-[#232323] tracking-tight">
                     PRAXISBEISPIEL
                   </h5>
-                  <p className="text-xs text-slate-600 font-mono">
+                  <p className="text-xs text-[#474747] font-mono">
                     {new Date().toLocaleDateString('de-DE')}
                   </p>
                 </div>
@@ -280,7 +280,7 @@ const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: b
 
             {/* Typewriter Content */}
             <div className="mb-2">
-              <div className="font-mono text-xs text-slate-800 leading-relaxed min-h-[40px]">
+              <div className="font-mono text-xs text-[#232323] leading-relaxed min-h-[40px]">
                 {displayedText}
                 {isTyping && !hasBeenTyped && (
                   <motion.span
@@ -296,12 +296,12 @@ const ModernChallengeCard: React.FC<{ challenge: any; index: number; isActive: b
 
             {/* Source */}
             {challenge.sourceUrl && (
-              <div className="pt-2 border-t border-slate-200">
+              <div className="pt-2 border-t border-[#474747]/20">
                 <a 
                   href={challenge.sourceUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-900 transition-colors group/link"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#474747] hover:text-[#232323] transition-colors group/link"
                 >
                   <Globe className="h-3 w-3" />
                   <span>Quelle: {challenge.sourceTitle}</span>
@@ -359,8 +359,8 @@ const EuAiActCompliance = () => {
         sourceTitle: 'Heise Online: Clearview AI zu 20 Millionen Euro Strafe verurteilt',
         riskLevel: 'critical',
         gradient: 'from-white to-gray-50',
-        accentColor: 'bg-red-500',
-        borderColor: 'border-red-200'
+        accentColor: 'bg-[#e24e1b]',
+        borderColor: 'border-[#e24e1b]/20'
       },
       {
         icon: Gavel,
@@ -376,8 +376,8 @@ const EuAiActCompliance = () => {
         sourceTitle: 'Handelsblatt: HireVue stoppt KI-Gesichtserkennung',
         riskLevel: 'high',
         gradient: 'from-white to-orange-50',
-        accentColor: 'bg-orange-500',
-        borderColor: 'border-orange-200'
+        accentColor: 'bg-[#f97316]',
+        borderColor: 'border-[#f97316]/20'
       },
       {
         icon: MessageSquare,
@@ -393,8 +393,8 @@ const EuAiActCompliance = () => {
         sourceTitle: 'Bitkom: KI-Nutzung in deutschen Unternehmen 2024',
         riskLevel: 'medium',
         gradient: 'from-white to-blue-50',
-        accentColor: 'bg-blue-500',
-        borderColor: 'border-blue-200'
+        accentColor: 'bg-[#e24e1b]',
+        borderColor: 'border-[#e24e1b]/20'
       },
       {
         icon: Database,
@@ -410,8 +410,8 @@ const EuAiActCompliance = () => {
         sourceTitle: 'Manager Magazin: OpenAI investiert in KI-Sicherheit',
         riskLevel: 'critical',
         gradient: 'from-white to-purple-50',
-        accentColor: 'bg-purple-500',
-        borderColor: 'border-purple-200'
+        accentColor: 'bg-[#ea580c]',
+        borderColor: 'border-[#ea580c]/20'
       },
       {
         icon: Building2,
@@ -427,7 +427,7 @@ const EuAiActCompliance = () => {
         sourceTitle: 'Spiegel: Meta muss 1,2 Milliarden Euro Strafe zahlen',
         riskLevel: 'high',
         gradient: 'from-white to-green-50',
-        accentColor: 'bg-green-500',
+        accentColor: 'bg-[#39B37B]',
         borderColor: 'border-green-200'
       },
       {
@@ -444,7 +444,7 @@ const EuAiActCompliance = () => {
         sourceTitle: 'Tagesschau: EU-Verbot für Gesichtserkennung',
         riskLevel: 'critical',
         gradient: 'from-white to-indigo-50',
-        accentColor: 'bg-indigo-500',
+        accentColor: 'bg-[#e24e1b]',
         borderColor: 'border-indigo-200'
       }
     ];
@@ -465,44 +465,44 @@ const EuAiActCompliance = () => {
       <section ref={painRef} className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white relative">
         <div className="container relative px-4">
           <div className="text-center mb-16 space-y-6">
-            <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20 px-6 py-3">
+            <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20 px-6 py-3">
               <AlertCircle className="h-4 w-4 mr-2" />
               AI Act Compliance-Herausforderungen
             </Badge>
             
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#232323] leading-tight">
               Die 6 wichtigsten Compliance-Bereiche
-              <span className="block text-[#a1251b] mt-2">
+              <span className="block text-[#e24e1b] mt-2">
                 des EU AI Act
               </span>
             </h2>
             
             <div className="max-w-4xl mx-auto space-y-4">
-              <p className="text-xl text-gray-700 leading-relaxed">
-                <span className="font-semibold text-gray-900">87% der deutschen Unternehmen</span> nutzen bereits KI, 
-                aber nur <span className="font-semibold text-[#a1251b]">13% sind AI Act compliant</span>.
+              <p className="text-xl text-[#474747] leading-relaxed">
+                <span className="font-semibold text-[#232323]">87% der deutschen Unternehmen</span> nutzen bereits KI, 
+                aber nur <span className="font-semibold text-[#e24e1b]">13% sind AI Act compliant</span>.
               </p>
               
               {/* Professional Stats */}
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-gray-900">
+                    <div className="text-3xl font-bold text-[#232323]">
                       {painInView && <CountUp end={127} duration={2} />}
                     </div>
-                    <div className="text-sm text-gray-600">Tage bis erste AI Act Prüfungen</div>
+                    <div className="text-sm text-[#474747]">Tage bis erste AI Act Prüfungen</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-gray-900">
+                    <div className="text-3xl font-bold text-[#232323]">
                       €{painInView && <CountUp end={245} duration={2} />}M
                     </div>
-                    <div className="text-sm text-gray-600">bereits verhängte EU-Bußgelder</div>
+                    <div className="text-sm text-[#474747]">bereits verhängte EU-Bußgelder</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-gray-900">
+                    <div className="text-3xl font-bold text-[#232323]">
                       {painInView && <CountUp end={94} duration={2} />}%
                     </div>
-                    <div className="text-sm text-gray-600">der KI-Nutzer noch nicht compliant</div>
+                    <div className="text-sm text-[#474747]">der KI-Nutzer noch nicht compliant</div>
                   </div>
                 </div>
               </div>
@@ -512,8 +512,8 @@ const EuAiActCompliance = () => {
           {/* Central Card Display */}
           <div className="relative">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-900">Compliance-Herausforderungen</h3>
-              <p className="text-gray-600 mt-2">{currentIndex + 1} von {complianceChallenges.length}</p>
+              <h3 className="text-2xl font-semibold text-[#232323]">Compliance-Herausforderungen</h3>
+              <p className="text-[#474747] mt-2">{currentIndex + 1} von {complianceChallenges.length}</p>
             </div>
             
             {/* Central Card Container */}
@@ -565,7 +565,7 @@ const EuAiActCompliance = () => {
                     className={cn(
                       "w-3 h-3 rounded-full transition-all duration-300",
                       index === currentIndex 
-                        ? "bg-[#a1251b] scale-125" 
+                        ? "bg-[#e24e1b] scale-125" 
                         : "bg-gray-300 hover:bg-gray-400"
                     )}
                   />
@@ -592,7 +592,7 @@ const EuAiActCompliance = () => {
                     <Brain className="h-10 w-10 text-white" />
                   </div>
                   <div className="text-left flex-1">
-                    <h3 className="font-bold text-xl mb-2">Marsstein automatisiert AI Act Compliance</h3>
+                    <h3 className="font-semibold text-xl mb-2">Marsstein automatisiert AI Act Compliance</h3>
                     <p className="text-white/90">
                       Professionelle Lösung für alle 6 Compliance-Bereiche. 90% Automatisierung, 2 Wochen Umsetzung.
                     </p>
@@ -605,22 +605,22 @@ const EuAiActCompliance = () => {
             {/* Professional Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                <div className="text-2xl font-bold text-gray-900 mb-2">
+                <div className="text-2xl font-bold text-[#232323] mb-2">
                   {painInView && <CountUp end={200} duration={2} />}+
                 </div>
-                <div className="text-sm text-gray-600">Unternehmen bereits compliant</div>
+                <div className="text-sm text-[#474747]">Unternehmen bereits compliant</div>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                <div className="text-2xl font-bold text-gray-900 mb-2">
+                <div className="text-2xl font-bold text-[#232323] mb-2">
                   €{painInView && <CountUp end={15} duration={2} />}M
                 </div>
-                <div className="text-sm text-gray-600">Bußgeld-Risiken minimiert</div>
+                <div className="text-sm text-[#474747]">Bußgeld-Risiken minimiert</div>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                <div className="text-2xl font-bold text-gray-900 mb-2">
+                <div className="text-2xl font-bold text-[#232323] mb-2">
                   {painInView && <CountUp end={48} duration={2} />}h
                 </div>
-                <div className="text-sm text-gray-600">Durchschnittliche Implementierung</div>
+                <div className="text-sm text-[#474747]">Durchschnittliche Implementierung</div>
               </div>
             </div>
           </div>
@@ -643,25 +643,25 @@ const EuAiActCompliance = () => {
             <div className="space-y-8">
               {/* Professional Status Indicators */}
               <div className="flex flex-col sm:flex-row gap-3">
-                <Badge className="bg-gray-100 text-gray-700 border-gray-200 px-4 py-2 font-semibold">
+                <Badge className="bg-[#F5F6F8]/80 text-[#474747] border-gray-200 px-4 py-2 font-semibold">
                   <CheckCircle2 className="h-4 w-4 mr-2" />
                   AI Act seit 01.08.2024 aktiv
                 </Badge>
-                <Badge className="bg-blue-100 text-blue-700 border-blue-200 px-4 py-2 font-semibold">
+                <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20 px-4 py-2 font-semibold">
                   <AlertCircle className="h-4 w-4 mr-2" />
                   Fristen bis 2026
                 </Badge>
               </div>
               
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 leading-[1.1]">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#232323] leading-[1.1]">
                   EU AI Act Compliance
-                  <span className="block text-[#a1251b] mt-2">
+                  <span className="block text-[#e24e1b] mt-2">
                     leicht gemacht
                   </span>
                 </h1>
                 
-                <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
+                <p className="text-xl text-[#474747] leading-relaxed max-w-xl">
                   Automatisierte Compliance-Prüfung, rechtssichere Dokumentation und kontinuierliche Überwachung für alle AI Act Anforderungen.
                 </p>
               </div>
@@ -688,17 +688,17 @@ const EuAiActCompliance = () => {
                     <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-green-600 border-2 border-white"></div>
                     <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 border-2 border-white"></div>
                   </div>
-                  <span className="text-sm text-gray-600 font-medium">Für professionelle AI Act Compliance</span>
+                  <span className="text-sm text-[#474747] font-medium">Für professionelle AI Act Compliance</span>
                 </div>
               </div>
             </div>
             
             {/* Professional Dashboard Preview */}
             <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 relative z-10">
+              <div className="bg-white rounded-lg shadow-2xl border border-[#474747]/20 p-6 relative z-10">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-semibold text-gray-900">AI Act Compliance Status</h3>
-                  <Badge className="bg-green-100 text-green-700 border-green-200">
+                  <h3 className="text-lg font-semibold text-[#232323]">AI Act Compliance Status</h3>
+                  <Badge className="bg-[#39B37B]/10 text-[#39B37B] border-[#39B37B]/20">
                     Live Dashboard
                   </Badge>
                 </div>
@@ -729,27 +729,27 @@ const EuAiActCompliance = () => {
                         />
                       </svg>
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <div className="text-3xl font-bold text-gray-900">{complianceScore}%</div>
-                        <div className="text-sm text-gray-600">Compliant</div>
+                        <div className="text-3xl font-bold text-[#232323]">{complianceScore}%</div>
+                        <div className="text-sm text-[#474747]">Compliant</div>
                       </div>
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-3 bg-green-50 rounded-lg border border-green-200">
+                    <div className="text-center p-3 bg-[#39B37B]/5 rounded-lg border border-[#39B37B]/20">
                       <div className="text-lg font-bold text-green-700">23</div>
                       <div className="text-xs text-green-600">Anforderungen erfüllt</div>
                     </div>
-                    <div className="text-center p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <div className="text-center p-3 bg-[#F57C00]/10 rounded-lg border border-[#F57C00]/20">
                       <div className="text-lg font-bold text-yellow-700">7</div>
                       <div className="text-xs text-yellow-600">In Bearbeitung</div>
                     </div>
                   </div>
                   
                   <div className="text-center pt-4 border-t border-gray-200">
-                    <div className="text-sm text-gray-600 mb-2">Nächste Deadline</div>
-                    <div className="text-lg font-semibold text-gray-900">August 2025</div>
-                    <div className="text-sm text-gray-600">Generative AI Transparenz</div>
+                    <div className="text-sm text-[#474747] mb-2">Nächste Deadline</div>
+                    <div className="text-lg font-semibold text-[#232323]">August 2025</div>
+                    <div className="text-sm text-[#474747]">Generative AI Transparenz</div>
                   </div>
                 </div>
               </div>
@@ -769,14 +769,14 @@ const EuAiActCompliance = () => {
     <section className="py-20 md:py-32 bg-gradient-to-b from-white to-gray-50">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
+          <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
             <Brain className="h-3.5 w-3.5 mr-2" />
             AI Act Expertise
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Die 4 Risikokategorien des EU AI Act verstehen
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-[#474747] max-w-3xl mx-auto">
             Jedes KI-System muss einer von 4 Risikokategorien zugeordnet werden. 
             Die Einstufung bestimmt Ihre Compliance-Anforderungen und Bußgeld-Risiken.
           </p>
@@ -851,7 +851,7 @@ const EuAiActCompliance = () => {
                     <div className="text-xs text-orange-600 mb-2">
                       {item.systems.join(', ')}
                     </div>
-                    <div className="text-xs text-gray-600">{item.requirements}</div>
+                    <div className="text-xs text-[#474747]">{item.requirements}</div>
                   </div>
                 ))}
               </CardContent>
@@ -878,7 +878,7 @@ const EuAiActCompliance = () => {
                     {item}
                   </div>
                 ))}
-                <div className="mt-3 p-3 bg-yellow-100 rounded-lg">
+                <div className="mt-3 p-3 bg-[#F57C00]/20 rounded-lg">
                   <div className="text-xs font-semibold text-yellow-800">Hauptanforderung:</div>
                   <div className="text-xs text-yellow-700">Nutzer müssen informiert werden, dass sie mit KI interagieren</div>
                 </div>
@@ -891,7 +891,7 @@ const EuAiActCompliance = () => {
             <Card className="bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 shadow-xl">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-xl">
-                  <Brain className="h-6 w-6 text-[#a1251b]" />
+                  <Brain className="h-6 w-6 text-[#e24e1b]" />
                   Live AI Act Risk-Scanner
                 </CardTitle>
                 <CardDescription>
@@ -901,7 +901,7 @@ const EuAiActCompliance = () => {
               <CardContent className="space-y-6">
                 {/* AI Systems Detection */}
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-gray-800">Erkannte KI-Systeme:</h4>
+                  <h4 className="font-semibold text-[#232323]">Erkannte KI-Systeme:</h4>
                   {[
                     { name: 'Microsoft 365 Copilot', risk: 'Begrenzt', category: 'Generative AI', status: 'warning' },
                     { name: 'HR-Bewerbungsfilter', risk: 'Hochrisiko', category: 'Beschäftigung', status: 'danger' },
@@ -910,7 +910,7 @@ const EuAiActCompliance = () => {
                   ].map((system, index) => (
                     <div key={index} className="p-3 bg-white rounded-lg border border-gray-200">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-gray-700">{system.name}</span>
+                        <span className="text-sm font-medium text-[#474747]">{system.name}</span>
                         <Badge 
                           variant={system.status === 'danger' ? 'destructive' : 'outline'}
                           className="text-xs"
@@ -918,7 +918,7 @@ const EuAiActCompliance = () => {
                           {system.risk}
                         </Badge>
                       </div>
-                      <div className="text-xs text-gray-600">{system.category}</div>
+                      <div className="text-xs text-[#474747]">{system.category}</div>
                       {system.status === 'danger' && (
                         <div className="mt-2 flex items-center gap-1 text-red-600">
                           <AlertCircle className="h-3 w-3" />
@@ -931,7 +931,7 @@ const EuAiActCompliance = () => {
 
                 {/* Compliance Timeline */}
                 <div className="border-t pt-6">
-                  <h4 className="font-semibold text-gray-800 mb-4">AI Act Timeline</h4>
+                  <h4 className="font-semibold text-[#232323] mb-4">AI Act Timeline</h4>
                   <div className="space-y-3">
                     {[
                       { date: '01.08.2024', task: 'Verbotene KI-Systeme', status: 'active', urgent: true },
@@ -940,19 +940,19 @@ const EuAiActCompliance = () => {
                       { date: '02.08.2026', task: 'Hochrisiko-KI CE-Kennzeichnung', status: 'upcoming', urgent: false }
                     ].map((milestone, index) => (
                       <div key={index} className={`p-2 rounded-lg border ${
-                        milestone.status === 'active' ? 'bg-red-50 border-red-200' : 'bg-blue-50 border-blue-200'
+                        milestone.status === 'active' ? 'bg-[#e24e1b]/10 border-[#e24e1b]/20' : 'bg-[#F5F6F8] border-[#474747]/20'
                       }`}>
                         <div className="flex items-center justify-between">
                           <div className="text-sm font-medium">{milestone.date}</div>
                           {milestone.urgent && <Badge variant="destructive" className="text-xs">Urgent</Badge>}
                         </div>
-                        <div className="text-xs text-gray-600">{milestone.task}</div>
+                        <div className="text-xs text-[#474747]">{milestone.task}</div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <Button className="w-full bg-[#a1251b] hover:bg-[#8a1f17] text-white">
+                <Button className="w-full bg-[#e24e1b] hover:bg-[#8a1f17] text-white">
                   <Brain className="mr-2 h-4 w-4" />
                   Kostenlose AI Act Risikoanalyse
                 </Button>
@@ -969,14 +969,14 @@ const EuAiActCompliance = () => {
     <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
+          <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
             <Rocket className="h-3.5 w-3.5 mr-2" />
             Die Marsstein AI Act Lösung
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             KI-Compliance so einfach wie nie
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-[#474747] max-w-3xl mx-auto">
             Während andere Anbieter komplexe Beratung verkaufen, automatisieren wir 90% des AI Act Compliance-Prozesses 
             und machen die Umsetzung so intuitiv wie eine App-Installation.
           </p>
@@ -1033,7 +1033,7 @@ const EuAiActCompliance = () => {
               savings: '€320.000 internationale Compliance-Kosten'
             }
           ].map((benefit, index) => (
-            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-2 hover:border-[#a1251b]/30 hover:scale-105">
+            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-2 hover:border-[#e24e1b]/30 hover:scale-105">
               <CardHeader>
                 <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-[#a1251b] to-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
                   <benefit.icon className="h-7 w-7 text-white" />
@@ -1051,12 +1051,12 @@ const EuAiActCompliance = () => {
                   ))}
                 </ul>
                 
-                <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
+                <div className="p-3 bg-[#F5F6F8] rounded-lg border border-[#474747]/20">
                   <div className="text-xs font-semibold text-purple-800 mb-1">Tech-Specs:</div>
                   <div className="text-xs text-purple-700">{benefit.techDetails}</div>
                 </div>
                 
-                <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+                <div className="p-3 bg-[#39B37B]/5 rounded-lg border border-[#39B37B]/20">
                   <div className="text-xs font-semibold text-green-800 mb-1">Kosteneinsparung:</div>
                   <div className="text-sm font-bold text-green-700">{benefit.savings}</div>
                 </div>
@@ -1335,14 +1335,14 @@ const EuAiActCompliance = () => {
       <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
         <div className="container px-4">
           <div className="text-center mb-12 space-y-4">
-            <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
+            <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
               <Building2 className="h-3.5 w-3.5 mr-2" />
               Branchen-spezifische AI Act Compliance
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
               AI Act Anforderungen nach Branchen
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-[#474747] max-w-3xl mx-auto">
               Der AI Act betrifft verschiedene Branchen unterschiedlich stark. 
               Verstehen Sie Ihre spezifischen Risiken und Compliance-Anforderungen.
             </p>
@@ -1359,8 +1359,8 @@ const EuAiActCompliance = () => {
                     "flex items-center gap-2 px-4 py-2.5 rounded-full transition-all duration-300",
                     "text-sm font-medium border-2",
                     selectedIndustry === index
-                      ? "bg-[#a1251b] text-white border-[#a1251b] shadow-lg scale-105"
-                      : "bg-white text-gray-700 border-gray-200 hover:border-[#a1251b]/30 hover:bg-gray-50"
+                      ? "bg-[#e24e1b] text-white border-[#e24e1b] shadow-lg scale-105"
+                      : "bg-white text-[#474747] border-gray-200 hover:border-[#e24e1b]/30 hover:bg-[#F5F6F8]"
                   )}
                 >
                   <industry.icon className="h-4 w-4" />
@@ -1395,7 +1395,7 @@ const EuAiActCompliance = () => {
                       {React.createElement(industries[selectedIndustry].icon, { className: "h-8 w-8 text-white" })}
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold">{industries[selectedIndustry].title}</h3>
+                      <h3 className="text-2xl font-semibold">{industries[selectedIndustry].title}</h3>
                       <Badge className="mt-2 bg-white/20 text-white border-white/30">
                         Risikostufe: {industries[selectedIndustry].riskLevel}
                       </Badge>
@@ -1409,14 +1409,14 @@ const EuAiActCompliance = () => {
                 {/* Real World Example */}
                 <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">
                   <div className="flex items-start gap-4">
-                    <div className="h-12 w-12 rounded-lg bg-[#a1251b] flex items-center justify-center flex-shrink-0">
+                    <div className="h-12 w-12 rounded-lg bg-[#e24e1b] flex items-center justify-center flex-shrink-0">
                       <Building className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">
+                      <h4 className="text-lg font-bold text-[#232323] mb-2">
                         {industries[selectedIndustry].realWorldExample.title}
                       </h4>
-                      <p className="text-gray-700 mb-3">
+                      <p className="text-[#474747] mb-3">
                         {industries[selectedIndustry].realWorldExample.description}
                       </p>
                       <div className="flex items-center gap-2 text-sm">
@@ -1431,7 +1431,7 @@ const EuAiActCompliance = () => {
 
                 {/* AI Systems Grid */}
                 <div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <h4 className="text-lg font-bold text-[#232323] mb-4 flex items-center gap-2">
                     <Cpu className="h-5 w-5" />
                     Betroffene KI-Systeme in dieser Branche
                   </h4>
@@ -1439,7 +1439,7 @@ const EuAiActCompliance = () => {
                     {industries[selectedIndustry].aiSystems.map((system, index) => (
                       <div key={index} className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow">
                         <div className="flex items-start justify-between mb-2">
-                          <h5 className="font-semibold text-gray-900">{system.name}</h5>
+                          <h5 className="font-semibold text-[#232323]">{system.name}</h5>
                           <Badge 
                             variant={
                               system.risk === 'Hoch' ? 'destructive' : 
@@ -1452,7 +1452,7 @@ const EuAiActCompliance = () => {
                             {system.risk}
                           </Badge>
                         </div>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-[#474747]">
                           <span className="font-medium">Beispiel:</span> {system.example}
                         </p>
                       </div>
@@ -1461,7 +1461,7 @@ const EuAiActCompliance = () => {
                 </div>
 
                 {/* Concrete Steps */}
-                <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                <div className="bg-[#F5F6F8] rounded-xl p-6 border border-[#474747]/20">
                   <h4 className="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
                     <CheckSquare className="h-5 w-5" />
                     Konkrete Schritte zur Compliance
@@ -1472,7 +1472,7 @@ const EuAiActCompliance = () => {
                         <div className="h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">
                           {index + 1}
                         </div>
-                        <p className="text-gray-700">{step}</p>
+                        <p className="text-[#474747]">{step}</p>
                       </div>
                     ))}
                   </div>
@@ -1529,7 +1529,7 @@ const EuAiActCompliance = () => {
                         <div>
                           <h5 className="font-bold text-lg mb-2">Marsstein Lösung</h5>
                           <p className="text-white/90 mb-4">{industries[selectedIndustry].marsSteinSolution}</p>
-                          <Button className="bg-white text-[#a1251b] hover:bg-gray-100">
+                          <Button className="bg-white text-[#e24e1b] hover:bg-[#F5F6F8]/80">
                             Branchenspezifische Demo
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
@@ -1551,14 +1551,14 @@ const EuAiActCompliance = () => {
     <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
+          <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
             <Rocket className="h-3.5 w-3.5 mr-2" />
             Unser AI Act Prozess
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             In 2 Wochen AI Act compliant
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-[#474747] max-w-2xl mx-auto">
             Während traditionelle Beratung 6+ Monate dauert, machen wir Sie in nur 2 Wochen compliant
           </p>
         </div>
@@ -1617,7 +1617,7 @@ const EuAiActCompliance = () => {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <step.icon className="h-8 w-8 text-purple-600 opacity-20" />
-                  <div className="text-xs text-gray-600">
+                  <div className="text-xs text-[#474747]">
                     {step.details}
                   </div>
                 </CardContent>
@@ -1643,11 +1643,11 @@ const EuAiActCompliance = () => {
     <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
       <div className="container px-4">
         <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-[#a1251b]/10 text-[#a1251b] border-[#a1251b]/20">
+          <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
             <BookOpen className="h-3.5 w-3.5 mr-2" />
             AI Act FAQ
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Alles was Sie über den EU AI Act wissen müssen
           </h2>
         </div>
@@ -1688,7 +1688,7 @@ const EuAiActCompliance = () => {
                 <AccordionTrigger className="text-left hover:no-underline">
                   <span className="font-semibold">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                <AccordionContent className="text-[#474747] leading-relaxed pb-6">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -1701,7 +1701,7 @@ const EuAiActCompliance = () => {
 
   // CTA Section
   const CTASection = () => (
-    <section className="py-20 md:py-32 bg-gradient-to-r from-[#a1251b] to-purple-600 text-white">
+    <section className="py-20 md:py-32 bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white">
       <div className="container px-4 text-center">
         <div className="max-w-3xl mx-auto space-y-8">
           <Badge className="bg-white/20 text-white border-white/20">
@@ -1709,7 +1709,7 @@ const EuAiActCompliance = () => {
             Professionelle AI Act Compliance
           </Badge>
           
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
             AI Act Compliance in 2 Wochen statt 6 Monaten
           </h2>
           
@@ -1720,11 +1720,11 @@ const EuAiActCompliance = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8">
+            <Button size="lg" className="bg-white text-[#e24e1b] hover:bg-[#F5F6F8]/80 px-8">
               <Brain className="mr-2 h-5 w-5" />
               Kostenlose AI-Risikoanalyse
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8">
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#e24e1b] px-8">
               <Download className="mr-2 h-5 w-5" />
               AI Act Compliance Guide
             </Button>

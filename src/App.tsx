@@ -138,6 +138,7 @@ import TestOptimized from "./pages/TestOptimized";
 import TestIndex from "./pages/TestIndex";
 import SimpleTest from "./pages/SimpleTest";
 import DesignSeparatorTest from "./pages/DesignSeparatorTest";
+import FooterTest from "./pages/FooterTest";
 import SitemapSEO from "./pages/SitemapSEO";
 import FinalChecks from "./pages/FinalChecks";
 
@@ -172,6 +173,7 @@ const App = () => (
                 {/* Test Routes for Scroll Animation Tests - moved up for priority */}
                 <Route path="/design-separator-test" element={<DesignSeparatorTest />} />
                 <Route path="/simple-test" element={<SimpleTest />} />
+                <Route path="/test-footer" element={<FooterTest />} />
                 <Route path="/tests" element={<TestIndex />} />
                 <Route path="/test1" element={<Test1 />} />
                 <Route path="/test2" element={<Test2 />} />
