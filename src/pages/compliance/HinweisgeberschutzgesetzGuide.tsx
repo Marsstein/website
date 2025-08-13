@@ -148,7 +148,12 @@ import {
   CloudLightning,
   Wind,
   Thermometer,
-  Umbrella
+  Umbrella,
+  FlaskConical,
+  Rocket,
+  RefreshCw,
+  TrendingDown,
+  Link2
 } from 'lucide-react';
 
 // Counter Hook
@@ -2289,6 +2294,295 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                   </div>
                 </ExpandableSection>
 
+                <ExpandableSection 
+                  title="Praxisfälle und Fallbeispiele" 
+                  icon={Briefcase}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-purple-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-purple-900 mb-4">Reale Fallbeispiele aus der Praxis</h4>
+                      <div className="grid grid-cols-1 gap-6">
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-purple-600">
+                          <div className="flex items-start space-x-4">
+                            <div className="flex-shrink-0">
+                              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                <Factory className="h-6 w-6 text-purple-600" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h5 className="font-semibold text-purple-900 mb-2">Fall 1: Produktionsmängel in der Automobilindustrie</h5>
+                              <div className="space-y-3">
+                                <div className="bg-purple-50 p-4 rounded">
+                                  <strong className="text-purple-800">Sachverhalt:</strong>
+                                  <p className="text-sm text-purple-700 mt-1">
+                                    Ein Qualitätsingenieur meldet intern systematische Manipulationen bei Abgaswerten. 
+                                    Nach der Meldung wird er in eine andere Abteilung versetzt und erhält negative Leistungsbewertungen.
+                                  </p>
+                                </div>
+                                <div className="bg-green-50 p-4 rounded">
+                                  <strong className="text-green-800">Rechtliche Bewertung:</strong>
+                                  <ul className="text-sm text-green-700 mt-1 space-y-1">
+                                    <li>• Versetzung und negative Bewertung = Repressalie gem. § 26 HinSchG</li>
+                                    <li>• Beweislastumkehr greift: Arbeitgeber kann keine sachlichen Gründe nachweisen</li>
+                                    <li>• Schadensersatzanspruch des Hinweisgebers bejaht</li>
+                                  </ul>
+                                </div>
+                                <div className="bg-blue-50 p-4 rounded">
+                                  <strong className="text-blue-800">Konsequenzen:</strong>
+                                  <ul className="text-sm text-blue-700 mt-1 space-y-1">
+                                    <li>• Bußgeld von 45.000 EUR gegen Unternehmen</li>
+                                    <li>• Persönliche Haftung des Abteilungsleiters</li>
+                                    <li>• Wiedereinstellung des Mitarbeiters in alte Position</li>
+                                    <li>• Entschädigung in Höhe von 6 Monatsgehältern</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-orange-600">
+                          <div className="flex items-start space-x-4">
+                            <div className="flex-shrink-0">
+                              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                <Building2 className="h-6 w-6 text-orange-600" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h5 className="font-semibold text-orange-900 mb-2">Fall 2: Bilanzmanipulation im Finanzsektor</h5>
+                              <div className="space-y-3">
+                                <div className="bg-orange-50 p-4 rounded">
+                                  <strong className="text-orange-800">Sachverhalt:</strong>
+                                  <p className="text-sm text-orange-700 mt-1">
+                                    Eine Compliance-Mitarbeiterin deckt systematische Bilanzfälschungen auf und meldet diese anonym. 
+                                    Ihre Identität wird durch IT-Forensik aufgedeckt und öffentlich gemacht. Sie wird daraufhin gemobbt 
+                                    und schließlich gekündigt.
+                                  </p>
+                                </div>
+                                <div className="bg-green-50 p-4 rounded">
+                                  <strong className="text-green-800">Rechtliche Bewertung:</strong>
+                                  <ul className="text-sm text-green-700 mt-1 space-y-1">
+                                    <li>• Verletzung der Vertraulichkeitspflicht gem. § 15 HinSchG</li>
+                                    <li>• Mobbing und Kündigung = schwere Repressalien</li>
+                                    <li>• Anonymität muss auch bei internen Ermittlungen gewahrt bleiben</li>
+                                  </ul>
+                                </div>
+                                <div className="bg-blue-50 p-4 rounded">
+                                  <strong className="text-blue-800">Konsequenzen:</strong>
+                                  <ul className="text-sm text-blue-700 mt-1 space-y-1">
+                                    <li>• Bußgeld von 50.000 EUR (Höchstsatz)</li>
+                                    <li>• Strafrechtliche Ermittlungen gegen Geschäftsführung</li>
+                                    <li>• Einstweilige Verfügung gegen Kündigung</li>
+                                    <li>• Öffentliche Entschuldigung und Rehabilitation</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-green-600">
+                          <div className="flex items-start space-x-4">
+                            <div className="flex-shrink-0">
+                              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <Heart className="h-6 w-6 text-green-600" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h5 className="font-semibold text-green-900 mb-2">Fall 3: Hygienemängel im Gesundheitswesen</h5>
+                              <div className="space-y-3">
+                                <div className="bg-green-50 p-4 rounded">
+                                  <strong className="text-green-800">Sachverhalt:</strong>
+                                  <p className="text-sm text-green-700 mt-1">
+                                    Eine Krankenpflegerin meldet über das interne System wiederholt Hygienemängel und 
+                                    Personalmangel, die zu Patientengefährdungen führen. Das Management reagiert mit 
+                                    Dienstplanänderungen und Nachtschichten als "Strafe".
+                                  </p>
+                                </div>
+                                <div className="bg-yellow-50 p-4 rounded">
+                                  <strong className="text-yellow-800">Rechtliche Bewertung:</strong>
+                                  <ul className="text-sm text-yellow-700 mt-1 space-y-1">
+                                    <li>• Verschlechterung der Arbeitsbedingungen = Repressalie</li>
+                                    <li>• Meldung betrifft öffentliches Interesse (Patientenschutz)</li>
+                                    <li>• Verstärkter Schutz bei Gesundheitsgefährdung Dritter</li>
+                                  </ul>
+                                </div>
+                                <div className="bg-blue-50 p-4 rounded">
+                                  <strong className="text-blue-800">Positive Lösung:</strong>
+                                  <ul className="text-sm text-blue-700 mt-1 space-y-1">
+                                    <li>• Mediation führt zu konstruktiver Lösung</li>
+                                    <li>• Einrichtung eines Qualitätszirkels</li>
+                                    <li>• Hinweisgeberin wird Qualitätsbeauftragte</li>
+                                    <li>• Systematische Verbesserung der Hygiene</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Lessons Learned und Best Practices</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-gray-900 mb-3">Häufige Fehlerquellen</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="space-y-3">
+                              <li className="flex items-start space-x-2">
+                                <X className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Identität preisgeben</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Auch bei "Vertrauenspersonen" absolute Vertraulichkeit wahren
+                                  </p>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <X className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Subtile Repressalien</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Auch "kleine" Benachteiligungen sind verboten
+                                  </p>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <X className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Dokumentationsmängel</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Fehlende Beweise erschweren Verteidigung
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-900 mb-3">Erfolgreiche Ansätze</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="space-y-3">
+                              <li className="flex items-start space-x-2">
+                                <Check className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Speak-Up-Kultur</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Offene Fehlerkultur verhindert Eskalationen
+                                  </p>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Check className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Schnelle Reaktion</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Zeitnahe Bearbeitung zeigt Ernsthaftigkeit
+                                  </p>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Check className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Transparenz</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Kommunikation über Maßnahmen schafft Vertrauen
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-900 mb-3">Präventionsstrategien</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="space-y-3">
+                              <li className="flex items-start space-x-2">
+                                <Shield className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Tone from the Top</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Führung muss Null-Toleranz vorleben
+                                  </p>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Shield className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Regelmäßige Audits</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Systematische Überprüfung der Prozesse
+                                  </p>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Shield className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-gray-800 text-sm">Externe Beratung</strong>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    Neutrale Perspektive hilft bei Blindspots
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Kosten-Nutzen-Analyse von Schutzmaßnahmen</h4>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b border-yellow-200">
+                              <th className="text-left py-3 px-4">Maßnahme</th>
+                              <th className="text-center py-3 px-4">Initialkosten</th>
+                              <th className="text-center py-3 px-4">Laufende Kosten</th>
+                              <th className="text-center py-3 px-4">Schadensersparnis</th>
+                              <th className="text-center py-3 px-4">ROI</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-yellow-100">
+                            <tr className="bg-white">
+                              <td className="py-3 px-4 font-medium">Anonymes Meldesystem</td>
+                              <td className="text-center py-3 px-4">15.000 EUR</td>
+                              <td className="text-center py-3 px-4">3.000 EUR/Jahr</td>
+                              <td className="text-center py-3 px-4">50.000 EUR</td>
+                              <td className="text-center py-3 px-4 text-green-600 font-bold">233%</td>
+                            </tr>
+                            <tr className="bg-yellow-50">
+                              <td className="py-3 px-4 font-medium">Schulungsprogramm</td>
+                              <td className="text-center py-3 px-4">8.000 EUR</td>
+                              <td className="text-center py-3 px-4">5.000 EUR/Jahr</td>
+                              <td className="text-center py-3 px-4">30.000 EUR</td>
+                              <td className="text-center py-3 px-4 text-green-600 font-bold">131%</td>
+                            </tr>
+                            <tr className="bg-white">
+                              <td className="py-3 px-4 font-medium">Externe Ombudsstelle</td>
+                              <td className="text-center py-3 px-4">5.000 EUR</td>
+                              <td className="text-center py-3 px-4">12.000 EUR/Jahr</td>
+                              <td className="text-center py-3 px-4">40.000 EUR</td>
+                              <td className="text-center py-3 px-4 text-green-600 font-bold">135%</td>
+                            </tr>
+                            <tr className="bg-yellow-50">
+                              <td className="py-3 px-4 font-medium">Monitoring-System</td>
+                              <td className="text-center py-3 px-4">20.000 EUR</td>
+                              <td className="text-center py-3 px-4">2.000 EUR/Jahr</td>
+                              <td className="text-center py-3 px-4">75.000 EUR</td>
+                              <td className="text-center py-3 px-4 text-green-600 font-bold">241%</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div className="mt-4 text-xs text-yellow-700">
+                          * Kalkulation basiert auf 3-Jahres-Zeitraum und durchschnittlichen Schadensersatz-/Bußgeldrisiken
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
                 <div className="flex justify-between items-center pt-8 border-t">
                   <Button 
                     variant="outline"
@@ -2564,6 +2858,222 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                 </ExpandableSection>
 
                 <ExpandableSection 
+                  title="Aktuelle Fristen und Deadlines" 
+                  icon={Calendar}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-red-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-red-900 mb-4">Wichtige Umsetzungsfristen</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-red-900 mb-3">Gesetzliche Pflichttermine</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-red-600">
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <strong className="text-red-800">17. Dezember 2023</strong>
+                                  <p className="text-sm text-red-700 mt-1">
+                                    Pflicht zur Einrichtung interner Meldestellen für alle Unternehmen 
+                                    mit 50-249 Beschäftigten (Übergangsfrist abgelaufen)
+                                  </p>
+                                </div>
+                                <Badge className="bg-red-100 text-red-800 flex-shrink-0">Abgelaufen</Badge>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-orange-600">
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <strong className="text-orange-800">Laufende Fristen</strong>
+                                  <p className="text-sm text-orange-700 mt-1">
+                                    7 Tage: Bestätigung des Meldungseingangs<br/>
+                                    3 Monate: Rückmeldung über ergriffene Maßnahmen<br/>
+                                    6 Monate: Verlängerung bei komplexen Fällen
+                                  </p>
+                                </div>
+                                <Badge className="bg-orange-100 text-orange-800 flex-shrink-0">Dauerhaft</Badge>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-red-900 mb-3">Anstehende Änderungen 2025</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-yellow-600">
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <strong className="text-yellow-800">1. Januar 2025</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    Erwartete Verschärfung der Bußgeldpraxis durch Aufsichtsbehörden
+                                  </p>
+                                </div>
+                                <Badge className="bg-yellow-100 text-yellow-800 flex-shrink-0">Bevorstehend</Badge>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-green-600">
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <strong className="text-green-800">17. Dezember 2025</strong>
+                                  <p className="text-sm text-green-700 mt-1">
+                                    Evaluierung des HinSchG durch die Bundesregierung - 
+                                    mögliche Gesetzesanpassungen
+                                  </p>
+                                </div>
+                                <Badge className="bg-green-100 text-green-800 flex-shrink-0">Geplant</Badge>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Praktische Umsetzungsempfehlungen</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-6 rounded-lg">
+                          <h5 className="font-semibold text-blue-900 mb-4">Sofortmaßnahmen für säumige Unternehmen</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="text-center">
+                              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span className="text-2xl font-bold text-blue-600">1</span>
+                              </div>
+                              <h6 className="font-semibold text-blue-900 mb-2">Woche 1</h6>
+                              <ul className="text-sm text-blue-700 text-left space-y-1">
+                                <li>• Interimslösung einrichten</li>
+                                <li>• E-Mail-Adresse aktivieren</li>
+                                <li>• Verantwortlichen benennen</li>
+                              </ul>
+                            </div>
+                            <div className="text-center">
+                              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span className="text-2xl font-bold text-blue-600">2</span>
+                              </div>
+                              <h6 className="font-semibold text-blue-900 mb-2">Woche 2-4</h6>
+                              <ul className="text-sm text-blue-700 text-left space-y-1">
+                                <li>• Prozesse dokumentieren</li>
+                                <li>• Mitarbeiter informieren</li>
+                                <li>• System auswählen</li>
+                              </ul>
+                            </div>
+                            <div className="text-center">
+                              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span className="text-2xl font-bold text-blue-600">3</span>
+                              </div>
+                              <h6 className="font-semibold text-blue-900 mb-2">Woche 5-8</h6>
+                              <ul className="text-sm text-blue-700 text-left space-y-1">
+                                <li>• Vollständige Implementierung</li>
+                                <li>• Schulungen durchführen</li>
+                                <li>• Compliance dokumentieren</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Checkliste: Sind Sie compliant?</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-3">Mindestanforderungen</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-3">
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  Interne Meldestelle eingerichtet und funktionsfähig
+                                </span>
+                              </label>
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  Mindestens zwei Meldekanäle verfügbar (schriftlich/mündlich)
+                                </span>
+                              </label>
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  Anonyme Meldungen möglich
+                                </span>
+                              </label>
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  7-Tage-Frist für Eingangsbestätigung implementiert
+                                </span>
+                              </label>
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  3-Monats-Frist für Rückmeldung gewährleistet
+                                </span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-3">Best Practice Standards</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-3">
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  24/7 digitales Meldesystem verfügbar
+                                </span>
+                              </label>
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  Mehrsprachige Meldemöglichkeiten
+                                </span>
+                              </label>
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  Regelmäßige Mitarbeiterschulungen
+                                </span>
+                              </label>
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  KPI-Monitoring und Reporting etabliert
+                                </span>
+                              </label>
+                              <label className="flex items-start space-x-3">
+                                <input type="checkbox" className="rounded text-yellow-600 mt-0.5" />
+                                <span className="text-sm text-yellow-800">
+                                  Externe Zertifizierung vorhanden
+                                </span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-red-500 to-orange-500 p-6 rounded-lg text-white">
+                      <div className="flex items-start space-x-4">
+                        <AlertTriangle className="h-8 w-8 flex-shrink-0" />
+                        <div>
+                          <h4 className="text-xl font-bold mb-2">Warnung: Verstärkte Kontrollen ab 2025</h4>
+                          <p className="text-lg">
+                            Die Aufsichtsbehörden haben angekündigt, ab 2025 verstärkt die Einhaltung 
+                            des HinSchG zu kontrollieren. Unternehmen ohne funktionierende Meldesysteme 
+                            müssen mit empfindlichen Bußgeldern bis zu 50.000 EUR rechnen.
+                          </p>
+                          <Button 
+                            variant="secondary" 
+                            className="mt-4 bg-white text-red-600 hover:bg-gray-100"
+                          >
+                            Jetzt Compliance sicherstellen
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
                   title="Internationale Rechtsentwicklung" 
                   icon={Globe}
                 >
@@ -2652,6 +3162,361 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                             <li>• Aviation Safety Standards</li>
                             <li>• Pharmaceutical Guidelines</li>
                           </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Bußgeldbestimmungen und Sanktionen" 
+                  icon={Euro}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-red-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-red-900 mb-4">Bußgeldkatalog nach § 40 HinSchG</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-red-900 mb-3">Schwere Verstöße (bis 50.000 EUR)</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-red-600">
+                              <strong className="text-red-800">§ 40 Abs. 2 Nr. 1-3:</strong>
+                              <ul className="text-sm text-red-700 mt-2 space-y-1">
+                                <li>• Behinderung oder Verhinderung von Meldungen</li>
+                                <li>• Repressalien gegen Hinweisgeber</li>
+                                <li>• Verletzung der Vertraulichkeitspflicht</li>
+                                <li>• Vorsätzliche Falschangaben gegenüber Behörden</li>
+                              </ul>
+                              <div className="mt-3 p-3 bg-red-100 rounded">
+                                <p className="text-sm font-medium text-red-800">
+                                  Praxisbeispiel: Kündigung nach Meldung = 50.000 EUR
+                                </p>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-orange-600">
+                              <strong className="text-orange-800">§ 40 Abs. 2 Nr. 4-5:</strong>
+                              <ul className="text-sm text-orange-700 mt-2 space-y-1">
+                                <li>• Offenlegung der Identität ohne Zustimmung</li>
+                                <li>• Unterlassung notwendiger Folgemaßnahmen</li>
+                                <li>• Missbrauch des Meldesystems</li>
+                                <li>• Verstoß gegen Dokumentationspflichten</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-red-900 mb-3">Mittlere Verstöße (bis 20.000 EUR)</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-yellow-600">
+                              <strong className="text-yellow-800">§ 40 Abs. 3 Nr. 1-3:</strong>
+                              <ul className="text-sm text-yellow-700 mt-2 space-y-1">
+                                <li>• Keine oder unzureichende Meldestelle</li>
+                                <li>• Fehlende Meldekanäle</li>
+                                <li>• Verstoß gegen Informationspflichten</li>
+                                <li>• Unzureichende Dokumentation</li>
+                              </ul>
+                              <div className="mt-3 p-3 bg-yellow-100 rounded">
+                                <p className="text-sm font-medium text-yellow-800">
+                                  Häufigster Verstoß: Fehlende anonyme Meldemöglichkeit
+                                </p>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-blue-600">
+                              <strong className="text-blue-800">§ 40 Abs. 3 Nr. 4-6:</strong>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• Nichteinhaltung der 7-Tage-Frist</li>
+                                <li>• Fehlende Rückmeldung nach 3 Monaten</li>
+                                <li>• Unvollständige Informationen</li>
+                                <li>• Mangelnde Zugänglichkeit</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Haftungsrisiken und Präventionsmaßnahmen</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Persönliche Haftung</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <strong className="text-yellow-800">Betroffene Personen:</strong>
+                            <ul className="text-sm text-yellow-700 mt-2 space-y-1">
+                              <li>• Geschäftsführer/Vorstände</li>
+                              <li>• Compliance-Verantwortliche</li>
+                              <li>• HR-Leiter</li>
+                              <li>• Direkte Vorgesetzte</li>
+                            </ul>
+                            <div className="mt-3 text-xs text-yellow-600 bg-yellow-100 p-2 rounded">
+                              Tipp: D&O-Versicherung prüfen und anpassen
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Unternehmenshaftung</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <strong className="text-yellow-800">Risikobereiche:</strong>
+                            <ul className="text-sm text-yellow-700 mt-2 space-y-1">
+                              <li>• Organisationsverschulden</li>
+                              <li>• Aufsichtspflichtverletzung</li>
+                              <li>• Systemversagen</li>
+                              <li>• Reputationsschäden</li>
+                            </ul>
+                            <div className="mt-3 text-xs text-yellow-600 bg-yellow-100 p-2 rounded">
+                              Empfehlung: Regelmäßige Compliance-Audits
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Präventionsmaßnahmen</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <strong className="text-yellow-800">Best Practices:</strong>
+                            <ul className="text-sm text-yellow-700 mt-2 space-y-1">
+                              <li>• Dokumentierte Prozesse</li>
+                              <li>• Regelmäßige Schulungen</li>
+                              <li>• Externe Validierung</li>
+                              <li>• Kontinuierliche Verbesserung</li>
+                            </ul>
+                            <div className="mt-3 text-xs text-yellow-600 bg-yellow-100 p-2 rounded">
+                              ROI: 1€ Prävention = 5€ Schadensersparnis
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Praktische Handlungsempfehlungen" 
+                  icon={Lightbulb}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-teal-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-teal-900 mb-4">Sofortmaßnahmen für Unternehmen</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-teal-900 mb-3">Quick Wins (0-4 Wochen)</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                                <div className="flex-1">
+                                  <strong className="text-teal-800">Bestandsaufnahme durchführen</strong>
+                                  <ul className="text-sm text-teal-700 mt-2 space-y-1">
+                                    <li>• Vorhandene Meldewege dokumentieren</li>
+                                    <li>• Compliance-Lücken identifizieren</li>
+                                    <li>• Risikoanalyse erstellen</li>
+                                    <li>• Budget- und Ressourcenplanung</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                                <div className="flex-1">
+                                  <strong className="text-teal-800">Interimslösung implementieren</strong>
+                                  <ul className="text-sm text-teal-700 mt-2 space-y-1">
+                                    <li>• Temporäre E-Mail-Adresse einrichten</li>
+                                    <li>• Verantwortliche Person benennen</li>
+                                    <li>• Basis-Dokumentation erstellen</li>
+                                    <li>• Erste Mitarbeiterinformation</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-teal-900 mb-3">Mittelfristige Ziele (1-3 Monate)</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                                <div className="flex-1">
+                                  <strong className="text-teal-800">Professionelles System aufbauen</strong>
+                                  <ul className="text-sm text-teal-700 mt-2 space-y-1">
+                                    <li>• Digitale Plattform auswählen</li>
+                                    <li>• Prozesse standardisieren</li>
+                                    <li>• Rollen und Rechte definieren</li>
+                                    <li>• Testläufe durchführen</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                                <div className="flex-1">
+                                  <strong className="text-teal-800">Organisation vorbereiten</strong>
+                                  <ul className="text-sm text-teal-700 mt-2 space-y-1">
+                                    <li>• Führungskräfte schulen</li>
+                                    <li>• Kommunikationskampagne starten</li>
+                                    <li>• Betriebsvereinbarung abschließen</li>
+                                    <li>• Go-Live vorbereiten</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Checkliste für die Praxis</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-2">Rechtliche Compliance</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-2">
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Meldestelle eingerichtet</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Anonymität gewährleistet</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Fristen dokumentiert</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Prozesse definiert</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-2">Technische Umsetzung</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-2">
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">System implementiert</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Verschlüsselung aktiv</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Backups eingerichtet</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Tests durchgeführt</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-2">Organisatorisches</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-2">
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Team aufgestellt</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Schulungen geplant</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Kommuniziert</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Dokumentiert</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-2">Kontinuität</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-2">
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">KPIs definiert</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Monitoring aktiv</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Reviews geplant</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-blue-600" />
+                                <span className="text-sm text-blue-800">Budget gesichert</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-green-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-green-900 mb-4">Erfolgsfaktoren und Stolpersteine</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-green-900 mb-3">
+                            <CheckCircle className="inline-block h-5 w-5 text-green-600 mr-2" />
+                            Erfolgsfaktoren
+                          </h5>
+                          <div className="space-y-2">
+                            <div className="bg-white p-3 rounded-lg">
+                              <strong className="text-green-800">Top-Management-Support</strong>
+                              <p className="text-sm text-green-700 mt-1">
+                                Sichtbare Unterstützung durch Führung schafft Vertrauen und Akzeptanz
+                              </p>
+                            </div>
+                            <div className="bg-white p-3 rounded-lg">
+                              <strong className="text-green-800">Nutzerfreundliche Systeme</strong>
+                              <p className="text-sm text-green-700 mt-1">
+                                Intuitive Bedienung erhöht Meldungsbereitschaft signifikant
+                              </p>
+                            </div>
+                            <div className="bg-white p-3 rounded-lg">
+                              <strong className="text-green-800">Transparente Kommunikation</strong>
+                              <p className="text-sm text-green-700 mt-1">
+                                Offene Information über Prozesse und Ergebnisse stärkt Glaubwürdigkeit
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-red-900 mb-3">
+                            <AlertCircle className="inline-block h-5 w-5 text-red-600 mr-2" />
+                            Häufige Fehler
+                          </h5>
+                          <div className="space-y-2">
+                            <div className="bg-white p-3 rounded-lg">
+                              <strong className="text-red-800">Minimallösung implementieren</strong>
+                              <p className="text-sm text-red-700 mt-1">
+                                "Checkbox-Compliance" ohne echtes Commitment führt zu Vertrauensverlust
+                              </p>
+                            </div>
+                            <div className="bg-white p-3 rounded-lg">
+                              <strong className="text-red-800">Fehlende Nachverfolgung</strong>
+                              <p className="text-sm text-red-700 mt-1">
+                                Meldungen ohne konsequente Bearbeitung demotivieren potenzielle Hinweisgeber
+                              </p>
+                            </div>
+                            <div className="bg-white p-3 rounded-lg">
+                              <strong className="text-red-800">Unterschätzte Komplexität</strong>
+                              <p className="text-sm text-red-700 mt-1">
+                                Technische Lösung allein reicht nicht - Kultur und Prozesse sind entscheidend
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -4540,6 +5405,1684 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                   >
                     Nächster Abschnitt
                     <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Section 13: Technische Umsetzung */}
+            {currentSection === 13 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mb-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="p-3 bg-gradient-to-r from-violet-500 to-violet-600 rounded-xl">
+                      <Settings className="h-8 w-8 text-white" />
+                    </div>
+                    <div>
+                      <h1 className="text-4xl font-bold text-gray-900">Technische Umsetzung</h1>
+                      <p className="text-xl text-gray-600">Digitale Systeme und IT-Infrastruktur</p>
+                    </div>
+                  </div>
+                </div>
+
+                <ExpandableSection 
+                  title="Systemarchitektur und Komponenten" 
+                  icon={Server}
+                  defaultExpanded={true}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-violet-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-violet-900 mb-4">Moderne Meldesystem-Architektur</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-violet-900 mb-3">Frontend-Komponenten</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-violet-800">Webportal:</strong>
+                              <ul className="text-sm text-violet-700 mt-2 space-y-1">
+                                <li>• Responsive Design (Desktop/Mobile)</li>
+                                <li>• Multi-Language Support (DE/EN/FR/ES)</li>
+                                <li>• WCAG 2.1 AA Accessibility</li>
+                                <li>• Progressive Web App (PWA)</li>
+                                <li>• Offline-Funktionalität</li>
+                              </ul>
+                              <div className="mt-3 p-2 bg-violet-100 rounded text-xs text-violet-700">
+                                Tech Stack: React, TypeScript, TailwindCSS
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-violet-800">Mobile Apps:</strong>
+                              <ul className="text-sm text-violet-700 mt-2 space-y-1">
+                                <li>• Native iOS/Android Apps</li>
+                                <li>• Biometrische Authentifizierung</li>
+                                <li>• Push-Benachrichtigungen</li>
+                                <li>• Secure Local Storage</li>
+                                <li>• Voice Recording Feature</li>
+                              </ul>
+                              <div className="mt-3 p-2 bg-violet-100 rounded text-xs text-violet-700">
+                                Tech Stack: React Native, Swift, Kotlin
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-violet-900 mb-3">Backend-Infrastruktur</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-violet-800">API-Layer:</strong>
+                              <ul className="text-sm text-violet-700 mt-2 space-y-1">
+                                <li>• RESTful API mit GraphQL Gateway</li>
+                                <li>• OAuth 2.0 / SAML 2.0 Integration</li>
+                                <li>• Rate Limiting & DDoS Protection</li>
+                                <li>• API Versioning & Documentation</li>
+                                <li>• WebSocket für Real-time Updates</li>
+                              </ul>
+                              <div className="mt-3 p-2 bg-violet-100 rounded text-xs text-violet-700">
+                                Tech Stack: Node.js, Express, Apollo Server
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-violet-800">Microservices:</strong>
+                              <ul className="text-sm text-violet-700 mt-2 space-y-1">
+                                <li>• Authentication Service</li>
+                                <li>• Case Management Service</li>
+                                <li>• Notification Service</li>
+                                <li>• Document Processing Service</li>
+                                <li>• Analytics & Reporting Service</li>
+                              </ul>
+                              <div className="mt-3 p-2 bg-violet-100 rounded text-xs text-violet-700">
+                                Tech Stack: Docker, Kubernetes, RabbitMQ
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Sicherheitsarchitektur</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-2">Datenverschlüsselung</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="text-sm text-blue-800 space-y-2">
+                              <li className="flex items-start space-x-2">
+                                <Lock className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>In Transit:</strong>
+                                  <span className="text-xs block text-blue-700">TLS 1.3, HSTS, Certificate Pinning</span>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Lock className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>At Rest:</strong>
+                                  <span className="text-xs block text-blue-700">AES-256-GCM, HSM Integration</span>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Lock className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>Key Management:</strong>
+                                  <span className="text-xs block text-blue-700">AWS KMS, Azure Key Vault</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-2">Zero-Trust Security</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="text-sm text-blue-800 space-y-2">
+                              <li className="flex items-start space-x-2">
+                                <Shield className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>Network Segmentation:</strong>
+                                  <span className="text-xs block text-blue-700">VLANs, DMZ, Micro-Segmentation</span>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Shield className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>Identity Verification:</strong>
+                                  <span className="text-xs block text-blue-700">MFA, Continuous Authentication</span>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Shield className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>Least Privilege:</strong>
+                                  <span className="text-xs block text-blue-700">RBAC, Dynamic Permissions</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-2">Threat Detection</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="text-sm text-blue-800 space-y-2">
+                              <li className="flex items-start space-x-2">
+                                <Activity className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>SIEM Integration:</strong>
+                                  <span className="text-xs block text-blue-700">Splunk, ELK Stack, Datadog</span>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Activity className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>Anomaly Detection:</strong>
+                                  <span className="text-xs block text-blue-700">ML-based Pattern Recognition</span>
+                                </div>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Activity className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong>Incident Response:</strong>
+                                  <span className="text-xs block text-blue-700">Automated Playbooks, SOC</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Anonymisierung und Datenschutz" 
+                  icon={Eye}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-green-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-green-900 mb-4">Technologien zur Anonymisierung</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-green-900 mb-3">Anonyme Kommunikationskanäle</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-green-800">Tor-Integration:</strong>
+                              <div className="mt-2 space-y-2">
+                                <div className="flex items-start space-x-2">
+                                  <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                                  <span className="text-sm text-green-700">Hidden Service (.onion Address)</span>
+                                </div>
+                                <div className="flex items-start space-x-2">
+                                  <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                                  <span className="text-sm text-green-700">SecureDrop Implementation</span>
+                                </div>
+                                <div className="flex items-start space-x-2">
+                                  <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                                  <span className="text-sm text-green-700">Metadata Stripping</span>
+                                </div>
+                              </div>
+                              <div className="mt-3 p-2 bg-green-100 rounded">
+                                <p className="text-xs text-green-800">
+                                  <strong>Implementierung:</strong> Tor Browser Bundle, OnionShare, Tails OS
+                                </p>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-green-800">Proxy-Chains:</strong>
+                              <div className="mt-2 space-y-2">
+                                <div className="flex items-start space-x-2">
+                                  <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                                  <span className="text-sm text-green-700">Multi-Hop VPN Routing</span>
+                                </div>
+                                <div className="flex items-start space-x-2">
+                                  <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                                  <span className="text-sm text-green-700">Obfuscated Bridges</span>
+                                </div>
+                                <div className="flex items-start space-x-2">
+                                  <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                                  <span className="text-sm text-green-700">Traffic Mixing</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-green-900 mb-3">Datenschutztechniken</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-green-800">Privacy-Enhancing Technologies:</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• Differential Privacy Algorithms</li>
+                                <li>• Homomorphic Encryption</li>
+                                <li>• Secure Multi-Party Computation</li>
+                                <li>• k-Anonymity Implementation</li>
+                                <li>• Data Masking & Tokenization</li>
+                              </ul>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-green-800">GDPR-Compliance Features:</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• Automatisches Recht auf Löschung</li>
+                                <li>• Pseudonymisierung by Design</li>
+                                <li>• Consent Management</li>
+                                <li>• Data Portability API</li>
+                                <li>• Privacy Impact Assessment Tools</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Technische Datenschutzmaßnahmen</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Browser Security</h5>
+                          <div className="bg-white p-3 rounded-lg">
+                            <ul className="text-xs text-yellow-800 space-y-1">
+                              <li>• WebRTC Leak Protection</li>
+                              <li>• Canvas Fingerprinting Block</li>
+                              <li>• Third-Party Cookie Block</li>
+                              <li>• DNS-over-HTTPS</li>
+                              <li>• JavaScript Sandboxing</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Network Protection</h5>
+                          <div className="bg-white p-3 rounded-lg">
+                            <ul className="text-xs text-yellow-800 space-y-1">
+                              <li>• IP Address Masking</li>
+                              <li>• Traffic Obfuscation</li>
+                              <li>• Deep Packet Inspection Defense</li>
+                              <li>• Timing Attack Mitigation</li>
+                              <li>• Side-Channel Protection</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Data Minimization</h5>
+                          <div className="bg-white p-3 rounded-lg">
+                            <ul className="text-xs text-yellow-800 space-y-1">
+                              <li>• Automatic Data Expiry</li>
+                              <li>• Minimal Logging Policy</li>
+                              <li>• Ephemeral Sessions</li>
+                              <li>• Zero-Knowledge Architecture</li>
+                              <li>• Stateless Design</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Audit Protection</h5>
+                          <div className="bg-white p-3 rounded-lg">
+                            <ul className="text-xs text-yellow-800 space-y-1">
+                              <li>• Immutable Audit Logs</li>
+                              <li>• Cryptographic Timestamping</li>
+                              <li>• Blockchain Integration</li>
+                              <li>• Tamper Detection</li>
+                              <li>• Forensic Readiness</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Integration und Schnittstellen" 
+                  icon={Network}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-orange-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-orange-900 mb-4">Enterprise-Integration</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-orange-900 mb-3">HR-System Integration</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-orange-800">Supported Systems:</strong>
+                              <div className="mt-2 grid grid-cols-2 gap-2">
+                                <div className="text-sm text-orange-700 flex items-center space-x-1">
+                                  <Check className="h-3 w-3 text-orange-600" />
+                                  <span>SAP SuccessFactors</span>
+                                </div>
+                                <div className="text-sm text-orange-700 flex items-center space-x-1">
+                                  <Check className="h-3 w-3 text-orange-600" />
+                                  <span>Workday HCM</span>
+                                </div>
+                                <div className="text-sm text-orange-700 flex items-center space-x-1">
+                                  <Check className="h-3 w-3 text-orange-600" />
+                                  <span>Oracle HCM Cloud</span>
+                                </div>
+                                <div className="text-sm text-orange-700 flex items-center space-x-1">
+                                  <Check className="h-3 w-3 text-orange-600" />
+                                  <span>Microsoft Dynamics</span>
+                                </div>
+                              </div>
+                              <div className="mt-3 text-xs text-orange-700 bg-orange-100 p-2 rounded">
+                                Features: Employee Data Sync, Org Chart Import, Role Mapping
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-orange-800">API Capabilities:</strong>
+                              <ul className="text-sm text-orange-700 mt-2 space-y-1">
+                                <li>• Real-time Employee Status Updates</li>
+                                <li>• Automatic Deprovisioning</li>
+                                <li>• Department Structure Sync</li>
+                                <li>• Manager Hierarchy Import</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-orange-900 mb-3">Compliance Tool Integration</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-orange-800">GRC Platforms:</strong>
+                              <div className="mt-2 space-y-2">
+                                <div className="flex justify-between items-center">
+                                  <span className="text-sm text-orange-700">ServiceNow GRC</span>
+                                  <Badge className="bg-green-100 text-green-800 text-xs">Certified</Badge>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                  <span className="text-sm text-orange-700">SAP GRC</span>
+                                  <Badge className="bg-green-100 text-green-800 text-xs">Certified</Badge>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                  <span className="text-sm text-orange-700">MetricStream</span>
+                                  <Badge className="bg-blue-100 text-blue-800 text-xs">Beta</Badge>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                  <span className="text-sm text-orange-700">RSA Archer</span>
+                                  <Badge className="bg-yellow-100 text-yellow-800 text-xs">Planned</Badge>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-orange-800">Data Exchange:</strong>
+                              <ul className="text-sm text-orange-700 mt-2 space-y-1">
+                                <li>• Bi-directional Case Sync</li>
+                                <li>• Risk Assessment Import</li>
+                                <li>• Compliance Dashboard Feed</li>
+                                <li>• Automated Reporting</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-purple-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-purple-900 mb-4">Technische Implementierungsroadmap</h4>
+                      <div className="space-y-4">
+                        <div className="relative">
+                          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-purple-300"></div>
+                          <div className="space-y-6">
+                            <div className="flex items-start space-x-4">
+                              <div className="flex-shrink-0 w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">
+                                Phase 1
+                              </div>
+                              <div className="flex-1 bg-white p-4 rounded-lg">
+                                <h5 className="font-semibold text-purple-900 mb-2">Basis-Implementation (Woche 1-4)</h5>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  <ul className="text-sm text-purple-700 space-y-1">
+                                    <li>• Cloud-Infrastruktur Setup</li>
+                                    <li>• Basis-Security Implementation</li>
+                                    <li>• Core API Development</li>
+                                    <li>• Database Schema Design</li>
+                                  </ul>
+                                  <ul className="text-sm text-purple-700 space-y-1">
+                                    <li>• Authentication System</li>
+                                    <li>• Basic UI/UX Implementation</li>
+                                    <li>• Initial Testing Framework</li>
+                                    <li>• CI/CD Pipeline Setup</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                              <div className="flex-shrink-0 w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">
+                                Phase 2
+                              </div>
+                              <div className="flex-1 bg-white p-4 rounded-lg">
+                                <h5 className="font-semibold text-purple-900 mb-2">Erweiterte Features (Woche 5-8)</h5>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  <ul className="text-sm text-purple-700 space-y-1">
+                                    <li>• Anonymisierungsfunktionen</li>
+                                    <li>• Case Management System</li>
+                                    <li>• Workflow Automation</li>
+                                    <li>• Document Management</li>
+                                  </ul>
+                                  <ul className="text-sm text-purple-700 space-y-1">
+                                    <li>• Notification Engine</li>
+                                    <li>• Reporting Dashboard</li>
+                                    <li>• Mobile App Development</li>
+                                    <li>• Integration APIs</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                              <div className="flex-shrink-0 w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">
+                                Phase 3
+                              </div>
+                              <div className="flex-1 bg-white p-4 rounded-lg">
+                                <h5 className="font-semibold text-purple-900 mb-2">Go-Live & Optimization (Woche 9-12)</h5>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  <ul className="text-sm text-purple-700 space-y-1">
+                                    <li>• Security Audit & Pen Testing</li>
+                                    <li>• Performance Optimization</li>
+                                    <li>• User Acceptance Testing</li>
+                                    <li>• Documentation Completion</li>
+                                  </ul>
+                                  <ul className="text-sm text-purple-700 space-y-1">
+                                    <li>• Training Materials</li>
+                                    <li>• Rollout Strategy</li>
+                                    <li>• Support Infrastructure</li>
+                                    <li>• Monitoring Setup</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <div className="flex justify-between items-center pt-8 border-t">
+                  <Button 
+                    variant="outline"
+                    onClick={() => setCurrentSection(12)}
+                  >
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Vorheriger Abschnitt
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      markSectionComplete(13);
+                      setCurrentSection(14);
+                    }}
+                    className="bg-violet-600 hover:bg-violet-700"
+                  >
+                    Nächster Abschnitt
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Section 14: Implementierung */}
+            {currentSection === 14 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mb-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="p-3 bg-gradient-to-r from-rose-500 to-rose-600 rounded-xl">
+                      <Zap className="h-8 w-8 text-white" />
+                    </div>
+                    <div>
+                      <h1 className="text-4xl font-bold text-gray-900">Implementierung</h1>
+                      <p className="text-xl text-gray-600">Praktische Umsetzung in der Organisation</p>
+                    </div>
+                  </div>
+                </div>
+
+                <ExpandableSection 
+                  title="Projektplanung und Meilensteine" 
+                  icon={Target}
+                  defaultExpanded={true}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-rose-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-rose-900 mb-4">12-Wochen Implementierungsplan</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg">
+                          <div className="flex items-center justify-between mb-4">
+                            <h5 className="font-semibold text-rose-900">Gesamtfortschritt</h5>
+                            <span className="text-2xl font-bold text-rose-600">0%</span>
+                          </div>
+                          <Progress value={0} className="h-3 bg-rose-100" />
+                          <div className="grid grid-cols-4 gap-2 mt-4">
+                            <div className="text-center">
+                              <div className="text-xs text-rose-600 font-medium">Woche 1-3</div>
+                              <div className="text-xs text-rose-500">Vorbereitung</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-xs text-rose-600 font-medium">Woche 4-6</div>
+                              <div className="text-xs text-rose-500">Entwicklung</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-xs text-rose-600 font-medium">Woche 7-9</div>
+                              <div className="text-xs text-rose-500">Testing</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-xs text-rose-600 font-medium">Woche 10-12</div>
+                              <div className="text-xs text-rose-500">Rollout</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="bg-white p-4 rounded-lg">
+                            <h5 className="font-semibold text-rose-900 mb-3">Quick Wins (Woche 1-2)</h5>
+                            <div className="space-y-2">
+                              <div className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-rose-600" />
+                                <span className="text-sm text-rose-700">Projektteam zusammenstellen</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-rose-600" />
+                                <span className="text-sm text-rose-700">Ist-Analyse durchführen</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-rose-600" />
+                                <span className="text-sm text-rose-700">Stakeholder identifizieren</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-rose-600" />
+                                <span className="text-sm text-rose-700">Budget freigeben</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="bg-white p-4 rounded-lg">
+                            <h5 className="font-semibold text-rose-900 mb-3">Kritische Pfade</h5>
+                            <div className="space-y-2">
+                              <div className="flex items-start space-x-2">
+                                <AlertTriangle className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                                <span className="text-sm text-rose-700">Betriebsrat-Zustimmung (4 Wochen)</span>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <AlertTriangle className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                                <span className="text-sm text-rose-700">IT-Security Audit (2 Wochen)</span>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <AlertTriangle className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                                <span className="text-sm text-rose-700">Datenschutz-Freigabe (3 Wochen)</span>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <AlertTriangle className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                                <span className="text-sm text-rose-700">Management-Approval (1 Woche)</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Change Management Strategie</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Kommunikationsplan</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-3">
+                              <div>
+                                <strong className="text-blue-800 text-sm">Woche 1-2:</strong>
+                                <p className="text-xs text-blue-700 mt-1">
+                                  Management Briefing, Führungskräfte-Workshop
+                                </p>
+                              </div>
+                              <div>
+                                <strong className="text-blue-800 text-sm">Woche 3-4:</strong>
+                                <p className="text-xs text-blue-700 mt-1">
+                                  All-Hands Meeting, Intranet-Kampagne
+                                </p>
+                              </div>
+                              <div>
+                                <strong className="text-blue-800 text-sm">Woche 5-8:</strong>
+                                <p className="text-xs text-blue-700 mt-1">
+                                  Abteilungsschulungen, Q&A Sessions
+                                </p>
+                              </div>
+                              <div>
+                                <strong className="text-blue-800 text-sm">Woche 9-12:</strong>
+                                <p className="text-xs text-blue-700 mt-1">
+                                  Go-Live Events, Success Stories
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Widerstände überwinden</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-2">
+                              <div className="flex items-start space-x-2">
+                                <Users className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-blue-800 text-sm">Führungsebene:</strong>
+                                  <p className="text-xs text-blue-700">Business Case, ROI-Analyse</p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <Users className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-blue-800 text-sm">Mitarbeiter:</strong>
+                                  <p className="text-xs text-blue-700">Anonymitätsgarantie, Schutz</p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <Users className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-blue-800 text-sm">Betriebsrat:</strong>
+                                  <p className="text-xs text-blue-700">Mitbestimmung, Transparenz</p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <Users className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-blue-800 text-sm">IT-Abteilung:</strong>
+                                  <p className="text-xs text-blue-700">Standards, Integration</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Erfolgsmessung</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-3">
+                              <div>
+                                <strong className="text-blue-800 text-sm">Adoptionsrate:</strong>
+                                <div className="mt-1 flex items-center space-x-2">
+                                  <Progress value={0} className="flex-1 h-2" />
+                                  <span className="text-xs text-blue-700">Ziel: 80%</span>
+                                </div>
+                              </div>
+                              <div>
+                                <strong className="text-blue-800 text-sm">Meldungsqualität:</strong>
+                                <div className="mt-1 flex items-center space-x-2">
+                                  <Progress value={0} className="flex-1 h-2" />
+                                  <span className="text-xs text-blue-700">Ziel: 70%</span>
+                                </div>
+                              </div>
+                              <div>
+                                <strong className="text-blue-800 text-sm">Bearbeitungszeit:</strong>
+                                <div className="mt-1 flex items-center space-x-2">
+                                  <Progress value={0} className="flex-1 h-2" />
+                                  <span className="text-xs text-blue-700">Ziel: &lt;20 Tage</span>
+                                </div>
+                              </div>
+                              <div>
+                                <strong className="text-blue-800 text-sm">Mitarbeiterzufriedenheit:</strong>
+                                <div className="mt-1 flex items-center space-x-2">
+                                  <Progress value={0} className="flex-1 h-2" />
+                                  <span className="text-xs text-blue-700">Ziel: 4.0/5.0</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Pilot-Phase und Testing" 
+                  icon={FlaskConical}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-green-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-green-900 mb-4">Pilot-Programm Design</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-green-900 mb-3">Pilot-Gruppen Auswahl</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-green-800">Phase 1: Early Adopters (50 Personen)</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• Compliance-Team (10 Personen)</li>
+                                <li>• HR-Abteilung (15 Personen)</li>
+                                <li>• IT-Security (10 Personen)</li>
+                                <li>• Freiwillige Führungskräfte (15 Personen)</li>
+                              </ul>
+                              <div className="mt-2 text-xs text-green-600 bg-green-100 p-2 rounded">
+                                Start: Woche 7 | Dauer: 2 Wochen
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-green-800">Phase 2: Erweiterter Pilot (500 Personen)</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• Ausgewählte Abteilungen</li>
+                                <li>• Verschiedene Standorte</li>
+                                <li>• Unterschiedliche Hierarchieebenen</li>
+                                <li>• Internationale Teams</li>
+                              </ul>
+                              <div className="mt-2 text-xs text-green-600 bg-green-100 p-2 rounded">
+                                Start: Woche 9 | Dauer: 3 Wochen
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-green-900 mb-3">Testing-Szenarien</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-green-800">Funktionale Tests:</strong>
+                              <div className="mt-2 space-y-2">
+                                <label className="flex items-center space-x-2">
+                                  <input type="checkbox" className="rounded text-green-600" />
+                                  <span className="text-sm text-green-700">Anonyme Meldung erstellen</span>
+                                </label>
+                                <label className="flex items-center space-x-2">
+                                  <input type="checkbox" className="rounded text-green-600" />
+                                  <span className="text-sm text-green-700">Dokumente hochladen</span>
+                                </label>
+                                <label className="flex items-center space-x-2">
+                                  <input type="checkbox" className="rounded text-green-600" />
+                                  <span className="text-sm text-green-700">Status-Updates empfangen</span>
+                                </label>
+                                <label className="flex items-center space-x-2">
+                                  <input type="checkbox" className="rounded text-green-600" />
+                                  <span className="text-sm text-green-700">Rückfragen beantworten</span>
+                                </label>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-green-800">Last- und Performance-Tests:</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• 1.000 gleichzeitige Nutzer</li>
+                                <li>• 10.000 Meldungen/Monat</li>
+                                <li>• 100 GB Dokumenten-Upload</li>
+                                <li>• 24/7 Verfügbarkeit</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Feedback-Sammlung und Optimierung</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Quantitative Metriken</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-2">
+                              <div className="text-sm">
+                                <div className="flex justify-between mb-1">
+                                  <span className="text-yellow-700">System-Uptime</span>
+                                  <span className="font-medium">99.9%</span>
+                                </div>
+                                <Progress value={99.9} className="h-2" />
+                              </div>
+                              <div className="text-sm">
+                                <div className="flex justify-between mb-1">
+                                  <span className="text-yellow-700">Response Time</span>
+                                  <span className="font-medium">&lt; 2s</span>
+                                </div>
+                                <Progress value={85} className="h-2" />
+                              </div>
+                              <div className="text-sm">
+                                <div className="flex justify-between mb-1">
+                                  <span className="text-yellow-700">Error Rate</span>
+                                  <span className="font-medium">0.1%</span>
+                                </div>
+                                <Progress value={99.9} className="h-2" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Qualitative Insights</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="text-sm text-yellow-700 space-y-2">
+                              <li className="flex items-start space-x-2">
+                                <MessageSquare className="h-4 w-4 text-yellow-600 mt-0.5" />
+                                <span>User Interviews (n=25)</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <FileText className="h-4 w-4 text-yellow-600 mt-0.5" />
+                                <span>Usability Testing Sessions</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Users className="h-4 w-4 text-yellow-600 mt-0.5" />
+                                <span>Focus Groups (4 Gruppen)</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <BarChart3 className="h-4 w-4 text-yellow-600 mt-0.5" />
+                                <span>Net Promoter Score: 72</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-2">Optimierungen</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-2">
+                              <div className="flex items-center space-x-2">
+                                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                                <span className="text-sm text-yellow-700">UI/UX Verbesserungen</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                <span className="text-sm text-yellow-700">Performance-Tuning</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span className="text-sm text-yellow-700">Feature-Erweiterungen</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                <span className="text-sm text-yellow-700">Prozess-Anpassungen</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Rollout und Go-Live" 
+                  icon={Rocket}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-purple-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-purple-900 mb-4">Go-Live Checkliste</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-2">Technische Readiness</h5>
+                          <div className="bg-white p-3 rounded-lg">
+                            <div className="space-y-2">
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Produktion deployed</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Monitoring aktiv</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Backup getestet</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Security-Audit passed</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Failover getestet</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-2">Organisatorisch</h5>
+                          <div className="bg-white p-3 rounded-lg">
+                            <div className="space-y-2">
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Team geschult</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Prozesse definiert</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Eskalation klar</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Support bereit</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">FAQ erstellt</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-2">Kommunikation</h5>
+                          <div className="bg-white p-3 rounded-lg">
+                            <div className="space-y-2">
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Ankündigung versendet</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Intranet aktualisiert</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Poster aufgehängt</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Videos online</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Hotline aktiv</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-2">Rechtlich</h5>
+                          <div className="bg-white p-3 rounded-lg">
+                            <div className="space-y-2">
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Datenschutz geprüft</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Betriebsvereinbarung</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Compliance bestätigt</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Verträge unterzeichnet</span>
+                              </label>
+                              <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="rounded text-purple-600" />
+                                <span className="text-xs text-purple-700">Versicherung aktiv</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-orange-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-orange-900 mb-4">Launch-Aktivitäten</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-orange-900 mb-3">Go-Live Event (Tag 1)</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-3">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-orange-600 font-bold">09:00</div>
+                                <div className="flex-1">
+                                  <strong className="text-orange-800">System-Aktivierung</strong>
+                                  <p className="text-sm text-orange-700">Technisches Go-Live, Monitoring Start</p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-orange-600 font-bold">10:00</div>
+                                <div className="flex-1">
+                                  <strong className="text-orange-800">CEO Announcement</strong>
+                                  <p className="text-sm text-orange-700">Videobotschaft, E-Mail an alle</p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-orange-600 font-bold">11:00</div>
+                                <div className="flex-1">
+                                  <strong className="text-orange-800">Live-Demos</strong>
+                                  <p className="text-sm text-orange-700">Stündliche Vorführungen</p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-orange-600 font-bold">14:00</div>
+                                <div className="flex-1">
+                                  <strong className="text-orange-800">Q&A Sessions</strong>
+                                  <p className="text-sm text-orange-700">Offene Fragerunden</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-orange-900 mb-3">Erste Woche Support</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="grid grid-cols-2 gap-4">
+                              <div>
+                                <strong className="text-orange-800 text-sm">War Room Team</strong>
+                                <ul className="text-xs text-orange-700 mt-2 space-y-1">
+                                  <li>• 24/7 Bereitschaft</li>
+                                  <li>• Incident Management</li>
+                                  <li>• Quick Fixes</li>
+                                  <li>• Status Updates</li>
+                                </ul>
+                              </div>
+                              <div>
+                                <strong className="text-orange-800 text-sm">User Support</strong>
+                                <ul className="text-xs text-orange-700 mt-2 space-y-1">
+                                  <li>• Dedicated Hotline</li>
+                                  <li>• Floor Walker</li>
+                                  <li>• Chat Support</li>
+                                  <li>• Video Tutorials</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="mt-4 p-3 bg-orange-100 rounded">
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm font-medium text-orange-800">Support-Tickets</span>
+                                <span className="text-lg font-bold text-orange-600">0</span>
+                              </div>
+                              <Progress value={0} className="mt-2 h-2" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <div className="flex justify-between items-center pt-8 border-t">
+                  <Button 
+                    variant="outline"
+                    onClick={() => setCurrentSection(13)}
+                  >
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Vorheriger Abschnitt
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      markSectionComplete(14);
+                      setCurrentSection(15);
+                    }}
+                    className="bg-rose-600 hover:bg-rose-700"
+                  >
+                    Nächster Abschnitt
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Section 15: Continuous Improvement */}
+            {currentSection === 15 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mb-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="p-3 bg-gradient-to-r from-lime-500 to-lime-600 rounded-xl">
+                      <TrendingUp className="h-8 w-8 text-white" />
+                    </div>
+                    <div>
+                      <h1 className="text-4xl font-bold text-gray-900">Continuous Improvement</h1>
+                      <p className="text-xl text-gray-600">Kontinuierliche Weiterentwicklung und Optimierung</p>
+                    </div>
+                  </div>
+                </div>
+
+                <ExpandableSection 
+                  title="Leistungsmessung und KPIs" 
+                  icon={BarChart3}
+                  defaultExpanded={true}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-lime-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-lime-900 mb-4">Key Performance Indicators Dashboard</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="bg-white p-4 rounded-lg border-2 border-lime-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium text-lime-700">Meldungen/Monat</span>
+                            <TrendingUp className="h-4 w-4 text-green-500" />
+                          </div>
+                          <div className="text-2xl font-bold text-lime-900">127</div>
+                          <div className="text-xs text-lime-600 mt-1">+23% vs. Vormonat</div>
+                          <Progress value={75} className="mt-2 h-1" />
+                        </div>
+                        <div className="bg-white p-4 rounded-lg border-2 border-lime-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium text-lime-700">Ø Bearbeitungszeit</span>
+                            <TrendingDown className="h-4 w-4 text-red-500" />
+                          </div>
+                          <div className="text-2xl font-bold text-lime-900">18 Tage</div>
+                          <div className="text-xs text-lime-600 mt-1">-5 Tage vs. Q1</div>
+                          <Progress value={82} className="mt-2 h-1" />
+                        </div>
+                        <div className="bg-white p-4 rounded-lg border-2 border-lime-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium text-lime-700">Substantiierungsrate</span>
+                            <Minus className="h-4 w-4 text-yellow-500" />
+                          </div>
+                          <div className="text-2xl font-bold text-lime-900">67%</div>
+                          <div className="text-xs text-lime-600 mt-1">Stabil</div>
+                          <Progress value={67} className="mt-2 h-1" />
+                        </div>
+                        <div className="bg-white p-4 rounded-lg border-2 border-lime-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium text-lime-700">Anonyme Meldungen</span>
+                            <TrendingUp className="h-4 w-4 text-green-500" />
+                          </div>
+                          <div className="text-2xl font-bold text-lime-900">43%</div>
+                          <div className="text-xs text-lime-600 mt-1">+8% vs. Vorjahr</div>
+                          <Progress value={43} className="mt-2 h-1" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Detaillierte Metriken</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Prozess-Metriken</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-3">
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Erstbestätigung &lt; 7 Tage</span>
+                                  <span className="font-medium">98%</span>
+                                </div>
+                                <Progress value={98} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Abschluss &lt; 3 Monate</span>
+                                  <span className="font-medium">89%</span>
+                                </div>
+                                <Progress value={89} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Eskalationsrate</span>
+                                  <span className="font-medium">12%</span>
+                                </div>
+                                <Progress value={12} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Wiederöffnungsrate</span>
+                                  <span className="font-medium">3%</span>
+                                </div>
+                                <Progress value={3} className="h-2" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Qualitäts-Metriken</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-3">
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Meldungsqualität</span>
+                                  <span className="font-medium">4.2/5</span>
+                                </div>
+                                <Progress value={84} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Untersuchungstiefe</span>
+                                  <span className="font-medium">4.5/5</span>
+                                </div>
+                                <Progress value={90} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Dokumentation</span>
+                                  <span className="font-medium">4.7/5</span>
+                                </div>
+                                <Progress value={94} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Nachvollziehbarkeit</span>
+                                  <span className="font-medium">4.8/5</span>
+                                </div>
+                                <Progress value={96} className="h-2" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Impact-Metriken</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-3">
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Präventionswirkung</span>
+                                  <span className="font-medium">Hoch</span>
+                                </div>
+                                <Progress value={78} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Schadensabwendung</span>
+                                  <span className="font-medium">2.3M€</span>
+                                </div>
+                                <Progress value={85} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Kulturverbesserung</span>
+                                  <span className="font-medium">+15%</span>
+                                </div>
+                                <Progress value={75} className="h-2" />
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-sm mb-1">
+                                  <span className="text-blue-700">Compliance Score</span>
+                                  <span className="font-medium">92/100</span>
+                                </div>
+                                <Progress value={92} className="h-2" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Feedback-Loops und Verbesserungsprozesse" 
+                  icon={RefreshCw}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-green-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-green-900 mb-4">360° Feedback-System</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-green-900 mb-3">Feedback-Quellen</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <div className="flex items-start space-x-3">
+                                <Users className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                                <div className="flex-1">
+                                  <strong className="text-green-800">Hinweisgeber-Feedback</strong>
+                                  <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                    <li>• Post-Case Surveys (Response: 73%)</li>
+                                    <li>• Anonyme Bewertungen</li>
+                                    <li>• Verbesserungsvorschläge</li>
+                                    <li>• User Experience Ratings</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <div className="flex items-start space-x-3">
+                                <Building className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                                <div className="flex-1">
+                                  <strong className="text-green-800">Stakeholder-Input</strong>
+                                  <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                    <li>• Management Reviews (Quartalsweise)</li>
+                                    <li>• Betriebsrat-Feedback</li>
+                                    <li>• Compliance Committee Input</li>
+                                    <li>• Externe Auditoren</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-green-900 mb-3">Verbesserungsprozess</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <div className="space-y-4">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                                <div className="flex-1">
+                                  <strong className="text-green-800">Sammlung & Analyse</strong>
+                                  <p className="text-sm text-green-700 mt-1">
+                                    Monatliche Auswertung aller Feedback-Kanäle
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                                <div className="flex-1">
+                                  <strong className="text-green-800">Priorisierung</strong>
+                                  <p className="text-sm text-green-700 mt-1">
+                                    Impact-Effort-Matrix, ROI-Bewertung
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                                <div className="flex-1">
+                                  <strong className="text-green-800">Implementation</strong>
+                                  <p className="text-sm text-green-700 mt-1">
+                                    Agile Sprints, Quick Wins, Major Updates
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                                <div className="flex-1">
+                                  <strong className="text-green-800">Validierung</strong>
+                                  <p className="text-sm text-green-700 mt-1">
+                                    A/B Testing, Pilot Groups, Erfolgsmonitoring
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-purple-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-purple-900 mb-4">Innovation und Zukunftstrends</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-2">KI & Automation</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="text-sm text-purple-700 space-y-2">
+                              <li className="flex items-start space-x-2">
+                                <Brain className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>NLP für Meldungsanalyse</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Brain className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Anomalie-Erkennung</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Brain className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Predictive Analytics</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Brain className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Chatbot-Integration</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-2">Blockchain</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="text-sm text-purple-700 space-y-2">
+                              <li className="flex items-start space-x-2">
+                                <Link2 className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Unveränderbare Logs</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Link2 className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Smart Contracts</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Link2 className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Dezentrale Identität</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Link2 className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Cross-Org Sharing</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-2">Advanced Analytics</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="text-sm text-purple-700 space-y-2">
+                              <li className="flex items-start space-x-2">
+                                <BarChart3 className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Pattern Recognition</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <BarChart3 className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Risk Scoring</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <BarChart3 className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Network Analysis</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <BarChart3 className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Sentiment Analysis</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-2">UX Innovation</h5>
+                          <div className="bg-white p-4 rounded-lg">
+                            <ul className="text-sm text-purple-700 space-y-2">
+                              <li className="flex items-start space-x-2">
+                                <Smartphone className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Voice Reporting</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Smartphone className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>AR/VR Training</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Smartphone className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Gesture Control</span>
+                              </li>
+                              <li className="flex items-start space-x-2">
+                                <Smartphone className="h-4 w-4 text-purple-600 mt-0.5" />
+                                <span>Biometric Auth</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Best Practices und Lessons Learned" 
+                  icon={Award}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Erfolgsgeschichten und Learnings</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-3">Top 5 Erfolgsfaktoren</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-green-500">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-green-600 font-bold">#1</div>
+                                <div>
+                                  <strong className="text-yellow-800">Leadership Commitment</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    CEO persönlich involviert, regelmäßige Board-Updates, 
+                                    null Toleranz für Repressalien
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-green-500">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-green-600 font-bold">#2</div>
+                                <div>
+                                  <strong className="text-yellow-800">Einfachheit & Zugänglichkeit</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    3-Klick-Meldung, Mobile-First, Mehrsprachigkeit, 
+                                    24/7 Verfügbarkeit
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-green-500">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-green-600 font-bold">#3</div>
+                                <div>
+                                  <strong className="text-yellow-800">Schnelle Reaktionszeiten</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    7-Tage-Bestätigung zu 100% eingehalten, 
+                                    durchschnittlich 18 Tage Bearbeitungszeit
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-green-500">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-green-600 font-bold">#4</div>
+                                <div>
+                                  <strong className="text-yellow-800">Transparente Kommunikation</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    Regelmäßige Updates, Success Stories teilen, 
+                                    offene Fehlerkultur
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-green-500">
+                              <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 text-green-600 font-bold">#5</div>
+                                <div>
+                                  <strong className="text-yellow-800">Kontinuierliche Verbesserung</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    Monatliche Reviews, User Feedback Integration, 
+                                    agile Weiterentwicklung
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-yellow-900 mb-3">Vermeidbare Fehler</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-red-500">
+                              <div className="flex items-start space-x-3">
+                                <X className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-yellow-800">Technologie-Fokus</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    Beste Software hilft nicht ohne Kulturwandel und 
+                                    Vertrauensbildung
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-red-500">
+                              <div className="flex items-start space-x-3">
+                                <X className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-yellow-800">Unzureichende Ressourcen</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    Unterdimensioniertes Team führt zu Verzögerungen 
+                                    und Vertrauensverlust
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-red-500">
+                              <div className="flex items-start space-x-3">
+                                <X className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-yellow-800">Fehlende Nachverfolgung</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    Meldungen versanden ohne konsequente Bearbeitung 
+                                    und Feedback
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-red-500">
+                              <div className="flex items-start space-x-3">
+                                <X className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-yellow-800">Komplexe Prozesse</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    Überregulierung schreckt potenzielle Hinweisgeber ab
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border-l-4 border-l-red-500">
+                              <div className="flex items-start space-x-3">
+                                <X className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <strong className="text-yellow-800">Isolation des Systems</strong>
+                                  <p className="text-sm text-yellow-700 mt-1">
+                                    Fehlende Integration in bestehende Compliance-Strukturen
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-lg">
+                      <h4 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                        Abschluss und Ausblick
+                      </h4>
+                      <div className="max-w-3xl mx-auto space-y-6">
+                        <div className="bg-white p-6 rounded-lg shadow-lg">
+                          <div className="flex items-center space-x-4 mb-4">
+                            <CheckCircle className="h-8 w-8 text-green-500" />
+                            <h5 className="text-xl font-semibold text-gray-900">
+                              Erfolgreiche HinSchG-Implementation
+                            </h5>
+                          </div>
+                          <p className="text-gray-700 leading-relaxed">
+                            Mit diesem umfassenden Guide haben Sie alle notwendigen Informationen und 
+                            Werkzeuge zur erfolgreichen Implementierung des Hinweisgeberschutzgesetzes. 
+                            Von den rechtlichen Grundlagen über die technische Umsetzung bis hin zur 
+                            kontinuierlichen Verbesserung - Sie sind bestens vorbereitet.
+                          </p>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg shadow-lg">
+                          <div className="flex items-center space-x-4 mb-4">
+                            <Target className="h-8 w-8 text-blue-500" />
+                            <h5 className="text-xl font-semibold text-gray-900">
+                              Ihre nächsten Schritte
+                            </h5>
+                          </div>
+                          <ol className="space-y-3 text-gray-700">
+                            <li className="flex items-start space-x-3">
+                              <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                              <span>Führen Sie eine Ist-Analyse Ihrer aktuellen Compliance-Strukturen durch</span>
+                            </li>
+                            <li className="flex items-start space-x-3">
+                              <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                              <span>Bilden Sie ein interdisziplinäres Projektteam</span>
+                            </li>
+                            <li className="flex items-start space-x-3">
+                              <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                              <span>Erstellen Sie einen detaillierten Implementierungsplan</span>
+                            </li>
+                            <li className="flex items-start space-x-3">
+                              <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
+                              <span>Beginnen Sie mit Quick Wins für schnelle Erfolge</span>
+                            </li>
+                          </ol>
+                        </div>
+
+                        <div className="text-center pt-6">
+                          <Button 
+                            size="lg" 
+                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg shadow-lg"
+                          >
+                            <Download className="mr-2 h-5 w-5" />
+                            Kompletten Guide als PDF herunterladen
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <div className="flex justify-between items-center pt-8 border-t">
+                  <Button 
+                    variant="outline"
+                    onClick={() => setCurrentSection(14)}
+                  >
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Vorheriger Abschnitt
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      markSectionComplete(15);
+                      alert('Herzlichen Glückwunsch! Sie haben den kompletten HinSchG-Guide durchgearbeitet.');
+                    }}
+                    className="bg-gradient-to-r from-lime-600 to-green-600 hover:from-lime-700 hover:to-green-700 text-white"
+                  >
+                    Guide abschließen
+                    <CheckCircle className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
               </motion.div>

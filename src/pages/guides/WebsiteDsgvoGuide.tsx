@@ -1399,9 +1399,9 @@ const WebsiteDsgvoGuide: React.FC = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative py-20 px-4 sm:px-6 lg:px-8"
+        className="relative py-20"
       >
-        <div className="container mx-auto max-w-4xl relative z-10">
+        <div className="container mx-auto max-w-7xl px-4 relative z-10">
           <div className="text-center mb-12">
             <motion.div 
               initial={{ scale: 0 }}
@@ -1467,15 +1467,15 @@ const WebsiteDsgvoGuide: React.FC = () => {
       </div>
 
       {/* Chapter Navigation */}
-      <div className="container mx-auto max-w-4xl px-4 py-8">
+      <div className="container mx-auto max-w-7xl px-4 py-8">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Sidebar Navigation */}
           <div className="lg:col-span-1">
-            <div className="sticky top-32">
-              <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+            <div className="lg:sticky lg:top-24" style={{ maxHeight: 'calc(100vh - 8rem)', overflowY: 'auto' }}>
+              <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50 h-fit">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-white mb-4">Inhaltsverzeichnis</h3>
-                  <div className="space-y-2">
+                  <div className="space-y-2 max-h-[calc(100vh-16rem)] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
                     {chapters.map((chapter, index) => (
                       <motion.button
                         key={chapter.id}
@@ -1533,7 +1533,7 @@ const WebsiteDsgvoGuide: React.FC = () => {
 
                 <div 
                   ref={contentRef}
-                  className="prose prose-invert prose-slate max-w-none"
+                  className="prose prose-invert prose-slate max-w-none overflow-x-hidden"
                   dangerouslySetInnerHTML={{ __html: currentChapterData.content }}
                 />
 

@@ -43,7 +43,8 @@ import {
   Brain,
   Rocket,
   Code,
-  MonitorSpeaker
+  MonitorSpeaker,
+  Sparkles
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -98,6 +99,11 @@ const DsgvoGuides: React.FC = () => {
         'Vollständiger DSGVO-Überblick',
         'Praktische Beispiele',
         'Sofort anwendbares Wissen'
+      ],
+      achievements: [
+        'DSGVO-Grundverständnis aufbauen',
+        'Rechtliche Risiken erkennen',
+        'Erste Schritte zur Compliance'
       ]
     },
     {
@@ -125,6 +131,11 @@ const DsgvoGuides: React.FC = () => {
         'Strukturierter Implementierungsplan',
         'Praxiserprobte Templates',
         'Compliance in 30 Tagen'
+      ],
+      achievements: [
+        'Vollständige DSGVO-Compliance',
+        'Audit-sichere Dokumentation',
+        'Prozesse rechtssicher aufsetzen'
       ]
     },
     {
@@ -153,6 +164,11 @@ const DsgvoGuides: React.FC = () => {
         'Rechtssichere Website',
         'DSGVO-konforme Tools',
         'Praktische Umsetzung'
+      ],
+      achievements: [
+        'Cookie-Banner rechtssicher gestalten',
+        'Datenschutzerklärung aktualisieren',
+        'Tracking DSGVO-konform einrichten'
       ]
     },
     {
@@ -181,6 +197,11 @@ const DsgvoGuides: React.FC = () => {
         '72h-Compliance garantiert',
         'Rechtssichere Kommunikation',
         'Schadenminimierung'
+      ],
+      achievements: [
+        'Meldepflichten erfüllen',
+        'Krisenkommunikation beherrschen',
+        'Bußgelder vermeiden'
       ]
     },
     {
@@ -207,6 +228,11 @@ const DsgvoGuides: React.FC = () => {
         'DSGVO Art. 30 konform',
         'Praxiserprobte Templates',
         'Effiziente Umsetzung'
+      ],
+      achievements: [
+        'VVT Art. 30 konform erstellen',
+        'Datenflüsse dokumentieren',
+        'Behörden-ready in 7 Tagen'
       ]
     },
     {
@@ -234,6 +260,11 @@ const DsgvoGuides: React.FC = () => {
         'Alle Rechte abgedeckt',
         'Prozess-Templates',
         'Fristenmanagement'
+      ],
+      achievements: [
+        'Anfragen rechtssicher beantworten',
+        'Fristen automatisiert einhalten',
+        'Prozesse dokumentieren'
       ]
     },
     {
@@ -261,6 +292,11 @@ const DsgvoGuides: React.FC = () => {
         'Comprehensive Security',
         'Risk-based Approach',
         'Audit-ready Documentation'
+      ],
+      achievements: [
+        'Sicherheitskonzept implementieren',
+        'ISO 27001 Alignment',
+        'Audit-Nachweis erbringen'
       ]
     },
     {
@@ -288,6 +324,11 @@ const DsgvoGuides: React.FC = () => {
         'DSGVO Art. 30 konform',
         'Praxiserprobte Templates',
         'Effiziente Umsetzung'
+      ],
+      achievements: [
+        'VVT Art. 30 konform erstellen',
+        'Datenflüsse dokumentieren',
+        'Behörden-ready in 7 Tagen'
       ]
     },
     {
@@ -343,6 +384,11 @@ const DsgvoGuides: React.FC = () => {
         'Strukturierte DSFA-Methodik',
         'Risiko-Management',
         'Behörden-konforme Dokumentation'
+      ],
+      achievements: [
+        'Hochrisiko-Verarbeitung absichern',
+        'DSFA professionell durchführen',
+        'Behörden-Konsultation vorbereiten'
       ]
     }
   ];
@@ -615,27 +661,36 @@ const DsgvoGuides: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Metadata */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 p-4 bg-slate-800/60 rounded-xl backdrop-blur-sm">
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-emerald-400">{guide.readTime}</div>
-                        <div className="text-xs text-slate-400">Lesezeit</div>
-                      </div>
-                      <div className="text-center">
-                        <Badge className={getDifficultyColor(guide.difficulty)}>
-                          {getDifficultyLabel(guide.difficulty)}
-                        </Badge>
-                      </div>
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-1">
-                          <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                          <span className="text-lg font-bold text-yellow-400">{guide.rating}</span>
-                        </div>
-                        <div className="text-xs text-slate-400">Rating</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-blue-400">{guide.completions.toLocaleString()}</div>
-                        <div className="text-xs text-slate-400">Abschlüsse</div>
+                    {/* Was Sie erreichen */}
+                    <div className="mb-6 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl border border-white/10">
+                      <h4 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-yellow-400" />
+                        Was Sie erreichen
+                      </h4>
+                      <div className="space-y-2">
+                        {guide.achievements?.map((achievement, idx) => (
+                          <div key={idx} className="flex items-start gap-3">
+                            <div className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 ${
+                              idx === 0 ? 'bg-blue-400' : idx === 1 ? 'bg-purple-400' : 'bg-emerald-400'
+                            }`}></div>
+                            <p className="text-sm text-slate-200">{achievement}</p>
+                          </div>
+                        )) || (
+                          <>
+                            <div className="flex items-start gap-3">
+                              <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></div>
+                              <p className="text-sm text-slate-200">DSGVO-konforme Prozesse</p>
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></div>
+                              <p className="text-sm text-slate-200">Rechtssichere Dokumentation</p>
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0"></div>
+                              <p className="text-sm text-slate-200">Audit-ready in {guide.difficulty === 'beginner' ? '7 Tagen' : '30 Tagen'}</p>
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
 
