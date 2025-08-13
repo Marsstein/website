@@ -101,7 +101,7 @@ const FinalChecks = () => {
       pages: [
         {
           title: 'DSGVO',
-          url: '/regulierung/dsgvo',
+          url: '/dsgvo',
           description: 'Umfassender Guide zur Datenschutz-Grundverordnung (GDPR). Erfahren Sie alles über Betroffenenrechte, Verarbeitungsverzeichnisse, TOMs, Meldepflichten und praktische Umsetzungstipps für Ihr Unternehmen.',
           priority: 'high',
           available: true,
@@ -109,7 +109,7 @@ const FinalChecks = () => {
         },
         {
           title: 'EU AI Act',
-          url: '/regulierung/eu-ai-act',
+          url: '/eu-ai-act',
           description: 'Kompletter Leitfaden zur EU-Verordnung über Künstliche Intelligenz. Verstehen Sie Risikoklassen, Konformitätsbewertungen, Transparenzpflichten und technische Dokumentationsanforderungen für KI-Systeme.',
           priority: 'high',
           available: true,
@@ -117,7 +117,7 @@ const FinalChecks = () => {
         },
         {
           title: 'NIS-2',
-          url: '/regulierung/nis2',
+          url: '/nis2',
           description: 'Detaillierte Informationen zur Network and Information Security Directive 2.0. Prüfen Sie Ihre Betroffenheit, verstehen Sie Meldepflichten und implementieren Sie erforderliche Cybersecurity-Maßnahmen.',
           priority: 'medium',
           available: true,
@@ -125,7 +125,7 @@ const FinalChecks = () => {
         },
         {
           title: 'Hinweisgeberschutzgesetz',
-          url: '/regulierung/hinweisgeberschutzgesetz',
+          url: '/hinweisgeberschutzgesetz',
           description: 'Vollständiger Guide zum Whistleblower-Schutz in Deutschland. Erfahren Sie alles über interne Meldekanäle, Vertraulichkeitsanforderungen und Schutzmaßnahmen für Hinweisgeber nach HinSchG.',
           priority: 'medium',
           available: true,
@@ -133,7 +133,7 @@ const FinalChecks = () => {
         },
         {
           title: 'Geldwäschegesetz',
-          url: '/regulierung/geldwaeschegesetz',
+          url: '/geldwaeschegesetz',
           description: 'Praxisorientierter Leitfaden zu Anti-Geldwäsche-Bestimmungen (AML). Verstehen Sie Sorgfaltspflichten, Risikomanagement, Verdachtsmeldungen und interne Sicherungsmaßnahmen nach GwG.',
           priority: 'medium',
           available: true,
@@ -148,7 +148,7 @@ const FinalChecks = () => {
       pages: [
         {
           title: 'ISO 27001',
-          url: '/zertifizierung/iso-27001',
+          url: '/iso-27001',
           description: 'Der internationale Standard für Informationssicherheits-Managementsysteme (ISMS). Schritt-für-Schritt-Anleitung zur Implementierung, Zertifizierungsvorbereitung und kontinuierlichen Verbesserung Ihrer IT-Sicherheit.',
           priority: 'high',
           available: true,
@@ -156,7 +156,7 @@ const FinalChecks = () => {
         },
         {
           title: 'SOC 2',
-          url: '/zertifizierung/soc2',
+          url: '/soc2',
           description: 'System and Organization Controls 2 für Service-Provider. Meistern Sie die fünf Trust Service Principles (Sicherheit, Verfügbarkeit, Vertraulichkeit, Verarbeitungsintegrität, Datenschutz) für Ihre Cloud-Services.',
           priority: 'high',
           available: true,
@@ -164,7 +164,7 @@ const FinalChecks = () => {
         },
         {
           title: 'ISO 27017',
-          url: '/zertifizierung/iso-27017',
+          url: '/iso-27017',
           description: 'Spezifische Sicherheitskontrollen für Cloud-Services. Erweitern Sie Ihr ISO 27001 ISMS um Cloud-spezifische Controls für Provider und Nutzer von Cloud-Diensten.',
           priority: 'medium',
           available: true,
@@ -172,7 +172,7 @@ const FinalChecks = () => {
         },
         {
           title: 'ISO 27018',
-          url: '/zertifizierung/iso-27018',
+          url: '/iso-27018',
           description: 'Datenschutz in der Cloud für personenbezogene Daten. Implementieren Sie spezielle Privacy-Controls für Public Cloud PII (Personally Identifiable Information) Prozessoren.',
           priority: 'medium',
           available: true,
@@ -180,7 +180,7 @@ const FinalChecks = () => {
         },
         {
           title: 'TISAX',
-          url: '/zertifizierung/tisax',
+          url: '/tisax',
           description: 'Trusted Information Security Assessment Exchange für die Automobilindustrie. Erfüllen Sie die spezifischen Anforderungen der Automobilhersteller an Informationssicherheit und Datenschutz.',
           priority: 'medium',
           available: true,

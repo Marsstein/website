@@ -1513,6 +1513,149 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                         </div>
                       </div>
                     </div>
+
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Marktübersicht: Software-Lösungen für Hinweisgebersysteme</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-blue-500">
+                          <h5 className="font-semibold text-blue-900 mb-3">Enterprise-Lösungen</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <strong className="text-blue-800">Führende Anbieter:</strong>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• IntegrityLine (End-to-End Compliance)</li>
+                                <li>• EQS Group (Compliance Cloud)</li>
+                                <li>• NAVEX Global (Ethics Point)</li>
+                                <li>• SAP Ariba (Risk Management)</li>
+                                <li>• Vault Platform (Advanced Analytics)</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-blue-800">Kernfunktionen:</strong>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• Multi-Channel Intake (Web, App, Hotline)</li>
+                                <li>• Workflow Management</li>
+                                <li>• Reporting & Analytics</li>
+                                <li>• API-Integration</li>
+                                <li>• Compliance Dashboard</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-green-500">
+                          <h5 className="font-semibold text-green-900 mb-3">KMU-Lösungen</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <strong className="text-green-800">Kosteneffiziente Optionen:</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• Whistle-Cloud (ab 99€/Monat)</li>
+                                <li>• ComplianceDesktop (Modular)</li>
+                                <li>• FaceUp (User-friendly)</li>
+                                <li>• AllVoices (AI-powered)</li>
+                                <li>• Whispli (Blockchain-secured)</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-green-800">Auswahlkriterien:</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• Skalierbarkeit</li>
+                                <li>• Benutzerfreundlichkeit</li>
+                                <li>• Preis-Leistungs-Verhältnis</li>
+                                <li>• Deutscher Support</li>
+                                <li>• DSGVO-Konformität</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-purple-500">
+                          <h5 className="font-semibold text-purple-900 mb-3">Technologie-Trends 2025</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                              <strong className="text-purple-800">KI & Machine Learning:</strong>
+                              <ul className="text-sm text-purple-700 mt-2 space-y-1">
+                                <li>• Sentiment Analysis</li>
+                                <li>• Pattern Recognition</li>
+                                <li>• Risk Scoring</li>
+                                <li>• Auto-Kategorisierung</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-purple-800">Blockchain-Integration:</strong>
+                              <ul className="text-sm text-purple-700 mt-2 space-y-1">
+                                <li>• Unveränderliche Logs</li>
+                                <li>• Smart Contracts</li>
+                                <li>• Dezentrale Speicherung</li>
+                                <li>• Transparenz-Features</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-purple-800">Mobile & Voice:</strong>
+                              <ul className="text-sm text-purple-700 mt-2 space-y-1">
+                                <li>• Voice-to-Text Meldungen</li>
+                                <li>• Biometrische Sicherheit</li>
+                                <li>• Offline-Funktionalität</li>
+                                <li>• AR/VR Training</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Implementierungs-Roadmap für IT-Systeme</h4>
+                      <div className="space-y-4">
+                        <div className="relative">
+                          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-yellow-300"></div>
+                          <div className="space-y-6">
+                            <div className="flex items-start space-x-4">
+                              <div className="flex-shrink-0 w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold">
+                                Phase 1
+                              </div>
+                              <div className="flex-1 bg-white p-4 rounded-lg">
+                                <h5 className="font-semibold text-yellow-900 mb-2">Anforderungsanalyse (2-4 Wochen)</h5>
+                                <ul className="text-sm text-yellow-700 space-y-1">
+                                  <li>• Stakeholder-Workshops durchführen</li>
+                                  <li>• Prozesse dokumentieren</li>
+                                  <li>• Systemanforderungen definieren</li>
+                                  <li>• Anbietervergleich erstellen</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                              <div className="flex-shrink-0 w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold">
+                                Phase 2
+                              </div>
+                              <div className="flex-1 bg-white p-4 rounded-lg">
+                                <h5 className="font-semibold text-yellow-900 mb-2">Systemauswahl & Setup (3-6 Wochen)</h5>
+                                <ul className="text-sm text-yellow-700 space-y-1">
+                                  <li>• Proof of Concept durchführen</li>
+                                  <li>• Vertragsverhandlungen</li>
+                                  <li>• Technische Installation</li>
+                                  <li>• Grundkonfiguration</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                              <div className="flex-shrink-0 w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold">
+                                Phase 3
+                              </div>
+                              <div className="flex-1 bg-white p-4 rounded-lg">
+                                <h5 className="font-semibold text-yellow-900 mb-2">Integration & Testing (4-8 Wochen)</h5>
+                                <ul className="text-sm text-yellow-700 space-y-1">
+                                  <li>• API-Integrationen umsetzen</li>
+                                  <li>• Sicherheitstests durchführen</li>
+                                  <li>• User Acceptance Testing</li>
+                                  <li>• Performance-Optimierung</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </ExpandableSection>
 
@@ -1875,6 +2018,128 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                             <li>• Rechtsberatung möglich</li>
                             <li>• Protokollführung</li>
                           </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-indigo-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-indigo-900 mb-4">Dokumentationspflichten im Detail</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-indigo-900 mb-3">Gesetzliche Dokumentationspflichten</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-indigo-800">§ 11 HinSchG - Grundlegende Pflichten:</strong>
+                              <ul className="text-sm text-indigo-700 mt-2 space-y-1">
+                                <li>• Vollständige Erfassung aller Meldungen</li>
+                                <li>• Chronologische Dokumentation des Verfahrensverlaufs</li>
+                                <li>• Speicherung der Kommunikation mit Hinweisgeber</li>
+                                <li>• Aufbewahrung für mind. 3 Jahre nach Abschluss</li>
+                                <li>• DSGVO-konforme Löschung nach Fristablauf</li>
+                              </ul>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-indigo-800">Pflichtinhalte der Dokumentation:</strong>
+                              <ul className="text-sm text-indigo-700 mt-2 space-y-1">
+                                <li>• Eingangsdatum und -uhrzeit der Meldung</li>
+                                <li>• Art des Meldekanals (schriftlich/mündlich/digital)</li>
+                                <li>• Inhalt der Meldung (anonymisiert)</li>
+                                <li>• Durchgeführte Maßnahmen und Zeitpunkte</li>
+                                <li>• Ergebnisse der Untersuchung</li>
+                                <li>• Kommunikation mit Behörden</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-indigo-900 mb-3">Praktische Umsetzung der Dokumentation</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-indigo-800">Dokumentationsstruktur:</strong>
+                              <ul className="text-sm text-indigo-700 mt-2 space-y-1">
+                                <li>• Eindeutige Fallnummern-Vergabe</li>
+                                <li>• Standardisierte Erfassungsformulare</li>
+                                <li>• Digitales Case Management System</li>
+                                <li>• Revisionssichere Archivierung</li>
+                                <li>• Zugriffsprotokollierung</li>
+                              </ul>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-indigo-800">Datenschutz-Anforderungen:</strong>
+                              <ul className="text-sm text-indigo-700 mt-2 space-y-1">
+                                <li>• Minimale Speicherung personenbezogener Daten</li>
+                                <li>• Verschlüsselung sensibler Informationen</li>
+                                <li>• Berechtigungskonzept mit Need-to-know-Prinzip</li>
+                                <li>• Regelmäßige Datenschutz-Folgenabschätzung</li>
+                                <li>• Automatisierte Löschfristen</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 bg-red-100 p-4 rounded-lg">
+                        <h5 className="font-semibold text-red-900 mb-3 flex items-center">
+                          <AlertTriangle className="h-5 w-5 mr-2" />
+                          Kritische Dokumentationsfehler vermeiden
+                        </h5>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="bg-white p-3 rounded">
+                            <strong className="text-red-800 text-sm">Unvollständige Dokumentation:</strong>
+                            <ul className="text-xs text-red-700 mt-1 space-y-1">
+                              <li>• Fehlende Zeitstempel</li>
+                              <li>• Lückenhafte Verfahrensschritte</li>
+                              <li>• Vergessene Anhänge/Beweise</li>
+                              <li>• Unklare Verantwortlichkeiten</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-3 rounded">
+                            <strong className="text-red-800 text-sm">Datenschutzverstöße:</strong>
+                            <ul className="text-xs text-red-700 mt-1 space-y-1">
+                              <li>• Unnötige Speicherung von Namen</li>
+                              <li>• Fehlende Anonymisierung</li>
+                              <li>• Zu breite Zugriffsrechte</li>
+                              <li>• Versäumte Löschfristen</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-3 rounded">
+                            <strong className="text-red-800 text-sm">Formale Mängel:</strong>
+                            <ul className="text-xs text-red-700 mt-1 space-y-1">
+                              <li>• Fehlende Unterschriften</li>
+                              <li>• Nachträgliche Änderungen</li>
+                              <li>• Unklare Formulierungen</li>
+                              <li>• Fehlende Versionskontrolle</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 bg-green-100 p-4 rounded-lg">
+                        <h5 className="font-semibold text-green-900 mb-3 flex items-center">
+                          <CheckCircle className="h-5 w-5 mr-2" />
+                          Best Practices für die Dokumentation
+                        </h5>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <strong className="text-green-800">Technische Lösungen:</strong>
+                            <ul className="text-sm text-green-700 mt-2 space-y-1">
+                              <li>• Automatisierte Zeitstempel und Logs</li>
+                              <li>• Digitale Signatur für Unveränderbarkeit</li>
+                              <li>• Backup-Strategie mit Redundanz</li>
+                              <li>• Integration in Compliance-Management-System</li>
+                              <li>• API-Schnittstellen für Reporting</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <strong className="text-green-800">Organisatorische Maßnahmen:</strong>
+                            <ul className="text-sm text-green-700 mt-2 space-y-1">
+                              <li>• Klare Dokumentationsrichtlinien</li>
+                              <li>• Regelmäßige Schulungen für Bearbeiter</li>
+                              <li>• Vier-Augen-Prinzip bei kritischen Fällen</li>
+                              <li>• Monatliche Qualitätschecks</li>
+                              <li>• Jährliche externe Audits</li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3365,6 +3630,177 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                       </div>
                     </div>
 
+                    <div className="bg-white p-6 rounded-lg mb-6">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Detaillierte Umsetzungsschritte nach Unternehmensgröße</h4>
+                      <div className="space-y-4">
+                        <div className="border-l-4 border-l-blue-500 pl-4">
+                          <h5 className="font-semibold text-blue-900 mb-2">Kleine Unternehmen (50-249 Mitarbeiter)</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <strong className="text-blue-800">Organisationsstruktur:</strong>
+                              <ul className="text-sm text-blue-700 mt-1 space-y-1">
+                                <li>• Benennung eines Compliance-Beauftragten (20% Stelle)</li>
+                                <li>• Integration in bestehende HR-Strukturen</li>
+                                <li>• Externe Ombudsperson als kosteneffiziente Option</li>
+                                <li>• Schlanke Dokumentationsstruktur</li>
+                                <li>• Nutzung bestehender Kommunikationskanäle</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-blue-800">Kostenschätzung:</strong>
+                              <ul className="text-sm text-blue-700 mt-1 space-y-1">
+                                <li>• Initialkosten: 5.000-15.000 EUR</li>
+                                <li>• Laufende Kosten: 500-1.500 EUR/Monat</li>
+                                <li>• Software-Lösung: Cloud-basiert (SaaS)</li>
+                                <li>• Schulungsbudget: 2.000-5.000 EUR/Jahr</li>
+                                <li>• Externe Beratung: 3.000-8.000 EUR einmalig</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="border-l-4 border-l-green-500 pl-4">
+                          <h5 className="font-semibold text-green-900 mb-2">Mittlere Unternehmen (250-1.000 Mitarbeiter)</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <strong className="text-green-800">Organisationsstruktur:</strong>
+                              <ul className="text-sm text-green-700 mt-1 space-y-1">
+                                <li>• Dedizierte Compliance-Stelle (1-2 FTE)</li>
+                                <li>• Eigenes Meldesystem mit mehreren Kanälen</li>
+                                <li>• Interne Untersuchungsteams mit klaren Prozessen</li>
+                                <li>• Regelmäßige Audits und Reviews</li>
+                                <li>• Integration in Risk Management System</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-green-800">Kostenschätzung:</strong>
+                              <ul className="text-sm text-green-700 mt-1 space-y-1">
+                                <li>• Initialkosten: 20.000-50.000 EUR</li>
+                                <li>• Laufende Kosten: 3.000-8.000 EUR/Monat</li>
+                                <li>• Professionelle Software-Suite mit API</li>
+                                <li>• Schulungsbudget: 10.000-20.000 EUR/Jahr</li>
+                                <li>• Jährliche Audits: 5.000-15.000 EUR</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="border-l-4 border-l-purple-500 pl-4">
+                          <h5 className="font-semibold text-purple-900 mb-2">Große Unternehmen (&gt;1.000 Mitarbeiter)</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <strong className="text-purple-800">Organisationsstruktur:</strong>
+                              <ul className="text-sm text-purple-700 mt-1 space-y-1">
+                                <li>• Compliance-Abteilung (3-10 FTE)</li>
+                                <li>• 24/7 Hotline mit mehrsprachigem Support</li>
+                                <li>• Spezialisierte Investigation Units</li>
+                                <li>• Globale Koordination und Standards</li>
+                                <li>• Eigene IT-Infrastruktur und Entwicklung</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-purple-800">Kostenschätzung:</strong>
+                              <ul className="text-sm text-purple-700 mt-1 space-y-1">
+                                <li>• Initialkosten: 100.000-500.000 EUR</li>
+                                <li>• Laufende Kosten: 20.000-100.000 EUR/Monat</li>
+                                <li>• Enterprise-Lösung mit KI-Features</li>
+                                <li>• Schulungsbudget: 50.000-200.000 EUR/Jahr</li>
+                                <li>• Kontinuierliche Weiterentwicklung</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg mb-6">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Branchenspezifische Besonderheiten</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-red-50 p-4 rounded-lg">
+                          <h5 className="font-semibold text-red-900 mb-2">Finanzsektor</h5>
+                          <ul className="text-sm text-red-700 space-y-1">
+                            <li>• Integration mit BaFin-Anforderungen</li>
+                            <li>• Verschärfte Dokumentationspflichten</li>
+                            <li>• Verbindung zu Geldwäsche-Prävention</li>
+                            <li>• Besondere Vertraulichkeitsstufen</li>
+                            <li>• Meldepflicht an Aufsichtsbehörden</li>
+                          </ul>
+                        </div>
+                        <div className="bg-yellow-50 p-4 rounded-lg">
+                          <h5 className="font-semibold text-yellow-900 mb-2">Gesundheitswesen</h5>
+                          <ul className="text-sm text-yellow-700 space-y-1">
+                            <li>• Patientenschutz-Aspekte beachten</li>
+                            <li>• Ärztliche Schweigepflicht wahren</li>
+                            <li>• Schnittstellen zu QM-Systemen</li>
+                            <li>• Besondere Sensibilität bei Daten</li>
+                            <li>• MDR/IVDR Compliance integrieren</li>
+                          </ul>
+                        </div>
+                        <div className="bg-green-50 p-4 rounded-lg">
+                          <h5 className="font-semibold text-green-900 mb-2">Öffentlicher Sektor</h5>
+                          <ul className="text-sm text-green-700 space-y-1">
+                            <li>• Beamtenrechtliche Besonderheiten</li>
+                            <li>• Transparenzgebot vs. Vertraulichkeit</li>
+                            <li>• Politische Sensibilität beachten</li>
+                            <li>• Besondere Berichtspflichten</li>
+                            <li>• Haushaltsrechtliche Vorgaben</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-indigo-50 p-6 rounded-lg mb-6">
+                      <h4 className="text-lg font-semibold text-indigo-900 mb-4">Change Management und Kommunikationsstrategie</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-indigo-800 mb-3">Interne Kommunikation</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-3 rounded">
+                              <strong className="text-indigo-800">Führungsebene:</strong>
+                              <ul className="text-sm text-indigo-700 mt-1 space-y-1">
+                                <li>• Town Hall Meetings mit Vorstand</li>
+                                <li>• Leadership Commitment Statement</li>
+                                <li>• Persönliche Botschaften der Geschäftsführung</li>
+                                <li>• Vorbildfunktion aktiv wahrnehmen</li>
+                              </ul>
+                            </div>
+                            <div className="bg-white p-3 rounded">
+                              <strong className="text-indigo-800">Mitarbeiterebene:</strong>
+                              <ul className="text-sm text-indigo-700 mt-1 space-y-1">
+                                <li>• Informationsveranstaltungen pro Abteilung</li>
+                                <li>• E-Learning Module verpflichtend</li>
+                                <li>• FAQ-Dokumente und Intranet-Seite</li>
+                                <li>• Feedback-Schleifen etablieren</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-indigo-800 mb-3">Externe Kommunikation</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-3 rounded">
+                              <strong className="text-indigo-800">Stakeholder:</strong>
+                              <ul className="text-sm text-indigo-700 mt-1 space-y-1">
+                                <li>• Pressemitteilung zur Implementierung</li>
+                                <li>• Update für Investoren/Aktionäre</li>
+                                <li>• Information an Geschäftspartner</li>
+                                <li>• Branchenaustausch initiieren</li>
+                              </ul>
+                            </div>
+                            <div className="bg-white p-3 rounded">
+                              <strong className="text-indigo-800">Öffentlichkeit:</strong>
+                              <ul className="text-sm text-indigo-700 mt-1 space-y-1">
+                                <li>• Website-Bereich zum HinSchG</li>
+                                <li>• Transparenzbericht jährlich</li>
+                                <li>• Social Media Kommunikation</li>
+                                <li>• Teilnahme an Fachkonferenzen</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="bg-blue-50 p-6 rounded-lg">
                       <h4 className="text-lg font-semibold text-blue-900 mb-4">Checkliste für die Praxis</h4>
                       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -3515,6 +3951,148 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                               <p className="text-sm text-red-700 mt-1">
                                 Technische Lösung allein reicht nicht - Kultur und Prozesse sind entscheidend
                               </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-purple-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-purple-900 mb-4">Erweiterte Best Practices aus der Praxis</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-purple-500">
+                          <h5 className="font-semibold text-purple-900 mb-3">Kulturelle Integration</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <strong className="text-purple-800">Vertrauenskultur aufbauen:</strong>
+                              <ul className="text-sm text-purple-700 mt-2 space-y-1">
+                                <li>• Offene Fehlerkultur etablieren</li>
+                                <li>• Speak-up Culture fördern</li>
+                                <li>• Positive Beispiele kommunizieren</li>
+                                <li>• Whistleblower als "Beschützer" positionieren</li>
+                                <li>• Erfolgsgeschichten teilen (anonymisiert)</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-purple-800">Leadership Engagement:</strong>
+                              <ul className="text-sm text-purple-700 mt-2 space-y-1">
+                                <li>• CEO/Vorstand als Botschafter</li>
+                                <li>• Regelmäßige Townhalls zum Thema</li>
+                                <li>• Persönliche Commitment-Videos</li>
+                                <li>• Walk-the-Talk Prinzip</li>
+                                <li>• Null-Toleranz bei Repressalien</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-blue-500">
+                          <h5 className="font-semibold text-blue-900 mb-3">Prozessoptimierung</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                              <strong className="text-blue-800">Eingangsphase:</strong>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• KI-gestützte Vorklassifizierung</li>
+                                <li>• Automatische Übersetzung</li>
+                                <li>• Smart Routing zu Experten</li>
+                                <li>• Duplikatserkennung</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-blue-800">Bearbeitungsphase:</strong>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• Workflow-Automatisierung</li>
+                                <li>• Digitale Beweissicherung</li>
+                                <li>• Echtzeit-Kollaboration</li>
+                                <li>• Predictive Analytics</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-blue-800">Abschlussphase:</strong>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• Automatisierte Reports</li>
+                                <li>• Lessons Learned Datenbank</li>
+                                <li>• Präventionsmaßnahmen</li>
+                                <li>• Follow-up Automatisierung</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg border-l-4 border-l-green-500">
+                          <h5 className="font-semibold text-green-900 mb-3">Technologie-Best Practices</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <strong className="text-green-800">Moderne Sicherheitsfeatures:</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• End-to-End Verschlüsselung</li>
+                                <li>• Blockchain für Audit Trail</li>
+                                <li>• Zero-Knowledge Architecture</li>
+                                <li>• Tor-Browser Kompatibilität</li>
+                                <li>• Biometrische Authentifizierung</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-green-800">User Experience:</strong>
+                              <ul className="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• Mobile-First Design</li>
+                                <li>• Sprachsteuerung möglich</li>
+                                <li>• Barrierefreie Gestaltung</li>
+                                <li>• Offline-Modus verfügbar</li>
+                                <li>• Intuitive Benutzerführung</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-orange-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-orange-900 mb-4">Häufige Implementierungsfehler im Detail</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-orange-900 mb-3">Strategische Fehler</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-orange-800">Isolierte Implementierung:</strong>
+                              <p className="text-sm text-orange-700 mt-1">
+                                HinSchG-System wird nicht in bestehende Compliance-Strukturen integriert
+                              </p>
+                              <div className="mt-2 p-2 bg-orange-100 rounded">
+                                <span className="text-xs text-orange-800">→ Lösung: Ganzheitlicher Compliance-Ansatz</span>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-orange-800">Fehlende Ressourcenplanung:</strong>
+                              <p className="text-sm text-orange-700 mt-1">
+                                Unterschätzung von Zeit, Personal und Budget für nachhaltige Umsetzung
+                              </p>
+                              <div className="mt-2 p-2 bg-orange-100 rounded">
+                                <span className="text-xs text-orange-800">→ Lösung: Realistische Langzeitplanung</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-orange-900 mb-3">Operative Fehler</h5>
+                          <div className="space-y-3">
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-orange-800">Unklare Zuständigkeiten:</strong>
+                              <p className="text-sm text-orange-700 mt-1">
+                                Verantwortlichkeiten für Meldungsbearbeitung nicht eindeutig definiert
+                              </p>
+                              <div className="mt-2 p-2 bg-orange-100 rounded">
+                                <span className="text-xs text-orange-800">→ Lösung: RACI-Matrix erstellen</span>
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg">
+                              <strong className="text-orange-800">Mangelhafte Schulung:</strong>
+                              <p className="text-sm text-orange-700 mt-1">
+                                Mitarbeiter verstehen System und ihre Rechte/Pflichten nicht
+                              </p>
+                              <div className="mt-2 p-2 bg-orange-100 rounded">
+                                <span className="text-xs text-orange-800">→ Lösung: Verpflichtende Trainings</span>
+                              </div>
                             </div>
                           </div>
                         </div>
