@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -340,6 +341,19 @@ const EuAiActCompliance = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "EU AI Act Compliance Service",
+    "description": "KI-Compliance nach EU AI Act: Risikoanalyse, Konformitätsbewertung und Dokumentation",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "AI Compliance Management",
+    "areaServed": "EU"
+  };
 
   // AI Act Compliance Challenges Section - Central Card with Navigation
   const AiActPainpointsSection = () => {
@@ -3623,8 +3637,16 @@ class AIActKillSwitch:
   );
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <>
+      <SEOHead
+        title="EU AI Act Compliance – KI-Regulierung sicher umsetzen"
+        description="EU AI Act Compliance einfach gemacht: Risikoklassifizierung, CE-Kennzeichnung & Konformität. ✓ Automatisierte Prozesse ✓ Rechtssicher. Jetzt beraten lassen!"
+        canonical="/eu-ai-act"
+        keywords="EU AI Act, KI-Regulierung, AI Compliance, Künstliche Intelligenz Gesetz, KI-Verordnung"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-background">
+        <Header />
       <main>
         <HeroSection />
         <AiActPainpointsSection />
@@ -3641,6 +3663,7 @@ class AIActKillSwitch:
       </main>
       <Footer />
     </div>
+    </>
   );
 };
 

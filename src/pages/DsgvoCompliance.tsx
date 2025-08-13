@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -66,6 +67,19 @@ const DsgvoCompliance = () => {
   }, []);
 
   // Hero Section
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "DSGVO Compliance Service",
+    "description": "Automatisierte DSGVO-Compliance-Lösung mit KI-Unterstützung",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Compliance Management",
+    "areaServed": "DE"
+  };
+
   const HeroSection = () => (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
       {/* Background gradient */}
@@ -1395,8 +1409,16 @@ const DsgvoCompliance = () => {
   const HelpCircle = AlertCircle;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
-      <Header />
+    <>
+      <SEOHead
+        title="DSGVO Compliance Software – Automatisiert & Rechtssicher"
+        description="DSGVO-Compliance leicht gemacht: KI-gestützte Lösung für Datenschutz. ✓ Automatisierte Prozesse ✓ Bis zu 80% Zeitersparnis. Jetzt testen!"
+        canonical="/dsgvo"
+        keywords="DSGVO Compliance, Datenschutz Software, GDPR Compliance, Datenschutz-Grundverordnung"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-white dark:bg-gray-950">
+        <Header />
       <main className="overflow-hidden">
         <HeroSection />
         <TrustSection />
@@ -1410,6 +1432,7 @@ const DsgvoCompliance = () => {
       </main>
       <Footer />
     </div>
+    </>
   );
 };
 

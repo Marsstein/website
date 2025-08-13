@@ -30,9 +30,9 @@ const FinalChecks = () => {
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
   // Helper function to create check items for a page
-  const createCheckItems = (pageId: string) => ({
-    mobileReady: { id: `${pageId}-mobile`, title: 'Mobile Responsive Design', completed: false },
-    seoOptimized: { id: `${pageId}-seo`, title: 'SEO Meta Tags & Struktur', completed: false },
+  const createCheckItems = (pageId: string, isFirstFive: boolean = false) => ({
+    mobileReady: { id: `${pageId}-mobile`, title: 'Mobile Responsive Design', completed: isFirstFive },
+    seoOptimized: { id: `${pageId}-seo`, title: 'SEO Meta Tags & Struktur', completed: isFirstFive },
     contentReady: { id: `${pageId}-content`, title: 'Inhalte vollständig & aktuell', completed: false },
     performanceOptimized: { id: `${pageId}-perf`, title: 'Performance optimiert', completed: false },
     accessibilityCompliant: { id: `${pageId}-a11y`, title: 'Barrierefreiheit geprüft', completed: false }
@@ -50,7 +50,7 @@ const FinalChecks = () => {
           description: 'Die Hauptseite der Marsstein Compliance Platform. Hier finden Sie einen Überblick über alle unsere Compliance-Lösungen, Tools und Services für DSGVO, ISO 27001, EU AI Act und mehr.',
           priority: 'high',
           available: true,
-          ...createCheckItems('home')
+          ...createCheckItems('home', true)
         },
         {
           title: 'Preise',
@@ -58,7 +58,7 @@ const FinalChecks = () => {
           description: 'Transparente Preisübersicht für alle Marsstein-Pakete. Vergleichen Sie unsere Starter-, Professional- und Enterprise-Lösungen mit detaillierten Feature-Listen und finden Sie das passende Paket für Ihr Unternehmen.',
           priority: 'high',
           available: true,
-          ...createCheckItems('pricing')
+          ...createCheckItems('pricing', true)
         },
         {
           title: 'Kontakt',
@@ -66,7 +66,7 @@ const FinalChecks = () => {
           description: 'Nehmen Sie Kontakt mit unserem Expertenteam auf. Nutzen Sie unser Kontaktformular für individuelle Beratung oder vereinbaren Sie einen kostenlosen Erstberatungstermin für Ihre Compliance-Herausforderungen.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('contact')
+          ...createCheckItems('contact', true)
         },
         {
           title: 'Academy',
@@ -74,7 +74,7 @@ const FinalChecks = () => {
           description: 'Umfassende Lernplattform für Compliance-Themen. Erweitern Sie Ihr Wissen mit interaktiven Kursen, Webinaren und Zertifizierungen zu DSGVO, ISO-Standards und KI-Compliance.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('academy')
+          ...createCheckItems('academy', true)
         },
         {
           title: 'Dashboard',
@@ -82,7 +82,7 @@ const FinalChecks = () => {
           description: 'Ihr persönliches Compliance-Dashboard. Verwalten Sie alle Compliance-Aktivitäten, überwachen Sie KPIs, erstellen Sie Reports und behalten Sie den Überblick über Ihre Compliance-Status in Echtzeit.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('dashboard')
+          ...createCheckItems('dashboard', true)
         },
         {
           title: 'Danke',

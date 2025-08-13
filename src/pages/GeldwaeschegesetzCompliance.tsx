@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEOHead from '../components/SEOHead';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
   Shield, 
@@ -104,6 +105,19 @@ const GeldwaeschegesetzCompliance = () => {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Geldwäschegesetz Compliance Service",
+    "description": "GwG-Compliance automatisiert: KYC, Risikomanagement und Verdachtsmeldungen",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Anti-Money Laundering Compliance",
+    "areaServed": "DE"
+  };
 
   const features = [
     {

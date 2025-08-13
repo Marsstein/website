@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -79,6 +80,19 @@ const HinweisgeberschutzCompliance = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Hinweisgeberschutz Compliance Service",
+    "description": "Whistleblower-System nach HinSchG: Digitale Meldestelle mit Vertraulichkeitsschutz",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Whistleblower Protection System",
+    "areaServed": "DE"
+  };
 
   const painPoints = [
     {
@@ -276,8 +290,16 @@ const HinweisgeberschutzCompliance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Hinweisgeberschutz – Whistleblower-System nach HinSchG"
+        description="Hinweisgebersystem rechtssicher umsetzen: ✓ Digitale Meldestelle ✓ 100% anonym ✓ HinSchG-konform. Schützen Sie Whistleblower. Jetzt einrichten!"
+        canonical="/hinweisgeberschutzgesetz"
+        keywords="Hinweisgeberschutz, HinSchG, Whistleblower System, Hinweisgebersystem, Meldestelle"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -841,6 +863,7 @@ const HinweisgeberschutzCompliance = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

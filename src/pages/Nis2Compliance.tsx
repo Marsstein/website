@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -72,6 +73,19 @@ const Nis2Compliance = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "NIS-2 Compliance Service",
+    "description": "NIS-2 Richtlinie Compliance: Cybersecurity für kritische Infrastrukturen",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Cybersecurity Compliance",
+    "areaServed": "EU"
+  };
 
   const painPoints = [
     {
@@ -267,8 +281,16 @@ const Nis2Compliance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="NIS-2 Compliance – Cybersecurity-Richtlinie umsetzen"
+        description="NIS-2 Richtlinie sicher erfüllen: Risikomanagement, Meldepflichten & Sicherheitsmaßnahmen. ✓ KRITIS-konform ✓ Automatisiert. Jetzt beraten lassen!"
+        canonical="/nis2"
+        keywords="NIS-2, NIS2 Richtlinie, Cybersecurity Compliance, KRITIS, Network Information Security"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -828,6 +850,7 @@ const Nis2Compliance = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
