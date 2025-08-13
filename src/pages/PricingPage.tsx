@@ -1,0 +1,242 @@
+import React from 'react';
+import SEOHead from '../components/SEOHead';
+import { Link } from 'react-router-dom';
+
+const PricingPage = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Marsstein Compliance Platform",
+    "description": "Compliance Management Software für DSGVO, ISO 27001 und EU AI Act",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "price": "99",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "99",
+          "priceCurrency": "EUR",
+          "unitText": "MONTH"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Professional",
+        "price": "299",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "299",
+          "priceCurrency": "EUR",
+          "unitText": "MONTH"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Enterprise",
+        "price": "Auf Anfrage",
+        "priceCurrency": "EUR"
+      }
+    ]
+  };
+
+  const plans = [
+    {
+      name: 'Starter',
+      price: '99€',
+      period: '/Monat',
+      description: 'Perfekt für kleine Unternehmen',
+      features: [
+        'DSGVO Basis-Compliance',
+        'Bis zu 5 Nutzer',
+        'Cookie Management Tool',
+        'E-Mail Support',
+        'Basis-Vorlagen'
+      ],
+      cta: 'Jetzt starten',
+      highlighted: false
+    },
+    {
+      name: 'Professional',
+      price: '299€',
+      period: '/Monat',
+      description: 'Für wachsende Unternehmen',
+      features: [
+        'Alles aus Starter',
+        'Bis zu 25 Nutzer',
+        'ISO 27001 Module',
+        'Whistleblower System',
+        'Priority Support',
+        'API-Zugang',
+        'Custom Branding'
+      ],
+      cta: 'Jetzt starten',
+      highlighted: true
+    },
+    {
+      name: 'Enterprise',
+      price: 'Custom',
+      period: '',
+      description: 'Maßgeschneiderte Lösungen',
+      features: [
+        'Alles aus Professional',
+        'Unbegrenzte Nutzer',
+        'EU AI Act Compliance',
+        'Dedizierter Account Manager',
+        'SLA Garantie',
+        'On-Premise Option',
+        'Custom Integrationen'
+      ],
+      cta: 'Kontakt aufnehmen',
+      highlighted: false
+    }
+  ];
+
+  return (
+    <>
+      <SEOHead
+        title="Preise & Pakete – Compliance Software ab 99€/Monat"
+        description="Transparente Preise für Marsstein Compliance Software. Starter ab 99€, Professional 299€, Enterprise auf Anfrage. Jetzt 30 Tage testen!"
+        canonical="/pricing"
+        keywords="Compliance Software Preise, DSGVO Software Kosten, ISO 27001 Tool Preise"
+      />
+      
+      <div className="min-h-screen bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Transparente Preise für jeden Bedarf
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Wählen Sie das passende Paket für Ihre Compliance-Anforderungen. 
+              Alle Preise verstehen sich zzgl. MwSt. 30 Tage kostenlos testen.
+            </p>
+          </div>
+
+          {/* Pricing Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {plans.map((plan, index) => (
+              <div
+                key={index}
+                className={`relative rounded-lg ${
+                  plan.highlighted
+                    ? 'ring-2 ring-blue-600 shadow-xl'
+                    : 'border border-gray-200'
+                } bg-white p-8`}
+              >
+                {plan.highlighted && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                      Beliebt
+                    </span>
+                  </div>
+                )}
+                
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h2>
+                  <p className="text-gray-600 mb-4">{plan.description}</p>
+                  <div className="text-4xl font-bold text-gray-900">
+                    {plan.price}
+                    <span className="text-lg text-gray-600 font-normal">{plan.period}</span>
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <svg
+                        className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  to={plan.name === 'Enterprise' ? '/contact' : '/signup'}
+                  className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors ${
+                    plan.highlighted
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                  }`}
+                >
+                  {plan.cta}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* FAQ Section */}
+          <div className="bg-white rounded-lg p-8 shadow-sm">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              Häufig gestellte Fragen
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Kann ich das Paket später wechseln?
+                </h3>
+                <p className="text-gray-600">
+                  Ja, Sie können jederzeit upgraden oder downgraden. Die Abrechnung erfolgt anteilig.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Gibt es eine Mindestlaufzeit?
+                </h3>
+                <p className="text-gray-600">
+                  Nein, alle Pakete sind monatlich kündbar. Bei Jahreszahlung gewähren wir 20% Rabatt.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Sind Schulungen enthalten?
+                </h3>
+                <p className="text-gray-600">
+                  Professional und Enterprise Pakete enthalten Onboarding-Schulungen. Weitere Trainings auf Anfrage.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Wie sicher sind meine Daten?
+                </h3>
+                <p className="text-gray-600">
+                  Wir hosten in deutschen Rechenzentren und sind ISO 27001 zertifiziert. Ihre Daten sind sicher.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center mt-16">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Noch unsicher? Testen Sie kostenlos!
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              30 Tage unverbindlich alle Features testen. Keine Kreditkarte erforderlich.
+            </p>
+            <Link
+              to="/signup"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Kostenlos testen
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default PricingPage;

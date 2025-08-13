@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEOHead from '../components/SEOHead';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
   Shield, 
@@ -104,6 +105,19 @@ const GeldwaeschegesetzCompliance = () => {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Geldwäschegesetz Compliance Service",
+    "description": "GwG-Compliance automatisiert: KYC, Risikomanagement und Verdachtsmeldungen",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Anti-Money Laundering Compliance",
+    "areaServed": "DE"
+  };
 
   const features = [
     {
@@ -365,7 +379,15 @@ const GeldwaeschegesetzCompliance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
+    <>
+      <SEOHead
+        title="Geldwäschegesetz (GwG) – AML-Compliance automatisiert"
+        description="GwG-Compliance leicht gemacht: KYC-Prüfung, Risikomanagement & Verdachtsmeldungen. ✓ KI-gestützt ✓ BaFin-konform. Jetzt digitalisieren!"
+        canonical="/geldwaeschegesetz"
+        keywords="Geldwäschegesetz, GwG, AML Compliance, Anti-Geldwäsche, KYC Prüfung"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
       {/* Background Pattern */}
       <div className="fixed inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -1048,6 +1070,7 @@ const GeldwaeschegesetzCompliance = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

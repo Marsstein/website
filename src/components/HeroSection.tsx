@@ -110,7 +110,7 @@ export const HeroSection: React.FC = () => {
                 Compliance{' '}
                 <span className="relative">
                   <span className="bg-gradient-to-r from-brand-red to-orange-500 bg-clip-text text-transparent">
-                    Modernisiert
+                    Revolutioniert
                   </span>
                   <div className="absolute -top-2 -right-2 lg:-top-3 lg:-right-3">
                     <Sparkles className="h-6 w-6 lg:h-8 lg:w-8 text-brand-red animate-pulse" />
@@ -120,7 +120,7 @@ export const HeroSection: React.FC = () => {
               
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
                 Die erste KI-native Compliance-Plattform für das digitale Zeitalter. 
-                Unser Ziel: Automatisierung Ihrer Compliance-Prozesse mit bis zu 85% Zeitersparnis.
+                Automatisieren Sie Ihre Compliance-Prozesse und sparen Sie bis zu 85% Zeit.
               </p>
             </div>
 

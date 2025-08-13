@@ -30,9 +30,9 @@ const FinalChecks = () => {
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
   // Helper function to create check items for a page
-  const createCheckItems = (pageId: string) => ({
-    mobileReady: { id: `${pageId}-mobile`, title: 'Mobile Responsive Design', completed: false },
-    seoOptimized: { id: `${pageId}-seo`, title: 'SEO Meta Tags & Struktur', completed: false },
+  const createCheckItems = (pageId: string, isFirstFive: boolean = false) => ({
+    mobileReady: { id: `${pageId}-mobile`, title: 'Mobile Responsive Design', completed: isFirstFive },
+    seoOptimized: { id: `${pageId}-seo`, title: 'SEO Meta Tags & Struktur', completed: isFirstFive },
     contentReady: { id: `${pageId}-content`, title: 'Inhalte vollständig & aktuell', completed: false },
     performanceOptimized: { id: `${pageId}-perf`, title: 'Performance optimiert', completed: false },
     accessibilityCompliant: { id: `${pageId}-a11y`, title: 'Barrierefreiheit geprüft', completed: false }
@@ -50,7 +50,7 @@ const FinalChecks = () => {
           description: 'Die Hauptseite der Marsstein Compliance Platform. Hier finden Sie einen Überblick über alle unsere Compliance-Lösungen, Tools und Services für DSGVO, ISO 27001, EU AI Act und mehr.',
           priority: 'high',
           available: true,
-          ...createCheckItems('home')
+          ...createCheckItems('home', true)
         },
         {
           title: 'Preise',
@@ -58,7 +58,7 @@ const FinalChecks = () => {
           description: 'Transparente Preisübersicht für alle Marsstein-Pakete. Vergleichen Sie unsere Starter-, Professional- und Enterprise-Lösungen mit detaillierten Feature-Listen und finden Sie das passende Paket für Ihr Unternehmen.',
           priority: 'high',
           available: true,
-          ...createCheckItems('pricing')
+          ...createCheckItems('pricing', true)
         },
         {
           title: 'Kontakt',
@@ -66,7 +66,7 @@ const FinalChecks = () => {
           description: 'Nehmen Sie Kontakt mit unserem Expertenteam auf. Nutzen Sie unser Kontaktformular für individuelle Beratung oder vereinbaren Sie einen kostenlosen Erstberatungstermin für Ihre Compliance-Herausforderungen.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('contact')
+          ...createCheckItems('contact', true)
         },
         {
           title: 'Academy',
@@ -74,7 +74,7 @@ const FinalChecks = () => {
           description: 'Umfassende Lernplattform für Compliance-Themen. Erweitern Sie Ihr Wissen mit interaktiven Kursen, Webinaren und Zertifizierungen zu DSGVO, ISO-Standards und KI-Compliance.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('academy')
+          ...createCheckItems('academy', true)
         },
         {
           title: 'Dashboard',
@@ -82,7 +82,7 @@ const FinalChecks = () => {
           description: 'Ihr persönliches Compliance-Dashboard. Verwalten Sie alle Compliance-Aktivitäten, überwachen Sie KPIs, erstellen Sie Reports und behalten Sie den Überblick über Ihre Compliance-Status in Echtzeit.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('dashboard')
+          ...createCheckItems('dashboard', true)
         },
         {
           title: 'Danke',
@@ -101,43 +101,43 @@ const FinalChecks = () => {
       pages: [
         {
           title: 'DSGVO',
-          url: '/regulierung/dsgvo',
+          url: '/dsgvo',
           description: 'Umfassender Guide zur Datenschutz-Grundverordnung (GDPR). Erfahren Sie alles über Betroffenenrechte, Verarbeitungsverzeichnisse, TOMs, Meldepflichten und praktische Umsetzungstipps für Ihr Unternehmen.',
           priority: 'high',
           available: true,
-          ...createCheckItems('dsgvo-reg')
+          ...createCheckItems('dsgvo-reg', true)
         },
         {
           title: 'EU AI Act',
-          url: '/regulierung/eu-ai-act',
+          url: '/eu-ai-act',
           description: 'Kompletter Leitfaden zur EU-Verordnung über Künstliche Intelligenz. Verstehen Sie Risikoklassen, Konformitätsbewertungen, Transparenzpflichten und technische Dokumentationsanforderungen für KI-Systeme.',
           priority: 'high',
           available: true,
-          ...createCheckItems('ai-act-reg')
+          ...createCheckItems('ai-act-reg', true)
         },
         {
           title: 'NIS-2',
-          url: '/regulierung/nis2',
+          url: '/nis2',
           description: 'Detaillierte Informationen zur Network and Information Security Directive 2.0. Prüfen Sie Ihre Betroffenheit, verstehen Sie Meldepflichten und implementieren Sie erforderliche Cybersecurity-Maßnahmen.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('nis2-reg')
+          ...createCheckItems('nis2-reg', true)
         },
         {
           title: 'Hinweisgeberschutzgesetz',
-          url: '/regulierung/hinweisgeberschutzgesetz',
+          url: '/hinweisgeberschutzgesetz',
           description: 'Vollständiger Guide zum Whistleblower-Schutz in Deutschland. Erfahren Sie alles über interne Meldekanäle, Vertraulichkeitsanforderungen und Schutzmaßnahmen für Hinweisgeber nach HinSchG.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('hinweisgeberschutz-reg')
+          ...createCheckItems('hinweisgeberschutz-reg', true)
         },
         {
           title: 'Geldwäschegesetz',
-          url: '/regulierung/geldwaeschegesetz',
+          url: '/geldwaeschegesetz',
           description: 'Praxisorientierter Leitfaden zu Anti-Geldwäsche-Bestimmungen (AML). Verstehen Sie Sorgfaltspflichten, Risikomanagement, Verdachtsmeldungen und interne Sicherungsmaßnahmen nach GwG.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('geldwaeschegesetz-reg')
+          ...createCheckItems('geldwaeschegesetz-reg', true)
         }
       ]
     },
@@ -148,7 +148,7 @@ const FinalChecks = () => {
       pages: [
         {
           title: 'ISO 27001',
-          url: '/zertifizierung/iso-27001',
+          url: '/iso-27001',
           description: 'Der internationale Standard für Informationssicherheits-Managementsysteme (ISMS). Schritt-für-Schritt-Anleitung zur Implementierung, Zertifizierungsvorbereitung und kontinuierlichen Verbesserung Ihrer IT-Sicherheit.',
           priority: 'high',
           available: true,
@@ -156,7 +156,7 @@ const FinalChecks = () => {
         },
         {
           title: 'SOC 2',
-          url: '/zertifizierung/soc2',
+          url: '/soc2',
           description: 'System and Organization Controls 2 für Service-Provider. Meistern Sie die fünf Trust Service Principles (Sicherheit, Verfügbarkeit, Vertraulichkeit, Verarbeitungsintegrität, Datenschutz) für Ihre Cloud-Services.',
           priority: 'high',
           available: true,
@@ -164,7 +164,7 @@ const FinalChecks = () => {
         },
         {
           title: 'ISO 27017',
-          url: '/zertifizierung/iso-27017',
+          url: '/iso-27017',
           description: 'Spezifische Sicherheitskontrollen für Cloud-Services. Erweitern Sie Ihr ISO 27001 ISMS um Cloud-spezifische Controls für Provider und Nutzer von Cloud-Diensten.',
           priority: 'medium',
           available: true,
@@ -172,7 +172,7 @@ const FinalChecks = () => {
         },
         {
           title: 'ISO 27018',
-          url: '/zertifizierung/iso-27018',
+          url: '/iso-27018',
           description: 'Datenschutz in der Cloud für personenbezogene Daten. Implementieren Sie spezielle Privacy-Controls für Public Cloud PII (Personally Identifiable Information) Prozessoren.',
           priority: 'medium',
           available: true,
@@ -180,7 +180,7 @@ const FinalChecks = () => {
         },
         {
           title: 'TISAX',
-          url: '/zertifizierung/tisax',
+          url: '/tisax',
           description: 'Trusted Information Security Assessment Exchange für die Automobilindustrie. Erfüllen Sie die spezifischen Anforderungen der Automobilhersteller an Informationssicherheit und Datenschutz.',
           priority: 'medium',
           available: true,

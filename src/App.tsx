@@ -3,14 +3,20 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Index from "./pages/Index";
+import Home from "./pages/Home";
 import Contact from "./pages/Contact";
+import ContactPage from "./pages/ContactPage";
 import Academy from "./pages/Academy";
+import AcademyPage from "./pages/AcademyPage";
 import Pricing from "./pages/Pricing";
+import PricingPage from "./pages/PricingPage";
 import Dashboard from "./pages/Dashboard";
+import DashboardPage from "./pages/DashboardPage";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
@@ -154,17 +160,19 @@ const queryClient = new QueryClient({
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
+      <HelmetProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
                 <Route path="/" element={<Index />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/academy" element={<Academy />} />
-                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/academy" element={<AcademyPage />} />
+                <Route path="/pricing" element={<PricingPage />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/sitemap-seo" element={<SitemapSEO />} />
@@ -343,6 +351,7 @@ const App = () => (
             </BrowserRouter>
           </TooltipProvider>
         </LanguageProvider>
+      </HelmetProvider>
     </QueryClientProvider>
   </ErrorBoundary>
 );
