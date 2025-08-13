@@ -379,7 +379,15 @@ const GeldwaeschegesetzCompliance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
+    <>
+      <SEOHead
+        title="Geldwäschegesetz (GwG) – AML-Compliance automatisiert"
+        description="GwG-Compliance leicht gemacht: KYC-Prüfung, Risikomanagement & Verdachtsmeldungen. ✓ KI-gestützt ✓ BaFin-konform. Jetzt digitalisieren!"
+        canonical="/geldwaeschegesetz"
+        keywords="Geldwäschegesetz, GwG, AML Compliance, Anti-Geldwäsche, KYC Prüfung"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
       {/* Background Pattern */}
       <div className="fixed inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -1062,6 +1070,7 @@ const GeldwaeschegesetzCompliance = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

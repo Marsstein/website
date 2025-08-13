@@ -105,7 +105,7 @@ const FinalChecks = () => {
           description: 'Umfassender Guide zur Datenschutz-Grundverordnung (GDPR). Erfahren Sie alles über Betroffenenrechte, Verarbeitungsverzeichnisse, TOMs, Meldepflichten und praktische Umsetzungstipps für Ihr Unternehmen.',
           priority: 'high',
           available: true,
-          ...createCheckItems('dsgvo-reg')
+          ...createCheckItems('dsgvo-reg', true)
         },
         {
           title: 'EU AI Act',
@@ -113,7 +113,7 @@ const FinalChecks = () => {
           description: 'Kompletter Leitfaden zur EU-Verordnung über Künstliche Intelligenz. Verstehen Sie Risikoklassen, Konformitätsbewertungen, Transparenzpflichten und technische Dokumentationsanforderungen für KI-Systeme.',
           priority: 'high',
           available: true,
-          ...createCheckItems('ai-act-reg')
+          ...createCheckItems('ai-act-reg', true)
         },
         {
           title: 'NIS-2',
@@ -121,7 +121,7 @@ const FinalChecks = () => {
           description: 'Detaillierte Informationen zur Network and Information Security Directive 2.0. Prüfen Sie Ihre Betroffenheit, verstehen Sie Meldepflichten und implementieren Sie erforderliche Cybersecurity-Maßnahmen.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('nis2-reg')
+          ...createCheckItems('nis2-reg', true)
         },
         {
           title: 'Hinweisgeberschutzgesetz',
@@ -129,7 +129,7 @@ const FinalChecks = () => {
           description: 'Vollständiger Guide zum Whistleblower-Schutz in Deutschland. Erfahren Sie alles über interne Meldekanäle, Vertraulichkeitsanforderungen und Schutzmaßnahmen für Hinweisgeber nach HinSchG.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('hinweisgeberschutz-reg')
+          ...createCheckItems('hinweisgeberschutz-reg', true)
         },
         {
           title: 'Geldwäschegesetz',
@@ -137,7 +137,7 @@ const FinalChecks = () => {
           description: 'Praxisorientierter Leitfaden zu Anti-Geldwäsche-Bestimmungen (AML). Verstehen Sie Sorgfaltspflichten, Risikomanagement, Verdachtsmeldungen und interne Sicherungsmaßnahmen nach GwG.',
           priority: 'medium',
           available: true,
-          ...createCheckItems('geldwaeschegesetz-reg')
+          ...createCheckItems('geldwaeschegesetz-reg', true)
         }
       ]
     },
