@@ -117,8 +117,8 @@ export const BenefitsSection: React.FC = () => {
               <div className="text-sm opacity-90">Compliance Ready</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold">99.9%</div>
-              <div className="text-sm opacity-90">Uptime Guarantee</div>
+              <div className="text-3xl md:text-4xl font-bold">Reliable</div>
+              <div className="text-sm opacity-90">Infrastructure</div>
             </div>
             <div className="space-y-2">
               <div className="text-3xl md:text-4xl font-bold">24/7</div>

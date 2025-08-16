@@ -54,11 +54,11 @@ const DsgvoCompliance = () => {
       // Animate compliance score
       const scoreInterval = setInterval(() => {
         setComplianceScore(prev => {
-          if (prev >= 99) {
+          if (prev >= 25) {
             clearInterval(scoreInterval);
-            return 99;
+            return 25;
           }
-          return prev + 3;
+          return prev + 1;
         });
       }, 30);
     }, 500);
@@ -107,7 +107,7 @@ const DsgvoCompliance = () => {
             </h1>
             
             <p className="text-xl text-[#474747] leading-relaxed">
-              Schützen Sie Ihr Unternehmen vor Bußgeldern bis zu 20 Mio. € oder 4% des Jahresumsatzes. 
+              Schützen Sie Ihr Unternehmen vor DSGVO-Bußgeldern. 
               Unsere Vision: KI-gestützte Lösung für Standards-konforme DSGVO-Compliance.
               <Badge variant="outline" className="ml-2 text-xs">Beta Phase</Badge>
             </p>
@@ -142,8 +142,8 @@ const DsgvoCompliance = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="relative h-48 flex items-center justify-center">
-                  <div className="text-7xl font-bold text-[#e24e1b]">
-                    {complianceScore}%
+                  <div className="text-5xl font-bold text-[#e24e1b]">
+                    Beta Phase
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <svg className="w-48 h-48 transform -rotate-90">
@@ -274,12 +274,12 @@ const DsgvoCompliance = () => {
         marsteinSolution: 'Automatische Cookie-Compliance, integrierte Datenschutzerklärung und AVV-Generator für alle gängigen Payment-Provider.',
         realFines: [
           {
-            description: 'Online-Händler wegen unzureichender Cookie-Einverständnisse - 35.000€',
+            description: 'Online-Händler wegen unzureichender Cookie-Einverständnisse',
             source: 'Berliner Datenschutzbeauftragte',
             url: 'https://www.datenschutz-berlin.de/fileadmin/user_upload/pdf/pressemitteilungen/2021/20211216-PM-Cookie-Banner.pdf'
           },
           {
-            description: 'E-Commerce-Unternehmen für fehlende Rechtsgrundlagen bei Newsletter-Marketing - 50.000€',
+            description: 'E-Commerce-Unternehmen für fehlende Rechtsgrundlagen bei Newsletter-Marketing',
             source: 'LfDI Baden-Württemberg',
             url: 'https://www.baden-wuerttemberg.datenschutz.de/lfdi-verhaengt-bussgeld-gegen-unternehmen-wegen-unzulaessiger-newsletter-versendung/'
           }
@@ -310,12 +310,12 @@ const DsgvoCompliance = () => {
         marsteinSolution: 'Spezialisierte Gesundheitsdaten-Templates, automatische TOM-Dokumentation und rechtssichere AVV-Vorlagen für Gesundheitsdienstleister.',
         realFines: [
           {
-            description: 'Krankenhaus wegen unzureichender Patientendaten-Sicherung - 4,25 Mio.€',
+            description: 'Krankenhaus wegen unzureichender Patientendaten-Sicherung',
             source: 'LfDI Baden-Württemberg',
             url: 'https://www.baden-wuerttemberg.datenschutz.de/lfdi-verhaengt-rekordbussgeld-von-4-25-millionen-euro-gegen-suedwestdeutsche-klinikgruppe/'
           },
           {
-            description: 'Arztpraxis für fehlerhafte Patientendaten-Übermittlung - 20.000€',
+            description: 'Arztpraxis für fehlerhafte Patientendaten-Übermittlung',
             source: 'BayLDA',
             url: 'https://www.lda.bayern.de/media/pm2020_05.pdf'
           }
@@ -346,12 +346,12 @@ const DsgvoCompliance = () => {
         marsteinSolution: 'FinTech-spezifische DSFA-Templates, automatisierte Transparenz-Berichte und PCI-DSS-konforme Datenschutz-Dokumentation.',
         realFines: [
           {
-            description: 'Deutsche Bank wegen unzureichender Kundendaten-Verarbeitung - 1,13 Mio.€',
+            description: 'Deutsche Bank wegen unzureichender Kundendaten-Verarbeitung',
             source: 'Hessischer Datenschutzbeauftragter',
             url: 'https://datenschutz.hessen.de/pressemitteilungen/der-hessische-beauftragte-fuer-datenschutz-und-informationsfreiheit-7'
           },
           {
-            description: 'Versicherung für intransparente Scoring-Verfahren - 300.000€',
+            description: 'Versicherung für intransparente Scoring-Verfahren',
             source: 'LfDI Rheinland-Pfalz',
             url: 'https://www.datenschutz.rlp.de/de/aktuelles/detail/news/detail/News/bussgeldverfahren-gegen-versicherungsunternehmen-abgeschlossen/'
           }
@@ -382,12 +382,12 @@ const DsgvoCompliance = () => {
         marsteinSolution: 'Automatische DPA-Generierung, Standard Contractual Clauses (SCC) Integration und Subprocessor-Notification-System.',
         realFines: [
           {
-            description: 'SaaS-Anbieter wegen unzulässiger Drittland-Übermittlungen - 746.000€',
+            description: 'SaaS-Anbieter wegen unzulässiger Drittland-Übermittlungen',
             source: 'CNIL (Frankreich)',
             url: 'https://www.cnil.fr/en/cookies-google-analytics-and-data-transfers-united-states-cnil-orders-website-operator-comply'
           },
           {
-            description: 'Cloud-Provider für fehlende Auftragsverarbeiter-Verträge - 225.000€',
+            description: 'Cloud-Provider für fehlende Auftragsverarbeiter-Verträge',
             source: 'Österreichische Datenschutzbehörde',
             url: 'https://www.dsb.gv.at/download/DSB-D123.270/0003-DSB/2019/DSB.pdf'
           }
@@ -418,12 +418,12 @@ const DsgvoCompliance = () => {
         marsteinSolution: 'Marketing-Tech-Stack Compliance-Checker, automatische Consent-Integration und DSGVO-konforme Lead-Scoring-Dokumentation.',
         realFines: [
           {
-            description: 'Marketing-Agentur wegen unerlaubter E-Mail-Werbung - 100.000€',
+            description: 'Marketing-Agentur wegen unerlaubter E-Mail-Werbung',
             source: 'LfDI Niedersachsen',
             url: 'https://lfd.niedersachsen.de/startseite/infothek/presseinformationen/100-000-euro-bussgeld-wegen-unerlaubter-e-mail-werbung-199019.html'
           },
           {
-            description: 'Werbeunternehmen für Tracking ohne Einwilligung - 90.000€',
+            description: 'Werbeunternehmen für Tracking ohne Einwilligung',
             source: 'Berliner Datenschutzbeauftragte',
             url: 'https://www.datenschutz-berlin.de/fileadmin/user_upload/pdf/pressemitteilungen/2022/20220331-PM_Bussgeld_Tracking.pdf'
           }
@@ -454,12 +454,12 @@ const DsgvoCompliance = () => {
         marsteinSolution: 'HR-spezifische Einverständnis-Templates, automatische Löschfristen-Verwaltung und Betriebsrat-konforme Datenschutz-Dokumentation.',
         realFines: [
           {
-            description: 'Unternehmen wegen übermäßiger Mitarbeiter-Überwachung - 2,6 Mio.€',
+            description: 'Unternehmen wegen übermäßiger Mitarbeiter-Überwachung',
             source: 'Berliner Datenschutzbeauftragte',
             url: 'https://www.datenschutz-berlin.de/fileadmin/user_upload/pdf/pressemitteilungen/2019/20190930-PM-Mitarbeiterueberwachung.pdf'
           },
           {
-            description: 'HR-Dienstleister für unsichere Bewerberdaten-Verarbeitung - 60.000€',
+            description: 'HR-Dienstleister für unsichere Bewerberdaten-Verarbeitung',
             source: 'LfDI Baden-Württemberg',
             url: 'https://www.baden-wuerttemberg.datenschutz.de/lfdi-verhaengt-bussgeld-wegen-datenschutzverstoessen-bei-bewerbungsverfahren/'
           }
@@ -835,7 +835,7 @@ const DsgvoCompliance = () => {
             },
             {
               icon: Clock,
-              title: 'Potenzial: Bis 90% Zeitersparnis',
+              title: 'Zeitersparnis durch Automatisierung',
               description: 'Vision: Automatisierung repetitiver Aufgaben für Fokus auf Kerngeschäft.',
               benefits: ['Geplant: KI-Dokumentation', 'Roadmap: Workflows', 'Vision: One-Click Reports']
             },
@@ -1290,7 +1290,7 @@ const DsgvoCompliance = () => {
             {[
               {
                 question: "Wie schnell kann ich mit Marsstein DSGVO-konform werden?",
-                answer: "Die meisten Unternehmen erreichen mit Marsstein innerhalb von 4 Wochen vollständige DSGVO-Compliance. Der genaue Zeitrahmen hängt von der Größe und Komplexität Ihres Unternehmens ab. Unsere KI-gestützte Analyse identifiziert sofort die wichtigsten Handlungsfelder, sodass Sie bereits ab Tag 1 Fortschritte machen."
+                answer: "Der Zeitrahmen für DSGVO-Compliance hängt von der Größe und Komplexität Ihres Unternehmens ab. Unsere geplante KI-gestützte Analyse soll dabei helfen, die wichtigsten Handlungsfelder schnell zu identifizieren."
               },
               {
                 question: "Was passiert, wenn sich die DSGVO-Gesetze ändern?",
@@ -1298,7 +1298,7 @@ const DsgvoCompliance = () => {
               },
               {
                 question: "Ist meine Unternehmensdaten bei Marsstein sicher?",
-                answer: "Absolut. Wir verwenden Ende-zu-Ende-Verschlüsselung nach Militärstandard und speichern alle Daten in ISO 27001 zertifizierten Rechenzentren in Deutschland. Wir sind selbst DSGVO-konform und werden regelmäßig von unabhängigen Auditoren geprüft. Ihre Daten verlassen niemals die EU."
+                answer: "Sicherheit hat für uns höchste Priorität. Wir planen die Implementierung von Ende-zu-Ende-Verschlüsselung und die Nutzung zertifizierter Rechenzentren in Deutschland. DSGVO-Konformität ist unser Ziel."
               },
               {
                 question: "Kann ich Marsstein auch für internationale Compliance nutzen?",
@@ -1306,7 +1306,7 @@ const DsgvoCompliance = () => {
               },
               {
                 question: "Was ist, wenn ich bereits einen Datenschutzbeauftragten habe?",
-                answer: "Marsstein ist das perfekte Tool für Datenschutzbeauftragte! Es automatisiert zeitaufwändige Aufgaben, erstellt Reports auf Knopfdruck und hält alle Dokumentationen aktuell. Viele DSBs nutzen Marsstein, um ihre Effizienz zu steigern und sich auf strategische Aufgaben zu konzentrieren."
+                answer: "Marsstein soll Datenschutzbeauftragte unterstützen. Geplant sind Features zur Automatisierung zeitaufwändiger Aufgaben und Report-Erstellung, um mehr Zeit für strategische Aufgaben zu schaffen."
               },
               {
                 question: "Gibt es eine Mindestvertragslaufzeit?",
@@ -1363,7 +1363,7 @@ const DsgvoCompliance = () => {
           <CardContent className="relative z-10 p-12 md:p-20 text-center space-y-8">
             <Badge className="bg-[#e24e1b] text-white px-6 py-2 text-base">
               <Sparkles className="h-4 w-4 mr-2" />
-              Limitiertes Angebot: 50% Rabatt für die ersten 3 Monate
+              Beta-Phase Zugang
             </Badge>
             
             <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">

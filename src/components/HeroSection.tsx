@@ -27,10 +27,10 @@ export const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const metrics = [
-    { value: 98, label: "Compliance Ziel", icon: Shield, color: "text-emerald-400", bgColor: "bg-emerald-500/20", borderColor: "border-emerald-500/30", suffix: "%", isGoal: true },
-    { value: 500, label: "Zielgruppe", icon: Building2, color: "text-blue-400", bgColor: "bg-blue-500/20", borderColor: "border-blue-500/30", suffix: "k+", isGoal: true },
-    { value: 10000, label: "Einsparziel", icon: Clock, color: "text-brand-red", bgColor: "bg-brand-red/20", borderColor: "border-brand-red/30", suffix: "h", isGoal: true },
-    { value: 99.5, label: "Verfügbarkeitsziel", icon: Activity, color: "text-purple-400", bgColor: "bg-purple-500/20", borderColor: "border-purple-500/30", suffix: "%", isGoal: true }
+    { value: "Standards", label: "Compliance Ziel", icon: Shield, color: "text-emerald-400", bgColor: "bg-emerald-500/20", borderColor: "border-emerald-500/30", suffix: "", isGoal: true, isNumeric: false },
+    { value: "DACH", label: "Zielgruppe", icon: Building2, color: "text-blue-400", bgColor: "bg-blue-500/20", borderColor: "border-blue-500/30", suffix: "", isGoal: true, isNumeric: false },
+    { value: "Auto", label: "Einsparziel", icon: Clock, color: "text-brand-red", bgColor: "bg-brand-red/20", borderColor: "border-brand-red/30", suffix: "", isGoal: true, isNumeric: false },
+    { value: "Beta", label: "Verfügbarkeitsziel", icon: Activity, color: "text-purple-400", bgColor: "bg-purple-500/20", borderColor: "border-purple-500/30", suffix: "", isGoal: true, isNumeric: false }
   ];
 
   const features = [
@@ -120,7 +120,7 @@ export const HeroSection: React.FC = () => {
               
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
                 Die erste KI-native Compliance-Plattform für das digitale Zeitalter. 
-                Automatisieren Sie Ihre Compliance-Prozesse und sparen Sie bis zu 85% Zeit.
+                Automatisieren Sie Ihre Compliance-Prozesse mit modernster Technologie.
               </p>
             </div>
 
@@ -233,19 +233,7 @@ export const HeroSection: React.FC = () => {
                         
                         <div className="space-y-1">
                           <div className="text-2xl font-bold text-white">
-                            {isVisible ? (
-                              <>
-                                <CountUp
-                                  end={metric.value}
-                                  duration={2.5}
-                                  delay={index * 0.2}
-                                  decimals={metric.label === "Verfügbarkeitsziel" ? 1 : 0}
-                                />
-                                {metric.suffix || ""}
-                              </>
-                            ) : (
-                              "0"
-                            )}
+                            {metric.value}
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="text-xs text-gray-400">{metric.label}</div>
@@ -266,7 +254,7 @@ export const HeroSection: React.FC = () => {
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-400">Compliance Ziel</span>
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold text-white">98.7%</span>
+                      <span className="font-semibold text-white">In Entwicklung</span>
                       <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-1 py-0">
                         Vision
                       </Badge>
@@ -276,7 +264,7 @@ export const HeroSection: React.FC = () => {
                     <div 
                       className="bg-gradient-to-r from-emerald-500 to-green-600 h-2 rounded-full transition-all duration-2000 ease-out"
                       style={{ 
-                        width: isVisible ? '98.7%' : '0%',
+                        width: isVisible ? '25%' : '0%',
                         transitionDelay: '1s'
                       }}
                     />
@@ -309,7 +297,7 @@ export const HeroSection: React.FC = () => {
             {/* Market Focus */}
             <div className="text-center">
               <p className="text-sm text-gray-300 mb-2">
-                Entwickelt für <strong className="text-white">500k+ EU-Unternehmen</strong>
+                Entwickelt für <strong className="text-white">EU-Unternehmen</strong>
               </p>
               <div className="flex justify-center items-center space-x-2">
                 <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-2 py-1">

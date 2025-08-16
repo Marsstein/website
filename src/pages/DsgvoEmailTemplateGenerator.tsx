@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEOHead from '../components/SEOHead';
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -174,6 +175,15 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const DsgvoEmailTemplateGenerator = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DSGVO E-Mail Template Generator",
+    "description": "Generator für DSGVO-konforme E-Mail-Vorlagen: Auskunftsersuchen, Löschanfragen, Betroffenenrechte",
+    "applicationCategory": "Privacy Tool",
+    "url": "https://marsstein.com/tools/dsgvo-email-template-generator"
+  };
+
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isGenerating, setIsGenerating] = useState(false);
   const heroRef = useRef(null);
@@ -395,8 +405,16 @@ Nach Prüfung unserer Systeme können wir Ihnen folgende Auskunft erteilen:
   ]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <>
+      <SEOHead
+        title="DSGVO E-Mail Templates – Rechtssichere Vorlagen"
+        description="DSGVO E-Mail Template Generator: Rechtssichere Vorlagen für Auskunftsersuchen, Löschanfragen, Betroffenenrechte. ✓ Anwaltlich geprüft ✓ Sofort einsetzbar. Jetzt generieren!"
+        canonical="/tools/dsgvo-email-template-generator"
+        keywords="DSGVO E-Mail Templates, Auskunftsersuchen, Löschanfragen, Betroffenenrechte, DSGVO Vorlagen"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-background">
+        <Header />
       
       {/* Hero Section - Dark themed like the three new pages */}
       <motion.section
@@ -1039,6 +1057,7 @@ ${demoFormData.company}`}
 
       <Footer />
     </div>
+    </>
   );
 };
 

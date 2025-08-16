@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -29,6 +30,14 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const ECommerce: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "E-Commerce Compliance Lösungen",
+    "description": "DSGVO-Compliance für Online-Handel: Cookie-Management, Kundendatenschutz, Cross-Border",
+    "url": "https://marsstein.com/branchen/e-commerce"
+  };
+
   const painPoints = [
     {
       icon: Cookie,
@@ -138,8 +147,16 @@ const ECommerce: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="E-Commerce – DSGVO & Cookie-Compliance für Shops"
+        description="E-Commerce DSGVO: Cookie-Banner, Kundendatenschutz, Cross-Border-Handel. ✓ Abmahnsicher ✓ Conversion-optimiert. Jetzt compliant werden!"
+        canonical="/branchen/e-commerce"
+        keywords="E-Commerce DSGVO, Cookie Compliance, Online Shop Datenschutz, E-Commerce Compliance, Cookie Banner"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -446,6 +463,7 @@ const ECommerce: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

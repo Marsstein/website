@@ -61,16 +61,6 @@ export const StatsSection: React.FC = () => {
       color: 'text-purple-600',
       bgColor: 'bg-purple-100 dark:bg-purple-900/20',
       badge: 'Roadmap'
-    },
-    {
-      icon: Users,
-      value: 500,
-      suffix: 'k+',
-      label: 'Zielgruppe',
-      description: 'EU-Unternehmen adressiert',
-      color: 'text-orange-600',
-      bgColor: 'bg-orange-100 dark:bg-orange-900/20',
-      badge: 'Potenzial'
     }
   ];
 

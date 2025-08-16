@@ -69,6 +69,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const TomMassnahmenGuide: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
@@ -88,7 +89,6 @@ const TomMassnahmenGuide: React.FC = () => {
       id: 0,
       title: 'TOM-Grundlagen & Rechtlicher Rahmen',
       subtitle: 'Art. 32 DSGVO verstehen',
-      readTime: '12 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-4 lg:p-8">
@@ -209,7 +209,6 @@ const TomMassnahmenGuide: React.FC = () => {
       id: 1,
       title: 'Technische Sicherheitsmaßnahmen',
       subtitle: 'IT-Security & Datenschutz',
-      readTime: '15 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-xl p-4 lg:p-8">
@@ -407,7 +406,6 @@ const TomMassnahmenGuide: React.FC = () => {
       id: 2,
       title: 'Organisatorische Sicherheitsmaßnahmen',
       subtitle: 'Prozesse, Richtlinien & Personal',
-      readTime: '12 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 rounded-xl p-4 lg:p-8">
@@ -689,7 +687,6 @@ const TomMassnahmenGuide: React.FC = () => {
       id: 3,
       title: 'Risikobasierte TOM-Auswahl',
       subtitle: 'Angemessenheit & Risikobewertung',
-      readTime: '10 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20 rounded-xl p-4 lg:p-8">
@@ -938,7 +935,6 @@ const TomMassnahmenGuide: React.FC = () => {
       id: 4,
       title: 'TOM-Dokumentation & Nachweis',
       subtitle: 'Compliance & Auditierung',
-      readTime: '8 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 rounded-xl p-4 lg:p-8">
@@ -1196,8 +1192,15 @@ const TomMassnahmenGuide: React.FC = () => {
   const currentChapterData = chapters[currentChapter];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      <Header />
+    <>
+      <SEOHead
+        title="TOM Maßnahmen – DSGVO Art. 32 Technische & Organisatorische Maßnahmen"
+        description="TOM-Maßnahmen nach Art. 32 DSGVO implementieren: Verschlüsselung, Zugangskontrollen, Pseudonymisierung. ✓ Schritt-für-Schritt ✓ Checklisten ✓ Vorlagen. Jetzt umsetzen!"
+        canonical="/wissen/leitfaden/tom-massnahmen"
+        keywords="tom maßnahmen dsgvo, art 32 dsgvo, technische organisatorische maßnahmen, verschlüsselung, zugangskontrollen"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        <Header />
       
 
 
@@ -1249,10 +1252,6 @@ const TomMassnahmenGuide: React.FC = () => {
 
             {/* Guide Stats */}
             <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="flex items-center gap-2 px-4 py-2 bg-slate-800/60 rounded-full backdrop-blur-sm">
-                <Clock className="h-4 w-4 text-blue-400" />
-                <span className="text-sm text-slate-300">45 Min Lesezeit</span>
-              </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-slate-800/60 rounded-full backdrop-blur-sm">
                 <Target className="h-4 w-4 text-green-400" />
                 <span className="text-sm text-slate-300">Fortgeschritten</span>
@@ -1333,7 +1332,7 @@ const TomMassnahmenGuide: React.FC = () => {
             <div className="flex items-center gap-6 text-sm text-slate-400">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
-                <span>{currentChapterData.readTime} Lesezeit</span>
+                <span>Kapitel {currentChapter + 1}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
@@ -1388,7 +1387,6 @@ const TomMassnahmenGuide: React.FC = () => {
                             </div>
                             <div className="flex-grow">
                               <div className="text-sm font-medium">{chapter.title}</div>
-                              <div className="text-xs opacity-75">{chapter.readTime}</div>
                             </div>
                           </div>
                         </button>
@@ -1399,7 +1397,7 @@ const TomMassnahmenGuide: React.FC = () => {
                       <div className="text-sm text-slate-400 mb-2">Gesamtfortschritt</div>
                       <Progress value={(completedChapters.length / chapters.length) * 100} className="h-2 mb-2" />
                       <div className="text-xs text-slate-400">
-                        {Math.round((completedChapters.length / chapters.length) * 100)}% • {chapters.reduce((total, chapter) => total + parseInt(chapter.readTime), 0)} Min gesamt
+                        {Math.round((completedChapters.length / chapters.length) * 100)}% abgeschlossen
                       </div>
                     </div>
                   </CardContent>
@@ -1543,8 +1541,9 @@ const TomMassnahmenGuide: React.FC = () => {
         </div>
       </section>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

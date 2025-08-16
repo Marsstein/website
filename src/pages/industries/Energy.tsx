@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -27,6 +28,13 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Energy: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "EnergyOrganization",
+    "name": "Energie Compliance Lösungen",
+    "description": "Energiesektor Compliance: KRITIS, Smart Grid DSGVO, NIS2 für kritische Infrastrukturen",
+    "url": "https://marsstein.com/branchen/energie"
+  };
   const painPoints = [
     {
       icon: Brain,
@@ -136,8 +144,16 @@ const Energy: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Energie – KRITIS & Smart Grid Compliance"
+        description="Energiesektor Compliance: KRITIS-Anforderungen, Smart Grid DSGVO, NIS2 kritische Infrastrukturen. ✓ Netzbetreiber-Expertise ✓ Smart Meter. Jetzt sicher!"
+        canonical="/branchen/energie"
+        keywords="KRITIS Compliance, Smart Grid DSGVO, Energiesektor NIS2, Smart Meter Datenschutz"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -444,6 +460,7 @@ const Energy: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

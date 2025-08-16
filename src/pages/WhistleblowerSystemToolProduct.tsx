@@ -476,18 +476,6 @@ const WhistleblowerSystemToolProduct = () => {
                 </div>
                 
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-lg font-bold text-emerald-600">7 Tage</div>
-                    <div className="text-xs text-gray-500">Ø Bearbeitung</div>
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-blue-600">99.9%</div>
-                    <div className="text-xs text-gray-500">Uptime</div>
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-purple-600">2,000+</div>
-                    <div className="text-xs text-gray-500">Unternehmen</div>
-                  </div>
                 </div>
               </div>
             </motion.div>

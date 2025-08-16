@@ -19,6 +19,8 @@ import Dashboard from "./pages/Dashboard";
 import DashboardPage from "./pages/DashboardPage";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
+import Impressum from "./pages/Impressum";
+import Datenschutz from "./pages/Datenschutz";
 
 import { Resources } from "./pages/Resources";
 import { DSGVOComplianceChecklist } from "./pages/resources/DSGVOComplianceChecklist";
@@ -63,6 +65,10 @@ import HinweisgeberschutzgesetzGuide from "./pages/compliance/Hinweisgeberschutz
 import TisaxGuide from "./pages/compliance/TisaxGuide";
 import GeldwaeschegesetzGuide from "./pages/compliance/GeldwaeschegesetzGuide";
 import DsgvoGuide from "./pages/compliance/DsgvoGuide";
+import DsgEkdCompliance from "./pages/compliance/DsgEkdCompliance";
+import DsgEkdGuide from "./pages/compliance/DsgEkdGuide";
+import KdgCompliance from "./pages/compliance/KdgCompliance";
+import KdgGuide from "./pages/compliance/KdgGuide";
 import DsgvoBasicsGuide from "./pages/guides/DsgvoBasicsGuide";
 import WebsiteDsgvoGuide from "./pages/guides/WebsiteDsgvoGuide";
 import Dsgvo30TageGuide from "./pages/guides/Dsgvo30TageGuide";
@@ -177,6 +183,8 @@ const App = () => (
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/sitemap-seo" element={<SitemapSEO />} />
                 <Route path="/final-checks" element={<FinalChecks />} />
+                <Route path="/impressum" element={<Impressum />} />
+                <Route path="/datenschutz" element={<Datenschutz />} />
                 
                 {/* Test Routes for Scroll Animation Tests - moved up for priority */}
                 <Route path="/design-separator-test" element={<DesignSeparatorTest />} />
@@ -296,6 +304,10 @@ const App = () => (
                 <Route path="/compliance/tisax" element={<TisaxGuide />} />
                 <Route path="/compliance/geldwaeschegesetz" element={<GeldwaeschegesetzGuide />} />
                 <Route path="/compliance/dsgvo" element={<DsgvoGuide />} />
+                <Route path="/dsg-ekd" element={<DsgEkdCompliance />} />
+                <Route path="/compliance/dsg-ekd" element={<DsgEkdGuide />} />
+                <Route path="/kdg" element={<KdgCompliance />} />
+                <Route path="/compliance/kdg" element={<KdgGuide />} />
                 <Route path="/wissen/leitfaden/dsgvo-grundlagen" element={<DsgvoBasicsGuide />} />
                 <Route path="/wissen/leitfaden/website-dsgvo" element={<WebsiteDsgvoGuide />} />
                 <Route path="/wissen/leitfaden/dsgvo-30-tage" element={<Dsgvo30TageGuide />} />

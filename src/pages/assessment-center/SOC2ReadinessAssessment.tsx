@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -92,6 +93,15 @@ interface AssessmentResult {
 }
 
 const SOC2ReadinessAssessment: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Assessment",
+    "name": "SOC 2 Readiness Assessment",
+    "description": "Bewerten Sie Ihre Bereitschaft für eine SOC 2 Zertifizierung mit unserem interaktiven Assessment-Tool",
+    "educationalLevel": "Professional",
+    "url": "https://marsstein.com/assessment-center/soc2-readiness-assessment"
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -670,8 +680,16 @@ const SOC2ReadinessAssessment: React.FC = () => {
 
   if (isCalculating) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
+      <>
+        <SEOHead
+          title="SOC 2 Readiness Assessment – Zertifizierungsbereitschaft"
+          description="SOC 2 Readiness Assessment: Prüfen Sie Ihre Bereitschaft für die SOC 2 Zertifizierung. ✓ Trust Services ✓ Gap-Analyse ✓ Audit-Roadmap. Jetzt testen!"
+          canonical="/assessment-center/soc2-readiness-assessment"
+          keywords="SOC 2 Assessment, SOC 2 Readiness, SOC 2 Zertifizierung, Trust Services, Audit Readiness"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
         <div className="pt-24 pb-16">
           <div className="container px-4">
             <div className="max-w-2xl mx-auto text-center">
@@ -715,6 +733,7 @@ const SOC2ReadinessAssessment: React.FC = () => {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
@@ -729,8 +748,16 @@ const SOC2ReadinessAssessment: React.FC = () => {
     };
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
+      <>
+        <SEOHead
+          title="SOC 2 Readiness Assessment – Zertifizierungsbereitschaft"
+          description="SOC 2 Readiness Assessment: Prüfen Sie Ihre Bereitschaft für die SOC 2 Zertifizierung. ✓ Trust Services ✓ Gap-Analyse ✓ Audit-Roadmap. Jetzt testen!"
+          canonical="/assessment-center/soc2-readiness-assessment"
+          keywords="SOC 2 Assessment, SOC 2 Readiness, SOC 2 Zertifizierung, Trust Services, Audit Readiness"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
         <div className="pt-24 pb-16">
           <div className="container px-4">
             <div className="max-w-6xl mx-auto">
@@ -998,12 +1025,21 @@ const SOC2ReadinessAssessment: React.FC = () => {
         </div>
         <Footer />
       </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-      <Header />
+    <>
+      <SEOHead
+        title="SOC 2 Readiness Assessment – Zertifizierungsbereitschaft"
+        description="SOC 2 Readiness Assessment: Prüfen Sie Ihre Bereitschaft für die SOC 2 Zertifizierung. ✓ Trust Services ✓ Gap-Analyse ✓ Audit-Roadmap. Jetzt testen!"
+        canonical="/assessment-center/soc2-readiness-assessment"
+        keywords="SOC 2 Assessment, SOC 2 Readiness, SOC 2 Zertifizierung, Trust Services, Audit Readiness"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        <Header />
       
       <div className="pt-24 pb-16">
         <div className="container px-4">
@@ -1194,6 +1230,7 @@ const SOC2ReadinessAssessment: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

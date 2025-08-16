@@ -239,7 +239,7 @@ export const ISO27001Section: React.FC = () => {
           {[
             { label: 'Kontrollen', value: totalControls.toString(), icon: FileCheck, gradient: 'from-emerald-500 to-green-600' },
             { label: 'Domains', value: '14', icon: Settings, gradient: 'from-blue-500 to-cyan-600' },
-            { label: 'Implementierung', value: '100%', icon: CheckCircle2, gradient: 'from-emerald-500 to-green-600' },
+            { label: 'Implementierung', value: 'Geplant', icon: CheckCircle2, gradient: 'from-emerald-500 to-green-600' },
             { label: 'Zertifiziert', value: '2024', icon: Shield, gradient: 'from-[#e24e1b] to-orange-500' }
           ].map((stat, index) => {
             const StatIcon = stat.icon;

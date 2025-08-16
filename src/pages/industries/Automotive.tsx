@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -27,6 +28,13 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Automotive: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AutomotiveOrganization",
+    "name": "Automotive Compliance Lösungen",
+    "description": "Automotive Compliance: TISAX, Connected Car DSGVO, Autonomous Vehicle AI Act",
+    "url": "https://marsstein.com/branchen/automotive"
+  };
   const painPoints = [
     {
       icon: Brain,
@@ -136,8 +144,16 @@ const Automotive: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Automotive – TISAX & Connected Car Compliance"
+        description="Automotive Compliance: TISAX-Zertifizierung, Connected Car DSGVO, Autonomous Vehicle AI Act. ✓ VDA-Standards ✓ Cyber Security. Jetzt automotive-ready!"
+        canonical="/branchen/automotive"
+        keywords="TISAX Zertifizierung, Automotive DSGVO, Connected Car, Autonomous Vehicle, VDA Standards"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -444,6 +460,7 @@ const Automotive: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

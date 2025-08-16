@@ -7189,28 +7189,28 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                               <div>
                                 <div className="flex justify-between text-sm mb-1">
                                   <span className="text-blue-700">Meldungsqualität</span>
-                                  <span className="font-medium">4.2/5</span>
+                                  <span className="font-medium">Gut</span>
                                 </div>
                                 <Progress value={84} className="h-2" />
                               </div>
                               <div>
                                 <div className="flex justify-between text-sm mb-1">
                                   <span className="text-blue-700">Untersuchungstiefe</span>
-                                  <span className="font-medium">4.5/5</span>
+                                  <span className="font-medium">Sehr gut</span>
                                 </div>
                                 <Progress value={90} className="h-2" />
                               </div>
                               <div>
                                 <div className="flex justify-between text-sm mb-1">
                                   <span className="text-blue-700">Dokumentation</span>
-                                  <span className="font-medium">4.7/5</span>
+                                  <span className="font-medium">Sehr gut</span>
                                 </div>
                                 <Progress value={94} className="h-2" />
                               </div>
                               <div>
                                 <div className="flex justify-between text-sm mb-1">
                                   <span className="text-blue-700">Nachvollziehbarkeit</span>
-                                  <span className="font-medium">4.8/5</span>
+                                  <span className="font-medium">Exzellent</span>
                                 </div>
                                 <Progress value={96} className="h-2" />
                               </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -5299,9 +5300,30 @@ const BenefitsSection = () => (
 
 // Main Component
 const Iso27001Compliance = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "ISO 27001 Zertifizierung",
+    "description": "ISO 27001 Zertifizierung und ISMS Implementierung für Informationssicherheit",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Information Security Management",
+    "areaServed": "DE"
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <>
+      <SEOHead
+        title="ISO 27001 Zertifizierung – ISMS erfolgreich aufbauen"
+        description="ISO 27001 Zertifizierung meistern: ISMS-Implementierung, Gap-Analyse & Audit-Vorbereitung. ✓ Schritt-für-Schritt ✓ Praxisnah. Jetzt starten!"
+        canonical="/iso-27001"
+        keywords="ISO 27001, ISMS, Informationssicherheit, ISO 27001 Zertifizierung, IT-Sicherheit"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-background">
+        <Header />
       <HeroSection />
       <PainpointSection />
       <Iso27001DeepDiveSection />
@@ -5321,6 +5343,7 @@ const Iso27001Compliance = () => {
       <CTASection />
       <Footer />
     </div>
+    </>
   );
 };
 

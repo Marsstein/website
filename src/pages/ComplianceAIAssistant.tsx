@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEOHead from '../components/SEOHead';
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -90,6 +91,15 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const ComplianceAIAssistant = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Compliance AI Assistant",
+    "description": "KI-gestützter Compliance-Berater für DSGVO, ISO 27001 und EU AI Act Fragen",
+    "applicationCategory": "AI Assistant",
+    "url": "https://marsstein.com/tools/compliance-ai-assistant"
+  };
+
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [responseTime, setResponseTime] = useState(0);
@@ -271,8 +281,16 @@ const ComplianceAIAssistant = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
-      <Header />
+    <>
+      <SEOHead
+        title="AI Assistant – Compliance-Berater mit KI-Power"
+        description="Compliance AI Assistant: KI-gestützter Berater für DSGVO, ISO 27001, EU AI Act. ✓ 24/7 verfügbar ✓ Voice AI ✓ Instant Antworten. Jetzt kostenlos testen!"
+        canonical="/tools/compliance-ai-assistant"
+        keywords="Compliance AI Assistant, KI Compliance Berater, DSGVO AI, Voice AI, Compliance Automation"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
+        <Header />
       
       {/* Hero Section */}
       <motion.section 
@@ -734,30 +752,13 @@ const ComplianceAIAssistant = () => {
               </Button>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-blue-100">
-              <div className="flex flex-col items-center space-y-2">
-                <MessageCircle className="w-8 h-8" />
-                <span className="text-sm">284k+ Fragen</span>
-              </div>
-              <div className="flex flex-col items-center space-y-2">
-                <Target className="w-8 h-8" />
-                <span className="text-sm">97.8% Genauigkeit</span>
-              </div>
-              <div className="flex flex-col items-center space-y-2">
-                <Zap className="w-8 h-8" />
-                <span className="text-sm">1.3s Antwortzeit</span>
-              </div>
-              <div className="flex flex-col items-center space-y-2">
-                <Users className="w-8 h-8" />
-                <span className="text-sm">12k+ Users</span>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
 
       <Footer />
     </div>
+    </>
   );
 };
 

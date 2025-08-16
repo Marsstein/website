@@ -286,9 +286,6 @@ const WhistleblowerSystemTool = () => {
   ];
 
   const stats = [
-    { value: '2,000+', label: 'Unternehmen', icon: Building2 },
-    { value: '99.9%', label: 'Uptime', icon: Shield },
-    { value: '< 2s', label: 'Meldung Zeit', icon: Clock },
     { value: '24/7', label: 'Verfügbar', icon: Headphones }
   ];
 
@@ -804,18 +801,6 @@ const WhistleblowerSystemTool = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4 mt-8">
-                  <div className="bg-gray-800 rounded-xl p-4 text-center">
-                    <div className="text-2xl font-bold text-emerald-500">247</div>
-                    <div className="text-sm text-gray-400">Aktive Fälle</div>
-                  </div>
-                  <div className="bg-gray-800 rounded-xl p-4 text-center">
-                    <div className="text-2xl font-bold text-blue-500">99.8%</div>
-                    <div className="text-sm text-gray-400">Termintreue</div>
-                  </div>
-                  <div className="bg-gray-800 rounded-xl p-4 text-center">
-                    <div className="text-2xl font-bold text-purple-500">15k+</div>
-                    <div className="text-sm text-gray-400">Meldungen</div>
-                  </div>
                   <div className="bg-gray-800 rounded-xl p-4 text-center">
                     <div className="text-2xl font-bold text-yellow-500">0</div>
                     <div className="text-sm text-gray-400">Datenlecks</div>

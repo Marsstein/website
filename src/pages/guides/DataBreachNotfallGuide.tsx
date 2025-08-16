@@ -167,7 +167,6 @@ const DataBreachNotfallGuide: React.FC = () => {
       id: 0,
       title: 'Sofortmaßnahmen: Die ersten 72 Stunden',
       subtitle: 'Kritische Schritte zur Schadensbegrenzung',
-      readTime: '15 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 rounded-xl p-8">
@@ -341,7 +340,6 @@ const DataBreachNotfallGuide: React.FC = () => {
       id: 1,
       title: 'Detaillierte Analyse und Untersuchung',
       subtitle: 'Umfassende Bewertung des Sicherheitsvorfalls',
-      readTime: '20 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-8">
@@ -622,7 +620,6 @@ const DataBreachNotfallGuide: React.FC = () => {
       id: 2,
       title: 'Meldepflichten und Behördenkommunikation',
       subtitle: 'Ordnungsgemäße Meldung nach Art. 33 und 34 DSGVO',
-      readTime: '25 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-8">
@@ -1023,7 +1020,6 @@ const DataBreachNotfallGuide: React.FC = () => {
       id: 3,
       title: 'Nachbearbeitung und Prävention',
       subtitle: 'Lessons Learned und Verbesserung der Sicherheit',
-      readTime: '18 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-xl p-8">
@@ -1573,10 +1569,6 @@ const DataBreachNotfallGuide: React.FC = () => {
             </p>
             
             <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
-              <Badge variant="outline" className="bg-red-500/10 border-red-500/20 text-red-300">
-                <Clock className="h-4 w-4 mr-2" />
-                65 Min Lesezeit
-              </Badge>
               <Badge variant="outline" className="bg-orange-500/10 border-orange-500/20 text-orange-300">
                 <Target className="h-4 w-4 mr-2" />
                 Notfallmanagement
@@ -1591,14 +1583,6 @@ const DataBreachNotfallGuide: React.FC = () => {
               </Badge>
             </div>
 
-            <div className="flex items-center justify-center gap-2 mb-8">
-              <div className="flex items-center gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="text-slate-300 ml-2">4.9/5 (1,247 Bewertungen)</span>
-            </div>
           </motion.div>
 
           <div className="grid lg:grid-cols-4 gap-8">
@@ -1632,7 +1616,6 @@ const DataBreachNotfallGuide: React.FC = () => {
                             )}
                             <div>
                               <div className="font-semibold text-sm">{chapter.title}</div>
-                              <div className="text-xs opacity-70">{chapter.readTime}</div>
                             </div>
                           </div>
                         </button>
@@ -1687,7 +1670,7 @@ const DataBreachNotfallGuide: React.FC = () => {
                     <div className="flex items-center gap-3">
                       <Badge variant="outline" className="bg-blue-500/10 border-blue-500/20 text-blue-300">
                         <Clock className="h-4 w-4 mr-2" />
-                        {chapters[currentChapter].readTime}
+                        Kapitel {currentChapter + 1}
                       </Badge>
                       <Button
                         onClick={() => handleChapterComplete(chapters[currentChapter].id)}

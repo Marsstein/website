@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -60,6 +61,15 @@ interface AssessmentResult {
 }
 
 const AIRiskAssessment: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Assessment",
+    "name": "EU AI Act Risk Assessment",
+    "description": "Bewerten Sie das Risiko Ihres KI-Systems nach EU AI Act Kriterien und erhalten Sie Handlungsempfehlungen",
+    "educationalLevel": "Professional",
+    "url": "https://marsstein.com/assessment-center/ai-risk-assessment"
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -451,8 +461,16 @@ const AIRiskAssessment: React.FC = () => {
 
   if (isCalculating) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-purple-950 dark:via-gray-900 dark:to-pink-950">
-        <Header />
+      <>
+        <SEOHead
+          title="KI-Risiko Assessment – EU AI Act Bewertung"
+          description="EU AI Act Risk Assessment: Bewerten Sie das Risiko Ihres KI-Systems nach EU AI Act. ✓ Risikoeinstufung ✓ Compliance-Check ✓ Handlungsempfehlungen. Jetzt testen!"
+          canonical="/assessment-center/ai-risk-assessment"
+          keywords="EU AI Act Assessment, KI-Risiko Bewertung, AI Risk Assessment, KI Compliance, EU AI Act Risiko"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-purple-950 dark:via-gray-900 dark:to-pink-950">
+          <Header />
         <div className="pt-24 pb-16 px-4">
           <div className="container mx-auto max-w-4xl">
             <Card className="text-center p-12">
@@ -476,6 +494,7 @@ const AIRiskAssessment: React.FC = () => {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
@@ -483,8 +502,16 @@ const AIRiskAssessment: React.FC = () => {
     const RiskIcon = getRiskIcon(result.overallRisk);
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-purple-950 dark:via-gray-900 dark:to-pink-950">
-        <Header />
+      <>
+        <SEOHead
+          title="KI-Risiko Assessment – EU AI Act Bewertung"
+          description="EU AI Act Risk Assessment: Bewerten Sie das Risiko Ihres KI-Systems nach EU AI Act. ✓ Risikoeinstufung ✓ Compliance-Check ✓ Handlungsempfehlungen. Jetzt testen!"
+          canonical="/assessment-center/ai-risk-assessment"
+          keywords="EU AI Act Assessment, KI-Risiko Bewertung, AI Risk Assessment, KI Compliance, EU AI Act Risiko"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-purple-950 dark:via-gray-900 dark:to-pink-950">
+          <Header />
         <div className="pt-24 pb-16 px-4">
           <div className="container mx-auto max-w-6xl">
             {/* Results Header */}
@@ -669,12 +696,21 @@ const AIRiskAssessment: React.FC = () => {
         </div>
         <Footer />
       </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-purple-950 dark:via-gray-900 dark:to-pink-950">
-      <Header />
+    <>
+      <SEOHead
+        title="KI-Risiko Assessment – EU AI Act Bewertung"
+        description="EU AI Act Risk Assessment: Bewerten Sie das Risiko Ihres KI-Systems nach EU AI Act. ✓ Risikoeinstufung ✓ Compliance-Check ✓ Handlungsempfehlungen. Jetzt testen!"
+        canonical="/assessment-center/ai-risk-assessment"
+        keywords="EU AI Act Assessment, KI-Risiko Bewertung, AI Risk Assessment, KI Compliance, EU AI Act Risiko"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-purple-950 dark:via-gray-900 dark:to-pink-950">
+        <Header />
       
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
@@ -833,6 +869,7 @@ const AIRiskAssessment: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

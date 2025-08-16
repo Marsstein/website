@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -27,6 +28,13 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Food: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Lebensmittel Compliance Lösungen",
+    "description": "Food Industry Compliance: Rückverfolgbarkeit, HACCP-Integration, Lieferketten-Transparenz",
+    "url": "https://marsstein.com/branchen/lebensmittel"
+  };
   const painPoints = [
     {
       icon: Brain,
@@ -136,8 +144,16 @@ const Food: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Lebensmittel – HACCP & Rückverfolgbarkeit DSGVO"
+        description="Food Industry Compliance: HACCP-Integration, Rückverfolgbarkeit DSGVO, Lebensmittelsicherheit. ✓ Farm-to-Fork ✓ Traceability. Jetzt food-safe!"
+        canonical="/branchen/lebensmittel"
+        keywords="HACCP Compliance, Lebensmittel DSGVO, Food Traceability, Rückverfolgbarkeit, Lebensmittelsicherheit"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -444,6 +460,7 @@ const Food: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

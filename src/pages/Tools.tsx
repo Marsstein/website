@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEOHead from '../components/SEOHead';
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -85,6 +86,15 @@ const Tools: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Compliance-Tools Suite",
+    "description": "Umfassende Suite von Compliance-Tools: DSGVO-Tools, Cookie-Management, Whistleblower-Systeme",
+    "numberOfItems": 12,
+    "url": "https://marsstein.com/tools"
+  };
 
   const categories = [
     { id: 'all', name: 'Alle Tools', icon: Grid3X3, count: 5 },
@@ -224,8 +234,16 @@ const Tools: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Tools – Compliance-Werkzeuge & Automatisierung"
+        description="Compliance-Tools Suite: DSGVO-Check, Cookie-Scanner, Whistleblower-System, KI-Assistent. ✓ Automatisierung ✓ Rechtssicher ✓ Enterprise-ready. Jetzt testen!"
+        canonical="/tools"
+        keywords="Compliance Tools, DSGVO Tools, Cookie Scanner, Whistleblower System, Compliance Automatisierung"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        <Header />
       
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -604,6 +622,7 @@ const Tools: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

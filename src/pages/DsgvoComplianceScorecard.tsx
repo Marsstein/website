@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEOHead from '../components/SEOHead';
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -112,6 +113,15 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const DsgvoComplianceScorecard: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DSGVO Compliance Scorecard",
+    "description": "Interaktive DSGVO-Compliance Bewertung mit Gap-Analyse und Handlungsempfehlungen",
+    "applicationCategory": "Assessment Tool",
+    "url": "https://marsstein.com/tools/dsgvo-compliance-scorecard"
+  };
+
   const [isAssessing, setIsAssessing] = useState(false);
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -258,8 +268,16 @@ const DsgvoComplianceScorecard: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <Header />
+    <>
+      <SEOHead
+        title="DSGVO Scorecard – Compliance-Status bewerten"
+        description="DSGVO Compliance Scorecard: Bewerten Sie Ihren Datenschutz-Status interaktiv. Gap-Analyse, Benchmarking, Handlungsempfehlungen. ✓ 15 Min Assessment. Jetzt bewerten!"
+        canonical="/tools/dsgvo-compliance-scorecard"
+        keywords="DSGVO Scorecard, Compliance Assessment, DSGVO Bewertung, Gap-Analyse, Datenschutz Status"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <Header />
       
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -811,6 +829,7 @@ const DsgvoComplianceScorecard: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

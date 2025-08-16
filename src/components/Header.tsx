@@ -229,30 +229,6 @@ export const Header: React.FC = () => {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-4">
-          {/* Language Switcher */}
-          <div className="flex items-center space-x-1 rounded-lg border p-1">
-            <button
-              onClick={() => setLanguage('en')}
-              className={`px-2 py-1 text-xs font-medium rounded ${
-                language === 'en'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground'
-              } transition-colors`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLanguage('de')}
-              className={`px-2 py-1 text-xs font-medium rounded ${
-                language === 'de'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground'
-              } transition-colors`}
-            >
-              DE
-            </button>
-          </div>
-
           <Button variant="ghost" size="sm">
             {t('nav_login')}
           </Button>
@@ -427,34 +403,6 @@ export const Header: React.FC = () => {
                   )
                 ))}
 
-                <div className="pt-4 border-t">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <Globe className="h-4 w-4" />
-                    <span className="text-sm font-medium">Language</span>
-                  </div>
-                  <div className="flex space-x-2">
-                    <button
-                      onClick={() => setLanguage('en')}
-                      className={`px-3 py-2 text-sm font-medium rounded ${
-                        language === 'en'
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted text-muted-foreground'
-                      }`}
-                    >
-                      English
-                    </button>
-                    <button
-                      onClick={() => setLanguage('de')}
-                      className={`px-3 py-2 text-sm font-medium rounded ${
-                        language === 'de'
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted text-muted-foreground'
-                      }`}
-                    >
-                      Deutsch
-                    </button>
-                  </div>
-                </div>
 
                 <div className="pt-4 space-y-2">
                   <Button variant="ghost" className="w-full justify-start">

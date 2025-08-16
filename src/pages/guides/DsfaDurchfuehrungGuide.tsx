@@ -66,6 +66,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const DsfaDurchfuehrungGuide: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
@@ -85,7 +86,6 @@ const DsfaDurchfuehrungGuide: React.FC = () => {
       id: 0,
       title: 'DSFA-Grundlagen & Anwendungsbereich',
       subtitle: 'Wann ist eine DSFA erforderlich?',
-      readTime: '10 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-4 lg:p-8">
@@ -269,7 +269,6 @@ const DsfaDurchfuehrungGuide: React.FC = () => {
       id: 1,
       title: 'DSFA-Vorbereitung & Projektplanung',
       subtitle: 'Strukturierter Ansatz für erfolgreiche Durchführung',
-      readTime: '8 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-xl p-4 lg:p-8">
@@ -593,8 +592,15 @@ const DsfaDurchfuehrungGuide: React.FC = () => {
   const currentChapterData = chapters[currentChapter];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <Header />
+    <>
+      <SEOHead
+        title="DSFA Durchführung – Datenschutz-Folgenabschätzung Leitfaden"
+        description="Datenschutz-Folgenabschätzung (DSFA) professionell durchführen: Wann nötig, wie umsetzen, Dokumentation. ✓ Schritt-für-Schritt ✓ Vorlagen ✓ Praxisbeispiele. Jetzt DSFA starten!"
+        canonical="/wissen/leitfaden/dsfa-durchfuehrung"
+        keywords="dsfa durchführung, datenschutz folgenabschätzung, dpia guide, art 35 dsgvo, risikobewertung datenschutz"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <Header />
       
 
       {/* Hero Section */}
@@ -645,10 +651,6 @@ const DsfaDurchfuehrungGuide: React.FC = () => {
 
             {/* Guide Stats */}
             <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="flex items-center gap-2 px-4 py-2 bg-slate-800/60 rounded-full backdrop-blur-sm">
-                <Clock className="h-4 w-4 text-purple-400" />
-                <span className="text-sm text-slate-300">30 Min Lesezeit</span>
-              </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-slate-800/60 rounded-full backdrop-blur-sm">
                 <Target className="h-4 w-4 text-pink-400" />
                 <span className="text-sm text-slate-300">Fortgeschritten</span>
@@ -722,7 +724,7 @@ const DsfaDurchfuehrungGuide: React.FC = () => {
             <div className="flex items-center gap-6 text-sm text-slate-400">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
-                <span>{currentChapterData.readTime} Lesezeit</span>
+                <span>Kapitel {currentChapter + 1}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
@@ -777,7 +779,6 @@ const DsfaDurchfuehrungGuide: React.FC = () => {
                             </div>
                             <div className="flex-grow">
                               <div className="text-sm font-medium">{chapter.title}</div>
-                              <div className="text-xs opacity-75">{chapter.readTime}</div>
                             </div>
                           </div>
                         </button>
@@ -788,7 +789,7 @@ const DsfaDurchfuehrungGuide: React.FC = () => {
                       <div className="text-sm text-slate-400 mb-2">Gesamtfortschritt</div>
                       <Progress value={(completedChapters.length / chapters.length) * 100} className="h-2 mb-2" />
                       <div className="text-xs text-slate-400">
-                        {Math.round((completedChapters.length / chapters.length) * 100)}% • {chapters.reduce((total, chapter) => total + parseInt(chapter.readTime), 0)} Min gesamt
+                        {Math.round((completedChapters.length / chapters.length) * 100)}% abgeschlossen
                       </div>
                     </div>
                   </CardContent>
@@ -865,8 +866,9 @@ const DsfaDurchfuehrungGuide: React.FC = () => {
         </div>
       </section>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

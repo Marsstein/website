@@ -60,18 +60,6 @@ export const TrustIndicators: React.FC = () => {
 
   const stats = [
     {
-      icon: Users,
-      value: '500k+',
-      label: 'Zielgruppe EU-Unternehmen',
-      subtext: 'Entwickelt für moderne Compliance-Teams'
-    },
-    {
-      icon: Building2,
-      value: '99.5%',
-      label: 'Ziel-Verfügbarkeit',
-      subtext: 'Enterprise-ready aufbauend'
-    },
-    {
       icon: Lock,
       value: 'Security',
       label: 'First Approach',

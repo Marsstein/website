@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -56,6 +57,19 @@ const Soc2Compliance = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "SOC 2 Compliance Service",
+    "description": "SOC 2 Type II Zertifizierung für Cloud-Services und SaaS-Anbieter",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Security Compliance Certification",
+    "areaServed": ["DE", "EU", "US"]
+  };
 
   const painPoints = [
     {
@@ -221,8 +235,16 @@ const Soc2Compliance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="SOC 2 Zertifizierung – Trust Services für SaaS & Cloud"
+        description="SOC 2 Type II Compliance für SaaS-Anbieter: 5 Trust Principles meistern. ✓ Audit-ready ✓ Automatisiert ✓ Kundenvertrauen. Jetzt vorbereiten!"
+        canonical="/soc2"
+        keywords="SOC 2, SOC 2 Type II, Trust Services, Cloud Security, SaaS Compliance"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -709,6 +731,7 @@ const Soc2Compliance = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
