@@ -62,14 +62,14 @@ const DsgvoVereineComprehensive: React.FC = () => {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   const navigationItems = [
-    { id: 'overview', label: 'Überblick', icon: Shield },
-    { id: 'member-data', label: 'Mitgliederdaten', icon: Users },
-    { id: 'events', label: 'Veranstaltungen', icon: Calendar },
-    { id: 'communication', label: 'Kommunikation', icon: Mail },
-    { id: 'finances', label: 'Finanzen', icon: Euro },
-    { id: 'implementation', label: 'Umsetzung', icon: Settings },
-    { id: 'checklist', label: 'Checkliste', icon: CheckSquare },
-    { id: 'resources', label: 'Ressourcen', icon: BookOpen }
+    { id: 'ueberblick', label: 'Überblick', icon: Shield },
+    { id: 'mitgliederdaten', label: 'Mitgliederdaten', icon: Users },
+    { id: 'veranstaltungen', label: 'Veranstaltungen', icon: Calendar },
+    { id: 'kommunikation', label: 'Kommunikation', icon: Mail },
+    { id: 'finanzen', label: 'Finanzen', icon: Euro },
+    { id: 'umsetzung', label: 'Umsetzung', icon: Settings },
+    { id: 'checkliste', label: 'Checkliste', icon: CheckSquare },
+    { id: 'ressourcen', label: 'Ressourcen', icon: BookOpen }
   ];
 
   const complianceStats = [
@@ -449,7 +449,7 @@ const volunteerDataHandling = {
           <div className="max-w-7xl mx-auto space-y-20">
             
             {/* Überblick Section */}
-            <section id="overview" className="space-y-8 scroll-mt-32">
+            <section id="ueberblick" className="space-y-8 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -552,7 +552,7 @@ const volunteerDataHandling = {
             </section>
 
             {/* Mitgliederdaten Section */}
-            <section id="member-data" className="space-y-8 scroll-mt-32">
+            <section id="mitgliederdaten" className="space-y-8 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -696,7 +696,7 @@ const volunteerDataHandling = {
             </section>
 
             {/* Veranstaltungen Section */}
-            <section id="events" className="space-y-8 scroll-mt-32">
+            <section id="veranstaltungen" className="space-y-8 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -821,7 +821,7 @@ const volunteerDataHandling = {
             </section>
 
             {/* Kommunikation Section */}
-            <section id="communication" className="space-y-8 scroll-mt-32">
+            <section id="kommunikation" className="space-y-8 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -928,7 +928,7 @@ const volunteerDataHandling = {
             </section>
 
             {/* Finanzen Section */}
-            <section id="finances" className="space-y-8 scroll-mt-32">
+            <section id="finanzen" className="space-y-8 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1032,7 +1032,7 @@ const volunteerDataHandling = {
             </section>
 
             {/* Implementierung Section */}
-            <section id="implementation" className="space-y-8 scroll-mt-32">
+            <section id="umsetzung" className="space-y-8 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1249,7 +1249,7 @@ const volunteerDataHandling = {
             </section>
 
             {/* Interaktive Checkliste */}
-            <section id="checklist" className="space-y-8 scroll-mt-32">
+            <section id="checkliste" className="space-y-8 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1334,7 +1334,7 @@ const volunteerDataHandling = {
             </section>
 
             {/* Ressourcen Section */}
-            <section id="resources" className="space-y-8 scroll-mt-32">
+            <section id="ressourcen" className="space-y-8 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}

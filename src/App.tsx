@@ -120,7 +120,7 @@ import DatenschutzKindergarten from "./pages/branchen/DatenschutzKindergarten";
 import DsgvoVermieter from "./pages/branchen/DsgvoVermieter";
 import DsgvoVereineComprehensive from "./pages/wissen/branchen/DsgvoVereineComprehensive";
 import DatenschutzBetriebsrat from "./pages/branchen/DatenschutzBetriebsrat";
-import DatenschutzHomeoffice from "./pages/branchen/DatenschutzHomeoffice";
+import DatenschutzHomeofficeComprehensive from "./pages/wissen/branchen/DatenschutzHomeofficeComprehensive";
 
 // KI Datenschutz Pages
 import KiDatenschutz from "./pages/KiDatenschutz";
@@ -375,7 +375,7 @@ const App = () => (
                 <Route path="/wissen/branchen/dsgvo-vermieter" element={<DsgvoVermieter />} />
                 <Route path="/wissen/branchen/dsgvo-vereine" element={<DsgvoVereineComprehensive />} />
                 <Route path="/wissen/branchen/datenschutz-betriebsrat" element={<DatenschutzBetriebsrat />} />
-                <Route path="/wissen/branchen/datenschutz-homeoffice" element={<DatenschutzHomeoffice />} />
+                <Route path="/wissen/branchen/datenschutz-homeoffice" element={<DatenschutzHomeofficeComprehensive />} />
                 
                 {/* KI Compliance Routes - now part of main structure */}
                 <Route path="/wissen/ki-datenschutz/risikoklassifizierung" element={<KiRisikoklassifizierung />} />
