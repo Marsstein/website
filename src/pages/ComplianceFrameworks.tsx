@@ -687,8 +687,8 @@ const ComplianceFrameworks: React.FC = () => {
               </h1>
             </div>
             <p className="text-xl text-slate-300 mb-8 max-w-4xl mx-auto">
-              Comprehensive guides to international compliance standards, certifications, and regulatory frameworks. 
-              Navigate the complex landscape of modern compliance requirements with expert guidance.
+              Umfassende Leitfäden zu internationalen Compliance-Standards, Zertifizierungen und regulatorischen Frameworks. 
+              Navigieren Sie mit fachkundiger Anleitung durch die komplexe Landschaft moderner Compliance-Anforderungen.
             </p>
             
             <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
@@ -704,15 +704,6 @@ const ComplianceFrameworks: React.FC = () => {
                 <Globe className="h-4 w-4 mr-2" />
                 International Standards
               </Badge>
-            </div>
-
-            <div className="flex items-center justify-center gap-2 mb-8">
-              <div className="flex items-center gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="text-slate-300 ml-2">4.9/5 (2,847 reviews)</span>
             </div>
           </motion.div>
         </div>

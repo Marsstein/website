@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-// Removed tabs import - using single page navigation
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Shield, 
   CheckCircle2, 
@@ -129,7 +129,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Soc2Guide: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>('ueberblick');
+  const [activeSection, setActiveSection] = useState('overview');
   const [completedSections, setCompletedSections] = useState<string[]>([]);
   const [readingProgress, setReadingProgress] = useState(0);
   const [bookmarked, setBookmarked] = useState(false);
@@ -143,24 +143,24 @@ const Soc2Guide: React.FC = () => {
   });
 
   const sections = [
-    { id: 'ueberblick', title: 'Überblick', icon: Eye, readTime: '10 Min' },
-    { id: 'trust-prinzipien', title: 'Trust Services Criteria', icon: Shield, readTime: '20 Min' },
-    { id: 'typen', title: 'Type I vs Type II', icon: GitBranch, readTime: '12 Min' },
-    { id: 'umfang', title: 'Scope Definition', icon: Target, readTime: '15 Min' },
-    { id: 'sicherheit', title: 'Security Criteria', icon: Lock, readTime: '30 Min' },
-    { id: 'verfuegbarkeit', title: 'Availability Criteria', icon: Activity, readTime: '18 Min' },
-    { id: 'verarbeitung', title: 'Processing Integrity', icon: Cpu, readTime: '18 Min' },
-    { id: 'vertraulichkeit', title: 'Confidentiality', icon: Eye, readTime: '15 Min' },
-    { id: 'datenschutz', title: 'Privacy Criteria', icon: UserCheck, readTime: '20 Min' },
-    { id: 'kontrollen', title: 'Common Controls', icon: Settings, readTime: '35 Min' },
-    { id: 'beweise', title: 'Evidence Collection', icon: FileText, readTime: '25 Min' },
-    { id: 'audit-prozess', title: 'Audit Process', icon: Search, readTime: '22 Min' },
-    { id: 'implementierung', title: 'Implementation Guide', icon: Rocket, readTime: '30 Min' },
-    { id: 'ueberwachung', title: 'Continuous Monitoring', icon: Activity, readTime: '18 Min' },
+    { id: 'overview', title: 'Überblick', icon: Eye, readTime: '10 Min' },
+    { id: 'trust-principles', title: 'Trust Services Criteria', icon: Shield, readTime: '20 Min' },
+    { id: 'types', title: 'Type I vs Type II', icon: GitBranch, readTime: '12 Min' },
+    { id: 'scope', title: 'Scope Definition', icon: Target, readTime: '15 Min' },
+    { id: 'security', title: 'Security Criteria', icon: Lock, readTime: '30 Min' },
+    { id: 'availability', title: 'Availability Criteria', icon: Activity, readTime: '18 Min' },
+    { id: 'processing', title: 'Processing Integrity', icon: Cpu, readTime: '18 Min' },
+    { id: 'confidentiality', title: 'Confidentiality', icon: Eye, readTime: '15 Min' },
+    { id: 'privacy', title: 'Privacy Criteria', icon: UserCheck, readTime: '20 Min' },
+    { id: 'controls', title: 'Common Controls', icon: Settings, readTime: '35 Min' },
+    { id: 'evidence', title: 'Evidence Collection', icon: FileText, readTime: '25 Min' },
+    { id: 'audit-process', title: 'Audit Process', icon: Search, readTime: '22 Min' },
+    { id: 'implementation', title: 'Implementation Guide', icon: Rocket, readTime: '30 Min' },
+    { id: 'continuous', title: 'Continuous Monitoring', icon: Activity, readTime: '18 Min' },
     { id: 'tools', title: 'Tools & Automation', icon: Code, readTime: '15 Min' },
-    { id: 'zertifizierung', title: 'Certification Path', icon: Award, readTime: '12 Min' },
-    { id: 'vorteile', title: 'Business Benefits', icon: TrendingUp, readTime: '10 Min' },
-    { id: 'ressourcen', title: 'Resources & Templates', icon: Download, readTime: '8 Min' }
+    { id: 'certification', title: 'Certification Path', icon: Award, readTime: '12 Min' },
+    { id: 'benefits', title: 'Business Benefits', icon: TrendingUp, readTime: '10 Min' },
+    { id: 'resources', title: 'Resources & Templates', icon: Download, readTime: '8 Min' }
   ];
 
   const trustServicesCriteria = [
@@ -450,75 +450,6 @@ const Soc2Guide: React.FC = () => {
     }));
   };
 
-  const scrollToSection = (sectionId: string) => {
-    window.history.pushState(null, '', `#${sectionId}`);
-    
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  // Initial load with hash
-  useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (hash) {
-      setTimeout(() => {
-        scrollToSection(hash);
-        setActiveSection(hash);
-      }, 100);
-    }
-  }, []);
-
-  // Track active section while scrolling
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        { id: 'ueberblick', title: 'Überblick', icon: Eye, readTime: '10 Min' },
-        { id: 'trust-prinzipien', title: 'Trust Services Criteria', icon: Shield, readTime: '20 Min' },
-        { id: 'typen', title: 'Type I vs Type II', icon: GitBranch, readTime: '12 Min' },
-        { id: 'umfang', title: 'Scope Definition', icon: Target, readTime: '15 Min' },
-        { id: 'sicherheit', title: 'Security Criteria', icon: Lock, readTime: '30 Min' },
-        { id: 'verfuegbarkeit', title: 'Availability Criteria', icon: Activity, readTime: '18 Min' },
-        { id: 'verarbeitung', title: 'Processing Integrity', icon: Cpu, readTime: '18 Min' },
-        { id: 'vertraulichkeit', title: 'Confidentiality', icon: Eye, readTime: '15 Min' },
-        { id: 'datenschutz', title: 'Privacy Criteria', icon: UserCheck, readTime: '20 Min' },
-        { id: 'kontrollen', title: 'Common Controls', icon: Settings, readTime: '35 Min' },
-        { id: 'beweise', title: 'Evidence Collection', icon: FileText, readTime: '25 Min' },
-        { id: 'audit-prozess', title: 'Audit Process', icon: Search, readTime: '22 Min' },
-        { id: 'implementierung', title: 'Implementation Guide', icon: Rocket, readTime: '30 Min' },
-        { id: 'ueberwachung', title: 'Continuous Monitoring', icon: Activity, readTime: '18 Min' },
-        { id: 'tools', title: 'Tools & Automation', icon: Code, readTime: '15 Min' },
-        { id: 'zertifizierung', title: 'Certification Path', icon: Award, readTime: '12 Min' },
-        { id: 'vorteile', title: 'Business Benefits', icon: TrendingUp, readTime: '10 Min' },
-        { id: 'ressourcen', title: 'Resources & Templates', icon: Download, readTime: '8 Min' }
-      ].map(item => ({
-        id: item.id,
-        element: document.getElementById(item.id)
-      }));
-      
-      const scrollPosition = window.scrollY + 150;
-      
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section.element && section.element.offsetTop <= scrollPosition) {
-          setActiveSection(section.id);
-          break;
-        }
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       if (contentRef.current) {
@@ -733,44 +664,6 @@ const Soc2Guide: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Sticky Navigation */}
-      <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
-        <div className="container px-4">
-          <div className="max-w-7xl mx-auto">
-            <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
-              {sections.map((item, index) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    scrollToSection(item.id);
-                    setActiveSection(item.id);
-                  }}
-                  className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
-                    activeSection === item.id
-                      ? "bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400 border-red-200 dark:border-red-800"
-                      : "hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-700 dark:hover:text-red-400",
-                    "border",
-                    activeSection === item.id
-                      ? "border-red-200 dark:border-red-800"
-                      : "border-transparent hover:border-red-200 dark:hover:border-red-800"
-                  )}
-                >
-                  <item.icon className={cn(
-                    "h-4 w-4",
-                    activeSection === item.id && "text-red-600 dark:text-red-500"
-                  )} />
-                  <span className={cn(
-                    "text-sm font-medium",
-                    activeSection === item.id && "text-red-700 dark:text-red-400"
-                  )}>{item.title}</span>
-                </button>
-              ))}
-            </nav>
-          </div>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="container mx-auto max-w-7xl px-4 py-8">
         <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
@@ -786,10 +679,7 @@ const Soc2Guide: React.FC = () => {
                       return (
                         <button
                           key={section.id}
-                          onClick={() => {
-                            scrollToSection(section.id);
-                            setActiveSection(section.id);
-                          }}
+                          onClick={() => setActiveSection(section.id)}
                           className={cn(
                             "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
                             activeSection === section.id
@@ -838,10 +728,12 @@ const Soc2Guide: React.FC = () => {
 
           {/* Main Content Area */}
           <div className="lg:col-span-3">
-            <div ref={contentRef} className="space-y-20">
+            <div ref={contentRef}>
+              <Tabs value={activeSection} onValueChange={setActiveSection}>
+                <TabsList className="hidden" />
                 
-                {/* Überblick Section */}
-                <section id="ueberblick" className="space-y-8 scroll-mt-32">
+                {/* Overview Section */}
+                <TabsContent value="overview" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -852,11 +744,11 @@ const Soc2Guide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">Überblick</h2>
                           <Button
-                            onClick={() => handleSectionComplete('ueberblick')}
-                            variant={completedSections.includes('ueberblick') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('overview')}
+                            variant={completedSections.includes('overview') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('ueberblick') ? (
+                            {completedSections.includes('overview') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -969,13 +861,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Trust Prinzipien Section */}
-                <section id="trust-prinzipien" className="space-y-8 scroll-mt-32">
+                {/* Trust Principles Section */}
+                <TabsContent value="trust-principles" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1112,13 +1001,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Typen Section */}
-                <section id="typen" className="space-y-8 scroll-mt-32">
+                {/* Types Section */}
+                <TabsContent value="types" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1242,13 +1128,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Implementierung Section */}
-                <section id="implementierung" className="space-y-8 scroll-mt-32">
+                {/* Implementation Section */}
+                <TabsContent value="implementation" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1410,13 +1293,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Umfang Section */}
-                <section id="umfang" className="space-y-8 scroll-mt-32">
+                {/* Scope Section */}
+                <TabsContent value="scope" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1648,13 +1528,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Sicherheit Section */}
-                <section id="sicherheit" className="space-y-8 scroll-mt-32">
+                {/* Security Criteria Section */}
+                <TabsContent value="security" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1905,13 +1782,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Beweise Section */}
-                <section id="beweise" className="space-y-8 scroll-mt-32">
+                {/* Evidence Collection Section */}
+                <TabsContent value="evidence" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2164,13 +2038,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Verfügbarkeit Section */}
-                <section id="verfuegbarkeit" className="space-y-8 scroll-mt-32">
+                {/* Availability Criteria Section */}
+                <TabsContent value="availability" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2226,13 +2097,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Verarbeitung Section */}
-                <section id="verarbeitung" className="space-y-8 scroll-mt-32">
+                {/* Processing Integrity Section */}
+                <TabsContent value="processing" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2281,13 +2149,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Vertraulichkeit Section */}
-                <section id="vertraulichkeit" className="space-y-8 scroll-mt-32">
+                {/* Confidentiality Section */}
+                <TabsContent value="confidentiality" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2343,13 +2208,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Datenschutz Section */}
-                <section id="datenschutz" className="space-y-8 scroll-mt-32">
+                {/* Privacy Section */}
+                <TabsContent value="privacy" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2402,13 +2264,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Kontrollen Section */}
-                <section id="kontrollen" className="space-y-8 scroll-mt-32">
+                {/* Common Controls Section */}
+                <TabsContent value="controls" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2467,13 +2326,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Audit-Prozess Section */}
-                <section id="audit-prozess" className="space-y-8 scroll-mt-32">
+                {/* Audit Process Section */}
+                <TabsContent value="audit-process" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2531,13 +2387,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Überwachung Section */}
-                <section id="ueberwachung" className="space-y-8 scroll-mt-32">
+                {/* Continuous Monitoring Section */}
+                <TabsContent value="continuous" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2597,13 +2450,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Tools Section */}
-                <section id="tools" className="space-y-8 scroll-mt-32">
+                {/* Tools & Automation Section */}
+                <TabsContent value="tools" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2670,13 +2520,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Zertifizierung Section */}
-                <section id="zertifizierung" className="space-y-8 scroll-mt-32">
+                {/* Certification Path Section */}
+                <TabsContent value="certification" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2733,13 +2580,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Vorteile Section */}
-                <section id="vorteile" className="space-y-8 scroll-mt-32">
+                {/* Business Benefits Section */}
+                <TabsContent value="benefits" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2788,13 +2632,10 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
-
-                {/* Ressourcen Section */}
-                <section id="ressourcen" className="space-y-8 scroll-mt-32">
+                {/* Resources Section */}
+                <TabsContent value="resources" className="space-y-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2850,7 +2691,9 @@ const Soc2Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </section>
+                </TabsContent>
+                
+              </Tabs>
             </div>
           </div>
         </div>

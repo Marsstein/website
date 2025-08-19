@@ -100,10 +100,27 @@ import GoogleFontsMunichCase from "./pages/legal/GoogleFontsMunichCase";
 // Branchen Wissen Pages
 import BranchenWissen from "./pages/BranchenWissen";
 import HealthcareDsgvoGuide from "./pages/branchen/HealthcareDsgvoGuide";
+import HealthcareAiComplianceGuide from "./pages/branchen/HealthcareAiComplianceGuide";
+import EdtechPrivacyGuide from "./pages/branchen/EdtechPrivacyGuide";
 import FintechComplianceGuide from "./pages/branchen/FintechComplianceGuide";
 import EcommercePrivacyGuide from "./pages/branchen/EcommercePrivacyGuide";
 import SaasPrivacyDesignGuide from "./pages/branchen/SaasPrivacyDesignGuide";
 import Industrie40DatenschutzGuide from "./pages/branchen/Industrie40DatenschutzGuide";
+import AutomotiveDatenschutz from "./pages/branchen/AutomotiveDatenschutz";
+import SmartGridComplianceGuide from "./pages/branchen/SmartGridComplianceGuide";
+import PharmaComplianceGuide from "./pages/branchen/PharmaComplianceGuide";
+import ProduktionDatenschutzGuide from "./pages/branchen/ProduktionDatenschutzGuide";
+import TravelComplianceGuide from "./pages/branchen/TravelComplianceGuide";
+import InsurtechComplianceGuide from "./pages/branchen/InsurtechComplianceGuide";
+import PropTechCompliance from "./pages/branchen/PropTechCompliance";
+import LogisticsCompliance from "./pages/branchen/LogisticsCompliance";
+import DatenschutzPflege from "./pages/branchen/DatenschutzPflege";
+import DatenschutzArztpraxis from "./pages/branchen/DatenschutzArztpraxis";
+import DatenschutzKindergarten from "./pages/branchen/DatenschutzKindergarten";
+import DsgvoVermieter from "./pages/branchen/DsgvoVermieter";
+import DsgvoVereineComprehensive from "./pages/wissen/branchen/DsgvoVereineComprehensive";
+import DatenschutzBetriebsrat from "./pages/branchen/DatenschutzBetriebsrat";
+import DatenschutzHomeoffice from "./pages/branchen/DatenschutzHomeoffice";
 
 // KI Datenschutz Pages
 import KiDatenschutz from "./pages/KiDatenschutz";
@@ -338,10 +355,27 @@ const App = () => (
                 
                 {/* Branchen Wissen Routes - now part of main structure */}
                 <Route path="/wissen/branchen/gesundheitswesen-dsgvo" element={<HealthcareDsgvoGuide />} />
+                <Route path="/wissen/branchen/healthcare-ai-compliance" element={<HealthcareAiComplianceGuide />} />
+                <Route path="/wissen/branchen/edtech-privacy" element={<EdtechPrivacyGuide />} />
                 <Route path="/wissen/branchen/fintech-compliance" element={<FintechComplianceGuide />} />
                 <Route path="/wissen/branchen/ecommerce-privacy" element={<EcommercePrivacyGuide />} />
                 <Route path="/wissen/branchen/saas-privacy-design" element={<SaasPrivacyDesignGuide />} />
                 <Route path="/wissen/branchen/industrie-40-datenschutz" element={<Industrie40DatenschutzGuide />} />
+                <Route path="/wissen/branchen/automotive-datenschutz" element={<AutomotiveDatenschutz />} />
+                <Route path="/wissen/branchen/smart-grid-compliance" element={<SmartGridComplianceGuide />} />
+                <Route path="/wissen/branchen/pharma-compliance" element={<PharmaComplianceGuide />} />
+                <Route path="/wissen/branchen/produktion" element={<ProduktionDatenschutzGuide />} />
+                <Route path="/wissen/branchen/travel-compliance" element={<TravelComplianceGuide />} />
+                <Route path="/wissen/branchen/insurtech-compliance" element={<InsurtechComplianceGuide />} />
+                <Route path="/wissen/branchen/proptech-compliance" element={<PropTechCompliance />} />
+                <Route path="/wissen/branchen/logistics-compliance" element={<LogisticsCompliance />} />
+                <Route path="/wissen/branchen/datenschutz-pflege" element={<DatenschutzPflege />} />
+                <Route path="/wissen/branchen/datenschutz-arztpraxis" element={<DatenschutzArztpraxis />} />
+                <Route path="/wissen/branchen/datenschutz-kindergarten" element={<DatenschutzKindergarten />} />
+                <Route path="/wissen/branchen/dsgvo-vermieter" element={<DsgvoVermieter />} />
+                <Route path="/wissen/branchen/dsgvo-vereine" element={<DsgvoVereineComprehensive />} />
+                <Route path="/wissen/branchen/datenschutz-betriebsrat" element={<DatenschutzBetriebsrat />} />
+                <Route path="/wissen/branchen/datenschutz-homeoffice" element={<DatenschutzHomeoffice />} />
                 
                 {/* KI Compliance Routes - now part of main structure */}
                 <Route path="/wissen/ki-datenschutz/risikoklassifizierung" element={<KiRisikoklassifizierung />} />

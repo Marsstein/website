@@ -186,6 +186,16 @@ const ComplianceFrameworks: React.FC = () => {
           link: '/wissen/frameworks/hinschg',
           highlights: ['Meldekanäle', 'Anonymität', 'Schutz', 'Ab 50 Mitarbeiter'],
           certification: false
+        },
+        {
+          title: 'DSG-EKD',
+          description: 'Datenschutzgesetz der Evangelischen Kirche in Deutschland. Spezifische Regelung für kirchliche Einrichtungen mit Fokus auf Seelsorgegeheimnis und Gemeindedaten.',
+          icon: Heart,
+          readTime: '30 Min',
+          level: 'Kirchlich',
+          link: '/compliance/dsg-ekd',
+          highlights: ['Kirchlicher Datenschutz', 'Seelsorgegeheimnis', 'Gemeindedaten', 'Spezialregelung'],
+          certification: false
         }
       ]
     },

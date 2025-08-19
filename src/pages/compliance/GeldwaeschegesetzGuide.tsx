@@ -12,6 +12,7 @@ import {
   FileText, 
   Users,
   Building2,
+  Building,
   AlertTriangle,
   CheckCircle2,
   ArrowRight,
@@ -44,7 +45,8 @@ import {
   MessageSquare,
   Cpu,
   CheckCircle,
-  GraduationCap
+  GraduationCap,
+  Home
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

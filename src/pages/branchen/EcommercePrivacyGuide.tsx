@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // Force reload for icon fixes
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { 
   ShoppingCart,
@@ -86,19 +85,70 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 const EcommercePrivacyGuide = () => {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeSection, setActiveSection] = useState<string>('ueberblick');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
-  const tabs = [
-    { id: 'overview', label: 'Überblick', icon: Shield },
+  const navigationItems = [
+    { id: 'ueberblick', label: 'Überblick', icon: Shield },
     { id: 'cookie-consent', label: 'Cookie Consent', icon: Cookie },
     { id: 'tracking-analytics', label: 'Tracking & Analytics', icon: BarChart },
-    { id: 'payment-data', label: 'Zahlungsdaten', icon: CreditCard },
-    { id: 'customer-rights', label: 'Kundenrechte', icon: Users },
+    { id: 'zahlungsdaten', label: 'Zahlungsdaten', icon: CreditCard },
+    { id: 'kundenrechte', label: 'Kundenrechte', icon: Users },
     { id: 'implementation', label: 'Implementation', icon: Code }
   ];
+
+  const scrollToSection = (sectionId: string) => {
+    window.history.pushState(null, '', `#${sectionId}`);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Handle initial load with hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        scrollToSection(hash);
+        setActiveSection(hash);
+      }, 100);
+    }
+  }, []);
+
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navigationItems.map(item => ({
+        id: item.id,
+        element: document.getElementById(item.id)
+      }));
+      
+      const scrollPosition = window.scrollY + 150;
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const privacyFrameworks = [
     {
@@ -1387,45 +1437,139 @@ const EcommercePrivacyGuide = () => {
               </CardContent>
             </Card>
 
-            {/* Main Content Tabs */}
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-                {tabs.map((tab) => (
-                  <TabsTrigger
-                    key={tab.id}
-                    value={tab.id}
-                    className="flex items-center gap-2 text-xs md:text-sm"
-                  >
-                    <tab.icon className="h-4 w-4" />
-                    <span className="hidden sm:inline">{tab.label}</span>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+            {/* Sticky Navigation */}
+            <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm mb-8">
+              <div className="container px-4">
+                <div className="max-w-7xl mx-auto">
+                  <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+                    {navigationItems.map((item, index) => (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          scrollToSection(item.id);
+                          setActiveSection(item.id);
+                        }}
+                        className={cn(
+                          "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
+                          activeSection === item.id
+                            ? "bg-orange-100 dark:bg-orange-950/50 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800"
+                            : "hover:bg-orange-50 dark:hover:bg-orange-950/30 hover:text-orange-700 dark:hover:text-orange-400",
+                          "border",
+                          activeSection === item.id
+                            ? "border-orange-200 dark:border-orange-800"
+                            : "border-transparent hover:border-orange-200 dark:hover:border-orange-800"
+                        )}
+                      >
+                        <item.icon className={cn(
+                          "h-4 w-4",
+                          activeSection === item.id && "text-orange-600 dark:text-orange-500"
+                        )} />
+                        <span className={cn(
+                          "text-sm font-medium",
+                          activeSection === item.id && "text-orange-700 dark:text-orange-400"
+                        )}>{item.label}</span>
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+              </div>
+            </div>
 
-              <TabsContent value="overview" className="space-y-8">
+            {/* Main Content Sections */}
+            <div className="space-y-20">
+              {/* Overview Section */}
+              <section id="ueberblick" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  E-Commerce Datenschutz Überblick
+                </motion.h2>
                 {renderOverview()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="cookie-consent" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Cookie Consent Section */}
+              <section id="cookie-consent" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Cookie Consent Management
+                </motion.h2>
                 {renderCookieConsent()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="tracking-analytics" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Tracking & Analytics Section */}
+              <section id="tracking-analytics" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Tracking & Analytics
+                </motion.h2>
                 {renderTrackingAnalytics()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="payment-data" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Payment Data Section */}
+              <section id="zahlungsdaten" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Zahlungsdaten & Sicherheit
+                </motion.h2>
                 {renderPaymentData()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="customer-rights" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Customer Rights Section */}
+              <section id="kundenrechte" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Kundenrechte nach DSGVO
+                </motion.h2>
                 {renderCustomerRights()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="implementation" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Implementation Section */}
+              <section id="implementation" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Praktische Implementation
+                </motion.h2>
                 {renderImplementation()}
-              </TabsContent>
-            </Tabs>
+              </section>
+            </div>
 
             {/* Quick Links */}
             <Card className="mt-12">

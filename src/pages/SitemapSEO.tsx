@@ -735,6 +735,20 @@ const SitemapSEO = () => {
           available: true 
         },
         { 
+          title: 'Healthcare AI Compliance', 
+          url: '/wissen/branchen/healthcare-ai-compliance', 
+          description: 'EU AI Act Compliance für medizinische KI-Systeme. Hochrisiko-KI, Bias-Monitoring, Human-in-the-Loop und algorithmische Fairness im Gesundheitswesen.', 
+          priority: 'medium',
+          available: true 
+        },
+        { 
+          title: 'EdTech Privacy Compliance', 
+          url: '/wissen/branchen/edtech-privacy', 
+          description: 'COPPA und FERPA Compliance für Bildungsplattformen. Altersgerechtes Consent Management, Kinderschutz und sichere Lernumgebungen.', 
+          priority: 'medium',
+          available: true 
+        },
+        { 
           title: 'Fintech Compliance', 
           url: '/wissen/branchen/fintech-compliance', 
           description: 'Compliance-Herausforderungen für FinTechs. PSD2, KYC/AML, Open Banking und Datenschutz in der digitalen Finanzwelt meistern.', 

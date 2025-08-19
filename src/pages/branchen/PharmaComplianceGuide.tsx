@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { 
-  Heart,
+  Pill,
   Shield, 
   FileText, 
   Users,
@@ -20,7 +20,7 @@ import {
   Euro,
   Calendar,
   Activity,
-  Stethoscope,
+  Microscope,
   Brain,
   Lock,
   Database,
@@ -50,8 +50,6 @@ import {
   Mail,
   Phone,
   Thermometer,
-  Pill,
-  Microscope,
   Syringe,
   Pulse,
   X,
@@ -70,12 +68,19 @@ import {
   UserX,
   Ban,
   CheckSquare,
-  Square
+  Square,
+  Beaker,
+  FlaskConical,
+  TestTube,
+  FileSpreadsheet,
+  Search,
+  Crosshair,
+  Factory
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
-const HealthcareDsgvoGuide = () => {
+const PharmaComplianceGuide = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
   const [activeSection, setActiveSection] = useState<string>('overview');
@@ -86,12 +91,12 @@ const HealthcareDsgvoGuide = () => {
   
   // Navigation items for sticky navigation
   const navigationItems = [
-    { id: 'overview', label: 'Überblick', icon: Shield },
-    { id: 'art9', label: 'Art. 9 DSGVO', icon: Lock },
-    { id: 'consent', label: 'Einwilligungsmanagement', icon: UserCheck },
-    { id: 'tom', label: 'TOM Healthcare', icon: Settings },
-    { id: 'dsfa', label: 'DSFA & Risikoanalyse', icon: BarChart3 },
-    { id: 'implementation', label: 'Praxis-Implementation', icon: Code }
+    { id: 'ueberblick', label: 'Überblick', icon: Shield },
+    { id: 'gxp-compliance', label: 'GxP Compliance', icon: FlaskConical },
+    { id: 'klinische-studien', label: 'Klinische Studien', icon: Microscope },
+    { id: 'pharmakovigilanz', label: 'Pharmakovigilanz', icon: Activity },
+    { id: 'serialisierung', label: 'Serialisierung', icon: BarChart3 },
+    { id: 'praxis-implementation', label: 'Praxis-Implementation', icon: Code }
   ];
   
   const scrollToSection = (sectionId: string) => {
@@ -146,207 +151,206 @@ const HealthcareDsgvoGuide = () => {
   }, []);
 
   const complianceStats = [
-    { label: 'Art. 9 DSGVO Erfüllung', value: 98, color: 'text-red-600', trend: '+5%' },
-    { label: 'TOM Implementierung', value: 96, color: 'text-pink-600', trend: '+8%' },
-    { label: 'Einwilligungsmanagement', value: 94, color: 'text-rose-600', trend: '+12%' },
-    { label: 'DSFA Compliance', value: 92, color: 'text-red-500', trend: '+7%' },
-    { label: 'MDR Integration', value: 89, color: 'text-orange-500', trend: '+15%' },
-    { label: 'Audit Readiness', value: 97, color: 'text-purple-600', trend: '+3%' }
+    { label: 'GMP Compliance', value: 98, color: 'text-blue-600', trend: '+3%' },
+    { label: 'GDP Fulfillment', value: 96, color: 'text-green-600', trend: '+5%' },
+    { label: 'GCP Standards', value: 94, color: 'text-purple-600', trend: '+8%' },
+    { label: 'ICH Guidelines', value: 92, color: 'text-orange-500', trend: '+6%' },
+    { label: 'EMA Compliance', value: 95, color: 'text-red-500', trend: '+4%' },
+    { label: 'FDA Ready', value: 93, color: 'text-cyan-600', trend: '+7%' }
   ];
 
-  const art9Requirements = [
+  const gxpRequirements = [
     {
-      title: 'Ausdrückliche Einwilligung (Art. 9 Abs. 2 lit. a)',
-      description: 'Die betroffene Person hat in die Verarbeitung der genannten personenbezogenen Daten für einen oder mehrere festgelegte Zwecke ausdrücklich eingewilligt',
-      examples: ['Behandlungseinwilligung für spezielle Therapien', 'Forschungsteilnahme mit Gesundheitsdaten', 'Telemedizin-Services', 'Genetische Untersuchungen'],
+      title: 'Good Manufacturing Practice (GMP)',
+      description: 'Umfassende Qualitätssicherung in der pharmazeutischen Produktion gemäß EU-GMP-Leitlinien und ICH Q7/Q10',
+      examples: ['Validierte Herstellungsverfahren', 'Saubere Produktionsräume', 'Qualifiziertes Personal', 'Kontinuierliche Überwachung'],
       risk: 'Kritisch',
-      fineExample: 'Bis zu 20 Mio. € oder 4% des Jahresumsatzes',
+      fineExample: 'Bis zu 5% des Jahresumsatzes + Produktionstopp',
       realWorldScenario: {
-        title: '🏥 Praxis-Szenario: Digitale Patientenaufnahme',
-        context: 'Ein 45-jähriger Patient kommt zur kardiologischen Erstuntersuchung. Das Krankenhaus nutzt ein digitales Einwilligungssystem.',
-        challenge: 'Wie kann die Klinik rechtssicher verschiedene Datenverarbeitungen abfragen, ohne den Patienten zu überfordern?',
+        title: '🏭 Praxis-Szenario: Pharmaproduktion mit IoT-Monitoring',
+        context: 'Ein Pharmaunternehmen implementiert IoT-basierte Echtzeit-Überwachung in seiner sterilen Produktionslinie für Injektionsarzneimittel.',
+        challenge: 'Wie kann das Unternehmen GMP-konforme Datenintegrität bei gleichzeitiger digitaler Transformation gewährleisten?',
         solution: {
           step1: {
-            title: '📋 Modularer Einwilligungsprozess',
-            description: 'Das System präsentiert dem Patienten drei klar getrennte Einwilligungsmodule:',
+            title: '📊 Validierte IoT-Infrastruktur',
+            description: 'Aufbau einer GMP-konformen digitalen Überwachungsinfrastruktur',
             modules: [
               {
-                name: 'Behandlungsdaten (erforderlich)',
-                purpose: 'Grundlegende medizinische Versorgung',
-                dataTypes: 'Symptome, Vorerkrankungen, aktuelle Medikation',
-                legal: 'Zwingend für Behandlungsvertrag'
+                name: 'Temperatur-Monitoring',
+                purpose: 'Kontinuierliche Überwachung kritischer Parameter',
+                dataTypes: 'Temperatur, Luftfeuchtigkeit, Druck',
+                legal: 'EU-GMP Annex 11 konform'
               },
               {
-                name: 'Erweiterte Diagnostik (optional)',
-                purpose: 'Präzisere Diagnose durch Familienanamnese',
-                dataTypes: 'Genetische Disposition, Familiengeschichte',
-                benefit: 'Früherkennung von Herzerkrankungen möglich'
+                name: 'Partikelzählung',
+                purpose: 'Reinraumklassen-Überwachung',
+                dataTypes: 'Partikelgrößen, Konzentrationen',
+                benefit: 'Proaktive Qualitätskontrolle'
               },
               {
-                name: 'Forschungsteilnahme (freiwillig)',
-                purpose: 'Anonymisierte Daten für Herzforschung',
-                dataTypes: 'Behandlungsergebnisse, Therapieerfolg',
-                incentive: 'Beitrag zur medizinischen Forschung'
+                name: 'Personnell Tracking',
+                purpose: 'Nachverfolgung von Mitarbeiterbewegungen',
+                dataTypes: 'Zugriffszeiten, Verweildauer',
+                incentive: 'Compliance-Nachweis für Inspektionen'
               }
             ]
           },
           step2: {
-            title: '🔒 Transparente Datennutzung',
-            description: 'Für jedes Modul wird klar erklärt:',
+            title: '🔐 Data Integrity Governance',
+            description: 'ALCOA+ konforme Datenerfassung und -speicherung',
             transparency: [
-              'Wer erhält Zugriff auf welche Daten?',
-              'Wie lange werden die Daten gespeichert?',
-              'Mit welchen Dritten werden Daten geteilt?',
-              'Wie kann die Einwilligung widerrufen werden?'
+              'Attributable: Eindeutige Zuordnung aller Aktionen',
+              'Legible: Lesbare und nachvollziehbare Daten',
+              'Contemporaneous: Zeitgleiche Datenerfassung',
+              'Original: Erhaltung der ursprünglichen Daten',
+              'Accurate: Korrektheit aller Messungen',
+              'Complete: Vollständigkeit der Dokumentation',
+              'Consistent: Einheitliche Datenformate',
+              'Enduring: Langzeitspeicherung und -verfügbarkeit',
+              'Available: Verfügbarkeit für Inspektionen'
             ]
           },
           step3: {
-            title: '📱 Praktische Umsetzung',
-            description: 'Der Patient erhält ein Tablet mit intuitiver Benutzeroberfläche',
+            title: '⚡ Automated Compliance Reporting',
+            description: 'Automatisierte Berichterstattung für regulatorische Behörden',
             features: [
-              'Visuell aufbereitete Einwilligungstexte mit Symbolen',
-              'Kurze Erklärvideos für komplexe Sachverhalte',
-              'Sofortige Auswirkungsvorschau bei jeder Auswahl',
-              'Jederzeit änderbare Entscheidungen während des Aufenthalts'
+              'Real-time Deviation Alerts bei Grenzwertüberschreitungen',
+              'Automatische Batch Records Generierung',
+              'Audit Trail mit digitaler Signatur',
+              'Electronic Batch Release mit QP-Freigabe'
             ]
           }
         },
         outcome: {
-          patientBenefit: 'Vollständige Transparenz und Kontrolle über eigene Daten',
-          clinicBenefit: 'Rechtssichere Datenverarbeitung mit höherer Einwilligungsrate',
-          complianceLevel: '98% DSGVO-konforme Einwilligungen'
+          productionBenefit: '30% Reduktion der Batch-Freigabezeit',
+          complianceBenefit: '100% Data Integrity Score bei letzter Inspektion',
+          operationalEfficiency: '25% weniger Papier-basierte Dokumentation'
         },
         keyLearnings: [
-          'Modulare Einwilligung erhöht Akzeptanz um 34%',
-          'Visuelle Aufbereitung reduziert Verständnisfragen um 67%',
-          'Granulare Kontrolle stärkt Vertrauen in die Einrichtung',
-          'Proaktive Transparenz verhindert spätere Beschwerden'
+          'IoT-Integration erfordert umfassende CSV (Computer System Validation)',
+          'Hybride Ansätze (digital + papierbasiert) in Übergangszeiten erfolgreich',
+          'Frühzeitige Einbindung der QA-Abteilung reduziert spätere Validierungsaufwände',
+          'Automatisierte Compliance führt zu höherer Datenqualität'
         ]
       }
     },
     {
-      title: 'Gesundheitsvorsorge & Arbeitsmedizin (Art. 9 Abs. 2 lit. h)',
-      description: 'Verarbeitung für Zwecke der Gesundheitsvorsorge oder der Arbeitsmedizin, für die Beurteilung der Arbeitsfähigkeit des Beschäftigten',
-      examples: ['Betriebsärztliche Untersuchungen', 'Vorsorgeuntersuchungen', 'Impfstatus-Verwaltung', 'Arbeitsplatz-Gesundheitsscreening'],
+      title: 'Good Distribution Practice (GDP)',
+      description: 'Qualitätsstandards für die Verteilung von Arzneimitteln entlang der gesamten Lieferkette',
+      examples: ['Temperaturkontrollierte Lagerung', 'Serialisierungsnachweise', 'Rückverfolgbarkeit', 'Transportvalidierung'],
       risk: 'Hoch',
-      fineExample: 'Meta Ireland: 1,2 Mrd. € (2023)',
+      fineExample: 'EMA Warning Letter + Distributionsverbot',
       realWorldScenario: {
-        title: '🏭 Praxis-Szenario: Betriebsärztlicher Dienst im Krankenhaus',
-        context: 'Ein großes Universitätsklinikum führt arbeitsmedizinische Vorsorgeuntersuchungen für 3.500 Mitarbeiter durch. Der Betriebsarzt muss Gesundheitsdaten verarbeiten, ohne die Privatsphäre zu verletzen.',
-        challenge: 'Wie können Gesundheitsdaten der Mitarbeiter verarbeitet werden, ohne dass die Personalstelle Zugang zu medizinischen Details erhält?',
+        title: '🚛 Praxis-Szenario: Blockchain-basierte Lieferketten-Transparenz',
+        context: 'Ein Pharmagrossist implementiert eine blockchain-basierte Lösung zur lückenlosen Rückverfolgung von Arzneimitteln vom Hersteller bis zur Apotheke.',
+        challenge: 'Wie kann die GDP-konforme Dokumentation bei gleichzeitiger Effizienzsteigerung und Fälschungsschutz gewährleistet werden?',
         solution: {
           step1: {
-            title: '👩‍⚕️ Strikte Datentrennung',
-            description: 'Implementierung eines "Zwei-Welten-Modells"',
+            title: '⛓️ Distributed Ledger Implementation',
+            description: 'Aufbau einer privaten Blockchain für pharmazeutische Lieferketten',
             medicalWorld: {
-              title: 'Medizinische Welt (Betriebsarzt)',
-              access: 'Vollständige Gesundheitsdaten',
-              purpose: 'Arbeitsmedizinische Vorsorge',
-              data: ['Untersuchungsergebnisse', 'Impfstatus', 'Arbeitsplatzrisiken', 'Gesundheitsempfehlungen']
+              title: 'Blockchain Layer (Vertrauensebene)',
+              access: 'Alle Lieferkettenpartner',
+              purpose: 'Unveränderliche Transaktionshistorie',
+              data: ['Seriennummern', 'Temperaturdaten', 'Übergabezeitpunkte', 'Qualitätszertifikate']
             },
             administrativeWorld: {
-              title: 'Administrative Welt (Personalabteilung)',
-              access: 'Nur arbeitsrelevante Ergebnisse',
-              purpose: 'Arbeitsplatzanpassung',
-              data: ['Arbeitsfähigkeit: Ja/Nein', 'Einschränkungen ohne medizinische Details', 'Nächster Termin']
+              title: 'API Layer (Integrationsebene)',
+              access: 'ERP- und WMS-Systeme',
+              purpose: 'Nahtlose Systemintegration',
+              data: ['Bestandsdaten', 'Liefertermine', 'Qualitätsstatus']
             }
           },
           step2: {
-            title: '🔒 Technische Umsetzung der Datentrennung',
-            description: 'Innovative Lösung für maximalen Datenschutz',
+            title: '📱 Smart Contract Automation',
+            description: 'Automatisierte Compliance-Prüfungen durch intelligente Verträge',
             technicalImplementation: [
               {
-                component: 'Medizinisches Dokumentationssystem',
-                security: 'Separate Datenbank mit Berufsgeheimnis-Schutz',
-                access: 'Nur medizinisches Personal mit Qualifikation'
+                component: 'Temperature Compliance Contract',
+                security: 'Automatische Warnung bei Temperaturabweichungen',
+                access: 'Alle berechtigten Lieferkettenpartner'
               },
               {
-                component: 'Arbeitsplatz-Bewertungssystem',
-                security: 'Automatisierte Anonymisierung medizinischer Details',
-                access: 'HR-Abteilung erhält nur arbeitsrelevante Bewertungen'
+                component: 'Authentication Smart Contract',
+                security: 'Automatische Prüfung der Serialisierungsdaten',
+                access: 'Nur verifizierte Handelspartner'
               },
               {
-                component: 'Audit-Trail System',
-                security: 'Lückenlose Dokumentation aller Datenzugriffe',
-                access: 'Datenschutzbeauftragte für Compliance-Kontrolle'
+                component: 'GDP Compliance Oracle',
+                security: 'Integration externer Compliance-Datenquellen',
+                access: 'Regulatorische Behörden für Inspektionen'
               }
             ]
           },
           step3: {
-            title: '📊 Praktisches Beispiel: Nachtschicht-Tauglichkeit',
-            description: 'Wie arbeitsmedizinische Bewertungen datenschutzkonform kommuniziert werden',
+            title: '🔍 Transparency Dashboard',
+            description: 'Zentrale Übersicht über alle Lieferketten-Aktivitäten',
             medicalAssessment: {
-              betriebsarzt: 'Patient hat chronische Insomnie und Bluthochdruck. Nachtschichten erhöhen Gesundheitsrisiko erheblich.',
-              documentation: 'Vollständige medizinische Begründung in separatem System'
+              grossist: 'Vollständige Rückverfolgbarkeit aller Arzneimittel mit Echtzeit-Temperaturmonitoring.',
+              documentation: 'Unveränderliche Blockchain-Records für alle Transaktionen'
             },
             hrCommunication: {
-              personalstelle: 'Mitarbeiter für Nachtschichten nicht geeignet. Alternative Schichtzeiten empfohlen.',
-              rationale: 'Keine medizinischen Details, nur arbeitsplatzrelevante Empfehlung'
+              apotheke: 'Sofortige Verifizierung der Arzneimittel-Authentizität über QR-Code-Scan.',
+              rationale: 'Schutz vor Fälschungen und GDP-konforme Dokumentation'
             }
           }
         },
         outcome: {
-          employeeBenefit: 'Optimaler Gesundheitsschutz ohne Diskriminierungsrisiko',
-          employerBenefit: 'Arbeitsschutz-Compliance ohne Datenschutzverstöße',
-          legalCompliance: 'Vollständige Art. 9 DSGVO Konformität + Arbeitsschutzrecht'
+          traceabilityBenefit: 'Reduzierung der Rückverfolgungszeit von Tagen auf Sekunden',
+          complianceBenefit: 'Automatische GDP-Compliance-Berichterstattung',
+          economicBenefit: '40% Reduktion der administrativen Aufwände'
         },
         keyLearnings: [
-          'Datentrennung schafft Vertrauen bei Mitarbeitern',
-          'Betriebsärztliche Schweigepflicht bleibt vollständig gewahrt',
-          'Automatisierte Anonymisierung verhindert menschliche Fehler',
-          'Transparente Prozesse reduzieren Widerstand gegen Vorsorgeuntersuchungen'
+          'Blockchain erfordert Standardisierung zwischen allen Partnern',
+          'Smart Contracts reduzieren manuellen Aufwand erheblich',
+          'Transparenz schafft Vertrauen bei allen Stakeholdern',
+          'Regulatorische Behörden begrüßen erhöhte Rückverfolgbarkeit'
         ]
       }
     },
     {
-      title: 'Lebenswichtige Interessen (Art. 9 Abs. 2 lit. c)',
-      description: 'Die Verarbeitung ist zum Schutz lebenswichtiger Interessen der betroffenen Person oder einer anderen natürlichen Person erforderlich',
-      examples: ['Notfallbehandlung bewusstloser Patienten', 'Intensivmedizin', 'Rettungsdienst-Einsätze', 'Organspende-Koordination'],
-      risk: 'Mittel',
-      fineExample: 'Ausnahme: Notfallsituationen meist bußgeldfrei',
+      title: 'Good Clinical Practice (GCP)',
+      description: 'Internationale Standards für Design, Durchführung und Berichterstattung klinischer Prüfungen',
+      examples: ['Informed Consent Management', 'Source Data Verification', 'Audit Trail Documentation', 'Safety Reporting'],
+      risk: 'Kritisch',
+      fineExample: 'Studienabbruch + Behördliche Sanktionen',
       implementation: {
         requirements: [
-          'Unmittelbare Lebensgefahr oder schwerwiegende Gesundheitsgefährdung',
-          'Nachträgliche Information sobald möglich',
-          'Dokumentation der Notfallsituation',
-          'Minimale erforderliche Datenverarbeitung'
+          'ICH GCP E6(R2) Compliance',
+          'EU Clinical Trial Regulation (CTR)',
+          'CTMS (Clinical Trial Management System)',
+          'eCRF (Electronic Case Report Forms)'
         ],
         template: `
-// Notfall-Datenverarbeitung
-const emergencyDataProcessing = {
-  emergencyId: generateEmergencyId(),
-  timestamp: new Date().toISOString(),
-  legalBasis: 'Art. 9 Abs. 2 lit. c DSGVO',
-  
-  situation: {
-    type: 'life_threatening_emergency',
-    severity: 'critical',
-    consentStatus: 'unable_to_consent',
-    witnesses: 2
+// GCP-konforme Studienteilnehmer-Verwaltung
+const clinicalTrialManagement = {
+  studyId: generateStudyProtocolId(),
+  regulatoryBasis: 'ICH GCP E6(R2)',
+  consent: {
+    type: 'informed_consent_electronic',
+    verification: 'biometric_signature',
+    withdrawal: 'immediate_data_anonymization',
+    documentation: 'audit_trail_complete'
   },
   
-  processedData: {
-    vitalSigns: 'immediately_necessary_only',
-    medicalHistory: 'emergency_relevant_only',
-    allergies: 'life_threatening_allergies_only',
-    medications: 'interaction_critical_only'
+  dataIntegrity: {
+    sourceDataVerification: 'remote_monitoring_enabled',
+    auditTrail: 'immutable_blockchain_records',
+    dataLocks: 'progressive_database_freeze',
+    signatureChain: 'electronic_signatures_validated'
   },
   
-  // Nachträgliche Compliance
-  postEmergencyActions: {
-    patientInformation: {
-      required: true,
-      deadline: '72_hours_after_emergency',
-      method: 'written_and_verbal'
-    },
-    dataReview: {
-      unnecessary_data_deletion: 'within_7_days',
-      consent_regularization: 'as_soon_as_possible'
-    },
-    documentation: {
-      emergency_justification: 'detailed_medical_report',
-      legal_assessment: 'documented_necessity'
-    }
+  safetyReporting: {
+    adverseEvents: 'real_time_capture',
+    seriousAE: 'immediate_notification',
+    expeditedReporting: 'automated_regulatory_submission',
+    periodicReports: 'ai_assisted_signal_detection'
+  },
+  
+  qualityAssurance: {
+    monitoring: 'risk_based_remote_monitoring',
+    audits: 'predictive_quality_analytics',
+    inspectionReadiness: 'continuous_compliance_scoring'
   }
 };
         `
@@ -354,91 +358,78 @@ const emergencyDataProcessing = {
     }
   ];
 
-  const consentManagement = [
+  const clinicalTrialCompliance = [
     {
-      scenario: 'Digitale Erstanamnese',
-      challenge: 'Umfassende Gesundheitsdatenerhebung bei Erstkontakt',
-      solution: 'Granulares, modulares Einwilligungssystem',
+      scenario: 'Dezentrale Klinische Studien (DCT)',
+      challenge: 'Remote Patient Monitoring mit gleichzeitiger GCP-Compliance',
+      solution: 'Digitale Plattform für patientenzentrierte Studien',
       implementation: {
         modules: [
-          'Basis-Gesundheitsdaten (Pflichtangaben)',
-          'Erweiterte Anamnese (Optional)',
-          'Forschungsteilnahme (Opt-in)',
-          'Datenübermittlung an Fachärzte (Situativ)'
+          'Electronic Patient Reported Outcomes (ePRO)',
+          'Wearable Device Integration',
+          'Virtual Site Monitoring',
+          'Remote Consent Management'
         ],
         technical: `
-// Modulares Consent Management
-const consentModules = {
-  basic_health_data: {
-    required: true,
-    legalBasis: 'Art. 9 Abs. 2 lit. h DSGVO',
-    description: 'Grundlegende Gesundheitsdaten für Behandlung',
-    dataTypes: ['current_symptoms', 'medication_list', 'allergies']
+// DCT Platform Architecture
+const decentralizedClinicalTrial = {
+  patientApp: {
+    features: ['symptom_diary', 'medication_adherence', 'vitals_tracking'],
+    compliance: 'FDA_21CFR11_validated',
+    security: 'end_to_end_encryption',
+    accessibility: 'WCAG_2.1_AA_compliant'
   },
   
-  extended_anamnesis: {
-    required: false,
-    legalBasis: 'Art. 9 Abs. 2 lit. a DSGVO',
-    description: 'Detaillierte Krankengeschichte für optimale Behandlung',
-    dataTypes: ['family_history', 'lifestyle_factors', 'previous_surgeries'],
-    benefits: 'Personalisierte Behandlungsempfehlungen'
+  wearableIntegration: {
+    devices: ['smartwatch', 'glucose_monitor', 'bp_cuff'],
+    dataStandards: 'HL7_FHIR_R4',
+    validation: 'clinical_grade_accuracy',
+    privacy: 'on_device_processing'
   },
   
-  research_participation: {
-    required: false,
-    legalBasis: 'Art. 9 Abs. 2 lit. a DSGVO',
-    description: 'Anonymisierte Daten für medizinische Forschung',
-    dataTypes: ['anonymized_diagnosis', 'treatment_outcomes'],
-    withdrawal: 'jederzeit ohne Begründung'
+  virtualMonitoring: {
+    scheduling: 'ai_optimized_visit_planning',
+    documentation: 'automated_source_verification',
+    communication: 'secure_video_consultation',
+    oversight: 'real_time_data_quality_monitoring'
   }
 };
         `
       }
     },
     {
-      scenario: 'Telemedizin-Konsultation',
-      challenge: 'Videoübertragung, Aufzeichnung, internationale Datenübertragung',
-      solution: 'Privacy-by-Design Telemedizin-Plattform',
+      scenario: 'Adaptive Clinical Trials',
+      challenge: 'Protokollanpassungen während laufender Studien',
+      solution: 'KI-gestützte adaptive Studiendesigns',
       implementation: {
         modules: [
-          'Ende-zu-Ende Verschlüsselung',
-          'Temporäre Session-Daten',
-          'Aufzeichnungs-Kontrolle',
-          'EU-Server Hosting'
+          'Bayesian Statistical Modeling',
+          'Real-time Efficacy Monitoring',
+          'Automated Protocol Amendments',
+          'Regulatory Communication Hub'
         ],
         technical: `
-// Telemedizin Privacy Setup
-const telemedicineSession = {
-  sessionId: generateSecureSessionId(),
-  encryption: {
-    type: 'end_to_end_encryption',
-    algorithm: 'AES-256-GCM',
-    keyExchange: 'ECDH-P256'
+// Adaptive Trial Management
+const adaptiveTrialSystem = {
+  statisticalEngine: {
+    methodology: 'bayesian_adaptive_design',
+    interimAnalysis: 'automated_efficacy_boundaries',
+    sampleSizeReestimation: 'conditional_power_analysis',
+    dropout: 'missing_data_imputation'
   },
   
-  dataProcessing: {
-    video_audio: {
-      storage: 'temporary_session_only',
-      retention: '24_hours_max',
-      recording: {
-        allowed: false, // Default
-        requires: 'explicit_consent_both_parties',
-        purpose: 'medical_documentation_only'
-      }
-    },
-    
-    session_metadata: {
-      stored: ['session_duration', 'connection_quality'],
-      not_stored: ['ip_addresses', 'device_fingerprints'],
-      anonymized: true
-    }
+  protocolAdaptations: {
+    doseOptimization: 'continual_reassessment_method',
+    populationEnrichment: 'biomarker_driven_selection',
+    endpointModification: 'regulatory_pre_approved_changes',
+    studyTermination: 'futility_boundary_monitoring'
   },
   
-  infrastructure: {
-    server_location: 'EU_only',
-    data_residency: 'Germany_preferred',
-    third_party_services: 'gdpr_compliant_only',
-    subprocessors: 'documented_and_approved'
+  regulatoryInterface: {
+    submissions: 'automated_amendment_preparation',
+    communication: 'real_time_authority_updates',
+    approval: 'expedited_review_pathways',
+    transparency: 'public_trial_registry_sync'
   }
 };
         `
@@ -446,234 +437,340 @@ const telemedicineSession = {
     }
   ];
 
-  const tomMeasures = [
+  const pharmakovigilanceSystem = [
     {
-      category: 'Zutrittskontrolle',
-      icon: Building2,
+      category: 'Adverse Event Reporting',
+      icon: AlertTriangle,
       measures: [
-        'Biometrische Zugangssysteme für Patientenbereiche',
-        'Mehrstufige Besucherregistrierung',
-        '24/7 Sicherheitsdienst mit Protokollierung',
-        'Videoüberwachung mit automatischer Anonymisierung'
+        'Automatisierte SAE-Erfassung aus EMR-Systemen',
+        'KI-basierte Signal Detection aus Social Media',
+        'Real-time Kausalitätsbewertung',
+        'Globale Regulatory Submission Automation'
       ],
-      healthcareSpecific: 'Patientenzimmer, Operationssäle, Datenverarbeitungsräume, Archivbereiche',
-      iso27001: 'A.11.1.1 - Physische Sicherheitsbereiche',
+      pharmaSpecific: 'ICH E2B(R3), EudraVigilance, FDA FAERS Integration',
+      iso27001: 'ICH E2E - Pharmacovigilance Planning',
       practicalImplementation: {
-        title: 'Intelligente Sicherheitszonen',
-        description: 'Automatische Anpassung der Sicherheitsmaßnahmen je nach Bereich und Tageszeit',
+        title: 'Intelligente Pharmakovigilanz-Pipeline',
+        description: 'End-to-end Automatisierung der Arzneimittelsicherheit',
         zones: [
           {
-            name: 'Öffentlicher Bereich',
-            security: 'Grundsicherheit',
-            access: 'Freier Zugang für Besucher',
-            measures: 'Videoaufzeichnung, Notfallknöpfe'
+            name: 'Signal Detection Layer',
+            security: 'Machine Learning Pipeline',
+            access: 'Strukturierte + unstrukturierte Daten',
+            measures: 'NLP für Freitext-Analyse medizinischer Berichte'
           },
           {
-            name: 'Patientenbereich',
-            security: 'Mittlere Sicherheit',
-            access: 'Mitarbeiterausweis + PIN',
-            measures: 'Automatische Patientenanonymisierung bei Aufzeichnungen'
+            name: 'Case Processing Layer',
+            security: 'Automated Triage System',
+            access: 'Medizinische Fachkräfte + AI',
+            measures: 'Automatische Kausalitätsbewertung nach WHO-UMC'
           },
           {
-            name: 'OP/Intensivstation',
-            security: 'Hohe Sicherheit',
-            access: 'Biometrie + Mitarbeiterausweis',
-            measures: 'Lückenlose Dokumentation, Reinraumstandards'
+            name: 'Regulatory Submission Layer',
+            security: 'Gateway zu Behörden',
+            access: 'Qualified Person für PV',
+            measures: 'Automatische E2B(R3) Generierung'
           },
           {
-            name: 'Rechenzentrum',
-            security: 'Maximale Sicherheit',
-            access: 'Multi-Faktor + Begleitperson',
-            measures: 'Faraday-Käfig, 24/7 Überwachung'
+            name: 'Analytics Layer',
+            security: 'Business Intelligence',
+            access: 'Management Dashboard',
+            measures: 'Predictive Safety Analytics'
           }
         ]
       }
     },
     {
-      category: 'Zugangskontrolle',
-      icon: UserCheck,
+      category: 'Risk Management',
+      icon: ShieldCheck,
       measures: [
-        'Multi-Faktor-Authentifizierung für alle Systeme',
-        'Rollenbasierte Berechtigungen nach Funktionsbereich',
-        'Automatische Sperrung bei Inaktivität (5 Min)',
-        'Privilegierte Konten mit zusätzlicher Überwachung'
+        'Risk Evaluation and Mitigation Strategies (REMS)',
+        'Periodic Safety Update Reports (PSUR) Automation',
+        'Benefit-Risk Assessment Kontinuum',
+        'Post-Market Surveillance Integration'
       ],
-      healthcareSpecific: 'KIS, PACS, Laborinformationssysteme, Patientenportale',
-      iso27001: 'A.9.1.1 - Zugriffsrichtlinie',
+      pharmaSpecific: 'EMA PRAC Guidelines, FDA REMS Requirements',
+      iso27001: 'ICH E2E - Post-marketing Safety Studies',
       practicalImplementation: {
-        title: 'Intelligente Rollenverwaltung',
-        description: 'Automatische Rechtevergabe basierend auf Funktion, Schicht und Patientenzuordnung',
+        title: 'Proaktives Risikomanagement-Ökosystem',
+        description: 'Kontinuierliche Überwachung und Bewertung von Arzneimittelrisiken',
         roles: [
           {
-            name: '👩‍⚕️ Ärzte',
-            permissions: 'Vollzugriff auf zugewiesene Patienten',
-            restrictions: 'Automatische Sperrung nach Schichtende',
-            security: 'Biometrische Anmeldung + Smart Card'
+            name: '🔬 Safety Scientists',
+            permissions: 'Vollzugriff auf Sicherheitsdaten',
+            restrictions: 'Nur für zugewiesene Produkte',
+            security: 'Two-factor Auth + Digital Signatures'
           },
           {
-            name: '👩‍⚕️ Pflegekräfte',
-            permissions: 'Patientendaten + Vitalwerte erfassen',
-            restrictions: 'Keine Diagnose-Änderungen',
-            security: 'PIN + Fingerabdruck'
+            name: '📊 Data Scientists',
+            permissions: 'Anonymisierte Daten für Analytics',
+            restrictions: 'Keine Patientenidentifikation',
+            security: 'Role-based Access + Audit Logging'
           },
           {
-            name: '📈 Verwaltung',
-            permissions: 'Terminplanung + Abrechnung',
-            restrictions: 'Kein Zugriff auf medizinische Daten',
-            security: 'Passwort + SMS-Code'
+            name: '⚖️ Regulatory Affairs',
+            permissions: 'Submission Templates + Behördenkommunikation',
+            restrictions: 'Nur finale Berichte',
+            security: 'Qualified Electronic Signatures'
           },
           {
-            name: '🔧 IT-Support',
-            permissions: 'Systemwartung unter Aufsicht',
-            restrictions: 'Keine Patientendaten sichtbar',
-            security: 'Doppelte Bestätigung + Protokollierung'
+            name: '👩‍⚕️ Medical Directors',
+            permissions: 'Strategic Oversight + Benefit-Risk Decisions',
+            restrictions: 'Aggregierte Daten',
+            security: 'Executive Dashboard + Mobile Access'
           }
         ]
       }
     },
     {
-      category: 'Verschlüsselung',
-      icon: Shield,
+      category: 'Global Compliance',
+      icon: Globe,
       measures: [
-        'Ende-zu-Ende Verschlüsselung aller Patientendaten',
-        'Hardware Security Modules (HSM) für Schlüsselverwaltung',
-        'Verschlüsselte Datenbanken mit Feld-Level Encryption',
-        'Sichere Kommunikation zwischen allen Systemen'
+        'Multi-Region Regulatory Mapping',
+        'Lokale Behördenanforderungen Integration',
+        'Kulturelle Adaption von Safety Communications',
+        'Harmonisierte Safety Database (GSDB)'
       ],
-      healthcareSpecific: 'Patientenakten, DICOM-Bilder, Laborbefunde, Verschreibungen',
-      iso27001: 'A.10.1.1 - Kryptographische Kontrollen',
+      pharmaSpecific: 'FDA, EMA, PMDA, NMPA, Health Canada Requirements',
+      iso27001: 'ISO 27799 - Health informatics security',
       practicalImplementation: {
-        title: 'Mehrstufige Verschlüsselungsstrategie',
-        description: 'Umfassender Schutz von der Dateneingabe bis zur langfristigen Archivierung',
+        title: 'Globale Compliance-Orchestrierung',
+        description: 'Harmonisierung internationaler Pharmakovigilanz-Anforderungen',
         layers: [
           {
-            name: '📱 Eingabeebene',
-            protection: 'Verschlüsselung direkt bei der Dateneingabe',
-            benefit: 'Schutz bereits während der Erfassung',
-            technology: 'Client-seitige Verschlüsselung mit Hardware-Schlüsseln'
+            name: '🌍 Regional Compliance Hub',
+            protection: 'Länderspezifische Anpassungen',
+            benefit: 'Lokale Compliance trotz globaler Effizienz',
+            technology: 'Rule Engine für regionale Variationen'
           },
           {
-            name: '📊 Übertragungsebene',
-            protection: 'Sichere Kanäle zwischen allen Systemen',
-            benefit: 'Schutz vor Netzwerkangriffen',
-            technology: 'TLS 1.3 mit Certificate Pinning'
+            name: '📡 API Gateway',
+            protection: 'Sichere Behördenkommunikation',
+            benefit: 'Direkte Integration mit Behördensystemen',
+            technology: 'REST APIs mit OAuth 2.0'
           },
           {
-            name: '📋 Speicherebene',
-            protection: 'Verschlüsselte Datenbankfelder',
-            benefit: 'Schutz auch bei Datenbankzugriff',
-            technology: 'AES-256 mit HSM-verwalteten Schlüsseln'
+            name: '🏛️ Master Data Management',
+            protection: 'Einheitliche Produktdatenbank',
+            benefit: 'Konsistenz über alle Märkte',
+            technology: 'Blockchain für unveränderliche Product IDs'
           },
           {
-            name: '📺 Archivebene',
-            protection: 'Langzeitsichere Verschlüsselung',
-            benefit: 'Schutz über Jahrzehnte garantiert',
-            technology: 'Quantenresistente Algorithmen'
+            name: '📈 Analytics Engine',
+            protection: 'Cross-regional Signal Detection',
+            benefit: 'Früherkennung globaler Sicherheitssignale',
+            technology: 'Federated Learning zwischen Regionen'
           }
         ]
+      }
+    }
+  ];
+
+  const serializationRequirements = [
+    {
+      scenario: 'EU FMD (Falsified Medicines Directive)',
+      challenge: 'Eindeutige Kennzeichnung und Rückverfolgbarkeit aller verschreibungspflichtigen Medikamente',
+      solution: 'End-to-End Serialisierung mit EMVS-Integration',
+      implementation: {
+        modules: [
+          'Level 1: Primärverpackung Serialisierung',
+          'Level 2: Sekundärverpackung Aggregation',
+          'Level 3: Tertiärverpackung für Logistik',
+          'Level 4: Paletten-Ebene für Supply Chain'
+        ],
+        technical: `
+// FMD Compliance Architecture
+const serializationSystem = {
+  dataMatrix: {
+    standard: 'GS1_DataMatrix_ECC200',
+    content: {
+      productCode: 'GTIN_14_digit',
+      serialNumber: 'unique_alphanumeric_20_char',
+      batchLot: 'manufacturer_batch_id',
+      expiryDate: 'YYMMDD_format'
+    },
+    verification: 'ISO_IEC_15415_grading'
+  },
+  
+  emvsIntegration: {
+    uploadTiming: 'before_wholesale_distribution',
+    dataFormat: 'EFPIA_EMVO_standard',
+    verification: 'two_way_authentication',
+    decommissioning: 'pharmacy_dispensing_event'
+  },
+  
+  traceability: {
+    aggregation: 'parent_child_relationships',
+    commissioning: 'manufacturing_line_integration',
+    trackAndTrace: 'supply_chain_visibility',
+    authentication: 'consumer_verification_app'
+  }
+};
+        `
+      }
+    },
+    {
+      scenario: 'US DSCSA (Drug Supply Chain Security Act)',
+      challenge: 'Vollständige elektronische Rückverfolgbarkeit bis zum Verbraucher bis 2023',
+      solution: 'Blockchain-basierte Interoperable Exchange',
+      implementation: {
+        modules: [
+          'EPCIS Event Capture',
+          'ATP (Authorized Trading Partner) Verification',
+          'VRS (Verification Router Service)',
+          'Suspect Product Investigation'
+        ],
+        technical: `
+// DSCSA Compliance Platform
+const dscsaCompliance = {
+  epcisEvents: {
+    commissioning: 'manufacturing_completion',
+    aggregation: 'packaging_hierarchy',
+    shipping: 'trading_partner_transfer',
+    receiving: 'custody_acknowledgment',
+    dispensing: 'patient_delivery_final'
+  },
+  
+  tradePartnerNetwork: {
+    verification: 'FDA_registration_lookup',
+    licensing: 'state_board_validation',
+    reputation: 'blockchain_trust_score',
+    compliance: 'automated_audit_trails'
+  },
+  
+  productVerification: {
+    trigger: 'suspect_product_identification',
+    process: 'lot_level_investigation',
+    resolution: 'quarantine_disposition',
+    reporting: 'regulatory_notification'
+  }
+};
+        `
       }
     }
   ];
 
   const riskScenarios = [
     {
-      scenario: 'Patientendaten-Breach durch Ransomware',
-      likelihood: 'Hoch',
+      scenario: 'GMP-Abweichung in kritischer Produktion',
+      likelihood: 'Mittel',
       impact: 'Sehr Hoch',
-      riskScore: 95,
-      potentialFine: '5-20 Mio. €',
-      affectedPersons: '10.000+',
+      riskScore: 90,
+      potentialFine: '5% Jahresumsatz + Produktionstopp',
+      affectedProducts: '50+ Medikamente',
       mitigationMeasures: [
-        'Immutable Backups mit Air-Gap Isolation',
-        'Zero-Trust Network Architecture',
-        'Endpoint Detection and Response (EDR)',
-        'Incident Response Team 24/7',
-        'Cyber Insurance mit DSGVO-Abdeckung'
+        'Kontinuierliche Prozessüberwachung mit IoT',
+        'Predictive Quality Analytics',
+        'Automatisierte Deviation Detection',
+        'Real-time Quality Control Dashboard',
+        'Supplier Quality Management Integration'
       ],
       complianceActions: [
-        'Meldung an Aufsichtsbehörde binnen 72h',
-        'Information betroffener Personen binnen 72h',
-        'Forensische Untersuchung dokumentieren',
-        'Schadensbegrenzung und -bewertung',
-        'Verbesserungsmaßnahmen implementieren'
+        'Sofortige Behördenbenachrichtigung',
+        'Root Cause Analysis innerhalb 48h',
+        'Vorsorgeprüfung aller verwandten Chargen',
+        'CAPA (Corrective Action Preventive Action)',
+        'Externe Quality Audit Beauftragung'
       ]
     },
     {
-      scenario: 'Unberechtigte Einsichtnahme durch Mitarbeiter',
-      likelihood: 'Mittel',
+      scenario: 'Klinische Studie Protokollverletzung',
+      likelihood: 'Hoch',
       impact: 'Hoch',
-      riskScore: 75,
-      potentialFine: '500.000 - 2 Mio. €',
-      affectedPersons: '50-500',
+      riskScore: 85,
+      potentialFine: 'Studienabbruch + €2-10 Mio.',
+      affectedPersons: '1.000+ Studienteilnehmer',
       mitigationMeasures: [
-        'Umfassende Zugriffsprotokollierung',
-        'Anomalie-Erkennung bei Datenzugriffen',
-        'Regelmäßige Mitarbeiterschulungen',
-        'Break-Glass Verfahren für Notfälle',
-        'Whistleblower-System für Compliance-Verstöße'
+        'Elektronische Protokoll-Compliance-Checks',
+        'Real-time Data Quality Monitoring',
+        'Automated Informed Consent Tracking',
+        'Remote Site Monitoring mit KI',
+        'Predictive Protocol Deviation Analytics'
       ],
       complianceActions: [
-        'Interne Untersuchung und Dokumentation',
-        'Arbeitsrechtliche Maßnahmen prüfen',
-        'Betroffene Patienten informieren',
-        'Zusätzliche Sicherheitsmaßnahmen',
-        'Präventive Schulungsmaßnahmen'
+        'Ethikkommission sofort informieren',
+        'Regulatory Authority Notification',
+        'Studienteilnehmer informieren',
+        'Independent Data Monitoring Committee',
+        'Protokoll-Amendment oder Studie beenden'
+      ]
+    },
+    {
+      scenario: 'Pharmakovigilanz-Berichterstattungsfehler',
+      likelihood: 'Mittel',
+      impact: 'Hoch',
+      riskScore: 80,
+      potentialFine: '€1-5 Mio. + Marktrücknahme',
+      affectedPersons: '10.000+ Patienten',
+      mitigationMeasures: [
+        'Automatisierte SAE-Detection aus EMRs',
+        'KI-basierte Literature Mining',
+        'Real-time Signal Detection',
+        'Global Safety Database Integration',
+        'Automated Regulatory Submission'
+      ],
+      complianceActions: [
+        'Immediate Safety Review',
+        'Expedited Regulatory Reporting',
+        'Risk Communication zu Ärzten',
+        'Produkt-Labeling Update',
+        'Post-Market Safety Study initiation'
       ]
     }
   ];
 
   const implementationRoadmap = [
     {
-      phase: 'Assessment & Planung',
-      duration: '4-6 Wochen',
+      phase: 'Regulatory Assessment',
+      duration: '6-8 Wochen',
       color: 'blue',
       tasks: [
-        'DSGVO Healthcare Gap-Analyse',
-        'Datenschutz-Folgenabschätzung (DSFA)',
-        'Art. 9 Compliance-Audit',
-        'Stakeholder-Workshops',
-        'Implementierungsplan erstellen'
+        'GxP Gap-Analyse aller Systeme',
+        'ICH Guidelines Compliance Review',
+        'Regulatory Submission Strategy',
+        'Quality Management System Audit',
+        'Vendor Qualification Program'
       ],
-      deliverables: ['Gap-Analyse Report', 'DSFA Dokumentation', 'Implementierungsroadmap']
+      deliverables: ['Compliance Roadmap', 'Risk Assessment Report', 'Validation Master Plan']
     },
     {
-      phase: 'Technische Implementation',
-      duration: '8-12 Wochen',
+      phase: 'System Implementation',
+      duration: '12-16 Wochen',
       color: 'green',
       tasks: [
-        'Verschlüsselungsinfrastruktur aufbauen',
-        'Consent Management System',
-        'Zugriffskontrollsystem implementieren',
-        'Monitoring und Alerting',
-        'Backup und Recovery optimieren'
+        'LIMS/QMS System Deployment',
+        'Clinical Trial Management System',
+        'Pharmacovigilance Platform Setup',
+        'Serialization Infrastructure',
+        'Integration und Validation'
       ],
-      deliverables: ['Technische Infrastruktur', 'Security Controls', 'Monitoring Dashboard']
+      deliverables: ['Validated Systems', 'Integration Testing', 'User Training']
     },
     {
-      phase: 'Organisatorische Maßnahmen',
-      duration: '6-8 Wochen',
+      phase: 'Process Optimization',
+      duration: '8-10 Wochen',
       color: 'orange',
       tasks: [
-        'Richtlinien und Verfahren aktualisieren',
-        'Mitarbeiterschulungen durchführen',
-        'Incident Response Prozesse',
-        'Audit und Compliance Checks',
-        'Dokumentation vervollständigen'
+        'Standard Operating Procedures',
+        'Quality Assurance Processes',
+        'Audit Trail Implementation',
+        'Change Control Procedures',
+        'Continuous Improvement Program'
       ],
-      deliverables: ['Compliance Dokumentation', 'Schulungsnachweis', 'Audit Reports']
+      deliverables: ['SOP Library', 'Quality Manual', 'Training Records']
     },
     {
-      phase: 'Go-Live & Monitoring',
-      duration: '2-4 Wochen',
+      phase: 'Regulatory Readiness',
+      duration: '4-6 Wochen',
       color: 'purple',
       tasks: [
-        'Produktive Inbetriebnahme',
-        'Continuous Monitoring einrichten',
-        'User Acceptance Testing',
-        'Performance Optimierung',
-        'Compliance Validation'
+        'Mock Regulatory Inspections',
+        'Submission Document Preparation',
+        'Global Compliance Validation',
+        'Ongoing Monitoring Setup',
+        'Regulatory Intelligence Integration'
       ],
-      deliverables: ['Live System', 'Monitoring Setup', 'Compliance Certificate']
+      deliverables: ['Inspection Readiness', 'Submission Files', 'Monitoring Dashboard']
     }
   ];
 
@@ -700,8 +797,8 @@ const telemedicineSession = {
         {/* Hero Section with Parallax */}
         <section ref={heroRef} className="relative py-20 md:py-28">
           <div className="absolute inset-0 -z-10">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-red-500/10 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+            <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
           </div>
 
           <motion.div 
@@ -716,49 +813,49 @@ const telemedicineSession = {
                   transition={{ duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 dark:bg-red-950/30 text-red-700 dark:text-red-400">
-                    <Heart className="h-4 w-4" />
-                    <span className="text-sm font-medium">Healthcare DSGVO Excellence</span>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400">
+                    <Pill className="h-4 w-4" />
+                    <span className="text-sm font-medium">Pharma Compliance Excellence</span>
                   </div>
                   
                   <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                    Healthcare DSGVO
-                    <span className="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent block mt-2">
-                      Art. 9 Compliance Guide
+                    Pharma Compliance
+                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-2">
+                      GxP Excellence Guide
                     </span>
                   </h1>
                   
                   <p className="text-xl text-gray-600 dark:text-gray-300">
-                    Meistern Sie die komplexesten Datenschutz-Herausforderungen im Gesundheitswesen. 
-                    Von Art. 9 DSGVO über MDR bis hin zu KI-basierten Diagnose-Systemen.
+                    Meistern Sie die komplexesten regulatorischen Anforderungen der Pharmaindustrie. 
+                    Von GMP über klinische Studien bis hin zur globalen Pharmakovigilanz.
                   </p>
 
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
-                      <span>DSGVO Art. 9 konforme Verarbeitung von Gesundheitsdaten</span>
+                      <span>GMP, GDP, GCP konforme Implementierung</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
-                      <span>EU AI Act Compliance für medizinische KI-Systeme</span>
+                      <span>ICH Guidelines & EMA/FDA Compliance</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
-                      <span>MDR-Integration und Medizinprodukte-Compliance</span>
+                      <span>Serialisierung & Pharmakovigilanz Automation</span>
                     </div>
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Link to="/contact?demo=true&industry=healthcare">
-                      <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 group">
-                        <Stethoscope className="mr-2 h-5 w-5" />
-                        Healthcare Demo buchen
+                    <Link to="/contact?demo=true&industry=pharma">
+                      <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 group">
+                        <Pill className="mr-2 h-5 w-5" />
+                        Pharma Demo buchen
                         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
                     <Button size="lg" variant="outline" className="group">
                       <Download className="mr-2 h-5 w-5" />
-                      Art. 9 DSGVO Checkliste
+                      GxP Compliance Checkliste
                     </Button>
                   </div>
                 </motion.div>
@@ -770,10 +867,10 @@ const telemedicineSession = {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="relative"
                 >
-                  <Card className="p-6 shadow-2xl border-2 border-red-200 dark:border-red-800">
+                  <Card className="p-6 shadow-2xl border-2 border-blue-200 dark:border-blue-800">
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <h3 className="font-bold text-lg">Healthcare Compliance Center</h3>
+                        <h3 className="font-bold text-lg">Pharma Compliance Center</h3>
                         <Badge className="bg-green-100 text-green-700">
                           {getCompletionPercentage()}% Konform
                         </Badge>
@@ -816,11 +913,11 @@ const telemedicineSession = {
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute -top-4 -right-4 bg-white dark:bg-gray-900 rounded-full px-4 py-2 shadow-xl border-2 border-red-500"
+                    className="absolute -top-4 -right-4 bg-white dark:bg-gray-900 rounded-full px-4 py-2 shadow-xl border-2 border-blue-500"
                   >
                     <div className="flex items-center gap-2">
-                      <Heart className="h-4 w-4 text-red-500 animate-pulse" />
-                      <span className="text-sm font-medium">DSGVO Ready</span>
+                      <Pill className="h-4 w-4 text-blue-500 animate-pulse" />
+                      <span className="text-sm font-medium">GxP Ready</span>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -844,21 +941,21 @@ const telemedicineSession = {
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
                       activeSection === item.id
-                        ? "bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400 border-red-200 dark:border-red-800"
-                        : "hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-700 dark:hover:text-red-400",
+                        ? "bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+                        : "hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-700 dark:hover:text-blue-400",
                       "border",
                       activeSection === item.id
-                        ? "border-red-200 dark:border-red-800"
-                        : "border-transparent hover:border-red-200 dark:hover:border-red-800"
+                        ? "border-blue-200 dark:border-blue-800"
+                        : "border-transparent hover:border-blue-200 dark:hover:border-blue-800"
                     )}
                   >
                     <item.icon className={cn(
                       "h-4 w-4",
-                      activeSection === item.id && "text-red-600 dark:text-red-500"
+                      activeSection === item.id && "text-blue-600 dark:text-blue-500"
                     )} />
                     <span className={cn(
                       "text-sm font-medium",
-                      activeSection === item.id && "text-red-700 dark:text-red-400"
+                      activeSection === item.id && "text-blue-700 dark:text-blue-400"
                     )}>{item.label}</span>
                   </button>
                 ))}
@@ -873,35 +970,35 @@ const telemedicineSession = {
             <div className="max-w-7xl mx-auto space-y-20">
 
               {/* Overview Section */}
-              <section id="overview" className="space-y-8 scroll-mt-32">
+              <section id="ueberblick" className="space-y-8 scroll-mt-32">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
                 >
-                  Healthcare DSGVO Überblick
+                  Pharma Compliance Überblick
                 </motion.h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <Card className="p-6">
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2">
-                          <Shield className="h-6 w-6 text-red-600" />
-                          DSGVO Art. 9 - Besondere Kategorien
+                          <Shield className="h-6 w-6 text-blue-600" />
+                          GxP Standards - Good Practices
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <p className="text-gray-600 dark:text-gray-400">
-                          Gesundheitsdaten gehören zu den besonderen Kategorien personenbezogener Daten 
-                          und erfordern höchste Schutzstandards und spezielle Rechtsgrundlagen.
+                          GxP umfasst alle "Good Practice" Standards in der Pharmaindustrie und stellt 
+                          sicher, dass Produkte konsistent und kontrolliert hergestellt werden.
                         </p>
                         
                         <div className="space-y-3">
                           {[
-                            'Explizite Einwilligung oder gesetzliche Erlaubnis',
-                            'Erhöhte technische und organisatorische Maßnahmen',
-                            'Besondere Transparenz- und Informationspflichten',
-                            'Verschärfte Dokumentations- und Nachweispflichten'
+                            'GMP (Good Manufacturing Practice) für Produktion',
+                            'GCP (Good Clinical Practice) für klinische Studien',
+                            'GDP (Good Distribution Practice) für Vertrieb',
+                            'GLP (Good Laboratory Practice) für Tests'
                           ].map((item, i) => (
                             <div key={i} className="flex items-start gap-3">
                               <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0 mt-1" />
@@ -910,15 +1007,15 @@ const telemedicineSession = {
                           ))}
                         </div>
 
-                        <div className="p-4 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-200">
+                        <div className="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200">
                           <div className="flex items-center gap-2 mb-2">
-                            <AlertTriangle className="h-4 w-4 text-red-600" />
-                            <span className="font-semibold text-red-800 dark:text-red-400">
-                              Bußgeldrisiko
+                            <AlertTriangle className="h-4 w-4 text-blue-600" />
+                            <span className="font-semibold text-blue-800 dark:text-blue-400">
+                              Regulatorische Relevanz
                             </span>
                           </div>
-                          <p className="text-sm text-red-700 dark:text-red-300">
-                            Bis zu 20 Mio. € oder 4% des weltweiten Jahresumsatzes bei Verstößen gegen Art. 9 DSGVO
+                          <p className="text-sm text-blue-700 dark:text-blue-300">
+                            Verstöße können zu Produktionsverboten, Marktrücknahmen und erheblichen Bußgeldern führen
                           </p>
                         </div>
                       </CardContent>
@@ -927,25 +1024,25 @@ const telemedicineSession = {
                     <Card className="p-6">
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2">
-                          <Brain className="h-6 w-6 text-purple-600" />
-                          EU AI Act & Healthcare KI
+                          <Microscope className="h-6 w-6 text-purple-600" />
+                          ICH Guidelines & Global Harmonisierung
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <p className="text-gray-600 dark:text-gray-400">
-                          Medizinische KI-Systeme fallen unter die Hochrisiko-Kategorie des EU AI Act 
-                          und erfordern umfassende Compliance-Maßnahmen.
+                          Die International Council for Harmonisation (ICH) entwickelt global einheitliche 
+                          Standards für Qualität, Sicherheit und Wirksamkeit von Arzneimitteln.
                         </p>
                         
                         <div className="space-y-3">
                           {[
-                            'Risikomanagementsystem für KI-Anwendungen',
-                            'Transparenz und Erklärbarkeit der Algorithmen', 
-                            'Menschliche Aufsicht bei kritischen Entscheidungen',
-                            'Kontinuierliche Überwachung und Bias-Monitoring'
+                            'ICH Q-Series: Qualitätsstandards und analytische Verfahren',
+                            'ICH E-Series: Efficacy Guidelines für klinische Studien', 
+                            'ICH S-Series: Safety Guidelines für präklinische Tests',
+                            'ICH M-Series: Multidisziplinäre Guidelines'
                           ].map((item, i) => (
                             <div key={i} className="flex items-start gap-3">
-                              <Brain className="h-4 w-4 text-purple-600 flex-shrink-0 mt-1" />
+                              <Microscope className="h-4 w-4 text-purple-600 flex-shrink-0 mt-1" />
                               <span className="text-sm">{item}</span>
                             </div>
                           ))}
@@ -953,13 +1050,13 @@ const telemedicineSession = {
 
                         <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200">
                           <div className="flex items-center gap-2 mb-2">
-                            <Lightbulb className="h-4 w-4 text-purple-600" />
+                            <Globe className="h-4 w-4 text-purple-600" />
                             <span className="font-semibold text-purple-800 dark:text-purple-400">
-                              Best Practice
+                              Globale Anerkennung
                             </span>
                           </div>
                           <p className="text-sm text-purple-700 dark:text-purple-300">
-                            Implementieren Sie "Human-in-the-Loop" Systeme für alle KI-gestützten Diagnosen
+                            ICH-konforme Dossiers werden von EMA, FDA, PMDA und anderen Behörden akzeptiert
                           </p>
                         </div>
                       </CardContent>
@@ -970,25 +1067,25 @@ const telemedicineSession = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Art. 9 DSGVO Section */}
-              <section id="art9" className="space-y-8 scroll-mt-32">
+              {/* GxP Section */}
+              <section id="gxp-compliance" className="space-y-8 scroll-mt-32">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
                 >
-                  Art. 9 DSGVO - Besondere Kategorien personenbezogener Daten
+                  GxP Compliance Standards
                 </motion.h2>
                   <div className="space-y-8">
-                    {art9Requirements.map((requirement, index) => (
+                    {gxpRequirements.map((requirement, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <Card className="border-l-4 border-red-500">
+                        <Card className="border-l-4 border-blue-500">
                           <CardHeader>
                             <div className="flex items-start justify-between">
                               <CardTitle className="text-xl pr-4">{requirement.title}</CardTitle>
@@ -1023,8 +1120,8 @@ const telemedicineSession = {
 
                               <div>
                                 <h4 className="font-semibold mb-3 flex items-center gap-2">
-                                  <Euro className="h-4 w-4 text-red-600" />
-                                  Bußgeldrisiko
+                                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                                  Konsequenzen bei Verstößen
                                 </h4>
                                 <div className="p-3 bg-red-50 dark:bg-red-950/30 rounded-lg">
                                   <p className="text-sm text-red-700 dark:text-red-300 font-medium">
@@ -1037,16 +1134,16 @@ const telemedicineSession = {
                             {requirement.realWorldScenario && (
                               <div className="space-y-6">
                                 <button
-                                  onClick={() => setExpandedSection(expandedSection === `scenario-${index}` ? null : `scenario-${index}`)}
+                                  onClick={() => setExpandedSection(expandedSection === `gxp-${index}` ? null : `gxp-${index}`)}
                                   className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                                 >
                                   <Lightbulb className="h-4 w-4" />
                                   Praxis-Szenario anzeigen
                                   <ChevronDown className={cn("h-4 w-4 transition-transform", 
-                                    expandedSection === `scenario-${index}` && "rotate-180")} />
+                                    expandedSection === `gxp-${index}` && "rotate-180")} />
                                 </button>
                                 
-                                {expandedSection === `scenario-${index}` && (
+                                {expandedSection === `gxp-${index}` && (
                                   <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
@@ -1108,7 +1205,7 @@ const telemedicineSession = {
                                               </div>
                                             )}
                                             {step.transparency && (
-                                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                                 {step.transparency.map((item, itemIndex) => (
                                                   <div key={itemIndex} className="flex items-start gap-2 text-sm">
                                                     <CheckCircle2 className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
@@ -1121,54 +1218,8 @@ const telemedicineSession = {
                                               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                 {step.features.map((feature, featureIndex) => (
                                                   <div key={featureIndex} className="flex items-start gap-2 text-sm">
-                                                    <Smartphone className="h-3 w-3 text-purple-600 mt-1 flex-shrink-0" />
+                                                    <Zap className="h-3 w-3 text-purple-600 mt-1 flex-shrink-0" />
                                                     <span>{feature}</span>
-                                                  </div>
-                                                ))}
-                                              </div>
-                                            )}
-                                            {step.actions && (
-                                              <div className="space-y-3">
-                                                {step.actions.map((action, actionIndex) => (
-                                                  <div key={actionIndex} className="border-l-4 border-red-500 pl-4">
-                                                    <div className="flex items-center gap-2 mb-2">
-                                                      <Clock className="h-4 w-4 text-red-600" />
-                                                      <span className="font-medium text-sm">{action.time}</span>
-                                                      <span className="text-sm text-gray-600">- {action.action}</span>
-                                                    </div>
-                                                    <div className="text-xs text-gray-600 mb-1">
-                                                      <strong>Datenverarbeitung:</strong> {action.dataProcessing}
-                                                    </div>
-                                                    {action.legalBasis && (
-                                                      <div className="text-xs text-green-600">
-                                                        <strong>Rechtsgrundlage:</strong> {action.legalBasis}
-                                                      </div>
-                                                    )}
-                                                  </div>
-                                                ))}
-                                              </div>
-                                            )}
-                                            {step.documentation && (
-                                              <div className="space-y-3">
-                                                {step.documentation.map((doc, docIndex) => (
-                                                  <div key={docIndex} className="bg-gray-50 dark:bg-gray-700 p-3 rounded">
-                                                    <div className="font-medium text-sm mb-1">{doc.aspect}</div>
-                                                    <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">{doc.content}</div>
-                                                    <div className="text-xs text-blue-600 dark:text-blue-400">{doc.evidence || doc.monitoring || doc.purpose}</div>
-                                                  </div>
-                                                ))}
-                                              </div>
-                                            )}
-                                            {step.postEmergencyActions && (
-                                              <div className="space-y-3">
-                                                {step.postEmergencyActions.map((action, actionIndex) => (
-                                                  <div key={actionIndex} className="border-l-4 border-green-500 pl-4">
-                                                    <div className="flex items-center gap-2 mb-2">
-                                                      <Calendar className="h-4 w-4 text-green-600" />
-                                                      <span className="font-medium text-sm">{action.timeline}</span>
-                                                    </div>
-                                                    <div className="text-sm text-gray-700 dark:text-gray-300 mb-1">{action.action}</div>
-                                                    <div className="text-xs text-gray-600 dark:text-gray-400">{action.method || action.scope || action.transparency}</div>
                                                   </div>
                                                 ))}
                                               </div>
@@ -1206,6 +1257,47 @@ const telemedicineSession = {
                                 )}
                               </div>
                             )}
+
+                            {requirement.implementation && (
+                              <div className="space-y-6">
+                                <button
+                                  onClick={() => setExpandedSection(expandedSection === `implementation-${index}` ? null : `implementation-${index}`)}
+                                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+                                >
+                                  <Code className="h-4 w-4" />
+                                  Technische Implementation
+                                  <ChevronDown className={cn("h-4 w-4 transition-transform", 
+                                    expandedSection === `implementation-${index}` && "rotate-180")} />
+                                </button>
+                                
+                                {expandedSection === `implementation-${index}` && (
+                                  <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-4"
+                                  >
+                                    <div className="space-y-4">
+                                      <div>
+                                        <h5 className="font-medium mb-3">Anforderungen:</h5>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                          {requirement.implementation.requirements.map((req, reqIndex) => (
+                                            <div key={reqIndex} className="flex items-start gap-2 text-sm p-2 bg-blue-50 dark:bg-blue-950/30 rounded">
+                                              <CheckCircle2 className="h-3 w-3 text-blue-600 mt-1 flex-shrink-0" />
+                                              <span>{req}</span>
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </div>
+                                      <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                        <pre className="text-green-400 text-xs">
+                                          {requirement.implementation.template}
+                                        </pre>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                )}
+                              </div>
+                            )}
                           </CardContent>
                         </Card>
                       </motion.div>
@@ -1216,23 +1308,23 @@ const telemedicineSession = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Consent Management Section */}
-              <section id="consent" className="space-y-8 scroll-mt-32">
+              {/* Clinical Trials Section */}
+              <section id="klinische-studien" className="space-y-8 scroll-mt-32">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
                 >
-                  Einwilligungsmanagement im Gesundheitswesen
+                  Klinische Studien & GCP Compliance
                 </motion.h2>
                   <div className="space-y-8">
-                    {consentManagement.map((consent, index) => (
+                    {clinicalTrialCompliance.map((trial, index) => (
                       <Card key={index} className="p-6">
                         <CardHeader>
                           <CardTitle className="flex items-center gap-2">
-                            <UserCheck className="h-6 w-6 text-green-600" />
-                            {consent.scenario}
+                            <Microscope className="h-6 w-6 text-purple-600" />
+                            {trial.scenario}
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-6">
@@ -1240,19 +1332,19 @@ const telemedicineSession = {
                             <div>
                               <h4 className="font-semibold mb-3 text-red-700">Herausforderung</h4>
                               <p className="text-sm text-gray-600 dark:text-gray-400">
-                                {consent.challenge}
+                                {trial.challenge}
                               </p>
                             </div>
                             <div>
                               <h4 className="font-semibold mb-3 text-green-700">Lösung</h4>
                               <p className="text-sm text-gray-600 dark:text-gray-400">
-                                {consent.solution}
+                                {trial.solution}
                               </p>
                             </div>
                             <div>
                               <h4 className="font-semibold mb-3 text-blue-700">Module</h4>
                               <div className="space-y-2">
-                                {consent.implementation.modules.map((module, i) => (
+                                {trial.implementation.modules.map((module, i) => (
                                   <div key={i} className="text-sm p-2 bg-blue-50 dark:bg-blue-950/30 rounded">
                                     {module}
                                   </div>
@@ -1263,16 +1355,16 @@ const telemedicineSession = {
 
                           <div>
                             <button
-                              onClick={() => setExpandedSection(expandedSection === `consent-${index}` ? null : `consent-${index}`)}
+                              onClick={() => setExpandedSection(expandedSection === `trial-${index}` ? null : `trial-${index}`)}
                               className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                             >
                               <Code className="h-4 w-4" />
                               Technische Implementation
                               <ChevronDown className={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `consent-${index}` && "rotate-180")} />
+                                expandedSection === `trial-${index}` && "rotate-180")} />
                             </button>
                             
-                            {expandedSection === `consent-${index}` && (
+                            {expandedSection === `trial-${index}` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1280,7 +1372,7 @@ const telemedicineSession = {
                               >
                                 <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
                                   <pre className="text-green-400 text-xs">
-                                    {consent.implementation.technical}
+                                    {trial.implementation.technical}
                                   </pre>
                                 </div>
                               </motion.div>
@@ -1295,23 +1387,23 @@ const telemedicineSession = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* TOM Healthcare Section */}
-              <section id="tom" className="space-y-8 scroll-mt-32">
+              {/* Pharmacovigilance Section */}
+              <section id="pharmakovigilanz" className="space-y-8 scroll-mt-32">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
                 >
-                  Technische und Organisatorische Maßnahmen (TOM) für Healthcare
+                  Pharmakovigilanz & Safety Monitoring
                 </motion.h2>
                   <div className="space-y-8">
-                    {tomMeasures.map((tom, index) => (
+                    {pharmakovigilanceSystem.map((pv, index) => (
                       <Card key={index} className="p-6">
                         <CardHeader>
                           <CardTitle className="flex items-center gap-2">
-                            <tom.icon className="h-6 w-6 text-blue-600" />
-                            {tom.category}
+                            <pv.icon className="h-6 w-6 text-orange-600" />
+                            {pv.category}
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-6">
@@ -1319,7 +1411,7 @@ const telemedicineSession = {
                             <div>
                               <h4 className="font-semibold mb-3">Technische Maßnahmen</h4>
                               <div className="space-y-2">
-                                {tom.measures.map((measure, i) => (
+                                {pv.measures.map((measure, i) => (
                                   <div key={i} className="flex items-start gap-2">
                                     <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                                     <span className="text-sm">{measure}</span>
@@ -1329,35 +1421,35 @@ const telemedicineSession = {
                             </div>
                             
                             <div>
-                              <h4 className="font-semibold mb-3">Healthcare-spezifisch</h4>
-                              <p className="text-sm text-gray-600 dark:text-gray-400 p-3 bg-red-50 dark:bg-red-950/30 rounded-lg">
-                                {tom.healthcareSpecific}
+                              <h4 className="font-semibold mb-3">Pharma-spezifisch</h4>
+                              <p className="text-sm text-gray-600 dark:text-gray-400 p-3 bg-orange-50 dark:bg-orange-950/30 rounded-lg">
+                                {pv.pharmaSpecific}
                               </p>
                               <div className="mt-3">
                                 <Badge variant="outline" className="text-xs">
-                                  {tom.iso27001}
+                                  {pv.iso27001}
                                 </Badge>
                               </div>
                             </div>
                             
                             <div>
                               <h4 className="font-semibold mb-3">Praktische Umsetzung</h4>
-                              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-200">
+                              <div className="bg-orange-50 dark:bg-orange-950/30 rounded-lg p-4 border border-orange-200">
                                 <div className="space-y-3">
                                   <div className="flex items-center gap-2 mb-2">
-                                    <Shield className="h-4 w-4 text-blue-600" />
-                                    <span className="font-medium text-blue-800 dark:text-blue-200">{tom.practicalImplementation.title}</span>
+                                    <Activity className="h-4 w-4 text-orange-600" />
+                                    <span className="font-medium text-orange-800 dark:text-orange-200">{pv.practicalImplementation.title}</span>
                                   </div>
-                                  <div className="text-sm text-blue-700 dark:text-blue-300 mb-3">
-                                    {tom.practicalImplementation.description}
+                                  <div className="text-sm text-orange-700 dark:text-orange-300 mb-3">
+                                    {pv.practicalImplementation.description}
                                   </div>
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    {tom.practicalImplementation.zones && tom.practicalImplementation.zones.map((zone, zoneIndex) => (
+                                  <div className="grid grid-cols-1 gap-3">
+                                    {pv.practicalImplementation.zones && pv.practicalImplementation.zones.map((zone, zoneIndex) => (
                                       <div key={zoneIndex} className="p-3 bg-white dark:bg-gray-800 rounded border">
                                         <div className="font-medium text-gray-900 dark:text-gray-100 text-sm mb-1">
                                           {zone.name}
                                         </div>
-                                        <div className="text-xs text-blue-600 dark:text-blue-400 mb-1">
+                                        <div className="text-xs text-orange-600 dark:text-orange-400 mb-1">
                                           {zone.security}
                                         </div>
                                         <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
@@ -1368,12 +1460,12 @@ const telemedicineSession = {
                                         </div>
                                       </div>
                                     ))}
-                                    {tom.practicalImplementation.roles && tom.practicalImplementation.roles.map((role, roleIndex) => (
+                                    {pv.practicalImplementation.roles && pv.practicalImplementation.roles.map((role, roleIndex) => (
                                       <div key={roleIndex} className="p-3 bg-white dark:bg-gray-800 rounded border">
                                         <div className="font-medium text-gray-900 dark:text-gray-100 text-sm mb-1">
                                           {role.name}
                                         </div>
-                                        <div className="text-xs text-blue-600 dark:text-blue-400 mb-1">
+                                        <div className="text-xs text-orange-600 dark:text-orange-400 mb-1">
                                           {role.permissions}
                                         </div>
                                         <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
@@ -1384,12 +1476,12 @@ const telemedicineSession = {
                                         </div>
                                       </div>
                                     ))}
-                                    {tom.practicalImplementation.layers && tom.practicalImplementation.layers.map((layer, layerIndex) => (
+                                    {pv.practicalImplementation.layers && pv.practicalImplementation.layers.map((layer, layerIndex) => (
                                       <div key={layerIndex} className="p-3 bg-white dark:bg-gray-800 rounded border">
                                         <div className="font-medium text-gray-900 dark:text-gray-100 text-sm mb-1">
                                           {layer.name}
                                         </div>
-                                        <div className="text-xs text-blue-600 dark:text-blue-400 mb-1">
+                                        <div className="text-xs text-orange-600 dark:text-orange-400 mb-1">
                                           {layer.protection}
                                         </div>
                                         <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
@@ -1414,15 +1506,94 @@ const telemedicineSession = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* DSFA & Risk Analysis Section */}
-              <section id="dsfa" className="space-y-8 scroll-mt-32">
+              {/* Serialization Section */}
+              <section id="serialisierung" className="space-y-8 scroll-mt-32">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
                 >
-                  Datenschutz-Folgenabschätzung & Risikoanalyse
+                  Serialisierung & Track & Trace
+                </motion.h2>
+                  <div className="space-y-8">
+                    {serializationRequirements.map((serialization, index) => (
+                      <Card key={index} className="p-6">
+                        <CardHeader>
+                          <CardTitle className="flex items-center gap-2">
+                            <BarChart3 className="h-6 w-6 text-cyan-600" />
+                            {serialization.scenario}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-6">
+                          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div>
+                              <h4 className="font-semibold mb-3 text-red-700">Herausforderung</h4>
+                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                                {serialization.challenge}
+                              </p>
+                            </div>
+                            <div>
+                              <h4 className="font-semibold mb-3 text-green-700">Lösung</h4>
+                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                                {serialization.solution}
+                              </p>
+                            </div>
+                            <div>
+                              <h4 className="font-semibold mb-3 text-blue-700">Module</h4>
+                              <div className="space-y-2">
+                                {serialization.implementation.modules.map((module, i) => (
+                                  <div key={i} className="text-sm p-2 bg-blue-50 dark:bg-blue-950/30 rounded">
+                                    {module}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <button
+                              onClick={() => setExpandedSection(expandedSection === `serialization-${index}` ? null : `serialization-${index}`)}
+                              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+                            >
+                              <Code className="h-4 w-4" />
+                              Technische Implementation
+                              <ChevronDown className={cn("h-4 w-4 transition-transform", 
+                                expandedSection === `serialization-${index}` && "rotate-180")} />
+                            </button>
+                            
+                            {expandedSection === `serialization-${index}` && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-4"
+                              >
+                                <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                  <pre className="text-green-400 text-xs">
+                                    {serialization.implementation.technical}
+                                  </pre>
+                                </div>
+                              </motion.div>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+              </section>
+
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Risk Analysis Section */}
+              <section className="space-y-8">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Pharma-spezifische Risikoanalyse
                 </motion.h2>
                   <div className="space-y-8">
                     {riskScenarios.map((risk, index) => (
@@ -1460,7 +1631,7 @@ const telemedicineSession = {
                             </div>
                             <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg text-center">
                               <div className="text-sm text-purple-700 dark:text-purple-400 mb-1">
-                                Bußgeld
+                                Strafen
                               </div>
                               <div className="font-bold text-purple-800 dark:text-purple-300">
                                 {risk.potentialFine}
@@ -1471,7 +1642,7 @@ const telemedicineSession = {
                                 Betroffene
                               </div>
                               <div className="font-bold text-blue-800 dark:text-blue-300">
-                                {risk.affectedPersons}
+                                {risk.affectedProducts || risk.affectedPersons}
                               </div>
                             </div>
                           </div>
@@ -1517,7 +1688,7 @@ const telemedicineSession = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Implementation Section */}
-              <section id="implementation" className="space-y-8 scroll-mt-32">
+              <section id="praxis-implementation" className="space-y-8 scroll-mt-32">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1585,7 +1756,7 @@ const telemedicineSession = {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <CheckSquare className="h-6 w-6 text-green-600" />
-                        Interaktive Compliance-Checkliste
+                        Interaktive Pharma Compliance-Checkliste
                       </CardTitle>
                       <div className="text-sm text-gray-600">
                         Fortschritt: {getCompletionPercentage()}% abgeschlossen
@@ -1595,30 +1766,30 @@ const telemedicineSession = {
                     <CardContent className="space-y-6">
                       {[
                         {
-                          category: 'Rechtliche Grundlagen',
+                          category: 'GxP Grundlagen',
                           items: [
-                            'Datenschutzbeauftragte/r bestellt',
-                            'Verzeichnis der Verarbeitungstätigkeiten erstellt',
-                            'DSFA für Hochrisiko-Verarbeitungen durchgeführt',
-                            'Auftragsverarbeitungsverträge aktualisiert'
+                            'GMP-konforme Produktionssysteme etabliert',
+                            'GCP-Compliance für klinische Studien',
+                            'GDP-Standards für Distribution implementiert',
+                            'GLP-konforme Laborsysteme validiert'
                           ]
                         },
                         {
-                          category: 'Technische Maßnahmen', 
+                          category: 'Regulatory Affairs', 
                           items: [
-                            'Ende-zu-Ende Verschlüsselung implementiert',
-                            'Zugriffskontrollsystem eingerichtet',
-                            'Backup und Recovery getestet',
-                            'Monitoring und Alerting aktiv'
+                            'ICH Guidelines Implementation abgeschlossen',
+                            'EMA/FDA Submission Templates erstellt',
+                            'Pharmakovigilanz-System operational',
+                            'Serialisierung EU FMD/US DSCSA konform'
                           ]
                         },
                         {
-                          category: 'Organisatorische Maßnahmen',
+                          category: 'Quality Assurance',
                           items: [
-                            'Mitarbeiterschulungen durchgeführt',
-                            'Incident Response Plan erstellt',
-                            'Einwilligungsprozesse dokumentiert',
-                            'Audit-Verfahren etabliert'
+                            'Computer System Validation (CSV) durchgeführt',
+                            'Data Integrity Controls implementiert',
+                            'Risk-based Quality Management etabliert',
+                            'Continuous Process Verification aktiv'
                           ]
                         }
                       ].map((section, sectionIndex) => (
@@ -1667,7 +1838,7 @@ const telemedicineSession = {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <Card className="bg-gradient-to-r from-red-600 via-pink-600 to-rose-600 text-white overflow-hidden relative">
+                <Card className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white overflow-hidden relative">
                   <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
                   <CardContent className="relative p-8 md:p-12 text-center">
                     <div className="max-w-4xl mx-auto space-y-8">
@@ -1676,25 +1847,25 @@ const telemedicineSession = {
                         whileInView={{ scale: 1 }}
                         transition={{ type: "spring", duration: 0.8 }}
                       >
-                        <Heart className="h-16 w-16 mx-auto mb-6 text-white" />
+                        <Pill className="h-16 w-16 mx-auto mb-6 text-white" />
                       </motion.div>
                       
                       <h2 className="text-3xl md:text-4xl font-bold">
-                        Starten Sie Ihre Healthcare DSGVO Journey
+                        Starten Sie Ihre Pharma Compliance Journey
                       </h2>
                       <p className="text-xl text-white/90 max-w-3xl mx-auto">
-                        Profitieren Sie von unserer 10+ Jahren Expertise in Healthcare Compliance. 
-                        Von DSGVO Art. 9 über EU AI Act bis hin zu MDR – wir begleiten Sie zur vollständigen Compliance.
+                        Profitieren Sie von unserer langjährigen Expertise in pharmazeutischer Compliance. 
+                        Von GxP über ICH Guidelines bis hin zur globalen Regulatory Intelligence.
                       </p>
                       
                       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link to="/contact?demo=true&industry=healthcare">
+                        <Link to="/contact?demo=true&industry=pharma">
                           <Button 
                             size="lg" 
-                            className="bg-white text-red-600 hover:bg-gray-100 group shadow-lg"
+                            className="bg-white text-blue-600 hover:bg-gray-100 group shadow-lg"
                           >
-                            <Heart className="mr-2 h-5 w-5" />
-                            Kostenlose Healthcare-Beratung
+                            <Pill className="mr-2 h-5 w-5" />
+                            Kostenlose Pharma-Beratung
                             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                           </Button>
                         </Link>
@@ -1704,15 +1875,15 @@ const telemedicineSession = {
                           className="bg-transparent text-white border-white hover:bg-white/10"
                         >
                           <Download className="mr-2 h-5 w-5" />
-                          Umfassender Healthcare Guide (PDF)
+                          Umfassender GxP Guide (PDF)
                         </Button>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
                         {[
-                          { icon: Heart, title: 'Healthcare-Expertise', subtitle: 'Spezialisiert auf Gesundheitswesen' },
-                          { icon: Shield, title: 'DSGVO + EU AI Act Ready', subtitle: 'Zukunftssichere Compliance' },
-                          { icon: Award, title: 'MDR & ISO 27001 Certified', subtitle: 'Höchste Sicherheitsstandards' }
+                          { icon: Pill, title: 'Pharma-Expertise', subtitle: 'Spezialisiert auf pharmazeutische Industrie' },
+                          { icon: Shield, title: 'GxP + ICH Konform', subtitle: 'Vollständige regulatory compliance' },
+                          { icon: Award, title: 'Global Standards', subtitle: 'EMA, FDA, PMDA ready' }
                         ].map((item, index) => (
                           <motion.div
                             key={index}
@@ -1744,37 +1915,37 @@ const telemedicineSession = {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <ExternalLink className="h-5 w-5 text-red-600" />
-                    Weiterführende Healthcare-Ressourcen
+                    <ExternalLink className="h-5 w-5 text-blue-600" />
+                    Weiterführende Pharma-Ressourcen
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <Link to="/wissen/rechtsprechung/meta-irland-2024" className="block group">
-                      <div className="p-4 bg-red-50 rounded-lg border border-red-200 hover:border-red-300 transition-colors group-hover:shadow-md">
-                        <Gavel className="h-5 w-5 text-red-600 mb-2" />
-                        <div className="font-medium">Meta Ireland Urteil</div>
-                        <div className="text-sm text-gray-600">1,2 Mrd. € Bußgeld-Analyse</div>
-                      </div>
-                    </Link>
-                    <Link to="/wissen/compliance/eu-ai-act" className="block group">
-                      <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors group-hover:shadow-md">
-                        <Brain className="h-5 w-5 text-purple-600 mb-2" />
-                        <div className="font-medium">EU AI Act Guide</div>
-                        <div className="text-sm text-gray-600">KI-Compliance für Healthcare</div>
-                      </div>
-                    </Link>
-                    <Link to="/wissen/krisenmanagement/data-breach-72h" className="block group">
-                      <div className="p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors group-hover:shadow-md">
-                        <Timer className="h-5 w-5 text-orange-600 mb-2" />
-                        <div className="font-medium">Data Breach Response</div>
-                        <div className="text-sm text-gray-600">72h Notfall-Leitfaden</div>
-                      </div>
-                    </Link>
-                    <Link to="/branchen/gesundheitswesen" className="block group">
+                    <Link to="/wissen/rechtsprechung/ich-guidelines" className="block group">
                       <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 hover:border-blue-300 transition-colors group-hover:shadow-md">
-                        <Stethoscope className="h-5 w-5 text-blue-600 mb-2" />
-                        <div className="font-medium">Healthcare Solutions</div>
+                        <Microscope className="h-5 w-5 text-blue-600 mb-2" />
+                        <div className="font-medium">ICH Guidelines</div>
+                        <div className="text-sm text-gray-600">Q, E, S & M Series Compliance</div>
+                      </div>
+                    </Link>
+                    <Link to="/wissen/compliance/gxp-validation" className="block group">
+                      <div className="p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-300 transition-colors group-hover:shadow-md">
+                        <FlaskConical className="h-5 w-5 text-green-600 mb-2" />
+                        <div className="font-medium">GxP Validation</div>
+                        <div className="text-sm text-gray-600">Computer System Validation</div>
+                      </div>
+                    </Link>
+                    <Link to="/wissen/krisenmanagement/drug-recall" className="block group">
+                      <div className="p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors group-hover:shadow-md">
+                        <AlertTriangle className="h-5 w-5 text-orange-600 mb-2" />
+                        <div className="font-medium">Drug Recall Management</div>
+                        <div className="text-sm text-gray-600">Notfall-Produktrückruf</div>
+                      </div>
+                    </Link>
+                    <Link to="/branchen/pharma" className="block group">
+                      <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors group-hover:shadow-md">
+                        <Pill className="h-5 w-5 text-purple-600 mb-2" />
+                        <div className="font-medium">Pharma Solutions</div>
                         <div className="text-sm text-gray-600">Unsere Produktlösungen</div>
                       </div>
                     </Link>
@@ -1791,4 +1962,4 @@ const telemedicineSession = {
   );
 };
 
-export default HealthcareDsgvoGuide;
+export default PharmaComplianceGuide;

@@ -92,6 +92,8 @@ import GoogleFontsMunichCase from "./pages/legal/GoogleFontsMunichCase";
 // Branchen Wissen Pages
 import BranchenWissen from "./pages/BranchenWissen";
 import HealthcareDsgvoGuide from "./pages/branchen/HealthcareDsgvoGuide";
+import HealthcareAiComplianceGuide from "./pages/branchen/HealthcareAiComplianceGuide";
+import EdtechPrivacyGuide from "./pages/branchen/EdtechPrivacyGuide";
 import FintechComplianceGuide from "./pages/branchen/FintechComplianceGuide";
 import EcommercePrivacyGuide from "./pages/branchen/EcommercePrivacyGuide";
 import SaasPrivacyDesignGuide from "./pages/branchen/SaasPrivacyDesignGuide";
@@ -255,6 +257,8 @@ const App = () => (
                 
                 {/* Branchen Wissen Routes */}
                 <Route path="/wissen/branchen/gesundheitswesen-dsgvo" element={<HealthcareDsgvoGuide />} />
+                <Route path="/wissen/branchen/healthcare-ai-compliance" element={<HealthcareAiComplianceGuide />} />
+                <Route path="/wissen/branchen/edtech-privacy" element={<EdtechPrivacyGuide />} />
                 <Route path="/wissen/branchen/fintech-compliance" element={<FintechComplianceGuide />} />
                 <Route path="/wissen/branchen/ecommerce-privacy" element={<EcommercePrivacyGuide />} />
                 <Route path="/wissen/branchen/saas-privacy-design" element={<SaasPrivacyDesignGuide />} />

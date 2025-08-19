@@ -35,9 +35,7 @@ export const Header: React.FC = () => {
   const navItems = [
     { key: 'nav_regulations', href: '#' },
     { key: 'nav_certifications', href: '#' },
-    { key: 'nav_tools', href: '/tools' },
     { key: 'nav_knowledge', href: '#' },
-    { key: 'nav_resources', href: '/assessment-center' },
     { key: 'nav_industries', href: '/branchen' },
     { key: 'nav_contact', href: '/contact' },
   ];
