@@ -1,14 +1,11 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/hooks/useLanguage';
-import { Globe } from 'lucide-react';
 import { Menu as LucideMenu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
 export const Header: React.FC = () => {
-  const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -219,7 +216,9 @@ export const Header: React.FC = () => {
                 to={item.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                {t(item.key)}
+                {item.key === 'nav_industries' ? 'Branchen' : 
+                 item.key === 'nav_contact' ? 'Kontakt' : 
+                 item.key}
               </Link>
             )
           ))}
@@ -228,11 +227,11 @@ export const Header: React.FC = () => {
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-4">
           <Button variant="ghost" size="sm">
-            {t('nav_login')}
+            Anmelden
           </Button>
           <Link to="/contact?demo=true">
             <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              {t('nav_demo')}
+              Demo anfordern
             </Button>
           </Link>
         </div>
@@ -396,7 +395,9 @@ export const Header: React.FC = () => {
                       to={item.href}
                       className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
                     >
-                      {t(item.key)}
+                      {item.key === 'nav_industries' ? 'Branchen' : 
+                       item.key === 'nav_contact' ? 'Kontakt' : 
+                       item.key}
                     </Link>
                   )
                 ))}
@@ -404,11 +405,11 @@ export const Header: React.FC = () => {
 
                 <div className="pt-4 space-y-2">
                   <Button variant="ghost" className="w-full justify-start">
-                    {t('nav_login')}
+                    Anmelden
                   </Button>
                   <Link to="/contact?demo=true" className="block">
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                      {t('nav_demo')}
+                      Demo anfordern
                     </Button>
                   </Link>
                 </div>

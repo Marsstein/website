@@ -236,6 +236,28 @@ const FinalChecks = () => {
           metaDescription: 'TISAX Zertifizierung für Automotive: VDA ISA konforme Informationssicherheit für Zulieferer. ✓ Assessment Levels ✓ ENX-Anbindung. Jetzt TISAX-konform werden!',
           indexStatus: 'index',
           ...createCheckItems('tisax-cert', true)
+        },
+        {
+          title: 'DSG-EKD',
+          url: '/dsg-ekd',
+          description: 'Datenschutzgesetz der Evangelischen Kirche in Deutschland: Kirchenspezifische Datenschutz-Bestimmungen, Besonderheiten zur DSGVO und kirchliche Aufsicht.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'DSG-EKD – Evangelische Kirche Datenschutz',
+          metaDescription: 'DSG-EKD Compliance: Kirchlicher Datenschutz, evangelische Kirche, DSGVO-Besonderheiten. ✓ Kirchenrecht ✓ Religionsausübung ✓ Seelsorgegeheimnis.',
+          indexStatus: 'index',
+          ...createCheckItems('dsg-ekd')
+        },
+        {
+          title: 'KDG',
+          url: '/kdg',
+          description: 'Kirchliches Datenschutzgesetz der katholischen Kirche: KDG-Anordnung, katholische Datenschutz-Aufsicht und kirchenrechtliche Besonderheiten.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'KDG – Katholische Kirche Datenschutz',
+          metaDescription: 'KDG Compliance: Katholisches Datenschutzgesetz, Kirchenrecht, Beichtgeheimnis. ✓ KDG-Anordnung ✓ Kirchliche Aufsicht ✓ Seelsorgedatenschutz.',
+          indexStatus: 'index',
+          ...createCheckItems('kdg')
         }
       ]
     },
@@ -640,6 +662,17 @@ const FinalChecks = () => {
           ...createCheckItems('dsgvo-guides-knowledge', true)
         },
         {
+          title: 'Zertifizierungen',
+          url: '/wissen/zertifizierungen',
+          description: 'Übersicht über alle Zertifizierungsstandards: ISO 27001, SOC 2, TISAX, DSG-EKD, KDG. Anforderungen, Vorbereitungsschritte und Best Practices.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Zertifizierungen – Compliance Standards & Frameworks',
+          metaDescription: 'Zertifizierungen Übersicht: ISO 27001, SOC 2, TISAX, DSG-EKD, KDG. ✓ Anforderungen ✓ Vorbereitung ✓ Best Practices ✓ Audit-ready. Jetzt zertifizieren!',
+          indexStatus: 'index',
+          ...createCheckItems('zertifizierungen-knowledge', true)
+        },
+        {
           title: 'Risk Management',
           url: '/wissen/risk-management',
           description: 'Systematisches Risikomanagement für Compliance. Identifikation, Bewertung und Behandlung von Datenschutz- und Sicherheitsrisiken.',
@@ -755,6 +788,595 @@ const FinalChecks = () => {
           metaDescription: 'Datenschutz-Folgenabschätzung (DSFA) professionell durchführen: Wann nötig, wie umsetzen, Dokumentation. ✓ Schritt-für-Schritt ✓ Vorlagen ✓ Praxisbeispiele. Jetzt DSFA starten!',
           indexStatus: 'index',
           ...createCheckItems('dpia-guide', true)
+        }
+      ]
+    },
+    {
+      id: 'branchen-wissen',
+      icon: '🏢',
+      title: 'Branchen Wissen',
+      pages: [
+        {
+          title: 'Gesundheitswesen DSGVO',
+          url: '/wissen/branchen/gesundheitswesen-dsgvo',
+          description: 'DSGVO-Compliance im Gesundheitswesen: Patientendaten, Schweigepflicht, Forschung und digitale Gesundheitsdienste rechtssicher umsetzen.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Gesundheitswesen DSGVO – Patientendaten rechtssicher verarbeiten',
+          metaDescription: 'DSGVO im Gesundheitswesen: Patientendatenschutz, Schweigepflicht, Forschung, eHealth. ✓ Praxisnahe Lösungen ✓ Rechtssicherheit ✓ Compliance-Checklisten.',
+          indexStatus: 'index',
+          ...createCheckItems('healthcare-dsgvo')
+        },
+        {
+          title: 'Healthcare AI Compliance',
+          url: '/wissen/branchen/healthcare-ai-compliance',
+          description: 'KI-Systeme im Gesundheitswesen compliant einsetzen: Medizinische KI, EU AI Act, FDA-Regularien und Patientensicherheit.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Healthcare AI Compliance – Medizinische KI rechtssicher einsetzen',
+          metaDescription: 'Healthcare AI Compliance: Medizinische KI, EU AI Act, FDA-Regularien, Patientensicherheit. ✓ Risikobewertung ✓ Zulassung ✓ Post-Market Surveillance.',
+          indexStatus: 'index',
+          ...createCheckItems('healthcare-ai')
+        },
+        {
+          title: 'EdTech Privacy',
+          url: '/wissen/branchen/edtech-privacy',
+          description: 'Datenschutz in Bildungseinrichtungen: Schülerdaten, COPPA/FERPA-Compliance, Lernplattformen und digitale Bildungstools.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'EdTech Privacy – Bildungssektor Datenschutz',
+          metaDescription: 'EdTech Datenschutz: Schülerdaten, COPPA/FERPA, Lernplattformen, digitale Bildung. ✓ Consent Management ✓ Age Verification ✓ Data Minimization.',
+          indexStatus: 'index',
+          ...createCheckItems('edtech-privacy')
+        },
+        {
+          title: 'FinTech Compliance',
+          url: '/wissen/branchen/fintech-compliance',
+          description: 'Compliance in FinTech: PCI-DSS, PSD2, MiFID II, Geldwäschegesetz und Open Banking rechtssicher umsetzen.',
+          priority: 'high',
+          available: true,
+          titleTag: 'FinTech Compliance – Finanzregulierung & Datenschutz',
+          metaDescription: 'FinTech Compliance: PCI-DSS, PSD2, MiFID II, Geldwäschegesetz, Open Banking. ✓ Regulatory Sandbox ✓ API Security ✓ Transaction Monitoring.',
+          indexStatus: 'index',
+          ...createCheckItems('fintech-compliance')
+        },
+        {
+          title: 'E-Commerce Privacy',
+          url: '/wissen/branchen/ecommerce-privacy',
+          description: 'Online-Shop Datenschutz: Kundendaten, Cookies, Newsletter-Marketing, Payment Processing und Cross-Border-Commerce.',
+          priority: 'high',
+          available: true,
+          titleTag: 'E-Commerce Privacy – Online-Shop DSGVO-Compliance',
+          metaDescription: 'E-Commerce Datenschutz: Kundendaten, Cookies, Marketing, Payment, Cross-Border. ✓ Cookie-Banner ✓ Newsletter DSGVO ✓ Checkout Compliance.',
+          indexStatus: 'index',
+          ...createCheckItems('ecommerce-privacy')
+        },
+        {
+          title: 'SaaS Privacy Design',
+          url: '/wissen/branchen/saas-privacy-design',
+          description: 'Privacy by Design für SaaS: Multi-Tenancy, Data Residency, Cloud Security und internationale Compliance.',
+          priority: 'high',
+          available: true,
+          titleTag: 'SaaS Privacy Design – Cloud-Service Datenschutz',
+          metaDescription: 'SaaS Privacy Design: Multi-Tenancy, Data Residency, Cloud Security, internationale Compliance. ✓ Privacy by Design ✓ Tenant Isolation ✓ Data Localization.',
+          indexStatus: 'index',
+          ...createCheckItems('saas-privacy')
+        },
+        {
+          title: 'Industrie 4.0 Datenschutz',
+          url: '/wissen/branchen/industrie-40-datenschutz',
+          description: 'Datenschutz in der Smart Factory: IoT-Sensorik, Maschinendaten, Predictive Maintenance und Worker Privacy.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Industrie 4.0 Datenschutz – Smart Factory Privacy',
+          metaDescription: 'Industrie 4.0 Datenschutz: IoT-Sensorik, Maschinendaten, Predictive Maintenance, Worker Privacy. ✓ Edge Computing ✓ OT Security ✓ Data Anonymization.',
+          indexStatus: 'index',
+          ...createCheckItems('industrie40-privacy')
+        },
+        {
+          title: 'Automotive Datenschutz',
+          url: '/wissen/branchen/automotive-datenschutz',
+          description: 'Connected Car Compliance: Fahrzeugdaten, Telematics, UNECE WP.29, Over-the-Air Updates und autonomes Fahren.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Automotive Datenschutz – Connected Car Compliance',
+          metaDescription: 'Automotive Datenschutz: Fahrzeugdaten, Telematics, UNECE WP.29, OTA-Updates, autonomes Fahren. ✓ In-Vehicle Privacy ✓ V2X Compliance ✓ Cybersecurity.',
+          indexStatus: 'index',
+          ...createCheckItems('automotive-privacy')
+        },
+        {
+          title: 'Smart Grid Compliance',
+          url: '/wissen/branchen/smart-grid-compliance',
+          description: 'Energiesektor Compliance: Smart Meter, Verbrauchsdaten, Netzstabilität und kritische Infrastruktur.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Smart Grid Compliance – Energiesektor Datenschutz',
+          metaDescription: 'Smart Grid Compliance: Smart Meter, Verbrauchsdaten, Netzstabilität, kritische Infrastruktur. ✓ NIS-2 Compliance ✓ Data Minimization ✓ Grid Security.',
+          indexStatus: 'index',
+          ...createCheckItems('smart-grid')
+        },
+        {
+          title: 'Pharma Compliance',
+          url: '/wissen/branchen/pharma-compliance',
+          description: 'Pharmaceutical Compliance: GxP, 21 CFR Part 11, EU GMP, Clinical Trial Data und Pharmacovigilance.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Pharma Compliance – Pharmaceutical Data Governance',
+          metaDescription: 'Pharma Compliance: GxP, 21 CFR Part 11, EU GMP, Clinical Trials, Pharmacovigilance. ✓ Data Integrity ✓ Electronic Records ✓ Audit Trail.',
+          indexStatus: 'index',
+          ...createCheckItems('pharma-compliance')
+        },
+        {
+          title: 'Produktion Datenschutz',
+          url: '/wissen/branchen/produktion',
+          description: 'Datenschutz in der Produktion: Mitarbeiterdaten, Qualitätssicherung, Supply Chain und Fertigungsdaten.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Produktion Datenschutz – Manufacturing Privacy',
+          metaDescription: 'Produktion Datenschutz: Mitarbeiterdaten, Qualitätssicherung, Supply Chain, Fertigungsdaten. ✓ Worker Monitoring ✓ Quality Data ✓ Supplier Compliance.',
+          indexStatus: 'index',
+          ...createCheckItems('manufacturing-privacy')
+        },
+        {
+          title: 'Travel Compliance',
+          url: '/wissen/branchen/travel-compliance',
+          description: 'Reisebranche Compliance: Buchungsdaten, PNR-Datensätze, Hotel-Guest Privacy und Cross-Border Data Flows.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Travel Compliance – Reisebranche Datenschutz',
+          metaDescription: 'Travel Compliance: Buchungsdaten, PNR, Hotel Privacy, Cross-Border Flows. ✓ Reservation Systems ✓ Guest Data ✓ International Transfers.',
+          indexStatus: 'index',
+          ...createCheckItems('travel-compliance')
+        },
+        {
+          title: 'InsurTech Compliance',
+          url: '/wissen/branchen/insurtech-compliance',
+          description: 'Versicherungstech Compliance: Telematics, Usage-Based Insurance, Claims Processing und Actuarial Data.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'InsurTech Compliance – Versicherungstech Datenschutz',
+          metaDescription: 'InsurTech Compliance: Telematics, UBI, Claims Processing, Actuarial Data. ✓ Risk Assessment ✓ Premium Calculation ✓ Fraud Detection.',
+          indexStatus: 'index',
+          ...createCheckItems('insurtech-compliance')
+        },
+        {
+          title: 'PropTech Compliance',
+          url: '/wissen/branchen/proptech-compliance',
+          description: 'Immobilien-Tech Compliance: Mieter-Screening, Smart Building Data, Property Management und Facility Data.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'PropTech Compliance – Immobilien-Tech Datenschutz',
+          metaDescription: 'PropTech Compliance: Mieter-Screening, Smart Buildings, Property Management, Facility Data. ✓ Tenant Privacy ✓ IoT Sensors ✓ Building Automation.',
+          indexStatus: 'index',
+          ...createCheckItems('proptech-compliance')
+        },
+        {
+          title: 'Logistics Compliance',
+          url: '/wissen/branchen/logistics-compliance',
+          description: 'Logistik Compliance: GPS-Tracking, Supply Chain Visibility, Driver Privacy und Last-Mile Delivery.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Logistics Compliance – Logistik Datenschutz',
+          metaDescription: 'Logistics Compliance: GPS-Tracking, Supply Chain, Driver Privacy, Last-Mile. ✓ Fleet Management ✓ Route Optimization ✓ Delivery Tracking.',
+          indexStatus: 'index',
+          ...createCheckItems('logistics-compliance')
+        },
+        {
+          title: 'Datenschutz Pflege',
+          url: '/wissen/branchen/datenschutz-pflege',
+          description: 'Datenschutz in Pflegeeinrichtungen: Bewohnerdaten, Pflegedokumentation, Angehörigen-Info und digitale Pflegesysteme.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Datenschutz Pflege – Pflegeeinrichtungen DSGVO',
+          metaDescription: 'Datenschutz Pflege: Bewohnerdaten, Pflegedokumentation, Angehörigen-Info, digitale Systeme. ✓ Consent Management ✓ Medical Records ✓ Family Communication.',
+          indexStatus: 'index',
+          ...createCheckItems('pflege-privacy')
+        },
+        {
+          title: 'Datenschutz Arztpraxis',
+          url: '/wissen/branchen/datenschutz-arztpraxis',
+          description: 'DSGVO in der Arztpraxis: Patientendaten, Praxisverwaltung, Terminbuchung und Telematikinfrastruktur.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Datenschutz Arztpraxis – Medizinische Praxis DSGVO',
+          metaDescription: 'Datenschutz Arztpraxis: Patientendaten, Praxisverwaltung, Terminbuchung, TI. ✓ Medical Records ✓ Appointment Systems ✓ Health IT.',
+          indexStatus: 'index',
+          ...createCheckItems('arztpraxis-privacy')
+        },
+        {
+          title: 'Datenschutz Kindergarten',
+          url: '/wissen/branchen/datenschutz-kindergarten',
+          description: 'DSGVO im Kindergarten: Kinderdaten, Eltern-Consent, Foto-/Videoaufnahmen und pädagogische Dokumentation.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Datenschutz Kindergarten – Kita DSGVO-Compliance',
+          metaDescription: 'Datenschutz Kindergarten: Kinderdaten, Eltern-Consent, Foto/Video, pädagogische Dokumentation. ✓ Child Privacy ✓ Parental Consent ✓ Educational Records.',
+          indexStatus: 'index',
+          ...createCheckItems('kindergarten-privacy')
+        },
+        {
+          title: 'DSGVO Vermieter',
+          url: '/wissen/branchen/dsgvo-vermieter',
+          description: 'DSGVO für Vermieter: Mieter-Screening, Mieterdaten, Hausverwaltung und Immobilienbewirtschaftung.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'DSGVO Vermieter – Immobilienverwaltung Datenschutz',
+          metaDescription: 'DSGVO Vermieter: Mieter-Screening, Mieterdaten, Hausverwaltung, Immobilienbewirtschaftung. ✓ Tenant Screening ✓ Property Management ✓ Rental Compliance.',
+          indexStatus: 'index',
+          ...createCheckItems('vermieter-dsgvo')
+        },
+        {
+          title: 'DSGVO Vereine',
+          url: '/wissen/branchen/dsgvo-vereine',
+          description: 'DSGVO für Vereine: Mitgliederdaten, Veranstaltungen, Newsletter und ehrenamtliche Tätigkeit.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'DSGVO Vereine – Vereinsdatenschutz & Compliance',
+          metaDescription: 'DSGVO Vereine: Mitgliederdaten, Veranstaltungen, Newsletter, Ehrenamt. ✓ Member Data ✓ Event Management ✓ Volunteer Compliance.',
+          indexStatus: 'index',
+          ...createCheckItems('vereine-dsgvo')
+        },
+        {
+          title: 'Datenschutz Betriebsrat',
+          url: '/wissen/branchen/datenschutz-betriebsrat',
+          description: 'Datenschutz im Betriebsrat: Mitarbeiterdaten, Mitbestimmung, Beratungsgespräche und interne Kommunikation.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Datenschutz Betriebsrat – Employee Representative Privacy',
+          metaDescription: 'Datenschutz Betriebsrat: Mitarbeiterdaten, Mitbestimmung, Beratung, interne Kommunikation. ✓ Employee Rights ✓ Works Council ✓ Confidential Communication.',
+          indexStatus: 'index',
+          ...createCheckItems('betriebsrat-privacy')
+        },
+        {
+          title: 'Datenschutz Homeoffice',
+          url: '/wissen/branchen/datenschutz-homeoffice',
+          description: 'Homeoffice Datenschutz: Remote Work Security, BYOD-Policy, Monitoring und Work-Life-Balance.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Datenschutz Homeoffice – Remote Work Privacy',
+          metaDescription: 'Datenschutz Homeoffice: Remote Work Security, BYOD, Monitoring, Work-Life-Balance. ✓ Home Office Setup ✓ Data Protection ✓ Employee Privacy.',
+          indexStatus: 'index',
+          ...createCheckItems('homeoffice-privacy')
+        }
+      ]
+    },
+    {
+      id: 'ki-datenschutz',
+      icon: '🤖',
+      title: 'KI Datenschutz',
+      pages: [
+        {
+          title: 'KI Risikoklassifizierung',
+          url: '/wissen/ki-datenschutz/risikoklassifizierung',
+          description: 'EU AI Act Risikoklassifizierung: High-Risk AI, Limited Risk, Minimal Risk und verbotene KI-Praktiken systematisch bewerten.',
+          priority: 'high',
+          available: true,
+          titleTag: 'KI Risikoklassifizierung – EU AI Act Risk Assessment',
+          metaDescription: 'KI Risikoklassifizierung nach EU AI Act: High-Risk AI, Limited Risk, Minimal Risk. ✓ Risk Assessment ✓ Classification Matrix ✓ Compliance Roadmap.',
+          indexStatus: 'index',
+          ...createCheckItems('ki-risk-classification')
+        },
+        {
+          title: 'Algorithmic Impact Assessment',
+          url: '/wissen/ki-datenschutz/algorithmic-impact-assessment',
+          description: 'Systematische Bewertung von KI-Auswirkungen: Fairness, Transparenz, Verantwortlichkeit und gesellschaftliche Folgen.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Algorithmic Impact Assessment – KI-Folgenabschätzung',
+          metaDescription: 'Algorithmic Impact Assessment: KI-Auswirkungen systematisch bewerten. ✓ Fairness Testing ✓ Bias Detection ✓ Stakeholder Analysis ✓ Impact Mitigation.',
+          indexStatus: 'index',
+          ...createCheckItems('algorithmic-impact')
+        },
+        {
+          title: 'Privacy Preserving AI',
+          url: '/wissen/ki-datenschutz/privacy-preserving-ai',
+          description: 'Datenschutzfreundliche KI-Entwicklung: Differential Privacy, Homomorphic Encryption und Secure Multi-Party Computation.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Privacy Preserving AI – Datenschutzfreundliche KI',
+          metaDescription: 'Privacy Preserving AI: Differential Privacy, Homomorphic Encryption, Secure Computation. ✓ Private ML ✓ Data Minimization ✓ Anonymization Techniques.',
+          indexStatus: 'index',
+          ...createCheckItems('privacy-preserving-ai')
+        },
+        {
+          title: 'Federated Learning',
+          url: '/wissen/ki-datenschutz/federated-learning',
+          description: 'Federated Learning für Privacy: Dezentrales Lernen ohne zentrale Datenspeicherung und Edge AI Deployment.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Federated Learning – Dezentrales Machine Learning',
+          metaDescription: 'Federated Learning: Dezentrales ML ohne zentrale Datenspeicherung. ✓ Edge AI ✓ Privacy by Design ✓ On-Device Learning ✓ Model Aggregation.',
+          indexStatus: 'index',
+          ...createCheckItems('federated-learning')
+        },
+        {
+          title: 'Financial AI Compliance',
+          url: '/wissen/ki-datenschutz/financial-ai-compliance',
+          description: 'KI im Finanzsektor: Model Risk Management, Explainable AI für Kreditentscheidungen und algorithmische Transparenz.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Financial AI Compliance – Finanz-KI Regulierung',
+          metaDescription: 'Financial AI Compliance: Model Risk Management, Explainable AI, Kreditentscheidungen, algorithmische Transparenz. ✓ Fair Lending ✓ Model Validation ✓ Bias Testing.',
+          indexStatus: 'index',
+          ...createCheckItems('financial-ai')
+        },
+        {
+          title: 'HR AI Compliance',
+          url: '/wissen/ki-datenschutz/hr-ai-compliance',
+          description: 'KI im Personalwesen: Recruiting AI, Performance Monitoring, Bias-freie Personalentscheidungen und Mitarbeiter-Privacy.',
+          priority: 'high',
+          available: true,
+          titleTag: 'HR AI Compliance – Personalwesen KI-Compliance',
+          metaDescription: 'HR AI Compliance: Recruiting AI, Performance Monitoring, Bias-freie Entscheidungen, Mitarbeiter-Privacy. ✓ Fair Hiring ✓ Employee Rights ✓ Algorithmic Transparency.',
+          indexStatus: 'index',
+          ...createCheckItems('hr-ai-compliance')
+        },
+        {
+          title: 'Model Privacy Attacks',
+          url: '/wissen/ki-datenschutz/model-privacy-attacks',
+          description: 'KI-Modell Sicherheit: Membership Inference, Model Inversion, Property Inference und Abwehrstrategien.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Model Privacy Attacks – KI-Modell Sicherheit',
+          metaDescription: 'Model Privacy Attacks: Membership Inference, Model Inversion, Property Inference. ✓ Attack Vectors ✓ Defense Strategies ✓ Privacy Testing ✓ Model Hardening.',
+          indexStatus: 'index',
+          ...createCheckItems('model-privacy-attacks')
+        },
+        {
+          title: 'Data Minimization Guide',
+          url: '/wissen/ki-datenschutz/data-minimization',
+          description: 'Datenminimierung in KI: Feature Selection, Synthetic Data, Data Reduction und Privacy-Utility Trade-offs.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Data Minimization – KI-Datenminimierung Guide',
+          metaDescription: 'Data Minimization für KI: Feature Selection, Synthetic Data, Data Reduction, Privacy-Utility Balance. ✓ DSGVO Compliance ✓ Efficient ML ✓ Privacy Enhancement.',
+          indexStatus: 'index',
+          ...createCheckItems('data-minimization')
+        },
+        {
+          title: 'Explainable AI',
+          url: '/wissen/ki-datenschutz/explainable-ai',
+          description: 'Erklärbare KI: LIME, SHAP, Model Interpretability und algorithmische Transparenz für Compliance.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Explainable AI – Erklärbare KI für Compliance',
+          metaDescription: 'Explainable AI: LIME, SHAP, Model Interpretability, algorithmische Transparenz. ✓ AI Explainability ✓ Decision Transparency ✓ Regulatory Compliance.',
+          indexStatus: 'index',
+          ...createCheckItems('explainable-ai')
+        },
+        {
+          title: 'Privacy by Design AI',
+          url: '/wissen/ki-datenschutz/privacy-by-design-ai',
+          description: 'Privacy by Design für KI-Systeme: Proaktiver Datenschutz, Privacy Engineering und Built-in Privacy.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Privacy by Design AI – Datenschutz in KI-Architektur',
+          metaDescription: 'Privacy by Design AI: Proaktiver Datenschutz, Privacy Engineering, Built-in Privacy. ✓ Privacy Patterns ✓ Secure Architecture ✓ Data Protection by Default.',
+          indexStatus: 'index',
+          ...createCheckItems('privacy-by-design-ai')
+        },
+        {
+          title: 'KI Einwilligungsmanagement',
+          url: '/wissen/ki-datenschutz/ki-einwilligungsmanagement',
+          description: 'Consent Management für KI: Granulare Einwilligung, Dynamic Consent und KI-spezifische Aufklärung.',
+          priority: 'high',
+          available: true,
+          titleTag: 'KI Einwilligungsmanagement – AI Consent Management',
+          metaDescription: 'KI Einwilligungsmanagement: Granulare Einwilligung, Dynamic Consent, KI-Aufklärung. ✓ AI-specific Consent ✓ Transparent Information ✓ User Control.',
+          indexStatus: 'index',
+          ...createCheckItems('ki-consent-management')
+        },
+        {
+          title: 'Automated Decision Making',
+          url: '/wissen/ki-datenschutz/automated-decision-making',
+          description: 'Automatisierte Entscheidungsfindung: Art. 22 DSGVO, Human-in-the-Loop, Widerspruchsrechte und Profiling.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Automated Decision Making – Art. 22 DSGVO Compliance',
+          metaDescription: 'Automated Decision Making: Art. 22 DSGVO, Human-in-the-Loop, Widerspruchsrechte, Profiling. ✓ ADM Compliance ✓ Human Oversight ✓ Contestability.',
+          indexStatus: 'index',
+          ...createCheckItems('automated-decision-making')
+        }
+      ]
+    },
+    {
+      id: 'crisis-management',
+      icon: '🚨',
+      title: 'Krisenmanagement',
+      pages: [
+        {
+          title: 'Data Breach 72h Guide',
+          url: '/wissen/krisenmanagement/data-breach-72h',
+          description: 'Data Breach Response in 72 Stunden: Sofortmaßnahmen, Meldepflichten, Betroffenenbenachrichtigung und Schadensbegrenzung.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Data Breach 72h – DSGVO Datenpanne Meldung',
+          metaDescription: 'Data Breach 72h Response: Sofortmaßnahmen, DSGVO-Meldung, Betroffenenbenachrichtigung, Schadensbegrenzung. ✓ Incident Response ✓ Notification Templates ✓ Legal Compliance.',
+          indexStatus: 'index',
+          ...createCheckItems('data-breach-72h')
+        },
+        {
+          title: 'Security Incident Guide',
+          url: '/wissen/krisenmanagement/security-incident',
+          description: 'IT-Sicherheitsvorfälle managen: Incident Response, Forensik, Business Continuity und Stakeholder-Kommunikation.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Security Incident – IT-Sicherheitsvorfall Response',
+          metaDescription: 'Security Incident Management: Incident Response, Forensik, Business Continuity, Kommunikation. ✓ CSIRT Processes ✓ Evidence Preservation ✓ Recovery Planning.',
+          indexStatus: 'index',
+          ...createCheckItems('security-incident')
+        },
+        {
+          title: 'Communication Templates',
+          url: '/wissen/krisenmanagement/communication-templates',
+          description: 'Krisenkommunikation: Vorlagen für Datenpannen, interne Kommunikation, Pressemitteilungen und Kundenkommunikation.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Communication Templates – Krisenkommunikation Vorlagen',
+          metaDescription: 'Krisenkommunikation Templates: Datenpanne-Meldung, interne Kommunikation, Presse, Kunden. ✓ Ready-to-use Templates ✓ Multi-Channel ✓ Stakeholder-specific.',
+          indexStatus: 'index',
+          ...createCheckItems('communication-templates')
+        },
+        {
+          title: 'Compliance Audit Emergency',
+          url: '/wissen/krisenmanagement/compliance-audit-emergency',
+          description: 'Notfall-Audit-Response: Aufsichtsbehörden-Anfragen, Dokumentenvorbereitung und rechtliche Verteidigung.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Compliance Audit Emergency – Aufsichtsbehörden Response',
+          metaDescription: 'Compliance Audit Emergency: Aufsichtsbehörden-Anfragen, Dokumentenvorbereitung, rechtliche Verteidigung. ✓ Regulatory Response ✓ Document Preparation ✓ Legal Strategy.',
+          indexStatus: 'index',
+          ...createCheckItems('audit-emergency')
+        },
+        {
+          title: 'Media Crisis Guide',
+          url: '/wissen/krisenmanagement/media-crisis',
+          description: 'Medien-Krisenkommunikation: Pressestrategie, Social Media Response, Reputationsmanagement und Thought Leadership.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Media Crisis – Medien-Krisenkommunikation Guide',
+          metaDescription: 'Media Crisis Management: Pressestrategie, Social Media Response, Reputationsmanagement, Thought Leadership. ✓ PR Strategy ✓ Crisis Communication ✓ Brand Protection.',
+          indexStatus: 'index',
+          ...createCheckItems('media-crisis')
+        },
+        {
+          title: 'Vendor Data Breach',
+          url: '/wissen/krisenmanagement/vendor-data-breach',
+          description: 'Lieferanten-Datenpannen: Third-Party Incident Response, Vertragsmanagement und Supply Chain Security.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Vendor Data Breach – Lieferanten-Datenpanne Response',
+          metaDescription: 'Vendor Data Breach: Third-Party Incident Response, Vertragsmanagement, Supply Chain Security. ✓ Vendor Management ✓ Contract Enforcement ✓ Risk Assessment.',
+          indexStatus: 'index',
+          ...createCheckItems('vendor-data-breach')
+        },
+        {
+          title: 'GDPR Fine Response',
+          url: '/wissen/krisenmanagement/gdpr-fine-response',
+          description: 'DSGVO-Bußgeld Response: Rechtsmittel, Verfahrensstrategie, Schadensbegrenzung und Compliance-Verbesserung.',
+          priority: 'high',
+          available: true,
+          titleTag: 'GDPR Fine Response – DSGVO-Bußgeld Verteidigung',
+          metaDescription: 'GDPR Fine Response: Rechtsmittel, Verfahrensstrategie, Schadensbegrenzung, Compliance-Verbesserung. ✓ Legal Defense ✓ Appeal Process ✓ Remediation Planning.',
+          indexStatus: 'index',
+          ...createCheckItems('gdpr-fine-response')
+        },
+        {
+          title: 'Business Continuity',
+          url: '/wissen/krisenmanagement/business-continuity',
+          description: 'Business Continuity Planning: Notfallpläne, Disaster Recovery, Remote Work Continuity und Stakeholder Management.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Business Continuity – Geschäftskontinuität planen',
+          metaDescription: 'Business Continuity: Notfallpläne, Disaster Recovery, Remote Work, Stakeholder Management. ✓ BCP Templates ✓ Recovery Strategies ✓ Crisis Leadership.',
+          indexStatus: 'index',
+          ...createCheckItems('business-continuity')
+        }
+      ]
+    },
+    {
+      id: 'rechtsprechung',
+      icon: '⚖️',
+      title: 'Rechtsprechung',
+      pages: [
+        {
+          title: 'Schrems II Case',
+          url: '/wissen/rechtsprechung/schrems-ii',
+          description: 'Schrems II Urteil: Auswirkungen auf internationale Datentransfers, Privacy Shield Invalidierung und SCCs.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Schrems II – Internationale Datentransfers nach EuGH',
+          metaDescription: 'Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance.',
+          indexStatus: 'index',
+          ...createCheckItems('schrems-ii-case')
+        },
+        {
+          title: 'Meta Irland 2024',
+          url: '/wissen/rechtsprechung/meta-irland-2024',
+          description: 'Meta Irland Entscheidung 2024: Facebook-Datenverarbeitung, Rechtsgrundlagen und Plattform-Compliance.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Meta Irland 2024 – Facebook DSGVO-Entscheidung',
+          metaDescription: 'Meta Irland 2024: Facebook-Datenverarbeitung, Rechtsgrundlagen, Plattform-Compliance. ✓ DPC Decision ✓ Legal Basis Analysis ✓ Social Media Compliance.',
+          indexStatus: 'index',
+          ...createCheckItems('meta-ireland-2024')
+        },
+        {
+          title: 'Cookie Law Guide',
+          url: '/wissen/rechtsprechung/cookie-law',
+          description: 'Cookie-Rechtsprechung: ePrivacy-Richtlinie, Consent-Anforderungen und aktuelle Gerichtsentscheidungen.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Cookie Law – ePrivacy & DSGVO Cookie-Recht',
+          metaDescription: 'Cookie Law: ePrivacy-Richtlinie, Consent-Anforderungen, Gerichtsentscheidungen. ✓ Cookie Consent ✓ Legal Requirements ✓ Court Decisions ✓ Compliance Guide.',
+          indexStatus: 'index',
+          ...createCheckItems('cookie-law')
+        },
+        {
+          title: 'Facebook Fanpage Case',
+          url: '/wissen/rechtsprechung/facebook-fanpage',
+          description: 'Facebook Fanpage Urteil: Gemeinsame Verantwortlichkeit, Page Insights und Social Media Compliance.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Facebook Fanpage – EuGH Urteil gemeinsame Verantwortlichkeit',
+          metaDescription: 'Facebook Fanpage EuGH-Urteil: Gemeinsame Verantwortlichkeit, Page Insights, Social Media Compliance. ✓ Joint Controllership ✓ Liability ✓ Practical Implications.',
+          indexStatus: 'index',
+          ...createCheckItems('facebook-fanpage')
+        },
+        {
+          title: 'Google Analytics Austria',
+          url: '/wissen/rechtsprechung/google-analytics-austria',
+          description: 'Google Analytics Österreich Entscheidung: US-Tool-Verbot, Datenschutzbehörde und Alternative Analytics.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Google Analytics Austria – DSB Entscheidung US-Tools',
+          metaDescription: 'Google Analytics Austria DSB-Entscheidung: US-Tool-Verbot, Schrems II Auswirkungen, Analytics-Alternativen. ✓ Regulatory Decision ✓ Tool Assessment ✓ Compliance Strategy.',
+          indexStatus: 'index',
+          ...createCheckItems('google-analytics-austria')
+        },
+        {
+          title: 'Amazon Luxemburg 2021',
+          url: '/wissen/rechtsprechung/amazon-luxemburg-2021',
+          description: 'Amazon Luxemburg Bußgeld 2021: CNPD-Entscheidung, Datenverarbeitungs-Verletzungen und E-Commerce Compliance.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Amazon Luxemburg 2021 – CNPD Bußgeld-Entscheidung',
+          metaDescription: 'Amazon Luxemburg 2021 CNPD-Bußgeld: Datenverarbeitungs-Verletzungen, E-Commerce Compliance, DSGVO-Enforcement. ✓ Fine Analysis ✓ Compliance Lessons ✓ Enforcement Trends.',
+          indexStatus: 'index',
+          ...createCheckItems('amazon-luxembourg-2021')
+        },
+        {
+          title: 'WhatsApp Irland 2021',
+          url: '/wissen/rechtsprechung/whatsapp-irland-2021',
+          description: 'WhatsApp Irland Bußgeld 2021: Transparenz-Verletzungen, Messenger-Compliance und Informationspflichten.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'WhatsApp Irland 2021 – DPC Transparenz-Bußgeld',
+          metaDescription: 'WhatsApp Irland 2021 DPC-Bußgeld: Transparenz-Verletzungen, Messenger-Compliance, Informationspflichten. ✓ Transparency Requirements ✓ Messaging Apps ✓ User Information.',
+          indexStatus: 'index',
+          ...createCheckItems('whatsapp-ireland-2021')
+        },
+        {
+          title: 'Planet49 Cookie Case',
+          url: '/wissen/rechtsprechung/planet49-cookie',
+          description: 'Planet49 EuGH Cookie-Urteil: Vorab-aktivierte Checkboxen, Consent-Anforderungen und Gewinnspiel-Compliance.',
+          priority: 'high',
+          available: true,
+          titleTag: 'Planet49 Cookie – EuGH Urteil Vorab-Checkboxen',
+          metaDescription: 'Planet49 EuGH Cookie-Urteil: Vorab-Checkboxen ungültig, Consent-Anforderungen, Gewinnspiel-Compliance. ✓ Cookie Consent ✓ Pre-ticked Boxes ✓ Valid Consent.',
+          indexStatus: 'index',
+          ...createCheckItems('planet49-cookie')
+        },
+        {
+          title: 'Google Fonts München',
+          url: '/wissen/rechtsprechung/google-fonts-muenchen',
+          description: 'Google Fonts München Urteil: IP-Adressen-Übertragung, Web Fonts DSGVO-Compliance und lokale Alternativen.',
+          priority: 'medium',
+          available: true,
+          titleTag: 'Google Fonts München – LG Urteil IP-Adressen-Schutz',
+          metaDescription: 'Google Fonts München LG-Urteil: IP-Adressen-Übertragung unzulässig, Web Fonts DSGVO, lokale Alternativen. ✓ Font Privacy ✓ IP Protection ✓ Local Hosting.',
+          indexStatus: 'index',
+          ...createCheckItems('google-fonts-munich')
         }
       ]
     },
