@@ -36,6 +36,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 export const DataPrivacyReadinessAssessment: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -551,7 +552,14 @@ export const DataPrivacyReadinessAssessment: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <>
+      <SEOHead
+        title="Datenschutz Readiness Assessment – DSGVO-Bereitschaft prüfen"
+        description="Bewerten Sie Ihre Datenschutz-Bereitschaft interaktiv. Analysieren Sie Prozesse, Dokumentation & TOMs für optimalen Datenschutz. ✓ Kostenlos ✓ Sofortige Auswertung. Jetzt testen!"
+        canonical="/assessment-center/datenschutz-readiness-assessment"
+        keywords="datenschutz readiness assessment, dsgvo bereitschaft prüfen, datenschutz bewertung, privacy assessment"
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
       {/* Hero Section */}
       <section className="pt-24 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -582,10 +590,6 @@ export const DataPrivacyReadinessAssessment: React.FC = () => {
                   Ermitteln Sie Ihren DSGVO-Compliance-Reifegrad in nur 5 Minuten
                 </p>
                 <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                    <span>4.8 (1.923 Teilnehmer)</span>
-                  </div>
                   <div className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />
                     <span>~5 Minuten</span>
@@ -788,6 +792,7 @@ export const DataPrivacyReadinessAssessment: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };

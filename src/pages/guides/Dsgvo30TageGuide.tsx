@@ -129,6 +129,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const Dsgvo30TageGuide: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
@@ -156,7 +157,6 @@ const Dsgvo30TageGuide: React.FC = () => {
       id: 0,
       title: 'Woche 1: Bestandsaufnahme',
       subtitle: 'Datenflüsse identifizieren und dokumentieren',
-      readTime: '15 Min',
       week: 1,
       content: `
         <div class="space-y-8">
@@ -510,7 +510,6 @@ const Dsgvo30TageGuide: React.FC = () => {
       id: 1,
       title: 'Woche 2: Rechtsgrundlagen',
       subtitle: 'Art. 6 DSGVO für alle Verarbeitungen definieren',
-      readTime: '18 Min',
       week: 2,
       content: `
         <div class="space-y-8">
@@ -836,7 +835,6 @@ const Dsgvo30TageGuide: React.FC = () => {
       id: 2,
       title: 'Woche 3: TOM & Dokumentation',
       subtitle: 'Technische und organisatorische Maßnahmen implementieren',
-      readTime: '20 Min',
       week: 3,
       content: `
         <div class="space-y-8">
@@ -1243,7 +1241,6 @@ const Dsgvo30TageGuide: React.FC = () => {
       id: 3,
       title: 'Woche 4: Schulung & Testing',
       subtitle: 'Team-Training und Compliance-Tests durchführen',
-      readTime: '14 Min',
       week: 4,
       content: `
         <div class="space-y-8">
@@ -1704,11 +1701,18 @@ const Dsgvo30TageGuide: React.FC = () => {
   const currentChapterData = chapters[currentChapter];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
-      wordWrap: 'break-word',
-      overflowWrap: 'break-word'
-    }}>
-      <Header />
+    <>
+      <SEOHead
+        title="DSGVO in 30 Tagen – Express-Guide zur Compliance"
+        description="DSGVO-Compliance in 30 Tagen erreichen: Priorisierter Aktionsplan mit täglichen Aufgaben. ✓ Express-Guide ✓ Sofort umsetzbar ✓ Basis-Compliance. Jetzt starten!"
+        canonical="/wissen/leitfaden/dsgvo-30-tage"
+        keywords="dsgvo 30 tage, datenschutz express, compliance schnell, dsgvo sofort umsetzen, datenschutz aktionsplan"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
+        wordWrap: 'break-word',
+        overflowWrap: 'break-word'
+      }}>
+        <Header />
       
       {/* Hero Section */}
       <motion.section 
@@ -1746,21 +1750,9 @@ const Dsgvo30TageGuide: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
-                <Clock className="h-3 w-3 mr-1" />
-                67 Min Lesezeit
-              </Badge>
               <Badge className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30">
                 <Target className="h-3 w-3 mr-1" />
                 Fortgeschritten
-              </Badge>
-              <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
-                <Users className="h-3 w-3 mr-1" />
-                1.923 Nutzer
-              </Badge>
-              <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
-                <Star className="h-3 w-3 mr-1 fill-current" />
-                4.8/5
               </Badge>
             </div>
           </div>
@@ -1821,7 +1813,6 @@ const Dsgvo30TageGuide: React.FC = () => {
                           </div>
                           <div>
                             <div className="font-medium text-sm">{chapter.title}</div>
-                            <div className="text-xs opacity-75">{chapter.readTime}</div>
                           </div>
                         </div>
                       </motion.button>
@@ -1843,7 +1834,7 @@ const Dsgvo30TageGuide: React.FC = () => {
                         Woche {currentChapterData.week}
                       </Badge>
                       <Clock className="h-4 w-4 text-slate-400" />
-                      <span className="text-sm text-slate-400">{currentChapterData.readTime}</span>
+                      <span className="text-sm text-slate-400">Kapitel {currentChapter + 1}</span>
                     </div>
                     <h2 className="text-3xl font-bold text-white mb-2">{currentChapterData.title}</h2>
                     <p className="text-slate-400">{currentChapterData.subtitle}</p>
@@ -1947,8 +1938,9 @@ const Dsgvo30TageGuide: React.FC = () => {
         </div>
       </div>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

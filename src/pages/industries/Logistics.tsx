@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -27,6 +28,13 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Logistics: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LogisticsOrganization",
+    "name": "Logistik Compliance Lösungen",
+    "description": "Transport & Logistik Compliance: GPS-Tracking DSGVO, Supply Chain Security, Fahrerdatenschutz",
+    "url": "https://marsstein.com/branchen/logistik"
+  };
   const painPoints = [
     {
       icon: Brain,
@@ -136,8 +144,16 @@ const Logistics: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Logistik – GPS-Tracking & Supply Chain DSGVO"
+        description="Transport & Logistik Compliance: GPS-Tracking DSGVO, Supply Chain Security, Fahrerdatenschutz. ✓ Sendungsverfolgung ✓ Fleet Management. Jetzt compliant!"
+        canonical="/branchen/logistik"
+        keywords="Logistik DSGVO, GPS Tracking Datenschutz, Supply Chain Security, Transport Compliance"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -444,6 +460,7 @@ const Logistics: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

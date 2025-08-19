@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -26,6 +27,15 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const FinancialServices: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "Finanzdienstleister Compliance Lösungen",
+    "description": "Compliance für Banken, Versicherungen und FinTechs: MaRisk, BAIT, PSD2",
+    "serviceType": "Financial Compliance Solutions",
+    "url": "https://marsstein.com/branchen/finanzdienstleister"
+  };
+
   const painPoints = [
     {
       icon: Lock,
@@ -120,8 +130,16 @@ const FinancialServices: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Finanzdienstleister – BaFin & DSGVO Compliance"
+        description="FinTech Compliance: MaRisk, BAIT, PSD2 & DSGVO für Banken und Versicherungen. ✓ BaFin-konform ✓ Expertenwissen. Jetzt beraten lassen!"
+        canonical="/branchen/finanzdienstleister"
+        keywords="FinTech Compliance, BaFin Anforderungen, MaRisk, BAIT, PSD2 Compliance, Banken DSGVO"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -424,6 +442,7 @@ const FinancialServices: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

@@ -55,6 +55,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const VerarbeitungsverzeichnisGuide: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
@@ -74,7 +75,6 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
       id: 0,
       title: 'Einführung & Rechtliche Grundlagen',
       subtitle: 'Art. 30 DSGVO verstehen',
-      readTime: '8 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-4 lg:p-8">
@@ -192,7 +192,6 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
       id: 1,
       title: 'Pflichtangaben für Verantwortliche',
       subtitle: 'Art. 30 Abs. 1 DSGVO im Detail',
-      readTime: '12 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
@@ -474,7 +473,6 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
       id: 2,
       title: 'Praktische Umsetzung',
       subtitle: 'Schritt-für-Schritt zum Verarbeitungsverzeichnis',
-      readTime: '10 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-6">
@@ -705,7 +703,6 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
       id: 3,
       title: 'Häufige Fehler vermeiden',
       subtitle: 'Die 10 kritischsten Fallstricke',
-      readTime: '8 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20 rounded-xl p-6">
@@ -873,7 +870,6 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
       id: 4,
       title: 'Tools und Vorlagen',
       subtitle: 'Praktische Hilfsmittel für die Umsetzung',
-      readTime: '6 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
@@ -1096,15 +1092,21 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
   };
 
   const currentChapterData = chapters[currentChapter];
-  const totalReadTime = chapters.reduce((sum, chapter) => sum + parseInt(chapter.readTime), 0);
   const overallProgress = ((currentChapter + (readingProgress / 100)) / chapters.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
-      wordWrap: 'break-word',
-      overflowWrap: 'break-word'
-    }}>
-      <Header />
+    <>
+      <SEOHead
+        title="Verarbeitungsverzeichnis – DSGVO Anleitung & Vorlagen"
+        description="Verarbeitungsverzeichnis nach Art. 30 DSGVO erstellen: Schritt-für-Schritt Anleitung, Vorlagen & Beispiele. ✓ Rechtssicher ✓ Vollständig ✓ Sofort einsetzbar. Jetzt umsetzen!"
+        canonical="/wissen/leitfaden/verarbeitungsverzeichnis"
+        keywords="verarbeitungsverzeichnis dsgvo, art 30 dsgvo, verarbeitungstätigkeiten dokumentieren, dsgvo vorlage"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
+        wordWrap: 'break-word',
+        overflowWrap: 'break-word'
+      }}>
+        <Header />
       
       {/* Fixed Reading Progress */}
       <div className="fixed top-16 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
@@ -1168,7 +1170,7 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
             <div className="flex items-center gap-6 text-sm text-slate-400">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
-                <span>{currentChapterData.readTime} Lesezeit</span>
+                <span>Kapitel {currentChapter + 1}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
@@ -1223,7 +1225,6 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
                             </div>
                             <div className="flex-grow">
                               <div className="text-sm font-medium">{chapter.title}</div>
-                              <div className="text-xs opacity-75">{chapter.readTime}</div>
                             </div>
                           </div>
                         </button>
@@ -1234,7 +1235,7 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
                       <div className="text-sm text-slate-400 mb-2">Gesamtfortschritt</div>
                       <Progress value={overallProgress} className="h-2 mb-2" />
                       <div className="text-xs text-slate-400">
-                        {Math.round(overallProgress)}% • {totalReadTime} Min gesamt
+                        {Math.round(overallProgress)}% abgeschlossen
                       </div>
                     </div>
                   </CardContent>
@@ -1317,8 +1318,9 @@ const VerarbeitungsverzeichnisGuide: React.FC = () => {
         </div>
       </div>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

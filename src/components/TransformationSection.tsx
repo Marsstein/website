@@ -41,10 +41,10 @@ export const TransformationSection: React.FC = () => {
         title: 'Vorher',
         subtitle: 'Manuelle Prozesse',
         stats: [
-          { label: 'Audit-Vorbereitung', value: '120+ Stunden', color: 'text-red-600' },
-          { label: 'Manuelle Prozesse', value: '85%', color: 'text-red-600' },
-          { label: 'Fehlerrate', value: '23%', color: 'text-red-600' },
-          { label: 'Stress-Level', value: 'Maximum', color: 'text-red-600' }
+          { label: 'Audit-Vorbereitung', value: 'Aufwändig', color: 'text-red-600' },
+          { label: 'Manuelle Prozesse', value: 'Viele', color: 'text-red-600' },
+          { label: 'Fehlerrisiko', value: 'Vorhanden', color: 'text-red-600' },
+          { label: 'Arbeitsbelastung', value: 'Hoch', color: 'text-red-600' }
         ],
         bgColor: 'from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20',
         borderColor: 'border-red-200 dark:border-red-800'
@@ -54,10 +54,10 @@ export const TransformationSection: React.FC = () => {
         title: 'Nachher',
         subtitle: 'Mit Marsstein',
         stats: [
-          { label: 'Audit-Vorbereitung', value: '30 Minuten', color: 'text-green-600' },
-          { label: 'Automatisierung', value: '95%', color: 'text-green-600' },
-          { label: 'Fehlerrate', value: '<1%', color: 'text-green-600' },
-          { label: 'Stress-Level', value: 'Minimal', color: 'text-green-600' }
+          { label: 'Audit-Vorbereitung', value: 'Optimiert', color: 'text-green-600' },
+          { label: 'Automatisierung', value: 'Geplant', color: 'text-green-600' },
+          { label: 'Fehlerrisiko', value: 'Reduziert', color: 'text-green-600' },
+          { label: 'Arbeitsbelastung', value: 'Verbessert', color: 'text-green-600' }
         ],
         bgColor: 'from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20',
         borderColor: 'border-green-200 dark:border-green-800'
@@ -68,14 +68,14 @@ export const TransformationSection: React.FC = () => {
   const benefits = [
     {
       icon: TrendingUp,
-      title: '400% Effizienzsteigerung',
-      description: 'Automatisierte Prozesse steigern die Produktivität um das Vierfache',
+      title: 'Effizienzsteigerung',
+      description: 'Automatisierte Prozesse zur Steigerung der Produktivität',
       color: 'text-green-600'
     },
     {
       icon: Euro,
-      title: '€50k+ Kostenoptimierung/Jahr',
-      description: 'Reduzierte Personalkosten, minimierte Compliance-Risiken, weniger externe Beratung',
+      title: 'Kostenoptimierung',
+      description: 'Reduzierte Personalkosten und minimierte Compliance-Risiken',
       color: 'text-blue-600'
     },
     {
@@ -262,21 +262,21 @@ export const TransformationSection: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-brand-red">
-                    {isVisible && <AnimatedNumber end={300} suffix="%" />}
+                    Positiv
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">ROI im ersten Jahr</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Erwarteter ROI</p>
                 </div>
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-green-600">
-                    €{isVisible && <AnimatedNumber end={75} />}k
+                    Signifikant
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Durchschnittliche Ersparnis</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Potenzielle Ersparnis</p>
                 </div>
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-blue-600">
-                    {isVisible && <AnimatedNumber end={6} />} Monate
+                    Variabel
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Break-Even Point</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Amortisierung</p>
                 </div>
               </div>
 

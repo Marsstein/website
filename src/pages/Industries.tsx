@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import SEOHead from '../components/SEOHead';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -38,6 +39,28 @@ const Industries: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Branchenspezifische Compliance-Lösungen",
+    "description": "Compliance-Lösungen für verschiedene Branchen: Healthcare, FinTech, E-Commerce, SaaS und mehr",
+    "numberOfItems": 9,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Gesundheitswesen",
+        "url": "https://marsstein.com/branchen/gesundheitswesen"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Finanzdienstleister",
+        "url": "https://marsstein.com/branchen/finanzdienstleister"
+      }
+    ]
+  };
 
   const categories = [
     { id: 'all', name: 'Alle Branchen', icon: Building2, count: 9 },
@@ -228,8 +251,16 @@ const Industries: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Branchen – Compliance-Lösungen für jede Industrie"
+        description="Branchenspezifische Compliance: Healthcare, FinTech, E-Commerce & mehr. ✓ Maßgeschneidert ✓ Best Practices ✓ Expertenwissen. Jetzt entdecken!"
+        canonical="/branchen"
+        keywords="Branchenlösungen, Healthcare Compliance, FinTech Compliance, E-Commerce DSGVO, Industrie Compliance"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
+        <Header />
       
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -698,6 +729,7 @@ const Industries: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

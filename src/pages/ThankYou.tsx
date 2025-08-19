@@ -4,12 +4,20 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Monitor, ArrowRight, Home } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEOHead from '@/components/SEOHead';
 
 export const ThankYou: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted/20 flex items-center justify-center px-4">
+    <>
+      <SEOHead
+        title="Danke – Ihre Anfrage wurde erfolgreich übermittelt"
+        description="Vielen Dank für Ihre Anfrage. Unser Compliance-Team meldet sich innerhalb von 24 Stunden bei Ihnen. Entdecken Sie jetzt unsere Demo oder weitere Ressourcen."
+        canonical="/thank-you"
+        keywords="danke, anfrage bestätigung, marsstein kontakt, compliance demo"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted/20 flex items-center justify-center px-4">
       <div className="max-w-2xl mx-auto text-center">
         <Card className="shadow-lg">
           <CardHeader className="pb-4">
@@ -82,6 +90,7 @@ export const ThankYou: React.FC = () => {
         </Card>
       </div>
     </div>
+    </>
   );
 };
 

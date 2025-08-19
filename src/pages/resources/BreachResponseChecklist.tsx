@@ -40,6 +40,7 @@ import {
   Gavel
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 export const BreachResponseChecklist: React.FC = () => {
   const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
@@ -322,7 +323,14 @@ export const BreachResponseChecklist: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <>
+      <SEOHead
+        title="Breach Response Checklist – 72-Stunden DSGVO Notfallplan"
+        description="Notfall-Checkliste für Datenpannen: Schritt-für-Schritt in 72h. Meldepflichten, Kommunikation, Schadensbegrenzung. ✓ DSGVO-konform ✓ Sofort einsetzbar. Jetzt downloaden!"
+        canonical="/assessment-center/breach-response-checklist"
+        keywords="breach response checklist, datenpanne notfallplan, 72 stunden dsgvo, data breach response, notfallcheckliste"
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
       {/* Hero Section */}
       <section className="pt-24 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -770,6 +778,7 @@ export const BreachResponseChecklist: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };

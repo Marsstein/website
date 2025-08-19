@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -33,6 +34,13 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Manufacturing: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ManufacturingOrganization",
+    "name": "Produktion Compliance Lösungen",
+    "description": "Industrie 4.0 Compliance: IoT-Sicherheit, OT-Security, Smart Factory DSGVO für Manufacturing",
+    "url": "https://marsstein.com/branchen/produktion"
+  };
   const painPoints = [
     {
       icon: Database,
@@ -143,8 +151,16 @@ const Manufacturing: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Produktion – Industrie 4.0 & IoT-Sicherheit"
+        description="Manufacturing Compliance: Industrie 4.0, IoT-Sicherheit, Smart Factory DSGVO, OT-Security. ✓ Produktionsschutz ✓ Supply Chain Security. Jetzt beraten lassen!"
+        canonical="/branchen/produktion"
+        keywords="Industrie 4.0 Compliance, Manufacturing DSGVO, IoT Sicherheit, OT Security, Smart Factory"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -459,6 +475,7 @@ const Manufacturing: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

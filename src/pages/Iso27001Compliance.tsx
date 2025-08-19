@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -1380,7 +1381,7 @@ const BenefitsSection = () => (
 
     const implementationPhases = [
       {
-        id: 'readiness',
+        id: 'bereitschaft',
         title: 'Readiness Assessment',
         icon: Search,
         color: 'from-blue-500 to-indigo-500',
@@ -1405,7 +1406,7 @@ const BenefitsSection = () => (
         }
       },
       {
-        id: 'foundation',
+        id: 'grundlage',
         title: 'ISMS Foundation',
         icon: Layers,
         color: 'from-emerald-500 to-teal-500',
@@ -1430,7 +1431,7 @@ const BenefitsSection = () => (
         }
       },
       {
-        id: 'controls',
+        id: 'kontrollen',
         title: 'Controls Implementation',
         icon: Shield,
         color: 'from-orange-500 to-red-500',
@@ -1455,7 +1456,7 @@ const BenefitsSection = () => (
         }
       },
       {
-        id: 'validation',
+        id: 'validierung',
         title: 'Validation & Testing',
         icon: CheckSquare,
         color: 'from-purple-500 to-violet-500',
@@ -5299,28 +5300,273 @@ const BenefitsSection = () => (
 
 // Main Component
 const Iso27001Compliance = () => {
+  const [activeSection, setActiveSection] = useState<string>('overview');
+  
+  // Navigation items with German labels
+  const navigationItems = [
+    { id: 'ueberblick', label: 'Überblick', icon: Shield },
+    { id: 'schmerzpunkte', label: 'Schmerzpunkte', icon: AlertCircle },
+    { id: 'iso-details', label: 'ISO 27001 Details', icon: FileText },
+    { id: 'vorteile', label: 'Vorteile', icon: CheckCircle2 },
+    { id: 'roi', label: 'ROI', icon: TrendingUp },
+    { id: 'implementierung', label: 'Implementierung', icon: Settings },
+    { id: 'zertifizierung', label: 'Zertifizierung', icon: Award },
+    { id: 'wartung', label: 'Wartung', icon: Shield },
+    { id: 'integration', label: 'Integration', icon: Layers },
+    { id: 'branchen', label: 'Branchen', icon: Building2 },
+    { id: 'fallstudien', label: 'Fallstudien', icon: BookOpen },
+    { id: 'prozess', label: 'Prozess', icon: Rocket },
+    { id: 'tools', label: 'Tools', icon: Monitor },
+    { id: 'ressourcen', label: 'Ressourcen', icon: FileCheck },
+    { id: 'faq', label: 'FAQ', icon: Globe }
+  ];
+
+  // Scroll to section function
+  const scrollToSection = (sectionId: string) => {
+    window.history.pushState(null, '', `#${sectionId}`);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Handle initial load with hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        scrollToSection(hash);
+        setActiveSection(hash);
+      }, 100);
+    }
+  }, []);
+
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navigationItems.map(item => ({
+        id: item.id,
+        element: document.getElementById(item.id)
+      }));
+      
+      const scrollPosition = window.scrollY + 150;
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "ISO 27001 Zertifizierung",
+    "description": "ISO 27001 Zertifizierung und ISMS Implementierung für Informationssicherheit",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Information Security Management",
+    "areaServed": "DE"
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <HeroSection />
-      <PainpointSection />
-      <Iso27001DeepDiveSection />
-      <BenefitsSection />
-      <ROISection />
-      <ImplementationSection />
-      <CertificationProcessSection />
-      <MaintenanceSection />
-      <IntegrationStandardsSection />
-      <IndustrySpecificsSection />
-      <CaseStudiesSection />
-      <TargetIndustriesSection />
-      <ProcessSection />
-      <ToolsSoftwareSection />
-      <ResourcesSection />
-      <FAQSection />
-      <CTASection />
-      <Footer />
+    <>
+      <SEOHead
+        title="ISO 27001 Zertifizierung – ISMS erfolgreich aufbauen"
+        description="ISO 27001 Zertifizierung meistern: ISMS-Implementierung, Gap-Analyse & Audit-Vorbereitung. ✓ Schritt-für-Schritt ✓ Praxisnah. Jetzt starten!"
+        canonical="/iso-27001"
+        keywords="ISO 27001, ISMS, Informationssicherheit, ISO 27001 Zertifizierung, IT-Sicherheit"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-background">
+        <Header />
+        
+        {/* Hero Section */}
+        <section id="ueberblick" className="scroll-mt-32">
+          <HeroSection />
+        </section>
+        
+        {/* Sticky Navigation */}
+        <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+          <div className="container px-4">
+            <div className="max-w-7xl mx-auto">
+              <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+                {navigationItems.map((item, index) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      scrollToSection(item.id);
+                      setActiveSection(item.id);
+                    }}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
+                      activeSection === item.id
+                        ? "bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400 border-red-200 dark:border-red-800"
+                        : "hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-700 dark:hover:text-red-400",
+                      "border",
+                      activeSection === item.id
+                        ? "border-red-200 dark:border-red-800"
+                        : "border-transparent hover:border-red-200 dark:hover:border-red-800"
+                    )}
+                  >
+                    <item.icon className={cn(
+                      "h-4 w-4",
+                      activeSection === item.id && "text-red-600 dark:text-red-500"
+                    )} />
+                    <span className={cn(
+                      "text-sm font-medium",
+                      activeSection === item.id && "text-red-700 dark:text-red-400"
+                    )}>{item.label}</span>
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </div>
+        </div>
+        
+        {/* Main Content */}
+        <div className="py-20">
+          <div className="container px-4">
+            <div className="max-w-7xl mx-auto space-y-20">
+              
+              {/* Schmerzpunkte Section */}
+              <section id="schmerzpunkte" className="space-y-8 scroll-mt-32">
+                <PainpointSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Deep Dive Section */}
+              <section id="iso-details" className="space-y-8 scroll-mt-32">
+                <Iso27001DeepDiveSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Vorteile Section */}
+              <section id="vorteile" className="space-y-8 scroll-mt-32">
+                <BenefitsSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* ROI Section */}
+              <section id="roi" className="space-y-8 scroll-mt-32">
+                <ROISection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Implementierung Section */}
+              <section id="implementierung" className="space-y-8 scroll-mt-32">
+                <ImplementationSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Zertifizierung Section */}
+              <section id="zertifizierung" className="space-y-8 scroll-mt-32">
+                <CertificationProcessSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Wartung Section */}
+              <section id="wartung" className="space-y-8 scroll-mt-32">
+                <MaintenanceSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Integration Section */}
+              <section id="integration" className="space-y-8 scroll-mt-32">
+                <IntegrationStandardsSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Branchen Section */}
+              <section id="branchen" className="space-y-8 scroll-mt-32">
+                <IndustrySpecificsSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Fallstudien Section */}
+              <section id="fallstudien" className="space-y-8 scroll-mt-32">
+                <CaseStudiesSection />
+              </section>
+              
+              {/* Target Industries - separate section without navigation */}
+              <TargetIndustriesSection />
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Prozess Section */}
+              <section id="prozess" className="space-y-8 scroll-mt-32">
+                <ProcessSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Tools Section */}
+              <section id="tools" className="space-y-8 scroll-mt-32">
+                <ToolsSoftwareSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* Ressourcen Section */}
+              <section id="ressourcen" className="space-y-8 scroll-mt-32">
+                <ResourcesSection />
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+              
+              {/* FAQ Section */}
+              <section id="faq" className="space-y-8 scroll-mt-32">
+                <FAQSection />
+              </section>
+              
+              {/* CTA Section */}
+              <CTASection />
+              
+            </div>
+          </div>
+        </div>
+        
+        <Footer />
     </div>
+    </>
   );
 };
 

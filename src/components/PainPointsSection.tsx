@@ -55,7 +55,6 @@ export const PainPointsSection: React.FC = () => {
       icon: TrendingDown,
       title: 'Reputations- und Haftungsrisiken',
       description: 'Compliance-Verstöße können erhebliche Auswirkungen auf Unternehmensreputation und Geschäftstätigkeit haben.',
-      stat: '87% Kundenverlust',
       color: 'from-gray-500 to-gray-600',
       bgColor: 'bg-gray-50 dark:bg-gray-950/20',
       borderColor: 'border-gray-200 dark:border-gray-900'
@@ -128,14 +127,6 @@ export const PainPointsSection: React.FC = () => {
                       {point.description}
                     </p>
 
-                    {/* Stat */}
-                    <div className={cn(
-                      "inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium",
-                      point.bgColor
-                    )}>
-                      <TrendingDown className="h-4 w-4" />
-                      {point.stat}
-                    </div>
                   </div>
 
                   {/* Hover effect */}

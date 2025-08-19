@@ -68,7 +68,6 @@ const Knowledge: React.FC = () => {
       bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
       category: 'dsgvo',
       guides: 8,
-      readTime: '15-45 Min',
       difficulty: 'Alle Level',
       link: '/wissen/dsgvo',
       popular: true,
@@ -88,7 +87,6 @@ const Knowledge: React.FC = () => {
       bgColor: 'bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900',
       category: 'implementation',
       guides: 6,
-      readTime: '20-60 Min',
       difficulty: 'Fortgeschritten',
       link: '/wissen/compliance-frameworks',
       featured: [
@@ -107,7 +105,6 @@ const Knowledge: React.FC = () => {
       bgColor: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
       category: 'dsgvo',
       guides: 5,
-      readTime: '10-25 Min',
       difficulty: 'Experte',
       link: '/wissen/rechtsprechung',
       featured: [
@@ -126,7 +123,6 @@ const Knowledge: React.FC = () => {
       bgColor: 'bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900',
       category: 'implementation',
       guides: 4,
-      readTime: '25-50 Min',
       difficulty: 'Fortgeschritten',
       link: '/wissen/risk-management',
       featured: [
@@ -145,7 +141,6 @@ const Knowledge: React.FC = () => {
       bgColor: 'bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900',
       category: 'dsgvo',
       guides: 7,
-      readTime: '20-40 Min',
       difficulty: 'Mittel',
       link: '/wissen/branchen',
       featured: [
@@ -164,7 +159,6 @@ const Knowledge: React.FC = () => {
       bgColor: 'bg-gradient-to-br from-slate-900 via-red-900 to-slate-900',
       category: 'crisis',
       guides: 4,
-      readTime: '15-30 Min',
       difficulty: 'Kritisch',
       link: '/wissen/krisenmanagement',
       urgent: true,
@@ -281,13 +275,11 @@ const Knowledge: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
           >
             {[
               { value: '24+', label: 'Leitfäden', sublabel: 'Praxiserprobte Guides', icon: FileText, color: 'from-blue-500 to-indigo-500' },
-              { value: '150+', label: 'Stunden Content', sublabel: 'Detaillierte Anleitungen', icon: Clock, color: 'from-indigo-500 to-purple-500' },
-              { value: '98%', label: 'Erfolgsrate', sublabel: 'Bei Implementierung', icon: Target, color: 'from-purple-500 to-pink-500' },
-              { value: '5,000+', label: 'Nutzer monatlich', sublabel: 'Vertrauen uns', icon: Users, color: 'from-pink-500 to-red-500' }
+              { value: '98%', label: 'Erfolgsrate', sublabel: 'Bei Implementierung', icon: Target, color: 'from-purple-500 to-pink-500' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -408,14 +400,10 @@ const Knowledge: React.FC = () => {
                       </p>
                       
                       {/* Stats */}
-                      <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-slate-800/60 rounded-xl backdrop-blur-sm">
+                      <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-slate-800/60 rounded-xl backdrop-blur-sm">
                         <div className="text-center">
                           <div className="text-lg font-bold text-blue-400">{area.guides}</div>
                           <div className="text-xs text-slate-400">Guides</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-lg font-bold text-emerald-400">{area.readTime}</div>
-                          <div className="text-xs text-slate-400">Lesezeit</div>
                         </div>
                         <div className="text-center">
                           <Badge className={getDifficultyColor(area.difficulty)}>

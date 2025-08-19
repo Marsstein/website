@@ -108,6 +108,7 @@ import { cn } from '@/lib/utils';
 
 const Iso27001Guide: React.FC = () => {
   const [activeSection, setActiveSection] = useState('overview');
+  const [activeNavSection, setActiveNavSection] = useState<string>('overview');
   const [completedSections, setCompletedSections] = useState<string[]>([]);
   const [readingProgress, setReadingProgress] = useState(0);
   const [bookmarked, setBookmarked] = useState(false);
@@ -120,25 +121,76 @@ const Iso27001Guide: React.FC = () => {
     offset: ["start start", "end end"]
   });
 
+  // Scroll to section function
+  const scrollToSection = (sectionId: string) => {
+    window.history.pushState(null, '', `#${sectionId}`);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Handle initial load with hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        scrollToSection(hash);
+        setActiveNavSection(hash);
+      }, 100);
+    }
+  }, []);
+
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionElements = sections.map(item => ({
+        id: item.id,
+        element: document.getElementById(item.id)
+      }));
+      
+      const scrollPosition = window.scrollY + 150;
+      
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const section = sectionElements[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveNavSection(section.id);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const sections = [
-    { id: 'overview', title: 'Überblick', icon: Eye, readTime: '8 Min' },
-    { id: 'history', title: 'Geschichte & Evolution', icon: Calendar, readTime: '12 Min' },
-    { id: 'fundamentals', title: 'ISMS-Grundlagen', icon: BookOpen, readTime: '15 Min' },
-    { id: 'legal', title: 'Rechtlicher Rahmen', icon: Scale, readTime: '10 Min' },
-    { id: 'requirements', title: 'Anforderungen (Clauses)', icon: CheckCircle2, readTime: '25 Min' },
-    { id: 'controls', title: 'Sicherheitskontrollen', icon: Shield, readTime: '45 Min' },
-    { id: 'riskmanagement', title: 'Risikomanagement', icon: AlertTriangle, readTime: '20 Min' },
-    { id: 'implementation', title: 'Implementierung', icon: Settings, readTime: '30 Min' },
-    { id: 'documentation', title: 'Dokumentation', icon: FileText, readTime: '18 Min' },
-    { id: 'audit', title: 'Audit & Assessment', icon: Search, readTime: '22 Min' },
-    { id: 'certification', title: 'Zertifizierung', icon: Award, readTime: '15 Min' },
-    { id: 'maintenance', title: 'Aufrechterhaltung', icon: RotateCcw, readTime: '12 Min' },
-    { id: 'integration', title: 'Integration & Standards', icon: Network, readTime: '14 Min' },
-    { id: 'industry', title: 'Branchenspezifika', icon: Building2, readTime: '16 Min' },
-    { id: 'benefits', title: 'Vorteile & ROI', icon: TrendingUp, readTime: '12 Min' },
-    { id: 'casestudies', title: 'Fallstudien', icon: BookOpen, readTime: '20 Min' },
-    { id: 'tools', title: 'Tools & Software', icon: Code, readTime: '10 Min' },
-    { id: 'resources', title: 'Ressourcen', icon: Download, readTime: '8 Min' }
+    { id: 'ueberblick', title: 'Überblick', icon: Eye, readTime: '8 Min' },
+    { id: 'geschichte', title: 'Geschichte & Evolution', icon: Calendar, readTime: '12 Min' },
+    { id: 'grundlagen', title: 'ISMS-Grundlagen', icon: BookOpen, readTime: '15 Min' },
+    { id: 'rechtlicher-rahmen', title: 'Rechtlicher Rahmen', icon: Scale, readTime: '10 Min' },
+    { id: 'anforderungen', title: 'Anforderungen (Clauses)', icon: CheckCircle2, readTime: '25 Min' },
+    { id: 'sicherheitskontrollen', title: 'Sicherheitskontrollen', icon: Shield, readTime: '45 Min' },
+    { id: 'risikomanagement', title: 'Risikomanagement', icon: AlertTriangle, readTime: '20 Min' },
+    { id: 'implementierung', title: 'Implementierung', icon: Settings, readTime: '30 Min' },
+    { id: 'dokumentation', title: 'Dokumentation', icon: FileText, readTime: '18 Min' },
+    { id: 'audit-assessment', title: 'Audit & Assessment', icon: Search, readTime: '22 Min' },
+    { id: 'zertifizierung', title: 'Zertifizierung', icon: Award, readTime: '15 Min' },
+    { id: 'aufrechterhaltung', title: 'Aufrechterhaltung', icon: RotateCcw, readTime: '12 Min' },
+    { id: 'integration-standards', title: 'Integration & Standards', icon: Network, readTime: '14 Min' },
+    { id: 'branchenspezifika', title: 'Branchenspezifika', icon: Building2, readTime: '16 Min' },
+    { id: 'vorteile-roi', title: 'Vorteile & ROI', icon: TrendingUp, readTime: '12 Min' },
+    { id: 'fallstudien', title: 'Fallstudien', icon: BookOpen, readTime: '20 Min' },
+    { id: 'tools-software', title: 'Tools & Software', icon: Code, readTime: '10 Min' },
+    { id: 'ressourcen', title: 'Ressourcen', icon: Download, readTime: '8 Min' }
   ];
 
   const controls = [
@@ -604,7 +656,7 @@ const Iso27001Guide: React.FC = () => {
                 ISO 27001 Guide
               </Badge>
               <div className="text-sm text-slate-400">
-                Abschnitt {sections.findIndex(s => s.id === activeSection) + 1} von {sections.length}
+                Abschnitt {sections.findIndex(s => s.id === activeNavSection) + 1} von {sections.length}
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -670,7 +722,7 @@ const Iso27001Guide: React.FC = () => {
 
               <div className="flex gap-4">
                 <Button 
-                  onClick={() => setActiveSection('fundamentals')}
+                  onClick={() => scrollToSection('fundamentals')}
                   className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600"
                 >
                   <Play className="h-4 w-4 mr-2" />
@@ -750,42 +802,65 @@ const Iso27001Guide: React.FC = () => {
         </div>
       </motion.section>
 
+      {/* Sticky Navigation */}
+      <div className="sticky top-16 z-40 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 shadow-lg">
+        <div className="container px-4 mx-auto max-w-7xl">
+          <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+            {sections.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setActiveNavSection(item.id);
+                  }}
+                  className={cn(
+                    "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
+                    activeNavSection === item.id
+                      ? "bg-blue-500/20 text-blue-300 border-blue-500/30"
+                      : "hover:bg-slate-800/50 hover:text-slate-300 text-slate-400",
+                    "border",
+                    activeNavSection === item.id
+                      ? "border-blue-500/30"
+                      : "border-transparent hover:border-slate-700"
+                  )}
+                >
+                  <IconComponent className={cn(
+                    "h-4 w-4",
+                    activeNavSection === item.id && "text-blue-400"
+                  )} />
+                  <span className={cn(
+                    "text-sm font-medium",
+                    activeNavSection === item.id && "text-blue-300"
+                  )}>{item.title}</span>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="container mx-auto max-w-7xl px-4 py-8">
         <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
-          {/* Sidebar Navigation */}
+          {/* Sidebar - Progress und Quick Actions */}
           <div className="lg:col-span-1">
             <div className="lg:sticky lg:top-32 space-y-6">
               <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Inhaltsverzeichnis</h3>
-                  <div className="space-y-2">
-                    {sections.map((section, index) => {
-                      const IconComponent = section.icon;
-                      return (
-                        <button
-                          key={section.id}
-                          onClick={() => setActiveSection(section.id)}
-                          className={cn(
-                            "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
-                            activeSection === section.id
-                              ? "bg-blue-500/20 border border-blue-500/50 text-blue-300"
-                              : "border border-slate-700/50 text-slate-400 hover:bg-slate-700/50 hover:text-slate-300"
-                          )}
-                        >
-                          <div className="flex items-center gap-3">
-                            <IconComponent className="h-4 w-4" />
-                            <div className="text-left">
-                              <div className="text-sm font-medium">{section.title}</div>
-                              <div className="text-xs opacity-70">{section.readTime}</div>
-                            </div>
-                          </div>
-                          {completedSections.includes(section.id) && (
-                            <CheckCircle2 className="h-4 w-4 text-green-400" />
-                          )}
-                        </button>
-                      );
-                    })}
+                  <h3 className="text-lg font-semibold text-white mb-4">Fortschritt</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex justify-between text-sm mb-2">
+                        <span className="text-slate-400">Gesamtfortschritt</span>
+                        <span className="text-blue-400">{Math.round(readingProgress)}%</span>
+                      </div>
+                      <Progress value={readingProgress} className="h-2" />
+                    </div>
+                    <div className="text-sm text-slate-400">
+                      {completedSections.length} von {sections.length} Abschnitten gelesen
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -814,12 +889,10 @@ const Iso27001Guide: React.FC = () => {
 
           {/* Main Content Area */}
           <div className="lg:col-span-3">
-            <div ref={contentRef}>
-              <Tabs value={activeSection} onValueChange={setActiveSection}>
-                <TabsList className="hidden" />
-                
-                {/* Overview Section */}
-                <TabsContent value="overview" className="space-y-8">
+            <div ref={contentRef} className="space-y-20">
+              
+              {/* Overview Section */}
+              <section id="ueberblick" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -932,10 +1005,13 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
-
-                {/* History Section */}
-                <TabsContent value="history" className="space-y-8">
+              </section>
+              
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
+              
+              {/* History Section */}
+              <section id="geschichte" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1125,10 +1201,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Fundamentals Section */}
-                <TabsContent value="fundamentals" className="space-y-8">
+                <section id="grundlagen" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1270,10 +1346,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Requirements Section */}
-                <TabsContent value="requirements" className="space-y-8">
+                <section id="anforderungen" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1406,10 +1482,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Controls Section */}
-                <TabsContent value="controls" className="space-y-8">
+                <section id="sicherheitskontrollen" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1529,10 +1605,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Implementation Section */}
-                <TabsContent value="implementation" className="space-y-8">
+                <section id="implementierung" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1631,10 +1707,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Certification Section */}
-                <TabsContent value="certification" className="space-y-8">
+                <section id="zertifizierung" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1784,10 +1860,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Benefits Section */}
-                <TabsContent value="benefits" className="space-y-8">
+                <section id="vorteile-roi" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1885,10 +1961,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Legal Section */}
-                <TabsContent value="legal" className="space-y-8">
+                <section id="rechtlicher-rahmen" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2063,10 +2139,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Risk Management Section */}
-                <TabsContent value="riskmanagement" className="space-y-8">
+                <section id="risikomanagement" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2281,10 +2357,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Implementation Section */}
-                <TabsContent value="implementation" className="space-y-8">
+                <section id="implementierung" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2504,10 +2580,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Documentation Section */}
-                <TabsContent value="documentation" className="space-y-8">
+                <section id="dokumentation" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2732,10 +2808,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Audit Section */}
-                <TabsContent value="audit" className="space-y-8">
+                <section id="audit-assessment" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -2911,10 +2987,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Certification Section */}
-                <TabsContent value="certification" className="space-y-8">
+                <section id="zertifizierung" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -3096,10 +3172,10 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
                 {/* Resources Section */}
-                <TabsContent value="resources" className="space-y-8">
+                <section id="ressourcen" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -3208,20 +3284,19 @@ const Iso27001Guide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
-              </Tabs>
+                </section>
             </div>
 
             {/* Navigation */}
             <div className="flex flex-col lg:flex-row items-center justify-between mt-8 pt-6 border-t border-slate-700/50 gap-4">
               <Button
                 onClick={() => {
-                  const currentIndex = sections.findIndex(s => s.id === activeSection);
+                  const currentIndex = sections.findIndex(s => s.id === activeNavSection);
                   if (currentIndex > 0) {
-                    setActiveSection(sections[currentIndex - 1].id);
+                    scrollToSection(sections[currentIndex - 1].id);
                   }
                 }}
-                disabled={activeSection === sections[0].id}
+                disabled={activeNavSection === sections[0].id}
                 variant="outline"
                 className="border-slate-600 text-slate-300 hover:bg-slate-700"
               >
@@ -3231,7 +3306,7 @@ const Iso27001Guide: React.FC = () => {
 
               <div className="flex items-center gap-3 order-first lg:order-none">
                 <Badge variant="outline" className="text-xs">
-                  {sections.findIndex(s => s.id === activeSection) + 1} / {sections.length}
+                  {sections.findIndex(s => s.id === activeNavSection) + 1} / {sections.length}
                 </Badge>
                 <Button
                   onClick={() => setBookmarked(!bookmarked)}
@@ -3245,12 +3320,12 @@ const Iso27001Guide: React.FC = () => {
 
               <Button
                 onClick={() => {
-                  const currentIndex = sections.findIndex(s => s.id === activeSection);
+                  const currentIndex = sections.findIndex(s => s.id === activeNavSection);
                   if (currentIndex < sections.length - 1) {
-                    setActiveSection(sections[currentIndex + 1].id);
+                    scrollToSection(sections[currentIndex + 1].id);
                   }
                 }}
-                disabled={activeSection === sections[sections.length - 1].id}
+                disabled={activeNavSection === sections[sections.length - 1].id}
                 className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600"
               >
                 Nächster Abschnitt

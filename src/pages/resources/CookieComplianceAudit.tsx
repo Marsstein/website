@@ -40,6 +40,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 export const CookieComplianceAudit: React.FC = () => {
   const [websiteUrl, setWebsiteUrl] = useState('');
@@ -305,7 +306,14 @@ export const CookieComplianceAudit: React.FC = () => {
   const completedCount = completedItems.size;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <>
+      <SEOHead
+        title="Cookie Compliance Audit – DSGVO Cookie-Scanner & Analyse"
+        description="Detaillierte Cookie-Compliance Überprüfung: Cookie-Scanner, Einwilligungsprozesse, TCF 2.2. ✓ Automatische Analyse ✓ DSGVO-konform ✓ Sofortige Ergebnisse. Jetzt Website scannen!"
+        canonical="/assessment-center/cookie-compliance-audit"
+        keywords="cookie compliance audit, cookie scanner, dsgvo cookies, cookie banner test, tcf 2.2 audit"
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
       {/* Hero Section */}
       <section className="pt-24 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -843,6 +851,7 @@ export const CookieComplianceAudit: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };

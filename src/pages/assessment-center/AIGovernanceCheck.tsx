@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -75,6 +76,15 @@ interface AssessmentResult {
 }
 
 const AIGovernanceCheck: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Assessment",
+    "name": "AI Governance Check",
+    "description": "Überprüfen Sie Ihre KI-Governance-Strukturen und -Prozesse für verantwortungsvolle KI-Entwicklung",
+    "educationalLevel": "Professional",
+    "url": "https://marsstein.com/assessment-center/ai-governance-check"
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -625,8 +635,16 @@ const AIGovernanceCheck: React.FC = () => {
 
   if (isCalculating) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
+      <>
+        <SEOHead
+          title="KI-Governance Check – Reifegrad-Bewertung"
+          description="AI Governance Check: Bewerten Sie Ihre KI-Governance-Strukturen. ✓ Verantwortungsvolle KI ✓ Reifegrad-Analyse ✓ Handlungsempfehlungen. Jetzt testen!"
+          canonical="/assessment-center/ai-governance-check"
+          keywords="AI Governance Check, KI-Governance, Responsible AI, KI-Ethik, KI-Management"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
         <div className="pt-24 pb-16">
           <div className="container px-4">
             <div className="max-w-2xl mx-auto text-center">
@@ -669,7 +687,8 @@ const AIGovernanceCheck: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </>
     );
   }
 
@@ -684,8 +703,16 @@ const AIGovernanceCheck: React.FC = () => {
     };
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
+      <>
+        <SEOHead
+          title="KI-Governance Check – Reifegrad-Bewertung"
+          description="AI Governance Check: Bewerten Sie Ihre KI-Governance-Strukturen. ✓ Verantwortungsvolle KI ✓ Reifegrad-Analyse ✓ Handlungsempfehlungen. Jetzt testen!"
+          canonical="/assessment-center/ai-governance-check"
+          keywords="AI Governance Check, KI-Governance, Responsible AI, KI-Ethik, KI-Management"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
         <div className="pt-24 pb-16">
           <div className="container px-4">
             <div className="max-w-6xl mx-auto">
@@ -939,12 +966,21 @@ const AIGovernanceCheck: React.FC = () => {
         </div>
         <Footer />
       </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-      <Header />
+    <>
+      <SEOHead
+        title="KI-Governance Check – Reifegrad-Bewertung"
+        description="AI Governance Check: Bewerten Sie Ihre KI-Governance-Strukturen. ✓ Verantwortungsvolle KI ✓ Reifegrad-Analyse ✓ Handlungsempfehlungen. Jetzt testen!"
+        canonical="/assessment-center/ai-governance-check"
+        keywords="AI Governance Check, KI-Governance, Responsible AI, KI-Ethik, KI-Management"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        <Header />
       
       <div className="pt-24 pb-16">
         <div className="container px-4">
@@ -1135,6 +1171,7 @@ const AIGovernanceCheck: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

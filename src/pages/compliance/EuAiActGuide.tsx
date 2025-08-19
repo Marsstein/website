@@ -6,7 +6,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Shield, 
   CheckCircle2, 
@@ -189,7 +188,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const EuAiActGuide: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('overview');
+  const [activeSection, setActiveSection] = useState('ueberblick');
   const [completedSections, setCompletedSections] = useState<string[]>([]);
   const [readingProgress, setReadingProgress] = useState(0);
   const [bookmarked, setBookmarked] = useState(false);
@@ -203,24 +202,24 @@ const EuAiActGuide: React.FC = () => {
   });
 
   const sections = [
-    { id: 'overview', title: 'Überblick', icon: Eye, readTime: '12 Min' },
-    { id: 'scope', title: 'Anwendungsbereich', icon: Target, readTime: '15 Min' },
-    { id: 'risk-levels', title: 'Risikostufen', icon: Gauge, readTime: '25 Min' },
-    { id: 'prohibited', title: 'Verbotene Praktiken', icon: ShieldOff, readTime: '18 Min' },
-    { id: 'high-risk', title: 'Hochrisiko-KI', icon: AlertTriangle, readTime: '30 Min' },
-    { id: 'general-purpose', title: 'General Purpose AI', icon: BrainCircuit, readTime: '20 Min' },
-    { id: 'requirements', title: 'Anforderungen', icon: ClipboardCheck, readTime: '35 Min' },
-    { id: 'conformity', title: 'Konformitätsbewertung', icon: BadgeCheck, readTime: '25 Min' },
-    { id: 'transparency', title: 'Transparenzpflichten', icon: Eye, readTime: '20 Min' },
+    { id: 'ueberblick', title: 'Überblick', icon: Eye, readTime: '12 Min' },
+    { id: 'anwendungsbereich', title: 'Anwendungsbereich', icon: Target, readTime: '15 Min' },
+    { id: 'risikostufen', title: 'Risikostufen', icon: Gauge, readTime: '25 Min' },
+    { id: 'verbotene-praktiken', title: 'Verbotene Praktiken', icon: ShieldOff, readTime: '18 Min' },
+    { id: 'hochrisiko-ki', title: 'Hochrisiko-KI', icon: AlertTriangle, readTime: '30 Min' },
+    { id: 'general-purpose-ai', title: 'General Purpose AI', icon: BrainCircuit, readTime: '20 Min' },
+    { id: 'anforderungen', title: 'Anforderungen', icon: ClipboardCheck, readTime: '35 Min' },
+    { id: 'konformitaet', title: 'Konformitätsbewertung', icon: BadgeCheck, readTime: '25 Min' },
+    { id: 'transparenz', title: 'Transparenzpflichten', icon: Eye, readTime: '20 Min' },
     { id: 'governance', title: 'AI Governance', icon: Building2, readTime: '22 Min' },
-    { id: 'documentation', title: 'Dokumentation', icon: FileText, readTime: '18 Min' },
-    { id: 'compliance-timeline', title: 'Zeitplan', icon: Calendar, readTime: '15 Min' },
-    { id: 'penalties', title: 'Bußgelder', icon: Gavel, readTime: '12 Min' },
-    { id: 'implementation', title: 'Implementierung', icon: Rocket, readTime: '30 Min' },
-    { id: 'technical-standards', title: 'Technische Standards', icon: Wrench, readTime: '25 Min' },
+    { id: 'dokumentation', title: 'Dokumentation', icon: FileText, readTime: '18 Min' },
+    { id: 'zeitplan', title: 'Zeitplan', icon: Calendar, readTime: '15 Min' },
+    { id: 'bussgelder', title: 'Bußgelder', icon: Gavel, readTime: '12 Min' },
+    { id: 'implementierung', title: 'Implementierung', icon: Rocket, readTime: '30 Min' },
+    { id: 'technische-standards', title: 'Technische Standards', icon: Wrench, readTime: '25 Min' },
     { id: 'innovation', title: 'Innovation & Sandboxes', icon: Sparkles, readTime: '18 Min' },
-    { id: 'certification', title: 'Zertifizierung', icon: Award, readTime: '20 Min' },
-    { id: 'resources', title: 'Ressourcen', icon: Download, readTime: '10 Min' }
+    { id: 'zertifizierung', title: 'Zertifizierung', icon: Award, readTime: '20 Min' },
+    { id: 'ressourcen', title: 'Ressourcen', icon: Download, readTime: '10 Min' }
   ];
 
   const riskCategories = [
@@ -485,6 +484,22 @@ const EuAiActGuide: React.FC = () => {
     }));
   };
 
+  const scrollToSection = (sectionId: string) => {
+    window.history.pushState(null, '', `#${sectionId}`);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (contentRef.current) {
@@ -493,10 +508,37 @@ const EuAiActGuide: React.FC = () => {
         const progress = (scrolled / maxScroll) * 100;
         setReadingProgress(Math.min(progress, 100));
       }
+
+      // Track active section
+      const sectionElements = sections.map(section => ({
+        id: section.id,
+        element: document.getElementById(section.id)
+      }));
+      
+      const scrollPosition = window.scrollY + 150;
+      
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const section = sectionElements[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle initial hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        scrollToSection(hash);
+        setActiveSection(hash);
+      }, 100);
+    }
   }, []);
 
   const CounterAnimation = ({ value, suffix = '', prefix = '', duration = 2000 }: { value: number; suffix?: string; prefix?: string; duration?: number }) => {
@@ -689,6 +731,47 @@ const EuAiActGuide: React.FC = () => {
         </div>
       </motion.section>
 
+      {/* Sticky Navigation */}
+      <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <div className="container px-4">
+          <div className="max-w-7xl mx-auto">
+            <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+              {sections.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      scrollToSection(item.id);
+                      setActiveSection(item.id);
+                    }}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
+                      activeSection === item.id
+                        ? "bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400 border-red-200 dark:border-red-800"
+                        : "hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-700 dark:hover:text-red-400",
+                      "border",
+                      activeSection === item.id
+                        ? "border-red-200 dark:border-red-800"
+                        : "border-transparent hover:border-red-200 dark:hover:border-red-800"
+                    )}
+                  >
+                    <IconComponent className={cn(
+                      "h-4 w-4",
+                      activeSection === item.id && "text-red-600 dark:text-red-500"
+                    )} />
+                    <span className={cn(
+                      "text-sm font-medium",
+                      activeSection === item.id && "text-red-700 dark:text-red-400"
+                    )}>{item.title}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="container mx-auto max-w-7xl px-4 py-8">
         <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
@@ -704,7 +787,10 @@ const EuAiActGuide: React.FC = () => {
                       return (
                         <button
                           key={section.id}
-                          onClick={() => setActiveSection(section.id)}
+                          onClick={() => {
+                            scrollToSection(section.id);
+                            setActiveSection(section.id);
+                          }}
                           className={cn(
                             "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
                             activeSection === section.id
@@ -753,12 +839,10 @@ const EuAiActGuide: React.FC = () => {
 
           {/* Main Content Area */}
           <div className="lg:col-span-3">
-            <div ref={contentRef}>
-              <Tabs value={activeSection} onValueChange={setActiveSection}>
-                <TabsList className="hidden" />
+            <div ref={contentRef} className="space-y-20">
                 
-                {/* Overview Section */}
-                <TabsContent value="overview" className="space-y-8">
+                {/* Überblick Section */}
+                <section id="ueberblick" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -769,11 +853,11 @@ const EuAiActGuide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">Überblick</h2>
                           <Button
-                            onClick={() => handleSectionComplete('overview')}
-                            variant={completedSections.includes('overview') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('ueberblick')}
+                            variant={completedSections.includes('ueberblick') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('overview') ? (
+                            {completedSections.includes('ueberblick') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -872,10 +956,13 @@ const EuAiActGuide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
-                {/* Risk Levels Section */}
-                <TabsContent value="risk-levels" className="space-y-8">
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Risikostufen Section */}
+                <section id="risikostufen" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -886,11 +973,11 @@ const EuAiActGuide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">Risikostufen</h2>
                           <Button
-                            onClick={() => handleSectionComplete('risk-levels')}
-                            variant={completedSections.includes('risk-levels') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('risikostufen')}
+                            variant={completedSections.includes('risikostufen') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('risk-levels') ? (
+                            {completedSections.includes('risikostufen') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -1025,10 +1112,13 @@ const EuAiActGuide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
                 {/* High Risk Section */}
-                <TabsContent value="high-risk" className="space-y-8">
+                <section id="hochrisiko-ki" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1039,11 +1129,11 @@ const EuAiActGuide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">Hochrisiko-KI-Systeme</h2>
                           <Button
-                            onClick={() => handleSectionComplete('high-risk')}
-                            variant={completedSections.includes('high-risk') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('hochrisiko-ki')}
+                            variant={completedSections.includes('hochrisiko-ki') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('high-risk') ? (
+                            {completedSections.includes('hochrisiko-ki') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -1188,10 +1278,13 @@ const EuAiActGuide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
                 {/* Compliance Timeline Section */}
-                <TabsContent value="compliance-timeline" className="space-y-8">
+                <section id="zeitplan" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1202,11 +1295,11 @@ const EuAiActGuide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">Compliance Timeline</h2>
                           <Button
-                            onClick={() => handleSectionComplete('compliance-timeline')}
-                            variant={completedSections.includes('compliance-timeline') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('zeitplan')}
+                            variant={completedSections.includes('zeitplan') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('compliance-timeline') ? (
+                            {completedSections.includes('zeitplan') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -1280,10 +1373,13 @@ const EuAiActGuide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
                 {/* Implementation Section */}
-                <TabsContent value="implementation" className="space-y-8">
+                <section id="implementierung" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1294,11 +1390,11 @@ const EuAiActGuide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">Implementierungs-Roadmap</h2>
                           <Button
-                            onClick={() => handleSectionComplete('implementation')}
-                            variant={completedSections.includes('implementation') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('implementierung')}
+                            variant={completedSections.includes('implementierung') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('implementation') ? (
+                            {completedSections.includes('implementierung') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -1448,10 +1544,13 @@ const EuAiActGuide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
 
-                {/* Prohibited Practices Section */}
-                <TabsContent value="prohibited" className="space-y-8">
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Verbotene Praktiken Section */}
+                <section id="verbotene-praktiken" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1462,11 +1561,11 @@ const EuAiActGuide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">Verbotene KI-Praktiken</h2>
                           <Button
-                            onClick={() => handleSectionComplete('prohibited')}
-                            variant={completedSections.includes('prohibited') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('verbotene-praktiken')}
+                            variant={completedSections.includes('verbotene-praktiken') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('prohibited') ? (
+                            {completedSections.includes('verbotene-praktiken') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -1695,10 +1794,13 @@ const EuAiActGuide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
                 {/* General Purpose AI Section */}
-                <TabsContent value="general-purpose" className="space-y-8">
+                <section id="general-purpose" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1709,11 +1811,11 @@ const EuAiActGuide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">General Purpose AI Models (GPAI)</h2>
                           <Button
-                            onClick={() => handleSectionComplete('general-purpose')}
-                            variant={completedSections.includes('general-purpose') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('general-purpose-ai')}
+                            variant={completedSections.includes('general-purpose-ai') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('general-purpose') ? (
+                            {completedSections.includes('general-purpose-ai') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -1962,10 +2064,798 @@ const EuAiActGuide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Anwendungsbereich Section */}
+                <section id="anwendungsbereich" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Anwendungsbereich</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('anwendungsbereich')}
+                            variant={completedSections.includes('anwendungsbereich') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('anwendungsbereich') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Materieller Anwendungsbereich */}
+                          <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-blue-300 mb-6">Materieller Anwendungsbereich</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">KI-Systeme (Art. 3 Nr. 1)</h4>
+                                <div className="space-y-3">
+                                  <div className="bg-slate-900/50 rounded-lg p-4">
+                                    <p className="text-slate-300 text-sm">
+                                      "Ein maschinenbasiertes System, das für explizite oder implizite Ziele 
+                                      entwickelt wurde und das aus den erhaltenen Eingaben ableitet, wie es Ausgaben 
+                                      wie Vorhersagen, Inhalte, Empfehlungen oder Entscheidungen generiert, die 
+                                      physische oder virtuelle Umgebungen beeinflussen können."
+                                    </p>
+                                  </div>
+                                  <ul className="space-y-2">
+                                    {[
+                                      'Machine Learning Systeme',
+                                      'Logic- und knowledge-based Ansätze',
+                                      'Statistische Ansätze',
+                                      'Bayesian estimation',
+                                      'Search und optimization Methoden'
+                                    ].map((item, idx) => (
+                                      <li key={idx} className="flex items-center gap-2 text-sm text-slate-300">
+                                        <CheckCircle className="h-3 w-3 text-blue-400" />
+                                        {item}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Ausnahmen</h4>
+                                <div className="space-y-3">
+                                  <ul className="space-y-2">
+                                    {[
+                                      'KI für ausschließlich militärische Zwecke',
+                                      'KI für nationale Sicherheit',
+                                      'KI nur für Forschung und Entwicklung',
+                                      'KI nur für persönliche, nicht-berufliche Zwecke',
+                                      'Open Source Software (mit Einschränkungen)'
+                                    ].map((item, idx) => (
+                                      <li key={idx} className="flex items-center gap-2 text-sm text-slate-300">
+                                        <X className="h-3 w-3 text-red-400" />
+                                        {item}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Räumlicher Anwendungsbereich */}
+                          <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-emerald-300 mb-6">Räumlicher Anwendungsbereich</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-emerald-300 mb-3">Anbieter in der EU</h4>
+                                <p className="text-sm text-slate-300">
+                                  Alle Anbieter mit Sitz in der EU, unabhängig davon, 
+                                  wo das KI-System eingesetzt wird.
+                                </p>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-emerald-300 mb-3">Verwendung in der EU</h4>
+                                <p className="text-sm text-slate-300">
+                                  KI-Systeme von Drittlandanbietern, die in der EU 
+                                  verwendet werden.
+                                </p>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-emerald-300 mb-3">Output in der EU</h4>
+                                <p className="text-sm text-slate-300">
+                                  KI-Systeme, deren Output in der EU verwendet wird, 
+                                  auch wenn das System selbst außerhalb betrieben wird.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Akteure im AI Act */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Betroffene Akteure</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              {[
+                                {
+                                  role: 'Anbieter (Provider)',
+                                  definition: 'Natürliche oder juristische Person, die ein KI-System entwickelt oder entwickeln lässt',
+                                  responsibilities: [
+                                    'CE-Kennzeichnung',
+                                    'Konformitätsbewertung',
+                                    'Technische Dokumentation',
+                                    'Post-Market-Monitoring'
+                                  ]
+                                },
+                                {
+                                  role: 'Betreiber (Deployer)',
+                                  definition: 'Person, die ein KI-System unter ihrer Autorität verwendet',
+                                  responsibilities: [
+                                    'Zweckbestimmung beachten',
+                                    'Menschliche Aufsicht',
+                                    'Eingabedaten überwachen',
+                                    'Incident Reporting'
+                                  ]
+                                },
+                                {
+                                  role: 'Importeur',
+                                  definition: 'Person mit Sitz in der EU, die KI-System aus Drittland in Verkehr bringt',
+                                  responsibilities: [
+                                    'Konformitätsprüfung',
+                                    'CE-Kennzeichnung verifizieren',
+                                    'Technische Dokumentation prüfen',
+                                    'Marktüberwachung unterstützen'
+                                  ]
+                                },
+                                {
+                                  role: 'Händler (Distributor)',
+                                  definition: 'Person in der Lieferkette, die KI-System verfügbar macht',
+                                  responsibilities: [
+                                    'Konformität überprüfen',
+                                    'Lagerungsbedingungen einhalten',
+                                    'Behörden informieren',
+                                    'Zusammenarbeit mit Marktüberwachung'
+                                  ]
+                                }
+                              ].map((actor, idx) => (
+                                <div key={idx} className="bg-slate-900/50 rounded-lg p-4">
+                                  <h4 className="font-semibold text-blue-300 mb-2">{actor.role}</h4>
+                                  <p className="text-sm text-slate-300 mb-3">{actor.definition}</p>
+                                  <ul className="space-y-1">
+                                    {actor.responsibilities.map((resp, ridx) => (
+                                      <li key={ridx} className="text-xs text-slate-400 flex items-center gap-2">
+                                        <CheckCircle className="h-2 w-2 text-emerald-400" />
+                                        {resp}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Anforderungen Section */}
+                <section id="anforderungen" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Anforderungen</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('anforderungen')}
+                            variant={completedSections.includes('anforderungen') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('anforderungen') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Hochrisiko-Anforderungen */}
+                          <div className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-red-300 mb-6">Anforderungen für Hochrisiko-KI-Systeme</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              {[
+                                {
+                                  requirement: 'Risikomanagementsystem',
+                                  article: 'Art. 9',
+                                  description: 'Kontinuierlicher Prozess zur Identifikation, Analyse und Bewertung von Risiken',
+                                  details: [
+                                    'Risiko-Identifikation und -Analyse',
+                                    'Risikobewertung und -bewältigung',
+                                    'Dokumentation aller Risikomanagement-Aktivitäten',
+                                    'Regelmäßige Überprüfung und Aktualisierung'
+                                  ]
+                                },
+                                {
+                                  requirement: 'Datenqualität und -governance',
+                                  article: 'Art. 10',
+                                  description: 'Sicherstellung hoher Datenqualität für Training, Validierung und Test',
+                                  details: [
+                                    'Relevante, repräsentative und fehlerfrei Daten',
+                                    'Angemessene statistische Eigenschaften',
+                                    'Bias-Minimierung',
+                                    'Datenqualitätskontrolle'
+                                  ]
+                                },
+                                {
+                                  requirement: 'Technische Dokumentation',
+                                  article: 'Art. 11',
+                                  description: 'Umfassende Dokumentation des KI-Systems und seiner Eigenschaften',
+                                  details: [
+                                    'Allgemeine Beschreibung des KI-Systems',
+                                    'Detaillierte Entwicklungsdokumentation',
+                                    'Risikomanagement-Dokumentation',
+                                    'Konformitätsbewertungsverfahren'
+                                  ]
+                                },
+                                {
+                                  requirement: 'Automatische Protokollierung',
+                                  article: 'Art. 12',
+                                  description: 'Automatische Aufzeichnung von Ereignissen während des Betriebs',
+                                  details: [
+                                    'Funktionsdauer und -häufigkeit',
+                                    'Eingabedaten und deren Referenz',
+                                    'Zeitstempel aller Aktivitäten',
+                                    'Systemleistung und -verhalten'
+                                  ]
+                                },
+                                {
+                                  requirement: 'Transparenz und Information',
+                                  article: 'Art. 13',
+                                  description: 'Klare und verständliche Informationen für Betreiber',
+                                  details: [
+                                    'Zweckbestimmung und Verwendungszweck',
+                                    'Genauigkeitsgrad und Robustheit',
+                                    'Bekannte Einschränkungen',
+                                    'Erwartete Systemlebensdauer'
+                                  ]
+                                },
+                                {
+                                  requirement: 'Menschliche Aufsicht',
+                                  article: 'Art. 14',
+                                  description: 'Sicherstellung angemessener menschlicher Kontrolle',
+                                  details: [
+                                    'Human-in-the-loop Design',
+                                    'Human-on-the-loop Überwachung',
+                                    'Human-in-command Kontrolle',
+                                    'Interpretierbare Outputs'
+                                  ]
+                                }
+                              ].map((req, idx) => (
+                                <div key={idx} className="bg-slate-900/50 rounded-lg p-4">
+                                  <div className="flex items-center gap-2 mb-3">
+                                    <Badge variant="outline" className="text-xs">{req.article}</Badge>
+                                    <h4 className="font-semibold text-white">{req.requirement}</h4>
+                                  </div>
+                                  <p className="text-sm text-slate-300 mb-3">{req.description}</p>
+                                  <ul className="space-y-1">
+                                    {req.details.map((detail, didx) => (
+                                      <li key={didx} className="text-xs text-slate-400 flex items-start gap-2">
+                                        <CheckCircle className="h-2 w-2 text-emerald-400 mt-1 flex-shrink-0" />
+                                        {detail}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Genauigkeits- und Robustheitsanforderungen */}
+                          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-blue-300 mb-6">Genauigkeit, Robustheit und Cybersicherheit</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-blue-300 mb-3">Genauigkeit</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Angemessenes Genauigkeitsniveau',
+                                    'Konsistente Leistung',
+                                    'Messbare Metriken',
+                                    'Benchmark-Vergleiche'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Target className="h-3 w-3 text-blue-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-emerald-300 mb-3">Robustheit</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Resilienz gegen Fehler',
+                                    'Umgang mit Anomalien',
+                                    'Stabile Performance',
+                                    'Graceful Degradation'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Shield className="h-3 w-3 text-emerald-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-red-300 mb-3">Cybersicherheit</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Schutz vor Angriffen',
+                                    'Sichere Datenübertragung',
+                                    'Zugriffskontrollen',
+                                    'Incident Response'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Lock className="h-3 w-3 text-red-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Konformitätsbewertung Section */}
+                <section id="konformitaet" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Konformitätsbewertung</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('konformitaet')}
+                            variant={completedSections.includes('konformitaet') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('konformitaet') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Konformitätsbewertungsverfahren Übersicht */}
+                          <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-purple-300 mb-6">Konformitätsbewertungsverfahren</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-purple-300 mb-3">Internes Qualitätsmanagement (Anhang VI)</h4>
+                                <div className="space-y-3">
+                                  <div className="text-sm text-slate-300">
+                                    <p className="mb-2"><strong>Anwendbar für:</strong> Die meisten Hochrisiko-KI-Systeme</p>
+                                    <p className="mb-3"><strong>Ausnahmen:</strong> Biometrische Identifikationssysteme</p>
+                                  </div>
+                                  <ul className="space-y-2">
+                                    {[
+                                      'Qualitätsmanagementsystem implementieren',
+                                      'Technische Dokumentation erstellen',
+                                      'Automatische Protokollierung einrichten',
+                                      'EU-Konformitätserklärung ausstellen',
+                                      'CE-Kennzeichnung anbringen',
+                                      'Post-Market-Monitoring durchführen'
+                                    ].map((item, idx) => (
+                                      <li key={idx} className="text-xs text-slate-400 flex items-start gap-2">
+                                        <CheckCircle className="h-2 w-2 text-emerald-400 mt-1 flex-shrink-0" />
+                                        {item}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-pink-300 mb-3">Beteiligung Notifizierter Stellen (Anhang VII)</h4>
+                                <div className="space-y-3">
+                                  <div className="text-sm text-slate-300">
+                                    <p className="mb-2"><strong>Anwendbar für:</strong> Biometrische Identifikationssysteme</p>
+                                    <p className="mb-3"><strong>Zusätzlich zu:</strong> Internem Qualitätsmanagement</p>
+                                  </div>
+                                  <ul className="space-y-2">
+                                    {[
+                                      'Technische Dokumentation prüfen lassen',
+                                      'Qualitätsmanagementsystem bewerten',
+                                      'Konformitätszertifikat erhalten',
+                                      'Jährliche Überwachung durchführen',
+                                      'Änderungen melden und bewerten lassen'
+                                    ].map((item, idx) => (
+                                      <li key={idx} className="text-xs text-slate-400 flex items-start gap-2">
+                                        <CheckCircle className="h-2 w-2 text-pink-400 mt-1 flex-shrink-0" />
+                                        {item}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* CE-Kennzeichnung */}
+                          <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-blue-300 mb-6">CE-Kennzeichnung</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-blue-300 mb-3">Anbringung</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Sichtbar, lesbar und dauerhaft',
+                                    'Auf dem KI-System oder Verpackung',
+                                    'Mindesthöhe 5 mm',
+                                    'Bei digitalen Systemen: elektronisch'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <CheckCircle className="h-3 w-3 text-blue-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-cyan-300 mb-3">Bedeutung</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Konformität mit AI Act',
+                                    'Freier Verkehr in der EU',
+                                    'Herstellerverantwortung',
+                                    'Marktüberwachung ermöglichen'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Award className="h-3 w-3 text-cyan-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-emerald-300 mb-3">Dokumentation</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'EU-Konformitätserklärung',
+                                    'Technische Dokumentation',
+                                    'Qualitätsmanagement-Unterlagen',
+                                    '10 Jahre aufbewahren'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <FileText className="h-3 w-3 text-emerald-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Notifizierte Stellen */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Notifizierte Stellen</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Rolle und Aufgaben</h4>
+                                <div className="space-y-3">
+                                  <div className="bg-slate-900/50 rounded-lg p-3">
+                                    <h5 className="font-semibold text-blue-300 mb-2">Bewertungsaufgaben</h5>
+                                    <ul className="space-y-1 text-sm">
+                                      {[
+                                        'Technische Dokumentation prüfen',
+                                        'Qualitätsmanagementsystem bewerten',
+                                        'Konformitätszertifikate ausstellen',
+                                        'Überwachungsaudits durchführen'
+                                      ].map((task, idx) => (
+                                        <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                          <CheckCircle className="h-2 w-2 text-blue-400" />
+                                          {task}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  <div className="bg-slate-900/50 rounded-lg p-3">
+                                    <h5 className="font-semibold text-emerald-300 mb-2">Qualifikationen</h5>
+                                    <ul className="space-y-1 text-sm">
+                                      {[
+                                        'Fachkompetenz in KI-Technologien',
+                                        'Unabhängigkeit und Unparteilichkeit',
+                                        'Akkreditierung nach ISO/IEC 17065',
+                                        'Regelmäßige Schulungen'
+                                      ].map((qual, idx) => (
+                                        <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                          <Award className="h-2 w-2 text-emerald-400" />
+                                          {qual}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Verfahren</h4>
+                                <div className="space-y-3">
+                                  <div className="flex items-center gap-3 p-3 bg-slate-900/50 rounded-lg">
+                                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
+                                    <div>
+                                      <p className="font-semibold text-white text-sm">Antragstellung</p>
+                                      <p className="text-xs text-slate-400">Vollständige Unterlagen einreichen</p>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-3 p-3 bg-slate-900/50 rounded-lg">
+                                    <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
+                                    <div>
+                                      <p className="font-semibold text-white text-sm">Bewertung</p>
+                                      <p className="text-xs text-slate-400">Technische Prüfung und Audit</p>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-3 p-3 bg-slate-900/50 rounded-lg">
+                                    <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+                                    <div>
+                                      <p className="font-semibold text-white text-sm">Zertifizierung</p>
+                                      <p className="text-xs text-slate-400">Konformitätszertifikat ausstellen</p>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-3 p-3 bg-slate-900/50 rounded-lg">
+                                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
+                                    <div>
+                                      <p className="font-semibold text-white text-sm">Überwachung</p>
+                                      <p className="text-xs text-slate-400">Jährliche Surveillance-Audits</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Transparenzpflichten Section */}
+                <section id="transparenz" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Transparenzpflichten</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('transparenz')}
+                            variant={completedSections.includes('transparenz') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('transparenz') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* KI-Systeme mit begrenztem Risiko */}
+                          <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-yellow-300 mb-6">Limited Risk AI-Systeme (Art. 50)</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-yellow-300 mb-3">Betroffene Systeme</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Chatbots und virtuelle Assistenten',
+                                    'Emotionserkennungssysteme',
+                                    'Biometrische Kategorisierungssysteme',
+                                    'KI-Systeme zur Inhaltsgenerierung (Deepfakes)',
+                                    'KI-Systeme zur Bilderkennung'
+                                  ].map((system, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Eye className="h-3 w-3 text-yellow-400" />
+                                      {system}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-orange-300 mb-3">Transparenzpflichten</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Nutzer über KI-Interaktion informieren',
+                                    'Klare und verständliche Informationen',
+                                    'Rechtzeitige Information vor Nutzung',
+                                    'KI-generierte Inhalte kennzeichnen',
+                                    'Opt-out Möglichkeiten bereitstellen'
+                                  ].map((obligation, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Info className="h-3 w-3 text-orange-400" />
+                                      {obligation}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Deepfakes und synthetische Inhalte */}
+                          <div className="bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-red-300 mb-6">Deepfakes & Synthetische Inhalte</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-red-300 mb-3">Audio-Deepfakes</h4>
+                                <div className="space-y-2">
+                                  <p className="text-sm text-slate-300 mb-3">
+                                    KI-generierte oder manipulierte Audioinhalte müssen eindeutig als solche gekennzeichnet werden.
+                                  </p>
+                                  <ul className="space-y-1 text-xs">
+                                    {[
+                                      'Maschinenlesbare Kennzeichnung',
+                                      'Menschenlesbare Warnung',
+                                      'Metadaten-Einbettung',
+                                      'Watermarking-Technologien'
+                                    ].map((req, idx) => (
+                                      <li key={idx} className="text-slate-400 flex items-center gap-2">
+                                        <CheckCircle className="h-2 w-2 text-red-400" />
+                                        {req}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-pink-300 mb-3">Video-Deepfakes</h4>
+                                <div className="space-y-2">
+                                  <p className="text-sm text-slate-300 mb-3">
+                                    Manipulierte oder synthetische Videoinhalte erfordern besondere Kennzeichnung.
+                                  </p>
+                                  <ul className="space-y-1 text-xs">
+                                    {[
+                                      'Visuelle Kennzeichnung im Video',
+                                      'Blockchain-basierte Verifikation',
+                                      'Digitale Signaturen',
+                                      'Provenance-Tracking'
+                                    ].map((req, idx) => (
+                                      <li key={idx} className="text-slate-400 flex items-center gap-2">
+                                        <CheckCircle className="h-2 w-2 text-pink-400" />
+                                        {req}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-purple-300 mb-3">Text-Generierung</h4>
+                                <div className="space-y-2">
+                                  <p className="text-sm text-slate-300 mb-3">
+                                    KI-generierte Texte und Artikel müssen als maschinell erstellt erkennbar sein.
+                                  </p>
+                                  <ul className="space-y-1 text-xs">
+                                    {[
+                                      'Disclaimer am Textanfang',
+                                      'Strukturierte Daten-Markup',
+                                      'API-Header für KI-Inhalte',
+                                      'Publishing-Standards einhalten'
+                                    ].map((req, idx) => (
+                                      <li key={idx} className="text-slate-400 flex items-center gap-2">
+                                        <CheckCircle className="h-2 w-2 text-purple-400" />
+                                        {req}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Best Practices für Transparenz */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Best Practices für Transparenz</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Nutzerinformation</h4>
+                                <div className="space-y-3">
+                                  {[
+                                    {
+                                      practice: 'Proaktive Offenlegung',
+                                      description: 'Nutzer vor der ersten Interaktion über KI-Einsatz informieren',
+                                      implementation: 'Pop-up, Banner oder Disclaimer verwenden'
+                                    },
+                                    {
+                                      practice: 'Verständliche Sprache',
+                                      description: 'Technische Details in einfache Sprache übersetzen',
+                                      implementation: 'Laienverständliche Erklärungen und Beispiele'
+                                    },
+                                    {
+                                      practice: 'Granulare Kontrolle',
+                                      description: 'Nutzer können spezifische KI-Features deaktivieren',
+                                      implementation: 'Detaillierte Einstellungsoptionen anbieten'
+                                    }
+                                  ].map((practice, idx) => (
+                                    <div key={idx} className="bg-slate-900/50 rounded-lg p-3">
+                                      <h5 className="font-semibold text-blue-300 text-sm mb-1">{practice.practice}</h5>
+                                      <p className="text-xs text-slate-300 mb-2">{practice.description}</p>
+                                      <p className="text-xs text-slate-400 italic">{practice.implementation}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Technische Umsetzung</h4>
+                                <div className="space-y-3">
+                                  {[
+                                    {
+                                      tech: 'Maschinenlesbare Labels',
+                                      description: 'Strukturierte Metadaten für automatische Erkennung',
+                                      examples: 'JSON-LD, RDFa, Dublin Core'
+                                    },
+                                    {
+                                      tech: 'Digital Watermarking',
+                                      description: 'Unsichtbare Kennzeichnung in Medieninhalten',
+                                      examples: 'C2PA, Project Origin, Content Authenticity'
+                                    },
+                                    {
+                                      tech: 'Provenance Tracking',
+                                      description: 'Nachverfolgung der Entstehungsgeschichte',
+                                      examples: 'Blockchain, Hash-Chains, Digital Certificates'
+                                    }
+                                  ].map((tech, idx) => (
+                                    <div key={idx} className="bg-slate-900/50 rounded-lg p-3">
+                                      <h5 className="font-semibold text-emerald-300 text-sm mb-1">{tech.tech}</h5>
+                                      <p className="text-xs text-slate-300 mb-2">{tech.description}</p>
+                                      <p className="text-xs text-slate-400 italic">{tech.examples}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
                 {/* Technical Standards Section */}
-                <TabsContent value="technical-standards" className="space-y-8">
+                <section id="technische-standards" className="space-y-8 scroll-mt-32">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1976,11 +2866,11 @@ const EuAiActGuide: React.FC = () => {
                         <div className="flex items-center justify-between mb-6">
                           <h2 className="text-3xl font-bold text-white">Technische Standards & Normen</h2>
                           <Button
-                            onClick={() => handleSectionComplete('technical-standards')}
-                            variant={completedSections.includes('technical-standards') ? 'default' : 'outline'}
+                            onClick={() => handleSectionComplete('technische-standards')}
+                            variant={completedSections.includes('technische-standards') ? 'default' : 'outline'}
                             size="sm"
                           >
-                            {completedSections.includes('technical-standards') ? (
+                            {completedSections.includes('technische-standards') ? (
                               <CheckCircle2 className="h-4 w-4 mr-2" />
                             ) : (
                               <Circle className="h-4 w-4 mr-2" />
@@ -2229,9 +3119,897 @@ const EuAiActGuide: React.FC = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </TabsContent>
-                
-              </Tabs>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* AI Governance Section */}
+                <section id="governance" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">AI Governance</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('governance')}
+                            variant={completedSections.includes('governance') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('governance') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Governance Framework */}
+                          <div className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-indigo-300 mb-6">AI Governance Framework</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-indigo-300 mb-3">Strategische Ebene</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'AI-Strategie und -Vision',
+                                    'Board-Level Oversight',
+                                    'Risikotoleranz definieren',
+                                    'Ethische Leitlinien',
+                                    'Business Impact Assessment'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Target className="h-3 w-3 text-indigo-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-purple-300 mb-3">Operative Ebene</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'AI-Governance-Komitee',
+                                    'Cross-funktionale Teams',
+                                    'Prozesse und Verfahren',
+                                    'KPI-Monitoring',
+                                    'Incident Management'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Settings className="h-3 w-3 text-purple-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-pink-300 mb-3">Technische Ebene</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'MLOps und DevOps',
+                                    'Model Lifecycle Management',
+                                    'Continuous Monitoring',
+                                    'Automated Testing',
+                                    'Version Control'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <Code className="h-3 w-3 text-pink-400" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Rollen und Verantwortlichkeiten */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Rollen und Verantwortlichkeiten</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              {[
+                                {
+                                  role: 'Chief AI Officer (CAIO)',
+                                  responsibilities: [
+                                    'AI-Strategie entwickeln und umsetzen',
+                                    'Risikomanagement überwachen',
+                                    'Compliance sicherstellen',
+                                    'Stakeholder-Management'
+                                  ],
+                                  skills: ['Technische Expertise', 'Business Acumen', 'Regulatory Knowledge']
+                                },
+                                {
+                                  role: 'AI Ethics Officer',
+                                  responsibilities: [
+                                    'Ethische Richtlinien entwickeln',
+                                    'Bias Detection und Mitigation',
+                                    'Fairness Assessments',
+                                    'Stakeholder Engagement'
+                                  ],
+                                  skills: ['Ethik und Philosophie', 'AI Fairness', 'Kommunikation']
+                                },
+                                {
+                                  role: 'AI Risk Manager',
+                                  responsibilities: [
+                                    'Risikoidentifikation und -bewertung',
+                                    'Mitigation Strategies',
+                                    'Incident Response',
+                                    'Regulatory Reporting'
+                                  ],
+                                  skills: ['Risk Management', 'Regulatory Compliance', 'Data Analysis']
+                                },
+                                {
+                                  role: 'AI Compliance Manager',
+                                  responsibilities: [
+                                    'Regulatory Mapping',
+                                    'Audit Coordination',
+                                    'Documentation Management',
+                                    'Training und Awareness'
+                                  ],
+                                  skills: ['Legal Expertise', 'Process Management', 'Audit Skills']
+                                }
+                              ].map((role, idx) => (
+                                <div key={idx} className="bg-slate-900/50 rounded-lg p-4">
+                                  <h4 className="font-semibold text-blue-300 mb-3">{role.role}</h4>
+                                  <div className="space-y-3">
+                                    <div>
+                                      <h5 className="font-semibold text-white text-sm mb-2">Verantwortlichkeiten</h5>
+                                      <ul className="space-y-1">
+                                        {role.responsibilities.map((resp, ridx) => (
+                                          <li key={ridx} className="text-xs text-slate-300 flex items-start gap-2">
+                                            <CheckCircle className="h-2 w-2 text-emerald-400 mt-1 flex-shrink-0" />
+                                            {resp}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <h5 className="font-semibold text-white text-sm mb-2">Schlüssel-Skills</h5>
+                                      <div className="flex flex-wrap gap-1">
+                                        {role.skills.map((skill, sidx) => (
+                                          <Badge key={sidx} variant="outline" className="text-xs px-2 py-1">
+                                            {skill}
+                                          </Badge>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Dokumentation Section */}
+                <section id="dokumentation" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Dokumentation</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('dokumentation')}
+                            variant={completedSections.includes('dokumentation') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('dokumentation') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Technische Dokumentation nach Anhang IV */}
+                          <div className="bg-gradient-to-r from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-green-300 mb-6">Technische Dokumentation (Anhang IV)</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-green-300 mb-3">Allgemeine Informationen</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Name und Kontaktdaten des Anbieters',
+                                    'Name und Kontaktdaten des Bevollmächtigten',
+                                    'Beschreibung des KI-Systems',
+                                    'Zweckbestimmung des Systems',
+                                    'EU-Konformitätserklärung'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-start gap-2">
+                                      <FileText className="h-3 w-3 text-green-400 mt-1 flex-shrink-0" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-teal-300 mb-3">Technische Spezifikationen</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Detaillierte Beschreibung der Systemarchitektur',
+                                    'Entwicklungsmethodik und -verfahren',
+                                    'Verwendete Algorithmen und Techniken',
+                                    'Datenquellen und Trainingsverfahren',
+                                    'Systemintegration und Schnittstellen'
+                                  ].map((item, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-start gap-2">
+                                      <Database className="h-3 w-3 text-teal-400 mt-1 flex-shrink-0" />
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Dokumentations-Templates */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Dokumentations-Templates</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              {[
+                                {
+                                  template: 'System Overview Document',
+                                  description: 'Comprehensive overview of the AI system',
+                                  sections: [
+                                    'Executive Summary',
+                                    'System Architecture',
+                                    'Key Components',
+                                    'Performance Metrics',
+                                    'Risk Assessment'
+                                  ]
+                                },
+                                {
+                                  template: 'Data Management Plan',
+                                  description: 'Documentation of data handling procedures',
+                                  sections: [
+                                    'Data Sources',
+                                    'Data Quality Measures',
+                                    'Privacy Protection',
+                                    'Bias Mitigation',
+                                    'Data Lifecycle'
+                                  ]
+                                },
+                                {
+                                  template: 'Risk Management Report',
+                                  description: 'Comprehensive risk analysis and mitigation',
+                                  sections: [
+                                    'Risk Identification',
+                                    'Risk Assessment',
+                                    'Mitigation Strategies',
+                                    'Monitoring Plan',
+                                    'Incident Response'
+                                  ]
+                                }
+                              ].map((template, idx) => (
+                                <div key={idx} className="bg-slate-900/50 rounded-lg p-4">
+                                  <h4 className="font-semibold text-blue-300 mb-2">{template.template}</h4>
+                                  <p className="text-sm text-slate-300 mb-3">{template.description}</p>
+                                  <ul className="space-y-1">
+                                    {template.sections.map((section, sidx) => (
+                                      <li key={sidx} className="text-xs text-slate-400 flex items-center gap-2">
+                                        <CheckCircle className="h-2 w-2 text-emerald-400" />
+                                        {section}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Bußgelder Section */}
+                <section id="bussgelder" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Bußgelder</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('bussgelder')}
+                            variant={completedSections.includes('bussgelder') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('bussgelder') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Bußgeld-Kategorien */}
+                          <div className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-red-300 mb-6">Bußgeld-Kategorien nach Art. 99</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-red-300 mb-3">Höchste Stufe</h4>
+                                <div className="text-center mb-4">
+                                  <div className="text-2xl font-bold text-red-400">€35 Mio</div>
+                                  <div className="text-sm text-slate-300">oder 7% des Jahresumsatzes</div>
+                                </div>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Verbotene KI-Praktiken (Art. 5)',
+                                    'Nichteinhaltung Datenqualität',
+                                    'Mangelhafte menschliche Aufsicht'
+                                  ].map((violation, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-start gap-2">
+                                      <AlertTriangle className="h-3 w-3 text-red-400 mt-1 flex-shrink-0" />
+                                      {violation}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-orange-300 mb-3">Mittlere Stufe</h4>
+                                <div className="text-center mb-4">
+                                  <div className="text-2xl font-bold text-orange-400">€15 Mio</div>
+                                  <div className="text-sm text-slate-300">oder 3% des Jahresumsatzes</div>
+                                </div>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Verstöße gegen Hochrisiko-Anforderungen',
+                                    'Mangelhafte CE-Kennzeichnung',
+                                    'Unzureichende Dokumentation'
+                                  ].map((violation, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-start gap-2">
+                                      <AlertCircle className="h-3 w-3 text-orange-400 mt-1 flex-shrink-0" />
+                                      {violation}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-yellow-300 mb-3">Niedrigste Stufe</h4>
+                                <div className="text-center mb-4">
+                                  <div className="text-2xl font-bold text-yellow-400">€7,5 Mio</div>
+                                  <div className="text-sm text-slate-300">oder 1,5% des Jahresumsatzes</div>
+                                </div>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Verstöße gegen Transparenzpflichten',
+                                    'Unzureichende Kennzeichnung',
+                                    'Mangelhafte Kooperation'
+                                  ].map((violation, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-start gap-2">
+                                      <Info className="h-3 w-3 text-yellow-400 mt-1 flex-shrink-0" />
+                                      {violation}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Enforcement und Marktüberwachung */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Enforcement und Marktüberwachung</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Zuständige Behörden</h4>
+                                <div className="space-y-3">
+                                  {[
+                                    {
+                                      authority: 'Nationale Marktüberwachungsbehörden',
+                                      responsibilities: [
+                                        'Marktüberwachung und Kontrollen',
+                                        'Bußgeldverfahren einleiten',
+                                        'Produktrückrufe anordnen',
+                                        'Verkaufsverbote verhängen'
+                                      ]
+                                    },
+                                    {
+                                      authority: 'Europäisches AI Office',
+                                      responsibilities: [
+                                        'Koordination zwischen Mitgliedstaaten',
+                                        'Harmonisierte Standards',
+                                        'Guidance Documents',
+                                        'Internationale Kooperation'
+                                      ]
+                                    }
+                                  ].map((auth, idx) => (
+                                    <div key={idx} className="bg-slate-900/50 rounded-lg p-3">
+                                      <h5 className="font-semibold text-blue-300 text-sm mb-2">{auth.authority}</h5>
+                                      <ul className="space-y-1">
+                                        {auth.responsibilities.map((resp, ridx) => (
+                                          <li key={ridx} className="text-xs text-slate-400 flex items-start gap-2">
+                                            <CheckCircle className="h-2 w-2 text-emerald-400 mt-1 flex-shrink-0" />
+                                            {resp}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Compliance-Maßnahmen</h4>
+                                <div className="space-y-3">
+                                  {[
+                                    {
+                                      measure: 'Proaktive Compliance',
+                                      description: 'Vorbeugende Maßnahmen implementieren',
+                                      actions: ['Regular Compliance Audits', 'Staff Training', 'Process Documentation']
+                                    },
+                                    {
+                                      measure: 'Incident Response',
+                                      description: 'Schnelle Reaktion auf Compliance-Verstöße',
+                                      actions: ['Sofortige Korrekturmaßnahmen', 'Behörden informieren', 'Root Cause Analysis']
+                                    },
+                                    {
+                                      measure: 'Legal Defense',
+                                      description: 'Vorbereitung auf Enforcement-Verfahren',
+                                      actions: ['Legal Counsel', 'Evidence Preservation', 'Mitigation Strategies']
+                                    }
+                                  ].map((measure, idx) => (
+                                    <div key={idx} className="bg-slate-900/50 rounded-lg p-3">
+                                      <h5 className="font-semibold text-emerald-300 text-sm mb-1">{measure.measure}</h5>
+                                      <p className="text-xs text-slate-300 mb-2">{measure.description}</p>
+                                      <ul className="space-y-1">
+                                        {measure.actions.map((action, aidx) => (
+                                          <li key={aidx} className="text-xs text-slate-400 flex items-center gap-2">
+                                            <CheckCircle className="h-2 w-2 text-emerald-400" />
+                                            {action}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Innovation & Sandboxes Section */}
+                <section id="innovation" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Innovation & Sandboxes</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('innovation')}
+                            variant={completedSections.includes('innovation') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('innovation') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* AI Regulatory Sandboxes */}
+                          <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-cyan-300 mb-6">AI Regulatory Sandboxes (Art. 57)</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-cyan-300 mb-3">Zweck und Vorteile</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Kontrollierte Testumgebung für innovative KI',
+                                    'Reduzierte regulatorische Unsicherheit',
+                                    'Enge Zusammenarbeit mit Aufsichtsbehörden',
+                                    'Proof-of-Concept für neue KI-Anwendungen',
+                                    'Learning und Best Practice Development'
+                                  ].map((benefit, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-start gap-2">
+                                      <Lightbulb className="h-3 w-3 text-cyan-400 mt-1 flex-shrink-0" />
+                                      {benefit}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-blue-300 mb-3">Teilnahme-Voraussetzungen</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'Innovative KI-Systeme entwickeln',
+                                    'Hohe Komplexität oder Neuartigkeit',
+                                    'Potenzial für Marktreife',
+                                    'Bereitschaft zur Kooperation',
+                                    'Ausreichende Ressourcen für Tests'
+                                  ].map((requirement, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-start gap-2">
+                                      <CheckCircle className="h-3 w-3 text-blue-400 mt-1 flex-shrink-0" />
+                                      {requirement}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Innovation Support Measures */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Unterstützungsmaßnahmen für Innovation</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              {[
+                                {
+                                  measure: 'Codes of Practice',
+                                  description: 'Freiwillige Verhaltenskodizes für innovative Ansätze',
+                                  features: [
+                                    'Industry-led Standards',
+                                    'Best Practice Sharing',
+                                    'Continuous Improvement',
+                                    'Market Recognition'
+                                  ]
+                                },
+                                {
+                                  measure: 'Testing Framework',
+                                  description: 'Strukturierte Testverfahren für neue KI-Systeme',
+                                  features: [
+                                    'Standardized Benchmarks',
+                                    'Safety Testing Protocols',
+                                    'Performance Metrics',
+                                    'Risk Assessment Tools'
+                                  ]
+                                },
+                                {
+                                  measure: 'Innovation Hubs',
+                                  description: 'Zentren für KI-Innovation und Compliance',
+                                  features: [
+                                    'Expert Consultation',
+                                    'Regulatory Guidance',
+                                    'Technology Transfer',
+                                    'Startup Support'
+                                  ]
+                                }
+                              ].map((measure, idx) => (
+                                <div key={idx} className="bg-slate-900/50 rounded-lg p-4">
+                                  <h4 className="font-semibold text-emerald-300 mb-2">{measure.measure}</h4>
+                                  <p className="text-sm text-slate-300 mb-3">{measure.description}</p>
+                                  <ul className="space-y-1">
+                                    {measure.features.map((feature, fidx) => (
+                                      <li key={fidx} className="text-xs text-slate-400 flex items-center gap-2">
+                                        <Sparkles className="h-2 w-2 text-emerald-400" />
+                                        {feature}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Zertifizierung Section */}
+                <section id="zertifizierung" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Zertifizierung</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('zertifizierung')}
+                            variant={completedSections.includes('zertifizierung') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('zertifizierung') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Zertifizierungsprozess */}
+                          <div className="bg-gradient-to-r from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-purple-300 mb-6">Zertifizierungsprozess</h3>
+                            <div className="space-y-4">
+                              {[
+                                {
+                                  step: 1,
+                                  title: 'Vorbereitung',
+                                  description: 'Vollständige Dokumentation und interne Audits',
+                                  duration: '2-4 Wochen',
+                                  activities: ['Gap Analysis', 'Dokumentation vervollständigen', 'Interne Reviews', 'Team Training']
+                                },
+                                {
+                                  step: 2,
+                                  title: 'Antragstellung',
+                                  description: 'Formale Einreichung bei notifizierter Stelle',
+                                  duration: '1-2 Wochen',
+                                  activities: ['Notified Body auswählen', 'Antragsformulare', 'Unterlagen einreichen', 'Erstbewertung']
+                                },
+                                {
+                                  step: 3,
+                                  title: 'Assessment',
+                                  description: 'Technische Prüfung und Audit vor Ort',
+                                  duration: '4-8 Wochen',
+                                  activities: ['Dokumentenprüfung', 'Site Audit', 'Technical Testing', 'Compliance Verification']
+                                },
+                                {
+                                  step: 4,
+                                  title: 'Zertifikat',
+                                  description: 'Ausstellung des Konformitätszertifikats',
+                                  duration: '1-2 Wochen',
+                                  activities: ['Final Report', 'Certificate Issuance', 'CE Marking', 'Market Entry']
+                                }
+                              ].map((step, idx) => (
+                                <div key={idx} className="flex items-start gap-4 p-4 bg-slate-900/50 rounded-lg">
+                                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center font-bold text-white flex-shrink-0">
+                                    {step.step}
+                                  </div>
+                                  <div className="flex-1">
+                                    <div className="flex items-center justify-between mb-2">
+                                      <h4 className="font-semibold text-white">{step.title}</h4>
+                                      <Badge variant="outline" className="text-xs">{step.duration}</Badge>
+                                    </div>
+                                    <p className="text-sm text-slate-300 mb-3">{step.description}</p>
+                                    <div className="flex flex-wrap gap-1">
+                                      {step.activities.map((activity, aidx) => (
+                                        <Badge key={aidx} variant="secondary" className="text-xs px-2 py-1">
+                                          {activity}
+                                        </Badge>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Zertifizierungs-Optionen */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Zertifizierungs-Optionen</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">AI Act Compliance Zertifizierung</h4>
+                                <div className="space-y-3">
+                                  {[
+                                    {
+                                      type: 'Hochrisiko-System Zertifizierung',
+                                      scope: 'Vollständige AI Act Compliance für Hochrisiko-KI',
+                                      standards: ['AI Act Art. 8-15', 'Anhang III/IV', 'ISO/IEC 23053'],
+                                      validity: '3 Jahre'
+                                    },
+                                    {
+                                      type: 'General Purpose AI Zertifizierung',
+                                      scope: 'Spezielle Anforderungen für Foundation Models',
+                                      standards: ['AI Act Art. 51', 'Systemic Risk Assessment', 'Safety Measures'],
+                                      validity: '2 Jahre'
+                                    }
+                                  ].map((cert, idx) => (
+                                    <div key={idx} className="bg-slate-900/50 rounded-lg p-3">
+                                      <div className="flex items-center justify-between mb-2">
+                                        <h5 className="font-semibold text-blue-300 text-sm">{cert.type}</h5>
+                                        <span className="text-xs text-slate-400">{cert.validity}</span>
+                                      </div>
+                                      <p className="text-xs text-slate-300 mb-2">{cert.scope}</p>
+                                      <div className="flex flex-wrap gap-1">
+                                        {cert.standards.map((standard, sidx) => (
+                                          <Badge key={sidx} variant="outline" className="text-xs">
+                                            {standard}
+                                          </Badge>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Zusätzliche Zertifizierungen</h4>
+                                <div className="space-y-3">
+                                  {[
+                                    {
+                                      cert: 'ISO/IEC 27001',
+                                      purpose: 'Information Security Management',
+                                      benefit: 'Credibility für Cybersecurity-Maßnahmen'
+                                    },
+                                    {
+                                      cert: 'ISO/IEC 23053',
+                                      purpose: 'AI Systems Framework',
+                                      benefit: 'Internationale AI-Standards Compliance'
+                                    },
+                                    {
+                                      cert: 'SOC 2 Type II',
+                                      purpose: 'Service Organization Controls',
+                                      benefit: 'Vertrauen bei B2B-Kunden'
+                                    },
+                                    {
+                                      cert: 'GDPR Compliance',
+                                      purpose: 'Data Protection Compliance',
+                                      benefit: 'EU-weite Datenschutz-Compliance'
+                                    }
+                                  ].map((cert, idx) => (
+                                    <div key={idx} className="bg-slate-900/50 rounded-lg p-3">
+                                      <h5 className="font-semibold text-emerald-300 text-sm mb-1">{cert.cert}</h5>
+                                      <p className="text-xs text-slate-300 mb-1">{cert.purpose}</p>
+                                      <p className="text-xs text-slate-400 italic">{cert.benefit}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Ressourcen Section */}
+                <section id="ressourcen" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Ressourcen</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('ressourcen')}
+                            variant={completedSections.includes('ressourcen') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('ressourcen') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Offizielle Ressourcen */}
+                          <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-blue-300 mb-6">Offizielle Ressourcen</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-blue-300 mb-3">EU-Quellen</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'EU AI Act (Regulation 2024/1689)',
+                                    'AI Office (European Commission)',
+                                    'ENISA AI Guidelines',
+                                    'European AI Alliance',
+                                    'AI Standardization Roadmap'
+                                  ].map((resource, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <ExternalLink className="h-3 w-3 text-blue-400" />
+                                      {resource}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-indigo-300 mb-3">Standards & Guidelines</h4>
+                                <ul className="space-y-2 text-sm">
+                                  {[
+                                    'ISO/IEC 23053:2022 (AI Framework)',
+                                    'ISO/IEC 23894:2023 (Risk Management)',
+                                    'CEN-CENELEC Standards',
+                                    'IEEE AI Ethics Standards',
+                                    'NIST AI Risk Management Framework'
+                                  ].map((standard, idx) => (
+                                    <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                      <FileText className="h-3 w-3 text-indigo-400" />
+                                      {standard}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Tools & Templates */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Tools & Templates</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              {[
+                                {
+                                  category: 'Assessment Tools',
+                                  tools: [
+                                    'AI Act Self-Assessment',
+                                    'Risk Classification Tool',
+                                    'Compliance Checklist',
+                                    'Gap Analysis Template'
+                                  ]
+                                },
+                                {
+                                  category: 'Documentation Templates',
+                                  tools: [
+                                    'Technical Documentation',
+                                    'Risk Management Plan',
+                                    'Data Management Plan',
+                                    'EU Declaration of Conformity'
+                                  ]
+                                },
+                                {
+                                  category: 'Implementation Guides',
+                                  tools: [
+                                    'Hochrisiko Implementation',
+                                    'Transparency Requirements',
+                                    'CE Marking Guide',
+                                    'Audit Preparation Checklist'
+                                  ]
+                                }
+                              ].map((category, idx) => (
+                                <div key={idx} className="bg-slate-900/50 rounded-lg p-4">
+                                  <h4 className="font-semibold text-emerald-300 mb-3">{category.category}</h4>
+                                  <ul className="space-y-2">
+                                    {category.tools.map((tool, tidx) => (
+                                      <li key={tidx} className="text-sm text-slate-300 flex items-center gap-2">
+                                        <Download className="h-3 w-3 text-emerald-400" />
+                                        {tool}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
             </div>
           </div>
         </div>

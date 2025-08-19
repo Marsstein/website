@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -62,6 +63,19 @@ const Iso27018Compliance = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "ISO 27018 Privacy Zertifizierung",
+    "description": "ISO 27018 für Cloud-Datenschutz: Privacy Controls für personenbezogene Daten in der Cloud",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Cloud Privacy Certification",
+    "areaServed": "DE"
+  };
 
   const painPoints = [
     {
@@ -238,8 +252,16 @@ const Iso27018Compliance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="ISO 27018 – Cloud-Datenschutz für personenbezogene Daten"
+        description="ISO 27018 Privacy-Zertifizierung: PII-Schutz in der Cloud nach DSGVO. ✓ Public Cloud Privacy ✓ Compliance. Jetzt zertifizieren!"
+        canonical="/iso-27018"
+        keywords="ISO 27018, Cloud Privacy, Cloud Datenschutz, PII Protection, ISO 27018 Zertifizierung"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -736,6 +758,7 @@ const Iso27018Compliance = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

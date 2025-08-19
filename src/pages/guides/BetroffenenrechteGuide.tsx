@@ -58,6 +58,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const BetroffenenrechteGuide: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
@@ -77,7 +78,6 @@ const BetroffenenrechteGuide: React.FC = () => {
       id: 0,
       title: 'Übersicht & Grundlagen',
       subtitle: 'Die 8 zentralen Betroffenenrechte',
-      readTime: '10 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-4 lg:p-8">
@@ -199,7 +199,6 @@ const BetroffenenrechteGuide: React.FC = () => {
       id: 1,
       title: 'Informationsrecht (Art. 13 & 14)',
       subtitle: 'Proaktive Transparenzpflicht',
-      readTime: '12 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
@@ -357,7 +356,6 @@ Dr. Anna Schmidt, datenschutz@mustermann.de
       id: 2,
       title: 'Auskunftsrecht (Art. 15)',
       subtitle: 'Das meistgenutzte Betroffenenrecht',
-      readTime: '15 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
@@ -528,7 +526,6 @@ Sie haben das Recht auf Berichtigung, Löschung, Einschränkung...
       id: 3,
       title: 'Löschung & Berichtigung',
       subtitle: 'Art. 16 & 17 DSGVO umsetzen',
-      readTime: '10 Min',
       content: `
         <div class="space-y-8">
           <!-- Berichtigungsrecht -->
@@ -711,7 +708,6 @@ Sie haben das Recht auf Berichtigung, Löschung, Einschränkung...
       id: 4,
       title: 'Weitere Betroffenenrechte',
       subtitle: 'Einschränkung, Portabilität, Widerspruch & Automatisierung',
-      readTime: '12 Min',
       content: `
         <div class="space-y-8">
           <!-- Einschränkung der Verarbeitung -->
@@ -928,7 +924,6 @@ Sie haben das Recht auf Berichtigung, Löschung, Einschränkung...
       id: 5,
       title: 'Praktische Umsetzung',
       subtitle: 'Prozesse, Tools und Compliance',
-      readTime: '10 Min',
       content: `
         <div class="space-y-8">
           <!-- Prozessdesign -->
@@ -1198,15 +1193,21 @@ Sie haben das Recht auf Berichtigung, Löschung, Einschränkung...
   };
 
   const currentChapterData = chapters[currentChapter];
-  const totalReadTime = chapters.reduce((sum, chapter) => sum + parseInt(chapter.readTime), 0);
   const overallProgress = ((currentChapter + (readingProgress / 100)) / chapters.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
-      wordWrap: 'break-word',
-      overflowWrap: 'break-word'
-    }}>
-      <Header />
+    <>
+      <SEOHead
+        title="Betroffenenrechte – DSGVO Leitfaden für den Umgang"
+        description="Betroffenenrechte nach DSGVO professionell managen: Auskunft, Löschung, Berichtigung, Datenportabilität. ✓ Prozesse ✓ Fristen ✓ Vorlagen. Jetzt rechtssicher umsetzen!"
+        canonical="/wissen/leitfaden/betroffenenrechte"
+        keywords="betroffenenrechte dsgvo, auskunftsrecht, recht auf löschung, datenportabilität, dsgvo betroffenenanfragen"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
+        wordWrap: 'break-word',
+        overflowWrap: 'break-word'
+      }}>
+        <Header />
       
       {/* Fixed Reading Progress */}
       <div className="fixed top-16 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
@@ -1270,7 +1271,7 @@ Sie haben das Recht auf Berichtigung, Löschung, Einschränkung...
             <div className="flex items-center gap-6 text-sm text-slate-400">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
-                <span>{currentChapterData.readTime} Lesezeit</span>
+                <span>Kapitel {currentChapter + 1}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
@@ -1325,7 +1326,6 @@ Sie haben das Recht auf Berichtigung, Löschung, Einschränkung...
                             </div>
                             <div className="flex-grow">
                               <div className="text-sm font-medium">{chapter.title}</div>
-                              <div className="text-xs opacity-75">{chapter.readTime}</div>
                             </div>
                           </div>
                         </button>
@@ -1336,7 +1336,7 @@ Sie haben das Recht auf Berichtigung, Löschung, Einschränkung...
                       <div className="text-sm text-slate-400 mb-2">Gesamtfortschritt</div>
                       <Progress value={overallProgress} className="h-2 mb-2" />
                       <div className="text-xs text-slate-400">
-                        {Math.round(overallProgress)}% • {totalReadTime} Min gesamt
+                        {Math.round(overallProgress)}% abgeschlossen
                       </div>
                     </div>
                   </CardContent>
@@ -1419,8 +1419,9 @@ Sie haben das Recht auf Berichtigung, Löschung, Einschränkung...
         </div>
       </div>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

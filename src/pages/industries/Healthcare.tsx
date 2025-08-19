@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -28,6 +29,15 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Healthcare: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "name": "Healthcare Compliance Lösungen",
+    "description": "Compliance-Lösungen für das Gesundheitswesen: DSGVO Art. 9, E-Health, Telemedizin",
+    "medicalSpecialty": "Health Information Technology",
+    "url": "https://marsstein.com/branchen/gesundheitswesen"
+  };
+
   const painPoints = [
     {
       icon: Lock,
@@ -137,8 +147,16 @@ const Healthcare: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Gesundheitswesen – DSGVO & E-Health Compliance"
+        description="Healthcare Compliance: Patientendatenschutz nach DSGVO Art. 9, E-Health-Gesetz, Telemedizin. ✓ Spezialwissen ✓ Praxiserprobt. Jetzt beraten lassen!"
+        canonical="/branchen/gesundheitswesen"
+        keywords="Healthcare Compliance, Gesundheitsdaten DSGVO, E-Health, Telemedizin Datenschutz, Krankenhaus IT"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -465,6 +483,7 @@ const Healthcare: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

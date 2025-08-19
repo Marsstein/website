@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 import { Progress } from '@/components/ui/progress';
 import { 
   Cloud,
@@ -72,9 +73,11 @@ import {
 import { Link } from 'react-router-dom';
 
 const SaasPrivacyDesignGuide = () => {
-  const [activeTab, setActiveTab] = useState('overview');
-
-  const tabs = [
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string>('overview');
+  
+  // Navigation items for sticky navigation
+  const navigationItems = [
     { id: 'overview', label: 'Überblick', icon: Shield },
     { id: 'architecture', label: 'Privacy Architecture', icon: Layers },
     { id: 'data-minimization', label: 'Data Minimization', icon: Database },
@@ -82,6 +85,57 @@ const SaasPrivacyDesignGuide = () => {
     { id: 'security-design', label: 'Security by Design', icon: Lock },
     { id: 'implementation', label: 'Implementation', icon: Code }
   ];
+  
+  const scrollToSection = (sectionId: string) => {
+    // Update URL with hash
+    window.history.pushState(null, '', `#${sectionId}`);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120; // Offset for sticky navigation
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
+  // Handle initial load with hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        scrollToSection(hash);
+        setActiveSection(hash);
+      }, 100);
+    }
+  }, []);
+  
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navigationItems.map(item => ({
+        id: item.id,
+        element: document.getElementById(item.id)
+      }));
+      
+      const scrollPosition = window.scrollY + 150; // Offset for sticky nav
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const renderOverview = () => (
     <div className="space-y-8">
@@ -577,45 +631,144 @@ if (purpose !== processingPurpose) return false;`}
               </CardContent>
             </Card>
 
-            {/* Main Content Tabs */}
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-                {tabs.map((tab) => (
-                  <TabsTrigger
-                    key={tab.id}
-                    value={tab.id}
-                    className="flex items-center gap-2 text-xs md:text-sm"
+          </div>
+        </div>
+
+        {/* Sticky Navigation */}
+        <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+          <div className="container px-4">
+            <div className="max-w-7xl mx-auto">
+              <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+                {navigationItems.map((item, index) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      scrollToSection(item.id);
+                      setActiveSection(item.id);
+                    }}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
+                      activeSection === item.id
+                        ? "bg-cyan-100 dark:bg-cyan-950/50 text-cyan-700 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800"
+                        : "hover:bg-cyan-50 dark:hover:bg-cyan-950/30 hover:text-cyan-700 dark:hover:text-cyan-400",
+                      "border",
+                      activeSection === item.id
+                        ? "border-cyan-200 dark:border-cyan-800"
+                        : "border-transparent hover:border-cyan-200 dark:hover:border-cyan-800"
+                    )}
                   >
-                    <tab.icon className="h-4 w-4" />
-                    <span className="hidden sm:inline">{tab.label}</span>
-                  </TabsTrigger>
+                    <item.icon className={cn(
+                      "h-4 w-4",
+                      activeSection === item.id && "text-cyan-600 dark:text-cyan-500"
+                    )} />
+                    <span className={cn(
+                      "text-sm font-medium",
+                      activeSection === item.id && "text-cyan-700 dark:text-cyan-400"
+                    )}>{item.label}</span>
+                  </button>
                 ))}
-              </TabsList>
+              </nav>
+            </div>
+          </div>
+        </div>
 
-              <TabsContent value="overview" className="space-y-8">
+        {/* Main Content Sections */}
+        <div className="py-20">
+          <div className="container px-4">
+            <div className="max-w-6xl mx-auto space-y-20">
+              {/* Overview Section */}
+              <section id="overview" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  SaaS Privacy by Design Überblick
+                </motion.h2>
                 {renderOverview()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="architecture" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Architecture Section */}
+              <section id="architecture" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Privacy Architecture Framework
+                </motion.h2>
                 {renderArchitecture()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="data-minimization" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Data Minimization Section */}
+              <section id="data-minimization" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Data Minimization Strategien
+                </motion.h2>
                 {renderDataMinimization()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="user-control" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* User Control Section */}
+              <section id="user-control" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  User Control & Transparency
+                </motion.h2>
                 {renderUserControl()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="security-design" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Security Design Section */}
+              <section id="security-design" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Security by Design Prinzipien
+                </motion.h2>
                 {renderSecurityDesign()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="implementation" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Implementation Section */}
+              <section id="implementation" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Implementation Roadmap
+                </motion.h2>
                 {renderImplementation()}
-              </TabsContent>
-            </Tabs>
+              </section>
+            </div>
 
             {/* Quick Links */}
             <Card className="mt-12">

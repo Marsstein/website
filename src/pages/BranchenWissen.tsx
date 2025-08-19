@@ -55,7 +55,9 @@ import {
   Briefcase,
   GraduationCap,
   Home,
-  Plane
+  Plane,
+  Hammer,
+  Baby
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -69,12 +71,12 @@ const BranchenWissen: React.FC = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   const categories = [
-    { id: 'all', name: 'Alle Branchen', icon: Building2, count: 15 },
-    { id: 'healthcare', name: 'Gesundheitswesen', icon: Heart, count: 3 },
-    { id: 'finance', name: 'Finanzsektor', icon: CreditCard, count: 2 },
-    { id: 'technology', name: 'Technologie', icon: Cpu, count: 4 },
-    { id: 'manufacturing', name: 'Produktion', icon: Factory, count: 2 },
-    { id: 'services', name: 'Dienstleistungen', icon: Briefcase, count: 4 }
+    { id: 'all', name: 'Alle Branchen', icon: Building2, count: 24 },
+    { id: 'healthcare', name: 'Gesundheitswesen', icon: Heart, count: 5 },
+    { id: 'finance', name: 'Finanzsektor', icon: CreditCard, count: 3 },
+    { id: 'technology', name: 'Technologie', icon: Cpu, count: 5 },
+    { id: 'manufacturing', name: 'Produktion', icon: Factory, count: 3 },
+    { id: 'services', name: 'Dienstleistungen', icon: Briefcase, count: 8 }
   ];
 
   const complexityLevels = [
@@ -108,6 +110,50 @@ const BranchenWissen: React.FC = () => {
       tags: ['Patientendaten', 'Medizinprodukte', 'Telemedizin']
     },
     {
+      id: 'healthcare-ai-compliance',
+      title: 'Healthcare AI Compliance Guide',
+      description: 'EU AI Act Compliance für medizinische KI-Systeme und algorithmische Fairness',
+      icon: Brain,
+      category: 'healthcare',
+      difficulty: 'Expert',
+      color: 'from-blue-500 to-purple-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
+      readTime: '50 Min',
+      lastUpdated: '2024-01-15',
+      popular: true,
+      link: '/wissen/branchen/healthcare-ai-compliance',
+      highlights: [
+        'EU AI Act für Hochrisiko-KI im Gesundheitswesen',
+        'Bias-Monitoring und algorithmische Fairness',
+        'Human-in-the-Loop für medizinische Entscheidungen',
+        'KI-Governance und Risikomanagementsysteme'
+      ],
+      frameworks: ['EU AI Act', 'DSGVO', 'ISO 27001'],
+      tags: ['KI-Systeme', 'Algorithmic Bias', 'Medical AI', 'Human Oversight']
+    },
+    {
+      id: 'edtech-privacy',
+      title: 'EdTech Privacy Compliance Guide',
+      description: 'COPPA und FERPA Compliance für Bildungsplattformen und altersgerechtes Consent Management',
+      icon: GraduationCap,
+      category: 'education',
+      difficulty: 'Expert',
+      color: 'from-green-500 to-teal-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-green-900 to-slate-900',
+      readTime: '40 Min',
+      lastUpdated: '2024-01-15',
+      popular: true,
+      link: '/wissen/branchen/edtech-privacy',
+      highlights: [
+        'COPPA-konforme Plattformen für Kinder unter 13',
+        'FERPA Compliance für Bildungseinrichtungen',
+        'Altersgerechtes Consent Management',
+        'Sichere EdTech-Plattformen und Datenschutz'
+      ],
+      frameworks: ['COPPA', 'FERPA', 'DSGVO'],
+      tags: ['Bildung', 'Kinderschutz', 'Consent Management', 'EdTech Sicherheit']
+    },
+    {
       id: 'fintech-compliance',
       title: 'FinTech Compliance Strategie',
       description: 'Strategische Compliance-Ansätze für FinTech-Startups und digitale Finanzdienstleister',
@@ -128,6 +174,28 @@ const BranchenWissen: React.FC = () => {
       ],
       frameworks: ['DSGVO', 'ISO 27001', 'PCI DSS'],
       tags: ['Payment', 'Open Banking', 'KYC', 'Blockchain']
+    },
+    {
+      id: 'insurtech-compliance',
+      title: 'InsurTech Compliance Excellence',
+      description: 'Digitale Transformation der Versicherungsbranche mit DSGVO, IDD und AI Act Compliance',
+      icon: Shield,
+      category: 'finance',
+      complexity: 'expert',
+      color: 'from-blue-600 to-indigo-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
+      readTime: '55 Min',
+      lastUpdated: '2024-01-18',
+      popular: true,
+      link: '/wissen/branchen/insurtech-compliance',
+      highlights: [
+        'DSGVO für Gesundheits- und Telematikdaten',
+        'IDD-konforme digitale Beratung',
+        'KI-basierte Risikobewertung und AI Act',
+        'Compliance-konforme Customer Journey'
+      ],
+      frameworks: ['DSGVO', 'IDD', 'AI Act', 'DORA'],
+      tags: ['Versicherung', 'Telematik', 'KI-Bewertung', 'Digital Advisory']
     },
     {
       id: 'ecommerce-privacy',
@@ -191,6 +259,27 @@ const BranchenWissen: React.FC = () => {
       ],
       frameworks: ['DSGVO', 'ISO 27001', 'IEC 62443'],
       tags: ['IoT', 'OT Security', 'Predictive Analytics', 'Supply Chain']
+    },
+    {
+      id: 'production-data-protection',
+      title: 'Produktion & Datenschutz',
+      description: 'DSGVO-Compliance für Produktionsbetriebe und klassische Fertigung',
+      icon: Hammer,
+      category: 'manufacturing',
+      complexity: 'intermediate',
+      color: 'from-gray-500 to-slate-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900',
+      readTime: '45 Min',
+      lastUpdated: '2024-01-25',
+      link: '/wissen/branchen/produktion',
+      highlights: [
+        'Maschinendatenerfassung (MDE)',
+        'Qualitätsdaten & Prüfprotokolle',
+        'Mitarbeiterdatenschutz in der Fertigung',
+        'Lieferketten-Datenaustausch'
+      ],
+      frameworks: ['DSGVO', 'ISO 27001', 'ISO 9001'],
+      tags: ['Fertigung', 'MDE', 'Qualitätssicherung', 'Mitarbeiterdaten']
     },
     {
       id: 'automotive-connected',
@@ -402,6 +491,153 @@ const BranchenWissen: React.FC = () => {
       ],
       frameworks: ['DSGVO', 'Solvency II', 'ISO 27001'],
       tags: ['Telematics', 'Underwriting', 'Claims', 'UBI']
+    },
+    {
+      id: 'datenschutz-pflege',
+      title: 'Datenschutz Pflege',
+      description: 'DSGVO-Compliance für Pflegeeinrichtungen und ambulante Pflegedienste',
+      icon: Heart,
+      category: 'healthcare',
+      complexity: 'intermediate',
+      color: 'from-red-600 to-pink-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-red-900 to-slate-900',
+      readTime: '35 Min',
+      lastUpdated: '2024-01-25',
+      link: '/wissen/branchen/datenschutz-pflege',
+      highlights: [
+        'Pflegedokumentation DSGVO-konform',
+        'Einwilligungsmanagement für Bewohner',
+        'Angehörigen-Kommunikation',
+        'Vitaldaten-Monitoring'
+      ],
+      frameworks: ['DSGVO', 'ISO 27001'],
+      tags: ['Pflegedokumentation', 'Bewohnerdaten', 'Einwilligung', 'Vitaldaten']
+    },
+    {
+      id: 'datenschutz-arztpraxis',
+      title: 'Datenschutz Arztpraxis',
+      description: 'DSGVO-konforme Verarbeitung von Patientendaten in Arztpraxen',
+      icon: Stethoscope,
+      category: 'healthcare',
+      complexity: 'intermediate',
+      color: 'from-blue-600 to-cyan-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
+      readTime: '40 Min',
+      lastUpdated: '2024-01-25',
+      link: '/wissen/branchen/datenschutz-arztpraxis',
+      highlights: [
+        'Elektronische Patientenakte (ePA)',
+        'Telemedizin DSGVO-konform',
+        'Praxismanagement-Software',
+        'Art. 9 DSGVO Gesundheitsdaten'
+      ],
+      frameworks: ['DSGVO', 'ISO 27001'],
+      tags: ['Patientenakten', 'Telemedizin', 'Gesundheitsdaten', 'PVS']
+    },
+    {
+      id: 'datenschutz-kindergarten',
+      title: 'Datenschutz Kindergarten',
+      description: 'DSGVO-Compliance für Kindergärten, Kitas und Vorschulen',
+      icon: Baby,
+      category: 'services',
+      complexity: 'basic',
+      color: 'from-green-600 to-emerald-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-green-900 to-slate-900',
+      readTime: '25 Min',
+      lastUpdated: '2024-01-25',
+      link: '/wissen/branchen/datenschutz-kindergarten',
+      highlights: [
+        'Kinderdatenschutz Art. 8 DSGVO',
+        'Eltern-Einwilligungen',
+        'Foto- und Videoaufnahmen',
+        'Entwicklungsberichte'
+      ],
+      frameworks: ['DSGVO'],
+      tags: ['Kinderdaten', 'Eltern-Einwilligung', 'Fotos', 'Entwicklung']
+    },
+    {
+      id: 'dsgvo-vermieter',
+      title: 'DSGVO für Vermieter',
+      description: 'Rechtssichere Verarbeitung von Mieter- und Bewerberdaten',
+      icon: Home,
+      category: 'services',
+      complexity: 'basic',
+      color: 'from-indigo-600 to-purple-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900',
+      readTime: '30 Min',
+      lastUpdated: '2024-01-25',
+      link: '/wissen/branchen/dsgvo-vermieter',
+      highlights: [
+        'Bewerbungsverfahren DSGVO-konform',
+        'Mieterdaten-Verwaltung',
+        'Videoüberwachung im Haus',
+        'Schufa-Auskunft rechtssicher'
+      ],
+      frameworks: ['DSGVO'],
+      tags: ['Mieterdaten', 'Bewerbungen', 'Videoüberwachung', 'Schufa']
+    },
+    {
+      id: 'dsgvo-vereine',
+      title: 'DSGVO für Vereine',
+      description: 'Datenschutz-Compliance für Sportvereine und ehrenamtliche Organisationen',
+      icon: Users,
+      category: 'services',
+      complexity: 'basic',
+      color: 'from-emerald-600 to-teal-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900',
+      readTime: '25 Min',
+      lastUpdated: '2024-01-25',
+      link: '/wissen/branchen/dsgvo-vereine',
+      highlights: [
+        'Mitgliederdaten-Verwaltung',
+        'Vereinsregister DSGVO-konform',
+        'Veranstaltungsfotos',
+        'Ehrenamtlichen-Datenschutz'
+      ],
+      frameworks: ['DSGVO'],
+      tags: ['Mitgliederdaten', 'Vereinsregister', 'Fotos', 'Ehrenamt']
+    },
+    {
+      id: 'datenschutz-betriebsrat',
+      title: 'Datenschutz Betriebsrat',
+      description: 'DSGVO-Compliance für Betriebsräte und Mitbestimmungsorgane',
+      icon: Briefcase,
+      category: 'services',
+      complexity: 'intermediate',
+      color: 'from-blue-600 to-indigo-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
+      readTime: '30 Min',
+      lastUpdated: '2024-01-25',
+      link: '/wissen/branchen/datenschutz-betriebsrat',
+      highlights: [
+        'Mitarbeiterdaten im BR',
+        'Betriebsvereinbarungen DSGVO',
+        'Mitbestimmung bei Überwachung',
+        '§ 26 BDSG Beschäftigtendaten'
+      ],
+      frameworks: ['DSGVO', 'BDSG'],
+      tags: ['Mitarbeiterdaten', 'Betriebsvereinbarung', 'Mitbestimmung', 'BDSG']
+    },
+    {
+      id: 'datenschutz-homeoffice',
+      title: 'Datenschutz Homeoffice',
+      description: 'DSGVO-konforme Heimarbeit und sicherer Umgang mit Firmendaten',
+      icon: Home,
+      category: 'technology',
+      complexity: 'intermediate',
+      color: 'from-purple-600 to-pink-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
+      readTime: '30 Min',
+      lastUpdated: '2024-01-25',
+      link: '/wissen/branchen/datenschutz-homeoffice',
+      highlights: [
+        'Sichere Homeoffice-Arbeitsplätze',
+        'VPN und Netzwerk-Sicherheit',
+        'Datenzugriff kontrollieren',
+        'BYOD-Politik DSGVO-konform'
+      ],
+      frameworks: ['DSGVO', 'ISO 27001'],
+      tags: ['Homeoffice', 'VPN', 'BYOD', 'Remote Work']
     }
   ];
 
@@ -769,6 +1005,24 @@ const BranchenWissen: React.FC = () => {
                 color: "from-red-500 to-pink-500",
                 complexity: "Expert",
                 readTime: "45 Min"
+              },
+              {
+                title: "Healthcare AI Compliance",
+                description: "EU AI Act für medizinische KI-Systeme",
+                icon: Brain,
+                link: "/wissen/branchen/healthcare-ai-compliance",
+                color: "from-blue-500 to-purple-500",
+                complexity: "Expert",
+                readTime: "50 Min"
+              },
+              {
+                title: "EdTech Privacy",
+                description: "COPPA & FERPA für Bildungsplattformen",
+                icon: GraduationCap,
+                link: "/wissen/branchen/edtech-privacy",
+                color: "from-green-500 to-teal-500",
+                complexity: "Expert",
+                readTime: "40 Min"
               },
               {
                 title: "FinTech Compliance",

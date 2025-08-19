@@ -4123,6 +4123,1093 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
               </motion.div>
             )}
 
+            {/* Section 7: Verfahrensschritte */}
+            {currentSection === 7 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mb-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="p-3 bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl">
+                      <Route className="h-8 w-8 text-white" />
+                    </div>
+                    <div>
+                      <h1 className="text-4xl font-bold text-gray-900">Verfahrensschritte</h1>
+                      <p className="text-xl text-gray-600">Strukturierte Prozesse für den Umgang mit Hinweisen</p>
+                    </div>
+                  </div>
+                </div>
+
+                <ExpandableSection 
+                  title="Meldungseingang und Erstbearbeitung" 
+                  icon={Mail}
+                  defaultExpanded={true}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Sofortmaßnahmen nach Meldungseingang</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Erste 24 Stunden</h5>
+                          <div className="space-y-3">
+                            <div className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                              <div>
+                                <strong>Meldungsbestätigung:</strong> Automatische Eingangsbestätigung an Hinweisgeber
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                              <div>
+                                <strong>Vorläufige Klassifizierung:</strong> Erste Bewertung der Meldung nach Schweregrad
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                              <div>
+                                <strong>Zuständigkeitsprüfung:</strong> Weiterleitung an verantwortliche Stelle
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                              <div>
+                                <strong>Dokumentation:</strong> Vollständige Erfassung aller Angaben
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Erste Woche</h5>
+                          <div className="space-y-3">
+                            <div className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">5</div>
+                              <div>
+                                <strong>Plausibilitätsprüfung:</strong> Erste inhaltliche Bewertung der Meldung
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">6</div>
+                              <div>
+                                <strong>Risikoeinschätzung:</strong> Bewertung möglicher Schäden und Gefahren
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">7</div>
+                              <div>
+                                <strong>Bestätigung:</strong> Schriftliche Bestätigung des Meldungseingangs (§ 17 HinSchG)
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">8</div>
+                              <div>
+                                <strong>Untersuchungsplan:</strong> Erstellung eines strukturierten Vorgehens
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Bewertungsmatrix für Meldungen</h4>
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse border border-yellow-300">
+                          <thead>
+                            <tr className="bg-yellow-200">
+                              <th className="border border-yellow-300 p-3 text-left font-semibold text-yellow-900">Kriterium</th>
+                              <th className="border border-yellow-300 p-3 text-center font-semibold text-yellow-900">Niedrig</th>
+                              <th className="border border-yellow-300 p-3 text-center font-semibold text-yellow-900">Mittel</th>
+                              <th className="border border-yellow-300 p-3 text-center font-semibold text-yellow-900">Hoch</th>
+                              <th className="border border-yellow-300 p-3 text-center font-semibold text-yellow-900">Kritisch</th>
+                            </tr>
+                          </thead>
+                          <tbody className="text-sm">
+                            <tr>
+                              <td className="border border-yellow-300 p-3 font-medium">Rechtsverletzung</td>
+                              <td className="border border-yellow-300 p-3 text-center">Ordnungswidrigkeit</td>
+                              <td className="border border-yellow-300 p-3 text-center">Vergehen</td>
+                              <td className="border border-yellow-300 p-3 text-center">Verbrechen</td>
+                              <td className="border border-yellow-300 p-3 text-center">Schweres Verbrechen</td>
+                            </tr>
+                            <tr className="bg-yellow-50">
+                              <td className="border border-yellow-300 p-3 font-medium">Schadenshöhe</td>
+                              <td className="border border-yellow-300 p-3 text-center">&lt; 10.000 €</td>
+                              <td className="border border-yellow-300 p-3 text-center">10.000-100.000 €</td>
+                              <td className="border border-yellow-300 p-3 text-center">100.000-1 Mio €</td>
+                              <td className="border border-yellow-300 p-3 text-center">&gt; 1 Mio €</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-yellow-300 p-3 font-medium">Öffentliches Interesse</td>
+                              <td className="border border-yellow-300 p-3 text-center">Gering</td>
+                              <td className="border border-yellow-300 p-3 text-center">Beachtlich</td>
+                              <td className="border border-yellow-300 p-3 text-center">Erheblich</td>
+                              <td className="border border-yellow-300 p-3 text-center">Außergewöhnlich</td>
+                            </tr>
+                            <tr className="bg-yellow-50">
+                              <td className="border border-yellow-300 p-3 font-medium">Gefahr für Leben/Gesundheit</td>
+                              <td className="border border-yellow-300 p-3 text-center">Keine</td>
+                              <td className="border border-yellow-300 p-3 text-center">Potenzielle Gefahr</td>
+                              <td className="border border-yellow-300 p-3 text-center">Konkrete Gefahr</td>
+                              <td className="border border-yellow-300 p-3 text-center">Akute Gefahr</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Untersuchungsverfahren" 
+                  icon={Search}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-green-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-green-900 mb-4">Systematische Untersuchung</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg border-l-4 border-green-500">
+                          <h5 className="font-semibold text-green-900 mb-2">Phase 1: Vorermittlung (1-2 Wochen)</h5>
+                          <ul className="space-y-2 text-green-800">
+                            <li>• <strong>Sachverhaltsaufklärung:</strong> Sammlung aller verfügbaren Informationen</li>
+                            <li>• <strong>Beweissicherung:</strong> Sicherstellung von Dokumenten und digitalen Daten</li>
+                            <li>• <strong>Zeugenbefragung:</strong> Erste Gespräche mit relevanten Personen</li>
+                            <li>• <strong>Rechtliche Einordnung:</strong> Prüfung der rechtlichen Relevanz</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-lg border-l-4 border-green-600">
+                          <h5 className="font-semibold text-green-900 mb-2">Phase 2: Hauptuntersuchung (2-6 Wochen)</h5>
+                          <ul className="space-y-2 text-green-800">
+                            <li>• <strong>Tiefere Analyse:</strong> Detaillierte Untersuchung der Vorwürfe</li>
+                            <li>• <strong>Expertengutachten:</strong> Hinzuziehung von Fachexperten bei Bedarf</li>
+                            <li>• <strong>Anhörungen:</strong> Formelle Befragung der betroffenen Personen</li>
+                            <li>• <strong>Zusätzliche Beweise:</strong> Weitere Beweismittel sammeln</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-white p-4 rounded-lg border-l-4 border-green-700">
+                          <h5 className="font-semibold text-green-900 mb-2">Phase 3: Bewertung (1-2 Wochen)</h5>
+                          <ul className="space-y-2 text-green-800">
+                            <li>• <strong>Beweisanalyse:</strong> Gesamtbewertung aller gesammelten Beweise</li>
+                            <li>• <strong>Rechtliche Würdigung:</strong> Endgültige rechtliche Einschätzung</li>
+                            <li>• <strong>Maßnahmenentwicklung:</strong> Planung von Konsequenzen und Korrekturen</li>
+                            <li>• <strong>Berichtserstellung:</strong> Abschlussbericht mit Empfehlungen</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-purple-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-purple-900 mb-4">Untersuchungsstandards</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-3">Grundprinzipien</h5>
+                          <div className="space-y-3 text-sm text-purple-800">
+                            <div className="flex items-center space-x-2">
+                              <CheckCircle className="h-4 w-4 text-purple-600" />
+                              <span><strong>Objektivität:</strong> Neutrale und unvoreingenommene Untersuchung</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <CheckCircle className="h-4 w-4 text-purple-600" />
+                              <span><strong>Vertraulichkeit:</strong> Schutz aller Beteiligten und Informationen</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <CheckCircle className="h-4 w-4 text-purple-600" />
+                              <span><strong>Verhältnismäßigkeit:</strong> Angemessene Untersuchungstiefe</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <CheckCircle className="h-4 w-4 text-purple-600" />
+                              <span><strong>Dokumentation:</strong> Lückenlose Aufzeichnung aller Schritte</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <CheckCircle className="h-4 w-4 text-purple-600" />
+                              <span><strong>Rechtmäßigkeit:</strong> Einhaltung aller gesetzlichen Vorgaben</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-3">Qualitätssicherung</h5>
+                          <div className="space-y-3 text-sm text-purple-800">
+                            <div className="flex items-center space-x-2">
+                              <Star className="h-4 w-4 text-purple-600" />
+                              <span><strong>Vier-Augen-Prinzip:</strong> Mindestens zwei Personen bei kritischen Schritten</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Star className="h-4 w-4 text-purple-600" />
+                              <span><strong>Externe Expertise:</strong> Hinzuziehung von Spezialisten bei Bedarf</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Star className="h-4 w-4 text-purple-600" />
+                              <span><strong>Peer Review:</strong> Überprüfung durch unabhängige Kollegen</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Star className="h-4 w-4 text-purple-600" />
+                              <span><strong>Standardisierung:</strong> Verwendung einheitlicher Verfahren</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Star className="h-4 w-4 text-purple-600" />
+                              <span><strong>Kontinuierliche Verbesserung:</strong> Regelmäßige Verfahrensoptimierung</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Kommunikation mit dem Hinweisgeber" 
+                  icon={MessageSquare}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-indigo-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-indigo-900 mb-4">Gesetzliche Kommunikationspflichten</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg border border-indigo-200">
+                          <h5 className="font-semibold text-indigo-900 mb-2">Pflichtmitteilungen nach § 17 HinSchG</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div>
+                              <strong className="text-indigo-900">Innerhalb 7 Tagen:</strong>
+                              <ul className="mt-2 space-y-1 text-indigo-800">
+                                <li>• Eingangsbestätigung</li>
+                                <li>• Zuständigkeitsmitteilung</li>
+                                <li>• Erste Einschätzung</li>
+                                <li>• Weitere Vorgehensweise</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-indigo-900">Innerhalb 3 Monaten:</strong>
+                              <ul className="mt-2 space-y-1 text-indigo-800">
+                                <li>• Zwischenbericht über Fortschritt</li>
+                                <li>• Geplante Untersuchungsschritte</li>
+                                <li>• Vorläufige Ergebnisse</li>
+                                <li>• Zeitplan für Abschluss</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-indigo-900">Nach Abschluss:</strong>
+                              <ul className="mt-2 space-y-1 text-indigo-800">
+                                <li>• Abschließende Mitteilung</li>
+                                <li>• Ergebnis der Untersuchung</li>
+                                <li>• Ergriffene Maßnahmen</li>
+                                <li>• Begründung bei Ablehnung</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-teal-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-teal-900 mb-4">Best Practices für die Kommunikation</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-teal-900 mb-3 flex items-center">
+                            <MessageSquare className="mr-2 h-5 w-5" />
+                            Professionelle Kommunikation
+                          </h5>
+                          <div className="space-y-2 text-sm text-teal-800">
+                            <p><strong>Ton und Stil:</strong></p>
+                            <ul className="ml-4 space-y-1">
+                              <li>• Respektvoll und wertschätzend</li>
+                              <li>• Sachlich und professionell</li>
+                              <li>• Verständlich und präzise</li>
+                              <li>• Empathisch und unterstützend</li>
+                            </ul>
+                            <p className="mt-3"><strong>Strukturierung:</strong></p>
+                            <ul className="ml-4 space-y-1">
+                              <li>• Klare Gliederung der Inhalte</li>
+                              <li>• Verwendung von Überschriften</li>
+                              <li>• Bullet Points für bessere Lesbarkeit</li>
+                              <li>• Zusammenfassung der wichtigsten Punkte</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-teal-900 mb-3 flex items-center">
+                            <Lock className="mr-2 h-5 w-5" />
+                            Schutz der Identität
+                          </h5>
+                          <div className="space-y-2 text-sm text-teal-800">
+                            <p><strong>Anonymitätsschutz:</strong></p>
+                            <ul className="ml-4 space-y-1">
+                              <li>• Sichere Kommunikationskanäle nutzen</li>
+                              <li>• Verschlüsselung bei sensiblen Daten</li>
+                              <li>• Vermeidung identifizierender Merkmale</li>
+                              <li>• Separate Aktenführung</li>
+                            </ul>
+                            <p className="mt-3"><strong>Vertraulichkeit:</strong></p>
+                            <ul className="ml-4 space-y-1">
+                              <li>• Begrenzter Personenkreis mit Zugang</li>
+                              <li>• Need-to-know-Prinzip beachten</li>
+                              <li>• Physische und digitale Sicherheit</li>
+                              <li>• Aufbewahrungsfristen einhalten</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Entscheidung und Maßnahmen" 
+                  icon={Gavel}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-red-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-red-900 mb-4">Entscheidungsmatrix</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg">
+                          <h5 className="font-semibold text-red-900 mb-3">Mögliche Untersuchungsergebnisse</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                              <div className="space-y-3">
+                                <div className="p-3 bg-green-100 rounded border-l-4 border-green-500">
+                                  <h6 className="font-semibold text-green-900">Unbegründet</h6>
+                                  <p className="text-sm text-green-800">Vorwürfe können nicht bestätigt werden</p>
+                                  <ul className="text-xs text-green-700 mt-2">
+                                    <li>• Keine Rechtsverletzung feststellbar</li>
+                                    <li>• Sachverhalt widerlegt</li>
+                                    <li>• Unzureichende Beweise</li>
+                                  </ul>
+                                </div>
+                                <div className="p-3 bg-yellow-100 rounded border-l-4 border-yellow-500">
+                                  <h6 className="font-semibold text-yellow-900">Teilweise begründet</h6>
+                                  <p className="text-sm text-yellow-800">Einzelne Aspekte bestätigt</p>
+                                  <ul className="text-xs text-yellow-700 mt-2">
+                                    <li>• Geringfügige Verstöße</li>
+                                    <li>• Verfahrensmängel</li>
+                                    <li>• Nachbesserungsbedarf</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="space-y-3">
+                                <div className="p-3 bg-orange-100 rounded border-l-4 border-orange-500">
+                                  <h6 className="font-semibold text-orange-900">Begründet</h6>
+                                  <p className="text-sm text-orange-800">Wesentliche Verstöße bestätigt</p>
+                                  <ul className="text-xs text-orange-700 mt-2">
+                                    <li>• Rechtsverletzungen belegt</li>
+                                    <li>• Sofortige Maßnahmen erforderlich</li>
+                                    <li>• Compliance-Verstöße</li>
+                                  </ul>
+                                </div>
+                                <div className="p-3 bg-red-100 rounded border-l-4 border-red-500">
+                                  <h6 className="font-semibold text-red-900">Schwerwiegend begründet</h6>
+                                  <p className="text-sm text-red-800">Erhebliche Rechtsverletzungen</p>
+                                  <ul className="text-xs text-red-700 mt-2">
+                                    <li>• Straftaten oder schwere Verstöße</li>
+                                    <li>• Meldung an Behörden</li>
+                                    <li>• Umfassende Korrekturen nötig</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Maßnahmenkatalog</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-gray-900 mb-3 text-center">Sofortmaßnahmen</h5>
+                          <div className="space-y-2 text-sm">
+                            <div className="p-2 bg-red-100 rounded">
+                              <strong>Schadensbegrenzung</strong>
+                              <ul className="text-xs mt-1">
+                                <li>• Stopp gefährdender Aktivitäten</li>
+                                <li>• Beweissicherung</li>
+                                <li>• Krisenteam aktivieren</li>
+                              </ul>
+                            </div>
+                            <div className="p-2 bg-orange-100 rounded">
+                              <strong>Personalmaßnahmen</strong>
+                              <ul className="text-xs mt-1">
+                                <li>• Suspendierung bei Bedarf</li>
+                                <li>• Versetzung oder Freistellung</li>
+                                <li>• Arbeitsrechtliche Schritte</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-900 mb-3 text-center">Mittelfristige Maßnahmen</h5>
+                          <div className="space-y-2 text-sm">
+                            <div className="p-2 bg-yellow-100 rounded">
+                              <strong>Prozessverbesserung</strong>
+                              <ul className="text-xs mt-1">
+                                <li>• Richtlinien überarbeiten</li>
+                                <li>• Kontrollen verstärken</li>
+                                <li>• Schulungen durchführen</li>
+                              </ul>
+                            </div>
+                            <div className="p-2 bg-blue-100 rounded">
+                              <strong>Organisatorisch</strong>
+                              <ul className="text-xs mt-1">
+                                <li>• Strukturen anpassen</li>
+                                <li>• Zuständigkeiten klären</li>
+                                <li>• Berichtswege optimieren</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-900 mb-3 text-center">Langfristige Maßnahmen</h5>
+                          <div className="space-y-2 text-sm">
+                            <div className="p-2 bg-green-100 rounded">
+                              <strong>Kulturwandel</strong>
+                              <ul className="text-xs mt-1">
+                                <li>• Compliance-Kultur stärken</li>
+                                <li>• Werteorientierung fördern</li>
+                                <li>• Führungskräfte schulen</li>
+                              </ul>
+                            </div>
+                            <div className="p-2 bg-purple-100 rounded">
+                              <strong>Monitoring</strong>
+                              <ul className="text-xs mt-1">
+                                <li>• Kontrollsysteme etablieren</li>
+                                <li>• Regelmäßige Überprüfungen</li>
+                                <li>• Wirksamkeitsmessung</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Abschluss und Nachverfolgung" 
+                  icon={CheckCircle}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-emerald-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-emerald-900 mb-4">Verfahrensabschluss</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-emerald-900 mb-3">Abschlussdokumentation</h5>
+                          <div className="space-y-3 text-sm text-emerald-800">
+                            <div className="flex items-start space-x-2">
+                              <FileText className="h-4 w-4 text-emerald-600 mt-0.5" />
+                              <div>
+                                <strong>Untersuchungsbericht:</strong>
+                                <ul className="ml-4 mt-1 space-y-1">
+                                  <li>• Sachverhaltsdarstellung</li>
+                                  <li>• Untersuchungsergebnisse</li>
+                                  <li>• Rechtliche Bewertung</li>
+                                  <li>• Empfohlene Maßnahmen</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2">
+                              <Database className="h-4 w-4 text-emerald-600 mt-0.5" />
+                              <div>
+                                <strong>Beweisdokumentation:</strong>
+                                <ul className="ml-4 mt-1 space-y-1">
+                                  <li>• Alle gesammelten Beweise</li>
+                                  <li>• Gesprächsprotokolle</li>
+                                  <li>• Expertengutachten</li>
+                                  <li>• Zusätzliche Unterlagen</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-emerald-900 mb-3">Kommunikation der Ergebnisse</h5>
+                          <div className="space-y-3 text-sm text-emerald-800">
+                            <div className="flex items-start space-x-2">
+                              <Mail className="h-4 w-4 text-emerald-600 mt-0.5" />
+                              <div>
+                                <strong>An Hinweisgeber:</strong>
+                                <ul className="ml-4 mt-1 space-y-1">
+                                  <li>• Abschließende Mitteilung</li>
+                                  <li>• Zusammenfassung der Ergebnisse</li>
+                                  <li>• Dank für die Meldung</li>
+                                  <li>• Verweis auf Schutzrechte</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2">
+                              <Users className="h-4 w-4 text-emerald-600 mt-0.5" />
+                              <div>
+                                <strong>An Stakeholder:</strong>
+                                <ul className="ml-4 mt-1 space-y-1">
+                                  <li>• Management-Summary</li>
+                                  <li>• Handlungsempfehlungen</li>
+                                  <li>• Zeitplan für Umsetzung</li>
+                                  <li>• Risikobewertung</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Nachverfolgung und Monitoring</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg">
+                          <h5 className="font-semibold text-blue-900 mb-3">Umsetzungscontrolling</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="text-center">
+                              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <Calendar className="h-8 w-8 text-blue-600" />
+                              </div>
+                              <h6 className="font-semibold text-blue-900">30 Tage</h6>
+                              <p className="text-sm text-blue-800">Erste Umsetzungsüberprüfung</p>
+                            </div>
+                            <div className="text-center">
+                              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <BarChart3 className="h-8 w-8 text-blue-600" />
+                              </div>
+                              <h6 className="font-semibold text-blue-900">90 Tage</h6>
+                              <p className="text-sm text-blue-800">Zwischenbewertung der Wirksamkeit</p>
+                            </div>
+                            <div className="text-center">
+                              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <Award className="h-8 w-8 text-blue-600" />
+                              </div>
+                              <h6 className="font-semibold text-blue-900">1 Jahr</h6>
+                              <p className="text-sm text-blue-800">Abschließende Wirksamkeitsprüfung</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <div className="flex justify-between items-center pt-8 border-t">
+                  <Button 
+                    variant="outline"
+                    onClick={() => setCurrentSection(6)}
+                  >
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Vorheriger Abschnitt
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      markSectionComplete(7);
+                      setCurrentSection(8);
+                    }}
+                    className="bg-pink-600 hover:bg-pink-700"
+                  >
+                    Nächster Abschnitt
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Section 8: Dokumentation */}
+            {currentSection === 8 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mb-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="p-3 bg-gradient-to-r from-teal-500 to-teal-600 rounded-xl">
+                      <FileText className="h-8 w-8 text-white" />
+                    </div>
+                    <div>
+                      <h1 className="text-4xl font-bold text-gray-900">Dokumentation</h1>
+                      <p className="text-xl text-gray-600">Systematische Erfassung und Verwaltung aller Verfahrensschritte</p>
+                    </div>
+                  </div>
+                </div>
+
+                <ExpandableSection 
+                  title="Gesetzliche Dokumentationspflichten" 
+                  icon={Scale}
+                  defaultExpanded={true}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-4">Anforderungen nach § 18 HinSchG</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Inhaltliche Anforderungen</h5>
+                          <div className="space-y-3 text-sm text-blue-800">
+                            <div className="flex items-start space-x-2">
+                              <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5" />
+                              <div>
+                                <strong>Vollständige Sachverhaltserfassung:</strong>
+                                <ul className="ml-4 mt-1 space-y-1">
+                                  <li>• Alle wesentlichen Fakten</li>
+                                  <li>• Chronologische Darstellung</li>
+                                  <li>• Beteiligte Personen</li>
+                                  <li>• Relevante Dokumente</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2">
+                              <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5" />
+                              <div>
+                                <strong>Verfahrensdokumentation:</strong>
+                                <ul className="ml-4 mt-1 space-y-1">
+                                  <li>• Alle Untersuchungsschritte</li>
+                                  <li>• Zwischenergebnisse</li>
+                                  <li>• Entscheidungsbegründungen</li>
+                                  <li>• Ergriffene Maßnahmen</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-blue-900 mb-3">Formelle Anforderungen</h5>
+                          <div className="space-y-3 text-sm text-blue-800">
+                            <div className="flex items-start space-x-2">
+                              <FileText className="h-4 w-4 text-blue-600 mt-0.5" />
+                              <div>
+                                <strong>Aufbewahrungsfristen:</strong>
+                                <ul className="ml-4 mt-1 space-y-1">
+                                  <li>• Mindestens 3 Jahre</li>
+                                  <li>• Bei Strafverfahren länger</li>
+                                  <li>• Digitale Langzeitspeicherung</li>
+                                  <li>• Sichere Archivierung</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="flex items-start space-x-2">
+                              <Lock className="h-4 w-4 text-blue-600 mt-0.5" />
+                              <div>
+                                <strong>Datenschutz:</strong>
+                                <ul className="ml-4 mt-1 space-y-1">
+                                  <li>• DSGVO-konforme Speicherung</li>
+                                  <li>• Zugriffskontrollen</li>
+                                  <li>• Anonymisierung wo möglich</li>
+                                  <li>• Löschfristen beachten</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-yellow-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-yellow-900 mb-4">Beweissicherung und -aufbewahrung</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg border border-yellow-200">
+                          <h5 className="font-semibold text-yellow-900 mb-3">Digitale Beweismittel</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div>
+                              <strong className="text-yellow-900">E-Mails & Kommunikation</strong>
+                              <ul className="mt-2 space-y-1 text-yellow-800">
+                                <li>• Vollständige E-Mail-Header</li>
+                                <li>• Anhänge separat sichern</li>
+                                <li>• Kommunikationsketten</li>
+                                <li>• Zeitstempel dokumentieren</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-yellow-900">Dateien & Dokumente</strong>
+                              <ul className="mt-2 space-y-1 text-yellow-800">
+                                <li>• Originaldateien bewahren</li>
+                                <li>• Versionsstände sichern</li>
+                                <li>• Metadaten erhalten</li>
+                                <li>• Hash-Werte erstellen</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-yellow-900">System-Logs</strong>
+                              <ul className="mt-2 space-y-1 text-yellow-800">
+                                <li>• Zugriffsprotokolle</li>
+                                <li>• Änderungshistorien</li>
+                                <li>• Transaktionslogs</li>
+                                <li>• Audit-Trails sichern</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Dokumentationssystem und Templates" 
+                  icon={Database}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-green-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-green-900 mb-4">Strukturiertes Akten- und Fallmanagement</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg border border-green-200">
+                          <h5 className="font-semibold text-green-900 mb-3">Aktenaufbau und -struktur</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                              <div className="space-y-3">
+                                <div className="p-3 bg-green-100 rounded border-l-4 border-green-500">
+                                  <h6 className="font-semibold text-green-900">Teil A: Grunddaten</h6>
+                                  <ul className="text-sm text-green-800 mt-2 space-y-1">
+                                    <li>• Fallnummer und Erstellungsdatum</li>
+                                    <li>• Art der Meldung (anonym/identifiziert)</li>
+                                    <li>• Kurze Sachverhaltsdarstellung</li>
+                                    <li>• Erste Klassifizierung</li>
+                                    <li>• Zuständige Bearbeiter</li>
+                                  </ul>
+                                </div>
+                                <div className="p-3 bg-green-100 rounded border-l-4 border-green-600">
+                                  <h6 className="font-semibold text-green-900">Teil B: Verfahrensverlauf</h6>
+                                  <ul className="text-sm text-green-800 mt-2 space-y-1">
+                                    <li>• Chronologische Dokumentation</li>
+                                    <li>• Untersuchungsschritte</li>
+                                    <li>• Zwischenergebnisse</li>
+                                    <li>• Kommunikation mit Beteiligten</li>
+                                    <li>• Statusupdates</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="space-y-3">
+                                <div className="p-3 bg-green-100 rounded border-l-4 border-green-700">
+                                  <h6 className="font-semibold text-green-900">Teil C: Beweise und Unterlagen</h6>
+                                  <ul className="text-sm text-green-800 mt-2 space-y-1">
+                                    <li>• Originalmeldung</li>
+                                    <li>• Gesammelte Dokumente</li>
+                                    <li>• Gesprächsprotokolle</li>
+                                    <li>• Expertengutachten</li>
+                                    <li>• Zusätzliche Beweismittel</li>
+                                  </ul>
+                                </div>
+                                <div className="p-3 bg-green-100 rounded border-l-4 border-green-800">
+                                  <h6 className="font-semibold text-green-900">Teil D: Ergebnisse und Maßnahmen</h6>
+                                  <ul className="text-sm text-green-800 mt-2 space-y-1">
+                                    <li>• Abschlussbericht</li>
+                                    <li>• Rechtliche Bewertung</li>
+                                    <li>• Beschlossene Maßnahmen</li>
+                                    <li>• Umsetzungscontrolling</li>
+                                    <li>• Lessons Learned</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-purple-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-purple-900 mb-4">Dokumenten-Templates und Formulare</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-3 flex items-center">
+                            <Mail className="mr-2 h-5 w-5" />
+                            Kommunikation
+                          </h5>
+                          <div className="space-y-2 text-sm">
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Eingangsbestätigung</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Standardisierte Bestätigung des Meldungseingangs mit Fallnummer
+                              </p>
+                            </div>
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Zwischenbericht</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Template für 3-Monats-Mitteilung an Hinweisgeber
+                              </p>
+                            </div>
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Abschlussmitteilung</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Finale Kommunikation der Untersuchungsergebnisse
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-3 flex items-center">
+                            <Search className="mr-2 h-5 w-5" />
+                            Untersuchung
+                          </h5>
+                          <div className="space-y-2 text-sm">
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Untersuchungsplan</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Strukturierte Planung der Untersuchungsschritte
+                              </p>
+                            </div>
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Gesprächsprotokoll</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Standardisierte Erfassung von Befragungen
+                              </p>
+                            </div>
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Bewertungsmatrix</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Systematische Bewertung von Sachverhalten
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-purple-900 mb-3 flex items-center">
+                            <FileText className="mr-2 h-5 w-5" />
+                            Berichte
+                          </h5>
+                          <div className="space-y-2 text-sm">
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Abschlussbericht</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Umfassende Dokumentation der Untersuchung
+                              </p>
+                            </div>
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Management Summary</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Kompakte Zusammenfassung für Führungsebene
+                              </p>
+                            </div>
+                            <div className="p-2 bg-white rounded border">
+                              <strong>Compliance Report</strong>
+                              <p className="text-xs text-purple-700 mt-1">
+                                Regelmäßige Berichterstattung an Aufsichtsgremien
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Digitale Dokumentenmanagement-Systeme" 
+                  icon={Server}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-indigo-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-indigo-900 mb-4">Technische Anforderungen</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-indigo-900 mb-3">Systemfunktionalitäten</h5>
+                          <div className="space-y-3 text-sm text-indigo-800">
+                            <div className="flex items-center space-x-2">
+                              <Database className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Zentrale Datenhaltung:</strong> Einheitliche Speicherung aller Dokumente</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Search className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Volltext-Suche:</strong> Schnelles Auffinden relevanter Informationen</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Users className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Rollenbasierte Zugriffe:</strong> Differenzierte Berechtigungskonzepte</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Clock className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Versionskontrolle:</strong> Nachvollziehbare Änderungshistorie</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Lock className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Verschlüsselung:</strong> Schutz sensibler Informationen</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-indigo-900 mb-3">Integration und Workflows</h5>
+                          <div className="space-y-3 text-sm text-indigo-800">
+                            <div className="flex items-center space-x-2">
+                              <Network className="h-4 w-4 text-indigo-600" />
+                              <span><strong>API-Schnittstellen:</strong> Integration in bestehende Systeme</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Workflow className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Automatisierte Workflows:</strong> Standardisierte Prozessabläufe</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Bell className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Benachrichtigungen:</strong> Automatische Erinnerungen und Alerts</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <BarChart3 className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Reporting:</strong> Automatisierte Berichtsgenerierung</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Shield className="h-4 w-4 text-indigo-600" />
+                              <span><strong>Backup & Recovery:</strong> Sichere Datenwiederherstellung</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-cyan-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-cyan-900 mb-4">Compliance und Sicherheit</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg">
+                          <h5 className="font-semibold text-cyan-900 mb-3">Rechtliche Compliance</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div>
+                              <strong className="text-cyan-900">DSGVO-Konformität</strong>
+                              <ul className="mt-2 space-y-1 text-cyan-800">
+                                <li>• Datenschutz by Design</li>
+                                <li>• Pseudonymisierung</li>
+                                <li>• Recht auf Vergessenwerden</li>
+                                <li>• Dokumentation der Verarbeitung</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-cyan-900">Aufbewahrungsfristen</strong>
+                              <ul className="mt-2 space-y-1 text-cyan-800">
+                                <li>• Automatische Archivierung</li>
+                                <li>• Rechtssichere Löschung</li>
+                                <li>• Fristen-Monitoring</li>
+                                <li>• Audit-Protokolle</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <strong className="text-cyan-900">Zugriffskontrolle</strong>
+                              <ul className="mt-2 space-y-1 text-cyan-800">
+                                <li>• Need-to-know-Prinzip</li>
+                                <li>• Zweifaktor-Authentifizierung</li>
+                                <li>• Zugriffsprotokolle</li>
+                                <li>• Regelmäßige Berechtigungsprüfung</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <ExpandableSection 
+                  title="Qualitätssicherung und Audit-Trail" 
+                  icon={Award}
+                >
+                  <div className="space-y-6">
+                    <div className="bg-orange-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-orange-900 mb-4">Dokumentationsqualität</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h5 className="font-semibold text-orange-900 mb-3">Qualitätsstandards</h5>
+                          <div className="space-y-3 text-sm text-orange-800">
+                            <div className="p-3 bg-white rounded border">
+                              <h6 className="font-semibold">Vollständigkeit</h6>
+                              <ul className="mt-1 space-y-1 text-xs">
+                                <li>• Alle relevanten Informationen erfasst</li>
+                                <li>• Keine wesentlichen Lücken</li>
+                                <li>• Vollständige Chronologie</li>
+                                <li>• Alle Beteiligten dokumentiert</li>
+                              </ul>
+                            </div>
+                            <div className="p-3 bg-white rounded border">
+                              <h6 className="font-semibold">Nachvollziehbarkeit</h6>
+                              <ul className="mt-1 space-y-1 text-xs">
+                                <li>• Logische Struktur</li>
+                                <li>• Klare Verweise und Querverbindungen</li>
+                                <li>• Eindeutige Identifizierung</li>
+                                <li>• Transparente Entscheidungswege</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-orange-900 mb-3">Kontrollen und Reviews</h5>
+                          <div className="space-y-3 text-sm text-orange-800">
+                            <div className="p-3 bg-white rounded border">
+                              <h6 className="font-semibold">Vier-Augen-Prinzip</h6>
+                              <ul className="mt-1 space-y-1 text-xs">
+                                <li>• Unabhängige Überprüfung</li>
+                                <li>• Fachliche Validierung</li>
+                                <li>• Rechtliche Compliance</li>
+                                <li>• Qualitätsfreigabe</li>
+                              </ul>
+                            </div>
+                            <div className="p-3 bg-white rounded border">
+                              <h6 className="font-semibold">Regelmäßige Audits</h6>
+                              <ul className="mt-1 space-y-1 text-xs">
+                                <li>• Interne Qualitätsprüfungen</li>
+                                <li>• Externe Revisionen</li>
+                                <li>• Compliance-Checks</li>
+                                <li>• Continuous Improvement</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Audit-Trail und Nachweisführung</h4>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg">
+                          <h5 className="font-semibold text-gray-900 mb-3">Lückenlose Dokumentation aller Aktivitäten</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+                            <div className="text-center">
+                              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <Clock className="h-6 w-6 text-blue-600" />
+                              </div>
+                              <h6 className="font-semibold text-gray-900">Zeitstempel</h6>
+                              <p className="text-xs text-gray-600">Präzise Erfassung aller Aktivitätszeiten</p>
+                            </div>
+                            <div className="text-center">
+                              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <Users className="h-6 w-6 text-green-600" />
+                              </div>
+                              <h6 className="font-semibold text-gray-900">Benutzer-ID</h6>
+                              <p className="text-xs text-gray-600">Eindeutige Zuordnung aller Aktionen</p>
+                            </div>
+                            <div className="text-center">
+                              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <Edit3 className="h-6 w-6 text-purple-600" />
+                              </div>
+                              <h6 className="font-semibold text-gray-900">Änderungen</h6>
+                              <p className="text-xs text-gray-600">Vollständige Versionierung aller Dokumente</p>
+                            </div>
+                            <div className="text-center">
+                              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <Shield className="h-6 w-6 text-red-600" />
+                              </div>
+                              <h6 className="font-semibold text-gray-900">Integrität</h6>
+                              <p className="text-xs text-gray-600">Kryptographische Sicherung gegen Manipulation</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ExpandableSection>
+
+                <div className="flex justify-between items-center pt-8 border-t">
+                  <Button 
+                    variant="outline"
+                    onClick={() => setCurrentSection(7)}
+                  >
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Vorheriger Abschnitt
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      markSectionComplete(8);
+                      setCurrentSection(9);
+                    }}
+                    className="bg-teal-600 hover:bg-teal-700"
+                  >
+                    Nächster Abschnitt
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+
             {/* Section 9: Schulungen */}
             {currentSection === 9 && (
               <motion.div
@@ -7189,28 +8276,28 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                               <div>
                                 <div className="flex justify-between text-sm mb-1">
                                   <span className="text-blue-700">Meldungsqualität</span>
-                                  <span className="font-medium">4.2/5</span>
+                                  <span className="font-medium">Gut</span>
                                 </div>
                                 <Progress value={84} className="h-2" />
                               </div>
                               <div>
                                 <div className="flex justify-between text-sm mb-1">
                                   <span className="text-blue-700">Untersuchungstiefe</span>
-                                  <span className="font-medium">4.5/5</span>
+                                  <span className="font-medium">Sehr gut</span>
                                 </div>
                                 <Progress value={90} className="h-2" />
                               </div>
                               <div>
                                 <div className="flex justify-between text-sm mb-1">
                                   <span className="text-blue-700">Dokumentation</span>
-                                  <span className="font-medium">4.7/5</span>
+                                  <span className="font-medium">Sehr gut</span>
                                 </div>
                                 <Progress value={94} className="h-2" />
                               </div>
                               <div>
                                 <div className="flex justify-between text-sm mb-1">
                                   <span className="text-blue-700">Nachvollziehbarkeit</span>
-                                  <span className="font-medium">4.8/5</span>
+                                  <span className="font-medium">Exzellent</span>
                                 </div>
                                 <Progress value={96} className="h-2" />
                               </div>

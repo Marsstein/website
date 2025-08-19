@@ -501,13 +501,10 @@ const DsgvoGuides: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+            className="flex justify-center max-w-5xl mx-auto"
           >
             {[
-              { value: '10', label: 'Detaillierte Leitfäden', sublabel: 'Von Basics bis Expert', icon: FileText, color: 'from-blue-500 to-indigo-500' },
-              { value: '8.8h', label: 'Gesamte Lesezeit', sublabel: 'Umfassender Content', icon: Clock, color: 'from-indigo-500 to-purple-500' },
-              { value: '15,800+', label: 'Erfolgreiche Umsetzungen', sublabel: 'Praxisbewährt', icon: CheckCircle2, color: 'from-purple-500 to-pink-500' },
-              { value: '4.7★', label: 'Durchschnittsbewertung', sublabel: 'Nutzer-Feedback', icon: Star, color: 'from-pink-500 to-red-500' }
+              { value: '10', label: 'Detaillierte Leitfäden', sublabel: 'Von Basics bis Expert', icon: FileText, color: 'from-blue-500 to-indigo-500' }
             ].map((stat, index) => (
               <motion.div
                 key={index}

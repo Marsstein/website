@@ -196,7 +196,6 @@ const WebsiteDsgvoGuide: React.FC = () => {
       id: 0,
       title: 'Website-Grundlagen für DSGVO',
       subtitle: 'Rechtlicher Rahmen und Compliance-Anforderungen',
-      readTime: '8 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-8">
@@ -372,7 +371,6 @@ const WebsiteDsgvoGuide: React.FC = () => {
       id: 1,
       title: 'Cookie-Banner & Consent Management',
       subtitle: 'Rechtskonforme Einwilligungssysteme implementieren',
-      readTime: '12 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-8">
@@ -559,7 +557,6 @@ const WebsiteDsgvoGuide: React.FC = () => {
       id: 2,
       title: 'Datenschutzerklärung optimieren',
       subtitle: 'Vollständige und rechtssichere Privacy Policy',
-      readTime: '10 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-8">
@@ -744,7 +741,6 @@ const WebsiteDsgvoGuide: React.FC = () => {
       id: 3,
       title: 'Analytics & Tracking DSGVO-konform',
       subtitle: 'Google Analytics, Hotjar & Co. rechtssicher einsetzen',
-      readTime: '15 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 rounded-xl p-8">
@@ -1034,7 +1030,6 @@ const WebsiteDsgvoGuide: React.FC = () => {
       id: 4,
       title: 'Drittanbieter-Tools & Compliance',
       subtitle: 'Externe Services DSGVO-konform integrieren',
-      readTime: '12 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 rounded-xl p-8">
@@ -1430,21 +1425,9 @@ const WebsiteDsgvoGuide: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
-                <Clock className="h-3 w-3 mr-1" />
-                47 Min Lesezeit
-              </Badge>
               <Badge className="bg-pink-500/20 text-pink-300 border-pink-500/30">
                 <Target className="h-3 w-3 mr-1" />
                 Fortgeschritten
-              </Badge>
-              <Badge className="bg-red-500/20 text-red-300 border-red-500/30">
-                <Users className="h-3 w-3 mr-1" />
-                2.847 Nutzer
-              </Badge>
-              <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
-                <Star className="h-3 w-3 mr-1 fill-current" />
-                4.8/5
               </Badge>
             </div>
           </div>
@@ -1505,7 +1488,6 @@ const WebsiteDsgvoGuide: React.FC = () => {
                           </div>
                           <div>
                             <div className="font-medium text-sm">{chapter.title}</div>
-                            <div className="text-xs opacity-75">{chapter.readTime}</div>
                           </div>
                         </div>
                       </motion.button>
@@ -1527,7 +1509,7 @@ const WebsiteDsgvoGuide: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-slate-400" />
-                    <span className="text-sm text-slate-400">{currentChapterData.readTime}</span>
+                    <span className="text-sm text-slate-400">Kapitel {currentChapter + 1}</span>
                   </div>
                 </div>
 

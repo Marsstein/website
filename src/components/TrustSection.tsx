@@ -25,15 +25,15 @@ export const TrustSection: React.FC = () => {
     },
     {
       icon: Users,
-      value: '500k+',
+      value: 'DACH',
       label: 'Zielmarkt',
-      description: 'EU-Unternehmen addressiert',
+      description: 'Fokus auf DACH-Region',
       color: 'from-blue-500 to-cyan-600',
       badge: 'Potenzial'
     },
     {
       icon: FileCheck,
-      value: '10k+',
+      value: 'Beta',
       label: 'Audit-Kapazität',
       description: 'Skalierung geplant',
       color: 'from-purple-500 to-pink-600',
@@ -41,7 +41,7 @@ export const TrustSection: React.FC = () => {
     },
     {
       icon: TrendingUp,
-      value: '90%',
+      value: 'Auto',
       label: 'Zeitersparnis',
       description: 'Unser Automatisierungsziel',
       color: 'from-orange-500 to-red-600',

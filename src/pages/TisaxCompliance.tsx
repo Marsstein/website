@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -70,6 +71,19 @@ const TisaxCompliance = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "TISAX Zertifizierung",
+    "description": "TISAX für die Automobilindustrie: Informationssicherheit nach VDA ISA",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Automotive Security Certification",
+    "areaServed": "DE"
+  };
 
   const painPoints = [
     {
@@ -273,8 +287,16 @@ const TisaxCompliance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="TISAX – Automotive Security für Zulieferer & OEMs"
+        description="TISAX-Zertifizierung für die Automobilindustrie: VDA ISA konform werden. ✓ Assessment-Level 2&3 ✓ ENX-Zugang. Jetzt vorbereiten!"
+        canonical="/tisax"
+        keywords="TISAX, VDA ISA, Automotive Security, TISAX Zertifizierung, Automobilindustrie"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -852,6 +874,7 @@ const TisaxCompliance = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

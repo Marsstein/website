@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { motion } from 'framer-motion';
 import { Progress } from '@/components/ui/progress';
 import { 
   Factory,
@@ -89,17 +89,69 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Industrie40DatenschutzGuide = () => {
-  const [activeTab, setActiveTab] = useState('overview');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-
-  const tabs = [
-    { id: 'overview', label: 'Überblick', icon: Shield },
-    { id: 'iot-devices', label: 'IoT & Sensoren', icon: Radio },
-    { id: 'machine-data', label: 'Maschinendaten', icon: Cog },
+  const [activeSection, setActiveSection] = useState<string>('ueberblick');
+  
+  // Navigation items for sticky navigation - mit deutschen Anker-Links
+  const navigationItems = [
+    { id: 'ueberblick', label: 'Überblick', icon: Shield },
+    { id: 'iot-sensoren', label: 'IoT & Sensoren', icon: Radio },
+    { id: 'maschinendaten', label: 'Maschinendaten', icon: Cog },
     { id: 'edge-computing', label: 'Edge Computing', icon: Cpu },
-    { id: 'worker-privacy', label: 'Mitarbeiterschutz', icon: Users },
-    { id: 'implementation', label: 'Implementation', icon: Code }
+    { id: 'mitarbeiterschutz', label: 'Mitarbeiterschutz', icon: Users },
+    { id: 'umsetzung', label: 'Umsetzung', icon: Code }
   ];
+  
+  const scrollToSection = (sectionId: string) => {
+    // Update URL with hash
+    window.history.pushState(null, '', `#${sectionId}`);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120; // Offset for sticky navigation
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
+  // Handle initial load with hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        scrollToSection(hash);
+        setActiveSection(hash);
+      }, 100);
+    }
+  }, []);
+  
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navigationItems.map(item => ({
+        id: item.id,
+        element: document.getElementById(item.id)
+      }));
+      
+      const scrollPosition = window.scrollY + 150; // Offset for sticky nav
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const industrie40Frameworks = [
     {
@@ -1780,45 +1832,144 @@ compliance:
               </CardContent>
             </Card>
 
-            {/* Main Content Tabs */}
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-                {tabs.map((tab) => (
-                  <TabsTrigger
-                    key={tab.id}
-                    value={tab.id}
-                    className="flex items-center gap-2 text-xs md:text-sm"
+          </div>
+        </div>
+
+        {/* Sticky Navigation */}
+        <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+          <div className="container px-4">
+            <div className="max-w-7xl mx-auto">
+              <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+                {navigationItems.map((item, index) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      scrollToSection(item.id);
+                      setActiveSection(item.id);
+                    }}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
+                      activeSection === item.id
+                        ? "bg-gray-100 dark:bg-gray-950/50 text-gray-700 dark:text-gray-400 border-gray-200 dark:border-gray-800"
+                        : "hover:bg-gray-50 dark:hover:bg-gray-950/30 hover:text-gray-700 dark:hover:text-gray-400",
+                      "border",
+                      activeSection === item.id
+                        ? "border-gray-200 dark:border-gray-800"
+                        : "border-transparent hover:border-gray-200 dark:hover:border-gray-800"
+                    )}
                   >
-                    <tab.icon className="h-4 w-4" />
-                    <span className="hidden sm:inline">{tab.label}</span>
-                  </TabsTrigger>
+                    <item.icon className={cn(
+                      "h-4 w-4",
+                      activeSection === item.id && "text-gray-600 dark:text-gray-500"
+                    )} />
+                    <span className={cn(
+                      "text-sm font-medium",
+                      activeSection === item.id && "text-gray-700 dark:text-gray-400"
+                    )}>{item.label}</span>
+                  </button>
                 ))}
-              </TabsList>
+              </nav>
+            </div>
+          </div>
+        </div>
 
-              <TabsContent value="overview" className="space-y-8">
+        {/* Main Content Sections */}
+        <div className="py-20">
+          <div className="container px-4">
+            <div className="max-w-6xl mx-auto space-y-20">
+              {/* Überblick Section */}
+              <section id="ueberblick" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Industrie 4.0 Datenschutz Überblick
+                </motion.h2>
                 {renderOverview()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="iot-devices" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* IoT & Sensoren Section */}
+              <section id="iot-sensoren" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  IoT-Geräte & Sensoren Datenschutz
+                </motion.h2>
                 {renderIoTDevices()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="machine-data" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Maschinendaten Section */}
+              <section id="maschinendaten" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Maschinendaten & Produktionsdaten
+                </motion.h2>
                 {renderMachineData()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="edge-computing" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Edge Computing Section */}
+              <section id="edge-computing" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Edge Computing & Datenverarbeitung
+                </motion.h2>
                 {renderEdgeComputing()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="worker-privacy" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Mitarbeiterschutz Section */}
+              <section id="mitarbeiterschutz" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Mitarbeiterdatenschutz in der Smart Factory
+                </motion.h2>
                 {renderWorkerPrivacy()}
-              </TabsContent>
+              </section>
 
-              <TabsContent value="implementation" className="space-y-8">
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+              {/* Umsetzung Section */}
+              <section id="umsetzung" className="space-y-8 scroll-mt-32">
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-3xl font-bold mb-8"
+                >
+                  Umsetzung & Implementation
+                </motion.h2>
                 {renderImplementation()}
-              </TabsContent>
-            </Tabs>
+              </section>
+            </div>
 
             {/* Quick Links */}
             <Card className="mt-12">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -57,6 +58,19 @@ const Iso27017Compliance = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "ISO 27017 Cloud Security Zertifizierung",
+    "description": "ISO 27017 für Cloud-Security: Spezifische Sicherheitskontrollen für Cloud-Services",
+    "provider": {
+      "@type": "Organization",
+      "name": "Marsstein GmbH"
+    },
+    "serviceType": "Cloud Security Certification",
+    "areaServed": "DE"
+  };
 
   const painPoints = [
     {
@@ -221,8 +235,16 @@ const Iso27017Compliance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="ISO 27017 – Cloud-Security-Standard zertifizieren"
+        description="ISO 27017 Zertifizierung für Cloud-Services: Spezifische Controls für AWS, Azure & GCP. ✓ Multi-Cloud ✓ Compliance. Jetzt beraten lassen!"
+        canonical="/iso-27017"
+        keywords="ISO 27017, Cloud Security, Cloud Zertifizierung, ISO 27017 Controls, Cloud Compliance"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -709,6 +731,7 @@ const Iso27017Compliance = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

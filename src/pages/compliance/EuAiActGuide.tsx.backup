@@ -1,0 +1,2333 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { 
+  Shield, 
+  CheckCircle2, 
+  ArrowRight, 
+  ArrowLeft,
+  Clock,
+  Star,
+  Download,
+  BookOpen,
+  Target,
+  AlertTriangle,
+  Lightbulb,
+  FileText,
+  Users,
+  Scale,
+  Lock,
+  Eye,
+  Gavel,
+  Euro,
+  Calendar,
+  ChevronRight,
+  ChevronDown,
+  Share2,
+  Bookmark,
+  ExternalLink,
+  Play,
+  Pause,
+  RotateCcw,
+  CheckCircle,
+  AlertCircle,
+  Info,
+  HelpCircle,
+  Zap,
+  Brain,
+  Award,
+  TrendingUp,
+  Settings,
+  Database,
+  Building2,
+  Globe,
+  Code,
+  Server,
+  Cloud,
+  Network,
+  Cpu,
+  Monitor,
+  Wifi,
+  Activity,
+  BarChart3,
+  PieChart,
+  LineChart,
+  Building,
+  Factory,
+  Briefcase,
+  GraduationCap,
+  Heart,
+  MapPin,
+  Flag,
+  Home,
+  Package,
+  ShoppingCart,
+  Layers,
+  Grid,
+  List,
+  Plus,
+  Minus,
+  X,
+  Check,
+  Edit3,
+  Copy,
+  Save,
+  Trash2,
+  FolderOpen,
+  File,
+  Image,
+  Video,
+  Music,
+  Upload,
+  Link as LinkIcon,
+  Mail,
+  Phone,
+  MessageSquare,
+  Send,
+  Bell,
+  Search,
+  Filter,
+  SortAsc,
+  Route,
+  Navigation,
+  Compass,
+  Map,
+  Timer,
+  Rocket,
+  CircleDot,
+  Circle,
+  DollarSign,
+  Percent,
+  Hash,
+  Key,
+  Unlock,
+  ShieldCheck,
+  ShieldOff,
+  ShieldAlert,
+  UserCheck,
+  UserX,
+  UserPlus,
+  GitBranch,
+  GitCommit,
+  GitMerge,
+  Box,
+  Boxes,
+  Package2,
+  Truck,
+  Anchor,
+  Plane,
+  Train,
+  Car,
+  Bot,
+  Sparkles,
+  BrainCircuit,
+  Microscope,
+  Fingerprint,
+  ScanFace,
+  AlertOctagon,
+  Gauge,
+  Megaphone,
+  BadgeCheck,
+  ClipboardCheck,
+  FileSearch,
+  ScrollText,
+  Stamp,
+  ShieldQuestion,
+  UserCog,
+  Wrench,
+  Cog,
+  BrainCog,
+  Cpu as CpuIcon,
+  CircuitBoard,
+  Zap as ZapIcon,
+  Binary,
+  GitFork,
+  Workflow,
+  TestTube2,
+  FlaskConical,
+  Beaker,
+  Atom,
+  Dna,
+  Stethoscope,
+  Siren,
+  RadioActive,
+  Flame,
+  Snowflake,
+  ThermometerSnowflake,
+  Waves,
+  Wind,
+  Sun,
+  Moon,
+  CloudRain,
+  CloudSnow,
+  CloudLightning,
+  Tornado,
+  Rainbow,
+  Sparkle,
+  Stars,
+  Orbit,
+  Satellite,
+  RocketIcon,
+  Telescope,
+  Microscope as MicroscopeIcon,
+  PetriDish,
+  TestTube,
+  Dna as DnaIcon,
+  Pill,
+  Syringe,
+  HeartPulse,
+  BrainIcon,
+  Fingerprint as FingerprintIcon
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { cn } from '@/lib/utils';
+
+const EuAiActGuide: React.FC = () => {
+  const [activeSection, setActiveSection] = useState('ueberblick');
+  const [completedSections, setCompletedSections] = useState<string[]>([]);
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [bookmarked, setBookmarked] = useState(false);
+  const [expandedRiskLevel, setExpandedRiskLevel] = useState<{[key: string]: boolean}>({});
+  const [checkedItems, setCheckedItems] = useState<{[key: string]: boolean}>({});
+  
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: contentRef,
+    offset: ["start start", "end end"]
+  });
+
+  const sections = [
+    { id: 'ueberblick', title: 'Überblick', icon: Eye, readTime: '12 Min' },
+    { id: 'anwendungsbereich', title: 'Anwendungsbereich', icon: Target, readTime: '15 Min' },
+    { id: 'risikostufen', title: 'Risikostufen', icon: Gauge, readTime: '25 Min' },
+    { id: 'verbotene-praktiken', title: 'Verbotene Praktiken', icon: ShieldOff, readTime: '18 Min' },
+    { id: 'hochrisiko-ki', title: 'Hochrisiko-KI', icon: AlertTriangle, readTime: '30 Min' },
+    { id: 'general-purpose-ai', title: 'General Purpose AI', icon: BrainCircuit, readTime: '20 Min' },
+    { id: 'anforderungen', title: 'Anforderungen', icon: ClipboardCheck, readTime: '35 Min' },
+    { id: 'konformitaet', title: 'Konformitätsbewertung', icon: BadgeCheck, readTime: '25 Min' },
+    { id: 'transparenz', title: 'Transparenzpflichten', icon: Eye, readTime: '20 Min' },
+    { id: 'governance', title: 'AI Governance', icon: Building2, readTime: '22 Min' },
+    { id: 'dokumentation', title: 'Dokumentation', icon: FileText, readTime: '18 Min' },
+    { id: 'zeitplan', title: 'Zeitplan', icon: Calendar, readTime: '15 Min' },
+    { id: 'bussgelder', title: 'Bußgelder', icon: Gavel, readTime: '12 Min' },
+    { id: 'implementierung', title: 'Implementierung', icon: Rocket, readTime: '30 Min' },
+    { id: 'technische-standards', title: 'Technische Standards', icon: Wrench, readTime: '25 Min' },
+    { id: 'innovation', title: 'Innovation & Sandboxes', icon: Sparkles, readTime: '18 Min' },
+    { id: 'zertifizierung', title: 'Zertifizierung', icon: Award, readTime: '20 Min' },
+    { id: 'ressourcen', title: 'Ressourcen', icon: Download, readTime: '10 Min' }
+  ];
+
+  const riskCategories = [
+    {
+      level: 'Minimal Risk',
+      icon: CheckCircle,
+      color: 'from-green-500 to-emerald-600',
+      description: 'Geringe oder keine Risiken für Grundrechte',
+      requirements: 'Minimale Anforderungen',
+      examples: [
+        'AI-gestützte Videospiele',
+        'Spam-Filter',
+        'AI-generierte Kunstwerke',
+        'Inventory Management Systeme',
+        'Predictive Maintenance'
+      ],
+      obligations: [
+        'Freiwillige Verhaltenskodizes',
+        'Keine spezifischen rechtlichen Anforderungen',
+        'Best Practices empfohlen',
+        'Transparenz bei Interaktion'
+      ]
+    },
+    {
+      level: 'Limited Risk',
+      icon: Info,
+      color: 'from-yellow-500 to-orange-600',
+      description: 'Systeme mit spezifischen Transparenzpflichten',
+      requirements: 'Transparenzpflichten',
+      examples: [
+        'Chatbots und virtuelle Assistenten',
+        'Emotion Recognition Systems',
+        'Biometrische Kategorisierungssysteme',
+        'Deepfakes (Audio/Video)',
+        'AI-generierte Inhalte'
+      ],
+      obligations: [
+        'Nutzer informieren, dass sie mit KI interagieren',
+        'Kennzeichnung von KI-generierten Inhalten',
+        'Opt-out Möglichkeiten bereitstellen',
+        'Klare Erkennbarkeit von Deepfakes',
+        'Emotionserkennung offenlegen'
+      ]
+    },
+    {
+      level: 'High Risk',
+      icon: AlertTriangle,
+      color: 'from-orange-500 to-red-600',
+      description: 'Erhebliche Risiken für Gesundheit, Sicherheit oder Grundrechte',
+      requirements: 'Umfassende Compliance-Anforderungen',
+      examples: [
+        'Biometrische Identifikation',
+        'Kritische Infrastrukturen',
+        'Bildung und Berufsausbildung',
+        'Beschäftigung und Arbeitnehmerverwaltung',
+        'Zugang zu wesentlichen Dienstleistungen',
+        'Strafverfolgung',
+        'Migration und Grenzkontrollen',
+        'Rechtspflege'
+      ],
+      obligations: [
+        'Risikomanagementsystem',
+        'Datenqualität und -governance',
+        'Technische Dokumentation',
+        'Aufzeichnungspflichten (Logging)',
+        'Transparenz und Nutzerinformation',
+        'Menschliche Aufsicht',
+        'Genauigkeit, Robustheit und Cybersicherheit',
+        'Konformitätsbewertung',
+        'CE-Kennzeichnung'
+      ]
+    },
+    {
+      level: 'Unacceptable Risk',
+      icon: ShieldOff,
+      color: 'from-red-500 to-pink-600',
+      description: 'Verbotene AI-Praktiken',
+      requirements: 'Vollständiges Verbot',
+      examples: [
+        'Social Scoring durch Behörden',
+        'Unterschwellige Manipulation',
+        'Ausnutzung von Schwächen vulnerabler Gruppen',
+        'Biometrische Echtzeit-Fernidentifizierung im öffentlichen Raum',
+        'Predictive Policing basierend auf Profiling',
+        'Emotionserkennung am Arbeitsplatz/Bildung',
+        'Ungezielte Scraping für Gesichtsdatenbanken',
+        'AI-basierte Ableitung sensibler Merkmale'
+      ],
+      obligations: [
+        'Sofortige Einstellung',
+        'Keine Entwicklung oder Vermarktung',
+        'Ausnahmen nur für Strafverfolgung unter strengen Bedingungen',
+        'Hohe Strafen bei Verstößen (bis 35 Mio € oder 7% Umsatz)'
+      ]
+    }
+  ];
+
+  const complianceTimeline = [
+    {
+      date: '2. August 2024',
+      milestone: 'Inkrafttreten',
+      description: 'EU AI Act tritt offiziell in Kraft',
+      status: 'completed',
+      requirements: []
+    },
+    {
+      date: '2. Februar 2025',
+      milestone: 'Verbotene Praktiken',
+      description: 'Verbot unannehmbarer KI-Praktiken wird wirksam',
+      status: 'upcoming',
+      requirements: [
+        'Einstellung verbotener AI-Systeme',
+        'Compliance-Check bestehender Systeme',
+        'Dokumentation der Einstellung'
+      ]
+    },
+    {
+      date: '2. August 2025',
+      milestone: 'General Purpose AI',
+      description: 'Pflichten für GPAI-Modelle treten in Kraft',
+      status: 'upcoming',
+      requirements: [
+        'Technische Dokumentation',
+        'Urheberrechts-Compliance',
+        'Modell-Evaluierung',
+        'Systemische Risiken (>10^25 FLOPS)'
+      ]
+    },
+    {
+      date: '2. August 2026',
+      milestone: 'Annex III Hochrisiko-KI',
+      description: 'Anforderungen für bestehende Hochrisiko-KI-Systeme',
+      status: 'upcoming',
+      requirements: [
+        'Konformitätsbewertung',
+        'CE-Kennzeichnung',
+        'Registrierung in EU-Datenbank',
+        'Benannte Stellen einbeziehen'
+      ]
+    },
+    {
+      date: '2. August 2027',
+      milestone: 'Vollständige Anwendung',
+      description: 'Alle Bestimmungen des AI Act gelten',
+      status: 'upcoming',
+      requirements: [
+        'Volle Compliance für alle AI-Systeme',
+        'Marktüberwachung aktiv',
+        'Alle Durchführungsrechtsakte anwendbar'
+      ]
+    },
+    {
+      date: '2. August 2030',
+      milestone: 'Erste Überprüfung',
+      description: 'Kommission überprüft und bewertet AI Act',
+      status: 'future',
+      requirements: [
+        'Evaluierungsbericht',
+        'Mögliche Gesetzesanpassungen',
+        'Neue technische Standards'
+      ]
+    }
+  ];
+
+  const implementationSteps = [
+    {
+      phase: 'Phase 1: AI Inventory & Gap Analysis',
+      duration: '2-3 Monate',
+      icon: Search,
+      color: 'from-blue-500 to-indigo-600',
+      tasks: [
+        'Bestandsaufnahme aller AI-Systeme im Unternehmen',
+        'Klassifizierung nach Risikostufen',
+        'Use Case Dokumentation',
+        'Gap-Analyse gegen AI Act Anforderungen',
+        'Risikobewertung durchführen',
+        'Compliance-Roadmap erstellen'
+      ],
+      deliverables: ['AI System Inventory', 'Risk Classification Report', 'Gap Analysis', 'Compliance Roadmap']
+    },
+    {
+      phase: 'Phase 2: Governance & Organisation',
+      duration: '2-4 Monate',
+      icon: Building2,
+      color: 'from-emerald-500 to-teal-600',
+      tasks: [
+        'AI Governance Board etablieren',
+        'Verantwortlichkeiten definieren (RACI)',
+        'AI Ethics Committee gründen',
+        'Policies und Procedures entwickeln',
+        'Training Programme aufsetzen',
+        'Incident Response Plan erstellen'
+      ],
+      deliverables: ['AI Governance Framework', 'Policy Suite', 'Training Materials', 'Org Chart']
+    },
+    {
+      phase: 'Phase 3: Technical Implementation',
+      duration: '6-9 Monate',
+      icon: Code,
+      color: 'from-purple-500 to-pink-600',
+      tasks: [
+        'Risikomanagementsystem implementieren',
+        'Data Governance Framework',
+        'Logging und Monitoring aufsetzen',
+        'Human Oversight Mechanismen',
+        'Bias Detection und Mitigation',
+        'Security und Robustness Testing'
+      ],
+      deliverables: ['Technical Documentation', 'Risk Management System', 'Monitoring Dashboard']
+    },
+    {
+      phase: 'Phase 4: Documentation & Testing',
+      duration: '3-4 Monate',
+      icon: FileText,
+      color: 'from-orange-500 to-red-600',
+      tasks: [
+        'Technische Dokumentation vervollständigen',
+        'Conformity Assessment vorbereiten',
+        'Testing und Validierung',
+        'Audit Trail etablieren',
+        'Transparency Reports erstellen',
+        'User Information Materials'
+      ],
+      deliverables: ['Complete Documentation Set', 'Test Reports', 'Audit Trails', 'User Guides']
+    },
+    {
+      phase: 'Phase 5: Certification & Go-Live',
+      duration: '2-3 Monate',
+      icon: Award,
+      color: 'from-cyan-500 to-blue-600',
+      tasks: [
+        'Notified Body Engagement',
+        'Conformity Assessment durchführen',
+        'CE Marking Prozess',
+        'EU Database Registration',
+        'Market Surveillance Vorbereitung',
+        'Continuous Monitoring Setup'
+      ],
+      deliverables: ['CE Certificate', 'EU Database Entry', 'Surveillance Plan', 'Compliance Dashboard']
+    }
+  ];
+
+  const handleSectionComplete = (sectionId: string) => {
+    setCompletedSections(prev => 
+      prev.includes(sectionId) 
+        ? prev.filter(id => id !== sectionId)
+        : [...prev, sectionId]
+    );
+  };
+
+  const toggleRiskLevel = (level: string) => {
+    setExpandedRiskLevel(prev => ({
+      ...prev,
+      [level]: !prev[level]
+    }));
+  };
+
+  const handleItemCheck = (itemId: string) => {
+    setCheckedItems(prev => ({
+      ...prev,
+      [itemId]: !prev[itemId]
+    }));
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    window.history.pushState(null, '', `#${sectionId}`);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (contentRef.current) {
+        const scrolled = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrolled / maxScroll) * 100;
+        setReadingProgress(Math.min(progress, 100));
+      }
+
+      // Track active section
+      const sectionElements = sections.map(section => ({
+        id: section.id,
+        element: document.getElementById(section.id)
+      }));
+      
+      const scrollPosition = window.scrollY + 150;
+      
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const section = sectionElements[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle initial hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        scrollToSection(hash);
+        setActiveSection(hash);
+      }, 100);
+    }
+  }, []);
+
+  const CounterAnimation = ({ value, suffix = '', prefix = '', duration = 2000 }: { value: number; suffix?: string; prefix?: string; duration?: number }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: true });
+
+    useEffect(() => {
+      if (isInView) {
+        let startTime: number;
+        const startValue = 0;
+        const endValue = value;
+
+        const animate = (currentTime: number) => {
+          if (!startTime) startTime = currentTime;
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+          const currentValue = Math.floor(startValue + (endValue - startValue) * progress);
+          setCount(currentValue);
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        };
+
+        requestAnimationFrame(animate);
+      }
+    }, [isInView, value, duration]);
+
+    return <span ref={ref}>{prefix}{count}{suffix}</span>;
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <Header />
+      
+      {/* Fixed Progress Bar */}
+      <div className="fixed top-16 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
+        <div className="container mx-auto max-w-7xl px-4 py-3">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-4">
+              <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                <BrainCircuit className="h-3 w-3 mr-1" />
+                EU AI Act Guide
+              </Badge>
+              <div className="text-sm text-slate-400">
+                Abschnitt {sections.findIndex(s => s.id === activeSection) + 1} von {sections.length}
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-slate-400">{Math.round(readingProgress)}% gelesen</span>
+              <Button
+                onClick={() => setBookmarked(!bookmarked)}
+                variant="ghost"
+                size="sm"
+                className="text-slate-400 hover:text-yellow-400"
+              >
+                <Bookmark className={cn("h-4 w-4", bookmarked && "fill-current text-yellow-400")} />
+              </Button>
+            </div>
+          </div>
+          <Progress value={readingProgress} className="h-1" />
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <motion.section 
+        className="relative pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-5"></div>
+        <div className="relative container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-4 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl">
+                  <BrainCircuit className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-4xl md:text-5xl font-bold text-white">EU AI Act</h1>
+                  <p className="text-xl text-blue-400">Regulation (EU) 2024/1689</p>
+                </div>
+              </div>
+              
+              <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+                Die weltweit erste umfassende KI-Regulierung. Risikobasierter Ansatz zum Schutz 
+                von Grundrechten bei gleichzeitiger Förderung von Innovation und Vertrauen in KI-Systeme.
+              </p>
+              
+              <div className="flex flex-wrap gap-4 mb-8">
+                <Badge variant="outline" className="bg-blue-500/10 border-blue-500/20 text-blue-300">
+                  <Flag className="h-4 w-4 mr-2" />
+                  EU-Verordnung
+                </Badge>
+                <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/20 text-emerald-300">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  In Kraft seit 2.8.2024
+                </Badge>
+                <Badge variant="outline" className="bg-purple-500/10 border-purple-500/20 text-purple-300">
+                  <Building2 className="h-4 w-4 mr-2" />
+                  Alle KI-Anbieter & -Nutzer
+                </Badge>
+              </div>
+
+              <div className="flex gap-4">
+                <Button 
+                  onClick={() => setActiveSection('risk-levels')}
+                  className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600"
+                >
+                  <Play className="h-4 w-4 mr-2" />
+                  Guide starten
+                </Button>
+                <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                  <Download className="h-4 w-4 mr-2" />
+                  PDF herunterladen
+                </Button>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="space-y-6"
+            >
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl font-bold text-blue-400 mb-2">
+                      <CounterAnimation value={4} />
+                    </div>
+                    <div className="text-sm text-slate-400">Risikostufen</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl font-bold text-emerald-400 mb-2">
+                      <CounterAnimation value={113} />
+                    </div>
+                    <div className="text-sm text-slate-400">Artikel</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl font-bold text-purple-400 mb-2">
+                      <CounterAnimation value={35} prefix="€" suffix="M" />
+                    </div>
+                    <div className="text-sm text-slate-400">Max. Bußgeld</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl font-bold text-orange-400 mb-2">
+                      <CounterAnimation value={7} suffix="%" />
+                    </div>
+                    <div className="text-sm text-slate-400">vom Jahresumsatz</div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Quick Overview */}
+              <Card className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold text-white mb-4">Was Sie in diesem Guide lernen</h3>
+                  <div className="space-y-3">
+                    {[
+                      'Risikobasierter Ansatz und Klassifizierung',
+                      'Verbotene KI-Praktiken verstehen',
+                      'Anforderungen für Hochrisiko-KI',
+                      'General Purpose AI Regelungen',
+                      'Konformitätsbewertung und CE-Kennzeichnung',
+                      'Implementierungs-Roadmap und Timeline'
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <CheckCircle className="h-4 w-4 text-blue-400" />
+                        <span className="text-slate-300 text-sm">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Sticky Navigation */}
+      <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <div className="container px-4">
+          <div className="max-w-7xl mx-auto">
+            <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+              {sections.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      scrollToSection(item.id);
+                      setActiveSection(item.id);
+                    }}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
+                      activeSection === item.id
+                        ? "bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400 border-red-200 dark:border-red-800"
+                        : "hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-700 dark:hover:text-red-400",
+                      "border",
+                      activeSection === item.id
+                        ? "border-red-200 dark:border-red-800"
+                        : "border-transparent hover:border-red-200 dark:hover:border-red-800"
+                    )}
+                  >
+                    <IconComponent className={cn(
+                      "h-4 w-4",
+                      activeSection === item.id && "text-red-600 dark:text-red-500"
+                    )} />
+                    <span className={cn(
+                      "text-sm font-medium",
+                      activeSection === item.id && "text-red-700 dark:text-red-400"
+                    )}>{item.title}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto max-w-7xl px-4 py-8">
+        <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
+          {/* Sidebar Navigation */}
+          <div className="lg:col-span-1">
+            <div className="lg:sticky lg:top-32 space-y-6">
+              <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-white mb-4">Inhaltsverzeichnis</h3>
+                  <div className="space-y-2">
+                    {sections.map((section, index) => {
+                      const IconComponent = section.icon;
+                      return (
+                        <button
+                          key={section.id}
+                          onClick={() => {
+                            scrollToSection(section.id);
+                            setActiveSection(section.id);
+                          }}
+                          className={cn(
+                            "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
+                            activeSection === section.id
+                              ? "bg-blue-500/20 border border-blue-500/50 text-blue-300"
+                              : "border border-slate-700/50 text-slate-400 hover:bg-slate-700/50 hover:text-slate-300"
+                          )}
+                        >
+                          <div className="flex items-center gap-3">
+                            <IconComponent className="h-4 w-4" />
+                            <div className="text-left">
+                              <div className="text-sm font-medium">{section.title}</div>
+                              <div className="text-xs opacity-70">{section.readTime}</div>
+                            </div>
+                          </div>
+                          {completedSections.includes(section.id) && (
+                            <CheckCircle2 className="h-4 w-4 text-green-400" />
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-white mb-4">Schnellaktionen</h3>
+                  <div className="space-y-3">
+                    <Button variant="outline" size="sm" className="w-full justify-start">
+                      <Download className="h-4 w-4 mr-2" />
+                      Risk Assessment Template
+                    </Button>
+                    <Button variant="outline" size="sm" className="w-full justify-start">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Compliance Checklist
+                    </Button>
+                    <Button variant="outline" size="sm" className="w-full justify-start">
+                      <Share2 className="h-4 w-4 mr-2" />
+                      Guide teilen
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Main Content Area */}
+          <div className="lg:col-span-3">
+            <div ref={contentRef} className="space-y-20">
+                
+                {/* Überblick Section */}
+                <section id="ueberblick" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Überblick</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('ueberblick')}
+                            variant={completedSections.includes('ueberblick') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('ueberblick') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+                        
+                        <div className="prose prose-invert prose-slate max-w-none">
+                          <p className="text-lg text-slate-300 leading-relaxed mb-6">
+                            Die Verordnung (EU) 2024/1689 über künstliche Intelligenz (AI Act) ist die weltweit 
+                            erste umfassende horizontale Regulierung für KI-Systeme. Sie verfolgt einen risikobasierten 
+                            Ansatz und zielt darauf ab, ein Gleichgewicht zwischen dem Schutz der Grundrechte und der 
+                            Förderung von Innovation zu schaffen.
+                          </p>
+
+                          <div className="grid md:grid-cols-2 gap-6 mb-8">
+                            <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
+                              <h3 className="text-xl font-bold text-blue-300 mb-4 flex items-center gap-2">
+                                <Target className="h-5 w-5" />
+                                Hauptziele
+                              </h3>
+                              <ul className="space-y-2 text-slate-300">
+                                <li className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                                  <span>Schutz von Grundrechten und Sicherheit</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                                  <span>Rechtssicherheit für KI-Entwickler</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                                  <span>Förderung von vertrauenswürdiger KI</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                                  <span>Harmonisierung des EU-Binnenmarkts</span>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-xl p-6">
+                              <h3 className="text-xl font-bold text-emerald-300 mb-4 flex items-center gap-2">
+                                <Building2 className="h-5 w-5" />
+                                Geltungsbereich
+                              </h3>
+                              <ul className="space-y-2 text-slate-300">
+                                <li className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                                  <span>Anbieter von KI-Systemen</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                                  <span>Betreiber/Nutzer von KI</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                                  <span>Importeure und Händler</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                                  <span>Drittländer mit EU-Auswirkung</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-4">Kernprinzipien des AI Act</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              <div className="text-center">
+                                <div className="p-3 bg-blue-500 rounded-xl w-fit mx-auto mb-3">
+                                  <Gauge className="h-6 w-6 text-white" />
+                                </div>
+                                <h4 className="font-semibold text-white mb-2">Risikobasiert</h4>
+                                <p className="text-sm text-slate-400">Anforderungen proportional zum Risiko</p>
+                              </div>
+                              <div className="text-center">
+                                <div className="p-3 bg-emerald-500 rounded-xl w-fit mx-auto mb-3">
+                                  <Users className="h-6 w-6 text-white" />
+                                </div>
+                                <h4 className="font-semibold text-white mb-2">Human-Centric</h4>
+                                <p className="text-sm text-slate-400">Mensch im Mittelpunkt der KI-Nutzung</p>
+                              </div>
+                              <div className="text-center">
+                                <div className="p-3 bg-purple-500 rounded-xl w-fit mx-auto mb-3">
+                                  <Globe className="h-6 w-6 text-white" />
+                                </div>
+                                <h4 className="font-semibold text-white mb-2">Technologieneutral</h4>
+                                <p className="text-sm text-slate-400">Anwendbar auf alle KI-Technologien</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Risikostufen Section */}
+                <section id="risikostufen" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Risikostufen</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('risikostufen')}
+                            variant={completedSections.includes('risikostufen') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('risikostufen') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="mb-6 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
+                          <h3 className="text-lg font-bold text-blue-300 mb-3">Risikobasierter Ansatz</h3>
+                          <p className="text-slate-300 mb-4">
+                            Der EU AI Act klassifiziert KI-Systeme in vier Risikostufen. Je höher das Risiko 
+                            für Grundrechte und Sicherheit, desto strenger die Anforderungen. Diese Pyramide 
+                            zeigt die Verteilung und jeweiligen Compliance-Anforderungen.
+                          </p>
+                          <div className="relative h-64 flex items-end justify-center">
+                            <svg className="w-full h-full" viewBox="0 0 400 200">
+                              {/* Pyramid */}
+                              <path d="M200 20 L320 180 L80 180 Z" fill="url(#pyramidGradient)" stroke="rgba(255,255,255,0.2)" strokeWidth="2"/>
+                              
+                              {/* Risk Levels */}
+                              <line x1="120" y1="60" x2="280" y2="60" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+                              <line x1="140" y1="100" x2="260" y2="100" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+                              <line x1="160" y1="140" x2="240" y2="140" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+                              
+                              {/* Labels */}
+                              <text x="200" y="45" textAnchor="middle" fill="#ef4444" className="text-xs font-semibold">Verboten</text>
+                              <text x="200" y="85" textAnchor="middle" fill="#f97316" className="text-xs font-semibold">Hochrisiko</text>
+                              <text x="200" y="125" textAnchor="middle" fill="#eab308" className="text-xs font-semibold">Begrenzt</text>
+                              <text x="200" y="165" textAnchor="middle" fill="#22c55e" className="text-xs font-semibold">Minimal</text>
+                              
+                              {/* Gradient Definition */}
+                              <defs>
+                                <linearGradient id="pyramidGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                  <stop offset="0%" stopColor="#ef4444" stopOpacity="0.8"/>
+                                  <stop offset="33%" stopColor="#f97316" stopOpacity="0.6"/>
+                                  <stop offset="66%" stopColor="#eab308" stopOpacity="0.4"/>
+                                  <stop offset="100%" stopColor="#22c55e" stopOpacity="0.2"/>
+                                </linearGradient>
+                              </defs>
+                            </svg>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4">
+                          {riskCategories.map((category, index) => {
+                            const IconComponent = category.icon;
+                            const isExpanded = expandedRiskLevel[category.level];
+                            
+                            return (
+                              <motion.div
+                                key={category.level}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.05 }}
+                                className="border border-slate-700 rounded-xl overflow-hidden"
+                              >
+                                <button
+                                  onClick={() => toggleRiskLevel(category.level)}
+                                  className="w-full p-6 bg-slate-800/50 hover:bg-slate-800/70 transition-colors flex items-center justify-between"
+                                >
+                                  <div className="flex items-center gap-4">
+                                    <div className={cn(
+                                      "p-3 rounded-xl bg-gradient-to-r",
+                                      category.color
+                                    )}>
+                                      <IconComponent className="h-6 w-6 text-white" />
+                                    </div>
+                                    <div className="text-left">
+                                      <h3 className="text-lg font-bold text-white">{category.level}</h3>
+                                      <p className="text-slate-400 text-sm">{category.description}</p>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-3">
+                                    <Badge variant="outline" className="text-xs">
+                                      {category.requirements}
+                                    </Badge>
+                                    <ChevronDown className={cn(
+                                      "h-5 w-5 text-slate-400 transition-transform duration-200",
+                                      isExpanded && "rotate-180"
+                                    )} />
+                                  </div>
+                                </button>
+                                
+                                {isExpanded && (
+                                  <motion.div
+                                    initial={{ height: 0 }}
+                                    animate={{ height: "auto" }}
+                                    exit={{ height: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="border-t border-slate-700 bg-slate-900/50"
+                                  >
+                                    <div className="p-6 space-y-6">
+                                      <div className="grid md:grid-cols-2 gap-6">
+                                        <div>
+                                          <h4 className="text-md font-semibold text-white mb-3 flex items-center gap-2">
+                                            <Package className="h-4 w-4 text-blue-400" />
+                                            Beispiele
+                                          </h4>
+                                          <ul className="space-y-2">
+                                            {category.examples.map((example, idx) => (
+                                              <li key={idx} className="flex items-start gap-2 text-sm">
+                                                <CircleDot className="h-3 w-3 text-slate-400 mt-1 flex-shrink-0" />
+                                                <span className="text-slate-300">{example}</span>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+                                        
+                                        <div>
+                                          <h4 className="text-md font-semibold text-white mb-3 flex items-center gap-2">
+                                            <ClipboardCheck className="h-4 w-4 text-emerald-400" />
+                                            Anforderungen
+                                          </h4>
+                                          <ul className="space-y-2">
+                                            {category.obligations.map((obligation, idx) => (
+                                              <li key={idx} className="flex items-start gap-2 text-sm">
+                                                <CheckCircle className="h-3 w-3 text-emerald-400 mt-1 flex-shrink-0" />
+                                                <span className="text-slate-300">{obligation}</span>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                )}
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </TabsContent>
+
+                {/* High Risk Section */}
+                <TabsContent value="high-risk" className="space-y-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Hochrisiko-KI-Systeme</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('high-risk')}
+                            variant={completedSections.includes('high-risk') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('high-risk') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* High Risk Categories */}
+                          <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 rounded-xl p-6">
+                            <h3 className="text-xl font-bold text-orange-300 mb-6">Annex III - Hochrisiko-Bereiche</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              {[
+                                {
+                                  category: 'Biometrische Systeme',
+                                  icon: Fingerprint,
+                                  examples: [
+                                    'Fernbiometrische Identifikation',
+                                    'Emotionserkennung am Arbeitsplatz',
+                                    'Biometrische Kategorisierung'
+                                  ]
+                                },
+                                {
+                                  category: 'Kritische Infrastruktur',
+                                  icon: Server,
+                                  examples: [
+                                    'Verkehrssteuerung',
+                                    'Wasser- und Stromversorgung',
+                                    'Digitale Infrastruktur'
+                                  ]
+                                },
+                                {
+                                  category: 'Bildung & Ausbildung',
+                                  icon: GraduationCap,
+                                  examples: [
+                                    'Zulassung zu Bildungseinrichtungen',
+                                    'Bewertung von Prüfungen',
+                                    'Lernfortschrittsüberwachung'
+                                  ]
+                                },
+                                {
+                                  category: 'Beschäftigung',
+                                  icon: Briefcase,
+                                  examples: [
+                                    'Recruiting und Auswahl',
+                                    'Leistungsbewertung',
+                                    'Kündigungsentscheidungen'
+                                  ]
+                                },
+                                {
+                                  category: 'Wesentliche Dienste',
+                                  icon: Heart,
+                                  examples: [
+                                    'Sozialleistungen',
+                                    'Notfalldienste',
+                                    'Kreditwürdigkeit'
+                                  ]
+                                },
+                                {
+                                  category: 'Rechtsdurchsetzung',
+                                  icon: Gavel,
+                                  examples: [
+                                    'Risikoanalyse Straftaten',
+                                    'Polygraph-ähnliche Tools',
+                                    'Beweisbewertung'
+                                  ]
+                                }
+                              ].map((area) => {
+                                const IconComponent = area.icon;
+                                return (
+                                  <div key={area.category} className="bg-slate-800/50 rounded-xl p-6">
+                                    <div className="flex items-center gap-3 mb-4">
+                                      <div className="p-2 bg-orange-500 rounded-lg">
+                                        <IconComponent className="h-5 w-5 text-white" />
+                                      </div>
+                                      <h4 className="font-semibold text-white">{area.category}</h4>
+                                    </div>
+                                    <ul className="space-y-2">
+                                      {area.examples.map((example, idx) => (
+                                        <li key={idx} className="flex items-start gap-2 text-sm">
+                                          <AlertTriangle className="h-3 w-3 text-orange-400 mt-1" />
+                                          <span className="text-slate-300">{example}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Requirements for High Risk */}
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                <Shield className="h-5 w-5 text-blue-400" />
+                                Technische Anforderungen
+                              </h3>
+                              <ul className="space-y-3">
+                                {[
+                                  'Risikomanagementsystem etablieren',
+                                  'Datenqualität und -governance sicherstellen',
+                                  'Technische Dokumentation erstellen',
+                                  'Automatische Aufzeichnung (Logging)',
+                                  'Transparenz für Nutzer gewährleisten',
+                                  'Menschliche Aufsicht ermöglichen',
+                                  'Genauigkeit, Robustheit, Cybersicherheit'
+                                ].map((req, idx) => (
+                                  <li key={idx} className="flex items-start gap-2">
+                                    <CheckCircle className="h-4 w-4 text-blue-400 mt-0.5" />
+                                    <span className="text-sm text-slate-300">{req}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                <FileText className="h-5 w-5 text-emerald-400" />
+                                Compliance-Prozess
+                              </h3>
+                              <ul className="space-y-3">
+                                {[
+                                  'Konformitätsbewertung durchführen',
+                                  'EU-Konformitätserklärung erstellen',
+                                  'CE-Kennzeichnung anbringen',
+                                  'Registrierung in EU-Datenbank',
+                                  'Post-Market Monitoring',
+                                  'Schwerwiegende Vorfälle melden',
+                                  'Dokumentation 10 Jahre aufbewahren'
+                                ].map((proc, idx) => (
+                                  <li key={idx} className="flex items-start gap-2">
+                                    <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
+                                    <span className="text-sm text-slate-300">{proc}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </TabsContent>
+
+                {/* Compliance Timeline Section */}
+                <TabsContent value="compliance-timeline" className="space-y-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Compliance Timeline</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('compliance-timeline')}
+                            variant={completedSections.includes('compliance-timeline') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('compliance-timeline') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="mb-6 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
+                          <h3 className="text-lg font-bold text-blue-300 mb-3">Stufenweise Einführung</h3>
+                          <p className="text-slate-300">
+                            Der EU AI Act wird schrittweise über mehrere Jahre eingeführt. Die Timeline zeigt die wichtigsten 
+                            Meilensteine und wann welche Anforderungen in Kraft treten.
+                          </p>
+                        </div>
+
+                        <div className="space-y-6">
+                          {complianceTimeline.map((milestone, index) => (
+                            <motion.div
+                              key={milestone.date}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: index * 0.1 }}
+                              className={cn(
+                                "relative bg-slate-800/50 rounded-xl p-6 border-2",
+                                milestone.status === 'completed' && "border-green-500/50",
+                                milestone.status === 'upcoming' && "border-blue-500/50",
+                                milestone.status === 'future' && "border-slate-700"
+                              )}
+                            >
+                              <div className="flex items-start gap-4">
+                                <div className={cn(
+                                  "w-4 h-4 rounded-full mt-2",
+                                  milestone.status === 'completed' && "bg-green-500",
+                                  milestone.status === 'upcoming' && "bg-blue-500 animate-pulse",
+                                  milestone.status === 'future' && "bg-slate-600"
+                                )} />
+                                
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-4 mb-3">
+                                    <h4 className="text-lg font-bold text-white">{milestone.milestone}</h4>
+                                    <Badge variant={milestone.status === 'completed' ? 'default' : 'outline'} className="text-xs">
+                                      {milestone.date}
+                                    </Badge>
+                                  </div>
+                                  
+                                  <p className="text-slate-300 mb-4">{milestone.description}</p>
+                                  
+                                  {milestone.requirements.length > 0 && (
+                                    <div className="bg-slate-900/50 rounded-lg p-4">
+                                      <h5 className="text-sm font-semibold text-slate-300 mb-2">Wichtige Anforderungen:</h5>
+                                      <ul className="space-y-1">
+                                        {milestone.requirements.map((req, idx) => (
+                                          <li key={idx} className="flex items-start gap-2 text-sm">
+                                            <CheckCircle className="h-3 w-3 text-blue-400 mt-0.5 flex-shrink-0" />
+                                            <span className="text-slate-400">{req}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                              
+                              {index < complianceTimeline.length - 1 && (
+                                <div className="absolute -bottom-6 left-6 w-0.5 h-6 bg-slate-600" />
+                              )}
+                            </motion.div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </TabsContent>
+
+                {/* Implementation Section */}
+                <TabsContent value="implementation" className="space-y-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Implementierungs-Roadmap</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('implementation')}
+                            variant={completedSections.includes('implementation') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('implementation') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="mb-6 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-purple-300 mb-4">EU AI Act Compliance Journey</h3>
+                          <p className="text-slate-300 mb-4">
+                            Eine strukturierte Herangehensweise ist entscheidend für erfolgreiche AI Act Compliance. 
+                            Diese Roadmap führt Sie durch alle notwendigen Schritte von der ersten Bestandsaufnahme bis zur Zertifizierung.
+                          </p>
+                          <div className="grid md:grid-cols-3 gap-4 text-center">
+                            <div className="bg-slate-800/50 rounded-lg p-4">
+                              <div className="text-2xl font-bold text-purple-400">12-18 Monate</div>
+                              <div className="text-sm text-slate-400">Typische Implementierungsdauer</div>
+                            </div>
+                            <div className="bg-slate-800/50 rounded-lg p-4">
+                              <div className="text-2xl font-bold text-pink-400">5 Phasen</div>
+                              <div className="text-sm text-slate-400">Strukturierter Ansatz</div>
+                            </div>
+                            <div className="bg-slate-800/50 rounded-lg p-4">
+                              <div className="text-2xl font-bold text-indigo-400">€200k-500k</div>
+                              <div className="text-sm text-slate-400">Typische Kosten (High-Risk)</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="space-y-6">
+                          {implementationSteps.map((step, index) => {
+                            const IconComponent = step.icon;
+                            return (
+                              <motion.div
+                                key={step.phase}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
+                              >
+                                <div className="flex items-start gap-4">
+                                  <div className={cn(
+                                    "p-3 rounded-xl bg-gradient-to-r flex-shrink-0",
+                                    step.color
+                                  )}>
+                                    <IconComponent className="h-6 w-6 text-white" />
+                                  </div>
+                                  <div className="flex-1">
+                                    <div className="flex items-center gap-4 mb-4">
+                                      <h4 className="text-lg font-bold text-white">{step.phase}</h4>
+                                      <Badge variant="outline" className="text-xs">{step.duration}</Badge>
+                                    </div>
+                                    
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                      <div>
+                                        <h5 className="text-sm font-semibold text-slate-300 mb-3">Hauptaufgaben:</h5>
+                                        <ul className="space-y-2">
+                                          {step.tasks.map((task, idx) => (
+                                            <li key={idx} className="flex items-start gap-2">
+                                              <input 
+                                                type="checkbox" 
+                                                id={`impl-task-${index}-${idx}`}
+                                                checked={checkedItems[`impl-task-${index}-${idx}`] || false}
+                                                onChange={() => handleItemCheck(`impl-task-${index}-${idx}`)}
+                                                className="mt-1 text-blue-500"
+                                              />
+                                              <label 
+                                                htmlFor={`impl-task-${index}-${idx}`}
+                                                className={cn(
+                                                  "text-sm text-slate-300 cursor-pointer",
+                                                  checkedItems[`impl-task-${index}-${idx}`] && "line-through opacity-60"
+                                                )}
+                                              >
+                                                {task}
+                                              </label>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                      
+                                      <div>
+                                        <h5 className="text-sm font-semibold text-slate-300 mb-3">Deliverables:</h5>
+                                        <div className="flex flex-wrap gap-2">
+                                          {step.deliverables.map((deliverable) => (
+                                            <Badge key={deliverable} variant="outline" className="text-xs">
+                                              {deliverable}
+                                            </Badge>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+
+                        <div className="mt-8 grid md:grid-cols-2 gap-6">
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                              <Sparkles className="h-5 w-5 text-yellow-400" />
+                              Success Factors
+                            </h3>
+                            <ul className="space-y-3">
+                              {[
+                                'Executive Sponsorship und Budget-Commitment',
+                                'Cross-funktionales AI Governance Board',
+                                'Frühzeitige Einbindung von Legal & Compliance',
+                                'Pragmatischer, risikobasierter Ansatz',
+                                'Automatisierung wo möglich',
+                                'Kontinuierliche Schulung aller Stakeholder',
+                                'Enge Zusammenarbeit mit Notified Bodies'
+                              ].map((factor, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <CheckCircle className="h-4 w-4 text-yellow-400 mt-0.5 flex-shrink-0" />
+                                  <span className="text-sm text-slate-300">{factor}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                              <AlertOctagon className="h-5 w-5 text-red-400" />
+                              Typische Herausforderungen
+                            </h3>
+                            <ul className="space-y-3">
+                              {[
+                                'Unklarheit bei Risiko-Klassifizierung',
+                                'Fehlende harmonisierte Standards',
+                                'Begrenzte Verfügbarkeit von Notified Bodies',
+                                'Komplexität bei GPAI-Modellen',
+                                'Dokumentationsaufwand unterschätzt',
+                                'Supply Chain Transparency',
+                                'Technische Schulden in Legacy-Systemen'
+                              ].map((challenge, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <AlertTriangle className="h-4 w-4 text-red-400 mt-0.5 flex-shrink-0" />
+                                  <span className="text-sm text-slate-300">{challenge}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+
+                {/* Verbotene Praktiken Section */}
+                <section id="verbotene-praktiken" className="space-y-8 scroll-mt-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Verbotene KI-Praktiken</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('prohibited')}
+                            variant={completedSections.includes('prohibited') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('prohibited') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* Article 5 Prohibited Practices */}
+                          <div className="bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-red-300 mb-6 text-center">Artikel 5 - Verbotene KI-Praktiken</h3>
+                            <div className="space-y-6">
+                              {[
+                                {
+                                  article: '5(1)(a)',
+                                  title: 'Unterschwellige Techniken',
+                                  description: 'KI-Systeme, die unterschwellige Techniken jenseits des Bewusstseins einer Person einsetzen oder diese täuschen',
+                                  purpose: 'mit dem Ziel oder der Wirkung, das Verhalten einer Person erheblich zu beeinträchtigen',
+                                  examples: [
+                                    'Unterschwellige Werbung in Apps oder Websites',
+                                    'Voice assistants die unbewusst Kaufverhalten beeinflussen',
+                                    'Gaming Apps mit versteckten Manipulationstechniken',
+                                    'Social Media Algorithmen die suchterzeugende Patterns nutzen',
+                                    'Dark Patterns in User Interfaces'
+                                  ],
+                                  legalConsequences: [
+                                    'Bis zu 35 Mio. EUR oder 7% des weltweiten Jahresumsatzes',
+                                    'Sofortige Einstellung der Praktiken erforderlich',
+                                    'Mögliche strafrechtliche Konsequenzen',
+                                    'Reputationsschäden und Kundenvertrauen'
+                                  ],
+                                  complianceActions: [
+                                    'Audit aller User Interface Designs',
+                                    'Review von Algorithmus-Designs',
+                                    'Ethik Board für UX Decisions',
+                                    'User consent und Transparency',
+                                    'Regular ethical impact assessments'
+                                  ]
+                                },
+                                {
+                                  article: '5(1)(b)',
+                                  title: 'Ausnutzung von Schwächen',
+                                  description: 'KI-Systeme, die Schwächen einer bestimmten Gruppe von Personen aufgrund ihres Alters, ihrer Behinderung oder ihrer besonderen sozialen oder wirtschaftlichen Lage ausnutzen',
+                                  purpose: 'um das Verhalten einer Person aus dieser Gruppe erheblich zu beeinträchtigen',
+                                  examples: [
+                                    'Predatory lending algorithms targeting vulnerable populations',
+                                    'Gaming apps specifically designed for children addiction',
+                                    'Insurance pricing algorithms discriminating against disabled',
+                                    'Credit scoring that penalizes low-income individuals',
+                                    'Educational apps exploiting children\'s psychological vulnerabilities'
+                                  ],
+                                  legalConsequences: [
+                                    'Bis zu 35 Mio. EUR oder 7% des weltweiten Jahresumsatzes',
+                                    'Zivilrechtliche Schadenersatzansprüche',
+                                    'Aufsichtsbehördliche Maßnahmen',
+                                    'Mögliche class-action lawsuits'
+                                  ],
+                                  complianceActions: [
+                                    'Vulnerability Impact Assessments',
+                                    'Special protection measures for vulnerable groups',
+                                    'Enhanced consent mechanisms',
+                                    'Regular algorithmic audits for bias',
+                                    'Stakeholder engagement with advocacy groups'
+                                  ]
+                                },
+                                {
+                                  article: '5(1)(c)',
+                                  title: 'Social Scoring',
+                                  description: 'KI-Systeme zur Bewertung oder Klassifizierung der Vertrauenswürdigkeit natürlicher Personen über einen bestimmten Zeitraum hinweg',
+                                  purpose: 'aufgrund ihres sozialen Verhaltens oder bekannter, abgeleiteter oder vorhergesagter persönlicher oder Persönlichkeitsmerkmale',
+                                  examples: [
+                                    'Umfassende Social Credit Systeme durch Behörden',
+                                    'Employee scoring based on social media activity',
+                                    'Tenant screening using social behavior data',
+                                    'Insurance premiums based on lifestyle scoring',
+                                    'Dating app algorithms creating social hierarchy'
+                                  ],
+                                  legalConsequences: [
+                                    'Vollständiges Verbot für öffentliche Behörden',
+                                    'Strenge Beschränkungen für private Anbieter',
+                                    'Bis zu 35 Mio. EUR Bußgeld',
+                                    'Aufsichtsbehördliche Durchsetzung'
+                                  ],
+                                  complianceActions: [
+                                    'Review aller scoring algorithms',
+                                    'Eliminate broad social scoring systems',
+                                    'Implement purpose limitation principles',
+                                    'Ensure transparent scoring criteria',
+                                    'Provide individual appeal mechanisms'
+                                  ]
+                                },
+                                {
+                                  article: '5(1)(d)',
+                                  title: 'Biometrische Echtzeit-Fernidentifizierung',
+                                  description: 'Biometrische Echtzeit-Fernidentifizierungssysteme in öffentlich zugänglichen Räumen zu Strafverfolgungszwecken',
+                                  purpose: 'es sei denn, sie werden für spezifische Strafverfolgungszwecke unter strengen Bedingungen verwendet',
+                                  examples: [
+                                    'Gesichtserkennung in öffentlichen Räumen ohne Verdacht',
+                                    'Massenüberwachung durch biometrische Systeme',
+                                    'Real-time identification ohne richterliche Anordnung',
+                                    'Predictive policing mit biometrischer Identifikation',
+                                    'Automated border control ohne menschliche Aufsicht'
+                                  ],
+                                  legalConsequences: [
+                                    'Verbot außerhalb spezifischer Ausnahmen',
+                                    'Strenge gerichtliche Kontrolle erforderlich',
+                                    'Hohe Bußgelder bei Verstößen',
+                                    'Datenschutzrechtliche Konsequenzen'
+                                  ],
+                                  complianceActions: [
+                                    'Audit existing biometric systems',
+                                    'Implement strict access controls',
+                                    'Establish judicial oversight mechanisms',
+                                    'Document legitimate law enforcement purposes',
+                                    'Implement privacy by design'
+                                  ]
+                                }
+                              ].map((prohibition) => (
+                                <div key={prohibition.article} className="bg-slate-800/50 rounded-xl p-6 border-2 border-red-500/30">
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <Badge className="bg-red-500/20 text-red-300 border-red-500/50">Art. {prohibition.article}</Badge>
+                                    <h4 className="text-lg font-bold text-white">{prohibition.title}</h4>
+                                  </div>
+                                  
+                                  <div className="mb-4">
+                                    <p className="text-slate-300 mb-2 text-sm italic">"{prohibition.description} {prohibition.purpose}"</p>
+                                  </div>
+                                  
+                                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                    <div>
+                                      <h5 className="text-sm font-semibold text-red-300 mb-3 flex items-center gap-2">
+                                        <AlertOctagon className="h-4 w-4" />
+                                        Beispiele
+                                      </h5>
+                                      <ul className="space-y-2">
+                                        {prohibition.examples.map((example, idx) => (
+                                          <li key={idx} className="flex items-start gap-2">
+                                            <ShieldOff className="h-3 w-3 text-red-400 mt-1 flex-shrink-0" />
+                                            <span className="text-xs text-slate-300">{example}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                    
+                                    <div>
+                                      <h5 className="text-sm font-semibold text-orange-300 mb-3 flex items-center gap-2">
+                                        <Gavel className="h-4 w-4" />
+                                        Rechtliche Konsequenzen
+                                      </h5>
+                                      <ul className="space-y-2">
+                                        {prohibition.legalConsequences.map((consequence, idx) => (
+                                          <li key={idx} className="flex items-start gap-2">
+                                            <AlertTriangle className="h-3 w-3 text-orange-400 mt-1 flex-shrink-0" />
+                                            <span className="text-xs text-slate-300">{consequence}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                    
+                                    <div>
+                                      <h5 className="text-sm font-semibold text-green-300 mb-3 flex items-center gap-2">
+                                        <CheckCircle className="h-4 w-4" />
+                                        Compliance Maßnahmen
+                                      </h5>
+                                      <ul className="space-y-2">
+                                        {prohibition.complianceActions.map((action, idx) => (
+                                          <li key={idx} className="flex items-start gap-2">
+                                            <CheckCircle className="h-3 w-3 text-green-400 mt-1 flex-shrink-0" />
+                                            <span className="text-xs text-slate-300">{action}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Enforcement Mechanisms */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Durchsetzungsmechanismen</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                                  <Building2 className="h-5 w-5 text-blue-400" />
+                                  Aufsichtsbehörden
+                                </h4>
+                                <ul className="space-y-2 text-sm">
+                                  <li className="text-slate-300">• Nationale AI-Behörden</li>
+                                  <li className="text-slate-300">• Marktüberwachungsbehörden</li>
+                                  <li className="text-slate-300">• Datenschutzbehörden</li>
+                                  <li className="text-slate-300">• Europäisches AI Board</li>
+                                </ul>
+                              </div>
+                              
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                                  <Search className="h-5 w-5 text-emerald-400" />
+                                  Überwachungsmaßnahmen
+                                </h4>
+                                <ul className="space-y-2 text-sm">
+                                  <li className="text-slate-300">• Regelmäßige Inspektionen</li>
+                                  <li className="text-slate-300">• Technische Tests</li>
+                                  <li className="text-slate-300">• Dokumentenprüfungen</li>
+                                  <li className="text-slate-300">• Whistleblower-Programme</li>
+                                </ul>
+                              </div>
+                              
+                              <div className="bg-slate-900/50 rounded-lg p-4">
+                                <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                                  <Gavel className="h-5 w-5 text-purple-400" />
+                                  Sanktionsmaßnahmen
+                                </h4>
+                                <ul className="space-y-2 text-sm">
+                                  <li className="text-slate-300">• Verwarnungen</li>
+                                  <li className="text-slate-300">• Anordnungen zur Einstellung</li>
+                                  <li className="text-slate-300">• Marktverbot</li>
+                                  <li className="text-slate-300">• Bußgelder bis 35 Mio. €</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </TabsContent>
+
+                {/* General Purpose AI Section */}
+                <TabsContent value="general-purpose" className="space-y-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">General Purpose AI Models (GPAI)</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('general-purpose')}
+                            variant={completedSections.includes('general-purpose') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('general-purpose') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* GPAI Definition and Scope */}
+                          <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-purple-300 mb-6">GPAI Model Definition & Kategorien</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div className="bg-slate-800/50 rounded-xl p-6">
+                                <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                  <BrainCircuit className="h-5 w-5 text-purple-400" />
+                                  Standard GPAI Models
+                                </h4>
+                                <div className="space-y-4">
+                                  <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
+                                    <h5 className="font-semibold text-purple-300 mb-2">Definition (Art. 3 Nr. 44a)</h5>
+                                    <p className="text-sm text-slate-300 mb-3">
+                                      KI-Modell, das mit einer erheblichen Menge von Multimodal-Daten mittels 
+                                      selbstüberwachten, unüberwachten oder verstärkenden Lernverfahren trainiert wurde 
+                                      und eine Vielzahl charakteristischer Aufgaben erfüllen kann.
+                                    </p>
+                                  </div>
+                                  
+                                  <div>
+                                    <h5 className="font-semibold text-white mb-2">Anforderungen:</h5>
+                                    <ul className="space-y-2">
+                                      {[
+                                        'Technische Dokumentation bereitstellen',
+                                        'Informationen über Training und Testing',
+                                        'Urheberrechts-Compliance dokumentieren',
+                                        'Öffentliche Zusammenfassung verfügbar machen',
+                                        'Policy gegen missbräuchliche Nutzung',
+                                        'Robustheit und Cybersicherheit gewährleisten'
+                                      ].map((req, idx) => (
+                                        <li key={idx} className="flex items-start gap-2">
+                                          <CheckCircle className="h-3 w-3 text-purple-400 mt-1 flex-shrink-0" />
+                                          <span className="text-xs text-slate-300">{req}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div className="bg-slate-800/50 rounded-xl p-6">
+                                <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                  <Zap className="h-5 w-5 text-orange-400" />
+                                  Systemic Risk GPAI (&gt;10²⁵ FLOPS)
+                                </h4>
+                                <div className="space-y-4">
+                                  <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-4">
+                                    <h5 className="font-semibold text-orange-300 mb-2">Schwellenwert</h5>
+                                    <p className="text-sm text-slate-300 mb-3">
+                                      Modelle mit mehr als 10²⁵ FLOPS (Floating Point Operations) für das Training 
+                                      gelten als systemische Risiko-Modelle.
+                                    </p>
+                                  </div>
+                                  
+                                  <div>
+                                    <h5 className="font-semibold text-white mb-2">Zusätzliche Anforderungen:</h5>
+                                    <ul className="space-y-2">
+                                      {[
+                                        'Model evaluation gemäß EU Codes of Practice',
+                                        'Adversarial testing durchführen',
+                                        'Systemic risk assessment',
+                                        'Red teaming exercises',
+                                        'Incident reporting an AI Office',
+                                        'Cybersecurity measures dokumentieren',
+                                        'Access restrictions implementieren',
+                                        'Energy consumption reporting'
+                                      ].map((req, idx) => (
+                                        <li key={idx} className="flex items-start gap-2">
+                                          <AlertTriangle className="h-3 w-3 text-orange-400 mt-1 flex-shrink-0" />
+                                          <span className="text-xs text-slate-300">{req}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* FLOPS Calculation Framework */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">FLOPS Calculation & Model Assessment</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">FLOPS Berechnung</h4>
+                                <div className="bg-slate-900/50 rounded-lg p-4 mb-4">
+                                  <div className="text-sm text-slate-300 mb-2">Formel:</div>
+                                  <div className="bg-slate-800 rounded p-3 font-mono text-blue-300 text-sm">
+                                    FLOPS = 6 × N × D
+                                  </div>
+                                  <div className="text-xs text-slate-400 mt-2">
+                                    N = Anzahl Parameter<br/>
+                                    D = Anzahl Training Tokens
+                                  </div>
+                                </div>
+                                
+                                <div className="space-y-3">
+                                  <h5 className="font-semibold text-slate-300">Beispiele bekannter Modelle:</h5>
+                                  {[
+                                    { model: 'GPT-3', params: '175B', flops: '~3.1 × 10²³', risk: 'Standard' },
+                                    { model: 'GPT-4', params: '~1.7T', flops: '~2.4 × 10²⁵', risk: 'Systemic' },
+                                    { model: 'PaLM', params: '540B', flops: '~2.5 × 10²⁴', risk: 'Standard' },
+                                    { model: 'Claude-3', params: 'Unknown', flops: 'Estimated >10²⁵', risk: 'Likely Systemic' }
+                                  ].map((example) => (
+                                    <div key={example.model} className="bg-slate-800/30 rounded p-3">
+                                      <div className="flex justify-between items-center">
+                                        <span className="font-medium text-white">{example.model}</span>
+                                        <Badge className={cn(
+                                          example.risk === 'Systemic' && 'bg-orange-500/20 text-orange-300',
+                                          example.risk.includes('Systemic') && 'bg-orange-500/20 text-orange-300',
+                                          example.risk === 'Standard' && 'bg-blue-500/20 text-blue-300'
+                                        )}>
+                                          {example.risk}
+                                        </Badge>
+                                      </div>
+                                      <div className="text-xs text-slate-400">
+                                        {example.params} params • {example.flops} FLOPS
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                              
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Assessment Framework</h4>
+                                <div className="space-y-4">
+                                  {[
+                                    {
+                                      category: 'Technical Documentation',
+                                      items: [
+                                        'Model architecture details',
+                                        'Training methodologies',
+                                        'Dataset information',
+                                        'Performance benchmarks',
+                                        'Limitation documentation'
+                                      ]
+                                    },
+                                    {
+                                      category: 'Risk Assessment',
+                                      items: [
+                                        'Systemic risk evaluation',
+                                        'Dual-use potential analysis',
+                                        'Societal impact assessment',
+                                        'Bias und fairness testing',
+                                        'Environmental impact'
+                                      ]
+                                    },
+                                    {
+                                      category: 'Governance Measures',
+                                      items: [
+                                        'Access control mechanisms',
+                                        'Usage monitoring systems',
+                                        'Incident response procedures',
+                                        'Model update protocols',
+                                        'Stakeholder engagement'
+                                      ]
+                                    }
+                                  ].map((framework) => (
+                                    <div key={framework.category} className="bg-slate-900/50 rounded-lg p-4">
+                                      <h5 className="font-semibold text-white mb-3">{framework.category}</h5>
+                                      <ul className="space-y-1">
+                                        {framework.items.map((item, idx) => (
+                                          <li key={idx} className="text-xs text-slate-300 flex items-center gap-2">
+                                            <Circle className="h-2 w-2 fill-current" />
+                                            {item}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Downstream Provider Obligations */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Downstream Provider Verpflichtungen</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              {[
+                                {
+                                  role: 'Model Provider',
+                                  icon: BrainCircuit,
+                                  responsibilities: [
+                                    'Technical documentation maintenance',
+                                    'Copyright compliance verification',
+                                    'Model evaluation und testing',
+                                    'Incident reporting to authorities',
+                                    'Cybersecurity measures implementation'
+                                  ]
+                                },
+                                {
+                                  role: 'Application Developer',
+                                  icon: Code,
+                                  responsibilities: [
+                                    'GPAI model capabilities assessment',
+                                    'Application-specific risk evaluation',
+                                    'User safety measures implementation',
+                                    'Misuse prevention mechanisms',
+                                    'Transparency und user information'
+                                  ]
+                                },
+                                {
+                                  role: 'Deployer/User',
+                                  icon: Users,
+                                  responsibilities: [
+                                    'Use case appropriateness evaluation',
+                                    'Human oversight implementation',
+                                    'Output monitoring und quality control',
+                                    'Incident detection und response',
+                                    'End-user protection measures'
+                                  ]
+                                }
+                              ].map((stakeholder) => {
+                                const IconComponent = stakeholder.icon;
+                                return (
+                                  <div key={stakeholder.role} className="bg-slate-900/50 rounded-lg p-4">
+                                    <div className="flex items-center gap-3 mb-4">
+                                      <IconComponent className="h-5 w-5 text-blue-400" />
+                                      <h4 className="font-semibold text-white">{stakeholder.role}</h4>
+                                    </div>
+                                    <ul className="space-y-2">
+                                      {stakeholder.responsibilities.map((resp, idx) => (
+                                        <li key={idx} className="flex items-start gap-2">
+                                          <CheckCircle className="h-3 w-3 text-blue-400 mt-1 flex-shrink-0" />
+                                          <span className="text-xs text-slate-300">{resp}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                );
+                              })
+                            }
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </TabsContent>
+
+                {/* Technical Standards Section */}
+                <TabsContent value="technical-standards" className="space-y-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+                      <CardContent className="p-8">
+                        <div className="flex items-center justify-between mb-6">
+                          <h2 className="text-3xl font-bold text-white">Technische Standards & Normen</h2>
+                          <Button
+                            onClick={() => handleSectionComplete('technical-standards')}
+                            variant={completedSections.includes('technical-standards') ? 'default' : 'outline'}
+                            size="sm"
+                          >
+                            {completedSections.includes('technical-standards') ? (
+                              <CheckCircle2 className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Circle className="h-4 w-4 mr-2" />
+                            )}
+                            Als gelesen markieren
+                          </Button>
+                        </div>
+
+                        <div className="space-y-8">
+                          {/* ISO/IEC Standards */}
+                          <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
+                            <h3 className="text-2xl font-bold text-blue-300 mb-6">Harmonisierte Normen für AI Act</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              {[
+                                {
+                                  standard: 'ISO/IEC 23053:2022',
+                                  title: 'Framework for AI systems using ML',
+                                  scope: 'Allgemeiner Rahmen für KI-Systeme',
+                                  relevance: 'Grundlage für alle AI Act Compliance',
+                                  status: 'Published',
+                                  keyAspects: [
+                                    'AI system lifecycle management',
+                                    'Risk management frameworks',
+                                    'Quality assurance processes',
+                                    'Documentation requirements',
+                                    'Stakeholder identification'
+                                  ]
+                                },
+                                {
+                                  standard: 'ISO/IEC 23894:2023',
+                                  title: 'AI risk management',
+                                  scope: 'Spezifische Risikomanagement-Prozesse',
+                                  relevance: 'Hochrisiko-KI Compliance',
+                                  status: 'Published',
+                                  keyAspects: [
+                                    'Risk identification methodologies',
+                                    'Risk assessment procedures',
+                                    'Risk mitigation strategies',
+                                    'Continuous monitoring',
+                                    'Risk communication'
+                                  ]
+                                },
+                                {
+                                  standard: 'ISO/IEC 25059:2023',
+                                  title: 'AI system quality measurement',
+                                  scope: 'Qualitätsmessung und -bewertung',
+                                  relevance: 'Performance und Robustheit',
+                                  status: 'Published',
+                                  keyAspects: [
+                                    'Quality characteristics definition',
+                                    'Measurement frameworks',
+                                    'Evaluation methodologies',
+                                    'Performance benchmarking',
+                                    'Quality reporting'
+                                  ]
+                                },
+                                {
+                                  standard: 'ISO/IEC 23090-24:2024',
+                                  title: 'AI fairness and bias assessment',
+                                  scope: 'Fairness und Bias-Bewertung',
+                                  relevance: 'Non-discrimination requirements',
+                                  status: 'Draft',
+                                  keyAspects: [
+                                    'Bias detection methods',
+                                    'Fairness metrics definition',
+                                    'Assessment procedures',
+                                    'Mitigation strategies',
+                                    'Monitoring frameworks'
+                                  ]
+                                }
+                              ].map((standard) => (
+                                <div key={standard.standard} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                                  <div className="flex items-center justify-between mb-4">
+                                    <h4 className="text-lg font-bold text-white">{standard.standard}</h4>
+                                    <Badge className={cn(
+                                      standard.status === 'Published' && 'bg-green-500/20 text-green-300',
+                                      standard.status === 'Draft' && 'bg-yellow-500/20 text-yellow-300'
+                                    )}>
+                                      {standard.status}
+                                    </Badge>
+                                  </div>
+                                  
+                                  <h5 className="font-semibold text-blue-300 mb-2">{standard.title}</h5>
+                                  <p className="text-sm text-slate-300 mb-3">{standard.scope}</p>
+                                  <p className="text-xs text-slate-400 mb-4">Relevanz: {standard.relevance}</p>
+                                  
+                                  <div>
+                                    <h6 className="text-sm font-semibold text-slate-300 mb-2">Kernaspekte:</h6>
+                                    <ul className="space-y-1">
+                                      {standard.keyAspects.map((aspect, idx) => (
+                                        <li key={idx} className="text-xs text-slate-300 flex items-center gap-2">
+                                          <Circle className="h-2 w-2 fill-current" />
+                                          {aspect}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Technical Implementation Guidelines */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Technical Implementation Guidelines</h3>
+                            <div className="grid md:grid-cols-3 gap-6">
+                              {[
+                                {
+                                  category: 'Data Governance',
+                                  icon: Database,
+                                  standards: ['ISO/IEC 25012', 'ISO 8000', 'FAIR Principles'],
+                                  requirements: [
+                                    'Data quality management systems',
+                                    'Data lineage and provenance tracking',
+                                    'Bias detection in training data',
+                                    'Data minimization principles',
+                                    'Privacy-preserving techniques'
+                                  ]
+                                },
+                                {
+                                  category: 'Model Development',
+                                  icon: BrainCog,
+                                  standards: ['MLOps Standards', 'IEEE 2857', 'ISO/IEC 25010'],
+                                  requirements: [
+                                    'Reproducible training processes',
+                                    'Version control for models',
+                                    'Automated testing pipelines',
+                                    'Performance monitoring',
+                                    'Model validation frameworks'
+                                  ]
+                                },
+                                {
+                                  category: 'Deployment & Operations',
+                                  icon: Server,
+                                  standards: ['ISO/IEC 27001', 'NIST AI RMF', 'ISO 9001'],
+                                  requirements: [
+                                    'Secure deployment practices',
+                                    'Runtime monitoring systems',
+                                    'Incident response procedures',
+                                    'Change management processes',
+                                    'Business continuity planning'
+                                  ]
+                                }
+                              ].map((guideline) => {
+                                const IconComponent = guideline.icon;
+                                return (
+                                  <div key={guideline.category} className="bg-slate-900/50 rounded-lg p-4">
+                                    <div className="flex items-center gap-3 mb-4">
+                                      <IconComponent className="h-5 w-5 text-blue-400" />
+                                      <h4 className="font-semibold text-white">{guideline.category}</h4>
+                                    </div>
+                                    
+                                    <div className="mb-4">
+                                      <h5 className="text-sm font-semibold text-slate-300 mb-2">Applicable Standards:</h5>
+                                      <div className="flex flex-wrap gap-1">
+                                        {guideline.standards.map((standard) => (
+                                          <Badge key={standard} variant="outline" className="text-xs">
+                                            {standard}
+                                          </Badge>
+                                        ))}
+                                      </div>
+                                    </div>
+                                    
+                                    <div>
+                                      <h5 className="text-sm font-semibold text-slate-300 mb-2">Key Requirements:</h5>
+                                      <ul className="space-y-1">
+                                        {guideline.requirements.map((req, idx) => (
+                                          <li key={idx} className="text-xs text-slate-300 flex items-center gap-2">
+                                            <Circle className="h-2 w-2 fill-current" />
+                                            {req}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                );
+                              })
+                            }
+                            </div>
+                          </div>
+
+                          {/* Conformity Assessment Procedures */}
+                          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                            <h3 className="text-xl font-bold text-white mb-6">Konformitätsbewertungsverfahren</h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Internal Quality Management (Annex VI)</h4>
+                                <div className="space-y-4">
+                                  <div className="bg-slate-900/50 rounded-lg p-4">
+                                    <h5 className="font-semibold text-emerald-300 mb-2">Applicability</h5>
+                                    <p className="text-sm text-slate-300">For high-risk AI systems listed in Annex III, except biometric systems</p>
+                                  </div>
+                                  
+                                  <div className="bg-slate-900/50 rounded-lg p-4">
+                                    <h5 className="font-semibold text-blue-300 mb-2">Requirements</h5>
+                                    <ul className="space-y-1 text-sm">
+                                      {[
+                                        'Quality management system implementation',
+                                        'Technical documentation preparation',
+                                        'Automatic logging system setup',
+                                        'EU conformity declaration',
+                                        'CE marking application',
+                                        'Post-market monitoring system'
+                                      ].map((req, idx) => (
+                                        <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                          <CheckCircle className="h-3 w-3 text-emerald-400" />
+                                          {req}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-4">Notified Body Assessment (Annex VII)</h4>
+                                <div className="space-y-4">
+                                  <div className="bg-slate-900/50 rounded-lg p-4">
+                                    <h5 className="font-semibold text-orange-300 mb-2">Applicability</h5>
+                                    <p className="text-sm text-slate-300">For biometric identification and categorization systems</p>
+                                  </div>
+                                  
+                                  <div className="bg-slate-900/50 rounded-lg p-4">
+                                    <h5 className="font-semibold text-purple-300 mb-2">Process</h5>
+                                    <ul className="space-y-1 text-sm">
+                                      {[
+                                        'Technical documentation submission',
+                                        'Quality management system audit',
+                                        'Design examination by notified body',
+                                        'Testing and validation procedures',
+                                        'EU type examination certificate',
+                                        'Annual surveillance audits'
+                                      ].map((step, idx) => (
+                                        <li key={idx} className="text-slate-300 flex items-center gap-2">
+                                          <AlertTriangle className="h-3 w-3 text-purple-400" />
+                                          {step}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default EuAiActGuide;

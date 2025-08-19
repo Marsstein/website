@@ -43,6 +43,7 @@ import {
   Award
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 export const VendorAssessmentTemplate: React.FC = () => {
   const [vendors, setVendors] = useState([
@@ -354,7 +355,14 @@ export const VendorAssessmentTemplate: React.FC = () => {
   const riskLevel = getRiskLevel(riskScore);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <>
+      <SEOHead
+        title="Vendor Assessment Template – Lieferanten DSGVO-Bewertung"
+        description="Strukturierte Lieferanten-Bewertung: Datenschutz, IT-Sicherheit, Compliance systematisch prüfen. ✓ Bewertungsmatrix ✓ Risiko-Scoring ✓ Vorlagen. Jetzt Partner bewerten!"
+        canonical="/assessment-center/vendor-assessment-template"
+        keywords="vendor assessment template, lieferantenbewertung dsgvo, auftragsverarbeiter bewertung, supplier assessment"
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
       {/* Hero Section */}
       <section className="pt-24 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -890,6 +898,7 @@ export const VendorAssessmentTemplate: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };

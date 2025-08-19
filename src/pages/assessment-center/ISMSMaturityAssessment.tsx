@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -82,6 +83,15 @@ interface AssessmentResult {
 }
 
 const ISMSMaturityAssessment: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Assessment",
+    "name": "ISO 27001 ISMS Maturity Assessment",
+    "description": "Bewerten Sie die Reife Ihres Information Security Management Systems (ISMS) nach ISO 27001 Standards",
+    "educationalLevel": "Professional",
+    "url": "https://marsstein.com/assessment-center/isms-maturity-assessment"
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -666,6 +676,7 @@ const ISMSMaturityAssessment: React.FC = () => {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
@@ -680,9 +691,17 @@ const ISMSMaturityAssessment: React.FC = () => {
     };
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
-        <div className="pt-24 pb-16">
+      <>
+        <SEOHead
+          title="ISO 27001 Maturity Assessment – ISMS Reifegrad prüfen"
+          description="ISO 27001 ISMS Maturity Assessment: Bewerten Sie den Reifegrad Ihres Information Security Management Systems. ✓ CMMI-basiert ✓ Benchmarks ✓ Roadmap. Jetzt testen!"
+          canonical="/assessment-center/isms-maturity-assessment"
+          keywords="ISO 27001 Assessment, ISMS Maturity, ISMS Reifegrad, ISO 27001 Bewertung, Maturity Assessment"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
+          <div className="pt-24 pb-16">
           <div className="container px-4">
             <div className="max-w-6xl mx-auto">
               {/* Results Header */}
@@ -1001,14 +1020,23 @@ const ISMSMaturityAssessment: React.FC = () => {
         </div>
         <Footer />
       </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-      <Header />
-      
-      <div className="pt-24 pb-16">
+    <>
+      <SEOHead
+        title="ISO 27001 Maturity Assessment – ISMS Reifegrad prüfen"
+        description="ISO 27001 ISMS Maturity Assessment: Bewerten Sie den Reifegrad Ihres Information Security Management Systems. ✓ CMMI-basiert ✓ Benchmarks ✓ Roadmap. Jetzt testen!"
+        canonical="/assessment-center/isms-maturity-assessment"
+        keywords="ISO 27001 Assessment, ISMS Maturity, ISMS Reifegrad, ISO 27001 Bewertung, Maturity Assessment"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        <Header />
+        
+        <div className="pt-24 pb-16">
         <div className="container px-4">
           <div className="max-w-4xl mx-auto">
             {/* Header */}
@@ -1194,6 +1222,7 @@ const ISMSMaturityAssessment: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEOHead from '../components/SEOHead';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -56,6 +57,15 @@ import { Link } from 'react-router-dom';
 const CookieManagementTool = () => {
   const [consentRate, setConsentRate] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cookie Management Tool",
+    "description": "DSGVO-konformes Cookie-Consent Management Tool mit granularer Einwilligungsverwaltung",
+    "applicationCategory": "Privacy Tool",
+    "url": "https://marsstein.com/tools/cookie-management"
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -256,15 +266,23 @@ const CookieManagementTool = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-red-50">
-      {/* Background Pattern */}
-      <div className="fixed inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
+    <>
+      <SEOHead
+        title="Cookie Management – DSGVO-konforme Cookie-Banner"
+        description="Cookie Management Tool: DSGVO-konforme Cookie-Banner, Consent-Verwaltung, TCF 2.2, Google Consent Mode v2. ✓ Rechtssicher ✓ Conversion-optimiert. Jetzt testen!"
+        canonical="/tools/cookie-management"
+        keywords="Cookie Management, DSGVO Cookie Banner, Cookie Consent Tool, TCF 2.2, Google Consent Mode"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-red-50">
+        {/* Background Pattern */}
+        <div className="fixed inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
+        </div>
 
-      <Header />
+        <Header />
 
       {/* Hero Section */}
       <motion.section 
@@ -779,6 +797,7 @@ const CookieManagementTool = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

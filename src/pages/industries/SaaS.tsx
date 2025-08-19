@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -28,6 +29,15 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const SaaS: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SaaS Compliance Lösungen",
+    "description": "Compliance für SaaS-Unternehmen: Multi-Tenant DSGVO, SOC 2, EU AI Act für Enterprise-Ready",
+    "applicationCategory": "Business Software",
+    "operatingSystem": "Web-based",
+    "url": "https://marsstein.com/branchen/saas-unternehmen"
+  };
   const painPoints = [
     {
       icon: Database,
@@ -137,8 +147,16 @@ const SaaS: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
+    <>
+      <SEOHead
+        title="SaaS-Unternehmen – Multi-Tenant DSGVO & SOC 2"
+        description="SaaS Compliance: Multi-Tenant DSGVO, SOC 2 Type II, EU AI Act für Enterprise SaaS. ✓ API-Security ✓ Global Compliance. Jetzt Enterprise-ready werden!"
+        canonical="/branchen/saas-unternehmen"
+        keywords="SaaS Compliance, Multi-Tenant DSGVO, SOC 2 Type II, Enterprise SaaS, SaaS Security"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
       
       <main className="overflow-hidden">
         {/* Hero Section */}
@@ -445,6 +463,7 @@ const SaaS: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

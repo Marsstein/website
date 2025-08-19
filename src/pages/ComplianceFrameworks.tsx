@@ -74,7 +74,9 @@ import {
   Ship,
   Layers,
   Package,
-  ShoppingCart
+  ShoppingCart,
+  Church,
+  Cross
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -89,17 +91,17 @@ const ComplianceFrameworks: React.FC = () => {
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const categories = [
-    { id: 'all', name: 'Alle Frameworks', icon: Award, count: 12 },
+    { id: 'all', name: 'Alle Frameworks', icon: Award, count: 14 },
     { id: 'security', name: 'IT-Sicherheit', icon: Shield, count: 4 },
-    { id: 'privacy', name: 'Datenschutz', icon: Lock, count: 3 },
+    { id: 'privacy', name: 'Datenschutz', icon: Lock, count: 5 },
     { id: 'industry', name: 'Branchenstandards', icon: Building2, count: 3 },
     { id: 'ai', name: 'KI & Automation', icon: Brain, count: 2 }
   ];
 
   const difficulties = [
-    { id: 'all', name: 'Alle Level', count: 12 },
+    { id: 'all', name: 'Alle Level', count: 14 },
     { id: 'beginner', name: 'Einsteiger', count: 3 },
-    { id: 'intermediate', name: 'Fortgeschritten', count: 6 },
+    { id: 'intermediate', name: 'Fortgeschritten', count: 8 },
     { id: 'expert', name: 'Experte', count: 3 }
   ];
 
@@ -537,6 +539,92 @@ const ComplianceFrameworks: React.FC = () => {
         reporting: 'BaFin',
         penalties: 'Up to 5M€'
       }
+    },
+    {
+      id: 'dsg-ekd',
+      title: 'DSG-EKD',
+      subtitle: 'Kirchlicher Datenschutz',
+      description: 'Datenschutzgesetz der Evangelischen Kirche in Deutschland. Spezifische Regelung für kirchliche Einrichtungen mit Fokus auf Seelsorgegeheimnis und Gemeindedaten.',
+      category: 'privacy',
+      difficulty: 'intermediate',
+      readTime: '30 Min',
+      implementationTime: '3-6 Monate',
+      icon: Church,
+      color: 'from-purple-500 to-violet-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
+      link: '/dsg-ekd',
+      certification: false,
+      compliance: 97,
+      lastUpdated: '2024-01-26',
+      industries: ['Kirchen', 'Gemeinden', 'Diakonie', 'Kirchliche Einrichtungen'],
+      benefits: [
+        'Kirchliche Autonomie',
+        'Seelsorgegeheimnis',
+        'Gemeindedatenschutz',
+        'Vertrauensschutz'
+      ],
+      requirements: [
+        'Kirchliche Datenschutzbeauftragte',
+        'Seelsorge-Dokumentation',
+        'Mitgliederdatenverwaltung',
+        'Ehrenamtlichen-Schulung'
+      ],
+      keyAreas: [
+        'Kirchliche Amtshandlungen',
+        'Seelsorgegeheimnis',
+        'Mitgliederverwaltung',
+        'Gemeindekommunikation',
+        'Ehrenamtlichen-Datenschutz',
+        'Kirchenbuchführung'
+      ],
+      stats: {
+        churches: '14.000+',
+        members: '20.3M',
+        speciality: 'Kirchenrecht'
+      }
+    },
+    {
+      id: 'kdg',
+      title: 'KDG',
+      subtitle: 'Katholischer Datenschutz',
+      description: 'Gesetz über den Kirchlichen Datenschutz der katholischen Kirche. Spezifische Regelung für katholische Einrichtungen mit Fokus auf Beichtgeheimnis und sakramentale Daten.',
+      category: 'privacy',
+      difficulty: 'intermediate',
+      readTime: '30 Min',
+      implementationTime: '3-6 Monate',
+      icon: Cross,
+      color: 'from-amber-500 to-yellow-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-amber-900 to-slate-900',
+      link: '/compliance/kdg',
+      certification: false,
+      compliance: 96,
+      lastUpdated: '2024-01-26',
+      industries: ['Bistümer', 'Pfarreien', 'Caritas', 'Katholische Einrichtungen'],
+      benefits: [
+        'Kirchenrechtliche Konformität',
+        'Beichtgeheimnis-Schutz',
+        'Sakramentendatenschutz',
+        'Diözesane Einheit'
+      ],
+      requirements: [
+        'Diözesane Datenschutzbeauftragte',
+        'Matrikelbuch-Verwaltung',
+        'Caritas-Datenschutz',
+        'Pfarrverwaltung'
+      ],
+      keyAreas: [
+        'Sakramentale Datenverarbeitung',
+        'Beichtgeheimnis',
+        'Diözesanverwaltung',
+        'Caritative Dienste',
+        'Matrikelbuchführung',
+        'Digitale Seelsorge'
+      ],
+      stats: {
+        dioceses: '27',
+        catholics: '12.1M',
+        speciality: 'Kanonisches Recht'
+      }
     }
   ];
 
@@ -599,8 +687,8 @@ const ComplianceFrameworks: React.FC = () => {
               </h1>
             </div>
             <p className="text-xl text-slate-300 mb-8 max-w-4xl mx-auto">
-              Comprehensive guides to international compliance standards, certifications, and regulatory frameworks. 
-              Navigate the complex landscape of modern compliance requirements with expert guidance.
+              Umfassende Leitfäden zu internationalen Compliance-Standards, Zertifizierungen und regulatorischen Frameworks. 
+              Navigieren Sie mit fachkundiger Anleitung durch die komplexe Landschaft moderner Compliance-Anforderungen.
             </p>
             
             <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
@@ -616,15 +704,6 @@ const ComplianceFrameworks: React.FC = () => {
                 <Globe className="h-4 w-4 mr-2" />
                 International Standards
               </Badge>
-            </div>
-
-            <div className="flex items-center justify-center gap-2 mb-8">
-              <div className="flex items-center gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="text-slate-300 ml-2">4.9/5 (2,847 reviews)</span>
             </div>
           </motion.div>
         </div>

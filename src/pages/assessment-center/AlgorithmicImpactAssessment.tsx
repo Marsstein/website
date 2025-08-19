@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -68,6 +69,15 @@ interface AssessmentResult {
 }
 
 const AlgorithmicImpactAssessment: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Assessment",
+    "name": "Algorithmic Impact Assessment",
+    "description": "Bewerten Sie die gesellschaftlichen Auswirkungen Ihrer algorithmischen Entscheidungssysteme",
+    "educationalLevel": "Professional",
+    "url": "https://marsstein.com/assessment-center/algorithmic-impact-assessment"
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -527,8 +537,16 @@ const AlgorithmicImpactAssessment: React.FC = () => {
 
   if (isCalculating) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
+      <>
+        <SEOHead
+          title="Algorithmic Impact Assessment – Folgenabschätzung"
+          description="Algorithmic Impact Assessment: Bewerten Sie gesellschaftliche Auswirkungen algorithmischer Systeme. ✓ Bias-Prüfung ✓ Fairness ✓ Transparenz. Jetzt testen!"
+          canonical="/assessment-center/algorithmic-impact-assessment"
+          keywords="Algorithmic Impact Assessment, AIA, Algorithmen Folgenabschätzung, KI Fairness, Bias Detection"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
         <div className="pt-24 pb-16">
           <div className="container px-4">
             <div className="max-w-2xl mx-auto text-center">
@@ -568,6 +586,7 @@ const AlgorithmicImpactAssessment: React.FC = () => {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
@@ -581,8 +600,16 @@ const AlgorithmicImpactAssessment: React.FC = () => {
     };
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
+      <>
+        <SEOHead
+          title="Algorithmic Impact Assessment – Folgenabschätzung"
+          description="Algorithmic Impact Assessment: Bewerten Sie gesellschaftliche Auswirkungen algorithmischer Systeme. ✓ Bias-Prüfung ✓ Fairness ✓ Transparenz. Jetzt testen!"
+          canonical="/assessment-center/algorithmic-impact-assessment"
+          keywords="Algorithmic Impact Assessment, AIA, Algorithmen Folgenabschätzung, KI Fairness, Bias Detection"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
         <div className="pt-24 pb-16">
           <div className="container px-4">
             <div className="max-w-6xl mx-auto">
@@ -803,12 +830,21 @@ const AlgorithmicImpactAssessment: React.FC = () => {
         </div>
         <Footer />
       </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-      <Header />
+    <>
+      <SEOHead
+        title="Algorithmic Impact Assessment – Folgenabschätzung"
+        description="Algorithmic Impact Assessment: Bewerten Sie gesellschaftliche Auswirkungen algorithmischer Systeme. ✓ Bias-Prüfung ✓ Fairness ✓ Transparenz. Jetzt testen!"
+        canonical="/assessment-center/algorithmic-impact-assessment"
+        keywords="Algorithmic Impact Assessment, AIA, Algorithmen Folgenabschätzung, KI Fairness, Bias Detection"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        <Header />
       
       <div className="pt-24 pb-16">
         <div className="container px-4">
@@ -998,6 +1034,7 @@ const AlgorithmicImpactAssessment: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

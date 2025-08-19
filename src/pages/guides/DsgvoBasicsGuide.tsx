@@ -66,7 +66,6 @@ const DsgvoBasicsGuide: React.FC = () => {
       id: 0,
       title: 'Was ist die DSGVO?',
       subtitle: 'Grundlagen, Geschichte und rechtlicher Rahmen',
-      readTime: '8 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-4 lg:p-8">
@@ -322,7 +321,6 @@ const DsgvoBasicsGuide: React.FC = () => {
       id: 1,
       title: 'Die 7 Grundprinzipien',
       subtitle: 'Art. 5 DSGVO - Das Fundament des Datenschutzes',
-      readTime: '12 Min',
       content: `
         <div class="space-y-8">
           <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 rounded-xl p-6">
@@ -627,7 +625,6 @@ const DsgvoBasicsGuide: React.FC = () => {
       id: 2,
       title: 'Rechtsgrundlagen Art. 6',
       subtitle: 'Die 6 Erlaubnistatbestände für Datenverarbeitung',
-      readTime: '15 Min',
       content: `
         <div class="space-y-6">
           <p class="text-xl text-slate-300 leading-relaxed">
@@ -747,7 +744,6 @@ const DsgvoBasicsGuide: React.FC = () => {
       id: 3,
       title: 'Betroffenenrechte',
       subtitle: 'Was müssen Sie gewährleisten?',
-      readTime: '2 Min',
       content: `
         <div class="space-y-6">
           <p class="text-xl text-slate-300 leading-relaxed">
@@ -868,7 +864,6 @@ const DsgvoBasicsGuide: React.FC = () => {
       id: 4,
       title: 'Sanktionen & Bußgelder',
       subtitle: 'Was passiert bei Verstößen?',
-      readTime: '2 Min',
       content: `
         <div class="space-y-6">
           <p class="text-xl text-slate-300 leading-relaxed">
@@ -1045,7 +1040,6 @@ const DsgvoBasicsGuide: React.FC = () => {
   };
 
   const currentChapterData = chapters[currentChapter];
-  const totalReadTime = chapters.reduce((sum, chapter) => sum + parseInt(chapter.readTime), 0);
   const overallProgress = ((currentChapter + (readingProgress / 100)) / chapters.length) * 100;
 
   return (
@@ -1114,26 +1108,12 @@ const DsgvoBasicsGuide: React.FC = () => {
               </div>
             </div>
             
-            <div className="flex items-center gap-6 text-sm text-slate-400">
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>{currentChapterData.readTime} Lesezeit</span>
+            {completedChapters.includes(currentChapter) && (
+              <div className="flex items-center gap-2 text-green-400 text-sm">
+                <CheckCircle className="h-4 w-4" />
+                <span>Abgeschlossen</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4" />
-                <span>2,847 Leser</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                <span>4.9 Bewertung</span>
-              </div>
-              {completedChapters.includes(currentChapter) && (
-                <div className="flex items-center gap-2 text-green-400">
-                  <CheckCircle className="h-4 w-4" />
-                  <span>Abgeschlossen</span>
-                </div>
-              )}
-            </div>
+            )}
           </motion.div>
 
           {/* Chapter Navigation Sidebar */}
@@ -1172,7 +1152,6 @@ const DsgvoBasicsGuide: React.FC = () => {
                             </div>
                             <div className="flex-grow">
                               <div className="text-sm font-medium">{chapter.title}</div>
-                              <div className="text-xs opacity-75">{chapter.readTime}</div>
                             </div>
                           </div>
                         </button>
@@ -1183,7 +1162,7 @@ const DsgvoBasicsGuide: React.FC = () => {
                       <div className="text-sm text-slate-400 mb-2">Gesamtfortschritt</div>
                       <Progress value={overallProgress} className="h-2 mb-2" />
                       <div className="text-xs text-slate-400">
-                        {Math.round(overallProgress)}% • {totalReadTime} Min gesamt
+                        {Math.round(overallProgress)}% abgeschlossen
                       </div>
                     </div>
                   </CardContent>
