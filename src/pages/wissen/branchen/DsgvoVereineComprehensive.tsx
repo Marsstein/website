@@ -209,63 +209,54 @@ const volunteerDataHandling = {
     }
   ];
 
+  // Handle initial load with hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        scrollToSection(hash);
+        setActiveSection(hash);
+      }, 100);
+    }
+  }, []);
+  
+  // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navigationItems.map(item => 
-        document.getElementById(item.id)
-      ).filter(Boolean);
+      const sections = navigationItems.map(item => ({
+        id: item.id,
+        element: document.getElementById(item.id)
+      }));
       
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 150; // Offset for sticky nav
       
-      for (const section of sections) {
-        if (section) {
-          const { offsetTop, offsetHeight } = section;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section.id);
-            // Update URL hash without causing scroll
-            if (window.location.hash !== `#${section.id}`) {
-              window.history.replaceState(null, '', `#${section.id}`);
-            }
-            break;
-          }
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
         }
       }
     };
-
-    // Check for initial hash on page load
-    const handleInitialHash = () => {
-      const hash = window.location.hash.slice(1);
-      if (hash && navigationItems.some(item => item.id === hash)) {
-        setActiveSection(hash);
-        // Small delay to ensure page is rendered
-        setTimeout(() => {
-          scrollToSection(hash);
-        }, 100);
-      }
-    };
-
-    handleInitialHash();
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('hashchange', handleInitialHash);
     
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('hashchange', handleInitialHash);
-    };
-  }, [navigationItems]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const offset = 100;
-      const targetPosition = section.offsetTop - offset;
+    // Update URL with hash
+    window.history.pushState(null, '', `#${sectionId}`);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120; // Offset for sticky navigation
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
       window.scrollTo({
-        top: targetPosition,
+        top: offsetPosition,
         behavior: 'smooth'
       });
-      // Update URL hash
-      window.history.pushState(null, '', `#${sectionId}`);
-      setActiveSection(sectionId);
     }
   };
 
