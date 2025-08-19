@@ -19,14 +19,14 @@ const Impressum: React.FC = () => {
               <div className="flex items-start space-x-3">
                 <User className="w-5 h-5 text-gray-600 mt-1" />
                 <div>
-                  <p className="text-gray-700">Zhihu Chen</p>
+                  <p className="text-gray-700">Marsstein GmbH i.G.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-gray-600 mt-1" />
                 <div>
-                  <p className="text-gray-700">Jakobstr. 10</p>
-                  <p className="text-gray-700">78464 Konstanz</p>
+                  <p className="text-gray-700">Bücklestraße 3</p>
+                  <p className="text-gray-700">78467 Konstanz</p>
                 </div>
               </div>
             </div>
@@ -38,7 +38,8 @@ const Impressum: React.FC = () => {
             <div className="flex items-start space-x-3">
               <Mail className="w-5 h-5 text-gray-600 mt-1" />
               <div>
-                <p className="text-gray-700">E-Mail: jayson@marsstein.ai</p>
+                <p className="text-gray-700">E-Mail: info@marsstein.ai</p>
+                <p className="text-gray-700">Telefon: +4917670560292</p>
               </div>
             </div>
           </section>
@@ -47,9 +48,9 @@ const Impressum: React.FC = () => {
           <section>
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
             <div className="space-y-2">
-              <p className="text-gray-700">Zhihu Chen</p>
-              <p className="text-gray-700">Jakobstr. 10</p>
-              <p className="text-gray-700">78464 Konstanz</p>
+              <p className="text-gray-700">Marsstein GmbH i.G.</p>
+              <p className="text-gray-700">Bücklestraße 3</p>
+              <p className="text-gray-700">78467 Konstanz</p>
             </div>
           </section>
 

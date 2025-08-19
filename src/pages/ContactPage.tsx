@@ -9,14 +9,14 @@ const ContactPage = () => {
     "@type": "ContactPage",
     "mainEntity": {
       "@type": "Organization",
-      "name": "Marsstein GmbH",
-      "email": "info@marsstein.com",
-      "telephone": "+49-30-12345678",
+      "name": "Marsstein GmbH i.G.",
+      "email": "info@marsstein.ai",
+      "telephone": "+4917670560292",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Friedrichstraße 123",
-        "addressLocality": "Berlin",
-        "postalCode": "10117",
+        "streetAddress": "Bücklestraße 3",
+        "addressLocality": "Konstanz",
+        "postalCode": "78467",
         "addressCountry": "DE"
       }
     }
@@ -175,7 +175,7 @@ const ContactPage = () => {
                     </div>
                     <div className="ml-4">
                       <h3 className="font-semibold text-[#232323] text-lg">E-Mail</h3>
-                      <p className="text-[#474747] font-medium">info@marsstein.com</p>
+                      <p className="text-[#474747] font-medium">info@marsstein.ai</p>
                       <p className="text-sm text-[#474747] opacity-80">Antwort innerhalb von 24 Stunden</p>
                     </div>
                   </div>
@@ -188,7 +188,7 @@ const ContactPage = () => {
                     </div>
                     <div className="ml-4">
                       <h3 className="font-semibold text-[#232323] text-lg">Telefon</h3>
-                      <p className="text-[#474747] font-medium">+49 (0) 30 123 456 78</p>
+                      <p className="text-[#474747] font-medium">+4917670560292</p>
                       <p className="text-sm text-[#474747] opacity-80">Mo-Fr 9:00-18:00 Uhr</p>
                     </div>
                   </div>
@@ -203,9 +203,9 @@ const ContactPage = () => {
                     <div className="ml-4">
                       <h3 className="font-semibold text-[#232323] text-lg">Adresse</h3>
                       <p className="text-[#474747] font-medium">
-                        Marsstein GmbH<br />
-                        Friedrichstraße 123<br />
-                        10117 Berlin
+                        Marsstein GmbH i.G.<br />
+                        Bücklestraße 3<br />
+                        78467 Konstanz
                       </p>
                     </div>
                   </div>

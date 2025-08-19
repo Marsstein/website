@@ -29,10 +29,11 @@ const Datenschutz: React.FC = () => {
               Verantwortlicher
             </h2>
             <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-gray-700">Zhihu Chen</p>
-              <p className="text-gray-700">Jakobstr. 10</p>
-              <p className="text-gray-700">78464 Konstanz</p>
-              <p className="text-gray-700 mt-2">E-Mail: jayson@marsstein.ai</p>
+              <p className="text-gray-700">Marsstein GmbH i.G.</p>
+              <p className="text-gray-700">Bücklestraße 3</p>
+              <p className="text-gray-700">78467 Konstanz</p>
+              <p className="text-gray-700 mt-2">E-Mail: info@marsstein.ai</p>
+              <p className="text-gray-700">Telefon: +4917670560292</p>
             </div>
           </section>
 
