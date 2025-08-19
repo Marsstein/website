@@ -65,7 +65,7 @@ const WissenOverview: React.FC = () => {
       title: 'KI Compliance',
       description: 'Alles zu künstlicher Intelligenz und Datenschutz. EU AI Act, algorithmische Transparenz und ethische KI-Entwicklung.',
       icon: Brain,
-      link: '/wissen/ki-compliance',
+      link: '/wissen/ki-datenschutz',
       category: 'ai',
       articles: 32,
       level: 'Fortgeschritten',

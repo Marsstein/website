@@ -393,7 +393,7 @@ const SitemapSEO = () => {
         },
         { 
           title: 'KI Compliance', 
-          url: '/wissen/ki-compliance', 
+          url: '/wissen/ki-datenschutz', 
           description: 'Alles zu KI und Datenschutz. EU AI Act, algorithmische Transparenz, Bias-Vermeidung und ethische KI-Entwicklung für compliant AI-Systeme.', 
           priority: 'high',
           available: true 

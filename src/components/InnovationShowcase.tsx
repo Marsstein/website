@@ -96,7 +96,7 @@ const innovations: Innovation[] = [
     icon: Cpu,
     gradient: 'from-indigo-500/20 to-purple-600/20',
     features: ['Local Processing', 'Privacy-First', 'Cloud Sync'],
-    href: '/wissen/ki-compliance',
+    href: '/wissen/ki-datenschutz',
     status: 'beta',
     metric: { label: 'Latenz', value: '<1ms' }
   }
@@ -352,7 +352,7 @@ export const InnovationShowcase: React.FC = () => {
                     KI-Demo erleben
                   </Button>
                 </Link>
-                <Link to="/wissen/ki-compliance">
+                <Link to="/wissen/ki-datenschutz">
                   <Button variant="outline" className="interactive-border magnetic">
                     Technologie lernen
                     <ArrowRight className="ml-2 h-4 w-4" />

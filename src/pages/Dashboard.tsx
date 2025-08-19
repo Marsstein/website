@@ -999,7 +999,7 @@ function HelpPage() {
           <CardContent className="space-y-4">
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4" />
-              <span>jayson.chen@marsstein.com</span>
+              <span>info@marsstein.ai</span>
             </div>
             {/* <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />

@@ -184,7 +184,7 @@ const FinalChecks = () => {
       pages: [
         {
           title: 'ISO 27001',
-          url: '/iso-27001',
+          url: '/iso-27001-zertifizierung',
           description: 'Der internationale Standard für Informationssicherheits-Managementsysteme (ISMS). Schritt-für-Schritt-Anleitung zur Implementierung, Zertifizierungsvorbereitung und kontinuierlichen Verbesserung Ihrer IT-Sicherheit.',
           priority: 'high',
           available: true,
@@ -195,7 +195,7 @@ const FinalChecks = () => {
         },
         {
           title: 'SOC 2',
-          url: '/soc2',
+          url: '/soc2-zertifizierung',
           description: 'System and Organization Controls 2 für Service-Provider. Meistern Sie die fünf Trust Service Principles (Sicherheit, Verfügbarkeit, Vertraulichkeit, Verarbeitungsintegrität, Datenschutz) für Ihre Cloud-Services.',
           priority: 'high',
           available: true,
@@ -206,7 +206,7 @@ const FinalChecks = () => {
         },
         {
           title: 'ISO 27017',
-          url: '/iso-27017',
+          url: '/iso-27017-zertifizierung',
           description: 'Spezifische Sicherheitskontrollen für Cloud-Services. Erweitern Sie Ihr ISO 27001 ISMS um Cloud-spezifische Controls für Provider und Nutzer von Cloud-Diensten.',
           priority: 'medium',
           available: true,
@@ -217,7 +217,7 @@ const FinalChecks = () => {
         },
         {
           title: 'ISO 27018',
-          url: '/iso-27018',
+          url: '/iso-27018-zertifizierung',
           description: 'Datenschutz in der Cloud für personenbezogene Daten. Implementieren Sie spezielle Privacy-Controls für Public Cloud PII (Personally Identifiable Information) Prozessoren.',
           priority: 'medium',
           available: true,
@@ -228,7 +228,7 @@ const FinalChecks = () => {
         },
         {
           title: 'TISAX',
-          url: '/tisax',
+          url: '/tisax-zertifizierung',
           description: 'Trusted Information Security Assessment Exchange für die Automobilindustrie. Erfüllen Sie die spezifischen Anforderungen der Automobilhersteller an Informationssicherheit und Datenschutz.',
           priority: 'medium',
           available: true,
@@ -1830,7 +1830,7 @@ const FinalChecks = () => {
         },
         {
           title: 'Healthcare Compliance Wissen',
-          url: '/wissen/branchen/healthcare',
+          url: '/wissen/branchen/healthcare-ai-compliance',
           description: 'Spezialwissen für Gesundheitswesen-Compliance. Patientendatenschutz, E-Health-Gesetz, Forschungsdaten und Krankenkassen-Schnittstellen.',
           priority: 'medium',
           available: true,
@@ -1841,7 +1841,7 @@ const FinalChecks = () => {
         },
         {
           title: 'FinTech Compliance Wissen',
-          url: '/wissen/branchen/fintech',
+          url: '/wissen/branchen/fintech-compliance',
           description: 'Finanzsektor-Compliance verstehen. MaRisk, BAIT, PSD2 und die Schnittstelle zwischen Finanzregulierung und Datenschutz.',
           priority: 'medium',
           available: true,
@@ -1852,7 +1852,7 @@ const FinalChecks = () => {
         },
         {
           title: 'E-Commerce Compliance Wissen',
-          url: '/wissen/branchen/e-commerce',
+          url: '/wissen/branchen/ecommerce-privacy',
           description: 'Online-Handel rechtssicher gestalten. Von Cookie-Compliance über Kundendatenschutz bis zu grenzüberschreitendem Datenverkehr.',
           priority: 'medium',
           available: true,
@@ -1863,7 +1863,7 @@ const FinalChecks = () => {
         },
         {
           title: 'SaaS Compliance Wissen',
-          url: '/wissen/branchen/saas',
+          url: '/wissen/branchen/saas-privacy-design',
           description: 'Cloud-Service Compliance meistern. Multi-Tenancy, Auftragsverarbeitung, SLAs und internationale Compliance für SaaS-Anbieter.',
           priority: 'medium',
           available: true,
@@ -1875,7 +1875,7 @@ const FinalChecks = () => {
         // KI Datenschutz Pages
         {
           title: 'KI Datenschutz Übersicht',
-          url: '/wissen/ki-datenschutz',
+          url: '/wissen/ki-compliance',
           description: 'Künstliche Intelligenz und Datenschutz vereinen. EU AI Act, algorithmische Transparenz, Bias-Vermeidung und ethische KI-Entwicklung.',
           priority: 'medium',
           available: true,

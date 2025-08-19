@@ -304,7 +304,7 @@ const App = () => (
                 {/* Knowledge/Wissen Routes */}
                 <Route path="/wissen" element={<Knowledge />} />
                 <Route path="/wissen/dsgvo" element={<DsgvoGuides />} />
-                <Route path="/wissen/ki-compliance" element={<KiDatenschutz />} />
+                <Route path="/wissen/ki-datenschutz" element={<KiDatenschutz />} />
                 <Route path="/wissen/cybersecurity" element={<CrisisManagement />} />
                 <Route path="/wissen/zertifizierungen" element={<ComplianceFrameworks />} />
                 <Route path="/wissen/branchen" element={<BranchenWissen />} />

@@ -23,7 +23,7 @@ const sharedData = {
   ],
   wissenLinks: [
     { label: 'DSGVO Leitfäden', href: '/wissen/dsgvo' },
-    { label: 'KI Compliance', href: '/wissen/ki-compliance' },
+    { label: 'KI Compliance', href: '/wissen/ki-datenschutz' },
     { label: 'Krisenmanagement', href: '/wissen/krisenmanagement' }
   ],
   branchenLinks: [
