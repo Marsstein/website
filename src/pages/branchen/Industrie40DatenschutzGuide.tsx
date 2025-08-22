@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -83,7 +84,8 @@ import {
   Bolt,
   CircuitBoard,
   Laptop,
-  Cloud
+  Cloud,
+  ChevronUp
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -91,6 +93,7 @@ import { cn } from '@/lib/utils';
 const Industrie40DatenschutzGuide = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string>('ueberblick');
+  const [showBackToTop, setShowBackToTop] = useState(false);
   
   // Navigation items for sticky navigation - mit deutschen Anker-Links
   const navigationItems = [
@@ -147,6 +150,9 @@ const Industrie40DatenschutzGuide = () => {
           break;
         }
       }
+      
+      // Show back to top button when scrolled down
+      setShowBackToTop(window.scrollY > 500);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -1767,6 +1773,13 @@ compliance:
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <Helmet>
+        <title>Industrie 4.0 Datenschutz – Smart Factory DSGVO</title>
+        <meta name="description" content="Umfassender Datenschutz-Leitfaden für Industrie 4.0. IoT-Sensoren, Edge Computing & Mitarbeiterschutz in der Smart Factory. DSGVO-konforme Umsetzung garantiert." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://datenschutz-assistent.de/wissen/branchen/industrie-40-datenschutz" />
+      </Helmet>
+      
       <Header />
       
       <main className="py-20">
@@ -1805,6 +1818,35 @@ compliance:
                 </Button>
               </div>
             </div>
+
+            {/* Table of Contents */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5 text-gray-600" />
+                  Inhaltsverzeichnis
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <nav aria-label="Inhaltsverzeichnis">
+                  <ul className="space-y-2">
+                    {navigationItems.map((item) => (
+                      <li key={item.id}>
+                        <button
+                          onClick={() => scrollToSection(item.id)}
+                          className="text-left w-full px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors flex items-center gap-2 group"
+                        >
+                          <item.icon className="h-4 w-4 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300" />
+                          <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                            {item.label}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </CardContent>
+            </Card>
 
             {/* Progress Indicator */}
             <Card className="mb-8">
@@ -1878,7 +1920,7 @@ compliance:
           <div className="container px-4">
             <div className="max-w-6xl mx-auto space-y-20">
               {/* Überblick Section */}
-              <section id="ueberblick" className="space-y-8 scroll-mt-32">
+              <section id="ueberblick" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1894,7 +1936,7 @@ compliance:
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* IoT & Sensoren Section */}
-              <section id="iot-sensoren" className="space-y-8 scroll-mt-32">
+              <section id="iot-sensoren" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1910,7 +1952,7 @@ compliance:
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Maschinendaten Section */}
-              <section id="maschinendaten" className="space-y-8 scroll-mt-32">
+              <section id="maschinendaten" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1926,7 +1968,7 @@ compliance:
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Edge Computing Section */}
-              <section id="edge-computing" className="space-y-8 scroll-mt-32">
+              <section id="edge-computing" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1942,7 +1984,7 @@ compliance:
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Mitarbeiterschutz Section */}
-              <section id="mitarbeiterschutz" className="space-y-8 scroll-mt-32">
+              <section id="mitarbeiterschutz" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1958,7 +2000,7 @@ compliance:
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Umsetzung Section */}
-              <section id="umsetzung" className="space-y-8 scroll-mt-32">
+              <section id="umsetzung" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1988,11 +2030,11 @@ compliance:
                       <div className="text-sm text-gray-600">Umfassender DSGVO-Leitfaden</div>
                     </div>
                   </Link>
-                  <Link to="/wissen/branchen/saas-privacy-design" className="block">
+                  <Link to="/wissen/branchen/automotive-datenschutz" className="block">
                     <div className="p-4 bg-cyan-50 rounded-lg border border-cyan-200 hover:border-cyan-300 transition-colors">
                       <Cloud className="h-5 w-5 text-cyan-600 mb-2" />
-                      <div className="font-medium">SaaS Privacy by Design</div>
-                      <div className="text-sm text-gray-600">Privacy-native SaaS Development</div>
+                      <div className="font-medium">Automotive Datenschutz</div>
+                      <div className="text-sm text-gray-600">Connected Cars & DSGVO</div>
                     </div>
                   </Link>
                   <Link to="/wissen/krisenmanagement" className="block">
@@ -2017,6 +2059,17 @@ compliance:
       </main>
 
       <Footer />
+      
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 z-50 p-3 bg-gray-700 dark:bg-gray-950 text-white rounded-full shadow-lg hover:bg-gray-800 dark:hover:bg-gray-900 transition-all"
+          aria-label="Zurück nach oben"
+        >
+          <ChevronUp className="h-5 w-5" />
+        </button>
+      )}
     </div>
   );
 };

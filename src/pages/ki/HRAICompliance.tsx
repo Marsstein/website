@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -208,6 +208,91 @@ const HRAICompliance = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  // SEO Meta Tags
+  useEffect(() => {
+    // Title Tag (58 Zeichen)
+    document.title = "HR AI Compliance – BetrVG & AGG konforme KI-Lösungen";
+    
+    // Meta Description (149 Zeichen)
+    const metaDescription = "Umfassender Guide für KI-Compliance im HR-Bereich: EU AI Act, BetrVG, AGG Anforderungen, Bias-Tests und praktische Umsetzung.";
+    
+    // Viewport
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      viewportMeta = document.createElement('meta');
+      viewportMeta.setAttribute('name', 'viewport');
+      document.head.appendChild(viewportMeta);
+    }
+    viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1');
+    
+    // Meta Description
+    let descriptionMeta = document.querySelector('meta[name="description"]');
+    if (!descriptionMeta) {
+      descriptionMeta = document.createElement('meta');
+      descriptionMeta.setAttribute('name', 'description');
+      document.head.appendChild(descriptionMeta);
+    }
+    descriptionMeta.setAttribute('content', metaDescription);
+    
+    // Canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', `${window.location.origin}/wissen/ki-datenschutz/hr-ai-compliance`);
+    
+    // Open Graph Tags
+    const ogTags = [
+      { property: 'og:title', content: 'HR AI Compliance – BetrVG & AGG konforme KI-Lösungen' },
+      { property: 'og:description', content: metaDescription },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: `${window.location.origin}/wissen/ki-datenschutz/hr-ai-compliance` }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogMeta = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogMeta) {
+        ogMeta = document.createElement('meta');
+        ogMeta.setAttribute('property', tag.property);
+        document.head.appendChild(ogMeta);
+      }
+      ogMeta.setAttribute('content', tag.content);
+    });
+
+    // Scroll margin for sticky header
+    const style = document.createElement('style');
+    style.textContent = `
+      h1, h2, h3, h4, h5, h6 {
+        scroll-margin-top: 96px;
+      }
+      
+      @media (max-width: 768px) {
+        .mobile-toc-accordion {
+          max-height: 300px;
+          overflow-y: auto;
+        }
+        
+        body {
+          font-size: 16px;
+          line-height: 1.6;
+        }
+        
+        a, button {
+          min-height: 48px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   const tabs = [
     { id: 'overview', label: 'Überblick', icon: Shield },
@@ -994,7 +1079,7 @@ const HRAICompliance = () => {
               </div>
             </div>
             
-            <h1 className="text-5xl font-bold text-white mb-6">
+            <h1 id="hr-ai-compliance" className="text-5xl font-bold text-white mb-6">
               HR AI & Bewerbermanagement Compliance
             </h1>
             
@@ -1046,6 +1131,68 @@ const HRAICompliance = () => {
         </div>
       </div>
 
+      {/* Table of Contents */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="w-5 h-5" />
+              Inhaltsverzeichnis
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <nav aria-label="Inhaltsverzeichnis" className={cn("space-y-2", "md:grid md:grid-cols-2 md:gap-6 md:space-y-0")}>
+              <div className="space-y-2">
+                <a 
+                  href="#ueberblick" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Shield className="w-4 h-4 flex-shrink-0" />
+                  <span>HR AI Compliance Landscape</span>
+                </a>
+                <a 
+                  href="#legal-framework" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Scale className="w-4 h-4 flex-shrink-0" />
+                  <span>Legal Framework für HR AI</span>
+                </a>
+                <a 
+                  href="#bias-detection" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Users className="w-4 h-4 flex-shrink-0" />
+                  <span>Bias Detection & Fairness Testing</span>
+                </a>
+              </div>
+              <div className="space-y-2">
+                <a 
+                  href="#transparenz" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Eye className="w-4 h-4 flex-shrink-0" />
+                  <span>Transparenz & Erklärbarkeit</span>
+                </a>
+                <a 
+                  href="#praktische-umsetzung" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Code className="w-4 h-4 flex-shrink-0" />
+                  <span>Praktische Umsetzung</span>
+                </a>
+                <a 
+                  href="#compliance-tools" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Wrench className="w-4 h-4 flex-shrink-0" />
+                  <span>Compliance Tools & Tests</span>
+                </a>
+              </div>
+            </nav>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -1053,7 +1200,7 @@ const HRAICompliance = () => {
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">HR AI Compliance Landscape</h2>
+              <h2 id="ueberblick" className="text-3xl font-bold mb-4">HR AI Compliance Landscape</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Die Verwendung von KI in HR-Prozessen unterliegt strengen rechtlichen Anforderungen. 
                 Diese Seite führt Sie durch die komplexe Regulatorik und zeigt praktische Lösungsansätze 
@@ -1259,12 +1406,48 @@ const HRAICompliance = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Related Resources */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <LinkIcon className="w-5 h-5" />
+                  Verwandte KI-Compliance Ressourcen
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Link 
+                    to="/wissen/ki-datenschutz/federated-learning" 
+                    className="flex items-center gap-3 p-4 border rounded-lg hover:border-blue-300 hover:shadow-md transition-all min-h-[48px]"
+                  >
+                    <Network className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-blue-800">Federated Learning Guide</h4>
+                      <p className="text-sm text-gray-600">Dezentrale KI-Kollaboration mit Privacy-by-Design</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  </Link>
+                  <Link 
+                    to="/wissen/ki-datenschutz/financial-ai-compliance" 
+                    className="flex items-center gap-3 p-4 border rounded-lg hover:border-blue-300 hover:shadow-md transition-all min-h-[48px]"
+                  >
+                    <Building2 className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-blue-800">Financial AI Compliance</h4>
+                      <p className="text-sm text-gray-600">Regulatorische Anforderungen für KI im Finanzsektor</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           {/* Legal Framework Tab */}
           <TabsContent value="legal-framework" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Legal Framework für HR AI</h2>
+              <h2 id="legal-framework" className="text-3xl font-bold mb-4">Legal Framework für HR AI</h2>
               <p className="text-lg text-gray-600">
                 Die vier wichtigsten Rechtsrahmen für KI im Personalwesen
               </p>
@@ -1361,7 +1544,7 @@ const HRAICompliance = () => {
           {/* Bias & Discrimination Tab */}
           <TabsContent value="bias-discrimination" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Bias Detection & Fairness Testing</h2>
+              <h2 id="bias-detection" className="text-3xl font-bold mb-4">Bias Detection & Fairness Testing</h2>
               <p className="text-lg text-gray-600">
                 Umfassende Methoden zur Erkennung und Vermeidung von Diskriminierung in HR AI
               </p>
@@ -1514,7 +1697,7 @@ const HRAICompliance = () => {
           {/* Transparency & Explainability Tab */}
           <TabsContent value="transparency" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Transparenz & Erklärbarkeit</h2>
+              <h2 id="transparenz" className="text-3xl font-bold mb-4">Transparenz & Erklärbarkeit</h2>
               <p className="text-lg text-gray-600">
                 Erfüllung der Transparenzpflichten nach DSGVO und EU AI Act
               </p>
@@ -1624,7 +1807,7 @@ const HRAICompliance = () => {
           {/* Implementation Tab */}
           <TabsContent value="implementation" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Praktische Umsetzung</h2>
+              <h2 id="praktische-umsetzung" className="text-3xl font-bold mb-4">Praktische Umsetzung</h2>
               <p className="text-lg text-gray-600">
                 5-Phasen Roadmap für compliance-konforme HR AI Implementation
               </p>
@@ -1745,7 +1928,7 @@ const HRAICompliance = () => {
           {/* Compliance Tools Tab */}
           <TabsContent value="compliance-tools" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Compliance Tools & Tests</h2>
+              <h2 id="compliance-tools" className="text-3xl font-bold mb-4">Compliance Tools & Tests</h2>
               <p className="text-lg text-gray-600">
                 Praktische Tools für HR AI Compliance Testing und Monitoring
               </p>

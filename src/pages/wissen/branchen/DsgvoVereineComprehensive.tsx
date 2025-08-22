@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
@@ -52,6 +53,12 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 const DsgvoVereineComprehensive: React.FC = () => {
+  // SEO Meta-Tags - optimiert gemäß SEO-Checkliste
+  const pageTitle = "DSGVO Vereine – Datenschutz im Vereinswesen 2024";
+  const pageDescription = "DSGVO für Vereine: ✓ Mitgliederdaten verwalten ✓ Newsletter rechtssicher ✓ Veranstaltungsfotos ✓ Praktische Checklisten. Jetzt Verein DSGVO-konform machen!";
+  
+  // Mobile font settings
+  const baseFontSize = typeof window !== 'undefined' && window.innerWidth < 640 ? 16 : 16;
   const [activeSection, setActiveSection] = useState('overview');
   const [expandedScenarios, setExpandedScenarios] = useState<string[]>([]);
   const [completedItems, setCompletedItems] = useState<string[]>([]);
@@ -209,6 +216,38 @@ const volunteerDataHandling = {
     }
   ];
 
+  // Add scroll-margin-top styles for sticky header and mobile optimizations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      h2[id], h3[id], section[id] {
+        scroll-margin-top: 96px;
+      }
+      
+      /* Mobile-optimierungen */
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        
+        .tap-target {
+          min-height: 48px;
+          min-width: 48px;
+        }
+        
+        p, li {
+          max-width: 45ch;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   // Handle initial load with hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
@@ -285,8 +324,38 @@ const volunteerDataHandling = {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-      <Header />
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="dsgvo vereine, datenschutz vereine, dsgvo vereinsrecht, datenschutz ehrenamt, dsgvo compliance vereine" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://www.example.com/wissen/branchen/dsgvo-vereine" />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.example.com/wissen/branchen/dsgvo-vereine" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": pageTitle,
+            "description": pageDescription,
+            "author": {
+              "@type": "Organization",
+              "name": "DSGVO Compliance Team"
+            },
+            "datePublished": "2024-01-01",
+            "dateModified": new Date().toISOString()
+          })}
+        </script>
+      </Helmet>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+        <Header />
       
       {/* Hero Section mit Parallax */}
       <section ref={heroRef} className="relative bg-gradient-to-br from-white via-gray-50 to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/20 py-20 md:py-28 overflow-hidden">
@@ -366,7 +435,7 @@ const volunteerDataHandling = {
             >
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 min-h-[48px] min-w-[48px]"
               >
                 <HeartHandshake className="h-5 w-5 mr-2" />
                 Kostenlose Erstberatung
@@ -374,7 +443,7 @@ const volunteerDataHandling = {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-emerald-950/30"
+                className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-emerald-950/30 min-h-[48px] min-w-[48px]"
               >
                 <Download className="h-5 w-5 mr-2" />
                 DSGVO-Guide für Vereine
@@ -391,7 +460,7 @@ const volunteerDataHandling = {
           >
             <Card className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-2xl border-2 border-emerald-200 dark:border-emerald-800">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4 text-center text-gray-900 dark:text-white">
+                <h3 id="compliance-statistiken" className="text-lg font-semibold mb-4 text-center text-gray-900 dark:text-white">
                   Aktuelle Compliance-Statistiken für Vereine
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -420,8 +489,41 @@ const volunteerDataHandling = {
         </motion.div>
       </section>
 
-      {/* Sticky Navigation */}
-      <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+      {/* Inhaltsverzeichnis für Mobile und Desktop */}
+      <section className="py-8 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <nav aria-label="Inhaltsverzeichnis" className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                <BookOpen className="h-5 w-5 text-emerald-600" />
+                Inhaltsverzeichnis
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {navigationItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left tap-target"
+                  >
+                    <item.icon className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky Navigation mit scroll-margin-top */}
+      <style>
+        {`
+          h2[id], h3[id], section[id] {
+            scroll-margin-top: 96px;
+          }
+        `}
+      </style>
+      <nav className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm" aria-label="Inhaltsverzeichnis">
         <div className="container px-4">
           <nav className="flex items-center justify-start md:justify-center gap-2 py-4 overflow-x-auto scrollbar-hide">
             {navigationItems.map((item) => (
@@ -441,7 +543,7 @@ const volunteerDataHandling = {
             ))}
           </nav>
         </div>
-      </div>
+      </nav>
 
       {/* Main Content */}
       <div className="py-20 bg-gray-50 dark:bg-gray-950">
@@ -456,7 +558,7 @@ const volunteerDataHandling = {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+                <h2 id="dsgvo-vereinswesen" className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
                   DSGVO im Vereinswesen - Was Sie wissen müssen
                 </h2>
                 
@@ -1526,6 +1628,41 @@ const volunteerDataHandling = {
         </div>
       </div>
 
+      {/* Related Links Section for SEO */}
+      <section className="py-12 bg-white dark:bg-gray-900">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-2xl font-bold mb-6">Verwandte Compliance-Themen</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link to="/wissen/branchen/datenschutz-kindergarten" className="group">
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline mb-2">Datenschutz Kindergarten</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">DSGVO-Compliance für Kitas</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to="/wissen/branchen/dsgvo-vermieter" className="group">
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline mb-2">DSGVO für Vermieter</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Datenschutz in der Immobilienverwaltung</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to="/wissen/branchen/datenschutz-arztpraxis" className="group">
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline mb-2">Datenschutz Arztpraxis</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">DSGVO für niedergelassene Ärzte</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Enhanced CTA Section */}
       <section className="py-20 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 dark:from-emerald-950 dark:via-teal-900 dark:to-cyan-950 relative overflow-hidden">
         <div className="absolute inset-0">
@@ -1614,6 +1751,7 @@ const volunteerDataHandling = {
 
       <Footer />
     </div>
+    </>
   );
 };
 

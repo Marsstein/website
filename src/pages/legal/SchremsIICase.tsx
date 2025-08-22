@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -47,6 +47,48 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const SchremsIICase: React.FC = () => {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Schrems II – Internationale Datentransfers nach EuGH';
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance.');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance.';
+      document.head.appendChild(meta);
+    }
+    
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(meta);
+    }
+  }, []);
+  
+  // Add scroll offset for sticky header
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      h2[id], h3[id] { 
+        scroll-margin-top: 96px; 
+      }
+      @media (max-width: 768px) {
+        h2[id], h3[id] { 
+          scroll-margin-top: 80px; 
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   const [activeTab, setActiveTab] = useState('overview');
   const [copySuccess, setCopySuccess] = useState('');
   const heroRef = useRef<HTMLDivElement>(null);
@@ -257,22 +299,24 @@ const SchremsIICase: React.FC = () => {
               <Star className="h-5 w-5 text-pink-400 animate-pulse" />
             </motion.div>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8"
-            >
-              <span className="text-white">Schrems</span>
-              <br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
-                II
-              </span>
-              <br />
-              <span className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-slate-400 to-slate-200 bg-clip-text text-transparent">
-                EuGH C-311/18
-              </span>
-            </motion.h1>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8">
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="block"
+              >
+                <span className="text-white">Schrems</span>
+                <br />
+                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+                  II
+                </span>
+                <br />
+                <span className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-slate-400 to-slate-200 bg-clip-text text-transparent">
+                  EuGH C-311/18
+                </span>
+              </motion.span>
+            </h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
@@ -307,8 +351,25 @@ const SchremsIICase: React.FC = () => {
         </div>
       </motion.section>
 
+      {/* Table of Contents */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl">
+          <nav aria-label="Inhaltsverzeichnis" className="bg-slate-800/60 backdrop-blur-sm rounded-xl p-6 lg:p-8">
+            <h2 className="text-xl font-bold text-white mb-4">Inhaltsverzeichnis</h2>
+            <ul className="space-y-2 text-sm lg:text-base">
+              <li><a href="#overview" className="text-purple-300 hover:text-purple-400 transition-colors">1. Überblick</a></li>
+              <li><a href="#findings" className="text-purple-300 hover:text-purple-400 transition-colors">2. Kernurteile</a></li>
+              <li><a href="#impact" className="text-purple-300 hover:text-purple-400 transition-colors">3. Praktische Auswirkungen</a></li>
+              <li><a href="#actions" className="text-purple-300 hover:text-purple-400 transition-colors">4. Maßnahmenplan</a></li>
+              <li><a href="#timeline" className="text-purple-300 hover:text-purple-400 transition-colors">5. Timeline</a></li>
+              <li><a href="#resources" className="text-purple-300 hover:text-purple-400 transition-colors">6. Verwandte Ressourcen</a></li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
       {/* Content Tabs */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8" id="content">
         <div className="container mx-auto max-w-7xl">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <motion.div 
@@ -337,7 +398,7 @@ const SchremsIICase: React.FC = () => {
             </motion.div>
 
             {/* Overview Tab */}
-            <TabsContent value="overview" className="space-y-8">
+            <TabsContent value="overview" className="space-y-8" id="overview">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -347,7 +408,7 @@ const SchremsIICase: React.FC = () => {
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-3 gap-8">
                       <div className="md:col-span-2">
-                        <h3 className="text-2xl font-bold text-white mb-6">Urteilsübersicht</h3>
+                        <h2 className="text-2xl font-bold text-white mb-6">Urteilsübersicht</h2>
                         <div className="space-y-4 text-slate-300 leading-relaxed">
                           <p>
                             Am 16. Juli 2020 fällte der Europäische Gerichtshof (EuGH) ein wegweisendes Urteil 
@@ -361,13 +422,13 @@ const SchremsIICase: React.FC = () => {
                           </p>
                           <p>
                             Diese Entscheidung hatte massive Auswirkungen auf internationale Datentransfers und 
-                            zwang Unternehmen weltweit zur Überprüfung ihrer Compliance-Strategien.
+                            zwang Unternehmen weltweit zur Überprüfung ihrer <Link to="/services/compliance-management" className="text-purple-300 hover:text-purple-400 underline">Compliance-Strategien</Link>.
                           </p>
                         </div>
                       </div>
                       <div className="space-y-6">
                         <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl p-6">
-                          <h4 className="text-lg font-bold text-white mb-4">Fakten</h4>
+                          <h3 className="text-lg font-bold text-white mb-4">Fakten</h3>
                           <div className="space-y-3 text-sm">
                             <div className="flex justify-between">
                               <span className="text-slate-400">Aktenzeichen:</span>
@@ -406,7 +467,7 @@ const SchremsIICase: React.FC = () => {
             </TabsContent>
 
             {/* Key Findings Tab */}
-            <TabsContent value="findings" className="space-y-8">
+            <TabsContent value="findings" className="space-y-8" id="findings">
               <div className="grid gap-6">
                 {keyFindings.map((finding, index) => (
                   <motion.div
@@ -440,7 +501,7 @@ const SchremsIICase: React.FC = () => {
             </TabsContent>
 
             {/* Practical Impact Tab */}
-            <TabsContent value="impact" className="space-y-8">
+            <TabsContent value="impact" className="space-y-8" id="impact">
               <div className="grid md:grid-cols-2 gap-8">
                 {practicalImpacts.map((category, index) => (
                   <motion.div
@@ -477,7 +538,7 @@ const SchremsIICase: React.FC = () => {
             </TabsContent>
 
             {/* Action Items Tab */}
-            <TabsContent value="actions" className="space-y-8">
+            <TabsContent value="actions" className="space-y-8" id="actions">
               <div className="space-y-8">
                 {actionItems.map((phase, index) => (
                   <motion.div
@@ -513,7 +574,7 @@ const SchremsIICase: React.FC = () => {
             </TabsContent>
 
             {/* Timeline Tab */}
-            <TabsContent value="timeline" className="space-y-8">
+            <TabsContent value="timeline" className="space-y-8" id="timeline">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -521,7 +582,7 @@ const SchremsIICase: React.FC = () => {
               >
                 <Card className="bg-slate-800/80 backdrop-blur-sm border-purple-500/30">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-8 text-center">Schrems II Timeline</h3>
+                    <h2 className="text-2xl font-bold text-white mb-8 text-center">Schrems II Timeline</h2>
                     <div className="space-y-6">
                       {timeline.map((event, index) => (
                         <motion.div
@@ -548,7 +609,7 @@ const SchremsIICase: React.FC = () => {
                             <div className="bg-slate-700/50 rounded-lg p-6">
                               <div className="flex items-center gap-3 mb-2">
                                 <Badge className="bg-slate-600 text-slate-200">{event.date}</Badge>
-                                <h4 className="text-lg font-bold text-white">{event.event}</h4>
+                                <h3 className="text-lg font-bold text-white">{event.event}</h3>
                               </div>
                               <p className="text-slate-300">{event.description}</p>
                             </div>
@@ -565,7 +626,7 @@ const SchremsIICase: React.FC = () => {
       </section>
 
       {/* Related Resources */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-800/50 via-purple-900/30 to-slate-800/50">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-800/50 via-purple-900/30 to-slate-800/50" id="resources">
         <div className="container mx-auto max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}

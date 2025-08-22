@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -56,6 +57,7 @@ import {
   Minus,
   X,
   Check,
+  Pause,
   Edit3,
   Copy,
   Save,
@@ -78,6 +80,19 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const DataBreach72hGuide: React.FC = () => {
+  // Table of Contents data
+  const tableOfContents = [
+    { id: "critical-timeline", title: "Kritische DSGVO-Fristen", level: 2 },
+    { id: "step-0", title: "Sofort-Assessment (0-15 Min)", level: 2 },
+    { id: "step-1", title: "Containment & Forensik (15 Min - 2h)", level: 2 },
+    { id: "step-2", title: "Risikobewertung & Klassifizierung (2-6h)", level: 2 },
+    { id: "step-3", title: "Behördenmeldung (6-24h)", level: 2 },
+    { id: "step-4", title: "Betroffenen-Benachrichtigung (24-72h)", level: 2 },
+    { id: "step-5", title: "Recovery & Härtung (24-72h)", level: 2 },
+    { id: "step-6", title: "Post-Incident Analysis (48-168h)", level: 2 },
+    { id: "step-7", title: "Langzeit-Monitoring (1-4 Wochen)", level: 2 },
+    { id: "emergency-resources", title: "Emergency Resources", level: 2 }
+  ];
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [timeElapsed, setTimeElapsed] = useState(0);
@@ -367,7 +382,70 @@ const DataBreach72hGuide: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+    <>
+      <Helmet>
+        <title>Data Breach 72h Response Guide – DSGVO Notfall-Leitfaden | Marsstein</title>
+        <meta name="description" content="Strukturierte Schritt-für-Schritt Anleitung für DSGVO-konforme Data Breach Response. 8 kritische Phasen in 72h. Jetzt kostenlos nutzen!" />
+        <meta name="keywords" content="Data Breach, DSGVO, Datenschutzverletzung, 72 Stunden, Incident Response, Behördenmeldung, EU-DSGVO Art. 33" />
+        <meta property="og:title" content="Data Breach 72h Response Guide – DSGVO Notfall-Leitfaden" />
+        <meta property="og:description" content="Strukturierte Schritt-für-Schritt Anleitung für DSGVO-konforme Data Breach Response. 8 kritische Phasen in 72h." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.de/wissen/krisenmanagement/data-breach-72h" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Data Breach 72h Response Guide – DSGVO Notfall-Leitfaden" />
+        <meta name="twitter:description" content="Strukturierte Schritt-für-Schritt Anleitung für DSGVO-konforme Data Breach Response. 8 kritische Phasen in 72h." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://marsstein.de/wissen/krisenmanagement/data-breach-72h" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Data Breach 72h Response Guide – DSGVO Notfall-Leitfaden",
+            "description": "Strukturierte Schritt-für-Schritt Anleitung für DSGVO-konforme Data Breach Response. 8 kritische Phasen in 72h.",
+            "author": {
+              "@type": "Organization",
+              "name": "Marsstein"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Marsstein",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://marsstein.de/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://marsstein.de/wissen/krisenmanagement/data-breach-72h"
+            },
+            "articleSection": "Krisenmanagement",
+            "keywords": "Data Breach, DSGVO, Datenschutzverletzung, 72 Stunden, Incident Response"
+          })}
+        </script>
+        <style>
+          {`
+            html {
+              scroll-behavior: smooth;
+            }
+            h1, h2, h3, h4, h5, h6 {
+              scroll-margin-top: 120px;
+            }
+            .toc-nav a {
+              -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+            }
+            @media (max-width: 768px) {
+              .toc-nav {
+                max-height: 400px;
+                overflow-y: auto;
+              }
+              h1, h2, h3, h4, h5, h6 {
+                scroll-margin-top: 140px;
+              }
+            }
+          `}
+        </style>
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
       <Header />
       
       {/* Fixed Progress Bar */}
@@ -430,13 +508,11 @@ const DataBreach72hGuide: React.FC = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8"
             >
-              <span className="text-white">72-Stunden</span>
+              <span className="text-white">Data Breach 72h Response Guide</span>
               <br />
               <span className="bg-gradient-to-r from-red-400 via-orange-400 to-pink-400 bg-clip-text text-transparent">
-                Data Breach
+                DSGVO Notfall-Leitfaden
               </span>
-              <br />
-              <span className="text-white">Response</span>
             </motion.h1>
             
             <motion.p 
@@ -446,7 +522,10 @@ const DataBreach72hGuide: React.FC = () => {
               className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12"
             >
               Strukturierte <span className="font-semibold text-red-300">Schritt-für-Schritt Anleitung</span> für die 
-              DSGVO-konforme Reaktion auf Datenschutzverletzungen.
+              DSGVO-konforme Reaktion auf Datenschutzverletzungen. Folgen Sie unserem strukturierten 
+              <Link to="/wissen/krisenmanagement" className="text-red-300 hover:text-red-200 font-semibold underline">
+                Krisenmanagement-Leitfaden
+              </Link> für optimale Vorbereitung.
             </motion.p>
 
             <motion.div
@@ -468,8 +547,41 @@ const DataBreach72hGuide: React.FC = () => {
         </div>
       </motion.section>
 
+      {/* Table of Contents */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 sm:p-8"
+          >
+            <nav aria-label="Inhaltsverzeichnis" className="toc-nav">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <BookOpen className="h-6 w-6 text-blue-400" />
+                Inhaltsverzeichnis
+              </h2>
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                {tableOfContents.map((item, index) => (
+                  <motion.a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 hover:text-white transition-all duration-200 no-underline group text-sm sm:text-base min-h-[48px]"
+                  >
+                    <ArrowRight className="h-4 w-4 text-blue-400 group-hover:text-blue-300" />
+                    <span className="font-medium">{item.title}</span>
+                  </motion.a>
+                ))}
+              </div>
+            </nav>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Critical Timeline Alert */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
+      <section id="critical-timeline" className="py-8 px-4 sm:px-6 lg:px-8" style={{scrollMarginTop: '96px'}}>
         <div className="container mx-auto max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -479,21 +591,21 @@ const DataBreach72hGuide: React.FC = () => {
             <div className="flex items-start gap-4">
               <AlertTriangle className="h-8 w-8 text-red-400 animate-pulse flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Kritische DSGVO-Fristen</h3>
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-black text-red-400 mb-2">72h</div>
-                    <div className="text-sm font-semibold text-slate-300">Behördenmeldung</div>
+                <h2 className="text-2xl font-bold text-white mb-4">Kritische DSGVO-Fristen</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                  <div className="text-center p-3 sm:p-4 bg-slate-800/30 rounded-xl">
+                    <div className="text-2xl sm:text-3xl font-black text-red-400 mb-2">72h</div>
+                    <div className="text-xs sm:text-sm font-semibold text-slate-300">Behördenmeldung</div>
                     <div className="text-xs text-slate-400">DSGVO Art. 33</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-black text-orange-400 mb-2">Unverzüglich</div>
-                    <div className="text-sm font-semibold text-slate-300">Betroffenen-Info</div>
+                  <div className="text-center p-3 sm:p-4 bg-slate-800/30 rounded-xl">
+                    <div className="text-xl sm:text-2xl md:text-3xl font-black text-orange-400 mb-2">Unverzüglich</div>
+                    <div className="text-xs sm:text-sm font-semibold text-slate-300">Betroffenen-Info</div>
                     <div className="text-xs text-slate-400">DSGVO Art. 34</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-black text-pink-400 mb-2">€20M</div>
-                    <div className="text-sm font-semibold text-slate-300">Max. Bußgeld</div>
+                  <div className="text-center p-3 sm:p-4 bg-slate-800/30 rounded-xl">
+                    <div className="text-2xl sm:text-3xl font-black text-pink-400 mb-2">€20M</div>
+                    <div className="text-xs sm:text-sm font-semibold text-slate-300">Max. Bußgeld</div>
                     <div className="text-xs text-slate-400">4% Jahresumsatz</div>
                   </div>
                 </div>
@@ -525,12 +637,12 @@ const DataBreach72hGuide: React.FC = () => {
                   completedSteps.includes(step.id) ? "opacity-30" : "opacity-0 group-hover:opacity-20"
                 )} />
                 
-                <Card className={cn(
+                <Card id={`step-${step.id}`} className={cn(
                   "border-2 transition-all duration-500 group-hover:shadow-2xl overflow-hidden",
                   completedSteps.includes(step.id) 
                     ? "border-green-500/50 bg-gradient-to-br from-slate-800/90 to-green-900/20" 
                     : "border-slate-700/50 bg-slate-800/80"
-                )}>
+                )} style={{scrollMarginTop: '120px'}}>
                   <CardContent className="p-8">
                     {/* Header */}
                     <div className="flex items-start justify-between mb-6">
@@ -546,7 +658,7 @@ const DataBreach72hGuide: React.FC = () => {
                         </motion.div>
                         <div>
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-2xl font-bold text-white">{step.title}</h3>
+                            <h2 className="text-2xl font-bold text-white">{step.title}</h2>
                             <Badge className={getPriorityColor(step.priority)}>
                               {step.priority}
                             </Badge>
@@ -584,12 +696,12 @@ const DataBreach72hGuide: React.FC = () => {
                     </div>
 
                     {/* Tasks */}
-                    <div className="grid lg:grid-cols-2 gap-8 mb-6">
+                    <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                           <FileText className="h-5 w-5 text-blue-400" />
                           Aufgaben
-                        </h4>
+                        </h3>
                         <div className="space-y-3">
                           {step.tasks.map((task, idx) => (
                             <motion.div 
@@ -607,10 +719,10 @@ const DataBreach72hGuide: React.FC = () => {
                       </div>
 
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                           <CheckCircle className="h-5 w-5 text-green-400" />
                           Checkliste
-                        </h4>
+                        </h3>
                         <div className="space-y-3">
                           {step.checklist.map((item, idx) => (
                             <motion.div 
@@ -629,7 +741,7 @@ const DataBreach72hGuide: React.FC = () => {
                     </div>
 
                     {/* Stakeholders & Legal */}
-                    <div className="grid md:grid-cols-2 gap-6 pt-6 border-t border-slate-700/50">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 pt-6 border-t border-slate-700/50">
                       <div>
                         <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
                           <Users className="h-4 w-4" />
@@ -688,7 +800,7 @@ const DataBreach72hGuide: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {[
               {
                 title: "Incident Response Checkliste",
@@ -768,6 +880,7 @@ const DataBreach72hGuide: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

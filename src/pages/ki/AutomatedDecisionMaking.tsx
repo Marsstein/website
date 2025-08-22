@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { Helmet } from 'react-helmet-async';
 import { 
   Workflow,
   Shield, 
@@ -72,6 +74,16 @@ import {
 } from 'lucide-react';
 
 const AutomatedDecisionMaking = () => {
+  // SEO Meta Tags
+  useEffect(() => {
+    const metaViewport = document.querySelector('meta[name="viewport"]');
+    if (!metaViewport) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(meta);
+    }
+  }, []);
   const [activeFramework, setActiveFramework] = useState('gdpr-art22');
   const [completedSteps, setCompletedSteps] = useState({});
   const [selectedDecisionType, setSelectedDecisionType] = useState('credit-scoring');
@@ -80,6 +92,32 @@ const AutomatedDecisionMaking = () => {
   const { scrollYProgress } = useScroll({ container: containerRef });
   const headerY = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.8]);
+
+  // Structured Data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Automated Decision Making – DSGVO Art. 22 & EU AI Act",
+    "description": "DSGVO-konforme automatisierte Entscheidungsfindung: Art. 22 Compliance, EU AI Act Anforderungen & XAI Implementation. Jetzt rechtssicher umsetzen!",
+    "author": {
+      "@type": "Organization",
+      "name": "MarsJonas"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MarsJonas",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://marsjonas.com/logo.png"
+      }
+    },
+    "datePublished": "2024-01-15",
+    "dateModified": "2024-01-15",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://marsjonas.com/ki/automated-decision-making"
+    }
+  };
 
   const complianceFrameworks = [
     {
@@ -736,6 +774,14 @@ print("\\nGDPR Art. 22 konforme Kreditprüfung abgeschlossen")`
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>Automated Decision Making – DSGVO Art. 22 & EU AI Act</title>
+        <meta name="description" content="DSGVO-konforme automatisierte Entscheidungsfindung: Art. 22 Compliance, EU AI Act Anforderungen & XAI Implementation. Jetzt rechtssicher umsetzen!" />
+        <link rel="canonical" href="https://marsjonas.com/ki/automated-decision-making" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
       <Header />
       
       {/* Hero Section */}
@@ -746,6 +792,35 @@ print("\\nGDPR Art. 22 konforme Kreditprüfung abgeschlossen")`
       >
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative container mx-auto px-6 py-24">
+          {/* Breadcrumb Navigation */}
+          <nav className="flex mb-8" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center space-x-1 md:space-x-3">
+              <li className="inline-flex items-center">
+                <Link to="/" className="inline-flex items-center text-sm font-medium text-white/70 hover:text-white">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                  </svg>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 text-white/50" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <Link to="/ki" className="ml-1 text-sm font-medium text-white/70 hover:text-white md:ml-2">KI & Innovation</Link>
+                </div>
+              </li>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 text-white/50" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="ml-1 text-sm font-medium text-white md:ml-2">Automated Decision Making</span>
+                </div>
+              </li>
+            </ol>
+          </nav>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -782,6 +857,51 @@ print("\\nGDPR Art. 22 konforme Kreditprüfung abgeschlossen")`
 
       {/* Main Content */}
       <div className="container mx-auto px-6 py-16">
+        {/* Table of Contents */}
+        <Card className="mb-12 bg-orange-50 border-orange-200">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FileText className="w-5 h-5 text-orange-600" />
+              Inhaltsverzeichnis
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <nav aria-label="Table of contents">
+              <ol className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li>
+                  <a href="#frameworks" className="text-orange-700 hover:text-orange-900 hover:underline flex items-center gap-2">
+                    <span className="font-semibold">1.</span> Compliance Frameworks für ADM
+                  </a>
+                </li>
+                <li>
+                  <a href="#decision-types" className="text-orange-700 hover:text-orange-900 hover:underline flex items-center gap-2">
+                    <span className="font-semibold">2.</span> Typen automatisierter Entscheidungen
+                  </a>
+                </li>
+                <li>
+                  <a href="#implementation" className="text-orange-700 hover:text-orange-900 hover:underline flex items-center gap-2">
+                    <span className="font-semibold">3.</span> ADM Compliance Implementation
+                  </a>
+                </li>
+                <li>
+                  <a href="#monitoring" className="text-orange-700 hover:text-orange-900 hover:underline flex items-center gap-2">
+                    <span className="font-semibold">4.</span> Monitoring & Validation
+                  </a>
+                </li>
+                <li>
+                  <a href="#compliance-validation" className="text-orange-700 hover:text-orange-900 hover:underline flex items-center gap-2">
+                    <span className="font-semibold">5.</span> Compliance Validation & Auditing
+                  </a>
+                </li>
+                <li>
+                  <a href="#related-topics" className="text-orange-700 hover:text-orange-900 hover:underline flex items-center gap-2">
+                    <span className="font-semibold">6.</span> Verwandte Themen
+                  </a>
+                </li>
+              </ol>
+            </nav>
+          </CardContent>
+        </Card>
         <Tabs defaultValue="frameworks" className="space-y-8">
           <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5">
             <TabsTrigger value="frameworks">Frameworks</TabsTrigger>
@@ -792,7 +912,7 @@ print("\\nGDPR Art. 22 konforme Kreditprüfung abgeschlossen")`
           </TabsList>
 
           {/* Compliance Frameworks */}
-          <TabsContent value="frameworks" className="space-y-8">
+          <TabsContent value="frameworks" className="space-y-8" id="frameworks">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Compliance Frameworks für ADM</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -846,7 +966,7 @@ print("\\nGDPR Art. 22 konforme Kreditprüfung abgeschlossen")`
           </TabsContent>
 
           {/* Decision Types */}
-          <TabsContent value="decision-types" className="space-y-8">
+          <TabsContent value="decision-types" className="space-y-8" id="decision-types">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Typen automatisierter Entscheidungen</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -951,7 +1071,7 @@ print("\\nGDPR Art. 22 konforme Kreditprüfung abgeschlossen")`
           </TabsContent>
 
           {/* Implementation Process */}
-          <TabsContent value="implementation" className="space-y-8">
+          <TabsContent value="implementation" className="space-y-8" id="implementation">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">ADM Compliance Implementation</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -1056,7 +1176,7 @@ print("\\nGDPR Art. 22 konforme Kreditprüfung abgeschlossen")`
           </TabsContent>
 
           {/* Monitoring & Validation */}
-          <TabsContent value="monitoring" className="space-y-8">
+          <TabsContent value="monitoring" className="space-y-8" id="monitoring">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">ADM Monitoring & Validation</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -1401,7 +1521,7 @@ print(f"Active Alerts: {dashboard['total_alerts_7d']}")`}</code>
           </TabsContent>
 
           {/* Compliance Validation */}
-          <TabsContent value="compliance" className="space-y-8">
+          <TabsContent value="compliance" className="space-y-8" id="compliance-validation">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Compliance Validation & Auditing</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -1561,9 +1681,9 @@ print(f"Active Alerts: {dashboard['total_alerts_7d']}")`}</code>
           transition={{ delay: 0.5 }}
           className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl p-8 text-white text-center mt-16"
         >
-          <h3 className="text-2xl font-bold mb-4">
+          <h2 className="text-2xl font-bold mb-4">
             Bereit für compliant automatisierte Entscheidungsfindung?
-          </h3>
+          </h2>
           <p className="text-amber-100 mb-6 max-w-2xl mx-auto">
             Implementieren Sie rechtskonforme ADM-Systeme mit vollständiger DSGVO Art. 22 
             und EU AI Act Compliance für maximale Transparenz und Rechtssicherheit.
@@ -1579,6 +1699,63 @@ print(f"Active Alerts: {dashboard['total_alerts_7d']}")`}</code>
             </Button>
           </div>
         </motion.div>
+
+        {/* Related Topics Section */}
+        <section className="mt-16" id="related-topics">
+          <h2 className="text-3xl font-bold mb-8 text-center">Verwandte Themen</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Bot className="w-5 h-5 text-purple-600" />
+                  AI Ethics & Bias Management
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">
+                  Ethische KI-Entwicklung und systematisches Bias-Management für faire automatisierte Entscheidungen.
+                </p>
+                <Link to="/ki/ai-ethics" className="text-orange-600 hover:text-orange-700 font-medium flex items-center gap-1">
+                  Mehr erfahren <ArrowRight className="w-4 h-4" />
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-blue-600" />
+                  Data Protection by Design
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">
+                  Datenschutz von Anfang an in automatisierte Entscheidungssysteme integrieren.
+                </p>
+                <Link to="/datenschutz/privacy-by-design" className="text-orange-600 hover:text-orange-700 font-medium flex items-center gap-1">
+                  Mehr erfahren <ArrowRight className="w-4 h-4" />
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Eye className="w-5 h-5 text-green-600" />
+                  Explainable AI (XAI)
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">
+                  Transparente und nachvollziehbare KI-Entscheidungen für maximale Compliance.
+                </p>
+                <Link to="/ki/explainable-ai" className="text-orange-600 hover:text-orange-700 font-medium flex items-center gap-1">
+                  Mehr erfahren <ArrowRight className="w-4 h-4" />
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
       </div>
 
       <Footer />

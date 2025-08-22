@@ -4,12 +4,13 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Helmet } from 'react-helmet-async';
 
 const FintechComplianceGuide = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string>('overview');
   
-  // Navigation items for sticky navigation
+  // Navigation items for sticky navigation with scroll-margin-top
   const navigationItems = [
     { id: 'overview', label: 'Überblick', icon: Shield },
     { id: 'pci-dss', label: 'PCI DSS', icon: CreditCard },
@@ -1570,6 +1571,13 @@ const FintechComplianceGuide = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <Helmet>
+        <title>FinTech Compliance – PCI DSS, PSD2 & Crypto Assets</title>
+        <meta name="description" content="Komplette FinTech Compliance-Lösungen: PCI DSS Level 1, PSD2-konforme APIs & sichere Crypto-Asset-Verwaltung. 99.99% Uptime, < 15 Min Incident Response." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://datenschutz-assistent.de/wissen/branchen/fintech-compliance" />
+      </Helmet>
+      
       <Header />
       
       {/* Hero Section */}
@@ -1635,7 +1643,33 @@ const FintechComplianceGuide = () => {
       {/* Main Content Sections */}
       <div className="py-20">
         <div className="container px-4">
-          <div className="max-w-7xl mx-auto space-y-20">
+          <div className="max-w-7xl mx-auto">
+            {/* Table of Contents */}
+            <div className="mb-12 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-gray-600" />
+                Inhaltsverzeichnis
+              </h2>
+              <nav aria-label="Inhaltsverzeichnis">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {navigationItems.map((item) => (
+                    <li key={item.id}>
+                      <button
+                        onClick={() => scrollToSection(item.id)}
+                        className="text-left w-full px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-3 group"
+                      >
+                        <item.icon className="h-4 w-4 text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                        <span className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                          {item.label}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+            
+            <div className="space-y-20">
             {/* Overview Section */}
             <section id="overview" className="space-y-8 scroll-mt-32">
               <motion.h2
@@ -1728,6 +1762,7 @@ const FintechComplianceGuide = () => {
               </motion.h2>
               {renderImplementation()}
             </section>
+            </div>
           </div>
         </div>
       </div>
@@ -1768,6 +1803,15 @@ const FintechComplianceGuide = () => {
       </div>
       
       <Footer />
+      
+      {/* Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-8 right-8 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all opacity-90 hover:opacity-100"
+        aria-label="Zurück nach oben"
+      >
+        <ArrowRight className="h-5 w-5 rotate-[-90deg]" />
+      </button>
     </div>
   );
 };

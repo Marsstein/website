@@ -81,6 +81,31 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const PharmaComplianceGuide = () => {
+  // SEO Meta Tags
+  React.useEffect(() => {
+    // Title Tag
+    document.title = 'Pharma Compliance GxP Standards – DSGVO Leitfaden';
+    
+    // Meta Description
+    const metaDescription = document.querySelector('meta[name="description"]') || document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    metaDescription.setAttribute('content', 'GxP-konforme Pharma Compliance für GMP, GDP & GCP. Praxisnahe Implementierung von ICH Guidelines & EMA/FDA Standards. Jetzt Pharma-Beratung anfragen!');
+    if (!document.querySelector('meta[name="description"]')) {
+      document.head.appendChild(metaDescription);
+    }
+    
+    // Canonical URL
+    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', 'https://www.dataprivacyframework.com/wissen/branchen/pharma-compliance');
+    if (!document.querySelector('link[rel="canonical"]')) {
+      document.head.appendChild(canonical);
+    }
+    
+    return () => {
+      document.title = 'Data Privacy Framework';
+    };
+  }, []);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
   const [activeSection, setActiveSection] = useState<string>('overview');
@@ -969,8 +994,8 @@ const dscsaCompliance = {
           <div className="container px-4">
             <div className="max-w-7xl mx-auto space-y-20">
 
-              {/* Overview Section */}
-              <section id="ueberblick" className="space-y-8 scroll-mt-32">
+              {/* Overview Section with proper scroll margin */}
+              <section id="ueberblick" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1067,8 +1092,8 @@ const dscsaCompliance = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* GxP Section */}
-              <section id="gxp-compliance" className="space-y-8 scroll-mt-32">
+              {/* GxP Section with proper scroll margin */}
+              <section id="gxp-compliance" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1308,8 +1333,8 @@ const dscsaCompliance = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Clinical Trials Section */}
-              <section id="klinische-studien" className="space-y-8 scroll-mt-32">
+              {/* Clinical Trials Section with proper scroll margin */}
+              <section id="klinische-studien" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1387,8 +1412,8 @@ const dscsaCompliance = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Pharmacovigilance Section */}
-              <section id="pharmakovigilanz" className="space-y-8 scroll-mt-32">
+              {/* Pharmacovigilance Section with proper scroll margin */}
+              <section id="pharmakovigilanz" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1506,8 +1531,8 @@ const dscsaCompliance = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Serialization Section */}
-              <section id="serialisierung" className="space-y-8 scroll-mt-32">
+              {/* Serialization Section with proper scroll margin */}
+              <section id="serialisierung" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1687,8 +1712,8 @@ const dscsaCompliance = {
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Implementation Section */}
-              <section id="praxis-implementation" className="space-y-8 scroll-mt-32">
+              {/* Implementation Section with proper scroll margin */}
+              <section id="praxis-implementation" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}

@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AlertTriangle, Code, Shield, Server, Zap, CheckCircle, XCircle, ExternalLink, Download, Terminal } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const GoogleFontsMunichCase: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
+
+  useEffect(() => {
+    // Scroll margins for sticky header offset
+    const style = document.createElement('style');
+    style.textContent = `
+      h2, h3, h4 { scroll-margin-top: 96px; }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   const tabs = [
     { id: 'overview', label: 'Überblick', icon: AlertTriangle },
@@ -34,14 +46,26 @@ const GoogleFontsMunichCase: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
+      <Helmet>
+        <title>Google Fonts DSGVO Urteil München €100 – Lokales Font Hosting</title>
+        <meta 
+          name="description" 
+          content="Google Fonts DSGVO-Urteil München: IP-Übertragung illegal! Lokales Font-Hosting implementieren & €100 Schadensersatz vermeiden." 
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Google Fonts DSGVO Urteil München €100 – Lokales Font Hosting" />
+        <meta property="og:description" content="Google Fonts DSGVO-Urteil München: IP-Übertragung illegal! Lokales Font-Hosting implementieren & €100 Schadensersatz vermeiden." />
+        <meta property="og:type" content="article" />
+        <link rel="canonical" href="https://marsjonas.de/wissen/rechtsprechung/google-fonts-muenchen" />
+      </Helmet>
       {/* Header */}
       <header className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Google Fonts DSGVO-Urteil
+            Google Fonts DSGVO-Urteil München
           </h1>
           <p className="text-xl opacity-90">
-            LG München I, Urteil vom 20.01.2022 - 3 O 17493/20
+            LG München I, Urteil vom 20.01.2022 - 3 O 17493/20 • €100 Schadensersatz
           </p>
           <div className="mt-6 flex items-center space-x-4">
             <span className="bg-white/20 px-4 py-2 rounded-full text-sm">
@@ -111,8 +135,23 @@ const GoogleFontsMunichCase: React.FC = () => {
 const OverviewTab: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
+      {/* Table of Contents */}
+      <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <nav aria-label="Inhaltsverzeichnis">
+          <h2 id="inhaltsverzeichnis" className="text-xl font-bold text-gray-800 mb-4">Inhaltsverzeichnis</h2>
+          <ul className="space-y-2 text-gray-600">
+            <li><a href="#urteil-ueberblick" className="text-orange-600 hover:text-orange-500 transition-colors">1. Das Urteil im Überblick</a></li>
+            <li><a href="#timeline" className="text-orange-600 hover:text-orange-500 transition-colors">2. Timeline & Entwicklung</a></li>
+            <li><a href="#urteilsdetails" className="text-orange-600 hover:text-orange-500 transition-colors">3. Urteilsdetails & Rechtliche Grundlagen</a></li>
+            <li><a href="#technische-analyse" className="text-orange-600 hover:text-orange-500 transition-colors">4. Technische Analyse</a></li>
+            <li><a href="#loesungsansaetze" className="text-orange-600 hover:text-orange-500 transition-colors">5. DSGVO-konforme Lösungsansätze</a></li>
+            <li><a href="#migration-guide" className="text-orange-600 hover:text-orange-500 transition-colors">6. Migration Guide</a></li>
+          </ul>
+        </nav>
+      </div>
+
       <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 id="urteil-ueberblick" className="text-2xl font-bold text-gray-800 mb-6">
           Das Urteil im Überblick
         </h2>
         
@@ -170,7 +209,9 @@ const OverviewTab: React.FC = () => {
         <div className="bg-gray-50 p-6 rounded-lg">
           <h3 className="font-semibold text-gray-800 mb-3">Auswirkungen für Webseitenbetreiber</h3>
           <p className="text-gray-700 mb-4">
-            Das Urteil hat weitreichende Konsequenzen für alle Webseitenbetreiber, die externe Dienste einbinden:
+            Das Urteil hat weitreichende Konsequenzen für alle Webseitenbetreiber, die externe Dienste einbinden. 
+            Ähnlich wie bei <Link to="/wissen/rechtsprechung/planet49-cookie" className="text-orange-600 hover:text-orange-500">Cookie-Consent Verstößen</Link> 
+            zeigt sich auch hier die Notwendigkeit DSGVO-konformer Datenverarbeitung:
           </p>
           <ul className="space-y-2 text-gray-700">
             <li>• Sofortiger Handlungsbedarf bei Google Fonts-Nutzung</li>
@@ -182,7 +223,7 @@ const OverviewTab: React.FC = () => {
       </div>
 
       <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 id="timeline" className="text-2xl font-bold text-gray-800 mb-6">
           Timeline & Entwicklung
         </h2>
         
@@ -221,7 +262,7 @@ const VerdictTab: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 id="urteilsdetails" className="text-2xl font-bold text-gray-800 mb-6">
           Urteilsdetails & Rechtliche Grundlagen
         </h2>
 
@@ -335,7 +376,7 @@ const TechnicalTab: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 id="technische-analyse" className="text-2xl font-bold text-gray-800 mb-6">
           Technische Analyse der Google Fonts Problematik
         </h2>
 
@@ -520,7 +561,7 @@ const SolutionsTab: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 id="loesungsansaetze" className="text-2xl font-bold text-gray-800 mb-6">
           DSGVO-konforme Lösungsansätze
         </h2>
 
@@ -722,7 +763,7 @@ const ImplementationTab: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 id="migration-guide" className="text-2xl font-bold text-gray-800 mb-6">
           Schritt-für-Schritt Migration Guide
         </h2>
 

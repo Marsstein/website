@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // Force reload for icon fixes
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { Helmet } from 'react-helmet-async';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -1372,6 +1373,13 @@ const EcommercePrivacyGuide = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <Helmet>
+        <title>E-Commerce Privacy – Cookie Consent & DSGVO Online-Shop</title>
+        <meta name="description" content="DSGVO-konforme E-Commerce Lösungen: Advanced Cookie Consent, Zahlungsdaten-Sicherheit & Customer Analytics. 78% mehr Conversions durch Privacy-by-Design." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://datenschutz-assistent.de/wissen/branchen/ecommerce-privacy" />
+      </Helmet>
+      
       <Header />
       
       <main className="py-20">
@@ -1475,6 +1483,31 @@ const EcommercePrivacyGuide = () => {
               </div>
             </div>
 
+            {/* Table of Contents */}
+            <div className="mb-12 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-gray-600" />
+                Inhaltsverzeichnis
+              </h2>
+              <nav aria-label="Inhaltsverzeichnis">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {navigationItems.map((item) => (
+                    <li key={item.id}>
+                      <button
+                        onClick={() => scrollToSection(item.id)}
+                        className="text-left w-full px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-3 group"
+                      >
+                        <item.icon className="h-4 w-4 text-gray-500 group-hover:text-orange-600 dark:group-hover:text-orange-400" />
+                        <span className="text-gray-700 dark:text-gray-300 group-hover:text-orange-600 dark:group-hover:text-orange-400">
+                          {item.label}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+
             {/* Main Content Sections */}
             <div className="space-y-20">
               {/* Overview Section */}
@@ -1569,6 +1602,7 @@ const EcommercePrivacyGuide = () => {
                 </motion.h2>
                 {renderImplementation()}
               </section>
+              </div>
             </div>
 
             {/* Quick Links */}
@@ -1613,10 +1647,18 @@ const EcommercePrivacyGuide = () => {
               </CardContent>
             </Card>
           </div>
-        </div>
       </main>
 
       <Footer />
+      
+      {/* Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-8 right-8 z-50 p-3 bg-orange-600 text-white rounded-full shadow-lg hover:bg-orange-700 transition-all opacity-90 hover:opacity-100"
+        aria-label="Zurück nach oben"
+      >
+        <ArrowRight className="h-5 w-5 rotate-[-90deg]" />
+      </button>
     </div>
   );
 };

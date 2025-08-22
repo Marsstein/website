@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -867,6 +868,28 @@ const biasMonitoring = {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <SEOHead 
+        title="Healthcare AI Compliance – Medizinische KI rechtssicher einsetzen"
+        description="Healthcare AI Compliance: Medizinische KI, EU AI Act, FDA-Regularien, Patientensicherheit. ✓ Risikobewertung ✓ Zulassung ✓ Post-Market Surveillance."
+        canonical="/wissen/branchen/healthcare-ai-compliance"
+        keywords="Healthcare AI Compliance, Medizinische KI, EU AI Act Healthcare, FDA AI Regularien, MDR Software, Patientensicherheit KI"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Healthcare AI Compliance – Medizinische KI rechtssicher einsetzen",
+          "description": "Umfassender Leitfaden zur rechtssicheren Implementierung von KI-Systemen im Gesundheitswesen unter Berücksichtigung von EU AI Act, FDA-Regularien und MDR.",
+          "author": {
+            "@type": "Organization",
+            "name": "Marsstein"
+          },
+          "datePublished": "2024-01-15",
+          "dateModified": "2024-01-15",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://marsstein.com/wissen/branchen/healthcare-ai-compliance"
+          }
+        }}
+      />
       <Header />
       
       <main className="overflow-hidden">
@@ -1051,7 +1074,7 @@ const biasMonitoring = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Healthcare AI Compliance Überblick
                 </motion.h2>
@@ -1149,7 +1172,7 @@ const biasMonitoring = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   EU AI Act Healthcare-Anforderungen
                 </motion.h2>
@@ -1384,7 +1407,7 @@ const biasMonitoring = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   KI-Risikokategorien im Gesundheitswesen
                 </motion.h2>
@@ -1540,7 +1563,7 @@ const biasMonitoring = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Bias-Monitoring und algorithmische Fairness
                 </motion.h2>
@@ -1638,7 +1661,7 @@ const biasMonitoring = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Human-in-the-Loop Frameworks
                 </motion.h2>
@@ -1829,7 +1852,7 @@ const biasMonitoring = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Praxis-Implementation & Roadmap
                 </motion.h2>

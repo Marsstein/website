@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { Link } from 'react-router-dom';
 import { 
   Eye,
   Lightbulb, 
@@ -104,10 +105,120 @@ import {
   TreePine,
   Map,
   Radar,
-  Layers3
+  Layers3,
+  List
 } from 'lucide-react';
 
 const ExplainableAIGuide = () => {
+  useEffect(() => {
+    document.title = 'Explainable AI Guide – DSGVO Art. 22 konforme KI-Systeme';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Implementierung erklärbarer KI für DSGVO Art. 22: LIME, SHAP & Counterfactuals. Compliance-konforme XAI-Lösungen. Jetzt umsetzen!');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Implementierung erklärbarer KI für DSGVO Art. 22: LIME, SHAP & Counterfactuals. Compliance-konforme XAI-Lösungen. Jetzt umsetzen!';
+      document.head.appendChild(meta);
+    }
+
+    // Viewport meta tag
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(meta);
+    }
+
+    // Add canonical URL
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      const link = document.createElement('link');
+      link.rel = 'canonical';
+      link.href = 'https://dataguard.de/wissen/ki-datenschutz/explainable-ai';
+      document.head.appendChild(link);
+    }
+
+    // Add Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Explainable AI Guide – DSGVO Art. 22 konforme KI-Systeme' },
+      { property: 'og:description', content: 'Implementierung erklärbarer KI für DSGVO Art. 22: LIME, SHAP & Counterfactuals. Compliance-konforme XAI-Lösungen. Jetzt umsetzen!' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: 'https://dataguard.de/wissen/ki-datenschutz/explainable-ai' }
+    ];
+
+    ogTags.forEach(tag => {
+      const existingTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!existingTag) {
+        const meta = document.createElement('meta');
+        meta.setAttribute('property', tag.property);
+        meta.content = tag.content;
+        document.head.appendChild(meta);
+      }
+    });
+
+    // Add JSON-LD structured data
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Explainable AI Guide – DSGVO Art. 22 konforme KI-Systeme",
+      "description": "Implementierung erklärbarer KI für DSGVO Art. 22: LIME, SHAP & Counterfactuals. Compliance-konforme XAI-Lösungen. Jetzt umsetzen!",
+      "author": {
+        "@type": "Organization",
+        "name": "DataGuard"
+      },
+      "datePublished": "2024-01-15",
+      "dateModified": new Date().toISOString(),
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dataguard.de/wissen/ki-datenschutz/explainable-ai"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://dataguard.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Wissen",
+            "item": "https://dataguard.de/wissen"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "KI-Datenschutz",
+            "item": "https://dataguard.de/wissen/ki-datenschutz"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Explainable AI",
+            "item": "https://dataguard.de/wissen/ki-datenschutz/explainable-ai"
+          }
+        ]
+      }
+    };
+
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(structuredData);
+    document.head.appendChild(scriptTag);
+
+    return () => {
+      // Cleanup on unmount
+      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
+
   const [activeMethod, setActiveMethod] = useState('lime');
   const [completedSteps, setCompletedSteps] = useState({});
   const [expandedSections, setExpandedSections] = useState({});
@@ -1157,6 +1268,64 @@ def demonstrate_counterfactual_compliance():
 
       {/* Main Content */}
       <div className="container mx-auto px-6 py-16">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+            <li>
+              <Link to="/" className="hover:text-blue-600">Home</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li>
+              <Link to="/wissen" className="hover:text-blue-600">Wissen</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li>
+              <Link to="/wissen/ki-datenschutz" className="hover:text-blue-600">KI-Datenschutz</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li className="text-gray-900 font-medium">Explainable AI</li>
+          </ol>
+        </nav>
+
+        {/* Table of Contents for Mobile */}
+        <div className="lg:hidden mb-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <List className="w-5 h-5" />
+                Inhaltsverzeichnis
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <nav aria-label="Inhaltsverzeichnis">
+                <ul className="space-y-2">
+                  <li>
+                    <a href="#methods-section" className="text-blue-600 hover:underline">XAI Methoden</a>
+                  </li>
+                  <li>
+                    <a href="#article22-section" className="text-blue-600 hover:underline">Art. 22 Framework</a>
+                  </li>
+                  <li>
+                    <a href="#implementation-section" className="text-blue-600 hover:underline">Implementation</a>
+                  </li>
+                  <li>
+                    <a href="#scenarios-section" className="text-blue-600 hover:underline">Use Cases</a>
+                  </li>
+                  <li>
+                    <a href="#compliance-section" className="text-blue-600 hover:underline">Compliance</a>
+                  </li>
+                </ul>
+              </nav>
+            </CardContent>
+          </Card>
+        </div>
+
         <Tabs defaultValue="methods" className="space-y-8">
           <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5">
             <TabsTrigger value="methods">XAI Methoden</TabsTrigger>
@@ -1169,10 +1338,12 @@ def demonstrate_counterfactual_compliance():
           {/* XAI Methods Overview */}
           <TabsContent value="methods" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Explainable AI Methoden</h2>
+              <h2 id="methods-section" className="text-3xl font-bold mb-4 scroll-mt-24">Explainable AI Methoden</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
-                Überblick über die wichtigsten XAI-Techniken für DSGVO Art. 22 Compliance mit 
-                Bewertung ihrer Eignung für automatisierte Entscheidungssysteme.
+                Überblick über die wichtigsten XAI-Techniken für <Link to="/wissen/dsgvo-grundlagen" className="text-blue-600 hover:underline">DSGVO</Link> Art. 22 Compliance mit 
+                Bewertung ihrer Eignung für automatisierte Entscheidungssysteme. Ergänzend empfehlen wir unsere Guides zu
+                <Link to="/wissen/ki-datenschutz/algorithmic-impact-assessment" className="text-blue-600 hover:underline"> Algorithmic Impact Assessment</Link> und
+                <Link to="/wissen/ki-datenschutz/model-privacy-attacks" className="text-blue-600 hover:underline"> Model Privacy Attacks</Link>.
               </p>
             </div>
 
@@ -1260,7 +1431,7 @@ def demonstrate_counterfactual_compliance():
           {/* Article 22 Framework */}
           <TabsContent value="article22" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">DSGVO Art. 22 Framework</h2>
+              <h2 id="article22-section" className="text-3xl font-bold mb-4 scroll-mt-24">DSGVO Art. 22 Framework</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Detaillierte Analyse der rechtlichen Anforderungen und deren technische Umsetzung 
                 durch Explainable AI Methoden für vollständige Compliance.
@@ -1334,7 +1505,7 @@ def demonstrate_counterfactual_compliance():
           {/* Technical Implementation */}
           <TabsContent value="implementation" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Technische Implementierung</h2>
+              <h2 id="implementation-section" className="text-3xl font-bold mb-4 scroll-mt-24">Technische Implementierung</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Praktische Code-Beispiele und Implementierungsanleitungen für 
                 DSGVO-konforme Explainable AI Systeme mit verschiedenen XAI-Methoden.
@@ -1400,7 +1571,7 @@ def demonstrate_counterfactual_compliance():
           {/* Use Case Scenarios */}
           <TabsContent value="scenarios" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Praxisszenarien & Use Cases</h2>
+              <h2 id="scenarios-section" className="text-3xl font-bold mb-4 scroll-mt-24">Praxisszenarien & Use Cases</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Reale Anwendungsszenarien für Explainable AI in automatisierten 
                 Entscheidungssystemen mit spezifischen Compliance-Anforderungen.
@@ -1518,7 +1689,7 @@ def demonstrate_counterfactual_compliance():
           {/* Compliance Dashboard */}
           <TabsContent value="compliance" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Compliance Dashboard</h2>
+              <h2 id="compliance-section" className="text-3xl font-bold mb-4 scroll-mt-24">Compliance Dashboard</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Überwachung und Validierung der DSGVO Art. 22 Compliance mit 
                 automatisierten Metriken und Reporting-Funktionen.

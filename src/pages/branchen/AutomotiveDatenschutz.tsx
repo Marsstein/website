@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -75,7 +76,8 @@ import {
   LineChart,
   Phone,
   User,
-  ShoppingCart
+  ShoppingCart,
+  ChevronUp
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -84,6 +86,7 @@ import { motion } from 'framer-motion';
 const AutomotiveDatenschutz = () => {
   const [activeSection, setActiveSection] = useState<string>('ueberblick');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   const navigationItems = [
     { id: 'ueberblick', label: 'Überblick', icon: Car },
@@ -138,6 +141,9 @@ const AutomotiveDatenschutz = () => {
           break;
         }
       }
+      
+      // Show back to top button when scrolled down
+      setShowBackToTop(window.scrollY > 500);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -1509,6 +1515,13 @@ const AutomotiveDatenschutz = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <Helmet>
+        <title>Automotive Datenschutz – Connected Cars DSGVO-konform</title>
+        <meta name="description" content="Datenschutz-Leitfaden für die Automobilindustrie. Connected Cars, Telematik & Infotainment DSGVO-konform gestalten. Compliance für OEMs & Zulieferer." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://datenschutz-assistent.de/wissen/branchen/automotive-datenschutz" />
+      </Helmet>
+      
       <Header />
       
       <main className="flex-grow">
@@ -1544,6 +1557,41 @@ const AutomotiveDatenschutz = () => {
                   </Button>
                 </div>
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Table of Contents */}
+        <section className="py-12 bg-gray-50 dark:bg-gray-800">
+          <div className="container px-4">
+            <div className="max-w-4xl mx-auto">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-gray-600" />
+                    Inhaltsverzeichnis
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <nav aria-label="Inhaltsverzeichnis">
+                    <ul className="grid md:grid-cols-2 gap-3">
+                      {navigationItems.map((item) => (
+                        <li key={item.id}>
+                          <button
+                            onClick={() => scrollToSection(item.id)}
+                            className="text-left w-full px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors flex items-center gap-3 group"
+                          >
+                            <item.icon className="h-5 w-5 text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                            <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                              {item.label}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -1620,7 +1668,7 @@ const AutomotiveDatenschutz = () => {
             <div className="max-w-7xl mx-auto space-y-20">
               
               {/* Überblick Section */}
-              <section id="ueberblick" className="space-y-8 scroll-mt-32">
+              <section id="ueberblick" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1636,7 +1684,7 @@ const AutomotiveDatenschutz = () => {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Connected Car Section */}
-              <section id="connected-car" className="space-y-8 scroll-mt-32">
+              <section id="connected-car" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1652,7 +1700,7 @@ const AutomotiveDatenschutz = () => {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Fahrzeugdaten Section */}
-              <section id="fahrzeugdaten" className="space-y-8 scroll-mt-32">
+              <section id="fahrzeugdaten" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1668,7 +1716,7 @@ const AutomotiveDatenschutz = () => {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Telematik Section */}
-              <section id="telematik" className="space-y-8 scroll-mt-32">
+              <section id="telematik" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1684,7 +1732,7 @@ const AutomotiveDatenschutz = () => {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Infotainment Section */}
-              <section id="infotainment" className="space-y-8 scroll-mt-32">
+              <section id="infotainment" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1700,7 +1748,7 @@ const AutomotiveDatenschutz = () => {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Compliance Section */}
-              <section id="compliance" className="space-y-8 scroll-mt-32">
+              <section id="compliance" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1748,32 +1796,32 @@ const AutomotiveDatenschutz = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <Link to="/wissen/branchen/ecommerce-privacy" className="block">
+                  <Link to="/wissen/branchen/industrie-40-datenschutz" className="block">
                     <div className="p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors">
-                      <ShoppingCart className="h-5 w-5 text-orange-600 mb-2" />
-                      <div className="font-medium">E-Commerce Privacy</div>
-                      <div className="text-sm text-gray-600">Online-Handel & DSGVO</div>
+                      <Gauge className="h-5 w-5 text-orange-600 mb-2" />
+                      <div className="font-medium">Industrie 4.0</div>
+                      <div className="text-sm text-gray-600">Smart Factory & IoT</div>
                     </div>
                   </Link>
-                  <Link to="/wissen/technologie/iot-datenschutz" className="block">
+                  <Link to="/wissen/branchen/smart-grid-compliance" className="block">
                     <div className="p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-300 transition-colors">
                       <Wifi className="h-5 w-5 text-green-600 mb-2" />
-                      <div className="font-medium">IoT Datenschutz</div>
-                      <div className="text-sm text-gray-600">Vernetzte Geräte</div>
+                      <div className="font-medium">Smart Grid</div>
+                      <div className="text-sm text-gray-600">Energie & Datenschutz</div>
                     </div>
                   </Link>
-                  <Link to="/wissen/compliance/un-r-155" className="block">
+                  <Link to="/wissen/compliance/dsgvo" className="block">
                     <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors">
                       <Shield className="h-5 w-5 text-purple-600 mb-2" />
-                      <div className="font-medium">UN-R 155/156</div>
-                      <div className="text-sm text-gray-600">Cybersecurity Regulation</div>
+                      <div className="font-medium">DSGVO Guide</div>
+                      <div className="text-sm text-gray-600">Compliance Leitfaden</div>
                     </div>
                   </Link>
-                  <Link to="/wissen/ki-ethik" className="block">
+                  <Link to="/wissen/technologie/ki" className="block">
                     <div className="p-4 bg-red-50 rounded-lg border border-red-200 hover:border-red-300 transition-colors">
                       <BrainCircuit className="h-5 w-5 text-red-600 mb-2" />
-                      <div className="font-medium">KI & Ethik</div>
-                      <div className="text-sm text-gray-600">Autonomous Driving</div>
+                      <div className="font-medium">KI & Datenschutz</div>
+                      <div className="text-sm text-gray-600">AI Act & DSGVO</div>
                     </div>
                   </Link>
                 </div>
@@ -1784,6 +1832,17 @@ const AutomotiveDatenschutz = () => {
       </main>
 
       <Footer />
+      
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 z-50 p-3 bg-blue-600 dark:bg-blue-700 text-white rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition-all"
+          aria-label="Zurück nach oben"
+        >
+          <ChevronUp className="h-5 w-5" />
+        </button>
+      )}
     </div>
   );
 };

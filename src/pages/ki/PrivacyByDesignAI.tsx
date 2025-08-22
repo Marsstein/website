@@ -1462,6 +1462,25 @@ demonstrate_privacy_defaults()`
             </Button>
           </div>
         </motion.div>
+
+        {/* Related Articles */}
+        <div className="mt-16 bg-gray-100 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-center">Weiterführende KI-Datenschutz Themen</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="/ki/ki-einwilligungsmanagement" className="block bg-white rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <h3 className="font-semibold mb-2 text-blue-600">KI-Einwilligungsmanagement</h3>
+              <p className="text-sm text-gray-600">Granulare Consent-Systeme für AI-basierte Datenverarbeitung nach DSGVO</p>
+            </a>
+            <a href="/ki/automated-decision-making" className="block bg-white rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <h3 className="font-semibold mb-2 text-blue-600">Automated Decision Making</h3>
+              <p className="text-sm text-gray-600">DSGVO Art. 22 konforme automatisierte Entscheidungsfindung in KI-Systemen</p>
+            </a>
+            <a href="/wissen/dsgvo" className="block bg-white rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <h3 className="font-semibold mb-2 text-blue-600">DSGVO Grundlagen</h3>
+              <p className="text-sm text-gray-600">Datenschutz-Grundverordnung Basics für Unternehmen und Entwickler</p>
+            </a>
+          </div>
+        </div>
       </div>
 
       <Footer />

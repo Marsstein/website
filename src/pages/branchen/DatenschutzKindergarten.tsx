@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -97,6 +98,12 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const DatenschutzKindergarten = () => {
+  // SEO Meta-Tags - optimiert gemäß SEO-Checkliste
+  const pageTitle = "Datenschutz Kindergarten DSGVO – Kita-Guide 2024";
+  const pageDescription = "DSGVO für Kindergärten: ✓ Kinderdaten schützen ✓ Foto-Einwilligungen ✓ Elternkommunikation ✓ Praktische Checklisten. Jetzt Kita DSGVO-konform machen!";
+  
+  // Mobile font settings
+  const baseFontSize = typeof window !== 'undefined' && window.innerWidth < 640 ? 16 : 16;
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
   const [activeSection, setActiveSection] = useState<string>('overview');
@@ -105,7 +112,7 @@ const DatenschutzKindergarten = () => {
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   
-  // Navigation items for sticky navigation
+  // Navigation items for sticky navigation mit Anker-IDs
   const navigationItems = [
     { id: 'ueberblick', label: 'Überblick', icon: Baby },
     { id: 'rechtlicher-rahmen', label: 'Rechtlicher Rahmen', icon: Scale },
@@ -134,6 +141,38 @@ const DatenschutzKindergarten = () => {
     }
   };
   
+  // Add scroll-margin-top styles for sticky header and mobile optimizations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      h2[id], h3[id], section[id] {
+        scroll-margin-top: 96px;
+      }
+      
+      /* Mobile-optimierungen */
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        
+        .tap-target {
+          min-height: 48px;
+          min-width: 48px;
+        }
+        
+        p, li {
+          max-width: 45ch;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   // Handle initial load with hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
@@ -189,6 +228,35 @@ const DatenschutzKindergarten = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="datenschutz kindergarten, dsgvo kita, kinderdatenschutz, foto einwilligung kita, dsgvo compliance kindergarten" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://www.example.com/wissen/branchen/datenschutz-kindergarten" />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.example.com/wissen/branchen/datenschutz-kindergarten" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": pageTitle,
+            "description": pageDescription,
+            "author": {
+              "@type": "Organization",
+              "name": "DSGVO Compliance Team"
+            },
+            "datePublished": "2024-01-01",
+            "dateModified": new Date().toISOString()
+          })}
+        </script>
+      </Helmet>
       <Header />
       <div className="min-h-screen bg-white dark:bg-gray-950">
         {/* Hero Section with Parallax */}
@@ -225,13 +293,13 @@ const DatenschutzKindergarten = () => {
                 
                 <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
                   In deutschen Kitas werden täglich sensible Daten von über 3,7 Millionen Kindern verarbeitet. 
-                  Schützen Sie diese Daten rechtskonform und vertrauenswürdig.
+                  Schützen Sie diese Daten rechtskonform und vertrauenswürdig mit unseren <Link to="/loesungen" className="text-red-600 dark:text-red-400 hover:underline">DSGVO-Lösungen</Link>.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                   <Button 
                     size="lg" 
-                    className="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
+                    className="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 min-h-[48px] min-w-[48px]"
                     onClick={() => scrollToSection('rechtlicher-rahmen')}
                   >
                     <BookOpen className="mr-2 h-5 w-5" />
@@ -241,7 +309,7 @@ const DatenschutzKindergarten = () => {
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="border-red-200 dark:border-red-800 hover:bg-red-50 dark:hover:bg-red-950/30"
+                    className="border-red-200 dark:border-red-800 hover:bg-red-50 dark:hover:bg-red-950/30 min-h-[48px] min-w-[48px]"
                   >
                     <Download className="mr-2 h-5 w-5" />
                     Checkliste herunterladen
@@ -306,8 +374,41 @@ const DatenschutzKindergarten = () => {
           </motion.div>
         </section>
 
-        {/* Sticky Navigation */}
-        <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-red-100 dark:border-red-900">
+        {/* Inhaltsverzeichnis für Mobile und Desktop */}
+        <section className="py-8 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <nav aria-label="Inhaltsverzeichnis" className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-red-600" />
+                  Inhaltsverzeichnis
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {navigationItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left tap-target"
+                    >
+                      <item.icon className="h-5 w-5 text-red-600 flex-shrink-0" />
+                      <span className="text-sm font-medium">{item.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </nav>
+            </div>
+          </div>
+        </section>
+
+        {/* Sticky Navigation mit scroll-margin-top */}
+        <style>
+          {`
+            h2[id], h3[id], section[id] {
+              scroll-margin-top: 96px;
+            }
+          `}
+        </style>
+        <nav className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-red-100 dark:border-red-900" aria-label="Inhaltsverzeichnis">
           <div className="container mx-auto px-4">
             <nav className="flex items-center justify-start md:justify-center gap-2 py-4 overflow-x-auto scrollbar-hide">
               {navigationItems.map((item) => {
@@ -330,7 +431,7 @@ const DatenschutzKindergarten = () => {
               })}
             </nav>
           </div>
-        </div>
+        </nav>
 
         {/* Main Content */}
         <div className="py-20">
@@ -347,7 +448,7 @@ const DatenschutzKindergarten = () => {
                 className="space-y-8 scroll-mt-32"
               >
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                  <h2 id="warum-datenschutz-wichtig" className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                     Warum Datenschutz in Kitas so wichtig ist
                   </h2>
                   <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -361,7 +462,7 @@ const DatenschutzKindergarten = () => {
                       icon: Baby,
                       title: 'Art. 8 DSGVO',
                       subtitle: 'Kinderdatenschutz',
-                      description: 'Kinder unter 16 Jahren benötigen IMMER die Einwilligung der Eltern für die Datenverarbeitung.',
+                      description: <>Kinder unter 16 Jahren benötigen IMMER die Einwilligung der Eltern für die Datenverarbeitung. Erfahren Sie mehr über <Link to="/wissen/dsgvo-artikel" className="text-red-600 dark:text-red-400 hover:underline">Art. 8 DSGVO</Link>.</>,
                       risk: 'Kritisch'
                     },
                     {
@@ -375,7 +476,7 @@ const DatenschutzKindergarten = () => {
                       icon: Heart,
                       title: 'Besondere Kategorien',
                       subtitle: 'Gesundheitsdaten',
-                      description: 'Allergien, Medikamente und Entwicklungsberichte sind besonders schützenswerte Daten nach Art. 9 DSGVO.',
+                      description: <>Allergien, Medikamente und Entwicklungsberichte sind besonders schützenswerte Daten nach <Link to="/wissen/dsgvo-artikel" className="text-red-600 dark:text-red-400 hover:underline">Art. 9 DSGVO</Link>.</>,
                       risk: 'Kritisch'
                     }
                   ].map((item, index) => (
@@ -391,7 +492,7 @@ const DatenschutzKindergarten = () => {
                               <p className="text-sm text-gray-600 dark:text-gray-400">{item.subtitle}</p>
                             </div>
                           </div>
-                          <Badge variant={item.risk === 'Kritisch' ? 'destructive' : 'secondary'}>
+                          <Badge variant={item.risk === 'Kritisch' ? 'destructive' : 'secondary'} className="text-xs">
                             {item.risk} Risiko
                           </Badge>
                         </div>
@@ -477,7 +578,7 @@ const DatenschutzKindergarten = () => {
                 className="space-y-8 scroll-mt-32"
               >
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                  <h2 id="rechtlicher-rahmen-kitas" className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                     Rechtlicher Rahmen für Kitas
                   </h2>
                   <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -486,7 +587,7 @@ const DatenschutzKindergarten = () => {
                 </div>
 
                 <div className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-950/20 dark:to-pink-950/20 rounded-xl p-8 border border-red-200 dark:border-red-800">
-                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <h3 id="art-8-dsgvo" className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <Scale className="h-8 w-8 text-red-600" />
                     Art. 8 DSGVO - Der Kinderschutzparagraph
                   </h3>
@@ -623,7 +724,7 @@ const DatenschutzKindergarten = () => {
                 className="space-y-8 scroll-mt-32"
               >
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                  <h2 id="foto-video-aufnahmen" className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                     Foto- und Videoaufnahmen: Der Klassiker
                   </h2>
                   <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -633,16 +734,16 @@ const DatenschutzKindergarten = () => {
 
                 {/* Real-world scenario */}
                 <div className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-950/20 dark:to-pink-950/20 rounded-xl p-8 border border-red-200 dark:border-red-800">
-                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <h3 id="praxis-szenario-sommerfest" className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <Camera className="h-8 w-8 text-red-600" />
-                    🏠 Praxis-Szenario: Sommerfest in der Kita
+                    Praxis-Szenario: Sommerfest in der Kita
                   </h3>
                   
                   <div className="space-y-6">
                     <div className="bg-white/80 dark:bg-gray-900/80 rounded-lg p-6">
                       <h4 className="font-semibold mb-3 flex items-center gap-2">
                         <Clipboard className="h-5 w-5 text-red-600" />
-                        📋 Kontext
+                        Kontext
                       </h4>
                       <p className="text-gray-700 dark:text-gray-300">
                         Das jährliche Sommerfest steht an. Die Erzieherin möchte Fotos für das Portfolio machen, 
@@ -653,7 +754,7 @@ const DatenschutzKindergarten = () => {
                     <div className="bg-white/80 dark:bg-gray-900/80 rounded-lg p-6">
                       <h4 className="font-semibold mb-3 flex items-center gap-2">
                         <AlertTriangle className="h-5 w-5 text-orange-600" />
-                        ⚠️ Herausforderung
+                        Herausforderung
                       </h4>
                       <p className="text-gray-700 dark:text-gray-300">
                         Nicht alle Eltern sind mit allen Verwendungszwecken einverstanden. 
@@ -664,7 +765,7 @@ const DatenschutzKindergarten = () => {
                     <div className="bg-white/80 dark:bg-gray-900/80 rounded-lg p-6">
                       <h4 className="font-semibold mb-3 flex items-center gap-2">
                         <CheckCircle2 className="h-5 w-5 text-green-600" />
-                        ✅ Lösung: Modulare Einwilligungen
+                        Lösung: Modulare Einwilligungen
                       </h4>
                       
                       <div className="grid md:grid-cols-3 gap-4 mt-4">
@@ -830,9 +931,205 @@ const DatenschutzKindergarten = () => {
                 </Card>
               </motion.section>
 
+              {/* Digitale Tools Section */}
+              <motion.section
+                id="digitale-tools"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="space-y-8 scroll-mt-32"
+              >
+                <div className="text-center mb-12">
+                  <h2 id="digitale-tools-kita" className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                    Digitale Tools datenschutzkonform nutzen
+                  </h2>
+                  <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Von Kita-Apps bis zur Verwaltungssoftware: So setzen Sie digitale Helfer DSGVO-konform ein.
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    {
+                      title: 'Kita-Apps',
+                      icon: Smartphone,
+                      description: 'Kommunikation mit Eltern über sichere Kanäle',
+                      tips: ['Verschlüsselung prüfen', 'AV-Vertrag abschließen', 'Datensparsamkeit beachten'],
+                      link: '/loesungen/kita-software'
+                    },
+                    {
+                      title: 'Cloud-Speicher',
+                      icon: Cloud,
+                      description: 'Fotos und Dokumente sicher in der Cloud',
+                      tips: ['EU-Server bevorzugen', 'Zugriffsrechte regeln', 'Automatische Löschung'],
+                      link: '/wissen/cloud-datenschutz'
+                    },
+                    {
+                      title: 'Verwaltungssoftware',
+                      icon: Monitor,
+                      description: 'Digitale Verwaltung von Kinderdaten',
+                      tips: ['Berechtigungskonzept', 'Regelmäßige Backups', 'Protokollierung'],
+                      link: '/loesungen/verwaltung'
+                    },
+                    {
+                      title: 'Videokonferenzen',
+                      icon: Video,
+                      description: 'Elterngespräche und Teamsitzungen online',
+                      tips: ['DSGVO-konforme Tools', 'Keine Aufzeichnungen', 'Einwilligung einholen'],
+                      link: '/wissen/videokonferenzen'
+                    }
+                  ].map((tool, index) => (
+                    <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+                      <CardHeader>
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-red-100 dark:bg-red-950/50 rounded-lg">
+                            <tool.icon className="h-6 w-6 text-red-600 dark:text-red-400" />
+                          </div>
+                          <CardTitle className="text-lg">{tool.title}</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-700 dark:text-gray-300 mb-4">{tool.description}</p>
+                        <div className="space-y-2 mb-4">
+                          {tool.tips.map((tip, tipIndex) => (
+                            <div key={tipIndex} className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5" />
+                              <span className="text-sm">{tip}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <Link 
+                          to={tool.link}
+                          className="text-red-600 dark:text-red-400 hover:underline text-sm flex items-center gap-1"
+                        >
+                          Mehr erfahren
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </motion.section>
+
+              {/* Datenpannen Section */}
+              <motion.section
+                id="datenpannen"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="space-y-8 scroll-mt-32"
+              >
+                <div className="text-center mb-12">
+                  <h2 id="datenpannen-kita" className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                    Datenpannen: Richtig reagieren
+                  </h2>
+                  <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    72 Stunden Zeit zum Handeln - Was bei Datenpannen in der Kita zu tun ist.
+                  </p>
+                </div>
+
+                <Card className="border-red-500 border-2">
+                  <CardHeader className="bg-red-50 dark:bg-red-950/30">
+                    <CardTitle className="flex items-center gap-2">
+                      <AlertTriangle className="h-6 w-6 text-red-600" />
+                      Notfallplan bei Datenpannen
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <div className="space-y-6">
+                      {[
+                        {
+                          time: 'Sofort',
+                          action: 'Datenpanne feststellen und dokumentieren',
+                          details: 'Art, Umfang und betroffene Personen erfassen'
+                        },
+                        {
+                          time: 'Innerhalb 24h',
+                          action: 'Risikobewertung durchführen',
+                          details: 'Prüfen: Hohes Risiko für Betroffene?'
+                        },
+                        {
+                          time: 'Innerhalb 72h',
+                          action: 'Meldung an Aufsichtsbehörde',
+                          details: 'Bei hohem Risiko zwingend erforderlich'
+                        },
+                        {
+                          time: 'Unverzüglich',
+                          action: 'Betroffene informieren',
+                          details: 'Eltern transparent über Vorfall informieren'
+                        }
+                      ].map((step, index) => (
+                        <div key={index} className="flex gap-4">
+                          <div className="flex-shrink-0">
+                            <div className="w-12 h-12 bg-red-100 dark:bg-red-950/50 rounded-full flex items-center justify-center">
+                              <Timer className="h-6 w-6 text-red-600" />
+                            </div>
+                          </div>
+                          <div className="flex-grow">
+                            <div className="flex items-baseline gap-2 mb-1">
+                              <span className="font-bold text-red-600">{step.time}</span>
+                              <span className="font-semibold">{step.action}</span>
+                            </div>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">{step.details}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Zurück nach oben Link */}
+                <div className="mt-8 text-center">
+                  <button 
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="text-sm text-red-600 dark:text-red-400 hover:underline flex items-center gap-1 mx-auto"
+                  >
+                    <ArrowRight className="h-4 w-4 rotate-[-90deg]" />
+                    Zurück nach oben
+                  </button>
+                </div>
+              </motion.section>
+
             </div>
           </div>
         </div>
+        
+        {/* Related Links Section for SEO */}
+        <section className="py-12 bg-gray-50 dark:bg-gray-900">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-7xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">Verwandte Compliance-Themen</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Link to="/wissen/branchen/datenschutz-pflege" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">Datenschutz in der Pflege</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">DSGVO-Compliance für Pflegeeinrichtungen</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/wissen/branchen/datenschutz-arztpraxis" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">Datenschutz Arztpraxis</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">DSGVO für niedergelassene Ärzte</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/wissen/branchen/dsgvo-vereine" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">DSGVO für Vereine</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Datenschutz im Vereinswesen</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
         
         {/* Call-to-Action Section */}
         <section className="py-20 bg-gradient-to-r from-red-600 via-pink-600 to-rose-600">
@@ -859,7 +1156,7 @@ const DatenschutzKindergarten = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
                     size="lg" 
-                    className="bg-white text-red-600 hover:bg-gray-100 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
+                    className="bg-white text-red-600 hover:bg-gray-100 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 min-h-[48px] min-w-[48px]"
                   >
                     <Calendar className="mr-2 h-5 w-5" />
                     Kita-Demo buchen
@@ -868,7 +1165,7 @@ const DatenschutzKindergarten = () => {
                   <Button 
                     size="lg" 
                     variant="outline" 
-                    className="text-white border-white hover:bg-white/20 backdrop-blur-sm"
+                    className="text-white border-white hover:bg-white/20 backdrop-blur-sm min-h-[48px] min-w-[48px]"
                   >
                     <Download className="mr-2 h-5 w-5" />
                     DSGVO-Guide herunterladen

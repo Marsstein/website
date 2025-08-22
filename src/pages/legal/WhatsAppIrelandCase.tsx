@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { Helmet } from 'react-helmet-async';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -69,6 +70,16 @@ const WhatsAppIrelandCase: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  useEffect(() => {
+    // Scroll margins for sticky header offset
+    const style = document.createElement('style');
+    style.textContent = `
+      h2, h3, h4 { scroll-margin-top: 96px; }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   const handleCopy = async (text: string, type: string) => {
     try {
@@ -384,6 +395,18 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
+      <Helmet>
+        <title>WhatsApp Irland DSGVO Bußgeld €225 Mio – Messaging Compliance</title>
+        <meta 
+          name="description" 
+          content="WhatsApp Ireland €225 Mio Bußgeld wegen Transparenz-Verstößen. Messaging-Apps DSGVO-konform gestalten & Compliance umsetzen." 
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="WhatsApp Irland DSGVO Bußgeld €225 Mio – Messaging Compliance" />
+        <meta property="og:description" content="WhatsApp Ireland €225 Mio Bußgeld wegen Transparenz-Verstößen. Messaging-Apps DSGVO-konform gestalten & Compliance umsetzen." />
+        <meta property="og:type" content="article" />
+        <link rel="canonical" href="https://marsjonas.de/wissen/rechtsprechung/whatsapp-irland-2021" />
+      </Helmet>
       <Header />
       
       {/* Animated Background Elements */}
@@ -438,14 +461,14 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8"
             >
-              <span className="text-white">WhatsApp</span>
+              <span className="text-white">WhatsApp Ireland</span>
               <br />
               <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Ireland
+                €225 Mio Bußgeld
               </span>
               <br />
               <span className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-slate-400 to-slate-200 bg-clip-text text-transparent">
-                Transparency Case
+                Messaging Compliance
               </span>
             </motion.h1>
             
@@ -518,6 +541,29 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
 
             {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-8">
+              {/* Table of Contents */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Card className="bg-slate-800/80 backdrop-blur-sm border-emerald-500/30 mb-8">
+                  <CardContent className="p-6">
+                    <nav aria-label="Inhaltsverzeichnis">
+                      <h2 id="inhaltsverzeichnis" className="text-xl font-bold text-white mb-4">Inhaltsverzeichnis</h2>
+                      <ul className="space-y-2 text-slate-300">
+                        <li><a href="#whatsapp-verfahren" className="text-emerald-400 hover:text-emerald-300 transition-colors">1. Das WhatsApp Ireland Verfahren</a></li>
+                        <li><a href="#zentrale-erkenntnisse" className="text-emerald-400 hover:text-emerald-300 transition-colors">2. Zentrale Erkenntnisse</a></li>
+                        <li><a href="#verstoesse-details" className="text-emerald-400 hover:text-emerald-300 transition-colors">3. Verstöße-Details</a></li>
+                        <li><a href="#transparenz-anforderungen" className="text-emerald-400 hover:text-emerald-300 transition-colors">4. Transparenz-Anforderungen</a></li>
+                        <li><a href="#messaging-compliance" className="text-emerald-400 hover:text-emerald-300 transition-colors">5. Messaging-Compliance</a></li>
+                        <li><a href="#implementation" className="text-emerald-400 hover:text-emerald-300 transition-colors">6. Implementation</a></li>
+                      </ul>
+                    </nav>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -527,7 +573,7 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-3 gap-8">
                       <div className="md:col-span-2">
-                        <h3 className="text-2xl font-bold text-white mb-6">Das WhatsApp Ireland Verfahren</h3>
+                        <h2 id="whatsapp-verfahren" className="text-2xl font-bold text-white mb-6">Das WhatsApp Ireland Verfahren</h2>
                         <div className="space-y-4 text-slate-300 leading-relaxed">
                           <p>
                             Am 2. September 2021 verhängte die irische Datenschutzkommission (DPC) eine 
@@ -538,12 +584,14 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
                             Das Verfahren konzentrierte sich auf die mangelnde Transparenz bei der 
                             Datenverarbeitung, insbesondere auf die unzureichende Information der Nutzer 
                             über die Verarbeitungszwecke, Rechtsgrundlagen und Betroffenenrechte gemäß 
-                            den Artikeln 12-14 DSGVO.
+                            den Artikeln 12-14 DSGVO. Ähnlich wie bei <Link to="/wissen/rechtsprechung/planet49-cookie" className="text-emerald-400 hover:text-emerald-300">Cookie-Consent-Verstößen</Link> 
+                            zeigt sich auch hier die Bedeutung klarer Nutzerinformation.
                           </p>
                           <p>
                             Diese Entscheidung markiert einen Wendepunkt für Messaging-Apps und 
                             Kommunikationsplattformen und etabliert neue Standards für die 
-                            Transparenz-Kommunikation in der Branche.
+                            Transparenz-Kommunikation in der Branche. Weitere relevante Urteile finden Sie in unserer 
+                            <Link to="/wissen/rechtsprechung" className="text-emerald-400 hover:text-emerald-300">Rechtsprechungs-Übersicht</Link>.
                           </p>
                           <p>
                             Die DPC bemängelte insbesondere die Komplexität und Unverständlichkeit 
@@ -621,9 +669,9 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
               >
                 <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-8 text-center">
+                    <h2 id="zentrale-erkenntnisse" className="text-2xl font-bold text-white mb-8 text-center">
                       Zentrale Erkenntnisse des Falls
-                    </h3>
+                    </h2>
                     <div className="grid md:grid-cols-3 gap-6">
                       {[
                         {
@@ -671,9 +719,9 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
               >
                 <Card className="bg-slate-800/80 backdrop-blur-sm border-emerald-500/30">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-8 text-center">
+                    <h2 id="verstoesse-details" className="text-2xl font-bold text-white mb-8 text-center">
                       Verstöße-Aufschlüsselung: €225 Millionen
-                    </h3>
+                    </h2>
                     <div className="space-y-6">
                       {violationBreakdown.map((item, index) => (
                         <motion.div
@@ -782,9 +830,9 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
               >
                 <Card className="bg-slate-800/80 backdrop-blur-sm border-emerald-500/30 mb-8">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                    <h2 id="transparenz-anforderungen" className="text-2xl font-bold text-white mb-6 text-center">
                       DSGVO Transparenz-Anforderungen für Messaging-Apps
-                    </h3>
+                    </h2>
                     <p className="text-slate-300 text-center mb-8">
                       Die Artikel 12-14 DSGVO definieren klare Anforderungen an die Transparenz der Datenverarbeitung. 
                       Hier sind die wichtigsten Compliance-Bereiche für Messaging-Plattformen:
@@ -868,6 +916,9 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
 
             {/* Messaging Compliance Tab */}
             <TabsContent value="messaging" className="space-y-8">
+              <h2 id="messaging-compliance" className="text-3xl font-bold text-white mb-8 text-center">
+                Messaging-Compliance nach WhatsApp Ireland
+              </h2>
               <div className="space-y-8">
                 {messagingCompliance.map((category, index) => (
                   <motion.div
@@ -948,7 +999,7 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
                 transition={{ duration: 0.6 }}
                 className="mb-12"
               >
-                <h3 className="text-3xl font-bold text-white mb-8 text-center">Messaging-Compliance Implementation Roadmap</h3>
+                <h2 id="implementation" className="text-3xl font-bold text-white mb-8 text-center">Messaging-Compliance Implementation Roadmap</h2>
                 <div className="space-y-8">
                   {implementationSteps.map((phase, index) => (
                     <Card key={index} className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">

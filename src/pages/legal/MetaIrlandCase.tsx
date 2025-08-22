@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -54,6 +54,48 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const MetaIrlandCase: React.FC = () => {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Meta Irland 2024 – Facebook DSGVO-Entscheidung';
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Meta Irland 2024: Facebook-Datenverarbeitung, Rechtsgrundlagen, Plattform-Compliance. ✓ DPC Decision ✓ Legal Basis Analysis ✓ Social Media Compliance.');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Meta Irland 2024: Facebook-Datenverarbeitung, Rechtsgrundlagen, Plattform-Compliance. ✓ DPC Decision ✓ Legal Basis Analysis ✓ Social Media Compliance.';
+      document.head.appendChild(meta);
+    }
+    
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(meta);
+    }
+  }, []);
+  
+  // Add scroll offset for sticky header
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      h1, h2[id], h3[id] { 
+        scroll-margin-top: 96px; 
+      }
+      @media (max-width: 768px) {
+        h1, h2[id], h3[id] { 
+          scroll-margin-top: 80px; 
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   const [activeTab, setActiveTab] = useState('overview');
   const [copySuccess, setCopySuccess] = useState('');
   const heroRef = useRef<HTMLDivElement>(null);
@@ -324,22 +366,24 @@ const MetaIrlandCase: React.FC = () => {
               <AlertTriangle className="h-5 w-5 text-red-400 animate-pulse" />
             </motion.div>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8"
-            >
-              <span className="text-white">Meta</span>
-              <br />
-              <span className="bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">
-                Ireland
-              </span>
-              <br />
-              <span className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-slate-400 to-slate-200 bg-clip-text text-transparent">
-                DPC Case 2024
-              </span>
-            </motion.h1>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8">
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="block"
+              >
+                <span className="text-white">Meta</span>
+                <br />
+                <span className="bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">
+                  Ireland
+                </span>
+                <br />
+                <span className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-slate-400 to-slate-200 bg-clip-text text-transparent">
+                  DPC Case 2024
+                </span>
+              </motion.span>
+            </h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
@@ -375,8 +419,24 @@ const MetaIrlandCase: React.FC = () => {
         </div>
       </motion.section>
 
+      {/* Table of Contents */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl">
+          <nav aria-label="Inhaltsverzeichnis" className="bg-slate-800/60 backdrop-blur-sm rounded-xl p-6 lg:p-8">
+            <h2 className="text-xl font-bold text-white mb-4">Inhaltsverzeichnis</h2>
+            <ul className="space-y-2 text-sm lg:text-base">
+              <li><a href="#overview" className="text-orange-300 hover:text-orange-400 transition-colors">1. Verfahrensübersicht</a></li>
+              <li><a href="#fine" className="text-orange-300 hover:text-orange-400 transition-colors">2. Bußgeld-Aufschlüsselung</a></li>
+              <li><a href="#changes" className="text-orange-300 hover:text-orange-400 transition-colors">3. Erforderliche Änderungen</a></li>
+              <li><a href="#business" className="text-orange-300 hover:text-orange-400 transition-colors">4. Business Impact & Action Plan</a></li>
+              <li><a href="#lessons" className="text-orange-300 hover:text-orange-400 transition-colors">5. Branchenspezifische Learnings</a></li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
       {/* Content Tabs */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8" id="content">
         <div className="container mx-auto max-w-7xl">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <motion.div 
@@ -405,7 +465,7 @@ const MetaIrlandCase: React.FC = () => {
             </motion.div>
 
             {/* Overview Tab */}
-            <TabsContent value="overview" className="space-y-8">
+            <TabsContent value="overview" className="space-y-8" id="overview">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -415,7 +475,7 @@ const MetaIrlandCase: React.FC = () => {
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-3 gap-8">
                       <div className="md:col-span-2">
-                        <h3 className="text-2xl font-bold text-white mb-6">Verfahrensübersicht</h3>
+                        <h2 className="text-2xl font-bold text-white mb-6">Verfahrensübersicht</h2>
                         <div className="space-y-4 text-slate-300 leading-relaxed">
                           <p>
                             Im Mai 2024 verhängte die irische Datenschutzkommission (DPC) eine Rekordstrafe 
@@ -428,14 +488,14 @@ const MetaIrlandCase: React.FC = () => {
                             bei den Verarbeitungszwecken.
                           </p>
                           <p>
-                            Diese Entscheidung setzt neue Standards für Social Media Plattformen und hat 
-                            weitreichende Auswirkungen auf das gesamte Digital Marketing Ökosystem.
+                            Diese Entscheidung setzt neue Standards für <Link to="/services/social-media-compliance" className="text-orange-300 hover:text-orange-400 underline">Social Media Plattformen</Link> und hat 
+                            weitreichende Auswirkungen auf das gesamte <Link to="/services/marketing-compliance" className="text-orange-300 hover:text-orange-400 underline">Digital Marketing Ökosystem</Link>.
                           </p>
                         </div>
                       </div>
                       <div className="space-y-6">
                         <div className="bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-xl p-6">
-                          <h4 className="text-lg font-bold text-white mb-4">Verfahren Details</h4>
+                          <h3 className="text-lg font-bold text-white mb-4">Verfahren Details</h3>
                           <div className="space-y-3 text-sm">
                             <div className="flex justify-between">
                               <span className="text-slate-400">Behörde:</span>
@@ -474,7 +534,7 @@ const MetaIrlandCase: React.FC = () => {
             </TabsContent>
 
             {/* Fine Breakdown Tab */}
-            <TabsContent value="fine" className="space-y-8">
+            <TabsContent value="fine" className="space-y-8" id="fine">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -482,9 +542,9 @@ const MetaIrlandCase: React.FC = () => {
               >
                 <Card className="bg-slate-800/80 backdrop-blur-sm border-orange-500/30">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-8 text-center">
+                    <h2 className="text-2xl font-bold text-white mb-8 text-center">
                       Bußgeld-Aufschlüsselung: €1.2 Milliarden
-                    </h3>
+                    </h2>
                     <div className="space-y-6">
                       {fineBreakdown.map((item, index) => (
                         <motion.div
@@ -497,7 +557,7 @@ const MetaIrlandCase: React.FC = () => {
                           <div className="flex items-start justify-between mb-4">
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-2">
-                                <h4 className="text-lg font-bold text-white">{item.violation}</h4>
+                                <h3 className="text-lg font-bold text-white">{item.violation}</h3>
                                 <Badge className={cn(
                                   "text-xs",
                                   item.severity === 'KRITISCH' ? 'bg-red-500/20 text-red-300' :
@@ -529,7 +589,7 @@ const MetaIrlandCase: React.FC = () => {
             </TabsContent>
 
             {/* Key Changes Tab */}
-            <TabsContent value="changes" className="space-y-8">
+            <TabsContent value="changes" className="space-y-8" id="changes">
               <div className="grid md:grid-cols-2 gap-8">
                 {keyChanges.map((area, index) => (
                   <motion.div
@@ -566,7 +626,7 @@ const MetaIrlandCase: React.FC = () => {
             </TabsContent>
 
             {/* Business Impact Tab */}
-            <TabsContent value="business" className="space-y-8">
+            <TabsContent value="business" className="space-y-8" id="business">
               <div className="space-y-8">
                 {businessImpact.map((category, index) => (
                   <motion.div
@@ -611,7 +671,7 @@ const MetaIrlandCase: React.FC = () => {
                 transition={{ duration: 0.6 }}
                 className="mt-12"
               >
-                <h3 className="text-3xl font-bold text-white mb-8 text-center">Compliance Action Plan</h3>
+                <h2 className="text-3xl font-bold text-white mb-8 text-center">Compliance Action Plan</h2>
                 <div className="space-y-8">
                   {complianceSteps.map((phase, index) => (
                     <Card key={index} className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
@@ -641,7 +701,7 @@ const MetaIrlandCase: React.FC = () => {
             </TabsContent>
 
             {/* Industry Lessons Tab */}
-            <TabsContent value="lessons" className="space-y-8">
+            <TabsContent value="lessons" className="space-y-8" id="lessons">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

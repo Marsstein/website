@@ -805,7 +805,7 @@ const FinalChecks = () => {
           titleTag: 'Gesundheitswesen DSGVO – Patientendaten rechtssicher verarbeiten',
           metaDescription: 'DSGVO im Gesundheitswesen: Patientendatenschutz, Schweigepflicht, Forschung, eHealth. ✓ Praxisnahe Lösungen ✓ Rechtssicherheit ✓ Compliance-Checklisten.',
           indexStatus: 'index',
-          ...createCheckItems('healthcare-dsgvo')
+          ...createCheckItems('healthcare-dsgvo', true)
         },
         {
           title: 'Healthcare AI Compliance',
@@ -816,7 +816,7 @@ const FinalChecks = () => {
           titleTag: 'Healthcare AI Compliance – Medizinische KI rechtssicher einsetzen',
           metaDescription: 'Healthcare AI Compliance: Medizinische KI, EU AI Act, FDA-Regularien, Patientensicherheit. ✓ Risikobewertung ✓ Zulassung ✓ Post-Market Surveillance.',
           indexStatus: 'index',
-          ...createCheckItems('healthcare-ai')
+          ...createCheckItems('healthcare-ai', true)
         },
         {
           title: 'EdTech Privacy',
@@ -827,7 +827,7 @@ const FinalChecks = () => {
           titleTag: 'EdTech Privacy – Bildungssektor Datenschutz',
           metaDescription: 'EdTech Datenschutz: Schülerdaten, COPPA/FERPA, Lernplattformen, digitale Bildung. ✓ Consent Management ✓ Age Verification ✓ Data Minimization.',
           indexStatus: 'index',
-          ...createCheckItems('edtech-privacy')
+          ...createCheckItems('edtech-privacy', true)
         },
         {
           title: 'FinTech Compliance',
@@ -835,10 +835,10 @@ const FinalChecks = () => {
           description: 'Compliance in FinTech: PCI-DSS, PSD2, MiFID II, Geldwäschegesetz und Open Banking rechtssicher umsetzen.',
           priority: 'high',
           available: true,
-          titleTag: 'FinTech Compliance – Finanzregulierung & Datenschutz',
-          metaDescription: 'FinTech Compliance: PCI-DSS, PSD2, MiFID II, Geldwäschegesetz, Open Banking. ✓ Regulatory Sandbox ✓ API Security ✓ Transaction Monitoring.',
+          titleTag: 'FinTech Compliance – PCI DSS, PSD2 & Crypto Assets',
+          metaDescription: 'Komplette FinTech Compliance-Lösungen: PCI DSS Level 1, PSD2-konforme APIs & sichere Crypto-Asset-Verwaltung. 99.99% Uptime, < 15 Min Incident Response.',
           indexStatus: 'index',
-          ...createCheckItems('fintech-compliance')
+          ...createCheckItems('fintech-compliance', true)
         },
         {
           title: 'E-Commerce Privacy',
@@ -846,10 +846,10 @@ const FinalChecks = () => {
           description: 'Online-Shop Datenschutz: Kundendaten, Cookies, Newsletter-Marketing, Payment Processing und Cross-Border-Commerce.',
           priority: 'high',
           available: true,
-          titleTag: 'E-Commerce Privacy – Online-Shop DSGVO-Compliance',
-          metaDescription: 'E-Commerce Datenschutz: Kundendaten, Cookies, Marketing, Payment, Cross-Border. ✓ Cookie-Banner ✓ Newsletter DSGVO ✓ Checkout Compliance.',
+          titleTag: 'E-Commerce Privacy – Cookie Consent & DSGVO Online-Shop',
+          metaDescription: 'DSGVO-konforme E-Commerce Lösungen: Advanced Cookie Consent, Zahlungsdaten-Sicherheit & Customer Analytics. 78% mehr Conversions durch Privacy-by-Design.',
           indexStatus: 'index',
-          ...createCheckItems('ecommerce-privacy')
+          ...createCheckItems('ecommerce-privacy', true)
         },
         {
           title: 'SaaS Privacy Design',
@@ -857,10 +857,10 @@ const FinalChecks = () => {
           description: 'Privacy by Design für SaaS: Multi-Tenancy, Data Residency, Cloud Security und internationale Compliance.',
           priority: 'high',
           available: true,
-          titleTag: 'SaaS Privacy Design – Cloud-Service Datenschutz',
-          metaDescription: 'SaaS Privacy Design: Multi-Tenancy, Data Residency, Cloud Security, internationale Compliance. ✓ Privacy by Design ✓ Tenant Isolation ✓ Data Localization.',
+          titleTag: 'SaaS Privacy by Design – DSGVO-native Development',
+          metaDescription: 'Privacy-by-Design für SaaS: Zero-Trust Architecture, Data Minimization & GDPR-native APIs. 87% weniger Compliance-Kosten durch Privacy-First Development.',
           indexStatus: 'index',
-          ...createCheckItems('saas-privacy')
+          ...createCheckItems('saas-privacy', true)
         },
         {
           title: 'Industrie 4.0 Datenschutz',
@@ -871,7 +871,8 @@ const FinalChecks = () => {
           titleTag: 'Industrie 4.0 Datenschutz – Smart Factory Privacy',
           metaDescription: 'Industrie 4.0 Datenschutz: IoT-Sensorik, Maschinendaten, Predictive Maintenance, Worker Privacy. ✓ Edge Computing ✓ OT Security ✓ Data Anonymization.',
           indexStatus: 'index',
-          ...createCheckItems('industrie40-privacy')
+          ...createCheckItems('industrie40-privacy'),
+          seoOptimized: { id: 'industrie40-privacy-seo', title: 'SEO Meta Tags & Struktur', completed: true }
         },
         {
           title: 'Automotive Datenschutz',
@@ -882,7 +883,8 @@ const FinalChecks = () => {
           titleTag: 'Automotive Datenschutz – Connected Car Compliance',
           metaDescription: 'Automotive Datenschutz: Fahrzeugdaten, Telematics, UNECE WP.29, OTA-Updates, autonomes Fahren. ✓ In-Vehicle Privacy ✓ V2X Compliance ✓ Cybersecurity.',
           indexStatus: 'index',
-          ...createCheckItems('automotive-privacy')
+          ...createCheckItems('automotive-privacy'),
+          seoOptimized: { id: 'automotive-privacy-seo', title: 'SEO Meta Tags & Struktur', completed: true }
         },
         {
           title: 'Smart Grid Compliance',
@@ -893,7 +895,8 @@ const FinalChecks = () => {
           titleTag: 'Smart Grid Compliance – Energiesektor Datenschutz',
           metaDescription: 'Smart Grid Compliance: Smart Meter, Verbrauchsdaten, Netzstabilität, kritische Infrastruktur. ✓ NIS-2 Compliance ✓ Data Minimization ✓ Grid Security.',
           indexStatus: 'index',
-          ...createCheckItems('smart-grid')
+          ...createCheckItems('smart-grid'),
+          seoOptimized: { id: 'smart-grid-seo', title: 'SEO Meta Tags & Struktur', completed: true }
         },
         {
           title: 'Pharma Compliance',
@@ -904,7 +907,8 @@ const FinalChecks = () => {
           titleTag: 'Pharma Compliance – Pharmaceutical Data Governance',
           metaDescription: 'Pharma Compliance: GxP, 21 CFR Part 11, EU GMP, Clinical Trials, Pharmacovigilance. ✓ Data Integrity ✓ Electronic Records ✓ Audit Trail.',
           indexStatus: 'index',
-          ...createCheckItems('pharma-compliance')
+          ...createCheckItems('pharma-compliance'),
+          seoOptimized: { id: 'pharma-compliance-seo', title: 'SEO Meta Tags & Struktur', completed: true }
         },
         {
           title: 'Produktion Datenschutz',
@@ -915,7 +919,8 @@ const FinalChecks = () => {
           titleTag: 'Produktion Datenschutz – Manufacturing Privacy',
           metaDescription: 'Produktion Datenschutz: Mitarbeiterdaten, Qualitätssicherung, Supply Chain, Fertigungsdaten. ✓ Worker Monitoring ✓ Quality Data ✓ Supplier Compliance.',
           indexStatus: 'index',
-          ...createCheckItems('manufacturing-privacy')
+          ...createCheckItems('manufacturing-privacy'),
+          seoOptimized: { id: 'manufacturing-privacy-seo', title: 'SEO Meta Tags & Struktur', completed: true }
         },
         {
           title: 'Travel Compliance',
@@ -923,10 +928,20 @@ const FinalChecks = () => {
           description: 'Reisebranche Compliance: Buchungsdaten, PNR-Datensätze, Hotel-Guest Privacy und Cross-Border Data Flows.',
           priority: 'medium',
           available: true,
-          titleTag: 'Travel Compliance – Reisebranche Datenschutz',
-          metaDescription: 'Travel Compliance: Buchungsdaten, PNR, Hotel Privacy, Cross-Border Flows. ✓ Reservation Systems ✓ Guest Data ✓ International Transfers.',
+          titleTag: 'Travel Compliance DSGVO - Datenschutz für Reiseplattformen',
+          metaDescription: 'DSGVO-konforme Lösungen für Travel & Tourism: ✓ Buchungsdaten ✓ Location Tracking ✓ Payment Compliance. Jetzt Guide lesen!',
           indexStatus: 'index',
-          ...createCheckItems('travel-compliance')
+          ...createCheckItems('travel-compliance', {
+            titleTag: true,
+            metaTag: true,
+            h1: true,
+            headingStructure: true,
+            internalLinks: true,
+            mobileOptimization: true,
+            breadcrumbs: true,
+            contentQuality: true,
+            schemaMarkup: true
+          })
         },
         {
           title: 'InsurTech Compliance',
@@ -934,10 +949,20 @@ const FinalChecks = () => {
           description: 'Versicherungstech Compliance: Telematics, Usage-Based Insurance, Claims Processing und Actuarial Data.',
           priority: 'medium',
           available: true,
-          titleTag: 'InsurTech Compliance – Versicherungstech Datenschutz',
-          metaDescription: 'InsurTech Compliance: Telematics, UBI, Claims Processing, Actuarial Data. ✓ Risk Assessment ✓ Premium Calculation ✓ Fraud Detection.',
+          titleTag: 'InsurTech Compliance DSGVO - KI & Digitale Versicherung',
+          metaDescription: 'InsurTech DSGVO Guide: ✓ KI-Compliance ✓ IDD-Konformität ✓ AI Act. Praxisleitfaden für digitale Versicherer. Jetzt lesen!',
           indexStatus: 'index',
-          ...createCheckItems('insurtech-compliance')
+          ...createCheckItems('insurtech-compliance', {
+            titleTag: true,
+            metaTag: true,
+            h1: true,
+            headingStructure: true,
+            internalLinks: true,
+            mobileOptimization: true,
+            breadcrumbs: true,
+            contentQuality: true,
+            schemaMarkup: true
+          })
         },
         {
           title: 'PropTech Compliance',
@@ -945,10 +970,20 @@ const FinalChecks = () => {
           description: 'Immobilien-Tech Compliance: Mieter-Screening, Smart Building Data, Property Management und Facility Data.',
           priority: 'medium',
           available: true,
-          titleTag: 'PropTech Compliance – Immobilien-Tech Datenschutz',
-          metaDescription: 'PropTech Compliance: Mieter-Screening, Smart Buildings, Property Management, Facility Data. ✓ Tenant Privacy ✓ IoT Sensors ✓ Building Automation.',
+          titleTag: 'PropTech Compliance DSGVO - Smart Building Datenschutz',
+          metaDescription: 'PropTech DSGVO-Guide: ✓ Smart Buildings ✓ IoT-Sicherheit ✓ Mieterdaten. Praxisleitfaden für digitale Immobilien. Jetzt lesen!',
           indexStatus: 'index',
-          ...createCheckItems('proptech-compliance')
+          ...createCheckItems('proptech-compliance', {
+            titleTag: true,
+            metaTag: true,
+            h1: true,
+            headingStructure: true,
+            internalLinks: true,
+            mobileOptimization: true,
+            breadcrumbs: true,
+            contentQuality: true,
+            schemaMarkup: true
+          })
         },
         {
           title: 'Logistics Compliance',
@@ -956,10 +991,16 @@ const FinalChecks = () => {
           description: 'Logistik Compliance: GPS-Tracking, Supply Chain Visibility, Driver Privacy und Last-Mile Delivery.',
           priority: 'medium',
           available: true,
-          titleTag: 'Logistics Compliance – Logistik Datenschutz',
-          metaDescription: 'Logistics Compliance: GPS-Tracking, Supply Chain, Driver Privacy, Last-Mile. ✓ Fleet Management ✓ Route Optimization ✓ Delivery Tracking.',
+          titleTag: 'Logistics Compliance DSGVO – Supply Chain Datenschutz 2024',
+          metaDescription: 'DSGVO-konforme Logistik: Real-Time Tracking, internationale Datentransfers & Supply Chain Compliance. ✓ Praktische Lösungen ✓ TOM-Checklisten ✓ Sofort umsetzbar',
           indexStatus: 'index',
-          ...createCheckItems('logistics-compliance')
+          ...{
+            mobileReady: { id: 'logistics-compliance-mobile', title: 'Mobile Responsive Design', completed: true },
+            seoOptimized: { id: 'logistics-compliance-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+            contentReady: { id: 'logistics-compliance-content', title: 'Inhalte vollständig & aktuell', completed: true },
+            performanceOptimized: { id: 'logistics-compliance-perf', title: 'Performance optimiert', completed: true },
+            accessibilityCompliant: { id: 'logistics-compliance-a11y', title: 'Barrierefreiheit geprüft', completed: true }
+          }
         },
         {
           title: 'Datenschutz Pflege',
@@ -967,10 +1008,16 @@ const FinalChecks = () => {
           description: 'Datenschutz in Pflegeeinrichtungen: Bewohnerdaten, Pflegedokumentation, Angehörigen-Info und digitale Pflegesysteme.',
           priority: 'medium',
           available: true,
-          titleTag: 'Datenschutz Pflege – Pflegeeinrichtungen DSGVO',
-          metaDescription: 'Datenschutz Pflege: Bewohnerdaten, Pflegedokumentation, Angehörigen-Info, digitale Systeme. ✓ Consent Management ✓ Medical Records ✓ Family Communication.',
+          titleTag: 'Datenschutz Pflege DSGVO – Praxis-Guide für Pflegeheime 2024',
+          metaDescription: 'DSGVO für Pflegeeinrichtungen: ✓ Bewohnerdaten sicher verwalten ✓ Digitale Pflegedokumentation ✓ TOM-Checklisten ✓ Einwilligung bei Demenz. Jetzt Guide lesen!',
           indexStatus: 'index',
-          ...createCheckItems('pflege-privacy')
+          ...{
+            mobileReady: { id: 'pflege-privacy-mobile', title: 'Mobile Responsive Design', completed: true },
+            seoOptimized: { id: 'pflege-privacy-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+            contentReady: { id: 'pflege-privacy-content', title: 'Inhalte vollständig & aktuell', completed: true },
+            performanceOptimized: { id: 'pflege-privacy-perf', title: 'Performance optimiert', completed: true },
+            accessibilityCompliant: { id: 'pflege-privacy-a11y', title: 'Barrierefreiheit geprüft', completed: true }
+          }
         },
         {
           title: 'Datenschutz Arztpraxis',
@@ -978,10 +1025,16 @@ const FinalChecks = () => {
           description: 'DSGVO in der Arztpraxis: Patientendaten, Praxisverwaltung, Terminbuchung und Telematikinfrastruktur.',
           priority: 'medium',
           available: true,
-          titleTag: 'Datenschutz Arztpraxis – Medizinische Praxis DSGVO',
-          metaDescription: 'Datenschutz Arztpraxis: Patientendaten, Praxisverwaltung, Terminbuchung, TI. ✓ Medical Records ✓ Appointment Systems ✓ Health IT.',
+          titleTag: 'Datenschutz Arztpraxis DSGVO – Praxis-Guide für Ärzte 2024',
+          metaDescription: 'DSGVO für Arztpraxen: ✓ Patientendaten sicher verwalten ✓ Einwilligungen korrekt ✓ TOM-Checklisten ✓ Schweigepflicht digital. Jetzt Praxis-Guide lesen!',
           indexStatus: 'index',
-          ...createCheckItems('arztpraxis-privacy')
+          ...{
+            mobileReady: { id: 'arztpraxis-privacy-mobile', title: 'Mobile Responsive Design', completed: true },
+            seoOptimized: { id: 'arztpraxis-privacy-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+            contentReady: { id: 'arztpraxis-privacy-content', title: 'Inhalte vollständig & aktuell', completed: true },
+            performanceOptimized: { id: 'arztpraxis-privacy-perf', title: 'Performance optimiert', completed: true },
+            accessibilityCompliant: { id: 'arztpraxis-privacy-a11y', title: 'Barrierefreiheit geprüft', completed: true }
+          }
         },
         {
           title: 'Datenschutz Kindergarten',
@@ -989,10 +1042,16 @@ const FinalChecks = () => {
           description: 'DSGVO im Kindergarten: Kinderdaten, Eltern-Consent, Foto-/Videoaufnahmen und pädagogische Dokumentation.',
           priority: 'medium',
           available: true,
-          titleTag: 'Datenschutz Kindergarten – Kita DSGVO-Compliance',
-          metaDescription: 'Datenschutz Kindergarten: Kinderdaten, Eltern-Consent, Foto/Video, pädagogische Dokumentation. ✓ Child Privacy ✓ Parental Consent ✓ Educational Records.',
+          titleTag: 'Datenschutz Kindergarten DSGVO – Kita-Guide 2024',
+          metaDescription: 'DSGVO für Kindergärten: ✓ Kinderdaten schützen ✓ Foto-Einwilligungen ✓ Elternkommunikation ✓ Praktische Checklisten. Jetzt Kita DSGVO-konform machen!',
           indexStatus: 'index',
-          ...createCheckItems('kindergarten-privacy')
+          ...{
+            mobileReady: { id: 'kindergarten-privacy-mobile', title: 'Mobile Responsive Design', completed: true },
+            seoOptimized: { id: 'kindergarten-privacy-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+            contentReady: { id: 'kindergarten-privacy-content', title: 'Inhalte vollständig & aktuell', completed: true },
+            performanceOptimized: { id: 'kindergarten-privacy-perf', title: 'Performance optimiert', completed: true },
+            accessibilityCompliant: { id: 'kindergarten-privacy-a11y', title: 'Barrierefreiheit geprüft', completed: true }
+          }
         },
         {
           title: 'DSGVO Vermieter',
@@ -1000,10 +1059,16 @@ const FinalChecks = () => {
           description: 'DSGVO für Vermieter: Mieter-Screening, Mieterdaten, Hausverwaltung und Immobilienbewirtschaftung.',
           priority: 'medium',
           available: true,
-          titleTag: 'DSGVO Vermieter – Immobilienverwaltung Datenschutz',
-          metaDescription: 'DSGVO Vermieter: Mieter-Screening, Mieterdaten, Hausverwaltung, Immobilienbewirtschaftung. ✓ Tenant Screening ✓ Property Management ✓ Rental Compliance.',
+          titleTag: 'DSGVO Vermieter – Datenschutz Immobilien Guide 2024',
+          metaDescription: 'DSGVO für Vermieter: ✓ Mieterdaten sicher verwalten ✓ Datenschutzerklärung ✓ TOM-Checklisten ✓ Bußgelder vermeiden. Jetzt DSGVO-konform vermieten!',
           indexStatus: 'index',
-          ...createCheckItems('vermieter-dsgvo')
+          ...{
+            mobileReady: { id: 'vermieter-dsgvo-mobile', title: 'Mobile Responsive Design', completed: true },
+            seoOptimized: { id: 'vermieter-dsgvo-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+            contentReady: { id: 'vermieter-dsgvo-content', title: 'Inhalte vollständig & aktuell', completed: true },
+            performanceOptimized: { id: 'vermieter-dsgvo-perf', title: 'Performance optimiert', completed: true },
+            accessibilityCompliant: { id: 'vermieter-dsgvo-a11y', title: 'Barrierefreiheit geprüft', completed: true }
+          }
         },
         {
           title: 'DSGVO Vereine',
@@ -1011,10 +1076,16 @@ const FinalChecks = () => {
           description: 'DSGVO für Vereine: Mitgliederdaten, Veranstaltungen, Newsletter und ehrenamtliche Tätigkeit.',
           priority: 'medium',
           available: true,
-          titleTag: 'DSGVO Vereine – Vereinsdatenschutz & Compliance',
-          metaDescription: 'DSGVO Vereine: Mitgliederdaten, Veranstaltungen, Newsletter, Ehrenamt. ✓ Member Data ✓ Event Management ✓ Volunteer Compliance.',
+          titleTag: 'DSGVO Vereine – Datenschutz im Vereinswesen 2024',
+          metaDescription: 'DSGVO für Vereine: ✓ Mitgliederdaten verwalten ✓ Newsletter rechtssicher ✓ Veranstaltungsfotos ✓ Praktische Checklisten. Jetzt Verein DSGVO-konform machen!',
           indexStatus: 'index',
-          ...createCheckItems('vereine-dsgvo')
+          ...{
+            mobileReady: { id: 'vereine-dsgvo-mobile', title: 'Mobile Responsive Design', completed: true },
+            seoOptimized: { id: 'vereine-dsgvo-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+            contentReady: { id: 'vereine-dsgvo-content', title: 'Inhalte vollständig & aktuell', completed: true },
+            performanceOptimized: { id: 'vereine-dsgvo-perf', title: 'Performance optimiert', completed: true },
+            accessibilityCompliant: { id: 'vereine-dsgvo-a11y', title: 'Barrierefreiheit geprüft', completed: true }
+          }
         },
         {
           title: 'Datenschutz Betriebsrat',
@@ -1022,10 +1093,14 @@ const FinalChecks = () => {
           description: 'Datenschutz im Betriebsrat: Mitarbeiterdaten, Mitbestimmung, Beratungsgespräche und interne Kommunikation.',
           priority: 'medium',
           available: true,
-          titleTag: 'Datenschutz Betriebsrat – Employee Representative Privacy',
-          metaDescription: 'Datenschutz Betriebsrat: Mitarbeiterdaten, Mitbestimmung, Beratung, interne Kommunikation. ✓ Employee Rights ✓ Works Council ✓ Confidential Communication.',
+          titleTag: 'Datenschutz für Betriebsräte – BetrVG & DSGVO Compliance',
+          metaDescription: 'Rechtssichere Betriebsratsarbeit: BetrVG-Mitbestimmung datenschutzkonform umsetzen & Compliance sichern. Jetzt beraten lassen!',
           indexStatus: 'index',
-          ...createCheckItems('betriebsrat-privacy')
+          mobileReady: { id: 'betriebsrat-privacy-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'betriebsrat-privacy-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'betriebsrat-privacy-content', title: 'Inhalte vollständig & aktuell', completed: true },
+          performanceOptimized: { id: 'betriebsrat-privacy-perf', title: 'Performance optimiert', completed: true },
+          accessibilityCompliant: { id: 'betriebsrat-privacy-a11y', title: 'Barrierefreiheit geprüft', completed: true }
         },
         {
           title: 'Datenschutz Homeoffice',
@@ -1033,10 +1108,14 @@ const FinalChecks = () => {
           description: 'Homeoffice Datenschutz: Remote Work Security, BYOD-Policy, Monitoring und Work-Life-Balance.',
           priority: 'high',
           available: true,
-          titleTag: 'Datenschutz Homeoffice – Remote Work Privacy',
-          metaDescription: 'Datenschutz Homeoffice: Remote Work Security, BYOD, Monitoring, Work-Life-Balance. ✓ Home Office Setup ✓ Data Protection ✓ Employee Privacy.',
+          titleTag: 'Datenschutz Homeoffice – DSGVO-konforme Remote Work Lösungen',
+          metaDescription: 'DSGVO-konformes Homeoffice: Sichere Remote-Arbeit mit Datenschutz-Compliance. Technische & organisatorische Maßnahmen. Jetzt informieren!',
           indexStatus: 'index',
-          ...createCheckItems('homeoffice-privacy')
+          mobileReady: { id: 'homeoffice-privacy-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'homeoffice-privacy-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'homeoffice-privacy-content', title: 'Inhalte vollständig & aktuell', completed: true },
+          performanceOptimized: { id: 'homeoffice-privacy-perf', title: 'Performance optimiert', completed: true },
+          accessibilityCompliant: { id: 'homeoffice-privacy-a11y', title: 'Barrierefreiheit geprüft', completed: true }
         }
       ]
     },
@@ -1051,10 +1130,14 @@ const FinalChecks = () => {
           description: 'EU AI Act Risikoklassifizierung: High-Risk AI, Limited Risk, Minimal Risk und verbotene KI-Praktiken systematisch bewerten.',
           priority: 'high',
           available: true,
-          titleTag: 'KI Risikoklassifizierung – EU AI Act Risk Assessment',
-          metaDescription: 'KI Risikoklassifizierung nach EU AI Act: High-Risk AI, Limited Risk, Minimal Risk. ✓ Risk Assessment ✓ Classification Matrix ✓ Compliance Roadmap.',
+          titleTag: 'KI-Risikoklassifizierung nach EU AI Act – Compliance Guide',
+          metaDescription: 'Verstehen Sie die 4 Risikokategorien des EU AI Acts. Praktischer Guide für Compliance-Anforderungen Ihres KI-Systems.',
           indexStatus: 'index',
-          ...createCheckItems('ki-risk-classification')
+          mobileReady: { id: 'ki-risk-classification-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'ki-risk-classification-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'ki-risk-classification-content', title: 'Inhalte vollständig & aktuell', completed: true },
+          performanceOptimized: { id: 'ki-risk-classification-perf', title: 'Performance optimiert', completed: true },
+          accessibilityCompliant: { id: 'ki-risk-classification-a11y', title: 'Barrierefreiheit geprüft', completed: true }
         },
         {
           title: 'Algorithmic Impact Assessment',
@@ -1062,10 +1145,14 @@ const FinalChecks = () => {
           description: 'Systematische Bewertung von KI-Auswirkungen: Fairness, Transparenz, Verantwortlichkeit und gesellschaftliche Folgen.',
           priority: 'high',
           available: true,
-          titleTag: 'Algorithmic Impact Assessment – KI-Folgenabschätzung',
-          metaDescription: 'Algorithmic Impact Assessment: KI-Auswirkungen systematisch bewerten. ✓ Fairness Testing ✓ Bias Detection ✓ Stakeholder Analysis ✓ Impact Mitigation.',
+          titleTag: 'Algorithmic Impact Assessment – DSGVO & EU AI Act Toolkit',
+          metaDescription: 'Systematische Bewertung von KI-Algorithmen nach DSGVO Art. 35 und EU AI Act. Templates und Frameworks für Ihr Impact Assessment.',
           indexStatus: 'index',
-          ...createCheckItems('algorithmic-impact')
+          mobileReady: { id: 'algorithmic-impact-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'algorithmic-impact-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'algorithmic-impact-content', title: 'Inhalte vollständig & aktuell', completed: true },
+          performanceOptimized: { id: 'algorithmic-impact-perf', title: 'Performance optimiert', completed: true },
+          accessibilityCompliant: { id: 'algorithmic-impact-a11y', title: 'Barrierefreiheit geprüft', completed: true }
         },
         {
           title: 'Privacy Preserving AI',
@@ -1073,10 +1160,14 @@ const FinalChecks = () => {
           description: 'Datenschutzfreundliche KI-Entwicklung: Differential Privacy, Homomorphic Encryption und Secure Multi-Party Computation.',
           priority: 'high',
           available: true,
-          titleTag: 'Privacy Preserving AI – Datenschutzfreundliche KI',
-          metaDescription: 'Privacy Preserving AI: Differential Privacy, Homomorphic Encryption, Secure Computation. ✓ Private ML ✓ Data Minimization ✓ Anonymization Techniques.',
+          titleTag: 'Privacy-Preserving AI – Datenschutzfreundliche KI-Lösungen',
+          metaDescription: '6 Privacy-Preserving AI Technologien: Differential Privacy bis Homomorphic Encryption. Praxis-Guide für datenschutzkonforme KI-Systeme.',
           indexStatus: 'index',
-          ...createCheckItems('privacy-preserving-ai')
+          mobileReady: { id: 'privacy-preserving-ai-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'privacy-preserving-ai-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'privacy-preserving-ai-content', title: 'Inhalte vollständig & aktuell', completed: true },
+          performanceOptimized: { id: 'privacy-preserving-ai-perf', title: 'Performance optimiert', completed: true },
+          accessibilityCompliant: { id: 'privacy-preserving-ai-a11y', title: 'Barrierefreiheit geprüft', completed: true }
         },
         {
           title: 'Federated Learning',
@@ -1087,7 +1178,11 @@ const FinalChecks = () => {
           titleTag: 'Federated Learning – Dezentrales Machine Learning',
           metaDescription: 'Federated Learning: Dezentrales ML ohne zentrale Datenspeicherung. ✓ Edge AI ✓ Privacy by Design ✓ On-Device Learning ✓ Model Aggregation.',
           indexStatus: 'index',
-          ...createCheckItems('federated-learning')
+          mobileReady: { id: 'federated-learning-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'federated-learning-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'federated-learning-content', title: 'Inhalte vollständig & aktuell', completed: true },
+          performanceOptimized: { id: 'federated-learning-perf', title: 'Performance optimiert', completed: true },
+          accessibilityCompliant: { id: 'federated-learning-a11y', title: 'Barrierefreiheit geprüft', completed: true }
         },
         {
           title: 'Financial AI Compliance',
@@ -1098,7 +1193,11 @@ const FinalChecks = () => {
           titleTag: 'Financial AI Compliance – Finanz-KI Regulierung',
           metaDescription: 'Financial AI Compliance: Model Risk Management, Explainable AI, Kreditentscheidungen, algorithmische Transparenz. ✓ Fair Lending ✓ Model Validation ✓ Bias Testing.',
           indexStatus: 'index',
-          ...createCheckItems('financial-ai')
+          mobileReady: { id: 'financial-ai-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'financial-ai-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'financial-ai-content', title: 'Inhalte vollständig & aktuell', completed: true },
+          performanceOptimized: { id: 'financial-ai-perf', title: 'Performance optimiert', completed: false },
+          accessibilityCompliant: { id: 'financial-ai-a11y', title: 'Barrierefreiheit geprüft', completed: false }
         },
         {
           title: 'HR AI Compliance',
@@ -1109,7 +1208,11 @@ const FinalChecks = () => {
           titleTag: 'HR AI Compliance – Personalwesen KI-Compliance',
           metaDescription: 'HR AI Compliance: Recruiting AI, Performance Monitoring, Bias-freie Entscheidungen, Mitarbeiter-Privacy. ✓ Fair Hiring ✓ Employee Rights ✓ Algorithmic Transparency.',
           indexStatus: 'index',
-          ...createCheckItems('hr-ai-compliance')
+          mobileReady: { id: 'hr-ai-compliance-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'hr-ai-compliance-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'hr-ai-compliance-content', title: 'Inhalte vollständig & aktuell', completed: true },
+          performanceOptimized: { id: 'hr-ai-compliance-perf', title: 'Performance optimiert', completed: false },
+          accessibilityCompliant: { id: 'hr-ai-compliance-a11y', title: 'Barrierefreiheit geprüft', completed: false }
         },
         {
           title: 'Model Privacy Attacks',
@@ -1120,7 +1223,7 @@ const FinalChecks = () => {
           titleTag: 'Model Privacy Attacks – KI-Modell Sicherheit',
           metaDescription: 'Model Privacy Attacks: Membership Inference, Model Inversion, Property Inference. ✓ Attack Vectors ✓ Defense Strategies ✓ Privacy Testing ✓ Model Hardening.',
           indexStatus: 'index',
-          ...createCheckItems('model-privacy-attacks')
+          ...createCheckItems('model-privacy-attacks', true)
         },
         {
           title: 'Data Minimization Guide',
@@ -1131,7 +1234,7 @@ const FinalChecks = () => {
           titleTag: 'Data Minimization – KI-Datenminimierung Guide',
           metaDescription: 'Data Minimization für KI: Feature Selection, Synthetic Data, Data Reduction, Privacy-Utility Balance. ✓ DSGVO Compliance ✓ Efficient ML ✓ Privacy Enhancement.',
           indexStatus: 'index',
-          ...createCheckItems('data-minimization')
+          ...createCheckItems('data-minimization', true)
         },
         {
           title: 'Explainable AI',
@@ -1142,7 +1245,7 @@ const FinalChecks = () => {
           titleTag: 'Explainable AI – Erklärbare KI für Compliance',
           metaDescription: 'Explainable AI: LIME, SHAP, Model Interpretability, algorithmische Transparenz. ✓ AI Explainability ✓ Decision Transparency ✓ Regulatory Compliance.',
           indexStatus: 'index',
-          ...createCheckItems('explainable-ai')
+          ...createCheckItems('explainable-ai', true)
         },
         {
           title: 'Privacy by Design AI',
@@ -1153,7 +1256,9 @@ const FinalChecks = () => {
           titleTag: 'Privacy by Design AI – Datenschutz in KI-Architektur',
           metaDescription: 'Privacy by Design AI: Proaktiver Datenschutz, Privacy Engineering, Built-in Privacy. ✓ Privacy Patterns ✓ Secure Architecture ✓ Data Protection by Default.',
           indexStatus: 'index',
-          ...createCheckItems('privacy-by-design-ai')
+          ...createCheckItems('privacy-by-design-ai'),
+          seoOptimized: { id: 'privacy-by-design-ai-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          mobileReady: { id: 'privacy-by-design-ai-mobile', title: 'Mobile Responsive Design', completed: true }
         },
         {
           title: 'KI Einwilligungsmanagement',
@@ -1164,7 +1269,9 @@ const FinalChecks = () => {
           titleTag: 'KI Einwilligungsmanagement – AI Consent Management',
           metaDescription: 'KI Einwilligungsmanagement: Granulare Einwilligung, Dynamic Consent, KI-Aufklärung. ✓ AI-specific Consent ✓ Transparent Information ✓ User Control.',
           indexStatus: 'index',
-          ...createCheckItems('ki-consent-management')
+          ...createCheckItems('ki-consent-management'),
+          seoOptimized: { id: 'ki-consent-management-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          mobileReady: { id: 'ki-consent-management-mobile', title: 'Mobile Responsive Design', completed: true }
         },
         {
           title: 'Automated Decision Making',
@@ -1175,7 +1282,9 @@ const FinalChecks = () => {
           titleTag: 'Automated Decision Making – Art. 22 DSGVO Compliance',
           metaDescription: 'Automated Decision Making: Art. 22 DSGVO, Human-in-the-Loop, Widerspruchsrechte, Profiling. ✓ ADM Compliance ✓ Human Oversight ✓ Contestability.',
           indexStatus: 'index',
-          ...createCheckItems('automated-decision-making')
+          ...createCheckItems('automated-decision-making'),
+          seoOptimized: { id: 'automated-decision-making-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          mobileReady: { id: 'automated-decision-making-mobile', title: 'Mobile Responsive Design', completed: true }
         }
       ]
     },
@@ -1193,7 +1302,7 @@ const FinalChecks = () => {
           titleTag: 'Data Breach 72h – DSGVO Datenpanne Meldung',
           metaDescription: 'Data Breach 72h Response: Sofortmaßnahmen, DSGVO-Meldung, Betroffenenbenachrichtigung, Schadensbegrenzung. ✓ Incident Response ✓ Notification Templates ✓ Legal Compliance.',
           indexStatus: 'index',
-          ...createCheckItems('data-breach-72h')
+          ...createCheckItems('data-breach-72h', true)
         },
         {
           title: 'Security Incident Guide',
@@ -1204,7 +1313,7 @@ const FinalChecks = () => {
           titleTag: 'Security Incident – IT-Sicherheitsvorfall Response',
           metaDescription: 'Security Incident Management: Incident Response, Forensik, Business Continuity, Kommunikation. ✓ CSIRT Processes ✓ Evidence Preservation ✓ Recovery Planning.',
           indexStatus: 'index',
-          ...createCheckItems('security-incident')
+          ...createCheckItems('security-incident', true)
         },
         {
           title: 'Communication Templates',
@@ -1215,7 +1324,7 @@ const FinalChecks = () => {
           titleTag: 'Communication Templates – Krisenkommunikation Vorlagen',
           metaDescription: 'Krisenkommunikation Templates: Datenpanne-Meldung, interne Kommunikation, Presse, Kunden. ✓ Ready-to-use Templates ✓ Multi-Channel ✓ Stakeholder-specific.',
           indexStatus: 'index',
-          ...createCheckItems('communication-templates')
+          ...createCheckItems('communication-templates', true)
         },
         {
           title: 'Compliance Audit Emergency',
@@ -1226,7 +1335,11 @@ const FinalChecks = () => {
           titleTag: 'Compliance Audit Emergency – Aufsichtsbehörden Response',
           metaDescription: 'Compliance Audit Emergency: Aufsichtsbehörden-Anfragen, Dokumentenvorbereitung, rechtliche Verteidigung. ✓ Regulatory Response ✓ Document Preparation ✓ Legal Strategy.',
           indexStatus: 'index',
-          ...createCheckItems('audit-emergency')
+          mobileReady: { id: 'audit-emergency-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'audit-emergency-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'audit-emergency-content', title: 'Inhalte vollständig & aktuell', completed: false },
+          performanceOptimized: { id: 'audit-emergency-perf', title: 'Performance optimiert', completed: false },
+          accessibilityCompliant: { id: 'audit-emergency-a11y', title: 'Barrierefreiheit geprüft', completed: false }
         },
         {
           title: 'Media Crisis Guide',
@@ -1237,7 +1350,11 @@ const FinalChecks = () => {
           titleTag: 'Media Crisis – Medien-Krisenkommunikation Guide',
           metaDescription: 'Media Crisis Management: Pressestrategie, Social Media Response, Reputationsmanagement, Thought Leadership. ✓ PR Strategy ✓ Crisis Communication ✓ Brand Protection.',
           indexStatus: 'index',
-          ...createCheckItems('media-crisis')
+          mobileReady: { id: 'media-crisis-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'media-crisis-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'media-crisis-content', title: 'Inhalte vollständig & aktuell', completed: false },
+          performanceOptimized: { id: 'media-crisis-perf', title: 'Performance optimiert', completed: false },
+          accessibilityCompliant: { id: 'media-crisis-a11y', title: 'Barrierefreiheit geprüft', completed: false }
         },
         {
           title: 'Vendor Data Breach',
@@ -1248,7 +1365,11 @@ const FinalChecks = () => {
           titleTag: 'Vendor Data Breach – Lieferanten-Datenpanne Response',
           metaDescription: 'Vendor Data Breach: Third-Party Incident Response, Vertragsmanagement, Supply Chain Security. ✓ Vendor Management ✓ Contract Enforcement ✓ Risk Assessment.',
           indexStatus: 'index',
-          ...createCheckItems('vendor-data-breach')
+          mobileReady: { id: 'vendor-data-breach-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'vendor-data-breach-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'vendor-data-breach-content', title: 'Inhalte vollständig & aktuell', completed: false },
+          performanceOptimized: { id: 'vendor-data-breach-perf', title: 'Performance optimiert', completed: false },
+          accessibilityCompliant: { id: 'vendor-data-breach-a11y', title: 'Barrierefreiheit geprüft', completed: false }
         },
         {
           title: 'GDPR Fine Response',
@@ -1259,7 +1380,11 @@ const FinalChecks = () => {
           titleTag: 'GDPR Fine Response – DSGVO-Bußgeld Verteidigung',
           metaDescription: 'GDPR Fine Response: Rechtsmittel, Verfahrensstrategie, Schadensbegrenzung, Compliance-Verbesserung. ✓ Legal Defense ✓ Appeal Process ✓ Remediation Planning.',
           indexStatus: 'index',
-          ...createCheckItems('gdpr-fine-response')
+          mobileReady: { id: 'gdpr-fine-response-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'gdpr-fine-response-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'gdpr-fine-response-content', title: 'Inhalte vollständig & aktuell', completed: false },
+          performanceOptimized: { id: 'gdpr-fine-response-perf', title: 'Performance optimiert', completed: false },
+          accessibilityCompliant: { id: 'gdpr-fine-response-a11y', title: 'Barrierefreiheit geprüft', completed: false }
         },
         {
           title: 'Business Continuity',
@@ -1270,7 +1395,11 @@ const FinalChecks = () => {
           titleTag: 'Business Continuity – Geschäftskontinuität planen',
           metaDescription: 'Business Continuity: Notfallpläne, Disaster Recovery, Remote Work, Stakeholder Management. ✓ BCP Templates ✓ Recovery Strategies ✓ Crisis Leadership.',
           indexStatus: 'index',
-          ...createCheckItems('business-continuity')
+          mobileReady: { id: 'business-continuity-mobile', title: 'Mobile Responsive Design', completed: true },
+          seoOptimized: { id: 'business-continuity-seo', title: 'SEO Meta Tags & Struktur', completed: true },
+          contentReady: { id: 'business-continuity-content', title: 'Inhalte vollständig & aktuell', completed: false },
+          performanceOptimized: { id: 'business-continuity-perf', title: 'Performance optimiert', completed: false },
+          accessibilityCompliant: { id: 'business-continuity-a11y', title: 'Barrierefreiheit geprüft', completed: false }
         }
       ]
     },
@@ -1288,7 +1417,7 @@ const FinalChecks = () => {
           titleTag: 'Schrems II – Internationale Datentransfers nach EuGH',
           metaDescription: 'Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance.',
           indexStatus: 'index',
-          ...createCheckItems('schrems-ii-case')
+          ...createCheckItems('schrems-ii-case', true)
         },
         {
           title: 'Meta Irland 2024',
@@ -1299,7 +1428,7 @@ const FinalChecks = () => {
           titleTag: 'Meta Irland 2024 – Facebook DSGVO-Entscheidung',
           metaDescription: 'Meta Irland 2024: Facebook-Datenverarbeitung, Rechtsgrundlagen, Plattform-Compliance. ✓ DPC Decision ✓ Legal Basis Analysis ✓ Social Media Compliance.',
           indexStatus: 'index',
-          ...createCheckItems('meta-ireland-2024')
+          ...createCheckItems('meta-ireland-2024', true)
         },
         {
           title: 'Cookie Law Guide',
@@ -1310,7 +1439,7 @@ const FinalChecks = () => {
           titleTag: 'Cookie Law – ePrivacy & DSGVO Cookie-Recht',
           metaDescription: 'Cookie Law: ePrivacy-Richtlinie, Consent-Anforderungen, Gerichtsentscheidungen. ✓ Cookie Consent ✓ Legal Requirements ✓ Court Decisions ✓ Compliance Guide.',
           indexStatus: 'index',
-          ...createCheckItems('cookie-law')
+          ...createCheckItems('cookie-law', true)
         },
         {
           title: 'Facebook Fanpage Case',
@@ -1321,7 +1450,7 @@ const FinalChecks = () => {
           titleTag: 'Facebook Fanpage – EuGH Urteil gemeinsame Verantwortlichkeit',
           metaDescription: 'Facebook Fanpage EuGH-Urteil: Gemeinsame Verantwortlichkeit, Page Insights, Social Media Compliance. ✓ Joint Controllership ✓ Liability ✓ Practical Implications.',
           indexStatus: 'index',
-          ...createCheckItems('facebook-fanpage')
+          ...createCheckItems('facebook-fanpage', true)
         },
         {
           title: 'Google Analytics Austria',
@@ -1332,7 +1461,7 @@ const FinalChecks = () => {
           titleTag: 'Google Analytics Austria – DSB Entscheidung US-Tools',
           metaDescription: 'Google Analytics Austria DSB-Entscheidung: US-Tool-Verbot, Schrems II Auswirkungen, Analytics-Alternativen. ✓ Regulatory Decision ✓ Tool Assessment ✓ Compliance Strategy.',
           indexStatus: 'index',
-          ...createCheckItems('google-analytics-austria')
+          ...createCheckItems('google-analytics-austria', true)
         },
         {
           title: 'Amazon Luxemburg 2021',
@@ -1343,7 +1472,7 @@ const FinalChecks = () => {
           titleTag: 'Amazon Luxemburg 2021 – CNPD Bußgeld-Entscheidung',
           metaDescription: 'Amazon Luxemburg 2021 CNPD-Bußgeld: Datenverarbeitungs-Verletzungen, E-Commerce Compliance, DSGVO-Enforcement. ✓ Fine Analysis ✓ Compliance Lessons ✓ Enforcement Trends.',
           indexStatus: 'index',
-          ...createCheckItems('amazon-luxembourg-2021')
+          ...createCheckItems('amazon-luxembourg-2021', true)
         },
         {
           title: 'WhatsApp Irland 2021',
@@ -1351,10 +1480,10 @@ const FinalChecks = () => {
           description: 'WhatsApp Irland Bußgeld 2021: Transparenz-Verletzungen, Messenger-Compliance und Informationspflichten.',
           priority: 'medium',
           available: true,
-          titleTag: 'WhatsApp Irland 2021 – DPC Transparenz-Bußgeld',
-          metaDescription: 'WhatsApp Irland 2021 DPC-Bußgeld: Transparenz-Verletzungen, Messenger-Compliance, Informationspflichten. ✓ Transparency Requirements ✓ Messaging Apps ✓ User Information.',
+          titleTag: 'WhatsApp Irland DSGVO Bußgeld €225 Mio – Messaging Compliance',
+          metaDescription: 'WhatsApp Ireland €225 Mio Bußgeld wegen Transparenz-Verstößen. Messaging-Apps DSGVO-konform gestalten & Compliance umsetzen.',
           indexStatus: 'index',
-          ...createCheckItems('whatsapp-ireland-2021')
+          ...createCheckItems('whatsapp-ireland-2021', true)
         },
         {
           title: 'Planet49 Cookie Case',
@@ -1362,10 +1491,10 @@ const FinalChecks = () => {
           description: 'Planet49 EuGH Cookie-Urteil: Vorab-aktivierte Checkboxen, Consent-Anforderungen und Gewinnspiel-Compliance.',
           priority: 'high',
           available: true,
-          titleTag: 'Planet49 Cookie – EuGH Urteil Vorab-Checkboxen',
-          metaDescription: 'Planet49 EuGH Cookie-Urteil: Vorab-Checkboxen ungültig, Consent-Anforderungen, Gewinnspiel-Compliance. ✓ Cookie Consent ✓ Pre-ticked Boxes ✓ Valid Consent.',
+          titleTag: 'Planet49 EuGH Cookie Urteil C-673/17 – Consent Banner DSGVO-konform',
+          metaDescription: 'Planet49 Cookie Urteil EuGH: Keine voreingestellten Checkboxen! DSGVO-konforme Cookie Banner & Consent-Mechanismen implementieren.',
           indexStatus: 'index',
-          ...createCheckItems('planet49-cookie')
+          ...createCheckItems('planet49-cookie', true)
         },
         {
           title: 'Google Fonts München',
@@ -1373,10 +1502,10 @@ const FinalChecks = () => {
           description: 'Google Fonts München Urteil: IP-Adressen-Übertragung, Web Fonts DSGVO-Compliance und lokale Alternativen.',
           priority: 'medium',
           available: true,
-          titleTag: 'Google Fonts München – LG Urteil IP-Adressen-Schutz',
-          metaDescription: 'Google Fonts München LG-Urteil: IP-Adressen-Übertragung unzulässig, Web Fonts DSGVO, lokale Alternativen. ✓ Font Privacy ✓ IP Protection ✓ Local Hosting.',
+          titleTag: 'Google Fonts DSGVO Urteil München €100 – Lokales Font Hosting',
+          metaDescription: 'Google Fonts DSGVO-Urteil München: IP-Übertragung illegal! Lokales Font-Hosting implementieren & €100 Schadensersatz vermeiden.',
           indexStatus: 'index',
-          ...createCheckItems('google-fonts-munich')
+          ...createCheckItems('google-fonts-munich', true)
         }
       ]
     },
@@ -1736,7 +1865,7 @@ const FinalChecks = () => {
           titleTag: 'Krisenmanagement – Compliance-Notfallpläne & Response',
           metaDescription: 'Compliance-Krisenmanagement: Notfallpläne für Datenpannen, Sicherheitsvorfälle, Compliance-Verstöße. ✓ Strukturiert ✓ Praxiserprobt. Jetzt vorbereitet sein!',
           indexStatus: 'index',
-          ...createCheckItems('crisis-mgmt-overview')
+          ...createCheckItems('crisis-mgmt-overview', true)
         },
         {
           title: 'Data Breach Response Plan',
@@ -2131,8 +2260,7 @@ const FinalChecks = () => {
             return (
               <div key={category.id} className="mb-6 border border-gray-300 rounded-lg bg-white">
                 <div
-                  className="bg-gray-100 p-4 cursor-pointer rounded-t-lg flex justify-between items-center font-semibold text-gray-800 hover:bg-gray-200 transition-colors"
-                  onClick={() => toggleCategory(category.id)}
+                  className="bg-gray-100 p-4 rounded-t-lg flex justify-between items-center font-semibold text-gray-800"
                 >
                   <span className="flex items-center">
                     {category.icon} {category.title}
@@ -2143,11 +2271,8 @@ const FinalChecks = () => {
                       ({category.pages.length} Seiten)
                     </span>
                   </span>
-                  <span className={`transition-transform duration-300 ${isExpanded(category.id) ? 'rotate-90' : ''}`}>
-                    ▶
-                  </span>
                 </div>
-                <div className={`overflow-hidden transition-all duration-300 ${isExpanded(category.id) ? 'max-h-[5000px]' : 'max-h-0'}`}>
+                <div>
                   <div className="p-4">
                     {category.pages.map((page, pageIndex) => {
                       const pageCompletion = calculatePageCompletion(page);
@@ -2170,23 +2295,23 @@ const FinalChecks = () => {
                                 </span>
                               </div>
                               <div className="text-xs text-gray-500 mb-1">
-                                URL: <code className="bg-gray-200 px-1 rounded">{page.url}</code>
+                                URL: <code className="bg-gray-200 px-1 rounded break-all text-xs">{page.url}</code>
                               </div>
-                              <div className="text-sm text-gray-600 mb-2">{page.description}</div>
+                              <div className="text-sm text-gray-600 mb-2 break-words leading-relaxed">{page.description}</div>
                               {page.titleTag && (
-                                <div className="mt-2 p-2 bg-blue-50 rounded border border-blue-200">
+                                <div className="mt-2 p-3 bg-blue-50 rounded border border-blue-200 overflow-hidden">
                                   <div className="text-xs font-semibold text-blue-800 mb-1">Title Tag ({page.titleTag.length} Zeichen):</div>
-                                  <div className="text-xs text-blue-700 font-mono">{page.titleTag}</div>
+                                  <div className="text-xs text-blue-700 break-words whitespace-normal leading-relaxed">{page.titleTag}</div>
                                 </div>
                               )}
                               {page.metaDescription && (
-                                <div className="mt-2 p-2 bg-green-50 rounded border border-green-200">
+                                <div className="mt-2 p-3 bg-green-50 rounded border border-green-200 overflow-hidden">
                                   <div className="text-xs font-semibold text-green-800 mb-1">Meta Description ({page.metaDescription.length} Zeichen):</div>
-                                  <div className="text-xs text-green-700 font-mono">{page.metaDescription}</div>
+                                  <div className="text-xs text-green-700 break-words whitespace-normal leading-relaxed">{page.metaDescription}</div>
                                 </div>
                               )}
                               {page.indexStatus && (
-                                <div className="mt-2 p-2 bg-purple-50 rounded border border-purple-200">
+                                <div className="mt-2 p-3 bg-purple-50 rounded border border-purple-200 overflow-hidden">
                                   <div className="text-xs font-semibold text-purple-800 mb-1">Index Status:</div>
                                   <div className="text-xs text-purple-700 font-mono">
                                     {page.indexStatus === 'index' ? '✅ ' : '🚫 '}{page.indexStatus}
@@ -2196,7 +2321,7 @@ const FinalChecks = () => {
                             </div>
                           </div>
 
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                             {[
                               { key: 'mobileReady', icon: '📱', color: 'blue' },
                               { key: 'seoOptimized', icon: '🔍', color: 'green' },
@@ -2221,7 +2346,7 @@ const FinalChecks = () => {
                                       {checkItem.completed ? '✅' : '⭕'}
                                     </span>
                                   </div>
-                                  <div className="text-xs text-gray-600 leading-tight">
+                                  <div className="text-xs text-gray-600 leading-tight break-words">
                                     {checkItem.title}
                                   </div>
                                 </div>

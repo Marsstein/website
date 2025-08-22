@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -47,7 +47,10 @@ import {
   Filter,
   Activity,
   RefreshCw,
-  Plus
+  Plus,
+  List,
+  ChevronRight,
+  Home
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -58,6 +61,92 @@ const CrisisManagement: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  useEffect(() => {
+    // Title Tag
+    document.title = 'Krisenmanagement Datenschutz – DSGVO Notfallpläne 72h';
+    
+    // Meta Description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'DSGVO-Notfallpläne für Datenschutzverletzungen: 72h Data Breach Response, Behördenprüfungen & Compliance-Krisen. Jetzt vorbereiten!');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'DSGVO-Notfallpläne für Datenschutzverletzungen: 72h Data Breach Response, Behördenprüfungen & Compliance-Krisen. Jetzt vorbereiten!';
+      document.head.appendChild(meta);
+    }
+    
+    // Canonical URL
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', 'https://marsstein.de/wissen/krisenmanagement');
+    } else {
+      const link = document.createElement('link');
+      link.rel = 'canonical';
+      link.href = 'https://marsstein.de/wissen/krisenmanagement';
+      document.head.appendChild(link);
+    }
+    
+    // Open Graph Tags
+    const ogTags = [
+      { property: 'og:title', content: 'Krisenmanagement Datenschutz – DSGVO Notfallpläne 72h' },
+      { property: 'og:description', content: 'DSGVO-Notfallpläne für Datenschutzverletzungen: 72h Data Breach Response, Behördenprüfungen & Compliance-Krisen.' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: 'https://marsstein.de/wissen/krisenmanagement' }
+    ];
+    
+    ogTags.forEach(tag => {
+      const existingTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (existingTag) {
+        existingTag.setAttribute('content', tag.content);
+      } else {
+        const meta = document.createElement('meta');
+        meta.setAttribute('property', tag.property);
+        meta.content = tag.content;
+        document.head.appendChild(meta);
+      }
+    });
+    
+    // JSON-LD Structured Data
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Krisenmanagement im Datenschutz',
+      description: 'Umfassende Notfallpläne und Krisenmanagement-Strategien für Datenschutzverletzungen und Compliance-Krisen.',
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString(),
+      author: {
+        '@type': 'Organization',
+        name: 'MarsStein'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'MarsStein',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://marsstein.de/logo.png'
+        }
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://marsstein.de/wissen/krisenmanagement'
+      }
+    };
+    
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+    
+    return () => {
+      // Cleanup
+      const scriptTag = document.querySelector('script[type="application/ld+json"]');
+      if (scriptTag) {
+        scriptTag.remove();
+      }
+    };
+  }, []);
 
   const urgencyCategories = [
     { id: 'all', name: 'Alle Situationen', icon: AlertTriangle, count: 8 },
@@ -260,6 +349,68 @@ const CrisisManagement: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
       <Header />
       
+      {/* Breadcrumb Navigation */}
+      <nav className="bg-slate-900/80 backdrop-blur-sm border-b border-slate-700/50 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl">
+          <ol className="flex items-center py-3 text-sm">
+            <li>
+              <Link to="/" className="text-slate-400 hover:text-red-400 transition-colors flex items-center">
+                <Home className="h-4 w-4 mr-1" />
+                Home
+              </Link>
+            </li>
+            <ChevronRight className="h-4 w-4 mx-2 text-slate-600" />
+            <li>
+              <Link to="/wissen" className="text-slate-400 hover:text-red-400 transition-colors">
+                Wissen
+              </Link>
+            </li>
+            <ChevronRight className="h-4 w-4 mx-2 text-slate-600" />
+            <li className="text-red-400 font-semibold">Krisenmanagement</li>
+          </ol>
+        </div>
+      </nav>
+      
+      {/* Table of Contents */}
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8">
+        <Card className="bg-slate-800/60 backdrop-blur-sm border-slate-700/50">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <List className="h-5 w-5 text-red-400" />
+              <h2 className="text-lg font-semibold text-white">Inhaltsverzeichnis</h2>
+            </div>
+            <nav aria-label="Inhaltsverzeichnis">
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="#crisis-response-overview" className="text-slate-300 hover:text-red-400 transition-colors flex items-center gap-2">
+                    <AlertTriangle className="h-4 w-4" />
+                    Krisenmanagement Überblick
+                  </a>
+                </li>
+                <li>
+                  <a href="#urgency-categories" className="text-slate-300 hover:text-red-400 transition-colors flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    Dringlichkeitskategorien
+                  </a>
+                </li>
+                <li>
+                  <a href="#crisis-scenarios" className="text-slate-300 hover:text-red-400 transition-colors flex items-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    Notfallszenarien
+                  </a>
+                </li>
+                <li>
+                  <a href="#emergency-support" className="text-slate-300 hover:text-red-400 transition-colors flex items-center gap-2">
+                    <Phone className="h-4 w-4" />
+                    Notfall-Unterstützung
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </CardContent>
+        </Card>
+      </div>
+      
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-red-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse" />
@@ -269,9 +420,10 @@ const CrisisManagement: React.FC = () => {
 
       {/* Hero Section */}
       <motion.section 
+        id="crisis-response-overview"
         ref={heroRef}
         style={{ y, opacity }}
-        className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden scroll-mt-24"
       >
         <div className="container mx-auto max-w-7xl relative z-10">
           <motion.div 
@@ -376,7 +528,7 @@ const CrisisManagement: React.FC = () => {
       </motion.section>
 
       {/* Urgency Filter */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
+      <section id="urgency-categories" className="py-8 px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div className="container mx-auto max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -412,7 +564,7 @@ const CrisisManagement: React.FC = () => {
       </section>
 
       {/* Crisis Scenarios Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="crisis-scenarios" className="py-16 px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div className="container mx-auto max-w-7xl">
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredScenarios.map((scenario, index) => (
@@ -552,7 +704,7 @@ const CrisisManagement: React.FC = () => {
       </section>
 
       {/* Emergency Contact Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section id="emergency-support" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-red-900/30 to-slate-800/50" />
         
         <div className="container mx-auto max-w-7xl relative z-10">
@@ -688,6 +840,105 @@ const CrisisManagement: React.FC = () => {
               </motion.div>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Related Resources Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="text-white">Verwandte</span>{' '}
+              <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+                Themen
+              </span>
+            </h2>
+            <p className="text-lg text-slate-300">
+              Weitere wichtige Datenschutz-Bereiche für Ihr Unternehmen
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              whileHover={{ y: -5 }}
+            >
+              <Card className="h-full bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 mb-4">
+                    <Shield className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">DSGVO Grundlagen</h3>
+                  <p className="text-slate-300 mb-4">
+                    Verstehen Sie die rechtlichen Anforderungen und Pflichten der DSGVO.
+                  </p>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/wissen/dsgvo-grundlagen">
+                      Mehr erfahren
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              whileHover={{ y: -5 }}
+            >
+              <Card className="h-full bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 mb-4">
+                    <FileCheck className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Audit Management</h3>
+                  <p className="text-slate-300 mb-4">
+                    Systematische Prüfung und Optimierung Ihrer Datenschutz-Compliance.
+                  </p>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/wissen/audit-management">
+                      Mehr erfahren
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              whileHover={{ y: -5 }}
+            >
+              <Card className="h-full bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 mb-4">
+                    <Lock className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Datensicherheit</h3>
+                  <p className="text-slate-300 mb-4">
+                    Technische und organisatorische Maßnahmen zum Schutz Ihrer Daten.
+                  </p>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/wissen/technische-massnahmen/verschluesselung">
+                      Mehr erfahren
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </section>
 

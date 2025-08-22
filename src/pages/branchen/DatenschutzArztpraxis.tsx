@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -87,6 +88,24 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const DatenschutzArztpraxis = () => {
+  // Structured Data für SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Guide",
+    "name": "Datenschutz in der Arztpraxis - DSGVO Compliance Guide",
+    "description": "Praxisleitfaden für Datenschutz in Arztpraxen. Patientendaten DSGVO-konform verarbeiten, TOM implementieren.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Marsstein Compliance Solutions"
+    },
+    "datePublished": "2024-01-15",
+    "dateModified": new Date().toISOString(),
+    "inLanguage": "de-DE",
+    "about": {
+      "@type": "Thing",
+      "name": "DSGVO Compliance in Arztpraxen"
+    }
+  };
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
   const [activeSection, setActiveSection] = useState<string>('overview');
@@ -94,6 +113,38 @@ const DatenschutzArztpraxis = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  
+  // Add scroll-margin-top styles for sticky header and mobile optimizations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      h2[id], h3[id], section[id] {
+        scroll-margin-top: 96px;
+      }
+      
+      /* Mobile-optimierungen */
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        
+        .tap-target {
+          min-height: 48px;
+          min-width: 48px;
+        }
+        
+        p, li {
+          max-width: 45ch;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   
   // Navigation items for sticky navigation
   const navigationItems = [
@@ -598,6 +649,22 @@ const emergencyProtocol = {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Datenschutz Arztpraxis DSGVO – Praxis-Guide für Ärzte 2024</title>
+        <meta name="description" content="DSGVO für Arztpraxen: ✓ Patientendaten sicher verwalten ✓ Einwilligungen korrekt ✓ TOM-Checklisten ✓ Schweigepflicht digital. Jetzt Praxis-Guide lesen!" />
+        <meta name="keywords" content="datenschutz arztpraxis, dsgvo arzt, patientendatenschutz, einwilligung patient, tom arztpraxis, schweigepflicht dsgvo" />
+        <link rel="canonical" href="https://marsstein.com/wissen/branchen/datenschutz-arztpraxis" />
+        <meta property="og:title" content="Datenschutz in der Arztpraxis - DSGVO Compliance Guide" />
+        <meta property="og:description" content="Praxisleitfaden für Datenschutz in Arztpraxen. Patientendaten DSGVO-konform verarbeiten, TOM implementieren." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.com/wissen/branchen/datenschutz-arztpraxis" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+      
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
       <Header />
       
@@ -655,13 +722,13 @@ const emergencyProtocol = {
 
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link to="/contact?demo=true&industry=healthcare">
-                      <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 group">
+                      <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 group tap-target min-h-[48px]">
                         <Heart className="mr-2 h-5 w-5" />
                         Praxis-Beratung buchen
                         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
-                    <Button size="lg" variant="outline" className="group">
+                    <Button size="lg" variant="outline" className="group tap-target min-h-[48px]">
                       <Download className="mr-2 h-5 w-5" />
                       Arztpraxis DSGVO-Checkliste
                     </Button>
@@ -734,11 +801,37 @@ const emergencyProtocol = {
           </motion.div>
         </section>
 
+        {/* Inhaltsverzeichnis für Mobile und Desktop */}
+        <section className="py-8 bg-white dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <nav aria-label="Inhaltsverzeichnis" className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-red-600" />
+                  Inhaltsverzeichnis
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {navigationItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left tap-target"
+                    >
+                      <item.icon className="h-5 w-5 text-red-600 flex-shrink-0" />
+                      <span className="text-sm font-medium">{item.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </nav>
+            </div>
+          </div>
+        </section>
+
         {/* Sticky Navigation */}
-        <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <nav className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm" aria-label="Inhaltsverzeichnis">
           <div className="container px-4">
             <div className="max-w-7xl mx-auto">
-              <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+              <div className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
                 {navigationItems.map((item, index) => (
                   <button
                     key={item.id}
@@ -746,6 +839,7 @@ const emergencyProtocol = {
                       scrollToSection(item.id);
                       setActiveSection(item.id);
                     }}
+                    aria-label={`Zu ${item.label} springen`}
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
                       activeSection === item.id
@@ -767,10 +861,10 @@ const emergencyProtocol = {
                     )}>{item.label}</span>
                   </button>
                 ))}
-              </nav>
+              </div>
             </div>
           </div>
-        </div>
+        </nav>
 
         {/* Main Content Sections */}
         <div className="py-20">
@@ -778,7 +872,7 @@ const emergencyProtocol = {
             <div className="max-w-7xl mx-auto space-y-20">
 
               {/* Overview Section */}
-              <section id="overview" className="space-y-8 scroll-mt-32">
+              <section id="overview" className="space-y-8 scroll-mt-32" aria-label="Überblick Datenschutz Arztpraxis">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -878,7 +972,7 @@ const emergencyProtocol = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Patient Data Processing Section */}
-              <section id="patientendaten" className="space-y-8 scroll-mt-32">
+              <section id="patientendaten" className="space-y-8 scroll-mt-32" aria-label="Patientendatenverarbeitung">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1086,7 +1180,7 @@ const emergencyProtocol = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Practice Organization Section */}
-              <section id="praxisorganisation" className="space-y-8 scroll-mt-32">
+              <section id="praxisorganisation" className="space-y-8 scroll-mt-32" aria-label="Praxisorganisation">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1154,7 +1248,7 @@ const emergencyProtocol = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* TOM for Medical Practices Section */}
-              <section id="tom-praxis" className="space-y-8 scroll-mt-32">
+              <section id="tom-praxis" className="space-y-8 scroll-mt-32" aria-label="Technische und Organisatorische Maßnahmen für Arztpraxen">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1212,7 +1306,7 @@ const emergencyProtocol = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Emergency Situations Section */}
-              <section id="notfallsituationen" className="space-y-8 scroll-mt-32">
+              <section id="notfallsituationen" className="space-y-8 scroll-mt-32" aria-label="Notfallsituationen">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1316,7 +1410,7 @@ const emergencyProtocol = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Implementation Guide Section */}
-              <section id="implementation" className="space-y-8 scroll-mt-32">
+              <section id="implementation" className="space-y-8 scroll-mt-32" aria-label="Praxis-Leitfaden">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1605,10 +1699,46 @@ const emergencyProtocol = {
             </div>
           </div>
         </section>
+        
+        {/* Related Links Section for SEO */}
+        <section className="py-12 bg-gray-50 dark:bg-gray-900">
+          <div className="container px-4">
+            <div className="max-w-7xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">Verwandte Compliance-Themen</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Link to="/wissen/branchen/datenschutz-pflege" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">Datenschutz in der Pflege</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">DSGVO-Compliance für Pflegeeinrichtungen</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/wissen/branchen/logistics-compliance" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">Logistics Compliance</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">DSGVO im Supply Chain Management</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/wissen/dsgvo-compliance" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">DSGVO Grundlagen</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Basiswissen zur EU-Datenschutzverordnung</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
     </div>
+    </>
   );
 };
 

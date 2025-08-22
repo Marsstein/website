@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -38,7 +39,8 @@ import {
   Download,
   ChevronDown,
   ExternalLink,
-  Heart
+  Heart,
+  ChevronUp
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -46,6 +48,7 @@ import { cn } from '@/lib/utils';
 export default function SmartGridComplianceGuide() {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string>('ueberblick');
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
@@ -201,6 +204,9 @@ export default function SmartGridComplianceGuide() {
           break;
         }
       }
+      
+      // Show back to top button when scrolled down
+      setShowBackToTop(window.scrollY > 500);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -209,6 +215,13 @@ export default function SmartGridComplianceGuide() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+      <Helmet>
+        <title>Smart Grid Datenschutz – Compliance für Energienetze</title>
+        <meta name="description" content="Umfassender Leitfaden für Smart Grid Datenschutz. Smart Meter DSGVO-konform einsetzen, Energiedaten schützen & Cyber-Security für kritische Infrastruktur." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://datenschutz-assistent.de/wissen/branchen/smart-grid-compliance" />
+      </Helmet>
+      
       <Header />
       
       {/* Hero Section */}
@@ -359,6 +372,52 @@ export default function SmartGridComplianceGuide() {
         </motion.div>
       </section>
 
+      {/* Table of Contents */}
+      <section className="py-12 bg-white">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5 text-gray-600" />
+                  Inhaltsverzeichnis
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <nav aria-label="Inhaltsverzeichnis">
+                  <ul className="grid md:grid-cols-2 gap-3">
+                    {navigationItems.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <li key={item.id}>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              const element = document.getElementById(item.id);
+                              if (element) {
+                                const yOffset = -100;
+                                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                                window.scrollTo({ top: y, behavior: 'smooth' });
+                              }
+                            }}
+                            className="text-left w-full px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-3 group"
+                          >
+                            <Icon className="h-5 w-5 text-gray-500 group-hover:text-blue-600" />
+                            <span className="text-gray-700 group-hover:text-gray-900">
+                              {item.label}
+                            </span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Sticky Navigation */}
       <div className="sticky top-16 z-40 bg-white border-b border-gray-200 shadow-sm">
         <div className="container px-4 mx-auto">
@@ -398,7 +457,7 @@ export default function SmartGridComplianceGuide() {
       <div className="container px-4 mx-auto py-16 space-y-16">
         
         {/* Überblick Section */}
-        <section id="ueberblick" className="space-y-8 scroll-mt-32">
+        <section id="ueberblick" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
           <div id="smart-grid-datenschutz-ueberblick" className="absolute -top-32" />
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -517,7 +576,7 @@ export default function SmartGridComplianceGuide() {
         </section>
 
         {/* Smart Meter Section */}
-        <section id="smart-meter" className="space-y-8 scroll-mt-32">
+        <section id="smart-meter" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
           <div id="smart-meter-datenschutz-dsgvo" className="absolute -top-32" />
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -714,7 +773,7 @@ const consentConfig = {
         </section>
 
         {/* Energiedaten Section */}
-        <section id="energiedaten" className="space-y-8 scroll-mt-32">
+        <section id="energiedaten" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
           <div id="energiedaten-management-compliance" className="absolute -top-32" />
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -870,7 +929,7 @@ class EnergyDataPrivacy {
         </section>
 
         {/* Netzinfrastruktur Section */}
-        <section id="netzinfrastruktur" className="space-y-8 scroll-mt-32">
+        <section id="netzinfrastruktur" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
           <div id="netzinfrastruktur-cyber-security" className="absolute -top-32" />
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -1011,7 +1070,7 @@ if (threatLevel > CRITICAL) {
         </section>
 
         {/* Verbraucherschutz Section */}
-        <section id="verbraucherschutz" className="space-y-8 scroll-mt-32">
+        <section id="verbraucherschutz" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
           <div id="verbraucherschutz-transparenz-dsgvo" className="absolute -top-32" />
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -1275,7 +1334,7 @@ const EnergyDashboard = () => {
         </section>
 
         {/* Implementation Section */}
-        <section id="implementation" className="space-y-8 scroll-mt-32">
+        <section id="implementation" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
           <div id="praktische-umsetzung-smart-grid" className="absolute -top-32" />
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -1580,7 +1639,7 @@ services:
               {
                 title: 'Healthcare DSGVO',
                 description: 'Patientendaten rechtssicher verarbeiten',
-                link: '/wissen/branchen/gesundheitswesen-dsgvo',
+                link: '/wissen/branchen/healthcare-dsgvo',
                 icon: Heart
               },
               {
@@ -1619,6 +1678,17 @@ services:
       </section>
 
       <Footer />
+      
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all"
+          aria-label="Zurück nach oben"
+        >
+          <ChevronUp className="h-5 w-5" />
+        </button>
+      )}
     </div>
   );
 }

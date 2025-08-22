@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -182,6 +182,91 @@ const FinancialAICompliance = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  // SEO Meta Tags
+  useEffect(() => {
+    // Title Tag (59 Zeichen)
+    document.title = "Financial AI Compliance – MiFID II & Basel Framework Guide";
+    
+    // Meta Description (149 Zeichen)
+    const metaDescription = "Umfassender Guide für KI-Compliance im Finanzsektor: MiFID II, Basel III/IV, PCI DSS Anforderungen und praktische Umsetzung.";
+    
+    // Viewport
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      viewportMeta = document.createElement('meta');
+      viewportMeta.setAttribute('name', 'viewport');
+      document.head.appendChild(viewportMeta);
+    }
+    viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1');
+    
+    // Meta Description
+    let descriptionMeta = document.querySelector('meta[name="description"]');
+    if (!descriptionMeta) {
+      descriptionMeta = document.createElement('meta');
+      descriptionMeta.setAttribute('name', 'description');
+      document.head.appendChild(descriptionMeta);
+    }
+    descriptionMeta.setAttribute('content', metaDescription);
+    
+    // Canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', `${window.location.origin}/wissen/ki-datenschutz/financial-ai-compliance`);
+    
+    // Open Graph Tags
+    const ogTags = [
+      { property: 'og:title', content: 'Financial AI Compliance – MiFID II & Basel Framework Guide' },
+      { property: 'og:description', content: metaDescription },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: `${window.location.origin}/wissen/ki-datenschutz/financial-ai-compliance` }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogMeta = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogMeta) {
+        ogMeta = document.createElement('meta');
+        ogMeta.setAttribute('property', tag.property);
+        document.head.appendChild(ogMeta);
+      }
+      ogMeta.setAttribute('content', tag.content);
+    });
+
+    // Scroll margin for sticky header
+    const style = document.createElement('style');
+    style.textContent = `
+      h1, h2, h3, h4, h5, h6 {
+        scroll-margin-top: 96px;
+      }
+      
+      @media (max-width: 768px) {
+        .mobile-toc-accordion {
+          max-height: 300px;
+          overflow-y: auto;
+        }
+        
+        body {
+          font-size: 16px;
+          line-height: 1.6;
+        }
+        
+        a, button {
+          min-height: 48px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   const tabs = [
     { id: 'overview', label: 'Überblick', icon: Shield },
@@ -941,7 +1026,7 @@ const FinancialAICompliance = () => {
               </div>
             </div>
             
-            <h1 className="text-5xl font-bold text-white mb-6">
+            <h1 id="financial-ai-compliance" className="text-5xl font-bold text-white mb-6">
               Financial AI & Algorithmic Trading Rules
             </h1>
             
@@ -993,6 +1078,68 @@ const FinancialAICompliance = () => {
         </div>
       </div>
 
+      {/* Table of Contents */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="w-5 h-5" />
+              Inhaltsverzeichnis
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <nav aria-label="Inhaltsverzeichnis" className={cn("space-y-2", "md:grid md:grid-cols-2 md:gap-6 md:space-y-0")}>
+              <div className="space-y-2">
+                <a 
+                  href="#ueberblick" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Shield className="w-4 h-4 flex-shrink-0" />
+                  <span>Financial AI Regulatory Landscape</span>
+                </a>
+                <a 
+                  href="#regulatory-landscape" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Scale className="w-4 h-4 flex-shrink-0" />
+                  <span>Regulatory Landscape</span>
+                </a>
+                <a 
+                  href="#algorithmic-trading-requirements" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <TrendingUp className="w-4 h-4 flex-shrink-0" />
+                  <span>Algorithmic Trading Requirements</span>
+                </a>
+              </div>
+              <div className="space-y-2">
+                <a 
+                  href="#risk-management-framework" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                  <span>Risk Management Framework</span>
+                </a>
+                <a 
+                  href="#compliance-framework" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <CheckSquare className="w-4 h-4 flex-shrink-0" />
+                  <span>Compliance Framework</span>
+                </a>
+                <a 
+                  href="#implementation-roadmap" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Code className="w-4 h-4 flex-shrink-0" />
+                  <span>Implementation Roadmap</span>
+                </a>
+              </div>
+            </nav>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -1000,7 +1147,7 @@ const FinancialAICompliance = () => {
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Financial AI Regulatory Landscape</h2>
+              <h2 id="ueberblick" className="text-3xl font-bold mb-4">Financial AI Regulatory Landscape</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Der Finanzsektor unterliegt strengen regulatorischen Anforderungen, die sich mit dem Einsatz 
                 von KI und algorithmischen Trading-Systemen deutlich verschärfen. Diese Seite hilft Ihnen dabei, 
@@ -1192,12 +1339,48 @@ const FinancialAICompliance = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Related Resources */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <LinkIcon className="w-5 h-5" />
+                  Verwandte KI-Compliance Ressourcen
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Link 
+                    to="/wissen/ki-datenschutz/federated-learning" 
+                    className="flex items-center gap-3 p-4 border rounded-lg hover:border-blue-300 hover:shadow-md transition-all min-h-[48px]"
+                  >
+                    <Network className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-blue-800">Federated Learning Guide</h4>
+                      <p className="text-sm text-gray-600">Dezentrale KI-Kollaboration mit Privacy-by-Design</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  </Link>
+                  <Link 
+                    to="/wissen/ki-datenschutz/hr-ai-compliance" 
+                    className="flex items-center gap-3 p-4 border rounded-lg hover:border-blue-300 hover:shadow-md transition-all min-h-[48px]"
+                  >
+                    <Users className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-blue-800">HR AI Compliance</h4>
+                      <p className="text-sm text-gray-600">Compliance für KI-Systeme im Personalwesen</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           {/* Regulatory Landscape Tab */}
           <TabsContent value="regulatory-landscape" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Regulatory Landscape</h2>
+              <h2 id="regulatory-landscape" className="text-3xl font-bold mb-4">Regulatory Landscape</h2>
               <p className="text-lg text-gray-600">
                 Die vier wichtigsten Regulierungsrahmen für Financial AI
               </p>
@@ -1302,7 +1485,7 @@ const FinancialAICompliance = () => {
           {/* Algorithmic Trading Tab */}
           <TabsContent value="algorithmic-trading" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Algorithmic Trading Requirements</h2>
+              <h2 id="algorithmic-trading-requirements" className="text-3xl font-bold mb-4">Algorithmic Trading Requirements</h2>
               <p className="text-lg text-gray-600">
                 Spezifische Compliance-Anforderungen für algorithmische Trading-Systeme
               </p>
@@ -1415,7 +1598,7 @@ const FinancialAICompliance = () => {
           {/* Risk Management Tab */}
           <TabsContent value="risk-management" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Risk Management Framework</h2>
+              <h2 id="risk-management-framework" className="text-3xl font-bold mb-4">Risk Management Framework</h2>
               <p className="text-lg text-gray-600">
                 Umfassendes Risikomanagement für Financial AI Systeme
               </p>
@@ -1505,7 +1688,7 @@ const FinancialAICompliance = () => {
           {/* Compliance Framework Tab */}
           <TabsContent value="compliance-framework" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Compliance Framework</h2>
+              <h2 id="compliance-framework" className="text-3xl font-bold mb-4">Compliance Framework</h2>
               <p className="text-lg text-gray-600">
                 Überprüfen Sie Ihre Compliance-Readiness
               </p>
@@ -1604,7 +1787,7 @@ const FinancialAICompliance = () => {
           {/* Implementation Tab */}
           <TabsContent value="implementation" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Implementation Roadmap</h2>
+              <h2 id="implementation-roadmap" className="text-3xl font-bold mb-4">Implementation Roadmap</h2>
               <p className="text-lg text-gray-600">
                 5-Phasen Ansatz für erfolgreiche Financial AI Compliance
               </p>

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
@@ -71,6 +72,18 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const ComplianceAuditEmergencyGuide: React.FC = () => {
+  // Add scroll-margin-top for sticky header
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      h2, h3, h4 { scroll-margin-top: 96px; }
+      section[id] { scroll-margin-top: 80px; }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   const [currentPhase, setCurrentPhase] = useState(0);
   const [completedItems, setCompletedItems] = useState<string[]>([]);
   const [expandedSections, setExpandedSections] = useState<string[]>([]);
@@ -557,8 +570,64 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-yellow-900 to-slate-900">
+      <Helmet>
+        <title>Compliance Audit Emergency – Aufsichtsbehörden Response</title>
+        <meta name="description" content="Compliance Audit Emergency: Aufsichtsbehörden-Anfragen, Dokumentenvorbereitung, rechtliche Verteidigung. ✓ Regulatory Response ✓ Document Preparation ✓ Legal Strategy." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://marsstein.ai/wissen/krisenmanagement/compliance-audit-emergency" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Compliance Audit Emergency – Aufsichtsbehörden Response" />
+        <meta property="og:description" content="Compliance Audit Emergency: Aufsichtsbehörden-Anfragen, Dokumentenvorbereitung, rechtliche Verteidigung. ✓ Regulatory Response ✓ Document Preparation ✓ Legal Strategy." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.ai/wissen/krisenmanagement/compliance-audit-emergency" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Compliance Audit Emergency Response Guide",
+            "description": "Strukturierte Vorbereitung auf unangekündigte Behördenprüfungen in nur 24 Stunden",
+            "author": {
+              "@type": "Organization",
+              "name": "Marsstein"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Marsstein",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://marsstein.ai/logo.png"
+              }
+            },
+            "datePublished": new Date().toISOString(),
+            "dateModified": new Date().toISOString()
+          })}
+        </script>
+      </Helmet>
       <Header />
       
+      {/* Table of Contents - Mobile */}
+      <nav aria-label="Inhaltsverzeichnis" className="lg:hidden sticky top-16 z-40 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
+        <details className="container mx-auto max-w-7xl px-4">
+          <summary className="py-3 cursor-pointer font-semibold text-yellow-400 flex items-center justify-between">
+            Inhaltsverzeichnis
+            <ChevronDown className="h-5 w-5" />
+          </summary>
+          <div className="pb-4 space-y-2">
+            <a href="#audit-phasen" className="block text-sm text-slate-300 hover:text-yellow-400 pl-4">Audit-Phasen</a>
+            <a href="#sofort-reaktion" className="block text-sm text-slate-300 hover:text-yellow-400 pl-4">1. Sofort-Reaktion</a>
+            <a href="#dokumenten-sammlung" className="block text-sm text-slate-300 hover:text-yellow-400 pl-4">2. Dokumenten-Sammlung</a>
+            <a href="#gap-analyse" className="block text-sm text-slate-300 hover:text-yellow-400 pl-4">3. Gap-Analyse</a>
+            <a href="#audit-vorbereitung" className="block text-sm text-slate-300 hover:text-yellow-400 pl-4">4. Audit-Vorbereitung</a>
+            <a href="#audit-durchfuehrung" className="block text-sm text-slate-300 hover:text-yellow-400 pl-4">5. Audit-Durchführung</a>
+            <a href="#post-audit" className="block text-sm text-slate-300 hover:text-yellow-400 pl-4">6. Post-Audit</a>
+            <a href="#ressourcen" className="block text-sm text-slate-300 hover:text-yellow-400 pl-4">Sofort-Ressourcen</a>
+          </div>
+        </details>
+      </nav>
+
       {/* Fixed Timer Bar */}
       <div className="fixed top-16 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
         <div className="container mx-auto max-w-7xl px-4 py-4">
@@ -631,7 +700,8 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
               className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12"
             >
               <span className="font-semibold text-yellow-300">Strukturierte Vorbereitung</span> auf unangekündigte 
-              Behördenprüfungen in nur 24 Stunden.
+              Behördenprüfungen in nur 24 Stunden. Ergänzt unsere <Link to="/wissen/krisenmanagement" className="text-yellow-400 hover:text-yellow-300 underline">Krisenmanagement-Guides</Link> 
+              und <Link to="/dsgvo/dokumentation" className="text-yellow-400 hover:text-yellow-300 underline">DSGVO-Dokumentation</Link>.
             </motion.p>
 
             <motion.div
@@ -640,13 +710,17 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white px-8 py-4 text-lg font-semibold">
-                <Timer className="mr-2 h-5 w-5" />
-                Emergency Response starten
+              <Button asChild size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white px-8 py-4 text-lg font-semibold">
+                <Link to="/contact">
+                  <Timer className="mr-2 h-5 w-5" />
+                  Emergency Response starten
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-yellow-500/30 hover:border-yellow-400 text-yellow-300 hover:bg-yellow-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
-                <Download className="mr-2 h-5 w-5" />
-                Audit-Checkliste
+              <Button asChild size="lg" variant="outline" className="border-2 border-yellow-500/30 hover:border-yellow-400 text-yellow-300 hover:bg-yellow-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
+                <Link to="/dsgvo/dokumentation/vorlagen">
+                  <Download className="mr-2 h-5 w-5" />
+                  Audit-Checkliste
+                </Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -664,9 +738,10 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
             <div className="flex items-start gap-4">
               <AlertOctagon className="h-8 w-8 text-yellow-400 animate-pulse flex-shrink-0 mt-1" />
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white mb-4">Kritische Erst-Dokumente</h3>
+                <h2 className="text-2xl font-bold text-white mb-4">Kritische Erst-Dokumente</h2>
                 <p className="text-slate-300 mb-6">
-                  Diese Dokumente werden mit hoher Wahrscheinlichkeit als erstes angefordert:
+                  Diese Dokumente werden mit hoher Wahrscheinlichkeit als erstes angefordert. 
+                  Nutzen Sie unsere <Link to="/dsgvo/dokumentation/vorlagen" className="text-yellow-400 hover:text-yellow-300 underline">DSGVO-Vorlagen</Link> für schnelle Dokumentenerstellung.
                 </p>
                 <div className="grid md:grid-cols-3 gap-6">
                   {[
@@ -725,7 +800,7 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                           {item.status}
                         </Badge>
                       </div>
-                      <h4 className="font-semibold text-white mb-1">{item.doc}</h4>
+                      <h3 className="font-semibold text-white mb-1">{item.doc}</h3>
                       <p className="text-xs text-slate-400">📍 {item.location}</p>
                     </motion.div>
                   ))}
@@ -737,8 +812,21 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
       </section>
 
       {/* Audit Phases */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8" id="audit-phasen">
         <div className="container mx-auto max-w-7xl">
+          {/* Desktop Table of Contents */}
+          <nav aria-label="Inhaltsverzeichnis" className="hidden lg:block mb-12 bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+            <h2 className="text-xl font-bold text-yellow-400 mb-4">Inhaltsverzeichnis</h2>
+            <ol className="space-y-2">
+              <li><a href="#sofort-reaktion" className="text-slate-300 hover:text-yellow-400">1. Sofort-Reaktion & Koordination</a></li>
+              <li><a href="#dokumenten-sammlung" className="text-slate-300 hover:text-yellow-400">2. Dokumenten-Sammlung & Vorbereitung</a></li>
+              <li><a href="#gap-analyse" className="text-slate-300 hover:text-yellow-400">3. Gap-Analyse & Quick Fixes</a></li>
+              <li><a href="#audit-vorbereitung" className="text-slate-300 hover:text-yellow-400">4. Audit-Vorbereitung & Briefing</a></li>
+              <li><a href="#audit-durchfuehrung" className="text-slate-300 hover:text-yellow-400">5. Audit-Durchführung & Management</a></li>
+              <li><a href="#post-audit" className="text-slate-300 hover:text-yellow-400">6. Post-Audit & Follow-Up</a></li>
+              <li><a href="#ressourcen" className="text-slate-300 hover:text-yellow-400">7. Sofort-Ressourcen</a></li>
+            </ol>
+          </nav>
           <div className="space-y-8">
             {auditPhases.map((phase, index) => (
               <motion.div
@@ -750,6 +838,12 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                   "relative group",
                   currentPhase === phase.id && "ring-2 ring-yellow-500/50"
                 )}
+                id={phase.id === 0 ? "sofort-reaktion" : 
+                    phase.id === 1 ? "dokumenten-sammlung" :
+                    phase.id === 2 ? "gap-analyse" :
+                    phase.id === 3 ? "audit-vorbereitung" :
+                    phase.id === 4 ? "audit-durchfuehrung" :
+                    "post-audit"}
               >
                 {/* Glow Effect */}
                 <div className={cn(
@@ -816,10 +910,10 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                         variant="ghost"
                         className="w-full justify-between p-0 h-auto hover:bg-transparent"
                       >
-                        <h4 className="text-lg font-semibold text-white flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                           <Target className="h-5 w-5 text-yellow-400" />
                           Schlüsselaktivitäten
-                        </h4>
+                        </h3>
                         {expandedSections.includes(`activities-${phase.id}`) ? (
                           <ChevronDown className="h-5 w-5 text-slate-400" />
                         ) : (
@@ -846,10 +940,10 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                     {/* Phase-specific content */}
                     {phase.id === 0 && phase.criticalDocuments && (
                       <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                           <FileText className="h-5 w-5 text-blue-400" />
                           Kritische Dokumente
-                        </h4>
+                        </h3>
                         <div className="space-y-3">
                           {phase.criticalDocuments.map((doc) => (
                             <div key={doc.id} className="flex items-center justify-between p-4 bg-slate-700/50 rounded-xl">
@@ -894,10 +988,10 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
 
                     {phase.id === 1 && phase.documentCategories && (
                       <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                           <Archive className="h-5 w-5 text-green-400" />
                           Dokumenten-Kategorien
-                        </h4>
+                        </h3>
                         <div className="space-y-4">
                           {phase.documentCategories.map((category, idx) => (
                             <div key={idx} className="border border-slate-700/50 rounded-xl p-4 bg-slate-800/40">
@@ -930,14 +1024,14 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
 
                     {phase.id === 2 && phase.gapCategories && (
                       <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                           <AlertTriangle className="h-5 w-5 text-orange-400" />
                           Gap-Analyse & Quick Fixes
-                        </h4>
+                        </h3>
                         <div className="space-y-4">
                           {phase.gapCategories.map((category, idx) => (
                             <div key={idx} className="border border-slate-700/50 rounded-xl p-4 bg-slate-800/40">
-                              <h5 className="font-semibold text-white mb-3">{category.area}</h5>
+                              <h4 className="font-semibold text-white mb-3">{category.area}</h4>
                               <div className="space-y-3">
                                 {category.gaps.map((gap, gapIdx) => (
                                   <div key={gapIdx} className="flex items-start gap-3 p-3 bg-slate-700/50 rounded-lg">
@@ -980,15 +1074,15 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                       <div className="space-y-6">
                         {/* Team Roles */}
                         <div>
-                          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                             <Users className="h-5 w-5 text-purple-400" />
                             Audit Team & Rollen
-                          </h4>
+                          </h3>
                           <div className="grid md:grid-cols-2 gap-4">
                             {phase.auditPreparation.team.map((member, idx) => (
                               <div key={idx} className="bg-slate-700/50 rounded-xl p-4">
                                 <div className="flex items-center justify-between mb-2">
-                                  <h5 className="font-semibold text-white">{member.role}</h5>
+                                  <h4 className="font-semibold text-white">{member.role}</h4>
                                   <UserCheck className="h-5 w-5 text-purple-400" />
                                 </div>
                                 <p className="text-sm text-slate-300 mb-2">{member.person}</p>
@@ -1007,16 +1101,16 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
 
                         {/* Communication Guidelines */}
                         <div>
-                          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                             <MessageSquare className="h-5 w-5 text-blue-400" />
                             Kommunikations-Leitlinien
-                          </h4>
+                          </h3>
                           <div className="grid md:grid-cols-2 gap-4">
                             <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4">
-                              <h5 className="font-semibold text-green-300 mb-3 flex items-center gap-2">
+                              <h4 className="font-semibold text-green-300 mb-3 flex items-center gap-2">
                                 <CheckCircle className="h-5 w-5" />
                                 DO's
-                              </h5>
+                              </h4>
                               <div className="space-y-2">
                                 {phase.auditPreparation.communication.dos.map((item, idx) => (
                                   <div key={idx} className="flex items-start gap-2">
@@ -1027,10 +1121,10 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                               </div>
                             </div>
                             <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
-                              <h5 className="font-semibold text-red-300 mb-3 flex items-center gap-2">
+                              <h4 className="font-semibold text-red-300 mb-3 flex items-center gap-2">
                                 <X className="h-5 w-5" />
                                 DON'Ts
-                              </h5>
+                              </h4>
                               <div className="space-y-2">
                                 {phase.auditPreparation.communication.donts.map((item, idx) => (
                                   <div key={idx} className="flex items-start gap-2">
@@ -1049,17 +1143,17 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                       <div className="space-y-6">
                         {/* Audit Day Timeline */}
                         <div>
-                          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                             <Calendar className="h-5 w-5 text-indigo-400" />
                             Audit-Tag Protokoll
-                          </h4>
+                          </h3>
                           <div className="space-y-4">
                             {Object.entries(phase.auditDayProtocol).map(([timeOfDay, activities]) => (
                               <div key={timeOfDay} className="bg-slate-700/50 rounded-xl p-4">
-                                <h5 className="font-semibold text-white capitalize mb-3">
+                                <h4 className="font-semibold text-white capitalize mb-3">
                                   {timeOfDay === 'morning' ? 'Vormittag' : 
                                    timeOfDay === 'ongoing' ? 'Laufend' : 'Tagesabschluss'}
-                                </h5>
+                                </h4>
                                 <div className="space-y-2">
                                   {activities.map((activity, idx) => (
                                     <div key={idx} className="flex items-start gap-3">
@@ -1075,13 +1169,13 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
 
                         {/* Response Strategies */}
                         <div>
-                          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                             <Brain className="h-5 w-5 text-pink-400" />
                             Response-Strategien
-                          </h4>
+                          </h3>
                           <div className="grid md:grid-cols-2 gap-4">
                             <div className="bg-slate-700/50 rounded-xl p-4">
-                              <h5 className="font-semibold text-white mb-3">Fragen-Handling</h5>
+                              <h4 className="font-semibold text-white mb-3">Fragen-Handling</h4>
                               {Object.entries(phase.responseStrategies.questions).map(([type, strategy]) => (
                                 <div key={type} className="mb-2">
                                   <p className="text-sm font-semibold text-slate-300 capitalize">{type}:</p>
@@ -1090,7 +1184,7 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                               ))}
                             </div>
                             <div className="bg-slate-700/50 rounded-xl p-4">
-                              <h5 className="font-semibold text-white mb-3">Finding-Management</h5>
+                              <h4 className="font-semibold text-white mb-3">Finding-Management</h4>
                               {Object.entries(phase.responseStrategies.findings).map(([severity, response]) => (
                                 <div key={severity} className="mb-2">
                                   <p className="text-sm font-semibold text-slate-300 capitalize">{severity}:</p>
@@ -1107,17 +1201,17 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                       <div className="space-y-6">
                         {/* Post-Audit Timeline */}
                         <div>
-                          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                             <TrendingUp className="h-5 w-5 text-green-400" />
                             Post-Audit Maßnahmen
-                          </h4>
+                          </h3>
                           <div className="grid lg:grid-cols-3 gap-4">
                             {Object.entries(phase.postAuditActions).map(([timing, actions]) => (
                               <div key={timing} className="bg-slate-700/50 rounded-xl p-4">
-                                <h5 className="font-semibold text-white mb-3 capitalize">
+                                <h4 className="font-semibold text-white mb-3 capitalize">
                                   {timing === 'immediate' ? 'Sofort' :
                                    timing === 'shortTerm' ? 'Kurzfristig' : 'Langfristig'}
-                                </h5>
+                                </h4>
                                 <div className="space-y-2">
                                   {actions.map((action, idx) => (
                                     <div key={idx} className="flex items-start gap-2">
@@ -1133,10 +1227,10 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
 
                         {/* Success Metrics */}
                         <div>
-                          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                             <Award className="h-5 w-5 text-yellow-400" />
                             Erfolgs-Metriken
-                          </h4>
+                          </h3>
                           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                             {phase.successMetrics.map((metric, idx) => (
                               <div key={idx} className="flex items-center gap-3 p-3 bg-slate-700/50 rounded-lg">
@@ -1152,10 +1246,10 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                     {/* Tips Section (if present) */}
                     {phase.tips && (
                       <div className="mt-6 pt-6 border-t border-slate-700/50">
-                        <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
+                        <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
                           <Lightbulb className="h-4 w-4 text-yellow-400" />
                           Praktische Tipps
-                        </h4>
+                        </h3>
                         <div className="grid md:grid-cols-2 gap-3">
                           {phase.tips.map((tip, idx) => (
                             <div key={idx} className="flex items-start gap-2">
@@ -1175,7 +1269,7 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
       </section>
 
       {/* Quick Actions & Resources */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="ressourcen">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-yellow-900/30 to-slate-800/50" />
         
         <div className="container mx-auto max-w-7xl relative z-10">
@@ -1261,12 +1355,19 @@ const ComplianceAuditEmergencyGuide: React.FC = () => {
                     <h3 className="text-lg font-bold mb-2 text-white">{resource.title}</h3>
                     <p className="text-sm text-slate-300 mb-4">{resource.description}</p>
                     
-                    <Button className={cn(
+                    <Button asChild className={cn(
                       "w-full bg-gradient-to-r text-white text-sm",
                       resource.color
                     )}>
-                      {resource.action}
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <Link to={
+                        resource.title === "Master-Checkliste" ? "/dsgvo/dokumentation/vorlagen" :
+                        resource.title === "Dokumenten-Tracker" ? "/tools/compliance-score" :
+                        resource.title === "Audit-Protokoll" ? "/dsgvo/dokumentation" :
+                        "/contact"
+                      }>
+                        {resource.action}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
