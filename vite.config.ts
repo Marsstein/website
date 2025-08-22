@@ -5,6 +5,10 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  ssgOptions: {
+    script: 'async',
+    formatting: 'prettify',
+  },
   server: {
     host: "0.0.0.0",
     port: 8080,
@@ -23,12 +27,22 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          ui: ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
-          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
-          email: ['@emailjs/browser']
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('react-router-dom')) {
+              return 'router';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'ui';
+            }
+            if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
+              return 'forms';
+            }
+            if (id.includes('@emailjs')) {
+              return 'email';
+            }
+            // Don't include react and react-dom in manualChunks for SSG
+          }
         }
       }
     },

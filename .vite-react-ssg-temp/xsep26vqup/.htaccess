@@ -1,0 +1,107 @@
+# URL Migration - 301 Redirects für neue SEO-optimierte URLs
+# Erstellt: August 2025
+
+# ==========================================
+# REGULIERUNGEN REDIRECTS (zu Premium-URLs)
+# ==========================================
+
+# Premium URLs - Ultra-kurz für maximale SEO-Performance
+Redirect 301 /regulierung/dsgvo /dsgvo
+Redirect 301 /regulierung/eu-ai-act /eu-ai-act
+Redirect 301 /regulierung/nis2 /nis2-compliance
+Redirect 301 /regulierung/hinweisgeberschutzgesetz /hinweisgeberschutzgesetz
+Redirect 301 /regulierung/geldwaeschegesetz /geldwaeschegesetz
+
+# ==========================================
+# ZERTIFIZIERUNGEN REDIRECTS (*-zertifizierung)
+# ==========================================
+
+Redirect 301 /zertifizierung/iso-27001 /iso-27001-zertifizierung
+Redirect 301 /zertifizierung/soc2 /soc2-zertifizierung
+Redirect 301 /zertifizierung/iso-27017 /iso-27017-zertifizierung
+Redirect 301 /zertifizierung/iso-27018 /iso-27018-zertifizierung
+Redirect 301 /zertifizierung/tisax /tisax-zertifizierung
+
+# ==========================================
+# LEGACY URLs REDIRECTS
+# ==========================================
+
+# Legacy Compliance URLs zu neuen Product URLs
+Redirect 301 /dsgvo-compliance /dsgvo
+Redirect 301 /iso-27001-compliance /iso-27001-zertifizierung
+Redirect 301 /eu-ai-act-compliance /eu-ai-act
+Redirect 301 /soc2-compliance /soc2-zertifizierung
+Redirect 301 /iso-27017-compliance /iso-27017-zertifizierung
+Redirect 301 /iso-27018-compliance /iso-27018-zertifizierung
+Redirect 301 /tisax-compliance /tisax-zertifizierung
+
+# ==========================================
+# TOOLS REDIRECTS (Duplikat-Bereinigung)
+# ==========================================
+
+# Konsolidierung der Tool-URLs
+Redirect 301 /tools/cookie-management-tool /tools/cookie-management
+Redirect 301 /tools/whistleblower-system-tool /tools/whistleblower-system
+
+# ==========================================
+# TEST/DEV URLs - 404 (ENTFERNEN AUS PRODUCTION)
+# ==========================================
+
+# KRITISCH: Diese URLs sollten in der Production nicht existieren
+# Redirect 404 für Test-URLs um sie aus Google Index zu entfernen
+RedirectMatch 404 ^/test[0-9]*$
+RedirectMatch 404 ^/test-.*$
+RedirectMatch 404 ^/approach[0-9]*$
+RedirectMatch 404 ^/diagnostic.*$
+RedirectMatch 404 ^/robust$
+RedirectMatch 404 ^/optimized$
+RedirectMatch 404 ^/simple-final$
+RedirectMatch 404 ^/simple-test$
+RedirectMatch 404 ^/design-separator-test$
+
+# ==========================================
+# REACT ROUTER FALLBACK
+# ==========================================
+
+# Alle anderen Requests zu React Router weiterleiten
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# ==========================================
+# PERFORMANCE & SECURITY HEADERS
+# ==========================================
+
+# Caching für statische Assets
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options SAMEORIGIN
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ==========================================
+# MONITORING HINWEISE
+# ==========================================
+
+# Nach Implementierung überwachen:
+# - Google Search Console: 301 Redirect Erfolg
+# - Google Analytics: Traffic auf neuen URLs
+# - Keyword Rankings für neue URL-Struktur
+# - Internal Link Equity auf neue URLs
