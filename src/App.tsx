@@ -170,6 +170,8 @@ import DesignSeparatorTest from "./pages/DesignSeparatorTest";
 import FooterTest from "./pages/FooterTest";
 import SitemapSEO from "./pages/SitemapSEO";
 import FinalChecks from "./pages/FinalChecks";
+import About from "./pages/About";
+import TestUns from "./pages/TestUns";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -196,6 +198,8 @@ const App = () => (
                 <Route path="/academy" element={<AcademyPage />} />
                 <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/ueber-uns" element={<About />} />
+                <Route path="/test-uns" element={<TestUns />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/sitemap-seo" element={<SitemapSEO />} />

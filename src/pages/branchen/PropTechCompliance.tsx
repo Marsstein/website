@@ -2,6 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+import { 
+  Breadcrumb, 
+  BreadcrumbItem, 
+  BreadcrumbLink, 
+  BreadcrumbList, 
+  BreadcrumbPage, 
+  BreadcrumbSeparator 
+} from '@/components/ui/breadcrumb';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -331,7 +340,7 @@ const PropTechCompliance = () => {
     },
     {
       title: 'ESG-Datenverarbeitung und Reporting',
-      description: 'Nachhaltigkeitsdaten müssen DSGVO-konform erhoben werden, besonders wenn sie Rückschlüsse auf Einzelpersonen zulassen',
+      description: 'Nachhaltigkeitsdaten müssen <Link to="/dsgvo-compliance" className="text-cyan-600 hover:text-cyan-700 underline">DSGVO-konform</Link> erhoben werden, besonders wenn sie Rückschlüsse auf Einzelpersonen zulassen',
       examples: ['Anonymisierte Verbrauchsdaten', 'Aggregierte CO2-Bilanzen', 'Datenschutzkonforme ESG-Reports', 'Pseudonymisierte Mobilitätsdaten'],
       risk: 'Mittel',
       fineExample: 'Noch keine Präzedenzfälle, aber hohes Risiko',
@@ -510,7 +519,7 @@ const smartMeteringPrivacy = {
       iso27001: 'A.13.2.1 - Informationsübertragung',
       practicalImplementation: {
         title: 'Privacy-First Mieterplattform',
-        description: 'Vollständig DSGVO-konforme digitale Services für moderne Mietverhältnisse',
+        description: 'Vollständig <Link to="/dsgvo-compliance" className="text-cyan-600 hover:text-cyan-700 underline">DSGVO-konforme</Link> digitale Services für moderne Mietverhältnisse',
         features: [
           {
             name: '📱 Mieter-App',
@@ -570,7 +579,7 @@ const smartMeteringPrivacy = {
             name: '🔍 Bonitätsprüfung',
             automation: 'Minimaldatenansatz, automatische Löschung',
             privacy: 'Nur notwendige Daten, verschlüsselte Übertragung',
-            compliance: 'SCHUFA-Auskunft nur mit Einwilligung'
+            compliance: 'SCHUFA-Auskunft nur mit <Link to="/tools/consent-generator" className="text-cyan-600 hover:text-cyan-700 underline">rechtssicherer Einwilligung</Link>'
           },
           {
             name: '🛠️ Predictive Maintenance',
@@ -611,7 +620,7 @@ const smartMeteringPrivacy = {
           {
             name: '🚪 Visitor Management',
             technology: 'QR-Codes mit Zeitbegrenzung',
-            privacy: 'Minimale Besucherdaten, DSGVO-konform',
+            privacy: 'Minimale Besucherdaten, <Link to="/dsgvo-compliance" className="text-cyan-600 hover:text-cyan-700 underline">DSGVO-konform</Link>',
             efficiency: 'Kontaktloser Check-In, automatische Löschung'
           },
           {
@@ -742,7 +751,7 @@ const workspaceAnalytics = {
       tasks: [
         'PropTech-Systemlandschaft analysieren',
         'DSGVO-Gap-Analyse für IoT/Smart Building',
-        'Datenschutz-Folgenabschätzung',
+        'Datenschutz-Folgenabschätzung (siehe <Link to="/dsgvo-compliance" className="text-cyan-600 hover:text-cyan-700 underline">DSGVO-Leitfaden</Link>)',
         'Stakeholder-Alignment (Mieter, Eigentümer, Dienstleister)',
         'Compliance-Roadmap erstellen'
       ],
@@ -767,7 +776,7 @@ const workspaceAnalytics = {
       color: 'orange',
       tasks: [
         'Mieter-Onboarding digitalisieren',
-        'Consent Management implementieren',
+        'Consent Management implementieren (siehe <Link to="/tools/consent-generator" className="text-cyan-600 hover:text-cyan-700 underline">Consent Generator</Link>)',
         'Automatisierte Löschkonzepte',
         'Transparenz-Dashboard aufbauen',
         'Mitarbeiterschulungen'
@@ -806,7 +815,54 @@ const workspaceAnalytics = {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <SEOHead 
+        title="PropTech Compliance DSGVO - Smart Building Datenschutz"
+        description="PropTech DSGVO-Guide: ✓ Smart Buildings ✓ IoT-Sicherheit ✓ Mieterdaten. Praxisleitfaden für digitale Immobilien. Jetzt lesen!"
+        canonical="/wissen/branchen/proptech-compliance"
+        keywords="PropTech Compliance, Smart Building DSGVO, IoT Immobilien, Mieterdaten Datenschutz, PropTech Datenschutz, Smart Home DSGVO, Gebäudeautomation Compliance"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Guide",
+          "name": "PropTech Compliance Guide: DSGVO für Smart Buildings",
+          "description": "Umfassender Compliance-Leitfaden für PropTech-Unternehmen mit Fokus auf Smart Buildings, IoT-Sicherheit und Mieterdatenschutz.",
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "PropTech Companies, Real Estate Tech, Smart Building Operators"
+          },
+          "keywords": "PropTech, Compliance, DSGVO, Smart Buildings, IoT, Datenschutz",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Marsstein",
+            "url": "https://marsstein.com"
+          },
+          "datePublished": "2024-01-25",
+          "dateModified": new Date().toISOString()
+        }}
+      />
       <Header />
+      
+      {/* Breadcrumb Navigation */}
+      <div className="container px-4 py-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen">Wissen</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen/branchen">Branchen</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>PropTech Compliance</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       
       <main className="overflow-hidden">
         {/* Hero Section with Parallax */}
@@ -833,14 +889,14 @@ const workspaceAnalytics = {
                     <span className="text-sm font-medium">PropTech Compliance Excellence</span>
                   </div>
                   
-                  <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+                  <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
                     PropTech & Smart Buildings
                     <span className="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent block mt-2">
                       DSGVO-Compliance Guide
                     </span>
                   </h1>
                   
-                  <p className="text-xl text-gray-600 dark:text-gray-300">
+                  <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
                     Meistern Sie die Datenschutz-Herausforderungen moderner Immobilientechnologie. 
                     Von IoT-Sensoren über KI-basierte Gebäudeautomation bis zu digitalen Mieterprozessen.
                   </p>
@@ -862,13 +918,13 @@ const workspaceAnalytics = {
 
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link to="/contact?demo=true&industry=proptech">
-                      <Button size="lg" className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:opacity-90 group">
+                      <Button size="lg" className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:opacity-90 group min-h-[48px] px-6">
                         <Building className="mr-2 h-5 w-5" />
                         PropTech Demo buchen
                         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
-                    <Button size="lg" variant="outline" className="group">
+                    <Button size="lg" variant="outline" className="group min-h-[48px] px-6">
                       <Download className="mr-2 h-5 w-5" />
                       Smart Building Checkliste
                     </Button>
@@ -954,7 +1010,7 @@ const workspaceAnalytics = {
                       setActiveSection(item.id);
                     }}
                     className={cn(
-                      "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
+                      "flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-200 whitespace-nowrap min-h-[48px]",
                       activeSection === item.id
                         ? "bg-cyan-100 dark:bg-cyan-950/50 text-cyan-700 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800"
                         : "hover:bg-cyan-50 dark:hover:bg-cyan-950/30 hover:text-cyan-700 dark:hover:text-cyan-400",
@@ -1005,7 +1061,9 @@ const workspaceAnalytics = {
                       <CardContent className="space-y-4">
                         <p className="text-gray-600 dark:text-gray-400">
                           Moderne Gebäudetechnologie sammelt kontinuierlich Daten. Die Herausforderung: 
-                          Effizienz und Komfort maximieren, ohne die Privatsphäre zu verletzen.
+                          Effizienz und Komfort maximieren, ohne die Privatsphäre zu verletzen. 
+                          Ähnlich wie bei der <Link to="/dsgvo-compliance" className="text-cyan-600 hover:text-cyan-700 underline">DSGVO-Compliance</Link> 
+                          müssen auch hier strenge Datenschutzstandards eingehalten werden.
                         </p>
                         
                         <div className="space-y-3">
@@ -1046,7 +1104,10 @@ const workspaceAnalytics = {
                       <CardContent className="space-y-4">
                         <p className="text-gray-600 dark:text-gray-400">
                           Künstliche Intelligenz revolutioniert die Gebäudeverwaltung - 
-                          aber nur mit rechtskonformen und ethischen Algorithmen.
+                          aber nur mit rechtskonformen und ethischen Algorithmen. 
+                          Die Compliance-Anforderungen ähneln denen in anderen Branchen wie 
+                          <Link to="/wissen/branchen/insurtech-compliance" className="text-cyan-600 hover:text-cyan-700 underline">InsurTech</Link> oder 
+                          <Link to="/wissen/branchen/travel-compliance" className="text-cyan-600 hover:text-cyan-700 underline">Travel</Link>.
                         </p>
                         
                         <div className="space-y-3">
@@ -1741,7 +1802,7 @@ const workspaceAnalytics = {
                           category: 'Mieter & Nutzer',
                           items: [
                             'Transparenz-Dashboard verfügbar',
-                            'Consent Management integriert',
+                            'Consent Management integriert (mit <Link to="/tools/consent-generator" className="text-cyan-600 hover:text-cyan-700 underline">Consent Generator</Link>)',
                             'Datenschutzerklärung aktualisiert',
                             'Nutzer-Schulungen durchgeführt'
                           ]
@@ -1804,7 +1865,7 @@ const workspaceAnalytics = {
                         <Building className="h-16 w-16 mx-auto mb-6 text-white" />
                       </motion.div>
                       
-                      <h2 className="text-3xl md:text-4xl font-bold">
+                      <h2 className="text-2xl md:text-4xl font-bold">
                         Machen Sie Ihre Immobilien smart & compliant
                       </h2>
                       <p className="text-xl text-white/90 max-w-3xl mx-auto">

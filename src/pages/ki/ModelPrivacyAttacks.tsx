@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -194,6 +194,115 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const ModelPrivacyAttacks = () => {
+  useEffect(() => {
+    document.title = 'Model Privacy Attacks & Defense – DSGVO ML-Schutz';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Schützen Sie Ihre KI vor Privacy Attacks: Membership Inference, Model Inversion & mehr. Praktische Defense-Strategien. Jetzt absichern!');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Schützen Sie Ihre KI vor Privacy Attacks: Membership Inference, Model Inversion & mehr. Praktische Defense-Strategien. Jetzt absichern!';
+      document.head.appendChild(meta);
+    }
+
+    // Viewport meta tag
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(meta);
+    }
+
+    // Add canonical URL
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      const link = document.createElement('link');
+      link.rel = 'canonical';
+      link.href = 'https://dataguard.de/wissen/ki-datenschutz/model-privacy-attacks';
+      document.head.appendChild(link);
+    }
+
+    // Add Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Model Privacy Attacks & Defense – DSGVO ML-Schutz' },
+      { property: 'og:description', content: 'Schützen Sie Ihre KI vor Privacy Attacks: Membership Inference, Model Inversion & mehr. Praktische Defense-Strategien. Jetzt absichern!' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: 'https://dataguard.de/wissen/ki-datenschutz/model-privacy-attacks' }
+    ];
+
+    ogTags.forEach(tag => {
+      const existingTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!existingTag) {
+        const meta = document.createElement('meta');
+        meta.setAttribute('property', tag.property);
+        meta.content = tag.content;
+        document.head.appendChild(meta);
+      }
+    });
+
+    // Add JSON-LD structured data
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Model Privacy Attacks & Defense – DSGVO ML-Schutz",
+      "description": "Schützen Sie Ihre KI vor Privacy Attacks: Membership Inference, Model Inversion & mehr. Praktische Defense-Strategien. Jetzt absichern!",
+      "author": {
+        "@type": "Organization",
+        "name": "DataGuard"
+      },
+      "datePublished": "2024-01-15",
+      "dateModified": new Date().toISOString(),
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dataguard.de/wissen/ki-datenschutz/model-privacy-attacks"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://dataguard.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Wissen",
+            "item": "https://dataguard.de/wissen"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "KI-Datenschutz",
+            "item": "https://dataguard.de/wissen/ki-datenschutz"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Model Privacy Attacks",
+            "item": "https://dataguard.de/wissen/ki-datenschutz/model-privacy-attacks"
+          }
+        ]
+      }
+    };
+
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(structuredData);
+    document.head.appendChild(scriptTag);
+
+    return () => {
+      // Cleanup on unmount
+      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
+
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
@@ -985,11 +1094,14 @@ const ModelPrivacyAttacks = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white" itemScope itemType="https://schema.org/Article">
+      <meta itemProp="name" content="Model Privacy Attacks & Defense – DSGVO ML-Schutz" />
+      <meta itemProp="description" content="Schützen Sie Ihre KI vor Privacy Attacks: Membership Inference, Model Inversion & mehr. Praktische Defense-Strategien. Jetzt absichern!" />
+      <meta itemProp="author" content="DataGuard Experts" />
       <Header />
       
       {/* Hero Section */}
-      <div ref={heroRef} className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-red-900 to-orange-900">
+      <section ref={heroRef} className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-red-900 to-orange-900">
         <motion.div 
           style={{ y, opacity }}
           className="absolute inset-0"
@@ -1007,53 +1119,54 @@ const ModelPrivacyAttacks = () => {
             className="text-center"
           >
             <div className="flex items-center justify-center mb-6">
-              <div className="p-4 bg-gradient-to-br from-red-600 to-orange-600 rounded-2xl shadow-2xl">
-                <ShieldX className="w-16 h-16 text-white" />
+              <div className="p-3 sm:p-4 bg-gradient-to-br from-red-600 to-orange-600 rounded-2xl shadow-2xl">
+                <ShieldX className="w-12 h-12 sm:w-16 sm:h-16 text-white" />
               </div>
             </div>
             
-            <h1 className="text-5xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
               Model Privacy Attacks & Defense
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8 px-4">
               Umfassender Guide zu Angriffsvektoren auf ML-Modelle und effektive Verteidigungsstrategien: 
               Von Membership Inference bis Model Extraction - Schützen Sie Ihre KI-Systeme proaktiv
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
-              <Badge variant="outline" className="px-4 py-2 text-white border-white/30 bg-white/10">
-                <ShieldX className="w-4 h-4 mr-2" />
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+              <Badge variant="outline" className="px-3 py-1.5 sm:px-4 sm:py-2 text-white border-white/30 bg-white/10 text-xs sm:text-sm">
+                <ShieldX className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 5 Attack Vectors
               </Badge>
-              <Badge variant="outline" className="px-4 py-2 text-white border-white/30 bg-white/10">
-                <ShieldCheck className="w-4 h-4 mr-2" />
+              <Badge variant="outline" className="px-3 py-1.5 sm:px-4 sm:py-2 text-white border-white/30 bg-white/10 text-xs sm:text-sm">
+                <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 5 Defense Strategies
               </Badge>
-              <Badge variant="outline" className="px-4 py-2 text-white border-white/30 bg-white/10">
-                <TestTube className="w-4 h-4 mr-2" />
+              <Badge variant="outline" className="px-3 py-1.5 sm:px-4 sm:py-2 text-white border-white/30 bg-white/10 text-xs sm:text-sm">
+                <TestTube className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 Testing Framework
               </Badge>
             </div>
           </motion.div>
         </div>
-      </div>
+      </section>
 
       {/* Navigation Tabs */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b">
+      <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b" aria-label="Inhaltsverzeichnis">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-6 h-auto p-1">
+            <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6 h-auto p-1">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
                   <TabsTrigger
                     key={tab.id}
                     value={tab.id}
+                    id={`tab-${tab.id}`}
                     className="flex flex-col items-center gap-2 py-3 px-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                   >
                     <Icon className="w-5 h-5" />
-                    <span className="text-xs font-medium hidden sm:inline">
+                    <span className="text-[10px] sm:text-xs font-medium hidden sm:inline">
                       {tab.label}
                     </span>
                   </TabsTrigger>
@@ -1062,20 +1175,81 @@ const ModelPrivacyAttacks = () => {
             </TabsList>
           </Tabs>
         </div>
-      </div>
+      </nav>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+            <li>
+              <Link to="/" className="hover:text-blue-600">Home</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li>
+              <Link to="/wissen" className="hover:text-blue-600">Wissen</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li>
+              <Link to="/wissen/ki-datenschutz" className="hover:text-blue-600">KI-Datenschutz</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li className="text-gray-900 font-medium">Model Privacy Attacks</li>
+          </ol>
+        </nav>
+
+        {/* Table of Contents for Mobile */}
+        <div className="lg:hidden mb-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <List className="w-5 h-5" />
+                Inhaltsverzeichnis
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <nav aria-label="Inhaltsverzeichnis">
+                <ul className="space-y-2">
+                  <li>
+                    <a href="#overview-section" className="text-blue-600 hover:underline">Überblick</a>
+                  </li>
+                  <li>
+                    <a href="#attack-vectors-section" className="text-blue-600 hover:underline">Angriffsvektoren</a>
+                  </li>
+                  <li>
+                    <a href="#defense-strategies-section" className="text-blue-600 hover:underline">Verteidigungsstrategien</a>
+                  </li>
+                  <li>
+                    <a href="#testing-framework-section" className="text-blue-600 hover:underline">Testing Framework</a>
+                  </li>
+                  <li>
+                    <a href="#implementation-section" className="text-blue-600 hover:underline">Implementation</a>
+                  </li>
+                  <li>
+                    <a href="#monitoring-section" className="text-blue-600 hover:underline">Monitoring & Detection</a>
+                  </li>
+                </ul>
+              </nav>
+            </CardContent>
+          </Card>
+        </div>
+
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Model Privacy: Angriffe verstehen, Verteidigung stärken</h2>
+              <h2 id="overview-section" className="text-3xl font-bold mb-4 scroll-mt-24">Model Privacy: Angriffe verstehen, Verteidigung stärken</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Machine Learning Modelle sind anfällig für sophisticated Privacy-Attacks, die sensible 
                 Trainingsdaten rekonstruieren oder Membership-Information preisgeben können. Lernen Sie, 
-                wie Sie Ihre KI-Systeme effektiv schützen.
+                wie Sie Ihre KI-Systeme effektiv schützen. Ergänzend empfehlen wir unseren Guide zu <Link to="/wissen/ki-datenschutz/privacy-preserving-ai" className="text-blue-600 hover:underline">Privacy-Preserving AI</Link> und <Link to="/wissen/ki-datenschutz/federated-learning" className="text-blue-600 hover:underline">Federated Learning</Link>.
               </p>
             </div>
 
@@ -1085,7 +1259,7 @@ const ModelPrivacyAttacks = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Skull className="w-5 h-5 text-red-500" />
-                    Membership Inference
+                    <span className="text-base sm:text-lg">Membership Inference</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1109,7 +1283,7 @@ const ModelPrivacyAttacks = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Eye className="w-5 h-5 text-purple-500" />
-                    Model Inversion
+                    <span className="text-base sm:text-lg">Model Inversion</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1133,7 +1307,7 @@ const ModelPrivacyAttacks = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Download className="w-5 h-5 text-orange-500" />
-                    Model Extraction
+                    <span className="text-base sm:text-lg">Model Extraction</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1167,7 +1341,7 @@ const ModelPrivacyAttacks = () => {
                   <p className="text-gray-600">
                     Simulieren Sie Privacy Attacks gegen ein Beispiel-Modell und verstehen Sie die Risiken
                   </p>
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4">
                     <Button onClick={() => simulateAttack('membership_inference')}>
                       <UserCheck className="w-4 h-4 mr-2" />
                       Membership Inference Test
@@ -1243,7 +1417,7 @@ const ModelPrivacyAttacks = () => {
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm">Regulatory Compliance (DSGVO, AI Act)</span>
+                        <span className="text-sm">Regulatory Compliance (<Link to="/wissen/dsgvo-grundlagen" className="text-blue-600 hover:underline">DSGVO</Link>, <Link to="/wissen/ki-datenschutz/eu-ai-act-compliance" className="text-blue-600 hover:underline">AI Act</Link>)</span>
                       </li>
                     </ul>
                   </div>
@@ -1266,6 +1440,48 @@ const ModelPrivacyAttacks = () => {
                       <li className="flex items-start gap-2">
                         <AlertTriangle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
                         <span className="text-sm">Biometrics: Gesichtserkennung Reconstruction</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Related Resources */}
+            <Card className="mb-8 bg-gradient-to-br from-gray-50 to-white">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <LinkIcon className="w-5 h-5" />
+                  Weiterführende Ressourcen
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="font-semibold mb-2 text-sm">Verwandte Themen:</h4>
+                    <ul className="space-y-2">
+                      <li>
+                        <Link to="/wissen/ki-datenschutz/privacy-by-design-ai" className="text-blue-600 hover:underline text-sm">Privacy by Design für AI</Link>
+                      </li>
+                      <li>
+                        <Link to="/wissen/ki-datenschutz/differential-privacy" className="text-blue-600 hover:underline text-sm">Differential Privacy Guide</Link>
+                      </li>
+                      <li>
+                        <Link to="/wissen/ki-datenschutz/secure-multi-party-computation" className="text-blue-600 hover:underline text-sm">Secure Multi-Party Computation</Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-sm">Compliance & Governance:</h4>
+                    <ul className="space-y-2">
+                      <li>
+                        <Link to="/wissen/ki-datenschutz/algorithmic-impact-assessment" className="text-blue-600 hover:underline text-sm">Algorithmic Impact Assessment</Link>
+                      </li>
+                      <li>
+                        <Link to="/wissen/ki-datenschutz/ai-risk-classification" className="text-blue-600 hover:underline text-sm">KI-Risikoklassifizierung</Link>
+                      </li>
+                      <li>
+                        <Link to="/wissen/ki-datenschutz/explainable-ai" className="text-blue-600 hover:underline text-sm">Explainable AI Guide</Link>
                       </li>
                     </ul>
                   </div>
@@ -1315,7 +1531,7 @@ const ModelPrivacyAttacks = () => {
           {/* Attack Vectors Tab */}
           <TabsContent value="attack-vectors" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Privacy Attack Vectors</h2>
+              <h2 id="attack-vectors-section" className="text-3xl font-bold mb-4 scroll-mt-24">Privacy Attack Vectors</h2>
               <p className="text-lg text-gray-600">
                 Detaillierte Analyse der 5 kritischsten Angriffsmethoden auf ML-Modelle
               </p>
@@ -1336,14 +1552,14 @@ const ModelPrivacyAttacks = () => {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-4">
                             <div className={cn(
-                              "p-3 rounded-xl bg-gradient-to-br text-white",
+                              "p-2 sm:p-3 rounded-xl bg-gradient-to-br text-white",
                               attack.color
                             )}>
                               <Icon className="w-8 h-8" />
                             </div>
                             <div>
                               <div className="flex items-center gap-3 mb-2">
-                                <CardTitle className="text-2xl">{attack.attack}</CardTitle>
+                                <CardTitle className="text-xl sm:text-2xl">{attack.attack}</CardTitle>
                                 <Badge variant={attack.severity === 'Sehr Hoch' ? 'destructive' : attack.severity === 'Hoch' ? 'default' : 'secondary'}>
                                   {attack.severity} Risk
                                 </Badge>
@@ -1499,7 +1715,7 @@ const ModelPrivacyAttacks = () => {
           {/* Defense Strategies Tab */}
           <TabsContent value="defense-strategies" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Defense Strategies</h2>
+              <h2 id="defense-strategies-section" className="text-3xl font-bold mb-4 scroll-mt-24">Defense Strategies</h2>
               <p className="text-lg text-gray-600">
                 5 bewährte Verteidigungsstrategien gegen Privacy Attacks
               </p>
@@ -1513,7 +1729,7 @@ const ModelPrivacyAttacks = () => {
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                          <div className="p-3 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl text-white">
+                          <div className="p-2 sm:p-3 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl text-white">
                             <Icon className="w-8 h-8" />
                           </div>
                           <div>
@@ -1650,7 +1866,7 @@ const ModelPrivacyAttacks = () => {
           {/* Testing Framework Tab */}
           <TabsContent value="testing-framework" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Privacy Testing Framework</h2>
+              <h2 id="testing-framework-section" className="text-3xl font-bold mb-4 scroll-mt-24">Privacy Testing Framework</h2>
               <p className="text-lg text-gray-600">
                 Systematische Tests zur Bewertung von Privacy Vulnerabilities
               </p>
@@ -1664,7 +1880,7 @@ const ModelPrivacyAttacks = () => {
                     <CardHeader>
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className="p-3 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl text-white">
+                          <div className="p-2 sm:p-3 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl text-white">
                             <Icon className="w-6 h-6" />
                           </div>
                           <div>
@@ -1741,7 +1957,7 @@ const ModelPrivacyAttacks = () => {
           {/* Implementation Tab */}
           <TabsContent value="implementation" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Implementation Roadmap</h2>
+              <h2 id="implementation-section" className="text-3xl font-bold mb-4 scroll-mt-24">Implementation Roadmap</h2>
               <p className="text-lg text-gray-600">
                 Schritt-für-Schritt Anleitung für Model Privacy Protection
               </p>
@@ -1839,7 +2055,7 @@ const ModelPrivacyAttacks = () => {
           {/* Monitoring Tab */}
           <TabsContent value="monitoring" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Monitoring & Detection</h2>
+              <h2 id="monitoring-section" className="text-3xl font-bold mb-4 scroll-mt-24">Monitoring & Detection</h2>
               <p className="text-lg text-gray-600">
                 Kontinuierliche Überwachung für Privacy Attacks und Model Integrity
               </p>
@@ -1852,7 +2068,7 @@ const ModelPrivacyAttacks = () => {
                   <Card key={monitoring.monitoringType} className="overflow-hidden">
                     <CardHeader>
                       <div className="flex items-center gap-4">
-                        <div className="p-3 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl text-white">
+                        <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl text-white">
                           <Icon className="w-8 h-8" />
                         </div>
                         <div>
@@ -1958,7 +2174,7 @@ const ModelPrivacyAttacks = () => {
             </Card>
           </TabsContent>
         </Tabs>
-      </div>
+      </main>
 
       <Footer />
     </div>

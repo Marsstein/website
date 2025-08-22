@@ -2,10 +2,20 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+import { 
+  Breadcrumb, 
+  BreadcrumbItem, 
+  BreadcrumbLink, 
+  BreadcrumbList, 
+  BreadcrumbPage, 
+  BreadcrumbSeparator 
+} from '@/components/ui/breadcrumb';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Link } from 'react-router-dom';
 import { 
   Shield,
   FileText,
@@ -104,7 +114,6 @@ import {
   UserMinus,
   Unlink
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const InsurtechComplianceGuide = () => {
@@ -112,6 +121,7 @@ const InsurtechComplianceGuide = () => {
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
   const [activeSection, setActiveSection] = useState<string>('overview');
   const [selectedInsuranceType, setSelectedInsuranceType] = useState<string>('auto');
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [complianceScore, setComplianceScore] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
@@ -144,6 +154,9 @@ const InsurtechComplianceGuide = () => {
     const handleScroll = () => {
       const sections = navigationItems.map(item => item.id);
       const scrollPosition = window.scrollY + 150;
+      
+      // Show/hide scroll to top button
+      setShowScrollTop(window.scrollY > 500);
       
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -211,7 +224,54 @@ const InsurtechComplianceGuide = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+      <SEOHead 
+        title="InsurTech Compliance DSGVO - KI & Digitale Versicherung"
+        description="InsurTech DSGVO Guide: ✓ KI-Compliance ✓ IDD-Konformität ✓ AI Act. Praxisleitfaden für digitale Versicherer. Jetzt lesen!"
+        canonical="/wissen/branchen/insurtech-compliance"
+        keywords="InsurTech Compliance, DSGVO Versicherung, IDD Richtlinie, AI Act InsurTech, Solvency II, DORA Compliance, digitale Versicherung Datenschutz"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Guide",
+          "name": "InsurTech Compliance Guide: Innovation trifft Regulatorik",
+          "description": "Umfassender Compliance-Leitfaden für InsurTech-Unternehmen mit Fokus auf DSGVO, IDD, AI Act und praktische Implementierung.",
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "InsurTech Companies, Digital Insurance Providers, Insurance Innovators"
+          },
+          "keywords": "InsurTech, Compliance, DSGVO, IDD, AI Act, Versicherung, Digitalisierung",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Marsstein",
+            "url": "https://marsstein.com"
+          },
+          "datePublished": "2024-01-20",
+          "dateModified": new Date().toISOString()
+        }}
+      />
       <Header />
+      
+      {/* Breadcrumb Navigation */}
+      <div className="container px-4 py-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen">Wissen</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen/branchen">Branchen</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>InsurTech Compliance</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       
       {/* Hero Section with Parallax */}
       <section ref={heroRef} className="relative py-20 md:py-28 overflow-hidden">
@@ -236,7 +296,7 @@ const InsurtechComplianceGuide = () => {
                 <Sparkles className="w-3 h-3 mr-1" />
                 InsurTech Compliance Excellence
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
                 InsurTech Compliance:
                 <span className="block mt-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                   Innovation trifft Regulatorik
@@ -248,7 +308,7 @@ const InsurtechComplianceGuide = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
             >
               Der umfassende Leitfaden für rechtskonforme Digitalisierung in der Versicherungsbranche. 
               Von DSGVO über IDD bis zum AI Act – alle Compliance-Anforderungen für moderne InsurTech-Lösungen.
@@ -262,7 +322,7 @@ const InsurtechComplianceGuide = () => {
             >
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-90 text-white group"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-90 text-white group min-h-[48px] px-6"
                 onClick={() => scrollToSection('ueberblick')}
               >
                 <Shield className="mr-2 h-5 w-5" />
@@ -272,7 +332,7 @@ const InsurtechComplianceGuide = () => {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-gray-300 dark:border-gray-700"
+                className="border-gray-300 dark:border-gray-700 min-h-[48px] px-6"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Whitepaper herunterladen
@@ -314,7 +374,7 @@ const InsurtechComplianceGuide = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap transition-all",
+                    "flex items-center gap-2 px-4 py-3 rounded-lg whitespace-nowrap transition-all min-h-[48px]",
                     activeSection === item.id
                       ? "bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 font-medium"
                       : "hover:bg-blue-50 dark:hover:bg-blue-950/30 text-gray-600 dark:text-gray-400"
@@ -334,6 +394,35 @@ const InsurtechComplianceGuide = () => {
         <div className="container px-4">
           <div className="max-w-7xl mx-auto space-y-20">
             
+            {/* Table of Contents */}
+            <section className="mb-12">
+              <Card className="p-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-blue-600" />
+                    Inhaltsverzeichnis
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <nav aria-label="Inhaltsverzeichnis">
+                    <ul className="space-y-2">
+                      {navigationItems.map((item) => (
+                        <li key={item.id}>
+                          <button
+                            onClick={() => scrollToSection(item.id)}
+                            className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors py-2 w-full text-left min-h-[44px]"
+                          >
+                            <item.icon className="h-4 w-4" />
+                            <span>{item.label}</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </CardContent>
+              </Card>
+            </section>
+            
             {/* Overview Section */}
             <section id="ueberblick" className="space-y-8 scroll-mt-32">
               <motion.div 
@@ -342,20 +431,20 @@ const InsurtechComplianceGuide = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                   InsurTech Compliance-Landschaft 2024
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   Die Versicherungsbranche durchläuft eine digitale Revolution. Mit neuen Technologien 
-                  kommen neue regulatorische Herausforderungen – von Datenschutz über KI-Ethik bis zur 
-                  digitalen Resilienz.
+                  kommen neue regulatorische Herausforderungen – von <Link to="/dsgvo-compliance" className="text-blue-600 hover:underline">Datenschutz</Link> über KI-Ethik bis zur 
+                  digitalen Resilienz. Nutzen Sie unseren <Link to="/tools/consent-generator" className="text-blue-600 hover:underline">Consent Generator</Link> für rechtssichere Einwilligungen. Erfahren Sie mehr über <Link to="/wissen/branchen/travel-compliance" className="text-blue-600 hover:underline">Travel Compliance</Link> oder <Link to="/wissen/branchen/proptech-compliance" className="text-blue-600 hover:underline">PropTech Compliance</Link>.
                 </p>
               </motion.div>
 
               {/* Interactive Compliance Dashboard */}
               <Card className="p-6 shadow-2xl border-2 border-blue-200 dark:border-blue-800">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">
                     Ihr Compliance-Score
                   </h3>
                   <Badge 
@@ -385,7 +474,7 @@ const InsurtechComplianceGuide = () => {
                       <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         {framework.name}
                       </div>
-                      <div className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                      <div className="text-lg md:text-xl font-bold text-blue-600 dark:text-blue-400">
                         {framework.compliance}%
                       </div>
                       <div className="text-xs text-green-600 dark:text-green-400">
@@ -398,7 +487,7 @@ const InsurtechComplianceGuide = () => {
 
               {/* Insurance Type Selector */}
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Wählen Sie Ihren Versicherungsbereich</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-4">Wählen Sie Ihren Versicherungsbereich</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
                   {insuranceTypes.map((type) => {
                     const Icon = type.icon;
@@ -504,7 +593,7 @@ const InsurtechComplianceGuide = () => {
                         <CardTitle className="text-lg mt-3">{challenge.title}</CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-gray-600 dark:text-gray-400">{challenge.description}</p>
+                        <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">{challenge.description}</p>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -520,10 +609,10 @@ const InsurtechComplianceGuide = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                   Regulatorisches Framework für InsurTech
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   Ein komplexes Geflecht aus Datenschutz, Finanzaufsicht und Tech-Regulierung prägt 
                   die Compliance-Landschaft für digitale Versicherungslösungen.
                 </p>
@@ -531,7 +620,7 @@ const InsurtechComplianceGuide = () => {
 
               {/* Regulatory Timeline */}
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-6">Regulatorische Meilensteine</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-6">Regulatorische Meilensteine</h3>
                 <div className="space-y-4">
                   {[
                     { date: '2018', title: 'DSGVO', description: 'Datenschutz-Grundverordnung tritt in Kraft', status: 'active' },
@@ -578,12 +667,12 @@ const InsurtechComplianceGuide = () => {
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <Lock className="h-8 w-8 text-blue-600" />
-                    <h3 className="text-xl font-bold">DSGVO in der Versicherung</h3>
+                    <h3 className="text-lg md:text-xl font-bold">DSGVO in der Versicherung</h3>
                   </div>
                   <div className="space-y-4">
                     <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4">
                       <h4 className="font-semibold mb-2">Besondere Herausforderungen</h4>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-sm md:text-base">
                         <li className="flex items-start gap-2">
                           <AlertCircle className="h-4 w-4 text-blue-600 mt-0.5" />
                           <span>Gesundheitsdaten nach Art. 9 DSGVO (Krankenversicherung)</span>
@@ -625,12 +714,12 @@ const InsurtechComplianceGuide = () => {
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <FileSignature className="h-8 w-8 text-purple-600" />
-                    <h3 className="text-xl font-bold">IDD-Compliance</h3>
+                    <h3 className="text-lg md:text-xl font-bold">IDD-Compliance</h3>
                   </div>
                   <div className="space-y-4">
                     <div className="bg-purple-50 dark:bg-purple-950/30 rounded-lg p-4">
                       <h4 className="font-semibold mb-2">Digitale Beratungspflichten</h4>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-sm md:text-base">
                         <li className="flex items-start gap-2">
                           <CheckCircle2 className="h-4 w-4 text-purple-600 mt-0.5" />
                           <span>Anforderungsgerechte Beratung auch in Apps</span>
@@ -675,7 +764,7 @@ const InsurtechComplianceGuide = () => {
                       <AlertTriangle className="h-6 w-6 text-red-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-2">
+                      <h3 className="text-lg md:text-xl font-bold text-red-900 dark:text-red-100 mb-2">
                         Bußgeldrisiken im InsurTech-Bereich
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -711,10 +800,10 @@ const InsurtechComplianceGuide = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4" id="datenschutz">
                   Datenschutz in InsurTech-Anwendungen
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   Von der Risikobewertung bis zur Schadensregulierung – Datenschutz durchzieht jeden 
                   Aspekt moderner Versicherungslösungen.
                 </p>
@@ -815,7 +904,7 @@ const InsurtechComplianceGuide = () => {
 
               {/* Privacy by Design Framework */}
               <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
-                <h3 className="text-xl font-bold mb-6">Privacy by Design für InsurTech</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-6">Privacy by Design für InsurTech</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <h4 className="font-semibold flex items-center gap-2">
@@ -885,7 +974,7 @@ const InsurtechComplianceGuide = () => {
 
               {/* Consent Management */}
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 rounded-xl p-6">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <h3 className="text-lg md:text-xl font-bold mb-4 flex items-center gap-2">
                   <UserCheck className="h-6 w-6 text-green-600" />
                   Einwilligungsmanagement für Versicherungen
                 </h3>
@@ -975,10 +1064,10 @@ const InsurtechComplianceGuide = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4" id="ki-compliance">
                   KI & Automatisierung im Versicherungswesen
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   Von der Risikobewertung bis zur automatisierten Schadensregulierung – KI revolutioniert 
                   die Versicherungsbranche. Mit dem AI Act kommen neue Compliance-Anforderungen.
                 </p>
@@ -986,7 +1075,7 @@ const InsurtechComplianceGuide = () => {
 
               {/* AI Risk Classification */}
               <Card className="p-6 border-2 border-purple-200 dark:border-purple-800">
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <h3 className="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
                   <Brain className="h-6 w-6 text-purple-600" />
                   KI-Risikostufen nach AI Act
                 </h3>
@@ -1169,7 +1258,7 @@ const InsurtechComplianceGuide = () => {
 
               {/* Algorithmic Fairness */}
               <Card className="p-6 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20">
-                <h3 className="text-xl font-bold mb-6">Algorithmic Fairness & Bias Prevention</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-6">Algorithmic Fairness & Bias Prevention</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {[
                     {
@@ -1234,10 +1323,10 @@ const InsurtechComplianceGuide = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4" id="kundenreise">
                   Compliance-konforme Customer Journey
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   Jeder Touchpoint der digitalen Kundenreise muss Datenschutz, Transparenz und 
                   regulatorische Anforderungen erfüllen.
                 </p>
@@ -1320,7 +1409,7 @@ const InsurtechComplianceGuide = () => {
                           <div className={`p-3 bg-${journey.color}-100 dark:bg-${journey.color}-950 rounded-lg`}>
                             <journey.icon className={`h-6 w-6 text-${journey.color}-600`} />
                           </div>
-                          <h3 className="text-xl font-bold">{journey.stage}</h3>
+                          <h3 className="text-lg md:text-xl font-bold">{journey.stage}</h3>
                         </div>
                       </CardHeader>
                       <CardContent>
@@ -1361,7 +1450,7 @@ const InsurtechComplianceGuide = () => {
 
               {/* Customer Rights Dashboard */}
               <Card className="p-6 bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-950/20 dark:to-blue-950/20">
-                <h3 className="text-xl font-bold mb-6">Kundenrechte-Dashboard</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-6">Kundenrechte-Dashboard</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {[
                     {
@@ -1450,10 +1539,10 @@ const InsurtechComplianceGuide = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4" id="implementierung">
                   Praktische Implementierung
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   Von der Strategie zur Umsetzung – so implementieren Sie Compliance in Ihre 
                   InsurTech-Lösung.
                 </p>
@@ -1461,7 +1550,7 @@ const InsurtechComplianceGuide = () => {
 
               {/* Implementation Roadmap */}
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-6">Compliance Implementation Roadmap</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-6">Compliance Implementation Roadmap</h3>
                 <div className="space-y-4">
                   {[
                     {
@@ -1663,7 +1752,7 @@ async function processInsuranceData(data) {
 
               {/* Best Practices */}
               <Card className="p-6 border-2 border-green-200 dark:border-green-800">
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <h3 className="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
                   <Award className="h-6 w-6 text-green-600" />
                   InsurTech Compliance Best Practices
                 </h3>
@@ -1713,7 +1802,7 @@ async function processInsuranceData(data) {
 
               {/* Success Metrics */}
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-6">Compliance Success Metrics</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-6">Compliance Success Metrics</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
                     { metric: "DSGVO-Anfragen", value: "< 48h", target: "Response Time", icon: Clock },
@@ -1839,9 +1928,83 @@ async function processInsuranceData(data) {
                 ))}
               </div>
             </section>
+            
+            {/* Related Content */}
+            <section className="mt-16">
+              <h2 className="text-2xl font-bold mb-6">Verwandte Compliance-Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Plane className="h-5 w-5 text-blue-600" />
+                      Travel Compliance
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                      DSGVO-Compliance für die Reisebranche.
+                    </p>
+                    <Link to="/wissen/branchen/travel-compliance">
+                      <Button variant="outline" className="w-full">
+                        Zum Guide <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Building2 className="h-5 w-5 text-blue-600" />
+                      PropTech Compliance
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                      DSGVO-Compliance für Immobilientechnologie.
+                    </p>
+                    <Link to="/wissen/branchen/proptech-compliance">
+                      <Button variant="outline" className="w-full">
+                        Zum Guide <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Shield className="h-5 w-5 text-blue-600" />
+                      DSGVO Compliance Guide
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                      Umfassender DSGVO-Leitfaden für alle Branchen.
+                    </p>
+                    <Link to="/dsgvo-compliance">
+                      <Button variant="outline" className="w-full">
+                        Zum Guide <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </section>
           </div>
         </div>
       </div>
+      
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors z-50"
+          aria-label="Nach oben scrollen"
+        >
+          <ChevronDown className="h-5 w-5 rotate-180" />
+        </button>
+      )}
       
       <Footer />
     </div>

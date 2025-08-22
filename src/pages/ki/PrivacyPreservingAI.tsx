@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -170,6 +170,36 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const PrivacyPreservingAI = () => {
+  // SEO Meta Information
+  useEffect(() => {
+    // Set document title (56 characters)
+    document.title = 'Privacy-Preserving AI – Datenschutzfreundliche KI-Lösungen';
+    
+    // Set meta description (148 characters)
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', '6 Privacy-Preserving AI Technologien: Differential Privacy bis Homomorphic Encryption. Praxis-Guide für datenschutzkonforme KI-Systeme.');
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'description';
+      newMeta.content = '6 Privacy-Preserving AI Technologien: Differential Privacy bis Homomorphic Encryption. Praxis-Guide für datenschutzkonforme KI-Systeme.';
+      document.head.appendChild(newMeta);
+    }
+
+    // Set viewport meta tag
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+      const newViewport = document.createElement('meta');
+      newViewport.name = 'viewport';
+      newViewport.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(newViewport);
+    }
+
+    return () => {
+      // Cleanup function if needed
+    };
+  }, []);
+
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
@@ -686,7 +716,10 @@ const PrivacyPreservingAI = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white" style={{
+      fontSize: '16px',
+      lineHeight: '1.6'
+    }}>
       <Header />
       
       {/* Hero Section */}
@@ -714,12 +747,12 @@ const PrivacyPreservingAI = () => {
             </div>
             
             <h1 className="text-5xl font-bold text-white mb-6">
-              Privacy-Preserving AI Technologien
+              Privacy-Preserving AI Technologien Guide
             </h1>
             
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Moderne Technologien für datenschutzfreundliche KI-Entwicklung: Von Differential Privacy 
-              bis Homomorphic Encryption - Ihr Guide für sichere und compliant AI-Systeme
+              bis Homomorphic Encryption - Ihr Guide für sichere und DSGVO-konforme AI-Systeme.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -740,8 +773,57 @@ const PrivacyPreservingAI = () => {
         </div>
       </div>
 
+      {/* Table of Contents */}
+      <nav aria-label="Inhaltsverzeichnis" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white">
+        <div className="bg-gradient-to-r from-gray-50 to-green-50 rounded-xl p-6 border">
+          <button 
+            onClick={() => toggleExpanded('toc')}
+            className="flex items-center gap-2 w-full text-left md:cursor-default"
+          >
+            <h2 id="inhaltsverzeichnis" className="text-2xl font-bold flex items-center gap-2">
+              <BookOpen className="w-6 h-6 text-green-600" />
+              Inhaltsverzeichnis
+            </h2>
+            <ChevronDown className={cn(
+              "w-5 h-5 text-gray-500 transition-transform md:hidden",
+              expandedSection === 'toc' && "rotate-180"
+            )} />
+          </button>
+          <div className={cn(
+            "mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3",
+            "md:block",
+            expandedSection === 'toc' ? "block" : "hidden md:grid"
+          )}>
+            <a href="#ppai-ueberblick" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Shield className="w-4 h-4 text-green-500 flex-shrink-0" />
+              PPAI Überblick
+            </a>
+            <a href="#ppai-technologien" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <ShieldCheck className="w-4 h-4 text-blue-500 flex-shrink-0" />
+              6 Core Technologien
+            </a>
+            <a href="#implementation-roadmap" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Code className="w-4 h-4 text-purple-500 flex-shrink-0" />
+              Implementation Guide
+            </a>
+            <a href="#ppai-frameworks" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Layers className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              Frameworks & Tools
+            </a>
+            <a href="#real-world-use-cases" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Bot className="w-4 h-4 text-red-500 flex-shrink-0" />
+              Real-World Use Cases
+            </a>
+            <a href="#regulatory-compliance" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <CheckSquare className="w-4 h-4 text-indigo-500 flex-shrink-0" />
+              Regulatory Compliance
+            </a>
+          </div>
+        </div>
+      </nav>
+
       {/* Navigation Tabs */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b" style={{scrollMarginTop: '96px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-6 h-auto p-1">
@@ -771,7 +853,7 @@ const PrivacyPreservingAI = () => {
           
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-8">
-            <div className="text-center mb-12">
+            <div id="ppai-ueberblick" className="text-center mb-12" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Privacy-Preserving AI (PPAI)</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Technologien und Methoden, die es ermöglichen, KI-Systeme zu entwickeln und zu betreiben, 
@@ -915,11 +997,19 @@ const PrivacyPreservingAI = () => {
                 </div>
               </CardContent>
             </Card>
+            
+            {/* Back to Top */}
+            <div className="text-center mt-8">
+              <a href="#inhaltsverzeichnis" className="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-green-600 transition-colors">
+                <ArrowRight className="w-4 h-4 rotate-[-90deg]" />
+                Zurück zum Inhaltsverzeichnis
+              </a>
+            </div>
           </TabsContent>
 
           {/* Technologies Tab */}
           <TabsContent value="technologies" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="ppai-technologien" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Core PPAI Technologies</h2>
               <p className="text-lg text-gray-600">
                 Detaillierte Übersicht der wichtigsten Privacy-Preserving AI Technologien
@@ -1059,7 +1149,7 @@ const PrivacyPreservingAI = () => {
 
           {/* Implementation Tab */}
           <TabsContent value="implementation" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="implementation-roadmap" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Implementation Roadmap</h2>
               <p className="text-lg text-gray-600">
                 5-Phasen Ansatz für erfolgreiche PPAI Implementation
@@ -1215,7 +1305,7 @@ const PrivacyPreservingAI = () => {
 
           {/* Use Cases Tab */}
           <TabsContent value="use-cases" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="real-world-use-cases" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Real-World Use Cases</h2>
               <p className="text-lg text-gray-600">
                 Erfolgreiche PPAI Implementierungen aus verschiedenen Branchen
@@ -1307,7 +1397,7 @@ const PrivacyPreservingAI = () => {
 
           {/* Compliance Tab */}
           <TabsContent value="compliance" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="regulatory-compliance" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Regulatory Compliance</h2>
               <p className="text-lg text-gray-600">
                 Wie PPAI bei der Erfüllung regulatorischer Anforderungen hilft
@@ -1394,7 +1484,7 @@ const PrivacyPreservingAI = () => {
               <CardContent>
                 <div className="space-y-4">
                   <p className="text-gray-600">
-                    Bereit für den Einstieg in Privacy-Preserving AI? Hier sind Ihre nächsten Schritte:
+                    Bereit für den Einstieg in Privacy-Preserving AI? Nutzen Sie zusätzlich unsere <Link to="/wissen/ki-datenschutz/risikoklassifizierung" className="text-blue-600 hover:underline">Risikoklassifizierung</Link> und das <Link to="/wissen/ki-datenschutz/algorithmic-impact-assessment" className="text-green-600 hover:underline">Impact Assessment</Link>. Hier sind Ihre nächsten Schritte:
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Button className="bg-gradient-to-r from-blue-600 to-purple-600">

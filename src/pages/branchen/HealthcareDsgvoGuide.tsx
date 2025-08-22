@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -694,6 +695,28 @@ const telemedicineSession = {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <SEOHead 
+        title="Gesundheitswesen DSGVO – Patientendaten rechtssicher verarbeiten"
+        description="DSGVO im Gesundheitswesen: Patientendatenschutz, Schweigepflicht, Forschung, eHealth. ✓ Praxisnahe Lösungen ✓ Rechtssicherheit ✓ Compliance-Checklisten."
+        canonical="/wissen/branchen/gesundheitswesen-dsgvo"
+        keywords="DSGVO Gesundheitswesen, Patientendatenschutz, Schweigepflicht DSGVO, eHealth Datenschutz, medizinische Forschung DSGVO, Gesundheitsdaten Art. 9"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Gesundheitswesen DSGVO – Patientendaten rechtssicher verarbeiten",
+          "description": "Umfassender Leitfaden zur DSGVO-Compliance im Gesundheitswesen mit Fokus auf Patientendatenschutz, Schweigepflicht und eHealth.",
+          "author": {
+            "@type": "Organization",
+            "name": "Marsstein"
+          },
+          "datePublished": "2024-01-15",
+          "dateModified": "2024-01-15",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://marsstein.com/wissen/branchen/gesundheitswesen-dsgvo"
+          }
+        }}
+      />
       <Header />
       
       <main className="overflow-hidden">
@@ -878,7 +901,7 @@ const telemedicineSession = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Healthcare DSGVO Überblick
                 </motion.h2>
@@ -976,7 +999,7 @@ const telemedicineSession = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Art. 9 DSGVO - Besondere Kategorien personenbezogener Daten
                 </motion.h2>
@@ -1222,7 +1245,7 @@ const telemedicineSession = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Einwilligungsmanagement im Gesundheitswesen
                 </motion.h2>
@@ -1301,7 +1324,7 @@ const telemedicineSession = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Technische und Organisatorische Maßnahmen (TOM) für Healthcare
                 </motion.h2>
@@ -1420,7 +1443,7 @@ const telemedicineSession = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Datenschutz-Folgenabschätzung & Risikoanalyse
                 </motion.h2>
@@ -1522,7 +1545,7 @@ const telemedicineSession = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Praxis-Implementation & Roadmap
                 </motion.h2>

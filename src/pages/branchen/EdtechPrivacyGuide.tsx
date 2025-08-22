@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -901,6 +902,28 @@ const lmsIntegrationFramework = {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <SEOHead 
+        title="EdTech Privacy – Bildungssektor Datenschutz"
+        description="EdTech Datenschutz: Schülerdaten, COPPA/FERPA, Lernplattformen, digitale Bildung. ✓ Consent Management ✓ Age Verification ✓ Data Minimization."
+        canonical="/wissen/branchen/edtech-privacy"
+        keywords="EdTech Privacy, Bildungssektor Datenschutz, COPPA FERPA, Schülerdaten DSGVO, Lernplattformen Datenschutz, Age Verification"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "EdTech Privacy – Bildungssektor Datenschutz",
+          "description": "Praxisleitfaden für Datenschutz in Bildungseinrichtungen und EdTech-Unternehmen mit Fokus auf COPPA/FERPA-Compliance und Schülerdatenschutz.",
+          "author": {
+            "@type": "Organization",
+            "name": "Marsstein"
+          },
+          "datePublished": "2024-01-15",
+          "dateModified": "2024-01-15",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://marsstein.com/wissen/branchen/edtech-privacy"
+          }
+        }}
+      />
       <Header />
       
       <main className="overflow-hidden">
@@ -1085,7 +1108,7 @@ const lmsIntegrationFramework = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   EdTech Privacy Compliance Überblick
                 </motion.h2>
@@ -1185,7 +1208,7 @@ const lmsIntegrationFramework = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   COPPA Compliance & Kinderschutz
                 </motion.h2>
@@ -1425,7 +1448,7 @@ const lmsIntegrationFramework = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   FERPA Compliance & Bildungsdatenschutz
                 </motion.h2>
@@ -1504,7 +1527,7 @@ const lmsIntegrationFramework = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Altersgerechtes Einwilligungsmanagement
                 </motion.h2>
@@ -1572,7 +1595,7 @@ const lmsIntegrationFramework = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   EdTech Plattform-Sicherheit
                 </motion.h2>
@@ -1698,7 +1721,7 @@ const lmsIntegrationFramework = {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8"
+                  className="text-3xl font-bold mb-8 scroll-mt-24"
                 >
                   Praxis-Implementation & Roadmap
                 </motion.h2>

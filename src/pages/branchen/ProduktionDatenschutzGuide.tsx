@@ -80,6 +80,31 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const ProduktionDatenschutzGuide = () => {
+  // SEO Meta Tags
+  React.useEffect(() => {
+    // Title Tag
+    document.title = 'Produktion Datenschutz DSGVO – Compliance Guide';
+    
+    // Meta Description
+    const metaDescription = document.querySelector('meta[name="description"]') || document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    metaDescription.setAttribute('content', 'DSGVO-konforme Produktion: Fertigungsdaten & Mitarbeiterschutz sicher umsetzen. ISO 27001 Standards für Ihre Fertigung. Jetzt Beratung anfordern!');
+    if (!document.querySelector('meta[name="description"]')) {
+      document.head.appendChild(metaDescription);
+    }
+    
+    // Canonical URL
+    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', 'https://www.dataprivacyframework.com/wissen/branchen/produktion');
+    if (!document.querySelector('link[rel="canonical"]')) {
+      document.head.appendChild(canonical);
+    }
+    
+    return () => {
+      document.title = 'Data Privacy Framework';
+    };
+  }, []);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string>('ueberblick');
   
@@ -1524,8 +1549,8 @@ export_controls:
           </div>
         </div>
 
-        {/* Sticky Navigation */}
-        <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        {/* Sticky Navigation with ToC */}
+        <nav className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm" aria-label="Inhaltsverzeichnis">
           <div className="container px-4">
             <div className="max-w-7xl mx-auto">
               <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
@@ -1560,19 +1585,20 @@ export_controls:
               </nav>
             </div>
           </div>
-        </div>
+        </nav>
 
         {/* Main Content Sections */}
         <div className="py-20">
           <div className="container px-4">
             <div className="max-w-6xl mx-auto space-y-20">
-              {/* Überblick Section */}
-              <section id="ueberblick" className="space-y-8 scroll-mt-32">
+              {/* Überblick Section with proper scroll margin */}
+              <section id="ueberblick" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
+                  id="datenschutz-produktion-ueberblick"
                 >
                   Datenschutz in der Produktion - Überblick
                 </motion.h2>
@@ -1582,13 +1608,14 @@ export_controls:
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Produktionsdaten Section */}
-              <section id="produktionsdaten" className="space-y-8 scroll-mt-32">
+              {/* Produktionsdaten Section with proper scroll margin */}
+              <section id="produktionsdaten" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
+                  id="produktionsdaten-fertigungsinformationen"
                 >
                   Produktionsdaten & Fertigungsinformationen
                 </motion.h2>
@@ -1598,13 +1625,14 @@ export_controls:
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Qualitätssicherung Section */}
-              <section id="qualitaet" className="space-y-8 scroll-mt-32">
+              {/* Qualitätssicherung Section with proper scroll margin */}
+              <section id="qualitaet" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
+                  id="qualitaetssicherung-compliance"
                 >
                   Qualitätssicherung & Compliance
                 </motion.h2>
@@ -1614,13 +1642,14 @@ export_controls:
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Lieferkette Section */}
-              <section id="lieferkette" className="space-y-8 scroll-mt-32">
+              {/* Lieferkette Section with proper scroll margin */}
+              <section id="lieferkette" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
+                  id="lieferkette-datenaustausch"
                 >
                   Lieferkette & Datenaustausch
                 </motion.h2>
@@ -1630,13 +1659,14 @@ export_controls:
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Mitarbeiterdaten Section */}
-              <section id="mitarbeiter" className="space-y-8 scroll-mt-32">
+              {/* Mitarbeiterdaten Section with proper scroll margin */}
+              <section id="mitarbeiter" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
+                  id="mitarbeiterdatenschutz-produktion"
                 >
                   Mitarbeiterdatenschutz
                 </motion.h2>
@@ -1646,13 +1676,14 @@ export_controls:
               {/* Divider */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-              {/* Umsetzung Section */}
-              <section id="umsetzung" className="space-y-8 scroll-mt-32">
+              {/* Umsetzung Section with proper scroll margin */}
+              <section id="umsetzung" className="space-y-8" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8"
+                  id="umsetzung-implementation"
                 >
                   Umsetzung & Implementation
                 </motion.h2>

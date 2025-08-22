@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -172,6 +172,91 @@ const FederatedLearningGuide = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  // SEO Meta Tags
+  useEffect(() => {
+    // Title Tag (58 Zeichen)
+    document.title = "Federated Learning Guide – Dezentrale KI mit Privacy-by-Design";
+    
+    // Meta Description (148 Zeichen)
+    const metaDescription = "Praxisguide für Federated Learning & Differential Privacy: Sichere dezentrale KI-Kollaboration mit mathematischen Privatheitsgarantien.";
+    
+    // Viewport
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      viewportMeta = document.createElement('meta');
+      viewportMeta.setAttribute('name', 'viewport');
+      document.head.appendChild(viewportMeta);
+    }
+    viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1');
+    
+    // Meta Description
+    let descriptionMeta = document.querySelector('meta[name="description"]');
+    if (!descriptionMeta) {
+      descriptionMeta = document.createElement('meta');
+      descriptionMeta.setAttribute('name', 'description');
+      document.head.appendChild(descriptionMeta);
+    }
+    descriptionMeta.setAttribute('content', metaDescription);
+    
+    // Canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', `${window.location.origin}/wissen/ki-datenschutz/federated-learning`);
+    
+    // Open Graph Tags
+    const ogTags = [
+      { property: 'og:title', content: 'Federated Learning Guide – Dezentrale KI mit Privacy-by-Design' },
+      { property: 'og:description', content: metaDescription },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: `${window.location.origin}/wissen/ki-datenschutz/federated-learning` }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogMeta = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogMeta) {
+        ogMeta = document.createElement('meta');
+        ogMeta.setAttribute('property', tag.property);
+        document.head.appendChild(ogMeta);
+      }
+      ogMeta.setAttribute('content', tag.content);
+    });
+
+    // Scroll margin for sticky header
+    const style = document.createElement('style');
+    style.textContent = `
+      h1, h2, h3, h4, h5, h6 {
+        scroll-margin-top: 96px;
+      }
+      
+      @media (max-width: 768px) {
+        .mobile-toc-accordion {
+          max-height: 300px;
+          overflow-y: auto;
+        }
+        
+        body {
+          font-size: 16px;
+          line-height: 1.6;
+        }
+        
+        a, button {
+          min-height: 48px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   const tabs = [
     { id: 'overview', label: 'Überblick', icon: Shield },
@@ -688,7 +773,7 @@ const FederatedLearningGuide = () => {
               </div>
             </div>
             
-            <h1 className="text-5xl font-bold text-white mb-6">
+            <h1 id="federated-learning-guide" className="text-5xl font-bold text-white mb-6">
               Federated Learning & Differential Privacy
             </h1>
             
@@ -740,6 +825,68 @@ const FederatedLearningGuide = () => {
         </div>
       </div>
 
+      {/* Table of Contents */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="w-5 h-5" />
+              Inhaltsverzeichnis
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <nav aria-label="Inhaltsverzeichnis" className={cn("space-y-2", "md:grid md:grid-cols-2 md:gap-6 md:space-y-0")}>
+              <div className="space-y-2">
+                <a 
+                  href="#ueberblick" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Shield className="w-4 h-4 flex-shrink-0" />
+                  <span>Überblick & Vorteile</span>
+                </a>
+                <a 
+                  href="#federated-learning-paradigmen" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Network className="w-4 h-4 flex-shrink-0" />
+                  <span>Federated Learning Paradigmen</span>
+                </a>
+                <a 
+                  href="#differential-privacy-mechanismen" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Lock className="w-4 h-4 flex-shrink-0" />
+                  <span>Differential Privacy Mechanismen</span>
+                </a>
+              </div>
+              <div className="space-y-2">
+                <a 
+                  href="#system-architektur" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Layers className="w-4 h-4 flex-shrink-0" />
+                  <span>FL+DP System Architektur</span>
+                </a>
+                <a 
+                  href="#implementation-frameworks" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Code className="w-4 h-4 flex-shrink-0" />
+                  <span>Implementation Frameworks</span>
+                </a>
+                <a 
+                  href="#production-use-cases" 
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors p-2 rounded hover:bg-blue-50 min-h-[48px]"
+                >
+                  <Bot className="w-4 h-4 flex-shrink-0" />
+                  <span>Production Use Cases</span>
+                </a>
+              </div>
+            </nav>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -747,7 +894,7 @@ const FederatedLearningGuide = () => {
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Federated Learning & Differential Privacy</h2>
+              <h2 id="ueberblick" className="text-3xl font-bold mb-4">Federated Learning & Differential Privacy</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Die Kombination von Federated Learning und Differential Privacy ermöglicht es, 
                 KI-Modelle zu trainieren ohne dabei sensible Daten zu zentralisieren oder die 
@@ -859,6 +1006,42 @@ const FederatedLearningGuide = () => {
               </CardContent>
             </Card>
 
+            {/* Related Resources */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <LinkIcon className="w-5 h-5" />
+                  Verwandte KI-Compliance Ressourcen
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Link 
+                    to="/wissen/ki-datenschutz/financial-ai-compliance" 
+                    className="flex items-center gap-3 p-4 border rounded-lg hover:border-blue-300 hover:shadow-md transition-all min-h-[48px]"
+                  >
+                    <Building2 className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-blue-800">Financial AI Compliance</h4>
+                      <p className="text-sm text-gray-600">Regulatorische Anforderungen für KI im Finanzsektor</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  </Link>
+                  <Link 
+                    to="/wissen/ki-datenschutz/hr-ai-compliance" 
+                    className="flex items-center gap-3 p-4 border rounded-lg hover:border-blue-300 hover:shadow-md transition-all min-h-[48px]"
+                  >
+                    <Users className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-blue-800">HR AI Compliance</h4>
+                      <p className="text-sm text-gray-600">Compliance für KI-Systeme im Personalwesen</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Interactive Simulation Preview */}
             <Card>
               <CardHeader>
@@ -904,7 +1087,7 @@ const FederatedLearningGuide = () => {
           {/* Federated Learning Tab */}
           <TabsContent value="federated-learning" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Federated Learning Paradigmen</h2>
+              <h2 id="federated-learning-paradigmen" className="text-3xl font-bold mb-4">Federated Learning Paradigmen</h2>
               <p className="text-lg text-gray-600">
                 Drei Hauptansätze für dezentrales maschinelles Lernen
               </p>
@@ -1012,7 +1195,7 @@ const FederatedLearningGuide = () => {
           {/* Differential Privacy Tab */}
           <TabsContent value="differential-privacy" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Differential Privacy Mechanismen</h2>
+              <h2 id="differential-privacy-mechanismen" className="text-3xl font-bold mb-4">Differential Privacy Mechanismen</h2>
               <p className="text-lg text-gray-600">
                 Mathematische Privatheitsgarantien für Federated Learning
               </p>
@@ -1135,7 +1318,7 @@ const FederatedLearningGuide = () => {
           {/* Architecture Tab */}
           <TabsContent value="architecture" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">FL+DP System Architektur</h2>
+              <h2 id="system-architektur" className="text-3xl font-bold mb-4">FL+DP System Architektur</h2>
               <p className="text-lg text-gray-600">
                 Komponenten einer produktionstauglichen FL+DP Lösung
               </p>
@@ -1206,7 +1389,7 @@ const FederatedLearningGuide = () => {
           {/* Implementation Tab */}
           <TabsContent value="implementation" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Implementation Frameworks</h2>
+              <h2 id="implementation-frameworks" className="text-3xl font-bold mb-4">Implementation Frameworks</h2>
               <p className="text-lg text-gray-600">
                 Production-ready Frameworks für FL+DP Deployment
               </p>
@@ -1304,7 +1487,7 @@ const FederatedLearningGuide = () => {
           {/* Use Cases Tab */}
           <TabsContent value="use-cases" className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Production Use Cases</h2>
+              <h2 id="production-use-cases" className="text-3xl font-bold mb-4">Production Use Cases</h2>
               <p className="text-lg text-gray-600">
                 Erfolgreiche FL+DP Implementierungen in der Praxis
               </p>

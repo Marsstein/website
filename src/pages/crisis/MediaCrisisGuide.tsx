@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
@@ -88,6 +89,18 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const MediaCrisisGuide: React.FC = () => {
+  // Add scroll-margin-top for sticky header
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      h2, h3, h4 { scroll-margin-top: 96px; }
+      section[id] { scroll-margin-top: 80px; }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   const [currentPhase, setCurrentPhase] = useState(0);
   const [selectedChannel, setSelectedChannel] = useState('all');
   const [expandedSections, setExpandedSections] = useState<string[]>([]);
@@ -518,8 +531,80 @@ const MediaCrisisGuide: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <Helmet>
+        <title>Media Crisis – Medien-Krisenkommunikation Guide</title>
+        <meta name="description" content="Media Crisis Management: Pressestrategie, Social Media Response, Reputationsmanagement, Thought Leadership. ✓ PR Strategy ✓ Crisis Communication ✓ Brand Protection." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://marsstein.ai/wissen/krisenmanagement/media-crisis" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Media Crisis – Medien-Krisenkommunikation Guide" />
+        <meta property="og:description" content="Media Crisis Management: Pressestrategie, Social Media Response, Reputationsmanagement, Thought Leadership. ✓ PR Strategy ✓ Crisis Communication ✓ Brand Protection." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.ai/wissen/krisenmanagement/media-crisis" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "Media Crisis Management Guide",
+            "description": "Strukturierte Anleitung für professionelle Medien-Krisenkommunikation",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "name": "Crisis Detection & Assessment",
+                "text": "Erkennung der medialen Krise und erste Bewertung der Situation"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Holding Statement & First Response",
+                "text": "Erste offizielle Reaktion und Kommunikation nach außen"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Multi-Channel Response Strategy",
+                "text": "Koordinierte Antwort über alle Kommunikationskanäle"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Stakeholder Management",
+                "text": "Gezielte Kommunikation mit allen Interessengruppen"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Recovery & Reputation Rebuild",
+                "text": "Wiederherstellung des Vertrauens und der Reputation"
+              }
+            ],
+            "author": {
+              "@type": "Organization",
+              "name": "Marsstein"
+            }
+          })}
+        </script>
+      </Helmet>
       <Header />
       
+      {/* Table of Contents - Mobile */}
+      <nav aria-label="Inhaltsverzeichnis" className="lg:hidden sticky top-16 z-40 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
+        <details className="container mx-auto max-w-7xl px-4">
+          <summary className="py-3 cursor-pointer font-semibold text-purple-400 flex items-center justify-between">
+            Inhaltsverzeichnis
+            <ChevronDown className="h-5 w-5" />
+          </summary>
+          <div className="pb-4 space-y-2">
+            <a href="#crisis-phases" className="block text-sm text-slate-300 hover:text-purple-400 pl-4">Crisis Response Phasen</a>
+            <a href="#detection" className="block text-sm text-slate-300 hover:text-purple-400 pl-4">1. Crisis Detection</a>
+            <a href="#first-response" className="block text-sm text-slate-300 hover:text-purple-400 pl-4">2. First Response</a>
+            <a href="#multi-channel" className="block text-sm text-slate-300 hover:text-purple-400 pl-4">3. Multi-Channel Strategy</a>
+            <a href="#stakeholder" className="block text-sm text-slate-300 hover:text-purple-400 pl-4">4. Stakeholder Management</a>
+            <a href="#recovery" className="block text-sm text-slate-300 hover:text-purple-400 pl-4">5. Recovery & Rebuild</a>
+            <a href="#ressourcen" className="block text-sm text-slate-300 hover:text-purple-400 pl-4">Crisis Tools & Templates</a>
+          </div>
+        </details>
+      </nav>
+
       {/* Fixed Monitoring Bar */}
       <div className="fixed top-16 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
         <div className="container mx-auto max-w-7xl px-4 py-4">
@@ -606,7 +691,7 @@ const MediaCrisisGuide: React.FC = () => {
               className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12"
             >
               <span className="font-semibold text-purple-300">Professionelle Krisenkommunikation</span> für 
-              Social Media, Presse und alle Stakeholder-Gruppen.
+              Social Media, Presse und alle Stakeholder-Gruppen. Teil unserer <Link to="/wissen/krisenmanagement" className="text-purple-400 hover:text-purple-300 underline">Krisenmanagement-Sammlung</Link>.
             </motion.p>
 
             <motion.div
@@ -615,13 +700,17 @@ const MediaCrisisGuide: React.FC = () => {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 text-lg font-semibold">
-                <Megaphone className="mr-2 h-5 w-5" />
-                Crisis Response aktivieren
+              <Button asChild size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 text-lg font-semibold">
+                <Link to="/contact">
+                  <Megaphone className="mr-2 h-5 w-5" />
+                  Crisis Response aktivieren
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-purple-500/30 hover:border-purple-400 text-purple-300 hover:bg-purple-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
-                <Download className="mr-2 h-5 w-5" />
-                Response Templates
+              <Button asChild size="lg" variant="outline" className="border-2 border-purple-500/30 hover:border-purple-400 text-purple-300 hover:bg-purple-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
+                <Link to="/tools/media-templates">
+                  <Download className="mr-2 h-5 w-5" />
+                  Response Templates
+                </Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -636,10 +725,10 @@ const MediaCrisisGuide: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-2 border-purple-500/30 rounded-2xl p-8 backdrop-blur-sm"
           >
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
               <Activity className="h-6 w-6 text-purple-400" />
               Real-time Crisis Dashboard
-            </h3>
+            </h2>
             
             <div className="grid lg:grid-cols-4 gap-6 mb-6">
               {[
@@ -780,10 +869,10 @@ const MediaCrisisGuide: React.FC = () => {
                         <div className="space-y-6">
                           {/* Key Actions */}
                           <div>
-                            <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                               <Zap className="h-5 w-5 text-yellow-400" />
                               Sofortmaßnahmen
-                            </h4>
+                            </h3>
                             <div className="grid md:grid-cols-2 gap-3">
                               {phase.keyActions.map((action, idx) => (
                                 <div key={idx} className="flex items-center gap-3 p-3 bg-slate-700/50 rounded-xl">
@@ -796,10 +885,10 @@ const MediaCrisisGuide: React.FC = () => {
 
                           {/* Escalation Triggers */}
                           <div>
-                            <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                               <AlertOctagon className="h-5 w-5 text-red-400" />
                               Eskalations-Trigger
-                            </h4>
+                            </h3>
                             <div className="space-y-3">
                               {phase.escalationTriggers.map((trigger, idx) => (
                                 <div key={idx} className="flex items-center justify-between p-4 bg-red-500/10 border border-red-500/30 rounded-xl">

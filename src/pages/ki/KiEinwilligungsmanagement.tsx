@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { 
   UserCheck,
   Shield, 
@@ -57,10 +59,24 @@ import {
   Trash2,
   Copy,
   RotateCcw,
-  Save
+  Save,
+  ChevronRight,
+  Home,
+  Menu,
+  BookOpen
 } from 'lucide-react';
 
 const KiEinwilligungsmanagement = () => {
+  // SEO Meta Tags
+  useEffect(() => {
+    const metaViewport = document.querySelector('meta[name="viewport"]');
+    if (!metaViewport) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(meta);
+    }
+  }, []);
   const [activeScenario, setActiveScenario] = useState('ml-training');
   const [completedSteps, setCompletedSteps] = useState({});
   const [selectedConsentType, setSelectedConsentType] = useState('granular');
@@ -818,6 +834,42 @@ print(f"Consent verarbeitet: {len(processing_result['enabled_features'])} Featur
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>KI-Einwilligungsmanagement – DSGVO-konforme Consent-Systeme</title>
+        <meta name="description" content="Granulare Consent-Systeme für KI & ML: Dynamic Consent, Purpose Binding & Automated Validation. DSGVO Art. 7 konform. Jetzt implementieren!" />
+        <link rel="canonical" href="https://datenschutzexperte.de/ki/ki-einwilligungsmanagement" />
+        <meta property="og:title" content="KI-Einwilligungsmanagement – DSGVO-konforme Consent-Systeme" />
+        <meta property="og:description" content="Granulare Consent-Systeme für KI & ML: Dynamic Consent, Purpose Binding & Automated Validation. DSGVO Art. 7 konform." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://datenschutzexperte.de/ki/ki-einwilligungsmanagement" />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "KI-Einwilligungsmanagement – DSGVO-konforme Consent-Systeme",
+            "description": "Granulare Consent-Systeme für KI & ML: Dynamic Consent, Purpose Binding & Automated Validation. DSGVO Art. 7 konform.",
+            "datePublished": "2025-01-20",
+            "dateModified": new Date().toISOString(),
+            "author": {
+              "@type": "Organization",
+              "name": "Datenschutzexperte.de"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Datenschutzexperte.de",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://datenschutzexperte.de/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://datenschutzexperte.de/ki/ki-einwilligungsmanagement"
+            }
+          })}
+        </script>
+      </Helmet>
       <Header />
       
       {/* Hero Section */}
@@ -862,6 +914,90 @@ print(f"Consent verarbeitet: {len(processing_result['enabled_features'])} Featur
         </div>
       </motion.div>
 
+      {/* Breadcrumb Navigation */}
+      <nav className="bg-white border-b">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <Link to="/" className="hover:text-emerald-600 flex items-center gap-1">
+              <Home className="w-4 h-4" />
+              Home
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <Link to="/ki" className="hover:text-emerald-600">
+              KI & Datenschutz
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 font-medium">KI-Einwilligungsmanagement</span>
+          </div>
+        </div>
+      </nav>
+
+      {/* Table of Contents */}
+      <div className="bg-gray-50 border-b">
+        <div className="container mx-auto px-6 py-8">
+          <div className="flex items-center gap-3 mb-4">
+            <BookOpen className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-lg font-semibold">Inhaltsverzeichnis</h2>
+          </div>
+          <nav className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="#anforderungen" className="flex items-center gap-2 p-3 bg-white rounded-lg hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                <Info className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900">Anforderungen</h3>
+                <p className="text-sm text-gray-600">KI-spezifische Einwilligungsanforderungen</p>
+              </div>
+            </a>
+            <a href="#use-cases" className="flex items-center gap-2 p-3 bg-white rounded-lg hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                <Target className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900">Use Cases</h3>
+                <p className="text-sm text-gray-600">Praktische Anwendungsszenarien</p>
+              </div>
+            </a>
+            <a href="#consent-typen" className="flex items-center gap-2 p-3 bg-white rounded-lg hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                <UserCheck className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900">Consent-Typen</h3>
+                <p className="text-sm text-gray-600">Verschiedene Einwilligungsansätze</p>
+              </div>
+            </a>
+            <a href="#implementation" className="flex items-center gap-2 p-3 bg-white rounded-lg hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                <Code className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900">Implementation</h3>
+                <p className="text-sm text-gray-600">Technische Umsetzung</p>
+              </div>
+            </a>
+            <a href="#compliance" className="flex items-center gap-2 p-3 bg-white rounded-lg hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                <Scale className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900">Compliance</h3>
+                <p className="text-sm text-gray-600">Monitoring & Validierung</p>
+              </div>
+            </a>
+            <a href="#weiterführende-themen" className="flex items-center gap-2 p-3 bg-white rounded-lg hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                <ArrowRight className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900">Weiterführende Themen</h3>
+                <p className="text-sm text-gray-600">Verwandte Artikel & Ressourcen</p>
+              </div>
+            </a>
+          </nav>
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="container mx-auto px-6 py-16">
         <Tabs defaultValue="requirements" className="space-y-8">
@@ -874,7 +1010,7 @@ print(f"Consent verarbeitet: {len(processing_result['enabled_features'])} Featur
           </TabsList>
 
           {/* Consent Requirements */}
-          <TabsContent value="requirements" className="space-y-8">
+          <TabsContent value="requirements" className="space-y-8" id="anforderungen">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">KI-spezifische Einwilligungsanforderungen</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -928,7 +1064,7 @@ print(f"Consent verarbeitet: {len(processing_result['enabled_features'])} Featur
           </TabsContent>
 
           {/* Use Case Scenarios */}
-          <TabsContent value="scenarios" className="space-y-8">
+          <TabsContent value="scenarios" className="space-y-8" id="use-cases">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">KI-Einwilligungs-Szenarien</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -1045,7 +1181,7 @@ print(f"Consent verarbeitet: {len(processing_result['enabled_features'])} Featur
           </TabsContent>
 
           {/* Consent Types */}
-          <TabsContent value="types" className="space-y-8">
+          <TabsContent value="types" className="space-y-8" id="consent-typen">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Consent-Management Ansätze</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -1117,7 +1253,7 @@ print(f"Consent verarbeitet: {len(processing_result['enabled_features'])} Featur
           </TabsContent>
 
           {/* Implementation Guide */}
-          <TabsContent value="implementation" className="space-y-8">
+          <TabsContent value="implementation" className="space-y-8" id="implementation">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Implementierungsleitfaden</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -1239,7 +1375,7 @@ print(f"Consent verarbeitet: {len(processing_result['enabled_features'])} Featur
           </TabsContent>
 
           {/* Compliance & Monitoring */}
-          <TabsContent value="compliance" className="space-y-8">
+          <TabsContent value="compliance" className="space-y-8" id="compliance">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Compliance & Monitoring</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -1426,6 +1562,138 @@ print(f"Consent verarbeitet: {len(processing_result['enabled_features'])} Featur
             </Button>
           </div>
         </motion.div>
+
+        {/* Related Topics Section */}
+        <div className="mt-16 border-t pt-16" id="weiterführende-themen">
+          <h2 className="text-3xl font-bold mb-8 text-center">Weiterführende Themen</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link to="/ki/ki-datenschutzfolgenabschaetzung" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
+                      <Shield className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <CardTitle className="text-lg">KI-Datenschutzfolgenabschätzung</CardTitle>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Systematische Bewertung der Datenschutzrisiken bei KI-Systemen gemäß DSGVO Art. 35
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center text-blue-600 font-medium">
+                    Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/ki/ki-transparenz" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 bg-green-100 rounded-lg group-hover:bg-green-200 transition-colors">
+                      <Eye className="w-5 h-5 text-green-600" />
+                    </div>
+                    <CardTitle className="text-lg">KI-Transparenz & Erklärbarkeit</CardTitle>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Explainable AI und transparente Kommunikation von KI-Entscheidungen
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center text-green-600 font-medium">
+                    Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/ki/automatisierte-entscheidungen" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors">
+                      <Bot className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <CardTitle className="text-lg">Automatisierte Entscheidungen</CardTitle>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    DSGVO Art. 22 konforme Gestaltung automatisierter Entscheidungsprozesse
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center text-purple-600 font-medium">
+                    Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/ki/ki-training-datenschutz" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 bg-orange-100 rounded-lg group-hover:bg-orange-200 transition-colors">
+                      <Database className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <CardTitle className="text-lg">KI-Training & Datenschutz</CardTitle>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Datenschutzkonforme Gestaltung von ML-Trainingsprozessen und Datenpipelines
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center text-orange-600 font-medium">
+                    Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/ki/ki-audit" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 bg-red-100 rounded-lg group-hover:bg-red-200 transition-colors">
+                      <FileCheck className="w-5 h-5 text-red-600" />
+                    </div>
+                    <CardTitle className="text-lg">KI-Audit & Compliance</CardTitle>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Systematische Prüfung und Zertifizierung von KI-Systemen
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center text-red-600 font-medium">
+                    Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/ki/ki-governance" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 transition-colors">
+                      <Building2 className="w-5 h-5 text-indigo-600" />
+                    </div>
+                    <CardTitle className="text-lg">KI-Governance Framework</CardTitle>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Organisatorische Strukturen für verantwortungsvolle KI-Entwicklung
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center text-indigo-600 font-medium">
+                    Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+        </div>
       </div>
 
       <Footer />

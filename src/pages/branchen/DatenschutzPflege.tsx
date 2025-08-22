@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -86,6 +87,24 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const DatenschutzPflege = () => {
+  // Structured Data für SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Guide",
+    "name": "Datenschutz in der Pflege - DSGVO Compliance Guide",
+    "description": "Umfassender Leitfaden für Datenschutz in Pflegeeinrichtungen. Rechtssichere Pflegedokumentation nach DSGVO.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Marsstein Compliance Solutions"
+    },
+    "datePublished": "2024-01-15",
+    "dateModified": new Date().toISOString(),
+    "inLanguage": "de-DE",
+    "about": {
+      "@type": "Thing",
+      "name": "DSGVO Compliance in Pflegeeinrichtungen"
+    }
+  };
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
   const [activeSection, setActiveSection] = useState<string>('ueberblick');
@@ -93,6 +112,38 @@ const DatenschutzPflege = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  
+  // Add scroll-margin-top styles for sticky header and mobile optimizations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      h2[id], h3[id], section[id] {
+        scroll-margin-top: 96px;
+      }
+      
+      /* Mobile-optimierungen */
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        
+        .tap-target {
+          min-height: 48px;
+          min-width: 48px;
+        }
+        
+        p, li {
+          max-width: 45ch;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   
   // Navigation items for sticky navigation
   const navigationItems = [
@@ -772,6 +823,22 @@ const angehörigenApp = {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Datenschutz Pflege DSGVO – Praxis-Guide für Pflegeheime 2024</title>
+        <meta name="description" content="DSGVO für Pflegeeinrichtungen: ✓ Bewohnerdaten sicher verwalten ✓ Digitale Pflegedokumentation ✓ TOM-Checklisten ✓ Einwilligung bei Demenz. Jetzt Guide lesen!" />
+        <meta name="keywords" content="datenschutz pflege, dsgvo pflegeeinrichtung, pflegedokumentation datenschutz, bewohnerdaten schützen, tom pflegeheim, einwilligung pflege" />
+        <link rel="canonical" href="https://marsstein.com/wissen/branchen/datenschutz-pflege" />
+        <meta property="og:title" content="Datenschutz in der Pflege - DSGVO Compliance Guide" />
+        <meta property="og:description" content="Umfassender Leitfaden für Datenschutz in Pflegeeinrichtungen. Rechtssichere Pflegedokumentation nach DSGVO." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.com/wissen/branchen/datenschutz-pflege" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+      
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
       <Header />
       
@@ -829,13 +896,13 @@ const angehörigenApp = {
 
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link to="/contact?demo=true&industry=pflege">
-                      <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 group">
+                      <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 group tap-target min-h-[48px]">
                         <Heart className="mr-2 h-5 w-5" />
                         Pflege Demo buchen
                         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
-                    <Button size="lg" variant="outline" className="group">
+                    <Button size="lg" variant="outline" className="group tap-target min-h-[48px]">
                       <Download className="mr-2 h-5 w-5" />
                       Pflege DSGVO Leitfaden
                     </Button>
@@ -908,11 +975,37 @@ const angehörigenApp = {
           </motion.div>
         </section>
 
+        {/* Inhaltsverzeichnis für Mobile und Desktop */}
+        <section className="py-8 bg-white dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <nav aria-label="Inhaltsverzeichnis" className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-red-600" />
+                  Inhaltsverzeichnis
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {navigationItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left tap-target"
+                    >
+                      <item.icon className="h-5 w-5 text-red-600 flex-shrink-0" />
+                      <span className="text-sm font-medium">{item.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </nav>
+            </div>
+          </div>
+        </section>
+
         {/* Sticky Navigation */}
-        <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <nav className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm" aria-label="Inhaltsverzeichnis">
           <div className="container px-4">
             <div className="max-w-7xl mx-auto">
-              <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+              <div className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
                 {navigationItems.map((item, index) => (
                   <button
                     key={item.id}
@@ -920,6 +1013,7 @@ const angehörigenApp = {
                       scrollToSection(item.id);
                       setActiveSection(item.id);
                     }}
+                    aria-label={`Zu ${item.label} springen`}
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap",
                       activeSection === item.id
@@ -941,10 +1035,10 @@ const angehörigenApp = {
                     )}>{item.label}</span>
                   </button>
                 ))}
-              </nav>
+              </div>
             </div>
           </div>
-        </div>
+        </nav>
 
         {/* Main Content Sections */}
         <div className="py-20">
@@ -952,7 +1046,7 @@ const angehörigenApp = {
             <div className="max-w-7xl mx-auto space-y-20">
 
               {/* Overview Section */}
-              <section id="ueberblick" className="space-y-8 scroll-mt-32">
+              <section id="ueberblick" className="space-y-8 scroll-mt-32" aria-label="Überblick Datenschutz in der Pflege">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1051,7 +1145,7 @@ const angehörigenApp = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Legal Framework Section */}
-              <section id="rechtliche-grundlagen" className="space-y-8 scroll-mt-32">
+              <section id="rechtliche-grundlagen" className="space-y-8 scroll-mt-32" aria-label="Rechtliche Grundlagen">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1324,7 +1418,7 @@ const angehörigenApp = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Consent Management Section */}
-              <section id="einwilligungsmanagement" className="space-y-8 scroll-mt-32">
+              <section id="einwilligungsmanagement" className="space-y-8 scroll-mt-32" aria-label="Einwilligungsmanagement">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1403,7 +1497,7 @@ const angehörigenApp = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* TOM Pflege Section */}
-              <section id="tom-pflege" className="space-y-8 scroll-mt-32">
+              <section id="tom-pflege" className="space-y-8 scroll-mt-32" aria-label="Technische und Organisatorische Maßnahmen">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1522,7 +1616,7 @@ const angehörigenApp = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* DSFA & Risk Analysis Section */}
-              <section id="dsfa-risiken" className="space-y-8 scroll-mt-32">
+              <section id="dsfa-risiken" className="space-y-8 scroll-mt-32" aria-label="Datenschutz-Folgenabschätzung und Risiken">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1624,7 +1718,7 @@ const angehörigenApp = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Implementation Section */}
-              <section id="praxis-umsetzung" className="space-y-8 scroll-mt-32">
+              <section id="praxis-umsetzung" className="space-y-8 scroll-mt-32" aria-label="Praxis-Umsetzung">
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1866,7 +1960,7 @@ const angehörigenApp = {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <Link to="/branchen/datenschutz-arztpraxis" className="block group">
+                    <Link to="/wissen/branchen/datenschutz-arztpraxis" className="block group">
                       <div className="p-4 bg-red-50 rounded-lg border border-red-200 hover:border-red-300 transition-colors group-hover:shadow-md">
                         <Stethoscope className="h-5 w-5 text-red-600 mb-2" />
                         <div className="font-medium">Datenschutz Arztpraxis</div>
@@ -1895,8 +1989,68 @@ const angehörigenApp = {
                       </div>
                     </Link>
                   </div>
+                  
+                  {/* Additional Related Links */}
+                  <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">Verwandte Compliance-Themen</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <Link to="/wissen/branchen/logistics-compliance" className="group">
+                        <div className="p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-700 transition-colors">
+                          <h4 className="font-medium text-red-600 dark:text-red-400 group-hover:underline">Logistics Compliance</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Supply Chain DSGVO-Compliance</p>
+                        </div>
+                      </Link>
+                      <Link to="/wissen/dsgvo-compliance" className="group">
+                        <div className="p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-700 transition-colors">
+                          <h4 className="font-medium text-red-600 dark:text-red-400 group-hover:underline">DSGVO Grundlagen</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Basiswissen zur EU-Datenschutzverordnung</p>
+                        </div>
+                      </Link>
+                      <Link to="/services/datenschutzbeauftragter" className="group">
+                        <div className="p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-700 transition-colors">
+                          <h4 className="font-medium text-red-600 dark:text-red-400 group-hover:underline">Externer DSB</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Datenschutzbeauftragter für Pflegeeinrichtungen</p>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+        
+        {/* Related Links Section for SEO */}
+        <section className="py-12 bg-gray-50 dark:bg-gray-900">
+          <div className="container px-4">
+            <div className="max-w-7xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">Verwandte Compliance-Themen</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Link to="/wissen/branchen/logistics-compliance" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">Logistics Compliance</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">DSGVO-konforme Supply Chain und Tracking</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/wissen/branchen/datenschutz-arztpraxis" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">Datenschutz Arztpraxis</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Patientendatenschutz in der ambulanten Versorgung</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/wissen/dsgvo-compliance" className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-red-600 dark:text-red-400 group-hover:underline mb-2">DSGVO Grundlagen</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Basiswissen zur EU-Datenschutzverordnung</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -1904,6 +2058,7 @@ const angehörigenApp = {
 
       <Footer />
     </div>
+    </>
   );
 };
 

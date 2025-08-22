@@ -70,6 +70,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const GoogleAnalyticsAustriaCase: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -405,6 +406,36 @@ function initAnalytics(hasConsent) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900">
+      <SEOHead
+        title="Google Analytics Austria DSB – US-Tool-Verbot Entscheidung"
+        description="Google Analytics Austria DSB-Entscheidung: US-Tool-Verbot, Schrems II Auswirkungen, Analytics-Alternativen. ✓ Regulatory Decision ✓ Tool Assessment ✓ Compliance Strategy."
+        canonical="/wissen/rechtsprechung/google-analytics-austria"
+        keywords="Google Analytics, Austria, DSB, Datenschutzbehörde, US-Tools, Schrems II, Analytics-Alternativen, DSGVO"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Google Analytics Austria DSB – US-Tool-Verbot Entscheidung",
+          "description": "Österreichische Datenschutzbehörde verbietet Google Analytics wegen unzulässiger Datenübermittlung in die USA",
+          "author": {
+            "@type": "Organization",
+            "name": "Marsstein"
+          },
+          "publisher": {
+            "@type": "Organization", 
+            "name": "Marsstein",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://marsstein.com/logo.png"
+            }
+          },
+          "datePublished": "2022-01-13",
+          "dateModified": "2024-01-15",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://marsstein.com/wissen/rechtsprechung/google-analytics-austria"
+          }
+        }}
+      />
       <Header />
       
       {/* Animated Background Elements */}
@@ -503,6 +534,46 @@ function initAnalytics(hasConsent) {
         </div>
       </motion.section>
 
+      {/* Table of Contents */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-800/20">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h2 id="inhaltsverzeichnis" className="text-3xl font-bold text-white mb-6" style={{ scrollMarginTop: '100px' }}>Inhaltsverzeichnis</h2>
+            <nav aria-label="Inhaltsverzeichnis" className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-4 text-left">
+                <div className="space-y-2">
+                  <a href="#entscheidungsuebersicht" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-orange-400 font-medium">1.</span> Entscheidungsübersicht
+                  </a>
+                  <a href="#kernurteile" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-orange-400 font-medium">2.</span> Kernurteile & Begründung
+                  </a>
+                  <a href="#technische-analyse" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-orange-400 font-medium">3.</span> Technische Analyse
+                  </a>
+                </div>
+                <div className="space-y-2">
+                  <a href="#alternativen" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-orange-400 font-medium">4.</span> Analytics-Alternativen
+                  </a>
+                  <a href="#compliance" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-orange-400 font-medium">5.</span> Compliance-Umsetzung
+                  </a>
+                  <a href="#eu-auswirkungen" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-orange-400 font-medium">6.</span> EU-weite Auswirkungen
+                  </a>
+                </div>
+              </div>
+            </nav>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Content Tabs */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
@@ -513,24 +584,30 @@ function initAnalytics(hasConsent) {
               transition={{ duration: 0.6 }}
               className="mb-12"
             >
-              <TabsList className="grid w-full grid-cols-6 bg-slate-800/60 backdrop-blur-sm p-2 rounded-xl">
-                <TabsTrigger value="overview" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                  Überblick
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-6 bg-slate-800/60 backdrop-blur-sm p-2 rounded-xl gap-2 md:gap-0">
+                <TabsTrigger value="overview" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Überblick</span>
+                  <span className="md:hidden">Info</span>
                 </TabsTrigger>
-                <TabsTrigger value="findings" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                  Kernurteile
+                <TabsTrigger value="findings" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Kernurteile</span>
+                  <span className="md:hidden">Urteil</span>
                 </TabsTrigger>
-                <TabsTrigger value="technical" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                  Technische Analyse
+                <TabsTrigger value="technical" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Technische Analyse</span>
+                  <span className="md:hidden">Tech</span>
                 </TabsTrigger>
-                <TabsTrigger value="alternatives" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                  Alternativen
+                <TabsTrigger value="alternatives" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Alternativen</span>
+                  <span className="md:hidden">Alt.</span>
                 </TabsTrigger>
-                <TabsTrigger value="implementation" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                  Umsetzung
+                <TabsTrigger value="implementation" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Umsetzung</span>
+                  <span className="md:hidden">Guide</span>
                 </TabsTrigger>
-                <TabsTrigger value="eu-impact" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">
-                  EU-Auswirkungen
+                <TabsTrigger value="eu-impact" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">EU-Auswirkungen</span>
+                  <span className="md:hidden">EU</span>
                 </TabsTrigger>
               </TabsList>
             </motion.div>
@@ -546,7 +623,7 @@ function initAnalytics(hasConsent) {
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-3 gap-8">
                       <div className="md:col-span-2">
-                        <h3 className="text-2xl font-bold text-white mb-6">Entscheidungsübersicht</h3>
+                        <h3 id="entscheidungsuebersicht" className="text-2xl font-bold text-white mb-6" style={{ scrollMarginTop: '100px' }}>Entscheidungsübersicht</h3>
                         <div className="space-y-4 text-slate-300 leading-relaxed">
                           <p>
                             Am 22. Dezember 2021 entschied die österreichische Datenschutzbehörde (DSB) 
@@ -607,7 +684,7 @@ function initAnalytics(hasConsent) {
             </TabsContent>
 
             {/* Key Findings Tab */}
-            <TabsContent value="findings" className="space-y-8">
+            <TabsContent value="findings" className="space-y-8" id="kernurteile">
               <div className="grid gap-6">
                 {keyFindings.map((finding, index) => (
                   <motion.div
@@ -645,7 +722,7 @@ function initAnalytics(hasConsent) {
             </TabsContent>
 
             {/* Technical Analysis Tab */}
-            <TabsContent value="technical" className="space-y-8">
+            <TabsContent value="technical" className="space-y-8" id="technische-analyse">
               <div className="space-y-8">
                 {technicalAnalysis.map((analysis, index) => (
                   <motion.div
@@ -705,7 +782,7 @@ function initAnalytics(hasConsent) {
             </TabsContent>
 
             {/* Alternatives Tab */}
-            <TabsContent value="alternatives" className="space-y-8">
+            <TabsContent value="alternatives" className="space-y-8" id="alternativen">
               <div className="grid gap-8">
                 {alternatives.map((alternative, index) => (
                   <motion.div
@@ -819,7 +896,7 @@ function initAnalytics(hasConsent) {
             </TabsContent>
 
             {/* Implementation Tab */}
-            <TabsContent value="implementation" className="space-y-8">
+            <TabsContent value="implementation" className="space-y-8" id="compliance">
               <div className="space-y-8">
                 {implementationGuide.map((phase, index) => (
                   <motion.div
@@ -890,7 +967,7 @@ function initAnalytics(hasConsent) {
             </TabsContent>
 
             {/* EU Impact Tab */}
-            <TabsContent value="eu-impact" className="space-y-8">
+            <TabsContent value="eu-impact" className="space-y-8" id="eu-auswirkungen">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

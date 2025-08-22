@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
@@ -10,6 +11,18 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const VendorDataBreachGuide: React.FC = () => {
+  // Add scroll-margin-top for sticky header
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      h2, h3, h4 { scroll-margin-top: 96px; }
+      section[id] { scroll-margin-top: 80px; }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   const [currentPhase, setCurrentPhase] = useState(0);
   const [completedTasks, setCompletedTasks] = useState<string[]>([]);
   const [vendorStatus, setVendorStatus] = useState<Record<string, 'unknown' | 'contacted' | 'responsive' | 'unresponsive'>>({});
@@ -435,6 +448,59 @@ const VendorDataBreachGuide: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900">
+      <Helmet>
+        <title>Vendor Data Breach – Lieferanten-Datenpanne Response</title>
+        <meta name="description" content="Vendor Data Breach: Third-Party Incident Response, Vertragsmanagement, Supply Chain Security. ✓ Vendor Management ✓ Contract Enforcement ✓ Risk Assessment." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://marsstein.ai/wissen/krisenmanagement/vendor-data-breach" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Vendor Data Breach – Lieferanten-Datenpanne Response" />
+        <meta property="og:description" content="Vendor Data Breach: Third-Party Incident Response, Vertragsmanagement, Supply Chain Security. ✓ Vendor Management ✓ Contract Enforcement ✓ Risk Assessment." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.ai/wissen/krisenmanagement/vendor-data-breach" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "Vendor Data Breach Response Guide",
+            "description": "Strukturierter Leitfaden für den Umgang mit Datenpannen bei Lieferanten und Dienstleistern",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "name": "Vendor Impact Assessment",
+                "text": "Sofortige Bewertung des Vendor-Vorfalls und Auswirkungen auf eigene Organisation"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Vendor Communication & Coordination",
+                "text": "Direkte Kommunikation mit betroffenem Vendor und Informationsbeschaffung"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Contractual Rights & Legal Assessment",
+                "text": "Analyse der vertraglichen Rechte und rechtlichen Optionen"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Customer & Stakeholder Communication",
+                "text": "Transparente Kommunikation mit eigenen Kunden und Stakeholdern"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Long-term Vendor Management",
+                "text": "Strategische Maßnahmen für zukünftige Vendor-Sicherheit"
+              }
+            ],
+            "author": {
+              "@type": "Organization",
+              "name": "Marsstein"
+            }
+          })}
+        </script>
+      </Helmet>
       <Header />
       
       {/* Fixed Progress Bar */}
@@ -503,7 +569,8 @@ const VendorDataBreachGuide: React.FC = () => {
               className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12"
             >
               <span className="font-semibold text-indigo-300">Strukturierte Reaktion</span> auf Datenschutzverletzungen 
-              bei Dienstleistern und Lieferanten.
+              bei Dienstleistern und Lieferanten. Ergänzt unsere <Link to="/wissen/krisenmanagement" className="text-indigo-400 hover:text-indigo-300 underline">Krisenmanagement-Guides</Link> 
+              und <Link to="/dsgvo/lieferanten" className="text-indigo-400 hover:text-indigo-300 underline">Lieferanten-Management</Link>.
             </motion.p>
 
             <motion.div
@@ -512,13 +579,17 @@ const VendorDataBreachGuide: React.FC = () => {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 text-white px-8 py-4 text-lg font-semibold">
-                <Search className="mr-2 h-5 w-5" />
-                Impact Assessment starten
+              <Button asChild size="lg" className="bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 text-white px-8 py-4 text-lg font-semibold">
+                <Link to="/contact">
+                  <Search className="mr-2 h-5 w-5" />
+                  Impact Assessment starten
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-indigo-500/30 hover:border-indigo-400 text-indigo-300 hover:bg-indigo-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
-                <Download className="mr-2 h-5 w-5" />
-                Vendor Response Toolkit
+              <Button asChild size="lg" variant="outline" className="border-2 border-indigo-500/30 hover:border-indigo-400 text-indigo-300 hover:bg-indigo-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
+                <Link to="/tools/vendor-assessment">
+                  <Download className="mr-2 h-5 w-5" />
+                  Vendor Response Toolkit
+                </Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -533,10 +604,10 @@ const VendorDataBreachGuide: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="bg-gradient-to-r from-indigo-500/10 to-blue-500/10 border-2 border-indigo-500/30 rounded-2xl p-8 backdrop-blur-sm"
           >
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
               <Target className="h-6 w-6 text-indigo-400" />
               Vendor Risk Assessment Matrix
-            </h3>
+            </h2>
             
             <div className="grid lg:grid-cols-4 gap-4">
               {vendorRiskCategories.map((category, index) => (
@@ -549,7 +620,7 @@ const VendorDataBreachGuide: React.FC = () => {
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <div className={cn("w-4 h-4 rounded-full", category.color)} />
-                    <h4 className="font-semibold text-white">{category.risk}</h4>
+                    <h3 className="font-semibold text-white">{category.risk}</h3>
                   </div>
                   <div className="space-y-2">
                     {category.vendors.map((vendor, idx) => (
@@ -756,12 +827,19 @@ const VendorDataBreachGuide: React.FC = () => {
                     <h3 className="text-lg font-bold mb-2 text-white">{tool.title}</h3>
                     <p className="text-sm text-slate-300 mb-4">{tool.description}</p>
                     
-                    <Button className={cn(
+                    <Button asChild className={cn(
                       "w-full bg-gradient-to-r text-white text-sm",
                       tool.color
                     )}>
-                      {tool.action}
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <Link to={
+                        tool.title === "Impact Assessment" ? "/tools/vendor-assessment" :
+                        tool.title === "Communication Scripts" ? "/dsgvo/dokumentation/vorlagen" :
+                        tool.title === "Legal Checklist" ? "/dsgvo/rechtliche-grundlagen" :
+                        "/contact"
+                      }>
+                        {tool.action}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>

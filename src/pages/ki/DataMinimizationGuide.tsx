@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -101,10 +101,121 @@ import {
   Filter,
   Trash,
   Sliders,
-  Workflow
+  Workflow,
+  List
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const DataMinimizationGuide = () => {
+  useEffect(() => {
+    document.title = 'Datenminimierung KI-Modelle – DSGVO-konforme ML-Entwicklung';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Datenminimierung für KI-Systeme: Feature Selection, Smart Sampling & Pipeline-Optimierung. DSGVO-konform entwickeln. Jetzt umsetzen!');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Datenminimierung für KI-Systeme: Feature Selection, Smart Sampling & Pipeline-Optimierung. DSGVO-konform entwickeln. Jetzt umsetzen!';
+      document.head.appendChild(meta);
+    }
+
+    // Viewport meta tag
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(meta);
+    }
+
+    // Add canonical URL
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      const link = document.createElement('link');
+      link.rel = 'canonical';
+      link.href = 'https://dataguard.de/wissen/ki-datenschutz/data-minimization';
+      document.head.appendChild(link);
+    }
+
+    // Add Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Datenminimierung KI-Modelle – DSGVO-konforme ML-Entwicklung' },
+      { property: 'og:description', content: 'Datenminimierung für KI-Systeme: Feature Selection, Smart Sampling & Pipeline-Optimierung. DSGVO-konform entwickeln. Jetzt umsetzen!' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: 'https://dataguard.de/wissen/ki-datenschutz/data-minimization' }
+    ];
+
+    ogTags.forEach(tag => {
+      const existingTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!existingTag) {
+        const meta = document.createElement('meta');
+        meta.setAttribute('property', tag.property);
+        meta.content = tag.content;
+        document.head.appendChild(meta);
+      }
+    });
+
+    // Add JSON-LD structured data
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Datenminimierung KI-Modelle – DSGVO-konforme ML-Entwicklung",
+      "description": "Datenminimierung für KI-Systeme: Feature Selection, Smart Sampling & Pipeline-Optimierung. DSGVO-konform entwickeln. Jetzt umsetzen!",
+      "author": {
+        "@type": "Organization",
+        "name": "DataGuard"
+      },
+      "datePublished": "2024-01-15",
+      "dateModified": new Date().toISOString(),
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dataguard.de/wissen/ki-datenschutz/data-minimization"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://dataguard.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Wissen",
+            "item": "https://dataguard.de/wissen"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "KI-Datenschutz",
+            "item": "https://dataguard.de/wissen/ki-datenschutz"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Datenminimierung",
+            "item": "https://dataguard.de/wissen/ki-datenschutz/data-minimization"
+          }
+        ]
+      }
+    };
+
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(structuredData);
+    document.head.appendChild(scriptTag);
+
+    return () => {
+      // Cleanup on unmount
+      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
+
   const [activeStage, setActiveStage] = useState(0);
   const [completedSteps, setCompletedSteps] = useState({});
   const [expandedSections, setExpandedSections] = useState({});
@@ -508,10 +619,14 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50" itemScope itemType="https://schema.org/Article">
+      <meta itemProp="name" content="Datenminimierung KI-Modelle – DSGVO-konforme ML-Entwicklung" />
+      <meta itemProp="description" content="Datenminimierung für KI-Systeme: Feature Selection, Smart Sampling & Pipeline-Optimierung. DSGVO-konform entwickeln. Jetzt umsetzen!" />
+      <meta itemProp="author" content="DataGuard Experts" />
       <Header />
       
       {/* Hero Section */}
+      <section className="relative">
       <motion.div 
         ref={containerRef}
         className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white overflow-hidden"
@@ -529,10 +644,10 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
               <Minimize2 className="w-5 h-5" />
               <span className="font-medium">Data Minimization Guide</span>
             </div>
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
               Data Minimization in ML Pipelines
             </h1>
-            <p className="text-xl lg:text-2xl text-blue-100 mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl text-blue-100 mb-8 leading-relaxed px-4">
               DSGVO-konforme Reduzierung von Personendaten in Machine Learning Workflows durch intelligente Optimierungstechniken
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
@@ -552,9 +667,68 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
           </motion.div>
         </div>
       </motion.div>
+      </section>
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 py-16">
+      <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+            <li>
+              <Link to="/" className="hover:text-blue-600">Home</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li>
+              <Link to="/wissen" className="hover:text-blue-600">Wissen</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li>
+              <Link to="/wissen/ki-datenschutz" className="hover:text-blue-600">KI-Datenschutz</Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li className="text-gray-900 font-medium">Datenminimierung</li>
+          </ol>
+        </nav>
+
+        {/* Table of Contents for Mobile */}
+        <div className="lg:hidden mb-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <List className="w-5 h-5" />
+                Inhaltsverzeichnis
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <nav aria-label="Inhaltsverzeichnis">
+                <ul className="space-y-2">
+                  <li>
+                    <a href="#principles-section" className="text-blue-600 hover:underline">Prinzipien</a>
+                  </li>
+                  <li>
+                    <a href="#techniques-section" className="text-blue-600 hover:underline">Techniken</a>
+                  </li>
+                  <li>
+                    <a href="#implementation-section" className="text-blue-600 hover:underline">Umsetzung</a>
+                  </li>
+                  <li>
+                    <a href="#compliance-section" className="text-blue-600 hover:underline">Compliance</a>
+                  </li>
+                  <li>
+                    <a href="#monitoring-section" className="text-blue-600 hover:underline">Monitoring</a>
+                  </li>
+                </ul>
+              </nav>
+            </CardContent>
+          </Card>
+        </div>
+
         <Tabs defaultValue="principles" className="space-y-8">
           <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5">
             <TabsTrigger value="principles">Prinzipien</TabsTrigger>
@@ -567,10 +741,12 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
           {/* Minimization Principles */}
           <TabsContent value="principles" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Data Minimization Prinzipien</h2>
+              <h2 id="principles-section" className="text-2xl sm:text-3xl font-bold mb-4 scroll-mt-24">Data Minimization Prinzipien</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Vier Kernprinzipien zur systematischen Reduzierung von Personendaten in ML-Pipelines 
-                unter Erhaltung der Modellqualität und Compliance mit DSGVO-Anforderungen.
+                unter Erhaltung der Modellqualität und Compliance mit <Link to="/wissen/dsgvo-grundlagen" className="text-blue-600 hover:underline">DSGVO</Link>-Anforderungen.
+                Ergänzend empfehlen wir unsere Guides zu <Link to="/wissen/ki-datenschutz/privacy-preserving-ai" className="text-blue-600 hover:underline">Privacy-Preserving AI</Link> und 
+                <Link to="/wissen/ki-datenschutz/model-privacy-attacks" className="text-blue-600 hover:underline"> Model Privacy Attacks</Link>.
               </p>
             </div>
 
@@ -585,8 +761,8 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
                   <Card className="h-full hover:shadow-lg transition-shadow">
                     <CardHeader className="pb-4">
                       <div className="flex items-center gap-4">
-                        <div className={`p-3 rounded-lg ${principle.color}`}>
-                          <principle.icon className="w-6 h-6 text-white" />
+                        <div className={`p-2 sm:p-3 rounded-lg ${principle.color}`}>
+                          <principle.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                         </div>
                         <div>
                           <CardTitle className="text-xl">{principle.title}</CardTitle>
@@ -622,7 +798,7 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
           {/* Implementation Techniques */}
           <TabsContent value="techniques" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Implementierungstechniken</h2>
+              <h2 id="techniques-section" className="text-2xl sm:text-3xl font-bold mb-4 scroll-mt-24">Implementierungstechniken</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Praktische Techniken zur Datenminimierung mit Code-Beispielen und 
                 quantifizierten Privacy-Benefits für verschiedene ML-Pipeline-Phasen.
@@ -674,7 +850,7 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
           {/* Implementation Roadmap */}
           <TabsContent value="implementation" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Implementation Roadmap</h2>
+              <h2 id="implementation-section" className="text-2xl sm:text-3xl font-bold mb-4 scroll-mt-24">Implementation Roadmap</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Schritt-für-Schritt Anleitung zur Implementierung von Data Minimization 
                 in bestehende ML-Pipelines mit Zeitplänen und Erfolgsmetriken.
@@ -770,7 +946,7 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
           {/* Compliance Framework */}
           <TabsContent value="compliance" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">DSGVO Compliance Framework</h2>
+              <h2 id="compliance-section" className="text-2xl sm:text-3xl font-bold mb-4 scroll-mt-24">DSGVO Compliance Framework</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Rechtliche Anforderungen, Risikobewertung und konkrete Umsetzungsmaßnahmen 
                 für DSGVO-konforme Data Minimization in ML-Systemen.
@@ -901,7 +1077,7 @@ X_synthetic, y_synthetic = create_dp_synthetic_data(X_real, y_real, epsilon=1.0)
           {/* Monitoring & Metrics */}
           <TabsContent value="monitoring" className="space-y-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Monitoring & Metriken</h2>
+              <h2 id="monitoring-section" className="text-3xl font-bold mb-4 scroll-mt-24">Monitoring & Metriken</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 Kontinuierliche Überwachung der Data Minimization Implementierung mit 
                 automatisierten Metriken und Compliance-Dashboards.
@@ -1163,7 +1339,7 @@ schedule.every().day.at("06:00").do(daily_monitoring_job)`}</code>
             </Button>
           </div>
         </motion.div>
-      </div>
+      </main>
 
       <Footer />
     </div>

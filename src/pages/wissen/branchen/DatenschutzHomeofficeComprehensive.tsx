@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { 
   Shield, 
   CheckCircle, 
@@ -297,6 +298,60 @@ const cloudStoragePolicy = {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+      <Helmet>
+        <title>Datenschutz Homeoffice – DSGVO-konforme Remote Work Lösungen</title>
+        <meta name="description" content="DSGVO-konformes Homeoffice: Sichere Remote-Arbeit mit Datenschutz-Compliance. Technische & organisatorische Maßnahmen. Jetzt informieren!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Datenschutz Homeoffice – DSGVO-konforme Remote Work Lösungen" />
+        <meta property="og:description" content="DSGVO-konformes Homeoffice: Sichere Remote-Arbeit mit Datenschutz-Compliance. Technische & organisatorische Maßnahmen. Jetzt informieren!" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.de/wissen/branchen/datenschutz-homeoffice" />
+        <link rel="canonical" href="https://marsstein.de/wissen/branchen/datenschutz-homeoffice" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Datenschutz Homeoffice – DSGVO-konforme Remote Work Lösungen",
+            "description": "DSGVO-konformes Homeoffice: Sichere Remote-Arbeit mit Datenschutz-Compliance. Technische & organisatorische Maßnahmen",
+            "author": {
+              "@type": "Organization",
+              "name": "Marsstein"
+            },
+            "publisher": {
+              "@type": "Organization", 
+              "name": "Marsstein"
+            },
+            "datePublished": "2024-01-01",
+            "dateModified": "2024-12-01"
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Wissen",
+                "item": "https://marsstein.de/wissen"
+              },
+              {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Branchen",
+                "item": "https://marsstein.de/wissen/branchen"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Datenschutz Homeoffice",
+                "item": "https://marsstein.de/wissen/branchen/datenschutz-homeoffice"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       <Header />
       
       {/* Hero Section */}
@@ -429,9 +484,9 @@ const cloudStoragePolicy = {
       </section>
 
       {/* Sticky Navigation */}
-      <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+      <nav className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm" aria-label="Inhaltsverzeichnis">
         <div className="container px-4">
-          <nav className="flex items-center justify-start md:justify-center gap-2 py-4 overflow-x-auto scrollbar-hide">
+          <div className="flex items-center justify-start md:justify-center gap-2 py-4 overflow-x-auto scrollbar-hide">
             {navigationItems.map((item) => (
               <button
                 key={item.id}
@@ -447,9 +502,9 @@ const cloudStoragePolicy = {
                 {item.label}
               </button>
             ))}
-          </nav>
+          </div>
         </div>
-      </div>
+      </nav>
 
       {/* Main Content */}
       <div className="py-20 bg-gray-50 dark:bg-gray-950">
@@ -457,7 +512,7 @@ const cloudStoragePolicy = {
           <div className="max-w-7xl mx-auto space-y-20">
             
             {/* Überblick Section */}
-            <section id="ueberblick" className="space-y-8 scroll-mt-32">
+            <section id="ueberblick" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -557,7 +612,7 @@ const cloudStoragePolicy = {
             </section>
 
             {/* Rechtslage Section */}
-            <section id="rechtslage" className="space-y-8 scroll-mt-32">
+            <section id="rechtslage" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -688,7 +743,7 @@ const cloudStoragePolicy = {
             </section>
 
             {/* Technische Sicherheit Section */}
-            <section id="technische-sicherheit" className="space-y-8 scroll-mt-32">
+            <section id="technische-sicherheit" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -829,7 +884,7 @@ const cloudStoragePolicy = {
             </section>
 
             {/* Arbeitsplatz Section */}
-            <section id="arbeitsplatz" className="space-y-8 scroll-mt-32">
+            <section id="arbeitsplatz" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -945,7 +1000,7 @@ const cloudStoragePolicy = {
             </section>
 
             {/* Kommunikation Section */}
-            <section id="kommunikation" className="space-y-8 scroll-mt-32">
+            <section id="kommunikation" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1132,7 +1187,7 @@ const cloudStoragePolicy = {
             </section>
 
             {/* Umsetzung Section */}
-            <section id="umsetzung" className="space-y-8 scroll-mt-32">
+            <section id="umsetzung" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1323,7 +1378,7 @@ const cloudStoragePolicy = {
             </section>
 
             {/* Interaktive Checkliste */}
-            <section id="checkliste" className="space-y-8 scroll-mt-32">
+            <section id="checkliste" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1408,7 +1463,7 @@ const cloudStoragePolicy = {
             </section>
 
             {/* Ressourcen Section */}
-            <section id="ressourcen" className="space-y-8 scroll-mt-32">
+            <section id="ressourcen" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1505,38 +1560,38 @@ const cloudStoragePolicy = {
                       <ul className="space-y-3">
                         <li>
                           <Link 
-                            to="/tools/homeoffice-check"
+                            to="/wissen/branchen/datenschutz-betriebsrat"
                             className="flex items-center gap-2 text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
                           >
-                            <ShieldCheck className="h-4 w-4" />
-                            Homeoffice-Security-Check
+                            <HandshakeIcon className="h-4 w-4" />
+                            Datenschutz für Betriebsräte
                           </Link>
                         </li>
                         <li>
                           <Link 
-                            to="/beratung/homeoffice"
+                            to="/wissen/it-sicherheit/verschluesselung"
                             className="flex items-center gap-2 text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
                           >
-                            <HeartHandshake className="h-4 w-4" />
-                            Homeoffice-Beratung
+                            <Lock className="h-4 w-4" />
+                            Verschlüsselung & sichere Kommunikation
                           </Link>
                         </li>
                         <li>
                           <Link 
-                            to="/schulungen/remote-work"
+                            to="/wissen/compliance/audit-management"
                             className="flex items-center gap-2 text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
                           >
                             <Award className="h-4 w-4" />
-                            Remote-Work Schulungen
+                            DSGVO-Audit Management
                           </Link>
                         </li>
                         <li>
                           <Link 
-                            to="/blog/homeoffice-dsgvo"
+                            to="/wissen/recht/beschaeftigtendatenschutz"
                             className="flex items-center gap-2 text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
                           >
-                            <BookOpen className="h-4 w-4" />
-                            Blog: Homeoffice & DSGVO
+                            <Users className="h-4 w-4" />
+                            Beschäftigtendatenschutz
                           </Link>
                         </li>
                       </ul>

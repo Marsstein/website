@@ -15,12 +15,22 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
+import { 
+  Breadcrumb, 
+  BreadcrumbItem, 
+  BreadcrumbLink, 
+  BreadcrumbList, 
+  BreadcrumbPage, 
+  BreadcrumbSeparator 
+} from '@/components/ui/breadcrumb';
 
 const TravelComplianceGuide = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState('overview');
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
   const [expandedScenarios, setExpandedScenarios] = useState<Set<string>>(new Set());
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -64,6 +74,9 @@ const TravelComplianceGuide = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 150;
+      
+      // Show/hide scroll to top button
+      setShowScrollTop(window.scrollY > 500);
       
       for (const item of navigationItems) {
         const section = document.getElementById(item.id);
@@ -130,7 +143,54 @@ const TravelComplianceGuide = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
+      <SEOHead 
+        title="Travel Compliance DSGVO - Datenschutz für Reiseplattformen"
+        description="DSGVO-konforme Lösungen für Travel & Tourism: ✓ Buchungsdaten ✓ Location Tracking ✓ Payment Compliance. Jetzt Guide lesen!"
+        canonical="/wissen/branchen/travel-compliance"
+        keywords="Travel Compliance, DSGVO Reisebranche, Tourism DSGVO, Buchungsplattform Datenschutz, Location Tracking DSGVO, Payment Compliance Travel, PCI DSS Tourism, Cross-Border Data Transfer"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Guide",
+          "name": "DSGVO-Compliance Guide für Travel & Tourism Plattformen",
+          "description": "Umfassender Guide zur DSGVO-Compliance in der Reise- und Tourismusbranche mit praktischen Implementierungsbeispielen.",
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Travel Tech Companies, Booking Platforms, Tourism Operators"
+          },
+          "keywords": "Travel Compliance, DSGVO, Tourism, Datenschutz, Location Tracking, Payment Compliance",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Marsstein",
+            "url": "https://marsstein.com"
+          },
+          "datePublished": "2024-01-15",
+          "dateModified": new Date().toISOString()
+        }}
+      />
       <Header />
+      
+      {/* Breadcrumb Navigation */}
+      <div className="container px-4 py-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen">Wissen</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen/branchen">Branchen</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Travel Compliance</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       
       {/* Hero Section with Parallax */}
       <section ref={heroRef} className="relative py-20 md:py-28 overflow-hidden">
@@ -149,10 +209,10 @@ const TravelComplianceGuide = () => {
               <Badge className="mb-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white">
                 Travel & Tourism Compliance
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+              <h1 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
                 DSGVO-Compliance für Travel & Tourism Plattformen
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
                 Von Buchungsplattformen bis Location-Based Services: Meistern Sie die Datenschutz-Herausforderungen der Reisebranche mit unseren praxiserprobten Lösungen.
               </p>
               
@@ -171,8 +231,8 @@ const TravelComplianceGuide = () => {
                     className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-lg p-4 shadow-lg"
                   >
                     <stat.icon className="h-8 w-8 mx-auto mb-2 text-teal-600" />
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
+                    <div className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -180,8 +240,9 @@ const TravelComplianceGuide = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700"
+                  className="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-base md:text-lg min-h-[48px] px-6"
                   onClick={() => scrollToSection('overview')}
+                  aria-label="Zum Compliance Guide navigieren"
                 >
                   Compliance Guide starten
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -189,7 +250,8 @@ const TravelComplianceGuide = () => {
                 <Button 
                   size="lg" 
                   variant="outline"
-                  className="border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-950"
+                  className="border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-950 text-base md:text-lg min-h-[48px] px-6"
+                  aria-label="Travel Compliance Whitepaper herunterladen"
                 >
                   <FileText className="mr-2 h-5 w-5" />
                   Whitepaper anfordern
@@ -203,13 +265,13 @@ const TravelComplianceGuide = () => {
       {/* Sticky Navigation */}
       <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
         <div className="container px-4">
-          <nav className="flex items-center justify-start md:justify-center gap-2 py-2 overflow-x-auto scrollbar-hide">
+          <nav className="flex items-center justify-start md:justify-center gap-2 py-2 overflow-x-auto scrollbar-hide" aria-label="Seitennavigation">
             {navigationItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={cn(
-                  "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap",
+                  "flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap min-h-[48px]",
                   activeSection === item.id
                     ? "bg-teal-100 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300"
                     : "text-gray-600 dark:text-gray-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
@@ -228,6 +290,35 @@ const TravelComplianceGuide = () => {
         <div className="container px-4">
           <div className="max-w-7xl mx-auto space-y-20">
             
+            {/* Table of Contents */}
+            <section className="mb-12">
+              <Card className="p-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-teal-600" />
+                    Inhaltsverzeichnis
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <nav aria-label="Inhaltsverzeichnis">
+                    <ul className="space-y-2">
+                      {navigationItems.map((item) => (
+                        <li key={item.id}>
+                          <button
+                            onClick={() => scrollToSection(item.id)}
+                            className="flex items-center gap-2 text-gray-600 hover:text-teal-600 transition-colors py-2 w-full text-left min-h-[44px]"
+                          >
+                            <item.icon className="h-4 w-4" />
+                            <span>{item.label}</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </CardContent>
+              </Card>
+            </section>
+            
             {/* Overview Section */}
             <section id="overview" className="space-y-8 scroll-mt-32">
               <motion.div
@@ -236,9 +327,9 @@ const TravelComplianceGuide = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Travel Compliance im Überblick</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                  Die Reise- und Tourismusbranche verarbeitet täglich Millionen sensibler Daten: von Reisepässen über Zahlungsinformationen bis zu Standortdaten. Moderne Travel-Tech-Unternehmen müssen dabei höchste Datenschutzstandards erfüllen.
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Travel Compliance im Überblick</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                  Die Reise- und Tourismusbranche verarbeitet täglich Millionen sensibler Daten: von Reisepässen über Zahlungsinformationen bis zu Standortdaten. Moderne Travel-Tech-Unternehmen müssen dabei höchste <Link to="/dsgvo-compliance" className="text-teal-600 hover:underline">Datenschutzstandards</Link> erfüllen. Erfahren Sie mehr über <Link to="/wissen/branchen/insurtech-compliance" className="text-teal-600 hover:underline">InsurTech Compliance</Link> oder <Link to="/wissen/branchen/proptech-compliance" className="text-teal-600 hover:underline">PropTech Compliance</Link>.
                 </p>
 
                 {/* Compliance Dashboard */}
@@ -288,7 +379,7 @@ const TravelComplianceGuide = () => {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-sm md:text-base">
                         <li className="flex items-start gap-2">
                           <CheckCircle className="h-4 w-4 text-green-600 mt-0.5" />
                           <span>Art. 6 & 9 DSGVO für Reisedaten</span>
@@ -313,7 +404,7 @@ const TravelComplianceGuide = () => {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-sm md:text-base">
                         <li className="flex items-start gap-2">
                           <AlertTriangle className="h-4 w-4 text-orange-600 mt-0.5" />
                           <span>Reisepass & Ausweisdaten</span>
@@ -338,7 +429,7 @@ const TravelComplianceGuide = () => {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-sm md:text-base">
                         <li className="flex items-start gap-2">
                           <CheckCircle className="h-4 w-4 text-green-600 mt-0.5" />
                           <span>SCCs für Drittländer</span>
@@ -366,13 +457,13 @@ const TravelComplianceGuide = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Buchungsdaten & Personalisierung</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                  Buchungsplattformen verarbeiten hochsensible Daten für Millionen von Reisenden. Von der initialen Suche bis zur Reiserückkehr müssen alle Datenflüsse DSGVO-konform gestaltet werden.
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Buchungsdaten & Personalisierung</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                  Buchungsplattformen verarbeiten hochsensible Daten für Millionen von Reisenden. Von der initialen Suche bis zur Reiserückkehr müssen alle Datenflüsse <Link to="/dsgvo-compliance" className="text-teal-600 hover:underline">DSGVO-konform</Link> gestaltet werden. Nutzen Sie unseren <Link to="/tools/consent-generator" className="text-teal-600 hover:underline">Consent Generator</Link> für rechtssichere Einwilligungen.
                 </p>
 
                 <div className="bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-950/20 dark:to-cyan-950/20 rounded-xl p-6 mb-8">
-                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <h3 className="text-lg md:text-xl font-bold mb-4 flex items-center gap-2">
                     <Calendar className="h-6 w-6 text-teal-600" />
                     Booking Journey Compliance Map
                   </h3>
@@ -521,8 +612,8 @@ class TravelConsentManager {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Location Tracking & Privacy</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Location Tracking & Privacy</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                   Standortbasierte Services sind essentiell für moderne Travel Apps, erfordern aber besondere Sorgfalt beim Datenschutz. Vom Check-in bis zu lokalen Empfehlungen müssen Nutzer die volle Kontrolle behalten.
                 </p>
 
@@ -628,9 +719,9 @@ class PrivacyLocationService {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Payment Compliance & PCI DSS</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                  Zahlungsdaten unterliegen besonders strengen Anforderungen. Die Kombination aus DSGVO und PCI DSS erfordert höchste Sicherheitsstandards.
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Payment Compliance & PCI DSS</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                  Zahlungsdaten unterliegen besonders strengen Anforderungen. Die Kombination aus <Link to="/dsgvo-compliance" className="text-teal-600 hover:underline">DSGVO</Link> und PCI DSS erfordert höchste Sicherheitsstandards. Lesen Sie auch unsere <Link to="/wissen/cookie-banner-guide" className="text-teal-600 hover:underline">Cookie-Banner Best Practices</Link>.
                 </p>
 
                 <Card className="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-950/20 dark:to-cyan-950/20">
@@ -692,13 +783,13 @@ class PrivacyLocationService {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Cross-Border Data Transfers</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Cross-Border Data Transfers</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                   Internationale Reisebuchungen erfordern oft Datentransfers in Drittländer. Nach Schrems II müssen diese Transfers besonders sorgfältig geprüft werden.
                 </p>
 
                 <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 rounded-xl p-6">
-                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <h3 className="text-lg md:text-xl font-bold mb-4 flex items-center gap-2">
                     <Globe className="h-6 w-6 text-orange-600" />
                     Transfer Impact Assessment (TIA) Framework
                   </h3>
@@ -768,8 +859,8 @@ class PrivacyLocationService {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Bewertungen & User Generated Content</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Bewertungen & User Generated Content</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                   Kundenbewertungen sind essentiell für Travel Platforms, bergen aber datenschutzrechtliche Risiken. Vom Fake-Review-Management bis zur Moderation müssen klare Prozesse etabliert werden.
                 </p>
 
@@ -853,8 +944,8 @@ class PrivacyLocationService {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Technische Implementierung</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Technische Implementierung</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                   Eine robuste technische Architektur ist die Basis für nachhaltige Compliance. Hier zeigen wir Best Practices für Travel Tech Platforms.
                 </p>
 
@@ -1020,8 +1111,8 @@ class TravelPlatformPrivacy {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Praxis-Szenarien</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Praxis-Szenarien</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                   Reale Compliance-Herausforderungen aus der Travel-Branche und wie Sie diese DSGVO-konform lösen.
                 </p>
 
@@ -1125,8 +1216,8 @@ class TravelPlatformPrivacy {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Travel Compliance Checkliste</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Travel Compliance Checkliste</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                   Überprüfen Sie Ihre Travel Platform auf vollständige DSGVO-Compliance mit unserer umfassenden Checkliste.
                 </p>
 
@@ -1227,8 +1318,8 @@ class TravelPlatformPrivacy {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Ressourcen & Tools</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Ressourcen & Tools</h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                   Praktische Ressourcen und Tools für Ihre Travel Compliance Journey.
                 </p>
 
@@ -1244,7 +1335,7 @@ class TravelPlatformPrivacy {
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                         Umfassender Leitfaden für Datenschutz in der Reisebranche mit praktischen Beispielen.
                       </p>
-                      <Button variant="outline" className="w-full">
+                      <Button variant="outline" className="w-full min-h-[48px]">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         Download PDF
                       </Button>
@@ -1262,7 +1353,7 @@ class TravelPlatformPrivacy {
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                         Vorgefertigte Consent-Flows und Datenschutzerklärungen für Travel Platforms.
                       </p>
-                      <Button variant="outline" className="w-full">
+                      <Button variant="outline" className="w-full min-h-[48px]">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         Templates ansehen
                       </Button>
@@ -1280,7 +1371,7 @@ class TravelPlatformPrivacy {
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                         Technische Tools für Privacy-by-Design Implementation in Travel Tech.
                       </p>
-                      <Button variant="outline" className="w-full">
+                      <Button variant="outline" className="w-full min-h-[48px]">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         GitHub Repository
                       </Button>
@@ -1310,7 +1401,8 @@ class TravelPlatformPrivacy {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <Button 
                         size="lg" 
-                        className="bg-white text-teal-600 hover:bg-gray-100"
+                        className="bg-white text-teal-600 hover:bg-gray-100 text-base md:text-lg min-h-[48px] px-6"
+                        aria-label="Travel Compliance Demo vereinbaren"
                       >
                         <Calendar className="mr-2 h-5 w-5" />
                         Travel Compliance Demo buchen
@@ -1318,7 +1410,8 @@ class TravelPlatformPrivacy {
                       <Button 
                         size="lg" 
                         variant="outline" 
-                        className="text-white border-white hover:bg-white/10"
+                        className="text-white border-white hover:bg-white/10 text-base md:text-lg min-h-[48px] px-6"
+                        aria-label="Travel Compliance Whitepaper Download"
                       >
                         <FileText className="mr-2 h-5 w-5" />
                         Whitepaper herunterladen
@@ -1328,10 +1421,84 @@ class TravelPlatformPrivacy {
                 </Card>
               </motion.div>
             </section>
+            
+            {/* Related Content */}
+            <section className="mt-16">
+              <h2 className="text-2xl font-bold mb-6">Verwandte Compliance-Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Building className="h-5 w-5 text-teal-600" />
+                      InsurTech Compliance
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                      DSGVO-Compliance für Versicherungstechnologie.
+                    </p>
+                    <Link to="/wissen/branchen/insurtech-compliance">
+                      <Button variant="outline" className="w-full">
+                        Zum Guide <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Building className="h-5 w-5 text-teal-600" />
+                      PropTech Compliance
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                      DSGVO-Compliance für Immobilientechnologie.
+                    </p>
+                    <Link to="/wissen/branchen/proptech-compliance">
+                      <Button variant="outline" className="w-full">
+                        Zum Guide <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Shield className="h-5 w-5 text-teal-600" />
+                      DSGVO Compliance Guide
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                      Umfassender DSGVO-Leitfaden für alle Branchen.
+                    </p>
+                    <Link to="/dsgvo-compliance">
+                      <Button variant="outline" className="w-full">
+                        Zum Guide <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </section>
 
           </div>
         </div>
       </div>
+      
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 p-3 bg-teal-600 text-white rounded-full shadow-lg hover:bg-teal-700 transition-colors z-50"
+          aria-label="Nach oben scrollen"
+        >
+          <ChevronRight className="h-5 w-5 rotate-[-90deg]" />
+        </button>
+      )}
 
       <Footer />
     </div>

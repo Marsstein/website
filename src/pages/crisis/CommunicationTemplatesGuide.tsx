@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -44,12 +45,24 @@ import {
   Star,
   Flag,
   Bell,
-  Send
+  Send,
+  BookOpen
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const CommunicationTemplatesGuide: React.FC = () => {
+  // Table of Contents data
+  const tableOfContents = [
+    { id: "template-categories", title: "Template-Kategorien", level: 2 },
+    { id: "authorities-templates", title: "Behörden-Templates", level: 2 },
+    { id: "customer-templates", title: "Kunden-Templates", level: 2 },
+    { id: "employee-templates", title: "Mitarbeiter-Templates", level: 2 },
+    { id: "media-templates", title: "Medien-Templates", level: 2 },
+    { id: "compliance-guidelines", title: "Compliance-Richtlinien", level: 2 },
+    { id: "download-center", title: "Download Center", level: 2 }
+  ];
+
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTemplate, setSelectedTemplate] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -63,6 +76,16 @@ const CommunicationTemplatesGuide: React.FC = () => {
     { id: 'employees', name: 'Mitarbeiter', count: 3 },
     { id: 'media', name: 'Medien', count: 2 }
   ];
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      // Add feedback logic here if needed
+    });
+  };
+
+  const filteredTemplates = selectedCategory === 'all' 
+    ? templates 
+    : templates.filter(template => template.category === selectedCategory);
 
   const templates = [
     {
@@ -642,10 +665,6 @@ Mit freundlichen Grüßen
     }
   ];
 
-  const filteredTemplates = selectedCategory === 'all' 
-    ? templates 
-    : templates.filter(template => template.category === selectedCategory);
-
   const getUrgencyColor = (urgency: string) => {
     switch (urgency) {
       case 'KRITISCH': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100 animate-pulse';
@@ -656,12 +675,49 @@ Mit freundlichen Grüßen
     }
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900">
+    <>
+      <Helmet>
+        <title>Krisenkommunikation Templates – DSGVO Vorlagen & Muster | Marsstein</title>
+        <meta name="description" content="Professionelle Kommunikationsvorlagen für Krisen: Behördenmeldung, Kundenkommunikation & Mitarbeiterinfo. DSGVO-konform. Jetzt kostenlos!" />
+        <meta name="keywords" content="Krisenkommunikation, DSGVO Templates, Behördenmeldung, Data Breach Kommunikation, Notfallvorlagen, PR Krise" />
+        <meta property="og:title" content="Krisenkommunikation Templates – DSGVO Vorlagen & Muster" />
+        <meta property="og:description" content="Professionelle Kommunikationsvorlagen für Krisen: Behördenmeldung, Kundenkommunikation & Mitarbeiterinfo. DSGVO-konform." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.de/wissen/krisenmanagement/communication-templates" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Krisenkommunikation Templates – DSGVO Vorlagen & Muster" />
+        <meta name="twitter:description" content="Professionelle Kommunikationsvorlagen für Krisen: Behördenmeldung, Kundenkommunikation & Mitarbeiterinfo. DSGVO-konform." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://marsstein.de/wissen/krisenmanagement/communication-templates" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Krisenkommunikation Templates – DSGVO Vorlagen & Muster",
+            "description": "Professionelle Kommunikationsvorlagen für Krisen: Behördenmeldung, Kundenkommunikation & Mitarbeiterinfo. DSGVO-konform.",
+            "author": {
+              "@type": "Organization",
+              "name": "Marsstein"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Marsstein",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://marsstein.de/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://marsstein.de/wissen/krisenmanagement/communication-templates"
+            },
+            "articleSection": "Krisenmanagement",
+            "keywords": "Krisenkommunikation, DSGVO Templates, Behördenmeldung, Data Breach Kommunikation"
+          })}
+        </script>
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900">
       <Header />
       
       {/* Hero Section */}
@@ -1014,6 +1070,7 @@ Mit freundlichen Grüßen
 
       <Footer />
     </div>
+    </>
   );
 };
 

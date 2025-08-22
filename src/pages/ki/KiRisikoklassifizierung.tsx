@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -91,6 +91,36 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const KiRisikoklassifizierung = () => {
+  // SEO Meta Information
+  useEffect(() => {
+    // Set document title
+    document.title = 'KI-Risikoklassifizierung nach EU AI Act – Compliance Guide';
+    
+    // Set meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Verstehen Sie die 4 Risikokategorien des EU AI Acts. Praktischer Guide für Compliance-Anforderungen Ihres KI-Systems.');
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'description';
+      newMeta.content = 'Verstehen Sie die 4 Risikokategorien des EU AI Acts. Praktischer Guide für Compliance-Anforderungen Ihres KI-Systems.';
+      document.head.appendChild(newMeta);
+    }
+
+    // Set viewport meta tag
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+      const newViewport = document.createElement('meta');
+      newViewport.name = 'viewport';
+      newViewport.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(newViewport);
+    }
+
+    return () => {
+      // Cleanup function if needed
+    };
+  }, []);
+
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
@@ -396,7 +426,10 @@ const KiRisikoklassifizierung = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white" style={{
+      fontSize: '16px',
+      lineHeight: '1.6'
+    }}>
       <Header />
       
       {/* Hero Section */}
@@ -424,12 +457,12 @@ const KiRisikoklassifizierung = () => {
             </div>
             
             <h1 className="text-5xl font-bold text-white mb-6">
-              KI-Systeme Risikoklassifizierung
+              KI-Risikoklassifizierung nach EU AI Act
             </h1>
             
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Verstehen Sie die vier Risikokategorien des EU AI Acts und deren 
-              spezifische Compliance-Anforderungen für Ihr KI-System
+              spezifische Compliance-Anforderungen für Ihr KI-System. Praktischer Guide mit Templates und Checklisten.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -450,8 +483,57 @@ const KiRisikoklassifizierung = () => {
         </div>
       </div>
 
+      {/* Table of Contents */}
+      <nav aria-label="Inhaltsverzeichnis" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white">
+        <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-6 border">
+          <button 
+            onClick={() => toggleExpanded('toc')}
+            className="flex items-center gap-2 w-full text-left md:cursor-default"
+          >
+            <h2 id="inhaltsverzeichnis" className="text-2xl font-bold flex items-center gap-2">
+              <BookOpen className="w-6 h-6 text-blue-600" />
+              Inhaltsverzeichnis
+            </h2>
+            <ChevronDown className={cn(
+              "w-5 h-5 text-gray-500 transition-transform md:hidden",
+              expandedSection === 'toc' && "rotate-180"
+            )} />
+          </button>
+          <div className={cn(
+            "mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3",
+            "md:block", // Always show on desktop
+            expandedSection === 'toc' ? "block" : "hidden md:grid" // Collapsible on mobile
+          )}>
+            <a href="#risikoklassifizierung-ueberblick" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Shield className="w-4 h-4 text-blue-500 flex-shrink-0" />
+              Überblick Risikoklassifizierung
+            </a>
+            <a href="#vier-risikokategorien" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Gauge className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              Vier Risikokategorien
+            </a>
+            <a href="#bewertungsmethodik" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <BarChart3 className="w-4 h-4 text-green-500 flex-shrink-0" />
+              Bewertungsmethodik
+            </a>
+            <a href="#compliance-pflichten" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <FileCheck className="w-4 h-4 text-purple-500 flex-shrink-0" />
+              Compliance-Pflichten
+            </a>
+            <a href="#praxisbeispiele" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Bot className="w-4 h-4 text-red-500 flex-shrink-0" />
+              Praxisbeispiele
+            </a>
+            <a href="#implementation" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Code className="w-4 h-4 text-indigo-500 flex-shrink-0" />
+              Implementation
+            </a>
+          </div>
+        </div>
+      </nav>
+
       {/* Navigation Tabs */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b" style={{scrollMarginTop: '96px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-6 h-auto p-1">
@@ -481,7 +563,7 @@ const KiRisikoklassifizierung = () => {
           
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-8">
-            <div className="text-center mb-12">
+            <div id="risikoklassifizierung-ueberblick" className="text-center mb-12" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">EU AI Act Risikoklassifizierung</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Der EU AI Act kategorisiert KI-Systeme in vier Risikostufen, die jeweils 
@@ -525,7 +607,7 @@ const KiRisikoklassifizierung = () => {
                 <CardContent>
                   <p className="text-gray-600">
                     Regulierung richtet sich nach dem Risiko für Grundrechte und Sicherheit, 
-                    nicht nach der Technologie selbst.
+                    nicht nach der Technologie selbst. Für eine detaillierte Bewertung nutzen Sie unser <Link to="/wissen/ki-datenschutz/algorithmic-impact-assessment" className="text-blue-600 hover:underline">Algorithmic Impact Assessment</Link>.
                   </p>
                 </CardContent>
               </Card>
@@ -540,7 +622,7 @@ const KiRisikoklassifizierung = () => {
                 <CardContent>
                   <p className="text-gray-600">
                     Klassifizierung erfolgt nach dem Verwendungszweck und Einsatzbereich, 
-                    nicht nach der zugrundeliegenden KI-Technologie.
+                    nicht nach der zugrundeliegenden KI-Technologie. Implementierung mit <Link to="/wissen/ki-datenschutz/privacy-preserving-ai" className="text-green-600 hover:underline">Privacy-Preserving AI Technologien</Link> empfohlen.
                   </p>
                 </CardContent>
               </Card>
@@ -560,10 +642,19 @@ const KiRisikoklassifizierung = () => {
                 </CardContent>
               </Card>
             </div>
+            
+            {/* Back to Top */}
+            <div className="text-center mt-8">
+              <a href="#inhaltsverzeichnis" className="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                <ArrowRight className="w-4 h-4 rotate-[-90deg]" />
+                Zurück zum Inhaltsverzeichnis
+              </a>
+            </div>
           </TabsContent>
 
           {/* Risk Categories Tab */}
           <TabsContent value="categories" className="space-y-6">
+            <div id="vier-risikokategorien" style={{scrollMarginTop: '96px'}}></div>
             {riskCategories.map((category, index) => {
               const Icon = category.icon;
               return (
@@ -633,7 +724,7 @@ const KiRisikoklassifizierung = () => {
 
           {/* Assessment Methodology Tab */}
           <TabsContent value="assessment" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="bewertungsmethodik" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Bewertungsmethodik</h2>
               <p className="text-lg text-gray-600">
                 Systematischer Ansatz zur Klassifizierung Ihres KI-Systems
@@ -701,7 +792,7 @@ const KiRisikoklassifizierung = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-4">
-                  Nutzen Sie unsere strukturierte Vorlage für die Risikoklassifizierung Ihres KI-Systems.
+                  Nutzen Sie unsere strukturierte Vorlage für die Risikoklassifizierung Ihres KI-Systems. Für umfassendere Bewertungen empfehlen wir unser <Link to="/wissen/ki-datenschutz/algorithmic-impact-assessment" className="text-blue-600 hover:underline">Algorithmic Impact Assessment</Link>.
                 </p>
                 <Button className="bg-gradient-to-r from-blue-600 to-purple-600">
                   <Download className="w-4 h-4 mr-2" />
@@ -713,7 +804,7 @@ const KiRisikoklassifizierung = () => {
 
           {/* Compliance Requirements Tab */}
           <TabsContent value="compliance" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="compliance-pflichten" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Compliance-Pflichten Matrix</h2>
               <p className="text-lg text-gray-600">
                 Überblick über Anforderungen je Risikokategorie
@@ -781,7 +872,7 @@ const KiRisikoklassifizierung = () => {
 
           {/* Practical Examples Tab */}
           <TabsContent value="examples" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="praxisbeispiele" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Praxisbeispiele</h2>
               <p className="text-lg text-gray-600">
                 Konkrete Klassifizierungen realer KI-Systeme
@@ -835,7 +926,7 @@ const KiRisikoklassifizierung = () => {
 
           {/* Implementation Tab */}
           <TabsContent value="implementation" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="implementation" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Implementation Roadmap</h2>
               <p className="text-lg text-gray-600">
                 Schrittweise Umsetzung der Compliance-Anforderungen

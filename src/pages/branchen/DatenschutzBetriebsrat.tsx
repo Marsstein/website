@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -629,6 +630,60 @@ const transferProcedure = {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <Helmet>
+        <title>Datenschutz für Betriebsräte – BetrVG & DSGVO Compliance</title>
+        <meta name="description" content="Rechtssichere Betriebsratsarbeit: BetrVG-Mitbestimmung datenschutzkonform umsetzen & Compliance sichern. Jetzt beraten lassen!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Datenschutz für Betriebsräte – BetrVG & DSGVO Compliance" />
+        <meta property="og:description" content="Rechtssichere Betriebsratsarbeit: BetrVG-Mitbestimmung datenschutzkonform umsetzen & Compliance sichern. Jetzt beraten lassen!" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://marsstein.de/wissen/branchen/datenschutz-betriebsrat" />
+        <link rel="canonical" href="https://marsstein.de/wissen/branchen/datenschutz-betriebsrat" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Datenschutz für Betriebsräte – BetrVG & DSGVO Compliance",
+            "description": "Rechtssichere Betriebsratsarbeit: BetrVG-Mitbestimmung datenschutzkonform umsetzen & Compliance sichern",
+            "author": {
+              "@type": "Organization",
+              "name": "Marsstein"
+            },
+            "publisher": {
+              "@type": "Organization", 
+              "name": "Marsstein"
+            },
+            "datePublished": "2024-01-01",
+            "dateModified": "2024-12-01"
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Wissen",
+                "item": "https://marsstein.de/wissen"
+              },
+              {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Branchen",
+                "item": "https://marsstein.de/wissen/branchen"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Datenschutz Betriebsrat",
+                "item": "https://marsstein.de/wissen/branchen/datenschutz-betriebsrat"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       <Header />
       
       <main className="overflow-hidden">
@@ -765,10 +820,10 @@ const transferProcedure = {
         </section>
 
         {/* Sticky Navigation */}
-        <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <nav className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm" aria-label="Inhaltsverzeichnis">
           <div className="container px-4">
             <div className="max-w-7xl mx-auto">
-              <nav className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+              <div className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto py-4 scrollbar-hide">
                 {navigationItems.map((item, index) => (
                   <button
                     key={item.id}
@@ -797,10 +852,10 @@ const transferProcedure = {
                     )}>{item.label}</span>
                   </button>
                 ))}
-              </nav>
+              </div>
             </div>
           </div>
-        </div>
+        </nav>
 
         {/* Main Content Sections */}
         <div className="py-20">
@@ -808,7 +863,7 @@ const transferProcedure = {
             <div className="max-w-7xl mx-auto space-y-20">
 
               {/* Overview Section */}
-              <section id="overview" className="space-y-8 scroll-mt-32">
+              <section id="overview" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -906,7 +961,7 @@ const transferProcedure = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Rechtsgrundlagen Section */}
-              <section id="rechtsgrundlagen" className="space-y-8 scroll-mt-32">
+              <section id="rechtsgrundlagen" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1113,7 +1168,7 @@ const transferProcedure = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Datenarten Section */}
-              <section id="datenarten" className="space-y-8 scroll-mt-32">
+              <section id="datenarten" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1174,7 +1229,7 @@ const transferProcedure = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* TOM Section */}
-              <section id="tom" className="space-y-8 scroll-mt-32">
+              <section id="tom" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1261,7 +1316,7 @@ const transferProcedure = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Betriebsratsprozesse Section */}
-              <section id="prozesse" className="space-y-8 scroll-mt-32">
+              <section id="prozesse" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1350,7 +1405,7 @@ const transferProcedure = {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
               {/* Implementation Section */}
-              <section id="implementation" className="space-y-8 scroll-mt-32">
+              <section id="implementation" className="space-y-8 scroll-mt-32" style={{ scrollMarginTop: '96px' }}>
                 <motion.h2
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1583,32 +1638,32 @@ const transferProcedure = {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <Link to="/wissen/arbeitsrecht/betrvg-dsgvo" className="block group">
+                    <Link to="/wissen/branchen/datenschutz-homeoffice" className="block group">
                       <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 hover:border-blue-300 transition-colors group-hover:shadow-md">
-                        <Gavel className="h-5 w-5 text-blue-600 mb-2" />
-                        <div className="font-medium">BetrVG & DSGVO</div>
-                        <div className="text-sm text-gray-600">Rechtliche Grundlagen</div>
+                        <Shield className="h-5 w-5 text-blue-600 mb-2" />
+                        <div className="font-medium">Datenschutz Homeoffice</div>
+                        <div className="text-sm text-gray-600">Sicheres Arbeiten im Homeoffice</div>
                       </div>
                     </Link>
-                    <Link to="/wissen/compliance/br-schulungen" className="block group">
+                    <Link to="/wissen/compliance/audit-management" className="block group">
                       <div className="p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-300 transition-colors group-hover:shadow-md">
-                        <Users className="h-5 w-5 text-green-600 mb-2" />
-                        <div className="font-medium">BR-Schulungen</div>
-                        <div className="text-sm text-gray-600">Datenschutz für BR-Mitglieder</div>
+                        <CheckSquare className="h-5 w-5 text-green-600 mb-2" />
+                        <div className="font-medium">Audit Management</div>
+                        <div className="text-sm text-gray-600">DSGVO-Audits erfolgreich meistern</div>
                       </div>
                     </Link>
-                    <Link to="/wissen/it-sicherheit/br-infrastruktur" className="block group">
+                    <Link to="/wissen/it-sicherheit/verschluesselung" className="block group">
                       <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors group-hover:shadow-md">
                         <Lock className="h-5 w-5 text-purple-600 mb-2" />
-                        <div className="font-medium">IT-Sicherheit</div>
-                        <div className="text-sm text-gray-600">Sichere BR-IT-Infrastruktur</div>
+                        <div className="font-medium">Verschlüsselung</div>
+                        <div className="text-sm text-gray-600">Sichere Datenkommunikation</div>
                       </div>
                     </Link>
-                    <Link to="/branchen/betriebsrat" className="block group">
+                    <Link to="/wissen/recht/beschaeftigtendatenschutz" className="block group">
                       <div className="p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors group-hover:shadow-md">
-                        <HandshakeIcon className="h-5 w-5 text-orange-600 mb-2" />
-                        <div className="font-medium">BR Solutions</div>
-                        <div className="text-sm text-gray-600">Unsere Produktlösungen</div>
+                        <Users className="h-5 w-5 text-orange-600 mb-2" />
+                        <div className="font-medium">Beschäftigtendatenschutz</div>
+                        <div className="text-sm text-gray-600">Rechtliche Grundlagen im HR</div>
                       </div>
                     </Link>
                   </div>

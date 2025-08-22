@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Helmet } from 'react-helmet-async';
 import { 
   Cookie, 
   ArrowLeft,
@@ -75,6 +76,16 @@ const Planet49CookieCase: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  useEffect(() => {
+    // Scroll margins for sticky header offset
+    const style = document.createElement('style');
+    style.textContent = `
+      h2, h3, h4 { scroll-margin-top: 96px; }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   const handleCopy = async (text: string, type: string) => {
     try {
@@ -688,6 +699,18 @@ function vagueDescription() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900">
+      <Helmet>
+        <title>Planet49 EuGH Cookie Urteil C-673/17 – Consent Banner DSGVO-konform</title>
+        <meta 
+          name="description" 
+          content="Planet49 Cookie Urteil EuGH: Keine voreingestellten Checkboxen! DSGVO-konforme Cookie Banner & Consent-Mechanismen implementieren." 
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Planet49 EuGH Cookie Urteil C-673/17 – Consent Banner DSGVO-konform" />
+        <meta property="og:description" content="Planet49 Cookie Urteil EuGH: Keine voreingestellten Checkboxen! DSGVO-konforme Cookie Banner & Consent-Mechanismen implementieren." />
+        <meta property="og:type" content="article" />
+        <link rel="canonical" href="https://marsjonas.de/wissen/rechtsprechung/planet49-cookie" />
+      </Helmet>
       <Header />
       
       {/* Animated Background Elements */}
@@ -742,10 +765,10 @@ function vagueDescription() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8"
             >
-              <span className="text-white">Planet</span>
+              <span className="text-white">Planet49</span>
               <br />
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                49
+                Cookie Urteil
               </span>
               <br />
               <span className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-slate-400 to-slate-200 bg-clip-text text-transparent">
@@ -820,6 +843,29 @@ function vagueDescription() {
 
             {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-8">
+              {/* Table of Contents */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Card className="bg-slate-800/80 backdrop-blur-sm border-cyan-500/30 mb-8">
+                  <CardContent className="p-6">
+                    <nav aria-label="Inhaltsverzeichnis">
+                      <h2 id="inhaltsverzeichnis" className="text-xl font-bold text-white mb-4">Inhaltsverzeichnis</h2>
+                      <ul className="space-y-2 text-slate-300">
+                        <li><a href="#urteilsuebersicht" className="text-cyan-400 hover:text-cyan-300 transition-colors">1. Urteilsübersicht</a></li>
+                        <li><a href="#urteil-details" className="text-cyan-400 hover:text-cyan-300 transition-colors">2. Urteil-Details</a></li>
+                        <li><a href="#cookie-kategorien" className="text-cyan-400 hover:text-cyan-300 transition-colors">3. Cookie-Kategorien</a></li>
+                        <li><a href="#consent-mechanismen" className="text-cyan-400 hover:text-cyan-300 transition-colors">4. Consent-Mechanismen</a></li>
+                        <li><a href="#implementation-guide" className="text-cyan-400 hover:text-cyan-300 transition-colors">5. Implementation</a></li>
+                        <li><a href="#best-practices" className="text-cyan-400 hover:text-cyan-300 transition-colors">6. Best Practices</a></li>
+                      </ul>
+                    </nav>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -829,7 +875,7 @@ function vagueDescription() {
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-3 gap-8">
                       <div className="md:col-span-2">
-                        <h3 className="text-2xl font-bold text-white mb-6">Urteilsübersicht</h3>
+                        <h2 id="urteilsuebersicht" className="text-2xl font-bold text-white mb-6">Urteilsübersicht</h2>
                         <div className="space-y-4 text-slate-300 leading-relaxed">
                           <p>
                             Am 1. Oktober 2019 fällte der Europäische Gerichtshof (EuGH) ein bahnbrechendes Urteil 
@@ -844,7 +890,9 @@ function vagueDescription() {
                           <p>
                             Diese Entscheidung revolutionierte Cookie-Banner weltweit und zwang Unternehmen zur 
                             vollständigen Überarbeitung ihrer Consent-Mechanismen. Der Fokus liegt auf 
-                            <strong> aktiver, informierter und granularer Einwilligung</strong>.
+                            <strong> aktiver, informierter und granularer Einwilligung</strong>. Ähnlich wie bei 
+                            <Link to="/wissen/rechtsprechung/whatsapp-irland-2021" className="text-cyan-400 hover:text-cyan-300">Transparenz-Verstößen bei Messaging-Apps</Link> 
+                            zeigt sich die Bedeutung klarer Nutzerinformation.
                           </p>
                         </div>
                       </div>
@@ -890,6 +938,9 @@ function vagueDescription() {
 
             {/* Key Rulings Tab */}
             <TabsContent value="ruling" className="space-y-8">
+              <h2 id="urteil-details" className="text-3xl font-bold text-white mb-8 text-center">
+                Planet49 Urteil-Details
+              </h2>
               <div className="grid gap-6">
                 {keyRulings.map((ruling, index) => (
                   <motion.div
@@ -924,6 +975,9 @@ function vagueDescription() {
 
             {/* Cookie Categories Tab */}
             <TabsContent value="categories" className="space-y-8">
+              <h2 id="cookie-kategorien" className="text-3xl font-bold text-white mb-8 text-center">
+                Cookie-Kategorien nach Planet49
+              </h2>
               <div className="grid md:grid-cols-2 gap-8">
                 {cookieCategories.map((category, index) => (
                   <motion.div
@@ -985,6 +1039,9 @@ function vagueDescription() {
 
             {/* Consent Mechanisms Tab */}
             <TabsContent value="consent" className="space-y-8">
+              <h2 id="consent-mechanismen" className="text-3xl font-bold text-white mb-8 text-center">
+                DSGVO-konforme Consent-Mechanismen
+              </h2>
               <div className="grid lg:grid-cols-2 gap-8">
                 {consentMechanisms.map((mechanism, index) => (
                   <motion.div
@@ -1117,6 +1174,9 @@ function vagueDescription() {
 
             {/* Implementation Tab */}
             <TabsContent value="implementation" className="space-y-8">
+              <h2 id="implementation-guide" className="text-3xl font-bold text-white mb-8 text-center">
+                Planet49-konforme Cookie Implementation
+              </h2>
               <div className="space-y-8">
                 {implementationGuide.map((step, index) => (
                   <motion.div
@@ -1215,6 +1275,9 @@ function vagueDescription() {
 
             {/* Best Practices Tab */}
             <TabsContent value="practices" className="space-y-8">
+              <h2 id="best-practices" className="text-3xl font-bold text-white mb-8 text-center">
+                Cookie-Compliance Best Practices
+              </h2>
               <div className="grid md:grid-cols-2 gap-8">
                 {bestPractices.map((category, index) => (
                   <motion.div

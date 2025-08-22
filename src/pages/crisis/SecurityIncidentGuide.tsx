@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -36,17 +37,53 @@ import {
   CheckCircle,
   Play,
   Pause,
-  RotateCcw
+  RotateCcw,
+  List,
+  ChevronRight,
+  Home,
+  BookOpen
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const SecurityIncidentGuide: React.FC = () => {
+  // Table of Contents data
+  const tableOfContents = [
+    { id: "incident-phases", title: "Security Incident Phasen", level: 2 },
+    { id: "preparation", title: "1. Vorbereitung", level: 2 },
+    { id: "identification", title: "2. Identifikation & Analyse", level: 2 },
+    { id: "containment", title: "3. Eindämmung", level: 2 },
+    { id: "eradication", title: "4. Bereinigung", level: 2 },
+    { id: "recovery", title: "5. Wiederherstellung", level: 2 },
+    { id: "lessons-learned", title: "6. Lessons Learned", level: 2 },
+    { id: "compliance-requirements", title: "Compliance-Anforderungen", level: 2 },
+    { id: "response-tools", title: "Response Tools & Templates", level: 2 }
+  ];
+  
   const [currentPhase, setCurrentPhase] = useState(0);
   const [completedTasks, setCompletedTasks] = useState<string[]>([]);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  // Task management
+  const toggleTask = (taskId: string) => {
+    setCompletedTasks(prev => 
+      prev.includes(taskId) 
+        ? prev.filter(id => id !== taskId)
+        : [...prev, taskId]
+    );
+  };
+  
+  const getPriorityColor = (priority: string) => {
+    switch (priority) {
+      case 'KRITISCH': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100 animate-pulse';
+      case 'HOCH': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100';
+      case 'MITTEL': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100';
+      case 'WICHTIG': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100';
+      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100';
+    }
+  };
 
   const phases = [
     {
@@ -331,30 +368,86 @@ const SecurityIncidentGuide: React.FC = () => {
     }
   ];
 
-  const toggleTask = (taskId: string) => {
-    setCompletedTasks(prev => 
-      prev.includes(taskId) 
-        ? prev.filter(id => id !== taskId)
-        : [...prev, taskId]
-    );
-  };
-
   const getTotalTasks = () => phases.reduce((total, phase) => total + phase.tasks.length, 0);
   const progressPercentage = (completedTasks.length / getTotalTasks()) * 100;
-
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'KRITISCH': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100 animate-pulse';
-      case 'HOCH': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100';
-      case 'MITTEL': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100';
-      case 'WICHTIG': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100';
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900">
       <Header />
+      
+      {/* Breadcrumb Navigation */}
+      <nav className="bg-slate-900/80 backdrop-blur-sm border-b border-slate-700/50 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl">
+          <ol className="flex items-center py-3 text-sm">
+            <li>
+              <Link to="/" className="text-slate-400 hover:text-orange-400 transition-colors flex items-center">
+                <Home className="h-4 w-4 mr-1" />
+                Home
+              </Link>
+            </li>
+            <ChevronRight className="h-4 w-4 mx-2 text-slate-600" />
+            <li>
+              <Link to="/wissen" className="text-slate-400 hover:text-orange-400 transition-colors">
+                Wissen
+              </Link>
+            </li>
+            <ChevronRight className="h-4 w-4 mx-2 text-slate-600" />
+            <li>
+              <Link to="/wissen/krisenmanagement" className="text-slate-400 hover:text-orange-400 transition-colors">
+                Krisenmanagement
+              </Link>
+            </li>
+            <ChevronRight className="h-4 w-4 mx-2 text-slate-600" />
+            <li className="text-orange-400 font-semibold">Security Incident Response</li>
+          </ol>
+        </div>
+      </nav>
+      
+      {/* Table of Contents */}
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8">
+        <Card className="bg-slate-800/60 backdrop-blur-sm border-slate-700/50">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <List className="h-5 w-5 text-orange-400" />
+              <h2 className="text-lg font-semibold text-white">Inhaltsverzeichnis</h2>
+            </div>
+            <nav aria-label="Inhaltsverzeichnis">
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="#incident-overview" className="text-slate-300 hover:text-orange-400 transition-colors flex items-center gap-2">
+                    <Shield className="h-4 w-4" />
+                    Incident Response Überblick
+                  </a>
+                </li>
+                <li>
+                  <a href="#response-phases" className="text-slate-300 hover:text-orange-400 transition-colors flex items-center gap-2">
+                    <Activity className="h-4 w-4" />
+                    Response Phasen
+                  </a>
+                </li>
+                <li>
+                  <a href="#critical-actions" className="text-slate-300 hover:text-orange-400 transition-colors flex items-center gap-2">
+                    <AlertTriangle className="h-4 w-4" />
+                    Kritische Maßnahmen
+                  </a>
+                </li>
+                <li>
+                  <a href="#documentation" className="text-slate-300 hover:text-orange-400 transition-colors flex items-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    Dokumentation & Compliance
+                  </a>
+                </li>
+                <li>
+                  <a href="#post-incident" className="text-slate-300 hover:text-orange-400 transition-colors flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4" />
+                    Post-Incident Activities
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </CardContent>
+        </Card>
+      </div>
       
       {/* Fixed Progress Bar */}
       <div className="fixed top-16 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
@@ -751,7 +844,7 @@ const SecurityIncidentGuide: React.FC = () => {
       </section>
 
       {/* Navigation */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="post-incident" className="py-16 px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div className="container mx-auto max-w-7xl">
           <div className="flex justify-between items-center">
             <Button asChild variant="outline" className="border-slate-700 text-slate-300 hover:bg-slate-800">
@@ -766,6 +859,105 @@ const SecurityIncidentGuide: React.FC = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Resources Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="text-white">Verwandte</span>{' '}
+              <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                Ressourcen
+              </span>
+            </h2>
+            <p className="text-lg text-slate-300">
+              Weitere wichtige Krisenmanagement-Themen
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              whileHover={{ y: -5 }}
+            >
+              <Card className="h-full bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-red-500 to-orange-500 mb-4">
+                    <AlertTriangle className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">72h Data Breach Response</h3>
+                  <p className="text-slate-300 mb-4">
+                    Strukturierter Notfallplan für Datenschutzverletzungen nach DSGVO Artikel 33/34.
+                  </p>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/wissen/krisenmanagement/data-breach-72h">
+                      Mehr erfahren
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              whileHover={{ y: -5 }}
+            >
+              <Card className="h-full bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 mb-4">
+                    <Shield className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Krisenmanagement Übersicht</h3>
+                  <p className="text-slate-300 mb-4">
+                    Alle Notfallpläne und Krisenszenarien für Datenschutz-Compliance im Überblick.
+                  </p>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/wissen/krisenmanagement">
+                      Mehr erfahren
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              whileHover={{ y: -5 }}
+            >
+              <Card className="h-full bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 mb-4">
+                    <Lock className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Technische Maßnahmen</h3>
+                  <p className="text-slate-300 mb-4">
+                    Präventive Sicherheitsmaßnahmen zur Vermeidung von Security Incidents.
+                  </p>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/wissen/technische-massnahmen/verschluesselung">
+                      Mehr erfahren
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -227,6 +227,36 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const AlgorithmicImpactAssessment = () => {
+  // SEO Meta Information
+  useEffect(() => {
+    // Set document title (58 characters)
+    document.title = 'Algorithmic Impact Assessment – DSGVO & EU AI Act Toolkit';
+    
+    // Set meta description (152 characters)
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Systematische Bewertung von KI-Algorithmen nach DSGVO Art. 35 und EU AI Act. Templates und Frameworks für Ihr Impact Assessment.');
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'description';
+      newMeta.content = 'Systematische Bewertung von KI-Algorithmen nach DSGVO Art. 35 und EU AI Act. Templates und Frameworks für Ihr Impact Assessment.';
+      document.head.appendChild(newMeta);
+    }
+
+    // Set viewport meta tag
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+      const newViewport = document.createElement('meta');
+      newViewport.name = 'viewport';
+      newViewport.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(newViewport);
+    }
+
+    return () => {
+      // Cleanup function if needed
+    };
+  }, []);
+
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
@@ -593,7 +623,10 @@ const AlgorithmicImpactAssessment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white" style={{
+      fontSize: '16px',
+      lineHeight: '1.6'
+    }}>
       <Header />
       
       {/* Hero Section */}
@@ -621,12 +654,12 @@ const AlgorithmicImpactAssessment = () => {
             </div>
             
             <h1 className="text-5xl font-bold text-white mb-6">
-              Algorithmic Impact Assessment
+              Algorithmic Impact Assessment Guide
             </h1>
             
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Systematische Bewertung der Auswirkungen algorithmischer Systeme auf Grundrechte, 
-              Fairness und gesellschaftliche Teilhabe nach EU AI Act und DSGVO
+              Fairness und gesellschaftliche Teilhabe nach EU AI Act und DSGVO Art. 35.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -647,8 +680,57 @@ const AlgorithmicImpactAssessment = () => {
         </div>
       </div>
 
+      {/* Table of Contents */}
+      <nav aria-label="Inhaltsverzeichnis" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white">
+        <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-6 border">
+          <button 
+            onClick={() => toggleExpanded('toc')}
+            className="flex items-center gap-2 w-full text-left md:cursor-default"
+          >
+            <h2 id="inhaltsverzeichnis" className="text-2xl font-bold flex items-center gap-2">
+              <BookOpen className="w-6 h-6 text-blue-600" />
+              Inhaltsverzeichnis
+            </h2>
+            <ChevronDown className={cn(
+              "w-5 h-5 text-gray-500 transition-transform md:hidden",
+              expandedSection === 'toc' && "rotate-180"
+            )} />
+          </button>
+          <div className={cn(
+            "mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3",
+            "md:block",
+            expandedSection === 'toc' ? "block" : "hidden md:grid"
+          )}>
+            <a href="#aia-ueberblick" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Shield className="w-4 h-4 text-blue-500 flex-shrink-0" />
+              AIA Überblick
+            </a>
+            <a href="#aia-methodik" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <BarChart3 className="w-4 h-4 text-purple-500 flex-shrink-0" />
+              5-Phasen Methodik
+            </a>
+            <a href="#assessment-framework" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Layers className="w-4 h-4 text-green-500 flex-shrink-0" />
+              Assessment Framework
+            </a>
+            <a href="#tools-templates" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Wrench className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              Tools & Templates
+            </a>
+            <a href="#aia-praxisbeispiele" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <Bot className="w-4 h-4 text-red-500 flex-shrink-0" />
+              Praxisbeispiele
+            </a>
+            <a href="#compliance-checklist" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white transition-colors text-sm min-h-[48px]">
+              <CheckSquare className="w-4 h-4 text-indigo-500 flex-shrink-0" />
+              Compliance Check
+            </a>
+          </div>
+        </div>
+      </nav>
+
       {/* Navigation Tabs */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b" style={{scrollMarginTop: '96px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-6 h-auto p-1">
@@ -678,7 +760,7 @@ const AlgorithmicImpactAssessment = () => {
           
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-8">
-            <div className="text-center mb-12">
+            <div id="aia-ueberblick" className="text-center mb-12" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Algorithmic Impact Assessment (AIA)</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Ein systematischer Ansatz zur Bewertung der gesellschaftlichen und individuellen 
@@ -698,7 +780,7 @@ const AlgorithmicImpactAssessment = () => {
                 <CardContent>
                   <p className="text-gray-600">
                     Frühzeitige Identifikation und Minderung von Risiken für 
-                    Grundrechte und gesellschaftliche Teilhabe.
+                    Grundrechte und gesellschaftliche Teilhabe. Nutzen Sie auch unsere <Link to="/wissen/ki-datenschutz/risikoklassifizierung" className="text-blue-600 hover:underline">KI-Risikoklassifizierung</Link>.
                   </p>
                 </CardContent>
               </Card>
@@ -713,7 +795,7 @@ const AlgorithmicImpactAssessment = () => {
                 <CardContent>
                   <p className="text-gray-600">
                     Erfüllung rechtlicher Anforderungen nach EU AI Act, 
-                    DSGVO und branchenspezifischen Regelungen.
+                    DSGVO und branchenspezifischen Regelungen. Implementieren Sie <Link to="/wissen/ki-datenschutz/privacy-preserving-ai" className="text-green-600 hover:underline">Privacy-Preserving AI</Link>.
                   </p>
                 </CardContent>
               </Card>
@@ -782,11 +864,19 @@ const AlgorithmicImpactAssessment = () => {
                 </div>
               </CardContent>
             </Card>
+            
+            {/* Back to Top */}
+            <div className="text-center mt-8">
+              <a href="#inhaltsverzeichnis" className="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                <ArrowRight className="w-4 h-4 rotate-[-90deg]" />
+                Zurück zum Inhaltsverzeichnis
+              </a>
+            </div>
           </TabsContent>
 
           {/* Methodology Tab */}
           <TabsContent value="methodology" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="aia-methodik" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">5-Phasen Methodik</h2>
               <p className="text-lg text-gray-600">
                 Strukturierter Ansatz für umfassende Impact Assessments
@@ -878,7 +968,7 @@ const AlgorithmicImpactAssessment = () => {
 
           {/* Framework Tab */}
           <TabsContent value="framework" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="assessment-framework" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Assessment Framework</h2>
               <p className="text-lg text-gray-600">
                 6 Schlüsseldimensionen für umfassende Impact Bewertung
@@ -943,7 +1033,7 @@ const AlgorithmicImpactAssessment = () => {
 
           {/* Tools & Templates Tab */}
           <TabsContent value="tools" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="tools-templates" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Tools & Templates</h2>
               <p className="text-lg text-gray-600">
                 Praktische Hilfsmittel für Ihr Assessment
@@ -1032,7 +1122,8 @@ const AlgorithmicImpactAssessment = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-4">
-                  Testen Sie unser Assessment-Framework mit einem interaktiven Demo-System.
+                  Testen Sie unser Assessment-Framework mit einem interaktiven Demo-System. 
+                  Für die Risikoklassifizierung Ihres Systems nutzen Sie unsere <Link to="/wissen/ki-datenschutz/risikoklassifizierung" className="text-blue-600 hover:underline">Risikoklassifizierung</Link>.
                 </p>
                 <Button className="bg-gradient-to-r from-purple-600 to-blue-600">
                   <Play className="w-4 h-4 mr-2" />
@@ -1044,7 +1135,7 @@ const AlgorithmicImpactAssessment = () => {
 
           {/* Examples Tab */}
           <TabsContent value="examples" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="aia-praxisbeispiele" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Praxisbeispiele</h2>
               <p className="text-lg text-gray-600">
                 Reale Assessment-Fallstudien aus verschiedenen Branchen
@@ -1127,7 +1218,7 @@ const AlgorithmicImpactAssessment = () => {
 
           {/* Compliance Check Tab */}
           <TabsContent value="compliance" className="space-y-6">
-            <div className="text-center mb-8">
+            <div id="compliance-checklist" className="text-center mb-8" style={{scrollMarginTop: '96px'}}>
               <h2 className="text-3xl font-bold mb-4">Compliance Checklist</h2>
               <p className="text-lg text-gray-600">
                 Überprüfen Sie die Vollständigkeit Ihres Assessments

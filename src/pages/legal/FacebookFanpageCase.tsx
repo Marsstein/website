@@ -67,6 +67,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const FacebookFanpageCase: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -375,6 +376,36 @@ const FacebookFanpageCase: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <SEOHead
+        title="Facebook Fanpage EuGH C-210/16 – Gemeinsame Verantwortlichkeit"
+        description="Facebook Fanpage EuGH-Urteil: Gemeinsame Verantwortlichkeit, Page Insights, Social Media Compliance. ✓ Joint Controllership ✓ Liability ✓ Practical Implications."
+        canonical="/wissen/rechtsprechung/facebook-fanpage"
+        keywords="Facebook Fanpage, EuGH, gemeinsame Verantwortlichkeit, Joint Controller, DSGVO, Page Insights, Social Media Compliance"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Facebook Fanpage EuGH C-210/16 – Gemeinsame Verantwortlichkeit",
+          "description": "Das grundlegende Urteil zur gemeinsamen Verantwortlichkeit von Fanpage-Betreibern und Facebook",
+          "author": {
+            "@type": "Organization",
+            "name": "Marsstein"
+          },
+          "publisher": {
+            "@type": "Organization", 
+            "name": "Marsstein",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://marsstein.com/logo.png"
+            }
+          },
+          "datePublished": "2018-06-05",
+          "dateModified": "2024-01-15",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://marsstein.com/wissen/rechtsprechung/facebook-fanpage"
+          }
+        }}
+      />
       <Header />
       
       {/* Animated Background Elements */}
@@ -474,6 +505,46 @@ const FacebookFanpageCase: React.FC = () => {
         </div>
       </motion.section>
 
+      {/* Table of Contents */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-800/20">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h2 id="inhaltsverzeichnis" className="text-3xl font-bold text-white mb-6" style={{ scrollMarginTop: '100px' }}>Inhaltsverzeichnis</h2>
+            <nav aria-label="Inhaltsverzeichnis" className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-4 text-left">
+                <div className="space-y-2">
+                  <a href="#urteilsuebersicht" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-blue-400 font-medium">1.</span> Urteilsübersicht
+                  </a>
+                  <a href="#timeline" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-blue-400 font-medium">2.</span> Entwicklung Timeline
+                  </a>
+                  <a href="#jca-anforderungen" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-blue-400 font-medium">3.</span> Joint Controller Agreement
+                  </a>
+                </div>
+                <div className="space-y-2">
+                  <a href="#kernurteile" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-blue-400 font-medium">4.</span> Kernurteile & Auswirkungen
+                  </a>
+                  <a href="#compliance" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-blue-400 font-medium">5.</span> Compliance-Leitfaden
+                  </a>
+                  <a href="#branchen" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-blue-400 font-medium">6.</span> Branchenspezifische Aspekte
+                  </a>
+                </div>
+              </div>
+            </nav>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Content Tabs */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
@@ -484,30 +555,36 @@ const FacebookFanpageCase: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="mb-12"
             >
-              <TabsList className="grid w-full grid-cols-6 bg-slate-800/60 backdrop-blur-sm p-2 rounded-xl">
-                <TabsTrigger value="overview" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white">
-                  Überblick
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-6 bg-slate-800/60 backdrop-blur-sm p-2 rounded-xl gap-2 md:gap-0">
+                <TabsTrigger value="overview" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Überblick</span>
+                  <span className="md:hidden">Info</span>
                 </TabsTrigger>
-                <TabsTrigger value="findings" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white">
-                  Kernurteile
+                <TabsTrigger value="findings" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Kernurteile</span>
+                  <span className="md:hidden">Urteil</span>
                 </TabsTrigger>
-                <TabsTrigger value="impact" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white">
-                  Auswirkungen
+                <TabsTrigger value="impact" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Auswirkungen</span>
+                  <span className="md:hidden">Impact</span>
                 </TabsTrigger>
-                <TabsTrigger value="compliance" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white">
-                  Compliance
+                <TabsTrigger value="compliance" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Compliance</span>
+                  <span className="md:hidden">Guide</span>
                 </TabsTrigger>
-                <TabsTrigger value="jca" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white">
-                  JCA Details
+                <TabsTrigger value="jca" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">JCA Details</span>
+                  <span className="md:hidden">JCA</span>
                 </TabsTrigger>
-                <TabsTrigger value="industry" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white">
-                  Branchen
+                <TabsTrigger value="industry" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Branchen</span>
+                  <span className="md:hidden">Sektor</span>
                 </TabsTrigger>
               </TabsList>
             </motion.div>
 
             {/* Overview Tab */}
-            <TabsContent value="overview" className="space-y-8">
+            <TabsContent value="overview" className="space-y-8" id="overview">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -517,7 +594,7 @@ const FacebookFanpageCase: React.FC = () => {
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-3 gap-8">
                       <div className="md:col-span-2">
-                        <h3 className="text-2xl font-bold text-white mb-6">Urteilsübersicht</h3>
+                        <h3 id="urteilsuebersicht" className="text-2xl font-bold text-white mb-6" style={{ scrollMarginTop: '100px' }}>Urteilsübersicht</h3>
                         <div className="space-y-4 text-slate-300 leading-relaxed">
                           <p>
                             Am 5. Juni 2018 entschied der Europäische Gerichtshof in der Rechtssache 
@@ -584,7 +661,7 @@ const FacebookFanpageCase: React.FC = () => {
               >
                 <Card className="bg-slate-800/80 backdrop-blur-sm border-blue-500/30">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-8 text-center">Entwicklung Timeline</h3>
+                    <h3 id="timeline" className="text-2xl font-bold text-white mb-8 text-center" style={{ scrollMarginTop: '100px' }}>Entwicklung Timeline</h3>
                     <div className="space-y-6">
                       {timeline.map((event, index) => (
                         <motion.div
@@ -625,7 +702,7 @@ const FacebookFanpageCase: React.FC = () => {
             </TabsContent>
 
             {/* Key Findings Tab */}
-            <TabsContent value="findings" className="space-y-8">
+            <TabsContent value="findings" className="space-y-8" id="kernurteile">
               <div className="grid gap-6">
                 {keyFindings.map((finding, index) => (
                   <motion.div
@@ -717,7 +794,7 @@ const FacebookFanpageCase: React.FC = () => {
             </TabsContent>
 
             {/* Compliance Tab */}
-            <TabsContent value="compliance" className="space-y-8">
+            <TabsContent value="compliance" className="space-y-8" id="compliance">
               <div className="space-y-8">
                 {complianceSteps.map((step, index) => (
                   <motion.div
@@ -762,7 +839,7 @@ const FacebookFanpageCase: React.FC = () => {
               >
                 <Card className="bg-slate-800/80 backdrop-blur-sm border-blue-500/30">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                    <h3 id="jca-anforderungen" className="text-2xl font-bold text-white mb-6 text-center" style={{ scrollMarginTop: '100px' }}>
                       Joint Controller Agreement Anforderungen
                     </h3>
                     <p className="text-slate-300 text-center">
@@ -805,7 +882,7 @@ const FacebookFanpageCase: React.FC = () => {
             </TabsContent>
 
             {/* Industry Impact Tab */}
-            <TabsContent value="industry" className="space-y-8">
+            <TabsContent value="industry" className="space-y-8" id="branchen">
               <div className="space-y-8">
                 {industryImpacts.map((industry, index) => (
                   <motion.div

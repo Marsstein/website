@@ -1,20 +1,24 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Rocket, CheckCircle2, ArrowRight, ArrowLeft, Clock, AlertTriangle, Shield, Users, FileText, Download, Target, Phone, Timer, Circle, BookOpen, Calendar, Building2, Briefcase, AlertOctagon, Info, Copy, Star, UserCheck, TrendingUp, BarChart3, Award, Activity, Database, Server, Wifi, RefreshCw, Zap, Settings, Eye, Flag } from 'lucide-react';
+import { Rocket, CheckCircle2, ArrowRight, ArrowLeft, Clock, AlertTriangle, Shield, Users, FileText, Download, Target, Phone, Timer, Circle, BookOpen, Calendar, Building2, Briefcase, AlertOctagon, Info, Copy, Star, UserCheck, TrendingUp, BarChart3, Award, Activity, Database, Server, Wifi, RefreshCw, Zap, Settings, Eye, Flag, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const BusinessContinuityGuide: React.FC = () => {
   const [currentPhase, setCurrentPhase] = useState(0);
   const [completedTasks, setCompletedTasks] = useState<string[]>([]);
+  const [isTocOpen, setIsTocOpen] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  
+  const currentUrl = "https://marsstein.com/wissen/krisenmanagement/business-continuity";
 
   const continuityPhases = [
     {
@@ -218,6 +222,86 @@ const BusinessContinuityGuide: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
+      <Helmet>
+        <title>Business Continuity in Compliance-Krisen – BCP Strategien</title>
+        <meta name="description" content="Geschäftskontinuität während Compliance-Krisen sichern. Notfallpläne & Alternative Prozesse für Unternehmen. Jetzt Resilienz stärken!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href={currentUrl} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Business Continuity in Compliance-Krisen – BCP Strategien" />
+        <meta property="og:description" content="Geschäftskontinuität während Compliance-Krisen sichern. Notfallpläne & Alternative Prozesse für Unternehmen. Jetzt Resilienz stärken!" />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:type" content="article" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Business Continuity Planning Guide",
+            "description": "Geschäftskontinuität während Compliance-Krisen sicherstellen",
+            "url": currentUrl,
+            "publisher": {
+              "@type": "Organization",
+              "name": "MarsStein"
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": currentUrl
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Wissen",
+                "item": "https://marsstein.com/wissen"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Krisenmanagement",
+                "item": "https://marsstein.com/wissen/krisenmanagement"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Business Continuity",
+                "item": currentUrl
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
+      
+      <style>{`
+        h2, h3, h4 { scroll-margin-top: 96px; }
+        
+        @media (max-width: 768px) {
+          .toc-mobile-toggle {
+            display: flex;
+          }
+          .toc-desktop {
+            display: none;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .toc-mobile-toggle {
+            display: none;
+          }
+          .toc-desktop {
+            display: block;
+          }
+        }
+      `}</style>
+      
       <Header />
       
       {/* Hero Section */}
@@ -244,20 +328,20 @@ const BusinessContinuityGuide: React.FC = () => {
               <TrendingUp className="h-5 w-5 text-green-400" />
             </motion.div>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8"
-            >
-              <span className="text-white">Business</span>
-              <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
-                Continuity
-              </span>
-              <br />
-              <span className="text-white">Planning</span>
-            </motion.h1>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8">
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="block"
+              >
+                <span className="text-white">Business Continuity</span>
+                <br />
+                <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
+                  in Compliance-Krisen
+                </span>
+              </motion.span>
+            </h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
@@ -288,18 +372,69 @@ const BusinessContinuityGuide: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Business Process Matrix */}
+      {/* Table of Contents */}
       <section className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl">
+          {/* Mobile ToC Toggle */}
+          <div className="toc-mobile-toggle mb-6">
+            <Button
+              onClick={() => setIsTocOpen(!isTocOpen)}
+              variant="outline"
+              className="w-full border-emerald-500/30 hover:border-emerald-400 text-emerald-300 hover:bg-emerald-500/10"
+            >
+              <span className="flex items-center justify-center gap-2">
+                Inhaltsverzeichnis
+                <ChevronDown className={cn("h-4 w-4 transition-transform", isTocOpen && "rotate-180")} />
+              </span>
+            </Button>
+          </div>
+          
+          {/* Desktop ToC */}
+          <nav aria-label="Inhaltsverzeichnis" className="toc-desktop bg-slate-800/60 rounded-xl p-6 mb-8 border border-slate-700/50">
+            <h2 className="text-xl font-bold text-white mb-4">Inhaltsverzeichnis</h2>
+            <ol className="space-y-2 text-slate-300">
+              <li><a href="#kritische-prozesse" className="hover:text-emerald-400 transition-colors">1. Kritische Geschäftsprozesse</a></li>
+              <li><a href="#impact-assessment" className="hover:text-emerald-400 transition-colors">2. Crisis Impact Assessment</a></li>
+              <li><a href="#alternative-prozesse" className="hover:text-emerald-400 transition-colors">3. Alternative Prozesse</a></li>
+              <li><a href="#stakeholder-kommunikation" className="hover:text-emerald-400 transition-colors">4. Stakeholder Management</a></li>
+              <li><a href="#ressourcen-management" className="hover:text-emerald-400 transition-colors">5. Ressourcen-Reallokation</a></li>
+              <li><a href="#monitoring" className="hover:text-emerald-400 transition-colors">6. Performance Monitoring</a></li>
+              <li><a href="#recovery" className="hover:text-emerald-400 transition-colors">7. Recovery Planning</a></li>
+              <li><a href="#risk-assessment" className="hover:text-emerald-400 transition-colors">8. Risk Assessment Matrix</a></li>
+            </ol>
+          </nav>
+          
+          {/* Mobile ToC Content */}
+          {isTocOpen && (
+            <nav aria-label="Inhaltsverzeichnis" className="md:hidden bg-slate-800/60 rounded-xl p-6 mb-8 border border-slate-700/50">
+              <h2 className="text-xl font-bold text-white mb-4">Inhaltsverzeichnis</h2>
+              <ol className="space-y-2 text-slate-300">
+                <li><a href="#kritische-prozesse" className="hover:text-emerald-400 transition-colors" onClick={() => setIsTocOpen(false)}>1. Kritische Geschäftsprozesse</a></li>
+                <li><a href="#impact-assessment" className="hover:text-emerald-400 transition-colors" onClick={() => setIsTocOpen(false)}>2. Crisis Impact Assessment</a></li>
+                <li><a href="#alternative-prozesse" className="hover:text-emerald-400 transition-colors" onClick={() => setIsTocOpen(false)}>3. Alternative Prozesse</a></li>
+                <li><a href="#stakeholder-kommunikation" className="hover:text-emerald-400 transition-colors" onClick={() => setIsTocOpen(false)}>4. Stakeholder Management</a></li>
+                <li><a href="#ressourcen-management" className="hover:text-emerald-400 transition-colors" onClick={() => setIsTocOpen(false)}>5. Ressourcen-Reallokation</a></li>
+                <li><a href="#monitoring" className="hover:text-emerald-400 transition-colors" onClick={() => setIsTocOpen(false)}>6. Performance Monitoring</a></li>
+                <li><a href="#recovery" className="hover:text-emerald-400 transition-colors" onClick={() => setIsTocOpen(false)}>7. Recovery Planning</a></li>
+                <li><a href="#risk-assessment" className="hover:text-emerald-400 transition-colors" onClick={() => setIsTocOpen(false)}>8. Risk Assessment Matrix</a></li>
+              </ol>
+            </nav>
+          )}
+        </div>
+      </section>
+
+      {/* Business Process Matrix */}
+      <section id="kritische-prozesse" className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="bg-gradient-to-r from-emerald-500/10 to-green-500/10 border-2 border-emerald-500/30 rounded-2xl p-8 backdrop-blur-sm"
           >
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
               <Activity className="h-6 w-6 text-emerald-400" />
               Kritische Geschäftsprozesse
-            </h3>
+            </h2>
             
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -361,7 +496,7 @@ const BusinessContinuityGuide: React.FC = () => {
                       </motion.div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-2xl font-bold text-white">{phase.title}</h3>
+                          <h3 id={phase.id === 0 ? "impact-assessment" : phase.id === 1 ? "alternative-prozesse" : phase.id === 2 ? "stakeholder-kommunikation" : phase.id === 3 ? "ressourcen-management" : phase.id === 4 ? "monitoring" : "recovery"} className="text-2xl font-bold text-white">{phase.title}</h3>
                           <Badge className={cn(
                             phase.priority === 'KRITISCH' 
                               ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100 animate-pulse"
@@ -392,7 +527,15 @@ const BusinessContinuityGuide: React.FC = () => {
                           {phase.assessmentAreas.map((area, idx) => (
                             <div key={idx} className="flex items-center gap-3 p-3 bg-slate-700/50 rounded-xl">
                               <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                              <span className="text-sm text-slate-300">{area}</span>
+                              <span className="text-sm text-slate-300">
+                                {area === "Compliance-Ausfälle kategorisieren" ? (
+                                  <>
+                                    <Link to="/wissen/krisenmanagement/compliance-audit-emergency" className="text-emerald-400 hover:text-emerald-300 underline">Compliance-Ausfälle</Link> kategorisieren
+                                  </>
+                                ) : (
+                                  area
+                                )}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -406,7 +549,13 @@ const BusinessContinuityGuide: React.FC = () => {
                           {phase.impactMatrix.map((item, idx) => (
                             <div key={idx} className="flex items-center justify-between p-4 bg-slate-700/50 rounded-xl">
                               <div>
-                                <p className="font-semibold text-white">{item.process}</p>
+                                <p className="font-semibold text-white">
+                                  {item.process === "Datenverarbeitung" ? (
+                                    <Link to="/wissen/verschluesselung" className="text-white hover:text-emerald-300 underline">Datenverarbeitung</Link>
+                                  ) : (
+                                    item.process
+                                  )}
+                                </p>
                                 <p className="text-sm text-slate-400">Mitigation: {item.mitigation}</p>
                               </div>
                               <Badge className={cn(
@@ -429,7 +578,13 @@ const BusinessContinuityGuide: React.FC = () => {
                         <div className="grid md:grid-cols-2 gap-4">
                           {phase.stakeholderGroups.map((stakeholder, idx) => (
                             <div key={idx} className="bg-slate-700/50 rounded-xl p-4">
-                              <h5 className="font-semibold text-white mb-2">{stakeholder.group}</h5>
+                              <h5 className="font-semibold text-white mb-2">
+                                {stakeholder.group === "Mitarbeiter" ? (
+                                  <Link to="/wissen/branchen/datenschutz-betriebsrat" className="text-white hover:text-emerald-300 underline">Mitarbeiter</Link>
+                                ) : (
+                                  stakeholder.group
+                                )}
+                              </h5>
                               <div className="space-y-1 text-sm">
                                 <p className="text-slate-300">Frequenz: {stakeholder.frequency}</p>
                                 <p className="text-slate-300">Kanäle: {stakeholder.channels.join(', ')}</p>
@@ -539,7 +694,7 @@ const BusinessContinuityGuide: React.FC = () => {
       </section>
 
       {/* Risk Assessment */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="risk-assessment" className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -565,7 +720,15 @@ const BusinessContinuityGuide: React.FC = () => {
                 transition={{ delay: index * 0.1 }}
                 className="bg-slate-800/60 rounded-xl p-6 border border-slate-700/50"
               >
-                <h3 className="text-lg font-semibold text-white mb-4">{risk.risk}</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  {risk.risk === "Data Loss" ? (
+                    <Link to="/wissen/krisenmanagement/vendor-data-breach" className="text-white hover:text-emerald-300 underline">Data Loss</Link>
+                  ) : risk.risk === "Regulatory Fine" ? (
+                    <Link to="/wissen/krisenmanagement/gdpr-fine-response" className="text-white hover:text-emerald-300 underline">Regulatory Fine</Link>
+                  ) : (
+                    risk.risk
+                  )}
+                </h3>
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div>
                     <p className="text-slate-400 mb-1">Wahrscheinlichkeit:</p>
@@ -605,12 +768,14 @@ const BusinessContinuityGuide: React.FC = () => {
             <Button asChild variant="outline" className="border-slate-700 text-slate-300 hover:bg-slate-800">
               <Link to="/wissen/krisenmanagement/gdpr-fine-response">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                GDPR Fine Response
+                <span className="hidden sm:inline">GDPR Fine Response</span>
+                <span className="sm:hidden">Zurück</span>
               </Link>
             </Button>
             <Button asChild className="bg-gradient-to-r from-emerald-500 to-green-500 text-white">
               <Link to="/wissen/krisenmanagement">
-                Zurück zur Übersicht
+                <span className="hidden sm:inline">Zurück zur Übersicht</span>
+                <span className="sm:hidden">Weiter</span>
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

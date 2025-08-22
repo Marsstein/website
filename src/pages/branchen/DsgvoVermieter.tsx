@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -14,8 +15,15 @@ import {
   FileCode, Settings, Laptop, UserCheck, Brain, Rocket, Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 const DsgvoVermieter: React.FC = () => {
+  // SEO Meta-Tags - optimiert gemäß SEO-Checkliste
+  const pageTitle = "DSGVO Vermieter – Datenschutz Immobilien Guide 2024";
+  const pageDescription = "DSGVO für Vermieter: ✓ Mieterdaten sicher verwalten ✓ Datenschutzerklärung ✓ TOM-Checklisten ✓ Bußgelder vermeiden. Jetzt DSGVO-konform vermieten!";
+  // Mobile font settings
+  const baseFontSize = typeof window !== 'undefined' && window.innerWidth < 640 ? 16 : 16;
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState<string>('ueberblick');
   
@@ -61,6 +69,38 @@ const DsgvoVermieter: React.FC = () => {
     }
   };
   
+  // Add scroll-margin-top styles for sticky header and mobile optimizations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      h2[id], h3[id], section[id] {
+        scroll-margin-top: 96px;
+      }
+      
+      /* Mobile-optimierungen */
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        
+        .tap-target {
+          min-height: 48px;
+          min-width: 48px;
+        }
+        
+        p, li {
+          max-width: 45ch;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   // Handle initial load with hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
@@ -102,8 +142,38 @@ const DsgvoVermieter: React.FC = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-background">
-      <Header />
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="dsgvo vermieter, datenschutz vermieter, dsgvo immobilien, dsgvo hausverwaltung, dsgvo compliance vermieter" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://www.example.com/wissen/branchen/dsgvo-vermieter" />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.example.com/wissen/branchen/dsgvo-vermieter" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": pageTitle,
+            "description": pageDescription,
+            "author": {
+              "@type": "Organization",
+              "name": "DSGVO Compliance Team"
+            },
+            "datePublished": "2024-01-01",
+            "dateModified": new Date().toISOString()
+          })}
+        </script>
+      </Helmet>
+      <div ref={containerRef} className="min-h-screen bg-background">
+        <Header />
       
       <main className="relative overflow-hidden">
         {/* Hero Section */}
@@ -131,12 +201,12 @@ const DsgvoVermieter: React.FC = () => {
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Die Datenschutz-Grundverordnung hat die Immobilienbranche fundamental verändert. 
-              Ein Verstoß kann bis zu 20 Millionen Euro oder 4% des Jahresumsatzes kosten.
+              Ein Verstoß kann bis zu 20 Millionen Euro oder 4% des Jahresumsatzes kosten. Erfahren Sie mehr über <Link to="/wissen/dsgvo-artikel" className="text-indigo-600 dark:text-indigo-400 hover:underline">DSGVO-Regelungen</Link>.
             </p>
 
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 mb-12"
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 mb-12 min-h-[48px] min-w-[48px]"
               onClick={() => scrollToSection('ueberblick')}
             >
               Leitfaden starten
@@ -168,8 +238,41 @@ const DsgvoVermieter: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Sticky Navigation - Healthcare Style */}
-      <div className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+      {/* Inhaltsverzeichnis für Mobile und Desktop */}
+      <section className="py-8 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <nav aria-label="Inhaltsverzeichnis" className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                <BookOpen className="h-5 w-5 text-indigo-600" />
+                Inhaltsverzeichnis
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {navigationItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left tap-target"
+                  >
+                    <item.icon className="h-5 w-5 text-indigo-600 flex-shrink-0" />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky Navigation mit scroll-margin-top */}
+      <style>
+        {`
+          h2[id], h3[id], section[id] {
+            scroll-margin-top: 96px;
+          }
+        `}
+      </style>
+      <nav className="sticky top-16 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm" aria-label="Inhaltsverzeichnis">
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-start md:justify-center gap-2 py-3 overflow-x-auto scrollbar-hide">
             {navigationItems.map((item) => {
@@ -199,21 +302,47 @@ const DsgvoVermieter: React.FC = () => {
             })}
           </nav>
         </div>
-      </div>
+      </nav>
 
       {/* Content */}
       <div className="container mx-auto px-4 py-12 space-y-24">
+        {/* Mobile-optimierte Inhaltsverzeichnis-Box */}
+        <div className="lg:hidden mb-8">
+          <Card className="border-indigo-200 dark:border-indigo-800">
+            <div className="p-4">
+              <h3 className="text-lg font-semibold mb-4 flex items-center justify-between">
+                <span>Schnellnavigation</span>
+                <ChevronRight className="h-5 w-5 rotate-90" />
+              </h3>
+              <nav aria-label="Inhaltsverzeichnis Mobil">
+                <ul className="space-y-2">
+                  {navigationItems.map((item) => (
+                    <li key={item.id}>
+                      <button
+                        onClick={() => scrollToSection(item.id)}
+                        className="w-full text-left px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-950/30 flex items-center gap-2 text-sm"
+                      >
+                        <item.icon className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                        {item.label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          </Card>
+        </div>
         {/* Warum ist Datenschutz kritisch Section */}
         <section id="ueberblick" className="scroll-mt-32">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center">
+            <h2 id="warum-datenschutz-kritisch" className="text-4xl font-bold mb-8 text-center">
               <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 Warum ist Datenschutz für Vermieter so kritisch?
               </span>
             </h2>
             
             <Card className="p-8 mb-8 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border-amber-200 dark:border-amber-800">
-              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+              <h3 id="besonderheiten-branche" className="text-2xl font-bold mb-4 flex items-center gap-2">
                 <AlertOctagon className="h-6 w-6 text-amber-600" />
                 Die Besonderheiten Ihrer Branche
               </h3>
@@ -243,7 +372,7 @@ const DsgvoVermieter: React.FC = () => {
                   <div key={index} className="space-y-3">
                     <div className="flex items-center gap-2">
                       <item.icon className="h-5 w-5 text-amber-600" />
-                      <h4 className="font-semibold text-lg">{item.title}</h4>
+                      <div className="font-semibold text-lg">{item.title}</div>
                     </div>
                     <ul className="space-y-1 ml-7">
                       {item.items.map((point, idx) => (
@@ -278,8 +407,8 @@ const DsgvoVermieter: React.FC = () => {
                 </thead>
                 <tbody>
                   {[
-                    { artikel: 'Art. 6', inhalt: 'Rechtmäßigkeit der Verarbeitung', bedeutung: 'Basis für jede Datenverarbeitung' },
-                    { artikel: 'Art. 9', inhalt: 'Besondere Datenkategorien', bedeutung: 'Gesundheitsdaten bei barrierefreiem Wohnen' },
+                    { artikel: 'Art. 6', inhalt: 'Rechtmäßigkeit der Verarbeitung', bedeutung: <>Basis für jede Datenverarbeitung. Mehr zu <Link to="/wissen/dsgvo-artikel" className="text-indigo-600 dark:text-indigo-400 hover:underline">Art. 6 DSGVO</Link></> },
+                    { artikel: 'Art. 9', inhalt: 'Besondere Datenkategorien', bedeutung: <>Gesundheitsdaten bei barrierefreiem Wohnen. Siehe <Link to="/wissen/dsgvo-artikel" className="text-indigo-600 dark:text-indigo-400 hover:underline">Art. 9 DSGVO</Link></> },
                     { artikel: 'Art. 13/14', inhalt: 'Informationspflichten', bedeutung: 'Transparenz bei Datenerhebung' },
                     { artikel: 'Art. 17', inhalt: 'Recht auf Löschung', bedeutung: 'Löschkonzept erforderlich' },
                     { artikel: 'Art. 32', inhalt: 'Sicherheit der Verarbeitung', bedeutung: 'Technische Schutzmaßnahmen' }
@@ -297,7 +426,7 @@ const DsgvoVermieter: React.FC = () => {
 
           {/* Rechtliche Grundlagen */}
           <Card className="p-6 mb-8">
-            <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+            <h3 id="rechtliche-grundlagen-daten" className="text-2xl font-semibold mb-6 flex items-center gap-2">
               <Scale className="h-6 w-6 text-indigo-600" />
               Rechtliche Grundlagen für Datenverarbeitung
             </h3>
@@ -957,7 +1086,7 @@ Ort, Datum                  Unterschrift`}</pre>
             ].map((practice, idx) => (
               <Card key={idx} className="p-6">
                 <practice.icon className="h-8 w-8 text-indigo-600 mb-3" />
-                <h3 className="text-lg font-semibold mb-3">{practice.title}</h3>
+                <div className="text-lg font-semibold mb-3">{practice.title}</div>
                 <ul className="space-y-2">
                   {practice.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="flex items-start gap-2 text-sm">
@@ -973,16 +1102,16 @@ Ort, Datum                  Unterschrift`}</pre>
 
         {/* Zukunftstrends */}
         <section id="zukunft" className="max-w-6xl mx-auto scroll-mt-32">
-          <h2 className="text-4xl font-bold mb-8">Zukunftstrends und Vorbereitung</h2>
+          <h2 id="zukunftstrends-vorbereitung" className="text-4xl font-bold mb-8">Zukunftstrends und Vorbereitung</h2>
           
           <Card className="p-6 mb-6">
-            <h3 className="text-2xl font-semibold mb-4">Was kommt auf Vermieter zu?</h3>
+            <h3 id="was-kommt-auf-vermieter" className="text-2xl font-semibold mb-4">Was kommt auf Vermieter zu?</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2">
+                <div className="font-semibold mb-3 flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-indigo-600" />
                   Neue Technologien
-                </h4>
+                </div>
                 <ul className="space-y-2">
                   {[
                     'KI-basierte Mieterauswahl: Neue Datenschutzanforderungen',
@@ -998,10 +1127,10 @@ Ort, Datum                  Unterschrift`}</pre>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2">
+                <div className="font-semibold mb-3 flex items-center gap-2">
                   <Calendar className="h-5 w-5 text-indigo-600" />
                   Zeitplan
-                </h4>
+                </div>
                 <div className="space-y-3">
                   <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded p-3">
                     <p className="font-semibold text-sm">2025:</p>
@@ -1025,9 +1154,40 @@ Ort, Datum                  Unterschrift`}</pre>
           </Card>
         </section>
 
+        {/* Related Links Section for SEO */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">Verwandte Compliance-Themen</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/wissen/branchen/datenschutz-kindergarten" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <div className="p-6">
+                  <h3 className="font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline mb-2">Datenschutz Kindergarten</h3>
+                  <p className="text-sm text-muted-foreground">DSGVO-Compliance für Kitas</p>
+                </div>
+              </Card>
+            </Link>
+            <Link to="/wissen/branchen/dsgvo-vereine" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <div className="p-6">
+                  <h3 className="font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline mb-2">DSGVO für Vereine</h3>
+                  <p className="text-sm text-muted-foreground">Datenschutz im Vereinswesen</p>
+                </div>
+              </Card>
+            </Link>
+            <Link to="/wissen/branchen/datenschutz-pflege" className="group">
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <div className="p-6">
+                  <h3 className="font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline mb-2">Datenschutz in der Pflege</h3>
+                  <p className="text-sm text-muted-foreground">DSGVO für Pflegeeinrichtungen</p>
+                </div>
+              </Card>
+            </Link>
+          </div>
+        </section>
+
         {/* CTA */}
         <Card className="p-8 text-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-          <h3 className="text-3xl font-bold mb-4">
+          <h3 id="ihr-weg-compliance" className="text-3xl font-bold mb-4">
             Ihr Weg zur DSGVO-Compliance
           </h3>
           <p className="text-xl mb-6 max-w-2xl mx-auto">
@@ -1035,11 +1195,11 @@ Ort, Datum                  Unterschrift`}</pre>
             Mit den richtigen Prozessen und Tools wird Datenschutz zum Wettbewerbsvorteil.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
+            <Button size="lg" variant="secondary" className="min-h-[48px] min-w-[48px]">
               Kostenlose Vermieter-Beratung
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/20">
+            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/20 min-h-[48px] min-w-[48px]">
               DSGVO-Audit anfordern
             </Button>
           </div>
@@ -1047,7 +1207,7 @@ Ort, Datum                  Unterschrift`}</pre>
 
         {/* Weiterführende Informationen */}
         <section className="max-w-6xl mx-auto mt-12">
-          <h2 className="text-4xl font-bold mb-8 text-center">Weiterführende Ressourcen</h2>
+          <h2 id="weiterfuehrende-ressourcen" className="text-4xl font-bold mb-8 text-center">Weiterführende Ressourcen</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="p-6">
@@ -1079,15 +1239,15 @@ Ort, Datum                  Unterschrift`}</pre>
               </h3>
               <div className="space-y-3">
                 <div>
-                  <h4 className="font-medium text-sm mb-1">Immobilienverwaltung:</h4>
+                  <div className="font-medium text-sm mb-1">Immobilienverwaltung:</div>
                   <p className="text-sm text-muted-foreground">Haufe Axera, DOMUS, objego</p>
                 </div>
                 <div>
-                  <h4 className="font-medium text-sm mb-1">Kommunikation:</h4>
+                  <div className="font-medium text-sm mb-1">Kommunikation:</div>
                   <p className="text-sm text-muted-foreground">Element/Matrix, Threema Work</p>
                 </div>
                 <div>
-                  <h4 className="font-medium text-sm mb-1">E-Mail-Verschlüsselung:</h4>
+                  <div className="font-medium text-sm mb-1">E-Mail-Verschlüsselung:</div>
                   <p className="text-sm text-muted-foreground">ProtonMail, Tutanota, GPG4Win</p>
                 </div>
               </div>
@@ -1099,6 +1259,7 @@ Ort, Datum                  Unterschrift`}</pre>
       
       <Footer />
     </div>
+    </>
   );
 };
 

@@ -76,6 +76,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const AmazonLuxembourgCase: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -508,6 +509,36 @@ class GDPRConsentManager {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900">
+      <SEOHead
+        title="Amazon Luxemburg 2021 – CNPD Bußgeld-Entscheidung 746M€"
+        description="Amazon Luxemburg 2021 CNPD-Bußgeld: Datenverarbeitungs-Verletzungen, E-Commerce Compliance, DSGVO-Enforcement. ✓ Fine Analysis ✓ Compliance Lessons ✓ Enforcement Trends."
+        canonical="/wissen/rechtsprechung/amazon-luxemburg-2021"
+        keywords="Amazon, Luxemburg, CNPD, Bußgeld, DSGVO, E-Commerce, Compliance, Datenverarbeitung, 746 Millionen"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Amazon Luxemburg 2021 – CNPD Bußgeld-Entscheidung 746M€",
+          "description": "Analyse des €746 Millionen DSGVO-Bußgelds gegen Amazon durch die luxemburgische CNPD",
+          "author": {
+            "@type": "Organization",
+            "name": "Marsstein"
+          },
+          "publisher": {
+            "@type": "Organization", 
+            "name": "Marsstein",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://marsstein.com/logo.png"
+            }
+          },
+          "datePublished": "2021-07-30",
+          "dateModified": "2024-01-15",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://marsstein.com/wissen/rechtsprechung/amazon-luxemburg-2021"
+          }
+        }}
+      />
       <Header />
       
       {/* Animated Background Elements */}
@@ -607,6 +638,46 @@ class GDPRConsentManager {
         </div>
       </motion.section>
 
+      {/* Table of Contents */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-800/20">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h2 id="inhaltsverzeichnis" className="text-3xl font-bold text-white mb-6" style={{ scrollMarginTop: '100px' }}>Inhaltsverzeichnis</h2>
+            <nav aria-label="Inhaltsverzeichnis" className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-4 text-left">
+                <div className="space-y-2">
+                  <a href="#bussgeld-uebersicht" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-indigo-400 font-medium">1.</span> Bußgeld-Übersicht
+                  </a>
+                  <a href="#violation-analysis" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-indigo-400 font-medium">2.</span> Verletzungsanalyse
+                  </a>
+                  <a href="#compliance-solutions" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-indigo-400 font-medium">3.</span> Compliance-Lösungen
+                  </a>
+                </div>
+                <div className="space-y-2">
+                  <a href="#ecommerce-impact" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-indigo-400 font-medium">4.</span> E-Commerce Impact
+                  </a>
+                  <a href="#branchen-guidance" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-indigo-400 font-medium">5.</span> Branchen-Guidance
+                  </a>
+                  <a href="#enforcement-trends" className="block p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors text-slate-300 hover:text-white">
+                    <span className="text-indigo-400 font-medium">6.</span> Enforcement-Trends
+                  </a>
+                </div>
+              </div>
+            </nav>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Content Tabs */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
@@ -617,24 +688,30 @@ class GDPRConsentManager {
               transition={{ duration: 0.6 }}
               className="mb-12"
             >
-              <TabsList className="grid w-full grid-cols-6 bg-slate-800/60 backdrop-blur-sm p-2 rounded-xl">
-                <TabsTrigger value="overview" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white">
-                  Überblick
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-6 bg-slate-800/60 backdrop-blur-sm p-2 rounded-xl gap-2 md:gap-0">
+                <TabsTrigger value="overview" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Überblick</span>
+                  <span className="md:hidden">Info</span>
                 </TabsTrigger>
-                <TabsTrigger value="violations" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white">
-                  Verstöße
+                <TabsTrigger value="violations" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Verstöße</span>
+                  <span className="md:hidden">Fälle</span>
                 </TabsTrigger>
-                <TabsTrigger value="advertising" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white">
-                  Werbepraktiken
+                <TabsTrigger value="advertising" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Werbepraktiken</span>
+                  <span className="md:hidden">Ads</span>
                 </TabsTrigger>
-                <TabsTrigger value="industry" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white">
-                  Branchenimpact
+                <TabsTrigger value="industry" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Branchenimpact</span>
+                  <span className="md:hidden">Sektor</span>
                 </TabsTrigger>
-                <TabsTrigger value="compliance" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white">
-                  Compliance
+                <TabsTrigger value="compliance" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Compliance</span>
+                  <span className="md:hidden">Guide</span>
                 </TabsTrigger>
-                <TabsTrigger value="technical" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white">
-                  Lösungen
+                <TabsTrigger value="technical" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white text-xs md:text-sm">
+                  <span className="hidden md:inline">Lösungen</span>
+                  <span className="md:hidden">Tech</span>
                 </TabsTrigger>
               </TabsList>
             </motion.div>
@@ -650,7 +727,7 @@ class GDPRConsentManager {
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-3 gap-8">
                       <div className="md:col-span-2">
-                        <h3 className="text-2xl font-bold text-white mb-6">Verfahrensübersicht</h3>
+                        <h3 id="bussgeld-uebersicht" className="text-2xl font-bold text-white mb-6" style={{ scrollMarginTop: '100px' }}>Verfahrensübersicht</h3>
                         <div className="space-y-4 text-slate-300 leading-relaxed">
                           <p>
                             Am 30. Juli 2021 verhängte die luxemburgische Datenschutzbehörde (CNPD) 
@@ -758,7 +835,7 @@ class GDPRConsentManager {
             </TabsContent>
 
             {/* Violations Tab */}
-            <TabsContent value="violations" className="space-y-8">
+            <TabsContent value="violations" className="space-y-8" id="violation-analysis">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -821,7 +898,7 @@ class GDPRConsentManager {
             </TabsContent>
 
             {/* Advertising Practices Tab */}
-            <TabsContent value="advertising" className="space-y-8">
+            <TabsContent value="advertising" className="space-y-8" id="compliance-solutions">
               <div className="grid md:grid-cols-2 gap-8">
                 {advertisingAnalysis.map((practice, index) => (
                   <motion.div
@@ -892,7 +969,7 @@ class GDPRConsentManager {
             </TabsContent>
 
             {/* Industry Impact Tab */}
-            <TabsContent value="industry" className="space-y-8">
+            <TabsContent value="industry" className="space-y-8" id="ecommerce-impact">
               <div className="space-y-8">
                 {industryImpacts.map((industry, index) => (
                   <motion.div
@@ -955,7 +1032,7 @@ class GDPRConsentManager {
             </TabsContent>
 
             {/* Compliance Tab */}
-            <TabsContent value="compliance" className="space-y-8">
+            <TabsContent value="compliance" className="space-y-8" id="branchen-guidance">
               <div className="space-y-8">
                 {complianceFramework.map((phase, index) => (
                   <motion.div
@@ -1015,7 +1092,7 @@ class GDPRConsentManager {
             </TabsContent>
 
             {/* Technical Solutions Tab */}
-            <TabsContent value="technical" className="space-y-8">
+            <TabsContent value="technical" className="space-y-8" id="enforcement-trends">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
