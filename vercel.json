@@ -86,6 +86,11 @@
       "destination": "/index.html"
     }
   ],
+  "functions": {
+    "api/og.js": {
+      "maxDuration": 10
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",

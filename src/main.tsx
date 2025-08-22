@@ -1,7 +1,6 @@
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'  // Fixed: using the main App component with test routes
-// import App from './App-minimal.tsx'  // Minimal version
-import './index.css'
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
 
 const rootElement = document.getElementById("root");
 
