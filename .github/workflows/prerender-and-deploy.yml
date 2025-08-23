@@ -7,6 +7,7 @@ on:
 jobs:
   prerender:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     
     steps:
       - uses: actions/checkout@v3
@@ -15,17 +16,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
           
       - name: Install dependencies
         run: npm install --legacy-peer-deps
         
-      - name: Install Puppeteer dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
           
       - name: Build and Prerender
-        run: npm run build:ssg
+        run: |
+          export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+          export PUPPETEER_EXECUTABLE_PATH=$(which google-chrome-stable)
+          npm run build:ssg
+        timeout-minutes: 30
         
       - name: Commit prerendered pages
         run: |

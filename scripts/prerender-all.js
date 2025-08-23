@@ -288,7 +288,14 @@ async function main() {
   
   try {
     // Starte Puppeteer
-    browser = await puppeteer.launch(prerenderConfig.puppeteer);
+    const launchOptions = { ...prerenderConfig.puppeteer };
+    
+    // Use system Chrome if available (e.g., in GitHub Actions)
+    if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+      launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+    }
+    
+    browser = await puppeteer.launch(launchOptions);
     
     // Hole alle Routen
     log.info('Loading routes...');
