@@ -8,9 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+# dist  # Kommentiert für Prerendering - dist/ wird committed
 dist-ssr
 *.local
+
+# Prerender logs
+prerender.log
 
 # Editor directories and files
 .vscode/*
