@@ -347,6 +347,11 @@ async function main() {
     }
     
     logStream.end();
+    
+    // Force exit to ensure the process terminates
+    setTimeout(() => {
+      process.exit(stats.failed > 0 ? 1 : 0);
+    }, 1000);
   }
 }
 

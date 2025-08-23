@@ -6,6 +6,17 @@ import { spawn } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Handle process termination
+process.on('SIGINT', () => {
+  console.log('\nReceived SIGINT, cleaning up...');
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  console.log('\nReceived SIGTERM, cleaning up...');
+  process.exit(0);
+});
+
 // Routes to prerender with their specific metadata
 const routes = [
   {
@@ -102,7 +113,12 @@ for (const route of routes) {
 }
 
 // Kill the preview server
-previewProcess.kill();
+previewProcess.kill('SIGTERM');
+
+// Force kill after a short delay to ensure cleanup
+setTimeout(() => {
+  process.exit(0);
+}, 1000);
 
 console.log(`\n✨ Prerendered ${routes.length} routes successfully!`);
 console.log('📦 Build complete with full HTML content for SEO.');
