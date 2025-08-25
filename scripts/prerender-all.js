@@ -288,7 +288,14 @@ async function main() {
   
   try {
     // Starte Puppeteer
-    browser = await puppeteer.launch(prerenderConfig.puppeteer);
+    const launchOptions = { ...prerenderConfig.puppeteer };
+    
+    // Use system Chrome if available (e.g., in GitHub Actions)
+    if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+      launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+    }
+    
+    browser = await puppeteer.launch(launchOptions);
     
     // Hole alle Routen
     log.info('Loading routes...');
@@ -340,6 +347,11 @@ async function main() {
     }
     
     logStream.end();
+    
+    // Force exit to ensure the process terminates
+    setTimeout(() => {
+      process.exit(stats.failed > 0 ? 1 : 0);
+    }, 1000);
   }
 }
 
