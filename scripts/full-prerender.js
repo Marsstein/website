@@ -6,6 +6,44 @@ import { spawn } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+/**
+ * HTML Optimierungen und Formatierung
+ */
+function optimizeHtml(html, route) {
+  // Entferne Development-spezifische Scripts
+  html = html.replace(/<script.*?\/\/@vite\/client.*?<\/script>/g, '');
+  
+  // Füge canonical URL hinzu wenn nicht vorhanden
+  if (!html.includes('rel="canonical"')) {
+    const canonicalUrl = `https://marsstein.com${route}`;
+    html = html.replace('</head>', `  <link rel="canonical" href="${canonicalUrl}" />\n</head>`);
+  }
+  
+  // Entferne inline styles die animations blockieren
+  html = html.replace(/style="opacity:\s*0[^"]*"/g, '');
+  html = html.replace(/style="[^"]*transform:\s*translate[^"]*"/g, '');
+  
+  // Füge Debug-Kommentar hinzu
+  html = html.replace('</head>', `  <!-- Prerendered at ${new Date().toISOString()} -->\n</head>`);
+  
+  // Formatiere HTML für bessere Lesbarkeit im View-Source
+  // Füge Zeilenumbrüche nach wichtigen Tags hinzu
+  html = html.replace(/<\/head>/g, '</head>\n');
+  html = html.replace(/<body/g, '\n<body');
+  html = html.replace(/<\/body>/g, '\n</body>');
+  html = html.replace(/<div id="root">/g, '\n<div id="root">\n');
+  html = html.replace(/<\/div><script/g, '\n</div>\n<script');
+  html = html.replace(/<\/script><script/g, '</script>\n<script');
+  html = html.replace(/<meta/g, '\n  <meta');
+  html = html.replace(/<link/g, '\n  <link');
+  html = html.replace(/<title/g, '\n  <title');
+  
+  // Füge Einrückungen für bessere Struktur hinzu
+  html = html.replace(/(\n)(<(?:meta|link|title))/g, '$1  $2');
+  
+  return html;
+}
+
 // Handle process termination
 process.on('SIGINT', () => {
   console.log('\nReceived SIGINT, cleaning up...');
@@ -130,12 +168,15 @@ async function prerenderRoute(route) {
     console.log(`   Title: ${title}`);
     console.log(`   Description: ${metaDescription}`);
     
+    // Optimize and format HTML for better source readability
+    const optimizedHtml = optimizeHtml(html, route.path);
+    
     // Create directory structure
     const outputPath = join(__dirname, '..', 'dist', route.path.slice(1));
     mkdirSync(outputPath, { recursive: true });
     
     // Write the HTML file
-    writeFileSync(join(outputPath, 'index.html'), html);
+    writeFileSync(join(outputPath, 'index.html'), optimizedHtml);
     
     console.log(`✅ Prerendered: ${route.path}`);
     
