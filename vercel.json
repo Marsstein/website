@@ -80,12 +80,8 @@
       "statusCode": 301
     }
   ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "functions": {
     "api/og.js": {
       "maxDuration": 10
