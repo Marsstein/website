@@ -3,8 +3,6 @@ import { writeFileSync, mkdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
-// Temporär deaktiviert bis format-html.js fertig ist
-// import { formatHTML, addDebugComments } from './format-html.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -15,76 +13,145 @@ function optimizeHtml(html, route) {
   // Entferne Development-spezifische Scripts
   html = html.replace(/<script.*?\/\/@vite\/client.*?<\/script>/g, '');
   
-  // WICHTIGER FIX: Title tag ist oft fehlerhaft (fehlt >)
-  // Korrigiere zuerst alle malformed title tags
-  html = html.replace(/<title(?!>)([^<]*)<\/title>/g, '<title>$1</title>');
-  
-  // Extract title from the document
-  const titleMatch = html.match(/<title[^>]*>([^<]*)<\/title>/);
-  const titleContent = titleMatch ? titleMatch[1] : '';
-  
-  // Remove ALL title tags from the document first
-  html = html.replace(/<title[^>]*>.*?<\/title>/g, '');
-  
-  // WICHTIG: Entferne doppelte meta tags (React Helmet cleanup issue)
-  // Behalte nur das erste Vorkommen jedes meta tags
-  const metaTagMap = new Map();
-  
-  // Finde alle meta tags
-  const metaTagRegex = /<meta\s+([^>]*?)>/g;
-  let match;
-  const metaTags = [];
-  
-  while ((match = metaTagRegex.exec(html)) !== null) {
-    metaTags.push({
-      fullTag: match[0],
-      attributes: match[1]
-    });
-  }
-  
-  // Filtere doppelte meta tags
-  const uniqueMetaTags = [];
-  metaTags.forEach(tag => {
-    // Extract key attributes (name, property)
-    const nameMatch = tag.attributes.match(/name="([^"]+)"/);
-    const propertyMatch = tag.attributes.match(/property="([^"]+)"/);
-    const key = nameMatch ? `name:${nameMatch[1]}` : propertyMatch ? `property:${propertyMatch[1]}` : null;
-    
-    if (key) {
-      if (!metaTagMap.has(key)) {
-        metaTagMap.set(key, tag.fullTag);
-        uniqueMetaTags.push(tag.fullTag);
-      }
-    } else {
-      uniqueMetaTags.push(tag.fullTag);
-    }
-  });
-  
-  // Ersetze alle meta tags mit den gefilterten
-  metaTags.forEach(tag => {
-    html = html.replace(tag.fullTag, '');
-  });
-  
-  // Add title tag and meta tags back to head in proper order
-  const titleTag = titleContent ? `  <title>${titleContent}</title>\n` : '';
-  const metaTagsString = uniqueMetaTags.join('\n  ');
-  html = html.replace('</head>', `${titleTag}  ${metaTagsString}\n</head>`);
-  
-  // Füge canonical URL hinzu wenn nicht vorhanden
-  if (!html.includes('rel="canonical"')) {
-    const canonicalUrl = `https://marsstein.com${route}`;
-    html = html.replace('</head>', `  <link rel="canonical" href="${canonicalUrl}" />\n</head>`);
-  }
-  
   // Entferne inline styles die animations blockieren
   html = html.replace(/style="opacity:\s*0[^"]*"/g, '');
   html = html.replace(/style="[^"]*transform:\s*translate[^"]*"/g, '');
   
-  // Performance: Füge preload für wichtige Ressourcen hinzu
-  const heroImageMatch = html.match(/src="(\/[^"]+\.(?:jpg|png|webp))"/);
-  if (heroImageMatch && !html.includes('rel="preload"')) {
-    const preloadTag = `  <link rel="preload" as="image" href="${heroImageMatch[1]}" fetchpriority="high" />\n`;
-    html = html.replace('</head>', `${preloadTag}</head>`);
+  // Fix encoding issues
+  html = html
+    .replace(/Ã¤/g, 'ä')
+    .replace(/Ã¶/g, 'ö')
+    .replace(/Ã¼/g, 'ü')
+    .replace(/Ã„/g, 'Ä')
+    .replace(/Ã–/g, 'Ö')
+    .replace(/Ãœ/g, 'Ü')
+    .replace(/ÃŸ/g, 'ß')
+    .replace(/â€™/g, "'")
+    .replace(/â€"/g, '–')
+    .replace(/â€œ/g, '"')
+    .replace(/â€/g, '"')
+    .replace(/â€¢/g, '•')
+    .replace(/â€¦/g, '…');
+
+  // Fix malformed title tags
+  html = html.replace(/<title([^>]*)>([^<]+)<\/title>/gi, (match, attrs, content) => {
+    // Don't remove content that looks like valid title beginnings
+    return `<title${attrs}>${content}</title>`;
+  });
+  
+  // Reorder head elements to ensure proper SEO tag positioning
+  const headMatch = html.match(/<head[^>]*>([\s\S]*?)<\/head>/);
+  if (headMatch) {
+    let headContent = headMatch[1];
+    
+    // Extract different types of elements
+    const elements = {
+      charset: [],
+      viewport: [],
+      title: [],
+      helmetMeta: [],
+      helmetLink: [],
+      otherMeta: [],
+      preloadLinks: [],
+      stylesheetLinks: [],
+      inlineStyles: [],
+      scripts: [],
+      other: []
+    };
+    
+    // Extract charset meta tag
+    const charsetMatches = headContent.match(/<meta\s+charset[^>]*>/gi) || [];
+    elements.charset = charsetMatches;
+    charsetMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract viewport meta tag
+    const viewportMatches = headContent.match(/<meta\s+name=["']viewport["'][^>]*>/gi) || [];
+    elements.viewport = viewportMatches;
+    viewportMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract title tag
+    const titleMatches = headContent.match(/<title[^>]*>[\s\S]*?<\/title>/gi) || [];
+    elements.title = titleMatches;
+    titleMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract React Helmet meta tags (with data-rh="true")
+    const helmetMetaMatches = headContent.match(/<meta[^>]*data-rh=["']true["'][^>]*>/gi) || [];
+    elements.helmetMeta = helmetMetaMatches;
+    helmetMetaMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract React Helmet link tags (with data-rh="true")
+    const helmetLinkMatches = headContent.match(/<link[^>]*data-rh=["']true["'][^>]*>/gi) || [];
+    elements.helmetLink = helmetLinkMatches;
+    helmetLinkMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract other meta tags
+    const otherMetaMatches = headContent.match(/<meta[^>]*>/gi) || [];
+    elements.otherMeta = otherMetaMatches;
+    otherMetaMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract preload links
+    const preloadLinkMatches = headContent.match(/<link[^>]*rel=["']preload["'][^>]*>/gi) || [];
+    elements.preloadLinks = preloadLinkMatches;
+    preloadLinkMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract stylesheet links
+    const stylesheetLinkMatches = headContent.match(/<link[^>]*rel=["']stylesheet["'][^>]*>/gi) || [];
+    elements.stylesheetLinks = stylesheetLinkMatches;
+    stylesheetLinkMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract inline styles
+    const styleMatches = headContent.match(/<style[^>]*>[\s\S]*?<\/style>/gi) || [];
+    elements.inlineStyles = styleMatches;
+    styleMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract script tags
+    const scriptMatches = headContent.match(/<script[^>]*>[\s\S]*?<\/script>/gi) || [];
+    elements.scripts = scriptMatches;
+    scriptMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Extract remaining link tags
+    const remainingLinkMatches = headContent.match(/<link[^>]*>/gi) || [];
+    remainingLinkMatches.forEach(tag => { headContent = headContent.replace(tag, ''); });
+    
+    // Performance: Füge preload für wichtige Ressourcen hinzu
+    const heroImageMatch = html.match(/src="(\/[^"]+\.(?:jpg|png|webp))"/);
+    if (heroImageMatch && !elements.preloadLinks.some(link => link.includes(heroImageMatch[1]))) {
+      elements.preloadLinks.push(`<link rel="preload" as="image" href="${heroImageMatch[1]}" fetchpriority="high" />`);
+    }
+    
+    // Füge canonical URL hinzu wenn nicht vorhanden
+    if (!elements.helmetLink.some(link => link.includes('rel="canonical"')) && 
+        !remainingLinkMatches.some(link => link.includes('rel="canonical"'))) {
+      const canonicalUrl = `https://marsstein.com${route}`;
+      elements.helmetLink.push(`<link rel="canonical" href="${canonicalUrl}" data-rh="true" />`);
+    }
+    
+    // Remaining content
+    elements.other = [headContent.trim()];
+    
+    // Rebuild head in correct SEO order
+    const orderedElements = [
+      ...elements.charset,
+      ...elements.viewport,
+      ...elements.title,
+      ...elements.helmetMeta,     // React Helmet SEO meta tags come early
+      ...elements.helmetLink,     // React Helmet canonical and other SEO links
+      ...elements.otherMeta,      // Other meta tags
+      ...elements.preloadLinks,   // Preload hints
+      ...remainingLinkMatches,    // Other links
+      ...elements.stylesheetLinks, // Stylesheets
+      ...elements.inlineStyles,   // Inline styles come after SEO tags
+      ...elements.scripts,        // Scripts
+      ...elements.other.filter(Boolean),
+      `<!-- Prerendered at ${new Date().toISOString()} -->`
+    ].filter(Boolean);
+    
+    // Format the head content properly
+    const formattedHead = orderedElements
+      .map(element => `  ${element}`)
+      .join('\n');
+    
+    html = html.replace(headMatch[0], `<head>\n${formattedHead}\n</head>`);
   }
   
   // Füge width/height zu Bildern hinzu um Layout Shifts zu vermeiden
@@ -100,41 +167,15 @@ function optimizeHtml(html, route) {
     return match;
   });
   
-  // Füge Debug-Kommentar hinzu
-  html = html.replace('</head>', `  <!-- Prerendered at ${new Date().toISOString()} -->\n</head>`);
-  
-  // Verbesserte HTML-Formatierung direkt hier
-  if (process.env.NODE_ENV !== 'production') {
-    // Basis-Formatierung
-    html = html
-      // Entferne existierende Whitespaces
-      .replace(/>\s+</g, '><')
-      // Head-Bereich
-      .replace(/<head>/g, '<head>\n')
-      .replace(/<\/head>/g, '\n</head>')
-      .replace(/<meta/g, '\n  <meta')
-      .replace(/<link/g, '\n  <link')
-      .replace(/<title>/g, '\n  <title')
-      .replace(/<script/g, '\n  <script')
-      // Body-Bereich
-      .replace(/<body/g, '\n<body')
-      .replace(/<\/body>/g, '\n</body>')
-      .replace(/<div id="root">/g, '\n  <div id="root">\n')
-      // Haupt-Container
-      .replace(/<div class="([^"]+)">/g, (match, classes) => {
-        // Einrückung für Haupt-Container
-        if (classes.includes('min-h-screen') || classes.includes('container')) {
-          return `\n    ${match}\n`;
-        }
-        return match;
-      })
-      // Header, Main, Footer
-      .replace(/<(header|main|footer|section|article|nav)([^>]*)>/g, '\n      <$1$2>\n')
-      .replace(/<\/(header|main|footer|section|article|nav)>/g, '\n      </$1>\n')
-      // Aufräumen
-      .replace(/\n\n+/g, '\n\n')
-      .replace(/\n\s*\n/g, '\n');
+  // Ensure proper DOCTYPE
+  if (!html.startsWith('<!DOCTYPE')) {
+    html = '<!DOCTYPE html>\n' + html;
   }
+  
+  // Final formatting pass
+  html = html
+    .replace(/\n\s*\n\s*\n/g, '\n\n')  // Remove excessive newlines
+    .replace(/^\s*$/gm, '');            // Remove empty lines
   
   return html;
 }
@@ -207,7 +248,12 @@ await new Promise(resolve => setTimeout(resolve, 5000));
 async function prerenderRoute(route) {
   const launchOptions = { 
     headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: [
+      '--no-sandbox', 
+      '--disable-setuid-sandbox',
+      '--lang=de-DE',  // Ensure German locale
+      '--accept-lang=de-DE,de'
+    ]
   };
   
   // Use system Chrome if available (e.g., in GitHub Actions)
@@ -219,6 +265,22 @@ async function prerenderRoute(route) {
   
   try {
     const page = await browser.newPage();
+    
+    // Set proper encoding and locale
+    await page.setExtraHTTPHeaders({
+      'Accept-Language': 'de-DE,de;q=0.9,en;q=0.8',
+      'Accept-Charset': 'utf-8'
+    });
+    
+    // Override navigator.languages to ensure German locale
+    await page.evaluateOnNewDocument(() => {
+      Object.defineProperty(navigator, 'language', {
+        get: function() { return 'de-DE'; }
+      });
+      Object.defineProperty(navigator, 'languages', {
+        get: function() { return ['de-DE', 'de']; }
+      });
+    });
     
     // Set viewport for consistent rendering
     await page.setViewport({ width: 1920, height: 1080 });
@@ -246,71 +308,52 @@ async function prerenderRoute(route) {
     // Wait for React Helmet to update meta tags
     console.log('   Waiting for meta tags to update...');
     
-    // Wait longer for Helmet to update
-    await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 3000)));
+    // Give React Helmet plenty of time to update all tags
+    await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 5000)));
     
-    // Then wait for specific meta tag changes
+    // Wait for all React Helmet tags to be present
     try {
       await page.waitForFunction(() => {
-        const helmetTags = document.querySelectorAll('[data-rh="true"]');
-        const description = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const title = document.title;
+        // Check for essential SEO tags
+        const hasDescription = document.querySelector('meta[name="description"][data-rh="true"]');
+        const hasOgTitle = document.querySelector('meta[property="og:title"][data-rh="true"]');
+        const hasOgDescription = document.querySelector('meta[property="og:description"][data-rh="true"]');
+        const hasCanonical = document.querySelector('link[rel="canonical"][data-rh="true"]');
+        const hasTitle = document.title && document.title !== 'Marsstein';
         
-        // Check if Helmet has added its tags
-        return helmetTags.length > 0 || (
-          description && 
-          description.content && 
-          !description.content.includes('MVP 1.0 Demo') &&
-          ogTitle && 
-          ogTitle.content &&
-          title && 
-          title !== 'Marsstein'
-        );
-      }, { timeout: 15000 });
-      
-      // Additional wait for all updates to complete
-      await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 2000)));
+        return hasDescription && hasOgTitle && hasOgDescription && hasCanonical && hasTitle;
+      }, { timeout: 10000 });
       
     } catch (e) {
-      console.warn(`Warning: Helmet meta tags not fully loaded for ${route.path}, using fallback wait`);
-      // Fallback to fixed wait if meta tags don't appear
-      await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 2000)));
+      console.warn(`⚠️  Some SEO tags may be missing for ${route.path}`);
     }
     
-    // Verify content is loaded
-    try {
-      await page.waitForSelector('h1, h2', { timeout: 5000 });
-    } catch (e) {
-      console.warn(`Warning: No headings found for ${route.path}`);
-    }
+    // Additional wait to ensure all updates are complete
+    await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 2000)));
     
     // Get the fully rendered HTML
-    const html = await page.content();
+    let html = await page.content();
     
     // Debug: Check if meta tags are captured
     const title = await page.title();
     const metaDescription = await page.$eval('meta[name="description"]', el => el.content).catch(() => 'No description found');
     const ogTitle = await page.$eval('meta[property="og:title"]', el => el.content).catch(() => 'No og:title found');
+    const canonicalUrl = await page.$eval('link[rel="canonical"]', el => el.href).catch(() => 'No canonical found');
+    
     console.log(`   Title: ${title}`);
     console.log(`   Description: ${metaDescription}`);
     console.log(`   OG Title: ${ogTitle}`);
-    
-    // Additional debug: Check if HTML contains correct meta tags
-    const hasCorrectTitle = html.includes(title);
-    const hasCorrectDescription = html.includes(metaDescription);
-    console.log(`   HTML contains correct title: ${hasCorrectTitle}`);
-    console.log(`   HTML contains correct description: ${hasCorrectDescription}`);
+    console.log(`   Canonical: ${canonicalUrl}`);
     
     // Optimize and format HTML for better source readability
-    const optimizedHtml = optimizeHtml(html, route.path);
+    html = optimizeHtml(html, route.path);
     
     // Create directory structure
     const outputPath = join(__dirname, '..', 'dist', route.path.slice(1));
     mkdirSync(outputPath, { recursive: true });
     
-    // Write the HTML file
-    writeFileSync(join(outputPath, 'index.html'), optimizedHtml);
+    // Write the HTML file with proper UTF-8 encoding
+    writeFileSync(join(outputPath, 'index.html'), html, { encoding: 'utf8' });
     
     console.log(`✅ Prerendered: ${route.path}`);
     

@@ -5390,7 +5390,7 @@ const Iso27001Compliance = () => {
       <SEOHead
         title="ISO 27001 Zertifizierung – ISMS erfolgreich aufbauen"
         description="ISO 27001 Zertifizierung meistern: ISMS-Implementierung, Gap-Analyse & Audit-Vorbereitung. ✓ Schritt-für-Schritt ✓ Praxisnah. Jetzt starten!"
-        canonical="/iso-27001"
+        canonical="/iso-27001-zertifizierung"
         keywords="ISO 27001, ISMS, Informationssicherheit, ISO 27001 Zertifizierung, IT-Sicherheit"
         structuredData={structuredData}
       />

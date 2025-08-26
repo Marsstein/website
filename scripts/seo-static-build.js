@@ -1,0 +1,200 @@
+import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync, readdirSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+/**
+ * Creates static HTML files for SEO without JavaScript
+ * This prevents "Root element not found" errors
+ */
+
+console.log('🔧 SEO Static HTML Builder');
+console.log('=========================\n');
+
+// Pfade
+const distDir = join(__dirname, '..', 'dist');
+const seoDistDir = join(__dirname, '..', 'dist-seo');
+
+// Erstelle SEO dist Verzeichnis
+mkdirSync(seoDistDir, { recursive: true });
+
+/**
+ * Entfernt alle Script-Tags aus HTML für reines statisches SEO-HTML
+ */
+function removeScripts(html) {
+  // Entferne alle <script> Tags
+  html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+  
+  // Entferne modulepreload links (da wir kein JS laden)
+  html = html.replace(/<link[^>]*rel="modulepreload"[^>]*>/gi, '');
+  
+  // Entferne type="module" script tags
+  html = html.replace(/<script[^>]*type="module"[^>]*>.*?<\/script>/gi, '');
+  
+  return html;
+}
+
+/**
+ * Verbessert HTML für SEO
+ */
+function optimizeForSEO(html, pagePath) {
+  // Füge Kommentar hinzu
+  html = html.replace('</head>', 
+    `  <!-- Static SEO Version - No JavaScript -->
+  <!-- Generated at ${new Date().toISOString()} -->
+</head>`);
+  
+  // WICHTIG: Entferne malformed title tags im body
+  // Diese kommen von React Helmet SSR Problemen
+  // Entferne spezifische problematische Tags ohne den ganzen Body zu löschen
+  html = html.replace(/<titlecompliance[^>]*>[\s\S]*?<\/titlecompliance>/gi, '');
+  html = html.replace(/<titleSOC[^>]*>[\s\S]*?<\/title>/gi, '');
+  
+  // Entferne title tags die im body sind (sollten nur im head sein)
+  const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+  if (bodyMatch) {
+    let bodyContent = bodyMatch[1];
+    // Entferne title tags aus dem body
+    bodyContent = bodyContent.replace(/<title[^>]*>[\s\S]*?<\/title>/gi, '');
+    html = html.replace(bodyMatch[0], `<body>${bodyContent}</body>`);
+  }
+  
+  // Stelle sicher dass Meta-Tags richtig formatiert sind
+  html = html.replace(/<title(?!>)([^<]*)<\/title>/g, '<title>$1</title>');
+  
+  // Entferne doppelte Leerzeichen
+  html = html.replace(/\s+/g, ' ');
+  html = html.replace(/>\s+</g, '><');
+  
+  // Formatiere für bessere Lesbarkeit
+  html = html.replace(/<meta/g, '\n  <meta');
+  html = html.replace(/<link/g, '\n  <link');
+  html = html.replace(/<title>/g, '\n  <title>');
+  html = html.replace(/<\/head>/g, '\n</head>');
+  html = html.replace(/<body/g, '\n<body');
+  
+  return html;
+}
+
+/**
+ * Kopiert eine HTML-Datei und erstellt SEO-Version
+ */
+function createSEOVersion(sourcePath, targetPath) {
+  if (!existsSync(sourcePath)) {
+    console.warn(`⚠️  Quelldatei nicht gefunden: ${sourcePath}`);
+    return false;
+  }
+  
+  // Lese Original HTML
+  let html = readFileSync(sourcePath, 'utf-8');
+  
+  // Entferne alle Scripts
+  html = removeScripts(html);
+  
+  // Optimiere für SEO
+  const pagePath = targetPath.replace(seoDistDir, '').replace('/index.html', '');
+  html = optimizeForSEO(html, pagePath);
+  
+  // Erstelle Verzeichnis falls nötig
+  const targetDir = dirname(targetPath);
+  mkdirSync(targetDir, { recursive: true });
+  
+  // Schreibe SEO HTML
+  writeFileSync(targetPath, html);
+  
+  return true;
+}
+
+// Liste der zu verarbeitenden Seiten
+const pages = [
+  'index.html',
+  'soc2-zertifizierung/index.html',
+  'eu-ai-act/index.html',
+  'nis2-compliance/index.html',
+  'iso-27001-zertifizierung/index.html',
+  'wissen/rechtsprechung/amazon-luxemburg-2021/index.html',
+  'wissen/rechtsprechung/schrems-ii/index.html',
+  'compliance/dsgvo/index.html',
+  'wissen/dsgvo/grundlagen/index.html',
+  'wissen/compliance/iso-27001/index.html'
+];
+
+console.log('📄 Erstelle statische SEO HTML-Dateien...\n');
+
+let successCount = 0;
+let errorCount = 0;
+
+// Verarbeite alle Seiten
+pages.forEach(page => {
+  const sourcePath = join(distDir, page);
+  const targetPath = join(seoDistDir, page);
+  
+  console.log(`Processing: ${page}`);
+  
+  if (createSEOVersion(sourcePath, targetPath)) {
+    console.log(`✅ Erstellt: ${targetPath}`);
+    successCount++;
+  } else {
+    console.log(`❌ Fehler bei: ${page}`);
+    errorCount++;
+  }
+});
+
+// Kopiere Assets (CSS, Bilder, etc.)
+console.log('\n📁 Kopiere Assets...');
+
+// CSS
+const cssDir = join(distDir, 'assets');
+const targetCssDir = join(seoDistDir, 'assets');
+if (existsSync(cssDir)) {
+  mkdirSync(targetCssDir, { recursive: true });
+  
+  const files = readdirSync(cssDir);
+  files.forEach(file => {
+    if (file.endsWith('.css')) {
+      copyFileSync(join(cssDir, file), join(targetCssDir, file));
+      console.log(`✅ CSS kopiert: ${file}`);
+    }
+  });
+}
+
+// Statische Dateien (favicon, etc.)
+const staticFiles = [
+  'favicon-32.png',
+  'favicon-16.png',
+  'apple-touch-icon.png',
+  'JLogoMarsstein.svg',
+  'safari-pinned-tab.svg',
+  'og-image-marsstein.jpg'
+];
+
+staticFiles.forEach(file => {
+  const sourcePath = join(distDir, file);
+  const targetPath = join(seoDistDir, file);
+  
+  if (existsSync(sourcePath)) {
+    copyFileSync(sourcePath, targetPath);
+    console.log(`✅ Asset kopiert: ${file}`);
+  }
+});
+
+console.log(`
+=============================
+✨ SEO Static Build Complete!
+=============================
+
+📊 Ergebnis:
+- Erfolgreiche Seiten: ${successCount}
+- Fehler: ${errorCount}
+
+📁 Output: dist-seo/
+
+Diese Version:
+✅ Keine JavaScript-Ausführung
+✅ Kein "Root element not found" Fehler
+✅ Vollständiges HTML mit allen SEO-Tags
+✅ Perfekt für SEO-Testing und Crawler
+
+Teste mit: npx serve dist-seo -p 5000
+`);

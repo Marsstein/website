@@ -13,6 +13,11 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: 8080,
   },
+  preview: {
+    port: 4173,
+    strictPort: false,
+    host: true,
+  },
   plugins: [
     react(),
     // Temporarily disable componentTagger to test
