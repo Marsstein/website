@@ -33,7 +33,9 @@ import {
   Users,
   Building2,
   Zap,
-  LineChart
+  LineChart,
+  Calendar,
+  Search
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -44,9 +46,58 @@ const RiskManagement: React.FC = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "name": "Risk Management für Compliance",
-    "description": "Systematisches Risikomanagement: Identifikation, Bewertung und Behandlung von Datenschutz- und Sicherheitsrisiken. ISO 31000, DSFA, Risk Assessment.",
-    "url": "https://marsstein.com/wissen/risk-management"
+    "name": "Risk Management für Compliance - ISO 31000 & DSFA Anleitung",
+    "description": "Systematisches Risikomanagement: Identifikation, Bewertung und Behandlung von Compliance-Risiken nach ISO 31000. Mit DSFA-Vorlagen und KPI-Dashboards.",
+    "url": "https://marsstein.com/wissen/risk-management",
+    "datePublished": "2024-01-01",
+    "dateModified": "2025-01-15",
+    "author": {
+      "@type": "Organization",
+      "name": "Marsstein"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Marsstein",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://marsstein.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://marsstein.com/wissen/risk-management"
+    }
+  };
+
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was ist Risk Management im Compliance-Kontext?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Risk Management ist der systematische Prozess zur Identifikation, Bewertung und Behandlung von Compliance-Risiken. Es umfasst die kontinuierliche Überwachung von Datenschutz-, Sicherheits- und regulatorischen Risiken nach Standards wie ISO 31000."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wann ist eine DSFA (Datenschutz-Folgenabschätzung) erforderlich?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eine DSFA ist nach Art. 35 DSGVO erforderlich, wenn eine Datenverarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten natürlicher Personen zur Folge hat. Dies betrifft insbesondere neue Technologien, umfangreiche Verarbeitungen oder systematische Überwachung."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie oft sollte ein Risk Assessment durchgeführt werden?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Risk Assessments sollten mindestens jährlich sowie bei wesentlichen Änderungen durchgeführt werden. Bei kritischen Systemen oder hohen Risiken empfiehlt sich eine quartalsweise oder sogar kontinuierliche Bewertung."
+        }
+      }
+    ]
   };
 
   const topics = {
@@ -59,7 +110,7 @@ const RiskManagement: React.FC = () => {
           description: 'Systematische Identifikation von Compliance-Risiken',
           readTime: '10 Min',
           level: 'Einsteiger',
-          link: '/wissen/risk-management/risk-assessment-basics'
+          link: '/wissen/leitfaden/risk-assessment'
         },
         {
           title: 'Bedrohungsmodellierung',
@@ -195,7 +246,7 @@ const RiskManagement: React.FC = () => {
           description: 'Datenschutz-Folgenabschätzung nach DSGVO',
           readTime: '18 Min',
           level: 'Experte',
-          link: '/wissen/risk-management/dsfa'
+          link: '/wissen/leitfaden/dsfa-durchfuehrung'
         },
         {
           title: 'ISO 31000 umsetzen',
@@ -295,11 +346,38 @@ const RiskManagement: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Risk Management – Compliance-Risiken systematisch managen"
-        description="Risk Management für Compliance: Risiken identifizieren, bewerten, behandeln. ✓ ISO 31000 ✓ DSFA ✓ Risk Assessment ✓ KPIs. Jetzt Risiken beherrschen!"
+        title="Risk Management für Compliance - ISO 31000 & DSFA Anleitung 2025"
+        description="Risk Management systematisch umsetzen: Risiken identifizieren, bewerten & behandeln nach ISO 31000. ✓ DSFA-Vorlagen ✓ KPI-Dashboard ✓ Praxis-Tools"
         canonical="/wissen/risk-management"
-        keywords="Risk Management, Risikomanagement, ISO 31000, DSFA, Risk Assessment"
-        structuredData={structuredData}
+        ogType="article"
+        structuredData={[
+          structuredData,
+          faqStructuredData,
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://marsstein.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Wissen",
+                "item": "https://marsstein.com/wissen"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Risk Management",
+                "item": "https://marsstein.com/wissen/risk-management"
+              }
+            ]
+          }
+        ]}
       />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
         <Header />
@@ -312,17 +390,48 @@ const RiskManagement: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
+              {/* Breadcrumbs */}
+              <nav aria-label="Breadcrumb" className="mb-6">
+                <ol className="flex items-center justify-center space-x-2 text-sm">
+                  <li>
+                    <Link to="/" className="text-gray-500 hover:text-brand-red transition-colors">Home</Link>
+                  </li>
+                  <li className="text-gray-400">/</li>
+                  <li>
+                    <Link to="/wissen" className="text-gray-500 hover:text-brand-red transition-colors">Wissen</Link>
+                  </li>
+                  <li className="text-gray-400">/</li>
+                  <li className="text-brand-red" aria-current="page">Risk Management</li>
+                </ol>
+              </nav>
+              
               <Badge className="mb-4 px-4 py-1" variant="outline">
                 <Target className="h-3 w-3 mr-1" />
                 Risk Management Wissenszentrum
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                Risiken systematisch beherrschen
+                Risk Management für Compliance-Risiken
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Identifikation, Bewertung und Behandlung von Datenschutz- und 
-                Sicherheitsrisiken für resiliente Compliance
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6">
+                Systematische Identifikation, Bewertung und Behandlung von Compliance-Risiken 
+                nach ISO 31000. Mit praktischen Vorlagen, Tools und KPI-Dashboards.
               </p>
+              
+              {/* Meta information */}
+              <div className="flex items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+                <span className="flex items-center gap-1">
+                  <Clock className="h-4 w-4" />
+                  25 Min. Lesezeit
+                </span>
+                <span className="flex items-center gap-1">
+                  <Calendar className="h-4 w-4" />
+                  Aktualisiert: Januar 2025
+                </span>
+                <span className="flex items-center gap-1">
+                  <Users className="h-4 w-4" />
+                  Für Risk Manager & Compliance
+                </span>
+              </div>
             </motion.div>
 
             {/* Risk Management Process */}
@@ -512,12 +621,110 @@ const RiskManagement: React.FC = () => {
               </Card>
             </motion.div>
 
-            {/* CTA */}
+            {/* FAQ Section */}
             <motion.div
-              className="mt-16 text-center"
+              className="mt-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">Häufig gestellte Fragen zum Risk Management</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="border-b pb-6">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Was ist Risk Management im Compliance-Kontext?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Risk Management ist der systematische Prozess zur Identifikation, Bewertung und Behandlung von Compliance-Risiken. 
+                      Es umfasst die kontinuierliche Überwachung von Datenschutz-, Sicherheits- und regulatorischen Risiken nach Standards wie ISO 31000.
+                    </p>
+                  </div>
+                  <div className="border-b pb-6">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Wann ist eine DSFA (Datenschutz-Folgenabschätzung) erforderlich?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Eine DSFA ist nach Art. 35 DSGVO erforderlich, wenn eine Datenverarbeitung voraussichtlich ein hohes Risiko für die Rechte 
+                      und Freiheiten natürlicher Personen zur Folge hat. Dies betrifft insbesondere neue Technologien, umfangreiche Verarbeitungen 
+                      oder systematische Überwachung.
+                    </p>
+                  </div>
+                  <div className="pb-6">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Wie oft sollte ein Risk Assessment durchgeführt werden?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Risk Assessments sollten mindestens jährlich sowie bei wesentlichen Änderungen durchgeführt werden. 
+                      Bei kritischen Systemen oder hohen Risiken empfiehlt sich eine quartalsweise oder sogar kontinuierliche Bewertung.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Related Content */}
+            <motion.div
+              className="mt-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
+            >
+              <Card>
+                <CardHeader>
+                  <CardTitle>Weiterführende Ressourcen</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <Link to="/wissen/leitfaden/dsfa-durchfuehrung" className="group">
+                      <Card className="h-full hover:shadow-lg transition-all">
+                        <CardContent className="p-4">
+                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-brand-red transition-colors">
+                            DSFA-Leitfaden
+                          </h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            Schritt-für-Schritt Anleitung zur Datenschutz-Folgenabschätzung
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                    <Link to="/wissen/compliance-frameworks" className="group">
+                      <Card className="h-full hover:shadow-lg transition-all">
+                        <CardContent className="p-4">
+                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-brand-red transition-colors">
+                            Compliance Frameworks
+                          </h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            Übersicht über ISO 27001, SOC2 und andere Standards
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                    <Link to="/assessment-center" className="group">
+                      <Card className="h-full hover:shadow-lg transition-all">
+                        <CardContent className="p-4">
+                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-brand-red transition-colors">
+                            Assessment Center
+                          </h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            Kostenlose Risk Assessment Tools und Checklisten
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div
+              className="mt-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
             >
               <Card className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 text-white p-8">
                 <h2 className="text-2xl font-bold mb-4">
@@ -527,22 +734,26 @@ const RiskManagement: React.FC = () => {
                   Unsere Experten unterstützen Sie bei der Implementierung
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    size="lg" 
-                    variant="secondary"
-                    className="bg-white text-gray-900 hover:bg-gray-100"
-                  >
-                    Risk Assessment starten
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-gray-900"
-                  >
-                    Risk Management Workshop
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                  </Button>
+                  <Link to="/assessment-center/compliance-risk-check">
+                    <Button 
+                      size="lg" 
+                      variant="secondary"
+                      className="bg-white text-gray-900 hover:bg-gray-100"
+                    >
+                      Risk Assessment starten
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Link to="/kontakt">
+                    <Button 
+                      size="lg" 
+                      variant="outline"
+                      className="border-white text-white hover:bg-white hover:text-gray-900"
+                    >
+                      Risk Management Workshop
+                      <ExternalLink className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
                 </div>
               </Card>
             </motion.div>

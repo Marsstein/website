@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -1043,11 +1044,18 @@ const DsgvoBasicsGuide: React.FC = () => {
   const overallProgress = ((currentChapter + (readingProgress / 100)) / chapters.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
-      wordWrap: 'break-word',
-      overflowWrap: 'break-word'
-    }}>
-      <Header />
+    <>
+      <SEOHead
+        title="DSGVO Grundlagen 2024 – Verständlicher Leitfaden"
+        description="DSGVO einfach erklärt: Grundprinzipien, Betroffenenrechte, Dokumentationspflichten & praktische Umsetzung. ✓ Anfängerfreundlich ✓ Mit Checklisten. Jetzt lernen!"
+        canonical="/wissen/dsgvo/grundlagen"
+        keywords="DSGVO Grundlagen, Datenschutz-Grundverordnung, GDPR Basics, Datenschutz Leitfaden"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
+        wordWrap: 'break-word',
+        overflowWrap: 'break-word'
+      }}>
+        <Header />
       
       {/* Fixed Reading Progress */}
       <div className="fixed top-16 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
@@ -1246,7 +1254,8 @@ const DsgvoBasicsGuide: React.FC = () => {
       </div>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,0 +1,457 @@
+{
+  "generatedAt": "2025-08-27T10:44:07.728Z",
+  "totalRoutes": 64,
+  "routes": [
+    "/",
+    "/academy",
+    "/assessment-center",
+    "/assessment-center/ai-governance-check",
+    "/assessment-center/ai-risk-assessment",
+    "/assessment-center/algorithmic-impact-assessment",
+    "/assessment-center/breach-response-checklist",
+    "/assessment-center/cookie-compliance-audit",
+    "/assessment-center/datenschutz-readiness-assessment",
+    "/assessment-center/dsgvo-compliance-checklist",
+    "/assessment-center/vendor-assessment-template",
+    "/branchen",
+    "/branchen/automotive",
+    "/branchen/e-commerce",
+    "/branchen/energie",
+    "/branchen/finanzdienstleister",
+    "/branchen/gesundheitswesen",
+    "/branchen/lebensmittel",
+    "/branchen/logistik",
+    "/branchen/produktion",
+    "/branchen/saas-unternehmen",
+    "/contact",
+    "/dashboard",
+    "/dsg-ekd",
+    "/dsgvo-compliance",
+    "/eu-ai-act-compliance",
+    "/geldwaeschegesetz",
+    "/hinweisgeberschutzgesetz",
+    "/iso-27001-zertifizierung",
+    "/iso-27017-zertifizierung",
+    "/iso-27018-zertifizierung",
+    "/kdg",
+    "/nis2-compliance",
+    "/pricing",
+    "/soc2-zertifizierung",
+    "/thank-you",
+    "/tisax-compliance",
+    "/tools",
+    "/tools/compliance-ai-assistant",
+    "/tools/cookie-management",
+    "/tools/dsgvo-compliance-scorecard",
+    "/tools/dsgvo-email-template-generator",
+    "/wissen",
+    "/wissen/branchen/edtech-privacy",
+    "/wissen/branchen/healthcare-ai-compliance",
+    "/wissen/branchen/insurtech-compliance",
+    "/wissen/branchen/travel-compliance",
+    "/wissen/compliance-frameworks",
+    "/wissen/cybersecurity",
+    "/wissen/dsgvo",
+    "/wissen/dsgvo-leitfaeden",
+    "/wissen/ki-datenschutz",
+    "/wissen/leitfaden/betroffenenrechte",
+    "/wissen/leitfaden/data-breach-notfall",
+    "/wissen/leitfaden/dsfa-durchfuehrung",
+    "/wissen/leitfaden/dsgvo-30-tage",
+    "/wissen/leitfaden/dsgvo-grundlagen",
+    "/wissen/leitfaden/tom-massnahmen",
+    "/wissen/leitfaden/verarbeitungsverzeichnis",
+    "/wissen/leitfaden/website-dsgvo",
+    "/wissen/rechtsprechung/amazon-luxemburg-2021",
+    "/wissen/rechtsprechung/facebook-fanpage",
+    "/wissen/rechtsprechung/google-analytics-austria",
+    "/wissen/risk-management"
+  ],
+  "mapping": [
+    {
+      "route": "/academy",
+      "title": "Academy – Compliance-Schulungen & Zertifizierungen",
+      "canonical": "/academy"
+    },
+    {
+      "route": "/assessment-center",
+      "title": "Assessment Center – Compliance & Risiko Bewertungen",
+      "canonical": "/assessment-center"
+    },
+    {
+      "route": "/tools/compliance-ai-assistant",
+      "title": "AI Assistant – Compliance-Berater mit KI-Power",
+      "canonical": "/tools/compliance-ai-assistant"
+    },
+    {
+      "route": "/contact",
+      "title": "Kontakt – Compliance-Experten erreichen",
+      "canonical": "/contact"
+    },
+    {
+      "route": "/tools/cookie-management",
+      "title": "Cookie Management – DSGVO-konforme Cookie-Banner",
+      "canonical": "/tools/cookie-management"
+    },
+    {
+      "route": "/dashboard",
+      "title": "Dashboard – Ihr Compliance-Cockpit in Echtzeit",
+      "canonical": "/dashboard"
+    },
+    {
+      "route": "/dsgvo-compliance",
+      "title": "DSGVO Compliance Software – Automatisiert & Rechtssicher",
+      "canonical": "/compliance/dsgvo"
+    },
+    {
+      "route": "/tools/dsgvo-compliance-scorecard",
+      "title": "DSGVO Scorecard – Compliance-Status bewerten",
+      "canonical": "/tools/dsgvo-compliance-scorecard"
+    },
+    {
+      "route": "/tools/dsgvo-email-template-generator",
+      "title": "DSGVO E-Mail Templates – Rechtssichere Vorlagen",
+      "canonical": "/tools/dsgvo-email-template-generator"
+    },
+    {
+      "route": "/eu-ai-act-compliance",
+      "title": "EU AI Act Compliance – KI-Regulierung sicher umsetzen",
+      "canonical": "/eu-ai-act"
+    },
+    {
+      "route": "/geldwaeschegesetz",
+      "title": "Geldwäschegesetz (GwG) – AML-Compliance automatisiert",
+      "canonical": "/geldwaeschegesetz"
+    },
+    {
+      "route": "/hinweisgeberschutzgesetz",
+      "title": "Hinweisgeberschutz – Whistleblower-System nach HinSchG",
+      "canonical": "/hinweisgeberschutzgesetz"
+    },
+    {
+      "route": "/",
+      "title": "Compliance Software & Beratung für DSGVO, ISO 27001",
+      "canonical": "/"
+    },
+    {
+      "route": "/",
+      "title": "Compliance & Datenschutz Lösungen für Unternehmen",
+      "canonical": "/"
+    },
+    {
+      "route": "/branchen",
+      "title": "Branchen – Compliance-Lösungen für jede Industrie",
+      "canonical": "/branchen"
+    },
+    {
+      "route": "/iso-27001-zertifizierung",
+      "title": "ISO 27001 Zertifizierung – ISMS erfolgreich aufbauen",
+      "canonical": "/iso-27001-zertifizierung"
+    },
+    {
+      "route": "/iso-27017-zertifizierung",
+      "title": "ISO 27017 – Cloud-Security-Standard zertifizieren",
+      "canonical": "/iso-27017"
+    },
+    {
+      "route": "/iso-27018-zertifizierung",
+      "title": "ISO 27018 – Cloud-Datenschutz für personenbezogene Daten",
+      "canonical": "/iso-27018"
+    },
+    {
+      "route": "/nis2-compliance",
+      "title": "NIS-2 Compliance – Cybersecurity-Richtlinie umsetzen",
+      "canonical": "/nis2-compliance"
+    },
+    {
+      "route": "/pricing",
+      "title": "Preise & Pakete – Compliance Software ab 99€/Monat",
+      "canonical": "/pricing"
+    },
+    {
+      "route": "/soc2-zertifizierung",
+      "title": "SOC 2 Zertifizierung – Trust Services für SaaS & Cloud",
+      "canonical": "/soc2-zertifizierung"
+    },
+    {
+      "route": "/thank-you",
+      "title": "Danke – Ihre Anfrage wurde erfolgreich übermittelt",
+      "canonical": "/thank-you"
+    },
+    {
+      "route": "/tisax-compliance",
+      "title": "TISAX – Automotive Security für Zulieferer & OEMs",
+      "canonical": "/tisax"
+    },
+    {
+      "route": "/tools",
+      "title": "Tools – Compliance-Werkzeuge & Automatisierung",
+      "canonical": "/tools"
+    },
+    {
+      "route": "/assessment-center/ai-governance-check",
+      "title": "KI-Governance Check – Reifegrad-Bewertung",
+      "canonical": "/assessment-center/ai-governance-check"
+    },
+    {
+      "route": "/assessment-center/ai-risk-assessment",
+      "title": "KI-Risiko Assessment – EU AI Act Bewertung",
+      "canonical": "/assessment-center/ai-risk-assessment"
+    },
+    {
+      "route": "/assessment-center/algorithmic-impact-assessment",
+      "title": "Algorithmic Impact Assessment – Folgenabschätzung",
+      "canonical": "/assessment-center/algorithmic-impact-assessment"
+    },
+    {
+      "route": "/assessment-center/dsgvo-compliance-checklist",
+      "title": "DSGVO Compliance Checklist – 50+ Prüfpunkte",
+      "canonical": "/assessment-center/dsgvo-compliance-checklist"
+    },
+    {
+      "route": "/",
+      "title": "ISO 27001 Maturity Assessment – ISMS Reifegrad prüfen",
+      "canonical": "/assessment-center/isms-maturity-assessment"
+    },
+    {
+      "route": "/",
+      "title": "SOC 2 Readiness Assessment – Zertifizierungsbereitschaft",
+      "canonical": "/assessment-center/soc2-readiness-assessment"
+    },
+    {
+      "route": "/wissen/branchen/edtech-privacy",
+      "title": "EdTech Privacy – Bildungssektor Datenschutz",
+      "canonical": "/wissen/branchen/edtech-privacy"
+    },
+    {
+      "route": "/wissen/branchen/healthcare-ai-compliance",
+      "title": "Healthcare AI Compliance – Medizinische KI rechtssicher einsetzen",
+      "canonical": "/wissen/branchen/healthcare-ai-compliance"
+    },
+    {
+      "route": "/",
+      "title": "Gesundheitswesen DSGVO – Patientendaten rechtssicher verarbeiten",
+      "canonical": "/wissen/branchen/gesundheitswesen-dsgvo"
+    },
+    {
+      "route": "/wissen/branchen/insurtech-compliance",
+      "title": "InsurTech Compliance DSGVO - KI & Digitale Versicherung",
+      "canonical": "/wissen/branchen/insurtech-compliance"
+    },
+    {
+      "route": "/",
+      "title": "PropTech Compliance DSGVO - Smart Building Datenschutz",
+      "canonical": "/wissen/branchen/proptech-compliance"
+    },
+    {
+      "route": "/wissen/branchen/travel-compliance",
+      "title": "Travel Compliance DSGVO - Datenschutz für Reiseplattformen",
+      "canonical": "/wissen/branchen/travel-compliance"
+    },
+    {
+      "route": "/dsg-ekd",
+      "title": "DSG-EKD – Kirchlicher Datenschutz der Evangelischen Kirche",
+      "canonical": "/compliance/dsg-ekd"
+    },
+    {
+      "route": "/",
+      "title": "ISO 27001 Leitfaden 2024 – Zertifizierung Schritt für Schritt",
+      "canonical": "/wissen/compliance/iso-27001"
+    },
+    {
+      "route": "/kdg",
+      "title": "KDG – Kirchlicher Datenschutz der Katholischen Kirche",
+      "canonical": "/kdg"
+    },
+    {
+      "route": "/",
+      "title": "KDG Leitfaden 2024 | Katholischer Datenschutz komplett erklärt",
+      "canonical": "https://datenschutzbeauftragter.nrw/compliance/kdg"
+    },
+    {
+      "route": "/",
+      "title": "Betroffenenrechte – DSGVO Leitfaden für den Umgang",
+      "canonical": "/wissen/leitfaden/betroffenenrechte"
+    },
+    {
+      "route": "/",
+      "title": "DSFA Durchführung – Datenschutz-Folgenabschätzung Leitfaden",
+      "canonical": "/wissen/leitfaden/dsfa-durchfuehrung"
+    },
+    {
+      "route": "/",
+      "title": "DSGVO in 30 Tagen – Express-Guide zur Compliance",
+      "canonical": "/wissen/leitfaden/dsgvo-30-tage"
+    },
+    {
+      "route": "/",
+      "title": "DSGVO Grundlagen 2024 – Verständlicher Leitfaden",
+      "canonical": "/wissen/dsgvo/grundlagen"
+    },
+    {
+      "route": "/",
+      "title": "TOM Maßnahmen – DSGVO Art. 32 Technische & Organisatorische Maßnahmen",
+      "canonical": "/wissen/leitfaden/tom-massnahmen"
+    },
+    {
+      "route": "/",
+      "title": "Verarbeitungsverzeichnis – DSGVO Anleitung & Vorlagen",
+      "canonical": "/wissen/leitfaden/verarbeitungsverzeichnis"
+    },
+    {
+      "route": "/branchen/automotive",
+      "title": "Automotive – TISAX & Connected Car Compliance",
+      "canonical": "/branchen/automotive"
+    },
+    {
+      "route": "/branchen/e-commerce",
+      "title": "E-Commerce – DSGVO & Cookie-Compliance für Shops",
+      "canonical": "/branchen/e-commerce"
+    },
+    {
+      "route": "/branchen/energie",
+      "title": "Energie – KRITIS & Smart Grid Compliance",
+      "canonical": "/branchen/energie"
+    },
+    {
+      "route": "/branchen/finanzdienstleister",
+      "title": "Finanzdienstleister – BaFin & DSGVO Compliance",
+      "canonical": "/branchen/finanzdienstleister"
+    },
+    {
+      "route": "/branchen/lebensmittel",
+      "title": "Lebensmittel – HACCP & Rückverfolgbarkeit DSGVO",
+      "canonical": "/branchen/lebensmittel"
+    },
+    {
+      "route": "/branchen/gesundheitswesen",
+      "title": "Gesundheitswesen – DSGVO & E-Health Compliance",
+      "canonical": "/branchen/gesundheitswesen"
+    },
+    {
+      "route": "/branchen/logistik",
+      "title": "Logistik – GPS-Tracking & Supply Chain DSGVO",
+      "canonical": "/branchen/logistik"
+    },
+    {
+      "route": "/branchen/produktion",
+      "title": "Produktion – Industrie 4.0 & IoT-Sicherheit",
+      "canonical": "/branchen/produktion"
+    },
+    {
+      "route": "/branchen/saas-unternehmen",
+      "title": "SaaS-Unternehmen – Multi-Tenant DSGVO & SOC 2",
+      "canonical": "/branchen/saas-unternehmen"
+    },
+    {
+      "route": "/wissen/rechtsprechung/amazon-luxemburg-2021",
+      "title": "Amazon Luxemburg 2021 – CNPD Bußgeld-Entscheidung 746M€",
+      "canonical": "/wissen/rechtsprechung/amazon-luxemburg-2021"
+    },
+    {
+      "route": "/wissen/rechtsprechung/facebook-fanpage",
+      "title": "Facebook Fanpage EuGH C-210/16 – Gemeinsame Verantwortlichkeit",
+      "canonical": "/wissen/rechtsprechung/facebook-fanpage"
+    },
+    {
+      "route": "/wissen/rechtsprechung/google-analytics-austria",
+      "title": "Google Analytics Austria DSB – US-Tool-Verbot Entscheidung",
+      "canonical": "/wissen/rechtsprechung/google-analytics-austria"
+    },
+    {
+      "route": "/assessment-center/breach-response-checklist",
+      "title": "Breach Response Checklist – 72-Stunden DSGVO Notfallplan",
+      "canonical": "/assessment-center/breach-response-checklist"
+    },
+    {
+      "route": "/assessment-center/cookie-compliance-audit",
+      "title": "Cookie Compliance Audit – DSGVO Cookie-Scanner & Analyse",
+      "canonical": "/assessment-center/cookie-compliance-audit"
+    },
+    {
+      "route": "/assessment-center/datenschutz-readiness-assessment",
+      "title": "Datenschutz Readiness Assessment – DSGVO-Bereitschaft prüfen",
+      "canonical": "/assessment-center/datenschutz-readiness-assessment"
+    },
+    {
+      "route": "/assessment-center/vendor-assessment-template",
+      "title": "Vendor Assessment Template – Lieferanten DSGVO-Bewertung",
+      "canonical": "/assessment-center/vendor-assessment-template"
+    },
+    {
+      "route": "/wissen/compliance-frameworks",
+      "title": "Compliance Frameworks – Standards & Gesetze im Vergleich",
+      "canonical": "/wissen/compliance-frameworks"
+    },
+    {
+      "route": "/wissen/cybersecurity",
+      "title": "Cybersecurity – IT-Sicherheit & Compliance Wissen",
+      "canonical": "/wissen/cybersecurity"
+    },
+    {
+      "route": "/wissen/dsgvo-leitfaeden",
+      "title": "DSGVO Leitfäden – Praktische Anleitungen & How-Tos",
+      "canonical": "/wissen/dsgvo-leitfaeden"
+    },
+    {
+      "route": "/wissen/dsgvo",
+      "title": "DSGVO Wissen – Kompendium & Praxis-Guide",
+      "canonical": "/wissen/dsgvo"
+    },
+    {
+      "route": "/wissen",
+      "title": "Wissen – Compliance-Wissensdatenbank & Guides",
+      "canonical": "/wissen"
+    },
+    {
+      "route": "/wissen/ki-datenschutz",
+      "title": "KI Compliance – EU AI Act & Datenschutz Guide",
+      "canonical": "/wissen/ki-compliance"
+    },
+    {
+      "route": "/wissen/leitfaden/betroffenenrechte",
+      "title": "Betroffenenrechte DSGVO – Prozesse & Vorlagen",
+      "canonical": "/wissen/leitfaden/betroffenenrechte"
+    },
+    {
+      "route": "/wissen/leitfaden/data-breach-notfall",
+      "title": "Data Breach Notfallplan – 72-Stunden Leitfaden DSGVO",
+      "canonical": "/wissen/leitfaden/data-breach-notfall"
+    },
+    {
+      "route": "/wissen/leitfaden/dsfa-durchfuehrung",
+      "title": "DSFA durchführen – Datenschutz-Folgenabschätzung Guide",
+      "canonical": "/wissen/leitfaden/dsfa-durchfuehrung"
+    },
+    {
+      "route": "/wissen/leitfaden/dsgvo-30-tage",
+      "title": "DSGVO in 30 Tagen – Express-Guide zur Compliance",
+      "canonical": "/wissen/leitfaden/dsgvo-30-tage"
+    },
+    {
+      "route": "/wissen/leitfaden/dsgvo-grundlagen",
+      "title": "DSGVO Grundlagen – Basiswissen verständlich erklärt",
+      "canonical": "/wissen/leitfaden/dsgvo-grundlagen"
+    },
+    {
+      "route": "/wissen/leitfaden/tom-massnahmen",
+      "title": "TOM Maßnahmen – Technische & organisatorische Sicherheit",
+      "canonical": "/wissen/leitfaden/tom-massnahmen"
+    },
+    {
+      "route": "/wissen/leitfaden/verarbeitungsverzeichnis",
+      "title": "Verarbeitungsverzeichnis erstellen – Art. 30 DSGVO",
+      "canonical": "/wissen/leitfaden/verarbeitungsverzeichnis"
+    },
+    {
+      "route": "/wissen/leitfaden/website-dsgvo",
+      "title": "Website DSGVO-konform – In 7 Schritten rechtssicher",
+      "canonical": "/wissen/leitfaden/website-dsgvo"
+    },
+    {
+      "route": "/wissen/risk-management",
+      "title": "Risk Management – Compliance-Risiken systematisch managen",
+      "canonical": "/wissen/risk-management"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SEOHead from '../components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -210,12 +211,54 @@ const KiDatenschutz = () => {
     return matchesSearch && matchesCategory;
   });
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "KI & Datenschutz: Leitfäden und Best Practices 2024",
+    "description": "Umfassende Sammlung zu KI-Datenschutz-Themen: EU AI Act, Privacy-Preserving AI, Algorithmic Impact Assessments. Über 12 praxisnahe Guides für sichere KI-Entwicklung.",
+    "url": "https://marsstein.com/wissen/ki-datenschutz",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Marsstein",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://marsstein.com/logo.png"
+      }
+    },
+    "dateModified": new Date().toISOString(),
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Wissen",
+          "item": "https://marsstein.com/wissen"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "KI & Datenschutz",
+          "item": "https://marsstein.com/wissen/ki-datenschutz"
+        }
+      ]
+    }
+  };
+
   return (
+    <>
+      <SEOHead
+        title="KI & Datenschutz 2024: EU AI Act, Privacy AI | Marsstein"
+        description="KI-Datenschutz kompakt: ✓ EU AI Act Compliance ✓ Privacy-Preserving AI ✓ Algorithmic Impact Assessments. 12+ Praxis-Guides für sichere KI. Jetzt lesen!"
+        canonical="/wissen/ki-datenschutz"
+        keywords="KI Datenschutz, EU AI Act, Künstliche Intelligenz DSGVO, Privacy AI, Algorithmic Impact Assessment, Machine Learning Datenschutz"
+        structuredData={structuredData}
+      />
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
       
       {/* Hero Section */}
-      <div ref={heroRef} className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+      <section ref={heroRef} className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black" aria-labelledby="main-heading">
         <motion.div 
           style={{ y, opacity }}
           className="absolute inset-0"
@@ -238,13 +281,20 @@ const KiDatenschutz = () => {
               </div>
             </div>
             
-            <h1 className="text-5xl font-bold text-white mb-6">
-              KI & Datenschutz
+            <nav aria-label="Breadcrumb" className="mb-6">
+              <ol className="flex items-center justify-center space-x-2 text-sm text-gray-300">
+                <li><Link to="/wissen" className="hover:text-white transition-colors">Wissen</Link></li>
+                <li><span className="mx-2">/</span></li>
+                <li className="text-white font-medium">KI & Datenschutz</li>
+              </ol>
+            </nav>
+            <h1 className="text-5xl font-bold text-white mb-6" id="main-heading">
+              KI & Datenschutz: Leitfäden für sichere KI-Entwicklung
             </h1>
             
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Umfassendes Wissen zu künstlicher Intelligenz, maschinellem Lernen und 
-              algorithmischen Systemen im Kontext von Datenschutz und Compliance
+              12+ praxisnahe Leitfäden zu KI-Datenschutz: Von EU AI Act Compliance über Privacy-Preserving AI 
+              bis zu branchenspezifischen Lösungen. Mit Checklisten, Templates und Code-Beispielen.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -266,7 +316,7 @@ const KiDatenschutz = () => {
 
         {/* Animated Circuit Pattern */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent" />
-      </div>
+      </section>
 
       {/* Search and Filter Section */}
       <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b">
@@ -304,8 +354,10 @@ const KiDatenschutz = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Quick Stats */}
+        <section aria-label="KI-Datenschutz Statistiken">
+          <h2 className="sr-only">KI-Datenschutz Guides Übersicht</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
           <Card className="border-2 border-purple-100 bg-gradient-to-br from-purple-50 to-white">
             <CardContent className="p-6">
@@ -355,8 +407,11 @@ const KiDatenschutz = () => {
             </CardContent>
           </Card>
         </div>
+        </section>
 
         {/* Topics Grid */}
+        <section aria-label="KI-Datenschutz Themen">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">Alle KI-Datenschutz Leitfäden</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTopics.map((topic, index) => {
             const Icon = topic.icon;
@@ -394,7 +449,9 @@ const KiDatenschutz = () => {
                         </div>
                       </div>
                       
-                      <CardTitle className="text-xl mb-2">{topic.title}</CardTitle>
+                      <CardTitle className="text-xl mb-2">
+                        <h3 className="font-semibold">{topic.title}</h3>
+                      </CardTitle>
                       <p className="text-gray-600 text-sm mb-4">{topic.description}</p>
                       
                       {topic.highlight && (
@@ -428,6 +485,7 @@ const KiDatenschutz = () => {
             );
           })}
         </div>
+        </section>
 
         {/* Empty State */}
         {filteredTopics.length === 0 && (
@@ -443,11 +501,11 @@ const KiDatenschutz = () => {
         )}
 
         {/* Newsletter CTA */}
-        <div className="mt-16 bg-gradient-to-br from-purple-900 to-blue-900 rounded-3xl p-8 text-white">
+        <section className="mt-16 bg-gradient-to-br from-purple-900 to-blue-900 rounded-3xl p-8 text-white" aria-label="Newsletter-Anmeldung">
           <div className="max-w-3xl mx-auto text-center">
             <Sparkles className="w-12 h-12 mx-auto mb-4" />
             <h2 className="text-3xl font-bold mb-4">
-              Bleiben Sie auf dem Laufenden
+              KI-Datenschutz Newsletter: Bleiben Sie informiert
             </h2>
             <p className="text-lg mb-6 text-gray-200">
               Erhalten Sie wöchentliche Updates zu neuen KI-Regulierungen, 
@@ -458,11 +516,12 @@ const KiDatenschutz = () => {
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
 
       <Footer />
     </div>
+    </>
   );
 };
 

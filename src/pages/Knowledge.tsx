@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
@@ -50,6 +51,85 @@ const Knowledge: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Compliance Wissen & Leitfäden",
+      "description": "Umfassende Sammlung von Compliance-Leitfäden, DSGVO-Guides und Rechtsprechungsanalysen für Datenschutzbeauftragte und Compliance Manager",
+      "url": "https://marsstein.com/wissen",
+      "provider": {
+        "@type": "Organization",
+        "name": "Marsstein",
+        "url": "https://marsstein.com"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 24,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Course",
+              "name": "DSGVO-Leitfäden",
+              "description": "Umfassende Schritt-für-Schritt Anleitungen für die DSGVO-Implementierung"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Course",
+              "name": "Compliance Frameworks",
+              "description": "Detaillierte Guides zu ISO 27001, SOC2, EU AI Act und anderen Standards"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marsstein.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Wissen",
+          "item": "https://marsstein.com/wissen"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Welche Compliance-Themen werden abgedeckt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unser Wissenscenter umfasst DSGVO-Leitfäden, ISO 27001, SOC2, EU AI Act, Rechtsprechung, Risk Management und branchenspezifische Compliance-Lösungen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für wen sind die Leitfäden geeignet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Leitfäden richten sich an Datenschutzbeauftragte, Compliance Manager, IT-Sicherheitsbeauftragte und alle, die Compliance-Anforderungen umsetzen müssen."
+          }
+        }
+      ]
+    }
+  ];
 
   const categories = [
     { id: 'all', name: 'Alle Bereiche', icon: BookOpen, count: 24 },
@@ -187,8 +267,15 @@ const Knowledge: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      <Header />
+    <>
+      <SEOHead
+        title="Compliance Wissen – DSGVO-Leitfäden & Rechtsprechung 2024"
+        description="Kostenlose Compliance-Leitfäden für DSGVO, ISO 27001, SOC2 & EU AI Act. ✓ 24+ praxiserprobte Guides ✓ Aktuelle Rechtsprechung ✓ Schritt-für-Schritt Anleitungen."
+        canonical="/wissen"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        <Header />
       
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -221,23 +308,16 @@ const Knowledge: React.FC = () => {
               <Brain className="h-5 w-5 text-indigo-400 animate-pulse" />
             </motion.div>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8"
-            >
-              <span className="text-white">Compliance</span>
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                Wissen
-              </span>
-              <br />
-              <span className="text-white">für</span>{' '}
-              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Experten
-              </span>
-            </motion.h1>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8">
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent"
+              >
+                Compliance Wissen für Experten
+              </motion.span>
+            </h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
@@ -606,8 +686,9 @@ const Knowledge: React.FC = () => {
         </div>
       </section>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

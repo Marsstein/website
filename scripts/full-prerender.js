@@ -3,8 +3,49 @@ import { writeFileSync, mkdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
+import prettier from 'prettier';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+/**
+ * Format HTML for better readability using Prettier
+ */
+async function formatHTML(html) {
+  try {
+    const formatted = await prettier.format(html, {
+      parser: 'html',
+      printWidth: 120,
+      tabWidth: 2,
+      useTabs: false,
+      singleQuote: false,
+      bracketSpacing: true,
+      htmlWhitespaceSensitivity: 'css',
+      endOfLine: 'lf',
+      semi: true,
+      arrowParens: 'avoid'
+    });
+    return formatted;
+  } catch (error) {
+    console.warn('⚠️  Prettier formatting failed, using fallback formatter:', error.message);
+    // Fallback to simple formatting
+    return html
+      .replace(/(<!DOCTYPE[^>]*>)/i, '$1\n')
+      .replace(/(<html[^>]*>)/i, '$1\n')
+      .replace(/(<head[^>]*>)/i, '$1\n')
+      .replace(/(<\/head>)/i, '\n$1\n')
+      .replace(/(<meta[^>]*>)/g, '  $1\n')
+      .replace(/(<link[^>]*>)/g, '  $1\n')
+      .replace(/(<title[^>]*>)/g, '  $1')
+      .replace(/(<\/title>)/g, '$1\n')
+      .replace(/(<script[^>]*>)(<\/script>)/g, '  $1$2\n')
+      .replace(/(<style[^>]*>)/g, '  $1')
+      .replace(/(<\/style>)/g, '$1\n')
+      .replace(/(<body[^>]*>)/i, '\n$1\n')
+      .replace(/(<\/body>)/i, '\n$1\n')
+      .replace(/(<\/html>)/i, '$1\n')
+      .replace(/\n{3,}/g, '\n\n');
+  }
+}
 
 /**
  * HTML Optimierungen und Formatierung
@@ -191,48 +232,107 @@ process.on('SIGTERM', () => {
   process.exit(0);
 });
 
-// Routes to prerender with their specific metadata
+// Routes to prerender - comprehensive list of all important routes with SEO
 const routes = [
-  {
-    path: '/',
-    waitForSelector: 'h1' // Wait for main heading to ensure content is loaded
-  },
-  {
-    path: '/eu-ai-act',
-    waitForSelector: 'h1'
-  },
-  {
-    path: '/wissen/rechtsprechung/amazon-luxemburg-2021',
-    waitForSelector: 'h1'
-  },
-  {
-    path: '/wissen/rechtsprechung/schrems-ii',
-    waitForSelector: 'h1'
-  },
-  {
-    path: '/compliance/dsgvo',
-    waitForSelector: 'h1'
-  },
-  {
-    path: '/wissen/dsgvo/grundlagen',
-    waitForSelector: 'h1'
-  },
-  {
-    path: '/wissen/compliance/iso-27001',
-    waitForSelector: 'h1'
-  },
-  {
-    path: '/nis2-compliance',
-    waitForSelector: 'h1'
-  },
-  {
-    path: '/iso-27001-zertifizierung',
-    waitForSelector: 'h1'
-  },
-  {
-    path: '/soc2-zertifizierung',
-    waitForSelector: 'h1'
-  }
+  // Homepage
+  { path: '/', waitForSelector: 'h1' },
+  
+  // Main compliance pages (using actual routes from App.tsx)
+  { path: '/dsgvo', waitForSelector: 'h1' }, // DsgvoCompliance page with SEO
+  { path: '/eu-ai-act', waitForSelector: 'h1' },
+  { path: '/nis2-compliance', waitForSelector: 'h1' },
+  { path: '/iso-27001-zertifizierung', waitForSelector: 'h1' },
+  { path: '/soc2-zertifizierung', waitForSelector: 'h1' },
+  { path: '/tisax-compliance', waitForSelector: 'h1' }, // Correct route
+  { path: '/tisax-zertifizierung', waitForSelector: 'h1' }, // Alternative route
+  { path: '/iso-27017-compliance', waitForSelector: 'h1' }, // Correct route
+  { path: '/iso-27017-zertifizierung', waitForSelector: 'h1' }, // Alternative route
+  { path: '/iso-27018-compliance', waitForSelector: 'h1' }, // Correct route
+  { path: '/iso-27018-zertifizierung', waitForSelector: 'h1' }, // Alternative route
+  { path: '/geldwaeschegesetz', waitForSelector: 'h1' },
+  { path: '/hinweisgeberschutzgesetz', waitForSelector: 'h1' },
+  { path: '/kdg', waitForSelector: 'h1' },
+  { path: '/compliance/dsg-ekd', waitForSelector: 'h1' },
+  { path: '/compliance/kdg', waitForSelector: 'h1' },
+  
+  // Knowledge base - DSGVO
+  { path: '/wissen', waitForSelector: 'h1' },
+  { path: '/wissen/dsgvo', waitForSelector: 'h1' },
+  { path: '/wissen/dsgvo/grundlagen', waitForSelector: 'h1' },
+  { path: '/wissen/dsgvo-leitfaeden', waitForSelector: 'h1' },
+  
+  // Knowledge base - Compliance
+  { path: '/wissen/compliance/iso-27001', waitForSelector: 'h1' },
+  { path: '/wissen/compliance-frameworks', waitForSelector: 'h1' },
+  { path: '/wissen/ki-compliance', waitForSelector: 'h1' },
+  { path: '/wissen/cybersecurity', waitForSelector: 'h1' },
+  { path: '/wissen/risk-management', waitForSelector: 'h1' },
+  
+  // Legal cases
+  { path: '/wissen/rechtsprechung/schrems-ii', waitForSelector: 'h1' },
+  { path: '/wissen/rechtsprechung/amazon-luxemburg-2021', waitForSelector: 'h1' },
+  { path: '/wissen/rechtsprechung/facebook-fanpage', waitForSelector: 'h1' },
+  { path: '/wissen/rechtsprechung/google-analytics-austria', waitForSelector: 'h1' },
+  
+  // Industries
+  { path: '/branchen', waitForSelector: 'h1' },
+  { path: '/branchen/automotive', waitForSelector: 'h1' },
+  { path: '/branchen/e-commerce', waitForSelector: 'h1' },
+  { path: '/branchen/energie', waitForSelector: 'h1' },
+  { path: '/branchen/finanzdienstleister', waitForSelector: 'h1' },
+  { path: '/branchen/gesundheitswesen', waitForSelector: 'h1' },
+  { path: '/branchen/lebensmittel', waitForSelector: 'h1' },
+  { path: '/branchen/logistik', waitForSelector: 'h1' },
+  { path: '/branchen/produktion', waitForSelector: 'h1' },
+  { path: '/branchen/saas-unternehmen', waitForSelector: 'h1' },
+  
+  // Industry knowledge pages
+  { path: '/wissen/branchen/gesundheitswesen-dsgvo', waitForSelector: 'h1' },
+  { path: '/wissen/branchen/healthcare-ai-compliance', waitForSelector: 'h1' },
+  { path: '/wissen/branchen/insurtech-compliance', waitForSelector: 'h1' },
+  { path: '/wissen/branchen/proptech-compliance', waitForSelector: 'h1' },
+  { path: '/wissen/branchen/travel-compliance', waitForSelector: 'h1' },
+  { path: '/wissen/branchen/edtech-privacy', waitForSelector: 'h1' },
+  
+  // Tools & Assessment
+  { path: '/tools', waitForSelector: 'h1' },
+  { path: '/assessment-center', waitForSelector: 'h1' },
+  { path: '/tools/compliance-ai-assistant', waitForSelector: 'h1' },
+  { path: '/tools/cookie-management', waitForSelector: 'h1' },
+  { path: '/tools/dsgvo-compliance-scorecard', waitForSelector: 'h1' },
+  { path: '/tools/dsgvo-email-template-generator', waitForSelector: 'h1' },
+  
+  // Assessment tools
+  { path: '/assessment-center/ai-governance-check', waitForSelector: 'h1' },
+  { path: '/assessment-center/ai-risk-assessment', waitForSelector: 'h1' },
+  { path: '/assessment-center/algorithmic-impact-assessment', waitForSelector: 'h1' },
+  { path: '/assessment-center/dsgvo-compliance-checklist', waitForSelector: 'h1' },
+  { path: '/assessment-center/isms-maturity-assessment', waitForSelector: 'h1' },
+  { path: '/assessment-center/soc2-readiness-assessment', waitForSelector: 'h1' },
+  { path: '/assessment-center/breach-response-checklist', waitForSelector: 'h1' },
+  { path: '/assessment-center/cookie-compliance-audit', waitForSelector: 'h1' },
+  { path: '/assessment-center/datenschutz-readiness-assessment', waitForSelector: 'h1' },
+  { path: '/assessment-center/vendor-assessment-template', waitForSelector: 'h1' },
+  
+  // Guides
+  { path: '/wissen/leitfaden/dsgvo-grundlagen', waitForSelector: 'h1' },
+  { path: '/wissen/leitfaden/dsgvo-30-tage', waitForSelector: 'h1' },
+  { path: '/wissen/leitfaden/betroffenenrechte', waitForSelector: 'h1' },
+  { path: '/wissen/leitfaden/verarbeitungsverzeichnis', waitForSelector: 'h1' },
+  { path: '/wissen/leitfaden/tom-massnahmen', waitForSelector: 'h1' },
+  { path: '/wissen/leitfaden/dsfa-durchfuehrung', waitForSelector: 'h1' },
+  { path: '/wissen/leitfaden/data-breach-notfall', waitForSelector: 'h1' },
+  { path: '/wissen/leitfaden/website-dsgvo', waitForSelector: 'h1' },
+  
+  // Compliance guides
+  { path: '/compliance/kdg', waitForSelector: 'h1' },
+  
+  // Other important pages
+  { path: '/academy', waitForSelector: 'h1' },
+  { path: '/pricing', waitForSelector: 'h1' },
+  { path: '/contact', waitForSelector: 'h1' },
+  { path: '/dashboard', waitForSelector: 'h1' },
+  { path: '/thank-you', waitForSelector: 'h1' }
 ];
 
 // Start preview server
@@ -345,8 +445,11 @@ async function prerenderRoute(route) {
     console.log(`   OG Title: ${ogTitle}`);
     console.log(`   Canonical: ${canonicalUrl}`);
     
-    // Optimize and format HTML for better source readability
+    // Optimize HTML first
     html = optimizeHtml(html, route.path);
+    
+    // Then format HTML for better readability with Prettier
+    html = await formatHTML(html);
     
     // Create directory structure
     const outputPath = join(__dirname, '..', 'dist', route.path.slice(1));

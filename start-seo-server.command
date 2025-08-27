@@ -24,35 +24,55 @@ echo "🧹 Lösche Vite Cache..."
 rm -rf node_modules/.vite
 echo ""
 
-# Build erstellen
-echo "🔨 Erstelle Production Build..."
+# Kill any existing process on port 4173
+echo "🔄 Beende eventuell laufende Server..."
+lsof -ti:4173 | xargs kill -9 2>/dev/null || true
+echo ""
+
+# Build mit SEO Prerendering erstellen
+echo "🔨 Erstelle Production Build mit SEO-Prerendering..."
+echo "   Dies rendert nur Seiten mit bestätigter SEO-Implementierung (64 Seiten)"
+echo "   Bitte warten Sie einige Minuten..."
+echo ""
+
+# Zuerst normalen Build erstellen
 npm run build
 
-# Warte kurz
-sleep 2
-
-# Prerendering ausführen
-echo "🎨 Führe Prerendering aus für SEO..."
-echo "   Dies kann einige Minuten dauern..."
-npm run prerender:full
+# Dann nur SEO-Seiten prerendern
+echo ""
+echo "🎯 Starte SEO-Prerendering für verifizierte Seiten..."
+npm run prerender:seo
 
 echo ""
-echo "✅ Build abgeschlossen!"
+echo "✅ Build und Prerendering abgeschlossen!"
+echo ""
+echo "📊 Prerenderte Seiten:"
+echo "   - Homepage und Compliance-Seiten"
+echo "   - Wissensdatenbank und Leitfäden"
+echo "   - Rechtsprechung (Schrems II, Amazon, etc.)"
+echo "   - Branchenlösungen"
+echo "   - Tools und Assessment Center"
 echo ""
 echo "🌐 Starte SEO-optimierten Server..."
 echo "=================================="
 echo ""
 echo "📍 Server läuft unter: http://localhost:4173"
 echo ""
-echo "💡 Tipp: Öffne die Entwicklertools und schaue dir den Seitenquelltext an!"
-echo "         Du solltest jetzt den vollständigen HTML-Content sehen."
+echo "💡 Tipp: Testen Sie verschiedene URLs:"
+echo "   - http://localhost:4173/wissen/rechtsprechung/amazon-luxemburg-2021"
+echo "   - http://localhost:4173/wissen/rechtsprechung/schrems-ii"
+echo "   - http://localhost:4173/compliance/dsgvo"
+echo "   - http://localhost:4173/iso-27001-zertifizierung"
+echo ""
+echo "🔍 Überprüfen Sie den Seitenquelltext (Rechtsklick → Seitenquelltext anzeigen)"
+echo "   Sie sollten die spezifischen SEO-Meta-Tags für jede Seite sehen!"
 echo ""
 echo "🛑 Zum Beenden: Drücke Ctrl+C"
 echo ""
 echo "=================================="
 
-# Preview Server starten
-npm run preview
+# SEO Preview Server starten
+npm run preview:seo
 
 # Terminal offen halten falls Server stoppt
 echo ""

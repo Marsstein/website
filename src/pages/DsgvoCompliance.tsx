@@ -1413,7 +1413,7 @@ const DsgvoCompliance = () => {
       <SEOHead
         title="DSGVO Compliance Software – Automatisiert & Rechtssicher"
         description="DSGVO-Compliance leicht gemacht: KI-gestützte Lösung für Datenschutz. ✓ Automatisierte Prozesse ✓ Bis zu 80% Zeitersparnis. Jetzt testen!"
-        canonical="/dsgvo"
+        canonical="/compliance/dsgvo"
         keywords="DSGVO Compliance, Datenschutz Software, GDPR Compliance, Datenschutz-Grundverordnung"
         structuredData={structuredData}
       />
