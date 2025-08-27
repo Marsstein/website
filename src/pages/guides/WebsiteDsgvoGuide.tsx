@@ -1797,6 +1797,7 @@ const WebsiteDsgvoGuide: React.FC = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
