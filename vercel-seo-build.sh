@@ -7,8 +7,12 @@ echo "🚀 Starte Vercel SEO Build..."
 echo "=================================="
 
 # Puppeteer Dependencies für Vercel
-echo "📦 Installiere Puppeteer Dependencies..."
+echo "📦 Installiere Puppeteer und Chrome..."
 npm install puppeteer
+
+# Chrome für Puppeteer herunterladen
+echo "🌐 Lade Chrome Browser herunter..."
+npx puppeteer browsers install chrome
 
 # Build erstellen
 echo "🔨 Erstelle Production Build..."
