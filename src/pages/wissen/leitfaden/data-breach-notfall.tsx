@@ -44,9 +44,41 @@ const DataBreachNotfall: React.FC = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "Data Breach Notfallplan",
-    "description": "Schritt-für-Schritt Notfallplan bei Datenpannen. 72-Stunden-Frist, Meldepflichten, Sofortmaßnahmen, Kommunikation. DSGVO-konform handeln.",
-    "url": "https://marsstein.com/wissen/leitfaden/data-breach-notfall"
+    "name": "Data Breach Notfallplan: DSGVO-konform in 72 Stunden",
+    "description": "Kompletter Notfallplan bei Datenpannen mit 4-Phasen-System. Sofortmaßnahmen, 72-Stunden-Meldepflicht, Risikobewertung, Kommunikation. Mit Checklisten und Vorlagen.",
+    "url": "https://marsstein.com/wissen/leitfaden/data-breach-notfall",
+    "dateModified": new Date().toISOString(),
+    "publisher": {
+      "@type": "Organization",
+      "name": "Marsstein",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://marsstein.com/logo.png"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Wissen",
+          "item": "https://marsstein.com/wissen"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Leitfäden",
+          "item": "https://marsstein.com/wissen/leitfaden"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Data Breach Notfallplan",
+          "item": "https://marsstein.com/wissen/leitfaden/data-breach-notfall"
+        }
+      ]
+    }
   };
 
   const emergencyPhases = [
@@ -275,33 +307,42 @@ const DataBreachNotfall: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Data Breach Notfallplan – 72-Stunden Leitfaden DSGVO"
-        description="Data Breach Notfallplan: Schritt-für-Schritt bei Datenpannen. ✓ 72-Stunden-Frist ✓ Meldepflichten ✓ Sofortmaßnahmen ✓ Kommunikation. DSGVO-konform handeln!"
+        title="Data Breach Notfallplan 2024: 72h DSGVO-Leitfaden | Marsstein"
+        description="Datenpanne? Unser 4-Phasen-Notfallplan: ✓ Sofortmaßnahmen in 4h ✓ 72-Stunden-Meldepflicht ✓ Risikobewertung ✓ Kommunikationsvorlagen. Jetzt handeln!"
         canonical="/wissen/leitfaden/data-breach-notfall"
-        keywords="Data Breach, Datenpanne, DSGVO Meldepflicht, 72 Stunden, Notfallplan"
+        keywords="Data Breach Notfallplan, Datenpanne DSGVO, 72 Stunden Meldepflicht, Datenschutzverletzung, Incident Response DSGVO"
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
         <Header />
         
         {/* Hero Section */}
-        <section className="pt-24 pb-12 px-4">
+        <section className="pt-24 pb-12 px-4" aria-labelledby="main-heading">
           <div className="container mx-auto max-w-6xl">
             <motion.div
               className="text-center mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
+              <nav aria-label="Breadcrumb" className="mb-4">
+                <ol className="flex items-center justify-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li><Link to="/wissen" className="hover:text-brand-red transition-colors">Wissen</Link></li>
+                  <li><span className="mx-2">/</span></li>
+                  <li><Link to="/wissen/leitfaden" className="hover:text-brand-red transition-colors">Leitfäden</Link></li>
+                  <li><span className="mx-2">/</span></li>
+                  <li className="text-gray-900 dark:text-white font-medium">Data Breach Notfallplan</li>
+                </ol>
+              </nav>
               <Badge className="mb-4 px-4 py-1" variant="destructive">
                 <AlertTriangle className="h-3 w-3 mr-1" />
                 Notfallplan
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                Data Breach Notfallplan
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4" id="main-heading">
+                Data Breach Notfallplan: DSGVO-konform in 72 Stunden
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Ihr Schritt-für-Schritt Leitfaden für den Ernstfall - 
-                DSGVO-konform handeln innerhalb der 72-Stunden-Frist
+                4-Phasen-Notfallplan bei Datenpannen: Von Sofortmaßnahmen über Risikobewertung 
+                bis zur Behördenmeldung. Mit Checklisten, Vorlagen und Quick-Actions für den Ernstfall.
               </p>
             </motion.div>
 
@@ -328,9 +369,10 @@ const DataBreachNotfall: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
+              <nav aria-label="Notfallphasen">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Notfall-Phasen
+                  4-Phasen-Notfallplan
                 </h2>
                 <div className="flex gap-2">
                   {emergencyPhases.map((phase) => (
@@ -349,6 +391,7 @@ const DataBreachNotfall: React.FC = () => {
                   ))}
                 </div>
               </div>
+              </nav>
 
               {emergencyPhases.map((phase) => (
                 <motion.div
@@ -491,6 +534,10 @@ const DataBreachNotfall: React.FC = () => {
             </motion.div>
 
             {/* Quick Actions */}
+            <section aria-label="Schnellzugriff Ressourcen">
+              <h2 className="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                Quick Actions für den Notfall
+              </h2>
             <motion.div
               className="grid md:grid-cols-4 gap-4 mb-12"
               initial={{ opacity: 0, y: 20 }}
@@ -513,7 +560,7 @@ const DataBreachNotfall: React.FC = () => {
               <Card className="text-center">
                 <CardContent className="p-6">
                   <FileText className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Meldeformular</h3>
+                  <h3 className="font-semibold mb-2 text-lg">Meldeformular</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     Behördenmeldung vorbereiten
                   </p>
@@ -526,7 +573,7 @@ const DataBreachNotfall: React.FC = () => {
               <Card className="text-center">
                 <CardContent className="p-6">
                   <ListChecks className="h-8 w-8 text-green-600 mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Checkliste</h3>
+                  <h3 className="font-semibold mb-2 text-lg">Checkliste</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     Druckbare Notfall-Checkliste
                   </p>
@@ -540,7 +587,7 @@ const DataBreachNotfall: React.FC = () => {
               <Card className="text-center">
                 <CardContent className="p-6">
                   <Users className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Expertenberatung</h3>
+                  <h3 className="font-semibold mb-2 text-lg">Expertenberatung</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     Individuelle Unterstützung
                   </p>
@@ -552,6 +599,7 @@ const DataBreachNotfall: React.FC = () => {
                 </CardContent>
               </Card>
             </motion.div>
+            </section>
 
             {/* Important Notes */}
             <motion.div
@@ -586,7 +634,7 @@ const DataBreachNotfall: React.FC = () => {
             >
               <Card className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8 text-center">
                 <h2 className="text-2xl font-bold mb-4">
-                  Bereiten Sie sich auf den Ernstfall vor
+                  Professioneller Data Breach Response Plan für Ihr Unternehmen
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
                   Entwickeln Sie mit uns einen maßgeschneiderten Data Breach Response Plan

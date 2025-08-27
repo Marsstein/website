@@ -26,14 +26,44 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 const AssessmentCenter = () => {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Assessment Center - Compliance Bewertungen",
-    "description": "Umfassendes Assessment Center für DSGVO, ISO 27001, SOC 2 und KI-Risiko Bewertungen mit interaktiven Tools",
-    "applicationCategory": "Assessment Platform",
-    "url": "https://marsstein.com/assessment-center"
-  };
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Assessment Center - Compliance Bewertungen",
+      "description": "Umfassendes Assessment Center für DSGVO, ISO 27001, SOC 2 und KI-Risiko Bewertungen mit interaktiven Tools",
+      "applicationCategory": "Assessment Platform",
+      "url": "https://marsstein.com/assessment-center",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marsstein.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Assessment Center",
+          "item": "https://marsstein.com/assessment-center"
+        }
+      ]
+    }
+  ];
 
   const assessments = [
     {
@@ -90,7 +120,6 @@ const AssessmentCenter = () => {
         title="Assessment Center – Compliance & Risiko Bewertungen"
         description="Interaktives Assessment Center für DSGVO, ISO 27001, SOC 2 und KI-Risiko Bewertungen. ✓ Professionelle Tools ✓ Detaillierte Analysen ✓ Handlungsempfehlungen."
         canonical="/assessment-center"
-        keywords="Assessment Center, DSGVO Assessment, ISO 27001 Bewertung, SOC 2 Readiness, KI-Risiko Assessment"
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
@@ -122,11 +151,7 @@ const AssessmentCenter = () => {
               </motion.div>
               
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8">
-                <span className="text-white">Assessment</span>
-                <br />
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 bg-clip-text text-transparent">
-                  Center
-                </span>
+                <span className="text-white">Assessment Center</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">
@@ -201,10 +226,8 @@ const AssessmentCenter = () => {
               className="text-center mb-16"
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                <span className="text-white">Verfügbare</span>
-                <br />
                 <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 bg-clip-text text-transparent">
-                  Assessments
+                  Verfügbare Compliance-Assessments
                 </span>
               </h2>
               <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">

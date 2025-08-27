@@ -80,6 +80,15 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
+import { 
+  Breadcrumb, 
+  BreadcrumbItem, 
+  BreadcrumbLink, 
+  BreadcrumbList, 
+  BreadcrumbPage, 
+  BreadcrumbSeparator 
+} from '@/components/ui/breadcrumb';
 
 const ComplianceFrameworks: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -663,7 +672,42 @@ const ComplianceFrameworks: React.FC = () => {
       wordWrap: 'break-word',
       overflowWrap: 'break-word'
     }}>
+      <SEOHead 
+        title="Compliance Frameworks 2024 - ISO 27001, SOC 2, DSGVO Guide"
+        description="Compliance Frameworks Übersicht 2024: ISO 27001 ✓ SOC 2 ✓ DSGVO ✓ NIS2. Vergleich, Zertifizierung & Umsetzung. Kostenloses Assessment starten!"
+        canonical="/wissen/compliance-frameworks"
+        keywords="Compliance Frameworks, ISO 27001, SOC 2, DSGVO, NIS2, TISAX, Compliance Management, Zertifizierung, IT-Sicherheit"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Guide",
+          "name": "Compliance Frameworks Übersicht 2024",
+          "description": "Umfassender Leitfaden zu Compliance Frameworks mit Vergleich, Implementierungstipps und Zertifizierungswegen.",
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Compliance Officers, IT Security Managers, Data Protection Officers"
+          }
+        }}
+      />
       <Header />
+
+      {/* Breadcrumb Navigation */}
+      <div className="container px-4 py-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen">Wissen</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Compliance Frameworks</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       
       {/* Hero Section */}
       <motion.section 

@@ -40,14 +40,71 @@ import { Progress } from '@/components/ui/progress';
 import { Checkbox } from '@/components/ui/checkbox';
 
 const DsgvoComplianceChecklist = () => {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Assessment",
-    "name": "DSGVO Compliance Checklist",
-    "description": "Umfassende DSGVO Compliance Checklist mit 50+ Prüfpunkten für vollständige Datenschutz-Compliance",
-    "educationalLevel": "Professional",
-    "url": "https://marsstein.com/assessment-center/dsgvo-compliance-checklist"
-  };
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Assessment",
+      "name": "DSGVO Compliance Checklist",
+      "description": "Umfassende DSGVO Compliance Checklist mit 50+ Prüfpunkten für vollständige Datenschutz-Compliance nach EU-DSGVO",
+      "educationalLevel": "Professional",
+      "url": "https://marsstein.com/assessment-center/dsgvo-compliance-checklist",
+      "provider": {
+        "@type": "Organization",
+        "name": "Marsstein",
+        "url": "https://marsstein.com"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Datenschutzbeauftragte, Compliance Manager"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marsstein.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Assessment Center",
+          "item": "https://marsstein.com/assessment-center"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "DSGVO Compliance Checklist",
+          "item": "https://marsstein.com/assessment-center/dsgvo-compliance-checklist"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was prüft die DSGVO Compliance Checklist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Checklist prüft über 50 kritische DSGVO-Anforderungen in 5 Kategorien: Rechtsgrundlagen, Betroffenenrechte, technische Maßnahmen, organisatorische Maßnahmen und besondere Datenkategorien."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für wen ist diese Checklist geeignet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Checklist eignet sich für Unternehmen jeder Größe, Datenschutzbeauftragte, Compliance Manager und alle, die ihre DSGVO-Compliance überprüfen möchten."
+          }
+        }
+      ]
+    }
+  ];
 
   const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
   const [currentCategory, setCurrentCategory] = useState(0);
@@ -265,10 +322,9 @@ const DsgvoComplianceChecklist = () => {
   return (
     <>
       <SEOHead
-        title="DSGVO Compliance Checklist – 50+ Prüfpunkte"
-        description="Vollständige DSGVO Compliance Checklist mit über 50 Prüfpunkten. ✓ Rechtliche Anforderungen ✓ Betroffenenrechte ✓ Technische Maßnahmen. Jetzt prüfen!"
+        title="DSGVO Compliance Checklist 2024 - Vollständige Prüfliste"
+        description="Kostenlose DSGVO-Compliance Checklist mit 50+ Prüfpunkten nach Art. 6-39 DSGVO. ✓ Sofort anwendbar ✓ Inkl. Handlungsempfehlungen ✓ PDF-Export."
         canonical="/assessment-center/dsgvo-compliance-checklist"
-        keywords="DSGVO Checklist, Compliance Prüfung, Datenschutz Audit, DSGVO Anforderungen, Compliance Check"
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
@@ -300,13 +356,7 @@ const DsgvoComplianceChecklist = () => {
               </motion.div>
               
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8">
-                <span className="text-white">DSGVO</span>
-                <br />
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 bg-clip-text text-transparent">
-                  Compliance
-                </span>
-                <br />
-                <span className="text-white">Checklist</span>
+                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 bg-clip-text text-transparent">DSGVO Compliance Checklist</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">

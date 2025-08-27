@@ -45,31 +45,9 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
 
 const SchremsIICase: React.FC = () => {
-  // SEO Meta Tags
-  useEffect(() => {
-    document.title = 'Schrems II – Internationale Datentransfers nach EuGH';
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance.');
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = 'description';
-      meta.content = 'Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance.';
-      document.head.appendChild(meta);
-    }
-    
-    const viewport = document.querySelector('meta[name="viewport"]');
-    if (!viewport) {
-      const meta = document.createElement('meta');
-      meta.name = 'viewport';
-      meta.content = 'width=device-width, initial-scale=1';
-      document.head.appendChild(meta);
-    }
-  }, []);
-  
   // Add scroll offset for sticky header
   useEffect(() => {
     const style = document.createElement('style');
@@ -251,6 +229,12 @@ const SchremsIICase: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <SEOHead
+        title="Schrems II – Internationale Datentransfers nach EuGH"
+        description="Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance."
+        canonicalUrl="https://marsstein.com/wissen/rechtsprechung/schrems-ii"
+        ogImage="https://marsstein.com/images/schrems-ii-urteil.jpg"
+      />
       <Header />
       
       {/* Animated Background Elements */}

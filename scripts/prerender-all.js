@@ -176,6 +176,24 @@ function optimizeHtml(html, route) {
   html = html.replace(/style="opacity:\s*0[^"]*"/g, '');
   html = html.replace(/style="[^"]*transform:\s*translate[^"]*"/g, '');
   
+  // Füge Debug-Kommentar hinzu
+  html = html.replace('</head>', `  <!-- Prerendered at ${new Date().toISOString()} -->\n</head>`);
+  
+  // Formatiere HTML für bessere Lesbarkeit im View-Source
+  // Füge Zeilenumbrüche nach wichtigen Tags hinzu
+  html = html.replace(/<\/head>/g, '</head>\n');
+  html = html.replace(/<body/g, '\n<body');
+  html = html.replace(/<\/body>/g, '\n</body>');
+  html = html.replace(/<div id="root">/g, '\n<div id="root">\n');
+  html = html.replace(/<\/div><script/g, '\n</div>\n<script');
+  html = html.replace(/<\/script><script/g, '</script>\n<script');
+  html = html.replace(/<meta/g, '\n  <meta');
+  html = html.replace(/<link/g, '\n  <link');
+  html = html.replace(/<title/g, '\n  <title');
+  
+  // Füge Einrückungen für bessere Struktur hinzu
+  html = html.replace(/(\n)(<(?:meta|link|title))/g, '$1  $2');
+  
   return html;
 }
 
@@ -212,7 +230,7 @@ function generateSitemap(routes) {
     let routePriority = priority;
     let routeChangefreq = changefreq;
     
-    for (const [category, config] of Object.entries(routeCategories)) {
+    for (const [, config] of Object.entries(routeCategories)) {
       for (const pattern of config.routes) {
         if (pattern.endsWith('*') && route.startsWith(pattern.slice(0, -1))) {
           routePriority = config.priority;

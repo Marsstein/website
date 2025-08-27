@@ -1,0 +1,2014 @@
+{
+  "timestamp": "2025-08-27T10:41:10.037Z",
+  "summary": {
+    "totalPages": 201,
+    "withSEO": 79,
+    "withoutSEO": 122,
+    "partialImplementation": 0
+  },
+  "pages": [
+    {
+      "file": "/pages/About.tsx",
+      "route": "/about",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "About.tsx"
+    },
+    {
+      "file": "/pages/Academy.tsx",
+      "route": "/academy",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Academy.tsx"
+    },
+    {
+      "file": "/pages/AcademyPage.tsx",
+      "route": "/academy-page",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Academy – Compliance-Schulungen & Zertifizierungen",
+        "description": "Marsstein Academy: Online-Kurse zu DSGVO, ISO 27001 & EU AI Act. ✓ Zertifikate ✓ Praxisnah ✓ Von Experten. Jetzt weiterbilden!",
+        "canonical": "/academy",
+        "keywords": "Compliance Schulung, DSGVO Kurs, ISO 27001 Training, Datenschutz Weiterbildung"
+      },
+      "fileName": "AcademyPage.tsx"
+    },
+    {
+      "file": "/pages/AssessmentCenter.tsx",
+      "route": "/assessment-center",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Assessment Center – Compliance & Risiko Bewertungen",
+        "description": "Interaktives Assessment Center für DSGVO, ISO 27001, SOC 2 und KI-Risiko Bewertungen. ✓ Professionelle Tools ✓ Detaillierte Analysen ✓ Handlungsempfehlungen.",
+        "canonical": "/assessment-center",
+        "keywords": "Assessment Center, DSGVO Assessment, ISO 27001 Bewertung, SOC 2 Readiness, KI-Risiko Assessment"
+      },
+      "fileName": "AssessmentCenter.tsx"
+    },
+    {
+      "file": "/pages/BranchenWissen.tsx",
+      "route": "/branchen-wissen",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "BranchenWissen.tsx"
+    },
+    {
+      "file": "/pages/ComplianceAIAssistant.tsx",
+      "route": "/compliance-aiassistant",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "AI Assistant – Compliance-Berater mit KI-Power",
+        "description": "Compliance AI Assistant: KI-gestützter Berater für DSGVO, ISO 27001, EU AI Act. ✓ 24/7 verfügbar ✓ Voice AI ✓ Instant Antworten. Jetzt kostenlos testen!",
+        "canonical": "/tools/compliance-ai-assistant",
+        "keywords": "Compliance AI Assistant, KI Compliance Berater, DSGVO AI, Voice AI, Compliance Automation"
+      },
+      "fileName": "ComplianceAIAssistant.tsx"
+    },
+    {
+      "file": "/pages/ComplianceFrameworks.tsx",
+      "route": "/compliance-frameworks",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "ComplianceFrameworks.tsx"
+    },
+    {
+      "file": "/pages/Contact.tsx",
+      "route": "/contact",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Contact.tsx"
+    },
+    {
+      "file": "/pages/ContactPage.tsx",
+      "route": "/contact-page",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Kontakt – Compliance-Experten erreichen",
+        "description": "Kontaktieren Sie Marsstein für Compliance-Beratung. ✓ Kostenlose Erstberatung ✓ 24h Antwortzeit ✓ Experten für DSGVO & ISO 27001.",
+        "canonical": "/contact",
+        "keywords": "Compliance Beratung, DSGVO Experten, ISO 27001 Beratung, Kontakt"
+      },
+      "fileName": "ContactPage.tsx"
+    },
+    {
+      "file": "/pages/CookieManagementTool.tsx",
+      "route": "/cookie-management-tool",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Cookie Management – DSGVO-konforme Cookie-Banner",
+        "description": "Cookie Management Tool: DSGVO-konforme Cookie-Banner, Consent-Verwaltung, TCF 2.2, Google Consent Mode v2. ✓ Rechtssicher ✓ Conversion-optimiert. Jetzt testen!",
+        "canonical": "/tools/cookie-management",
+        "keywords": "Cookie Management, DSGVO Cookie Banner, Cookie Consent Tool, TCF 2.2, Google Consent Mode"
+      },
+      "fileName": "CookieManagementTool.tsx"
+    },
+    {
+      "file": "/pages/CookieManagementToolProduct.tsx",
+      "route": "/cookie-management-tool-product",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "CookieManagementToolProduct.tsx"
+    },
+    {
+      "file": "/pages/CrisisManagement.tsx",
+      "route": "/crisis-management",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "CrisisManagement.tsx"
+    },
+    {
+      "file": "/pages/Dashboard.tsx",
+      "route": "/dashboard",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Dashboard.tsx"
+    },
+    {
+      "file": "/pages/DashboardPage.tsx",
+      "route": "/dashboard-page",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Dashboard – Ihr Compliance-Cockpit in Echtzeit",
+        "description": "Marsstein Dashboard: Alle Compliance-KPIs im Blick. ✓ Echtzeit-Monitoring ✓ Automatische Reports ✓ Risiko-Tracking. Jetzt einloggen!",
+        "canonical": "/dashboard",
+        "keywords": "Compliance Dashboard, DSGVO Monitoring, ISO 27001 Dashboard, Compliance KPIs"
+      },
+      "fileName": "DashboardPage.tsx"
+    },
+    {
+      "file": "/pages/Datenschutz.tsx",
+      "route": "/datenschutz",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Datenschutz.tsx"
+    },
+    {
+      "file": "/pages/DesignSeparatorTest.tsx",
+      "route": "/design-separator-test",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DesignSeparatorTest.tsx"
+    },
+    {
+      "file": "/pages/DesignSeparatorTestOriginal.tsx",
+      "route": "/design-separator-test-original",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DesignSeparatorTestOriginal.tsx"
+    },
+    {
+      "file": "/pages/DsgvoCompliance.tsx",
+      "route": "/dsgvo-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO Compliance Software – Automatisiert & Rechtssicher",
+        "description": "DSGVO-Compliance leicht gemacht: KI-gestützte Lösung für Datenschutz. ✓ Automatisierte Prozesse ✓ Bis zu 80% Zeitersparnis. Jetzt testen!",
+        "canonical": "/compliance/dsgvo",
+        "keywords": "DSGVO Compliance, Datenschutz Software, GDPR Compliance, Datenschutz-Grundverordnung"
+      },
+      "fileName": "DsgvoCompliance.tsx"
+    },
+    {
+      "file": "/pages/DsgvoComplianceScorecard.tsx",
+      "route": "/dsgvo-compliance-scorecard",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO Scorecard – Compliance-Status bewerten",
+        "description": "DSGVO Compliance Scorecard: Bewerten Sie Ihren Datenschutz-Status interaktiv. Gap-Analyse, Benchmarking, Handlungsempfehlungen. ✓ 15 Min Assessment. Jetzt bewerten!",
+        "canonical": "/tools/dsgvo-compliance-scorecard",
+        "keywords": "DSGVO Scorecard, Compliance Assessment, DSGVO Bewertung, Gap-Analyse, Datenschutz Status"
+      },
+      "fileName": "DsgvoComplianceScorecard.tsx"
+    },
+    {
+      "file": "/pages/DsgvoEmailTemplateGenerator.tsx",
+      "route": "/dsgvo-email-template-generator",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO E-Mail Templates – Rechtssichere Vorlagen",
+        "description": "DSGVO E-Mail Template Generator: Rechtssichere Vorlagen für Auskunftsersuchen, Löschanfragen, Betroffenenrechte. ✓ Anwaltlich geprüft ✓ Sofort einsetzbar. Jetzt generieren!",
+        "canonical": "/tools/dsgvo-email-template-generator",
+        "keywords": "DSGVO E-Mail Templates, Auskunftsersuchen, Löschanfragen, Betroffenenrechte, DSGVO Vorlagen"
+      },
+      "fileName": "DsgvoEmailTemplateGenerator.tsx"
+    },
+    {
+      "file": "/pages/DsgvoGuides.tsx",
+      "route": "/wissen/dsgvo-s",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DsgvoGuides.tsx"
+    },
+    {
+      "file": "/pages/EuAiActCompliance.tsx",
+      "route": "/eu-ai-act-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "EU AI Act Compliance – KI-Regulierung sicher umsetzen",
+        "description": "EU AI Act Compliance einfach gemacht: Risikoklassifizierung, CE-Kennzeichnung & Konformität. ✓ Automatisierte Prozesse ✓ Rechtssicher. Jetzt beraten lassen!",
+        "canonical": "/eu-ai-act",
+        "keywords": "EU AI Act, KI-Regulierung, AI Compliance, Künstliche Intelligenz Gesetz, KI-Verordnung"
+      },
+      "fileName": "EuAiActCompliance.tsx"
+    },
+    {
+      "file": "/pages/FinalChecks.tsx",
+      "route": "/final-checks",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "FinalChecks.tsx"
+    },
+    {
+      "file": "/pages/FooterTest.tsx",
+      "route": "/footer-test",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "FooterTest.tsx"
+    },
+    {
+      "file": "/pages/GeldwaeschegesetzCompliance.tsx",
+      "route": "/geldwaeschegesetz-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Geldwäschegesetz (GwG) – AML-Compliance automatisiert",
+        "description": "GwG-Compliance leicht gemacht: KYC-Prüfung, Risikomanagement & Verdachtsmeldungen. ✓ KI-gestützt ✓ BaFin-konform. Jetzt digitalisieren!",
+        "canonical": "/geldwaeschegesetz",
+        "keywords": "Geldwäschegesetz, GwG, AML Compliance, Anti-Geldwäsche, KYC Prüfung"
+      },
+      "fileName": "GeldwaeschegesetzCompliance.tsx"
+    },
+    {
+      "file": "/pages/HinweisgeberschutzCompliance.tsx",
+      "route": "/hinweisgeberschutz-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Hinweisgeberschutz – Whistleblower-System nach HinSchG",
+        "description": "Hinweisgebersystem rechtssicher umsetzen: ✓ Digitale Meldestelle ✓ 100% anonym ✓ HinSchG-konform. Schützen Sie Whistleblower. Jetzt einrichten!",
+        "canonical": "/hinweisgeberschutzgesetz",
+        "keywords": "Hinweisgeberschutz, HinSchG, Whistleblower System, Hinweisgebersystem, Meldestelle"
+      },
+      "fileName": "HinweisgeberschutzCompliance.tsx"
+    },
+    {
+      "file": "/pages/Home.tsx",
+      "route": "/",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Compliance Software & Beratung für DSGVO, ISO 27001",
+        "description": "Marsstein Compliance Platform: KI-gestützte Lösungen für DSGVO, ISO 27001 & EU AI Act. ✓ Automatisiert ✓ Rechtssicher. Jetzt starten!",
+        "canonical": "/",
+        "keywords": "Compliance Software, DSGVO, ISO 27001, EU AI Act, Datenschutz, Compliance Management"
+      },
+      "fileName": "Home.tsx"
+    },
+    {
+      "file": "/pages/Impressum.tsx",
+      "route": "/impressum",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Impressum.tsx"
+    },
+    {
+      "file": "/pages/Index.tsx",
+      "route": "/",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Compliance & Datenschutz Lösungen für Unternehmen",
+        "description": "Marsstein - Ihr Partner für DSGVO, ISO 27001, NIS2 & EU AI Act Compliance. Automatisierte Lösungen für Datenschutz und KI-Governance. Jetzt beraten lassen!",
+        "canonical": "/",
+        "keywords": null
+      },
+      "fileName": "Index.tsx"
+    },
+    {
+      "file": "/pages/Industries.tsx",
+      "route": "/industries",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Branchen – Compliance-Lösungen für jede Industrie",
+        "description": "Branchenspezifische Compliance: Healthcare, FinTech, E-Commerce & mehr. ✓ Maßgeschneidert ✓ Best Practices ✓ Expertenwissen. Jetzt entdecken!",
+        "canonical": "/branchen",
+        "keywords": "Branchenlösungen, Healthcare Compliance, FinTech Compliance, E-Commerce DSGVO, Industrie Compliance"
+      },
+      "fileName": "Industries.tsx"
+    },
+    {
+      "file": "/pages/Iso27001Compliance.tsx",
+      "route": "/iso27001compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "ISO 27001 Zertifizierung – ISMS erfolgreich aufbauen",
+        "description": "ISO 27001 Zertifizierung meistern: ISMS-Implementierung, Gap-Analyse & Audit-Vorbereitung. ✓ Schritt-für-Schritt ✓ Praxisnah. Jetzt starten!",
+        "canonical": "/iso-27001-zertifizierung",
+        "keywords": "ISO 27001, ISMS, Informationssicherheit, ISO 27001 Zertifizierung, IT-Sicherheit"
+      },
+      "fileName": "Iso27001Compliance.tsx"
+    },
+    {
+      "file": "/pages/Iso27017Compliance.tsx",
+      "route": "/iso27017compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "ISO 27017 – Cloud-Security-Standard zertifizieren",
+        "description": "ISO 27017 Zertifizierung für Cloud-Services: Spezifische Controls für AWS, Azure & GCP. ✓ Multi-Cloud ✓ Compliance. Jetzt beraten lassen!",
+        "canonical": "/iso-27017",
+        "keywords": "ISO 27017, Cloud Security, Cloud Zertifizierung, ISO 27017 Controls, Cloud Compliance"
+      },
+      "fileName": "Iso27017Compliance.tsx"
+    },
+    {
+      "file": "/pages/Iso27018Compliance.tsx",
+      "route": "/iso27018compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "ISO 27018 – Cloud-Datenschutz für personenbezogene Daten",
+        "description": "ISO 27018 Privacy-Zertifizierung: PII-Schutz in der Cloud nach DSGVO. ✓ Public Cloud Privacy ✓ Compliance. Jetzt zertifizieren!",
+        "canonical": "/iso-27018",
+        "keywords": "ISO 27018, Cloud Privacy, Cloud Datenschutz, PII Protection, ISO 27018 Zertifizierung"
+      },
+      "fileName": "Iso27018Compliance.tsx"
+    },
+    {
+      "file": "/pages/KiDatenschutz.tsx",
+      "route": "/ki-datenschutz",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "KiDatenschutz.tsx"
+    },
+    {
+      "file": "/pages/Knowledge.tsx",
+      "route": "/knowledge",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Knowledge.tsx"
+    },
+    {
+      "file": "/pages/Nis2Compliance.tsx",
+      "route": "/nis2compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "NIS-2 Compliance – Cybersecurity-Richtlinie umsetzen",
+        "description": "NIS-2 Richtlinie sicher erfüllen: Risikomanagement, Meldepflichten & Sicherheitsmaßnahmen. ✓ KRITIS-konform ✓ Automatisiert. Jetzt beraten lassen!",
+        "canonical": "/nis2-compliance",
+        "keywords": "NIS-2, NIS2 Richtlinie, Cybersecurity Compliance, KRITIS, Network Information Security"
+      },
+      "fileName": "Nis2Compliance.tsx"
+    },
+    {
+      "file": "/pages/NotFound.tsx",
+      "route": "/not-found",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "NotFound.tsx"
+    },
+    {
+      "file": "/pages/Pricing.tsx",
+      "route": "/pricing",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Pricing.tsx"
+    },
+    {
+      "file": "/pages/PricingPage.tsx",
+      "route": "/pricing-page",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Preise & Pakete – Compliance Software ab 99€/Monat",
+        "description": "Transparente Preise für Marsstein Compliance Software. Starter ab 99€, Professional 299€, Enterprise auf Anfrage. Jetzt 30 Tage testen!",
+        "canonical": "/pricing",
+        "keywords": "Compliance Software Preise, DSGVO Software Kosten, ISO 27001 Tool Preise"
+      },
+      "fileName": "PricingPage.tsx"
+    },
+    {
+      "file": "/pages/Rechtsprechung.tsx",
+      "route": "/rechtsprechung",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Rechtsprechung.tsx"
+    },
+    {
+      "file": "/pages/Resources.tsx",
+      "route": "/resources",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Resources.tsx"
+    },
+    {
+      "file": "/pages/RiskManagement.tsx",
+      "route": "/risk-management",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "RiskManagement.tsx"
+    },
+    {
+      "file": "/pages/SimpleTest.tsx",
+      "route": "/simple-test",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "SimpleTest.tsx"
+    },
+    {
+      "file": "/pages/SitemapSEO.tsx",
+      "route": "/sitemap-seo",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "SitemapSEO.tsx"
+    },
+    {
+      "file": "/pages/Soc2Compliance.tsx",
+      "route": "/soc2compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "SOC 2 Zertifizierung – Trust Services für SaaS & Cloud",
+        "description": "SOC 2 Type II Compliance für SaaS-Anbieter: 5 Trust Principles meistern. ✓ Audit-ready ✓ Automatisiert ✓ Kundenvertrauen. Jetzt vorbereiten!",
+        "canonical": "/soc2-zertifizierung",
+        "keywords": null
+      },
+      "fileName": "Soc2Compliance.tsx"
+    },
+    {
+      "file": "/pages/Test1.tsx",
+      "route": "/test1",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Test1.tsx"
+    },
+    {
+      "file": "/pages/Test2.tsx",
+      "route": "/test2",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Test2.tsx"
+    },
+    {
+      "file": "/pages/Test3.tsx",
+      "route": "/test3",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Test3.tsx"
+    },
+    {
+      "file": "/pages/TestApproach1.tsx",
+      "route": "/test-approach1",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestApproach1.tsx"
+    },
+    {
+      "file": "/pages/TestApproach2.tsx",
+      "route": "/test-approach2",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestApproach2.tsx"
+    },
+    {
+      "file": "/pages/TestApproach3.tsx",
+      "route": "/test-approach3",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestApproach3.tsx"
+    },
+    {
+      "file": "/pages/TestBidirectional.tsx",
+      "route": "/test-bidirectional",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestBidirectional.tsx"
+    },
+    {
+      "file": "/pages/TestDiagnostic.tsx",
+      "route": "/test-diagnostic",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestDiagnostic.tsx"
+    },
+    {
+      "file": "/pages/TestFinal.tsx",
+      "route": "/test-final",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestFinal.tsx"
+    },
+    {
+      "file": "/pages/TestFixed.tsx",
+      "route": "/test-fixed",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestFixed.tsx"
+    },
+    {
+      "file": "/pages/TestIndex.tsx",
+      "route": "/test-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestIndex.tsx"
+    },
+    {
+      "file": "/pages/TestOptimized.tsx",
+      "route": "/test-optimized",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestOptimized.tsx"
+    },
+    {
+      "file": "/pages/TestPerfect.tsx",
+      "route": "/test-perfect",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestPerfect.tsx"
+    },
+    {
+      "file": "/pages/TestPerfected.tsx",
+      "route": "/test-perfected",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestPerfected.tsx"
+    },
+    {
+      "file": "/pages/TestRobust.tsx",
+      "route": "/test-robust",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestRobust.tsx"
+    },
+    {
+      "file": "/pages/TestSimpleFinal.tsx",
+      "route": "/test-simple-final",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestSimpleFinal.tsx"
+    },
+    {
+      "file": "/pages/TestUltimateDiagnostic.tsx",
+      "route": "/test-ultimate-diagnostic",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestUltimateDiagnostic.tsx"
+    },
+    {
+      "file": "/pages/TestUns.tsx",
+      "route": "/test-uns",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TestUns.tsx"
+    },
+    {
+      "file": "/pages/ThankYou.tsx",
+      "route": "/thank-you",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Danke – Ihre Anfrage wurde erfolgreich übermittelt",
+        "description": "Vielen Dank für Ihre Anfrage. Unser Compliance-Team meldet sich innerhalb von 24 Stunden bei Ihnen. Entdecken Sie jetzt unsere Demo oder weitere Ressourcen.",
+        "canonical": "/thank-you",
+        "keywords": "danke, anfrage bestätigung, marsstein kontakt, compliance demo"
+      },
+      "fileName": "ThankYou.tsx"
+    },
+    {
+      "file": "/pages/TisaxCompliance.tsx",
+      "route": "/tisax-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "TISAX – Automotive Security für Zulieferer & OEMs",
+        "description": "TISAX-Zertifizierung für die Automobilindustrie: VDA ISA konform werden. ✓ Assessment-Level 2&3 ✓ ENX-Zugang. Jetzt vorbereiten!",
+        "canonical": "/tisax",
+        "keywords": "TISAX, VDA ISA, Automotive Security, TISAX Zertifizierung, Automobilindustrie"
+      },
+      "fileName": "TisaxCompliance.tsx"
+    },
+    {
+      "file": "/pages/Tools.tsx",
+      "route": "/tools",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Tools – Compliance-Werkzeuge & Automatisierung",
+        "description": "Compliance-Tools Suite: DSGVO-Check, Cookie-Scanner, Whistleblower-System, KI-Assistent. ✓ Automatisierung ✓ Rechtssicher ✓ Enterprise-ready. Jetzt testen!",
+        "canonical": "/tools",
+        "keywords": "Compliance Tools, DSGVO Tools, Cookie Scanner, Whistleblower System, Compliance Automatisierung"
+      },
+      "fileName": "Tools.tsx"
+    },
+    {
+      "file": "/pages/WhistleblowerSystemTool.tsx",
+      "route": "/whistleblower-system-tool",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "WhistleblowerSystemTool.tsx"
+    },
+    {
+      "file": "/pages/WhistleblowerSystemToolProduct.tsx",
+      "route": "/whistleblower-system-tool-product",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "WhistleblowerSystemToolProduct.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/AIGovernanceCheck.tsx",
+      "route": "/assessment-center/aigovernance-check",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "KI-Governance Check – Reifegrad-Bewertung",
+        "description": "AI Governance Check: Bewerten Sie Ihre KI-Governance-Strukturen. ✓ Verantwortungsvolle KI ✓ Reifegrad-Analyse ✓ Handlungsempfehlungen. Jetzt testen!",
+        "canonical": "/assessment-center/ai-governance-check",
+        "keywords": "AI Governance Check, KI-Governance, Responsible AI, KI-Ethik, KI-Management"
+      },
+      "fileName": "AIGovernanceCheck.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/AIRiskAssessment.tsx",
+      "route": "/assessment-center/airisk-assessment",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "KI-Risiko Assessment – EU AI Act Bewertung",
+        "description": "EU AI Act Risk Assessment: Bewerten Sie das Risiko Ihres KI-Systems nach EU AI Act. ✓ Risikoeinstufung ✓ Compliance-Check ✓ Handlungsempfehlungen. Jetzt testen!",
+        "canonical": "/assessment-center/ai-risk-assessment",
+        "keywords": "EU AI Act Assessment, KI-Risiko Bewertung, AI Risk Assessment, KI Compliance, EU AI Act Risiko"
+      },
+      "fileName": "AIRiskAssessment.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/AlgorithmicImpactAssessment.tsx",
+      "route": "/assessment-center/algorithmic-impact-assessment",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Algorithmic Impact Assessment – Folgenabschätzung",
+        "description": "Algorithmic Impact Assessment: Bewerten Sie gesellschaftliche Auswirkungen algorithmischer Systeme. ✓ Bias-Prüfung ✓ Fairness ✓ Transparenz. Jetzt testen!",
+        "canonical": "/assessment-center/algorithmic-impact-assessment",
+        "keywords": "Algorithmic Impact Assessment, AIA, Algorithmen Folgenabschätzung, KI Fairness, Bias Detection"
+      },
+      "fileName": "AlgorithmicImpactAssessment.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/DsgvoComplianceChecklist.tsx",
+      "route": "/assessment-center/dsgvo-compliance-checklist",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO Compliance Checklist – 50+ Prüfpunkte",
+        "description": "Vollständige DSGVO Compliance Checklist mit über 50 Prüfpunkten. ✓ Rechtliche Anforderungen ✓ Betroffenenrechte ✓ Technische Maßnahmen. Jetzt prüfen!",
+        "canonical": "/assessment-center/dsgvo-compliance-checklist",
+        "keywords": "DSGVO Checklist, Compliance Prüfung, Datenschutz Audit, DSGVO Anforderungen, Compliance Check"
+      },
+      "fileName": "DsgvoComplianceChecklist.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/ISMSMaturityAssessment.tsx",
+      "route": "/assessment-center/ismsmaturity-assessment",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "ISO 27001 Maturity Assessment – ISMS Reifegrad prüfen",
+        "description": "ISO 27001 ISMS Maturity Assessment: Bewerten Sie den Reifegrad Ihres Information Security Management Systems. ✓ CMMI-basiert ✓ Benchmarks ✓ Roadmap. Jetzt testen!",
+        "canonical": "/assessment-center/isms-maturity-assessment",
+        "keywords": "ISO 27001 Assessment, ISMS Maturity, ISMS Reifegrad, ISO 27001 Bewertung, Maturity Assessment"
+      },
+      "fileName": "ISMSMaturityAssessment.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/ISO27001ReadinessCheck.tsx",
+      "route": "/assessment-center/iso27001readiness-check",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "ISO27001ReadinessCheck.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/NIS2ComplianceCheck.tsx",
+      "route": "/assessment-center/nis2compliance-check",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "NIS2ComplianceCheck.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/SOC2ReadinessAssessment.tsx",
+      "route": "/assessment-center/soc2readiness-assessment",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "SOC 2 Readiness Assessment – Zertifizierungsbereitschaft",
+        "description": "SOC 2 Readiness Assessment: Prüfen Sie Ihre Bereitschaft für die SOC 2 Zertifizierung. ✓ Trust Services ✓ Gap-Analyse ✓ Audit-Roadmap. Jetzt testen!",
+        "canonical": "/assessment-center/soc2-readiness-assessment",
+        "keywords": "SOC 2 Assessment, SOC 2 Readiness, SOC 2 Zertifizierung, Trust Services, Audit Readiness"
+      },
+      "fileName": "SOC2ReadinessAssessment.tsx"
+    },
+    {
+      "file": "/pages/assessment-center/SecurityControlsAudit.tsx",
+      "route": "/assessment-center/security-controls-audit",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "SecurityControlsAudit.tsx"
+    },
+    {
+      "file": "/pages/branchen/AutomotiveDatenschutz.tsx",
+      "route": "/branchen/automotive-datenschutz",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "AutomotiveDatenschutz.tsx"
+    },
+    {
+      "file": "/pages/branchen/DatenschutzArztpraxis.tsx",
+      "route": "/branchen/datenschutz-arztpraxis",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DatenschutzArztpraxis.tsx"
+    },
+    {
+      "file": "/pages/branchen/DatenschutzBetriebsrat.tsx",
+      "route": "/branchen/datenschutz-betriebsrat",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DatenschutzBetriebsrat.tsx"
+    },
+    {
+      "file": "/pages/branchen/DatenschutzHomeoffice.tsx",
+      "route": "/branchen/datenschutz-homeoffice",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DatenschutzHomeoffice.tsx"
+    },
+    {
+      "file": "/pages/branchen/DatenschutzKindergarten.tsx",
+      "route": "/branchen/datenschutz-kindergarten",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DatenschutzKindergarten.tsx"
+    },
+    {
+      "file": "/pages/branchen/DatenschutzPflege.tsx",
+      "route": "/branchen/datenschutz-pflege",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DatenschutzPflege.tsx"
+    },
+    {
+      "file": "/pages/branchen/DsgvoVereine.tsx",
+      "route": "/branchen/dsgvo-vereine",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DsgvoVereine.tsx"
+    },
+    {
+      "file": "/pages/branchen/DsgvoVermieter.tsx",
+      "route": "/branchen/dsgvo-vermieter",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DsgvoVermieter.tsx"
+    },
+    {
+      "file": "/pages/branchen/EcommercePrivacyGuide.tsx",
+      "route": "/wissen/branchen/ecommerce-privacy-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "EcommercePrivacyGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/EdtechPrivacyGuide.tsx",
+      "route": "/wissen/branchen/edtech-privacy-",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "EdTech Privacy – Bildungssektor Datenschutz",
+        "description": "EdTech Datenschutz: Schülerdaten, COPPA/FERPA, Lernplattformen, digitale Bildung. ✓ Consent Management ✓ Age Verification ✓ Data Minimization.",
+        "canonical": "/wissen/branchen/edtech-privacy",
+        "keywords": "EdTech Privacy, Bildungssektor Datenschutz, COPPA FERPA, Schülerdaten DSGVO, Lernplattformen Datenschutz, Age Verification"
+      },
+      "fileName": "EdtechPrivacyGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/FintechComplianceGuide.tsx",
+      "route": "/wissen/branchen/fintech-compliance-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "FintechComplianceGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/HealthcareAiComplianceGuide.tsx",
+      "route": "/wissen/branchen/healthcare-ai-compliance-",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Healthcare AI Compliance – Medizinische KI rechtssicher einsetzen",
+        "description": "Healthcare AI Compliance: Medizinische KI, EU AI Act, FDA-Regularien, Patientensicherheit. ✓ Risikobewertung ✓ Zulassung ✓ Post-Market Surveillance.",
+        "canonical": "/wissen/branchen/healthcare-ai-compliance",
+        "keywords": "Healthcare AI Compliance, Medizinische KI, EU AI Act Healthcare, FDA AI Regularien, MDR Software, Patientensicherheit KI"
+      },
+      "fileName": "HealthcareAiComplianceGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/HealthcareDsgvoGuide.tsx",
+      "route": "/wissen/branchen/healthcare-dsgvo-",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Gesundheitswesen DSGVO – Patientendaten rechtssicher verarbeiten",
+        "description": "DSGVO im Gesundheitswesen: Patientendatenschutz, Schweigepflicht, Forschung, eHealth. ✓ Praxisnahe Lösungen ✓ Rechtssicherheit ✓ Compliance-Checklisten.",
+        "canonical": "/wissen/branchen/gesundheitswesen-dsgvo",
+        "keywords": "DSGVO Gesundheitswesen, Patientendatenschutz, Schweigepflicht DSGVO, eHealth Datenschutz, medizinische Forschung DSGVO, Gesundheitsdaten Art. 9"
+      },
+      "fileName": "HealthcareDsgvoGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/Industrie40DatenschutzGuide.tsx",
+      "route": "/wissen/branchen/industrie40datenschutz-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Industrie40DatenschutzGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/InsurtechComplianceGuide.tsx",
+      "route": "/wissen/branchen/insurtech-compliance-",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "InsurTech Compliance DSGVO - KI & Digitale Versicherung",
+        "description": "InsurTech DSGVO Guide: ✓ KI-Compliance ✓ IDD-Konformität ✓ AI Act. Praxisleitfaden für digitale Versicherer. Jetzt lesen!",
+        "canonical": "/wissen/branchen/insurtech-compliance",
+        "keywords": "InsurTech Compliance, DSGVO Versicherung, IDD Richtlinie, AI Act InsurTech, Solvency II, DORA Compliance, digitale Versicherung Datenschutz"
+      },
+      "fileName": "InsurtechComplianceGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/LogisticsCompliance.tsx",
+      "route": "/branchen/logistics-compliance",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "LogisticsCompliance.tsx"
+    },
+    {
+      "file": "/pages/branchen/PharmaComplianceGuide.tsx",
+      "route": "/wissen/branchen/pharma-compliance-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "PharmaComplianceGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/ProduktionDatenschutzGuide.tsx",
+      "route": "/wissen/branchen/produktion-datenschutz-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "ProduktionDatenschutzGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/PropTechCompliance.tsx",
+      "route": "/branchen/prop-tech-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "PropTech Compliance DSGVO - Smart Building Datenschutz",
+        "description": "PropTech DSGVO-Guide: ✓ Smart Buildings ✓ IoT-Sicherheit ✓ Mieterdaten. Praxisleitfaden für digitale Immobilien. Jetzt lesen!",
+        "canonical": "/wissen/branchen/proptech-compliance",
+        "keywords": "PropTech Compliance, Smart Building DSGVO, IoT Immobilien, Mieterdaten Datenschutz, PropTech Datenschutz, Smart Home DSGVO, Gebäudeautomation Compliance"
+      },
+      "fileName": "PropTechCompliance.tsx"
+    },
+    {
+      "file": "/pages/branchen/SaasPrivacyDesignGuide.tsx",
+      "route": "/wissen/branchen/saas-privacy-design-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "SaasPrivacyDesignGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/SmartGridComplianceGuide.tsx",
+      "route": "/wissen/branchen/smart-grid-compliance-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "SmartGridComplianceGuide.tsx"
+    },
+    {
+      "file": "/pages/branchen/TravelComplianceGuide.tsx",
+      "route": "/wissen/branchen/travel-compliance-",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Travel Compliance DSGVO - Datenschutz für Reiseplattformen",
+        "description": "DSGVO-konforme Lösungen für Travel & Tourism: ✓ Buchungsdaten ✓ Location Tracking ✓ Payment Compliance. Jetzt Guide lesen!",
+        "canonical": "/wissen/branchen/travel-compliance",
+        "keywords": "Travel Compliance, DSGVO Reisebranche, Tourism DSGVO, Buchungsplattform Datenschutz, Location Tracking DSGVO, Payment Compliance Travel, PCI DSS Tourism, Cross-Border Data Transfer"
+      },
+      "fileName": "TravelComplianceGuide.tsx"
+    },
+    {
+      "file": "/pages/compliance/DsgEkdCompliance.tsx",
+      "route": "/compliance/dsg-ekd-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSG-EKD – Kirchlicher Datenschutz der Evangelischen Kirche",
+        "description": "DSG-EKD Compliance für kirchliche Einrichtungen: Datenschutzgesetz der EKD umsetzen. ✓ Seelsorgegeheimnis ✓ Gemeindedaten ✓ Kirchliche Autonomie",
+        "canonical": "/compliance/dsg-ekd",
+        "keywords": "DSG-EKD, Kirchlicher Datenschutz, Evangelische Kirche, EKD Datenschutz, Kirchendatenschutz"
+      },
+      "fileName": "DsgEkdCompliance.tsx"
+    },
+    {
+      "file": "/pages/compliance/DsgEkdGuide.tsx",
+      "route": "/compliance/dsg-ekd-guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSG-EKD Implementierungsleitfaden",
+        "description": "Vollständiger Leitfaden zur Implementierung des Datenschutzgesetzes der Evangelischen Kirche in Deutschland (DSG-EKD). Schritt-für-Schritt Anleitung für kirchliche Einrichtungen.",
+        "canonical": null,
+        "keywords": "DSG-EKD, Datenschutz, Evangelische Kirche, Kirchlicher Datenschutz, Seelsorgegeheimnis, Mitgliederdaten, Gemeindedaten"
+      },
+      "fileName": "DsgEkdGuide.tsx"
+    },
+    {
+      "file": "/pages/compliance/DsgvoGuide.tsx",
+      "route": "/compliance/dsgvo-guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DsgvoGuide.tsx"
+    },
+    {
+      "file": "/pages/compliance/EuAiActGuide.tsx",
+      "route": "/compliance/eu-ai-act-guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "EuAiActGuide.tsx"
+    },
+    {
+      "file": "/pages/compliance/GeldwaeschegesetzGuide.tsx",
+      "route": "/compliance/geldwaeschegesetz-guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "GeldwaeschegesetzGuide.tsx"
+    },
+    {
+      "file": "/pages/compliance/HinweisgeberschutzgesetzGuide.tsx",
+      "route": "/compliance/hinweisgeberschutzgesetz-guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "HinweisgeberschutzgesetzGuide.tsx"
+    },
+    {
+      "file": "/pages/compliance/Iso27001Guide.tsx",
+      "route": "/compliance/iso27001guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "ISO 27001 Leitfaden 2024 – Zertifizierung Schritt für Schritt",
+        "description": "ISO 27001 Zertifizierung verstehen: ISMS-Aufbau, Kontrollen, Audit-Prozess & Kosten. ✓ Praxisleitfaden ✓ Mit Checklisten. Jetzt durchstarten!",
+        "canonical": "/wissen/compliance/iso-27001",
+        "keywords": "ISO 27001 Guide, ISMS Leitfaden, ISO 27001 Zertifizierung, Informationssicherheit"
+      },
+      "fileName": "Iso27001Guide.tsx"
+    },
+    {
+      "file": "/pages/compliance/Iso27017Guide.tsx",
+      "route": "/compliance/iso27017guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Iso27017Guide.tsx"
+    },
+    {
+      "file": "/pages/compliance/Iso27018Guide.tsx",
+      "route": "/compliance/iso27018guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Iso27018Guide.tsx"
+    },
+    {
+      "file": "/pages/compliance/KdgCompliance.tsx",
+      "route": "/compliance/kdg-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "KDG – Kirchlicher Datenschutz der Katholischen Kirche",
+        "description": "KDG Compliance für katholische Einrichtungen: Kirchliches Datenschutzgesetz umsetzen. ✓ Beichtgeheimnis ✓ Sakramentenschutz ✓ Caritas-Datenschutz",
+        "canonical": "/kdg",
+        "keywords": "KDG, Katholischer Datenschutz, Katholische Kirche, Kirchendatenschutz, Bistum Datenschutz"
+      },
+      "fileName": "KdgCompliance.tsx"
+    },
+    {
+      "file": "/pages/compliance/KdgGuide.tsx",
+      "route": "/compliance/kdg-guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "KDG Leitfaden 2024 | Katholischer Datenschutz komplett erklärt",
+        "description": "Umfassender KDG-Leitfaden für katholische Einrichtungen. ✓ Schritt-für-Schritt Anleitung ✓ Praxisbeispiele ✓ Vorlagen ✓ Checklisten. Jetzt KDG rechtssicher umsetzen!",
+        "canonical": "https://datenschutzbeauftragter.nrw/compliance/kdg",
+        "keywords": "KDG, Katholischer Datenschutz, KDG Leitfaden, Kirchendatenschutz, KDG Umsetzung, Beichtgeheimnis, Matrikelbücher, Sakramentenschutz"
+      },
+      "fileName": "KdgGuide.tsx"
+    },
+    {
+      "file": "/pages/compliance/Nis2Guide.tsx",
+      "route": "/compliance/nis2guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Nis2Guide.tsx"
+    },
+    {
+      "file": "/pages/compliance/Soc2Guide.tsx",
+      "route": "/compliance/soc2guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Soc2Guide.tsx"
+    },
+    {
+      "file": "/pages/compliance/TisaxGuide.tsx",
+      "route": "/compliance/tisax-guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TisaxGuide.tsx"
+    },
+    {
+      "file": "/pages/crisis/BusinessContinuityGuide.tsx",
+      "route": "/wissen/crisis/business-continuity-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "BusinessContinuityGuide.tsx"
+    },
+    {
+      "file": "/pages/crisis/CommunicationTemplatesGuide.tsx",
+      "route": "/wissen/crisis/communication-templates-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "CommunicationTemplatesGuide.tsx"
+    },
+    {
+      "file": "/pages/crisis/ComplianceAuditEmergencyGuide.tsx",
+      "route": "/wissen/crisis/compliance-audit-emergency-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "ComplianceAuditEmergencyGuide.tsx"
+    },
+    {
+      "file": "/pages/crisis/DataBreach72hGuide.tsx",
+      "route": "/wissen/crisis/data-breach72h-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DataBreach72hGuide.tsx"
+    },
+    {
+      "file": "/pages/crisis/GdprFineResponseGuide.tsx",
+      "route": "/wissen/crisis/gdpr-fine-response-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "GdprFineResponseGuide.tsx"
+    },
+    {
+      "file": "/pages/crisis/MediaCrisisGuide.tsx",
+      "route": "/wissen/crisis/media-crisis-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MediaCrisisGuide.tsx"
+    },
+    {
+      "file": "/pages/crisis/SecurityIncidentGuide.tsx",
+      "route": "/wissen/crisis/security-incident-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "SecurityIncidentGuide.tsx"
+    },
+    {
+      "file": "/pages/crisis/VendorDataBreachGuide.tsx",
+      "route": "/wissen/crisis/vendor-data-breach-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "VendorDataBreachGuide.tsx"
+    },
+    {
+      "file": "/pages/designs/AlpineResilience.tsx",
+      "route": "/designs/alpine-resilience",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "AlpineResilience.tsx"
+    },
+    {
+      "file": "/pages/designs/AppleLifestyle.tsx",
+      "route": "/designs/apple-lifestyle",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "AppleLifestyle.tsx"
+    },
+    {
+      "file": "/pages/designs/DesignShowcase.tsx",
+      "route": "/designs/design-showcase",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DesignShowcase.tsx"
+    },
+    {
+      "file": "/pages/designs/DigitalTrust.tsx",
+      "route": "/designs/digital-trust",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DigitalTrust.tsx"
+    },
+    {
+      "file": "/pages/designs/FutureLaw.tsx",
+      "route": "/designs/future-law",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "FutureLaw.tsx"
+    },
+    {
+      "file": "/pages/designs/LuxuriousTrust.tsx",
+      "route": "/designs/luxurious-trust",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "LuxuriousTrust.tsx"
+    },
+    {
+      "file": "/pages/designs/MarsBlack.tsx",
+      "route": "/designs/mars-black",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MarsBlack.tsx"
+    },
+    {
+      "file": "/pages/designs/MarsLuxe.tsx",
+      "route": "/designs/mars-luxe",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MarsLuxe.tsx"
+    },
+    {
+      "file": "/pages/designs/MarsQuantum.tsx",
+      "route": "/designs/mars-quantum",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MarsQuantum.tsx"
+    },
+    {
+      "file": "/pages/designs/MarsWhite.tsx",
+      "route": "/designs/mars-white",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MarsWhite.tsx"
+    },
+    {
+      "file": "/pages/designs/MarssteinCore.tsx",
+      "route": "/designs/marsstein-core",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MarssteinCore.tsx"
+    },
+    {
+      "file": "/pages/designs/MarssteinMidnight.tsx",
+      "route": "/designs/marsstein-midnight",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MarssteinMidnight.tsx"
+    },
+    {
+      "file": "/pages/designs/MarssteinProfessional.tsx",
+      "route": "/designs/marsstein-professional",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MarssteinProfessional.tsx"
+    },
+    {
+      "file": "/pages/designs/MinimalPure.tsx",
+      "route": "/designs/minimal-pure",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MinimalPure.tsx"
+    },
+    {
+      "file": "/pages/designs/ModernCompliance.tsx",
+      "route": "/designs/modern-compliance",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "ModernCompliance.tsx"
+    },
+    {
+      "file": "/pages/designs/NeuralMars.tsx",
+      "route": "/designs/neural-mars",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "NeuralMars.tsx"
+    },
+    {
+      "file": "/pages/designs/QuantumMars.tsx",
+      "route": "/designs/quantum-mars",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "QuantumMars.tsx"
+    },
+    {
+      "file": "/pages/designs/SwissPrecision.tsx",
+      "route": "/designs/swiss-precision",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "SwissPrecision.tsx"
+    },
+    {
+      "file": "/pages/designs/TechInnovation.tsx",
+      "route": "/designs/tech-innovation",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TechInnovation.tsx"
+    },
+    {
+      "file": "/pages/designs/TechPremium.tsx",
+      "route": "/designs/tech-premium",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "TechPremium.tsx"
+    },
+    {
+      "file": "/pages/guides/BetroffenenrechteGuide.tsx",
+      "route": "/wissen/s/betroffenenrechte-guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Betroffenenrechte – DSGVO Leitfaden für den Umgang",
+        "description": "Betroffenenrechte nach DSGVO professionell managen: Auskunft, Löschung, Berichtigung, Datenportabilität. ✓ Prozesse ✓ Fristen ✓ Vorlagen. Jetzt rechtssicher umsetzen!",
+        "canonical": "/wissen/leitfaden/betroffenenrechte",
+        "keywords": "betroffenenrechte dsgvo, auskunftsrecht, recht auf löschung, datenportabilität, dsgvo betroffenenanfragen"
+      },
+      "fileName": "BetroffenenrechteGuide.tsx"
+    },
+    {
+      "file": "/pages/guides/DataBreachNotfallGuide.tsx",
+      "route": "/wissen/s/data-breach-notfall-guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DataBreachNotfallGuide.tsx"
+    },
+    {
+      "file": "/pages/guides/DsfaDurchfuehrungGuide.tsx",
+      "route": "/wissen/s/dsfa-durchfuehrung-guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSFA Durchführung – Datenschutz-Folgenabschätzung Leitfaden",
+        "description": "Datenschutz-Folgenabschätzung (DSFA) professionell durchführen: Wann nötig, wie umsetzen, Dokumentation. ✓ Schritt-für-Schritt ✓ Vorlagen ✓ Praxisbeispiele. Jetzt DSFA starten!",
+        "canonical": "/wissen/leitfaden/dsfa-durchfuehrung",
+        "keywords": "dsfa durchführung, datenschutz folgenabschätzung, dpia guide, art 35 dsgvo, risikobewertung datenschutz"
+      },
+      "fileName": "DsfaDurchfuehrungGuide.tsx"
+    },
+    {
+      "file": "/pages/guides/Dsgvo30TageGuide.tsx",
+      "route": "/wissen/s/dsgvo30tage-guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO in 30 Tagen – Express-Guide zur Compliance",
+        "description": "DSGVO-Compliance in 30 Tagen erreichen: Priorisierter Aktionsplan mit täglichen Aufgaben. ✓ Express-Guide ✓ Sofort umsetzbar ✓ Basis-Compliance. Jetzt starten!",
+        "canonical": "/wissen/leitfaden/dsgvo-30-tage",
+        "keywords": "dsgvo 30 tage, datenschutz express, compliance schnell, dsgvo sofort umsetzen, datenschutz aktionsplan"
+      },
+      "fileName": "Dsgvo30TageGuide.tsx"
+    },
+    {
+      "file": "/pages/guides/DsgvoBasicsGuide.tsx",
+      "route": "/wissen/s/dsgvo-basics-guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO Grundlagen 2024 – Verständlicher Leitfaden",
+        "description": "DSGVO einfach erklärt: Grundprinzipien, Betroffenenrechte, Dokumentationspflichten & praktische Umsetzung. ✓ Anfängerfreundlich ✓ Mit Checklisten. Jetzt lernen!",
+        "canonical": "/wissen/dsgvo/grundlagen",
+        "keywords": "DSGVO Grundlagen, Datenschutz-Grundverordnung, GDPR Basics, Datenschutz Leitfaden"
+      },
+      "fileName": "DsgvoBasicsGuide.tsx"
+    },
+    {
+      "file": "/pages/guides/TomMassnahmenGuide.tsx",
+      "route": "/wissen/s/tom-massnahmen-guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "TOM Maßnahmen – DSGVO Art. 32 Technische & Organisatorische Maßnahmen",
+        "description": "TOM-Maßnahmen nach Art. 32 DSGVO implementieren: Verschlüsselung, Zugangskontrollen, Pseudonymisierung. ✓ Schritt-für-Schritt ✓ Checklisten ✓ Vorlagen. Jetzt umsetzen!",
+        "canonical": "/wissen/leitfaden/tom-massnahmen",
+        "keywords": "tom maßnahmen dsgvo, art 32 dsgvo, technische organisatorische maßnahmen, verschlüsselung, zugangskontrollen"
+      },
+      "fileName": "TomMassnahmenGuide.tsx"
+    },
+    {
+      "file": "/pages/guides/VerarbeitungsverzeichnisGuide.tsx",
+      "route": "/wissen/s/verarbeitungsverzeichnis-guide",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Verarbeitungsverzeichnis – DSGVO Anleitung & Vorlagen",
+        "description": "Verarbeitungsverzeichnis nach Art. 30 DSGVO erstellen: Schritt-für-Schritt Anleitung, Vorlagen & Beispiele. ✓ Rechtssicher ✓ Vollständig ✓ Sofort einsetzbar. Jetzt umsetzen!",
+        "canonical": "/wissen/leitfaden/verarbeitungsverzeichnis",
+        "keywords": "verarbeitungsverzeichnis dsgvo, art 30 dsgvo, verarbeitungstätigkeiten dokumentieren, dsgvo vorlage"
+      },
+      "fileName": "VerarbeitungsverzeichnisGuide.tsx"
+    },
+    {
+      "file": "/pages/guides/WebsiteDsgvoGuide.tsx",
+      "route": "/wissen/s/website-dsgvo-guide",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "WebsiteDsgvoGuide.tsx"
+    },
+    {
+      "file": "/pages/industries/Automotive.tsx",
+      "route": "/industries/automotive",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Automotive – TISAX & Connected Car Compliance",
+        "description": "Automotive Compliance: TISAX-Zertifizierung, Connected Car DSGVO, Autonomous Vehicle AI Act. ✓ VDA-Standards ✓ Cyber Security. Jetzt automotive-ready!",
+        "canonical": "/branchen/automotive",
+        "keywords": "TISAX Zertifizierung, Automotive DSGVO, Connected Car, Autonomous Vehicle, VDA Standards"
+      },
+      "fileName": "Automotive.tsx"
+    },
+    {
+      "file": "/pages/industries/ECommerce.tsx",
+      "route": "/industries/ecommerce",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "E-Commerce – DSGVO & Cookie-Compliance für Shops",
+        "description": "E-Commerce DSGVO: Cookie-Banner, Kundendatenschutz, Cross-Border-Handel. ✓ Abmahnsicher ✓ Conversion-optimiert. Jetzt compliant werden!",
+        "canonical": "/branchen/e-commerce",
+        "keywords": "E-Commerce DSGVO, Cookie Compliance, Online Shop Datenschutz, E-Commerce Compliance, Cookie Banner"
+      },
+      "fileName": "ECommerce.tsx"
+    },
+    {
+      "file": "/pages/industries/Energy.tsx",
+      "route": "/industries/energy",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Energie – KRITIS & Smart Grid Compliance",
+        "description": "Energiesektor Compliance: KRITIS-Anforderungen, Smart Grid DSGVO, NIS2 kritische Infrastrukturen. ✓ Netzbetreiber-Expertise ✓ Smart Meter. Jetzt sicher!",
+        "canonical": "/branchen/energie",
+        "keywords": "KRITIS Compliance, Smart Grid DSGVO, Energiesektor NIS2, Smart Meter Datenschutz"
+      },
+      "fileName": "Energy.tsx"
+    },
+    {
+      "file": "/pages/industries/FinancialServices.tsx",
+      "route": "/industries/financial-services",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Finanzdienstleister – BaFin & DSGVO Compliance",
+        "description": "FinTech Compliance: MaRisk, BAIT, PSD2 & DSGVO für Banken und Versicherungen. ✓ BaFin-konform ✓ Expertenwissen. Jetzt beraten lassen!",
+        "canonical": "/branchen/finanzdienstleister",
+        "keywords": "FinTech Compliance, BaFin Anforderungen, MaRisk, BAIT, PSD2 Compliance, Banken DSGVO"
+      },
+      "fileName": "FinancialServices.tsx"
+    },
+    {
+      "file": "/pages/industries/Food.tsx",
+      "route": "/industries/food",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Lebensmittel – HACCP & Rückverfolgbarkeit DSGVO",
+        "description": "Food Industry Compliance: HACCP-Integration, Rückverfolgbarkeit DSGVO, Lebensmittelsicherheit. ✓ Farm-to-Fork ✓ Traceability. Jetzt food-safe!",
+        "canonical": "/branchen/lebensmittel",
+        "keywords": "HACCP Compliance, Lebensmittel DSGVO, Food Traceability, Rückverfolgbarkeit, Lebensmittelsicherheit"
+      },
+      "fileName": "Food.tsx"
+    },
+    {
+      "file": "/pages/industries/Healthcare.tsx",
+      "route": "/industries/healthcare",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Gesundheitswesen – DSGVO & E-Health Compliance",
+        "description": "Healthcare Compliance: Patientendatenschutz nach DSGVO Art. 9, E-Health-Gesetz, Telemedizin. ✓ Spezialwissen ✓ Praxiserprobt. Jetzt beraten lassen!",
+        "canonical": "/branchen/gesundheitswesen",
+        "keywords": "Healthcare Compliance, Gesundheitsdaten DSGVO, E-Health, Telemedizin Datenschutz, Krankenhaus IT"
+      },
+      "fileName": "Healthcare.tsx"
+    },
+    {
+      "file": "/pages/industries/Logistics.tsx",
+      "route": "/industries/logistics",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Logistik – GPS-Tracking & Supply Chain DSGVO",
+        "description": "Transport & Logistik Compliance: GPS-Tracking DSGVO, Supply Chain Security, Fahrerdatenschutz. ✓ Sendungsverfolgung ✓ Fleet Management. Jetzt compliant!",
+        "canonical": "/branchen/logistik",
+        "keywords": "Logistik DSGVO, GPS Tracking Datenschutz, Supply Chain Security, Transport Compliance"
+      },
+      "fileName": "Logistics.tsx"
+    },
+    {
+      "file": "/pages/industries/Manufacturing.tsx",
+      "route": "/industries/manufacturing",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Produktion – Industrie 4.0 & IoT-Sicherheit",
+        "description": "Manufacturing Compliance: Industrie 4.0, IoT-Sicherheit, Smart Factory DSGVO, OT-Security. ✓ Produktionsschutz ✓ Supply Chain Security. Jetzt beraten lassen!",
+        "canonical": "/branchen/produktion",
+        "keywords": "Industrie 4.0 Compliance, Manufacturing DSGVO, IoT Sicherheit, OT Security, Smart Factory"
+      },
+      "fileName": "Manufacturing.tsx"
+    },
+    {
+      "file": "/pages/industries/SaaS.tsx",
+      "route": "/industries/saa-s",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "SaaS-Unternehmen – Multi-Tenant DSGVO & SOC 2",
+        "description": "SaaS Compliance: Multi-Tenant DSGVO, SOC 2 Type II, EU AI Act für Enterprise SaaS. ✓ API-Security ✓ Global Compliance. Jetzt Enterprise-ready werden!",
+        "canonical": "/branchen/saas-unternehmen",
+        "keywords": "SaaS Compliance, Multi-Tenant DSGVO, SOC 2 Type II, Enterprise SaaS, SaaS Security"
+      },
+      "fileName": "SaaS.tsx"
+    },
+    {
+      "file": "/pages/ki/AlgorithmicImpactAssessment.tsx",
+      "route": "/ki/algorithmic-impact-assessment",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "AlgorithmicImpactAssessment.tsx"
+    },
+    {
+      "file": "/pages/ki/AutomatedDecisionMaking.tsx",
+      "route": "/ki/automated-decision-making",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "AutomatedDecisionMaking.tsx"
+    },
+    {
+      "file": "/pages/ki/DataMinimizationGuide.tsx",
+      "route": "/wissen/ki/data-minimization-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DataMinimizationGuide.tsx"
+    },
+    {
+      "file": "/pages/ki/ExplainableAIGuide.tsx",
+      "route": "/wissen/ki/explainable-ai",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "ExplainableAIGuide.tsx"
+    },
+    {
+      "file": "/pages/ki/FederatedLearningGuide.tsx",
+      "route": "/wissen/ki/federated-learning-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "FederatedLearningGuide.tsx"
+    },
+    {
+      "file": "/pages/ki/FinancialAICompliance.tsx",
+      "route": "/ki/financial-aicompliance",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "FinancialAICompliance.tsx"
+    },
+    {
+      "file": "/pages/ki/HRAICompliance.tsx",
+      "route": "/ki/hraicompliance",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "HRAICompliance.tsx"
+    },
+    {
+      "file": "/pages/ki/KiEinwilligungsmanagement.tsx",
+      "route": "/ki/ki-einwilligungsmanagement",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "KiEinwilligungsmanagement.tsx"
+    },
+    {
+      "file": "/pages/ki/KiRisikoklassifizierung.tsx",
+      "route": "/ki/ki-risikoklassifizierung",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "KiRisikoklassifizierung.tsx"
+    },
+    {
+      "file": "/pages/ki/ModelPrivacyAttacks.tsx",
+      "route": "/ki/model-privacy-attacks",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "ModelPrivacyAttacks.tsx"
+    },
+    {
+      "file": "/pages/ki/PrivacyByDesignAI.tsx",
+      "route": "/ki/privacy-by-design-ai",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "PrivacyByDesignAI.tsx"
+    },
+    {
+      "file": "/pages/ki/PrivacyPreservingAI.tsx",
+      "route": "/ki/privacy-preserving-ai",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "PrivacyPreservingAI.tsx"
+    },
+    {
+      "file": "/pages/legal/AmazonLuxembourgCase.tsx",
+      "route": "/legal/amazon-luxembourg-case",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Amazon Luxemburg 2021 – CNPD Bußgeld-Entscheidung 746M€",
+        "description": "Amazon Luxemburg 2021 CNPD-Bußgeld: Datenverarbeitungs-Verletzungen, E-Commerce Compliance, DSGVO-Enforcement. ✓ Fine Analysis ✓ Compliance Lessons ✓ Enforcement Trends.",
+        "canonical": "/wissen/rechtsprechung/amazon-luxemburg-2021",
+        "keywords": "Amazon, Luxemburg, CNPD, Bußgeld, DSGVO, E-Commerce, Compliance, Datenverarbeitung, 746 Millionen"
+      },
+      "fileName": "AmazonLuxembourgCase.tsx"
+    },
+    {
+      "file": "/pages/legal/CookieLawGuide.tsx",
+      "route": "/wissen/legal/cookie-law-",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "CookieLawGuide.tsx"
+    },
+    {
+      "file": "/pages/legal/FacebookFanpageCase.tsx",
+      "route": "/legal/facebook-fanpage-case",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Facebook Fanpage EuGH C-210/16 – Gemeinsame Verantwortlichkeit",
+        "description": "Facebook Fanpage EuGH-Urteil: Gemeinsame Verantwortlichkeit, Page Insights, Social Media Compliance. ✓ Joint Controllership ✓ Liability ✓ Practical Implications.",
+        "canonical": "/wissen/rechtsprechung/facebook-fanpage",
+        "keywords": "Facebook Fanpage, EuGH, gemeinsame Verantwortlichkeit, Joint Controller, DSGVO, Page Insights, Social Media Compliance"
+      },
+      "fileName": "FacebookFanpageCase.tsx"
+    },
+    {
+      "file": "/pages/legal/GoogleAnalyticsAustriaCase.tsx",
+      "route": "/legal/google-analytics-austria-case",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Google Analytics Austria DSB – US-Tool-Verbot Entscheidung",
+        "description": "Google Analytics Austria DSB-Entscheidung: US-Tool-Verbot, Schrems II Auswirkungen, Analytics-Alternativen. ✓ Regulatory Decision ✓ Tool Assessment ✓ Compliance Strategy.",
+        "canonical": "/wissen/rechtsprechung/google-analytics-austria",
+        "keywords": "Google Analytics, Austria, DSB, Datenschutzbehörde, US-Tools, Schrems II, Analytics-Alternativen, DSGVO"
+      },
+      "fileName": "GoogleAnalyticsAustriaCase.tsx"
+    },
+    {
+      "file": "/pages/legal/GoogleFontsMunichCase.tsx",
+      "route": "/legal/google-fonts-munich-case",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "GoogleFontsMunichCase.tsx"
+    },
+    {
+      "file": "/pages/legal/MetaIrlandCase.tsx",
+      "route": "/legal/meta-irland-case",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "MetaIrlandCase.tsx"
+    },
+    {
+      "file": "/pages/legal/Planet49CookieCase.tsx",
+      "route": "/legal/planet49cookie-case",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "Planet49CookieCase.tsx"
+    },
+    {
+      "file": "/pages/legal/SchremsIICase.tsx",
+      "route": "/legal/schrems-iicase",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Schrems II – Internationale Datentransfers nach EuGH",
+        "description": "Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance.",
+        "canonical": null,
+        "keywords": null
+      },
+      "fileName": "SchremsIICase.tsx"
+    },
+    {
+      "file": "/pages/legal/WhatsAppIrelandCase.tsx",
+      "route": "/legal/whats-app-ireland-case",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "WhatsAppIrelandCase.tsx"
+    },
+    {
+      "file": "/pages/resources/BreachResponseChecklist.tsx",
+      "route": "/resources/breach-response-checklist",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Breach Response Checklist – 72-Stunden DSGVO Notfallplan",
+        "description": "Notfall-Checkliste für Datenpannen: Schritt-für-Schritt in 72h. Meldepflichten, Kommunikation, Schadensbegrenzung. ✓ DSGVO-konform ✓ Sofort einsetzbar. Jetzt downloaden!",
+        "canonical": "/assessment-center/breach-response-checklist",
+        "keywords": "breach response checklist, datenpanne notfallplan, 72 stunden dsgvo, data breach response, notfallcheckliste"
+      },
+      "fileName": "BreachResponseChecklist.tsx"
+    },
+    {
+      "file": "/pages/resources/CookieComplianceAudit.tsx",
+      "route": "/resources/cookie-compliance-audit",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Cookie Compliance Audit – DSGVO Cookie-Scanner & Analyse",
+        "description": "Detaillierte Cookie-Compliance Überprüfung: Cookie-Scanner, Einwilligungsprozesse, TCF 2.2. ✓ Automatische Analyse ✓ DSGVO-konform ✓ Sofortige Ergebnisse. Jetzt Website scannen!",
+        "canonical": "/assessment-center/cookie-compliance-audit",
+        "keywords": "cookie compliance audit, cookie scanner, dsgvo cookies, cookie banner test, tcf 2.2 audit"
+      },
+      "fileName": "CookieComplianceAudit.tsx"
+    },
+    {
+      "file": "/pages/resources/DSGVOComplianceChecklist.tsx",
+      "route": "/resources/dsgvocompliance-checklist",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DSGVOComplianceChecklist.tsx"
+    },
+    {
+      "file": "/pages/resources/DataPrivacyReadinessAssessment.tsx",
+      "route": "/resources/data-privacy-readiness-assessment",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Datenschutz Readiness Assessment – DSGVO-Bereitschaft prüfen",
+        "description": "Bewerten Sie Ihre Datenschutz-Bereitschaft interaktiv. Analysieren Sie Prozesse, Dokumentation & TOMs für optimalen Datenschutz. ✓ Kostenlos ✓ Sofortige Auswertung. Jetzt testen!",
+        "canonical": "/assessment-center/datenschutz-readiness-assessment",
+        "keywords": "datenschutz readiness assessment, dsgvo bereitschaft prüfen, datenschutz bewertung, privacy assessment"
+      },
+      "fileName": "DataPrivacyReadinessAssessment.tsx"
+    },
+    {
+      "file": "/pages/resources/VendorAssessmentTemplate.tsx",
+      "route": "/resources/vendor-assessment-template",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Vendor Assessment Template – Lieferanten DSGVO-Bewertung",
+        "description": "Strukturierte Lieferanten-Bewertung: Datenschutz, IT-Sicherheit, Compliance systematisch prüfen. ✓ Bewertungsmatrix ✓ Risiko-Scoring ✓ Vorlagen. Jetzt Partner bewerten!",
+        "canonical": "/assessment-center/vendor-assessment-template",
+        "keywords": "vendor assessment template, lieferantenbewertung dsgvo, auftragsverarbeiter bewertung, supplier assessment"
+      },
+      "fileName": "VendorAssessmentTemplate.tsx"
+    },
+    {
+      "file": "/pages/wissen/branchen/DatenschutzHomeofficeComprehensive.tsx",
+      "route": "/wissen/branchen/datenschutz-homeoffice-comprehensive",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DatenschutzHomeofficeComprehensive.tsx"
+    },
+    {
+      "file": "/pages/wissen/branchen/DsgvoVereineComprehensive.tsx",
+      "route": "/wissen/branchen/dsgvo-vereine-comprehensive",
+      "hasSEOHeadImport": false,
+      "hasSEOHeadUsage": false,
+      "seoData": null,
+      "fileName": "DsgvoVereineComprehensive.tsx"
+    },
+    {
+      "file": "/pages/wissen/compliance-frameworks.tsx",
+      "route": "/wissen/compliance-frameworks",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Compliance Frameworks – Standards & Gesetze im Vergleich",
+        "description": "Compliance-Frameworks im Überblick: ISO 27001, SOC 2, TISAX, DSGVO, EU AI Act. ✓ Anforderungen vergleichen ✓ Synergien nutzen ✓ Strategie optimieren. Jetzt informieren!",
+        "canonical": "/wissen/compliance-frameworks",
+        "keywords": "Compliance Frameworks, ISO 27001, SOC 2, TISAX, DSGVO Compliance"
+      },
+      "fileName": "compliance-frameworks.tsx"
+    },
+    {
+      "file": "/pages/wissen/cybersecurity.tsx",
+      "route": "/wissen/cybersecurity",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Cybersecurity – IT-Sicherheit & Compliance Wissen",
+        "description": "Cybersecurity & Compliance: IT-Sicherheit, ISO 27001, NIS-2, Incident Response. ✓ Technische Maßnahmen ✓ Standards ✓ Best Practices. Jetzt sicher werden!",
+        "canonical": "/wissen/cybersecurity",
+        "keywords": "Cybersecurity, IT-Sicherheit, ISO 27001, NIS-2, Incident Response"
+      },
+      "fileName": "cybersecurity.tsx"
+    },
+    {
+      "file": "/pages/wissen/dsgvo-leitfaeden.tsx",
+      "route": "/wissen/dsgvo-leitfaeden",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO Leitfäden – Praktische Anleitungen & How-Tos",
+        "description": "DSGVO-Leitfäden für die Praxis: Schritt-für-Schritt-Anleitungen, Checklisten, Vorlagen. ✓ DSGVO in 30 Tagen ✓ Verarbeitungsverzeichnis ✓ TOMs. Jetzt umsetzen!",
+        "canonical": "/wissen/dsgvo-leitfaeden",
+        "keywords": "DSGVO Leitfäden, DSGVO Anleitung, DSGVO How-To, DSGVO Praxis, DSGVO Umsetzung"
+      },
+      "fileName": "dsgvo-leitfaeden.tsx"
+    },
+    {
+      "file": "/pages/wissen/dsgvo.tsx",
+      "route": "/wissen/dsgvo",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO Wissen – Kompendium & Praxis-Guide",
+        "description": "DSGVO-Wissen kompakt: Grundlagen, Betroffenenrechte, Verarbeitungsverzeichnis, TOMs. ✓ Praxisnahe Guides ✓ Vorlagen ✓ Aktuelle Rechtsprechung. Jetzt lernen!",
+        "canonical": "/wissen/dsgvo",
+        "keywords": "DSGVO Wissen, GDPR Guide, Datenschutz Kompendium, DSGVO Grundlagen, Betroffenenrechte"
+      },
+      "fileName": "dsgvo.tsx"
+    },
+    {
+      "file": "/pages/wissen/index.tsx",
+      "route": "/wissen",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Wissen – Compliance-Wissensdatenbank & Guides",
+        "description": "Compliance-Wissensdatenbank: DSGVO, ISO 27001, EU AI Act Guides. ✓ Best Practices ✓ Vorlagen ✓ Aktuelle Informationen. Jetzt Wissen erweitern!",
+        "canonical": "/wissen",
+        "keywords": "Compliance Wissen, DSGVO Guide, ISO 27001 Wissen, EU AI Act Guide, Compliance Best Practices"
+      },
+      "fileName": "index.tsx"
+    },
+    {
+      "file": "/pages/wissen/ki-compliance.tsx",
+      "route": "/wissen/ki-compliance",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "KI Compliance – EU AI Act & Datenschutz Guide",
+        "description": "KI-Compliance Wissen: EU AI Act, algorithmische Transparenz, Bias-Vermeidung, ethische KI. ✓ Praxisguides ✓ Checklisten ✓ Expertenrat. Jetzt KI-konform werden!",
+        "canonical": "/wissen/ki-compliance",
+        "keywords": "KI Compliance, EU AI Act, Algorithmic Transparency, Bias in AI, Responsible AI"
+      },
+      "fileName": "ki-compliance.tsx"
+    },
+    {
+      "file": "/pages/wissen/leitfaden/betroffenenrechte.tsx",
+      "route": "/wissen/leitfaden/betroffenenrechte",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Betroffenenrechte DSGVO – Prozesse & Vorlagen",
+        "description": "Betroffenenrechte nach DSGVO umsetzen: ✓ Auskunft ✓ Löschung ✓ Berichtigung ✓ Datenportabilität. Prozesse, Fristen, Vorlagen. Jetzt DSGVO-konform handeln!",
+        "canonical": "/wissen/leitfaden/betroffenenrechte",
+        "keywords": "Betroffenenrechte DSGVO, Auskunftsrecht, Löschungsrecht, Recht auf Vergessenwerden, Datenportabilität"
+      },
+      "fileName": "betroffenenrechte.tsx"
+    },
+    {
+      "file": "/pages/wissen/leitfaden/data-breach-notfall.tsx",
+      "route": "/wissen/leitfaden/data-breach-notfall",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Data Breach Notfallplan – 72-Stunden Leitfaden DSGVO",
+        "description": "Data Breach Notfallplan: Schritt-für-Schritt bei Datenpannen. ✓ 72-Stunden-Frist ✓ Meldepflichten ✓ Sofortmaßnahmen ✓ Kommunikation. DSGVO-konform handeln!",
+        "canonical": "/wissen/leitfaden/data-breach-notfall",
+        "keywords": "Data Breach, Datenpanne, DSGVO Meldepflicht, 72 Stunden, Notfallplan"
+      },
+      "fileName": "data-breach-notfall.tsx"
+    },
+    {
+      "file": "/pages/wissen/leitfaden/dsfa-durchfuehrung.tsx",
+      "route": "/wissen/leitfaden/dsfa-durchfuehrung",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSFA durchführen – Datenschutz-Folgenabschätzung Guide",
+        "description": "DSFA nach Art. 35 DSGVO durchführen: ✓ Schwellwertanalyse ✓ Risikobewertung ✓ Abhilfemaßnahmen ✓ Vorlagen. Schritt-für-Schritt zur Datenschutz-Folgenabschätzung!",
+        "canonical": "/wissen/leitfaden/dsfa-durchfuehrung",
+        "keywords": "DSFA, Datenschutz-Folgenabschätzung, Art 35 DSGVO, DPIA, Privacy Impact Assessment"
+      },
+      "fileName": "dsfa-durchfuehrung.tsx"
+    },
+    {
+      "file": "/pages/wissen/leitfaden/dsgvo-30-tage.tsx",
+      "route": "/wissen/leitfaden/dsgvo-30-tage",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO in 30 Tagen – Express-Guide zur Compliance",
+        "description": "DSGVO-Express: In 30 Tagen zur Basis-Compliance. ✓ Täglicher Aktionsplan ✓ Priorisierte Aufgaben ✓ Quick Wins ✓ Pragmatisch. Jetzt DSGVO-konform werden!",
+        "canonical": "/wissen/leitfaden/dsgvo-30-tage",
+        "keywords": "DSGVO 30 Tage, DSGVO Express, DSGVO schnell umsetzen, DSGVO Aktionsplan, DSGVO Checkliste"
+      },
+      "fileName": "dsgvo-30-tage.tsx"
+    },
+    {
+      "file": "/pages/wissen/leitfaden/dsgvo-grundlagen.tsx",
+      "route": "/wissen/leitfaden/dsgvo-grundlagen",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "DSGVO Grundlagen – Basiswissen verständlich erklärt",
+        "description": "DSGVO-Grundlagen für Einsteiger: 7 Grundsätze, Rechtsgrundlagen, Verantwortlichkeiten, Betroffenenrechte. ✓ Verständlich ✓ Praxisnah ✓ Mit Beispielen. Jetzt lernen!",
+        "canonical": "/wissen/leitfaden/dsgvo-grundlagen",
+        "keywords": "DSGVO Grundlagen, DSGVO Basiswissen, DSGVO für Einsteiger, DSGVO verstehen, DSGVO Prinzipien"
+      },
+      "fileName": "dsgvo-grundlagen.tsx"
+    },
+    {
+      "file": "/pages/wissen/leitfaden/tom-massnahmen.tsx",
+      "route": "/wissen/leitfaden/tom-massnahmen",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "TOM Maßnahmen – Technische & organisatorische Sicherheit",
+        "description": "TOM nach Art. 32 DSGVO: Technische und organisatorische Maßnahmen umsetzen. ✓ Verschlüsselung ✓ Zugangskontrollen ✓ Pseudonymisierung ✓ Checkliste. Jetzt absichern!",
+        "canonical": "/wissen/leitfaden/tom-massnahmen",
+        "keywords": "TOM Maßnahmen, Art 32 DSGVO, Technische organisatorische Maßnahmen, TOMs, Datensicherheit"
+      },
+      "fileName": "tom-massnahmen.tsx"
+    },
+    {
+      "file": "/pages/wissen/leitfaden/verarbeitungsverzeichnis.tsx",
+      "route": "/wissen/leitfaden/verarbeitungsverzeichnis",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Verarbeitungsverzeichnis erstellen – Art. 30 DSGVO",
+        "description": "Verarbeitungsverzeichnis nach Art. 30 DSGVO erstellen: ✓ Schritt-für-Schritt Anleitung ✓ Vorlagen ✓ Beispiele ✓ Pflichtangaben. Jetzt rechtssicher dokumentieren!",
+        "canonical": "/wissen/leitfaden/verarbeitungsverzeichnis",
+        "keywords": "Verarbeitungsverzeichnis, Art 30 DSGVO, Verzeichnis Verarbeitungstätigkeiten, DSGVO Dokumentation"
+      },
+      "fileName": "verarbeitungsverzeichnis.tsx"
+    },
+    {
+      "file": "/pages/wissen/leitfaden/website-dsgvo.tsx",
+      "route": "/wissen/leitfaden/website-dsgvo",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Website DSGVO-konform – In 7 Schritten rechtssicher",
+        "description": "Website DSGVO-konform machen: Datenschutzerklärung, Cookie-Banner, Kontaktformulare, Analytics. ✓ Schritt-für-Schritt ✓ Checklisten ✓ Vorlagen. Jetzt umsetzen!",
+        "canonical": "/wissen/leitfaden/website-dsgvo",
+        "keywords": "Website DSGVO, DSGVO Website, Cookie Banner DSGVO, Datenschutzerklärung Website, Website rechtssicher"
+      },
+      "fileName": "website-dsgvo.tsx"
+    },
+    {
+      "file": "/pages/wissen/risk-management.tsx",
+      "route": "/wissen/risk-management",
+      "hasSEOHeadImport": true,
+      "hasSEOHeadUsage": true,
+      "seoData": {
+        "title": "Risk Management – Compliance-Risiken systematisch managen",
+        "description": "Risk Management für Compliance: Risiken identifizieren, bewerten, behandeln. ✓ ISO 31000 ✓ DSFA ✓ Risk Assessment ✓ KPIs. Jetzt Risiken beherrschen!",
+        "canonical": "/wissen/risk-management",
+        "keywords": "Risk Management, Risikomanagement, ISO 31000, DSFA, Risk Assessment"
+      },
+      "fileName": "risk-management.tsx"
+    }
+  ]
+}

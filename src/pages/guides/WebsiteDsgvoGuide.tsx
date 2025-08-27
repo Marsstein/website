@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEOHead from '@/components/SEOHead';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -179,6 +180,112 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const WebsiteDsgvoGuide: React.FC = () => {
+  // Breadcrumb structured data
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://marsstein.com'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Wissen',
+        'item': 'https://marsstein.com/wissen'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 3,
+        'name': 'Leitfäden',
+        'item': 'https://marsstein.com/wissen/leitfaden'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 4,
+        'name': 'Website DSGVO',
+        'item': 'https://marsstein.com/wissen/leitfaden/website-dsgvo'
+      }
+    ]
+  };
+
+  // SEO Meta Data
+  const seoData = {
+    title: 'Website DSGVO-konform machen - Schritt-für-Schritt Anleitung 2025',
+    description: 'Website DSGVO-konform gestalten: Cookie-Banner, Datenschutzerklärung, Analytics rechtssicher umsetzen. ✓ Praxis-Anleitung ✓ Checklisten ✓ Vorlagen',
+    canonical: 'https://marsstein.com/wissen/leitfaden/website-dsgvo',
+    keywords: 'Website DSGVO, DSGVO Website, Cookie Banner DSGVO, Datenschutzerklärung Website, Website rechtssicher, DSGVO Checkliste Website',
+    ogImage: 'https://marsstein.com/images/website-dsgvo-guide.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      'name': 'Website DSGVO-konform machen - Komplette Anleitung',
+      'description': 'Schritt-für-Schritt Anleitung zur DSGVO-konformen Gestaltung Ihrer Website mit Cookie-Banner, Datenschutzerklärung und Analytics.',
+      'url': 'https://marsstein.com/wissen/leitfaden/website-dsgvo',
+      'totalTime': 'PT30M',
+      'estimatedCost': {
+        '@type': 'MonetaryAmount',
+        'currency': 'EUR',
+        'minValue': '0',
+        'maxValue': '500'
+      },
+      'supply': [
+        {
+          '@type': 'HowToSupply',
+          'name': 'Website-Zugang'
+        },
+        {
+          '@type': 'HowToSupply',
+          'name': 'Cookie-Scanner Tool'
+        },
+        {
+          '@type': 'HowToSupply',
+          'name': 'Consent Management Platform'
+        }
+      ],
+      'step': [
+        {
+          '@type': 'HowToStep',
+          'name': 'Cookie-Audit durchführen',
+          'text': 'Identifizieren Sie alle Cookies und Tracking-Tools auf Ihrer Website'
+        },
+        {
+          '@type': 'HowToStep',
+          'name': 'Cookie-Banner implementieren',
+          'text': 'Installieren Sie ein DSGVO-konformes Consent Management System'
+        },
+        {
+          '@type': 'HowToStep',
+          'name': 'Datenschutzerklärung erstellen',
+          'text': 'Verfassen Sie eine vollständige Datenschutzerklärung nach Art. 13/14 DSGVO'
+        },
+        {
+          '@type': 'HowToStep',
+          'name': 'Analytics anpassen',
+          'text': 'Konfigurieren Sie Analytics-Tools DSGVO-konform'
+        },
+        {
+          '@type': 'HowToStep',
+          'name': 'Formulare prüfen',
+          'text': 'Ergänzen Sie Kontaktformulare um Einwilligungscheckboxen'
+        },
+        {
+          '@type': 'HowToStep',
+          'name': 'Drittanbieter auditieren',
+          'text': 'Prüfen Sie alle externen Services und schließen Sie AVVs ab'
+        },
+        {
+          '@type': 'HowToStep',
+          'name': 'Testen und dokumentieren',
+          'text': 'Testen Sie die Implementierung und dokumentieren Sie alles'
+        }
+      ]
+    },
+    breadcrumbStructuredData
+  };
   const [currentChapter, setCurrentChapter] = useState(0);
   const [readingProgress, setReadingProgress] = useState(0);
   const [isReading, setIsReading] = useState(false);
@@ -1386,8 +1493,18 @@ const WebsiteDsgvoGuide: React.FC = () => {
   const currentChapterData = chapters[currentChapter];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <Header />
+    <>
+      <SEOHead
+        title={seoData.title}
+        description={seoData.description}
+        canonical="/wissen/leitfaden/website-dsgvo"
+        ogImage="/images/website-dsgvo-guide.jpg"
+        ogType="article"
+        structuredData={[seoData.structuredData, seoData.breadcrumbStructuredData]}
+      />
+      
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <Header />
       
       {/* Hero Section */}
       <motion.section 
@@ -1408,6 +1525,25 @@ const WebsiteDsgvoGuide: React.FC = () => {
               <span className="text-sm font-semibold text-purple-300">Website DSGVO Guide</span>
               <Shield className="h-5 w-5 text-pink-400" />
             </motion.div>
+            
+            {/* Breadcrumbs for SEO */}
+            <nav aria-label="Breadcrumb" className="mb-6">
+              <ol className="flex items-center justify-center space-x-2 text-sm">
+                <li>
+                  <Link to="/" className="text-slate-400 hover:text-purple-400 transition-colors">Home</Link>
+                </li>
+                <li className="text-slate-600">/</li>
+                <li>
+                  <Link to="/wissen" className="text-slate-400 hover:text-purple-400 transition-colors">Wissen</Link>
+                </li>
+                <li className="text-slate-600">/</li>
+                <li>
+                  <Link to="/wissen/leitfaden" className="text-slate-400 hover:text-purple-400 transition-colors">Leitfäden</Link>
+                </li>
+                <li className="text-slate-600">/</li>
+                <li className="text-purple-300" aria-current="page">Website DSGVO</li>
+              </ol>
+            </nav>
             
             <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
               <span className="text-white">Website</span>
@@ -1570,7 +1706,7 @@ const WebsiteDsgvoGuide: React.FC = () => {
             {/* Related Guides */}
             <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Verwandte Leitfäden</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">Weiterführende DSGVO-Leitfäden</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {[
                     {
@@ -1590,6 +1726,7 @@ const WebsiteDsgvoGuide: React.FC = () => {
                       key={index}
                       to={guide.link}
                       className="block p-4 bg-slate-700/50 rounded-lg border border-slate-600/50 hover:border-slate-500 transition-colors group"
+                      aria-label={`Weiterlesen: ${guide.title}`}
                     >
                       <div className={cn("w-full h-2 rounded-full bg-gradient-to-r mb-3", guide.color)} />
                       <h4 className="font-semibold text-white group-hover:text-purple-300 transition-colors">{guide.title}</h4>
@@ -1599,12 +1736,68 @@ const WebsiteDsgvoGuide: React.FC = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* FAQ Schema for better SEO */}
+            <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50 mt-6">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-white mb-4">Häufig gestellte Fragen zur Website-DSGVO</h3>
+                <div className="space-y-4">
+                  <div className="border-b border-slate-700 pb-4">
+                    <h4 className="font-medium text-white mb-2">Muss jede Website ein Cookie-Banner haben?</h4>
+                    <p className="text-slate-400 text-sm">Nein, nur Websites die nicht-technisch notwendige Cookies verwenden benötigen ein Cookie-Banner mit aktiver Einwilligung.</p>
+                  </div>
+                  <div className="border-b border-slate-700 pb-4">
+                    <h4 className="font-medium text-white mb-2">Wie lange habe ich Zeit für die DSGVO-Umsetzung?</h4>
+                    <p className="text-slate-400 text-sm">Die DSGVO gilt seit Mai 2018. Die Umsetzung sollte unverzüglich erfolgen, da bei Verstößen Bußgelder drohen.</p>
+                  </div>
+                  <div className="pb-4">
+                    <h4 className="font-medium text-white mb-2">Was kostet eine DSGVO-konforme Website?</h4>
+                    <p className="text-slate-400 text-sm">Die Kosten variieren je nach Komplexität. Ein Cookie-Banner kostet ca. 10-50€/Monat, professionelle Beratung 500-5000€.</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
 
+      {/* FAQ Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          'mainEntity': [
+            {
+              '@type': 'Question',
+              'name': 'Muss jede Website ein Cookie-Banner haben?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Nein, nur Websites die nicht-technisch notwendige Cookies verwenden benötigen ein Cookie-Banner mit aktiver Einwilligung.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Wie lange habe ich Zeit für die DSGVO-Umsetzung?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Die DSGVO gilt seit Mai 2018. Die Umsetzung sollte unverzüglich erfolgen, da bei Verstößen Bußgelder drohen.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Was kostet eine DSGVO-konforme Website?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Die Kosten variieren je nach Komplexität. Ein Cookie-Banner kostet ca. 10-50€/Monat, professionelle Beratung 500-5000€.'
+              }
+            }
+          ]
+        })}
+      </script>
+
       <Footer />
     </div>
+    </>
   );
 };
 

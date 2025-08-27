@@ -225,8 +225,8 @@ const InsurtechComplianceGuide = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <SEOHead 
-        title="InsurTech Compliance DSGVO - KI & Digitale Versicherung"
-        description="InsurTech DSGVO Guide: ✓ KI-Compliance ✓ IDD-Konformität ✓ AI Act. Praxisleitfaden für digitale Versicherer. Jetzt lesen!"
+        title="InsurTech Compliance 2024 - DSGVO, AI Act & IDD Guide"
+        description="InsurTech Compliance Guide 2024: DSGVO für Versicherungen ✓ AI Act Anforderungen ✓ IDD-Konformität. Praktische Checklisten & Sofortmaßnahmen. Jetzt starten!"
         canonical="/wissen/branchen/insurtech-compliance"
         keywords="InsurTech Compliance, DSGVO Versicherung, IDD Richtlinie, AI Act InsurTech, Solvency II, DORA Compliance, digitale Versicherung Datenschutz"
         structuredData={{

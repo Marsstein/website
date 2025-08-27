@@ -48,6 +48,15 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import SEOHead from '@/components/SEOHead';
+import { 
+  Breadcrumb, 
+  BreadcrumbItem, 
+  BreadcrumbLink, 
+  BreadcrumbList, 
+  BreadcrumbPage, 
+  BreadcrumbSeparator 
+} from '@/components/ui/breadcrumb';
 
 const DsgvoGuides: React.FC = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');
@@ -419,7 +428,42 @@ const DsgvoGuides: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <SEOHead 
+        title="DSGVO Leitfäden 2024 - Datenschutz richtig umsetzen"
+        description="DSGVO Leitfäden & Guides 2024: Grundlagen ✓ Website-Compliance ✓ Verarbeitungsverzeichnis ✓ Datenpanne-Management. Praxisnah erklärt. Jetzt durchstarten!"
+        canonical="/wissen/dsgvo"
+        keywords="DSGVO Leitfaden, DSGVO Guide, Datenschutz Grundlagen, DSGVO Website, DSGVO Umsetzung, DSGVO 2024, Datenschutz Leitfaden"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "DSGVO Leitfäden und Guides",
+          "description": "Sammlung praktischer DSGVO-Leitfäden für verschiedene Anwendungsfälle und Schwierigkeitsgrade.",
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Business Owners, Data Protection Officers, Legal Professionals"
+          }
+        }}
+      />
       <Header />
+
+      {/* Breadcrumb Navigation */}
+      <div className="container px-4 py-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen">Wissen</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>DSGVO Leitfäden</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">

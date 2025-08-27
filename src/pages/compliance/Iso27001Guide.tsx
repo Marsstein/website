@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -640,11 +641,18 @@ const Iso27001Guide: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
-      wordWrap: 'break-word',
-      overflowWrap: 'break-word'
-    }}>
-      <Header />
+    <>
+      <SEOHead
+        title="ISO 27001 Leitfaden 2024 – Zertifizierung Schritt für Schritt"
+        description="ISO 27001 Zertifizierung verstehen: ISMS-Aufbau, Kontrollen, Audit-Prozess & Kosten. ✓ Praxisleitfaden ✓ Mit Checklisten. Jetzt durchstarten!"
+        canonical="/wissen/compliance/iso-27001"
+        keywords="ISO 27001 Guide, ISMS Leitfaden, ISO 27001 Zertifizierung, Informationssicherheit"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" style={{
+        wordWrap: 'break-word',
+        overflowWrap: 'break-word'
+      }}>
+        <Header />
       
       {/* Fixed Progress Bar */}
       <div className="fixed top-16 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
@@ -3337,7 +3345,8 @@ const Iso27001Guide: React.FC = () => {
       </div>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -42,10 +42,36 @@ const DSGVOLeitfaeden: React.FC = () => {
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "HowToGuide",
-    "name": "DSGVO Leitfäden - Praktische Anleitungen",
-    "description": "Praktische DSGVO-Leitfäden: Schritt-für-Schritt-Anleitungen, Checklisten, Vorlagen für häufige Compliance-Herausforderungen. Bewährte Umsetzungsstrategien.",
-    "url": "https://marsstein.com/wissen/dsgvo-leitfaeden"
+    "@type": "CollectionPage",
+    "name": "DSGVO Leitfäden 2024: Praktische Anleitungen",
+    "description": "Umfassende Sammlung praktischer DSGVO-Leitfäden mit Schritt-für-Schritt-Anleitungen, Checklisten und Vorlagen für alle Compliance-Herausforderungen.",
+    "url": "https://marsstein.com/wissen/dsgvo-leitfaeden",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Marsstein",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://marsstein.com/logo.png"
+      }
+    },
+    "dateModified": new Date().toISOString(),
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Wissen",
+          "item": "https://marsstein.com/wissen"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "DSGVO Leitfäden",
+          "item": "https://marsstein.com/wissen/dsgvo-leitfaeden"
+        }
+      ]
+    }
   };
 
   const categories = {
@@ -244,33 +270,40 @@ const DSGVOLeitfaeden: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="DSGVO Leitfäden – Praktische Anleitungen & How-Tos"
-        description="DSGVO-Leitfäden für die Praxis: Schritt-für-Schritt-Anleitungen, Checklisten, Vorlagen. ✓ DSGVO in 30 Tagen ✓ Verarbeitungsverzeichnis ✓ TOMs. Jetzt umsetzen!"
+        title="DSGVO Leitfäden 2024: Praktische Anleitungen | Marsstein"
+        description="Praktische DSGVO-Leitfäden mit Schritt-für-Schritt-Anleitungen. ✓ In 30 Tagen compliant ✓ Vorlagen & Checklisten ✓ Für Einsteiger bis Experten. Jetzt starten!"
         canonical="/wissen/dsgvo-leitfaeden"
-        keywords="DSGVO Leitfäden, DSGVO Anleitung, DSGVO How-To, DSGVO Praxis, DSGVO Umsetzung"
+        keywords="DSGVO Leitfäden, DSGVO Anleitung, DSGVO How-To, DSGVO Praxis, DSGVO Umsetzung, Datenschutz Leitfaden"
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
         <Header />
         
         {/* Hero Section */}
-        <section className="pt-24 pb-12 px-4">
+        <section className="pt-24 pb-12 px-4" aria-labelledby="main-heading">
           <div className="container mx-auto max-w-7xl">
             <motion.div
               className="text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
+              <nav aria-label="Breadcrumb" className="mb-4">
+                <ol className="flex items-center justify-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li><Link to="/wissen" className="hover:text-brand-red transition-colors">Wissen</Link></li>
+                  <li><span className="mx-2">/</span></li>
+                  <li className="text-gray-900 dark:text-white font-medium">DSGVO Leitfäden</li>
+                </ol>
+              </nav>
               <Badge className="mb-4 px-4 py-1" variant="outline">
                 <BookOpen className="h-3 w-3 mr-1" />
-                DSGVO Praxis-Leitfäden
+                20+ Praxis-Leitfäden
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                DSGVO praktisch umsetzen
+                DSGVO Leitfäden: Praktische Anleitungen für Ihre Compliance
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Schritt-für-Schritt-Anleitungen für häufige Compliance-Herausforderungen 
-                mit bewährten Umsetzungsstrategien
+                Über 20 praxiserprobte Schritt-für-Schritt-Anleitungen für Ihre DSGVO-Compliance. 
+                Von Einsteiger-Guides bis zu Experten-Themen – mit Vorlagen und Checklisten.
               </p>
             </motion.div>
 
@@ -289,7 +322,7 @@ const DSGVOLeitfaeden: React.FC = () => {
                       <Badge className="mb-3 bg-white/20 text-white border-white/30">
                         Featured Guide
                       </Badge>
-                      <h2 className="text-2xl font-bold mb-2">{featuredGuide.title}</h2>
+                      <h2 className="text-2xl font-bold mb-2" id="main-heading">{featuredGuide.title}</h2>
                       <p className="text-blue-100 mb-4">{featuredGuide.description}</p>
                       <div className="flex flex-wrap gap-4 text-sm">
                         <span className="flex items-center gap-1">
@@ -434,8 +467,12 @@ const DSGVOLeitfaeden: React.FC = () => {
             </motion.div>
 
             {/* Quick Access */}
+            <section aria-label="Weitere DSGVO-Ressourcen" className="mt-16">
+            <h2 className="text-2xl font-bold text-center mb-8 text-gray-900 dark:text-white">
+              Weitere hilfreiche DSGVO-Ressourcen
+            </h2>
             <motion.div
-              className="mt-16 grid md:grid-cols-3 gap-6"
+              className="grid md:grid-cols-3 gap-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -443,7 +480,7 @@ const DSGVOLeitfaeden: React.FC = () => {
               <Card className="text-center">
                 <CardContent className="p-6">
                   <FileText className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Vorlagen-Sammlung</h3>
+                  <h3 className="font-semibold mb-2 text-lg">Vorlagen-Sammlung</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     Über 50 DSGVO-Vorlagen zum Download
                   </p>
@@ -459,7 +496,7 @@ const DSGVOLeitfaeden: React.FC = () => {
               <Card className="text-center">
                 <CardContent className="p-6">
                   <CheckCircle2 className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">DSGVO-Checkliste</h3>
+                  <h3 className="font-semibold mb-2 text-lg">DSGVO-Checkliste</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     Interaktive Checkliste mit 100+ Punkten
                   </p>
@@ -475,7 +512,7 @@ const DSGVOLeitfaeden: React.FC = () => {
               <Card className="text-center">
                 <CardContent className="p-6">
                   <Users className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Experten-Support</h3>
+                  <h3 className="font-semibold mb-2 text-lg">Experten-Support</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     Persönliche Beratung für komplexe Fälle
                   </p>
@@ -488,6 +525,7 @@ const DSGVOLeitfaeden: React.FC = () => {
                 </CardContent>
               </Card>
             </motion.div>
+            </section>
 
             {/* CTA */}
             <motion.div
@@ -498,7 +536,7 @@ const DSGVOLeitfaeden: React.FC = () => {
             >
               <Card className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 text-white p-8">
                 <h2 className="text-2xl font-bold mb-4">
-                  Brauchen Sie einen individuellen Leitfaden?
+                  Maßgeschneiderte DSGVO-Leitfäden für Ihr Unternehmen
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
                   Wir erstellen maßgeschneiderte DSGVO-Leitfäden für Ihre spezifischen Anforderungen

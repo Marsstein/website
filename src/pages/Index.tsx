@@ -9,6 +9,7 @@ import { EUAIActSection } from '@/components/EUAIActSection';
 import { ModernFeaturesGrid } from '@/components/ModernFeaturesGrid';
 import { CTASection } from '@/components/CTASection';
 import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 
 // Import components directly instead of lazy loading to fix the issue
 import { InteractiveShowcase } from '@/components/InteractiveShowcase';
@@ -27,10 +28,29 @@ import { QuantumShieldWaveSeparator } from '@/components/separators/QuantumShiel
 import { KnowledgeConstellationSeparator } from '@/components/separators/KnowledgeConstellationSeparator';
 
 const Index = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Marsstein",
+    "url": "https://marsstein.com",
+    "logo": "https://marsstein.com/logomarsstein.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/marsstein"
+    ],
+    "description": "Marsstein ist Ihr Partner für Compliance, Datenschutz und KI-Governance. Wir unterstützen Sie bei DSGVO, ISO 27001, NIS2 und EU AI Act."
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-gray-50 dark:from-gray-950 dark:to-gray-900">
-      <Header />
-      <main className="overflow-hidden">
+    <>
+      <SEOHead
+        title="Compliance & Datenschutz Lösungen für Unternehmen"
+        description="Marsstein - Ihr Partner für DSGVO, ISO 27001, NIS2 & EU AI Act Compliance. Automatisierte Lösungen für Datenschutz und KI-Governance. Jetzt beraten lassen!"
+        canonical="/"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <Header />
+        <main className="overflow-hidden">
         <HeroSection />
         
         {/* 1. Hero → ScrollTransformation: KI-Activation Network */}
@@ -91,6 +111,7 @@ const Index = () => {
       </main>
       <Footer />
     </div>
+    </>
   );
 };
 

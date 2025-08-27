@@ -285,7 +285,7 @@ const Nis2Compliance = () => {
       <SEOHead
         title="NIS-2 Compliance – Cybersecurity-Richtlinie umsetzen"
         description="NIS-2 Richtlinie sicher erfüllen: Risikomanagement, Meldepflichten & Sicherheitsmaßnahmen. ✓ KRITIS-konform ✓ Automatisiert. Jetzt beraten lassen!"
-        canonical="/nis2"
+        canonical="/nis2-compliance"
         keywords="NIS-2, NIS2 Richtlinie, Cybersecurity Compliance, KRITIS, Network Information Security"
         structuredData={structuredData}
       />
