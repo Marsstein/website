@@ -1,6 +1,6 @@
 {
-  "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "echo 'Using pre-built dist folder'",
+  "installCommand": "npm install --legacy-peer-deps && npm install puppeteer",
+  "buildCommand": "./vercel-seo-build.sh",
   "outputDirectory": "dist",
   "framework": null,
   "redirects": [

@@ -699,12 +699,12 @@ export const DACHCompliance: React.FC = () => {
 
         {/* Enhanced Stats Section */}
         <motion.div 
-          className="mb-16"
-          initial={{ y: 50, opacity: 0 }}
+          className="mb-2"
+          initial={{ y: 20, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
         >
-          <Card className="p-8 glassmorphism-premium border-white/30 relative overflow-hidden">
+          <Card className="p-2 glassmorphism-premium border-white/30 relative overflow-hidden">
             <motion.div 
               className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/5 via-transparent to-red-500/5"
               animate={{
@@ -719,20 +719,20 @@ export const DACHCompliance: React.FC = () => {
             
             <div className="relative">
               <motion.div 
-                className="text-center mb-12"
-                initial={{ y: 20, opacity: 0 }}
+                className="text-center mb-2"
+                initial={{ y: 10, opacity: 0 }}
                 animate={isVisible ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: 1.6 }}
               >
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                <h3 className="text-[11px] font-semibold text-gray-800 mb-0.5">
                   DACH-Compliance in Zahlen
                 </h3>
-                <p className="text-lg text-gray-600">
+                <p className="text-[10px] text-gray-500 leading-tight">
                   Vollständige Abdeckung aller relevanten Gesetze und Vorschriften
                 </p>
               </motion.div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="grid grid-cols-4 gap-1">
                 {complianceStats.map((stat, index) => {
                   const Icon = stat.icon;
                   const isHovered = hoveredStat === index;
@@ -743,34 +743,34 @@ export const DACHCompliance: React.FC = () => {
                       className="text-center group cursor-pointer"
                       onMouseEnter={() => setHoveredStat(index)}
                       onMouseLeave={() => setHoveredStat(null)}
-                      initial={{ y: 30, opacity: 0 }}
+                      initial={{ y: 15, opacity: 0 }}
                       animate={isVisible ? { y: 0, opacity: 1 } : {}}
                       transition={{ 
                         duration: 0.6, 
                         delay: 1.8 + (index * 0.1),
                         ease: "easeOut"
                       }}
-                      whileHover={{ y: -10 }}
+                      whileHover={{ y: -2 }}
                     >
-                      <div className="space-y-4">
+                      <div className="space-y-0.5">
                         <motion.div 
                           className={cn(
-                            "inline-flex p-4 rounded-2xl transition-all duration-300",
+                            "inline-flex p-1 rounded-md transition-all duration-300",
                             isHovered 
-                              ? "bg-gradient-to-br from-[#e24e1b]/10 to-orange-500/10 scale-110" 
+                              ? "bg-gradient-to-br from-[#e24e1b]/10 to-orange-500/10 scale-105" 
                               : "bg-gradient-to-br from-gray-100 to-gray-50"
                           )}
                           whileHover={{
-                            rotate: [0, -10, 10, 0],
-                            scale: 1.15
+                            rotate: [0, -5, 5, 0],
+                            scale: 1.05
                           }}
                           transition={{ duration: 0.5 }}
                         >
-                          <Icon className={cn("h-8 w-8 transition-colors duration-300", stat.color)} />
+                          <Icon className={cn("h-2.5 w-2.5 transition-colors duration-300", stat.color)} />
                         </motion.div>
                         
                         <motion.div 
-                          className={cn("text-5xl font-black transition-all duration-300", stat.color)}
+                          className={cn("text-sm font-bold transition-all duration-300", stat.color)}
                           initial={{ scale: 0 }}
                           animate={isVisible ? { scale: 1 } : {}}
                           transition={{ 
@@ -788,7 +788,7 @@ export const DACHCompliance: React.FC = () => {
                           )}
                         </motion.div>
                         
-                        <div className="text-sm font-semibold text-gray-600">
+                        <div className="text-[9px] font-medium text-gray-600 leading-tight">
                           {stat.label}
                         </div>
                       </div>
