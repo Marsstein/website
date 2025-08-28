@@ -87,11 +87,6 @@
   ],
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "api/og.js": {
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
       "source": "/assets/(.*)",
