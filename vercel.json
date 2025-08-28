@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "VERCEL_SSR=false npm run build:vercel-ssr",
+  "buildCommand": "npm run build:react-content",
   "outputDirectory": "dist",
   "framework": null,
   "build": {
