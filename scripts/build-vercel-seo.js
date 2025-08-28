@@ -26,6 +26,33 @@ const allRoutes = JSON.parse(
   readFileSync(path.join(__dirname, '..', 'prerender-routes-simple.json'), 'utf-8')
 );
 
+// Route mapping for cleaner URLs
+const routeMapping = {
+  '/eu-ai-act-compliance': '/eu-ai-act',
+  '/dsgvo-compliance': '/dsgvo',
+  '/iso-27001-zertifizierung': '/iso-27001',
+  '/iso-27017-zertifizierung': '/iso-27017',
+  '/iso-27018-zertifizierung': '/iso-27018',
+  '/soc2-zertifizierung': '/soc2',
+  '/nis2-compliance': '/nis2',
+  '/tisax-compliance': '/tisax',
+  '/hinweisgeberschutzgesetz': '/whistleblower',
+  '/geldwaeschegesetz': '/aml',
+  '/compliance/dsg-ekd': '/dsg-ekd',
+  '/compliance/kdg': '/kdg',
+  // Keep original paths that don't need mapping
+  '/branchen': '/branchen',
+  '/branchen/automotive': '/branchen/automotive',
+  '/branchen/e-commerce': '/branchen/e-commerce',
+  '/branchen/energie': '/branchen/energie',
+  '/branchen/finanzdienstleister': '/branchen/finanzdienstleister',
+  '/branchen/gesundheitswesen': '/branchen/gesundheitswesen',
+  '/branchen/lebensmittel': '/branchen/lebensmittel',
+  '/branchen/logistik': '/branchen/logistik',
+  '/branchen/produktion': '/branchen/produktion',
+  '/branchen/saas-unternehmen': '/branchen/saas-unternehmen',
+};
+
 // Vollständige SEO-Routen-Definitionen
 const seoRoutes = {
   '/': {
@@ -183,6 +210,55 @@ const seoRoutes = {
     description: 'Compliance mit dem Katholischen Datenschutzgesetz (KDG). Automatisierte Lösungen für kirchliche Träger.',
     keywords: 'KDG, Katholisches Datenschutzgesetz, Kirchlicher Datenschutz',
     ogImage: 'https://marsstein.ai/og-kdg.png'
+  },
+  // Mapped routes
+  '/iso-27001': {
+    title: 'ISO 27001 Zertifizierung | Compliance Management Software | Marsstein',
+    description: 'ISO 27001 Zertifizierung vereinfacht. Gap-Analyse, Dokumentation und Audit-Vorbereitung mit KI-Unterstützung.',
+    keywords: 'ISO 27001, Zertifizierung, ISMS, Informationssicherheit, Compliance Management',
+    ogImage: 'https://marsstein.ai/og-iso27001.png'
+  },
+  '/iso-27017': {
+    title: 'ISO 27017 Compliance | Cloud Security Zertifizierung | Marsstein',
+    description: 'ISO 27017 Compliance für Cloud-Services. Erweiterte Sicherheitskontrollen für Cloud-Anbieter und -Nutzer.',
+    keywords: 'ISO 27017, Cloud Security, Cloud Compliance, ISO 27001 Erweiterung',
+    ogImage: 'https://marsstein.ai/og-iso27017.png'
+  },
+  '/iso-27018': {
+    title: 'ISO 27018 Compliance | Cloud Datenschutz Zertifizierung | Marsstein',
+    description: 'ISO 27018 Compliance für Cloud-Datenschutz. Schutz personenbezogener Daten in der Cloud.',
+    keywords: 'ISO 27018, Cloud Datenschutz, PII Protection, Cloud Privacy',
+    ogImage: 'https://marsstein.ai/og-iso27018.png'
+  },
+  '/soc2': {
+    title: 'SOC 2 Compliance | Automatisierte Zertifizierung & Audits | Marsstein',
+    description: 'SOC 2 Type II Compliance automatisiert. Kontinuierliches Monitoring und Audit-Ready Dokumentation.',
+    keywords: 'SOC 2, SOC 2 Type II, Compliance Audit, Trust Services, Security Compliance',
+    ogImage: 'https://marsstein.ai/og-soc2.png'
+  },
+  '/nis2': {
+    title: 'NIS2 Compliance Software | Cybersecurity Richtlinie automatisiert | Marsstein',
+    description: 'NIS2-Richtlinie einfach umsetzen. Risikomanagement, Incident Response und Compliance-Reporting automatisiert.',
+    keywords: 'NIS2, Cybersecurity, NIS2 Compliance, Incident Response, Risikomanagement',
+    ogImage: 'https://marsstein.ai/og-nis2.png'
+  },
+  '/tisax': {
+    title: 'TISAX Zertifizierung | Automotive Compliance Software | Marsstein',
+    description: 'TISAX-Zertifizierung für die Automobilindustrie. VDA ISA konform mit automatisierter Dokumentation.',
+    keywords: 'TISAX, Automotive Security, VDA ISA, Informationssicherheit Automotive',
+    ogImage: 'https://marsstein.ai/og-tisax.png'
+  },
+  '/whistleblower': {
+    title: 'Hinweisgeberschutzgesetz | Whistleblower System | Marsstein',
+    description: 'Compliance mit dem Hinweisgeberschutzgesetz. Anonyme Meldesysteme und Fallmanagement automatisiert.',
+    keywords: 'Hinweisgeberschutzgesetz, Whistleblower, HinSchG, Compliance Management',
+    ogImage: 'https://marsstein.ai/og-whistleblower.png'
+  },
+  '/aml': {
+    title: 'Geldwäschegesetz Compliance | AML Software | Marsstein',
+    description: 'Automatisierte Geldwäsche-Prävention. KYC, Transaktionsüberwachung und Verdachtsmeldungen.',
+    keywords: 'Geldwäschegesetz, AML, Anti Money Laundering, GwG, KYC',
+    ogImage: 'https://marsstein.ai/og-aml.png'
   }
 };
 
@@ -513,24 +589,27 @@ async function build() {
     const jsMatch = baseHtml.match(/<script[^>]+type="module"[^>]+src="([^"]+)"/)?.[1] || '/assets/index.js';
     
     for (const route of allRoutes) {
-      // Get SEO data
-      const routeData = seoRoutes[route] || generateSeoData(route);
+      // Apply route mapping if exists
+      const finalPath = routeMapping[route] || route;
+      
+      // Get SEO data - check both original and mapped route
+      const routeData = seoRoutes[finalPath] || seoRoutes[route] || generateSeoData(finalPath);
       
       // Generate full HTML with SEO tags
-      let html = generateHTMLWithAssets(route, routeData, cssMatch, jsMatch);
+      let html = generateHTMLWithAssets(finalPath, routeData, cssMatch, jsMatch);
       
       // Format HTML
       html = await formatHTML(html);
       
-      // Write file
-      const filePath = route === '/' 
+      // Write file to the mapped path
+      const filePath = finalPath === '/' 
         ? baseHtmlPath
-        : path.join(process.cwd(), 'dist', route, 'index.html');
+        : path.join(process.cwd(), 'dist', finalPath.slice(1), 'index.html');
       
       mkdirSync(path.dirname(filePath), { recursive: true });
       writeFileSync(filePath, html, 'utf-8');
       
-      console.log(`✅ Generated: ${route}`);
+      console.log(`✅ Generated: ${route} → ${finalPath}`);
     }
     
     // 5. Generate sitemap.xml

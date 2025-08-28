@@ -10,6 +10,26 @@
   },
   "redirects": [
     {
+      "source": "/compliance/eu-ai-act",
+      "destination": "/eu-ai-act",
+      "statusCode": 301
+    },
+    {
+      "source": "/eu-ai-act-compliance",
+      "destination": "/eu-ai-act",
+      "statusCode": 301
+    },
+    {
+      "source": "/compliance/dsgvo",
+      "destination": "/dsgvo",
+      "statusCode": 301
+    },
+    {
+      "source": "/dsgvo-compliance",
+      "destination": "/dsgvo",
+      "statusCode": 301
+    },
+    {
       "source": "/regulierung/dsgvo",
       "destination": "/dsgvo",
       "statusCode": 301
@@ -20,58 +40,133 @@
       "statusCode": 301
     },
     {
+      "source": "/compliance/nis2",
+      "destination": "/nis2",
+      "statusCode": 301
+    },
+    {
+      "source": "/nis2-compliance",
+      "destination": "/nis2",
+      "statusCode": 301
+    },
+    {
       "source": "/regulierung/nis2",
-      "destination": "/nis2-compliance",
+      "destination": "/nis2",
+      "statusCode": 301
+    },
+    {
+      "source": "/compliance/hinweisgeberschutzgesetz",
+      "destination": "/whistleblower",
+      "statusCode": 301
+    },
+    {
+      "source": "/hinweisgeberschutzgesetz",
+      "destination": "/whistleblower",
       "statusCode": 301
     },
     {
       "source": "/regulierung/hinweisgeberschutzgesetz",
-      "destination": "/hinweisgeberschutzgesetz",
+      "destination": "/whistleblower",
+      "statusCode": 301
+    },
+    {
+      "source": "/compliance/geldwaeschegesetz",
+      "destination": "/aml",
+      "statusCode": 301
+    },
+    {
+      "source": "/geldwaeschegesetz",
+      "destination": "/aml",
       "statusCode": 301
     },
     {
       "source": "/regulierung/geldwaeschegesetz",
-      "destination": "/geldwaeschegesetz",
+      "destination": "/aml",
       "statusCode": 301
     },
     {
       "source": "/zertifizierung/iso-27001",
-      "destination": "/iso-27001-zertifizierung",
+      "destination": "/iso-27001",
       "statusCode": 301
     },
     {
-      "source": "/zertifizierung/soc2",
-      "destination": "/soc2-zertifizierung",
-      "statusCode": 301
-    },
-    {
-      "source": "/zertifizierung/iso-27017",
-      "destination": "/iso-27017-zertifizierung",
-      "statusCode": 301
-    },
-    {
-      "source": "/zertifizierung/iso-27018",
-      "destination": "/iso-27018-zertifizierung",
-      "statusCode": 301
-    },
-    {
-      "source": "/zertifizierung/tisax",
-      "destination": "/tisax-zertifizierung",
-      "statusCode": 301
-    },
-    {
-      "source": "/dsgvo-compliance",
-      "destination": "/dsgvo",
+      "source": "/iso-27001-zertifizierung",
+      "destination": "/iso-27001",
       "statusCode": 301
     },
     {
       "source": "/iso-27001-compliance",
-      "destination": "/iso-27001-zertifizierung",
+      "destination": "/iso-27001",
       "statusCode": 301
     },
     {
-      "source": "/eu-ai-act-compliance",
-      "destination": "/eu-ai-act",
+      "source": "/compliance/iso-27001",
+      "destination": "/iso-27001",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/soc2",
+      "destination": "/soc2",
+      "statusCode": 301
+    },
+    {
+      "source": "/soc2-zertifizierung",
+      "destination": "/soc2",
+      "statusCode": 301
+    },
+    {
+      "source": "/compliance/soc2",
+      "destination": "/soc2",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/iso-27017",
+      "destination": "/iso-27017",
+      "statusCode": 301
+    },
+    {
+      "source": "/iso-27017-zertifizierung",
+      "destination": "/iso-27017",
+      "statusCode": 301
+    },
+    {
+      "source": "/compliance/iso-27017",
+      "destination": "/iso-27017",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/iso-27018",
+      "destination": "/iso-27018",
+      "statusCode": 301
+    },
+    {
+      "source": "/iso-27018-zertifizierung",
+      "destination": "/iso-27018",
+      "statusCode": 301
+    },
+    {
+      "source": "/compliance/iso-27018",
+      "destination": "/iso-27018",
+      "statusCode": 301
+    },
+    {
+      "source": "/zertifizierung/tisax",
+      "destination": "/tisax",
+      "statusCode": 301
+    },
+    {
+      "source": "/tisax-compliance",
+      "destination": "/tisax",
+      "statusCode": 301
+    },
+    {
+      "source": "/tisax-zertifizierung",
+      "destination": "/tisax",
+      "statusCode": 301
+    },
+    {
+      "source": "/compliance/tisax",
+      "destination": "/tisax",
       "statusCode": 301
     },
     {
