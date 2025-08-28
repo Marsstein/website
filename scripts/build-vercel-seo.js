@@ -2,15 +2,16 @@
 
 /**
  * Vercel SEO Build Script
- * Generiert vollständige HTML-Dateien mit SEO-Informationen ohne Puppeteer
+ * Uses local Puppeteer rendering during build time
  */
 
 import fs from 'fs/promises';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { exec } from 'child_process';
+import { exec, spawn } from 'child_process';
 import { promisify } from 'util';
+import prettier from 'prettier';
 
 const execAsync = promisify(exec);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -222,8 +223,8 @@ function generateSeoData(route) {
   };
 }
 
-// HTML Template Generator
-function generateHTML(route, routeData) {
+// HTML Template Generator with proper assets
+function generateHTMLWithAssets(route, routeData, cssPath, jsPath) {
   const baseUrl = 'https://marsstein.ai';
   const fullUrl = baseUrl + route;
   
@@ -298,13 +299,8 @@ function generateHTML(route, routeData) {
     }, null, 2)}
     </script>
     
-    <!-- Preload critical assets -->
-    <link rel="preload" href="${cssPath}" as="style">
-    <link rel="preload" href="${jsPath}" as="script" type="module" crossorigin>
-    ${additionalModules.map(module => `<link rel="modulepreload" href="${module}" crossorigin>`).join('\n    ')}
-    
     <!-- Styles -->
-    <link rel="stylesheet" href="${cssPath}" crossorigin>
+    <link rel="stylesheet" href="${cssPath}">
 </head>
 <body>
     <div id="root"></div>
@@ -324,7 +320,7 @@ function generateHTML(route, routeData) {
     </div>
     
     <!-- Scripts -->
-    <script type="module" src="${jsPath}"></script>
+    <script type="module" crossorigin src="${jsPath}"></script>
     
     <!-- Fallback for no JS -->
     <noscript>
@@ -418,6 +414,52 @@ function extractAssetPaths(html) {
   return paths;
 }
 
+/**
+ * Format HTML for better readability
+ */
+async function formatHTML(html) {
+  try {
+    const formatted = await prettier.format(html, {
+      parser: 'html',
+      printWidth: 120,
+      tabWidth: 2,
+      useTabs: false,
+      singleQuote: false,
+      bracketSpacing: true,
+      htmlWhitespaceSensitivity: 'css',
+      endOfLine: 'lf'
+    });
+    return formatted;
+  } catch (error) {
+    console.warn('⚠️  Prettier formatting failed:', error.message);
+    return html;
+  }
+}
+
+/**
+ * Clean up HTML
+ */
+function optimizeHtml(html) {
+  // Remove development-specific scripts
+  html = html.replace(/<script.*?\/\/@vite\/client.*?<\/script>/g, '');
+  
+  // Remove inline styles that block animations
+  html = html.replace(/style="opacity:\s*0[^"]*"/g, '');
+  html = html.replace(/style="[^"]*transform:\s*translate[^"]*"/g, '');
+  
+  // Fix encoding
+  html = html
+    .replace(/Ã¤/g, 'ä')
+    .replace(/Ã¶/g, 'ö')
+    .replace(/Ã¼/g, 'ü')
+    .replace(/Ã„/g, 'Ä')
+    .replace(/Ã–/g, 'Ö')
+    .replace(/Ãœ/g, 'Ü')
+    .replace(/ÃŸ/g, 'ß');
+  
+  return html;
+}
+
 // Main Build Function
 async function build() {
   console.log('🚀 Starting Vercel SEO Build...');
@@ -448,39 +490,59 @@ async function build() {
     console.log('  JS:', jsPath);
     console.log('  Module preloads:', additionalModules.length, 'files');
     
-    // 4. Generate HTML for each route
-    console.log('🔍 Generating SEO-optimized HTML pages...');
-    console.log(`📄 Processing ${allRoutes.length} routes...`);
+    // 2. Check if we should use prerendering
+    const prerenderScript = path.join(__dirname, 'prerender-seo-final.js');
+    if (existsSync(prerenderScript) && process.env.VERCEL !== '1') {
+      // Use existing prerender script locally
+      console.log('🎯 Using Puppeteer prerendering (local build)...');
+      await execAsync('node scripts/prerender-seo-final.js');
+      console.log('✅ Prerendering completed!');
+      return;
+    }
+    
+    // 3. On Vercel, use static generation
+    console.log('📄 Generating static SEO pages (Vercel build)...');
+    console.log(`🔍 Processing ${allRoutes.length} routes...`);
+    
+    // Read the base HTML template
+    const baseHtmlPath = path.join(process.cwd(), 'dist', 'index.html');
+    const baseHtml = await fs.readFile(baseHtmlPath, 'utf-8');
+    
+    // Extract assets from base HTML
+    const cssMatch = baseHtml.match(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/)?.[1] || '/assets/index.css';
+    const jsMatch = baseHtml.match(/<script[^>]+type="module"[^>]+src="([^"]+)"/)?.[1] || '/assets/index.js';
     
     for (const route of allRoutes) {
-      // Get SEO data - use predefined or generate
+      // Get SEO data
       const routeData = seoRoutes[route] || generateSeoData(route);
       
-      const html = generateHTML(route, routeData);
+      // Generate full HTML with SEO tags
+      let html = generateHTMLWithAssets(route, routeData, cssMatch, jsMatch);
       
-      // Determine file path
+      // Format HTML
+      html = await formatHTML(html);
+      
+      // Write file
       const filePath = route === '/' 
-        ? indexPath 
+        ? baseHtmlPath
         : path.join(process.cwd(), 'dist', route, 'index.html');
       
-      // Create directory if needed
-      await fs.mkdir(path.dirname(filePath), { recursive: true });
+      mkdirSync(path.dirname(filePath), { recursive: true });
+      writeFileSync(filePath, html, 'utf-8');
       
-      // Write HTML file
-      await fs.writeFile(filePath, html);
       console.log(`✅ Generated: ${route}`);
     }
     
     // 5. Generate sitemap.xml
+    // Generate sitemap and robots.txt
     console.log('🗺️  Generating sitemap.xml...');
-    await fs.writeFile(
+    writeFileSync(
       path.join(process.cwd(), 'dist', 'sitemap.xml'), 
       generateSitemap()
     );
     
-    // 6. Generate robots.txt
     console.log('🤖 Generating robots.txt...');
-    await fs.writeFile(
+    writeFileSync(
       path.join(process.cwd(), 'dist', 'robots.txt'), 
       generateRobotsTxt()
     );
