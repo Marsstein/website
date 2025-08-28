@@ -12,6 +12,7 @@ Das ursprüngliche Problem bestand aus mehreren Herausforderungen:
 2. **Puppeteer auf Vercel**: Puppeteer funktioniert nicht zuverlässig auf Vercel's Serverless-Infrastruktur
 3. **Edge Function Limitierungen**: Vercel Edge Functions haben keinen Zugriff auf Node.js Module wie `fs` oder `path`
 4. **Build-Zeit vs. Runtime**: Balance zwischen Performance und Flexibilität
+5. **URL-Struktur**: Die URLs sollen unverändert bleiben (z.B. `/iso-27001-zertifizierung` bleibt `/iso-27001-zertifizierung`)
 
 ## Lösungsansatz
 
@@ -72,6 +73,11 @@ Vordefinierte SEO-Daten für wichtige Seiten:
 - Strukturierte Daten
 
 Automatische Generierung für andere Seiten basierend auf der URL-Struktur.
+
+**Wichtig**: URLs bleiben unverändert! 
+- `/iso-27001-zertifizierung` bleibt `/iso-27001-zertifizierung` (nicht `/iso-27001`)
+- `/eu-ai-act-compliance` wird zu `/eu-ai-act` gemappt (nur für falsche Routen)
+- `/dsgvo-compliance` wird zu `/dsgvo` gemappt (nur für falsche Routen)
 
 ### 3. Deployment-Konfiguration
 
