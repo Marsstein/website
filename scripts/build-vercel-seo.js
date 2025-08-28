@@ -6,6 +6,7 @@
  */
 
 import fs from 'fs/promises';
+import { readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { exec } from 'child_process';
@@ -18,6 +19,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let cssPath = '/assets/index.css';
 let jsPath = '/assets/index.js';
 let additionalModules = [];
+
+// Load all routes from prerender-routes-simple.json
+const allRoutes = JSON.parse(
+  readFileSync(path.join(__dirname, '..', 'prerender-routes-simple.json'), 'utf-8')
+);
 
 // Vollständige SEO-Routen-Definitionen
 const seoRoutes = {
@@ -69,23 +75,59 @@ const seoRoutes = {
     keywords: 'Branchen Compliance, Healthcare Compliance, Automotive Compliance, Fintech Compliance',
     ogImage: 'https://marsstein.ai/og-branchen.png'
   },
-  '/branchen/healthcare': {
+  '/branchen/gesundheitswesen': {
     title: 'Healthcare Compliance | Medizintechnik & Pharma | Marsstein',
     description: 'Compliance-Lösungen für Healthcare, Medizintechnik und Pharma. MDR, IVDR und Datenschutz automatisiert.',
     keywords: 'Healthcare Compliance, MDR, IVDR, Medizintechnik Compliance, Pharma Compliance',
     ogImage: 'https://marsstein.ai/og-healthcare.png'
   },
-  '/branchen/fintech': {
+  '/branchen/finanzdienstleister': {
     title: 'FinTech Compliance | Banken & Versicherungen | Marsstein',
     description: 'Compliance für Finanzdienstleister. BAIT, MaRisk, VAIT und DSGVO in einer integrierten Lösung.',
     keywords: 'FinTech Compliance, BAIT, MaRisk, VAIT, Banking Compliance',
     ogImage: 'https://marsstein.ai/og-fintech.png'
   },
-  '/branchen/saas': {
+  '/branchen/saas-unternehmen': {
     title: 'SaaS Compliance | Software & Cloud Services | Marsstein',
     description: 'Compliance für SaaS-Unternehmen. SOC 2, ISO 27001 und DSGVO automatisiert managen.',
     keywords: 'SaaS Compliance, Cloud Compliance, Software Compliance, SOC 2 SaaS',
     ogImage: 'https://marsstein.ai/og-saas.png'
+  },
+  '/branchen/automotive': {
+    title: 'Automotive Compliance | TISAX & ISO 27001 | Marsstein',
+    description: 'Compliance-Lösungen für die Automobilindustrie. TISAX-Zertifizierung und Datenschutz.',
+    keywords: 'Automotive Compliance, TISAX, ISO 27001, VDA ISA',
+    ogImage: 'https://marsstein.ai/og-automotive.png'
+  },
+  '/branchen/e-commerce': {
+    title: 'E-Commerce Compliance | Online-Handel DSGVO | Marsstein',
+    description: 'Compliance für E-Commerce und Online-Handel. DSGVO, Cookie-Compliance und Datenschutz.',
+    keywords: 'E-Commerce Compliance, DSGVO, Cookie Compliance, Online-Shop',
+    ogImage: 'https://marsstein.ai/og-ecommerce.png'
+  },
+  '/branchen/energie': {
+    title: 'Energie Compliance | Kritische Infrastruktur | Marsstein',
+    description: 'Compliance für Energieversorger. NIS2, IT-Sicherheitskatalog und ISO 27001.',
+    keywords: 'Energie Compliance, NIS2, KRITIS, IT-Sicherheit',
+    ogImage: 'https://marsstein.ai/og-energie.png'
+  },
+  '/branchen/lebensmittel': {
+    title: 'Lebensmittel Compliance | Food & Beverage | Marsstein',
+    description: 'Compliance für die Lebensmittelindustrie. DSGVO, IFS und BRC Standards.',
+    keywords: 'Lebensmittel Compliance, IFS, BRC, Food Safety',
+    ogImage: 'https://marsstein.ai/og-lebensmittel.png'
+  },
+  '/branchen/logistik': {
+    title: 'Logistik Compliance | Transport & Supply Chain | Marsstein',
+    description: 'Compliance für Logistik und Transport. DSGVO, NIS2 und Lieferketten-Compliance.',
+    keywords: 'Logistik Compliance, Supply Chain, Transport, DSGVO',
+    ogImage: 'https://marsstein.ai/og-logistik.png'
+  },
+  '/branchen/produktion': {
+    title: 'Produktion Compliance | Industrie 4.0 | Marsstein',
+    description: 'Compliance für produzierende Unternehmen. ISO 27001, NIS2 und Industrie 4.0.',
+    keywords: 'Produktion Compliance, Industrie 4.0, ISO 27001, Fertigungs-IT',
+    ogImage: 'https://marsstein.ai/og-produktion.png'
   },
   '/ueber-uns': {
     title: 'Über Marsstein | Team & Vision der Compliance Platform',
@@ -110,8 +152,75 @@ const seoRoutes = {
     description: 'Kostenlose Compliance-Tools für DSGVO, ISO 27001 und mehr. Risk Assessment, Cookie Management und Compliance Checks.',
     keywords: 'Compliance Tools, DSGVO Tools, ISO 27001 Tools, Risk Assessment',
     ogImage: 'https://marsstein.ai/og-tools.png'
+  },
+  '/academy': {
+    title: 'Compliance Academy | Schulungen & Zertifizierungen | Marsstein',
+    description: 'Compliance-Schulungen und Zertifizierungen. DSGVO, ISO 27001 und EU AI Act Trainings für Ihr Team.',
+    keywords: 'Compliance Academy, Schulungen, Zertifizierungen, DSGVO Training',
+    ogImage: 'https://marsstein.ai/og-academy.png'
+  },
+  '/assessment-center': {
+    title: 'Assessment Center | Compliance-Checks & Audits | Marsstein',
+    description: 'Kostenlose Compliance-Assessments und Audits. Prüfen Sie Ihren DSGVO, ISO 27001 und NIS2 Status.',
+    keywords: 'Assessment Center, Compliance Audit, DSGVO Check, ISO 27001 Assessment',
+    ogImage: 'https://marsstein.ai/og-assessment.png'
+  },
+  '/wissen': {
+    title: 'Compliance Wissen | Wissensdatenbank & Guides | Marsstein',
+    description: 'Umfassende Compliance-Wissensdatenbank. Leitfäden, Best Practices und Rechtsprechung zu DSGVO, ISO 27001 und mehr.',
+    keywords: 'Compliance Wissen, DSGVO Guide, ISO 27001 Leitfaden, Compliance Knowledge',
+    ogImage: 'https://marsstein.ai/og-wissen.png'
+  },
+  '/compliance/dsg-ekd': {
+    title: 'DSG-EKD Compliance | Kirchlicher Datenschutz | Marsstein',
+    description: 'Datenschutz nach DSG-EKD für kirchliche Einrichtungen. Automatisierte Compliance für das Kirchengesetz.',
+    keywords: 'DSG-EKD, Kirchlicher Datenschutz, KDG, Kirchengesetz',
+    ogImage: 'https://marsstein.ai/og-dsg-ekd.png'
+  },
+  '/compliance/kdg': {
+    title: 'KDG Compliance | Katholisches Datenschutzgesetz | Marsstein',
+    description: 'Compliance mit dem Katholischen Datenschutzgesetz (KDG). Automatisierte Lösungen für kirchliche Träger.',
+    keywords: 'KDG, Katholisches Datenschutzgesetz, Kirchlicher Datenschutz',
+    ogImage: 'https://marsstein.ai/og-kdg.png'
   }
 };
+
+// Function to generate SEO data for routes not explicitly defined
+function generateSeoData(route) {
+  const routeParts = route.split('/');
+  const lastPart = routeParts[routeParts.length - 1];
+  const category = routeParts[1] || '';
+  
+  // Generate title based on route
+  let title = lastPart
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  
+  // Add category context
+  if (category) {
+    const categoryTitle = category
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+    title = `${title} | ${categoryTitle}`;
+  }
+  
+  title += ' | Marsstein';
+  
+  // Generate description
+  const description = `${title.replace(' | Marsstein', '')} - Compliance-Lösungen und Automatisierung mit Marsstein.`;
+  
+  // Generate keywords
+  const keywords = `${lastPart.replace(/-/g, ' ')}, Compliance, Marsstein, ${category.replace(/-/g, ' ')}`;
+  
+  return {
+    title,
+    description,
+    keywords,
+    ogImage: 'https://marsstein.ai/og-default.png'
+  };
+}
 
 // HTML Template Generator
 function generateHTML(route, routeData) {
@@ -238,7 +347,7 @@ function generateSitemap() {
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
-  for (const [route, data] of Object.entries(seoRoutes)) {
+  for (const route of allRoutes) {
     const priority = route === '/' ? '1.0' : route.includes('/branchen/') ? '0.7' : '0.8';
     sitemap += `
   <url>
@@ -341,8 +450,12 @@ async function build() {
     
     // 4. Generate HTML for each route
     console.log('🔍 Generating SEO-optimized HTML pages...');
+    console.log(`📄 Processing ${allRoutes.length} routes...`);
     
-    for (const [route, routeData] of Object.entries(seoRoutes)) {
+    for (const route of allRoutes) {
+      // Get SEO data - use predefined or generate
+      const routeData = seoRoutes[route] || generateSeoData(route);
+      
       const html = generateHTML(route, routeData);
       
       // Determine file path
@@ -373,7 +486,7 @@ async function build() {
     );
     
     console.log('✨ SEO Build complete!');
-    console.log(`📄 Generated ${Object.keys(seoRoutes).length} SEO-optimized pages`);
+    console.log(`📄 Generated ${allRoutes.length} SEO-optimized pages`);
     
   } catch (error) {
     console.error('❌ Build failed:', error);
