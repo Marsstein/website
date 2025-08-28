@@ -1,14 +1,20 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# Marsstein Robots.txt
 User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /assets/*.map
+
+# Sitemaps
+Sitemap: https://marsstein.ai/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# German search engines
+User-agent: Seekport
+Allow: /
+
+User-agent: Semrush
 Allow: /
