@@ -1,8 +1,15 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build:seo",
+  "buildCommand": "npm run build:vercel-puppeteer",
   "outputDirectory": "dist",
   "framework": null,
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--max-old-space-size=8192",
+      "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
+      "CHROMIUM_PATH": "/opt/chromium"
+    }
+  },
   "redirects": [
     {
       "source": "/regulierung/dsgvo",

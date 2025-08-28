@@ -26,3 +26,5 @@ prerender.log
 *.sln
 *.sw?
 .vercel
+.cache/
+dist/

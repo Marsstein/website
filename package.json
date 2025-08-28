@@ -23,7 +23,10 @@
     "prerender:all": "node scripts/prerender-all.js",
     "extract-routes": "node scripts/extract-routes.js",
     "build:vercel": "vite build && node scripts/prerender-vercel.js",
-    "prerender:vercel": "node scripts/prerender-vercel.js"
+    "prerender:vercel": "node scripts/prerender-vercel.js",
+    "build:simple": "node scripts/build-simple.js",
+    "build:vercel-seo": "node scripts/build-vercel-seo.js",
+    "build:vercel-puppeteer": "node scripts/build-vercel-puppeteer.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
