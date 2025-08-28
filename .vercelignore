@@ -1,0 +1,9 @@
+# Vercel Ignore File
+node_modules
+.git
+.gitignore
+README.md
+.env*
+scripts/puppeteer*
+scripts/start-seo-server.command
+scripts/serve-static.sh
