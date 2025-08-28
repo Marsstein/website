@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build:vercel-seo",
+  "buildCommand": "VERCEL_SSR=false npm run build:vercel-ssr",
   "outputDirectory": "dist",
   "framework": null,
   "build": {
