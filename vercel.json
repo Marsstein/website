@@ -1,13 +1,11 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build:vercel-puppeteer",
+  "buildCommand": "npm run build:vercel-seo",
   "outputDirectory": "dist",
   "framework": null,
   "build": {
     "env": {
-      "NODE_OPTIONS": "--max-old-space-size=8192",
-      "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
-      "CHROMIUM_PATH": "/opt/chromium"
+      "NODE_OPTIONS": "--max-old-space-size=4096"
     }
   },
   "redirects": [
@@ -58,22 +56,22 @@
     },
     {
       "source": "/zertifizierung/tisax",
-      "destination": "/tisax-zertifizierung",
+      "destination": "/tisax-compliance",
       "statusCode": 301
     },
     {
-      "source": "/dsgvo-compliance",
+      "source": "/compliance/dsgvo",
       "destination": "/dsgvo",
       "statusCode": 301
     },
     {
-      "source": "/iso-27001-compliance",
-      "destination": "/iso-27001-zertifizierung",
+      "source": "/compliance/eu-ai-act",
+      "destination": "/eu-ai-act",
       "statusCode": 301
     },
     {
-      "source": "/eu-ai-act-compliance",
-      "destination": "/eu-ai-act",
+      "source": "/compliance/iso-27001",
+      "destination": "/iso-27001-zertifizierung",
       "statusCode": 301
     },
     {
@@ -89,11 +87,6 @@
   ],
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "api/og.js": {
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
       "source": "/assets/(.*)",
