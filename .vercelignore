@@ -7,3 +7,6 @@ README.md
 scripts/puppeteer*
 scripts/start-seo-server.command
 scripts/serve-static.sh
+
+# Exclude API directory to prevent Edge Function conflicts
+api/
