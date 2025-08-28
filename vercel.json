@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build:vercel-seo",
+  "buildCommand": "npm run build:react-content",
   "outputDirectory": "dist",
   "framework": null,
   "build": {

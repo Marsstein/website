@@ -28,7 +28,9 @@
     "build:vercel-seo": "node scripts/build-vercel-seo.js",
     "build:vercel-puppeteer": "node scripts/build-vercel-puppeteer.js",
     "build:vercel-static": "node scripts/build-vercel-static.js",
-    "build:vercel-ssr": "node scripts/build-vercel-ssr.js"
+    "build:vercel-ssr": "node scripts/build-vercel-ssr.js",
+    "build:static": "node scripts/prerender-static.js",
+    "build:react-content": "node scripts/prerender-react-content.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

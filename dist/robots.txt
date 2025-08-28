@@ -1,10 +1,8 @@
-# Marsstein Robots.txt
+# Marsstein Robots
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /_next/
-Disallow: /assets/*.map
 
 # Sitemaps
 Sitemap: https://marsstein.ai/sitemap.xml
