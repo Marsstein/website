@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build:react-content",
+  "buildCommand": "npm run build:react-content-full",
   "outputDirectory": "dist",
   "framework": null,
   "build": {
