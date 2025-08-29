@@ -8,38 +8,10 @@ const PricingPage = () => {
     "@type": "Product",
     "name": "Marsstein Compliance Platform",
     "description": "Compliance Management Software für DSGVO, ISO 27001 und EU AI Act",
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Starter",
-        "price": "99",
-        "priceCurrency": "EUR",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "99",
-          "priceCurrency": "EUR",
-          "unitText": "MONTH"
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Professional",
-        "price": "299",
-        "priceCurrency": "EUR",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "299",
-          "priceCurrency": "EUR",
-          "unitText": "MONTH"
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Enterprise",
-        "price": "Auf Anfrage",
-        "priceCurrency": "EUR"
-      }
-    ]
+    "brand": {
+      "@type": "Brand",
+      "name": "Marsstein"
+    }
   };
 
   const plans = [
@@ -97,10 +69,10 @@ const PricingPage = () => {
   return (
     <>
       <SEOHead
-        title="Preise & Pakete – Compliance Software ab 99€/Monat"
-        description="Transparente Preise für Marsstein Compliance Software. Starter ab 99€, Professional 299€, Enterprise auf Anfrage. Jetzt 30 Tage testen!"
+        title="Preise & Pakete – Compliance Software"
+        description="Transparente Preise für Marsstein Compliance Software. Wählen Sie das passende Paket für Ihre Compliance-Anforderungen. Jetzt 30 Tage kostenlos testen!"
         canonical="/pricing"
-        keywords="Compliance Software Preise, DSGVO Software Kosten, ISO 27001 Tool Preise"
+        structuredData={structuredData}
       />
       
       <div className="min-h-screen bg-gray-50 py-16">

@@ -289,17 +289,7 @@ function generateHTMLWithAssets(route, routeData, cssPath, jsPath) {
       "description": routeData.description,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "127"
-      },
+      "isAccessibleForFree": true,
       "creator": {
         "@type": "Organization",
         "name": "Marsstein GmbH",

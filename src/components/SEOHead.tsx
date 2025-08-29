@@ -23,6 +23,37 @@ const SEOHead: React.FC<SEOProps> = ({
   const siteUrl = 'https://marsstein.com';
   const fullTitle = `${title} | Marsstein`;
   
+  // Default organization structured data
+  const defaultOrganizationData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Marsstein GmbH",
+    "url": siteUrl,
+    "logo": `${siteUrl}/marsstein-logo.png`,
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+4917670560292",
+      "contactType": "customer service",
+      "availableLanguage": ["German", "English"],
+      "email": "info@marsstein.ai"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bücklestraße 3",
+      "addressLocality": "Konstanz",
+      "postalCode": "78467",
+      "addressCountry": "DE"
+    },
+    "email": "info@marsstein.ai",
+    "sameAs": [
+      "https://www.linkedin.com/company/marsstein/",
+      "https://www.instagram.com/marsstein.ai/"
+    ]
+  };
+
+  // Merge default organization data with any provided structured data
+  const mergedStructuredData = structuredData || defaultOrganizationData;
+  
   return (
     <Helmet>
       {/* Primary Meta Tags */}
@@ -45,13 +76,6 @@ const SEOHead: React.FC<SEOProps> = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={ogImageAlt} />
       
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@marsstein" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
-      
       {/* Theme Color */}
       <meta name="theme-color" content="#0B1D2A" />
       
@@ -60,9 +84,9 @@ const SEOHead: React.FC<SEOProps> = ({
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e24e1b" />
       
       {/* Structured Data */}
-      {structuredData && (
+      {mergedStructuredData && (
         <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
+          {JSON.stringify(mergedStructuredData)}
         </script>
       )}
     </Helmet>
