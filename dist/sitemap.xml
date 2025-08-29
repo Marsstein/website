@@ -265,7 +265,73 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://marsstein.com/wissen/branchen/automotive-datenschutz</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/datenschutz-arztpraxis</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/datenschutz-betriebsrat</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/datenschutz-homeoffice</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/datenschutz-kindergarten</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/datenschutz-pflege</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/dsgvo-vereine</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/dsgvo-vermieter</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/ecommerce-privacy</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://marsstein.com/wissen/branchen/edtech-privacy</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/fintech-compliance</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/gesundheitswesen-dsgvo</loc>
     <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -277,7 +343,55 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://marsstein.com/wissen/branchen/healthcare-dsgvo</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/industrie-4-0-datenschutz</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://marsstein.com/wissen/branchen/insurtech-compliance</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/logistics-compliance</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/pharma-compliance</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/produktion-datenschutz</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/proptech-compliance</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/saas-privacy-design</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.com/wissen/branchen/smart-grid-compliance</loc>
     <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
