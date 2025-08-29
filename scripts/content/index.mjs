@@ -5,10 +5,12 @@
 
 import compliance from './compliance/index.mjs';
 import branchen from './branchen/index.mjs';
+import wissen from './wissen/index.mjs';
 
 export default {
   compliance,
   branchen,
+  wissen,
   
   /**
    * Holt den Content für eine bestimmte Route
@@ -17,7 +19,7 @@ export default {
    */
   getContent: (route) => {
     // Suche in allen Kategorien
-    const registry = { compliance, branchen };
+    const registry = { compliance, branchen, wissen };
     for (const category of Object.values(registry)) {
       if (typeof category === 'function') continue;
       
@@ -36,7 +38,7 @@ export default {
    */
   getAllRoutes: () => {
     const routes = [];
-    const registry = { compliance, branchen };
+    const registry = { compliance, branchen, wissen };
     for (const category of Object.values(registry)) {
       if (typeof category === 'function') continue;
       
