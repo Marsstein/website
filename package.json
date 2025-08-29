@@ -32,7 +32,9 @@
     "build:static": "node scripts/prerender-static.js",
     "build:react-content": "node scripts/prerender-react-content.js",
     "build:react-full": "node scripts/prerender-enhanced.mjs",
-    "build:react-content-full": "node scripts/prerender-react-content-full.js"
+    "build:react-content-full": "node scripts/prerender-react-content-full.js",
+    "build:modular": "node scripts/prerender-react-content-full-modular.js",
+    "build:vite": "vite build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
