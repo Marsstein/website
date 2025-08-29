@@ -57,10 +57,26 @@ const routeMapping = {
   '/hinweisgeberschutzgesetz-compliance': '/hinweisgeberschutzgesetz',
 };
 
+// Extract asset paths from built index.html
+const extractAssetPaths = () => {
+  const indexPath = join(__dirname, '..', 'dist', 'index.html');
+  const indexHtml = readFileSync(indexPath, 'utf-8');
+  
+  // Extract CSS file
+  const cssMatch = indexHtml.match(/href="(\/assets\/index-[^"]+\.css)"/);
+  const cssPath = cssMatch ? cssMatch[1] : '/assets/index.css';
+  
+  // Extract main JS file
+  const jsMatch = indexHtml.match(/src="(\/assets\/index-[^"]+\.js)"/);
+  const jsPath = jsMatch ? jsMatch[1] : '/assets/index.js';
+  
+  return { cssPath, jsPath };
+};
+
 /**
  * Generiert vollständigen HTML-Code mit SEO-Tags
  */
-function generateHTML(route, pageContent) {
+function generateHTML(route, pageContent, assetPaths) {
   const { title, description, content } = pageContent;
   const baseUrl = 'https://marsstein.com';
   
@@ -155,13 +171,13 @@ function generateHTML(route, pageContent) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <!-- CSS Bundle -->
-    <link rel="stylesheet" href="/assets/index.css">
+    <link rel="stylesheet" href="${assetPaths.cssPath}">
 </head>
 <body>
     <div id="root">${content}</div>
     
     <!-- JavaScript Bundle -->
-    <script type="module" src="/assets/index.js"></script>
+    <script type="module" src="${assetPaths.jsPath}"></script>
     
     <!-- Plausible Analytics -->
     <script defer data-domain="marsstein.com" src="https://plausible.io/js/script.js"></script>
@@ -209,17 +225,23 @@ async function build() {
     console.log('📚 Lade Content-Module...');
     const contentModules = await loadContentModules();
     
-    // 3. Lade Routen
+    // 3. Extrahiere Asset-Pfade aus der gebauten index.html
+    console.log('🔍 Extrahiere Asset-Pfade...');
+    const assetPaths = extractAssetPaths();
+    console.log(`   ✅ CSS: ${assetPaths.cssPath}`);
+    console.log(`   ✅ JS: ${assetPaths.jsPath}`);
+    
+    // 4. Lade Routen
     const routesPath = join(__dirname, '..', 'prerender-routes-simple.json');
     const routes = JSON.parse(readFileSync(routesPath, 'utf-8'));
     
-    // 4. Generiere HTML für jede Route
+    // 5. Generiere HTML für jede Route
     console.log('\n🎨 Generiere HTML für Routen...');
     let processedCount = 0;
     
     for (const route of routes) {
       const content = getRouteContent(route, contentModules);
-      const html = generateHTML(route, content);
+      const html = generateHTML(route, content, assetPaths);
       
       // Bestimme Dateipfad
       const mappedRoute = routeMapping[route] || route;
@@ -251,7 +273,7 @@ async function build() {
       }
     }
     
-    // 5. Generiere Sitemap
+    // 6. Generiere Sitemap
     console.log('\n🗺️  Generiere Sitemap...');
     const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -269,7 +291,7 @@ ${routes.map(route => {
     
     writeFileSync(join(__dirname, '..', 'dist', 'sitemap.xml'), sitemapContent);
     
-    // 6. Generiere robots.txt
+    // 7. Generiere robots.txt
     console.log('🤖 Generiere robots.txt...');
     const robotsContent = `User-agent: *
 Allow: /
