@@ -279,7 +279,7 @@ Nach der Implementierung sollten alle wichtigen Seiten:
 ### 📋 Zu implementieren (60 Seiten):
 
 #### Compliance (9 Seiten):
-- [ ] TISAX (`/tisax-compliance`)
+- [x] TISAX (`/tisax-compliance`)
 - [ ] DSGVO (`/dsgvo-compliance` → `/dsgvo`)
 - [ ] NIS2 (`/nis2-compliance` → `/nis2`)
 - [ ] EU AI Act (`/eu-ai-act-compliance` → `/eu-ai-act`)
@@ -309,16 +309,16 @@ Nach der Implementierung sollten alle wichtigen Seiten:
 - [ ] Vendor Assessment Template
 
 #### Branchen (10 Seiten):
-- [ ] Branchen Übersicht
-- [ ] Automotive
-- [ ] E-Commerce
-- [ ] Energie
-- [ ] Finanzdienstleister
-- [ ] Gesundheitswesen
-- [ ] Lebensmittel
-- [ ] Logistik
-- [ ] Produktion
-- [ ] SaaS-Unternehmen
+- [x] Branchen Übersicht
+- [x] Automotive
+- [x] E-Commerce
+- [x] Energie
+- [x] Finanzdienstleister
+- [x] Gesundheitswesen
+- [x] Lebensmittel
+- [x] Logistik
+- [x] Produktion
+- [x] SaaS-Unternehmen
 
 #### Tools (5 Seiten):
 - [ ] Tools Übersicht
@@ -353,8 +353,8 @@ Nach der Implementierung sollten alle wichtigen Seiten:
 
 ### 📊 Status:
 - **Gesamt**: 64 Seiten
-- **Implementiert**: 4 Seiten (6.25%)
-- **Ausstehend**: 60 Seiten (93.75%)
+- **Implementiert**: 15 Seiten (23.4%)
+- **Ausstehend**: 49 Seiten (76.6%)
 
 ## Quick Start: Nächste Seite implementieren
 
