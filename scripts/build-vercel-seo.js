@@ -265,13 +265,6 @@ function generateHTMLWithAssets(route, routeData, cssPath, jsPath) {
     <meta property="og:site_name" content="Marsstein">
     <meta property="og:locale" content="de_DE">
     
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="${fullUrl}">
-    <meta property="twitter:title" content="${routeData.title}">
-    <meta property="twitter:description" content="${routeData.description}">
-    <meta property="twitter:image" content="${routeData.ogImage}">
-    <meta property="twitter:site" content="@marsstein">
     
     <!-- Additional Meta Tags -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">

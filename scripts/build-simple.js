@@ -49,11 +49,6 @@ async function addSEOTags() {
     <meta property="og:url" content="https://marsstein.ai">
     <meta property="og:image" content="https://marsstein.ai/og-image.png">
     
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Marsstein - KI-native Compliance Platform">
-    <meta name="twitter:description" content="Revolutionäre KI-gestützte Compliance-Platform für DSGVO, ISO 27001, EU AI Act.">
-    <meta name="twitter:image" content="https://marsstein.ai/og-image.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://marsstein.ai">
