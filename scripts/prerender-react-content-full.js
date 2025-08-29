@@ -32,7 +32,7 @@ const routeMapping = {
  */
 const fullPageContent = {
   '/iso-27001-zertifizierung': () => ({
-    title: 'ISO 27001-Zertifizierung - Automatisiert & Rechtssicher | Marsstein',
+    title: 'ISO 27001-Zertifizierung - Automatisiert & Rechtssicher',
     description: 'ISO 27001 Zertifizierung in nur 6 Monaten mit KI-Unterstützung. 75% Zeitersparnis, 99.2% Erfolgsquote. Schützen Sie Ihr Unternehmen vor Cyber-Bedrohungen.',
     content: `
       <main class="min-h-screen">
@@ -1048,27 +1048,69 @@ async function formatHTML(html) {
 }
 
 /**
- * Generate HTML for a route
+ * Generate HTML for a route with complete SEO tags
  */
 async function generateHTML(route, baseHTML) {
   const content = getRouteContent(route);
+  const siteUrl = 'https://marsstein.ai';
+  const fullTitle = `${content.title} | Marsstein`;
   
   // Clone base HTML
   let html = baseHTML;
   
-  // Update meta tags
-  html = html.replace(/<title>.*?<\/title>/, `<title>${content.title}</title>`);
+  // Update title tag
+  html = html.replace(/<title>.*?<\/title>/, `<title>${fullTitle}</title>`);
   
-  // Add meta description if not present
+  // Prepare all SEO meta tags according to SEO-ARCHITECTURE.md
+  const seoTags = `
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="${fullTitle}">
+    <meta name="description" content="${content.description}">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="${siteUrl}${route}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="Marsstein">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="${siteUrl}${route}">
+    <meta property="og:title" content="${fullTitle}">
+    <meta property="og:description" content="${content.description}">
+    <meta property="og:image" content="${siteUrl}/og-image-marsstein.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Marsstein - Compliance und Datenschutz Lösungen">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@marsstein">
+    <meta name="twitter:title" content="${fullTitle}">
+    <meta name="twitter:description" content="${content.description}">
+    <meta name="twitter:image" content="${siteUrl}/og-image-marsstein.jpg">
+    
+    <!-- Additional SEO Tags -->
+    <meta name="author" content="Marsstein GmbH">
+    <meta name="publisher" content="Marsstein GmbH">
+    <meta name="copyright" content="Marsstein GmbH">
+    <meta name="language" content="de">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="7 days">
+  `;
+  
+  // Check if meta description already exists and update/add accordingly
   if (!html.includes('name="description"')) {
     html = html.replace(
-      '</head>',
-      `<meta name="description" content="${content.description}">\n</head>`
+      '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+      `<meta name="viewport" content="width=device-width, initial-scale=1.0" />${seoTags}`
     );
   } else {
+    // Replace existing description and add other tags
     html = html.replace(
       /<meta name="description" content="[^"]*">/,
-      `<meta name="description" content="${content.description}">`
+      seoTags
     );
   }
   
@@ -1078,20 +1120,65 @@ async function generateHTML(route, baseHTML) {
     `<div id="root">${content.content}</div>`
   );
   
-  // Add structured data
+  // Add structured data (enhanced version)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": content.title,
+    "name": fullTitle,
     "description": content.description,
-    "url": `https://marsstein.ai${route}`,
+    "url": `${siteUrl}${route}`,
+    "inLanguage": "de-DE",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Marsstein",
+      "url": siteUrl,
+      "description": "KI-gestützte Compliance-Platform für DSGVO, ISO 27001 und EU AI Act"
+    },
     "provider": {
       "@type": "Organization",
       "name": "Marsstein GmbH",
-      "url": "https://marsstein.ai",
-      "logo": "https://marsstein.ai/logomarsstein.png"
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/logomarsstein.png`,
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/marsstein",
+        "https://twitter.com/marsstein"
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": route.split('/').filter(Boolean).map((segment, index, array) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": segment.charAt(0).toUpperCase() + segment.slice(1),
+        "item": `${siteUrl}/${array.slice(0, index + 1).join('/')}`
+      }))
     }
   };
+  
+  // Special structured data for ISO 27001 page
+  if (route === '/iso-27001-zertifizierung') {
+    structuredData['@type'] = ['WebPage', 'Service'];
+    structuredData.serviceType = 'ISO 27001 Zertifizierung';
+    structuredData.provider['@type'] = ['Organization', 'LocalBusiness'];
+    structuredData.offers = {
+      "@type": "Offer",
+      "name": "ISO 27001 Zertifizierungsberatung",
+      "description": "Vollständige ISO 27001 Zertifizierung in 6 Monaten",
+      "price": "499",
+      "priceCurrency": "EUR",
+      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Marsstein GmbH"
+      }
+    };
+  }
   
   html = html.replace(
     '</head>',
