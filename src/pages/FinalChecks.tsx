@@ -64,8 +64,8 @@ const FinalChecks = () => {
           description: 'Transparente Preisübersicht für alle Marsstein-Pakete. Vergleichen Sie unsere Starter-, Professional- und Enterprise-Lösungen mit detaillierten Feature-Listen und finden Sie das passende Paket für Ihr Unternehmen.',
           priority: 'high',
           available: true,
-          titleTag: 'Preise – Compliance Management ab 149€/Monat',
-          metaDescription: 'Transparente Preise für Compliance Management. Starter ab 149€, Professional ab 499€, Enterprise individuell. ✓ Kostenlose Demo ✓ Keine Einrichtungsgebühr.',
+          titleTag: 'Preise – Compliance Management Software',
+          metaDescription: 'Transparente Preise für Compliance Management Software. Verschiedene Pakete für jede Unternehmensgröße. ✓ Kostenlose Demo ✓ Keine Einrichtungsgebühr.',
           indexStatus: 'index',
           ...createCheckItems('pricing', true)
         },

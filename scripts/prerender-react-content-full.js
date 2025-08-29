@@ -1145,8 +1145,8 @@ async function generateHTML(route, baseHTML) {
         "height": 512
       },
       "sameAs": [
-        "https://www.linkedin.com/company/marsstein",
-        "https://twitter.com/marsstein"
+        "https://www.linkedin.com/company/marsstein/",
+        "https://www.instagram.com/marsstein.ai/"
       ]
     },
     "breadcrumb": {
@@ -1165,19 +1165,6 @@ async function generateHTML(route, baseHTML) {
     structuredData['@type'] = ['WebPage', 'Service'];
     structuredData.serviceType = 'ISO 27001 Zertifizierung';
     structuredData.provider['@type'] = ['Organization', 'LocalBusiness'];
-    structuredData.offers = {
-      "@type": "Offer",
-      "name": "ISO 27001 Zertifizierungsberatung",
-      "description": "Vollständige ISO 27001 Zertifizierung in 6 Monaten",
-      "price": "499",
-      "priceCurrency": "EUR",
-      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
-      "availability": "https://schema.org/InStock",
-      "seller": {
-        "@type": "Organization",
-        "name": "Marsstein GmbH"
-      }
-    };
   }
   
   html = html.replace(

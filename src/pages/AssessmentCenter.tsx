@@ -34,16 +34,7 @@ const AssessmentCenter = () => {
       "description": "Umfassendes Assessment Center für DSGVO, ISO 27001, SOC 2 und KI-Risiko Bewertungen mit interaktiven Tools",
       "applicationCategory": "Assessment Platform",
       "url": "https://marsstein.com/assessment-center",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "127"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      }
+      "isAccessibleForFree": true
     },
     {
       "@context": "https://schema.org",
