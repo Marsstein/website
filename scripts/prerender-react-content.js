@@ -222,6 +222,236 @@ const routeConfigs = {
     ]
   }),
   
+  '/iso-27001-zertifizierung': () => pageTemplates.compliance('/iso-27001-zertifizierung', {
+    title: 'ISO 27001 Zertifizierung',
+    regulation: 'ISO 27001',
+    features: [
+      {
+        title: 'Gap-Analyse',
+        description: 'Automatisierte Identifizierung von Lücken zu ISO 27001 Anforderungen'
+      },
+      {
+        title: 'ISMS Dokumentation',
+        description: 'Vollständige Dokumentation Ihres Informationssicherheitsmanagementsystems'
+      },
+      {
+        title: 'Risikobewertung',
+        description: 'Strukturierte Risikoanalyse nach ISO 27001 Standards'
+      },
+      {
+        title: 'Audit-Vorbereitung',
+        description: 'Optimale Vorbereitung auf Ihr ISO 27001 Zertifizierungsaudit'
+      }
+    ]
+  }),
+
+  '/iso-27017-zertifizierung': () => pageTemplates.compliance('/iso-27017-zertifizierung', {
+    title: 'ISO 27017 Zertifizierung für Cloud-Sicherheit',
+    regulation: 'ISO 27017',
+    features: [
+      {
+        title: 'Cloud-Sicherheitskontrolle',
+        description: 'Spezifische Kontrollen für Cloud-Dienste und -Anbieter'
+      },
+      {
+        title: 'Shared Responsibility',
+        description: 'Klare Definition der Verantwortlichkeiten zwischen Cloud-Anbieter und -Nutzer'
+      },
+      {
+        title: 'Compliance-Mapping',
+        description: 'Abbildung Ihrer Cloud-Infrastruktur auf ISO 27017 Anforderungen'
+      },
+      {
+        title: 'Kontinuierliche Überwachung',
+        description: 'Laufende Überprüfung der Cloud-Sicherheitsmaßnahmen'
+      }
+    ]
+  }),
+
+  '/iso-27018-zertifizierung': () => pageTemplates.compliance('/iso-27018-zertifizierung', {
+    title: 'ISO 27018 Zertifizierung für Datenschutz in der Cloud',
+    regulation: 'ISO 27018',
+    features: [
+      {
+        title: 'PII-Schutz',
+        description: 'Schutz personenbezogener Daten in der Cloud'
+      },
+      {
+        title: 'Transparenz & Kontrolle',
+        description: 'Vollständige Transparenz über Datenverarbeitung in der Cloud'
+      },
+      {
+        title: 'Datenschutz-Compliance',
+        description: 'Nachweis der Einhaltung internationaler Datenschutzstandards'
+      },
+      {
+        title: 'Audit-Trail',
+        description: 'Lückenlose Dokumentation aller Datenverarbeitungsprozesse'
+      }
+    ]
+  }),
+
+  '/soc2-zertifizierung': () => pageTemplates.compliance('/soc2-zertifizierung', {
+    title: 'SOC 2 Zertifizierung',
+    regulation: 'SOC 2',
+    features: [
+      {
+        title: 'Trust Service Criteria',
+        description: 'Erfüllung aller fünf TSC: Sicherheit, Verfügbarkeit, Integrität, Vertraulichkeit, Datenschutz'
+      },
+      {
+        title: 'Kontrollumgebung',
+        description: 'Aufbau und Dokumentation effektiver interner Kontrollen'
+      },
+      {
+        title: 'Kontinuierliche Überwachung',
+        description: 'Laufende Überprüfung und Optimierung Ihrer SOC 2 Compliance'
+      },
+      {
+        title: 'Audit-Berichte',
+        description: 'Professionelle Berichte für Typ I und Typ II Audits'
+      }
+    ]
+  }),
+
+  '/tisax-compliance': () => pageTemplates.compliance('/tisax-compliance', {
+    title: 'TISAX Compliance für die Automobilindustrie',
+    regulation: 'TISAX',
+    features: [
+      {
+        title: 'VDA ISA Katalog',
+        description: 'Vollständige Abdeckung aller VDA ISA Anforderungen'
+      },
+      {
+        title: 'Prototypenschutz',
+        description: 'Spezielle Maßnahmen für den Schutz von Prototypen'
+      },
+      {
+        title: 'Lieferantenintegration',
+        description: 'Nahtlose Integration in die Automotive-Lieferkette'
+      },
+      {
+        title: 'Assessment-Vorbereitung',
+        description: 'Optimale Vorbereitung auf Ihr TISAX Assessment'
+      }
+    ]
+  }),
+
+  '/nis2-compliance': () => pageTemplates.compliance('/nis2-compliance', {
+    title: 'NIS2 Compliance',
+    regulation: 'NIS2-Richtlinie',
+    features: [
+      {
+        title: 'Risikomanagement',
+        description: 'Umfassendes Risikomanagement nach NIS2 Vorgaben'
+      },
+      {
+        title: 'Incident Response',
+        description: 'Strukturierte Prozesse für Sicherheitsvorfälle'
+      },
+      {
+        title: 'Supply Chain Security',
+        description: 'Sicherheit in der gesamten Lieferkette'
+      },
+      {
+        title: 'Behördenmeldungen',
+        description: 'Automatisierte Meldepflichten an zuständige Behörden'
+      }
+    ]
+  }),
+
+  '/geldwaeschegesetz': () => pageTemplates.compliance('/geldwaeschegesetz', {
+    title: 'Geldwäschegesetz Compliance',
+    regulation: 'GwG',
+    features: [
+      {
+        title: 'KYC-Prozesse',
+        description: 'Automatisierte Know-Your-Customer Verfahren'
+      },
+      {
+        title: 'Risikobewertung',
+        description: 'Kontinuierliche Bewertung von Geldwäscherisiken'
+      },
+      {
+        title: 'Verdachtsmeldungen',
+        description: 'Strukturierte Prozesse für Verdachtsmeldungen'
+      },
+      {
+        title: 'Dokumentation',
+        description: 'Revisionssichere Dokumentation aller Prüfungen'
+      }
+    ]
+  }),
+
+  '/hinweisgeberschutzgesetz': () => pageTemplates.compliance('/hinweisgeberschutzgesetz', {
+    title: 'Hinweisgeberschutzgesetz Compliance',
+    regulation: 'HinSchG',
+    features: [
+      {
+        title: 'Meldekanäle',
+        description: 'Sichere interne und externe Meldekanäle'
+      },
+      {
+        title: 'Vertraulichkeit',
+        description: 'Gewährleistung der Vertraulichkeit von Hinweisgebern'
+      },
+      {
+        title: 'Fallmanagement',
+        description: 'Strukturierte Bearbeitung von Hinweisen'
+      },
+      {
+        title: 'Dokumentation',
+        description: 'Rechtskonforme Dokumentation aller Meldungen'
+      }
+    ]
+  }),
+
+  '/dsg-ekd': () => pageTemplates.compliance('/dsg-ekd', {
+    title: 'DSG-EKD Compliance für kirchliche Einrichtungen',
+    regulation: 'DSG-EKD',
+    features: [
+      {
+        title: 'Kirchenspezifische Anforderungen',
+        description: 'Erfüllung aller Anforderungen des kirchlichen Datenschutzes'
+      },
+      {
+        title: 'Verfahrensverzeichnisse',
+        description: 'Spezielle Verzeichnisse für kirchliche Verarbeitungstätigkeiten'
+      },
+      {
+        title: 'Betroffenenrechte',
+        description: 'Management von Betroffenenrechten im kirchlichen Kontext'
+      },
+      {
+        title: 'Schulungen',
+        description: 'Zielgruppenspezifische Datenschutzschulungen'
+      }
+    ]
+  }),
+
+  '/kdg': () => pageTemplates.compliance('/kdg', {
+    title: 'KDG Compliance für katholische Einrichtungen',
+    regulation: 'KDG',
+    features: [
+      {
+        title: 'Katholischer Datenschutz',
+        description: 'Vollständige Erfüllung des Katholischen Datenschutzgesetzes'
+      },
+      {
+        title: 'Diözesane Anforderungen',
+        description: 'Berücksichtigung diözesanspezifischer Vorgaben'
+      },
+      {
+        title: 'Dokumentation',
+        description: 'Rechtskonforme Dokumentation für kirchliche Stellen'
+      },
+      {
+        title: 'Beratung',
+        description: 'Expertenberatung zu KDG-spezifischen Fragen'
+      }
+    ]
+  }),
+  
   // Add more route configurations as needed
 };
 
