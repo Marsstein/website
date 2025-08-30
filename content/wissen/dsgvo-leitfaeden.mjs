@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/dsgvo-leitfaeden',
   title: 'DSGVO Leitfäden: Praktische Anleitungen für Ihre Compliance',
-  description: 'Über 20 praxiserprobte Schritt-für-Schritt-Anleitungen für Ihre DSGVO-Compliance. 
-                Von Einsteiger-Guides bis zu Experten-Themen – mit Vorlagen u',
+  description: 'Über 20 praxiserprobte Schritt-für-Schritt-Anleitungen für Ihre DSGVO-Compliance.                  Von Einsteiger-Guides bis zu Experten-Themen – mit Vorlagen u',
   content: `
     <>
       <SEOHead>

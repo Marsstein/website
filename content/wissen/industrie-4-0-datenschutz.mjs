@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/industrie-4-0-datenschutz',
   title: 'Industrie 4 0 Datenschutz',
-  description: 'Implementieren Sie umfassende Datenschutz-Standards für Ihre Smart Factory. 
-          Von IoT-Sensornetzen über Edge Computing bis hin zu KI-gestützter Produkt',
+  description: 'Implementieren Sie umfassende Datenschutz-Standards für Ihre Smart Factory.            Von IoT-Sensornetzen über Edge Computing bis hin zu KI-gestützter Produkt',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -490,7 +489,7 @@ class IndustrialFederatedLearning {
               <div class="bg-gray-50 p-4 rounded-lg">
                 <h4 class="font-semibold mb-2">Data Governance Engine</h4>
                 <pre class="text-xs bg-white p-3 rounded border overflow-x-auto">
-{`// Production Data Governance
+{\`// Production Data Governance
 class ProductionDataGovernance {
   constructor() 
 
@@ -504,7 +503,7 @@ class ProductionDataGovernance {
       .validatePurpose(classification, context.purpose);
     
     if (!purposeCheck.allowed) {
-      throw new Error(\`Purpose limitation violation: \${purposeCheck.reason}\`);
+      throw new Error(\\\`Purpose limitation violation: \\\${purposeCheck.reason}\\\`);
     }
     
     // 3. Data Lineage Documentation
@@ -551,7 +550,7 @@ class ProductionDataGovernance {
     
     return report;
   }
-}`}
+}\`}
                 </pre>
               </div>
             </div>

@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/datenschutz-pflege',
   title: 'Datenschutz Pflege',
-  description: 'Rechtssichere DSGVO-Compliance für Pflegeheime, ambulante Dienste und Betreuungseinrichtungen. 
-                    Von der Einwilligung bis zur sicheren Pflege',
+  description: 'Rechtssichere DSGVO-Compliance für Pflegeheime, ambulante Dienste und Betreuungseinrichtungen.                      Von der Einwilligung bis zur sicheren Pflege',
   content: `) => ;
   }, []);
   
@@ -18,7 +17,7 @@ export default {
   
   const scrollToSection = (sectionId: string) => {
     // Update URL with hash
-    window.history.pushState(null, '', `#${sectionId}`);
+    window.history.pushState(null, '', \`#\${sectionId}\`);
     
     const element = document.getElementById(sectionId);
     if (element) {
@@ -245,7 +244,7 @@ export default {
           'Nachträgliche Information sobald möglich',
           'Beschränkung auf unbedingt erforderliche Daten'
         ],
-        template: `
+        template: \`
 // Notfall-Datenverarbeitung in Pflegeeinrichtungen
 const pflegeNotfallProtokoll = {
   notfallId: generateNotfallId(),
@@ -294,7 +293,7 @@ const pflegeNotfallProtokoll = {
     }
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -311,7 +310,7 @@ const pflegeNotfallProtokoll = {
           'Angehörigen-Kommunikation (Opt-in)',
           'Qualitätssicherung (Anonymisiert)'
         ],
-        technical: `
+        technical: \`
 // Modulares Einwilligungsmanagement Pflegeheim
 const pflegeheimEinwilligung = {
   grundversorgung: {
@@ -349,7 +348,7 @@ const pflegeheimEinwilligung = {
     anonymisierung: 'vollständig_nach_wissenschaftlichen_standards'
   }
 };
-        `
+        \`
       }
     },
     {
@@ -363,7 +362,7 @@ const pflegeheimEinwilligung = {
           'Video-Calls (Terminbasiert)',
           'Notfall-Benachrichtigungen (Immer aktiv)'
         ],
-        technical: `
+        technical: \`
 // Sichere Angehörigen-Kommunikation
 const angehörigenApp = {
   sessionManagement: {
@@ -401,7 +400,7 @@ const angehörigenApp = {
     angehörigenKontrolle: 'granulare_einstellungen'
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -855,7 +854,7 @@ const angehörigenApp = {
                   <button
                     key={item.id}
                    }
-                    aria-label=Zu ${item.label} springen
+                    aria-label=Zu \${item.label} springen
                     class=
                   >
                     <item.icon class= ></item>
@@ -1038,16 +1037,16 @@ const angehörigenApp = {
                           {requirement.realWorldScenario && (
                             <div class="space-y-6">
                               <button
-                               ` ? null : `legal-${index}`)}
+                               \` ? null : \`legal-\${index}\`)}
                                 class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                               >
                                 <Lightbulb class="h-4 w-4" ></Lightbulb>
                                 Praxis-Szenario anzeigen
                                 <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                  expandedSection === `legal-${index}` && "rotate-180")} ></ChevronDown>
+                                  expandedSection === \`legal-\${index}\` && "rotate-180")} ></ChevronDown>
                               </button>
                               
-                              {expandedSection === `legal-${index}` && (
+                              {expandedSection === \`legal-\${index}\` && (
                                 <motion.div
                                   initial={{ opacity: 0, height: 0 }}
                                   animate={{ opacity: 1, height: 'auto' }}
@@ -1291,16 +1290,16 @@ const angehörigenApp = {
 
                         <div>
                           <button
-                           ` ? null : `consent-${index}`)}
+                           \` ? null : \`consent-\${index}\`)}
                             class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                           >
                             <Code class="h-4 w-4" ></Code>
                             Technische Implementation
                             <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                              expandedSection === `consent-${index}` && "rotate-180")} ></ChevronDown>
+                              expandedSection === \`consent-\${index}\` && "rotate-180")} ></ChevronDown>
                           </button>
                           
-                          {expandedSection === `consent-${index}` && (
+                          {expandedSection === \`consent-\${index}\` && (
                             <motion.div
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: 'auto' }}
@@ -1657,7 +1656,7 @@ const angehörigenApp = {
                         <h4 class="font-semibold mb-3">{section.category}</h4>
                         <div>
                           {section.items.map((item, itemIndex) => {
-                            const itemId = `${sectionIndex}-${itemIndex}`;
+                            const itemId = \`\${sectionIndex}-\${itemIndex}\`;
                             const isChecked = checkedItems.has(itemId);
                             return (
                               <div> toggleChecklistItem(itemId)}

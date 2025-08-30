@@ -158,11 +158,21 @@ function createContentModule(route, content) {
     descMatch[1].trim().substring(0, 160) : 
     `${title} - Compliance-Automatisierung mit KI. Marsstein GmbH.`;
   
+  // Escape single quotes and remove line breaks in title and description
+  const safeTitle = title.replace(/'/g, "\\'").replace(/\n/g, ' ');
+  const safeDescription = description.replace(/'/g, "\\'").replace(/\n/g, ' ').trim();
+  
+  // Escape backticks and dollar signs in content to avoid breaking template literals
+  const safeContent = content
+    .replace(/\\/g, '\\\\')  // Escape backslashes first
+    .replace(/`/g, '\\`')    // Escape backticks
+    .replace(/\${/g, '\\${'); // Escape template literal expressions
+  
   return `export default {
   route: '${route}',
-  title: '${title}',
-  description: '${description}',
-  content: \`${content}\`
+  title: '${safeTitle}',
+  description: '${safeDescription}',
+  content: \`${safeContent}\`
 };`;
 }
 
@@ -225,13 +235,15 @@ async function generateAllModules() {
   for (const [category, modules] of Object.entries(modulesByCategory)) {
     const indexPath = path.join(__dirname, 'content', category, 'index.mjs');
     
-    const imports = modules.map(m => 
-      `import ${m.replace(/-/g, '_')} from './${m}.mjs';`
-    ).join('\n');
+    const imports = modules.map(m => {
+      const varName = m.replace(/-/g, '_').replace(/\./g, '_');
+      return `import ${varName} from './${m}.mjs';`;
+    }).join('\n');
     
-    const exports = modules.map(m => 
-      `  '${m}': ${m.replace(/-/g, '_')}`
-    ).join(',\n');
+    const exports = modules.map(m => {
+      const varName = m.replace(/-/g, '_').replace(/\./g, '_');
+      return `  '${m}': ${varName}`;
+    }).join(',\n');
     
     const indexContent = `${imports}
 

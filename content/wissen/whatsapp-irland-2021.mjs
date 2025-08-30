@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/rechtsprechung/whatsapp-irland-2021',
   title: 'Whatsapp Irland 2021',
-  description: 'Am 2. September 2021 verhängte die irische Datenschutzkommission (DPC) eine 
-                            Geldbuße von 225 Millionen Euro gegen WhatsApp Ireland ',
+  description: 'Am 2. September 2021 verhängte die irische Datenschutzkommission (DPC) eine                              Geldbuße von 225 Millionen Euro gegen WhatsApp Ireland',
   content: `) => document.head.removeChild(style);
   }, []);
 
@@ -119,7 +118,7 @@ export default {
     {
       title: "DSGVO-konforme Einwilligungsabfrage",
       language: "TypeScript",
-      code: `// Granulare Einwilligung für Messaging-Features
+      code: \`// Granulare Einwilligung für Messaging-Features
 interface ConsentRequest {
   messageData: boolean;
   metadata: boolean;
@@ -135,17 +134,17 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
       
     ]
   });
-};`
+};\`
     },
     {
       title: "Transparenz-Dashboard Component",
       language: "React",
-      code: `const PrivacyDashboard: React.FC = () => ;`
+      code: \`const PrivacyDashboard: React.FC = () => ;\`
     },
     {
       title: "DSGVO-konforme Datenminimierung",
       language: "TypeScript", 
-      code: `class MessagingDataProcessor {
+      code: \`class MessagingDataProcessor {
   // Automatische Löschung nach DSGVO-Prinzipien
   async processMessage(message: Message) {
     // Nur notwendige Metadaten speichern
@@ -169,7 +168,7 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
   async getDataProcessingInfo(userId: string) {
     return ;
   }
-}`
+}\`
     }
   ];
 
@@ -572,7 +571,7 @@ const requestMessagingConsent = async (): Promise<ConsentRequest> => {
                           <div class="w-full bg-slate-600 rounded-full h-2">
                             <div 
                               class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2 rounded-full"
-                              style={{ width: `${item.percentage}%` }}
+                              style={{ width: \`\${item.percentage}%\` }}
                             ></div>
                           </div>
                         </motion.div>

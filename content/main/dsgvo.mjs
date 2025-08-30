@@ -1,8 +1,7 @@
 export default {
   route: '/dsgvo',
   title: 'Dsgvo',
-  description: 'Die DSGVO gilt für alle Organisationen, die personenbezogene Daten von EU-Bürgern verarbeiten, 
-                              unabhängig vom Standort der Organi',
+  description: 'Die DSGVO gilt für alle Organisationen, die personenbezogene Daten von EU-Bürgern verarbeiten,                                unabhängig vom Standort der Organi',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -3282,8 +3281,8 @@ export default {
                               <div>
                                 <div class="flex items-center justify-between mb-4">
                                   <div class="flex items-center gap-3">
-                                    <div class=p-2 rounded-lg ${process.critical ? 'bg-red-500/20' : 'bg-emerald-500/20'}>
-                                      <IconComponent class=h-5 w-5 ${process.critical ? 'text-red-400' : 'text-emerald-400'} ></IconComponent>
+                                    <div class=p-2 rounded-lg \${process.critical ? 'bg-red-500/20' : 'bg-emerald-500/20'}>
+                                      <IconComponent class=h-5 w-5 \${process.critical ? 'text-red-400' : 'text-emerald-400'} ></IconComponent>
                                     </div>
                                     <h4 class="font-semibold text-white">{process.title}</h4>
                                   </div>

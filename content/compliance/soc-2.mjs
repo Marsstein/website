@@ -1,8 +1,7 @@
 export default {
   route: '/compliance/soc-2',
   title: 'SOC 2 Type II',
-  description: 'Der Goldstandard für SaaS-Unternehmen und Service Provider. 
-                Demonstrieren Sie die Wirksamkeit Ihrer Sicherheitskontrollen über einen Zeitraum v',
+  description: 'Der Goldstandard für SaaS-Unternehmen und Service Provider.                  Demonstrieren Sie die Wirksamkeit Ihrer Sicherheitskontrollen über einen Zeitraum v',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -746,16 +745,16 @@ export default {
                                             <li key={idx} class="flex items-start gap-2">
                                               <input 
                                                 type="checkbox" 
-                                                id=task-${index}-${idx}
-                                                checked={checkedItems[`task-${index}-${idx}`] || false}
-                                               -${idx}`)}
+                                                id=task-\${index}-\${idx}
+                                                checked={checkedItems[\`task-\${index}-\${idx}\`] || false}
+                                               -\${idx}\`)}
                                                 class="mt-1 text-blue-500"
                                               />
                                               <label 
-                                                for=task-${index}-${idx}
+                                                for=task-\${index}-\${idx}
                                                 class={cn(
                                                   "text-sm text-slate-300 cursor-pointer",
-                                                  checkedItems[`task-${index}-${idx}`] && "line-through opacity-60"
+                                                  checkedItems[\`task-\${index}-\${idx}\`] && "line-through opacity-60"
                                                 )}
                                               >
                                                 {task}

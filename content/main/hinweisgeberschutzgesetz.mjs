@@ -1,8 +1,7 @@
 export default {
   route: '/hinweisgeberschutzgesetz',
   title: 'Hinweisgeberschutzgesetz',
-  description: 'Umfassende Anleitung zur Implementierung des Hinweisgeberschutzgesetzes (HinSchG) 
-              mit praktischen Lösungen, rechtlichen Grundlagen und technische',
+  description: 'Umfassende Anleitung zur Implementierung des Hinweisgeberschutzgesetzes (HinSchG)                mit praktischen Lösungen, rechtlichen Grundlagen und technische',
   content: `) => cancelAnimationFrame(animationFrame);
   }, [end, duration, startCounting]);
 
@@ -118,7 +117,7 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
       <div class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
         <motion.div
           class="h-full bg-gradient-to-r from-blue-500 to-purple-600"
-          style={{ width: `${readingProgress}%` }}
+          style={{ width: \`\${readingProgress}%\` }}
           transition={{ duration: 0.1 }}
         ></motion>
       </div>
@@ -244,7 +243,7 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                     <motion.button
                       key={section.id}
                      
-                      class=w-full text-left p-3 rounded-lg transition-all duration-200 flex items-center space-x-3 ${
+                      class=w-full text-left p-3 rounded-lg transition-all duration-200 flex items-center space-x-3 \${
                         currentSection === section.id 
                           ? 'bg-blue-100 text-blue-700 shadow-md' 
                           : 'hover:bg-gray-50 text-gray-700'
@@ -252,7 +251,7 @@ const HinweisgeberschutzgesetzGuide: React.FC = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div class=p-2 rounded-lg bg-gradient-to-r ${section.color}>
+                      <div class=p-2 rounded-lg bg-gradient-to-r \${section.color}>
                         <section.icon class="h-4 w-4 text-white" ></section>
                       </div>
                       <div class="flex-1">

@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/rechtsprechung/meta-irland-2024',
   title: 'Meta Irland 2024',
-  description: 'Im Mai 2024 verhängte die irische Datenschutzkommission (DPC) eine Rekordstrafe 
-                            von 1.2 Milliarden Euro gegen Meta Ireland Limited ',
+  description: 'Im Mai 2024 verhängte die irische Datenschutzkommission (DPC) eine Rekordstrafe                              von 1.2 Milliarden Euro gegen Meta Ireland Limited',
   content: `) => ;
   }, []);
   const [activeTab, setActiveTab] = useState('overview');
@@ -445,7 +444,7 @@ export default {
                           <div class="w-full bg-slate-600 rounded-full h-2">
                             <div 
                               class="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full"
-                              style={{ width: `${item.percentage}%` }}
+                              style={{ width: \`\${item.percentage}%\` }}
                             ></div>
                           </div>
                         </motion.div>

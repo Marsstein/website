@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/smart-grid-compliance',
   title: 'Smart Grid Compliance',
-  description: 'Intelligente Stromnetze revolutionieren die Energiewirtschaft. Erfahren Sie, wie Sie Smart Grid-Technologien 
-                  DSGVO-konform implementieren und',
+  description: 'Intelligente Stromnetze revolutionieren die Energiewirtschaft. Erfahren Sie, wie Sie Smart Grid-Technologien                    DSGVO-konform implementieren und',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -139,7 +138,7 @@ export default {
                       <div class="flex justify-between items-center">
                         <span class="text-sm font-medium text-gray-700">{stat.label}</span>
                         <div class="flex items-center space-x-2">
-                          <span class=text-sm font-semibold ${stat.color}>{stat.value}%</span>
+                          <span class=text-sm font-semibold \${stat.color}>{stat.value}%</span>
                           <Badge variant="secondary" class="text-xs px-2 py-0.5">
                             {stat.trend}
                           </Badge>

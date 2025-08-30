@@ -1,8 +1,7 @@
 export default {
   route: '/eu-ai-act',
   title: 'EU AI Act',
-  description: 'Die weltweit erste umfassende KI-Regulierung. Risikobasierter Ansatz zum Schutz 
-                von Grundrechten bei gleichzeitiger Förderung von Innovation un',
+  description: 'Die weltweit erste umfassende KI-Regulierung. Risikobasierter Ansatz zum Schutz                  von Grundrechten bei gleichzeitiger Förderung von Innovation un',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -859,16 +858,16 @@ export default {
                                             <li key={idx} class="flex items-start gap-2">
                                               <input 
                                                 type="checkbox" 
-                                                id=impl-task-${index}-${idx}
-                                                checked={checkedItems[`impl-task-${index}-${idx}`] || false}
-                                               -${idx}`)}
+                                                id=impl-task-\${index}-\${idx}
+                                                checked={checkedItems[\`impl-task-\${index}-\${idx}\`] || false}
+                                               -\${idx}\`)}
                                                 class="mt-1 text-blue-500"
                                               />
                                               <label 
-                                                for=impl-task-${index}-${idx}
+                                                for=impl-task-\${index}-\${idx}
                                                 class={cn(
                                                   "text-sm text-slate-300 cursor-pointer",
-                                                  checkedItems[`impl-task-${index}-${idx}`] && "line-through opacity-60"
+                                                  checkedItems[\`impl-task-\${index}-\${idx}\`] && "line-through opacity-60"
                                                 )}
                                               >
                                                 {task}

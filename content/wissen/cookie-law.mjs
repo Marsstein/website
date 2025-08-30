@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/rechtsprechung/cookie-law',
   title: 'Cookie Law',
-  description: 'Die Cookie-Rechtsprechung hat sich in den letzten Jahren dramatisch entwickelt. 
-                            Von der ursprünglich lockeren Handhabung hin zu str',
+  description: 'Die Cookie-Rechtsprechung hat sich in den letzten Jahren dramatisch entwickelt.                              Von der ursprünglich lockeren Handhabung hin zu str',
   content: `) => {
       // Cleanup
       const scriptTag = document.querySelector('script[type="application/ld+json"]');
@@ -139,7 +138,7 @@ export default {
   const codeExamples = {
     essential: {
       title: 'Erforderliche Cookies - Implementierung',
-      code: `<!-- Session Cookie (Server-side) -->
+      code: \`<!-- Session Cookie (Server-side) -->
 <?php
 // Sichere Session-Konfiguration
 ini_set('session.cookie_httponly', 1);
@@ -157,11 +156,11 @@ function setSecureSetting(key, value) {
 
 // CSRF Token handling
 function getCSRFToken() 
-</script>`
+</script>\`
     },
     functional: {
       title: 'Funktionale Cookies - Mit Einwilligung',
-      code: `<!-- Consent-abhängige Funktionen -->
+      code: \`<!-- Consent-abhängige Funktionen -->
 <script>
 function initFunctionalFeatures() {
   // Prüfe Einwilligung
@@ -174,11 +173,11 @@ function hasConsent(category)
 document.addEventListener('cookie_consent_update', function(e) {
   if (e.detail.functional)  else 
 });
-</script>`
+</script>\`
     },
     analytics: {
       title: 'Analytics Cookies - Google Analytics 4',
-      code: `<!-- GA4 mit Consent Management -->
+      code: \`<!-- GA4 mit Consent Management -->
 <script>
 function initAnalytics() {
   if (hasConsent('analytics')) {
@@ -207,11 +206,11 @@ gtag('consent', 'default', {
   'analytics_storage': 'denied',
   'ad_storage': 'denied'
 });
-</script>`
+</script>\`
     },
     marketing: {
       title: 'Marketing Cookies - Facebook Pixel',
-      code: `<!-- Facebook Pixel mit Consent -->
+      code: \`<!-- Facebook Pixel mit Consent -->
 <script>
 function initMarketingPixels() {
   if (hasConsent('marketing')) {
@@ -239,7 +238,7 @@ function removeMarketingCookies() {
         c.trim().startsWith('_gcl')) 
   });
 }
-</script>`
+</script>\`
     }
   };
 

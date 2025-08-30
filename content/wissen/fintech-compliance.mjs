@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/fintech-compliance',
   title: 'FinTech Compliance Guide',
-  description: 'Implementieren Sie erstklassige Sicherheits- und Compliance-Standards für Ihre FinTech-Lösungen. 
-          Von Payment Processing über Open Banking bis zu Cryp',
+  description: 'Implementieren Sie erstklassige Sicherheits- und Compliance-Standards für Ihre FinTech-Lösungen.            Von Payment Processing über Open Banking bis zu Cryp',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -70,7 +69,7 @@ export default {
         <h4 class="text-xl font-bold text-gray-900 mb-6">Compliance Frameworks</h4>
         <div class="space-y-4">
           {complianceFrameworks.map((framework, index) => (
-            <div key={index} class=rounded-lg p-6 border-2 ${framework.color}>
+            <div key={index} class=rounded-lg p-6 border-2 \${framework.color}>
               <div class="flex justify-between items-start mb-3">
                 <div>
                   <h5 class="font-bold text-lg text-gray-900">{framework.name}</h5>
@@ -812,7 +811,7 @@ export default {
                   { risk: 'Low Risk', score: '0-49', color: 'text-green-600', action: 'Standard Processing' }
                 ].map((level, index) => (
                   <div key={index} class="flex items-center justify-between text-sm">
-                    <div class=font-bold ${level.color}>{level.risk}</div>
+                    <div class=font-bold \${level.color}>{level.risk}</div>
                     <div class="text-xs text-gray-500">{level.score}</div>
                   </div>
                 ))}
@@ -963,7 +962,7 @@ export default {
                 approach: [
                   '24/7 SOC: Dedicated Security Operations Center mit Crypto-Spezialisten',
                   'Disaster Recovery: 15-Sekunden Failover zwischen Rechenzentren',
-                  'Insurance Coverage: 100% Asset-Versicherung durch Lloyd\'s of London',
+                  'Insurance Coverage: 100% Asset-Versicherung durch Lloyd\\'s of London',
                   'Regulatory Liaison: Direkter Draht zu BaFin und anderen Aufsichtsbehörden'
                 ],
                 result: 'Banken-ähnliche Sicherheit und Verfügbarkeit für Crypto Assets',

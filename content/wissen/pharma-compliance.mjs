@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/pharma-compliance',
   title: 'Pharma Compliance',
-  description: 'Meistern Sie die komplexesten regulatorischen Anforderungen der Pharmaindustrie. 
-                    Von GMP über klinische Studien bis hin zur globalen Pharma',
+  description: 'Meistern Sie die komplexesten regulatorischen Anforderungen der Pharmaindustrie.                      Von GMP über klinische Studien bis hin zur globalen Pharma',
   content: `) => {
       document.title = 'Data Privacy Framework';
     };
@@ -27,7 +26,7 @@ export default {
   
   const scrollToSection = (sectionId: string) => {
     // Update URL with hash
-    window.history.pushState(null, '', `#${sectionId}`);
+    window.history.pushState(null, '', \`#\${sectionId}\`);
     
     const element = document.getElementById(sectionId);
     if (element) {
@@ -228,7 +227,7 @@ export default {
           'CTMS (Clinical Trial Management System)',
           'eCRF (Electronic Case Report Forms)'
         ],
-        template: `
+        template: \`
 // GCP-konforme Studienteilnehmer-Verwaltung
 const clinicalTrialManagement = {
   studyId: generateStudyProtocolId(),
@@ -260,7 +259,7 @@ const clinicalTrialManagement = {
     inspectionReadiness: 'continuous_compliance_scoring'
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -277,7 +276,7 @@ const clinicalTrialManagement = {
           'Virtual Site Monitoring',
           'Remote Consent Management'
         ],
-        technical: `
+        technical: \`
 // DCT Platform Architecture
 const decentralizedClinicalTrial = {
   patientApp: {
@@ -301,7 +300,7 @@ const decentralizedClinicalTrial = {
     oversight: 'real_time_data_quality_monitoring'
   }
 };
-        `
+        \`
       }
     },
     {
@@ -315,7 +314,7 @@ const decentralizedClinicalTrial = {
           'Automated Protocol Amendments',
           'Regulatory Communication Hub'
         ],
-        technical: `
+        technical: \`
 // Adaptive Trial Management
 const adaptiveTrialSystem = {
   statisticalEngine: {
@@ -339,7 +338,7 @@ const adaptiveTrialSystem = {
     transparency: 'public_trial_registry_sync'
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -480,7 +479,7 @@ const adaptiveTrialSystem = {
           'Level 3: Tertiärverpackung für Logistik',
           'Level 4: Paletten-Ebene für Supply Chain'
         ],
-        technical: `
+        technical: \`
 // FMD Compliance Architecture
 const serializationSystem = {
   dataMatrix: {
@@ -508,7 +507,7 @@ const serializationSystem = {
     authentication: 'consumer_verification_app'
   }
 };
-        `
+        \`
       }
     },
     {
@@ -522,7 +521,7 @@ const serializationSystem = {
           'VRS (Verification Router Service)',
           'Suspect Product Investigation'
         ],
-        technical: `
+        technical: \`
 // DSCSA Compliance Platform
 const dscsaCompliance = {
   epcisEvents: {
@@ -547,7 +546,7 @@ const dscsaCompliance = {
     reporting: 'regulatory_notification'
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -990,16 +989,16 @@ const dscsaCompliance = {
                             {requirement.realWorldScenario && (
                               <div class="space-y-6">
                                 <button
-                                 ` ? null : `gxp-${index}`)}
+                                 \` ? null : \`gxp-\${index}\`)}
                                   class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                                 >
                                   <Lightbulb class="h-4 w-4" ></Lightbulb>
                                   Praxis-Szenario anzeigen
                                   <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                    expandedSection === `gxp-${index}` && "rotate-180")} ></ChevronDown>
+                                    expandedSection === \`gxp-\${index}\` && "rotate-180")} ></ChevronDown>
                                 </button>
                                 
-                                {expandedSection === `gxp-${index}` && (
+                                {expandedSection === \`gxp-\${index}\` && (
                                   <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
@@ -1117,16 +1116,16 @@ const dscsaCompliance = {
                             {requirement.implementation && (
                               <div class="space-y-6">
                                 <button
-                                 ` ? null : `implementation-${index}`)}
+                                 \` ? null : \`implementation-\${index}\`)}
                                   class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                                 >
                                   <Code class="h-4 w-4" ></Code>
                                   Technische Implementation
                                   <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                    expandedSection === `implementation-${index}` && "rotate-180")} ></ChevronDown>
+                                    expandedSection === \`implementation-\${index}\` && "rotate-180")} ></ChevronDown>
                                 </button>
                                 
-                                {expandedSection === `implementation-${index}` && (
+                                {expandedSection === \`implementation-\${index}\` && (
                                   <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
@@ -1211,16 +1210,16 @@ const dscsaCompliance = {
 
                           <div>
                             <button
-                             ` ? null : `trial-${index}`)}
+                             \` ? null : \`trial-\${index}\`)}
                               class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                             >
                               <Code class="h-4 w-4" ></Code>
                               Technische Implementation
                               <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `trial-${index}` && "rotate-180")} ></ChevronDown>
+                                expandedSection === \`trial-\${index}\` && "rotate-180")} ></ChevronDown>
                             </button>
                             
-                            {expandedSection === `trial-${index}` && (
+                            {expandedSection === \`trial-\${index}\` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1409,16 +1408,16 @@ const dscsaCompliance = {
 
                           <div>
                             <button
-                             ` ? null : `serialization-${index}`)}
+                             \` ? null : \`serialization-\${index}\`)}
                               class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                             >
                               <Code class="h-4 w-4" ></Code>
                               Technische Implementation
                               <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `serialization-${index}` && "rotate-180")} ></ChevronDown>
+                                expandedSection === \`serialization-\${index}\` && "rotate-180")} ></ChevronDown>
                             </button>
                             
-                            {expandedSection === `serialization-${index}` && (
+                            {expandedSection === \`serialization-\${index}\` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1639,7 +1638,7 @@ const dscsaCompliance = {
                           <h4 class="font-semibold mb-3">{section.category}</h4>
                           <div>
                             {section.items.map((item, itemIndex) => {
-                              const itemId = `${sectionIndex}-${itemIndex}`;
+                              const itemId = \`\${sectionIndex}-\${itemIndex}\`;
                               const isChecked = checkedItems.has(itemId);
                               return (
                                 <div> toggleChecklistItem(itemId)}

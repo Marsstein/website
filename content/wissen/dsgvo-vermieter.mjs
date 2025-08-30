@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/dsgvo-vermieter',
   title: 'Dsgvo Vermieter',
-  description: 'Die Datenschutz-Grundverordnung hat die Immobilienbranche fundamental verändert. 
-              Ein Verstoß kann bis zu 20 Millionen Euro oder 4% des Jahresumsa',
+  description: 'Die Datenschutz-Grundverordnung hat die Immobilienbranche fundamental verändert.                Ein Verstoß kann bis zu 20 Millionen Euro oder 4% des Jahresumsa',
   content: `) => ;
   }, []);
 
@@ -27,7 +26,7 @@ export default {
           setActiveSection(section.id);
           // Update URL hash automatically when scrolling
           if (window.location.hash.slice(1) !== section.id) {
-            window.history.replaceState(null, '', `#${section.id}`);
+            window.history.replaceState(null, '', \`#\${section.id}\`);
           }
           break;
         }

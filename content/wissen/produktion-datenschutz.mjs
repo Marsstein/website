@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/produktion-datenschutz',
   title: 'Produktion Datenschutz',
-  description: 'Meistern Sie DSGVO, EU AI Act und ISO 27001 für Smart Factories,
-                    KI-gestützte Produktionsoptimierung und sichere OT/IT-Integration.',
+  description: 'Meistern Sie DSGVO, EU AI Act und ISO 27001 für Smart Factories,                     KI-gestützte Produktionsoptimierung und sichere OT/IT-Integration.',
   content: `
     <>
       <SEOHead>

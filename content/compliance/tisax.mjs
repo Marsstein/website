@@ -1,9 +1,7 @@
 export default {
   route: '/compliance/tisax',
   title: 'TISAX',
-  description: 'Der Standard für Informationssicherheit in der Automobilindustrie. 
-                Basierend auf VDA ISM und ISO 27001 - entwickelt für die spezifischen 
-     ',
+  description: 'Der Standard für Informationssicherheit in der Automobilindustrie.                  Basierend auf VDA ISM und ISO 27001 - entwickelt für die spezifischen',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -814,16 +812,16 @@ export default {
                                               <li key={idx} class="flex items-start gap-2">
                                                 <input 
                                                   type="checkbox" 
-                                                  id=objective-${index}-${idx}
-                                                  checked={checkedItems[`objective-${index}-${idx}`] || false}
-                                                 -${idx}`)}
+                                                  id=objective-\${index}-\${idx}
+                                                  checked={checkedItems[\`objective-\${index}-\${idx}\`] || false}
+                                                 -\${idx}\`)}
                                                   class="mt-1 text-blue-500"
                                                 />
                                                 <label 
-                                                  for=objective-${index}-${idx}
+                                                  for=objective-\${index}-\${idx}
                                                   class={cn(
                                                     "text-sm text-slate-300 cursor-pointer",
-                                                    checkedItems[`objective-${index}-${idx}`] && "line-through opacity-60"
+                                                    checkedItems[\`objective-\${index}-\${idx}\`] && "line-through opacity-60"
                                                   )}
                                                 >
                                                   {objective}
@@ -1014,7 +1012,7 @@ export default {
                               ].map((category) => (
                                 <div key={category.code} class="bg-slate-900/50 rounded-lg p-3 border border-slate-700">
                                   <div class="flex items-center justify-between mb-2">
-                                    <Badge class=bg-${category.color}-500/20 text-${category.color}-300 text-xs>
+                                    <Badge class=bg-\${category.color}-500/20 text-\${category.color}-300 text-xs>
                                       {category.code}
                                     </Badge>
                                     <span class="text-xs text-slate-400">{category.controls} Controls</span>
@@ -3012,7 +3010,7 @@ export default {
                                             <IconComponent class="h-4 w-4 text-white" ></IconComponent>
                                           </div>
                                           <div>
-                                            <h4 class=font-semibold ${step.color}>{step.phase}</h4>
+                                            <h4 class=font-semibold \${step.color}>{step.phase}</h4>
                                             <p class="text-sm text-slate-300">{step.description}</p>
                                           </div>
                                         </div>
@@ -3140,7 +3138,7 @@ export default {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        class=bg-gradient-to-br ${quarter.color} rounded-lg p-4 border
+                                        class=bg-gradient-to-br \${quarter.color} rounded-lg p-4 border
                                       >
                                         <div class="text-center mb-3">
                                           <div class="inline-flex items-center justify-center w-8 h-8 bg-slate-700 rounded-full mb-2">
@@ -3344,7 +3342,7 @@ export default {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        class=bg-gradient-to-br ${item.color} rounded-lg p-4 border
+                                        class=bg-gradient-to-br \${item.color} rounded-lg p-4 border
                                       >
                                         <div class="text-center mb-4">
                                           <div class="inline-flex p-3 rounded-full bg-slate-700 mb-3">
@@ -3618,7 +3616,7 @@ export default {
                                       initial={{ opacity: 0, y: 20 }}
                                       animate={{ opacity: 1, y: 0 }}
                                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                                      class=bg-gradient-to-br ${story.color} rounded-lg p-4 border
+                                      class=bg-gradient-to-br \${story.color} rounded-lg p-4 border
                                     >
                                       <div class="mb-4">
                                         <h4 class="font-bold text-white mb-1">{story.company}</h4>
@@ -3893,7 +3891,7 @@ export default {
                                           class="bg-slate-700/50 rounded-lg p-3"
                                         >
                                           <div class="text-center mb-3">
-                                            <IconComponent class=h-6 w-6 ${stage.color} mx-auto mb-2 ></IconComponent>
+                                            <IconComponent class=h-6 w-6 \${stage.color} mx-auto mb-2 ></IconComponent>
                                             <h5 class="font-bold text-white text-sm">{stage.stage}</h5>
                                           </div>
                                           <div class="space-y-2">

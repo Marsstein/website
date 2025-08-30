@@ -149,8 +149,11 @@ const loadContentModules = async () => {
   const contentModules = {};
   
   try {
-    const contentRegistry = await import('./scripts/content/index.mjs');
+    console.log('   🔍 Versuche Content-Module zu laden von ./content/index.mjs ...');
+    const contentRegistry = await import('./content/index.mjs');
+    console.log('   ✅ Module importiert');
     const allContent = contentRegistry.default;
+    console.log('   📂 Gefundene Kategorien:', Object.keys(allContent || {}));
     
     for (const [categoryName, category] of Object.entries(allContent)) {
       if (typeof category === 'function') continue;

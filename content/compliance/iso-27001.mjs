@@ -1,8 +1,7 @@
 export default {
   route: '/compliance/iso-27001',
   title: 'ISO 27001',
-  description: 'Der internationale Standard für Informationssicherheits-Managementsysteme (ISMS). 
-                Lernen Sie, wie Sie systematisch die Informationssicherheit i',
+  description: 'Der internationale Standard für Informationssicherheits-Managementsysteme (ISMS).                  Lernen Sie, wie Sie systematisch die Informationssicherheit i',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -1304,9 +1303,9 @@ export default {
                                           <div key={idx} class="flex items-start gap-3">
                                             <input
                                               type="checkbox"
-                                              id=${step.phase}-${idx}
-                                              checked={checkedItems[`${step.phase}-${idx}`] || false}
-                                             -${idx}`)}
+                                              id=\${step.phase}-\${idx}
+                                              checked={checkedItems[\`\${step.phase}-\${idx}\`] || false}
+                                             -\${idx}\`)}
                                               class="mt-1 rounded border-slate-600 text-blue-500 focus:ring-blue-500"
                                             />
                                             <label>
@@ -2057,16 +2056,16 @@ export default {
                                               <li key={idx} class="flex items-start gap-2 text-sm">
                                                 <input 
                                                   type="checkbox" 
-                                                  id=task-${index}-${idx}
-                                                  checked={checkedItems[`task-${index}-${idx}`] || false}
-                                                 -${idx}`)}
+                                                  id=task-\${index}-\${idx}
+                                                  checked={checkedItems[\`task-\${index}-\${idx}\`] || false}
+                                                 -\${idx}\`)}
                                                   class="mt-1 text-blue-500"
                                                 />
                                                 <label 
-                                                  for=task-${index}-${idx}
+                                                  for=task-\${index}-\${idx}
                                                   class={cn(
                                                     "text-slate-300 cursor-pointer",
-                                                    checkedItems[`task-${index}-${idx}`] && "line-through opacity-60"
+                                                    checkedItems[\`task-\${index}-\${idx}\`] && "line-through opacity-60"
                                                   )}
                                                 >
                                                   {task}

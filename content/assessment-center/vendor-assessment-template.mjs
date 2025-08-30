@@ -227,7 +227,7 @@ export default {
                       <div>
                         <div 
                           class="bg-purple-600 h-2 rounded-full transition-all duration-300"
-                          style={{ width: `$%` }}
+                          style={{ width: \`$%\` }}
                         ></div>
                       </div>
                     </div>
@@ -271,7 +271,7 @@ export default {
                               {/* Input Fields */}
                               {criteria.type === 'text' && (
                                 <Input
-                                  placeholder=${criteria.title} eingeben...
+                                  placeholder=\${criteria.title} eingeben...
                                   value={currentVendorData[criteria.id] || ''}
                                  
                                   class="bg-white dark:bg-gray-700"
@@ -280,7 +280,7 @@ export default {
 
                               {criteria.type === 'textarea' && (
                                 <textarea
-                                  placeholder=${criteria.title} beschreiben...
+                                  placeholder=\${criteria.title} beschreiben...
                                   value={currentVendorData[criteria.id] || ''}
                                  
                                   class="w-full p-3 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600"
@@ -296,7 +296,7 @@ export default {
                                 >
                                   {criteria.options.map((option: any) => (
                                     <div>
-                                      <RadioGroupItem value={option.value} id=${criteria.id}_${option.value} ></RadioGroupItem>
+                                      <RadioGroupItem value={option.value} id=\${criteria.id}_\${option.value} ></RadioGroupItem>
                                       <Label>
                                         {option.label}
                                       </Label>

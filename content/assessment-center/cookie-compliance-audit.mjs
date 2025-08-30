@@ -107,7 +107,7 @@ export default {
                       <div>
                         <div 
                           class="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                          style={{ width: `${scanProgress}%` }}
+                          style={{ width: \`\${scanProgress}%\` }}
                         ></div>
                       </div>
                     </div>
@@ -266,7 +266,7 @@ export default {
                 <div>
                   <div 
                     class="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full transition-all duration-300"
-                    style={{ width: `$%` }}
+                    style={{ width: \`$%\` }}
                   ></div>
                 </div>
               </CardContent>

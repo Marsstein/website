@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/ecommerce-privacy',
   title: 'Ecommerce Privacy',
-  description: 'Implementieren Sie erstklassige Datenschutz-Standards für Ihren Online-Shop. 
-          Von Cookie-Consent über Tracking-Management bis hin zu kundenfreundliche',
+  description: 'Implementieren Sie erstklassige Datenschutz-Standards für Ihren Online-Shop.            Von Cookie-Consent über Tracking-Management bis hin zu kundenfreundliche',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 

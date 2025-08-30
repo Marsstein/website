@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/saas-privacy-design',
   title: 'Saas Privacy Design',
-  description: 'Ein umfassendes Framework für die Entwicklung DSGVO-konformer SaaS-Anwendungen mit 
-          eingebautem Datenschutz von der ersten Zeile Code an.',
+  description: 'Ein umfassendes Framework für die Entwicklung DSGVO-konformer SaaS-Anwendungen mit            eingebautem Datenschutz von der ersten Zeile Code an.',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -61,7 +60,7 @@ export default {
           <Card>
             <CardContent class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <principle.icon class=w-6 h-6 ${principle.color} ></principle>
+                <principle.icon class=w-6 h-6 \${principle.color} ></principle>
                 <h4 class="font-semibold">{principle.title}</h4>
               </div>
               <p class="text-sm text-gray-600">{principle.description}</p>
@@ -310,7 +309,7 @@ if (purpose !== processingPurpose) return false;
           <Card key={index}>
             <CardHeader>
               <CardTitle class="flex items-center gap-2">
-                <security.icon class=w-5 h-5 text-${security.color}-600 ></security>
+                <security.icon class=w-5 h-5 text-\${security.color}-600 ></security>
                 {security.title}
               </CardTitle>
             </CardHeader>

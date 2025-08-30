@@ -204,7 +204,7 @@ export default {
     compliant: {
       title: "Planet49-konformer Cookie Banner",
       description: "Rechtssichere Implementierung mit granularer Kontrolle",
-      code: `// Planet49-konforme Cookie Banner Implementierung
+      code: \`// Planet49-konforme Cookie Banner Implementierung
 class CookieConsentManager {
   constructor() 
 
@@ -216,13 +216,13 @@ class CookieConsentManager {
   showConsentBanner() {
     const banner = document.createElement('div');
     banner.className = 'cookie-consent-banner';
-    banner.innerHTML = \`
+    banner.innerHTML = \\\`
       <div class="consent-content">
         <h3>Cookie-Einstellungen</h3>
         <p>Wir verwenden Cookies um Ihnen die bestmögliche Nutzung zu ermöglichen.</p>
         
         <div class="cookie-categories">
-          \$
+          \\$
         </div>
         
         <div class="consent-actions">
@@ -239,7 +239,7 @@ class CookieConsentManager {
         
         <a href="/datenschutz" class="privacy-link">Mehr Informationen</a>
       </div>
-    \`;
+    \\\`;
     
     document.body.appendChild(banner);
   }
@@ -272,21 +272,21 @@ class CookieConsentManager {
       }
     ];
 
-    return categories.map(cat => \`
+    return categories.map(cat => \\\`
       <div class="cookie-category">
         <label class="category-toggle">
           <input 
             type="checkbox" 
-            id="\${cat.id}"
-            \${cat.required ? 'checked disabled' : ''}
-            data-category="\${cat.id}"
+            id="\\\${cat.id}"
+            \\\${cat.required ? 'checked disabled' : ''}
+            data-category="\\\${cat.id}"
           >
-          <span class="category-name">\${cat.name}</span>
-          \${cat.required ? '<span class="required-badge">Erforderlich</span>' : ''}
+          <span class="category-name">\\\${cat.name}</span>
+          \\\${cat.required ? '<span class="required-badge">Erforderlich</span>' : ''}
         </label>
-        <p class="category-description">\${cat.description}</p>
+        <p class="category-description">\\\${cat.description}</p>
       </div>
-    \`).join('');
+    \\\`).join('');
   }
 
   savePreferences() {
@@ -357,7 +357,7 @@ class CookieConsentManager {
     ];
     
     nonEssentialCookies.forEach(name => {
-      document.cookie = \`\${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/\`;
+      document.cookie = \\\`\\\${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/\\\`;
     });
   }
 }
@@ -367,12 +367,12 @@ const cookieManager = new CookieConsentManager();
 
 // Globale Funktionen für Widerruf
 window.showCookieSettings = () => cookieManager.showConsentBanner();
-window.revokeCookieConsent = () => cookieManager.revokeConsent();`
+window.revokeCookieConsent = () => cookieManager.revokeConsent();\`
     },
     nonCompliant: {
       title: "Nicht-konforme Implementierung (VERMEIDEN!)",
       description: "Typische Fehler die gegen Planet49 verstoßen",
-      code: `// ❌ NICHT Planet49-konform - NICHT verwenden!
+      code: \`// ❌ NICHT Planet49-konform - NICHT verwenden!
 
 // FEHLER 1: Vorausgewählte Checkboxen
 function showBadCookieBanner() 
@@ -397,11 +397,11 @@ function hideWithdrawalOption() {
 
 // FEHLER 6: Unklare Zweckbindung
 function vagueDescription() {
-  return \`
+  return \\\`
     <p>Wir verwenden Cookies zur Verbesserung der Nutzererfahrung.</p>
     <!-- ❌ FALSCH: Zu unspezifisch, keine klare Zweckbindung -->
-  \`;
-}`
+  \\\`;
+}\`
     }
   };
 
