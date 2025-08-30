@@ -329,7 +329,7 @@ async function build() {
     console.log(`   ✅ JS: ${assetPaths.jsPath}`);
     
     // Load routes
-    const routesPath = join(__dirname, 'prerender-routes-simple.json');
+    const routesPath = join(__dirname, 'prerender-routes-complete.json');
     const routes = JSON.parse(readFileSync(routesPath, 'utf-8'));
     
     // Generate HTML for each route
