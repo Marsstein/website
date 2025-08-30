@@ -7,8 +7,30 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Mapping der 49 fehlenden Seiten zu ihren React-Komponenten
+// Mapping der fehlenden Seiten zu ihren React-Komponenten
+// Erweitert um 14 zusätzliche gefundene Komponenten
 const MISSING_PAGES = {
+  // HOMEPAGE UND HAUPTSEITEN (NEU!)
+  '/': 'src/pages/Index.tsx',
+  '/academy': 'src/pages/AcademyPage.tsx',
+  '/contact': 'src/pages/ContactPage.tsx',
+  '/dashboard': 'src/pages/DashboardPage.tsx',
+  '/pricing': 'src/pages/PricingPage.tsx',
+  '/thank-you': 'src/pages/thankyou.tsx',
+  
+  // BRANCHEN (NEU!)
+  '/branchen/automotive': 'src/pages/industries/automotive.tsx',
+  '/branchen/e-commerce': 'src/pages/industries/ecommerce.tsx',
+  
+  // TOOLS (NEU!)
+  '/tools': 'src/pages/tools.tsx',
+  '/tools/cookie-management': 'src/pages/cookiemanagement.tsx',
+  '/tools/dsgvo-compliance-scorecard': 'src/pages/DsgvoComplianceScorecard.tsx',
+  '/tools/dsgvo-email-template-generator': 'src/pages/DsgvoEmailTemplateGenerator.tsx',
+  
+  // WISSEN (NEU!)
+  '/wissen/dsgvo-leitfaeden': 'src/pages/dsgvoleitfaeden.tsx',
+  
   // Compliance Seiten (mit korrigierten Pfaden)
   '/dsgvo': 'src/pages/compliance/DsgvoGuide.tsx',
   '/nis2': 'src/pages/compliance/Nis2Guide.tsx', 
@@ -208,8 +230,9 @@ async function generateAllModules() {
         fs.mkdirSync(categoryDir, { recursive: true });
       }
       
-      // Generiere Dateiname
-      const fileName = route.split('/').pop() || 'index';
+      // Generiere Dateiname (Homepage wird zu 'home' statt 'index')
+      let fileName = route.split('/').pop() || 'home';
+      if (fileName === '' || route === '/') fileName = 'home';
       const outputFile = path.join(categoryDir, `${fileName}.mjs`);
       
       // Erstelle und speichere Modul
