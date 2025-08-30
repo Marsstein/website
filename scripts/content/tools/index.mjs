@@ -1,13 +1,13 @@
 import overview from './overview.mjs';
-import compliance_ai_assistant from './compliance-ai-assistant.mjs';
-import cookie_management from './cookie-management.mjs';
-import dsgvo_compliance_scorecard from './dsgvo-compliance-scorecard.mjs';
-import dsgvo_email_template_generator from './dsgvo-email-template-generator.mjs';
+import compliance_ai from './compliance_ai.mjs';
+import cookie_management from './cookie_management.mjs';
+import dsgvo_scorecard from './dsgvo_scorecard.mjs';
+import email_generator from './email_generator.mjs';
 
 export default {
   'overview': overview,
-  'compliance-ai-assistant': compliance_ai_assistant,
+  'compliance-ai': compliance_ai,
   'cookie-management': cookie_management,
-  'dsgvo-compliance-scorecard': dsgvo_compliance_scorecard,
-  'dsgvo-email-template-generator': dsgvo_email_template_generator
+  'dsgvo-scorecard': dsgvo_scorecard,
+  'email-generator': email_generator
 };
