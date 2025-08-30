@@ -34,7 +34,9 @@
     "build:react-full": "node scripts/prerender-enhanced.mjs",
     "build:react-content-full": "node scripts/prerender-react-content-full.js",
     "build:modular": "node scripts/prerender-react-content-full-modular.js",
-    "build:vite": "vite build"
+    "build:vite": "vite build",
+    "build:full": "node full-html-generator.js",
+    "build:production": "vite build && node full-html-generator.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

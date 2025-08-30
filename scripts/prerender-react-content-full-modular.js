@@ -255,12 +255,29 @@ async function build() {
         mkdirSync(dir, { recursive: true });
       }
       
-      // Formatiere HTML mit Prettier
-      const formattedHtml = await prettier.format(html, {
-        parser: 'html',
-        printWidth: 120,
-        tabWidth: 2,
-      });
+      // Bereinige HTML vor Formatierung
+      let cleanedHtml = html
+        .replace(/<\/<\/>/g, '') // Entferne leere closing tags
+        .replace(/<\/></g, '')   // Entferne ungültige Tag-Kombinationen  
+        .replace(/<>\s*<\/>/g, '') // Entferne leere Fragmente
+        .replace(/<Footer[^>]*\/>/g, '') // Entferne React-Komponenten
+        .replace(/<SEOHead[^>]*\/>/g, '') // Entferne SEOHead
+        .replace(/<Link/g, '<a')  // Konvertiere Link zu a
+        .replace(/<\/Link>/g, '</a>')
+        .replace(/to="/g, 'href="');
+      
+      // Formatiere HTML mit Prettier (mit Fehlerbehandlung)
+      let formattedHtml;
+      try {
+        formattedHtml = await prettier.format(cleanedHtml, {
+          parser: 'html',
+          printWidth: 120,
+          tabWidth: 2,
+        });
+      } catch (prettierError) {
+        console.warn(`⚠️  Prettier-Fehler bei ${route}, verwende unformatierten HTML`);
+        formattedHtml = cleanedHtml;
+      }
       
       // Schreibe Datei
       writeFileSync(filePath, formattedHtml);

@@ -1,0 +1,253 @@
+{
+  "compliance": {
+    "dsgvo": {
+      "route": "/dsgvo",
+      "sourceFile": "src/pages/compliance/DSGVO.tsx",
+      "title": "DSGVO-Compliance für Ihr Unternehmen",
+      "description": "DSGVO/GDPR konforme Datenschutzlösungen. KI-gestützte Compliance in 30 Tagen. Rechtssicher und automatisiert."
+    },
+    "nis2": {
+      "route": "/nis2",
+      "sourceFile": "src/pages/compliance/NIS2.tsx",
+      "title": "NIS2-Richtlinie Compliance & Cybersecurity",
+      "description": "NIS2 Directive Compliance für kritische Infrastrukturen. Cybersecurity-Anforderungen erfüllen. Jetzt vorbereiten!"
+    },
+    "eu-ai-act": {
+      "route": "/eu-ai-act",
+      "sourceFile": "src/pages/compliance/EUAIAct.tsx",
+      "title": "EU AI Act Compliance für KI-Systeme",
+      "description": "EU AI Act konforme KI-Entwicklung. Risikobewertung, Compliance-Strategien und Zertifizierung. Expertenberatung."
+    },
+    "hinweisgeberschutzgesetz": {
+      "route": "/hinweisgeberschutzgesetz",
+      "sourceFile": "src/pages/compliance/Hinweisgeberschutz.tsx",
+      "title": "Hinweisgeberschutzgesetz umsetzen",
+      "description": "Whistleblower-System nach HinSchG einrichten. Compliance-konform in 14 Tagen. Rechtssicher und anonym."
+    },
+    "geldwaeschegesetz": {
+      "route": "/geldwaeschegesetz",
+      "sourceFile": "src/pages/compliance/Geldwaesche.tsx",
+      "title": "Geldwäschegesetz (GwG) Compliance",
+      "description": "Anti-Money-Laundering Compliance nach GwG. KYC-Prozesse, Risikomanagement und Verdachtsmeldungen automatisiert."
+    }
+  },
+  
+  "assessment-center": {
+    "overview": {
+      "route": "/assessment-center",
+      "sourceFile": "src/pages/assessment-center/index.tsx",
+      "title": "Compliance Assessment Center",
+      "description": "Kostenlose Compliance-Assessments. DSGVO, ISO 27001, NIS2 Readiness prüfen. In 15 Minuten zum Ergebnis."
+    },
+    "ai-governance": {
+      "route": "/assessment-center/ai-governance-check",
+      "sourceFile": "src/pages/assessment-center/AIGovernanceCheck.tsx",
+      "title": "AI Governance Check - KI-Compliance prüfen",
+      "description": "KI-Governance Assessment. EU AI Act Readiness prüfen. Risiken identifizieren. Kostenlos in 10 Minuten."
+    },
+    "ai-risk": {
+      "route": "/assessment-center/ai-risk-assessment",
+      "sourceFile": "src/pages/assessment-center/AIRiskAssessment.tsx",
+      "title": "AI Risk Assessment für KI-Systeme",
+      "description": "KI-Risikobewertung nach EU AI Act. Risikoklassen bestimmen. Maßnahmen ableiten. Kostenlos testen."
+    },
+    "algorithmic-impact": {
+      "route": "/assessment-center/algorithmic-impact-assessment",
+      "sourceFile": "src/pages/assessment-center/AlgorithmicImpactAssessment.tsx",
+      "title": "Algorithmic Impact Assessment",
+      "description": "Folgenabschätzung für algorithmische Systeme. Bias erkennen, Fairness sicherstellen. Jetzt prüfen."
+    },
+    "dsgvo-checklist": {
+      "route": "/assessment-center/dsgvo-compliance-checklist",
+      "sourceFile": "src/pages/assessment-center/DsgvoComplianceChecklist.tsx",
+      "title": "DSGVO Compliance Checklist",
+      "description": "100-Punkte DSGVO-Checkliste. Alle Anforderungen prüfen. Mit Umsetzungshinweisen."
+    },
+    "isms-maturity": {
+      "route": "/assessment-center/isms-maturity-assessment",
+      "sourceFile": "src/pages/assessment-center/ISMSMaturityAssessment.tsx",
+      "title": "ISMS Maturity Assessment",
+      "description": "Reifegrad Ihres Information Security Management Systems bewerten. ISO 27001 Readiness prüfen."
+    },
+    "iso27001-readiness": {
+      "route": "/assessment-center/iso27001-readiness-check",
+      "sourceFile": "src/pages/assessment-center/ISO27001ReadinessCheck.tsx",
+      "title": "ISO 27001 Readiness Check",
+      "description": "ISO 27001 Zertifizierungsreife prüfen. Gap-Analyse in 20 Minuten. Mit Maßnahmenplan."
+    },
+    "nis2-compliance": {
+      "route": "/assessment-center/nis2-compliance-check",
+      "sourceFile": "src/pages/assessment-center/NIS2ComplianceCheck.tsx",
+      "title": "NIS2 Compliance Check",
+      "description": "NIS2-Richtlinie Compliance prüfen. Betroffenheit und Anforderungen analysieren. Kostenlos."
+    },
+    "security-controls": {
+      "route": "/assessment-center/security-controls-audit",
+      "sourceFile": "src/pages/assessment-center/SecurityControlsAudit.tsx",
+      "title": "Security Controls Audit",
+      "description": "IT-Sicherheitskontrollen prüfen. Schwachstellen identifizieren. Mit Priorisierung."
+    },
+    "soc2-readiness": {
+      "route": "/assessment-center/soc2-readiness-assessment",
+      "sourceFile": "src/pages/assessment-center/SOC2ReadinessAssessment.tsx",
+      "title": "SOC2 Readiness Assessment",
+      "description": "SOC2 Type II Zertifizierungsreife bewerten. Trust Service Criteria prüfen. Jetzt starten."
+    }
+  },
+  
+  "tools": {
+    "overview": {
+      "route": "/tools",
+      "sourceFile": "src/pages/tools/index.tsx",
+      "title": "Compliance Tools & Automatisierung",
+      "description": "KI-gestützte Compliance-Tools. DSGVO-Generator, Cookie-Management und mehr. Kostenlos testen."
+    },
+    "compliance-ai": {
+      "route": "/tools/compliance-ai-assistant",
+      "sourceFile": "src/pages/tools/ComplianceAI.tsx",
+      "title": "Compliance AI Assistant - Ihr KI-Berater",
+      "description": "KI-gestützter Compliance-Assistent. Fragen zu DSGVO, ISO 27001 und mehr. 24/7 verfügbar."
+    },
+    "cookie-management": {
+      "route": "/tools/cookie-management",
+      "sourceFile": "src/pages/tools/CookieManagement.tsx",
+      "title": "Cookie Consent Management Platform",
+      "description": "DSGVO-konforme Cookie-Banner. TCF 2.0 kompatibel. A/B-Testing für höhere Akzeptanz."
+    },
+    "dsgvo-scorecard": {
+      "route": "/tools/dsgvo-compliance-scorecard",
+      "sourceFile": "src/pages/tools/DSGVOScorecard.tsx",
+      "title": "DSGVO Compliance Scorecard",
+      "description": "DSGVO-Reifegrad messen. Benchmark mit Ihrer Branche. Prioritäten für Verbesserungen."
+    },
+    "email-generator": {
+      "route": "/tools/dsgvo-email-template-generator",
+      "sourceFile": "src/pages/tools/EmailGenerator.tsx",
+      "title": "DSGVO Email Template Generator",
+      "description": "DSGVO-konforme E-Mail-Vorlagen generieren. Betroffenenanfragen, Löschanträge und mehr."
+    }
+  },
+  
+  "wissen": {
+    "overview": {
+      "route": "/wissen",
+      "sourceFile": "src/pages/wissen/index.tsx",
+      "title": "Compliance Wissensdatenbank",
+      "description": "Umfassende Compliance-Wissensdatenbank. Leitfäden, Checklisten und Best Practices. Kostenlos."
+    },
+    "compliance-frameworks": {
+      "route": "/wissen/compliance-frameworks",
+      "sourceFile": "src/pages/wissen/ComplianceFrameworks.tsx",
+      "title": "Compliance Frameworks im Überblick",
+      "description": "ISO 27001, SOC2, TISAX und mehr. Vergleich aller wichtigen Compliance-Standards."
+    },
+    "cybersecurity": {
+      "route": "/wissen/cybersecurity",
+      "sourceFile": "src/pages/wissen/Cybersecurity.tsx",
+      "title": "Cybersecurity Best Practices",
+      "description": "IT-Sicherheit nach BSI und ISO 27001. Incident Response, Pentesting, Security by Design."
+    },
+    "dsgvo-grundlagen": {
+      "route": "/wissen/dsgvo",
+      "sourceFile": "src/pages/wissen/DSGVOGrundlagen.tsx",
+      "title": "DSGVO Grundlagen und Leitfäden",
+      "description": "DSGVO/GDPR Grundlagen verständlich erklärt. Artikel 1-99, Bußgelder, Checklisten."
+    },
+    "ki-datenschutz": {
+      "route": "/wissen/ki-datenschutz",
+      "sourceFile": "src/pages/wissen/KIDatenschutz.tsx",
+      "title": "KI & Datenschutz - Rechtliche Grundlagen",
+      "description": "Datenschutz bei KI-Systemen. EU AI Act, DSGVO-Anforderungen, Bias-Vermeidung."
+    },
+    "risk-management": {
+      "route": "/wissen/risk-management",
+      "sourceFile": "src/pages/wissen/RiskManagement.tsx",
+      "title": "Risk Management nach ISO 31000",
+      "description": "Risikomanagement-Framework aufbauen. Risikoidentifikation, -bewertung und -behandlung."
+    }
+  },
+  
+  "wissen/leitfaden": {
+    "betroffenenrechte": {
+      "route": "/wissen/leitfaden/betroffenenrechte",
+      "sourceFile": "src/pages/wissen/leitfaden/Betroffenenrechte.tsx",
+      "title": "Betroffenenrechte nach DSGVO umsetzen",
+      "description": "Auskunft, Löschung, Berichtigung. Alle Betroffenenrechte DSGVO-konform umsetzen."
+    },
+    "data-breach": {
+      "route": "/wissen/leitfaden/data-breach-notfall",
+      "sourceFile": "src/pages/wissen/leitfaden/DataBreach.tsx",
+      "title": "Data Breach Notfallplan",
+      "description": "Datenpanne in 72 Stunden melden. Schritt-für-Schritt Notfallplan mit Vorlagen."
+    },
+    "dsfa": {
+      "route": "/wissen/leitfaden/dsfa-durchfuehrung",
+      "sourceFile": "src/pages/wissen/leitfaden/DSFA.tsx",
+      "title": "DSFA Datenschutz-Folgenabschätzung",
+      "description": "DSFA/DPIA durchführen. Wann erforderlich? Schritt-für-Schritt Anleitung mit Vorlagen."
+    },
+    "dsgvo-30-tage": {
+      "route": "/wissen/leitfaden/dsgvo-30-tage",
+      "sourceFile": "src/pages/wissen/leitfaden/DSGVO30.tsx",
+      "title": "DSGVO in 30 Tagen umsetzen",
+      "description": "DSGVO-Compliance in 30 Tagen. Strukturierter Fahrplan mit täglichen Aufgaben."
+    },
+    "tom": {
+      "route": "/wissen/leitfaden/tom-massnahmen",
+      "sourceFile": "src/pages/wissen/leitfaden/TOM.tsx",
+      "title": "TOM - Technische und organisatorische Maßnahmen",
+      "description": "TOMs nach Art. 32 DSGVO. Checkliste mit 50+ Maßnahmen für Datensicherheit."
+    },
+    "verarbeitungsverzeichnis": {
+      "route": "/wissen/leitfaden/verarbeitungsverzeichnis",
+      "sourceFile": "src/pages/wissen/leitfaden/Verarbeitungsverzeichnis.tsx",
+      "title": "Verarbeitungsverzeichnis erstellen",
+      "description": "Verzeichnis von Verarbeitungstätigkeiten nach Art. 30 DSGVO. Mit Excel-Vorlage."
+    },
+    "website-dsgvo": {
+      "route": "/wissen/leitfaden/website-dsgvo",
+      "sourceFile": "src/pages/wissen/leitfaden/WebsiteDSGVO.tsx",
+      "title": "Website DSGVO-konform gestalten",
+      "description": "Datenschutzerklärung, Cookie-Banner, Kontaktformulare DSGVO-konform umsetzen."
+    }
+  },
+  
+  "main": {
+    "home": {
+      "route": "/",
+      "sourceFile": "src/pages/index.tsx",
+      "title": "Marsstein - KI-gestützte Compliance Automatisierung",
+      "description": "Compliance-Automatisierung mit KI. ISO 27001, DSGVO, NIS2 und mehr in Rekordzeit. Kostenlose Beratung."
+    },
+    "academy": {
+      "route": "/academy",
+      "sourceFile": "src/pages/academy/index.tsx",
+      "title": "Marsstein Academy - Compliance Schulungen",
+      "description": "Compliance-Schulungen und Zertifizierungskurse. DSGVO, ISO 27001, NIS2. Online und praxisnah."
+    },
+    "contact": {
+      "route": "/contact",
+      "sourceFile": "src/pages/contact.tsx",
+      "title": "Kontakt - Marsstein GmbH",
+      "description": "Kontaktieren Sie Marsstein für Compliance-Beratung. Kostenlose Erstberatung."
+    },
+    "dashboard": {
+      "route": "/dashboard",
+      "sourceFile": "src/pages/dashboard/index.tsx",
+      "title": "Compliance Dashboard - Marsstein",
+      "description": "Ihr zentrales Compliance-Dashboard. Alle Zertifizierungen und Audits im Überblick."
+    },
+    "pricing": {
+      "route": "/pricing",
+      "sourceFile": "src/pages/pricing.tsx",
+      "title": "Preise - Transparente Compliance-Pakete",
+      "description": "Faire Preise für Compliance-Automatisierung. ISO 27001 ab 999€/Monat."
+    },
+    "thank-you": {
+      "route": "/thank-you",
+      "sourceFile": "src/pages/thank-you.tsx",
+      "title": "Vielen Dank - Marsstein",
+      "description": "Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden."
+    }
+  }
+}
