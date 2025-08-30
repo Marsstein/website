@@ -18,12 +18,21 @@ const MISSING_PAGES = {
   '/pricing': 'src/pages/PricingPage.tsx',
   '/thank-you': 'src/pages/thankyou.tsx',
   
-  // BRANCHEN (NEU!)
-  '/branchen/automotive': 'src/pages/industries/automotive.tsx',
-  '/branchen/e-commerce': 'src/pages/industries/ecommerce.tsx',
+  // BRANCHEN/INDUSTRIES (ERWEITERT!)
+  '/branchen': 'src/pages/Industries.tsx',
+  '/branchen/automotive': 'src/pages/industries/Automotive.tsx',
+  '/branchen/e-commerce': 'src/pages/industries/ECommerce.tsx',
+  '/branchen/energie': 'src/pages/industries/Energy.tsx',
+  '/branchen/finanzdienstleister': 'src/pages/industries/FinancialServices.tsx',
+  '/branchen/gesundheitswesen': 'src/pages/industries/Healthcare.tsx',
+  '/branchen/lebensmittel': 'src/pages/industries/Food.tsx',
+  '/branchen/logistik': 'src/pages/industries/Logistics.tsx',
+  '/branchen/produktion': 'src/pages/industries/Manufacturing.tsx',
+  '/branchen/saas-unternehmen': 'src/pages/industries/SaaS.tsx',
   
-  // TOOLS (NEU!)
-  '/tools': 'src/pages/tools.tsx',
+  // TOOLS (ERWEITERT!)
+  '/tools': 'src/pages/Tools.tsx',
+  '/tools/compliance-ai-assistant': 'src/pages/ComplianceAIAssistant.tsx',
   '/tools/cookie-management': 'src/pages/cookiemanagement.tsx',
   '/tools/dsgvo-compliance-scorecard': 'src/pages/DsgvoComplianceScorecard.tsx',
   '/tools/dsgvo-email-template-generator': 'src/pages/DsgvoEmailTemplateGenerator.tsx',
@@ -48,7 +57,14 @@ const MISSING_PAGES = {
   '/compliance/soc-2': 'src/pages/compliance/Soc2Guide.tsx',
   '/compliance/tisax': 'src/pages/compliance/TisaxGuide.tsx',
   
-  // Assessment Center (mit korrigierten Pfaden aus resources/)
+  // Assessment Center (ERWEITERT!)
+  '/assessment-center': 'src/pages/AssessmentCenter.tsx',
+  '/assessment-center/ai-governance-check': 'src/pages/assessment-center/AIGovernanceCheck.tsx',
+  '/assessment-center/ai-risk-assessment': 'src/pages/assessment-center/AIRiskAssessment.tsx',
+  '/assessment-center/algorithmic-impact-assessment': 'src/pages/assessment-center/AlgorithmicImpactAssessment.tsx',
+  '/assessment-center/dsgvo-compliance-checklist': 'src/pages/assessment-center/DsgvoComplianceChecklist.tsx',
+  
+  // Assessment Center (aus resources/) (mit korrigierten Pfaden aus resources/)
   '/assessment-center/breach-response-checklist': 'src/pages/resources/BreachResponseChecklist.tsx',
   '/assessment-center/cookie-compliance-audit': 'src/pages/resources/CookieComplianceAudit.tsx',
   '/assessment-center/datenschutz-readiness-assessment': 'src/pages/resources/DatenschutzReadinessAssessment.tsx',
