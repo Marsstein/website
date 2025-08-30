@@ -16,7 +16,7 @@ export default {
   ];
   
   const scrollToSection = (sectionId: string) => {
-    window.history.pushState(null, '', `#${sectionId}`);
+    window.history.pushState(null, '', \`#\${sectionId}\`);
     
     const element = document.getElementById(sectionId);
     if (element) {
@@ -417,7 +417,7 @@ export default {
                         <div>
                           {stat.label}
                         </div>
-                        <div class=text-2xl font-bold ${stat.color} mb-1>
+                        <div class=text-2xl font-bold \${stat.color} mb-1>
                           {stat.value}%
                         </div>
                         <div>
@@ -484,7 +484,7 @@ export default {
                   >
                     <Card>
                       <CardContent class="p-6">
-                        <benefit.icon class=h-10 w-10 ${benefit.color} mb-4 ></benefit>
+                        <benefit.icon class=h-10 w-10 \${benefit.color} mb-4 ></benefit>
                         <h3 class="text-lg font-semibold mb-2">{benefit.title}</h3>
                         <p>{benefit.description}</p>
                       </CardContent>
@@ -939,16 +939,16 @@ export default {
                       'Dokumentation der Risikobewertung',
                       'Regelmäßige Überprüfung (mind. jährlich)'
                     ].map((item, index) => (
-                      <div> toggleCheckItem(`tia-${index}`)}
+                      <div> toggleCheckItem(\`tia-\${index}\`)}
                       >
-                        {checkedItems.has(`tia-${index}`) ? (
+                        {checkedItems.has(\`tia-\${index}\`) ? (
                           <CheckSquare class="h-5 w-5 text-green-600" ></CheckSquare>
                         ) : (
                           <Square class="h-5 w-5 text-gray-400" ></Square>
                         )}
                         <span class={cn(
                           "text-sm",
-                          checkedItems.has(`tia-${index}`) && "line-through text-gray-500"
+                          checkedItems.has(\`tia-\${index}\`) && "line-through text-gray-500"
                         )}>
                           {item}
                         </span>
@@ -1119,7 +1119,7 @@ export default {
                   <CardContent>
                     <div class="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
                       <pre class="text-sm">
-                        <code>{`// DSGVO-konformes Tracking Endpoint
+                        <code>{\`// DSGVO-konformes Tracking Endpoint
 app.post('/api/tracking/create', async (req, res) => {
   const { shipmentId, customerId } = req.body;
   
@@ -1128,7 +1128,7 @@ app.post('/api/tracking/create', async (req, res) => {
   
   // Speichere Verknüpfung mit Ablaufdatum
   await redis.setex(
-    \`tracking:\${trackingToken}\`,
+    \\\`tracking:\\\${trackingToken}\\\`,
     30 * 24 * 60 * 60, // 30 Tage
     JSON.stringify()
   );
@@ -1137,12 +1137,12 @@ app.post('/api/tracking/create', async (req, res) => {
   await auditLog.create();
   
   return res.json({
-    trackingUrl: \`https://track.example.com/\${trackingToken}\`,
+    trackingUrl: \\\`https://track.example.com/\\\${trackingToken}\\\`,
     expiresIn: '30 days',
     dataProcessed: ['Standort (Stadt-Ebene)', 'Sendungsstatus'],
     privacyPolicy: 'https://example.com/privacy'
   });
-});`}</code>
+});\`}</code>
                       </pre>
                     </div>
                   </CardContent>

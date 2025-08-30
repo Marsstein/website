@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/automotive-datenschutz',
   title: 'Datenschutz in der Automobilindustrie',
-  description: 'Von Connected Cars bis Autonomous Driving: Navigieren Sie sicher durch die komplexen 
-                  Datenschutzanforderungen der modernen Mobilität',
+  description: 'Von Connected Cars bis Autonomous Driving: Navigieren Sie sicher durch die komplexen                    Datenschutzanforderungen der modernen Mobilität',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 

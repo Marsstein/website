@@ -1,8 +1,7 @@
 export default {
   route: '/compliance/iso-27017',
   title: 'Iso 27017',
-  description: 'Umfassender Leitfaden zu ISO 27017 - Informationssicherheitskontrollen für 
-              Cloud-Computing-Services basierend auf ISO 27002',
+  description: 'Umfassender Leitfaden zu ISO 27017 - Informationssicherheitskontrollen für                Cloud-Computing-Services basierend auf ISO 27002',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -28,7 +27,7 @@ export default {
   };
 
   const scrollToSection = (sectionId) => {
-    const element = document.querySelector(`[data-section="${sectionId}"]`);
+    const element = document.querySelector(\`[data-section="\${sectionId}"]\`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -55,7 +54,7 @@ export default {
 
       {/* Sidebar */}
       <motion.div
-        class=fixed left-0 top-16 h-screen w-80 bg-slate-800/95 backdrop-blur-sm border-r border-slate-700 z-30 overflow-y-auto ${
+        class=fixed left-0 top-16 h-screen w-80 bg-slate-800/95 backdrop-blur-sm border-r border-slate-700 z-30 overflow-y-auto \${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:translate-x-0 transition-transform duration-300
       >
@@ -66,7 +65,7 @@ export default {
               <button
                 key={section.id}
                }
-                class=w-full text-left p-3 rounded-lg transition-all duration-200 group ${
+                class=w-full text-left p-3 rounded-lg transition-all duration-200 group \${
                   activeSection === section.id
                     ? 'bg-sky-600 text-white'
                     : 'text-gray-300 hover:bg-slate-700 hover:text-white'

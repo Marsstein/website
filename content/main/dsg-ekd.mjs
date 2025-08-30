@@ -1,8 +1,7 @@
 export default {
   route: '/dsg-ekd',
   title: 'Dsg Ekd',
-  description: 'Datenschutzgesetz der Evangelischen Kirche rechtssicher umsetzen. 
-                    Schützen Sie Gemeindedaten, wahren Sie das Seelsorgegeheimnis.',
+  description: 'Datenschutzgesetz der Evangelischen Kirche rechtssicher umsetzen.                      Schützen Sie Gemeindedaten, wahren Sie das Seelsorgegeheimnis.',
   content: `) => clearTimeout(timer);
   }, []);
 
@@ -288,7 +287,7 @@ export default {
                             <motion.div 
                               class="bg-purple-600 h-2 rounded-full"
                               initial={{ width: 0 }}
-                              animate={{ width: isVisible ? `${complianceScore}%` : 0 }}
+                              animate={{ width: isVisible ? \`\${complianceScore}%\` : 0 }}
                               transition={{ duration: 1.5, delay: 0.5 }}
                             ></motion>
                           </div>
@@ -321,7 +320,7 @@ export default {
                               <motion.div 
                                 class="bg-purple-600 h-2 rounded-full"
                                 initial={{ width: 0 }}
-                                animate={{ width: isVisible ? `${area.coverage}%` : 0 }}
+                                animate={{ width: isVisible ? \`\${area.coverage}%\` : 0 }}
                                 transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
                               ></motion>
                             </div>
@@ -455,7 +454,7 @@ export default {
                             <motion.div 
                               class="bg-gradient-to-r from-purple-500 to-violet-600 h-3 rounded-full"
                               initial={{ width: 0 }}
-                              whileInView={{ width: `${control.coverage}%` }}
+                              whileInView={{ width: \`\${control.coverage}%\` }}
                               transition={{ duration: 1.2, delay: 0.3 }}
                               viewport={{ once: true }}
                             ></motion>

@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/datenschutz-betriebsrat',
   title: 'Datenschutz Betriebsrat',
-  description: 'Rechtssichere Betriebsratsarbeit zwischen BetrVG und DSGVO. 
-                    Wir zeigen Ihnen, wie Sie Ihre Mitbestimmungsrechte datenschutzkonform ausüben.',
+  description: 'Rechtssichere Betriebsratsarbeit zwischen BetrVG und DSGVO.                      Wir zeigen Ihnen, wie Sie Ihre Mitbestimmungsrechte datenschutzkonform ausüben.',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -289,7 +288,7 @@ export default {
           'Fristgerechte Vernichtung nach Abschluss des Verfahrens'
         ],
         rechtsbasis: 'BetrVG § 102, DSGVO Art. 6 Abs. 1 lit. c',
-        template: `
+        template: \`
 // Kündigungsanhörung datenschutzkonform
 const terminationHearing = {
   case_id: generateAnonymizedId(),
@@ -319,7 +318,7 @@ const terminationHearing = {
     deletion: 'secure_shredding_digital_wiping'
   }
 };
-        `
+        \`
       }
     },
     {
@@ -334,7 +333,7 @@ const terminationHearing = {
           'Strukturierte Einigung oder Einigungsstellenverfahren'
         ],
         rechtsbasis: 'BetrVG § 95, § 99, DSGVO Art. 6 Abs. 1 lit. f',
-        template: `
+        template: \`
 // Versetzungsverfahren mit Datenschutz
 const transferProcedure = {
   procedure_id: generateSecureProcedureId(),
@@ -364,7 +363,7 @@ const transferProcedure = {
     appeal_process: 'documented_objection_procedure'
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -812,16 +811,16 @@ const transferProcedure = {
                             {rechtsgrundlage.realWorldScenario && (
                               <div class="space-y-6">
                                 <button
-                                 ` ? null : `rechtsgrund-${index}`)}
+                                 \` ? null : \`rechtsgrund-\${index}\`)}
                                   class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                                 >
                                   <Lightbulb class="h-4 w-4" ></Lightbulb>
                                   Praxis-Szenario anzeigen
                                   <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                    expandedSection === `rechtsgrund-${index}` && "rotate-180")} ></ChevronDown>
+                                    expandedSection === \`rechtsgrund-\${index}\` && "rotate-180")} ></ChevronDown>
                                 </button>
                                 
-                                {expandedSection === `rechtsgrund-${index}` && (
+                                {expandedSection === \`rechtsgrund-\${index}\` && (
                                   <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
@@ -1155,16 +1154,16 @@ const transferProcedure = {
 
                           <div>
                             <button
-                             ` ? null : `prozess-${index}`)}
+                             \` ? null : \`prozess-\${index}\`)}
                               class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                             >
                               <FileText class="h-4 w-4" ></FileText>
                               Code-Template anzeigen
                               <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `prozess-${index}` && "rotate-180")} ></ChevronDown>
+                                expandedSection === \`prozess-\${index}\` && "rotate-180")} ></ChevronDown>
                             </button>
                             
-                            {expandedSection === `prozess-${index}` && (
+                            {expandedSection === \`prozess-\${index}\` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1291,7 +1290,7 @@ const transferProcedure = {
                           <h4 class="font-semibold mb-3">{section.category}</h4>
                           <div>
                             {section.items.map((item, itemIndex) => {
-                              const itemId = `${sectionIndex}-${itemIndex}`;
+                              const itemId = \`\${sectionIndex}-\${itemIndex}\`;
                               const isChecked = checkedItems.has(itemId);
                               return (
                                 <div> toggleChecklistItem(itemId)}

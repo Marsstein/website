@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/datenschutz-kindergarten',
   title: 'Datenschutz Kindergarten',
-  description: 'In deutschen Kitas werden täglich sensible Daten von über 3,7 Millionen Kindern verarbeitet. 
-                  Schützen Sie diese Daten rechtskonform und vertr',
+  description: 'In deutschen Kitas werden täglich sensible Daten von über 3,7 Millionen Kindern verarbeitet.                    Schützen Sie diese Daten rechtskonform und vertr',
   content: `) => ;
   }, []);
 

@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/datenschutz-arztpraxis',
   title: 'Datenschutz Arztpraxis',
-  description: 'Kompletter DSGVO-Leitfaden für niedergelassene Ärzte. Von der Patientenaufnahme bis zur 
-                    sicheren Archivierung – alle Datenschutzaspekte pra',
+  description: 'Kompletter DSGVO-Leitfaden für niedergelassene Ärzte. Von der Patientenaufnahme bis zur                      sicheren Archivierung – alle Datenschutzaspekte pra',
   content: `) => ;
   }, []);
   
@@ -17,7 +16,7 @@ export default {
   ];
   
   const scrollToSection = (sectionId: string) => {
-    window.history.pushState(null, '', `#${sectionId}`);
+    window.history.pushState(null, '', \`#\${sectionId}\`);
     
     const element = document.getElementById(sectionId);
     if (element) {
@@ -167,7 +166,7 @@ export default {
         'E-Mail-Kommunikation ausschließlich über sichere Kanäle',
         'Wartezimmer-Organisation ohne Namensaufrufe'
       ],
-      implementation: `
+      implementation: \`
 // Datenschutzkonformes Terminmanagement
 const appointmentSystem = {
   booking: {
@@ -196,7 +195,7 @@ const appointmentSystem = {
     seating: 'privacy_optimized'
   }
 };
-      `
+      \`
     },
     {
       title: 'Abrechnung & Kostenträger',
@@ -207,7 +206,7 @@ const appointmentSystem = {
         'Verschlüsselte Kommunikation mit Krankenkassen',
         'Sichere Aufbewahrung der Belege nach GoB'
       ],
-      implementation: `
+      implementation: \`
 // Datenschutzkonforme Abrechnung
 const billingSystem = {
   data_separation: {
@@ -230,7 +229,7 @@ const billingSystem = {
     retention: 'legal_minimum_only'
   }
 };
-      `
+      \`
     },
     {
       title: 'Personalmanagement',
@@ -283,7 +282,7 @@ const billingSystem = {
         'Überschüssige Daten löschen nach Stabilisation',
         'Vollständige Dokumentation des Notfalls'
       ],
-      documentation: `
+      documentation: \`
 // Notfall-Datenverarbeitung Protokoll
 const emergencyProtocol = {
   patient_id: generateEmergencyId(),
@@ -323,7 +322,7 @@ const emergencyProtocol = {
     data_review: 'unnecessary_deletion_within_7_days'
   }
 };
-      `
+      \`
     },
     {
       scenario: 'IT-Systemausfall während Sprechstunde',
@@ -579,7 +578,7 @@ const emergencyProtocol = {
                   <button
                     key={item.id}
                    }
-                    aria-label=Zu ${item.label} springen
+                    aria-label=Zu \${item.label} springen
                     class=
                   >
                     <item.icon class= ></item>
@@ -777,16 +776,16 @@ const emergencyProtocol = {
                           {process.practicalScenario && (
                             <div class="space-y-6">
                               <button
-                               ` ? null : `patient-${index}`)}
+                               \` ? null : \`patient-\${index}\`)}
                                 class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                               >
                                 <Lightbulb class="h-4 w-4" ></Lightbulb>
                                 Praxis-Szenario anzeigen
                                 <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                  expandedSection === `patient-${index}` && "rotate-180")} ></ChevronDown>
+                                  expandedSection === \`patient-\${index}\` && "rotate-180")} ></ChevronDown>
                               </button>
                               
-                              {expandedSection === `patient-${index}` && (
+                              {expandedSection === \`patient-\${index}\` && (
                                 <motion.div
                                   initial={{ opacity: 0, height: 0 }}
                                   animate={{ opacity: 1, height: 'auto' }}
@@ -939,16 +938,16 @@ const emergencyProtocol = {
                         {org.implementation && (
                           <div>
                             <button
-                             ` ? null : `org-${index}`)}
+                             \` ? null : \`org-\${index}\`)}
                               class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                             >
                               <Code class="h-4 w-4" ></Code>
                               Technische Umsetzung anzeigen
                               <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `org-${index}` && "rotate-180")} ></ChevronDown>
+                                expandedSection === \`org-\${index}\` && "rotate-180")} ></ChevronDown>
                             </button>
                             
-                            {expandedSection === `org-${index}` && (
+                            {expandedSection === \`org-\${index}\` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1101,16 +1100,16 @@ const emergencyProtocol = {
                         {emergency.documentation && (
                           <div>
                             <button
-                             ` ? null : `emergency-${index}`)}
+                             \` ? null : \`emergency-\${index}\`)}
                               class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                             >
                               <Code class="h-4 w-4" ></Code>
                               Dokumentationsvorlage anzeigen
                               <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `emergency-${index}` && "rotate-180")} ></ChevronDown>
+                                expandedSection === \`emergency-\${index}\` && "rotate-180")} ></ChevronDown>
                             </button>
                             
-                            {expandedSection === `emergency-${index}` && (
+                            {expandedSection === \`emergency-\${index}\` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1249,7 +1248,7 @@ const emergencyProtocol = {
                         <h4 class="font-semibold mb-3">{section.category}</h4>
                         <div>
                           {section.items.map((item, itemIndex) => {
-                            const itemId = `${sectionIndex}-${itemIndex}`;
+                            const itemId = \`\${sectionIndex}-\${itemIndex}\`;
                             const isChecked = checkedItems.has(itemId);
                             return (
                               <div> toggleChecklistItem(itemId)}

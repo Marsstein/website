@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/dsgvo-vereine',
   title: 'Dsgvo Vereine',
-  description: 'Ob Sportverein, Kulturverein oder gemeinnützige Organisation – die DSGVO betrifft jeden Verein, 
-                der personenbezogene Daten verarbeitet. Wir zei',
+  description: 'Ob Sportverein, Kulturverein oder gemeinnützige Organisation – die DSGVO betrifft jeden Verein,                  der personenbezogene Daten verarbeitet. Wir zei',
   content: `) => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
@@ -28,7 +27,7 @@ export default {
 
   const scrollToSection = (sectionId: string) => {
     // Update URL with hash for SEO
-    if (window.location.hash !== `#${sectionId}`) {
+    if (window.location.hash !== \`#\${sectionId}\`) {
       window.location.hash = sectionId;
     }
     
@@ -148,7 +147,7 @@ export default {
             {navigationItems.map((item) => (
               <a
                 key={item.id}
-                href=#${item.id}
+                href=#\${item.id}
                }
                 class=
               >
@@ -327,7 +326,7 @@ export default {
                 >
                   <Card>
                     <CardHeader>
-                      <challenge.icon class=h-12 w-12 ${challenge.color} mb-4 ></challenge>
+                      <challenge.icon class=h-12 w-12 \${challenge.color} mb-4 ></challenge>
                       <CardTitle>{challenge.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -2085,7 +2084,7 @@ export default {
                   <Card>
                     <CardHeader>
                       <div class="flex items-start justify-between">
-                        <resource.icon class=h-10 w-10 text-${resource.color}-600 mb-3 ></resource>
+                        <resource.icon class=h-10 w-10 text-\${resource.color}-600 mb-3 ></resource>
                         <Badge variant="secondary">{resource.badge}</Badge>
                       </div>
                       <CardTitle class="text-lg">{resource.title}</CardTitle>

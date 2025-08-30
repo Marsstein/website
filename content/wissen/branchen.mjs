@@ -106,7 +106,7 @@ export default {
               >
                 <div>
                 <div>
-                  <div class=inline-flex p-3 rounded-xl bg-gradient-to-r ${stat.color} mb-4>
+                  <div class=inline-flex p-3 rounded-xl bg-gradient-to-r \${stat.color} mb-4>
                     <stat.icon class="h-6 w-6 text-white" ></stat>
                   </div>
                   <div>{stat.value}</div>

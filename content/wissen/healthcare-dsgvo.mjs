@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/healthcare-dsgvo',
   title: 'Healthcare Dsgvo',
-  description: 'Meistern Sie die komplexesten Datenschutz-Herausforderungen im Gesundheitswesen. 
-                    Von Art. 9 DSGVO über MDR bis hin zu KI-basierten Diagnose',
+  description: 'Meistern Sie die komplexesten Datenschutz-Herausforderungen im Gesundheitswesen.                      Von Art. 9 DSGVO über MDR bis hin zu KI-basierten Diagnose',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -147,7 +146,7 @@ export default {
           'Dokumentation der Notfallsituation',
           'Minimale erforderliche Datenverarbeitung'
         ],
-        template: `
+        template: \`
 // Notfall-Datenverarbeitung
 const emergencyDataProcessing = {
   emergencyId: generateEmergencyId(),
@@ -185,7 +184,7 @@ const emergencyDataProcessing = {
     }
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -202,7 +201,7 @@ const emergencyDataProcessing = {
           'Forschungsteilnahme (Opt-in)',
           'Datenübermittlung an Fachärzte (Situativ)'
         ],
-        technical: `
+        technical: \`
 // Modulares Consent Management
 const consentModules = {
   basic_health_data: {
@@ -228,7 +227,7 @@ const consentModules = {
     withdrawal: 'jederzeit ohne Begründung'
   }
 };
-        `
+        \`
       }
     },
     {
@@ -242,7 +241,7 @@ const consentModules = {
           'Aufzeichnungs-Kontrolle',
           'EU-Server Hosting'
         ],
-        technical: `
+        technical: \`
 // Telemedizin Privacy Setup
 const telemedicineSession = {
   sessionId: generateSecureSessionId(),
@@ -277,7 +276,7 @@ const telemedicineSession = {
     subprocessors: 'documented_and_approved'
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -816,16 +815,16 @@ const telemedicineSession = {
                             {requirement.realWorldScenario && (
                               <div class="space-y-6">
                                 <button
-                                 ` ? null : `scenario-${index}`)}
+                                 \` ? null : \`scenario-\${index}\`)}
                                   class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                                 >
                                   <Lightbulb class="h-4 w-4" ></Lightbulb>
                                   Praxis-Szenario anzeigen
                                   <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                    expandedSection === `scenario-${index}` && "rotate-180")} ></ChevronDown>
+                                    expandedSection === \`scenario-\${index}\` && "rotate-180")} ></ChevronDown>
                                 </button>
                                 
-                                {expandedSection === `scenario-${index}` && (
+                                {expandedSection === \`scenario-\${index}\` && (
                                   <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
@@ -1042,16 +1041,16 @@ const telemedicineSession = {
 
                           <div>
                             <button
-                             ` ? null : `consent-${index}`)}
+                             \` ? null : \`consent-\${index}\`)}
                               class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                             >
                               <Code class="h-4 w-4" ></Code>
                               Technische Implementation
                               <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `consent-${index}` && "rotate-180")} ></ChevronDown>
+                                expandedSection === \`consent-\${index}\` && "rotate-180")} ></ChevronDown>
                             </button>
                             
-                            {expandedSection === `consent-${index}` && (
+                            {expandedSection === \`consent-\${index}\` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1399,7 +1398,7 @@ const telemedicineSession = {
                           <h4 class="font-semibold mb-3">{section.category}</h4>
                           <div>
                             {section.items.map((item, itemIndex) => {
-                              const itemId = `${sectionIndex}-${itemIndex}`;
+                              const itemId = \`\${sectionIndex}-\${itemIndex}\`;
                               const isChecked = checkedItems.has(itemId);
                               return (
                                 <div> toggleChecklistItem(itemId)}

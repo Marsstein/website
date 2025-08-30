@@ -1,8 +1,7 @@
 export default {
   route: '/nis2',
   title: 'Nis2',
-  description: 'Umfassender Leitfaden zur Network and Information Security Directive 2 - 
-              Von der Anwendbarkeit bis zur vollständigen Compliance-Implementierung',
+  description: 'Umfassender Leitfaden zur Network and Information Security Directive 2 -                Von der Anwendbarkeit bis zur vollständigen Compliance-Implementierung',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -28,7 +27,7 @@ export default {
   };
 
   const scrollToSection = (sectionId) => {
-    const element = document.querySelector(`[data-section="${sectionId}"]`);
+    const element = document.querySelector(\`[data-section="\${sectionId}"]\`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -55,7 +54,7 @@ export default {
 
       {/* Sidebar */}
       <motion.div
-        class=fixed left-0 top-16 h-screen w-80 bg-slate-800/95 backdrop-blur-sm border-r border-slate-700 z-30 overflow-y-auto ${
+        class=fixed left-0 top-16 h-screen w-80 bg-slate-800/95 backdrop-blur-sm border-r border-slate-700 z-30 overflow-y-auto \${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:translate-x-0 transition-transform duration-300
       >
@@ -66,7 +65,7 @@ export default {
               <button
                 key={section.id}
                }
-                class=w-full text-left p-3 rounded-lg transition-all duration-200 group ${
+                class=w-full text-left p-3 rounded-lg transition-all duration-200 group \${
                   activeSection === section.id
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-300 hover:bg-slate-700 hover:text-white'
@@ -531,7 +530,7 @@ export default {
                         { name: 'Öffentliche Verwaltung', icon: Building2, color: 'text-emerald-400' }
                       ].map((sector) => (
                         <div key={sector.name} class="flex items-center gap-3 p-3 bg-slate-700/30 rounded-lg">
-                          <sector.icon class=h-5 w-5 ${sector.color} ></sector>
+                          <sector.icon class=h-5 w-5 \${sector.color} ></sector>
                           <span class="text-white font-medium">{sector.name}</span>
                         </div>
                       ))}
@@ -638,7 +637,7 @@ export default {
                         { name: 'Abfallwirtschaft', icon: Trash2, color: 'text-orange-400' }
                       ].map((sector) => (
                         <div key={sector.name} class="flex items-center gap-3 p-3 bg-slate-700/30 rounded-lg">
-                          <sector.icon class=h-5 w-5 ${sector.color} ></sector>
+                          <sector.icon class=h-5 w-5 \${sector.color} ></sector>
                           <span class="text-white font-medium">{sector.name}</span>
                         </div>
                       ))}
@@ -738,10 +737,10 @@ export default {
                             
                             <div class="mt-4 pt-4 border-t border-slate-600">
                               <button
-                               -${measure.title}`)}
+                               -\${measure.title}\`)}
                                 class="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
                               >
-                                {completedTasks.has(`${category.category}-${measure.title}`) ? (
+                                {completedTasks.has(\`\${category.category}-\${measure.title}\`) ? (
                                   <CheckCircle2 class="h-4 w-4 text-green-400" ></CheckCircle2>
                                 ) : (
                                   <Circle class="h-4 w-4" ></Circle>
@@ -949,16 +948,16 @@ export default {
                       class="bg-slate-700/30 rounded-lg p-6 border border-slate-600"
                     >
                       <div class="flex items-center gap-3 mb-4">
-                        <div class=p-2 rounded-lg ${
+                        <div class=p-2 rounded-lg \${
                           incidentType.urgency === 'Kritisch' ? 'bg-red-600/20' : 'bg-blue-600/20'
                         }>
-                          <incidentType.icon class=h-5 w-5 ${
+                          <incidentType.icon class=h-5 w-5 \${
                             incidentType.urgency === 'Kritisch' ? 'text-red-400' : 'text-blue-400'
                           } ></incidentType>
                         </div>
                         <div>
                           <h3 class="text-xl font-semibold text-white">{incidentType.type} Vorfälle</h3>
-                          <Badge class=mt-1 ${
+                          <Badge class=mt-1 \${
                             incidentType.urgency === 'Kritisch' 
                               ? 'bg-red-500/20 text-red-300' 
                               : 'bg-blue-500/20 text-blue-300'
@@ -1074,7 +1073,7 @@ export default {
                         
                         <div class="ml-16 bg-slate-700/30 rounded-lg p-6 flex-1">
                           <div class="flex items-center gap-3 mb-3">
-                            <milestone.icon class=h-5 w-5 ${
+                            <milestone.icon class=h-5 w-5 \${
                               milestone.status === 'completed' ? 'text-green-400' :
                               milestone.status === 'current' ? 'text-blue-400' :
                               'text-gray-400'
@@ -1120,14 +1119,14 @@ export default {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      class=bg-slate-700/30 rounded-lg p-6 border border-slate-600 hover:border-${phase.color}-500/50 transition-colors
+                      class=bg-slate-700/30 rounded-lg p-6 border border-slate-600 hover:border-\${phase.color}-500/50 transition-colors
                     >
                       <div class="flex items-center gap-3 mb-4">
-                        <div class=p-2 bg-${phase.color}-600/20 rounded-lg>
-                          <phase.icon class=h-5 w-5 text-${phase.color}-400 ></phase>
+                        <div class=p-2 bg-\${phase.color}-600/20 rounded-lg>
+                          <phase.icon class=h-5 w-5 text-\${phase.color}-400 ></phase>
                         </div>
                         <div>
-                          <Badge class=bg-${phase.color}-500/20 text-${phase.color}-300 mb-2>
+                          <Badge class=bg-\${phase.color}-500/20 text-\${phase.color}-300 mb-2>
                             Phase {phase.phase}
                           </Badge>
                           <h3 class="text-lg font-semibold text-white">{phase.title}</h3>

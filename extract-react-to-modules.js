@@ -7,8 +7,39 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Mapping der 49 fehlenden Seiten zu ihren React-Komponenten
+// Mapping der fehlenden Seiten zu ihren React-Komponenten
+// Erweitert um 14 zusätzliche gefundene Komponenten
 const MISSING_PAGES = {
+  // HOMEPAGE UND HAUPTSEITEN (NEU!)
+  '/': 'src/pages/Index.tsx',
+  '/academy': 'src/pages/AcademyPage.tsx',
+  '/contact': 'src/pages/ContactPage.tsx',
+  '/dashboard': 'src/pages/DashboardPage.tsx',
+  '/pricing': 'src/pages/PricingPage.tsx',
+  '/thank-you': 'src/pages/thankyou.tsx',
+  
+  // BRANCHEN/INDUSTRIES (ERWEITERT!)
+  '/branchen': 'src/pages/Industries.tsx',
+  '/branchen/automotive': 'src/pages/industries/Automotive.tsx',
+  '/branchen/e-commerce': 'src/pages/industries/ECommerce.tsx',
+  '/branchen/energie': 'src/pages/industries/Energy.tsx',
+  '/branchen/finanzdienstleister': 'src/pages/industries/FinancialServices.tsx',
+  '/branchen/gesundheitswesen': 'src/pages/industries/Healthcare.tsx',
+  '/branchen/lebensmittel': 'src/pages/industries/Food.tsx',
+  '/branchen/logistik': 'src/pages/industries/Logistics.tsx',
+  '/branchen/produktion': 'src/pages/industries/Manufacturing.tsx',
+  '/branchen/saas-unternehmen': 'src/pages/industries/SaaS.tsx',
+  
+  // TOOLS (ERWEITERT!)
+  '/tools': 'src/pages/Tools.tsx',
+  '/tools/compliance-ai-assistant': 'src/pages/ComplianceAIAssistant.tsx',
+  '/tools/cookie-management': 'src/pages/cookiemanagement.tsx',
+  '/tools/dsgvo-compliance-scorecard': 'src/pages/DsgvoComplianceScorecard.tsx',
+  '/tools/dsgvo-email-template-generator': 'src/pages/DsgvoEmailTemplateGenerator.tsx',
+  
+  // WISSEN (NEU!)
+  '/wissen/dsgvo-leitfaeden': 'src/pages/dsgvoleitfaeden.tsx',
+  
   // Compliance Seiten (mit korrigierten Pfaden)
   '/dsgvo': 'src/pages/compliance/DsgvoGuide.tsx',
   '/nis2': 'src/pages/compliance/Nis2Guide.tsx', 
@@ -26,7 +57,14 @@ const MISSING_PAGES = {
   '/compliance/soc-2': 'src/pages/compliance/Soc2Guide.tsx',
   '/compliance/tisax': 'src/pages/compliance/TisaxGuide.tsx',
   
-  // Assessment Center (mit korrigierten Pfaden aus resources/)
+  // Assessment Center (ERWEITERT!)
+  '/assessment-center': 'src/pages/AssessmentCenter.tsx',
+  '/assessment-center/ai-governance-check': 'src/pages/assessment-center/AIGovernanceCheck.tsx',
+  '/assessment-center/ai-risk-assessment': 'src/pages/assessment-center/AIRiskAssessment.tsx',
+  '/assessment-center/algorithmic-impact-assessment': 'src/pages/assessment-center/AlgorithmicImpactAssessment.tsx',
+  '/assessment-center/dsgvo-compliance-checklist': 'src/pages/assessment-center/DsgvoComplianceChecklist.tsx',
+  
+  // Assessment Center (aus resources/) (mit korrigierten Pfaden aus resources/)
   '/assessment-center/breach-response-checklist': 'src/pages/resources/BreachResponseChecklist.tsx',
   '/assessment-center/cookie-compliance-audit': 'src/pages/resources/CookieComplianceAudit.tsx',
   '/assessment-center/datenschutz-readiness-assessment': 'src/pages/resources/DatenschutzReadinessAssessment.tsx',
@@ -158,11 +196,21 @@ function createContentModule(route, content) {
     descMatch[1].trim().substring(0, 160) : 
     `${title} - Compliance-Automatisierung mit KI. Marsstein GmbH.`;
   
+  // Escape single quotes and remove line breaks in title and description
+  const safeTitle = title.replace(/'/g, "\\'").replace(/\n/g, ' ');
+  const safeDescription = description.replace(/'/g, "\\'").replace(/\n/g, ' ').trim();
+  
+  // Escape backticks and dollar signs in content to avoid breaking template literals
+  const safeContent = content
+    .replace(/\\/g, '\\\\')  // Escape backslashes first
+    .replace(/`/g, '\\`')    // Escape backticks
+    .replace(/\${/g, '\\${'); // Escape template literal expressions
+  
   return `export default {
   route: '${route}',
-  title: '${title}',
-  description: '${description}',
-  content: \`${content}\`
+  title: '${safeTitle}',
+  description: '${safeDescription}',
+  content: \`${safeContent}\`
 };`;
 }
 
@@ -198,8 +246,9 @@ async function generateAllModules() {
         fs.mkdirSync(categoryDir, { recursive: true });
       }
       
-      // Generiere Dateiname
-      const fileName = route.split('/').pop() || 'index';
+      // Generiere Dateiname (Homepage wird zu 'home' statt 'index')
+      let fileName = route.split('/').pop() || 'home';
+      if (fileName === '' || route === '/') fileName = 'home';
       const outputFile = path.join(categoryDir, `${fileName}.mjs`);
       
       // Erstelle und speichere Modul
@@ -225,13 +274,15 @@ async function generateAllModules() {
   for (const [category, modules] of Object.entries(modulesByCategory)) {
     const indexPath = path.join(__dirname, 'content', category, 'index.mjs');
     
-    const imports = modules.map(m => 
-      `import ${m.replace(/-/g, '_')} from './${m}.mjs';`
-    ).join('\n');
+    const imports = modules.map(m => {
+      const varName = m.replace(/-/g, '_').replace(/\./g, '_');
+      return `import ${varName} from './${m}.mjs';`;
+    }).join('\n');
     
-    const exports = modules.map(m => 
-      `  '${m}': ${m.replace(/-/g, '_')}`
-    ).join(',\n');
+    const exports = modules.map(m => {
+      const varName = m.replace(/-/g, '_').replace(/\./g, '_');
+      return `  '${m}': ${varName}`;
+    }).join(',\n');
     
     const indexContent = `${imports}
 

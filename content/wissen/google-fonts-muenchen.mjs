@@ -74,7 +74,7 @@ export default {
                 <button
                   key={tab.id}
                  
-                  class=flex items-center space-x-2 px-6 py-4 border-b-4 transition-colors whitespace-nowrap ${
+                  class=flex items-center space-x-2 px-6 py-4 border-b-4 transition-colors whitespace-nowrap \${
                     activeTab === tab.id
                       ? 'border-orange-500 text-orange-600 bg-orange-50'
                       : 'border-transparent text-gray-600 hover:text-orange-600 hover:bg-orange-50/50'
@@ -539,7 +539,7 @@ import "@fontsource/open-sans/700.css";
               
               <div class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto">
                 <pre class="text-sm">
-                  <code>{`// Node.js Express Proxy
+                  <code>{\`// Node.js Express Proxy
 const express = require('express');
 const axios = require('axios');
 const app = express();
@@ -547,7 +547,7 @@ const app = express();
 app.get('/fonts/css2', async (req, res) => {
   try {
     // Entferne sensible Header
-    const { data } = await axios.get(\`https://fonts.googleapis.com/css2?\${req.query}\`, {
+    const { data } = await axios.get(\\\`https://fonts.googleapis.com/css2?\\\${req.query}\\\`, {
       headers: {
         'User-Agent': 'Mozilla/5.0' // Generic UA
       }
@@ -555,13 +555,13 @@ app.get('/fonts/css2', async (req, res) => {
     
     // Ersetze Google URLs mit lokalen
     const localizedCSS = data
-      .replace(/https:\\/\\/fonts\\.gstatic\\.com/g, '/fonts/files');
+      .replace(/https:\\\\/\\\\/fonts\\\\.gstatic\\\\.com/g, '/fonts/files');
     
     res.setHeader('Content-Type', 'text/css');
     res.setHeader('Cache-Control', 'public, max-age=31536000');
     res.send(localizedCSS);
   } catch (error) 
-});`}</code>
+});\`}</code>
                 </pre>
               </div>
             </div>
@@ -646,7 +646,7 @@ grep -r "fonts.googleapis.com" . --include="*.html" --include="*.css" --include=
 grep -r "fonts.gstatic.com" . --include="*.html" --include="*.css" --include="*.js"
 
 # Oder mit ripgrep (schneller)
-rg "fonts\.(googleapis|gstatic)\.com" -t html -t css -t js</code>
+rg "fonts\\.(googleapis|gstatic)\\.com" -t html -t css -t js</code>
                 </pre>
               </div>
             </div>
@@ -691,7 +691,7 @@ def download_font(font_url, output_dir="./fonts"):
     
     # Font URLs extrahieren und downloaden
     import re
-    font_urls = re.findall(r'url\((https://[^)]+)\)', css_content)
+    font_urls = re.findall(r'url\\((https://[^)]+)\\)', css_content)
     
     for url in font_urls:
         filename = url.split('/')[-1]
@@ -828,7 +828,7 @@ body {
                 <h4 class="font-semibold text-blue-800 mb-2">Nginx Konfiguration für Caching:</h4>
                 <div class="bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
                   <pre class="text-xs">
-                    <code>location ~* \.(woff|woff2|ttf|otf|eot)$ {
+                    <code>location ~* \\.(woff|woff2|ttf|otf|eot)$ {
     expires 1y;
     add_header Cache-Control "public, immutable";
     add_header Access-Control-Allow-Origin "*";
@@ -1024,11 +1024,11 @@ add_action('wp_head', 'add_font_preload', 1);</code>
               <h4 class="font-semibold text-gray-800 mb-3">Web Vitals Tracking</h4>
               <div class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto">
                 <pre class="text-sm">
-                  <code>{`// Font Loading Performance messen
+                  <code>{\`// Font Loading Performance messen
 const observer = new PerformanceObserver((list) => {
   for (const entry of list.getEntries()) {
     if (entry.name.includes('.woff')) {
-      console.log(\`Font \${entry.name} loaded in \${entry.duration}ms\`);
+      console.log(\\\`Font \\\${entry.name} loaded in \\\${entry.duration}ms\\\`);
       
       // An Analytics senden
       if (window.gtag) {
@@ -1043,7 +1043,7 @@ observer.observe({ entryTypes: ['resource'] });
 // Font Loading API für bessere Kontrolle
 if ('fonts' in document) {
   document.fonts.ready.then(() => );
-}`}</code>
+}\`}</code>
                 </pre>
               </div>
             </div>
@@ -1146,8 +1146,8 @@ jobs:
       
       - name: Check for Google Fonts
         run: |
-          if grep -r "fonts.googleapis.com\|fonts.gstatic.com" . \
-             --include="*.html" --include="*.css" --include="*.js" \
+          if grep -r "fonts.googleapis.com\\|fonts.gstatic.com" . \\
+             --include="*.html" --include="*.css" --include="*.js" \\
              --include="*.jsx" --include="*.tsx" --include="*.vue"; then
             echo "❌ Google Fonts found! Please use local hosting."
             exit 1

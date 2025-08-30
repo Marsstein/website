@@ -1,8 +1,7 @@
 export default {
   route: '/wissen/branchen/proptech-compliance',
   title: 'Proptech Compliance',
-  description: 'Meistern Sie die Datenschutz-Herausforderungen moderner Immobilientechnologie. 
-                    Von IoT-Sensoren über KI-basierte Gebäudeautomation bis zu d',
+  description: 'Meistern Sie die Datenschutz-Herausforderungen moderner Immobilientechnologie.                      Von IoT-Sensoren über KI-basierte Gebäudeautomation bis zu d',
   content: `) => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -184,7 +183,7 @@ export default {
           'Rechtsgrundlage für personenbezogene Nachhaltigkeitsdaten',
           'Anonymisierung vor der Weitergabe an ESG-Ratingagenturen'
         ],
-        template: `
+        template: \`
 // ESG Data Privacy Compliance
 const esgDataProcessing = {
   dataCategories: {
@@ -218,7 +217,7 @@ const esgDataProcessing = {
     publicDisclosure: 'statistical_data_only'
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -235,7 +234,7 @@ const esgDataProcessing = {
           'Ende-zu-Ende Verschlüsselung aller Übertragungen',
           'Regelmäßige Security-Updates Over-the-Air'
         ],
-        technical: `
+        technical: \`
 // IoT Security Architecture
 const iotSecurityFramework = {
   edgeProcessing: {
@@ -277,7 +276,7 @@ const iotSecurityFramework = {
     }
   }
 };
-        `
+        \`
       }
     },
     {
@@ -291,7 +290,7 @@ const iotSecurityFramework = {
           'Erweitert: Stündliche Daten (Opt-In)',
           'Detailliert: Echtzeitdaten (explizite Zustimmung)'
         ],
-        technical: `
+        technical: \`
 // Smart Metering Privacy Controls
 const smartMeteringPrivacy = {
   dataGranularity: {
@@ -333,7 +332,7 @@ const smartMeteringPrivacy = {
     secure_multiparty: 'collaborative_analysis_without_sharing'
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -481,7 +480,7 @@ const smartMeteringPrivacy = {
           'Modelltraining auf verschlüsselten Daten',
           'Automatische Bias-Erkennung und -Korrektur'
         ],
-        technical: `
+        technical: \`
 // AI Privacy-Preserving Architecture
 const aiEnergyOptimization = {
   federatedLearning: {
@@ -514,7 +513,7 @@ const aiEnergyOptimization = {
     fairness: 'demographic_parity_monitored'
   }
 };
-        `
+        \`
       }
     },
     {
@@ -530,7 +529,7 @@ const aiEnergyOptimization = {
           'Heatmaps ohne Personenbezug',
           'Opt-In für personalisierte Features'
         ],
-        technical: `
+        technical: \`
 // Workspace Analytics Privacy Framework
 const workspaceAnalytics = {
   sensorProcessing: {
@@ -571,7 +570,7 @@ const workspaceAnalytics = {
     }
   }
 };
-        `
+        \`
       }
     }
   ];
@@ -971,16 +970,16 @@ const workspaceAnalytics = {
                             {requirement.realWorldScenario && (
                               <div class="space-y-6">
                                 <button
-                                 ` ? null : `scenario-${index}`)}
+                                 \` ? null : \`scenario-\${index}\`)}
                                   class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                                 >
                                   <Lightbulb class="h-4 w-4" ></Lightbulb>
                                   Praxis-Szenario anzeigen
                                   <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                    expandedSection === `scenario-${index}` && "rotate-180")} ></ChevronDown>
+                                    expandedSection === \`scenario-\${index}\` && "rotate-180")} ></ChevronDown>
                                 </button>
                                 
-                                {expandedSection === `scenario-${index}` && (
+                                {expandedSection === \`scenario-\${index}\` && (
                                   <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
@@ -1131,16 +1130,16 @@ const workspaceAnalytics = {
                             {requirement.implementation && (
                               <div>
                                 <button
-                                 ` ? null : `impl-${index}`)}
+                                 \` ? null : \`impl-\${index}\`)}
                                   class="flex items-center gap-2 text-purple-600 hover:text-purple-800 font-medium"
                                 >
                                   <Code class="h-4 w-4" ></Code>
                                   Technische Implementation
                                   <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                    expandedSection === `impl-${index}` && "rotate-180")} ></ChevronDown>
+                                    expandedSection === \`impl-\${index}\` && "rotate-180")} ></ChevronDown>
                                 </button>
                                 
-                                {expandedSection === `impl-${index}` && (
+                                {expandedSection === \`impl-\${index}\` && (
                                   <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
@@ -1216,16 +1215,16 @@ const workspaceAnalytics = {
 
                           <div>
                             <button
-                             ` ? null : `iot-${index}`)}
+                             \` ? null : \`iot-\${index}\`)}
                               class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
                             >
                               <Code class="h-4 w-4" ></Code>
                               Technische Implementation
                               <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `iot-${index}` && "rotate-180")} ></ChevronDown>
+                                expandedSection === \`iot-\${index}\` && "rotate-180")} ></ChevronDown>
                             </button>
                             
-                            {expandedSection === `iot-${index}` && (
+                            {expandedSection === \`iot-\${index}\` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1431,16 +1430,16 @@ const workspaceAnalytics = {
 
                           <div>
                             <button
-                             ` ? null : `ai-${index}`)}
+                             \` ? null : \`ai-\${index}\`)}
                               class="flex items-center gap-2 text-purple-600 hover:text-purple-800 font-medium"
                             >
                               <Code class="h-4 w-4" ></Code>
                               Technische Implementation
                               <ChevronDown class={cn("h-4 w-4 transition-transform", 
-                                expandedSection === `ai-${index}` && "rotate-180")} ></ChevronDown>
+                                expandedSection === \`ai-\${index}\` && "rotate-180")} ></ChevronDown>
                             </button>
                             
-                            {expandedSection === `ai-${index}` && (
+                            {expandedSection === \`ai-\${index}\` && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -1559,7 +1558,7 @@ const workspaceAnalytics = {
                           <h4 class="font-semibold mb-3">{section.category}</h4>
                           <div>
                             {section.items.map((item, itemIndex) => {
-                              const itemId = `${sectionIndex}-${itemIndex}`;
+                              const itemId = \`\${sectionIndex}-\${itemIndex}\`;
                               const isChecked = checkedItems.has(itemId);
                               return (
                                 <div> toggleChecklistItem(itemId)}

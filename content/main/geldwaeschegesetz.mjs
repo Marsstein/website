@@ -1,8 +1,7 @@
 export default {
   route: '/geldwaeschegesetz',
   title: 'Geldwaeschegesetz',
-  description: 'Das Geldwäschegesetz betrifft eine Vielzahl von Branchen mit unterschiedlichen 
-                Anforderungen und Risikoprofilen. Klicken Sie auf eine Branche f',
+  description: 'Das Geldwäschegesetz betrifft eine Vielzahl von Branchen mit unterschiedlichen                  Anforderungen und Risikoprofilen. Klicken Sie auf eine Branche f',
   content: `
     <div class="min-h-screen bg-gradient-to-br from-slate-900 via-rose-900 to-slate-900">
       <Header ></Header>
@@ -37,8 +36,8 @@ export default {
                   style={{
                     width: Math.random() * 300 + 50,
                     height: Math.random() * 300 + 50,
-                    left: `$%`,
-                    top: `$%`,
+                    left: \`$%\`,
+                    top: \`$%\`,
                   }}
                 ></motion>
               ))}
@@ -268,11 +267,11 @@ export default {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    class=relative flex items-center mb-12 ${
+                    class=relative flex items-center mb-12 \${
                       event.side === "right" ? "justify-end" : ""
                     }
                   >
-                    <div class=w-5/12 ${event.side === "right" ? "order-2 text-left pl-12" : "text-right pr-12"}>
+                    <div class=w-5/12 \${event.side === "right" ? "order-2 text-left pl-12" : "text-right pr-12"}>
                       <motion.div 
                         class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6"
                         whileHover={{ scale: 1.02 }}
@@ -354,7 +353,7 @@ export default {
                   >
                     <Card>
                       <CardHeader>
-                        <div class=inline-flex p-3 rounded-xl bg-gradient-to-r ${requirement.color} mb-4>
+                        <div class=inline-flex p-3 rounded-xl bg-gradient-to-r \${requirement.color} mb-4>
                           <requirement.icon class="h-6 w-6 text-white" ></requirement>
                         </div>
                         <CardTitle class="text-white">{requirement.title}</CardTitle>
@@ -451,10 +450,10 @@ export default {
                           <industry.icon class="h-8 w-8 text-rose-400" ></industry>
                           <Badge 
                             class=
-                              ${industry.riskLevel === "Sehr hoch" ? "bg-red-500/20 text-red-300 border-red-500/30" : ""}
-                              ${industry.riskLevel === "Hoch" ? "bg-orange-500/20 text-orange-300 border-orange-500/30" : ""}
-                              ${industry.riskLevel === "Mittel-Hoch" ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30" : ""}
-                              ${industry.riskLevel === "Mittel" ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : ""}
+                              \${industry.riskLevel === "Sehr hoch" ? "bg-red-500/20 text-red-300 border-red-500/30" : ""}
+                              \${industry.riskLevel === "Hoch" ? "bg-orange-500/20 text-orange-300 border-orange-500/30" : ""}
+                              \${industry.riskLevel === "Mittel-Hoch" ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30" : ""}
+                              \${industry.riskLevel === "Mittel" ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : ""}
                             
                           >
                             {industry.riskLevel}
@@ -759,7 +758,7 @@ export default {
                     <Card>
                       <CardHeader>
                         <div class="flex items-start justify-between mb-4">
-                          <div class=inline-flex p-3 rounded-xl bg-gradient-to-r ${caseStudy.color}>
+                          <div class=inline-flex p-3 rounded-xl bg-gradient-to-r \${caseStudy.color}>
                             <caseStudy.icon class="h-6 w-6 text-white" ></caseStudy>
                           </div>
                           <Badge class="bg-rose-500/20 text-rose-300 border-rose-500/30">
