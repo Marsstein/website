@@ -14,10 +14,10 @@ Alle wichtigen Compliance- und Hauptseiten sollen vollständigen HTML-Content im
 - `/iso-27018-zertifizierung` ✅
 - `/soc2-zertifizierung` ✅
 
-### ❌ Seiten mit Platzhalter-Content (60 Seiten):
+### ❌ Seiten mit Platzhalter-Content (49 Seiten verbleibend):
 
 #### Compliance-Seiten (10):
-- `/tisax-compliance` - TISAX Automotive Security
+- ✅ `/tisax-compliance` - TISAX Automotive Security
 - `/dsgvo-compliance` → `/dsgvo` - DSGVO/GDPR Compliance
 - `/nis2-compliance` → `/nis2` - NIS2 Directive
 - `/eu-ai-act-compliance` → `/eu-ai-act` - EU AI Act
@@ -46,17 +46,17 @@ Alle wichtigen Compliance- und Hauptseiten sollen vollständigen HTML-Content im
 - `/assessment-center/dsgvo-compliance-checklist` - DSGVO Compliance Checklist
 - `/assessment-center/vendor-assessment-template` - Vendor Assessment Template
 
-#### Branchen (9):
-- `/branchen` - Übersicht
-- `/branchen/automotive` - Automobilindustrie
-- `/branchen/e-commerce` - E-Commerce
-- `/branchen/energie` - Energiesektor
-- `/branchen/finanzdienstleister` - Finanzdienstleistungen
-- `/branchen/gesundheitswesen` - Gesundheitswesen
-- `/branchen/lebensmittel` - Lebensmittelindustrie
-- `/branchen/logistik` - Logistik
-- `/branchen/produktion` - Produktion
-- `/branchen/saas-unternehmen` - SaaS-Unternehmen
+#### Branchen (10):
+- ✅ `/branchen` - Übersicht
+- ✅ `/branchen/automotive` - Automobilindustrie
+- ✅ `/branchen/e-commerce` - E-Commerce
+- ✅ `/branchen/energie` - Energiesektor
+- ✅ `/branchen/finanzdienstleister` - Finanzdienstleistungen
+- ✅ `/branchen/gesundheitswesen` - Gesundheitswesen
+- ✅ `/branchen/lebensmittel` - Lebensmittelindustrie
+- ✅ `/branchen/logistik` - Logistik
+- ✅ `/branchen/produktion` - Produktion
+- ✅ `/branchen/saas-unternehmen` - SaaS-Unternehmen
 
 #### Tools (5):
 - `/tools` - Übersicht
@@ -89,7 +89,7 @@ Alle wichtigen Compliance- und Hauptseiten sollen vollständigen HTML-Content im
 - `/wissen/rechtsprechung/facebook-fanpage` - Facebook Fanpage
 - `/wissen/rechtsprechung/google-analytics-austria` - Google Analytics Austria
 
-**Gesamt: 60 Seiten zu implementieren**
+**Gesamt: 49 Seiten zu implementieren (11 bereits erledigt)**
 
 ## Technische Umsetzung
 

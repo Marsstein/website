@@ -3,7 +3,7 @@
 ## Inhaltsverzeichnis
 
 1. [Überblick](#überblick)
-2. [Technologie-Stack](#technologie-stack)
+2. [Tec1hnologie-Stack](#technologie-stack)
 3. [Projekt-Struktur](#projekt-struktur)
 4. [Architektur-Komponenten](#architektur-komponenten)
 5. [Build & Deployment](#build--deployment)
