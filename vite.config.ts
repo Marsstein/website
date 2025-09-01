@@ -107,10 +107,6 @@ export default defineConfig(({ mode }) => ({
             return `assets/[name]-[hash][extname]`;
           }
         }
-      },
-      // Preload wichtige Chunks
-      input: {
-        main: path.resolve(__dirname, 'index.html')
       }
     },
     // Performance-Optimierungen

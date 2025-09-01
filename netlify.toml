@@ -1,8 +1,8 @@
 # Netlify Build Configuration für Marsstein mit SEO-Prerendering
 
 [build]
-  # Build-Befehl: Erstellt Production Build mit SEO-optimiertem Prerendering
-  command = "npm run build && node scripts/prerender-fixed.js"
+  # Build-Befehl: Erstellt Production Build mit SEO-Prerendering
+  command = "npm run build && node scripts/prerender-netlify.js"
   
   # Output-Verzeichnis nach dem Build
   publish = "dist"
@@ -16,6 +16,8 @@
   GENERATE_SOURCEMAP = "false"
   DISABLE_ESLINT_PLUGIN = "true"
   IMAGE_INLINE_SIZE_LIMIT = "10000"
+  # Chromium für Puppeteer
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
 
 # Redirects für SPA-Routing
 [[redirects]]
