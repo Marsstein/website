@@ -6,12 +6,10 @@
   
   # Output-Verzeichnis nach dem Build
   publish = "dist"
-  
-  # Node.js Version für den Build
-  environment = { NODE_VERSION = "20" }
 
 [build.environment]
   # Umgebungsvariablen für den Build-Prozess
+  NODE_VERSION = "20"
   NODE_OPTIONS = "--max-old-space-size=4096"
   CI = "true"
 
