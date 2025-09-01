@@ -86,18 +86,6 @@
     thresholds.seo = 0.8
     # WICHTIG: Deploy nicht bei schlechten Scores abbrechen
     fail_deploy_on_score_thresholds = false
-    # Nur Hauptseite testen (stabiler)
-    audits = [
-      {
-        url = "/",
-        thresholds = {
-          performance = 0.5,
-          accessibility = 0.8,
-          best-practices = 0.8,
-          seo = 0.8
-        }
-      }
-    ]
 
 # Asset-Optimierung
 [[plugins]]
