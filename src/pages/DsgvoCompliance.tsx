@@ -106,11 +106,11 @@ const DsgvoCompliance = () => {
               </span>
             </h1>
             
-            <p className="text-xl text-[#474747] leading-relaxed">
-              Schützen Sie Ihr Unternehmen vor DSGVO-Bußgeldern. 
-              Unsere Vision: KI-gestützte Lösung für Standards-konforme DSGVO-Compliance.
-              <Badge variant="outline" className="ml-2 text-xs">Beta Phase</Badge>
-            </p>
+            <div className="text-xl text-[#474747] leading-relaxed">
+              <span>Schützen Sie Ihr Unternehmen vor DSGVO-Bußgeldern. 
+              Unsere Vision: KI-gestützte Lösung für Standards-konforme DSGVO-Compliance.</span>
+              <Badge variant="outline" className="ml-2 text-xs align-middle">Beta Phase</Badge>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316] text-white px-8">
