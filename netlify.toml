@@ -2,7 +2,7 @@
 
 [build]
   # Build-Befehl: Erstellt Production Build mit SEO-optimiertem Prerendering
-  command = "npm run build && npm run prerender:seo"
+  command = "npm run build && node scripts/prerender-fixed.js"
   
   # Output-Verzeichnis nach dem Build
   publish = "dist"

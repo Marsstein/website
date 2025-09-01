@@ -19,7 +19,7 @@
     "serve:static": "./scripts/serve-static.sh",
     "prerender": "node scripts/prerender.js",
     "prerender:full": "node scripts/full-prerender.js",
-    "prerender:seo": "node scripts/prerender-seo-final.js",
+    "prerender:seo": "node scripts/prerender-fixed.js",
     "prerender:all": "node scripts/prerender-all.js",
     "extract-routes": "node scripts/extract-routes.js",
     "build:vercel": "vite build && node scripts/prerender-vercel.js",
