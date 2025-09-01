@@ -58,11 +58,11 @@ const Knowledge: React.FC = () => {
       "@type": "CollectionPage",
       "name": "Compliance Wissen & Leitfäden",
       "description": "Umfassende Sammlung von Compliance-Leitfäden, DSGVO-Guides und Rechtsprechungsanalysen für Datenschutzbeauftragte und Compliance Manager",
-      "url": "https://marsstein.com/wissen",
+      "url": "https://marsstein.ai/wissen",
       "provider": {
         "@type": "Organization",
         "name": "Marsstein",
-        "url": "https://marsstein.com"
+        "url": "https://marsstein.ai"
       },
       "mainEntity": {
         "@type": "ItemList",
@@ -97,13 +97,13 @@ const Knowledge: React.FC = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marsstein.com"
+          "item": "https://marsstein.ai"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Wissen",
-          "item": "https://marsstein.com/wissen"
+          "item": "https://marsstein.ai/wissen"
         }
       ]
     },

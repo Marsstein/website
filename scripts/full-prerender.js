@@ -163,7 +163,7 @@ function optimizeHtml(html, route) {
     // Füge canonical URL hinzu wenn nicht vorhanden
     if (!elements.helmetLink.some(link => link.includes('rel="canonical"')) && 
         !remainingLinkMatches.some(link => link.includes('rel="canonical"'))) {
-      const canonicalUrl = `https://marsstein.com${route}`;
+      const canonicalUrl = `https://marsstein.ai${route}`;
       elements.helmetLink.push(`<link rel="canonical" href="${canonicalUrl}" data-rh="true" />`);
     }
     

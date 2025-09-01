@@ -33,7 +33,7 @@ const Logistics: React.FC = () => {
     "@type": "LogisticsOrganization",
     "name": "Logistik Compliance Lösungen",
     "description": "Transport & Logistik Compliance: GPS-Tracking DSGVO, Supply Chain Security, Fahrerdatenschutz",
-    "url": "https://marsstein.com/branchen/logistik"
+    "url": "https://marsstein.ai/branchen/logistik"
   };
   const painPoints = [
     {

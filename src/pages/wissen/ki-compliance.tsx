@@ -47,7 +47,7 @@ const KICompliance: React.FC = () => {
     "@type": "TechArticle",
     "name": "KI Compliance - EU AI Act und Datenschutz",
     "description": "Umfassendes Wissen zu KI-Compliance: EU AI Act, algorithmische Transparenz, Bias-Vermeidung, ethische KI-Entwicklung. Praxisnahe Umsetzung.",
-    "url": "https://marsstein.com/wissen/ki-compliance"
+    "url": "https://marsstein.ai/wissen/ki-compliance"
   };
 
   const topics = {

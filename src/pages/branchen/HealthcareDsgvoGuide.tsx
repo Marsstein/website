@@ -713,7 +713,7 @@ const telemedicineSession = {
           "dateModified": "2024-01-15",
           "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://marsstein.com/wissen/branchen/gesundheitswesen-dsgvo"
+            "@id": "https://marsstein.ai/wissen/branchen/gesundheitswesen-dsgvo"
           }
         }}
       />

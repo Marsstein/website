@@ -93,7 +93,7 @@ const Tools: React.FC = () => {
     "name": "Compliance-Tools Suite",
     "description": "Umfassende Suite von Compliance-Tools: DSGVO-Tools, Cookie-Management, Whistleblower-Systeme",
     "numberOfItems": 12,
-    "url": "https://marsstein.com/tools"
+    "url": "https://marsstein.ai/tools"
   };
 
   const categories = [

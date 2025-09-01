@@ -99,7 +99,7 @@ const SOC2ReadinessAssessment: React.FC = () => {
     "name": "SOC 2 Readiness Assessment",
     "description": "Bewerten Sie Ihre Bereitschaft für eine SOC 2 Zertifizierung mit unserem interaktiven Assessment-Tool",
     "educationalLevel": "Professional",
-    "url": "https://marsstein.com/assessment-center/soc2-readiness-assessment"
+    "url": "https://marsstein.ai/assessment-center/soc2-readiness-assessment"
   };
 
   const [currentStep, setCurrentStep] = useState(0);

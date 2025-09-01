@@ -528,14 +528,14 @@ class GDPRConsentManager {
             "name": "Marsstein",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://marsstein.com/logo.png"
+              "url": "https://marsstein.ai/logo.png"
             }
           },
           "datePublished": "2021-07-30",
           "dateModified": "2024-01-15",
           "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://marsstein.com/wissen/rechtsprechung/amazon-luxemburg-2021"
+            "@id": "https://marsstein.ai/wissen/rechtsprechung/amazon-luxemburg-2021"
           }
         }}
       />

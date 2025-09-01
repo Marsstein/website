@@ -18,7 +18,7 @@ const BusinessContinuityGuide: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   
-  const currentUrl = "https://marsstein.com/wissen/krisenmanagement/business-continuity";
+  const currentUrl = "https://marsstein.ai/wissen/krisenmanagement/business-continuity";
 
   const continuityPhases = [
     {
@@ -261,13 +261,13 @@ const BusinessContinuityGuide: React.FC = () => {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Wissen",
-                "item": "https://marsstein.com/wissen"
+                "item": "https://marsstein.ai/wissen"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Krisenmanagement",
-                "item": "https://marsstein.com/wissen/krisenmanagement"
+                "item": "https://marsstein.ai/wissen/krisenmanagement"
               },
               {
                 "@type": "ListItem",

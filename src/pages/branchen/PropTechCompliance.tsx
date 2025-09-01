@@ -833,7 +833,7 @@ const workspaceAnalytics = {
           "publisher": {
             "@type": "Organization",
             "name": "Marsstein",
-            "url": "https://marsstein.com"
+            "url": "https://marsstein.ai"
           },
           "datePublished": "2024-01-25",
           "dateModified": new Date().toISOString()

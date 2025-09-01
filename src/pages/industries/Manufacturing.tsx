@@ -39,7 +39,7 @@ const Manufacturing: React.FC = () => {
     "@type": "ManufacturingOrganization",
     "name": "Produktion Compliance Lösungen",
     "description": "Industrie 4.0 Compliance: IoT-Sicherheit, OT-Security, Smart Factory DSGVO für Manufacturing",
-    "url": "https://marsstein.com/branchen/produktion"
+    "url": "https://marsstein.ai/branchen/produktion"
   };
   const painPoints = [
     {

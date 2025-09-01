@@ -832,10 +832,10 @@ function TeamsPage() {
   const { language, t } = useLanguage();
 
   const team = [
-    { name: "John Doe", role: "Compliance Manager", email: "john@marsstein.com", status: "active" },
-    { name: "Jane Smith", role: "Data Protection Officer", email: "jane@marsstein.com", status: "active" },
-    { name: "Mike Johnson", role: "Security Analyst", email: "mike@marsstein.com", status: "pending" },
-    { name: "Sarah Wilson", role: "Auditor", email: "sarah@marsstein.com", status: "active" },
+    { name: "John Doe", role: "Compliance Manager", email: "john@marsstein.ai", status: "active" },
+    { name: "Jane Smith", role: "Data Protection Officer", email: "jane@marsstein.ai", status: "active" },
+    { name: "Mike Johnson", role: "Security Analyst", email: "mike@marsstein.ai", status: "pending" },
+    { name: "Sarah Wilson", role: "Auditor", email: "sarah@marsstein.ai", status: "active" },
   ];
 
   const handleInviteUser = () => {

@@ -232,8 +232,8 @@ const SchremsIICase: React.FC = () => {
       <SEOHead
         title="Schrems II – Internationale Datentransfers nach EuGH"
         description="Schrems II Urteil: Privacy Shield ungültig, SCC-Anforderungen, US-Datentransfers, TIA-Bewertung. ✓ Legal Analysis ✓ Compliance Impact ✓ Practical Guidance."
-        canonicalUrl="https://marsstein.com/wissen/rechtsprechung/schrems-ii"
-        ogImage="https://marsstein.com/images/schrems-ii-urteil.jpg"
+        canonicalUrl="https://marsstein.ai/wissen/rechtsprechung/schrems-ii"
+        ogImage="https://marsstein.ai/images/schrems-ii-urteil.jpg"
       />
       <Header />
       

@@ -44,7 +44,7 @@ const DSGVOWissen: React.FC = () => {
     "@type": "TechArticle",
     "name": "DSGVO Wissen - Umfassendes Kompendium",
     "description": "Umfassendes DSGVO-Wissen: Grundlagen, Betroffenenrechte, Verarbeitungsverzeichnis, TOMs, internationale Datentransfers. Praxisnah erklärt.",
-    "url": "https://marsstein.com/wissen/dsgvo"
+    "url": "https://marsstein.ai/wissen/dsgvo"
   };
 
   const topics = {

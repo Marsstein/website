@@ -81,7 +81,7 @@ export const ThankYou: React.FC = () => {
             <div className="bg-primary/5 rounded-lg p-4 text-sm text-muted-foreground">
               <p>
                 <strong>{t('thank_you_contact_info')}:</strong><br />
-                📧 contact@marsstein.com<br />
+                📧 contact@marsstein.ai<br />
                 📞 +41 44 123 45 67<br />
                 🕒 {t('thank_you_response_time')}
               </p>

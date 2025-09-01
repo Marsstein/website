@@ -189,25 +189,25 @@ const WebsiteDsgvoGuide: React.FC = () => {
         '@type': 'ListItem',
         'position': 1,
         'name': 'Home',
-        'item': 'https://marsstein.com'
+        'item': 'https://marsstein.ai'
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Wissen',
-        'item': 'https://marsstein.com/wissen'
+        'item': 'https://marsstein.ai/wissen'
       },
       {
         '@type': 'ListItem',
         'position': 3,
         'name': 'Leitfäden',
-        'item': 'https://marsstein.com/wissen/leitfaden'
+        'item': 'https://marsstein.ai/wissen/leitfaden'
       },
       {
         '@type': 'ListItem',
         'position': 4,
         'name': 'Website DSGVO',
-        'item': 'https://marsstein.com/wissen/leitfaden/website-dsgvo'
+        'item': 'https://marsstein.ai/wissen/leitfaden/website-dsgvo'
       }
     ]
   };
@@ -216,15 +216,15 @@ const WebsiteDsgvoGuide: React.FC = () => {
   const seoData = {
     title: 'Website DSGVO-konform machen - Schritt-für-Schritt Anleitung 2025',
     description: 'Website DSGVO-konform gestalten: Cookie-Banner, Datenschutzerklärung, Analytics rechtssicher umsetzen. ✓ Praxis-Anleitung ✓ Checklisten ✓ Vorlagen',
-    canonical: 'https://marsstein.com/wissen/leitfaden/website-dsgvo',
+    canonical: 'https://marsstein.ai/wissen/leitfaden/website-dsgvo',
     keywords: 'Website DSGVO, DSGVO Website, Cookie Banner DSGVO, Datenschutzerklärung Website, Website rechtssicher, DSGVO Checkliste Website',
-    ogImage: 'https://marsstein.com/images/website-dsgvo-guide.jpg',
+    ogImage: 'https://marsstein.ai/images/website-dsgvo-guide.jpg',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'HowTo',
       'name': 'Website DSGVO-konform machen - Komplette Anleitung',
       'description': 'Schritt-für-Schritt Anleitung zur DSGVO-konformen Gestaltung Ihrer Website mit Cookie-Banner, Datenschutzerklärung und Analytics.',
-      'url': 'https://marsstein.com/wissen/leitfaden/website-dsgvo',
+      'url': 'https://marsstein.ai/wissen/leitfaden/website-dsgvo',
       'totalTime': 'PT30M',
       'estimatedCost': {
         '@type': 'MonetaryAmount',

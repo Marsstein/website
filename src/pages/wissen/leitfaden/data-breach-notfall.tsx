@@ -46,14 +46,14 @@ const DataBreachNotfall: React.FC = () => {
     "@type": "HowTo",
     "name": "Data Breach Notfallplan: DSGVO-konform in 72 Stunden",
     "description": "Kompletter Notfallplan bei Datenpannen mit 4-Phasen-System. Sofortmaßnahmen, 72-Stunden-Meldepflicht, Risikobewertung, Kommunikation. Mit Checklisten und Vorlagen.",
-    "url": "https://marsstein.com/wissen/leitfaden/data-breach-notfall",
+    "url": "https://marsstein.ai/wissen/leitfaden/data-breach-notfall",
     "dateModified": new Date().toISOString(),
     "publisher": {
       "@type": "Organization",
       "name": "Marsstein",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://marsstein.com/logo.png"
+        "url": "https://marsstein.ai/logo.png"
       }
     },
     "breadcrumb": {
@@ -63,19 +63,19 @@ const DataBreachNotfall: React.FC = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Wissen",
-          "item": "https://marsstein.com/wissen"
+          "item": "https://marsstein.ai/wissen"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Leitfäden",
-          "item": "https://marsstein.com/wissen/leitfaden"
+          "item": "https://marsstein.ai/wissen/leitfaden"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Data Breach Notfallplan",
-          "item": "https://marsstein.com/wissen/leitfaden/data-breach-notfall"
+          "item": "https://marsstein.ai/wissen/leitfaden/data-breach-notfall"
         }
       ]
     }

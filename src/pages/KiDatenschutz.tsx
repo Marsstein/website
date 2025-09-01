@@ -216,13 +216,13 @@ const KiDatenschutz = () => {
     "@type": "CollectionPage",
     "name": "KI & Datenschutz: Leitfäden und Best Practices 2024",
     "description": "Umfassende Sammlung zu KI-Datenschutz-Themen: EU AI Act, Privacy-Preserving AI, Algorithmic Impact Assessments. Über 12 praxisnahe Guides für sichere KI-Entwicklung.",
-    "url": "https://marsstein.com/wissen/ki-datenschutz",
+    "url": "https://marsstein.ai/wissen/ki-datenschutz",
     "publisher": {
       "@type": "Organization",
       "name": "Marsstein",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://marsstein.com/logo.png"
+        "url": "https://marsstein.ai/logo.png"
       }
     },
     "dateModified": new Date().toISOString(),
@@ -233,13 +233,13 @@ const KiDatenschutz = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Wissen",
-          "item": "https://marsstein.com/wissen"
+          "item": "https://marsstein.ai/wissen"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "KI & Datenschutz",
-          "item": "https://marsstein.com/wissen/ki-datenschutz"
+          "item": "https://marsstein.ai/wissen/ki-datenschutz"
         }
       ]
     }

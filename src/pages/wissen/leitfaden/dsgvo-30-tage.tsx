@@ -44,7 +44,7 @@ const DSGVO30Tage: React.FC = () => {
     "@type": "HowTo",
     "name": "DSGVO in 30 Tagen umsetzen",
     "description": "DSGVO-Express: In 30 Tagen zur Basis-Compliance. Täglicher Aktionsplan mit priorisierten Aufgaben. Schnell und pragmatisch DSGVO-konform werden.",
-    "url": "https://marsstein.com/wissen/leitfaden/dsgvo-30-tage"
+    "url": "https://marsstein.ai/wissen/leitfaden/dsgvo-30-tage"
   };
 
   const weeks = [

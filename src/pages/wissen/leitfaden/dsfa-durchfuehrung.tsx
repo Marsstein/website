@@ -47,7 +47,7 @@ const DSFADurchfuehrung: React.FC = () => {
     "@type": "HowTo",
     "name": "DSFA Datenschutz-Folgenabschätzung durchführen",
     "description": "DSFA nach Art. 35 DSGVO professionell durchführen: Schwellwertanalyse, Risikobewertung, Abhilfemaßnahmen. Mit Vorlagen und Praxisbeispielen.",
-    "url": "https://marsstein.com/wissen/leitfaden/dsfa-durchfuehrung"
+    "url": "https://marsstein.ai/wissen/leitfaden/dsfa-durchfuehrung"
   };
 
   const dsfaPhasen = {

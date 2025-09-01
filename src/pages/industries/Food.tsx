@@ -33,7 +33,7 @@ const Food: React.FC = () => {
     "@type": "FoodService",
     "name": "Lebensmittel Compliance Lösungen",
     "description": "Food Industry Compliance: Rückverfolgbarkeit, HACCP-Integration, Lieferketten-Transparenz",
-    "url": "https://marsstein.com/branchen/lebensmittel"
+    "url": "https://marsstein.ai/branchen/lebensmittel"
   };
   const painPoints = [
     {

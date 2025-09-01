@@ -37,7 +37,7 @@ const DSGVOGrundlagen: React.FC = () => {
     "@type": "TechArticle",
     "name": "DSGVO Grundlagen - Basiswissen verständlich erklärt",
     "description": "DSGVO-Grundlagen für Einsteiger: Prinzipien, Rechtsgrundlagen, Verantwortlichkeiten. Verständlich erklärt mit praktischen Beispielen.",
-    "url": "https://marsstein.com/wissen/leitfaden/dsgvo-grundlagen"
+    "url": "https://marsstein.ai/wissen/leitfaden/dsgvo-grundlagen"
   };
 
   const tableOfContents = [

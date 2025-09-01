@@ -33,7 +33,7 @@ const FinancialServices: React.FC = () => {
     "name": "Finanzdienstleister Compliance Lösungen",
     "description": "Compliance für Banken, Versicherungen und FinTechs: MaRisk, BAIT, PSD2",
     "serviceType": "Financial Compliance Solutions",
-    "url": "https://marsstein.com/branchen/finanzdienstleister"
+    "url": "https://marsstein.ai/branchen/finanzdienstleister"
   };
 
   const painPoints = [

@@ -45,13 +45,13 @@ const DSGVOLeitfaeden: React.FC = () => {
     "@type": "CollectionPage",
     "name": "DSGVO Leitfäden 2024: Praktische Anleitungen",
     "description": "Umfassende Sammlung praktischer DSGVO-Leitfäden mit Schritt-für-Schritt-Anleitungen, Checklisten und Vorlagen für alle Compliance-Herausforderungen.",
-    "url": "https://marsstein.com/wissen/dsgvo-leitfaeden",
+    "url": "https://marsstein.ai/wissen/dsgvo-leitfaeden",
     "publisher": {
       "@type": "Organization",
       "name": "Marsstein",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://marsstein.com/logo.png"
+        "url": "https://marsstein.ai/logo.png"
       }
     },
     "dateModified": new Date().toISOString(),
@@ -62,13 +62,13 @@ const DSGVOLeitfaeden: React.FC = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Wissen",
-          "item": "https://marsstein.com/wissen"
+          "item": "https://marsstein.ai/wissen"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "DSGVO Leitfäden",
-          "item": "https://marsstein.com/wissen/dsgvo-leitfaeden"
+          "item": "https://marsstein.ai/wissen/dsgvo-leitfaeden"
         }
       ]
     }

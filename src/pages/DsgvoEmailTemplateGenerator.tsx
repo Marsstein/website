@@ -181,7 +181,7 @@ const DsgvoEmailTemplateGenerator = () => {
     "name": "DSGVO E-Mail Template Generator",
     "description": "Generator für DSGVO-konforme E-Mail-Vorlagen: Auskunftsersuchen, Löschanfragen, Betroffenenrechte",
     "applicationCategory": "Privacy Tool",
-    "url": "https://marsstein.com/tools/dsgvo-email-template-generator"
+    "url": "https://marsstein.ai/tools/dsgvo-email-template-generator"
   };
 
   const [selectedCategory, setSelectedCategory] = useState('all');

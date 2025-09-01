@@ -97,7 +97,7 @@ const ComplianceAIAssistant = () => {
     "name": "Compliance AI Assistant",
     "description": "KI-gestützter Compliance-Berater für DSGVO, ISO 27001 und EU AI Act Fragen",
     "applicationCategory": "AI Assistant",
-    "url": "https://marsstein.com/tools/compliance-ai-assistant"
+    "url": "https://marsstein.ai/tools/compliance-ai-assistant"
   };
 
   const [questionsAnswered, setQuestionsAnswered] = useState(0);

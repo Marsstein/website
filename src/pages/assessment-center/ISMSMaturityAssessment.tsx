@@ -89,7 +89,7 @@ const ISMSMaturityAssessment: React.FC = () => {
     "name": "ISO 27001 ISMS Maturity Assessment",
     "description": "Bewerten Sie die Reife Ihres Information Security Management Systems (ISMS) nach ISO 27001 Standards",
     "educationalLevel": "Professional",
-    "url": "https://marsstein.com/assessment-center/isms-maturity-assessment"
+    "url": "https://marsstein.ai/assessment-center/isms-maturity-assessment"
   };
 
   const [currentStep, setCurrentStep] = useState(0);

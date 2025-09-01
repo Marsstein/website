@@ -119,7 +119,7 @@ const DsgvoComplianceScorecard: React.FC = () => {
     "name": "DSGVO Compliance Scorecard",
     "description": "Interaktive DSGVO-Compliance Bewertung mit Gap-Analyse und Handlungsempfehlungen",
     "applicationCategory": "Assessment Tool",
-    "url": "https://marsstein.com/tools/dsgvo-compliance-scorecard"
+    "url": "https://marsstein.ai/tools/dsgvo-compliance-scorecard"
   };
 
   const [isAssessing, setIsAssessing] = useState(false);

@@ -38,7 +38,7 @@ const WissenOverview: React.FC = () => {
     "@type": "CollectionPage",
     "name": "Compliance Wissensdatenbank",
     "description": "Umfassende Wissensdatenbank für Compliance-Themen: DSGVO, ISO 27001, EU AI Act, Cybersecurity. Guides, Best Practices und aktuelle Informationen.",
-    "url": "https://marsstein.com/wissen"
+    "url": "https://marsstein.ai/wissen"
   };
 
   const categories = [

@@ -49,7 +49,7 @@ const TOMMassnahmen: React.FC = () => {
     "@type": "HowTo",
     "name": "TOM - Technische und organisatorische Maßnahmen",
     "description": "TOM nach Art. 32 DSGVO umsetzen: Technische und organisatorische Maßnahmen für Datenschutz. Verschlüsselung, Zugangskontrollen, Pseudonymisierung. Mit Checkliste!",
-    "url": "https://marsstein.com/wissen/leitfaden/tom-massnahmen"
+    "url": "https://marsstein.ai/wissen/leitfaden/tom-massnahmen"
   };
 
   const tomKategorien = {

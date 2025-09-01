@@ -228,14 +228,14 @@ function generateCompleteHTML(route, module, assetPaths) {
     <meta name="robots" content="index, follow">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://marsstein.com${route}">
+    <link rel="canonical" href="https://marsstein.ai${route}">
     
     <!-- Open Graph Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${description}">
-    <meta property="og:url" content="https://marsstein.com${route}">
-    <meta property="og:image" content="https://marsstein.com/og-image-marsstein.jpg">
+    <meta property="og:url" content="https://marsstein.ai${route}">
+    <meta property="og:image" content="https://marsstein.ai/og-image-marsstein.jpg">
     <meta property="og:image:alt" content="Marsstein - KI-gestützte Compliance-Automatisierung">
     <meta property="og:site_name" content="Marsstein">
     <meta property="og:locale" content="de_DE">
@@ -253,8 +253,8 @@ function generateCompleteHTML(route, module, assetPaths) {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Marsstein GmbH",
-      "url": "https://marsstein.com",
-      "logo": "https://marsstein.com/marsstein-logo.png",
+      "url": "https://marsstein.ai",
+      "logo": "https://marsstein.ai/marsstein-logo.png",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Bücklestraße 3",
@@ -295,7 +295,7 @@ function generateCompleteHTML(route, module, assetPaths) {
     <script type="module" src="${assetPaths.jsPath}"></script>
     
     <!-- Plausible Analytics -->
-    <script defer data-domain="marsstein.com" src="https://plausible.io/js/script.js"></script>
+    <script defer data-domain="marsstein.ai" src="https://plausible.io/js/script.js"></script>
 </body>
 </html>`;
 

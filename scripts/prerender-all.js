@@ -168,7 +168,7 @@ function optimizeHtml(html, route) {
   
   // Füge canonical URL hinzu wenn nicht vorhanden
   if (!html.includes('rel="canonical"')) {
-    const canonicalUrl = `https://marsstein.com${route}`;
+    const canonicalUrl = `https://marsstein.ai${route}`;
     html = html.replace('</head>', `  <link rel="canonical" href="${canonicalUrl}" />\n</head>`);
   }
   
@@ -279,7 +279,7 @@ Disallow: /tools/compliance-ai-assistant
 Disallow: /test*
 
 # Sitemap
-Sitemap: https://marsstein.com/sitemap.xml
+Sitemap: https://marsstein.ai/sitemap.xml
 `;
   
   writeFileSync(join(__dirname, '..', prerenderConfig.output.dir, 'robots.txt'), content);

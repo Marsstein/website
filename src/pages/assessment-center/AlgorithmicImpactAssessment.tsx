@@ -75,7 +75,7 @@ const AlgorithmicImpactAssessment: React.FC = () => {
     "name": "Algorithmic Impact Assessment",
     "description": "Bewerten Sie die gesellschaftlichen Auswirkungen Ihrer algorithmischen Entscheidungssysteme",
     "educationalLevel": "Professional",
-    "url": "https://marsstein.com/assessment-center/algorithmic-impact-assessment"
+    "url": "https://marsstein.ai/assessment-center/algorithmic-impact-assessment"
   };
 
   const [currentStep, setCurrentStep] = useState(0);

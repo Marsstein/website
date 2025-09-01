@@ -67,7 +67,7 @@ const AIRiskAssessment: React.FC = () => {
     "name": "EU AI Act Risk Assessment",
     "description": "Bewerten Sie das Risiko Ihres KI-Systems nach EU AI Act Kriterien und erhalten Sie Handlungsempfehlungen",
     "educationalLevel": "Professional",
-    "url": "https://marsstein.com/assessment-center/ai-risk-assessment"
+    "url": "https://marsstein.ai/assessment-center/ai-risk-assessment"
   };
 
   const [currentStep, setCurrentStep] = useState(0);

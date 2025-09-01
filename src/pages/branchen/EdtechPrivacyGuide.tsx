@@ -920,7 +920,7 @@ const lmsIntegrationFramework = {
           "dateModified": "2024-01-15",
           "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://marsstein.com/wissen/branchen/edtech-privacy"
+            "@id": "https://marsstein.ai/wissen/branchen/edtech-privacy"
           }
         }}
       />

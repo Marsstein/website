@@ -47,7 +47,7 @@ const ComplianceFrameworks: React.FC = () => {
     "@type": "TechArticle",
     "name": "Compliance Frameworks Übersicht",
     "description": "Alle relevanten Compliance-Rahmenwerke im Vergleich: ISO 27001, SOC 2, TISAX, ISO 27017/18, DSGVO. Anforderungen vergleichen, Synergien finden.",
-    "url": "https://marsstein.com/wissen/compliance-frameworks"
+    "url": "https://marsstein.ai/wissen/compliance-frameworks"
   };
 
   const frameworkCategories = {

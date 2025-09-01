@@ -50,7 +50,7 @@ const Cybersecurity: React.FC = () => {
     "@type": "TechArticle", 
     "name": "Cybersecurity & Compliance Wissen",
     "description": "IT-Sicherheit trifft Compliance: Technische Sicherheitsmaßnahmen, rechtliche Anforderungen, ISO 27001, NIS-2. Ganzheitlicher Schutz für Ihr Unternehmen.",
-    "url": "https://marsstein.com/wissen/cybersecurity"
+    "url": "https://marsstein.ai/wissen/cybersecurity"
   };
 
   const topics = {

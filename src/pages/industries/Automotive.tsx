@@ -33,7 +33,7 @@ const Automotive: React.FC = () => {
     "@type": "AutomotiveOrganization",
     "name": "Automotive Compliance Lösungen",
     "description": "Automotive Compliance: TISAX, Connected Car DSGVO, Autonomous Vehicle AI Act",
-    "url": "https://marsstein.com/branchen/automotive"
+    "url": "https://marsstein.ai/branchen/automotive"
   };
   const painPoints = [
     {

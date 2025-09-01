@@ -78,7 +78,7 @@ const extractAssetPaths = () => {
  */
 function generateHTML(route, pageContent, assetPaths) {
   const { title, description, content } = pageContent;
-  const baseUrl = 'https://marsstein.com';
+  const baseUrl = 'https://marsstein.ai';
   
   // Verwende gemappte URL falls vorhanden
   const canonicalPath = routeMapping[route] || route;
@@ -180,7 +180,7 @@ function generateHTML(route, pageContent, assetPaths) {
     <script type="module" src="${assetPaths.jsPath}"></script>
     
     <!-- Plausible Analytics -->
-    <script defer data-domain="marsstein.com" src="https://plausible.io/js/script.js"></script>
+    <script defer data-domain="marsstein.ai" src="https://plausible.io/js/script.js"></script>
 </body>
 </html>`;
 
@@ -298,7 +298,7 @@ ${routes.map(route => {
   const mappedRoute = routeMapping[route] || route;
   const priority = route === '/' ? '1.0' : route.includes('/wissen/') ? '0.6' : '0.8';
   return `  <url>
-    <loc>https://marsstein.com${mappedRoute}</loc>
+    <loc>https://marsstein.ai${mappedRoute}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${priority}</priority>
@@ -316,7 +316,7 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /_app/
 
-Sitemap: https://marsstein.com/sitemap.xml`;
+Sitemap: https://marsstein.ai/sitemap.xml`;
     
     writeFileSync(join(__dirname, '..', 'dist', 'robots.txt'), robotsContent);
     

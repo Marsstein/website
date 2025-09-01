@@ -654,11 +654,11 @@ const emergencyProtocol = {
         <title>Datenschutz Arztpraxis DSGVO – Praxis-Guide für Ärzte 2024</title>
         <meta name="description" content="DSGVO für Arztpraxen: ✓ Patientendaten sicher verwalten ✓ Einwilligungen korrekt ✓ TOM-Checklisten ✓ Schweigepflicht digital. Jetzt Praxis-Guide lesen!" />
         <meta name="keywords" content="datenschutz arztpraxis, dsgvo arzt, patientendatenschutz, einwilligung patient, tom arztpraxis, schweigepflicht dsgvo" />
-        <link rel="canonical" href="https://marsstein.com/wissen/branchen/datenschutz-arztpraxis" />
+        <link rel="canonical" href="https://marsstein.ai/wissen/branchen/datenschutz-arztpraxis" />
         <meta property="og:title" content="Datenschutz in der Arztpraxis - DSGVO Compliance Guide" />
         <meta property="og:description" content="Praxisleitfaden für Datenschutz in Arztpraxen. Patientendaten DSGVO-konform verarbeiten, TOM implementieren." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://marsstein.com/wissen/branchen/datenschutz-arztpraxis" />
+        <meta property="og:url" content="https://marsstein.ai/wissen/branchen/datenschutz-arztpraxis" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}

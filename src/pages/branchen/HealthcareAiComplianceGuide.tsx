@@ -886,7 +886,7 @@ const biasMonitoring = {
           "dateModified": "2024-01-15",
           "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://marsstein.com/wissen/branchen/healthcare-ai-compliance"
+            "@id": "https://marsstein.ai/wissen/branchen/healthcare-ai-compliance"
           }
         }}
       />

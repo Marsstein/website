@@ -7,8 +7,8 @@ const Home = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Marsstein",
-    "url": "https://marsstein.com",
-    "logo": "https://marsstein.com/logo.png",
+    "url": "https://marsstein.ai",
+    "logo": "https://marsstein.ai/logo.png",
     "description": "Compliance-Plattform für DSGVO, ISO 27001, EU AI Act und mehr",
     "sameAs": [
       "https://www.linkedin.com/company/marsstein",

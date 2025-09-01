@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -6,171 +7,179 @@ import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
-import Index from "./pages/Index";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import ContactPage from "./pages/ContactPage";
-import Academy from "./pages/Academy";
-import AcademyPage from "./pages/AcademyPage";
-import Pricing from "./pages/Pricing";
-import PricingPage from "./pages/PricingPage";
-import Dashboard from "./pages/Dashboard";
-import DashboardPage from "./pages/DashboardPage";
-import ThankYou from "./pages/ThankYou";
-import NotFound from "./pages/NotFound";
-import Impressum from "./pages/Impressum";
-import Datenschutz from "./pages/Datenschutz";
+// PageLoader component for Suspense fallback
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+  </div>
+);
 
-import { Resources } from "./pages/Resources";
-import { DSGVOComplianceChecklist } from "./pages/resources/DSGVOComplianceChecklist";
-import { DataPrivacyReadinessAssessment } from "./pages/resources/DataPrivacyReadinessAssessment";
-import { BreachResponseChecklist } from "./pages/resources/BreachResponseChecklist";
-import { CookieComplianceAudit } from "./pages/resources/CookieComplianceAudit";
-import { VendorAssessmentTemplate } from "./pages/resources/VendorAssessmentTemplate";
+// Lazy loaded page components
+const Index = lazy(() => import("./pages/Index"));
+const Home = lazy(() => import("./pages/Home"));
+const Contact = lazy(() => import("./pages/Contact"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const Academy = lazy(() => import("./pages/Academy"));
+const AcademyPage = lazy(() => import("./pages/AcademyPage"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const PricingPage = lazy(() => import("./pages/PricingPage"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Impressum = lazy(() => import("./pages/Impressum"));
+const Datenschutz = lazy(() => import("./pages/Datenschutz"));
+
+const Resources = lazy(() => import("./pages/Resources").then(module => ({ default: module.Resources })));
+const DSGVOComplianceChecklist = lazy(() => import("./pages/resources/DSGVOComplianceChecklist").then(module => ({ default: module.DSGVOComplianceChecklist })));
+const DataPrivacyReadinessAssessment = lazy(() => import("./pages/resources/DataPrivacyReadinessAssessment").then(module => ({ default: module.DataPrivacyReadinessAssessment })));
+const BreachResponseChecklist = lazy(() => import("./pages/resources/BreachResponseChecklist").then(module => ({ default: module.BreachResponseChecklist })));
+const CookieComplianceAudit = lazy(() => import("./pages/resources/CookieComplianceAudit").then(module => ({ default: module.CookieComplianceAudit })));
+const VendorAssessmentTemplate = lazy(() => import("./pages/resources/VendorAssessmentTemplate").then(module => ({ default: module.VendorAssessmentTemplate })));
 
 // EU AI Act Assessment Tools
-import AIRiskAssessment from "./pages/assessment-center/AIRiskAssessment";
-import AlgorithmicImpactAssessment from "./pages/assessment-center/AlgorithmicImpactAssessment";
-import AIGovernanceCheck from "./pages/assessment-center/AIGovernanceCheck";
-import DsgvoCompliance from "./pages/DsgvoCompliance";
-import Iso27001Compliance from "./pages/Iso27001Compliance";
-import EuAiActCompliance from "./pages/EuAiActCompliance";
-import Soc2Compliance from "./pages/Soc2Compliance";
-import Iso27017Compliance from "./pages/Iso27017Compliance";
-import Iso27018Compliance from "./pages/Iso27018Compliance";
-import TisaxCompliance from "./pages/TisaxCompliance";
-import Nis2Compliance from "./pages/Nis2Compliance";
-import HinweisgeberschutzCompliance from "./pages/HinweisgeberschutzCompliance";
-import GeldwaeschegesetzCompliance from "./pages/GeldwaeschegesetzCompliance";
-import Tools from "./pages/Tools";
-import CookieManagementTool from "./pages/CookieManagementTool";
-import WhistleblowerSystemTool from "./pages/WhistleblowerSystemTool";
-import CookieManagementToolProduct from "./pages/CookieManagementToolProduct";
-import WhistleblowerSystemToolProduct from "./pages/WhistleblowerSystemToolProduct";
-import DsgvoEmailTemplateGenerator from "./pages/DsgvoEmailTemplateGenerator";
-import DsgvoComplianceScorecard from "./pages/DsgvoComplianceScorecard";
-import ComplianceAIAssistant from "./pages/ComplianceAIAssistant";
-import Knowledge from "./pages/Knowledge";
-import DsgvoGuides from "./pages/DsgvoGuides";
-import ComplianceFrameworks from "./pages/ComplianceFrameworks";
-import RiskManagement from "./pages/RiskManagement";
-import Iso27001Guide from "./pages/compliance/Iso27001Guide";
-import Soc2Guide from "./pages/compliance/Soc2Guide";
-import EuAiActGuide from "./pages/compliance/EuAiActGuide";
-import Nis2Guide from "./pages/compliance/Nis2Guide";
-import Iso27017Guide from "./pages/compliance/Iso27017Guide";
-import Iso27018Guide from "./pages/compliance/Iso27018Guide";
-import HinweisgeberschutzgesetzGuide from "./pages/compliance/HinweisgeberschutzgesetzGuide";
-import TisaxGuide from "./pages/compliance/TisaxGuide";
-import GeldwaeschegesetzGuide from "./pages/compliance/GeldwaeschegesetzGuide";
-import DsgvoGuide from "./pages/compliance/DsgvoGuide";
-import DsgEkdCompliance from "./pages/compliance/DsgEkdCompliance";
-import DsgEkdGuide from "./pages/compliance/DsgEkdGuide";
-import KdgCompliance from "./pages/compliance/KdgCompliance";
-import KdgGuide from "./pages/compliance/KdgGuide";
-import DsgvoBasicsGuide from "./pages/guides/DsgvoBasicsGuide";
-import WebsiteDsgvoGuide from "./pages/guides/WebsiteDsgvoGuide";
-import Dsgvo30TageGuide from "./pages/guides/Dsgvo30TageGuide";
-import DataBreachNotfallGuide from "./pages/guides/DataBreachNotfallGuide";
-import VerarbeitungsverzeichnisGuide from "./pages/guides/VerarbeitungsverzeichnisGuide";
-import BetroffenenrechteGuide from "./pages/guides/BetroffenenrechteGuide";
-import TomMassnahmenGuide from "./pages/guides/TomMassnahmenGuide";
-import DsfaDurchfuehrungGuide from "./pages/guides/DsfaDurchfuehrungGuide";
-import CrisisManagement from "./pages/CrisisManagement";
-import DataBreach72hGuide from "./pages/crisis/DataBreach72hGuide";
-import SecurityIncidentGuide from "./pages/crisis/SecurityIncidentGuide";
-import CommunicationTemplatesGuide from "./pages/crisis/CommunicationTemplatesGuide";
-import ComplianceAuditEmergencyGuide from "./pages/crisis/ComplianceAuditEmergencyGuide";
-import MediaCrisisGuide from "./pages/crisis/MediaCrisisGuide";
-import VendorDataBreachGuide from "./pages/crisis/VendorDataBreachGuide";
-import GdprFineResponseGuide from "./pages/crisis/GdprFineResponseGuide";
-import BusinessContinuityGuide from "./pages/crisis/BusinessContinuityGuide";
-import Rechtsprechung from "./pages/Rechtsprechung";
-import SchremsIICase from "./pages/legal/SchremsIICase";
-import MetaIrlandCase from "./pages/legal/MetaIrlandCase";
-import CookieLawGuide from "./pages/legal/CookieLawGuide";
-import FacebookFanpageCase from "./pages/legal/FacebookFanpageCase";
-import GoogleAnalyticsAustriaCase from "./pages/legal/GoogleAnalyticsAustriaCase";
-import AmazonLuxembourgCase from "./pages/legal/AmazonLuxembourgCase";
-import WhatsAppIrelandCase from "./pages/legal/WhatsAppIrelandCase";
-import Planet49CookieCase from "./pages/legal/Planet49CookieCase";
-import GoogleFontsMunichCase from "./pages/legal/GoogleFontsMunichCase";
+const AIRiskAssessment = lazy(() => import("./pages/assessment-center/AIRiskAssessment"));
+const AlgorithmicImpactAssessment = lazy(() => import("./pages/assessment-center/AlgorithmicImpactAssessment"));
+const AIGovernanceCheck = lazy(() => import("./pages/assessment-center/AIGovernanceCheck"));
+const DsgvoCompliance = lazy(() => import("./pages/DsgvoCompliance"));
+const Iso27001Compliance = lazy(() => import("./pages/Iso27001Compliance"));
+const EuAiActCompliance = lazy(() => import("./pages/EuAiActCompliance"));
+const Soc2Compliance = lazy(() => import("./pages/Soc2Compliance"));
+const Iso27017Compliance = lazy(() => import("./pages/Iso27017Compliance"));
+const Iso27018Compliance = lazy(() => import("./pages/Iso27018Compliance"));
+const TisaxCompliance = lazy(() => import("./pages/TisaxCompliance"));
+const Nis2Compliance = lazy(() => import("./pages/Nis2Compliance"));
+const HinweisgeberschutzCompliance = lazy(() => import("./pages/HinweisgeberschutzCompliance"));
+const GeldwaeschegesetzCompliance = lazy(() => import("./pages/GeldwaeschegesetzCompliance"));
+const Tools = lazy(() => import("./pages/Tools"));
+const CookieManagementTool = lazy(() => import("./pages/CookieManagementTool"));
+const WhistleblowerSystemTool = lazy(() => import("./pages/WhistleblowerSystemTool"));
+const CookieManagementToolProduct = lazy(() => import("./pages/CookieManagementToolProduct"));
+const WhistleblowerSystemToolProduct = lazy(() => import("./pages/WhistleblowerSystemToolProduct"));
+const DsgvoEmailTemplateGenerator = lazy(() => import("./pages/DsgvoEmailTemplateGenerator"));
+const DsgvoComplianceScorecard = lazy(() => import("./pages/DsgvoComplianceScorecard"));
+const ComplianceAIAssistant = lazy(() => import("./pages/ComplianceAIAssistant"));
+const Knowledge = lazy(() => import("./pages/Knowledge"));
+const DsgvoGuides = lazy(() => import("./pages/DsgvoGuides"));
+const ComplianceFrameworks = lazy(() => import("./pages/ComplianceFrameworks"));
+const RiskManagement = lazy(() => import("./pages/RiskManagement"));
+const Iso27001Guide = lazy(() => import("./pages/compliance/Iso27001Guide"));
+const Soc2Guide = lazy(() => import("./pages/compliance/Soc2Guide"));
+const EuAiActGuide = lazy(() => import("./pages/compliance/EuAiActGuide"));
+const Nis2Guide = lazy(() => import("./pages/compliance/Nis2Guide"));
+const Iso27017Guide = lazy(() => import("./pages/compliance/Iso27017Guide"));
+const Iso27018Guide = lazy(() => import("./pages/compliance/Iso27018Guide"));
+const HinweisgeberschutzgesetzGuide = lazy(() => import("./pages/compliance/HinweisgeberschutzgesetzGuide"));
+const TisaxGuide = lazy(() => import("./pages/compliance/TisaxGuide"));
+const GeldwaeschegesetzGuide = lazy(() => import("./pages/compliance/GeldwaeschegesetzGuide"));
+const DsgvoGuide = lazy(() => import("./pages/compliance/DsgvoGuide"));
+const DsgEkdCompliance = lazy(() => import("./pages/compliance/DsgEkdCompliance"));
+const DsgEkdGuide = lazy(() => import("./pages/compliance/DsgEkdGuide"));
+const KdgCompliance = lazy(() => import("./pages/compliance/KdgCompliance"));
+const KdgGuide = lazy(() => import("./pages/compliance/KdgGuide"));
+const DsgvoBasicsGuide = lazy(() => import("./pages/guides/DsgvoBasicsGuide"));
+const WebsiteDsgvoGuide = lazy(() => import("./pages/guides/WebsiteDsgvoGuide"));
+const Dsgvo30TageGuide = lazy(() => import("./pages/guides/Dsgvo30TageGuide"));
+const DataBreachNotfallGuide = lazy(() => import("./pages/guides/DataBreachNotfallGuide"));
+const VerarbeitungsverzeichnisGuide = lazy(() => import("./pages/guides/VerarbeitungsverzeichnisGuide"));
+const BetroffenenrechteGuide = lazy(() => import("./pages/guides/BetroffenenrechteGuide"));
+const TomMassnahmenGuide = lazy(() => import("./pages/guides/TomMassnahmenGuide"));
+const DsfaDurchfuehrungGuide = lazy(() => import("./pages/guides/DsfaDurchfuehrungGuide"));
+const CrisisManagement = lazy(() => import("./pages/CrisisManagement"));
+const DataBreach72hGuide = lazy(() => import("./pages/crisis/DataBreach72hGuide"));
+const SecurityIncidentGuide = lazy(() => import("./pages/crisis/SecurityIncidentGuide"));
+const CommunicationTemplatesGuide = lazy(() => import("./pages/crisis/CommunicationTemplatesGuide"));
+const ComplianceAuditEmergencyGuide = lazy(() => import("./pages/crisis/ComplianceAuditEmergencyGuide"));
+const MediaCrisisGuide = lazy(() => import("./pages/crisis/MediaCrisisGuide"));
+const VendorDataBreachGuide = lazy(() => import("./pages/crisis/VendorDataBreachGuide"));
+const GdprFineResponseGuide = lazy(() => import("./pages/crisis/GdprFineResponseGuide"));
+const BusinessContinuityGuide = lazy(() => import("./pages/crisis/BusinessContinuityGuide"));
+const Rechtsprechung = lazy(() => import("./pages/Rechtsprechung"));
+const SchremsIICase = lazy(() => import("./pages/legal/SchremsIICase"));
+const MetaIrlandCase = lazy(() => import("./pages/legal/MetaIrlandCase"));
+const CookieLawGuide = lazy(() => import("./pages/legal/CookieLawGuide"));
+const FacebookFanpageCase = lazy(() => import("./pages/legal/FacebookFanpageCase"));
+const GoogleAnalyticsAustriaCase = lazy(() => import("./pages/legal/GoogleAnalyticsAustriaCase"));
+const AmazonLuxembourgCase = lazy(() => import("./pages/legal/AmazonLuxembourgCase"));
+const WhatsAppIrelandCase = lazy(() => import("./pages/legal/WhatsAppIrelandCase"));
+const Planet49CookieCase = lazy(() => import("./pages/legal/Planet49CookieCase"));
+const GoogleFontsMunichCase = lazy(() => import("./pages/legal/GoogleFontsMunichCase"));
 
 // Branchen Wissen Pages
-import BranchenWissen from "./pages/BranchenWissen";
-import HealthcareDsgvoGuide from "./pages/branchen/HealthcareDsgvoGuide";
-import HealthcareAiComplianceGuide from "./pages/branchen/HealthcareAiComplianceGuide";
-import EdtechPrivacyGuide from "./pages/branchen/EdtechPrivacyGuide";
-import FintechComplianceGuide from "./pages/branchen/FintechComplianceGuide";
-import EcommercePrivacyGuide from "./pages/branchen/EcommercePrivacyGuide";
-import SaasPrivacyDesignGuide from "./pages/branchen/SaasPrivacyDesignGuide";
-import Industrie40DatenschutzGuide from "./pages/branchen/Industrie40DatenschutzGuide";
-import AutomotiveDatenschutz from "./pages/branchen/AutomotiveDatenschutz";
-import SmartGridComplianceGuide from "./pages/branchen/SmartGridComplianceGuide";
-import PharmaComplianceGuide from "./pages/branchen/PharmaComplianceGuide";
-import ProduktionDatenschutzGuide from "./pages/branchen/ProduktionDatenschutzGuide";
-import TravelComplianceGuide from "./pages/branchen/TravelComplianceGuide";
-import InsurtechComplianceGuide from "./pages/branchen/InsurtechComplianceGuide";
-import PropTechCompliance from "./pages/branchen/PropTechCompliance";
-import LogisticsCompliance from "./pages/branchen/LogisticsCompliance";
-import DatenschutzPflege from "./pages/branchen/DatenschutzPflege";
-import DatenschutzArztpraxis from "./pages/branchen/DatenschutzArztpraxis";
-import DatenschutzKindergarten from "./pages/branchen/DatenschutzKindergarten";
-import DsgvoVermieter from "./pages/branchen/DsgvoVermieter";
-import DsgvoVereineComprehensive from "./pages/wissen/branchen/DsgvoVereineComprehensive";
-import DatenschutzBetriebsrat from "./pages/branchen/DatenschutzBetriebsrat";
-import DatenschutzHomeofficeComprehensive from "./pages/wissen/branchen/DatenschutzHomeofficeComprehensive";
+const BranchenWissen = lazy(() => import("./pages/BranchenWissen"));
+const HealthcareDsgvoGuide = lazy(() => import("./pages/branchen/HealthcareDsgvoGuide"));
+const HealthcareAiComplianceGuide = lazy(() => import("./pages/branchen/HealthcareAiComplianceGuide"));
+const EdtechPrivacyGuide = lazy(() => import("./pages/branchen/EdtechPrivacyGuide"));
+const FintechComplianceGuide = lazy(() => import("./pages/branchen/FintechComplianceGuide"));
+const EcommercePrivacyGuide = lazy(() => import("./pages/branchen/EcommercePrivacyGuide"));
+const SaasPrivacyDesignGuide = lazy(() => import("./pages/branchen/SaasPrivacyDesignGuide"));
+const Industrie40DatenschutzGuide = lazy(() => import("./pages/branchen/Industrie40DatenschutzGuide"));
+const AutomotiveDatenschutz = lazy(() => import("./pages/branchen/AutomotiveDatenschutz"));
+const SmartGridComplianceGuide = lazy(() => import("./pages/branchen/SmartGridComplianceGuide"));
+const PharmaComplianceGuide = lazy(() => import("./pages/branchen/PharmaComplianceGuide"));
+const ProduktionDatenschutzGuide = lazy(() => import("./pages/branchen/ProduktionDatenschutzGuide"));
+const TravelComplianceGuide = lazy(() => import("./pages/branchen/TravelComplianceGuide"));
+const InsurtechComplianceGuide = lazy(() => import("./pages/branchen/InsurtechComplianceGuide"));
+const PropTechCompliance = lazy(() => import("./pages/branchen/PropTechCompliance"));
+const LogisticsCompliance = lazy(() => import("./pages/branchen/LogisticsCompliance"));
+const DatenschutzPflege = lazy(() => import("./pages/branchen/DatenschutzPflege"));
+const DatenschutzArztpraxis = lazy(() => import("./pages/branchen/DatenschutzArztpraxis"));
+const DatenschutzKindergarten = lazy(() => import("./pages/branchen/DatenschutzKindergarten"));
+const DsgvoVermieter = lazy(() => import("./pages/branchen/DsgvoVermieter"));
+const DsgvoVereineComprehensive = lazy(() => import("./pages/wissen/branchen/DsgvoVereineComprehensive"));
+const DatenschutzBetriebsrat = lazy(() => import("./pages/branchen/DatenschutzBetriebsrat"));
+const DatenschutzHomeofficeComprehensive = lazy(() => import("./pages/wissen/branchen/DatenschutzHomeofficeComprehensive"));
 
 // KI Datenschutz Pages
-import KiDatenschutz from "./pages/KiDatenschutz";
-import KiRisikoklassifizierung from "./pages/ki/KiRisikoklassifizierung";
-import KiAlgorithmicImpactAssessment from "./pages/ki/AlgorithmicImpactAssessment";
-import PrivacyPreservingAI from "./pages/ki/PrivacyPreservingAI";
-import FederatedLearningGuide from "./pages/ki/FederatedLearningGuide";
-import FinancialAICompliance from "./pages/ki/FinancialAICompliance";
-import HRAICompliance from "./pages/ki/HRAICompliance";
-import ModelPrivacyAttacks from "./pages/ki/ModelPrivacyAttacks";
-import DataMinimizationGuide from "./pages/ki/DataMinimizationGuide";
-import ExplainableAIGuide from "./pages/ki/ExplainableAIGuide";
-import PrivacyByDesignAI from "./pages/ki/PrivacyByDesignAI";
-import KiEinwilligungsmanagement from "./pages/ki/KiEinwilligungsmanagement";
-import AutomatedDecisionMaking from "./pages/ki/AutomatedDecisionMaking";
+const KiDatenschutz = lazy(() => import("./pages/KiDatenschutz"));
+const KiRisikoklassifizierung = lazy(() => import("./pages/ki/KiRisikoklassifizierung"));
+const KiAlgorithmicImpactAssessment = lazy(() => import("./pages/ki/AlgorithmicImpactAssessment"));
+const PrivacyPreservingAI = lazy(() => import("./pages/ki/PrivacyPreservingAI"));
+const FederatedLearningGuide = lazy(() => import("./pages/ki/FederatedLearningGuide"));
+const FinancialAICompliance = lazy(() => import("./pages/ki/FinancialAICompliance"));
+const HRAICompliance = lazy(() => import("./pages/ki/HRAICompliance"));
+const ModelPrivacyAttacks = lazy(() => import("./pages/ki/ModelPrivacyAttacks"));
+const DataMinimizationGuide = lazy(() => import("./pages/ki/DataMinimizationGuide"));
+const ExplainableAIGuide = lazy(() => import("./pages/ki/ExplainableAIGuide"));
+const PrivacyByDesignAI = lazy(() => import("./pages/ki/PrivacyByDesignAI"));
+const KiEinwilligungsmanagement = lazy(() => import("./pages/ki/KiEinwilligungsmanagement"));
+const AutomatedDecisionMaking = lazy(() => import("./pages/ki/AutomatedDecisionMaking"));
 
 // Industry Pages
-import Industries from "./pages/Industries";
-import Healthcare from "./pages/industries/Healthcare";
-import FinancialServices from "./pages/industries/FinancialServices";
-import ECommerce from "./pages/industries/ECommerce";
-import SaaS from "./pages/industries/SaaS";
-import Manufacturing from "./pages/industries/Manufacturing";
-import Automotive from "./pages/industries/Automotive";
-import Energy from "./pages/industries/Energy";
-import Food from "./pages/industries/Food";
-import Logistics from "./pages/industries/Logistics";
-import Test1 from "./pages/Test1";
-import Test2 from "./pages/Test2";
-import Test3 from "./pages/Test3";
-import TestFixed from "./pages/TestFixed";
-import TestPerfect from "./pages/TestPerfect";
-import TestBidirectional from "./pages/TestBidirectional";
-import TestFinal from "./pages/TestFinal";
-import TestPerfected from "./pages/TestPerfected";
-import TestApproach1 from "./pages/TestApproach1";
-import TestApproach2 from "./pages/TestApproach2";
-import TestApproach3 from "./pages/TestApproach3";
-import TestDiagnostic from "./pages/TestDiagnostic";
-import TestUltimateDiagnostic from "./pages/TestUltimateDiagnostic";
-import TestRobust from "./pages/TestRobust";
-import TestSimpleFinal from "./pages/TestSimpleFinal";
-import TestOptimized from "./pages/TestOptimized";
-import TestIndex from "./pages/TestIndex";
-import SimpleTest from "./pages/SimpleTest";
-import DesignSeparatorTest from "./pages/DesignSeparatorTest";
-import FooterTest from "./pages/FooterTest";
-import SitemapSEO from "./pages/SitemapSEO";
-import FinalChecks from "./pages/FinalChecks";
-import About from "./pages/About";
-import TestUns from "./pages/TestUns";
+const Industries = lazy(() => import("./pages/Industries"));
+const Healthcare = lazy(() => import("./pages/industries/Healthcare"));
+const FinancialServices = lazy(() => import("./pages/industries/FinancialServices"));
+const ECommerce = lazy(() => import("./pages/industries/ECommerce"));
+const SaaS = lazy(() => import("./pages/industries/SaaS"));
+const Manufacturing = lazy(() => import("./pages/industries/Manufacturing"));
+const Automotive = lazy(() => import("./pages/industries/Automotive"));
+const Energy = lazy(() => import("./pages/industries/Energy"));
+const Food = lazy(() => import("./pages/industries/Food"));
+const Logistics = lazy(() => import("./pages/industries/Logistics"));
+const Test1 = lazy(() => import("./pages/Test1"));
+const Test2 = lazy(() => import("./pages/Test2"));
+const Test3 = lazy(() => import("./pages/Test3"));
+const TestFixed = lazy(() => import("./pages/TestFixed"));
+const TestPerfect = lazy(() => import("./pages/TestPerfect"));
+const TestBidirectional = lazy(() => import("./pages/TestBidirectional"));
+const TestFinal = lazy(() => import("./pages/TestFinal"));
+const TestPerfected = lazy(() => import("./pages/TestPerfected"));
+const TestApproach1 = lazy(() => import("./pages/TestApproach1"));
+const TestApproach2 = lazy(() => import("./pages/TestApproach2"));
+const TestApproach3 = lazy(() => import("./pages/TestApproach3"));
+const TestDiagnostic = lazy(() => import("./pages/TestDiagnostic"));
+const TestUltimateDiagnostic = lazy(() => import("./pages/TestUltimateDiagnostic"));
+const TestRobust = lazy(() => import("./pages/TestRobust"));
+const TestSimpleFinal = lazy(() => import("./pages/TestSimpleFinal"));
+const TestOptimized = lazy(() => import("./pages/TestOptimized"));
+const TestIndex = lazy(() => import("./pages/TestIndex"));
+const SimpleTest = lazy(() => import("./pages/SimpleTest"));
+const DesignSeparatorTest = lazy(() => import("./pages/DesignSeparatorTest"));
+const FooterTest = lazy(() => import("./pages/FooterTest"));
+const SitemapSEO = lazy(() => import("./pages/SitemapSEO"));
+const FinalChecks = lazy(() => import("./pages/FinalChecks"));
+const About = lazy(() => import("./pages/About"));
+const TestUns = lazy(() => import("./pages/TestUns"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -190,7 +199,8 @@ const App = () => (
             <Toaster />
             <BrowserRouter>
               <ScrollToTop />
-              <Routes>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/academy" element={<AcademyPage />} />
@@ -394,8 +404,9 @@ const App = () => (
                 <Route path="/wissen/ki-datenschutz/automated-decision-making" element={<AutomatedDecisionMaking />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
             </BrowserRouter>
           </TooltipProvider>
         </LanguageProvider>

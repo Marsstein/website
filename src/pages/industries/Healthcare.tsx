@@ -35,7 +35,7 @@ const Healthcare: React.FC = () => {
     "name": "Healthcare Compliance Lösungen",
     "description": "Compliance-Lösungen für das Gesundheitswesen: DSGVO Art. 9, E-Health, Telemedizin",
     "medicalSpecialty": "Health Information Technology",
-    "url": "https://marsstein.com/branchen/gesundheitswesen"
+    "url": "https://marsstein.ai/branchen/gesundheitswesen"
   };
 
   const painPoints = [

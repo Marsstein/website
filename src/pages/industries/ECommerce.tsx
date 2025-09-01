@@ -35,7 +35,7 @@ const ECommerce: React.FC = () => {
     "@type": "Store",
     "name": "E-Commerce Compliance Lösungen",
     "description": "DSGVO-Compliance für Online-Handel: Cookie-Management, Kundendatenschutz, Cross-Border",
-    "url": "https://marsstein.com/branchen/e-commerce"
+    "url": "https://marsstein.ai/branchen/e-commerce"
   };
 
   const painPoints = [

@@ -48,7 +48,7 @@ const RiskManagement: React.FC = () => {
     "@type": "TechArticle",
     "name": "Risk Management für Compliance - ISO 31000 & DSFA Anleitung",
     "description": "Systematisches Risikomanagement: Identifikation, Bewertung und Behandlung von Compliance-Risiken nach ISO 31000. Mit DSFA-Vorlagen und KPI-Dashboards.",
-    "url": "https://marsstein.com/wissen/risk-management",
+    "url": "https://marsstein.ai/wissen/risk-management",
     "datePublished": "2024-01-01",
     "dateModified": "2025-01-15",
     "author": {
@@ -60,12 +60,12 @@ const RiskManagement: React.FC = () => {
       "name": "Marsstein",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://marsstein.com/logo.png"
+        "url": "https://marsstein.ai/logo.png"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://marsstein.com/wissen/risk-management"
+      "@id": "https://marsstein.ai/wissen/risk-management"
     }
   };
 
@@ -361,19 +361,19 @@ const RiskManagement: React.FC = () => {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://marsstein.com"
+                "item": "https://marsstein.ai"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Wissen",
-                "item": "https://marsstein.com/wissen"
+                "item": "https://marsstein.ai/wissen"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": "Risk Management",
-                "item": "https://marsstein.com/wissen/risk-management"
+                "item": "https://marsstein.ai/wissen/risk-management"
               }
             ]
           }

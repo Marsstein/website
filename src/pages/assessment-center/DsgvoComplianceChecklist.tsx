@@ -47,11 +47,11 @@ const DsgvoComplianceChecklist = () => {
       "name": "DSGVO Compliance Checklist",
       "description": "Umfassende DSGVO Compliance Checklist mit 50+ Prüfpunkten für vollständige Datenschutz-Compliance nach EU-DSGVO",
       "educationalLevel": "Professional",
-      "url": "https://marsstein.com/assessment-center/dsgvo-compliance-checklist",
+      "url": "https://marsstein.ai/assessment-center/dsgvo-compliance-checklist",
       "provider": {
         "@type": "Organization",
         "name": "Marsstein",
-        "url": "https://marsstein.com"
+        "url": "https://marsstein.ai"
       },
       "audience": {
         "@type": "Audience",
@@ -66,19 +66,19 @@ const DsgvoComplianceChecklist = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marsstein.com"
+          "item": "https://marsstein.ai"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Assessment Center",
-          "item": "https://marsstein.com/assessment-center"
+          "item": "https://marsstein.ai/assessment-center"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "DSGVO Compliance Checklist",
-          "item": "https://marsstein.com/assessment-center/dsgvo-compliance-checklist"
+          "item": "https://marsstein.ai/assessment-center/dsgvo-compliance-checklist"
         }
       ]
     },

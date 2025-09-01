@@ -108,8 +108,8 @@ const FooterVariantA1: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-[#e24e1b]" />
-                <a href="mailto:jayson.chen@marsstein.com" className="text-[#474747] hover:text-[#e24e1b] transition-colors text-sm">
-                  jayson.chen@marsstein.com
+                <a href="mailto:jayson.chen@marsstein.ai" className="text-[#474747] hover:text-[#e24e1b] transition-colors text-sm">
+                  jayson.chen@marsstein.ai
                 </a>
               </div>
               <Link 
@@ -211,8 +211,8 @@ const FooterVariantA2: React.FC = () => {
                 <div className="p-2 bg-[#e24e1b]/10 rounded-lg">
                   <Mail className="h-5 w-5 text-[#e24e1b]" />
                 </div>
-                <a href="mailto:jayson.chen@marsstein.com" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
-                  jayson.chen@marsstein.com
+                <a href="mailto:jayson.chen@marsstein.ai" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+                  jayson.chen@marsstein.ai
                 </a>
               </div>
               <Link 
@@ -322,13 +322,13 @@ const FooterVariantA3: React.FC = () => {
                 </h3>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
                   <a 
-                    href="mailto:jayson.chen@marsstein.com" 
+                    href="mailto:jayson.chen@marsstein.ai" 
                     className="flex items-center gap-3 text-[#474747] hover:text-[#e24e1b] transition-all duration-300 font-light hover:font-normal"
                   >
                     <div className="p-2 bg-[#e24e1b]/10 rounded-xl">
                       <Mail className="h-5 w-5 text-[#e24e1b]" />
                     </div>
-                    jayson.chen@marsstein.com
+                    jayson.chen@marsstein.ai
                   </a>
                   <div className="w-px h-8 bg-[#e24e1b]/20 hidden sm:block"></div>
                   <Link 
@@ -467,8 +467,8 @@ const FooterVariantA5: React.FC = () => {
                 <div className="p-2 bg-[#e24e1b]/10 rounded-lg">
                   <Mail className="h-5 w-5 text-[#e24e1b]" />
                 </div>
-                <a href="mailto:jayson.chen@marsstein.com" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
-                  jayson.chen@marsstein.com
+                <a href="mailto:jayson.chen@marsstein.ai" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+                  jayson.chen@marsstein.ai
                 </a>
               </div>
               <Link 
@@ -568,8 +568,8 @@ const FooterVariantA4: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-[#e24e1b]" />
-                <a href="mailto:jayson.chen@marsstein.com" className="text-white/70 hover:text-[#e24e1b] transition-colors text-sm">
-                  jayson.chen@marsstein.com
+                <a href="mailto:jayson.chen@marsstein.ai" className="text-white/70 hover:text-[#e24e1b] transition-colors text-sm">
+                  jayson.chen@marsstein.ai
                 </a>
               </div>
               <Link 
@@ -669,9 +669,9 @@ const FooterVariantB: React.FC = () => {
           <h3 className="text-2xl font-bold mb-4">Bereit für Compliance Excellence?</h3>
           <p className="text-white/80 mb-6">Lassen Sie uns gemeinsam Ihre Compliance-Herausforderungen lösen.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="mailto:jayson.chen@marsstein.com" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+            <a href="mailto:jayson.chen@marsstein.ai" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
               <Mail className="h-4 w-4" />
-              jayson.chen@marsstein.com
+              jayson.chen@marsstein.ai
             </a>
             <Link 
               to="/contact" 
@@ -802,8 +802,8 @@ const FooterVariantC: React.FC = () => {
                 <div className="flex flex-col sm:flex-row items-center gap-6">
                   <div className="flex items-center gap-2">
                     <Mail className="h-5 w-5 text-[#e24e1b]" />
-                    <a href="mailto:jayson.chen@marsstein.com" className="text-white hover:text-[#e24e1b] transition-colors">
-                      jayson.chen@marsstein.com
+                    <a href="mailto:jayson.chen@marsstein.ai" className="text-white hover:text-[#e24e1b] transition-colors">
+                      jayson.chen@marsstein.ai
                     </a>
                   </div>
                   <Link 
@@ -899,11 +899,11 @@ const FooterVariantD: React.FC = () => {
                 </h3>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
                   <a 
-                    href="mailto:jayson.chen@marsstein.com" 
+                    href="mailto:jayson.chen@marsstein.ai" 
                     className="flex items-center gap-3 text-[#474747] hover:text-[#e24e1b] transition-colors duration-300 font-light"
                   >
                     <Mail className="h-5 w-5" />
-                    jayson.chen@marsstein.com
+                    jayson.chen@marsstein.ai
                   </a>
                   <div className="w-px h-6 bg-[#e24e1b]/30 hidden sm:block"></div>
                   <Link 

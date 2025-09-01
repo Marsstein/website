@@ -33,7 +33,7 @@ const AssessmentCenter = () => {
       "name": "Assessment Center - Compliance Bewertungen",
       "description": "Umfassendes Assessment Center für DSGVO, ISO 27001, SOC 2 und KI-Risiko Bewertungen mit interaktiven Tools",
       "applicationCategory": "Assessment Platform",
-      "url": "https://marsstein.com/assessment-center",
+      "url": "https://marsstein.ai/assessment-center",
       "isAccessibleForFree": true
     },
     {
@@ -44,13 +44,13 @@ const AssessmentCenter = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marsstein.com"
+          "item": "https://marsstein.ai"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Assessment Center",
-          "item": "https://marsstein.com/assessment-center"
+          "item": "https://marsstein.ai/assessment-center"
         }
       ]
     }

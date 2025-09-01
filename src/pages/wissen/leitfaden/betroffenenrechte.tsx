@@ -46,7 +46,7 @@ const Betroffenenrechte: React.FC = () => {
     "@type": "HowTo",
     "name": "Betroffenenrechte DSGVO umsetzen",
     "description": "Betroffenenrechte nach DSGVO professionell umsetzen: Auskunft, Löschung, Berichtigung, Datenportabilität. Prozesse, Fristen und Vorlagen für alle Anfragen.",
-    "url": "https://marsstein.com/wissen/leitfaden/betroffenenrechte"
+    "url": "https://marsstein.ai/wissen/leitfaden/betroffenenrechte"
   };
 
   const betroffenenrechte = {

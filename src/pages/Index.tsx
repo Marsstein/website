@@ -32,8 +32,8 @@ const Index = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Marsstein",
-    "url": "https://marsstein.com",
-    "logo": "https://marsstein.com/logomarsstein.png",
+    "url": "https://marsstein.ai",
+    "logo": "https://marsstein.ai/logomarsstein.png",
     "sameAs": [
       "https://www.linkedin.com/company/marsstein"
     ],

@@ -144,8 +144,8 @@ console.log('\n🗺️  Updating sitemap.xml...');
 const sitemapPath = join(__dirname, '..', 'dist', 'sitemap.xml');
 if (existsSync(sitemapPath)) {
   let sitemap = readFileSync(sitemapPath, 'utf-8');
-  sitemap = sitemap.replace(/http:\/\/localhost:8080/g, 'https://marsstein.com');
-  sitemap = sitemap.replace(/http:\/\/localhost:4173/g, 'https://marsstein.com');
+  sitemap = sitemap.replace(/http:\/\/localhost:8080/g, 'https://marsstein.ai');
+  sitemap = sitemap.replace(/http:\/\/localhost:4173/g, 'https://marsstein.ai');
   writeFileSync(sitemapPath, sitemap, 'utf-8');
   console.log('   ✅ Sitemap updated with production domain');
 }
@@ -156,7 +156,7 @@ const robotsPath = join(__dirname, '..', 'dist', 'robots.txt');
 const robotsContent = `User-agent: *
 Allow: /
 
-Sitemap: https://marsstein.com/sitemap.xml
+Sitemap: https://marsstein.ai/sitemap.xml
 
 # Crawl-delay for responsible crawling
 User-agent: *

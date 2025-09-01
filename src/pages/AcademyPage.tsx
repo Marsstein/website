@@ -8,7 +8,7 @@ const AcademyPage = () => {
     "@type": "EducationalOrganization",
     "name": "Marsstein Academy",
     "description": "E-Learning Plattform für Compliance, Datenschutz und Informationssicherheit",
-    "url": "https://marsstein.com/academy",
+    "url": "https://marsstein.ai/academy",
     "offers": {
       "@type": "EducationalOccupationalProgram",
       "name": "Compliance Zertifizierungsprogramm",

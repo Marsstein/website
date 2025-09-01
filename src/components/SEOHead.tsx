@@ -20,7 +20,7 @@ const SEOHead: React.FC<SEOProps> = ({
   ogType = 'website',
   structuredData
 }) => {
-  const siteUrl = 'https://marsstein.com';
+  const siteUrl = 'https://marsstein.ai';
   const fullTitle = `${title} | Marsstein`;
   
   // Default organization structured data

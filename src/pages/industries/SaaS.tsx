@@ -36,7 +36,7 @@ const SaaS: React.FC = () => {
     "description": "Compliance für SaaS-Unternehmen: Multi-Tenant DSGVO, SOC 2, EU AI Act für Enterprise-Ready",
     "applicationCategory": "Business Software",
     "operatingSystem": "Web-based",
-    "url": "https://marsstein.com/branchen/saas-unternehmen"
+    "url": "https://marsstein.ai/branchen/saas-unternehmen"
   };
   const painPoints = [
     {

@@ -61,7 +61,7 @@ export const prerenderConfig = {
       robots: 'index, follow'
     },
     sitemap: {
-      hostname: 'https://marsstein.com',
+      hostname: 'https://marsstein.ai',
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: true

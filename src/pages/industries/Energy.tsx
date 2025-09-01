@@ -33,7 +33,7 @@ const Energy: React.FC = () => {
     "@type": "EnergyOrganization",
     "name": "Energie Compliance Lösungen",
     "description": "Energiesektor Compliance: KRITIS, Smart Grid DSGVO, NIS2 für kritische Infrastrukturen",
-    "url": "https://marsstein.com/branchen/energie"
+    "url": "https://marsstein.ai/branchen/energie"
   };
   const painPoints = [
     {

@@ -64,7 +64,7 @@ const CookieManagementTool = () => {
     "name": "Cookie Management Tool",
     "description": "DSGVO-konformes Cookie-Consent Management Tool mit granularer Einwilligungsverwaltung",
     "applicationCategory": "Privacy Tool",
-    "url": "https://marsstein.com/tools/cookie-management"
+    "url": "https://marsstein.ai/tools/cookie-management"
   };
 
   useEffect(() => {

@@ -242,7 +242,7 @@ const InsurtechComplianceGuide = () => {
           "publisher": {
             "@type": "Organization",
             "name": "Marsstein",
-            "url": "https://marsstein.com"
+            "url": "https://marsstein.ai"
           },
           "datePublished": "2024-01-20",
           "dateModified": new Date().toISOString()

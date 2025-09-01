@@ -161,7 +161,7 @@ const TravelComplianceGuide = () => {
           "publisher": {
             "@type": "Organization",
             "name": "Marsstein",
-            "url": "https://marsstein.com"
+            "url": "https://marsstein.ai"
           },
           "datePublished": "2024-01-15",
           "dateModified": new Date().toISOString()

@@ -51,13 +51,13 @@ const Industries: React.FC = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Gesundheitswesen",
-        "url": "https://marsstein.com/branchen/gesundheitswesen"
+        "url": "https://marsstein.ai/branchen/gesundheitswesen"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Finanzdienstleister",
-        "url": "https://marsstein.com/branchen/finanzdienstleister"
+        "url": "https://marsstein.ai/branchen/finanzdienstleister"
       }
     ]
   };

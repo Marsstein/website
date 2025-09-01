@@ -48,7 +48,7 @@ const Verarbeitungsverzeichnis: React.FC = () => {
     "@type": "HowTo",
     "name": "Verarbeitungsverzeichnis erstellen",
     "description": "Verarbeitungsverzeichnis nach Art. 30 DSGVO erstellen: Schritt-für-Schritt Anleitung mit Vorlagen. Alle Verarbeitungstätigkeiten rechtssicher dokumentieren.",
-    "url": "https://marsstein.com/wissen/leitfaden/verarbeitungsverzeichnis"
+    "url": "https://marsstein.ai/wissen/leitfaden/verarbeitungsverzeichnis"
   };
 
   const verarbeitungsBeispiele = [

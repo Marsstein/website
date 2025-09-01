@@ -44,7 +44,7 @@ const WebsiteDSGVO: React.FC = () => {
     "@type": "HowTo",
     "name": "Website DSGVO-konform machen",
     "description": "Schritt-für-Schritt Anleitung: Website DSGVO-konform gestalten. Datenschutzerklärung, Cookie-Banner, Kontaktformulare, Analytics rechtssicher.",
-    "url": "https://marsstein.com/wissen/leitfaden/website-dsgvo"
+    "url": "https://marsstein.ai/wissen/leitfaden/website-dsgvo"
   };
 
   const steps = {

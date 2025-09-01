@@ -425,14 +425,14 @@ function initAnalytics(hasConsent) {
             "name": "Marsstein",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://marsstein.com/logo.png"
+              "url": "https://marsstein.ai/logo.png"
             }
           },
           "datePublished": "2022-01-13",
           "dateModified": "2024-01-15",
           "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://marsstein.com/wissen/rechtsprechung/google-analytics-austria"
+            "@id": "https://marsstein.ai/wissen/rechtsprechung/google-analytics-austria"
           }
         }}
       />

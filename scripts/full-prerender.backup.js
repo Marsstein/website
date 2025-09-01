@@ -72,7 +72,7 @@ function optimizeHtml(html, route) {
   
   // Füge canonical URL hinzu wenn nicht vorhanden
   if (!html.includes('rel="canonical"')) {
-    const canonicalUrl = `https://marsstein.com${route}`;
+    const canonicalUrl = `https://marsstein.ai${route}`;
     html = html.replace('</head>', `  <link rel="canonical" href="${canonicalUrl}" />\n</head>`);
   }
   

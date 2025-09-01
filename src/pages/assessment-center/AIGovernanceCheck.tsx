@@ -82,7 +82,7 @@ const AIGovernanceCheck: React.FC = () => {
     "name": "AI Governance Check",
     "description": "Überprüfen Sie Ihre KI-Governance-Strukturen und -Prozesse für verantwortungsvolle KI-Entwicklung",
     "educationalLevel": "Professional",
-    "url": "https://marsstein.com/assessment-center/ai-governance-check"
+    "url": "https://marsstein.ai/assessment-center/ai-governance-check"
   };
 
   const [currentStep, setCurrentStep] = useState(0);

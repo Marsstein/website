@@ -828,11 +828,11 @@ const angehörigenApp = {
         <title>Datenschutz Pflege DSGVO – Praxis-Guide für Pflegeheime 2024</title>
         <meta name="description" content="DSGVO für Pflegeeinrichtungen: ✓ Bewohnerdaten sicher verwalten ✓ Digitale Pflegedokumentation ✓ TOM-Checklisten ✓ Einwilligung bei Demenz. Jetzt Guide lesen!" />
         <meta name="keywords" content="datenschutz pflege, dsgvo pflegeeinrichtung, pflegedokumentation datenschutz, bewohnerdaten schützen, tom pflegeheim, einwilligung pflege" />
-        <link rel="canonical" href="https://marsstein.com/wissen/branchen/datenschutz-pflege" />
+        <link rel="canonical" href="https://marsstein.ai/wissen/branchen/datenschutz-pflege" />
         <meta property="og:title" content="Datenschutz in der Pflege - DSGVO Compliance Guide" />
         <meta property="og:description" content="Umfassender Leitfaden für Datenschutz in Pflegeeinrichtungen. Rechtssichere Pflegedokumentation nach DSGVO." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://marsstein.com/wissen/branchen/datenschutz-pflege" />
+        <meta property="og:url" content="https://marsstein.ai/wissen/branchen/datenschutz-pflege" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
