@@ -40,6 +40,13 @@
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
+    
+[[headers]]
+  for = "/*.mjs"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
     
 [[headers]]
   for = "/*.css"
@@ -63,26 +70,8 @@
     Cache-Control = "public, max-age=31536000, immutable"
     Access-Control-Allow-Origin = "*"
     
-# Preload-Headers für kritische Ressourcen
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Link = "</src/index.css>; rel=preload; as=style, </src/main.tsx>; rel=modulepreload"
 
 # Plugins für erweiterte Funktionalität
-# Lighthouse Performance-Tests
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-  
-  [plugins.inputs]
-    # Lighthouse Performance-Tests nach jedem Deploy
-    output_path = "reports/lighthouse.html"
-    # Performance-Schwellenwerte
-    thresholds.performance = 0.9
-    thresholds.accessibility = 0.9
-    thresholds.best-practices = 0.9
-    thresholds.seo = 0.9
-    
 # Asset-Optimierung
 [[plugins]]
   package = "netlify-plugin-image-optim"
