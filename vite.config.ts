@@ -80,24 +80,66 @@ export default defineConfig(({ mode }) => ({
             // Alles andere
             return 'vendor';
           }
+          
+          // Große Komponenten splitten
+          if (id.includes('HinweisgeberschutzgesetzGuide')) return 'guide-hinweis';
+          if (id.includes('Iso27017Guide') || id.includes('Iso27018Guide')) return 'guide-iso';
+          if (id.includes('TisaxGuide')) return 'guide-tisax';
+          if (id.includes('DsgEkdGuide')) return 'guide-dsg';
+          if (id.includes('EuAiActGuide')) return 'guide-ai';
+          if (id.includes('Iso27001')) return 'guide-iso27001';
         },
         // Weitere Optimierungen
         chunkFileNames: (chunkInfo) => {
           const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/').pop() : 'chunk';
           return `assets/${facadeModuleId}-[hash].js`;
+        },
+        // Entry-Chunk für kritische Assets
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/woff|woff2|eot|ttf|otf/.test(ext)) {
+            return `assets/fonts/[name]-[hash][extname]`;
+          } else if (/png|jpe?g|svg|gif|tiff|bmp|ico/.test(ext)) {
+            return `assets/images/[name]-[hash][extname]`;
+          } else {
+            return `assets/[name]-[hash][extname]`;
+          }
         }
+      },
+      // Preload wichtige Chunks
+      input: {
+        main: path.resolve(__dirname, 'index.html')
       }
     },
+    // Performance-Optimierungen
+    target: 'es2020',
+    cssCodeSplit: true,
+    cssMinify: true,
     chunkSizeWarningLimit: 200,
     // Optimierungen für kleinere Bundles
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        passes: 2,
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.trace']
+      },
+      mangle: {
+        safari10: true
+      },
+      format: {
+        comments: false,
+        ascii_only: true
       }
     },
     reportCompressedSize: false,
-    sourcemap: false
+    sourcemap: false,
+    // Bessere Module-Preloading
+    modulePreload: {
+      polyfill: true
+    }
   }
 }));

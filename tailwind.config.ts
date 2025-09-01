@@ -4,11 +4,12 @@ import tailwindcssAnimate from "tailwindcss-animate";
 export default {
 	darkMode: ["class"],
 	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
 	],
+	// PurgeCSS für Production
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
 	prefix: "",
 	theme: {
 		container: {
