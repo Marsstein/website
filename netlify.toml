@@ -77,9 +77,10 @@
   package = "@netlify/plugin-lighthouse"
   
   [plugins.inputs]
-    # Lighthouse läuft NACH dem Deployment
-    enable = true
-    # Nutze die Default-Einstellungen (stabiler)
+    # Basis-Konfiguration für Lighthouse
+    output_path = "reports/lighthouse.html"
+    # Keine Schwellenwerte setzen = Plugin blockiert Deploy nicht
+    fail_deploy_on_score_thresholds = false
 
 # Asset-Optimierung
 [[plugins]]
