@@ -1,10 +1,9 @@
 # Netlify Build Configuration für Marsstein mit Smart SEO-Prerendering
 
 [build]
-  # Build-Befehl mit intelligentem Prerendering
-  # Quick Mode für normale Builds (5 Sekunden)
-  # Full Mode nur bei Bedarf mit FULL_SEO=true
-  command = "npm run build && QUICK_BUILD=true node scripts/smart-seo-prerender.js && node scripts/lighthouse-check.js"
+  # Build-Befehl mit sicheren Meta-Tags für SEO
+  # Temporär ohne Puppeteer-Prerendering
+  command = "npm run build && node scripts/safe-meta-tags.js && node scripts/lighthouse-check.js"
   
   # Output-Verzeichnis nach dem Build
   publish = "dist"
@@ -101,17 +100,17 @@
     
 # Context-spezifische Konfigurationen
 [context.production]
-  # Produktions-Build mit vollem SEO (bei wichtigen Releases)
-  # Kann überschrieben werden mit Deploy-Hooks
-  command = "npm run build && node scripts/smart-seo-prerender.js && node scripts/lighthouse-check.js"
+  # Produktions-Build mit sicheren Meta-Tags
+  # Puppeteer temporär deaktiviert
+  command = "npm run build && node scripts/safe-meta-tags.js && node scripts/lighthouse-check.js"
 
 [context.deploy-preview]
   # Preview-Builds ohne Prerendering für Geschwindigkeit
   command = "npm run build"
 
 [context.branch-deploy]
-  # Branch-Builds mit Quick SEO
-  command = "npm run build && QUICK_BUILD=true node scripts/smart-seo-prerender.js"
+  # Branch-Builds ohne Prerendering
+  command = "npm run build"
 
 # Dev-Umgebung Einstellungen
 [dev]
