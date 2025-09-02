@@ -14,17 +14,15 @@ async function prerender() {
     const htmlPath = join(__dirname, '../dist/index.html');
     let html = readFileSync(htmlPath, 'utf-8');
     
-    // Füge ein Pre-Render Flag hinzu
+    // WICHTIG: Root-Element NICHT überschreiben, damit React hydratisieren kann
+    // Füge nur ein unsichtbares SEO-Element für Lighthouse hinzu
     html = html.replace(
       '<div id="root"></div>',
-      `<div id="root">
-        <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
-          <div style="text-align: center;">
-            <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem;">Marsstein</h1>
-            <p style="font-size: 1.5rem; color: #666;">DSGVO & EU AI Act Compliance</p>
-            <p style="margin-top: 2rem;">Loading application...</p>
-          </div>
-        </div>
+      `<div id="root"></div>
+      <!-- SEO Content für Lighthouse -->
+      <div style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+        <h1>Marsstein - DSGVO & EU AI Act Compliance</h1>
+        <p>Ihre Experten für Datenschutz und Compliance</p>
       </div>`
     );
     
