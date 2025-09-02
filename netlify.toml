@@ -1,8 +1,8 @@
 # Netlify Build Configuration für Marsstein mit SEO-Prerendering
 
 [build]
-  # Build-Befehl: Erstellt Production Build mit Performance-Check
-  command = "npm run build && node scripts/lighthouse-check.js"
+  # Build-Befehl: Erstellt Production Build mit Prerender für Lighthouse
+  command = "npm run build && node scripts/simple-prerender.js && node scripts/lighthouse-check.js"
   
   # Output-Verzeichnis nach dem Build
   publish = "dist"
@@ -72,6 +72,15 @@
     
 
 # Plugins für erweiterte Funktionalität
+# Lighthouse CI für Performance-Monitoring
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  [plugins.inputs]
+    # Lighthouse läuft NACH dem Deployment
+    enable = true
+    # Nutze die Default-Einstellungen (stabiler)
+
 # Asset-Optimierung
 [[plugins]]
   package = "netlify-plugin-image-optim"
