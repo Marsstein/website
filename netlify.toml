@@ -100,9 +100,9 @@
     
 # Context-spezifische Konfigurationen
 [context.production]
-  # Produktions-Build mit sicheren Meta-Tags
+  # Produktions-Build mit sicheren Meta-Tags und Bot-Fallback
   # Puppeteer temporär deaktiviert
-  command = "npm run build && node scripts/safe-meta-tags.js && node scripts/lighthouse-check.js"
+  command = "npm run build && node scripts/safe-meta-tags.js && node scripts/add-fallback-content.js && node scripts/lighthouse-check.js"
 
 [context.deploy-preview]
   # Preview-Builds mit Meta-Tags für konsistente Deploys
