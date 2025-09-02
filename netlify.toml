@@ -105,8 +105,8 @@
   command = "npm run build && node scripts/safe-meta-tags.js && node scripts/lighthouse-check.js"
 
 [context.deploy-preview]
-  # Preview-Builds ohne Prerendering für Geschwindigkeit
-  command = "npm run build"
+  # Preview-Builds mit Meta-Tags für konsistente Deploys
+  command = "npm run build && node scripts/safe-meta-tags.js"
 
 [context.branch-deploy]
   # Branch-Builds ohne Prerendering
