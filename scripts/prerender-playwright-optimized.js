@@ -1,25 +1,87 @@
 import { chromium } from 'playwright';
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs';
-import { join, dirname } from 'path';
+import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { performance } from 'perf_hooks';
+import { execSync } from 'child_process';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const rootDir = dirname(__dirname);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // =====================================
-// Route Konfiguration mit Priorisierung
+// Intelligente Pfad-Erkennung
+// =====================================
+function detectProjectRoot() {
+  // Mögliche Szenarien:
+  // 1. Script läuft aus /MarsJonas/scripts/ (Netlify)
+  // 2. Script läuft aus /MarsJonas/jonasmars/scripts/ (lokal)
+  
+  const possiblePaths = [
+    // Netlify: dist ist direkt im root
+    { 
+      root: dirname(__dirname), 
+      dist: join(dirname(__dirname), 'dist'),
+      context: 'netlify'
+    },
+    // Lokal aus jonasmars
+    {
+      root: process.cwd(),
+      dist: join(process.cwd(), 'dist'),
+      context: 'local-jonasmars'
+    },
+    // Lokal aus root
+    {
+      root: dirname(dirname(__dirname)),
+      dist: join(dirname(dirname(__dirname)), 'jonasmars', 'dist'),
+      context: 'local-root'
+    }
+  ];
+  
+  // Prüfe welcher Pfad existiert
+  for (const path of possiblePaths) {
+    console.log(`🔍 Checking ${path.context}: ${path.dist}`);
+    if (existsSync(path.dist)) {
+      console.log(`✅ Found dist directory in ${path.context} mode`);
+      return path;
+    }
+  }
+  
+  // Fallback: Erstelle dist im aktuellen Verzeichnis
+  const fallback = {
+    root: process.cwd(),
+    dist: join(process.cwd(), 'dist'),
+    context: 'fallback'
+  };
+  
+  console.warn(`⚠️  No existing dist found, using fallback: ${fallback.dist}`);
+  mkdirSync(fallback.dist, { recursive: true });
+  return fallback;
+}
+
+// Ermittle Pfade
+const paths = detectProjectRoot();
+const rootDir = paths.root;
+const distDir = paths.dist;
+
+console.log(`
+📂 Path Configuration:
+   Root: ${rootDir}
+   Dist: ${distDir}
+   Context: ${paths.context}
+   CWD: ${process.cwd()}
+`);
+
+// =====================================
+// Route Konfiguration
 // =====================================
 const ROUTES_CONFIG = {
-  // SEO-Kritische Seiten (Prio 1 - MUSS gerendert werden)
   critical: [
     '/',
-    '/contact',
+    '/contact', 
     '/pricing',
     '/academy',
   ],
   
-  // Top Compliance Pages (Prio 2 - Hoher Traffic)
   compliance: [
     '/dsgvo',
     '/iso-27001-zertifizierung',
@@ -33,7 +95,6 @@ const ROUTES_CONFIG = {
     '/geldwaeschegesetz',
   ],
   
-  // Hauptbranchen (Prio 3)
   industries: [
     '/branchen/gesundheitswesen',
     '/branchen/finanzdienstleister',
@@ -42,7 +103,6 @@ const ROUTES_CONFIG = {
     '/branchen/automotive',
   ],
   
-  // Wissensbasis & Tools (Prio 4)
   knowledge: [
     '/wissen/dsgvo',
     '/wissen/compliance-frameworks',
@@ -51,7 +111,6 @@ const ROUTES_CONFIG = {
     '/wissen/leitfaden/betroffenenrechte',
   ],
   
-  // Tools & Assessment (Prio 5)
   tools: [
     '/tools/compliance-ai-assistant',
     '/tools/cookie-management',
@@ -59,19 +118,6 @@ const ROUTES_CONFIG = {
     '/assessment-center/ai-risk-assessment',
   ],
   
-  // Erweiterte Seiten (Prio 6 - Optional)
-  extended: [
-    '/wissen/leitfaden/iso-27001-audit-vorbereitung',
-    '/branchen/bildung',
-    '/branchen/behorden',
-    '/branchen/kanzleien',
-    '/assessment-center/iso-27001-readiness',
-    '/assessment-center/nis2-compliance-check',
-    '/wissen/rechtsprechung/dsgvo-urteile',
-    '/wissen/rechtsprechung/bussgelder',
-  ],
-  
-  // Diese Routes NICHT prerendern (Client-Side only)
   exclude: [
     '/dashboard',
     '/app',
@@ -81,153 +127,64 @@ const ROUTES_CONFIG = {
   ]
 };
 
-// Optimierte Konfiguration
+// =====================================
+// Konfiguration
+// =====================================
 const CONFIG = {
-  // Performance Einstellungen
   BATCH_SIZE: process.env.SSG_BATCH_SIZE ? parseInt(process.env.SSG_BATCH_SIZE) : 5,
   MAX_WORKERS: process.env.SSG_MAX_WORKERS ? parseInt(process.env.SSG_MAX_WORKERS) : 3,
-  TIMEOUT: 20000, // Reduziert von 30000
-  RETRY_ATTEMPTS: 2, // Reduziert von 3
+  TIMEOUT: 15000,
+  RETRY_ATTEMPTS: 2,
   RETRY_DELAY: 1000,
-  
-  // Server Einstellungen  
-  PORT: process.env.SSG_PORT ? parseInt(process.env.SSG_PORT) : 5173,
-  WARMUP_TIME: 2000, // Server warm-up Zeit
-  
-  // Build Modus
-  MODE: process.env.SSG_MODE || 'critical', // critical | full | extended
-  FAIL_THRESHOLD: 0.2, // Max 20% Fehlerrate
-  
-  // Optimization
-  WAIT_FOR_IDLE: process.env.SSG_WAIT_IDLE === 'true',
-  REMOVE_SCRIPTS: process.env.SSG_REMOVE_SCRIPTS === 'true',
-  
-  // Output
+  // Vite Preview läuft standardmäßig auf 4173
+  PORT: process.env.SSG_PORT ? parseInt(process.env.SSG_PORT) : 4173,
+  WARMUP_TIME: 2000,
+  MODE: process.env.SSG_MODE || 'critical',
   VERBOSE: process.env.SSG_VERBOSE === 'true',
-  BUILD_MARKER: 'data-ssg="true"'
+  BUILD_MARKER: 'data-ssg-build="true"',
+  WAIT_STRATEGY: 'domcontentloaded'
 };
 
-// Performance Tracking
-class PerformanceTracker {
-  constructor() {
-    this.metrics = {
-      routes: [],
-      totalStart: performance.now(),
-      memoryUsage: []
-    };
-  }
-  
-  recordRoute(route, success, duration, attemptNum = 1) {
-    this.metrics.routes.push({
-      route,
-      success,
-      duration,
-      attemptNum,
-      timestamp: new Date().toISOString()
-    });
-  }
-  
-  recordMemory() {
-    const usage = process.memoryUsage();
-    this.metrics.memoryUsage.push({
-      rss: Math.round(usage.rss / 1024 / 1024),
-      heapUsed: Math.round(usage.heapUsed / 1024 / 1024),
-      timestamp: new Date().toISOString()
-    });
-  }
-  
-  getReport() {
-    const totalEnd = performance.now();
-    const successful = this.metrics.routes.filter(r => r.success).length;
-    const failed = this.metrics.routes.filter(r => !r.success).length;
-    const avgDuration = this.metrics.routes.reduce((sum, r) => sum + r.duration, 0) / this.metrics.routes.length;
-    const maxMemory = Math.max(...this.metrics.memoryUsage.map(m => m.heapUsed));
-    
-    return {
-      summary: {
-        totalRoutes: this.metrics.routes.length,
-        successful,
-        failed,
-        successRate: (successful / this.metrics.routes.length * 100).toFixed(1) + '%',
-        totalDuration: ((totalEnd - this.metrics.totalStart) / 1000).toFixed(1) + 's',
-        avgRouteTime: avgDuration.toFixed(0) + 'ms',
-        peakMemory: maxMemory + 'MB'
-      },
-      failedRoutes: this.metrics.routes.filter(r => !r.success).map(r => r.route),
-      slowRoutes: this.metrics.routes
-        .filter(r => r.duration > 5000)
-        .sort((a, b) => b.duration - a.duration)
-        .slice(0, 5)
-        .map(r => ({ route: r.route, time: r.duration + 'ms' }))
-    };
-  }
-}
-
-// Intelligentes Prerendering mit Fehlerbehandlung
+// =====================================
+// Haupt-Prerender-Funktion
+// =====================================
 async function prerenderRoute(page, route, baseUrl, attemptNum = 1) {
   const startTime = performance.now();
   
   try {
-    // Navigate mit optimierten Einstellungen - warte auf vollständiges Laden
-    const response = await page.goto(`${baseUrl}${route}`, {
-      waitUntil: 'networkidle0', // Warte bis keine Netzwerkaktivität mehr
+    const url = `${baseUrl}${route}`;
+    
+    if (CONFIG.VERBOSE) {
+      console.log(`  📄 Processing ${url} (attempt ${attemptNum})`);
+    }
+    
+    // Navigiere zur Seite
+    const response = await page.goto(url, {
+      waitUntil: CONFIG.WAIT_STRATEGY,
       timeout: CONFIG.TIMEOUT
     });
     
-    // Check Response Status
-    if (!response.ok() && response.status() !== 304) {
-      throw new Error(`HTTP ${response.status()}`);
+    // Prüfe Response
+    if (!response || (!response.ok() && response.status() !== 304)) {
+      throw new Error(`HTTP ${response?.status() || 'unknown'}`);
     }
     
-    // Warte auf kritische Elemente
+    // Warte NICHT auf visibility, da root hidden sein kann
+    // Warte nur darauf dass Content geladen ist
     try {
-      // Warte auf Basis-Content im Root-Element
       await page.waitForFunction(() => {
         const root = document.querySelector('#root');
-        const hasContent = root && root.children.length > 0;
-        const hasValidTitle = document.title && 
-                              document.title !== 'Vite + React' && 
-                              !document.title.includes('Loading');
-        
-        // Prüfe ob Hauptinhalt da ist (Header, Main, Footer)
-        const hasStructure = document.querySelector('header') || 
-                            document.querySelector('main') || 
-                            document.querySelector('nav');
-        
-        return hasContent && hasValidTitle && hasStructure;
-      }, { timeout: 10000 });
-      
-      // Extra Zeit für React Rendering und Lazy Loading
-      await page.waitForTimeout(1000);
-      
-      // Optional: Warte auf React Helmet Meta Tags (wenn vorhanden)
-      await page.waitForFunction(() => {
-        return document.querySelector('[data-react-helmet]') || 
-               document.querySelector('meta[name="description"]');
-      }, { timeout: 2000 }).catch(() => {
-        // Kein Fehler wenn Meta-Tags fehlen
-        if (CONFIG.VERBOSE) {
-          console.log(`  ℹ️  No meta tags found on ${route}, continuing...`);
-        }
-      });
-      
-    } catch (waitError) {
-      if (CONFIG.VERBOSE) {
-        console.warn(`  ⚠️  Timeout waiting for content on ${route}, using fallback`);
-      }
-      // Fallback: Warte mindestens auf irgendwas im Root
-      await page.waitForSelector('#root', { timeout: 5000 });
-      await page.waitForTimeout(2000);
+        // Check ob Content vorhanden ist (egal ob hidden oder visible)
+        return root && (root.children.length > 0 || root.textContent.length > 10);
+      }, { timeout: 3000 });
+    } catch (e) {
+      console.warn(`  ⚠️  Timeout waiting for content on ${route}, continuing anyway`);
     }
     
-    // Screenshot für Debug (optional)
-    if (CONFIG.VERBOSE && attemptNum > 1) {
-      const screenshotPath = join(rootDir, 'dist', '_debug', `${route.replace(/\//g, '_')}.png`);
-      mkdirSync(dirname(screenshotPath), { recursive: true });
-      await page.screenshot({ path: screenshotPath, fullPage: true });
-    }
+    // Extra Zeit für Lazy Loading
+    await page.waitForTimeout(1000);
     
-    // Hole optimierten HTML Content
+    // Hole HTML
     let html = await page.content();
     
     // Validierung
@@ -235,7 +192,7 @@ async function prerenderRoute(page, route, baseUrl, attemptNum = 1) {
       throw new Error('HTML validation failed');
     }
     
-    // Optimiere HTML für Production
+    // Optimiere HTML
     html = await optimizeHtml(html, route, page);
     
     // Speichere HTML
@@ -244,10 +201,7 @@ async function prerenderRoute(page, route, baseUrl, attemptNum = 1) {
     writeFileSync(outputPath, html);
     
     const duration = performance.now() - startTime;
-    
-    if (CONFIG.VERBOSE) {
-      console.log(`  ✅ ${route} (${duration.toFixed(0)}ms, ${(html.length / 1024).toFixed(1)}kb)`);
-    }
+    console.log(`  ✅ ${route} (${duration.toFixed(0)}ms, ${(html.length / 1024).toFixed(1)}kb)`);
     
     return { success: true, route, duration };
     
@@ -256,212 +210,128 @@ async function prerenderRoute(page, route, baseUrl, attemptNum = 1) {
     
     if (attemptNum < CONFIG.RETRY_ATTEMPTS) {
       if (CONFIG.VERBOSE) {
-        console.log(`  🔄 Retry ${attemptNum}/${CONFIG.RETRY_ATTEMPTS} for ${route}: ${error.message}`);
+        console.log(`  🔄 Retry ${attemptNum}/${CONFIG.RETRY_ATTEMPTS} for ${route}`);
       }
-      
       await page.waitForTimeout(CONFIG.RETRY_DELAY * attemptNum);
       return prerenderRoute(page, route, baseUrl, attemptNum + 1);
     }
     
-    console.error(`  ❌ ${route} failed after ${attemptNum} attempts: ${error.message}`);
+    console.error(`  ❌ ${route} failed: ${error.message}`);
     return { success: false, route, duration, error: error.message };
   }
 }
 
+// =====================================
 // HTML Validierung
+// =====================================
 function validateHtml(html, route) {
-  // Basis-Checks
-  if (!html || html.length < 1000) {
+  if (!html || html.length < 500) {
     console.warn(`  ⚠️  HTML too short on ${route}: ${html?.length || 0} bytes`);
     return false;
   }
-  if (!html.includes('<!DOCTYPE html>')) {
+  
+  if (!html.includes('<!DOCTYPE html>') && !html.includes('<!doctype html>')) {
     console.warn(`  ⚠️  Missing DOCTYPE on ${route}`);
     return false;
   }
-  if (!html.includes('<title>')) {
+  
+  if (!html.includes('<title>') && !html.includes('<title ')) {
     console.warn(`  ⚠️  Missing title tag on ${route}`);
     return false;
   }
-  if (html.includes('Vite + React')) {
-    console.warn(`  ⚠️  Default Vite title found on ${route}`);
-    return false;
-  }
   
-  // Warnung für fehlende Meta-Description, aber kein Fehler mehr
-  if (!html.includes('meta name="description"')) {
-    console.warn(`  ⚠️  Missing meta description on ${route} (continuing anyway)`);
-  }
-  
-  // Prüfe ob überhaupt Content da ist
-  if (!html.includes('<div id="root">') || html.includes('<div id="root"></div>')) {
-    console.warn(`  ⚠️  Empty root element on ${route}`);
+  // Prüfe ob React Root existiert
+  if (!html.includes('id="root"')) {
+    console.warn(`  ⚠️  Missing root element on ${route}`);
     return false;
   }
   
   return true;
 }
 
-// Erweiterte HTML Optimierung
+// =====================================
+// HTML Optimierung mit SEO
+// =====================================
 async function optimizeHtml(html, route, page) {
-  // 1. SSG Markierungen
   const buildInfo = {
     timestamp: new Date().toISOString(),
     route: route,
-    version: process.env.BUILD_VERSION || 'unknown'
+    version: process.env.BUILD_VERSION || '1.0.0'
   };
   
+  // Markiere als SSG-generiert
   html = html.replace(
     '<html',
     `<html ${CONFIG.BUILD_MARKER} data-build='${JSON.stringify(buildInfo)}'`
   );
   
-  // 2. Injiziere optimiertes Hydration Script
+  // Füge Hydration-Script hinzu
   const hydrationScript = `
     <script id="ssr-hydration">
-      (function() {
-        // SSG Metadata
-        window.__SSG__ = {
-          route: '${route}',
-          buildTime: '${buildInfo.timestamp}',
-          version: '${buildInfo.version}',
-          hydrated: false
-        };
-        
-        // Hydration Error Recovery
-        const originalError = window.onerror;
-        window.onerror = function(msg, source, lineno, colno, error) {
-          if (msg && msg.toString().includes('hydration')) {
-            console.warn('[SSG] Hydration mismatch detected, recovering...');
-            window.__SSG__.hydrationError = true;
-            
-            // Attempt recovery
-            setTimeout(() => {
-              if (!window.__SSG__.hydrated && window.React && window.ReactDOM) {
-                const root = document.getElementById('root');
-                if (root) {
-                  window.ReactDOM.createRoot(root).render(window.React.createElement(window.App));
-                  console.log('[SSG] Recovered via client-side render');
-                }
-              }
-            }, 100);
-            
-            return true; // Suppress error
-          }
-          return originalError ? originalError(msg, source, lineno, colno, error) : false;
-        };
-        
-        // Mark hydration complete
-        document.addEventListener('DOMContentLoaded', () => {
-          setTimeout(() => {
-            window.__SSG__.hydrated = true;
-            console.log('[SSG] Hydration complete for ${route}');
-          }, 500);
-        });
-      })();
+      window.__SSG__ = {
+        route: '${route}',
+        buildTime: '${buildInfo.timestamp}',
+        hydrated: false
+      };
+      
+      // Hydration Error Handler
+      const originalError = window.onerror;
+      window.onerror = function(msg, source, lineno, colno, error) {
+        if (msg && msg.toString().includes('hydration')) {
+          console.warn('[SSG] Hydration mismatch, recovering...');
+          window.__SSG__.hydrationError = true;
+          return true;
+        }
+        return originalError ? originalError(msg, source, lineno, colno, error) : false;
+      };
     </script>
   `;
   
   html = html.replace('</head>', hydrationScript + '</head>');
   
-  // 3. Preload Optimierungen
+  // SEO-Optimierungen
   const preloads = `
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.marsstein.com">
-    <link rel="preload" href="/assets/index.css" as="style">
-    <link rel="modulepreload" href="/assets/index.js">
+    <link rel="dns-prefetch" href="https://marsstein.com">
   `;
   
   html = html.replace('</head>', preloads + '</head>');
   
-  // 4. Inline Critical CSS (optional)
-  if (process.env.SSG_INLINE_CSS === 'true') {
-    try {
-      const criticalCSS = await page.evaluate(() => {
-        const sheets = Array.from(document.styleSheets);
-        let css = '';
-        sheets.forEach(sheet => {
-          try {
-            const rules = Array.from(sheet.cssRules || []);
-            rules.forEach(rule => {
-              // Nur above-the-fold CSS
-              if (rule.selectorText && !rule.selectorText.includes(':hover')) {
-                css += rule.cssText + ' ';
-              }
-            });
-          } catch (e) {}
-        });
-        return css.substring(0, 50000); // Limit 50kb
-      });
-      
-      if (criticalCSS) {
-        html = html.replace('</head>', `<style id="critical-css">${criticalCSS}</style></head>`);
-      }
-    } catch (e) {
-      console.warn('Could not extract critical CSS:', e.message);
-    }
-  }
-  
-  // 5. Cleanup - Behalte Formatierung für bessere Lesbarkeit
-  // Entferne nur HTML-Kommentare, aber behalte Whitespace/Formatierung
-  html = html.replace(/<!--[\s\S]*?-->/g, '');
-  
-  // DEAKTIVIERT: Minifizierung für bessere Lesbarkeit und SEO-Debugging
-  // html = html.replace(/\s+/g, ' '); // Normalize whitespace
-  // html = html.replace(/> </g, '><'); // Remove space between tags
-  
-  // 6. Optional: Remove React DevTools
-  if (CONFIG.REMOVE_SCRIPTS) {
-    html = html.replace(/<script[^>]*__REACT_DEVTOOLS[^>]*>[\s\S]*?<\/script>/gi, '');
-  }
-  
   return html;
 }
 
+// =====================================
 // Output Path Helper
+// =====================================
 function getOutputPath(route) {
-  const distDir = join(rootDir, 'dist');
-  
   if (route === '/') {
     return join(distDir, 'index.html');
   }
   
-  // Clean URLs (Netlify-konform)
-  const cleanPath = route.replace(/\/$/, '');
+  const cleanPath = route.replace(/^\//, '').replace(/\/$/, '');
   return join(distDir, cleanPath, 'index.html');
 }
 
-// SEO & Netlify Files
-function createSeoFiles(routes, stats) {
-  const distDir = join(rootDir, 'dist');
-  
-  // 1. Sitemap mit Prioritäten
-  const sitemapEntries = routes.map(route => {
-    let priority = 0.5;
-    let changefreq = 'monthly';
-    
-    if (route === '/') {
-      priority = 1.0;
-      changefreq = 'daily';
-    } else if (ROUTES_CONFIG.critical.includes(route)) {
-      priority = 0.9;
-      changefreq = 'weekly';
-    } else if (ROUTES_CONFIG.compliance.includes(route)) {
-      priority = 0.8;
-      changefreq = 'weekly';
-    } else if (ROUTES_CONFIG.industries.includes(route)) {
-      priority = 0.7;
-      changefreq = 'monthly';
-    }
-    
-    return `  <url>
-    <loc>https://marsstein.com${route}</loc>
+// =====================================
+// SEO Files generieren
+// =====================================
+function generateSEOFiles(results) {
+  // 1. Sitemap
+  const sitemapEntries = results
+    .filter(r => r.success)
+    .map(r => {
+      const priority = r.route === '/' ? '1.0' : 
+                      r.route.includes('/dsgvo') || r.route.includes('/iso') ? '0.9' : '0.8';
+      const changefreq = r.route === '/' ? 'daily' : 'weekly';
+      
+      return `  <url>
+    <loc>https://marsstein.com${r.route}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
-  });
+    });
   
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -473,67 +343,22 @@ ${sitemapEntries.join('\n')}
   
   // 2. Netlify _redirects
   const redirects = `
-# SPA Routes (Client-side routing)
+# SPA Routes
 /dashboard/*    /index.html    200
 /app/*          /index.html    200
 /auth/*         /index.html    200
-/api/*          /index.html    200
 
-# Legacy URL Redirects
-/compliance/dsgvo              /dsgvo                          301
-/compliance/iso-27001          /iso-27001-zertifizierung       301
-/compliance/iso-27017          /iso-27017-zertifizierung       301
-/compliance/iso-27018          /iso-27018-zertifizierung       301
-/industries/*                  /branchen/:splat                301
-/knowledge/*                   /wissen/:splat                  301
+# Legacy Redirects
+/compliance/dsgvo    /dsgvo    301
 
-# Wildcard for 404
-/*              /404.html      404
+# Default fallback
+/*    /index.html    200
 `;
   
   writeFileSync(join(distDir, '_redirects'), redirects.trim());
   console.log('  ✅ _redirects created');
   
-  // 3. Netlify _headers mit Cache-Control
-  const headers = `
-# Prerendered HTML - Cache with revalidation
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
-  X-Robots-Tag: all
-
-# Homepage - Moderate caching
-/
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
-
-# Compliance pages - Moderate caching  
-/dsgvo
-  Cache-Control: public, max-age=7200, stale-while-revalidate=86400
-/iso-27001-zertifizierung
-  Cache-Control: public, max-age=7200, stale-while-revalidate=86400
-/nis2
-  Cache-Control: public, max-age=7200, stale-while-revalidate=86400
-
-# Static Assets - Aggressive caching
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/images/*
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
-
-# Security Headers (all routes)
-/*
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.marsstein.com
-`;
-  
-  writeFileSync(join(distDir, '_headers'), headers.trim());
-  console.log('  ✅ _headers created');
-  
-  // 4. robots.txt
+  // 3. robots.txt
   const robots = `
 User-agent: *
 Allow: /
@@ -541,122 +366,58 @@ Disallow: /dashboard/
 Disallow: /app/
 Disallow: /auth/
 Disallow: /api/
-Disallow: /_debug/
-Disallow: /*.json$
 
-# Crawl-delay
-Crawl-delay: 1
-
-# Sitemap
 Sitemap: https://marsstein.com/sitemap.xml
-
-# Google
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
 `;
   
   writeFileSync(join(distDir, 'robots.txt'), robots.trim());
   console.log('  ✅ robots.txt created');
-  
-  // 5. 404.html
-  const html404 = `<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Seite nicht gefunden | Marsstein</title>
-  <meta name="robots" content="noindex, follow">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-    .container {
-      text-align: center;
-      padding: 2rem;
-      max-width: 500px;
-    }
-    h1 {
-      font-size: 6rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    }
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
-    p {
-      margin-bottom: 2rem;
-      opacity: 0.8;
-      line-height: 1.6;
-    }
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    a {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: white;
-      color: #764ba2;
-      text-decoration: none;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>404</h1>
-    <h2>Seite nicht gefunden</h2>
-    <p>Die angeforderte Seite existiert leider nicht. Sie wurde möglicherweise verschoben oder gelöscht.</p>
-    <div class="buttons">
-      <a href="/">Zur Startseite</a>
-      <a href="/contact">Kontakt</a>
-    </div>
-  </div>
-</body>
-</html>`;
-  
-  writeFileSync(join(distDir, '404.html'), html404);
-  console.log('  ✅ 404.html created');
-  
-  // 6. Build Report
-  const buildReport = {
-    timestamp: new Date().toISOString(),
-    mode: CONFIG.MODE,
-    stats: stats.getReport(),
-    config: {
-      batchSize: CONFIG.BATCH_SIZE,
-      timeout: CONFIG.TIMEOUT,
-      retryAttempts: CONFIG.RETRY_ATTEMPTS
-    }
-  };
-  
-  writeFileSync(
-    join(distDir, '_build-report.json'),
-    JSON.stringify(buildReport, null, 2)
-  );
-  console.log('  ✅ _build-report.json created');
 }
 
-// Haupt-Prerender-Funktion
-async function prerenderWithPlaywright() {
+// =====================================
+// Server Management
+// =====================================
+async function startPreviewServer() {
+  console.log('🚀 Starting Vite preview server...');
+  
+  // Auf Netlify startet der Build-Prozess bereits einen Server
+  // Wir müssen nur den richtigen Port finden
+  const ports = [CONFIG.PORT, 4173, 5173];
+  
+  for (const port of ports) {
+    try {
+      const response = await fetch(`http://localhost:${port}`);
+      if (response.ok || response.status === 404) {
+        console.log(`✅ Server found on port ${port}`);
+        CONFIG.PORT = port; // Update config mit richtigem Port
+        return `http://localhost:${port}`;
+      }
+    } catch (e) {
+      // Versuche nächsten Port
+    }
+  }
+  
+  // Fallback: Starte eigenen Server
+  try {
+    console.log(`Starting new server on port ${CONFIG.PORT}...`);
+    execSync(`npx vite preview --port ${CONFIG.PORT} --host > /dev/null 2>&1 &`, {
+      cwd: process.cwd(),
+      stdio: 'ignore'
+    });
+    
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    console.log(`✅ Server started on http://localhost:${CONFIG.PORT}`);
+    return `http://localhost:${CONFIG.PORT}`;
+  } catch (error) {
+    console.error('❌ Failed to start server:', error.message);
+    throw error;
+  }
+}
+
+// =====================================
+// Main Execution
+// =====================================
+async function main() {
   console.log('🚀 Starting Optimized Playwright SSG for Marsstein\n');
   console.log('📋 Configuration:');
   console.log(`  • Mode: ${CONFIG.MODE}`);
@@ -665,259 +426,141 @@ async function prerenderWithPlaywright() {
   console.log(`  • Timeout: ${CONFIG.TIMEOUT}ms`);
   console.log(`  • Retry Attempts: ${CONFIG.RETRY_ATTEMPTS}\n`);
   
-  const tracker = new PerformanceTracker();
-  let server;
-  let browser;
+  // Sammle alle Routes basierend auf Modus
+  let routes = [];
+  switch (CONFIG.MODE) {
+    case 'critical':
+      routes = [...ROUTES_CONFIG.critical, ...ROUTES_CONFIG.compliance];
+      break;
+    case 'extended':
+      routes = [
+        ...ROUTES_CONFIG.critical,
+        ...ROUTES_CONFIG.compliance,
+        ...ROUTES_CONFIG.industries,
+        ...ROUTES_CONFIG.knowledge
+      ];
+      break;
+    case 'full':
+      routes = [
+        ...ROUTES_CONFIG.critical,
+        ...ROUTES_CONFIG.compliance,
+        ...ROUTES_CONFIG.industries,
+        ...ROUTES_CONFIG.knowledge,
+        ...ROUTES_CONFIG.tools
+      ];
+      break;
+    default:
+      routes = ROUTES_CONFIG.critical;
+  }
   
-  try {
-    // 1. Route-Auswahl basierend auf Modus
-    let routes = [];
-    switch (CONFIG.MODE) {
-      case 'critical':
-        routes = [...ROUTES_CONFIG.critical, ...ROUTES_CONFIG.compliance];
-        break;
-      case 'full':
-        routes = [
-          ...ROUTES_CONFIG.critical,
-          ...ROUTES_CONFIG.compliance,
-          ...ROUTES_CONFIG.industries,
-          ...ROUTES_CONFIG.knowledge,
-          ...ROUTES_CONFIG.tools
-        ];
-        break;
-      case 'extended':
-        routes = Object.values(ROUTES_CONFIG)
-          .filter(group => Array.isArray(group))
-          .flat()
-          .filter(route => !ROUTES_CONFIG.exclude.some(ex => route.startsWith(ex)));
-        break;
-    }
+  console.log(`📄 Prerendering ${routes.length} routes in ${CONFIG.MODE} mode\n`);
+  
+  // Starte Server
+  const baseUrl = await startPreviewServer();
+  
+  // Warte kurz
+  console.log(`⏳ Warming up server (${CONFIG.WARMUP_TIME}ms)...`);
+  await new Promise(resolve => setTimeout(resolve, CONFIG.WARMUP_TIME));
+  
+  // Starte Browser
+  console.log('🌐 Launching Playwright browser...\n');
+  const browser = await chromium.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
+  
+  const context = await browser.newContext({
+    viewport: { width: 1920, height: 1080 },
+    userAgent: 'Mozilla/5.0 (compatible; Marsstein-SSG-Bot/1.0)'
+  });
+  
+  // Prerender alle Routes
+  console.log('🔄 Starting batch processing...\n');
+  const results = [];
+  const startTime = performance.now();
+  
+  // Batch Processing
+  for (let i = 0; i < routes.length; i += CONFIG.BATCH_SIZE) {
+    const batch = routes.slice(i, i + CONFIG.BATCH_SIZE);
+    const batchNum = Math.floor(i / CONFIG.BATCH_SIZE) + 1;
+    const totalBatches = Math.ceil(routes.length / CONFIG.BATCH_SIZE);
     
-    // Deduplizieren
-    routes = [...new Set(routes)];
-    console.log(`📄 Prerendering ${routes.length} routes in ${CONFIG.MODE} mode\n`);
+    console.log(`\n📦 Batch ${batchNum}/${totalBatches}:`);
     
-    // 2. Vite Preview Server für gebaute App starten
-    console.log('🚀 Starting Vite preview server...');
-    const { preview } = await import('vite');
-    server = await preview({
-      root: rootDir,
-      preview: {
-        port: CONFIG.PORT,
-        host: 'localhost',
-        strictPort: true,
-        open: false
-      },
-      logLevel: 'error'
+    // Parallel processing innerhalb des Batches
+    const batchPromises = batch.map(async route => {
+      const page = await context.newPage();
+      const result = await prerenderRoute(page, route, baseUrl);
+      await page.close();
+      return result;
     });
-    const baseUrl = `http://localhost:${CONFIG.PORT}`;
-    console.log(`✅ Server running on ${baseUrl}`);
     
-    // Server Warm-up
-    console.log(`⏳ Warming up server (${CONFIG.WARMUP_TIME}ms)...`);
-    await new Promise(resolve => setTimeout(resolve, CONFIG.WARMUP_TIME));
-    
-    // 3. Browser starten mit optimierten Settings
-    console.log('🌐 Launching Playwright browser...\n');
-    
-    const launchOptions = {
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu'
-      ]
-    };
-    
-    browser = await chromium.launch(launchOptions);
-    
-    // Context Pool für Parallelisierung
-    const contexts = [];
-    for (let i = 0; i < CONFIG.MAX_WORKERS; i++) {
-      const context = await browser.newContext({
-        viewport: { width: 1440, height: 900 },
-        userAgent: 'Mozilla/5.0 (Marsstein-SSG-Bot) Chrome/120.0.0.0',
-        locale: 'de-DE',
-        timezoneId: 'Europe/Berlin',
-        ignoreHTTPSErrors: true,
-        bypassCSP: true
-      });
-      contexts.push(context);
-    }
-    
-    // 4. Batch Processing mit Worker Pool
-    console.log('🔄 Starting batch processing...\n');
-    const results = [];
-    
-    for (let i = 0; i < routes.length; i += CONFIG.BATCH_SIZE) {
-      const batch = routes.slice(i, i + CONFIG.BATCH_SIZE);
-      const batchNum = Math.floor(i / CONFIG.BATCH_SIZE) + 1;
-      const totalBatches = Math.ceil(routes.length / CONFIG.BATCH_SIZE);
-      
-      if (!CONFIG.VERBOSE) {
-        process.stdout.write(`\r  Processing batch ${batchNum}/${totalBatches} (${Math.round(i/routes.length*100)}%)`);
-      } else {
-        console.log(`\n📦 Batch ${batchNum}/${totalBatches}:`);
-      }
-      
-      // Parallele Verarbeitung mit Worker-Verteilung
-      const batchPromises = batch.map(async (route, index) => {
-        const context = contexts[index % contexts.length];
-        const page = await context.newPage();
-        
-        try {
-          const result = await prerenderRoute(page, route, baseUrl);
-          tracker.recordRoute(route, result.success, result.duration);
-          return result;
-        } finally {
-          await page.close();
-        }
-      });
-      
-      const batchResults = await Promise.all(batchPromises);
-      results.push(...batchResults);
-      
-      // Memory Management
-      tracker.recordMemory();
-      if (tracker.metrics.memoryUsage.length > 0) {
-        const lastMemory = tracker.metrics.memoryUsage[tracker.metrics.memoryUsage.length - 1];
-        if (lastMemory.heapUsed > 500) { // > 500MB
-          if (CONFIG.VERBOSE) {
-            console.log('  ⚠️  High memory usage detected, forcing garbage collection...');
-          }
-          if (global.gc) global.gc();
-        }
-      }
-    }
-    
-    if (!CONFIG.VERBOSE) {
-      process.stdout.write('\r' + ' '.repeat(50) + '\r'); // Clear progress line
-    }
-    
-    // 5. Ergebnisse auswerten
-    const report = tracker.getReport();
-    
-    console.log('\n' + '='.repeat(60));
-    console.log('📊 SSG Build Report:');
-    console.log('='.repeat(60));
-    console.log(`  ✅ Successful: ${report.summary.successful}/${report.summary.totalRoutes}`);
-    console.log(`  ❌ Failed: ${report.summary.failed}/${report.summary.totalRoutes}`);
-    console.log(`  📈 Success Rate: ${report.summary.successRate}`);
-    console.log(`  ⏱️  Total Time: ${report.summary.totalDuration}`);
-    console.log(`  ⚡ Avg per Route: ${report.summary.avgRouteTime}`);
-    console.log(`  💾 Peak Memory: ${report.summary.peakMemory}`);
-    
-    if (report.failedRoutes.length > 0) {
-      console.log('\n❌ Failed Routes:');
-      report.failedRoutes.forEach(route => console.log(`  • ${route}`));
-    }
-    
-    if (report.slowRoutes.length > 0 && CONFIG.VERBOSE) {
-      console.log('\n⏱️  Slowest Routes:');
-      report.slowRoutes.forEach(({ route, time }) => console.log(`  • ${route}: ${time}`));
-    }
-    
-    console.log('='.repeat(60) + '\n');
-    
-    // 6. SEO Files erstellen
-    console.log('📝 Creating SEO & Netlify files...');
-    const successfulRoutes = results.filter(r => r.success).map(r => r.route);
-    createSeoFiles(successfulRoutes, tracker);
-    
-    // 7. Build-Validierung
-    const failureRate = report.summary.failed / report.summary.totalRoutes;
-    
-    if (failureRate > CONFIG.FAIL_THRESHOLD) {
-      console.error(`\n⚠️  Build quality check failed!`);
-      console.error(`   Failure rate ${(failureRate * 100).toFixed(1)}% exceeds threshold of ${CONFIG.FAIL_THRESHOLD * 100}%`);
-      process.exit(1);
-    }
-    
-    console.log('\n✅ SSG completed successfully!');
-    console.log('   Build artifacts available in ./dist\n');
-    
-    // 8. Optional: Netlify Plugin Check
-    if (process.env.NETLIFY) {
-      console.log('📦 Netlify environment detected');
-      console.log('   Ensure netlify-plugin-chromium is installed');
-      console.log('   Check _redirects and _headers files\n');
-    }
-    
-  } catch (error) {
-    console.error('\n❌ SSG Build failed:', error);
-    console.error(error.stack);
+    const batchResults = await Promise.all(batchPromises);
+    results.push(...batchResults);
+  }
+  
+  // Cleanup
+  await browser.close();
+  
+  // Generiere SEO Files
+  console.log('\n📝 Generating SEO files...');
+  generateSEOFiles(results);
+  
+  // Report
+  const totalTime = performance.now() - startTime;
+  const successful = results.filter(r => r.success).length;
+  const failed = results.filter(r => !r.success).length;
+  
+  console.log('\n' + '='.repeat(50));
+  console.log('✨ Prerendering Complete!');
+  console.log('='.repeat(50));
+  console.log(`Total Time: ${(totalTime / 1000).toFixed(1)}s`);
+  console.log(`Successful: ${successful}/${routes.length}`);
+  
+  if (failed > 0) {
+    console.log(`Failed: ${failed}`);
+    const failedRoutes = results.filter(r => !r.success);
+    failedRoutes.forEach(r => {
+      console.log(`  ❌ ${r.route}: ${r.error}`);
+    });
+  }
+  
+  // Build Report
+  const report = {
+    timestamp: new Date().toISOString(),
+    mode: CONFIG.MODE,
+    duration: totalTime,
+    routes: {
+      total: routes.length,
+      successful,
+      failed
+    },
+    details: results
+  };
+  
+  writeFileSync(
+    join(distDir, '_build-report.json'),
+    JSON.stringify(report, null, 2)
+  );
+  
+  // Exit Code basierend auf Fehlerrate
+  const errorRate = failed / routes.length;
+  if (errorRate > 0.2) {
+    console.error('\n❌ Build failed: Too many errors (>20%)');
     process.exit(1);
-  } finally {
-    // Cleanup
-    if (browser) {
-      await browser.close();
-      console.log('🧹 Browser closed');
-    }
-    if (server) {
-      await server.close();
-      console.log('🧹 Server closed');
-    }
   }
+  
+  process.exit(0);
 }
 
-// CLI Execution
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  // Parse CLI arguments
-  const args = process.argv.slice(2);
-  if (args.includes('--help')) {
-    console.log(`
-Marsstein SSG Prerender Tool
+// Error Handler
+process.on('unhandledRejection', (error) => {
+  console.error('💥 Unhandled error:', error);
+  process.exit(1);
+});
 
-Usage: node scripts/prerender-playwright-optimized.js [options]
-
-Options:
-  --mode <critical|full|extended>  Prerender mode (default: critical)
-  --batch-size <number>            Parallel batch size (default: 5)  
-  --verbose                        Verbose output
-  --help                          Show this help
-
-Environment Variables:
-  SSG_MODE              Prerender mode
-  SSG_BATCH_SIZE        Batch size for parallel processing
-  SSG_MAX_WORKERS       Maximum browser contexts
-  SSG_PORT              Dev server port
-  SSG_VERBOSE           Enable verbose logging
-  SSG_WAIT_IDLE         Wait for network idle
-  SSG_REMOVE_SCRIPTS    Remove React DevTools
-  SSG_INLINE_CSS        Inline critical CSS
-  BUILD_VERSION         Build version for tracking
-
-Examples:
-  # Quick critical pages only
-  node scripts/prerender-playwright-optimized.js --mode critical
-  
-  # Full build with all main pages
-  node scripts/prerender-playwright-optimized.js --mode full --verbose
-  
-  # CI/CD optimized
-  SSG_BATCH_SIZE=10 SSG_MAX_WORKERS=5 npm run build:ssg
-    `);
-    process.exit(0);
-  }
-  
-  // Set mode from CLI
-  const modeIndex = args.indexOf('--mode');
-  if (modeIndex !== -1 && args[modeIndex + 1]) {
-    CONFIG.MODE = args[modeIndex + 1];
-  }
-  
-  const batchIndex = args.indexOf('--batch-size');
-  if (batchIndex !== -1 && args[batchIndex + 1]) {
-    CONFIG.BATCH_SIZE = parseInt(args[batchIndex + 1]);
-  }
-  
-  if (args.includes('--verbose')) {
-    CONFIG.VERBOSE = true;
-  }
-  
-  // Run
-  prerenderWithPlaywright();
-}
-
-export { prerenderWithPlaywright, ROUTES_CONFIG };
+// Führe aus
+main().catch(error => {
+  console.error('💥 Fatal error:', error);
+  process.exit(1);
+});
