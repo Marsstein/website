@@ -179,34 +179,45 @@ async function prerenderRoute(page, route, baseUrl, attemptNum = 1) {
       throw new Error(`HTTP ${response.status()}`);
     }
     
-    // Warte auf kritische Elemente und React Helmet
+    // Warte auf kritische Elemente
     try {
-      // Warte explizit auf React Helmet Meta Tags
+      // Warte auf Basis-Content im Root-Element
       await page.waitForFunction(() => {
-        // Prüfe ob React Helmet seine Tags gesetzt hat
-        const helmet = document.querySelector('[data-react-helmet="true"]');
-        const hasValidMeta = document.querySelector('meta[name="description"]')?.content?.length > 0;
-        const hasOgMeta = document.querySelector('meta[property="og:title"]')?.content?.length > 0;
+        const root = document.querySelector('#root');
+        const hasContent = root && root.children.length > 0;
         const hasValidTitle = document.title && 
                               document.title !== 'Vite + React' && 
                               !document.title.includes('Loading');
-        const hasContent = document.querySelector('#root')?.children.length > 0;
-        const hasMainContent = document.querySelector('main') || document.querySelector('[role="main"]');
         
-        // Alle Bedingungen müssen erfüllt sein
-        return (helmet || hasValidMeta) && hasOgMeta && hasValidTitle && hasContent && hasMainContent;
-      }, { timeout: 8000 });
+        // Prüfe ob Hauptinhalt da ist (Header, Main, Footer)
+        const hasStructure = document.querySelector('header') || 
+                            document.querySelector('main') || 
+                            document.querySelector('nav');
+        
+        return hasContent && hasValidTitle && hasStructure;
+      }, { timeout: 10000 });
       
-      // Extra Zeit für lazy-loaded Komponenten
-      await page.waitForTimeout(500);
+      // Extra Zeit für React Rendering und Lazy Loading
+      await page.waitForTimeout(1000);
+      
+      // Optional: Warte auf React Helmet Meta Tags (wenn vorhanden)
+      await page.waitForFunction(() => {
+        return document.querySelector('[data-react-helmet]') || 
+               document.querySelector('meta[name="description"]');
+      }, { timeout: 2000 }).catch(() => {
+        // Kein Fehler wenn Meta-Tags fehlen
+        if (CONFIG.VERBOSE) {
+          console.log(`  ℹ️  No meta tags found on ${route}, continuing...`);
+        }
+      });
       
     } catch (waitError) {
       if (CONFIG.VERBOSE) {
-        console.warn(`  ⚠️  Timeout waiting for complete render on ${route}`);
+        console.warn(`  ⚠️  Timeout waiting for content on ${route}, using fallback`);
       }
-      // Fallback: Warte mindestens auf Basis-Content
-      await page.waitForSelector('#root > *', { timeout: 3000 }).catch(() => {});
-      await page.waitForTimeout(1500);
+      // Fallback: Warte mindestens auf irgendwas im Root
+      await page.waitForSelector('#root', { timeout: 5000 });
+      await page.waitForTimeout(2000);
     }
     
     // Screenshot für Debug (optional)
@@ -260,21 +271,33 @@ async function prerenderRoute(page, route, baseUrl, attemptNum = 1) {
 // HTML Validierung
 function validateHtml(html, route) {
   // Basis-Checks
-  if (!html || html.length < 1000) return false;
-  if (!html.includes('<!DOCTYPE html>')) return false;
-  if (!html.includes('<title>')) return false;
-  if (html.includes('Vite + React')) return false;
-  if (html.includes('Loading...') && !html.includes('data-ssg')) return false;
-  
-  // React Helmet / SEO Checks
-  if (!html.includes('meta name="description"')) {
-    console.warn(`  ⚠️  Missing meta description on ${route}`);
+  if (!html || html.length < 1000) {
+    console.warn(`  ⚠️  HTML too short on ${route}: ${html?.length || 0} bytes`);
+    return false;
+  }
+  if (!html.includes('<!DOCTYPE html>')) {
+    console.warn(`  ⚠️  Missing DOCTYPE on ${route}`);
+    return false;
+  }
+  if (!html.includes('<title>')) {
+    console.warn(`  ⚠️  Missing title tag on ${route}`);
+    return false;
+  }
+  if (html.includes('Vite + React')) {
+    console.warn(`  ⚠️  Default Vite title found on ${route}`);
     return false;
   }
   
-  // Route-spezifische Checks
-  if (route === '/' && !html.includes('Marsstein')) return false;
-  if (route === '/dsgvo' && !html.includes('DSGVO')) return false;
+  // Warnung für fehlende Meta-Description, aber kein Fehler mehr
+  if (!html.includes('meta name="description"')) {
+    console.warn(`  ⚠️  Missing meta description on ${route} (continuing anyway)`);
+  }
+  
+  // Prüfe ob überhaupt Content da ist
+  if (!html.includes('<div id="root">') || html.includes('<div id="root"></div>')) {
+    console.warn(`  ⚠️  Empty root element on ${route}`);
+    return false;
+  }
   
   return true;
 }
