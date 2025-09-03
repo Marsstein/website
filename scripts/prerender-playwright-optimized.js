@@ -381,10 +381,13 @@ async function optimizeHtml(html, route, page) {
     }
   }
   
-  // 5. Cleanup
-  html = html.replace(/<!--[\s\S]*?-->/g, ''); // Remove comments
-  html = html.replace(/\s+/g, ' '); // Normalize whitespace
-  html = html.replace(/> </g, '><'); // Remove space between tags
+  // 5. Cleanup - Behalte Formatierung für bessere Lesbarkeit
+  // Entferne nur HTML-Kommentare, aber behalte Whitespace/Formatierung
+  html = html.replace(/<!--[\s\S]*?-->/g, '');
+  
+  // DEAKTIVIERT: Minifizierung für bessere Lesbarkeit und SEO-Debugging
+  // html = html.replace(/\s+/g, ' '); // Normalize whitespace
+  // html = html.replace(/> </g, '><'); // Remove space between tags
   
   // 6. Optional: Remove React DevTools
   if (CONFIG.REMOVE_SCRIPTS) {
