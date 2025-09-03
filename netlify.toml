@@ -1,10 +1,14 @@
 [build]
-  command = "npm run build"
+  command = "npm run build:ssg"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "10"
+  # Playwright Browsers Path für Netlify
+  PLAYWRIGHT_BROWSERS_PATH = "/opt/buildhome/.cache/ms-playwright"
+  # Build Memory Allocation
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 # Caching Headers für Assets
 [[headers]]
@@ -71,8 +75,23 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# SPA Fallback - WICHTIG für React Router
-# Diese Regel kommt NACH allen spezifischen Routen
+# Dashboard und App bleiben SPA
+[[redirects]]
+  from = "/dashboard/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/app/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/auth/*"
+  to = "/index.html"
+  status = 200
+
+# SPA Fallback für nicht-prerenderte Seiten
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -90,6 +109,10 @@
   status = 301
 
 # Processing-Einstellungen
+# Chromium Plugin für Playwright Support
+[[plugins]]
+  package = "netlify-plugin-chromium"
+
 [build.processing]
   skip_processing = false
 

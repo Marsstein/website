@@ -1,73 +1,125 @@
-# Welcome to your Lovable project
+# Marsstein - AI-Powered Compliance Platform
 
-## Project info
+## 🎯 Kurzbeschreibung
 
-**URL**: https://lovable.dev/projects/46edd0ed-b257-4513-b6d4-c2aa1f520d87
+Marsstein ist eine moderne SaaS-Plattform für automatisierte Compliance-Management-Lösungen im DACH-Raum. Die Platform unterstützt Unternehmen bei DSGVO, ISO 27001, NIS2 und EU AI Act Compliance durch KI-gestützte Automatisierung und intuitive Dashboards.
 
-## How can I edit this code?
+**Problem:** Komplexe Compliance-Anforderungen überfordern viele Unternehmen  
+**Zielgruppe:** KMU und Enterprise im DACH-Raum (Finanz, Gesundheit, E-Commerce)  
+**Scope:** Compliance-Automatisierung, Risk Assessment, Dokumentation, Monitoring
 
-There are several ways of editing your application.
+## 🚀 Tech-Stack
 
-**Use Lovable**
+### Frontend
+- **Framework:** React 18.3 + TypeScript
+- **Build Tool:** Vite 5.4
+- **Styling:** TailwindCSS + shadcn/ui
+- **Routing:** React Router v6
+- **State:** React Query (TanStack Query)
+- **Forms:** React Hook Form + Zod
+- **Animations:** Framer Motion + React Spring
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/46edd0ed-b257-4513-b6d4-c2aa1f520d87) and start prompting.
+### Backend & Infrastructure
+- **Hosting:** Netlify (Static + SSG)
+- **Email:** EmailJS
+- **Analytics:** TBD
+- **Monitoring:** TBD
 
-Changes made via Lovable will be committed automatically to this repo.
+### Development
+- **Package Manager:** npm/bun
+- **Linting:** ESLint + Prettier
+- **Pre-rendering:** Playwright für SEO
 
-**Use your preferred IDE**
+## ⚡ Quickstart
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
+- Node.js 18+ (empfohlen: via [nvm](https://github.com/nvm-sh/nvm))
+- npm oder bun
+- Git
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation & Start
 
-Follow these steps:
+```bash
+# Repository klonen
+git clone https://github.com/marsstein/marsstein-platform.git
+cd marsstein-platform/jonasmars
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Dependencies installieren
+npm install
+# oder
+bun install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Development Server starten
 npm run dev
+# Server läuft auf http://localhost:8080
+
+# Production Build
+npm run build
+
+# Production Build mit SSG Pre-rendering
+npm run build:ssg
+
+# Tests ausführen
+npm run test:hydration
+
+# Code-Qualität prüfen
+npm run lint
 ```
 
-**Edit a file directly in GitHub**
+### Standard-Konfiguration
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. `.env.development` anlegen (siehe `.env.example`)
+2. EmailJS konfigurieren (VITE_EMAILJS_* Variablen)
+3. Optional: Netlify Deployment konfigurieren
 
-**Use GitHub Codespaces**
+## 📁 Projektstruktur
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+marsstein-platform/
+├── jonasmars/           # Hauptapplikation
+│   ├── src/
+│   │   ├── components/  # React Komponenten
+│   │   ├── pages/       # Route-basierte Pages
+│   │   ├── hooks/       # Custom React Hooks
+│   │   ├── lib/         # Utilities & Helpers
+│   │   └── styles/      # Global Styles
+│   ├── public/          # Statische Assets
+│   └── scripts/         # Build & Prerender Scripts
+├── Dokumentation/       # Projektdokumentation
+└── scripts/             # Globale Scripts
+```
 
-## What technologies are used for this project?
+## 🔗 Wichtige Links
 
-This project is built with:
+### Development
+- **Local:** http://localhost:8080
+- **Preview:** http://localhost:4173
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Staging/Production
+- **Staging:** https://marsstein-staging.netlify.app
+- **Production:** https://marsstein.de
 
-## How can I deploy this project?
+### Dokumentation
+- **API Spec:** `/Dokumentation/docs/api.md`
+- **Architecture:** `/Dokumentation/ARCHITECTURE.md`
+- **Contributing:** `/Dokumentation/CONTRIBUTING.md`
 
-Simply open [Lovable](https://lovable.dev/projects/46edd0ed-b257-4513-b6d4-c2aa1f520d87) and click on Share -> Publish.
+## 📊 Monitoring & Analytics
 
-## Can I connect a custom domain to my Lovable project?
+- **Performance:** Web Vitals via Netlify Analytics
+- **Errors:** Sentry (wenn konfiguriert)
+- **Uptime:** Netlify Status
 
-Yes, you can!
+## 🤝 Support & Kontakt
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Tech Lead:** [tech@marsstein.de]
+- **Issues:** GitHub Issues
+- **Dokumentation:** `/Dokumentation/`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📝 Lizenz
+
+Proprietär - Alle Rechte vorbehalten. Siehe LICENSE Datei.
+
+---
+
+Für detaillierte Entwicklungsinformationen siehe [`/Dokumentation/ARCHITECTURE.md`](/Dokumentation/ARCHITECTURE.md) und [`/Dokumentation/INFRA.md`](/Dokumentation/INFRA.md).
