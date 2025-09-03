@@ -169,9 +169,9 @@ async function prerenderRoute(page, route, baseUrl, attemptNum = 1) {
   const startTime = performance.now();
   
   try {
-    // Navigate mit optimierten Einstellungen
+    // Navigate mit optimierten Einstellungen - warte auf vollständiges Laden
     const response = await page.goto(`${baseUrl}${route}`, {
-      waitUntil: CONFIG.WAIT_FOR_IDLE ? 'networkidle' : 'domcontentloaded',
+      waitUntil: 'networkidle0', // Warte bis keine Netzwerkaktivität mehr
       timeout: CONFIG.TIMEOUT
     });
     
@@ -180,33 +180,35 @@ async function prerenderRoute(page, route, baseUrl, attemptNum = 1) {
       throw new Error(`HTTP ${response.status()}`);
     }
     
-    // Warte auf kritische Elemente
+    // Warte auf kritische Elemente und React Helmet
     try {
-      await Promise.race([
-        // Option 1: Meta Tags von React Helmet
-        page.waitForFunction(() => {
-          const hasValidMeta = document.querySelector('meta[name="description"]')?.content?.length > 0;
-          const hasValidTitle = document.title && 
-                                !document.title.includes('Vite') && 
-                                !document.title.includes('Loading');
-          const hasContent = document.querySelector('#root')?.children.length > 0;
-          return hasValidMeta && hasValidTitle && hasContent;
-        }, { timeout: 5000 }),
+      // Warte explizit auf React Helmet Meta Tags
+      await page.waitForFunction(() => {
+        // Prüfe ob React Helmet seine Tags gesetzt hat
+        const helmet = document.querySelector('[data-react-helmet="true"]');
+        const hasValidMeta = document.querySelector('meta[name="description"]')?.content?.length > 0;
+        const hasOgMeta = document.querySelector('meta[property="og:title"]')?.content?.length > 0;
+        const hasValidTitle = document.title && 
+                              document.title !== 'Vite + React' && 
+                              !document.title.includes('Loading');
+        const hasContent = document.querySelector('#root')?.children.length > 0;
+        const hasMainContent = document.querySelector('main') || document.querySelector('[role="main"]');
         
-        // Option 2: Custom Prerender Ready Marker
-        page.waitForSelector('[data-prerender-ready]', { timeout: 5000 }).catch(() => null),
-        
-        // Option 3: Minimum wait
-        page.waitForTimeout(1000)
-      ]);
+        // Alle Bedingungen müssen erfüllt sein
+        return (helmet || hasValidMeta) && hasOgMeta && hasValidTitle && hasContent && hasMainContent;
+      }, { timeout: 8000 });
+      
+      // Extra Zeit für lazy-loaded Komponenten
+      await page.waitForTimeout(500);
+      
     } catch (waitError) {
       if (CONFIG.VERBOSE) {
         console.warn(`  ⚠️  Timeout waiting for complete render on ${route}`);
       }
+      // Fallback: Warte mindestens auf Basis-Content
+      await page.waitForSelector('#root > *', { timeout: 3000 }).catch(() => {});
+      await page.waitForTimeout(1500);
     }
-    
-    // Zusätzliche Stabilisierung für dynamische Inhalte
-    await page.waitForTimeout(300);
     
     // Screenshot für Debug (optional)
     if (CONFIG.VERBOSE && attemptNum > 1) {
@@ -265,8 +267,15 @@ function validateHtml(html, route) {
   if (html.includes('Vite + React')) return false;
   if (html.includes('Loading...') && !html.includes('data-ssg')) return false;
   
+  // React Helmet / SEO Checks
+  if (!html.includes('meta name="description"')) {
+    console.warn(`  ⚠️  Missing meta description on ${route}`);
+    return false;
+  }
+  
   // Route-spezifische Checks
   if (route === '/' && !html.includes('Marsstein')) return false;
+  if (route === '/dsgvo' && !html.includes('DSGVO')) return false;
   
   return true;
 }
