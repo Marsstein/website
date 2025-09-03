@@ -686,7 +686,11 @@ async function prerenderWithPlaywright() {
     
     // 3. Browser starten mit optimierten Settings
     console.log('🌐 Launching Playwright browser...\n');
-    browser = await chromium.launch({
+    
+    // Check for Netlify Chromium plugin path
+    const chromiumPath = process.env.CHROME_PATH || process.env.CHROMIUM_PATH;
+    
+    const launchOptions = {
       headless: true,
       args: [
         '--no-sandbox',
@@ -701,7 +705,15 @@ async function prerenderWithPlaywright() {
         '--disable-extensions',
         '--disable-images', // Optional: Keine Bilder laden für Speed
       ]
-    });
+    };
+    
+    // Use Netlify's Chromium if available
+    if (chromiumPath) {
+      console.log(`📦 Using Chromium from: ${chromiumPath}`);
+      launchOptions.executablePath = chromiumPath;
+    }
+    
+    browser = await chromium.launch(launchOptions);
     
     // Context Pool für Parallelisierung
     const contexts = [];
