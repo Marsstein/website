@@ -25,6 +25,7 @@ prerender.log
 *.njsproj
 *.sln
 *.sw?
-.vercel
+# Netlify
+.netlify
 .cache/
 dist/

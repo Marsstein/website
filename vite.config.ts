@@ -1,127 +1,153 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import path from 'path';
+
+// Custom Plugin für Hydration-Fix
+function hydrationSafePlugin() {
+  return {
+    name: 'hydration-safe',
+    transformIndexHtml(html: string) {
+      // Injiziere Hydration-Safety-Check
+      const hydrationScript = `
+        <script>
+          (function() {
+            // Polyfill für useLayoutEffect in SSR/Prerender Umgebung
+            if (typeof window !== 'undefined' && !window.React) {
+              window.React = { useLayoutEffect: function() {} };
+            }
+            
+            // Verzögere React-Initialisierung
+            const originalHydrate = window.ReactDOM?.hydrateRoot;
+            const originalRender = window.ReactDOM?.createRoot;
+            
+            if (window.ReactDOM) {
+              // Override hydrateRoot für sicheres Hydration
+              window.ReactDOM.hydrateRoot = function(container, element) {
+                console.log('🔄 Safe hydration starting...');
+                // Warte auf nächsten Tick
+                setTimeout(() => {
+                  if (originalHydrate) {
+                    originalHydrate.call(window.ReactDOM, container, element);
+                  }
+                }, 0);
+              };
+              
+              // Override createRoot als Fallback
+              window.ReactDOM.createRoot = function(container) {
+                console.log('🚀 Using client-side rendering...');
+                const root = originalRender.call(window.ReactDOM, container);
+                return {
+                  ...root,
+                  render: function(element) {
+                    // Lösche Pre-rendered Content vor dem Rendern
+                    container.innerHTML = '';
+                    return root.render(element);
+                  }
+                };
+              };
+            }
+          })();
+        </script>
+      `;
+      
+      // Füge Script direkt nach <head> ein
+      return html.replace(
+        '<head>',
+        `<head>${hydrationScript}`
+      );
+    },
+  };
+}
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "0.0.0.0",
-    port: 8080,
-  },
-  preview: {
-    port: 4173,
-    strictPort: false,
-    host: true,
-  },
+export default defineConfig({
   plugins: [
-    react(),
-    // Temporarily disable componentTagger to test
-    // mode === 'development' &&
-    // componentTagger(),
-  ].filter(Boolean),
+    react({
+      // Wichtig: Nutze den neuen JSX Transform
+      jsxRuntime: 'automatic',
+      // Deaktiviere Fast Refresh für Production
+      fastRefresh: process.env.NODE_ENV !== 'production'
+    }),
+    hydrationSafePlugin()
+  ],
+  
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
+      // Wichtig: Stelle sicher, dass React richtig aufgelöst wird
+      'react': path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom'),
     },
   },
+
   build: {
+    // Optimierungen für Netlify
+    target: 'es2015',
+    minify: 'terser',
+    sourcemap: false,
+    
+    // Besseres Code-Splitting
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          // Kritisch: Vendor-Chunks trennen
+        manualChunks: (id) => {
+          // React und React-DOM in separatem Chunk
+          if (id.includes('node_modules/react')) {
+            return 'react-vendor';
+          }
+          // Router in eigenem Chunk
+          if (id.includes('react-router')) {
+            return 'router';
+          }
+          // Radix UI
+          if (id.includes('@radix-ui')) {
+            return 'radix-ui';
+          }
+          // Große Libraries
           if (id.includes('node_modules')) {
-            // React-Kern separat
-            if (id.includes('react-dom')) return 'react-dom';
-            if (id.includes('react') && !id.includes('react-dom')) return 'react-core';
-            
-            // UI-Bibliotheken
-            if (id.includes('@radix-ui')) return 'radix-ui';
-            if (id.includes('lucide-react')) return 'icons';
-            
-            // Animationen
-            if (id.includes('framer-motion') || id.includes('@react-spring')) return 'animation';
-            
-            // Charts
-            if (id.includes('recharts') || id.includes('d3')) return 'charts';
-            
-            // Forms
-            if (id.includes('react-hook-form') || id.includes('zod')) return 'forms';
-            
-            // Router
-            if (id.includes('react-router')) return 'router';
-            
-            // Utils
-            if (id.includes('date-fns') || id.includes('clsx') || id.includes('tailwind-merge')) return 'utils';
-            
-            // Email
-            if (id.includes('@emailjs')) return 'email';
-            
-            // Query & State Management
-            if (id.includes('@tanstack/react-query')) return 'query';
-            
-            // Carousel & Media
-            if (id.includes('embla-carousel')) return 'carousel';
-            if (id.includes('react-lottie')) return 'lottie';
-            
-            // UI Utils
-            if (id.includes('cmdk')) return 'command';
-            if (id.includes('vaul')) return 'drawer';
-            if (id.includes('sonner')) return 'toast';
-            if (id.includes('react-resizable-panels')) return 'panels';
-            if (id.includes('react-day-picker')) return 'datepicker';
-            if (id.includes('input-otp')) return 'otp';
-            if (id.includes('react-countup')) return 'countup';
-            if (id.includes('react-intersection-observer')) return 'observer';
-            if (id.includes('next-themes')) return 'themes';
-            if (id.includes('react-helmet-async')) return 'helmet';
-            if (id.includes('class-variance-authority')) return 'cva';
-            
-            // Alles andere
+            if (id.includes('emailjs') || id.includes('@emailjs')) {
+              return 'emailjs';
+            }
+            if (id.includes('lucide-react')) {
+              return 'icons';
+            }
+            if (id.includes('framer-motion') || id.includes('@react-spring')) {
+              return 'animation';
+            }
+            if (id.includes('recharts') || id.includes('d3')) {
+              return 'charts';
+            }
+            if (id.includes('react-hook-form') || id.includes('zod')) {
+              return 'forms';
+            }
+            // Alle anderen node_modules
             return 'vendor';
           }
-          
-          // Große Komponenten splitten
-          if (id.includes('HinweisgeberschutzgesetzGuide')) return 'guide-hinweis';
-          if (id.includes('Iso27017Guide') || id.includes('Iso27018Guide')) return 'guide-iso';
-          if (id.includes('TisaxGuide')) return 'guide-tisax';
-          if (id.includes('DsgEkdGuide')) return 'guide-dsg';
-          if (id.includes('EuAiActGuide')) return 'guide-ai';
-          if (id.includes('Iso27001')) return 'guide-iso27001';
         },
-        // Weitere Optimierungen
-        chunkFileNames: (chunkInfo) => {
-          const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/').pop() : 'chunk';
-          return `assets/${facadeModuleId}-[hash].js`;
-        },
-        // Entry-Chunk für kritische Assets
-        entryFileNames: 'assets/[name]-[hash].js',
+        
+        // Asset-Naming für besseres Caching
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name.split('.');
-          const ext = info[info.length - 1];
-          if (/woff|woff2|eot|ttf|otf/.test(ext)) {
-            return `assets/fonts/[name]-[hash][extname]`;
-          } else if (/png|jpe?g|svg|gif|tiff|bmp|ico/.test(ext)) {
+          const extType = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
             return `assets/images/[name]-[hash][extname]`;
-          } else {
-            return `assets/[name]-[hash][extname]`;
           }
-        }
-      }
+          return `assets/[name]-[hash][extname]`;
+        },
+        
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+      },
     },
-    // Performance-Optimierungen
-    target: 'es2020',
-    cssCodeSplit: true,
-    cssMinify: true,
-    chunkSizeWarningLimit: 200,
-    // Optimierungen für kleinere Bundles
-    minify: 'terser',
+
+    // Erhöhe Chunk-Size-Warnung (da wir viele Compliance-Seiten haben)
+    chunkSizeWarningLimit: 500,
+    
+    // Terser Optionen für kleinere Bundles
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        passes: 2,
-        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.trace']
+        pure_funcs: ['console.log', 'console.info', 'console.debug']
       },
       mangle: {
         safari10: true
@@ -131,11 +157,44 @@ export default defineConfig(({ mode }) => ({
         ascii_only: true
       }
     },
-    reportCompressedSize: false,
-    sourcemap: false,
-    // Bessere Module-Preloading
-    modulePreload: {
-      polyfill: true
+  },
+
+  server: {
+    port: 8080,
+    host: true,
+    // Wichtig für Entwicklung
+    hmr: {
+      overlay: false
     }
+  },
+
+  preview: {
+    port: 4173,
+    strictPort: false,
+    host: true
+  },
+
+  optimizeDeps: {
+    // Pre-bundle diese Dependencies
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'clsx',
+      'tailwind-merge',
+      'lucide-react',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu'
+    ],
+    // Exclude problematische Packages
+    exclude: []
+  },
+
+  // Definiere globale Konstanten
+  define: {
+    // Für Production Build
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+    // Feature Flags
+    '__ENABLE_HYDRATION__': JSON.stringify(false), // Kann auf true gesetzt werden wenn Hydration funktioniert
   }
-}));
+});

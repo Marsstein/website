@@ -1,120 +1,112 @@
-# Netlify Build Configuration für Marsstein mit Smart SEO-Prerendering
-
 [build]
-  # Build-Befehl mit sicheren Meta-Tags für SEO
-  # Temporär ohne Puppeteer-Prerendering
-  command = "npm run build && node scripts/safe-meta-tags.js && node scripts/lighthouse-check.js"
-  
-  # Output-Verzeichnis nach dem Build
+  command = "npm run build"
   publish = "dist"
 
 [build.environment]
-  # Umgebungsvariablen für den Build-Prozess
-  NODE_VERSION = "20"
-  NODE_OPTIONS = "--max-old-space-size=4096"
-  CI = "true"
-  # Quick Build als Standard für schnelle Deploys
-  QUICK_BUILD = "true"
-  # Aktiviere Puppeteer Unterstützung
-  NETLIFY = "true"
-  # Optimierungen für Build
-  GENERATE_SOURCEMAP = "false"
-  DISABLE_ESLINT_PLUGIN = "true"
-  IMAGE_INLINE_SIZE_LIMIT = "10000"
-  # Chromium für Puppeteer
-  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+  NODE_VERSION = "18"
+  NPM_VERSION = "10"
 
-# Redirects für SPA-Routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  
-# Headers für bessere Performance und SEO
-[[headers]]
-  for = "/index.html"
-  [headers.values]
-    # Kein Cache für HTML, um Updates zu ermöglichen
-    Cache-Control = "no-cache, no-store, must-revalidate"
-    X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "application/javascript; charset=utf-8"
-    
-[[headers]]
-  for = "/*.mjs"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "application/javascript; charset=utf-8"
-    
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    
+# Caching Headers für Assets
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    
+
+# Caching für JavaScript und CSS
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Caching für Bilder
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Fonts
 [[headers]]
   for = "/*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Access-Control-Allow-Origin = "*"
-    
+
+# HTML-Dateien - kein Cache für dynamischen Content
 [[headers]]
-  for = "/*.woff"
+  for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Access-Control-Allow-Origin = "*"
-    
+    Cache-Control = "public, max-age=0, must-revalidate"
 
-# Plugins für erweiterte Funktionalität
-# Lighthouse CI für Performance-Monitoring
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-  
-  [plugins.inputs]
-    # Basis-Konfiguration für Lighthouse
-    output_path = "reports/lighthouse.html"
-    # Keine Schwellenwerte setzen = Plugin blockiert Deploy nicht
-    fail_deploy_on_score_thresholds = false
+# Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# Asset-Optimierung
-[[plugins]]
-  package = "netlify-plugin-image-optim"
-  
-# Sitemap-Generator für SEO
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
-  [plugins.inputs]
-    buildDir = "dist"
-    exclude = ["/test*", "/approach*", "/diagnostic", "/robust", "/simple-final", "/optimized", "/ultimate-diagnostic"]
-    
-# Context-spezifische Konfigurationen
-[context.production]
-  # Produktions-Build mit sicheren Meta-Tags und Bot-Fallback
-  # Puppeteer temporär deaktiviert
-  command = "npm run build && node scripts/safe-meta-tags.js && node scripts/add-fallback-content.js && node scripts/lighthouse-check.js"
+# SPA Fallback - WICHTIG für React Router
+# Diese Regel kommt NACH allen spezifischen Routen
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
-[context.deploy-preview]
-  # Preview-Builds mit Meta-Tags für konsistente Deploys
-  command = "npm run build && node scripts/safe-meta-tags.js"
+# SEO Redirects
+[[redirects]]
+  from = "/datenschutz"
+  to = "/compliance/dsgvo"
+  status = 301
 
-[context.branch-deploy]
-  # Branch-Builds ohne Prerendering
-  command = "npm run build"
+[[redirects]]
+  from = "/iso27001"
+  to = "/iso-27001-zertifizierung"
+  status = 301
 
-# Dev-Umgebung Einstellungen
+# Processing-Einstellungen
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.images]
+  compress = true
+
+# Development settings
 [dev]
-  port = 4173
-  command = "npm run dev"
-  targetPort = 5173
-  autoLaunch = false
+  port = 8080
+  targetPort = 8080
+  publish = "dist"
+  autoLaunch = true

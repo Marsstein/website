@@ -9,7 +9,7 @@
 5. [Build & Deployment](#build--deployment)
 6. [Datenfluss & State Management](#datenfluss--state-management)
 7. [SEO & Rendering-Strategie](#seo--rendering-strategie)
-8. [Vercel Deployment](#vercel-deployment)
+8. [Netlify Deployment](#netlify-deployment)
 9. [Performance-Optimierung](#performance-optimierung)
 10. [Sicherheit](#sicherheit)
 11. [Entwicklungsworkflow](#entwicklungsworkflow)
@@ -84,7 +84,7 @@ marsstein_clean/
 │   ├── lib/             # Utility-Funktionen
 │   └── assets/          # Bilder und statische Dateien
 ├── scripts/             # Build und Deployment Scripts
-├── api/                # Vercel Edge Functions
+├── api/                # Edge Functions (optional)
 ├── public/             # Statische Assets
 └── dist/               # Build-Output
 ```
@@ -165,9 +165,9 @@ npm run build:seo
 - Vollständige HTML-Generierung
 - Für lokale Entwicklung
 
-#### 3. Vercel SEO Build
+#### 3. SEO Build
 ```bash
-npm run build:vercel-seo
+npm run build:seo
 ```
 - Statische HTML-Generierung ohne Puppeteer
 - 64 vorgenerierte SEO-Routen
@@ -278,38 +278,45 @@ interface SEOProps {
 }
 ```
 
-## Vercel Deployment
+## Netlify Deployment
 
-### Vercel-Konfiguration
+### Netlify-Konfiguration
 
-#### vercel.json
-```json
-{
-  "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build:vercel-seo",
-  "outputDirectory": "dist",
-  "framework": null,
-  "cleanUrls": true,
-  "trailingSlash": false
-}
+#### netlify.toml
+```toml
+[build]
+  base = ""
+  publish = "dist"
+  command = "npm run build:seo"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
 ```
 
-### Edge Functions
+### Edge Functions (Optional)
 
-#### /api/og.js
-- **Zweck**: Dynamische OG-Tags-Generierung
-- **Runtime**: Edge
-- **Verwendung**: Aktuell nicht aktiv genutzt
-
-#### /api/render.js
-- **Zweck**: Server-Side Rendering Capability
-- **Runtime**: Edge
-- **Verwendung**: Backup für dynamische Inhalte
+#### Netlify Functions
+- **Zweck**: Serverless Backend-Funktionen
+- **Runtime**: AWS Lambda
+- **Verwendung**: Für zukünftige API-Anforderungen
 
 ### Deployment-Workflow
 
 1. **Git Push** → GitHub Repository
-2. **Vercel Hook** → Automatischer Build-Start
+2. **Netlify Hook** → Automatischer Build-Start
 3. **Install Phase** → Dependencies mit legacy-peer-deps
 4. **Build Phase** → Statische HTML-Generierung
 5. **Deploy Phase** → Globale CDN-Verteilung
@@ -392,7 +399,7 @@ npm run preview     # Production-Preview
 git push origin main
 
 # Manuell
-vercel --prod
+netlify deploy --prod
 ```
 
 ### Entwicklungstools

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/build-netlify-fixed.js",
+    "build:standard": "vite build",
+    "build:test": "vite build && npm run test:hydration",
     "build:seo": "vite build && node scripts/full-prerender.js",
     "build:auto-seo": "vite build && node scripts/auto-prerender.js",
     "build:ssg": "vite build && node scripts/full-prerender.js",
@@ -21,14 +23,9 @@
     "prerender:full": "node scripts/full-prerender.js",
     "prerender:seo": "node scripts/prerender-fixed.js",
     "prerender:all": "node scripts/prerender-all.js",
+    "test:hydration": "node scripts/test-hydration.js",
     "extract-routes": "node scripts/extract-routes.js",
-    "build:vercel": "vite build && node scripts/prerender-vercel.js",
-    "prerender:vercel": "node scripts/prerender-vercel.js",
     "build:simple": "node scripts/build-simple.js",
-    "build:vercel-seo": "node scripts/build-vercel-seo.js",
-    "build:vercel-puppeteer": "node scripts/build-vercel-puppeteer.js",
-    "build:vercel-static": "node scripts/build-vercel-static.js",
-    "build:vercel-ssr": "node scripts/build-vercel-ssr.js",
     "build:static": "node scripts/prerender-static.js",
     "build:react-content": "node scripts/prerender-react-content.js",
     "build:react-full": "node scripts/prerender-enhanced.mjs",
@@ -36,7 +33,10 @@
     "build:modular": "node scripts/prerender-react-content-full-modular.js",
     "build:vite": "vite build",
     "build:full": "node full-html-generator.js",
-    "build:production": "vite build && node full-html-generator.js"
+    "build:production": "vite build && node full-html-generator.js",
+    "build:netlify-ssg": "node scripts/build-ssg-complete.js",
+    "build:netlify-safe": "node scripts/build-hydration-safe.js",
+    "build:netlify-static": "node scripts/build-pure-static.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
