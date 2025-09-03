@@ -4,8 +4,12 @@
  * Löst das NO_FCP Problem bei PageSpeed Insights
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const indexPath = path.join(__dirname, '../dist/index.html');
 
