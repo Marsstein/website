@@ -1,5 +1,4 @@
 import { chromium } from 'playwright';
-import { createServer } from 'vite';
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -675,20 +674,19 @@ async function prerenderWithPlaywright() {
     routes = [...new Set(routes)];
     console.log(`📄 Prerendering ${routes.length} routes in ${CONFIG.MODE} mode\n`);
     
-    // 2. Vite Server starten
+    // 2. Vite Preview Server für gebaute App starten
     console.log('🚀 Starting Vite preview server...');
-    server = await createServer({
+    const { preview } = await import('vite');
+    server = await preview({
       root: rootDir,
-      server: { 
+      preview: {
         port: CONFIG.PORT,
         host: 'localhost',
-        strictPort: true
+        strictPort: true,
+        open: false
       },
-      mode: 'production',
       logLevel: 'error'
     });
-    
-    await server.listen();
     const baseUrl = `http://localhost:${CONFIG.PORT}`;
     console.log(`✅ Server running on ${baseUrl}`);
     
