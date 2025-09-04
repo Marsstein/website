@@ -88,7 +88,7 @@ async function injectSEO(page, route) {
     keywords: 'DSGVO, Datenschutz'
   };
   
-  await page.evaluate((data, path) => {
+  await page.evaluate(({ data, path }) => {
     // Title
     let title = document.querySelector('title');
     if (!title) {
@@ -138,7 +138,7 @@ async function injectSEO(page, route) {
     canonical.href = `https://marsstein.com${path}`;
     
     console.log('[SEO] Tags injected for', path);
-  }, seo, route);
+  }, { data: seo, path: route });
 }
 
 // Prerender route with Playwright

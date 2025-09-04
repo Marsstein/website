@@ -90,13 +90,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // React und React-DOM in separatem Chunk
-          if (id.includes('node_modules/react')) {
+          // KRITISCH: React, React-DOM und React-Router MÜSSEN zusammen bleiben
+          // um "Cannot read properties of undefined (reading 'createContext')" zu vermeiden
+          if (id.includes('node_modules/react-dom') || 
+              id.includes('node_modules/react/') ||
+              id.includes('node_modules/react-router')) {
             return 'react-vendor';
-          }
-          // Router in eigenem Chunk
-          if (id.includes('react-router')) {
-            return 'router';
           }
           // Radix UI
           if (id.includes('@radix-ui')) {
