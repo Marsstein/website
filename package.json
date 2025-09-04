@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run build:ssg",
-    "build:ssg": "vite build && npx playwright install chromium && node scripts/prerender-playwright-optimized.js",
+    "build:ssg": "vite build && npx playwright install chromium && node scripts/prerender-seo-final.js",
     "build:ssg:production": "vite build && SSG_MODE=full SSG_WAIT_IDLE=true node scripts/prerender-playwright-optimized.js",
     "build:ssg:staging": "vite build && SSG_MODE=critical SSG_BATCH_SIZE=15 node scripts/prerender-playwright-optimized.js",
     "build:ssg:preview": "vite build && SSG_MODE=critical SSG_VERBOSE=false node scripts/prerender-playwright-optimized.js",
