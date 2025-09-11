@@ -11,6 +11,8 @@
 - User commits only - never Claude Code attribution
 - Never ask for confirmation once task is understood
 - Triple check UI/site behavior remains identical after each change
+- Website must run on port 8080 during development
+- Compare all changes live by viewing localhost:8080
 
 ### Cleanup Strategy
 Each major area gets separate branch:
