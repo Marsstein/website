@@ -165,28 +165,6 @@ const About = lazy(() => import('./pages/About'));
 const SitemapSEO = lazy(() => import('./pages/SitemapSEO'));
 const FinalChecks = lazy(() => import('./pages/FinalChecks'));
 
-// Test Pages
-const Test1 = lazy(() => import('./pages/Test1'));
-const Test2 = lazy(() => import('./pages/Test2'));
-const Test3 = lazy(() => import('./pages/Test3'));
-const TestFixed = lazy(() => import('./pages/TestFixed'));
-const TestPerfect = lazy(() => import('./pages/TestPerfect'));
-const TestBidirectional = lazy(() => import('./pages/TestBidirectional'));
-const TestFinal = lazy(() => import('./pages/TestFinal'));
-const TestPerfected = lazy(() => import('./pages/TestPerfected'));
-const TestApproach1 = lazy(() => import('./pages/TestApproach1'));
-const TestApproach2 = lazy(() => import('./pages/TestApproach2'));
-const TestApproach3 = lazy(() => import('./pages/TestApproach3'));
-const TestDiagnostic = lazy(() => import('./pages/TestDiagnostic'));
-const TestUltimateDiagnostic = lazy(() => import('./pages/TestUltimateDiagnostic'));
-const TestRobust = lazy(() => import('./pages/TestRobust'));
-const TestSimpleFinal = lazy(() => import('./pages/TestSimpleFinal'));
-const TestOptimized = lazy(() => import('./pages/TestOptimized'));
-const TestIndex = lazy(() => import('./pages/TestIndex'));
-const SimpleTest = lazy(() => import('./pages/SimpleTest'));
-const DesignSeparatorTest = lazy(() => import('./pages/DesignSeparatorTest'));
-const FooterTest = lazy(() => import('./pages/FooterTest'));
-const TestUns = lazy(() => import('./pages/TestUns'));
 
 export const routes: RouteObject[] = [
   {
@@ -352,28 +330,6 @@ export const routes: RouteObject[] = [
       { path: 'sitemap-seo', element: <SitemapSEO /> },
       { path: 'final-checks', element: <FinalChecks /> },
       
-      // Test Pages
-      { path: 'test1', element: <Test1 /> },
-      { path: 'test2', element: <Test2 /> },
-      { path: 'test3', element: <Test3 /> },
-      { path: 'test-fixed', element: <TestFixed /> },
-      { path: 'test-perfect', element: <TestPerfect /> },
-      { path: 'test-bidirectional', element: <TestBidirectional /> },
-      { path: 'test-final', element: <TestFinal /> },
-      { path: 'test-perfected', element: <TestPerfected /> },
-      { path: 'test-approach-1', element: <TestApproach1 /> },
-      { path: 'test-approach-2', element: <TestApproach2 /> },
-      { path: 'test-approach-3', element: <TestApproach3 /> },
-      { path: 'test-diagnostic', element: <TestDiagnostic /> },
-      { path: 'test-ultimate-diagnostic', element: <TestUltimateDiagnostic /> },
-      { path: 'test-robust', element: <TestRobust /> },
-      { path: 'test-simple-final', element: <TestSimpleFinal /> },
-      { path: 'test-optimized', element: <TestOptimized /> },
-      { path: 'test-index', element: <TestIndex /> },
-      { path: 'simple-test', element: <SimpleTest /> },
-      { path: 'design-separator-test', element: <DesignSeparatorTest /> },
-      { path: 'footer-test', element: <FooterTest /> },
-      { path: 'test-uns', element: <TestUns /> },
       
       // 404
       { path: '*', element: <NotFound /> },
