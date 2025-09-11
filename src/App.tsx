@@ -156,30 +156,9 @@ const Automotive = lazy(() => import("./pages/industries/Automotive"));
 const Energy = lazy(() => import("./pages/industries/Energy"));
 const Food = lazy(() => import("./pages/industries/Food"));
 const Logistics = lazy(() => import("./pages/industries/Logistics"));
-const Test1 = lazy(() => import("./pages/Test1"));
-const Test2 = lazy(() => import("./pages/Test2"));
-const Test3 = lazy(() => import("./pages/Test3"));
-const TestFixed = lazy(() => import("./pages/TestFixed"));
-const TestPerfect = lazy(() => import("./pages/TestPerfect"));
-const TestBidirectional = lazy(() => import("./pages/TestBidirectional"));
-const TestFinal = lazy(() => import("./pages/TestFinal"));
-const TestPerfected = lazy(() => import("./pages/TestPerfected"));
-const TestApproach1 = lazy(() => import("./pages/TestApproach1"));
-const TestApproach2 = lazy(() => import("./pages/TestApproach2"));
-const TestApproach3 = lazy(() => import("./pages/TestApproach3"));
-const TestDiagnostic = lazy(() => import("./pages/TestDiagnostic"));
-const TestUltimateDiagnostic = lazy(() => import("./pages/TestUltimateDiagnostic"));
-const TestRobust = lazy(() => import("./pages/TestRobust"));
-const TestSimpleFinal = lazy(() => import("./pages/TestSimpleFinal"));
-const TestOptimized = lazy(() => import("./pages/TestOptimized"));
-const TestIndex = lazy(() => import("./pages/TestIndex"));
-const SimpleTest = lazy(() => import("./pages/SimpleTest"));
-const DesignSeparatorTest = lazy(() => import("./pages/DesignSeparatorTest"));
-const FooterTest = lazy(() => import("./pages/FooterTest"));
 const SitemapSEO = lazy(() => import("./pages/SitemapSEO"));
 const FinalChecks = lazy(() => import("./pages/FinalChecks"));
 const About = lazy(() => import("./pages/About"));
-const TestUns = lazy(() => import("./pages/TestUns"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -215,27 +194,6 @@ const App = () => (
                 <Route path="/impressum" element={<Impressum />} />
                 <Route path="/datenschutz" element={<Datenschutz />} />
                 
-                {/* Test Routes for Scroll Animation Tests - moved up for priority */}
-                <Route path="/design-separator-test" element={<DesignSeparatorTest />} />
-                <Route path="/simple-test" element={<SimpleTest />} />
-                <Route path="/test-footer" element={<FooterTest />} />
-                <Route path="/tests" element={<TestIndex />} />
-                <Route path="/test1" element={<Test1 />} />
-                <Route path="/test2" element={<Test2 />} />
-                <Route path="/test3" element={<Test3 />} />
-                <Route path="/test-fixed" element={<TestFixed />} />
-                <Route path="/test-perfect" element={<TestPerfect />} />
-                <Route path="/test-bidirectional" element={<TestBidirectional />} />
-                <Route path="/test-final" element={<TestFinal />} />
-                <Route path="/test-perfected" element={<TestPerfected />} />
-                <Route path="/approach1" element={<TestApproach1 />} />
-                <Route path="/approach2" element={<TestApproach2 />} />
-                <Route path="/approach3" element={<TestApproach3 />} />
-                <Route path="/diagnostic" element={<TestDiagnostic />} />
-                <Route path="/ultimate-diagnostic" element={<TestUltimateDiagnostic />} />
-                <Route path="/robust" element={<TestRobust />} />
-                <Route path="/simple-final" element={<TestSimpleFinal />} />
-                <Route path="/optimized" element={<TestOptimized />} />
                 {/* Legacy routes (keep for backwards compatibility) */}
                 <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
                 <Route path="/iso-27001-compliance" element={<Iso27001Compliance />} />
