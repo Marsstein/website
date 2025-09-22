@@ -24,7 +24,7 @@ import { cn } from '@/lib/utils';
 interface TransformationCard {
   id: string;
   problem: {
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     title: string;
     description: string;
     impact: string;
@@ -32,7 +32,7 @@ interface TransformationCard {
     bgGradient: string;
   };
   solution: {
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     title: string;
     description: string;
     benefit: string;

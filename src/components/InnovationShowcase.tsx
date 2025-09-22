@@ -25,7 +25,7 @@ interface Innovation {
   id: string;
   title: string;
   description: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   gradient: string;
   features: string[];
   href: string;

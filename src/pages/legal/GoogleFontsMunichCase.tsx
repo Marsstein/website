@@ -786,7 +786,7 @@ grep -r "fonts.googleapis.com" . --include="*.html" --include="*.css" --include=
 grep -r "fonts.gstatic.com" . --include="*.html" --include="*.css" --include="*.js"
 
 # Oder mit ripgrep (schneller)
-rg "fonts\.(googleapis|gstatic)\.com" -t html -t css -t js`}</code>
+rg "fonts.(googleapis|gstatic).com" -t html -t css -t js`}</code>
                 </pre>
               </div>
             </div>
@@ -831,7 +831,7 @@ def download_font(font_url, output_dir="./fonts"):
     
     # Font URLs extrahieren und downloaden
     import re
-    font_urls = re.findall(r'url\((https://[^)]+)\)', css_content)
+    font_urls = re.findall(r'url((https://[^)]+))', css_content)
     
     for url in font_urls:
         filename = url.split('/')[-1]
@@ -984,7 +984,7 @@ body {
                 <h4 className="font-semibold text-blue-800 mb-2">Nginx Konfiguration für Caching:</h4>
                 <div className="bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
                   <pre className="text-xs">
-                    <code>{`location ~* \.(woff|woff2|ttf|otf|eot)$ {
+                    <code>{`location ~* .(woff|woff2|ttf|otf|eot)$ {
     expires 1y;
     add_header Cache-Control "public, immutable";
     add_header Access-Control-Allow-Origin "*";
@@ -1320,7 +1320,7 @@ jobs:
       
       - name: Check for Google Fonts
         run: |
-          if grep -r "fonts.googleapis.com\|fonts.gstatic.com" . \
+          if grep -r "fonts.googleapis.com|fonts.gstatic.com" . \
              --include="*.html" --include="*.css" --include="*.js" \
              --include="*.jsx" --include="*.tsx" --include="*.vue"; then
             echo "❌ Google Fonts found! Please use local hosting."

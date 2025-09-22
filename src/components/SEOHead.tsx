@@ -8,7 +8,7 @@ interface SEOProps {
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: string;
-  structuredData?: any;
+  structuredData?: Record<string, unknown>;
 }
 
 const SEOHead: React.FC<SEOProps> = ({

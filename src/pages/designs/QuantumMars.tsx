@@ -19,7 +19,7 @@ import {
   Bot,
   Layers,
   Atom,
-  Infinity
+  Infinity as InfinityIcon
 } from 'lucide-react';
 import './QuantumMars.css';
 
@@ -46,7 +46,7 @@ const QuantumMars: React.FC = () => {
       color: "quantum-mars"
     },
     {
-      icon: Infinity,
+      icon: InfinityIcon,
       title: "Infinite Mars Computation",
       description: "Unendliche Mars-Rechenpower durch Quantenparallelismus. Alle möglichen Compliance-Szenarien werden simultan in Mars-Quantenrealitäten berechnet.",
       progress: 97.4,

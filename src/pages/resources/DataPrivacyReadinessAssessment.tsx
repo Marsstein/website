@@ -38,6 +38,20 @@ import {
 import { cn } from '@/lib/utils';
 import SEOHead from '@/components/SEOHead';
 
+interface AssessmentOption {
+  value: string;
+  label: string;
+  points: number;
+}
+
+interface AssessmentQuestion {
+  id: string;
+  question: string;
+  context?: string;
+  tip?: string;
+  options: AssessmentOption[];
+}
+
 export const DataPrivacyReadinessAssessment: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -643,21 +657,21 @@ export const DataPrivacyReadinessAssessment: React.FC = () => {
                 </div>
                 
                 {/* Question Context & Tips */}
-                {showQuestionInfo && (currentQuestion as any).context && (
+                {showQuestionInfo && currentQuestion.context && (
                   <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
                     <div className="flex items-start gap-3 mb-3">
                       <BookOpen className="h-5 w-5 text-blue-600 mt-0.5" />
                       <div>
                         <h5 className="font-semibold text-blue-900 dark:text-blue-100 mb-1">Hintergrund</h5>
-                        <p className="text-sm text-blue-800 dark:text-blue-200">{(currentQuestion as any).context}</p>
+                        <p className="text-sm text-blue-800 dark:text-blue-200">{currentQuestion.context}</p>
                       </div>
                     </div>
-                    {(currentQuestion as any).tip && (
+                    {currentQuestion.tip && (
                       <div className="flex items-start gap-3">
                         <Lightbulb className="h-5 w-5 text-yellow-600 mt-0.5" />
                         <div>
                           <h5 className="font-semibold text-yellow-900 dark:text-yellow-100 mb-1">Tipp</h5>
-                          <p className="text-sm text-yellow-800 dark:text-yellow-200">{(currentQuestion as any).tip}</p>
+                          <p className="text-sm text-yellow-800 dark:text-yellow-200">{currentQuestion.tip}</p>
                         </div>
                       </div>
                     )}

@@ -784,7 +784,7 @@ const TisaxGuide: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-5"></div>
+        <div className="absolute inset-0 bg-[url('/placeholder-1920x1080.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="relative container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div

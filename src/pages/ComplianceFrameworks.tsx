@@ -715,7 +715,7 @@ const ComplianceFrameworks: React.FC = () => {
         className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
         style={{ y }}
       >
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-5"></div>
+        <div className="absolute inset-0 bg-[url('/placeholder-1920x1080.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="relative container mx-auto max-w-7xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

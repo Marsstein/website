@@ -325,7 +325,7 @@ export const EUAIActSection: React.FC = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(147,51,234,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(147,51,234,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with AI Brain */}
         <div className="text-center mb-12 space-y-6">
           <div className="flex items-center justify-center mb-4">
@@ -337,27 +337,34 @@ export const EUAIActSection: React.FC = () => {
             EU AI Act Compliance
           </Badge>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-            KI-Risiko <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Klassifizierung</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+            <span className="block sm:hidden">KI-Risiko</span>
+            <span className="hidden sm:block">KI-Risiko</span>
+            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent block sm:inline"> Klassifizierung</span>
           </h2>
           
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Vollständige Unterstützung für die EU-Verordnung über Künstliche Intelligenz. 
-            Automatische Risikoklassifizierung und Compliance-Management für KI-Systeme.
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
+            <span className="block sm:hidden">
+              EU AI Act Compliance. Automatische Risikoklassifizierung für KI-Systeme.
+            </span>
+            <span className="hidden sm:block">
+              Vollständige Unterstützung für die EU-Verordnung über Künstliche Intelligenz. 
+              Automatische Risikoklassifizierung und Compliance-Management für KI-Systeme.
+            </span>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-12 px-4">
           
           {/* Left: Risk Categories with Thermometers */}
-          <div className="lg:col-span-2 space-y-4">
-            <Card className="p-6 bg-white/80 backdrop-blur-sm border-white/60 shadow-xl">
+          <div className="xl:col-span-2 space-y-4">
+            <Card className="p-4 sm:p-6 bg-white/80 backdrop-blur-sm border-white/60 shadow-xl">
               <div className="flex items-center gap-3 mb-6">
-                <Scale className="h-6 w-6 text-purple-600" />
-                <h3 className="text-xl font-bold text-gray-900">KI-Risikoklassifizierung</h3>
+                <Scale className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">KI-Risikoklassifizierung</h3>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {aiRiskCategories.map((category, index) => {
                   const isActive = selectedCategory === index;
                   
@@ -491,54 +498,60 @@ export const EUAIActSection: React.FC = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center">
-          <Card className="inline-block p-8 bg-white/80 backdrop-blur-sm border-white/60 shadow-xl max-w-3xl relative overflow-hidden">
+        <div className="text-center px-4">
+          <Card className="inline-block p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-sm border-white/60 shadow-xl max-w-3xl w-full relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-50/50 to-pink-50/50" />
-            <div className="relative space-y-6">
+            <div className="relative space-y-4 sm:space-y-6">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <AIBrain active={true} />
-                <Badge className="bg-purple-500/10 text-purple-600 border-purple-500/20 text-sm">
+                <Badge className="bg-purple-500/10 text-purple-600 border-purple-500/20 text-xs sm:text-sm">
                   EU AI Act Ready 2025
                 </Badge>
               </div>
               
-              <h3 className="text-2xl font-bold text-gray-900">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
                 Bereit für KI-Compliance?
               </h3>
               
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Lassen Sie uns eine kostenlose Bewertung Ihrer KI-Systeme nach EU AI Act Kriterien durchführen.
-                <span className="font-semibold text-gray-900"> Automatische Risikoklassifizierung inklusive.</span>
+              <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+                <span className="block sm:hidden">
+                  Kostenlose KI-Bewertung nach EU AI Act Kriterien.
+                  <span className="font-semibold text-gray-900"> Automatische Risikoklassifizierung inklusive.</span>
+                </span>
+                <span className="hidden sm:block">
+                  Lassen Sie uns eine kostenlose Bewertung Ihrer KI-Systeme nach EU AI Act Kriterien durchführen.
+                  <span className="font-semibold text-gray-900"> Automatische Risikoklassifizierung inklusive.</span>
+                </span>
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact?demo=true">
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-600/90 hover:to-pink-600/90 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group">
-                    <Brain className="mr-2 h-5 w-5" />
+              <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row justify-center">
+                <Link to="/contact?demo=true" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-600/90 hover:to-pink-600/90 text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <Brain className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                     KI-Risiko Bewertung
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 
-                <Link to="/ki/ki-risikoklassifizierung">
-                  <Button variant="outline" className="px-8 py-3 text-lg font-semibold border-2 border-purple-500 text-purple-600 hover:bg-purple-50 hover:border-purple-600 transition-all duration-300">
-                    <Scale className="mr-2 h-5 w-5" />
+                <Link to="/ki/ki-risikoklassifizierung" className="w-full sm:w-auto">
+                  <Button variant="outline" className="w-full sm:w-auto px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold border-2 border-purple-500 text-purple-600 hover:bg-purple-50 hover:border-purple-600 transition-all duration-300">
+                    <Scale className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                     Mehr Details
                   </Button>  
                 </Link>
               </div>
 
-              <div className="flex items-center justify-center gap-6 text-sm text-gray-600">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-green-500" />
+                  <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-green-500" />
                   <span>Kostenlos</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-green-500" />
+                  <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-green-500" />
                   <span>Automatisiert</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-green-500" />
+                  <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-green-500" />
                   <span>EU-konform</span>
                 </div>
               </div>

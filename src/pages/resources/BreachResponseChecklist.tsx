@@ -42,6 +42,18 @@ import {
 import { cn } from '@/lib/utils';
 import SEOHead from '@/components/SEOHead';
 
+interface BreachResponseItem {
+  id: string;
+  title: string;
+  description: string;
+  timeframe: string;
+  responsible: string;
+  critical?: boolean;
+  tips?: string[];
+  legalBasis?: string;
+  consequences?: string;
+}
+
 export const BreachResponseChecklist: React.FC = () => {
   const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
   const [showEmailForm, setShowEmailForm] = useState(false);
@@ -607,7 +619,7 @@ export const BreachResponseChecklist: React.FC = () => {
                                 </div>
                                 
                                 {/* Expand Button */}
-                                {(item as any).tips && (
+                                {item.tips && (
                                   <Button
                                     variant="ghost"
                                     size="sm"
@@ -620,7 +632,7 @@ export const BreachResponseChecklist: React.FC = () => {
                               </div>
 
                               {/* Expanded Details */}
-                              {expandedItems.has(item.id) && (item as any).tips && (
+                              {expandedItems.has(item.id) && item.tips && (
                                 <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700 space-y-4">
                                   {/* Implementation Tips */}
                                   <div>
@@ -629,7 +641,7 @@ export const BreachResponseChecklist: React.FC = () => {
                                       <h5 className="font-semibold text-sm text-gray-900 dark:text-white">Umsetzungstipps</h5>
                                     </div>
                                     <div className="space-y-1">
-                                      {(item as any).tips?.map((tip: string, tipIndex: number) => (
+                                      {item.tips?.map((tip: string, tipIndex: number) => (
                                         <div key={tipIndex} className="flex items-start gap-2">
                                           <div className="w-1 h-1 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
                                           <p className="text-xs text-gray-600 dark:text-gray-400">{tip}</p>
@@ -639,27 +651,27 @@ export const BreachResponseChecklist: React.FC = () => {
                                   </div>
 
                                   {/* Legal Basis */}
-                                  {(item as any).legalBasis && (
+                                  {item.legalBasis && (
                                     <div>
                                       <div className="flex items-center gap-2 mb-2">
                                         <Gavel className="h-4 w-4 text-blue-600" />
                                         <h5 className="font-semibold text-sm text-gray-900 dark:text-white">Rechtsgrundlage</h5>
                                       </div>
                                       <p className="text-xs text-blue-800 dark:text-blue-200 bg-blue-50 dark:bg-blue-950/20 p-2 rounded">
-                                        {(item as any).legalBasis}
+                                        {item.legalBasis}
                                       </p>
                                     </div>
                                   )}
 
                                   {/* Consequences */}
-                                  {(item as any).consequences && (
+                                  {item.consequences && (
                                     <div>
                                       <div className="flex items-center gap-2 mb-2">
                                         <AlertCircle className="h-4 w-4 text-red-600" />
                                         <h5 className="font-semibold text-sm text-gray-900 dark:text-white">Konsequenzen bei Nicht-Beachtung</h5>
                                       </div>
                                       <p className="text-xs text-red-800 dark:text-red-200 bg-red-50 dark:bg-red-950/20 p-2 rounded">
-                                        {(item as any).consequences}
+                                        {item.consequences}
                                       </p>
                                     </div>
                                   )}

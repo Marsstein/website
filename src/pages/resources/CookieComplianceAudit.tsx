@@ -42,15 +42,40 @@ import {
 import { cn } from '@/lib/utils';
 import SEOHead from '@/components/SEOHead';
 
+interface DetectedCookie {
+  name: string;
+  domain: string;
+  category: 'essential' | 'analytics' | 'marketing' | 'functional';
+  purpose: string;
+  expires: string;
+}
+
+interface AuditIssue {
+  type: 'critical' | 'warning' | 'info';
+  title: string;
+  description: string;
+  recommendation: string;
+}
+
+interface AuditResults {
+  score: number;
+  status: 'compliant' | 'issues' | 'non-compliant';
+  totalCookies: number;
+  essentialCookies: number;
+  nonEssentialCookies: number;
+  issues: AuditIssue[];
+  cookies: DetectedCookie[];
+}
+
 export const CookieComplianceAudit: React.FC = () => {
   const [websiteUrl, setWebsiteUrl] = useState('');
-  const [auditResults, setAuditResults] = useState<any>(null);
+  const [auditResults, setAuditResults] = useState<AuditResults | null>(null);
   const [isScanning, setIsScanning] = useState(false);
   const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [scanStep, setScanStep] = useState('');
-  const [detectedCookies, setDetectedCookies] = useState<Array<any>>([]);
+  const [detectedCookies, setDetectedCookies] = useState<DetectedCookie[]>([]);
 
   const auditCategories = [
     {
@@ -529,7 +554,7 @@ export const CookieComplianceAudit: React.FC = () => {
                       </CardHeader>
                       <CardContent>
                         <div className="space-y-3">
-                          {auditResults.issues.map((issue: any, index: number) => (
+                          {auditResults.issues.map((issue, index) => (
                             <div key={index} className={cn(
                               "flex items-start gap-3 p-3 rounded-lg border",
                               issue.type === 'critical' ? 'bg-red-50 border-red-200 dark:bg-red-950/20 dark:border-red-800' :

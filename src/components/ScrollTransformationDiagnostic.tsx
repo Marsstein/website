@@ -24,7 +24,7 @@ import { cn } from '@/lib/utils';
 interface TransformationCard {
   id: string;
   problem: {
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     title: string;
     description: string;
     impact: string;
@@ -32,7 +32,7 @@ interface TransformationCard {
     bgGradient: string;
   };
   solution: {
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     title: string;
     description: string;
     benefit: string;
@@ -124,7 +124,7 @@ const transformationCards: TransformationCard[] = [
 export const ScrollTransformationDiagnostic: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isSticky, setIsSticky] = useState(false);
-  const [diagnostics, setDiagnostics] = useState<any>({});
+  const [diagnostics, setDiagnostics] = useState<Record<string, unknown>>({});
   const [renderCount, setRenderCount] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const lastRenderTime = useRef(Date.now());
@@ -132,6 +132,8 @@ export const ScrollTransformationDiagnostic: React.FC = () => {
   // Track render performance
   useEffect(() => {
     setRenderCount(prev => prev + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
     const now = Date.now();
     const timeSinceLastRender = now - lastRenderTime.current;
     lastRenderTime.current = now;

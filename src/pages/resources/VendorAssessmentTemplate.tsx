@@ -45,12 +45,27 @@ import {
 import { cn } from '@/lib/utils';
 import SEOHead from '@/components/SEOHead';
 
+interface OptionWithPoints {
+  value: string;
+  label: string;
+  points: number;
+}
+
+interface AssessmentCriteria {
+  id: string;
+  title: string;
+  type: 'text' | 'textarea' | 'select' | 'multiselect' | 'radio' | 'boolean';
+  required: boolean;
+  description: string;
+  options?: string[] | OptionWithPoints[];
+}
+
 export const VendorAssessmentTemplate: React.FC = () => {
   const [vendors, setVendors] = useState([
     { id: '1', name: '', category: '', riskLevel: '' }
   ]);
   const [currentVendor, setCurrentVendor] = useState(0);
-  const [assessmentData, setAssessmentData] = useState<Record<string, any>>({});
+  const [assessmentData, setAssessmentData] = useState<Record<string, unknown>>({});
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [showTips, setShowTips] = useState(false);
   const [completedVendors, setCompletedVendors] = useState<Set<string>>(new Set());
@@ -311,7 +326,7 @@ export const VendorAssessmentTemplate: React.FC = () => {
     setVendors(newVendors);
   };
 
-  const updateAssessmentData = (criteriaId: string, value: any) => {
+  const updateAssessmentData = (criteriaId: string, value: unknown) => {
     const vendorId = vendors[currentVendor].id;
     setAssessmentData(prev => ({
       ...prev,
@@ -331,11 +346,11 @@ export const VendorAssessmentTemplate: React.FC = () => {
       category.criteria.forEach(criteria => {
         if (criteria.type === 'radio' && criteria.options) {
           const value = data[criteria.id];
-          const option = criteria.options.find((opt: any) => opt.value === value);
+          const option = (criteria.options as OptionWithPoints[]).find(opt => opt.value === value);
           if (option) {
             totalPoints += option.points;
           }
-          maxPoints += Math.max(...criteria.options.map((opt: any) => opt.points));
+          maxPoints += Math.max(...(criteria.options as OptionWithPoints[]).map(opt => opt.points));
         }
       });
     });
@@ -703,7 +718,7 @@ export const VendorAssessmentTemplate: React.FC = () => {
                                   onValueChange={(value) => updateAssessmentData(criteria.id, value)}
                                   className="space-y-2"
                                 >
-                                  {criteria.options.map((option: any) => (
+                                  {(criteria.options as OptionWithPoints[]).map((option) => (
                                     <div key={option.value} className="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
                                       <RadioGroupItem value={option.value} id={`${criteria.id}_${option.value}`} />
                                       <Label 

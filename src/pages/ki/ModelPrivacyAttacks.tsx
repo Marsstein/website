@@ -193,6 +193,18 @@ import {
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
+interface AttackSimulation {
+  attack: string;
+  result: {
+    risk: string;
+    confidence: number;
+    details: string;
+    recommendation: string;
+  };
+  timestamp: string;
+  recommendations: string[];
+}
+
 const ModelPrivacyAttacks = () => {
   useEffect(() => {
     document.title = 'Model Privacy Attacks & Defense – DSGVO ML-Schutz';
@@ -306,7 +318,7 @@ const ModelPrivacyAttacks = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
-  const [attackSimulation, setAttackSimulation] = useState<any>(null);
+  const [attackSimulation, setAttackSimulation] = useState<AttackSimulation | null>(null);
   const [defenseScore, setDefenseScore] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();

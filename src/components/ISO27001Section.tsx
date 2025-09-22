@@ -27,7 +27,7 @@ interface ISO27001Control {
   description: string;
   controls: number;
   implementation: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 const iso27001Domains: ISO27001Control[] = [

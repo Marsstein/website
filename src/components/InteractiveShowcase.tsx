@@ -21,7 +21,7 @@ interface ShowcaseData {
   metric: string;
   value: string;
   change: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   color: string;
 }
 

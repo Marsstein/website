@@ -111,7 +111,7 @@ const transformationCards = [
 export const ScrollTransformationSimpleFinal: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isSticky, setIsSticky] = useState(false);
-  const [debugData, setDebugData] = useState<any>({});
+  const [debugData, setDebugData] = useState<Record<string, unknown>>({});
   const sectionRef = useRef<HTMLDivElement>(null);
   const renderCount = useRef(0);
 

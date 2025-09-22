@@ -26,7 +26,7 @@ interface FeatureCard {
   id: string;
   title: string;
   description: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   gradient: string;
   href: string;
   badge?: string;

@@ -21,7 +21,7 @@ import { useIntersectionObserver } from '@/hooks/useScrollAnimation';
 
 interface NewsletterBenefit {
   id: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
   gradient: string;
@@ -33,7 +33,7 @@ interface ContentPreview {
   title: string;
   description: string;
   frequency: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 const benefits: NewsletterBenefit[] = [

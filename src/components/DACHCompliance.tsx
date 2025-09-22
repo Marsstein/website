@@ -271,7 +271,7 @@ export const DACHCompliance: React.FC = () => {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Enhanced Header */}
         <div className="text-center mb-16 space-y-6">
@@ -314,12 +314,15 @@ export const DACHCompliance: React.FC = () => {
           </motion.div>
           
           <motion.h2 
-            className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight"
             initial={{ y: 30, opacity: 0 }}
             animate={isVisible ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            <span className="block text-gray-900">DSGVO Compliance für den</span>
+            <span className="block text-gray-900">
+              <span className="block sm:hidden">DSGVO für</span>
+              <span className="hidden sm:block">DSGVO Compliance für den</span>
+            </span>
             <motion.span 
               className="block bg-gradient-to-r from-[#e24e1b] via-red-500 to-[#e24e1b] bg-clip-text text-transparent"
               style={{
@@ -339,33 +342,39 @@ export const DACHCompliance: React.FC = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4"
             initial={{ y: 30, opacity: 0 }}
             animate={isVisible ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           >
-            Maßgeschneiderte Compliance-Lösungen für 
-            <span className="font-bold text-gray-900"> Deutschland, Österreich und die Schweiz.</span>
-            <br />
-            Mit lokalen Rechtsexperten und automatischen Updates zu nationalen Gesetzen.
+            <span className="block sm:hidden">
+              Compliance-Lösungen für 
+              <span className="font-bold text-gray-900"> Deutschland, Österreich und die Schweiz.</span>
+            </span>
+            <span className="hidden sm:block">
+              Maßgeschneiderte Compliance-Lösungen für 
+              <span className="font-bold text-gray-900"> Deutschland, Österreich und die Schweiz.</span>
+              <br />
+              Mit lokalen Rechtsexperten und automatischen Updates zu nationalen Gesetzen.
+            </span>
           </motion.p>
         </div>
 
         {/* Enhanced Country Selector */}
         <motion.div 
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-12 px-4"
           initial={{ y: 30, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
         >
-          <Card className="p-2 glassmorphism-card border-white/30">
-            <div className="flex rounded-lg">
+          <Card className="p-2 glassmorphism-card border-white/30 w-full max-w-2xl">
+            <div className="flex flex-col sm:flex-row rounded-lg gap-2 sm:gap-0">
               {dachCountries.map((country, index) => (
                 <motion.button
                   key={country.id}
                   onClick={() => setSelectedCountry(index)}
                   className={cn(
-                    "flex items-center gap-4 px-8 py-4 rounded-lg transition-all duration-300 text-lg font-semibold relative overflow-hidden",
+                    "flex items-center gap-2 sm:gap-4 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 text-base sm:text-lg font-semibold relative overflow-hidden flex-1 justify-center sm:justify-start",
                     selectedCountry === index
                       ? "bg-gradient-to-r from-[#e24e1b]/10 to-orange-500/10 text-gray-900 shadow-lg scale-105"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
@@ -381,13 +390,14 @@ export const DACHCompliance: React.FC = () => {
                     />
                   )}
                   <motion.span 
-                    className="text-2xl relative z-10"
+                    className="text-xl sm:text-2xl relative z-10"
                     animate={selectedCountry === index ? { scale: [1, 1.2, 1] } : {}}
                     transition={{ duration: 0.5 }}
                   >
                     {country.flag}
                   </motion.span>
-                  <span className="relative z-10">{country.country}</span>
+                  <span className="relative z-10 hidden sm:inline">{country.country}</span>
+                  <span className="relative z-10 sm:hidden text-sm">{country.country}</span>
                   {selectedCountry === index && (
                     <motion.div 
                       className="w-2 h-2 bg-[#e24e1b] rounded-full relative z-10"
@@ -402,7 +412,7 @@ export const DACHCompliance: React.FC = () => {
         </motion.div>
 
         {/* Enhanced Country Details */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-12 px-4">
           
           {/* Left: Country Overview */}
           <motion.div 

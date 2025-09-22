@@ -199,11 +199,22 @@ import {
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
+interface BiasTestResult {
+  id: number;
+  test: string;
+  result: {
+    score: number;
+    status: string;
+    description: string;
+  };
+  timestamp: string;
+}
+
 const HRAICompliance = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
-  const [biasTestResults, setBiasTestResults] = useState<any[]>([]);
+  const [biasTestResults, setBiasTestResults] = useState<BiasTestResult[]>([]);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
