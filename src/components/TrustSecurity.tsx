@@ -22,7 +22,7 @@ interface SecurityFeature {
   id: string;
   title: string;
   description: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   gradient: string;
   metrics: { label: string; value: string; trend?: string }[];
 }
@@ -31,7 +31,7 @@ interface Certification {
   id: string;
   name: string;
   description: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   status: 'certified' | 'in-progress' | 'planned';
   level?: string;
 }

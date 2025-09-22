@@ -29,7 +29,7 @@ interface FAQ {
 interface FAQCategory {
   id: string;
   name: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   color: string;
   count: number;
 }

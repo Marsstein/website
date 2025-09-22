@@ -132,8 +132,6 @@ export const ScrollTransformationDiagnostic: React.FC = () => {
   // Track render performance
   useEffect(() => {
     setRenderCount(prev => prev + 1);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
     const now = Date.now();
     const timeSinceLastRender = now - lastRenderTime.current;
     lastRenderTime.current = now;
