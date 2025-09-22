@@ -1,0 +1,189 @@
+/* Optimized CSS animations with GPU acceleration */
+@media (prefers-reduced-motion: no-preference) {
+  .gpu-accelerated {
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .animate-pulse-optimized {
+    animation: pulse-optimized 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .animate-float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 8s linear infinite;
+  }
+
+  .animate-scale-pulse {
+    animation: scale-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-fade-in-out {
+    animation: fade-in-out 4s ease-in-out infinite;
+  }
+
+  /* Reduced motion variants */
+  .animate-fade-gentle {
+    animation: fade-gentle 6s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-optimized,
+  .animate-float-slow,
+  .animate-float-fast,
+  .animate-rotate-slow,
+  .animate-scale-pulse,
+  .animate-fade-in-out {
+    animation: none;
+  }
+  
+  .animate-fade-gentle {
+    animation: fade-gentle-static 1s ease-out forwards;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .animate-float-slow,
+  .animate-float-fast {
+    animation-duration: 8s; /* Slower on mobile */
+  }
+  
+  .animate-scale-pulse {
+    animation: fade-gentle 4s ease-in-out infinite; /* Replace complex animations */
+  }
+}
+
+/* Keyframes */
+@keyframes pulse-optimized {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale3d(1.05, 1.05, 1);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(0, -10px, 0) rotate(2deg);
+  }
+  66% {
+    transform: translate3d(0, 5px, 0) rotate(-1deg);
+  }
+}
+
+@keyframes float-fast {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+  50% {
+    transform: translate3d(0, -15px, 0) scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+@keyframes scale-pulse {
+  0%, 100% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale3d(1.2, 1.2, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fade-gentle {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-gentle-static {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+
+/* High-performance device enhancements */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .high-perf-animation {
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .complex-transform {
+    will-change: transform, opacity, filter;
+  }
+}
+
+/* Battery optimization */
+@media (prefers-reduced-motion: no-preference) {
+  .battery-aware {
+    animation-play-state: running;
+  }
+}
+
+/* Pause animations when page is not visible to save battery */
+.page-hidden .battery-aware {
+  animation-play-state: paused;
+}
+
+/* Intersection observer optimization classes */
+.lazy-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.lazy-animate.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Container query optimizations for future support */
+@supports (container-type: inline-size) {
+  @container (max-width: 500px) {
+    .animate-scale-pulse {
+      animation: fade-gentle 4s ease-in-out infinite;
+    }
+  }
+}

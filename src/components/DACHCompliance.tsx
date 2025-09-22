@@ -32,6 +32,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CountUp from 'react-countup';
+import { usePerformantAnimation, getOptimizedTransition, getGPUAcceleratedStyle } from '@/hooks/usePerformantAnimation';
 
 // Removed old useTypewriter hook - using inline effect instead
 
@@ -138,6 +139,21 @@ export const DACHCompliance: React.FC = () => {
   const [showSource, setShowSource] = useState(false);
   const [typingComplete, setTypingComplete] = useState(false);
 
+  // Performance optimizations
+  const mainAnimConfig = usePerformantAnimation({
+    duration: 800,
+    complexity: 'medium',
+    enableFor: 'all'
+  });
+  
+  const complexAnimConfig = usePerformantAnimation({
+    duration: 3000,
+    complexity: 'high',
+    enableFor: 'high-performance-only'
+  });
+
+  const gpuStyles = getGPUAcceleratedStyle(mainAnimConfig);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -196,79 +212,92 @@ export const DACHCompliance: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(226,78,27,0.05)_0%,transparent_50%),radial-gradient(circle_at_70%_80%,rgba(239,68,68,0.05)_0%,transparent_50%),radial-gradient(circle_at_50%_20%,rgba(59,130,246,0.05)_0%,transparent_50%)]" />
         
         {/* Animated Elements */}
-        <motion.div 
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-[#e24e1b]/8 to-red-500/8 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.8, 1, 0.8]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-r from-blue-500/8 to-purple-500/8 rounded-full blur-3xl"
-          animate={{
-            y: [-10, 10, -10],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        {complexAnimConfig.shouldAnimate && (
+          <>
+            <motion.div 
+              className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-[#e24e1b]/8 to-red-500/8 rounded-full blur-3xl"
+              style={gpuStyles}
+              animate={complexAnimConfig.reducedComplexity ? 
+                { opacity: [0.8, 1, 0.8] } : 
+                { scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }
+              }
+              transition={getOptimizedTransition({
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }, complexAnimConfig)}
+            />
+            <motion.div 
+              className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-r from-blue-500/8 to-purple-500/8 rounded-full blur-3xl"
+              style={gpuStyles}
+              animate={complexAnimConfig.reducedComplexity ? 
+                { opacity: [0.7, 1, 0.7] } : 
+                { y: [-10, 10, -10], scale: [1, 1.1, 1] }
+              }
+              transition={getOptimizedTransition({
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }, complexAnimConfig)}
+            />
+          </>
+        )}
         
         {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
         
         {/* Flag Icons Background */}
-        <motion.div 
-          className="absolute top-1/4 left-1/4 text-6xl opacity-5"
-          animate={{
-            y: [-10, 10, -10],
-            rotate: [0, 5, -5, 0]
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          🇩🇪
-        </motion.div>
-        <motion.div 
-          className="absolute top-1/3 right-1/3 text-5xl opacity-5"
-          animate={{
-            y: [10, -10, 10],
-            rotate: [0, -5, 5, 0]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        >
-          🇦🇹
-        </motion.div>
-        <motion.div 
-          className="absolute bottom-1/3 left-1/3 text-7xl opacity-5"
-          animate={{
-            y: [-15, 15, -15],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 4
-          }}
-        >
-          🇨🇭
-        </motion.div>
+        {complexAnimConfig.shouldAnimate && (
+          <>
+            <motion.div 
+              className="absolute top-1/4 left-1/4 text-6xl opacity-5"
+              style={gpuStyles}
+              animate={complexAnimConfig.reducedComplexity ? 
+                { opacity: [0.3, 0.7, 0.3] } : 
+                { y: [-10, 10, -10], rotate: [0, 5, -5, 0] }
+              }
+              transition={getOptimizedTransition({
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }, complexAnimConfig)}
+            >
+              🇩🇪
+            </motion.div>
+            <motion.div 
+              className="absolute top-1/3 right-1/3 text-5xl opacity-5"
+              style={gpuStyles}
+              animate={complexAnimConfig.reducedComplexity ? 
+                { opacity: [0.3, 0.7, 0.3] } : 
+                { y: [10, -10, 10], rotate: [0, -5, 5, 0] }
+              }
+              transition={getOptimizedTransition({
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2
+              }, complexAnimConfig)}
+            >
+              🇦🇹
+            </motion.div>
+            <motion.div 
+              className="absolute bottom-1/3 left-1/3 text-7xl opacity-5"
+              style={gpuStyles}
+              animate={complexAnimConfig.reducedComplexity ? 
+                { opacity: [0.3, 0.7, 0.3] } : 
+                { y: [-15, 15, -15], scale: [1, 1.1, 1] }
+              }
+              transition={getOptimizedTransition({
+                duration: 7,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 4
+              }, complexAnimConfig)}
+            >
+              🇨🇭
+            </motion.div>
+          </>
+        )}
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -277,33 +306,43 @@ export const DACHCompliance: React.FC = () => {
         <div className="text-center mb-16 space-y-6">
           <motion.div 
             className="inline-flex items-center gap-4 px-8 py-4 rounded-full glassmorphism border border-[#e24e1b]/20"
+            style={gpuStyles}
             initial={{ y: 20, opacity: 0 }}
             animate={isVisible ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={getOptimizedTransition({ duration: 0.6, ease: "easeOut" }, mainAnimConfig)}
           >
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 180, 360]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
+              {complexAnimConfig.shouldAnimate && (
+                <motion.div
+                  style={gpuStyles}
+                  animate={complexAnimConfig.reducedComplexity ? 
+                    { rotate: [0, 360] } : 
+                    { scale: [1, 1.2, 1], rotate: [0, 180, 360] }
+                  }
+                  transition={getOptimizedTransition({
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }, complexAnimConfig)}
+                >
+                  <MapPin className="w-5 h-5 text-[#e24e1b]" />
+                </motion.div>
+              )}
+              {!complexAnimConfig.shouldAnimate && (
                 <MapPin className="w-5 h-5 text-[#e24e1b]" />
-              </motion.div>
-              <motion.div 
-                className="absolute inset-0 bg-[#e24e1b] rounded-full opacity-30"
-                animate={{ scale: [1, 1.5, 1] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+              )}
+              {complexAnimConfig.shouldAnimate && (
+                <motion.div 
+                  className="absolute inset-0 bg-[#e24e1b] rounded-full opacity-30"
+                  style={gpuStyles}
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={getOptimizedTransition({
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }, complexAnimConfig)}
+                />
+              )}
             </div>
             <span className="font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
               DACH-Spezialist
@@ -315,9 +354,10 @@ export const DACHCompliance: React.FC = () => {
           
           <motion.h2 
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight"
+            style={gpuStyles}
             initial={{ y: 30, opacity: 0 }}
             animate={isVisible ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={getOptimizedTransition({ duration: 0.8, delay: 0.2, ease: "easeOut" }, mainAnimConfig)}
           >
             <span className="block text-gray-900">
               <span className="block sm:hidden">DSGVO für</span>

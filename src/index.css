@@ -1,6 +1,9 @@
 /* Inter + JetBrains Mono Typography Import - Minimal Pure Style */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
+/* Optimized animations for performance */
+@import './styles/optimized-animations.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

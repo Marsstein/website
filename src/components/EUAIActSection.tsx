@@ -18,6 +18,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { usePerformantAnimation, getOptimizedTransition, getGPUAcceleratedStyle } from '@/hooks/usePerformantAnimation';
 
 interface AIRiskCategory {
   id: string;
@@ -35,25 +36,46 @@ interface AIRiskCategory {
   };
 }
 
-// Neural Network Component
+// Optimized Neural Network Component
 const NeuralNetwork: React.FC<{ intensity?: number }> = ({ intensity = 1 }) => {
   const [nodes, setNodes] = useState<Array<{id: number, x: number, y: number, active: boolean}>>([]);
   const [connections, setConnections] = useState<Array<{from: number, to: number, strength: number}>>([]);
 
+  const neuralAnimConfig = usePerformantAnimation({
+    duration: 800,
+    complexity: 'high',
+    enableFor: 'high-performance-only'
+  });
+
   useEffect(() => {
-    // Generate neural network nodes
-    const newNodes = Array.from({ length: 12 }, (_, i) => ({
+    if (!neuralAnimConfig.shouldAnimate) {
+      // Static fallback for low-performance devices
+      const staticNodes = Array.from({ length: 6 }, (_, i) => ({
+        id: i,
+        x: (i % 3) * 40 + 20,
+        y: Math.floor(i / 3) * 40 + 30,
+        active: i % 2 === 0
+      }));
+      setNodes(staticNodes);
+      setConnections([]);
+      return;
+    }
+
+    // Generate neural network nodes (reduced count for performance)
+    const nodeCount = neuralAnimConfig.reducedComplexity ? 8 : 12;
+    const newNodes = Array.from({ length: nodeCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       active: false
     }));
 
-    // Generate connections
+    // Generate connections (reduced for performance)
     const newConnections = [];
-    for (let i = 0; i < newNodes.length; i++) {
-      for (let j = i + 1; j < newNodes.length; j++) {
-        if (Math.random() < 0.3) {
+    const maxConnections = neuralAnimConfig.reducedComplexity ? 8 : 15;
+    for (let i = 0; i < newNodes.length && newConnections.length < maxConnections; i++) {
+      for (let j = i + 1; j < newNodes.length && newConnections.length < maxConnections; j++) {
+        if (Math.random() < (neuralAnimConfig.reducedComplexity ? 0.2 : 0.3)) {
           newConnections.push({
             from: i,
             to: j,
@@ -66,16 +88,17 @@ const NeuralNetwork: React.FC<{ intensity?: number }> = ({ intensity = 1 }) => {
     setNodes(newNodes);
     setConnections(newConnections);
 
-    // Animate nodes
+    // Animate nodes with performance considerations
+    const animationInterval = neuralAnimConfig.reducedComplexity ? 1200 : 800;
     const interval = setInterval(() => {
       setNodes(prev => prev.map(node => ({
         ...node,
         active: Math.random() < 0.3 * intensity
       })));
-    }, 800);
+    }, animationInterval);
 
     return () => clearInterval(interval);
-  }, [intensity]);
+  }, [intensity, neuralAnimConfig]);
 
   return (
     <div className="absolute inset-0 opacity-20">
@@ -279,6 +302,21 @@ export const EUAIActSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [brainActive, setBrainActive] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Performance optimizations
+  const mainAnimConfig = usePerformantAnimation({
+    duration: 600,
+    complexity: 'medium',
+    enableFor: 'all'
+  });
+  
+  const complexAnimConfig = usePerformantAnimation({
+    duration: 2000,
+    complexity: 'high',
+    enableFor: 'high-performance-only'
+  });
+
+  const gpuStyles = getGPUAcceleratedStyle(mainAnimConfig);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
