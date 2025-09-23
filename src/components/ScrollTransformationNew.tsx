@@ -158,7 +158,7 @@ export const ScrollTransformationNew: React.FC = () => {
       <div className="container mx-auto max-w-6xl px-4">
         {/* Header Section */}
         <motion.div 
-          className="text-center mb-8 space-y-4"
+          className="text-center mb-8 space-y-4 px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -170,7 +170,7 @@ export const ScrollTransformationNew: React.FC = () => {
             {showSolutions ? "✓ Lösungen verfügbar" : "⚠ Compliance Herausforderungen"}
           </Badge>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
             {showSolutions ? (
               <>KI-gestützte <span className="text-emerald-600">Compliance</span>-Transformation</>
             ) : (
@@ -178,7 +178,7 @@ export const ScrollTransformationNew: React.FC = () => {
             )}
           </h2>
           
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             {showSolutions 
               ? "Automatisierte Lösungen verwandeln Compliance-Herausforderungen in Wettbewerbsvorteile"
               : "Manuelle Prozesse, zeitaufwändige Audits und Regulierungs-Chaos verschlingen jährlich Milliardenbeträge"
@@ -195,7 +195,7 @@ export const ScrollTransformationNew: React.FC = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-5xl mx-auto">
           {transformationCards.map((card, index) => {
             const isActive = index <= activeCardIndex;
             const showSolution = showSolutions && isActive;
@@ -209,7 +209,7 @@ export const ScrollTransformationNew: React.FC = () => {
                 className="relative"
               >
                 <Card className={cn(
-                  "relative overflow-hidden h-[160px] transition-all duration-500",
+                  "relative overflow-hidden min-h-[240px] md:min-h-[220px] transition-all duration-500",
                   showSolution ? "scale-105" : "scale-100"
                 )}>
                   {/* Problem State */}
@@ -217,31 +217,28 @@ export const ScrollTransformationNew: React.FC = () => {
                     "absolute inset-0 p-4 transition-all duration-500",
                     showSolution ? "opacity-0 scale-95" : "opacity-100 scale-100"
                   )}>
-                    <Card className="w-full h-full p-4 border-2 border-red-100 bg-red-50/50">
-                      <div className="relative h-full">
-                        {/* Metric in top right corner */}
-                        <div className="absolute top-0 right-0">
-                          <span className="text-base font-bold text-red-600">
-                            {card.problem.metric}
-                          </span>
-                        </div>
-                        
-                        <div className="flex items-start gap-3">
-                          <div className="p-2 rounded-lg bg-red-100">
-                            <card.problem.icon className="w-5 h-5 text-red-600" />
-                          </div>
-                          <div className="flex-1 pr-24">
-                            <Badge variant="outline" className="mb-2 text-xs bg-white border-red-200 text-red-700">
+                    <Card className="w-full h-full p-6 border-2 border-red-100 bg-red-50/50">
+                      <div className="flex flex-col h-full">
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <div className="flex items-start gap-3">
+                            <div className="p-2 rounded-lg bg-red-100 flex-shrink-0">
+                              <card.problem.icon className="w-5 h-5 text-red-600" />
+                            </div>
+                            <Badge variant="outline" className="text-xs bg-white border-red-200 text-red-700">
                               Problem
                             </Badge>
-                            <h3 className="font-semibold text-gray-900 text-base mb-2">
-                              {card.problem.title}
-                            </h3>
-                            <p className="text-sm text-gray-600">
-                              {card.problem.description}
-                            </p>
+                          </div>
+                          <div className="text-sm md:text-lg font-bold text-red-600 text-right whitespace-nowrap">
+                            {card.problem.metric}
                           </div>
                         </div>
+                        
+                        <h3 className="font-semibold text-gray-900 text-lg mb-2">
+                          {card.problem.title}
+                        </h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {card.problem.description}
+                        </p>
                       </div>
                     </Card>
                   </div>
@@ -252,34 +249,31 @@ export const ScrollTransformationNew: React.FC = () => {
                     showSolution ? "opacity-100 scale-100" : "opacity-0 scale-105"
                   )}>
                     <Card className={cn(
-                      "w-full h-full p-4 border-2",
+                      "w-full h-full p-6 border-2",
                       `bg-gradient-to-br ${card.solution.bgGradient}`,
                       card.solution.borderColor
                     )}>
-                      <div className="relative h-full">
-                        {/* Metric in top right corner */}
-                        <div className="absolute top-0 right-0">
-                          <span className="text-base font-bold text-white">
-                            {card.solution.metric}
-                          </span>
-                        </div>
-                        
-                        <div className="flex items-start gap-3">
-                          <div className="p-2 rounded-lg bg-white/20">
-                            <card.solution.icon className="w-5 h-5 text-white" />
-                          </div>
-                          <div className="flex-1 pr-24">
-                            <Badge className="mb-2 text-xs bg-white/20 border-white/30 text-white">
+                      <div className="flex flex-col h-full">
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <div className="flex items-start gap-3">
+                            <div className="p-2 rounded-lg bg-white/20 flex-shrink-0">
+                              <card.solution.icon className="w-5 h-5 text-white" />
+                            </div>
+                            <Badge className="text-xs bg-white/20 border-white/30 text-white">
                               Lösung
                             </Badge>
-                            <h3 className="font-semibold text-white text-base mb-2">
-                              {card.solution.title}
-                            </h3>
-                            <p className="text-sm text-white/90">
-                              {card.solution.description}
-                            </p>
+                          </div>
+                          <div className="text-sm md:text-lg font-bold text-white text-right whitespace-nowrap">
+                            {card.solution.metric}
                           </div>
                         </div>
+                        
+                        <h3 className="font-semibold text-white text-lg mb-2">
+                          {card.solution.title}
+                        </h3>
+                        <p className="text-sm text-white/90 leading-relaxed">
+                          {card.solution.description}
+                        </p>
                       </div>
                     </Card>
                   </div>
