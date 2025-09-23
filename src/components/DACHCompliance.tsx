@@ -204,7 +204,7 @@ export const DACHCompliance: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden"
+      className="py-20 pb-32 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden"
     >
       {/* Enhanced Background */}
       <div className="absolute inset-0 -z-10">
@@ -655,11 +655,11 @@ export const DACHCompliance: React.FC = () => {
                 </div>
 
                 {/* Laws Grid */}
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {currentCountry.laws.map((law, index) => (
                     <motion.div 
                       key={index}
-                      className="group p-3 rounded-lg glassmorphism border border-white/20 hover:border-[#e24e1b]/30 cursor-pointer"
+                      className="group p-2 sm:p-3 rounded-lg glassmorphism border border-white/20 hover:border-[#e24e1b]/30 cursor-pointer"
                       whileHover={{ 
                         scale: 1.05,
                         y: -2
@@ -673,15 +673,15 @@ export const DACHCompliance: React.FC = () => {
                         bounce: 0.3
                       }}
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1 sm:gap-2">
                         <motion.div 
-                          className="p-1 rounded bg-gradient-to-br from-gray-100 to-gray-50 group-hover:from-[#e24e1b]/10 group-hover:to-orange-500/10 transition-all duration-300"
+                          className="p-1 rounded bg-gradient-to-br from-gray-100 to-gray-50 group-hover:from-[#e24e1b]/10 group-hover:to-orange-500/10 transition-all duration-300 flex-shrink-0"
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
                         >
-                          <FileCheck className="h-3 w-3 text-gray-600 group-hover:text-[#e24e1b] transition-colors" />
+                          <FileCheck className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-gray-600 group-hover:text-[#e24e1b] transition-colors" />
                         </motion.div>
-                        <span className="font-semibold text-gray-900 text-sm">{law}</span>
+                        <span className="font-semibold text-gray-900 text-xs sm:text-sm truncate">{law}</span>
                       </div>
                     </motion.div>
                   ))}
@@ -749,12 +749,12 @@ export const DACHCompliance: React.FC = () => {
 
         {/* Enhanced Stats Section */}
         <motion.div 
-          className="mb-2"
+          className="mb-12 px-4 sm:px-6 lg:px-8 flex justify-center"
           initial={{ y: 20, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
         >
-          <Card className="p-2 glassmorphism-premium border-white/30 relative overflow-hidden">
+          <Card className="p-4 sm:p-6 glassmorphism-premium border-white/30 relative overflow-hidden w-full max-w-4xl mx-auto">
             <motion.div 
               className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/5 via-transparent to-red-500/5"
               animate={{
@@ -769,20 +769,20 @@ export const DACHCompliance: React.FC = () => {
             
             <div className="relative">
               <motion.div 
-                className="text-center mb-2"
+                className="text-center mb-4"
                 initial={{ y: 10, opacity: 0 }}
                 animate={isVisible ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: 1.6 }}
               >
-                <h3 className="text-[11px] font-semibold text-gray-800 mb-0.5">
+                <h3 className="text-sm sm:text-base font-semibold text-gray-800 mb-1">
                   DACH-Compliance in Zahlen
                 </h3>
-                <p className="text-[10px] text-gray-500 leading-tight">
+                <p className="text-xs sm:text-sm text-gray-500">
                   Vollständige Abdeckung aller relevanten Gesetze und Vorschriften
                 </p>
               </motion.div>
 
-              <div className="grid grid-cols-4 gap-1">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-1">
                 {complianceStats.map((stat, index) => {
                   const Icon = stat.icon;
                   const isHovered = hoveredStat === index;
@@ -820,7 +820,7 @@ export const DACHCompliance: React.FC = () => {
                         </motion.div>
                         
                         <motion.div 
-                          className={cn("text-sm font-bold transition-all duration-300", stat.color)}
+                          className={cn("text-lg sm:text-xl font-bold transition-all duration-300", stat.color)}
                           initial={{ scale: 0 }}
                           animate={isVisible ? { scale: 1 } : {}}
                           transition={{ 
@@ -838,7 +838,7 @@ export const DACHCompliance: React.FC = () => {
                           )}
                         </motion.div>
                         
-                        <div className="text-[9px] font-medium text-gray-600 leading-tight">
+                        <div className="text-xs sm:text-sm font-medium text-gray-600">
                           {stat.label}
                         </div>
                       </div>
@@ -852,12 +852,12 @@ export const DACHCompliance: React.FC = () => {
 
         {/* Enhanced CTA Section */}
         <motion.div 
-          className="text-center"
+          className="text-center px-4 sm:px-6 lg:px-8"
           initial={{ y: 50, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 2.2, ease: "easeOut" }}
         >
-          <Card className="inline-block p-12 glassmorphism-premium border-white/30 shadow-2xl max-w-4xl relative overflow-hidden group">
+          <Card className="inline-block p-6 sm:p-8 md:p-12 glassmorphism-premium border-white/30 shadow-2xl w-full max-w-4xl relative overflow-hidden group">
             <motion.div 
               className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/5 via-red-500/5 to-[#e24e1b]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               animate={{
@@ -897,7 +897,7 @@ export const DACHCompliance: React.FC = () => {
                 </motion.div>
                 
                 <motion.h3 
-                  className="text-3xl font-bold text-gray-900"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900"
                   initial={{ y: 20, opacity: 0 }}
                   animate={isVisible ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.6, delay: 2.4 }}
@@ -906,7 +906,7 @@ export const DACHCompliance: React.FC = () => {
                 </motion.h3>
                 
                 <motion.p 
-                  className="text-xl text-gray-600 max-w-2xl mx-auto"
+                  className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
                   initial={{ y: 20, opacity: 0 }}
                   animate={isVisible ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.6, delay: 2.6 }}
@@ -917,19 +917,19 @@ export const DACHCompliance: React.FC = () => {
               </div>
 
               <motion.div 
-                className="flex flex-col sm:flex-row gap-6 justify-center"
+                className="flex flex-col sm:flex-row gap-4 justify-center"
                 initial={{ y: 30, opacity: 0 }}
                 animate={isVisible ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: 2.8 }}
               >
-                <Link to="/contact?demo=true">
+                <Link to="/contact?demo=true" className="w-full sm:w-auto">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <Button 
                       size="lg"
-                      className="bg-gradient-to-r from-[#e24e1b] via-red-500 to-[#e24e1b] hover:from-[#e24e1b]/90 hover:via-red-500/90 hover:to-[#e24e1b]/90 text-white px-12 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
+                      className="w-full sm:w-auto bg-gradient-to-r from-[#e24e1b] via-red-500 to-[#e24e1b] hover:from-[#e24e1b]/90 hover:via-red-500/90 hover:to-[#e24e1b]/90 text-white px-6 sm:px-8 md:px-12 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
                     >
                       <motion.div 
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
@@ -937,19 +937,19 @@ export const DACHCompliance: React.FC = () => {
                         whileHover={{ x: '200%' }}
                         transition={{ duration: 0.8 }}
                       />
-                      <MapPin className="mr-3 h-6 w-6" />
+                      <MapPin className="mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                       DACH-Analyse anfordern
                       <motion.div
                         whileHover={{ x: 5 }}
                         transition={{ type: "spring", stiffness: 400 }}
                       >
-                        <ArrowRight className="ml-3 h-6 w-6" />
+                        <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                       </motion.div>
                     </Button>
                   </motion.div>
                 </Link>
                 
-                <Link to="/branchen">
+                <Link to="/branchen" className="w-full sm:w-auto">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -957,15 +957,15 @@ export const DACHCompliance: React.FC = () => {
                     <Button 
                       size="lg"
                       variant="outline" 
-                      className="px-12 py-4 text-lg font-semibold border-2 glassmorphism hover:bg-white/50 hover:border-[#e24e1b] hover:text-[#e24e1b] transition-all duration-300"
+                      className="w-full sm:w-auto px-6 sm:px-8 md:px-12 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold border-2 glassmorphism hover:bg-white/50 hover:border-[#e24e1b] hover:text-[#e24e1b] transition-all duration-300"
                     >
-                      <Globe className="mr-3 h-6 w-6" />
+                      <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                       Branchen erkunden
                       <motion.div
                         whileHover={{ x: 5 }}
                         transition={{ type: "spring", stiffness: 400 }}
                       >
-                        <ArrowRight className="ml-3 h-6 w-6" />
+                        <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                       </motion.div>
                     </Button>
                   </motion.div>
@@ -973,7 +973,7 @@ export const DACHCompliance: React.FC = () => {
               </motion.div>
 
               <motion.div 
-                className="flex items-center justify-center gap-8 pt-6 text-sm"
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 pt-6 text-xs sm:text-sm"
                 initial={{ y: 20, opacity: 0 }}
                 animate={isVisible ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: 3.0 }}
@@ -984,7 +984,7 @@ export const DACHCompliance: React.FC = () => {
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                    <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4" />
                   </motion.div>
                   <span>Kostenlose Analyse</span>
                 </div>
@@ -994,7 +994,7 @@ export const DACHCompliance: React.FC = () => {
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
                   >
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                    <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4" />
                   </motion.div>
                   <span>DACH-Expertenwissen</span>
                 </div>
@@ -1004,7 +1004,7 @@ export const DACHCompliance: React.FC = () => {
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
                   >
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                    <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4" />
                   </motion.div>
                   <span>Live-Updates</span>
                 </div>

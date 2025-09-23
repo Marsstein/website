@@ -151,14 +151,14 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Key Features */}
-            <div className="grid grid-cols-2 gap-4 pt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-8">
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
                   <div
                     key={feature.title}
                     className={cn(
-                      "flex items-start space-x-3 p-4 rounded-lg bg-white/10 backdrop-blur-sm border-2 border-brand-red/30 transition-all duration-500 hover:bg-white/20 hover:shadow-lg hover:border-brand-red/50 hover-lift group",
+                      "flex items-start space-x-3 p-3 sm:p-4 rounded-lg bg-white/10 backdrop-blur-sm border-2 border-brand-red/30 transition-all duration-500 hover:bg-white/20 hover:shadow-lg hover:border-brand-red/50 hover-lift group",
                       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                     )}
                     style={{ 
@@ -168,16 +168,16 @@ export const HeroSection: React.FC = () => {
                     <div className="flex-shrink-0 p-2 rounded-lg bg-brand-red/30 group-hover:bg-brand-red/40 transition-colors duration-300">
                       <Icon className="h-5 w-5 text-brand-red group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-semibold text-white text-sm group-hover:text-orange-100 transition-colors duration-300">{feature.title}</h3>
+                    <div className="flex-1 min-w-0 overflow-hidden">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-orange-100 transition-colors duration-300 break-words">{feature.title}</h3>
                         {feature.badge && (
-                          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-1 py-0">
+                          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-1.5 py-0.5 flex-shrink-0">
                             {feature.badge}
                           </Badge>
                         )}
                       </div>
-                      <p className="text-gray-300 text-xs group-hover:text-gray-200 transition-colors duration-300">{feature.desc}</p>
+                      <p className="text-gray-300 text-xs group-hover:text-gray-200 transition-colors duration-300 break-words">{feature.desc}</p>
                     </div>
                   </div>
                 );
@@ -208,7 +208,7 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Metrics Grid */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {metrics.map((metric, index) => {
                     const Icon = metric.icon;
                     const isActive = activeMetric === index;
@@ -217,7 +217,7 @@ export const HeroSection: React.FC = () => {
                       <div
                         key={metric.label}
                         className={cn(
-                          "p-4 rounded-lg border-2 transition-all duration-500 cursor-pointer",
+                          "p-3 sm:p-4 rounded-lg border-2 transition-all duration-500 cursor-pointer",
                           isActive 
                             ? `${metric.bgColor} ${metric.borderColor} shadow-lg scale-105` 
                             : "bg-slate-800/40 border-blue-500/20 hover:bg-slate-800/60"
@@ -225,20 +225,20 @@ export const HeroSection: React.FC = () => {
                         onClick={() => setActiveMetric(index)}
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <Icon className={cn("h-5 w-5", isActive ? metric.color : "text-gray-400")} />
+                          <Icon className={cn("h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0", isActive ? metric.color : "text-gray-400")} />
                           {metric.label === "Compliance Ziel" && (
                             <span className="text-xs text-orange-400 font-medium">Roadmap</span>
                           )}
                         </div>
                         
                         <div className="space-y-1">
-                          <div className="text-2xl font-bold text-white">
+                          <div className="text-lg sm:text-2xl font-bold text-white break-words">
                             {metric.value}
                           </div>
-                          <div className="flex items-center gap-2">
-                            <div className="text-xs text-gray-400">{metric.label}</div>
+                          <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+                            <div className="text-xs text-gray-400 break-words">{metric.label}</div>
                             {metric.isGoal && (
-                              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-1 py-0">
+                              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-[10px] sm:text-xs px-1 py-0 flex-shrink-0">
                                 Ziel
                               </Badge>
                             )}
