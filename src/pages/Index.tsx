@@ -44,6 +44,36 @@ const Index = () => {
     reduceMotionCompliance: true,
   });
 
+  // Preload critical images and set initial visibility
+  React.useEffect(() => {
+    // Preload images
+    const imagesToPreload = [
+      '/JLogoMarsstein.svg',
+      '/images/hero-bg.jpg',
+      '/images/compliance-bg.jpg'
+    ];
+    
+    imagesToPreload.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+    
+    // Immediately mark above-the-fold sections as visible
+    const aboveFoldSections = [
+      'hero-section',
+      'ki-separator', 
+      'scroll-transformation',
+      'transformation-cta'
+    ];
+    
+    aboveFoldSections.forEach(id => {
+      const element = document.querySelector(`[data-component-id="${id}"]`);
+      if (element) {
+        element.classList.add('immediate-load');
+      }
+    });
+  }, []);
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",

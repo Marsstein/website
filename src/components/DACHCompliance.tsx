@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo, memo } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -184,7 +184,7 @@ const dachCountries: CountryCompliance[] = [
   }
 ];
 
-export const DACHCompliance: React.FC = () => {
+export const DACHCompliance: React.FC = memo(() => {
   const [selectedCountry, setSelectedCountry] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredMetric, setHoveredMetric] = useState<number | null>(null);
@@ -768,4 +768,6 @@ export const DACHCompliance: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+DACHCompliance.displayName = 'DACHCompliance';

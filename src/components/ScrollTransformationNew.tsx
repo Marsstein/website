@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo, memo } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -12,7 +12,7 @@ import {
   Brain
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 
 const transformationCards = [
   {
@@ -89,33 +89,129 @@ const transformationCards = [
   }
 ];
 
-export const ScrollTransformationNew: React.FC = () => {
+const TransformationCard = memo(({ 
+  card, 
+  index, 
+  progress, 
+  isVisible 
+}: { 
+  card: any; 
+  index: number; 
+  progress: number;
+  isVisible: boolean;
+}) => {
+  const cardStartProgress = 0.3 + (index * 0.15);
+  const cardEndProgress = cardStartProgress + 0.1;
+  const cardProgress = Math.max(0, Math.min(1, (progress - cardStartProgress) / (cardEndProgress - cardStartProgress)));
+  const showSolution = cardProgress > 0.5;
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
+      className="relative"
+      style={{ willChange: 'auto' }}
+    >
+      <Card className={cn(
+        "relative overflow-hidden min-h-[240px] md:min-h-[220px] transition-all duration-500",
+        showSolution ? "scale-105" : "scale-100"
+      )}>
+        {/* Problem State */}
+        <div className={cn(
+          "absolute inset-0 p-4 transition-all duration-500",
+          showSolution ? "opacity-0 scale-95" : "opacity-100 scale-100"
+        )}>
+          <Card className="w-full h-full p-6 border-2 border-red-100 bg-red-50/50">
+            <div className="flex flex-col h-full">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-red-100 flex-shrink-0">
+                    <card.problem.icon className="w-5 h-5 text-red-600" />
+                  </div>
+                  <Badge variant="outline" className="text-xs bg-white border-red-200 text-red-700">
+                    Problem
+                  </Badge>
+                </div>
+                <div className="text-sm md:text-lg font-bold text-red-600 text-right whitespace-nowrap">
+                  {card.problem.metric}
+                </div>
+              </div>
+              
+              <h3 className="font-semibold text-gray-900 text-lg mb-2">
+                {card.problem.title}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {card.problem.description}
+              </p>
+            </div>
+          </Card>
+        </div>
+        
+        {/* Solution State */}
+        <div className={cn(
+          "absolute inset-0 p-4 transition-all duration-500",
+          showSolution ? "opacity-100 scale-100" : "opacity-0 scale-105"
+        )}>
+          <Card className={cn(
+            "w-full h-full p-6 border-2",
+            `bg-gradient-to-br ${card.solution.bgGradient}`,
+            card.solution.borderColor
+          )}>
+            <div className="flex flex-col h-full">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-white/20 flex-shrink-0">
+                    <card.solution.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <Badge className="text-xs bg-white/20 border-white/30 text-white">
+                    Lösung
+                  </Badge>
+                </div>
+                <div className="text-sm md:text-lg font-bold text-white text-right whitespace-nowrap">
+                  {card.solution.metric}
+                </div>
+              </div>
+              
+              <h3 className="font-semibold text-white text-lg mb-2">
+                {card.solution.title}
+              </h3>
+              <p className="text-sm text-white/90 leading-relaxed">
+                {card.solution.description}
+              </p>
+            </div>
+          </Card>
+        </div>
+      </Card>
+    </motion.div>
+  );
+});
+
+TransformationCard.displayName = 'TransformationCard';
+
+export const ScrollTransformationNew: React.FC = memo(() => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [activeCardIndex, setActiveCardIndex] = useState(-1);
-  const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   
   // Use framer motion scroll progress
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
+    layoutEffect: false
   });
   
   const progressWidth = useTransform(scrollYProgress, [0.2, 0.7], ["0%", "100%"]);
+  const [progress, setProgress] = useState(0);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-        if (entry.isIntersecting) {
-          // Start animations when visible
-          const timer = setTimeout(() => {
-            setActiveCardIndex(0);
-          }, 100);
-          return () => clearTimeout(timer);
+        // Once visible, keep it visible (never hide again)
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0, rootMargin: '400px 0px' }
     );
     
     if (sectionRef.current) {
@@ -128,40 +224,36 @@ export const ScrollTransformationNew: React.FC = () => {
   useEffect(() => {
     if (!isVisible) return;
     
+    let rafId: number;
     const unsubscribe = scrollYProgress.on("change", (latest) => {
-      setProgress(latest);
-      
-      // Update active card based on scroll
-      if (latest < 0.3) {
-        setActiveCardIndex(-1);
-      } else if (latest < 0.45) {
-        setActiveCardIndex(0);
-      } else if (latest < 0.6) {
-        setActiveCardIndex(1);
-      } else if (latest < 0.75) {
-        setActiveCardIndex(2);
-      } else {
-        setActiveCardIndex(3);
-      }
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setProgress(latest);
+      });
     });
     
-    return () => unsubscribe();
+    return () => {
+      unsubscribe();
+      cancelAnimationFrame(rafId);
+    };
   }, [scrollYProgress, isVisible]);
   
-  const showSolutions = progress > 0.5;
+  const showSolutions = useMemo(() => progress > 0.5, [progress]);
   
   return (
     <section 
       ref={sectionRef}
       className="relative py-20 bg-gradient-to-b from-white to-gray-50"
+      style={{ willChange: 'auto' }}
     >
       <div className="container mx-auto max-w-6xl px-4">
         {/* Header Section */}
         <motion.div 
           className="text-center mb-8 space-y-4 px-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          style={{ willChange: 'auto' }}
         >
           <Badge className={cn(
             "transition-all duration-500",
@@ -196,94 +288,15 @@ export const ScrollTransformationNew: React.FC = () => {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-5xl mx-auto">
-          {transformationCards.map((card, index) => {
-            // Calculate individual card transformation progress
-            const cardStartProgress = 0.3 + (index * 0.15); // Start at 0.3, each card 0.15 apart
-            const cardEndProgress = cardStartProgress + 0.1; // Each card has 0.1 range for transformation
-            const cardProgress = Math.max(0, Math.min(1, (progress - cardStartProgress) / (cardEndProgress - cardStartProgress)));
-            const showSolution = cardProgress > 0.5;
-            
-            return (
-              <motion.div
-                key={card.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
-              >
-                <Card className={cn(
-                  "relative overflow-hidden min-h-[240px] md:min-h-[220px] transition-all duration-500",
-                  showSolution ? "scale-105" : "scale-100"
-                )}>
-                  {/* Problem State */}
-                  <div className={cn(
-                    "absolute inset-0 p-4 transition-all duration-500",
-                    showSolution ? "opacity-0 scale-95" : "opacity-100 scale-100"
-                  )}>
-                    <Card className="w-full h-full p-6 border-2 border-red-100 bg-red-50/50">
-                      <div className="flex flex-col h-full">
-                        <div className="flex items-start justify-between gap-3 mb-3">
-                          <div className="flex items-start gap-3">
-                            <div className="p-2 rounded-lg bg-red-100 flex-shrink-0">
-                              <card.problem.icon className="w-5 h-5 text-red-600" />
-                            </div>
-                            <Badge variant="outline" className="text-xs bg-white border-red-200 text-red-700">
-                              Problem
-                            </Badge>
-                          </div>
-                          <div className="text-sm md:text-lg font-bold text-red-600 text-right whitespace-nowrap">
-                            {card.problem.metric}
-                          </div>
-                        </div>
-                        
-                        <h3 className="font-semibold text-gray-900 text-lg mb-2">
-                          {card.problem.title}
-                        </h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {card.problem.description}
-                        </p>
-                      </div>
-                    </Card>
-                  </div>
-                  
-                  {/* Solution State */}
-                  <div className={cn(
-                    "absolute inset-0 p-4 transition-all duration-500",
-                    showSolution ? "opacity-100 scale-100" : "opacity-0 scale-105"
-                  )}>
-                    <Card className={cn(
-                      "w-full h-full p-6 border-2",
-                      `bg-gradient-to-br ${card.solution.bgGradient}`,
-                      card.solution.borderColor
-                    )}>
-                      <div className="flex flex-col h-full">
-                        <div className="flex items-start justify-between gap-3 mb-3">
-                          <div className="flex items-start gap-3">
-                            <div className="p-2 rounded-lg bg-white/20 flex-shrink-0">
-                              <card.solution.icon className="w-5 h-5 text-white" />
-                            </div>
-                            <Badge className="text-xs bg-white/20 border-white/30 text-white">
-                              Lösung
-                            </Badge>
-                          </div>
-                          <div className="text-sm md:text-lg font-bold text-white text-right whitespace-nowrap">
-                            {card.solution.metric}
-                          </div>
-                        </div>
-                        
-                        <h3 className="font-semibold text-white text-lg mb-2">
-                          {card.solution.title}
-                        </h3>
-                        <p className="text-sm text-white/90 leading-relaxed">
-                          {card.solution.description}
-                        </p>
-                      </div>
-                    </Card>
-                  </div>
-                </Card>
-              </motion.div>
-            );
-          })}
+          {transformationCards.map((card, index) => (
+            <TransformationCard 
+              key={card.id}
+              card={card}
+              index={index}
+              progress={progress}
+              isVisible={isVisible}
+            />
+          ))}
         </div>
 
         {/* Bottom text */}
@@ -300,4 +313,6 @@ export const ScrollTransformationNew: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+ScrollTransformationNew.displayName = 'ScrollTransformationNew';

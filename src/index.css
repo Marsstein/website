@@ -8,6 +8,70 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations to prevent flickers */
+@layer base {
+  * {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Disable will-change by default, enable only when needed */
+  section, div {
+    will-change: auto;
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  .transition-all {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Prevent layout shifts during animations */
+  [data-component-id] {
+    contain: layout style;
+  }
+  
+  /* GPU acceleration for transformed elements */
+  .scale-105, .scale-100 {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+  
+  /* Prevent image flickers */
+  img, svg {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    will-change: auto;
+  }
+  
+  /* Smooth section transitions */
+  .smooth-section {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: auto;
+  }
+  
+  /* Optimize motion components */
+  [data-framer-component-type] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Immediate load sections - no animation */
+  .immediate-load {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Smooth content loading */
+  [data-component-id] {
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  }
+}
+
 /* Marsstein Professional Color Palette - Compliance Dashboard */
 
 @layer base {

@@ -121,8 +121,8 @@ export const useSmoothHomepage = (config: SmoothPageConfig = {
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.1,
-      rootMargin: '50px',
+      threshold: 0,
+      rootMargin: '500px 0px 500px 0px', // Preload 500px before and after viewport
     });
 
     // Observe all components with data-component-id
@@ -136,8 +136,12 @@ export const useSmoothHomepage = (config: SmoothPageConfig = {
   const getComponentAnimationProps = useCallback((componentId: string, delay: number = 0) => {
     const inView = componentsInView.has(componentId);
     const shouldAnimate = performanceConfig.shouldAnimate && isLoaded;
+    
+    // Check if element should load immediately
+    const element = document.querySelector(`[data-component-id="${componentId}"]`);
+    const isImmediate = element?.classList.contains('immediate-load');
 
-    if (!shouldAnimate) {
+    if (!shouldAnimate || isImmediate) {
       return {
         initial: { opacity: 1, y: 0 },
         animate: { opacity: 1, y: 0 },
@@ -146,12 +150,12 @@ export const useSmoothHomepage = (config: SmoothPageConfig = {
     }
 
     return {
-      initial: { opacity: 0, y: 30 },
-      animate: inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+      initial: { opacity: 0, y: 10 },
+      animate: inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 },
       transition: {
-        duration: performanceConfig.duration / 1000,
-        delay: config.enableStaggeredAnimations ? delay : 0,
-        ease: performanceConfig.reducedComplexity ? "easeOut" : [0.25, 0.1, 0.25, 1],
+        duration: 0.3,
+        delay: config.enableStaggeredAnimations ? delay * 0.3 : 0,
+        ease: "easeOut",
       }
     };
   }, [componentsInView, performanceConfig, isLoaded, config.enableStaggeredAnimations]);
@@ -180,9 +184,9 @@ export const useSmoothHomepage = (config: SmoothPageConfig = {
 
     return {
       ...baseStyle,
-      opacity: inView ? 1 : 0.7,
-      transform: `translateZ(0) translateY(${inView ? 0 : 10}px)`,
-      transition: `all ${performanceConfig.duration / 1000}s ease-out`,
+      opacity: inView ? 1 : 0.9,
+      transform: `translateZ(0) translateY(${inView ? 0 : 5}px)`,
+      transition: `all ${performanceConfig.duration / 2000}s ease-out`,
     };
   }, [componentsInView, performanceConfig]);
 
