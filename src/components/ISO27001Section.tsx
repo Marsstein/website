@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, memo } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -159,7 +159,7 @@ const iso27001Domains: ISO27001Control[] = [
   }
 ];
 
-export const ISO27001Section: React.FC = () => {
+export const ISO27001Section: React.FC = memo(() => {
   const [selectedDomain, setSelectedDomain] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -397,4 +397,6 @@ export const ISO27001Section: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+ISO27001Section.displayName = 'ISO27001Section';

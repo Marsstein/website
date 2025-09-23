@@ -122,7 +122,7 @@ export const useSmoothHomepage = (config: SmoothPageConfig = {
 
     const observer = new IntersectionObserver(observerCallback, {
       threshold: 0,
-      rootMargin: '500px 0px 500px 0px', // Preload 500px before and after viewport
+      rootMargin: '800px 0px 800px 0px', // Preload 800px before and after viewport for smoother experience
     });
 
     // Observe all components with data-component-id
@@ -150,12 +150,12 @@ export const useSmoothHomepage = (config: SmoothPageConfig = {
     }
 
     return {
-      initial: { opacity: 0, y: 10 },
-      animate: inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 },
+      initial: { opacity: 0, y: 5 },
+      animate: inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 },
       transition: {
-        duration: 0.3,
-        delay: config.enableStaggeredAnimations ? delay * 0.3 : 0,
-        ease: "easeOut",
+        duration: 0.2,
+        delay: config.enableStaggeredAnimations ? delay * 0.1 : 0,
+        ease: [0.16, 1, 0.3, 1], // iOS-like spring easing
       }
     };
   }, [componentsInView, performanceConfig, isLoaded, config.enableStaggeredAnimations]);
@@ -184,9 +184,9 @@ export const useSmoothHomepage = (config: SmoothPageConfig = {
 
     return {
       ...baseStyle,
-      opacity: inView ? 1 : 0.9,
-      transform: `translateZ(0) translateY(${inView ? 0 : 5}px)`,
-      transition: `all ${performanceConfig.duration / 2000}s ease-out`,
+      opacity: inView ? 1 : 0.95,
+      transform: `translateZ(0) translateY(${inView ? 0 : 2}px)`,
+      transition: `all 0.15s cubic-bezier(0.16, 1, 0.3, 1)`,
     };
   }, [componentsInView, performanceConfig]);
 

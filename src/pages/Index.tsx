@@ -59,12 +59,31 @@ const Index = () => {
       img.src = src;
     });
     
-    // Immediately mark above-the-fold sections as visible
+    // Immediately mark ALL homepage sections as visible for smooth as fuck experience
     const aboveFoldSections = [
       'hero-section',
       'ki-separator', 
       'scroll-transformation',
-      'transformation-cta'
+      'transformation-cta',
+      'spacer-2',
+      'regulatory-separator',
+      'spacer-3',
+      'dach-compliance',
+      'security-separator',
+      'iso-section',
+      'ai-risk-separator',
+      'eu-ai-act',
+      'gesture-separator',
+      'interactive-showcase',
+      'quantum-separator',
+      'trust-security',
+      'knowledge-separator',
+      'smart-faq',
+      'divider-1',
+      'newsletter',
+      'innovation-showcase',
+      'features-grid',
+      'cta-section'
     ];
     
     aboveFoldSections.forEach(id => {

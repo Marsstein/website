@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo, memo } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -299,7 +299,7 @@ const aiRiskCategories: AIRiskCategory[] = [
   }
 ];
 
-export const EUAIActSection: React.FC = () => {
+export const EUAIActSection: React.FC = memo(() => {
   const [selectedCategory, setSelectedCategory] = useState(0); // Start with first category (unacceptable)
   const [isVisible, setIsVisible] = useState(false);
   const [brainActive, setBrainActive] = useState(false);
@@ -601,4 +601,6 @@ export const EUAIActSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+EUAIActSection.displayName = 'EUAIActSection';
