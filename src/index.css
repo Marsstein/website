@@ -16,12 +16,12 @@
     scroll-padding-top: 80px;
   }
   
-  /* Optimize all elements for smooth rendering */
+  /* Optimize all elements for smooth rendering - Fixed cookie banner positioning */
   * {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    /* -webkit-transform: translateZ(0); */
-    /* transform: translateZ(0); */
+    /* DISABLED: -webkit-transform: translateZ(0); - Causes cookie banner positioning issues */
+    /* DISABLED: transform: translateZ(0); - Causes cookie banner positioning issues */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
