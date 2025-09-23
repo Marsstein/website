@@ -101,14 +101,9 @@ const Index = () => {
           <KIActivationSeparator />
         </motion.div>
         
+        {/* Removed spacer - sections directly connected */}
         <motion.div 
-          className="py-8"
-          {...getComponentAnimationProps('spacer-1', 0.15)}
-          style={{ opacity: scrollState.isScrolling ? 0.8 : 1 }}
-        />
-        
-        <motion.div 
-          className="bg-gradient-to-b from-transparent to-orange-50/20 smooth-section"
+          className="smooth-section"
           data-component-id="scroll-transformation"
           {...getComponentAnimationProps('scroll-transformation', 0.2)}
           style={getSectionTransition('scroll-transformation')}
@@ -116,10 +111,11 @@ const Index = () => {
           <ScrollTransformation />
         </motion.div>
         
+        {/* Directly connected - no wrapper, no gap */}
         <motion.div
           className="smooth-section"
           data-component-id="transformation-cta"
-          {...getComponentAnimationProps('transformation-cta', 0.3)}
+          {...getComponentAnimationProps('transformation-cta', 0.2)}
           style={getSectionTransition('transformation-cta')}
         >
           <TransformationCTA />

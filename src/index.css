@@ -702,6 +702,37 @@
   transform: translate3d(0, 0, 0);
 }
 
+/* Precharged animation optimizations */
+.transformation-card {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  contain: layout style paint;
+}
+
+.progress-bar {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Mobile-specific performance optimizations */
+@media (max-width: 768px) {
+  .transformation-card,
+  .progress-bar,
+  .smooth-section {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Reduce complexity on mobile */
+  .transformation-card {
+    box-shadow: none;
+    filter: none;
+  }
+}
+
 /* Enhanced smooth scroll timing */
 html {
   scroll-behavior: smooth;

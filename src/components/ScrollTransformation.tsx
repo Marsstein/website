@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { usePrechargedAnimation } from '@/hooks/usePrechargedAnimation';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -124,7 +125,37 @@ export const ScrollTransformation: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isSticky, setIsSticky] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  
+  // Precharge animations for smooth performance
+  const { optimizeElement } = usePrechargedAnimation({
+    elements: ['.transformation-card', '.progress-bar', '.badge-transition'],
+    animations: ['fadeIn', 'slideUp', 'morphCard'],
+    priority: 'high'
+  });
 
+  // Warm up animations on mount
+  useEffect(() => {
+    if (sectionRef.current) {
+      // Force browser to calculate styles and create GPU layers
+      const cards = sectionRef.current.querySelectorAll('.transformation-card');
+      cards.forEach((card) => {
+        if (card instanceof HTMLElement) {
+          // Trigger layout calculation to create GPU layer
+          void card.offsetHeight;
+          optimizeElement(card);
+        }
+      });
+      
+      // Prime the animation by triggering a minimal transform
+      requestAnimationFrame(() => {
+        setScrollProgress(0.001);
+        requestAnimationFrame(() => {
+          setScrollProgress(0);
+        });
+      });
+    }
+  }, [optimizeElement]);
+  
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
@@ -147,9 +178,9 @@ export const ScrollTransformation: React.FC = () => {
         const scrolledIntoSection = headerHeight - rect.top;
         const availableScrollDistance = sectionHeight - windowHeight;
         
-        // Only start progress after we've scrolled 20% into the section
-        const animationStartPoint = availableScrollDistance * 0.2;
-        const animationDistance = availableScrollDistance * 0.75; // Animation runs for 75% of the scroll distance
+        // Start progress immediately when section becomes sticky
+        const animationStartPoint = 0; // Start instantly - no delay
+        const animationDistance = availableScrollDistance * 0.15; // Animation completes in just 15% of scroll distance (instant)
         
         if (scrolledIntoSection > animationStartPoint) {
           const adjustedScroll = scrolledIntoSection - animationStartPoint;
@@ -170,16 +201,26 @@ export const ScrollTransformation: React.FC = () => {
     <section 
       ref={sectionRef}
       className="relative"
-      style={{ height: '200vh' }}
+      style={{ 
+        height: '100vh',
+        willChange: 'transform',
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden'
+      }}
     >
       <div className={cn(
         "w-full transition-all duration-300",
         isSticky ? "fixed top-16 left-0 right-0 h-[calc(100vh-4rem)]" : "relative h-screen"
-      )}>
-        <div className="w-full h-full bg-white">
-          <div className="container mx-auto max-w-6xl px-4 py-8">
+      )}
+      style={{
+        willChange: isSticky ? 'transform' : 'auto',
+        transform: 'translate3d(0, 0, 0)',
+        backfaceVisibility: 'hidden'
+      }}>
+        <div className="w-full h-full bg-white" style={{ contain: 'layout style paint' }}>
+          <div className="container mx-auto max-w-6xl px-4 py-4">
             {/* Header Section */}
-            <div className="text-center mb-6 space-y-3">
+            <div className="text-center mb-3 space-y-2">
               <Badge className={cn(
                 "transition-all duration-500 text-sm",
                 scrollProgress > 0.5 ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" : "bg-red-500/10 text-red-600 border-red-500/20"
@@ -204,35 +245,47 @@ export const ScrollTransformation: React.FC = () => {
               </p>
             </div>
 
-            {/* Progress Bar */}
-            <div className="w-full h-2 bg-gray-200 rounded-full mb-6 max-w-md mx-auto">
+            {/* Progress Bar - GPU Accelerated */}
+            <div className="w-full h-2 bg-gray-200 rounded-full mb-3 max-w-md mx-auto progress-bar">
               <div 
-                className="h-full bg-gradient-to-r from-red-500 via-amber-500 to-emerald-500 rounded-full transition-all duration-300"
-                style={{ width: `${scrollProgress * 100}%` }}
+                className="h-full bg-gradient-to-r from-red-500 via-amber-500 to-emerald-500 rounded-full"
+                style={{ 
+                  transform: `scaleX(${scrollProgress})`,
+                  transformOrigin: 'left',
+                  transition: 'transform 100ms ease-out',
+                  willChange: 'transform',
+                  backfaceVisibility: 'hidden'
+                }}
               />
             </div>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-4xl mx-auto mb-4">
               {transformationCards.map((card, cardIndex) => {
-                // Spread cards evenly across the entire animation with bigger gaps
-                const cardStartProgress = cardIndex * 0.2 + 0.1; // Start at 10%, 30%, 50%, 70%
-                const cardEndProgress = cardStartProgress + 0.25; // Each card animation lasts 25% of total progress
+                // Ultra-fast card animation to eliminate white screen
+                const cardStartProgress = cardIndex * 0.1; // Start at 0%, 10%, 20%, 30%
+                const cardEndProgress = cardStartProgress + 0.15; // Each card animation lasts only 15% of total progress
                 
                 let cardProgress = 0;
                 if (scrollProgress > cardStartProgress) {
                   cardProgress = Math.max(0, Math.min(1, (scrollProgress - cardStartProgress) / (cardEndProgress - cardStartProgress)));
                 }
                 
-                const showSolution = cardProgress > 0.4; // Switch at 40% of card progress
-                const morphProgress = Math.max(0, Math.min(1, (cardProgress - 0.2) / 0.4)); // Morph between 20%-60%
+                const showSolution = cardProgress > 0.2; // Switch at 20% of card progress (ultra-fast)
+                const morphProgress = Math.max(0, Math.min(1, cardProgress / 0.2)); // Morph instantly between 0%-20%
                 
                 return (
-                  <div key={card.id} className="relative h-[140px]">
+                  <div key={card.id} className="relative h-[140px] transformation-card"
+                    style={{
+                      willChange: 'transform, opacity',
+                      transform: 'translateZ(0)',
+                      backfaceVisibility: 'hidden'
+                    }}>
                     {/* Problem Card */}
                     <div
-                      className="absolute inset-0 transition-all duration-700"
+                      className="absolute inset-0 transition-transform duration-500"
                       style={{
+                        willChange: 'transform, opacity',
                         opacity: showSolution ? 0 : 1,
                         transform: `scale(${showSolution ? 0.95 : 1}) translateY(${morphProgress * -10}px)`,
                         pointerEvents: showSolution ? 'none' : 'auto'
@@ -270,11 +323,13 @@ export const ScrollTransformation: React.FC = () => {
 
                     {/* Solution Card */}
                     <div
-                      className="absolute inset-0 transition-all duration-700"
+                      className="absolute inset-0 transition-transform duration-500"
                       style={{
+                        willChange: 'transform, opacity',
                         opacity: showSolution ? 1 : 0,
-                        transform: `scale(${showSolution ? 1 : 0.95}) translateY(${showSolution ? 0 : morphProgress * 10}px)`,
-                        pointerEvents: showSolution ? 'auto' : 'none'
+                        transform: `scale(${showSolution ? 1 : 0.95}) translateY(${showSolution ? 0 : morphProgress * 10}px) translateZ(0)`,
+                        pointerEvents: showSolution ? 'auto' : 'none',
+                        backfaceVisibility: 'hidden'
                       }}
                     >
                       <Card className={cn(
