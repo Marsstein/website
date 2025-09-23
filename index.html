@@ -169,35 +169,51 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preload" href="/JLogoMarsstein.svg" as="image" type="image/svg+xml" />
     <link rel="modulepreload" href="/src/main.tsx" />
-    <link rel="prefetch" href="/contact" />
-    <link rel="prefetch" href="/pricing" />
-    <link rel="prefetch" href="/academy" />
-    <link rel="prefetch" href="/dsgvo" />
-    <link rel="prefetch" href="/eu-ai-act" />
+    <!-- DNS prefetch for faster navigation -->
+    <link rel="dns-prefetch" href="https://marsstein.ai" />
     
     <!-- Critical CSS inlining for faster FCP -->
     <style>
-      body{margin:0;font-family:Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-      #root{min-height:100vh}
-      .loading-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0B1D2A}
+      html{scroll-behavior:smooth;scroll-padding-top:80px}
+      body{margin:0;font-family:Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+      *{box-sizing:border-box}
+      #root{min-height:100vh;position:relative}
+      .loading-screen{display:flex;align-items:center;justify-content:center;min-height:100vh}
       .spinner{width:2rem;height:2rem;border:2px solid #e5e7eb;border-top:2px solid #e24e1b;border-radius:50%;animation:spin 1s linear infinite}
       @keyframes spin{to{transform:rotate(360deg)}}
+      /* Smooth scrolling for all scrollable elements */
+      *{scroll-behavior:smooth}
     </style>
     
-    <!-- Service Worker Registration (disabled for development) -->
+    <!-- Intelligent Resource Prefetching -->
     <script>
-      // Service worker temporarily disabled to fix MIME type issues
-      // if ('serviceWorker' in navigator) {
-      //   window.addEventListener('load', () => {
-      //     navigator.serviceWorker.register('/sw.js')
-      //       .then(registration => {
-      //         console.log('SW registered: ', registration);
-      //       })
-      //       .catch(registrationError => {
-      //         console.log('SW registration failed: ', registrationError);
-      //       });
-      //   });
-      // }
+      // Intelligent prefetching after page load
+      window.addEventListener('load', () => {
+        // Prefetch critical route chunks after main page loads
+        setTimeout(() => {
+          const criticalRoutes = [
+            '/assets/js/ContactPage',
+            '/assets/js/PricingPage', 
+            '/assets/js/DsgvoCompliance',
+            '/assets/js/AcademyPage'
+          ];
+          
+          criticalRoutes.forEach(route => {
+            // Find the actual chunk file with hash
+            const scripts = Array.from(document.scripts);
+            const chunk = scripts.find(s => s.src.includes(route));
+            if (chunk) {
+              const link = document.createElement('link');
+              link.rel = 'prefetch';
+              link.href = chunk.src;
+              document.head.appendChild(link);
+            }
+          });
+        }, 1000);
+      });
+
+      // Add smooth scroll behavior programmatically 
+      document.documentElement.style.scrollBehavior = 'smooth';
     </script>
     
     <!-- Optimierte Rendering Performance -->

@@ -21,6 +21,7 @@ export default defineConfig({
     minify: 'terser',
     sourcemap: false,
     cssMinify: true,
+    assetsInlineLimit: 0,
     
     rollupOptions: {
       output: {
