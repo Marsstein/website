@@ -23,32 +23,6 @@ export default defineConfig({
     
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('react/') || id.includes('react-dom/') || id.includes('scheduler/')) {
-              return 'react';
-            }
-            if (id.includes('react-router')) {
-              return 'react-router';
-            }
-            if (id.includes('@radix-ui')) {
-              return 'radix-ui';
-            }
-            if (id.includes('emailjs') || id.includes('@emailjs')) {
-              return 'emailjs';
-            }
-            if (id.includes('lucide-react')) {
-              return 'icons';
-            }
-            if (id.includes('framer-motion') || id.includes('@react-spring')) {
-              return 'animation';
-            }
-            if (id.includes('recharts') || id.includes('d3')) {
-              return 'charts';
-            }
-            return 'vendor';
-          }
-        },
         
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name.split('.');

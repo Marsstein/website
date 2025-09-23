@@ -29,3 +29,4 @@ prerender.log
 .netlify
 .cache/
 dist/
+.vercel
