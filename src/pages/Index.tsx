@@ -49,9 +49,7 @@ const Index = () => {
   React.useEffect(() => {
     // Preload images
     const imagesToPreload = [
-      '/JLogoMarsstein.svg',
-      '/images/hero-bg.jpg',
-      '/images/compliance-bg.jpg'
+      '/JLogoMarsstein.svg'
     ];
     
     imagesToPreload.forEach(src => {
