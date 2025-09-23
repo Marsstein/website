@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
-import { ScrollTransformation } from '@/components/ScrollTransformation';
+import { ScrollTransformationNew } from '@/components/ScrollTransformationNew';
 import { TransformationCTA } from '@/components/TransformationCTA';
 import { DACHCompliance } from '@/components/DACHCompliance';
 import { ISO27001Section } from '@/components/ISO27001Section';
@@ -108,7 +108,7 @@ const Index = () => {
           {...getComponentAnimationProps('scroll-transformation', 0.2)}
           style={getSectionTransition('scroll-transformation')}
         >
-          <ScrollTransformation />
+          <ScrollTransformationNew />
         </motion.div>
         
         {/* Directly connected - no wrapper, no gap */}

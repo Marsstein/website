@@ -170,7 +170,7 @@ export const ScrollTransformation: React.FC = () => {
       const shouldBeSticky = rect.top <= headerHeight && rect.bottom > headerHeight;
       setIsSticky(shouldBeSticky);
 
-      // Only start animation when section is properly in view and we've scrolled significantly
+      // Calculate smooth progress while sticky
       let progress = 0;
       
       if (shouldBeSticky && rect.bottom > headerHeight) {
@@ -178,9 +178,9 @@ export const ScrollTransformation: React.FC = () => {
         const scrolledIntoSection = headerHeight - rect.top;
         const availableScrollDistance = sectionHeight - windowHeight;
         
-        // Start progress immediately when section becomes sticky
-        const animationStartPoint = 0; // Start instantly - no delay
-        const animationDistance = availableScrollDistance * 0.15; // Animation completes in just 15% of scroll distance (instant)
+        // Fast but smooth animation
+        const animationStartPoint = 0; // Start immediately
+        const animationDistance = availableScrollDistance * 0.5; // Complete in 50% of scroll
         
         if (scrolledIntoSection > animationStartPoint) {
           const adjustedScroll = scrolledIntoSection - animationStartPoint;
@@ -202,7 +202,7 @@ export const ScrollTransformation: React.FC = () => {
       ref={sectionRef}
       className="relative"
       style={{ 
-        height: '100vh',
+        height: '150vh',
         willChange: 'transform',
         transform: 'translateZ(0)',
         backfaceVisibility: 'hidden'
@@ -245,15 +245,14 @@ export const ScrollTransformation: React.FC = () => {
               </p>
             </div>
 
-            {/* Progress Bar - GPU Accelerated */}
-            <div className="w-full h-2 bg-gray-200 rounded-full mb-3 max-w-md mx-auto progress-bar">
+            {/* Progress Bar - Smooth Progressive Fill */}
+            <div className="w-full h-2 bg-gray-200 rounded-full mb-3 max-w-md mx-auto progress-bar overflow-hidden">
               <div 
-                className="h-full bg-gradient-to-r from-red-500 via-amber-500 to-emerald-500 rounded-full"
+                className="h-full bg-gradient-to-r from-red-500 via-amber-500 to-emerald-500 rounded-full transition-all duration-200 ease-out"
                 style={{ 
-                  transform: `scaleX(${scrollProgress})`,
-                  transformOrigin: 'left',
-                  transition: 'transform 100ms ease-out',
-                  willChange: 'transform',
+                  width: `${scrollProgress * 100}%`,
+                  willChange: 'width',
+                  transform: 'translateZ(0)',
                   backfaceVisibility: 'hidden'
                 }}
               />
@@ -262,17 +261,17 @@ export const ScrollTransformation: React.FC = () => {
             {/* Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-4xl mx-auto mb-4">
               {transformationCards.map((card, cardIndex) => {
-                // Ultra-fast card animation to eliminate white screen
-                const cardStartProgress = cardIndex * 0.1; // Start at 0%, 10%, 20%, 30%
-                const cardEndProgress = cardStartProgress + 0.15; // Each card animation lasts only 15% of total progress
+                // Fast sequential animation for smooth color transitions
+                const cardStartProgress = cardIndex * 0.15; // Start at 0%, 15%, 30%, 45%
+                const cardEndProgress = cardStartProgress + 0.25; // Each card animates for 25% of scroll
                 
                 let cardProgress = 0;
                 if (scrollProgress > cardStartProgress) {
                   cardProgress = Math.max(0, Math.min(1, (scrollProgress - cardStartProgress) / (cardEndProgress - cardStartProgress)));
                 }
                 
-                const showSolution = cardProgress > 0.2; // Switch at 20% of card progress (ultra-fast)
-                const morphProgress = Math.max(0, Math.min(1, cardProgress / 0.2)); // Morph instantly between 0%-20%
+                const showSolution = cardProgress > 0.4; // Switch at 40% of card progress
+                const morphProgress = Math.max(0, Math.min(1, (cardProgress - 0.2) / 0.4)); // Morph between 20%-60%
                 
                 return (
                   <div key={card.id} className="relative h-[140px] transformation-card"
