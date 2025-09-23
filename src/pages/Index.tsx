@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { Footer } from '@/components/Footer';
@@ -11,38 +11,37 @@ import { EUAIActSection } from '@/components/EUAIActSection';
 import { CTASection } from '@/components/CTASection';
 import { InteractiveShowcase } from '@/components/InteractiveShowcase';
 import { TrustSecurity } from '@/components/TrustSecurity';
-import { KIActivationSeparator } from '@/components/separators/KIActivationSeparator';
-import { RegulatoryBridgeSeparator } from '@/components/separators/RegulatoryBridgeSeparator';
-import { SecurityStandardsMatrixSeparator } from '@/components/separators/SecurityStandardsMatrixSeparator';
-import { AIRiskSpectrumSeparator } from '@/components/separators/AIRiskSpectrumSeparator';
-import { GestureFlowSeparator } from '@/components/separators/GestureFlowSeparator';
-import { QuantumShieldWaveSeparator } from '@/components/separators/QuantumShieldWaveSeparator';
-import { KnowledgeConstellationSeparator } from '@/components/separators/KnowledgeConstellationSeparator';
-
-const SmartFAQ = lazy(() => import('@/components/SmartFAQ').then(m => ({ default: m.SmartFAQ })));
-const IntelligentNewsletter = lazy(() => import('@/components/IntelligentNewsletter').then(m => ({ default: m.IntelligentNewsletter })));
+import { SmartFAQ } from '@/components/SmartFAQ';
+import { IntelligentNewsletter } from '@/components/IntelligentNewsletter';
 
 const Index = () => {
-  const [viewportHeight, setViewportHeight] = React.useState('100vh');
-  const [isAboveFold, setIsAboveFold] = React.useState(true);
+  const [sectionsVisible, setSectionsVisible] = React.useState(new Set());
   
   React.useEffect(() => {
-    const actualHeight = window.innerHeight;
-    setViewportHeight(`${actualHeight}px`);
-    
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          setIsAboveFold(window.scrollY < window.innerHeight * 0.5);
-          ticking = false;
+    // Ultra-performance Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.dataset.sectionId;
+            if (id) {
+              setSectionsVisible(prev => new Set([...prev, id]));
+              observer.unobserve(entry.target); // Stop observing once visible
+            }
+          }
         });
-        ticking = true;
+      },
+      { 
+        threshold: 0.05,
+        rootMargin: '50px 0px'
       }
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    );
+
+    // Observe all sections
+    const sections = document.querySelectorAll('[data-section-id]');
+    sections.forEach(section => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
 
@@ -67,95 +66,90 @@ const Index = () => {
         structuredData={structuredData}
       />
       
-      <style dangerouslySetInnerHTML={{ __html: `
-        .smooth-section { 
-          contain: layout style paint; 
-          will-change: auto;
-        }
-        .section-fade {
-          animation: fadeIn 0.6s ease-out forwards;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .lazy-boundary { min-height: ${viewportHeight}; }
-      ` }} />
-      
-      <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-gray-50">
+      <div className="compliance-homepage">
         <Header />
-        <main className="overflow-hidden">
-        <div className="smooth-section section-fade">
+        <main>
+        <section 
+          className="compliance-section hero-section"
+          data-section-id="hero"
+          style={{ 
+            opacity: 1,
+            transform: 'translateY(0)',
+            transition: 'none'
+          }}
+        >
           <HeroSection />
-        </div>
+        </section>
         
-        <div className={isAboveFold ? "section-fade" : ""}>
-          <KIActivationSeparator />
-        </div>
-        
-        <div className="smooth-section section-fade">
+        <section 
+          className={`compliance-section ${sectionsVisible.has('scroll') ? 'visible' : ''}`}
+          data-section-id="scroll"
+        >
           <ScrollTransformationNew />
-        </div>
+        </section>
         
-        <div className="smooth-section section-fade">
+        <section 
+          className={`compliance-section ${sectionsVisible.has('transformation') ? 'visible' : ''}`}
+          data-section-id="transformation"
+        >
           <TransformationCTA />
-        </div>
+        </section>
         
-        <div className="py-12" />
-        
-        <RegulatoryBridgeSeparator />
-        
-        <div className="py-8" />
-        
-        <div className="bg-gradient-to-b from-orange-50/20 via-white to-red-50/10 smooth-section section-fade">
+        <section 
+          className={`compliance-section dach-section ${sectionsVisible.has('dach') ? 'visible' : ''}`}
+          data-section-id="dach"
+        >
           <DACHCompliance />
-        </div>
+        </section>
         
-        <SecurityStandardsMatrixSeparator />
-        
-        <div className="bg-gradient-to-b from-red-50/10 to-orange-50/15 smooth-section section-fade">
+        <section 
+          className={`compliance-section iso-section ${sectionsVisible.has('iso') ? 'visible' : ''}`}
+          data-section-id="iso"
+        >
           <ISO27001Section />
-        </div>
+        </section>
         
-        <AIRiskSpectrumSeparator />
-        
-        <div className="bg-gradient-to-b from-orange-50/15 via-white to-gray-50 smooth-section section-fade">
+        <section 
+          className={`compliance-section ai-section ${sectionsVisible.has('ai') ? 'visible' : ''}`}
+          data-section-id="ai"
+        >
           <EUAIActSection />
-        </div>
+        </section>
         
-        <GestureFlowSeparator />
-        
-        <div className="smooth-section section-fade">
+        <section 
+          className={`compliance-section ${sectionsVisible.has('interactive') ? 'visible' : ''}`}
+          data-section-id="interactive"
+        >
           <InteractiveShowcase />
-        </div>
+        </section>
         
-        <QuantumShieldWaveSeparator />
-        
-        <div className="smooth-section section-fade">
+        <section 
+          className={`compliance-section ${sectionsVisible.has('trust') ? 'visible' : ''}`}
+          data-section-id="trust"
+        >
           <TrustSecurity />
-        </div>
+        </section>
         
-        <KnowledgeConstellationSeparator />
+        <section 
+          className={`compliance-section ${sectionsVisible.has('faq') ? 'visible' : ''}`}
+          data-section-id="faq"
+        >
+          <SmartFAQ />
+        </section>
         
-        <Suspense fallback={<div className="h-20" />}>
-          <div className="smooth-section section-fade">
-            <SmartFAQ />
-          </div>
-        </Suspense>
-
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
-
-        <Suspense fallback={<div className="h-20" />}>
-          <div className="smooth-section section-fade">
-            <IntelligentNewsletter />
-          </div>
-        </Suspense>
-
-        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
+        <section 
+          className={`compliance-section ${sectionsVisible.has('newsletter') ? 'visible' : ''}`}
+          data-section-id="newsletter"
+        >
+          <IntelligentNewsletter />
+        </section>
         
-        <div className="smooth-section section-fade">
+        <section 
+          className={`compliance-section ${sectionsVisible.has('cta') ? 'visible' : ''}`}
+          data-section-id="cta"
+        >
           <CTASection />
-        </div>
+        </section>
       </main>
       <Footer />
     </div>

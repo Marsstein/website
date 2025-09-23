@@ -1,8 +1,8 @@
 /* Inter + JetBrains Mono Typography Import - Minimal Pure Style */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-/* Optimized animations for performance */
-@import './styles/optimized-animations.css';
+/* Ultra-smooth compliance homepage animations */
+@import './styles/compliance-homepage.css';
 
 @tailwind base;
 @tailwind components;
@@ -908,6 +908,12 @@ html {
 
 .fluid-hover:hover {
   transform: translateY(-2px) scale(1.02);
+}
+
+/* Smooth homepage performance optimization */
+.homepage-container {
+  scroll-behavior: smooth;
+  will-change: scroll-position;
 }
 
 /* Accessibility and performance */

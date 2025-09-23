@@ -1,0 +1,185 @@
+/* Ultra-Smooth Compliance Homepage Animations - 60fps Guaranteed */
+
+/* Base compliance section styles with GPU acceleration */
+.compliance-homepage {
+  contain: layout style paint;
+  transform: translateZ(0);
+  will-change: scroll-position;
+}
+
+.compliance-section {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  contain: layout style;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Visible state with immediate GPU optimization */
+.compliance-section.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Hero section is always visible - no delay */
+.hero-section {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition: none !important;
+}
+
+/* Specialized section animations for different content types */
+.dach-section.visible {
+  animation: compliance-fade-in 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.iso-section.visible {
+  animation: compliance-slide-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ai-section.visible {
+  animation: compliance-scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Professional fade-in animation */
+@keyframes compliance-fade-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.98);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translate3d(0, -2px, 0) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Smooth slide-up animation */
+@keyframes compliance-slide-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Gentle scale-in animation */
+@keyframes compliance-scale-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 15px, 0) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Performance optimizations for different device types */
+@media (max-width: 768px) {
+  .compliance-section {
+    transition-duration: 0.6s;
+  }
+  
+  .dach-section.visible,
+  .iso-section.visible,
+  .ai-section.visible {
+    animation-duration: 0.6s;
+  }
+}
+
+/* High-performance device optimizations */
+@media (min-width: 1200px) {
+  .compliance-section {
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .compliance-section {
+    transition: opacity 0.2s ease !important;
+    transform: none !important;
+  }
+  
+  .compliance-section.visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .dach-section.visible,
+  .iso-section.visible,
+  .ai-section.visible {
+    animation: none !important;
+  }
+}
+
+/* Force hardware acceleration for smooth scrolling */
+.compliance-homepage * {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Scroll container optimization */
+.compliance-homepage main {
+  contain: layout style paint;
+  will-change: scroll-position;
+}
+
+/* Advanced GPU acceleration for complex sections */
+.compliance-section:nth-child(even) {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* Smooth transition states */
+.compliance-section:not(.visible) {
+  will-change: transform, opacity;
+}
+
+.compliance-section.visible {
+  will-change: auto;
+}
+
+/* Professional hover effects for interactive elements */
+.compliance-section .card-hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.compliance-section .card-hover:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 8px 25px rgba(226, 78, 27, 0.15);
+}
+
+/* Button interactions */
+.compliance-section button,
+.compliance-section a {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+}
+
+.compliance-section button:hover,
+.compliance-section a:hover {
+  transform: translate3d(0, -1px, 0);
+}
+
+/* Performance monitoring indicators (dev mode only) */
+.compliance-homepage[data-performance="debug"] .compliance-section {
+  outline: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.compliance-homepage[data-performance="debug"] .compliance-section.visible {
+  outline-color: rgba(226, 78, 27, 0.3);
+}

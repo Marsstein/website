@@ -1,0 +1,184 @@
+/* Ultra-Smooth Homepage Animations - 60fps Performance Optimized */
+
+/* Global performance settings */
+.smooth-homepage {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Ultra-smooth fade-in animation */
+@keyframes smoothFadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Smooth scale animation */
+@keyframes smoothScale {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Smooth slide up */
+@keyframes smoothSlideUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Performance-optimized animation classes */
+.animate-smooth-fade {
+  animation: smoothFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.animate-smooth-scale {
+  animation: smoothScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.animate-smooth-slide {
+  animation: smoothSlideUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Intersection Observer triggered animations */
+.scroll-trigger {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.scroll-trigger.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Staggered animations for multiple elements */
+.scroll-trigger:nth-child(1) { transition-delay: 0ms; }
+.scroll-trigger:nth-child(2) { transition-delay: 100ms; }
+.scroll-trigger:nth-child(3) { transition-delay: 200ms; }
+.scroll-trigger:nth-child(4) { transition-delay: 300ms; }
+.scroll-trigger:nth-child(5) { transition-delay: 400ms; }
+
+/* Card hover effects - lightweight */
+.smooth-card {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.smooth-card:hover {
+  transform: translate3d(0, -4px, 0);
+}
+
+/* Button animations */
+.smooth-button {
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.smooth-button:hover {
+  transform: translate3d(0, -2px, 0);
+}
+
+.smooth-button:active {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Smooth progress bars */
+.smooth-progress {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.smooth-progress-fill {
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.smooth-progress-fill.animate {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Smooth counters */
+.smooth-counter {
+  transition: opacity 0.3s ease-out;
+  will-change: opacity;
+}
+
+/* Loading animations */
+.smooth-loading {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.smooth-loading.loaded {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* GPU acceleration for all smooth elements */
+.smooth-element {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .scroll-trigger,
+  .animate-smooth-fade,
+  .animate-smooth-scale,
+  .animate-smooth-slide {
+    animation-duration: 0.4s !important;
+    transition-duration: 0.4s !important;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-trigger,
+  .animate-smooth-fade,
+  .animate-smooth-scale,
+  .animate-smooth-slide,
+  .smooth-card,
+  .smooth-button,
+  .smooth-progress-fill,
+  .smooth-loading {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
