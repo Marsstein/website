@@ -197,6 +197,8 @@ export const Header: React.FC = () => {
             src="/JLogoMarsstein.svg" 
             alt="Marsstein Logo" 
             className="h-8 w-auto"
+            width="32"
+            height="32"
             loading="eager"
             decoding="async"
           />

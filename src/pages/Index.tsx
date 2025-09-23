@@ -1,26 +1,16 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { lazy, Suspense } from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
+import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { ScrollTransformationNew } from '@/components/ScrollTransformationNew';
 import { TransformationCTA } from '@/components/TransformationCTA';
 import { DACHCompliance } from '@/components/DACHCompliance';
 import { ISO27001Section } from '@/components/ISO27001Section';
 import { EUAIActSection } from '@/components/EUAIActSection';
-import { ModernFeaturesGrid } from '@/components/ModernFeaturesGrid';
 import { CTASection } from '@/components/CTASection';
-import { Footer } from '@/components/Footer';
-import SEOHead from '@/components/SEOHead';
-import { useSmoothHomepage } from '@/hooks/useSmoothHomepage';
-
-// Import components directly instead of lazy loading to fix the issue
 import { InteractiveShowcase } from '@/components/InteractiveShowcase';
-import { InnovationShowcase } from '@/components/InnovationShowcase';
 import { TrustSecurity } from '@/components/TrustSecurity';
-import { SmartFAQ } from '@/components/SmartFAQ';
-import { IntelligentNewsletter } from '@/components/IntelligentNewsletter';
-
-// Import separator components
 import { KIActivationSeparator } from '@/components/separators/KIActivationSeparator';
 import { RegulatoryBridgeSeparator } from '@/components/separators/RegulatoryBridgeSeparator';
 import { SecurityStandardsMatrixSeparator } from '@/components/separators/SecurityStandardsMatrixSeparator';
@@ -29,68 +19,32 @@ import { GestureFlowSeparator } from '@/components/separators/GestureFlowSeparat
 import { QuantumShieldWaveSeparator } from '@/components/separators/QuantumShieldWaveSeparator';
 import { KnowledgeConstellationSeparator } from '@/components/separators/KnowledgeConstellationSeparator';
 
+const SmartFAQ = lazy(() => import('@/components/SmartFAQ').then(m => ({ default: m.SmartFAQ })));
+const IntelligentNewsletter = lazy(() => import('@/components/IntelligentNewsletter').then(m => ({ default: m.IntelligentNewsletter })));
+
 const Index = () => {
-  const {
-    scrollState,
-    isLoaded,
-    getComponentAnimationProps,
-    getParallaxTransform,
-    getSectionTransition,
-    getLoadingStyles,
-  } = useSmoothHomepage({
-    enableParallax: true,
-    enableStaggeredAnimations: true,
-    optimizeForMobile: true,
-    reduceMotionCompliance: true,
-  });
-
-
-  // Preload critical images and set initial visibility
+  const [viewportHeight, setViewportHeight] = React.useState('100vh');
+  const [isAboveFold, setIsAboveFold] = React.useState(true);
+  
   React.useEffect(() => {
-    // Preload images
-    const imagesToPreload = [
-      '/JLogoMarsstein.svg'
-    ];
+    const actualHeight = window.innerHeight;
+    setViewportHeight(`${actualHeight}px`);
     
-    imagesToPreload.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-    
-    // Immediately mark ALL homepage sections as visible for smooth as fuck experience
-    const aboveFoldSections = [
-      'hero-section',
-      'ki-separator', 
-      'scroll-transformation',
-      'transformation-cta',
-      'spacer-2',
-      'regulatory-separator',
-      'spacer-3',
-      'dach-compliance',
-      'security-separator',
-      'iso-section',
-      'ai-risk-separator',
-      'eu-ai-act',
-      'gesture-separator',
-      'interactive-showcase',
-      'quantum-separator',
-      'trust-security',
-      'knowledge-separator',
-      'smart-faq',
-      'divider-1',
-      'newsletter',
-      'innovation-showcase',
-      'features-grid',
-      'cta-section'
-    ];
-    
-    aboveFoldSections.forEach(id => {
-      const element = document.querySelector(`[data-component-id="${id}"]`);
-      if (element) {
-        element.classList.add('immediate-load');
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsAboveFold(window.scrollY < window.innerHeight * 0.5);
+          ticking = false;
+        });
+        ticking = true;
       }
-    });
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -112,219 +66,99 @@ const Index = () => {
         canonical="/"
         structuredData={structuredData}
       />
-      <motion.div 
-        className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-gray-50 dark:from-gray-950 dark:to-gray-900 smooth-homepage gpu-accelerate"
-        style={getLoadingStyles()}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <Header />
-        </motion.div>
+      
+      <style dangerouslySetInnerHTML={{ __html: `
+        .smooth-section { 
+          contain: layout style paint; 
+          will-change: auto;
+        }
+        .section-fade {
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .lazy-boundary { min-height: ${viewportHeight}; }
+      ` }} />
+      
+      <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-gray-50">
+        <Header />
         <main className="overflow-hidden">
-        <motion.div
-          className="smooth-section"
-          data-component-id="hero-section"
-          {...getComponentAnimationProps('hero-section', 0)}
-          style={getSectionTransition('hero-section')}
-          initial={{ scale: 0.95, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-        >
+        <div className="smooth-section section-fade">
           <HeroSection />
-        </motion.div>
+        </div>
         
-        {/* 1. Hero → ScrollTransformation: KI-Activation Network */}
-        <motion.div
-          className="smooth-parallax"
-          data-component-id="ki-separator"
-          {...getComponentAnimationProps('ki-separator', 0.1)}
-          style={{ transform: getParallaxTransform(0.2) }}
-        >
+        <div className={isAboveFold ? "section-fade" : ""}>
           <KIActivationSeparator />
-        </motion.div>
+        </div>
         
-        {/* Removed spacer - sections directly connected */}
-        <motion.div 
-          className="smooth-section"
-          data-component-id="scroll-transformation"
-          {...getComponentAnimationProps('scroll-transformation', 0.2)}
-          style={getSectionTransition('scroll-transformation')}
-        >
+        <div className="smooth-section section-fade">
           <ScrollTransformationNew />
-        </motion.div>
+        </div>
         
-        {/* Directly connected - no wrapper, no gap */}
-        <motion.div
-          className="smooth-section"
-          data-component-id="transformation-cta"
-          {...getComponentAnimationProps('transformation-cta', 0.2)}
-          style={getSectionTransition('transformation-cta')}
-        >
+        <div className="smooth-section section-fade">
           <TransformationCTA />
-        </motion.div>
+        </div>
         
-        <motion.div 
-          className="py-12"
-          {...getComponentAnimationProps('spacer-2', 0.35)}
-          style={{ opacity: scrollState.isScrolling ? 0.8 : 1 }}
-        />
+        <div className="py-12" />
         
-        {/* 2. TransformationCTA → DACH: Regulatory Bridge */}
-        <motion.div
-          className="smooth-parallax"
-          data-component-id="regulatory-separator"
-          {...getComponentAnimationProps('regulatory-separator', 0.4)}
-          style={{ transform: getParallaxTransform(0.3) }}
-        >
-          <RegulatoryBridgeSeparator />
-        </motion.div>
+        <RegulatoryBridgeSeparator />
         
-        <motion.div 
-          className="py-8"
-          {...getComponentAnimationProps('spacer-3', 0.45)}
-          style={{ opacity: scrollState.isScrolling ? 0.8 : 1 }}
-        />
+        <div className="py-8" />
         
-        <motion.div 
-          className="bg-gradient-to-b from-orange-50/20 via-white to-red-50/10 smooth-section"
-          data-component-id="dach-compliance"
-          {...getComponentAnimationProps('dach-compliance', 0.5)}
-          style={getSectionTransition('dach-compliance')}
-        >
+        <div className="bg-gradient-to-b from-orange-50/20 via-white to-red-50/10 smooth-section section-fade">
           <DACHCompliance />
-        </motion.div>
+        </div>
         
-        {/* 3. DACH → ISO: Security Standards Matrix */}
-        <motion.div
-          className="smooth-parallax"
-          data-component-id="security-separator"
-          {...getComponentAnimationProps('security-separator', 0.6)}
-          style={{ transform: getParallaxTransform(0.25) }}
-        >
-          <SecurityStandardsMatrixSeparator />
-        </motion.div>
+        <SecurityStandardsMatrixSeparator />
         
-        <motion.div 
-          className="bg-gradient-to-b from-red-50/10 to-orange-50/15 smooth-section"
-          data-component-id="iso-section"
-          {...getComponentAnimationProps('iso-section', 0.7)}
-          style={getSectionTransition('iso-section')}
-        >
+        <div className="bg-gradient-to-b from-red-50/10 to-orange-50/15 smooth-section section-fade">
           <ISO27001Section />
-        </motion.div>
+        </div>
         
-        {/* 4. ISO → AI Act: AI Risk Spectrum */}
-        <motion.div
-          className="smooth-parallax"
-          data-component-id="ai-risk-separator"
-          {...getComponentAnimationProps('ai-risk-separator', 0.8)}
-          style={{ transform: getParallaxTransform(0.15) }}
-        >
-          <AIRiskSpectrumSeparator />
-        </motion.div>
+        <AIRiskSpectrumSeparator />
         
-        <motion.div 
-          className="bg-gradient-to-b from-orange-50/15 via-white to-gray-50 smooth-section"
-          data-component-id="eu-ai-act"
-          {...getComponentAnimationProps('eu-ai-act', 0.9)}
-          style={getSectionTransition('eu-ai-act')}
-        >
+        <div className="bg-gradient-to-b from-orange-50/15 via-white to-gray-50 smooth-section section-fade">
           <EUAIActSection />
-        </motion.div>
+        </div>
         
-        {/* 5. AI Act → Interactive: Gesture Flow */}
-        <motion.div
-          className="smooth-parallax"
-          data-component-id="gesture-separator"
-          {...getComponentAnimationProps('gesture-separator', 1.0)}
-          style={{ transform: getParallaxTransform(0.1) }}
-        >
-          <GestureFlowSeparator />
-        </motion.div>
+        <GestureFlowSeparator />
         
-        <motion.div
-          className="smooth-section"
-          data-component-id="interactive-showcase"
-          {...getComponentAnimationProps('interactive-showcase', 1.1)}
-          style={getSectionTransition('interactive-showcase')}
-        >
+        <div className="smooth-section section-fade">
           <InteractiveShowcase />
-        </motion.div>
+        </div>
         
-        {/* 6. Interactive → Security: Quantum Shield Wave */}
-        <motion.div
-          className="smooth-parallax"
-          data-component-id="quantum-separator"
-          {...getComponentAnimationProps('quantum-separator', 1.2)}
-          style={{ transform: getParallaxTransform(0.2) }}
-        >
-          <QuantumShieldWaveSeparator />
-        </motion.div>
+        <QuantumShieldWaveSeparator />
         
-        <motion.div
-          className="smooth-section"
-          data-component-id="trust-security"
-          {...getComponentAnimationProps('trust-security', 1.3)}
-          style={getSectionTransition('trust-security')}
-        >
+        <div className="smooth-section section-fade">
           <TrustSecurity />
-        </motion.div>
+        </div>
         
-        {/* 7. Security → FAQ: Knowledge Constellation */}
-        <motion.div
-          className="smooth-parallax"
-          data-component-id="knowledge-separator"
-          {...getComponentAnimationProps('knowledge-separator', 1.4)}
-          style={{ transform: getParallaxTransform(0.05) }}
-        >
-          <KnowledgeConstellationSeparator />
-        </motion.div>
+        <KnowledgeConstellationSeparator />
         
-        <motion.div
-          className="smooth-section"
-          data-component-id="smart-faq"
-          {...getComponentAnimationProps('smart-faq', 1.5)}
-          style={getSectionTransition('smart-faq')}
-        >
-          <SmartFAQ />
-        </motion.div>
+        <Suspense fallback={<div className="h-20" />}>
+          <div className="smooth-section section-fade">
+            <SmartFAQ />
+          </div>
+        </Suspense>
 
-        <motion.div 
-          className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"
-          {...getComponentAnimationProps('divider-1', 1.6)}
-        />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
 
-        <motion.div
-          className="smooth-section"
-          data-component-id="newsletter"
-          {...getComponentAnimationProps('newsletter', 1.7)}
-          style={getSectionTransition('newsletter')}
-        >
-          <IntelligentNewsletter />
-        </motion.div>
+        <Suspense fallback={<div className="h-20" />}>
+          <div className="smooth-section section-fade">
+            <IntelligentNewsletter />
+          </div>
+        </Suspense>
 
-        <motion.div 
-          className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent"
-          {...getComponentAnimationProps('divider-2', 1.8)}
-        />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
         
-        <motion.div
-          className="smooth-section"
-          data-component-id="cta-section"
-          {...getComponentAnimationProps('cta-section', 1.9)}
-          style={getSectionTransition('cta-section')}
-        >
+        <div className="smooth-section section-fade">
           <CTASection />
-        </motion.div>
+        </div>
       </main>
       <Footer />
-    </motion.div>
+    </div>
     </>
   );
 };
