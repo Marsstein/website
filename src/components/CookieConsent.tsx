@@ -106,7 +106,7 @@ export const CookieConsentBanner: React.FC<CookieConsentProps> = ({ onConsentCha
 
   return (
     <div className="fixed inset-0 z-[300] bg-black/50 backdrop-blur-sm">
-      <div className="fixed bottom-0 left-0 right-0 p-4">
+      <div className="fixed top-0 left-0 right-0 p-4">
         <Card className="max-w-4xl mx-auto p-6 shadow-2xl border-2">
           <div className="flex items-start gap-4">
             <Cookie className="h-8 w-8 text-blue-600 mt-1 flex-shrink-0" />
