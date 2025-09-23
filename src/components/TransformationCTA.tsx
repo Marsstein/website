@@ -61,7 +61,7 @@ export const TransformationCTA: React.FC = () => {
           </defs>
           
           {/* Neural network connections */}
-          <g stroke="url(#synapseGrad)" strokeWidth="1.5" fill="none" className="animate-pulse">
+          <g stroke="url(#synapseGrad)" strokeWidth="1.5" fill="none" opacity="0.6">
             <path d="M100,88 Q200,60 300,88 Q400,116 500,88"/>
             <path d="M200,70 Q350,100 500,70 Q650,40 800,70"/>
             <path d="M300,106 Q450,80 600,106 Q750,132 900,106"/>
@@ -69,41 +69,36 @@ export const TransformationCTA: React.FC = () => {
             <path d="M600,126 Q750,98 900,126 Q1050,154 1100,126"/>
           </g>
           
-          {/* Neurons (main nodes) */}
+          {/* Neurons (main nodes) - simplified animations */}
           <g>
-            <circle cx="100" cy="88" r="12" fill="url(#neuronGlow)" className="animate-ping">
-              <animate attributeName="r" values="12;18;12" dur="2.5s" repeatCount="indefinite"/>
+            <circle cx="100" cy="88" r="12" fill="url(#neuronGlow)" opacity="0.8">
+              <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2.5s" repeatCount="indefinite"/>
             </circle>
             <circle cx="300" cy="88" r="10" fill="#e24e1b" opacity="0.7"/>
-            <circle cx="500" cy="88" r="14" fill="url(#neuronGlow)" className="animate-ping" style={{animationDelay: '0.8s'}}>
-              <animate attributeName="r" values="14;20;14" dur="3s" repeatCount="indefinite"/>
+            <circle cx="500" cy="88" r="14" fill="url(#neuronGlow)" opacity="0.8">
+              <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite"/>
             </circle>
             <circle cx="700" cy="88" r="10" fill="#e24e1b" opacity="0.7"/>
-            <circle cx="900" cy="88" r="12" fill="url(#neuronGlow)" className="animate-ping" style={{animationDelay: '1.6s'}}>
-              <animate attributeName="r" values="12;18;12" dur="2.2s" repeatCount="indefinite"/>
+            <circle cx="900" cy="88" r="12" fill="url(#neuronGlow)" opacity="0.8">
+              <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2.2s" repeatCount="indefinite"/>
             </circle>
             <circle cx="1100" cy="88" r="10" fill="#e24e1b" opacity="0.7"/>
           </g>
           
-          {/* Synapse signals */}
+          {/* Synapse signals - simplified for mobile compatibility */}
           <g>
-            <circle cx="150" cy="74" r="2" fill="#e24e1b" className="animate-bounce">
-              <animateMotion dur="4s" repeatCount="indefinite">
-                <mpath href="#path1"/>
-              </animateMotion>
+            <circle cx="150" cy="74" r="3" fill="#e24e1b" opacity="0.8">
+              <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="cx" values="150;250;350;250;150" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="cy" values="74;60;74;88;74" dur="4s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="400" cy="100" r="2" fill="#ff6b3d" className="animate-bounce" style={{animationDelay: '1s'}}>
-              <animateMotion dur="5s" repeatCount="indefinite">
-                <mpath href="#path2"/>
-              </animateMotion>
+            <circle cx="400" cy="100" r="3" fill="#ff6b3d" opacity="0.8">
+              <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="cx" values="400;550;700;550;400" dur="5s" repeatCount="indefinite"/>
+              <animate attributeName="cy" values="100;80;100;120;100" dur="5s" repeatCount="indefinite"/>
             </circle>
           </g>
           
-          {/* Hidden paths for motion */}
-          <defs>
-            <path id="path1" d="M100,88 Q200,60 300,88 Q400,116 500,88" fill="none"/>
-            <path id="path2" d="M300,106 Q450,80 600,106 Q750,132 900,106" fill="none"/>
-          </defs>
         </svg>
       </div>
 
