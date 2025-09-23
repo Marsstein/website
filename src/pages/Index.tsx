@@ -44,6 +44,7 @@ const Index = () => {
     reduceMotionCompliance: true,
   });
 
+
   // Preload critical images and set initial visibility
   React.useEffect(() => {
     // Preload images

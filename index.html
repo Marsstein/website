@@ -181,8 +181,9 @@
       .loading-screen{display:flex;align-items:center;justify-content:center;min-height:100vh}
       .spinner{width:2rem;height:2rem;border:2px solid #e5e7eb;border-top:2px solid #e24e1b;border-radius:50%;animation:spin 1s linear infinite}
       @keyframes spin{to{transform:rotate(360deg)}}
-      /* Smooth scrolling for all scrollable elements */
-      *{scroll-behavior:smooth}
+      /* Ultra smooth scrolling */
+      html,body{scroll-behavior:smooth;overscroll-behavior:none}
+      *{scrollbar-width:thin;scrollbar-color:#e24e1b #f0f0f0}
     </style>
     
     <!-- Intelligent Resource Prefetching -->
