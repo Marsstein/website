@@ -17,13 +17,13 @@ export default defineConfig({
   },
 
   build: {
-    target: 'es2015',
+    target: 'es2020',
     minify: 'terser',
     sourcemap: false,
+    cssMinify: true,
     
     rollupOptions: {
       output: {
-        
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name.split('.');
           const extType = info[info.length - 1];
@@ -32,9 +32,15 @@ export default defineConfig({
           }
           return `assets/[name]-[hash][extname]`;
         },
-        
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          motion: ['framer-motion', '@react-spring/web'],
+          utils: ['clsx', 'tailwind-merge']
+        }
       },
     },
 
@@ -44,7 +50,8 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug']
+        pure_funcs: ['console.log', 'console.info', 'console.debug'],
+        passes: 2
       },
       mangle: {
         safari10: true

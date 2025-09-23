@@ -197,6 +197,8 @@ export const Header: React.FC = () => {
             src="/JLogoMarsstein.svg" 
             alt="Marsstein Logo" 
             className="h-8 w-auto"
+            loading="eager"
+            decoding="async"
           />
         </Link>
 
@@ -228,7 +230,7 @@ export const Header: React.FC = () => {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" aria-label="Anmelden">
             Anmelden
           </Button>
           <Link to="/contact?demo=true">
@@ -242,7 +244,7 @@ export const Header: React.FC = () => {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" aria-label="Navigation Menu öffnen">
                 <LucideMenu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
@@ -254,6 +256,8 @@ export const Header: React.FC = () => {
                     src="/JLogoMarsstein.svg" 
                     alt="Marsstein Logo" 
                     className="h-6 w-auto"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 
@@ -331,7 +335,7 @@ export const Header: React.FC = () => {
                 </div>
 
                 <div className="border-t pt-4 space-y-3">
-                  <Button variant="ghost" className="w-full justify-center">
+                  <Button variant="ghost" className="w-full justify-center" aria-label="Anmelden">
                     Anmelden
                   </Button>
                   <Link to="/contact?demo=true" className="block">

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -36,16 +36,18 @@ interface AIRiskCategory {
   };
 }
 
-// Optimized Neural Network Component
+// Optimized Neural Network Component  
 const NeuralNetwork: React.FC<{ intensity?: number }> = ({ intensity = 1 }) => {
   const [nodes, setNodes] = useState<Array<{id: number, x: number, y: number, active: boolean}>>([]);
   const [connections, setConnections] = useState<Array<{from: number, to: number, strength: number}>>([]);
 
-  const neuralAnimConfig = usePerformantAnimation({
+  const animationConfig = useMemo(() => ({
     duration: 800,
-    complexity: 'high',
-    enableFor: 'high-performance-only'
-  });
+    complexity: 'high' as const,
+    enableFor: 'high-performance-only' as const
+  }), []);
+
+  const neuralAnimConfig = usePerformantAnimation(animationConfig);
 
   useEffect(() => {
     if (!neuralAnimConfig.shouldAnimate) {
@@ -98,7 +100,7 @@ const NeuralNetwork: React.FC<{ intensity?: number }> = ({ intensity = 1 }) => {
     }, animationInterval);
 
     return () => clearInterval(interval);
-  }, [intensity, neuralAnimConfig]);
+  }, [intensity, neuralAnimConfig.shouldAnimate, neuralAnimConfig.reducedComplexity]);
 
   return (
     <div className="absolute inset-0 opacity-20">

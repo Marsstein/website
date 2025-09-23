@@ -20,7 +20,7 @@ const transformationCards = [
     problem: {
       icon: Euro,
       title: 'Massive Bußgelder',
-      description: 'DSGVO-Verstöße können bis zu 4% des Jahresumsatzes oder 20',
+      description: 'DSGVO-Verstöße können bis zu 4% des Jahresumsatzes oder 20 Millionen Euro kosten.',
       metric: 'Bis zu 20 Mio. €',
       color: 'red'
     },
@@ -38,7 +38,7 @@ const transformationCards = [
     problem: {
       icon: Clock,
       title: 'Zeitaufwändige Prozesse',
-      description: 'Manuelle Compliance-Vorbereitung verschwendet wertvolle Arbeitszeit',
+      description: 'Manuelle Compliance-Vorbereitung verschwendet wertvolle Arbeitszeit und Ressourcen.',
       metric: '120+ Stunden/Audit',
       color: 'orange'
     },
@@ -56,7 +56,7 @@ const transformationCards = [
     problem: {
       icon: TrendingDown,
       title: 'Regulatorische Komplexität',
-      description: 'EU AI Act, NIS2, DORA - die Anzahl der Vorschriften wächst exponentiell',
+      description: 'EU AI Act, NIS2, DORA - die Anzahl der Vorschriften wächst exponentiell.',
       metric: '12+ neue Gesetze/Jahr',
       color: 'amber'
     },
@@ -74,7 +74,7 @@ const transformationCards = [
     problem: {
       icon: FileWarning,
       title: 'Inkonsistente Dokumentation',
-      description: 'Veraltete Richtlinien und fehlende Nachweise erschweren Audits',
+      description: 'Veraltete Richtlinien und fehlende Nachweise erschweren Audits erheblich.',
       metric: '67% unvollständig',
       color: 'red'
     },
@@ -197,8 +197,11 @@ export const ScrollTransformationNew: React.FC = () => {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-5xl mx-auto">
           {transformationCards.map((card, index) => {
-            const isActive = index <= activeCardIndex;
-            const showSolution = showSolutions && isActive;
+            // Calculate individual card transformation progress
+            const cardStartProgress = 0.3 + (index * 0.15); // Start at 0.3, each card 0.15 apart
+            const cardEndProgress = cardStartProgress + 0.1; // Each card has 0.1 range for transformation
+            const cardProgress = Math.max(0, Math.min(1, (progress - cardStartProgress) / (cardEndProgress - cardStartProgress)));
+            const showSolution = cardProgress > 0.5;
             
             return (
               <motion.div
@@ -291,7 +294,7 @@ export const ScrollTransformationNew: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20">
-            Typische DACH-Probleme gelöst
+            ✓ Typische DACH-Probleme
           </Badge>
         </motion.div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -34,8 +34,6 @@ import { cn } from '@/lib/utils';
 import CountUp from 'react-countup';
 import { usePerformantAnimation, getOptimizedTransition, getGPUAcceleratedStyle } from '@/hooks/usePerformantAnimation';
 
-// Removed old useTypewriter hook - using inline effect instead
-
 interface CountryCompliance {
   id: string;
   country: string;
@@ -56,6 +54,72 @@ interface CountryCompliance {
     gradient: string;
   };
 }
+
+// Optimized features
+const features = [
+  {
+    icon: Brain,
+    title: 'KI-gestützte Automatisierung',
+    description: 'Vollautomatische Dokumentation und kontinuierliche Überwachung',
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-500/20'
+  },
+  {
+    icon: Database,
+    title: 'Zentralisierte Verwaltung',
+    description: 'Alle Compliance-Dokumente und Nachweise in einer sicheren Plattform',
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-500/20'
+  },
+  {
+    icon: Network,
+    title: 'Echtzeit-Überwachung',
+    description: 'Live-Updates zu Gesetzesänderungen und Compliance-Status',
+    color: 'text-emerald-600',
+    bgColor: 'bg-emerald-500/20'
+  },
+  {
+    icon: Layers,
+    title: 'Multi-Standard Support',
+    description: 'DSGVO, ISO 27001, NIS2, EU AI Act und weitere Standards',
+    color: 'text-orange-600',
+    bgColor: 'bg-orange-500/20'
+  }
+];
+
+// Metrics with enhanced visuals
+const metrics = [
+  { 
+    number: '99.8', 
+    suffix: '%', 
+    label: 'Compliance Rate', 
+    icon: Target,
+    color: 'text-emerald-600',
+    description: 'Unserer Kunden erfüllen alle Standards'
+  },
+  { 
+    number: '3', 
+    label: 'DACH-Länder', 
+    icon: MapPin,
+    color: 'text-red-600',
+    description: 'Deutschland, Österreich, Schweiz'
+  },
+  { 
+    number: '18', 
+    label: 'Gesetze abgedeckt', 
+    icon: Scale,
+    color: 'text-blue-600',
+    description: 'Von DSGVO bis EU AI Act'
+  },
+  { 
+    number: '24', 
+    suffix: '/7', 
+    label: 'Live Updates', 
+    icon: Activity,
+    color: 'text-purple-600',
+    description: 'Kontinuierliche Überwachung'
+  }
+];
 
 const dachCountries: CountryCompliance[] = [
   {
@@ -120,18 +184,11 @@ const dachCountries: CountryCompliance[] = [
   }
 ];
 
-const complianceStats = [
-  { label: 'DACH-Länder', value: 3, icon: Flag, color: 'text-[#e24e1b]' },
-  { label: 'Gesetze abgedeckt', value: 18, icon: FileCheck, color: 'text-blue-500' },
-  { label: 'Compliance Rate', value: 99, icon: Target, color: 'text-emerald-500' },
-  { label: 'Live Updates', value: 24, suffix: '/7', icon: Activity, color: 'text-purple-500' }
-];
-
 export const DACHCompliance: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredStat, setHoveredStat] = useState<number | null>(null);
-  const [updateTyped, setUpdateTyped] = useState(false);
+  const [hoveredMetric, setHoveredMetric] = useState<number | null>(null);
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   
   const currentCountry = dachCountries[selectedCountry];
@@ -139,18 +196,21 @@ export const DACHCompliance: React.FC = () => {
   const [showSource, setShowSource] = useState(false);
   const [typingComplete, setTypingComplete] = useState(false);
 
-  // Performance optimizations
-  const mainAnimConfig = usePerformantAnimation({
+  // Optimized animation config using useMemo
+  const animationConfig = useMemo(() => ({
     duration: 800,
-    complexity: 'medium',
-    enableFor: 'all'
-  });
-  
-  const complexAnimConfig = usePerformantAnimation({
+    complexity: 'medium' as const,
+    enableFor: 'all' as const
+  }), []);
+
+  const complexAnimationConfig = useMemo(() => ({
     duration: 3000,
-    complexity: 'high',
-    enableFor: 'high-performance-only'
-  });
+    complexity: 'high' as const,
+    enableFor: 'high-performance-only' as const
+  }), []);
+
+  const mainAnimConfig = usePerformantAnimation(animationConfig);
+  const complexAnimConfig = usePerformantAnimation(complexAnimationConfig);
 
   const gpuStyles = getGPUAcceleratedStyle(mainAnimConfig);
 
@@ -171,13 +231,10 @@ export const DACHCompliance: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Removed auto-switching for better user control
-  
-  // Typewriter effect for current country
+  // Optimized typewriter effect
   useEffect(() => {
     if (!isVisible) return;
     
-    // Reset states when country changes
     setCurrentText('');
     setShowSource(false);
     setTypingComplete(false);
@@ -211,93 +268,8 @@ export const DACHCompliance: React.FC = () => {
         {/* Gradient Mesh */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(226,78,27,0.05)_0%,transparent_50%),radial-gradient(circle_at_70%_80%,rgba(239,68,68,0.05)_0%,transparent_50%),radial-gradient(circle_at_50%_20%,rgba(59,130,246,0.05)_0%,transparent_50%)]" />
         
-        {/* Animated Elements */}
-        {complexAnimConfig.shouldAnimate && (
-          <>
-            <motion.div 
-              className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-[#e24e1b]/8 to-red-500/8 rounded-full blur-3xl"
-              style={gpuStyles}
-              animate={complexAnimConfig.reducedComplexity ? 
-                { opacity: [0.8, 1, 0.8] } : 
-                { scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }
-              }
-              transition={getOptimizedTransition({
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }, complexAnimConfig)}
-            />
-            <motion.div 
-              className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-r from-blue-500/8 to-purple-500/8 rounded-full blur-3xl"
-              style={gpuStyles}
-              animate={complexAnimConfig.reducedComplexity ? 
-                { opacity: [0.7, 1, 0.7] } : 
-                { y: [-10, 10, -10], scale: [1, 1.1, 1] }
-              }
-              transition={getOptimizedTransition({
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }, complexAnimConfig)}
-            />
-          </>
-        )}
-        
         {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        
-        {/* Flag Icons Background */}
-        {complexAnimConfig.shouldAnimate && (
-          <>
-            <motion.div 
-              className="absolute top-1/4 left-1/4 text-6xl opacity-5"
-              style={gpuStyles}
-              animate={complexAnimConfig.reducedComplexity ? 
-                { opacity: [0.3, 0.7, 0.3] } : 
-                { y: [-10, 10, -10], rotate: [0, 5, -5, 0] }
-              }
-              transition={getOptimizedTransition({
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }, complexAnimConfig)}
-            >
-              🇩🇪
-            </motion.div>
-            <motion.div 
-              className="absolute top-1/3 right-1/3 text-5xl opacity-5"
-              style={gpuStyles}
-              animate={complexAnimConfig.reducedComplexity ? 
-                { opacity: [0.3, 0.7, 0.3] } : 
-                { y: [10, -10, 10], rotate: [0, -5, 5, 0] }
-              }
-              transition={getOptimizedTransition({
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2
-              }, complexAnimConfig)}
-            >
-              🇦🇹
-            </motion.div>
-            <motion.div 
-              className="absolute bottom-1/3 left-1/3 text-7xl opacity-5"
-              style={gpuStyles}
-              animate={complexAnimConfig.reducedComplexity ? 
-                { opacity: [0.3, 0.7, 0.3] } : 
-                { y: [-15, 15, -15], scale: [1, 1.1, 1] }
-              }
-              transition={getOptimizedTransition({
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 4
-              }, complexAnimConfig)}
-            >
-              🇨🇭
-            </motion.div>
-          </>
-        )}
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -305,118 +277,203 @@ export const DACHCompliance: React.FC = () => {
         {/* Enhanced Header */}
         <div className="text-center mb-16 space-y-6">
           <motion.div 
-            className="inline-flex items-center gap-4 px-8 py-4 rounded-full glassmorphism border border-[#e24e1b]/20"
-            style={gpuStyles}
+            className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-white/60 backdrop-blur-sm border border-gray-200/50"
             initial={{ y: 20, opacity: 0 }}
             animate={isVisible ? { y: 0, opacity: 1 } : {}}
-            transition={getOptimizedTransition({ duration: 0.6, ease: "easeOut" }, mainAnimConfig)}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="relative">
-              {complexAnimConfig.shouldAnimate && (
-                <motion.div
-                  style={gpuStyles}
-                  animate={complexAnimConfig.reducedComplexity ? 
-                    { rotate: [0, 360] } : 
-                    { scale: [1, 1.2, 1], rotate: [0, 180, 360] }
-                  }
-                  transition={getOptimizedTransition({
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }, complexAnimConfig)}
-                >
-                  <MapPin className="w-5 h-5 text-[#e24e1b]" />
-                </motion.div>
-              )}
-              {!complexAnimConfig.shouldAnimate && (
-                <MapPin className="w-5 h-5 text-[#e24e1b]" />
-              )}
-              {complexAnimConfig.shouldAnimate && (
-                <motion.div 
-                  className="absolute inset-0 bg-[#e24e1b] rounded-full opacity-30"
-                  style={gpuStyles}
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={getOptimizedTransition({
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }, complexAnimConfig)}
-                />
-              )}
-            </div>
-            <span className="font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-              DACH-Spezialist
-            </span>
+            <MapPin className="w-5 h-5 text-[#e24e1b]" />
+            <span className="font-semibold text-gray-800">DACH-Spezialist</span>
             <Badge className="bg-gradient-to-r from-[#e24e1b] to-orange-500 text-white border-0 px-3">
               Regional
             </Badge>
           </motion.div>
           
           <motion.h2 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight"
-            style={gpuStyles}
+            className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-gray-900"
             initial={{ y: 30, opacity: 0 }}
             animate={isVisible ? { y: 0, opacity: 1 } : {}}
-            transition={getOptimizedTransition({ duration: 0.8, delay: 0.2, ease: "easeOut" }, mainAnimConfig)}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            <span className="block text-gray-900">
-              <span className="block sm:hidden">DSGVO für</span>
-              <span className="hidden sm:block">DSGVO Compliance für den</span>
-            </span>
-            <motion.span 
-              className="block bg-gradient-to-r from-[#e24e1b] via-red-500 to-[#e24e1b] bg-clip-text text-transparent"
-              style={{
-                backgroundSize: '300% 300%'
-              }}
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
+            <span className="block">DSGVO Compliance für den</span>
+            <span className="block bg-gradient-to-r from-[#e24e1b] via-red-500 to-[#e24e1b] bg-clip-text text-transparent">
               DACH-Raum
-            </motion.span>
+            </span>
           </motion.h2>
           
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4"
+            className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
             initial={{ y: 30, opacity: 0 }}
             animate={isVisible ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           >
-            <span className="block sm:hidden">
-              Compliance-Lösungen für 
-              <span className="font-bold text-gray-900"> Deutschland, Österreich und die Schweiz.</span>
-            </span>
-            <span className="hidden sm:block">
-              Maßgeschneiderte Compliance-Lösungen für 
-              <span className="font-bold text-gray-900"> Deutschland, Österreich und die Schweiz.</span>
-              <br />
-              Mit lokalen Rechtsexperten und automatischen Updates zu nationalen Gesetzen.
-            </span>
+            Maßgeschneiderte Compliance-Lösungen für 
+            <span className="font-bold text-gray-900"> Deutschland, Österreich und die Schweiz.</span>
+            <br className="hidden md:block" />
+            Mit lokalen Rechtsexperten und automatischen Updates zu nationalen Gesetzen.
           </motion.p>
         </div>
 
+        {/* Enhanced Metrics Grid */}
+        <motion.div 
+          className="mb-20"
+          initial={{ y: 50, opacity: 0 }}
+          animate={isVisible ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {metrics.map((metric, index) => (
+              <motion.div
+                key={index}
+                className="group relative"
+                initial={{ y: 30, opacity: 0 }}
+                animate={isVisible ? { y: 0, opacity: 1 } : {}}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.8 + (index * 0.1),
+                  ease: "easeOut"
+                }}
+                onMouseEnter={() => setHoveredMetric(index)}
+                onMouseLeave={() => setHoveredMetric(null)}
+              >
+                <Card className="p-4 md:p-6 h-full text-center bg-white/60 backdrop-blur-sm border-white/60 shadow-sm hover:shadow-lg transition-all duration-300 group-hover:border-[#e24e1b]/30">
+                  {/* Icon */}
+                  <motion.div 
+                    className={cn(
+                      "mx-auto p-3 rounded-xl w-fit transition-all duration-300 mb-3",
+                      hoveredMetric === index 
+                        ? "bg-gradient-to-br from-[#e24e1b]/20 to-orange-500/20 scale-110" 
+                        : "bg-gray-100/50 group-hover:bg-[#e24e1b]/10"
+                    )}
+                  >
+                    <metric.icon className={cn("h-6 w-6 transition-colors duration-300", metric.color)} />
+                  </motion.div>
+
+                  {/* Value */}
+                  <motion.div 
+                    className="text-2xl md:text-3xl font-black text-gray-900 mb-1"
+                    animate={hoveredMetric === index ? { scale: [1, 1.1, 1] } : {}}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {isVisible && <CountUp end={Number(metric.number)} duration={2} />}
+                    {metric.suffix && <span className="text-lg">{metric.suffix}</span>}
+                  </motion.div>
+
+                  {/* Label */}
+                  <p className="text-sm font-medium text-gray-900 mb-1">
+                    {metric.label}
+                  </p>
+                  
+                  {/* Description */}
+                  <p className="text-xs text-gray-600 leading-tight">
+                    {metric.description}
+                  </p>
+
+                  {/* Hover Effect Indicator */}
+                  <motion.div 
+                    className="h-1 bg-gradient-to-r from-[#e24e1b] to-orange-500 rounded-full mx-auto transition-all duration-300 mt-3"
+                    style={{ 
+                      width: hoveredMetric === index ? '100%' : '0%'
+                    }}
+                  />
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Enhanced Features Grid */}
+        <motion.div 
+          className="mb-20"
+          initial={{ y: 50, opacity: 0 }}
+          animate={isVisible ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Ihre Vorteile mit Marsstein
+            </h3>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Moderne Technologie trifft auf regulatorische Expertise für 
+              umfassende DACH-Compliance.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                className="group relative"
+                initial={{ y: 30, opacity: 0 }}
+                animate={isVisible ? { y: 0, opacity: 1 } : {}}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 1.2 + (index * 0.1),
+                  ease: "easeOut"
+                }}
+                onMouseEnter={() => setHoveredFeature(index)}
+                onMouseLeave={() => setHoveredFeature(null)}
+              >
+                <Card className="p-6 h-full bg-white/60 backdrop-blur-sm border-white/60 shadow-sm hover:shadow-lg transition-all duration-300 group-hover:border-[#e24e1b]/30 relative overflow-hidden">
+                  {/* Background Effect */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-br from-[#e24e1b]/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                  
+                  <div className="relative">
+                    {/* Icon */}
+                    <motion.div 
+                      className={cn(
+                        "p-3 rounded-xl w-fit mb-4 transition-all duration-300",
+                        hoveredFeature === index 
+                          ? `${feature.bgColor} scale-110` 
+                          : "bg-gray-100/50 group-hover:bg-[#e24e1b]/10"
+                      )}
+                    >
+                      <feature.icon className={cn("h-6 w-6 transition-colors duration-300", feature.color)} />
+                    </motion.div>
+
+                    {/* Title */}
+                    <h4 className="text-lg font-bold text-gray-900 mb-3">
+                      {feature.title}
+                    </h4>
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+
+                    {/* Hover Effect Indicator */}
+                    <motion.div 
+                      className="h-1 bg-gradient-to-r from-[#e24e1b] to-orange-500 rounded-full transition-all duration-300 mt-4"
+                      style={{ 
+                        width: hoveredFeature === index ? '100%' : '0%'
+                      }}
+                    />
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Enhanced Country Selector */}
         <motion.div 
-          className="flex justify-center mb-12 px-4"
+          className="flex justify-center mb-12"
           initial={{ y: 30, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
         >
-          <Card className="p-2 glassmorphism-card border-white/30 w-full max-w-2xl">
+          <Card className="p-2 bg-white/60 backdrop-blur-sm border-white/60 w-full max-w-2xl">
             <div className="flex flex-col sm:flex-row rounded-lg gap-2 sm:gap-0">
               {dachCountries.map((country, index) => (
                 <motion.button
                   key={country.id}
                   onClick={() => setSelectedCountry(index)}
                   className={cn(
-                    "flex items-center gap-2 sm:gap-4 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 text-base sm:text-lg font-semibold relative overflow-hidden flex-1 justify-center sm:justify-start",
+                    "flex items-center gap-3 px-6 py-4 rounded-lg transition-all duration-300 text-lg font-semibold relative overflow-hidden flex-1 justify-center sm:justify-start",
                     selectedCountry === index
-                      ? "bg-gradient-to-r from-[#e24e1b]/10 to-orange-500/10 text-gray-900 shadow-lg scale-105"
+                      ? "bg-gradient-to-r from-[#e24e1b]/10 to-orange-500/10 text-gray-900 shadow-lg"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   )}
                   whileHover={{ scale: 1.02 }}
@@ -430,14 +487,13 @@ export const DACHCompliance: React.FC = () => {
                     />
                   )}
                   <motion.span 
-                    className="text-xl sm:text-2xl relative z-10"
+                    className="text-2xl relative z-10"
                     animate={selectedCountry === index ? { scale: [1, 1.2, 1] } : {}}
                     transition={{ duration: 0.5 }}
                   >
                     {country.flag}
                   </motion.span>
-                  <span className="relative z-10 hidden sm:inline">{country.country}</span>
-                  <span className="relative z-10 sm:hidden text-sm">{country.country}</span>
+                  <span className="relative z-10">{country.country}</span>
                   {selectedCountry === index && (
                     <motion.div 
                       className="w-2 h-2 bg-[#e24e1b] rounded-full relative z-10"
@@ -451,136 +507,71 @@ export const DACHCompliance: React.FC = () => {
           </Card>
         </motion.div>
 
-        {/* Enhanced Country Details */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-12 px-4">
+        {/* Country Details */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
           
           {/* Left: Country Overview */}
           <motion.div 
-            className="space-y-4"
+            className="space-y-6"
             initial={{ x: -50, opacity: 0 }}
             animate={isVisible ? { x: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
           >
-            <Card className="p-4 glassmorphism-card border-white/30 relative overflow-hidden group">
-              {/* Background Gradient */}
-              <motion.div 
-                className={cn(
-                  "absolute inset-0 bg-gradient-to-br opacity-50 transition-opacity duration-500",
-                  currentCountry.color.gradient
-                )}
-                animate={{
-                  opacity: [0.5, 0.7, 0.5]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+            <Card className="p-6 bg-white/60 backdrop-blur-sm border-white/60 relative overflow-hidden">
               
-              <div className="relative space-y-4">
+              <div className="relative space-y-6">
                 {/* Country Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <motion.div 
-                    className="text-4xl"
-                    animate={{
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 5, -5, 0]
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
+                <div className="flex items-center gap-4">
+                  <div className="text-5xl">
                     {currentCountry.flag}
-                  </motion.div>
+                  </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">
+                    <h3 className="text-2xl font-bold text-gray-900">
                       {currentCountry.country}
                     </h3>
-                    <p className="text-sm text-gray-600">Rechtsprechung & Compliance</p>
+                    <p className="text-gray-600">Rechtsprechung & Compliance</p>
                   </div>
                 </div>
 
                 {/* Compliance Score */}
-                <motion.div 
-                  className="flex items-center justify-between p-3 rounded-lg glassmorphism border border-white/20"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", bounce: 0.3 }}
-                >
-                  <div className="flex items-center gap-2">
-                    <motion.div
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                    >
-                      <Target className="h-5 w-5 text-emerald-500" />
-                    </motion.div>
-                    <span className="font-semibold text-gray-900 text-sm">Compliance Score</span>
+                <div className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/20">
+                  <div className="flex items-center gap-3">
+                    <Target className="h-6 w-6 text-emerald-500" />
+                    <span className="font-semibold text-gray-900">Compliance Score</span>
                   </div>
                   <motion.div 
-                    className="text-2xl font-black text-emerald-500"
+                    className="text-3xl font-black text-emerald-500"
                     initial={{ scale: 0 }}
                     animate={isVisible ? { scale: 1 } : {}}
-                    transition={{ delay: 1, type: "spring", bounce: 0.5 }}
+                    transition={{ delay: 1.8, type: "spring", bounce: 0.5 }}
                   >
                     {isVisible && <CountUp end={currentCountry.complianceScore} duration={2} />}%
                   </motion.div>
-                </motion.div>
+                </div>
 
                 {/* Coverage */}
-                <motion.div 
-                  className="p-3 rounded-lg bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/20"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", bounce: 0.3 }}
-                >
-                  <div className="flex items-center gap-2">
-                    <motion.div
-                      animate={{ 
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 180, 360]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      <Shield className="h-4 w-4 text-emerald-600" />
-                    </motion.div>
-                    <span className="font-semibold text-emerald-800 text-sm">
+                <div className="p-4 rounded-lg bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20">
+                  <div className="flex items-center gap-3">
+                    <Shield className="h-5 w-5 text-blue-600" />
+                    <span className="font-semibold text-blue-800">
                       {currentCountry.coverage}
                     </span>
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Recent Updates with Typewriter */}
-                <div className="space-y-2">
-                  <motion.div 
-                    className="p-4 rounded-lg bg-white border border-gray-300 shadow-sm relative overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", bounce: 0.3 }}
+                {/* Recent Updates */}
+                <div className="space-y-3">
+                  <div 
+                    className="p-4 rounded-lg bg-white border border-gray-300 shadow-sm"
                     style={{
                       fontFamily: '"Courier New", "Liberation Mono", "Consolas", monospace'
                     }}
                   >
                     <div className="space-y-3">
-                      {/* Header with Date */}
+                      {/* Header */}
                       <div className="flex items-center justify-between border-b border-gray-200 pb-2">
                         <div className="flex items-center gap-2">
-                          <motion.div
-                            animate={{ 
-                              scale: [1, 1.3, 1],
-                              opacity: [1, 0.5, 1]
-                            }}
-                            transition={{
-                              duration: 1.5,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
-                          >
-                            <Activity className="h-4 w-4 text-blue-500" />
-                          </motion.div>
+                          <Activity className="h-4 w-4 text-blue-500" />
                           <span className="font-bold text-gray-900 uppercase tracking-wide text-sm">
                             Aktuelle Updates
                           </span>
@@ -604,9 +595,9 @@ export const DACHCompliance: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                   
-                  {/* Source Link - Below the card */}
+                  {/* Source Link */}
                   {showSource && (
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
@@ -631,57 +622,43 @@ export const DACHCompliance: React.FC = () => {
 
           {/* Right: Laws & Regulations */}
           <motion.div 
-            className="space-y-4"
+            className="space-y-6"
             initial={{ x: 50, opacity: 0 }}
             animate={isVisible ? { x: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
           >
-            <Card className="p-4 glassmorphism-card border-white/30">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 mb-4">
-                  <motion.div 
-                    className="p-2 rounded-lg bg-gradient-to-br from-[#e24e1b] to-orange-500 text-white"
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: [0, -10, 10, 0] 
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Scale className="h-4 w-4" />
-                  </motion.div>
-                  <h3 className="text-lg font-bold text-gray-900">
+            <Card className="p-6 bg-white/60 backdrop-blur-sm border-white/60">
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-[#e24e1b] to-orange-500 text-white">
+                    <Scale className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">
                     Relevante Gesetze & Vorschriften
                   </h3>
                 </div>
 
                 {/* Laws Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {currentCountry.laws.map((law, index) => (
                     <motion.div 
                       key={index}
-                      className="group p-2 sm:p-3 rounded-lg glassmorphism border border-white/20 hover:border-[#e24e1b]/30 cursor-pointer"
-                      whileHover={{ 
-                        scale: 1.05,
-                        y: -2
-                      }}
+                      className="group p-3 rounded-lg bg-white/60 backdrop-blur-sm border border-gray-200 hover:border-[#e24e1b]/30 cursor-pointer transition-all duration-300"
+                      whileHover={{ scale: 1.05, y: -2 }}
                       initial={{ opacity: 0, y: 20 }}
                       animate={isVisible ? { opacity: 1, y: 0 } : {}}
                       transition={{ 
                         duration: 0.5, 
-                        delay: 1.2 + (index * 0.1),
+                        delay: 2.0 + (index * 0.1),
                         type: "spring",
                         bounce: 0.3
                       }}
                     >
-                      <div className="flex items-center gap-1 sm:gap-2">
-                        <motion.div 
-                          className="p-1 rounded bg-gradient-to-br from-gray-100 to-gray-50 group-hover:from-[#e24e1b]/10 group-hover:to-orange-500/10 transition-all duration-300 flex-shrink-0"
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <FileCheck className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-gray-600 group-hover:text-[#e24e1b] transition-colors" />
-                        </motion.div>
-                        <span className="font-semibold text-gray-900 text-xs sm:text-sm truncate">{law}</span>
+                      <div className="flex items-center gap-2">
+                        <div className="p-1 rounded bg-gray-100 group-hover:bg-[#e24e1b]/10 transition-all duration-300">
+                          <FileCheck className="h-3 w-3 text-gray-600 group-hover:text-[#e24e1b] transition-colors" />
+                        </div>
+                        <span className="font-semibold text-gray-900 text-sm">{law}</span>
                       </div>
                     </motion.div>
                   ))}
@@ -689,55 +666,31 @@ export const DACHCompliance: React.FC = () => {
 
                 {/* Specialties */}
                 <motion.div 
-                  className="pt-4 border-t border-gray-200/50"
+                  className="pt-6 border-t border-gray-200"
                   initial={{ opacity: 0 }}
                   animate={isVisible ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 1.8 }}
+                  transition={{ duration: 0.6, delay: 2.4 }}
                 >
-                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2 text-sm">
-                    <motion.div
-                      animate={{ 
-                        rotate: [0, 180, 360],
-                        scale: [1, 1.2, 1]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      <Sparkles className="h-4 w-4 text-[#e24e1b]" />
-                    </motion.div>
+                  <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-[#e24e1b]" />
                     Besonderheiten
                   </h4>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {currentCountry.specialties.map((specialty, index) => (
                       <motion.div 
                         key={index} 
-                        className="flex items-start gap-2 p-2 rounded glassmorphism border border-white/10"
+                        className="flex items-start gap-3 p-3 rounded-lg bg-white/60 backdrop-blur-sm border border-gray-200"
                         initial={{ opacity: 0, x: -20 }}
                         animate={isVisible ? { opacity: 1, x: 0 } : {}}
                         transition={{ 
                           duration: 0.5, 
-                          delay: 2.0 + (index * 0.2),
+                          delay: 2.6 + (index * 0.2),
                           ease: "easeOut"
                         }}
                         whileHover={{ x: 5 }}
                       >
-                        <motion.div 
-                          className="w-1.5 h-1.5 rounded-full bg-[#e24e1b] mt-1.5 flex-shrink-0"
-                          animate={{ 
-                            scale: [1, 1.5, 1],
-                            opacity: [1, 0.5, 1]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: index * 0.3
-                          }}
-                        />
-                        <span className="text-gray-700 text-sm">{specialty}</span>
+                        <div className="w-2 h-2 rounded-full bg-[#e24e1b] mt-2 flex-shrink-0" />
+                        <span className="text-gray-700">{specialty}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -747,268 +700,68 @@ export const DACHCompliance: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Enhanced Stats Section */}
+        {/* Enhanced CTA */}
         <motion.div 
-          className="mb-12 px-4 sm:px-6 lg:px-8 flex justify-center"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isVisible ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
-        >
-          <Card className="p-4 sm:p-6 glassmorphism-premium border-white/30 relative overflow-hidden w-full max-w-4xl mx-auto">
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/5 via-transparent to-red-500/5"
-              animate={{
-                opacity: [0.5, 0.8, 0.5]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            
-            <div className="relative">
-              <motion.div 
-                className="text-center mb-4"
-                initial={{ y: 10, opacity: 0 }}
-                animate={isVisible ? { y: 0, opacity: 1 } : {}}
-                transition={{ duration: 0.6, delay: 1.6 }}
-              >
-                <h3 className="text-sm sm:text-base font-semibold text-gray-800 mb-1">
-                  DACH-Compliance in Zahlen
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-500">
-                  Vollständige Abdeckung aller relevanten Gesetze und Vorschriften
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-1">
-                {complianceStats.map((stat, index) => {
-                  const Icon = stat.icon;
-                  const isHovered = hoveredStat === index;
-                  
-                  return (
-                    <motion.div 
-                      key={index} 
-                      className="text-center group cursor-pointer"
-                      onMouseEnter={() => setHoveredStat(index)}
-                      onMouseLeave={() => setHoveredStat(null)}
-                      initial={{ y: 15, opacity: 0 }}
-                      animate={isVisible ? { y: 0, opacity: 1 } : {}}
-                      transition={{ 
-                        duration: 0.6, 
-                        delay: 1.8 + (index * 0.1),
-                        ease: "easeOut"
-                      }}
-                      whileHover={{ y: -2 }}
-                    >
-                      <div className="space-y-0.5">
-                        <motion.div 
-                          className={cn(
-                            "inline-flex p-1 rounded-md transition-all duration-300",
-                            isHovered 
-                              ? "bg-gradient-to-br from-[#e24e1b]/10 to-orange-500/10 scale-105" 
-                              : "bg-gradient-to-br from-gray-100 to-gray-50"
-                          )}
-                          whileHover={{
-                            rotate: [0, -5, 5, 0],
-                            scale: 1.05
-                          }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <Icon className={cn("h-2.5 w-2.5 transition-colors duration-300", stat.color)} />
-                        </motion.div>
-                        
-                        <motion.div 
-                          className={cn("text-lg sm:text-xl font-bold transition-all duration-300", stat.color)}
-                          initial={{ scale: 0 }}
-                          animate={isVisible ? { scale: 1 } : {}}
-                          transition={{ 
-                            delay: 2.0 + (index * 0.1), 
-                            type: "spring", 
-                            bounce: 0.6 
-                          }}
-                        >
-                          {isVisible && (
-                            <CountUp 
-                              end={stat.value} 
-                              duration={2.5}
-                              suffix={stat.suffix || (index === 0 ? '' : index === 1 ? '+' : '%')}
-                            />
-                          )}
-                        </motion.div>
-                        
-                        <div className="text-xs sm:text-sm font-medium text-gray-600">
-                          {stat.label}
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </Card>
-        </motion.div>
-
-        {/* Enhanced CTA Section */}
-        <motion.div 
-          className="text-center px-4 sm:px-6 lg:px-8"
+          className="text-center"
           initial={{ y: 50, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 2.2, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 2.8, ease: "easeOut" }}
         >
-          <Card className="inline-block p-6 sm:p-8 md:p-12 glassmorphism-premium border-white/30 shadow-2xl w-full max-w-4xl relative overflow-hidden group">
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/5 via-red-500/5 to-[#e24e1b]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              animate={{
-                opacity: [0, 0.5, 0]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            
+          <Card className="inline-block p-8 md:p-12 bg-white/60 backdrop-blur-sm border-white/60 relative overflow-hidden group max-w-4xl">
             <div className="relative space-y-8">
               <div className="space-y-4">
-                <motion.div 
-                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#e24e1b]/10 to-red-500/10 border border-[#e24e1b]/20"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", bounce: 0.3 }}
-                >
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.3, 1],
-                      opacity: [1, 0.5, 1]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <Eye className="h-5 w-5 text-[#e24e1b]" />
-                  </motion.div>
-                  <span className="font-semibold text-[#e24e1b]">DACH-Analyse verfügbar</span>
-                  <Badge className="bg-gradient-to-r from-[#e24e1b] to-red-500 text-white border-0">
-                    Kostenlos
-                  </Badge>
-                </motion.div>
+                <Badge className="bg-gradient-to-r from-[#e24e1b] to-orange-500 text-white border-0 px-4 py-1">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  DACH-Spezialist
+                </Badge>
                 
-                <motion.h3 
-                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={isVisible ? { y: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 2.4 }}
-                >
-                  Bereit für DACH-Compliance?
-                </motion.h3>
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                  Bereit für <span className="bg-gradient-to-r from-[#e24e1b] to-orange-500 bg-clip-text text-transparent">DACH-Compliance?</span>
+                </h3>
                 
-                <motion.p 
-                  className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={isVisible ? { y: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 2.6 }}
-                >
-                  Starten Sie mit einer kostenlosen Analyse Ihrer aktuellen 
-                  <span className="font-semibold text-gray-900"> Compliance-Situation im DACH-Raum.</span>
-                </motion.p>
+                <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+                  Lassen Sie uns Ihre spezifischen Anforderungen für Deutschland, Österreich oder die Schweiz 
+                  <span className="font-semibold text-gray-900"> in einem persönlichen Gespräch besprechen.</span>
+                </p>
               </div>
 
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-                initial={{ y: 30, opacity: 0 }}
-                animate={isVisible ? { y: 0, opacity: 1 } : {}}
-                transition={{ duration: 0.6, delay: 2.8 }}
-              >
-                <Link to="/contact?demo=true" className="w-full sm:w-auto">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button 
-                      size="lg"
-                      className="w-full sm:w-auto bg-gradient-to-r from-[#e24e1b] via-red-500 to-[#e24e1b] hover:from-[#e24e1b]/90 hover:via-red-500/90 hover:to-[#e24e1b]/90 text-white px-6 sm:px-8 md:px-12 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
-                    >
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
-                        initial={{ x: '-100%' }}
-                        whileHover={{ x: '200%' }}
-                        transition={{ duration: 0.8 }}
-                      />
-                      <MapPin className="mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
-                      DACH-Analyse anfordern
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 400 }}
-                      >
-                        <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
-                      </motion.div>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link to="/contact?region=dach">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button className="bg-gradient-to-r from-[#e24e1b] to-orange-500 hover:from-[#e24e1b]/90 hover:to-orange-500/90 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group">
+                      <Users className="mr-2 h-5 w-5" />
+                      DACH-Beratung anfragen
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </motion.div>
                 </Link>
                 
-                <Link to="/branchen" className="w-full sm:w-auto">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button 
-                      size="lg"
-                      variant="outline" 
-                      className="w-full sm:w-auto px-6 sm:px-8 md:px-12 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold border-2 glassmorphism hover:bg-white/50 hover:border-[#e24e1b] hover:text-[#e24e1b] transition-all duration-300"
-                    >
-                      <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
-                      Branchen erkunden
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 400 }}
-                      >
-                        <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
-                      </motion.div>
+                <Link to="/compliance">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button variant="outline" className="px-8 py-4 text-lg font-semibold border-2 border-[#e24e1b]/30 hover:bg-[#e24e1b]/5 hover:border-[#e24e1b] transition-all duration-300">
+                      <Eye className="mr-2 h-5 w-5" />
+                      Compliance-Lösungen
                     </Button>
                   </motion.div>
                 </Link>
-              </motion.div>
+              </div>
 
-              <motion.div 
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 pt-6 text-xs sm:text-sm"
-                initial={{ y: 20, opacity: 0 }}
-                animate={isVisible ? { y: 0, opacity: 1 } : {}}
-                transition={{ duration: 0.6, delay: 3.0 }}
-              >
-                <div className="flex items-center gap-2 text-gray-600">
-                  <motion.div 
-                    className="p-1 rounded-full bg-emerald-500/10"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4" />
-                  </motion.div>
-                  <span>Kostenlose Analyse</span>
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap items-center justify-center gap-8 pt-6 border-t border-gray-200 text-sm text-gray-500">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                  <span>DSGVO-konform</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <motion.div 
-                    className="p-1 rounded-full bg-emerald-500/10"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                  >
-                    <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4" />
-                  </motion.div>
-                  <span>DACH-Expertenwissen</span>
+                <div className="flex items-center gap-2">
+                  <Globe className="h-4 w-4 text-blue-500" />
+                  <span>ISO 27001 zertifiziert</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <motion.div 
-                    className="p-1 rounded-full bg-emerald-500/10"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                  >
-                    <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4" />
-                  </motion.div>
-                  <span>Live-Updates</span>
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4 text-[#e24e1b]" />
+                  <span>Enterprise-Grade Security</span>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </Card>
         </motion.div>

@@ -7,6 +7,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { CookieConsentBanner } from "@/components/CookieConsent";
+import { SEOWrapper } from "@/components/SEOWrapper";
 // PageLoader component for Suspense fallback
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-screen">
@@ -178,8 +180,9 @@ const App = () => (
             <Toaster />
             <BrowserRouter>
               <ScrollToTop />
-              <Suspense fallback={<PageLoader />}>
-                <Routes>
+              <SEOWrapper>
+                <Suspense fallback={<PageLoader />}>
+                  <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/academy" element={<AcademyPage />} />
@@ -363,7 +366,9 @@ const App = () => (
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
-              </Suspense>
+                </Suspense>
+              </SEOWrapper>
+              <CookieConsentBanner />
             </BrowserRouter>
           </TooltipProvider>
         </LanguageProvider>

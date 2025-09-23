@@ -24,7 +24,7 @@ import { cn } from '@/lib/utils';
 interface TransformationCard {
   id: string;
   problem: {
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    icon: React.ComponentType<any>;
     title: string;
     description: string;
     impact: string;
@@ -32,7 +32,7 @@ interface TransformationCard {
     bgGradient: string;
   };
   solution: {
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    icon: React.ComponentType<any>;
     title: string;
     description: string;
     benefit: string;
@@ -213,8 +213,8 @@ export const ComplianceTransformation: React.FC = () => {
               />
             </div>
 
-            {/* Cards Grid - Fixed height container */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Cards Grid - Responsive height container */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
               {transformationCards.map((card, cardIndex) => {
                 // Calculate card transformation timing
                 const cardStartProgress = cardIndex / transformationCards.length;
@@ -223,7 +223,7 @@ export const ComplianceTransformation: React.FC = () => {
                 const showSolution = cardProgress > 0.3;
                 
                 return (
-                  <div key={card.id} className="relative h-[380px]">
+                  <div key={card.id} className="relative h-[340px] sm:h-[360px] md:h-[380px]">
                     {/* Problem Card */}
                     <div
                       className={cn(
@@ -232,29 +232,29 @@ export const ComplianceTransformation: React.FC = () => {
                       )}
                     >
                       <Card className={cn(
-                        "w-full h-full p-6 border-2 flex flex-col",
+                        "w-full h-full p-4 sm:p-5 md:p-6 border-2 flex flex-col",
                         `bg-gradient-to-br ${card.problem.bgGradient}`,
                         "border-red-200 hover:border-red-300 shadow-lg hover:shadow-xl transition-all duration-300"
                       )}>
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="p-3 rounded-xl bg-red-500/20 shrink-0">
-                            <card.problem.icon className={cn("h-6 w-6", card.problem.color)} />
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                          <div className="p-2 sm:p-3 rounded-xl bg-red-500/20 shrink-0">
+                            <card.problem.icon className={cn("h-5 w-5 sm:h-6 sm:w-6", card.problem.color)} />
                           </div>
-                          <Badge className="bg-red-500/10 text-red-600 border-red-500/20 text-sm shrink-0">
+                          <Badge className="bg-red-500/10 text-red-600 border-red-500/20 text-xs sm:text-sm shrink-0">
                             Problem
                           </Badge>
                         </div>
                         
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">
                           {card.problem.title}
                         </h3>
                         
-                        <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
+                        <p className="text-gray-600 text-xs sm:text-sm leading-relaxed flex-1 mb-4 sm:mb-6">
                           {card.problem.description}
                         </p>
                         
-                        <div className="mt-auto pt-4 border-t border-red-200">
-                          <div className="text-2xl font-black text-red-600 mb-1">
+                        <div className="mt-auto pt-3 sm:pt-4 border-t border-red-200">
+                          <div className="text-xl sm:text-2xl font-black text-red-600 mb-1">
                             {card.problem.impact}
                           </div>
                           <div className="text-xs text-gray-500 uppercase tracking-wide font-semibold">
@@ -272,29 +272,29 @@ export const ComplianceTransformation: React.FC = () => {
                       )}
                     >
                       <Card className={cn(
-                        "w-full h-full p-6 border-2 flex flex-col",
+                        "w-full h-full p-4 sm:p-5 md:p-6 border-2 flex flex-col",
                         `bg-gradient-to-br ${card.solution.bgGradient}`,
                         "border-emerald-200 hover:border-emerald-300 shadow-lg hover:shadow-xl transition-all duration-300"
                       )}>
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="p-3 rounded-xl bg-emerald-500/20 shrink-0">
-                            <card.solution.icon className={cn("h-6 w-6", card.solution.color)} />
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                          <div className="p-2 sm:p-3 rounded-xl bg-emerald-500/20 shrink-0">
+                            <card.solution.icon className={cn("h-5 w-5 sm:h-6 sm:w-6", card.solution.color)} />
                           </div>
-                          <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20 text-sm shrink-0">
+                          <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20 text-xs sm:text-sm shrink-0">
                             Lösung
                           </Badge>
                         </div>
                         
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">
                           {card.solution.title}
                         </h3>
                         
-                        <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
+                        <p className="text-gray-600 text-xs sm:text-sm leading-relaxed flex-1 mb-4 sm:mb-6">
                           {card.solution.description}
                         </p>
                         
-                        <div className="mt-auto pt-4 border-t border-emerald-200">
-                          <div className="text-2xl font-black text-emerald-600 mb-1">
+                        <div className="mt-auto pt-3 sm:pt-4 border-t border-emerald-200">
+                          <div className="text-xl sm:text-2xl font-black text-emerald-600 mb-1">
                             {card.solution.benefit}
                           </div>
                           <div className="text-xs text-gray-500 uppercase tracking-wide font-semibold">
@@ -309,10 +309,10 @@ export const ComplianceTransformation: React.FC = () => {
             </div>
 
             {/* Status Indicator */}
-            <div className="text-center mt-12">
+            <div className="text-center mt-8 sm:mt-12">
               <div
                 className={cn(
-                  "inline-flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-500",
+                  "inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full transition-all duration-500",
                   scrollProgress > 0.5 
                     ? "bg-emerald-500/10 text-emerald-600 border border-emerald-500/20" 
                     : "bg-red-500/10 text-red-600 border border-red-500/20"
@@ -320,13 +320,13 @@ export const ComplianceTransformation: React.FC = () => {
               >
                 {scrollProgress > 0.5 ? (
                   <>
-                    <CheckCircle2 className="h-5 w-5" />
-                    <span className="font-semibold">Probleme gelöst mit Marsstein</span>
+                    <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="font-semibold text-sm sm:text-base">Probleme gelöst mit Marsstein</span>
                   </>
                 ) : (
                   <>
-                    <AlertTriangle className="h-5 w-5" />
-                    <span className="font-semibold">Typische DACH-Probleme</span>
+                    <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="font-semibold text-sm sm:text-base">Typische DACH-Probleme</span>
                   </>
                 )}
               </div>
@@ -336,48 +336,48 @@ export const ComplianceTransformation: React.FC = () => {
       </div>
 
       {/* CTA Section - Outside sticky container */}
-      <div className="relative bg-white py-20">
+      <div className="relative bg-white py-12 sm:py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <Card className="inline-block p-12 bg-white/80 backdrop-blur-sm border-white/60 shadow-xl max-w-4xl relative overflow-hidden group">
+            <Card className="inline-block p-6 sm:p-8 md:p-12 bg-white/80 backdrop-blur-sm border-white/60 shadow-xl max-w-4xl relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 via-blue-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative space-y-8">
-                <div className="space-y-4">
+              <div className="relative space-y-6 sm:space-y-8">
+                <div className="space-y-3 sm:space-y-4">
                   <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20">
                     <Sparkles className="w-4 h-4 mr-1" />
                     Transformation starten
                   </Badge>
                   
-                  <h3 className="text-3xl font-bold text-gray-900">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
                     Bereit für die <span className="text-emerald-600">Compliance-Revolution?</span>
                   </h3>
                   
-                  <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
                     Lassen Sie uns Ihre Compliance-Herausforderungen in effiziente, 
                     automatisierte Lösungen verwandeln. <span className="font-semibold text-gray-900">
                     Starten Sie noch heute mit einer kostenlosen Demo.</span>
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                   <Link to="/contact?demo=true">
-                    <Button className="bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-600/90 hover:to-blue-600/90 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group">
-                      <Rocket className="mr-2 h-5 w-5" />
+                    <Button className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-600/90 hover:to-blue-600/90 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group">
+                      <Rocket className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                       Kostenlose Demo starten
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                   
                   <Link to="/tools">
-                    <Button variant="outline" className="px-8 py-4 text-lg font-semibold border-2 border-gray-300 hover:bg-gray-50 hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300">
-                      <Eye className="mr-2 h-5 w-5" />
+                    <Button variant="outline" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold border-2 border-gray-300 hover:bg-gray-50 hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300">
+                      <Eye className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                       Tools entdecken
                     </Button>
                   </Link>
                 </div>
 
-                <div className="flex items-center justify-center gap-8 text-sm text-gray-500">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-gray-500">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                     <span>Keine Kreditkarte nötig</span>

@@ -477,7 +477,13 @@ const FintechComplianceGuide = () => {
         <div className="bg-white rounded-xl p-6 border border-gray-200">
           <h5 className="font-bold text-lg text-gray-900 mb-4">Network Segmentation</h5>
           <div className="bg-gray-100 rounded-lg p-4">
-            <img src="/api/placeholder/400/300" alt="Network Segmentation Diagram" className="w-full rounded" />
+            <img 
+              src="/api/placeholder/400/300" 
+              alt="Network Segmentation Diagram" 
+              className="w-full rounded"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <ul className="mt-4 space-y-2">
             <li className="flex items-center gap-2">
