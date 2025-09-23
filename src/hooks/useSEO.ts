@@ -14,15 +14,15 @@ interface SEOConfig {
 const routeSEOConfig: Record<string, SEOConfig> = {
   '/': {
     title: 'Marsstein | DSGVO Compliance & Datenschutz Automatisierung',
-    description: 'Revolutionieren Sie Ihr Compliance-Management mit Marsstein. Automatisierte DSGVO-, EU AI Act- und ISO 27001-Lösungen für Unternehmen. Kostenlose Demo verfügbar.',
+    description: 'Revolutionieren Sie Ihr Compliance-Management mit Marsstein. Automatisierte DSGVO-, EU AI Act- und ISO 27001-Lösungen für deutsche Unternehmen.',
     keywords: 'DSGVO, Compliance, Datenschutz, EU AI Act, ISO 27001, Automatisierung, Deutschland, DACH',
     ogTitle: 'Marsstein | DSGVO Compliance & Datenschutz Automatisierung',
-    ogDescription: 'Revolutionieren Sie Ihr Compliance-Management mit Marsstein. Automatisierte DSGVO-, EU AI Act- und ISO 27001-Lösungen für Unternehmen. Kostenlose Demo verfügbar.',
+    ogDescription: 'Revolutionieren Sie Ihr Compliance-Management mit Marsstein. Automatisierte DSGVO-, EU AI Act- und ISO 27001-Lösungen für deutsche Unternehmen.',
     canonical: 'https://marsstein.ai'
   },
   '/dsgvo': {
     title: 'DSGVO Compliance Software | Automatisierte Datenschutz-Lösungen | Marsstein',
-    description: 'DSGVO-konforme Datenschutz-Automatisierung für deutsche Unternehmen. Vollautomatische Compliance-Überwachung, Dokumentation und Audit-Vorbereitung. Jetzt kostenlos testen.',
+    description: 'DSGVO-konforme Datenschutz-Automatisierung für deutsche Unternehmen. Vollautomatische Compliance-Überwachung, Dokumentation und Audit-Vorbereitung.',
     keywords: 'DSGVO Software, Datenschutz Automatisierung, GDPR Compliance, Datenschutz-Folgenabschätzung, DSB Tools, Deutschland',
     ogTitle: 'DSGVO Compliance Software | Automatisierte Datenschutz-Lösungen',
     ogDescription: 'DSGVO-konforme Datenschutz-Automatisierung für deutsche Unternehmen. Vollautomatische Compliance-Überwachung und Dokumentation.',
@@ -30,7 +30,7 @@ const routeSEOConfig: Record<string, SEOConfig> = {
   },
   '/pricing': {
     title: 'Preise & Pakete | DSGVO Compliance Software | Marsstein',
-    description: 'Transparente Preise für DSGVO Compliance Software. Vom Starter-Paket bis Enterprise - finden Sie die passende Lösung für Ihr Unternehmen. 30 Tage kostenlos testen.',
+    description: 'Transparente Preise für DSGVO Compliance Software. Vom Starter-Paket bis Enterprise - passende Lösung für Ihr Unternehmen.',
     keywords: 'DSGVO Software Preise, Compliance Kosten, Datenschutz Software Pakete, Enterprise Compliance, Deutschland',
     ogTitle: 'Preise & Pakete | DSGVO Compliance Software',
     ogDescription: 'Transparente Preise für DSGVO Compliance Software. Vom Starter-Paket bis Enterprise. 30 Tage kostenlos testen.',
@@ -38,7 +38,7 @@ const routeSEOConfig: Record<string, SEOConfig> = {
   },
   '/contact': {
     title: 'Kontakt & Demo | DSGVO Compliance Beratung | Marsstein',
-    description: 'Vereinbaren Sie eine kostenlose Demo der Marsstein DSGVO Compliance Software. Persönliche Beratung für deutsche Unternehmen. Kontakt: +49 176 70560292',
+    description: 'Vereinbaren Sie eine kostenlose Demo der Marsstein DSGVO Compliance Software. Persönliche Beratung für deutsche Unternehmen.',
     keywords: 'DSGVO Beratung, Compliance Demo, Datenschutz Kontakt, Marsstein Kontakt, Deutschland, Konstanz',
     ogTitle: 'Kontakt & Demo | DSGVO Compliance Beratung',
     ogDescription: 'Vereinbaren Sie eine kostenlose Demo der Marsstein DSGVO Compliance Software. Persönliche Beratung für deutsche Unternehmen.',
@@ -46,7 +46,7 @@ const routeSEOConfig: Record<string, SEOConfig> = {
   },
   '/academy': {
     title: 'DSGVO Academy | Compliance Training & Schulungen | Marsstein',
-    description: 'Professionelle DSGVO-Schulungen und Compliance-Training für Ihr Team. Online-Kurse, Zertifizierungen und Schulungsmaterialien für deutsche Unternehmen.',
+    description: 'Professionelle DSGVO-Schulungen und Compliance-Training für Ihr Team. Online-Kurse, Zertifizierungen und Schulungsmaterialien.',
     keywords: 'DSGVO Schulung, Compliance Training, Datenschutz Kurs, GDPR Academy, Online Schulung, Deutschland',
     ogTitle: 'DSGVO Academy | Compliance Training & Schulungen',
     ogDescription: 'Professionelle DSGVO-Schulungen und Compliance-Training für Ihr Team. Online-Kurse und Zertifizierungen.',
@@ -54,7 +54,7 @@ const routeSEOConfig: Record<string, SEOConfig> = {
   },
   '/tools': {
     title: 'DSGVO Tools & Ressourcen | Kostenlose Compliance Tools | Marsstein',
-    description: 'Kostenlose DSGVO Tools und Compliance-Ressourcen. Checklisten, Templates, Datenschutz-Generatoren und mehr für deutsche Unternehmen.',
+    description: 'Kostenlose DSGVO Tools und Compliance-Ressourcen. Checklisten, Templates, Datenschutz-Generatoren für deutsche Unternehmen.',
     keywords: 'DSGVO Tools, Compliance Checkliste, Datenschutz Generator, GDPR Tools, kostenlose Tools, Deutschland',
     ogTitle: 'DSGVO Tools & Ressourcen | Kostenlose Compliance Tools',
     ogDescription: 'Kostenlose DSGVO Tools und Compliance-Ressourcen. Checklisten, Templates und Datenschutz-Generatoren.',
@@ -62,7 +62,7 @@ const routeSEOConfig: Record<string, SEOConfig> = {
   },
   '/iso-27001-zertifizierung': {
     title: 'ISO 27001 Zertifizierung | Informationssicherheit Management | Marsstein',
-    description: 'ISO 27001 Zertifizierung für deutsche Unternehmen. Automatisierte ISMS-Implementierung, Gap-Analyse und Audit-Vorbereitung. Kostenlose Beratung.',
+    description: 'ISO 27001 Zertifizierung für deutsche Unternehmen. Automatisierte ISMS-Implementierung, Gap-Analyse und Audit-Vorbereitung.',
     keywords: 'ISO 27001 Zertifizierung, ISMS, Informationssicherheit, Management System, Deutschland, Audit',
     ogTitle: 'ISO 27001 Zertifizierung | Informationssicherheit Management',
     ogDescription: 'ISO 27001 Zertifizierung für deutsche Unternehmen. Automatisierte ISMS-Implementierung und Audit-Vorbereitung.',

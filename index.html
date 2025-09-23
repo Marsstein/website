@@ -32,7 +32,7 @@
     <meta name="twitter:description" content="Revolutionieren Sie Ihr Compliance-Management mit Marsstein. Automatisierte DSGVO-, EU AI Act- und ISO 27001-Lösungen für Unternehmen." />
     <meta name="twitter:image" content="https://marsstein.ai/og-image-marsstein.jpg" />
     
-    <!-- Structured Data -->
+    <!-- Structured Data - Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,6 +61,98 @@
       ]
     }
     </script>
+
+    <!-- Structured Data - Software Application -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Marsstein DSGVO Compliance Platform",
+      "description": "Automatisierte DSGVO-, EU AI Act- und ISO 27001-Compliance-Lösungen für Unternehmen",
+      "url": "https://marsstein.ai",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://marsstein.ai/pricing"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Marsstein GmbH",
+        "url": "https://marsstein.ai"
+      },
+      "featureList": [
+        "DSGVO Compliance Automation",
+        "EU AI Act Risk Classification",
+        "ISO 27001 Implementation",
+        "Automated Documentation",
+        "Compliance Monitoring"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "DSGVO Compliance Beratung",
+      "description": "Professionelle DSGVO-Compliance-Beratung und automatisierte Datenschutz-Lösungen",
+      "provider": {
+        "@type": "Organization",
+        "name": "Marsstein GmbH",
+        "url": "https://marsstein.ai"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Deutschland"
+      },
+      "serviceType": "Compliance Consulting",
+      "offers": {
+        "@type": "Offer",
+        "description": "Kostenlose Demo und Beratung",
+        "url": "https://marsstein.ai/contact"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist DSGVO Compliance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DSGVO Compliance bedeutet die Einhaltung der Datenschutz-Grundverordnung der EU. Unternehmen müssen personenbezogene Daten rechtmäßig verarbeiten und die Rechte der Betroffenen respektieren."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie kann Marsstein bei der DSGVO-Compliance helfen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Marsstein automatisiert DSGVO-Compliance durch intelligente Software. Wir bieten automatische Dokumentation, Überwachung und Audit-Vorbereitung für deutsche Unternehmen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was kostet DSGVO Compliance Software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Marsstein bietet verschiedene Pakete ab dem Starter-Paket. Eine kostenlose Demo ist verfügbar. Preise finden Sie auf unserer Pricing-Seite."
+          }
+        }
+      ]
+    }
+    </script>
     
     <!-- Favicons / PWA -->
     <link rel="icon" type="image/svg+xml" href="/JLogoMarsstein.svg" />
@@ -80,6 +172,33 @@
     <link rel="prefetch" href="/contact" />
     <link rel="prefetch" href="/pricing" />
     <link rel="prefetch" href="/academy" />
+    <link rel="prefetch" href="/dsgvo" />
+    <link rel="prefetch" href="/eu-ai-act" />
+    
+    <!-- Critical CSS inlining for faster FCP -->
+    <style>
+      body{margin:0;font-family:Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+      #root{min-height:100vh}
+      .loading-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0B1D2A}
+      .spinner{width:2rem;height:2rem;border:2px solid #e5e7eb;border-top:2px solid #e24e1b;border-radius:50%;animation:spin 1s linear infinite}
+      @keyframes spin{to{transform:rotate(360deg)}}
+    </style>
+    
+    <!-- Service Worker Registration (disabled for development) -->
+    <script>
+      // Service worker temporarily disabled to fix MIME type issues
+      // if ('serviceWorker' in navigator) {
+      //   window.addEventListener('load', () => {
+      //     navigator.serviceWorker.register('/sw.js')
+      //       .then(registration => {
+      //         console.log('SW registered: ', registration);
+      //       })
+      //       .catch(registrationError => {
+      //         console.log('SW registration failed: ', registrationError);
+      //       });
+      //   });
+      // }
+    </script>
     
     <!-- Optimierte Rendering Performance -->
     <meta name="renderer" content="webkit" />

@@ -37,14 +37,16 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-accordion'],
           motion: ['framer-motion', '@react-spring/web'],
-          utils: ['clsx', 'tailwind-merge']
+          utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
+          charts: ['recharts'],
+          forms: ['@emailjs/browser']
         }
       },
     },
 
-    chunkSizeWarningLimit: 500,
+    chunkSizeWarningLimit: 300,
     
     terserOptions: {
       compress: {
@@ -74,7 +76,9 @@ export default defineConfig({
   preview: {
     port: 4173,
     strictPort: false,
-    host: true
+    host: true,
+    cors: true,
+    open: false
   },
 
   optimizeDeps: {
