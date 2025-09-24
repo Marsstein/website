@@ -7,7 +7,6 @@ import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { CookieConsentBanner } from "@/components/CookieConsent";
 import { SEOWrapper } from "@/components/SEOWrapper";
 // PageLoader component for Suspense fallback
 const PageLoader = () => (
@@ -368,7 +367,6 @@ const App = () => (
                 </Routes>
                 </Suspense>
               </SEOWrapper>
-              <CookieConsentBanner />
             </BrowserRouter>
           </TooltipProvider>
         </LanguageProvider>

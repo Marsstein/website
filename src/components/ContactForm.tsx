@@ -11,7 +11,6 @@ import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin, Clock, Monitor, Shield } from 'lucide-react';
 import { getEmailJS } from '@/utils/lazyImports';
-import { useFunctionalCookies } from './CookieConsent';
 
 interface ContactFormProps {
   isDemoRequest?: boolean;
@@ -21,7 +20,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
   const { t } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
-  const functionalCookiesAllowed = useFunctionalCookies();
   const [isLoading, setIsLoading] = useState(false);
   const [lastSubmissionTime, setLastSubmissionTime] = useState<number | null>(null);
   const [formData, setFormData] = useState({
@@ -59,15 +57,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
       return;
     }
 
-    // Check functional cookies consent for EmailJS
-    if (!functionalCookiesAllowed) {
-      toast({
-        title: "Cookie-Zustimmung erforderlich",
-        description: "Bitte aktivieren Sie funktionale Cookies, um das Kontaktformular zu nutzen.",
-        variant: "destructive",
-      });
-      return;
-    }
 
     setIsLoading(true);
 
@@ -432,33 +421,14 @@ ${sanitizedData.message}
               </div>
             </div>
 
-            {/* Cookie consent notice */}
-            {!functionalCookiesAllowed && (
-              <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                <div className="flex items-start gap-3">
-                  <Shield className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                  <div className="text-sm">
-                    <p className="font-medium text-amber-800 mb-1">
-                      Funktionale Cookies erforderlich
-                    </p>
-                    <p className="text-amber-700">
-                      Um das Kontaktformular zu nutzen, müssen Sie funktionale Cookies aktivieren. 
-                      Diese ermöglichen den E-Mail-Service und Rate-Limiting für Ihre Sicherheit.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
 
             <Button
               type="submit"
               size="lg"
               className="w-full bg-gradient-primary hover:opacity-90"
-              disabled={isLoading || !functionalCookiesAllowed}
+              disabled={isLoading}
             >
-              {isLoading ? 'Sending...' : 
-               !functionalCookiesAllowed ? 'Cookies erforderlich' : 
-               t('contact_submit')}
+              {isLoading ? 'Sending...' : t('contact_submit')}
             </Button>
           </form>
         </Card>
