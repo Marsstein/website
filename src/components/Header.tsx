@@ -34,6 +34,7 @@ export const Header: React.FC = () => {
     { key: 'nav_certifications', href: '#' },
     { key: 'nav_knowledge', href: '#' },
     { key: 'nav_industries', href: '/branchen' },
+    { key: 'nav_pricing', href: '/preise' },
     { key: 'nav_about', href: '/ueber-uns' },
     { key: 'nav_contact', href: '/contact' },
   ];
@@ -221,9 +222,10 @@ export const Header: React.FC = () => {
                 to={item.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                {item.key === 'nav_industries' ? 'Branchen' : 
+                {item.key === 'nav_industries' ? 'Branchen' :
+                 item.key === 'nav_pricing' ? 'Preise' :
                  item.key === 'nav_about' ? 'Über uns' :
-                 item.key === 'nav_contact' ? 'Kontakt' : 
+                 item.key === 'nav_contact' ? 'Kontakt' :
                  item.key}
               </Link>
             )
@@ -325,6 +327,9 @@ export const Header: React.FC = () => {
                     <div className="pt-4 space-y-1">
                       <Link to="/branchen" className="block px-3 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-md transition-colors">
                         Branchen
+                      </Link>
+                      <Link to="/preise" className="block px-3 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-md transition-colors">
+                        Preise
                       </Link>
                       <Link to="/ueber-uns" className="block px-3 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-md transition-colors">
                         Über uns

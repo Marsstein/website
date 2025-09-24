@@ -1,81 +1,8 @@
+# START ROBOTS.TXT
+# ---------------------------
 User-agent: *
-Allow: /
+Disallow:
 
-# Block sensitive areas
-Disallow: /dashboard
-Disallow: /api/
-Disallow: /admin/
-Disallow: /_vite/
-Disallow: /node_modules/
-Disallow: /src/
-
-# Allow all compliance and knowledge pages
-Allow: /dsgvo
-Allow: /eu-ai-act
-Allow: /iso-27001-zertifizierung
-Allow: /soc2-zertifizierung
-Allow: /tools/
-Allow: /wissen/
-Allow: /compliance/
-Allow: /branchen/
-
-# Block duplicate content/legacy URLs with parameters
-Disallow: /*?
-Disallow: /*&
-Disallow: /*#
-
-# Block temporary/test pages
-Disallow: /test/
-Disallow: /tmp/
-Disallow: /temp/
-Disallow: /debug/
-
-# SEO-friendly crawl delay (0.5 seconds)
-Crawl-delay: 0.5
-
-# Sitemap location
 Sitemap: https://marsstein.ai/sitemap.xml
-
-# Block common bot traps
-Disallow: /wp-admin/
-Disallow: /wp-includes/
-Disallow: /wp-content/
-Disallow: /login
-Disallow: /register
-
-# Allow search engines to crawl essential pages
-User-agent: Googlebot
-Allow: /
-Allow: /dsgvo
-Allow: /eu-ai-act
-Allow: /pricing
-Allow: /contact
-Allow: /academy
-Allow: /tools/
-Allow: /wissen/
-Allow: /branchen/
-Allow: /compliance/
-
-User-agent: Bingbot
-Allow: /
-Allow: /dsgvo
-Allow: /eu-ai-act
-Allow: /pricing
-Allow: /contact
-Allow: /academy
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-# Block aggressive crawlers
-User-agent: AhrefsBot
-Crawl-delay: 10
-
-User-agent: MJ12bot
-Crawl-delay: 10
-
-User-agent: SemrushBot
-Crawl-delay: 5
+# ---------------------------
+# END ROBOTS.TXT

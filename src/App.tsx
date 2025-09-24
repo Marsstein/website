@@ -133,6 +133,9 @@ const DatenschutzHomeofficeComprehensive = lazy(() => import("./pages/wissen/bra
 
 // KI Datenschutz Pages
 const KiDatenschutz = lazy(() => import("./pages/KiDatenschutz"));
+
+// Pricing Page
+const Preise = lazy(() => import("./pages/Preise"));
 const KiRisikoklassifizierung = lazy(() => import("./pages/ki/KiRisikoklassifizierung"));
 const KiAlgorithmicImpactAssessment = lazy(() => import("./pages/ki/AlgorithmicImpactAssessment"));
 const PrivacyPreservingAI = lazy(() => import("./pages/ki/PrivacyPreservingAI"));
@@ -186,6 +189,7 @@ const App = () => (
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/academy" element={<AcademyPage />} />
                 <Route path="/pricing" element={<PricingPage />} />
+                <Route path="/preise" element={<Preise />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/ueber-uns" element={<About />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />

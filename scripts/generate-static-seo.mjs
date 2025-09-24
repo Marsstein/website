@@ -57,6 +57,12 @@ const routeConfigs = {
     keywords: 'Compliance Wissen, Datenschutz Leitfaden, Best Practices, DSGVO Guide, Knowledge Base',
     canonical: 'https://marsstein.ai/wissen'
   },
+  '/wissen/branchen': {
+    title: 'Branchen-Compliance Guides | DSGVO für Healthcare, FinTech, E-Commerce | Marsstein',
+    description: 'Branchenspezifische DSGVO & Compliance-Leitfäden für Healthcare, FinTech, E-Commerce, Industrie 4.0, EdTech & mehr. ✓ Praxiserprobte Lösungen ✓ Expert Guides',
+    keywords: 'Branchen Compliance, Healthcare DSGVO, FinTech Compliance, E-Commerce Datenschutz, Industrie 4.0, EdTech Privacy',
+    canonical: 'https://marsstein.ai/wissen/branchen'
+  },
   '/branchen': {
     title: 'Branchenlösungen | Compliance für Ihre Industrie | Marsstein',
     description: 'Maßgeschneiderte Compliance-Lösungen für verschiedene Branchen. Gesundheitswesen, Finanz, E-Commerce, SaaS und mehr.',

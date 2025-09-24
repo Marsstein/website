@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
@@ -69,6 +70,76 @@ const BranchenWissen: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Branchen-spezifische Compliance Guides",
+    "description": "Spezialisiertes DSGVO & Compliance-Wissen für verschiedene Branchen: Healthcare, FinTech, E-Commerce, Industrie 4.0 und mehr.",
+    "url": "https://marsstein.ai/wissen/branchen",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "https://marsstein.ai/",
+            "name": "Home"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://marsstein.ai/wissen",
+            "name": "Wissen"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "https://marsstein.ai/wissen/branchen",
+            "name": "Branchen"
+          }
+        }
+      ]
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": 24,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Article",
+            "name": "Healthcare DSGVO Compliance",
+            "description": "DSGVO-konforme Datenverarbeitung in Kliniken, Praxen und MedTech"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Article",
+            "name": "FinTech Compliance Strategie",
+            "description": "Compliance-Ansätze für FinTech-Startups und digitale Finanzdienstleister"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Article",
+            "name": "E-Commerce Privacy Excellence",
+            "description": "Best Practices für datenschutzfreundliches E-Commerce und Online-Marketing"
+          }
+        }
+      ]
+    }
+  };
 
   const categories = [
     { id: 'all', name: 'Alle Branchen', icon: Building2, count: 24 },
@@ -658,6 +729,12 @@ const BranchenWissen: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
+      <SEOHead
+        title="Branchen-Compliance Guides: DSGVO für Healthcare, FinTech, E-Commerce"
+        description="Branchenspezifische DSGVO & Compliance-Leitfäden für Healthcare, FinTech, E-Commerce, Industrie 4.0, EdTech & mehr. ✓ Praxiserprobte Lösungen ✓ Expert Guides"
+        canonical="/wissen/branchen"
+        structuredData={structuredData}
+      />
       <Header />
       
       {/* Animated Background Elements */}
