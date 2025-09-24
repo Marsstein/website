@@ -69,15 +69,7 @@ const routes = [
   { url: '/wissen/leitfaden/dsgvo-grundlagen', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/leitfaden/website-dsgvo', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/leitfaden/dsgvo-30-tage', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/leitfaden/data-breach-notfall', priority: '0.6', changefreq: 'monthly' },
-
-  { url: '/dsgvo-compliance', priority: '0.4', changefreq: 'monthly' },
-  { url: '/iso-27001-compliance', priority: '0.4', changefreq: 'monthly' },
-  { url: '/eu-ai-act-compliance', priority: '0.4', changefreq: 'monthly' },
-  { url: '/soc2-compliance', priority: '0.4', changefreq: 'monthly' },
-  { url: '/iso-27017-compliance', priority: '0.4', changefreq: 'monthly' },
-  { url: '/iso-27018-compliance', priority: '0.4', changefreq: 'monthly' },
-  { url: '/tisax-compliance', priority: '0.4', changefreq: 'monthly' }
+  { url: '/wissen/leitfaden/data-breach-notfall', priority: '0.6', changefreq: 'monthly' }
 ];
 
 function generateSitemap() {

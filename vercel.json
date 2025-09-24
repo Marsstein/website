@@ -10,6 +10,41 @@
       ],
       "destination": "https://marsstein.ai/:path*",
       "permanent": true
+    },
+    {
+      "source": "/iso-27001-compliance",
+      "destination": "/iso-27001-zertifizierung",
+      "permanent": true
+    },
+    {
+      "source": "/soc2-compliance",
+      "destination": "/soc2-zertifizierung",
+      "permanent": true
+    },
+    {
+      "source": "/iso-27017-compliance",
+      "destination": "/iso-27017-zertifizierung",
+      "permanent": true
+    },
+    {
+      "source": "/iso-27018-compliance",
+      "destination": "/iso-27018-zertifizierung",
+      "permanent": true
+    },
+    {
+      "source": "/tisax-compliance",
+      "destination": "/tisax-zertifizierung",
+      "permanent": true
+    },
+    {
+      "source": "/eu-ai-act-compliance",
+      "destination": "/eu-ai-act",
+      "permanent": true
+    },
+    {
+      "source": "/dsgvo-compliance",
+      "destination": "/dsgvo",
+      "permanent": true
     }
   ],
   "rewrites": [

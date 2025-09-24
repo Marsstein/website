@@ -330,46 +330,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://marsstein.ai/dsgvo-compliance</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/iso-27001-compliance</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/eu-ai-act-compliance</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/soc2-compliance</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/iso-27017-compliance</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/iso-27018-compliance</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/tisax-compliance</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
 </urlset>
