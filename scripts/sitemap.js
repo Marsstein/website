@@ -34,12 +34,15 @@ const routes = [
   { url: '/compliance/tisax', priority: '0.6', changefreq: 'monthly' },
   { url: '/compliance/dsgvo', priority: '0.7', changefreq: 'monthly' },
 
-  { url: '/resources', priority: '0.6', changefreq: 'weekly' },
-  { url: '/resources/dsgvo-compliance-checklist', priority: '0.5', changefreq: 'monthly' },
-  { url: '/resources/datenschutz-readiness-assessment', priority: '0.5', changefreq: 'monthly' },
-  { url: '/resources/breach-response-checklist', priority: '0.5', changefreq: 'monthly' },
-  { url: '/resources/cookie-compliance-audit', priority: '0.5', changefreq: 'monthly' },
-  { url: '/resources/vendor-assessment-template', priority: '0.5', changefreq: 'monthly' },
+  { url: '/assessment-center', priority: '0.6', changefreq: 'weekly' },
+  { url: '/assessment-center/dsgvo-compliance-checklist', priority: '0.5', changefreq: 'monthly' },
+  { url: '/assessment-center/datenschutz-readiness-assessment', priority: '0.5', changefreq: 'monthly' },
+  { url: '/assessment-center/breach-response-checklist', priority: '0.5', changefreq: 'monthly' },
+  { url: '/assessment-center/cookie-compliance-audit', priority: '0.5', changefreq: 'monthly' },
+  { url: '/assessment-center/vendor-assessment-template', priority: '0.5', changefreq: 'monthly' },
+  { url: '/assessment-center/ai-risk-assessment', priority: '0.6', changefreq: 'monthly' },
+  { url: '/assessment-center/algorithmic-impact-assessment', priority: '0.6', changefreq: 'monthly' },
+  { url: '/assessment-center/ai-governance-check', priority: '0.6', changefreq: 'monthly' },
 
   { url: '/branchen', priority: '0.7', changefreq: 'weekly' },
   { url: '/branchen/gesundheitswesen', priority: '0.6', changefreq: 'monthly' },
@@ -59,17 +62,20 @@ const routes = [
   { url: '/tools/whistleblower-system-tool', priority: '0.6', changefreq: 'monthly' },
   { url: '/tools/dsgvo-email-template-generator', priority: '0.5', changefreq: 'monthly' },
   { url: '/tools/dsgvo-compliance-scorecard', priority: '0.5', changefreq: 'monthly' },
-  { url: '/tools/dsgvo-bounty-hunter', priority: '0.4', changefreq: 'monthly' },
-  { url: '/tools/privacy-token', priority: '0.4', changefreq: 'monthly' },
   { url: '/tools/compliance-ai-assistant', priority: '0.5', changefreq: 'monthly' },
 
   { url: '/wissen', priority: '0.8', changefreq: 'weekly' },
+  { url: '/wissen/branchen', priority: '0.7', changefreq: 'weekly' },
   { url: '/wissen/dsgvo-leitfaeden', priority: '0.7', changefreq: 'monthly' },
   { url: '/wissen/compliance-frameworks', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/leitfaden/dsgvo-grundlagen', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/leitfaden/website-dsgvo', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/leitfaden/dsgvo-30-tage', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/leitfaden/data-breach-notfall', priority: '0.6', changefreq: 'monthly' }
+  { url: '/wissen/leitfaden/data-breach-notfall', priority: '0.6', changefreq: 'monthly' },
+  { url: '/wissen/leitfaden/verarbeitungsverzeichnis', priority: '0.6', changefreq: 'monthly' },
+  { url: '/wissen/leitfaden/betroffenenrechte', priority: '0.6', changefreq: 'monthly' },
+  { url: '/wissen/leitfaden/tom-massnahmen', priority: '0.6', changefreq: 'monthly' },
+  { url: '/wissen/leitfaden/dsfa-durchfuehrung', priority: '0.6', changefreq: 'monthly' }
 ];
 
 function generateSitemap() {

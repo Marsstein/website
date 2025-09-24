@@ -133,40 +133,58 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/resources</loc>
+    <loc>https://marsstein.ai/assessment-center</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/resources/dsgvo-compliance-checklist</loc>
+    <loc>https://marsstein.ai/assessment-center/dsgvo-compliance-checklist</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/resources/datenschutz-readiness-assessment</loc>
+    <loc>https://marsstein.ai/assessment-center/datenschutz-readiness-assessment</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/resources/breach-response-checklist</loc>
+    <loc>https://marsstein.ai/assessment-center/breach-response-checklist</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/resources/cookie-compliance-audit</loc>
+    <loc>https://marsstein.ai/assessment-center/cookie-compliance-audit</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/resources/vendor-assessment-template</loc>
+    <loc>https://marsstein.ai/assessment-center/vendor-assessment-template</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.ai/assessment-center/ai-risk-assessment</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.ai/assessment-center/algorithmic-impact-assessment</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.ai/assessment-center/ai-governance-check</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://marsstein.ai/branchen</loc>
@@ -271,18 +289,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/tools/dsgvo-bounty-hunter</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/tools/privacy-token</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://marsstein.ai/tools/compliance-ai-assistant</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -293,6 +299,12 @@
     <lastmod>2025-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.ai/wissen/branchen</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://marsstein.ai/wissen/dsgvo-leitfaeden</loc>
@@ -326,6 +338,30 @@
   </url>
   <url>
     <loc>https://marsstein.ai/wissen/leitfaden/data-breach-notfall</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.ai/wissen/leitfaden/verarbeitungsverzeichnis</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.ai/wissen/leitfaden/betroffenenrechte</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.ai/wissen/leitfaden/tom-massnahmen</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marsstein.ai/wissen/leitfaden/dsfa-durchfuehrung</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
