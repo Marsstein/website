@@ -103,12 +103,15 @@ function generateSitemap() {
 </urlset>`;
 
   const distPath = path.join(__dirname, '..', 'dist');
-  const sitemapPath = path.join(distPath, 'sitemap.xml');
+  const publicPath = path.join(__dirname, '..', 'public');
+  const distSitemapPath = path.join(distPath, 'sitemap.xml');
+  const publicSitemapPath = path.join(publicPath, 'sitemap.xml');
 
-  fs.writeFileSync(sitemapPath, sitemapXml);
+  fs.writeFileSync(distSitemapPath, sitemapXml);
+  fs.writeFileSync(publicSitemapPath, sitemapXml);
 
   console.log(`✅ Sitemap generated: ${routes.length} URLs`);
-  console.log(`📍 Location: ${sitemapPath}`);
+  console.log(`📍 Locations: ${distSitemapPath} & ${publicSitemapPath}`);
 }
 
 generateSitemap();
