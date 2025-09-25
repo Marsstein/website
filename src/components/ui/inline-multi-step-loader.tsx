@@ -26,7 +26,7 @@ export const InlineMultiStepLoader = ({
     let currentIndex = 0;
 
     const interval = setInterval(() => {
-      if (currentIndex < loadingStates.length) {
+      if (currentIndex <= loadingStates.length) {
         setCurrentState(currentIndex);
         currentIndex++;
       } else {

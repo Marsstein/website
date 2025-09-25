@@ -237,9 +237,9 @@ export const Header: React.FC = () => {
           <Button variant="ghost" size="sm" aria-label="Anmelden">
             Anmelden
           </Button>
-          <Link to="/contact?demo=true">
+          <Link to="/beta">
             <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              Demo anfordern
+              Kostenlos testen
             </Button>
           </Link>
         </div>
@@ -345,9 +345,9 @@ export const Header: React.FC = () => {
                   <Button variant="ghost" className="w-full justify-center" aria-label="Anmelden">
                     Anmelden
                   </Button>
-                  <Link to="/contact?demo=true" className="block">
+                  <Link to="/beta" className="block">
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                      Demo anfordern
+                      Kostenlos testen
                     </Button>
                   </Link>
                 </div>

@@ -30,6 +30,7 @@ const ThankYou = lazy(() => import("./pages/ThankYou"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
+const Beta = lazy(() => import("./pages/Beta"));
 
 const Resources = lazy(() => import("./pages/Resources").then(module => ({ default: module.Resources })));
 const DSGVOComplianceChecklist = lazy(() => import("./pages/resources/DSGVOComplianceChecklist").then(module => ({ default: module.DSGVOComplianceChecklist })));
@@ -190,6 +191,7 @@ const App = () => (
                 <Route path="/academy" element={<AcademyPage />} />
                 <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/preise" element={<Preise />} />
+                <Route path="/beta" element={<Beta />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/ueber-uns" element={<About />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
