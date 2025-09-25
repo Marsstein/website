@@ -9,7 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, MapPin, Clock, Monitor, Shield } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Monitor, Shield, Calendar } from 'lucide-react';
 import { getEmailJS } from '@/utils/lazyImports';
 
 interface ContactFormProps {
@@ -22,6 +22,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [lastSubmissionTime, setLastSubmissionTime] = useState<number | null>(null);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -167,21 +168,26 @@ ${sanitizedData.message}
     } catch (error) {
       if (import.meta.env.DEV) {
         console.error('Full error details:', error);
-        console.error('Error message:', error.message);
-        console.error('Error status:', error.status);
-        console.error('Error text:', error.text);
+        if (error && typeof error === 'object') {
+          console.error('Error message:', (error as any).message);
+          console.error('Error status:', (error as any).status);
+          console.error('Error text:', (error as any).text);
+        }
       }
 
       let errorMessage = 'Failed to send message. Please try again or contact us directly.';
 
-      if (error.status === 400) {
-        errorMessage = 'Invalid template parameters. Please check the form data.';
-      } else if (error.status === 401) {
-        errorMessage = 'EmailJS authentication failed. Please check your public key.';
-      } else if (error.status === 404) {
-        errorMessage = 'EmailJS service or template not found. Please check your service ID and template ID.';
-      } else if (error.text) {
-        errorMessage = `EmailJS error: ${error.text}`;
+      if (error && typeof error === 'object') {
+        const err = error as any;
+        if (err.status === 400) {
+          errorMessage = 'Invalid template parameters. Please check the form data.';
+        } else if (err.status === 401) {
+          errorMessage = 'EmailJS authentication failed. Please check your public key.';
+        } else if (err.status === 404) {
+          errorMessage = 'EmailJS service or template not found. Please check your service ID and template ID.';
+        } else if (err.text) {
+          errorMessage = `EmailJS error: ${err.text}`;
+        }
       }
 
       toast({
@@ -247,6 +253,51 @@ ${sanitizedData.message}
               </div>
             </div>
           </div>
+
+          {/* Free Consultation Section */}
+          <Card className="p-6 mb-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+            <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+              <Calendar className="h-6 w-6 text-primary" />
+              Kostenlose Erstberatung
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Vereinbaren Sie ein unverbindliches Beratungsgespräch mit unseren Compliance-Experten.
+            </p>
+            <div className="space-y-3 mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <span className="text-sm">30 Minuten Expertengespräch</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <span className="text-sm">Individuelle Lösungsvorschläge</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <span className="text-sm">Unverbindlich & kostenlos</span>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                try {
+                  if (typeof (window as any).Calendly !== 'undefined') {
+                    (window as any).Calendly.initPopupWidget({
+                      url: 'https://calendly.com/marsstein-info/marsstein-intro'
+                    });
+                  } else {
+                    window.open('https://calendly.com/marsstein-info/marsstein-intro', '_blank');
+                  }
+                } catch (error) {
+                  window.open('https://calendly.com/marsstein-info/marsstein-intro', '_blank');
+                }
+              }}
+              className="w-full px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity flex items-center justify-center"
+            >
+              <Calendar className="h-4 w-4 mr-2" />
+              Termin buchen
+            </button>
+          </Card>
 
           {/* Contact Info */}
           <div className="space-y-4">

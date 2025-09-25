@@ -4,15 +4,17 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Badge } from '@/components/ui/badge';
 import {
   CheckCircle2,
   Rocket,
-  FileCheck,
-  AlertCircle,
-  UserCheck,
   ArrowRight,
-  Clock,
-  Shield
+  Users,
+  Zap,
+  Star,
+  Percent,
+  Sparkles,
+  Gift
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -56,28 +58,6 @@ const Beta: React.FC = () => {
     { id: 'loeschkonzept', label: 'Löschkonzept umsetzen' }
   ];
 
-  const features = [
-    {
-      icon: <FileCheck className="h-5 w-5" />,
-      title: "Verarbeitungsverzeichnis",
-      description: "Automatisiert erstellt und immer aktuell"
-    },
-    {
-      icon: <Shield className="h-5 w-5" />,
-      title: "TOM-Dokumentation",
-      description: "Technische Maßnahmen vollständig dokumentiert"
-    },
-    {
-      icon: <UserCheck className="h-5 w-5" />,
-      title: "Betroffenenrechte",
-      description: "Anfragen in unter 30 Minuten bearbeitet"
-    },
-    {
-      icon: <AlertCircle className="h-5 w-5" />,
-      title: "Datenpannen-Workflow",
-      description: "72-Stunden-Frist automatisch eingehalten"
-    }
-  ];
 
   if (submitted) {
     return (
@@ -152,7 +132,7 @@ const Beta: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16 max-w-3xl mx-auto"
+          className="text-center mb-12 max-w-3xl mx-auto"
         >
           <div className="inline-flex items-center gap-2 text-primary text-sm font-medium mb-4">
             <Rocket className="h-4 w-4" />
@@ -169,73 +149,76 @@ const Beta: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-4 space-y-8"
-          >
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Was Sie erhalten</h2>
-              <div className="space-y-4">
-                {features.map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                    className="flex gap-4"
-                  >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                      {feature.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground">{feature.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-12"
+        >
+          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 border-brand-red/20">
+            <CardContent className="p-6 md:p-8">
+              <div className="text-center mb-6">
+                <Badge className="bg-brand-red/10 text-brand-red border-brand-red/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-3">
+                  Limited Beta Access
+                </Badge>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2">Werden Sie Beta-Tester</h2>
+                <p className="text-muted-foreground">Gestalten Sie die Zukunft der Compliance mit uns</p>
               </div>
-            </div>
 
-            <Card className="border-primary/20 bg-primary/5">
-              <CardContent className="pt-6">
-                <div className="space-y-3">
-                  <h3 className="font-semibold flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-primary" />
-                    Limitiertes Angebot
-                  </h3>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      3 Monate kostenlos
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      Danach 50% Rabatt für immer
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      Nur noch 12 Plätze verfügbar
-                    </li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="space-y-2"
+                >
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-sm font-semibold">Exklusive Community</h3>
+                  <p className="text-xs text-muted-foreground">Direkter Draht zum Team</p>
+                </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-8"
-          >
-            <Card>
-              <CardHeader>
-                <CardTitle>Beta-Zugang anfordern</CardTitle>
-                <CardDescription>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="space-y-2"
+                >
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
+                    <Gift className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-sm font-semibold">50% Rabatt</h3>
+                  <p className="text-xs text-muted-foreground">Nach der Beta-Phase</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="space-y-2"
+                >
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-sm font-semibold">Kostenlos testen</h3>
+                  <p className="text-xs text-muted-foreground">Keine Kreditkarte nötig</p>
+                </motion.div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="max-w-5xl mx-auto"
+        >
+            <Card className="shadow-lg">
+              <CardHeader className="text-center pb-8">
+                <CardTitle className="text-2xl">Beta-Zugang anfordern</CardTitle>
+                <CardDescription className="text-base">
                   Füllen Sie das Formular aus und starten Sie in 24 Stunden
                 </CardDescription>
               </CardHeader>
@@ -346,12 +329,12 @@ const Beta: React.FC = () => {
                               if (checked) {
                                 setFormData({
                                   ...formData,
-                                  challenges: [...formData.challenges, challenge.id]
+                                  challenges: [...formData.challenges, challenge.id] as any
                                 });
                               } else {
                                 setFormData({
                                   ...formData,
-                                  challenges: formData.challenges.filter(c => c !== challenge.id)
+                                  challenges: formData.challenges.filter(c => c !== challenge.id) as any
                                 });
                               }
                             }}
@@ -409,13 +392,12 @@ const Beta: React.FC = () => {
               </CardContent>
             </Card>
           </motion.div>
-        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-16 text-sm text-muted-foreground"
+          className="text-center mt-12 text-sm text-muted-foreground"
         >
           Bereits 38 Unternehmen nutzen unsere DSGVO-Automatisierung erfolgreich
         </motion.div>

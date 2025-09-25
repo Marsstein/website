@@ -192,8 +192,10 @@ export const HeroSection: React.FC = () => {
           )} style={{ transitionDelay: '300ms' }}>
             
             {/* Main Dashboard Card */}
-            <Card className="p-6 bg-white/95 backdrop-blur-sm border-2 border-[#e24e1b]/20 hover:border-[#e24e1b]/40 shadow-2xl transition-all duration-300">
-              <div className="space-y-6">
+            <Card className="p-6 bg-white/80 backdrop-blur-sm border border-white/50 shadow-2xl transition-all duration-300 hover:bg-white/85 relative overflow-hidden">
+              {/* Glass reflection effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent pointer-events-none" />
+              <div className="space-y-6 relative z-10">
 
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
@@ -201,7 +203,7 @@ export const HeroSection: React.FC = () => {
                     <h3 className="text-xl font-bold text-gray-900">DSGVO Compliance Suite</h3>
                     <p className="text-sm text-gray-600">Ihre Echtzeit-Compliance in Aktion</p>
                   </div>
-                  <Badge className="bg-[#e24e1b] text-white border-0">
+                  <Badge className="bg-[#e24e1b]/90 backdrop-blur-sm text-white border-0">
                     <Activity className="w-3 h-3 mr-1" />
                     Live System
                   </Badge>
@@ -222,8 +224,8 @@ export const HeroSection: React.FC = () => {
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-2">
                             <div className={cn(
-                              "p-1.5 rounded-lg transition-all",
-                              isComplete ? "bg-[#39B37B]/10" : "bg-[#e24e1b]/10"
+                              "p-1.5 rounded-lg backdrop-blur-sm transition-all",
+                              isComplete ? "bg-[#39B37B]/15" : "bg-[#e24e1b]/15"
                             )}>
                               <Icon className={cn(
                                 "h-4 w-4",
@@ -231,7 +233,7 @@ export const HeroSection: React.FC = () => {
                               )} />
                             </div>
                             <div>
-                              <p className="text-sm font-semibold text-gray-900">{metric.label}</p>
+                              <p className="text-sm font-semibold text-gray-800">{metric.label}</p>
                               <p className="text-xs text-gray-500">{metric.status}</p>
                             </div>
                           </div>
@@ -242,7 +244,7 @@ export const HeroSection: React.FC = () => {
                             {metric.value}%
                           </span>
                         </div>
-                        <div className="relative w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="relative w-full h-2 bg-gray-200/70 rounded-full overflow-hidden">
                           <div
                             className={cn(
                               "h-full rounded-full transition-all duration-2000 ease-out",
@@ -262,18 +264,18 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Overall Status */}
-                <div className="pt-4 border-t border-gray-200">
+                <div className="pt-4 border-t border-gray-200/50">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wider">Gesamtstatus</p>
                       <p className="text-lg font-bold text-[#e24e1b]">94% DSGVO-konform</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Badge className="bg-[#39B37B]/10 text-[#39B37B] border-[#39B37B]/20">
+                      <Badge className="bg-[#39B37B]/15 text-[#39B37B] border-0">
                         <CheckCircle2 className="w-3 h-3 mr-1" />
                         Audit-Ready
                       </Badge>
-                      <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
+                      <Badge className="bg-[#e24e1b]/15 text-[#e24e1b] border-0">
                         <Brain className="w-3 h-3 mr-1" />
                         KI-Powered
                       </Badge>
@@ -285,21 +287,21 @@ export const HeroSection: React.FC = () => {
 
             {/* Trust Indicators */}
             <div className="grid grid-cols-2 gap-4">
-              <Card className="p-4 bg-white border-2 border-[#39B37B]/30 text-center relative hover:border-[#39B37B]/50 transition-all hover:shadow-lg">
+              <Card className="p-4 bg-white/10 backdrop-blur-sm border-2 border-brand-red/30 text-center relative hover:bg-white/20 hover:shadow-lg hover:border-brand-red/50 transition-all group">
                 <CheckCircle2 className="h-6 w-6 text-[#39B37B] mx-auto mb-2" />
-                <div className="text-sm font-semibold text-gray-900">DSGVO</div>
-                <div className="text-xs text-gray-600">100% konform</div>
+                <div className="text-sm font-semibold text-white">DSGVO</div>
+                <div className="text-xs text-gray-300">Standards-konform</div>
                 <Badge className="absolute -top-2 -right-2 bg-[#39B37B] text-white text-xs px-2 py-0.5">
-                  Aktiv
+                  Ready
                 </Badge>
               </Card>
 
-              <Card className="p-4 bg-white border-2 border-[#e24e1b]/30 text-center relative hover:border-[#e24e1b]/50 transition-all hover:shadow-lg">
-                <Shield className="h-6 w-6 text-[#e24e1b] mx-auto mb-2" />
-                <div className="text-sm font-semibold text-gray-900">EU AI Act</div>
-                <div className="text-xs text-gray-600">KI-Governance</div>
-                <Badge className="absolute -top-2 -right-2 bg-[#e24e1b] text-white text-xs px-2 py-0.5">
-                  2025
+              <Card className="p-4 bg-white/10 backdrop-blur-sm border-2 border-brand-red/30 text-center relative hover:bg-white/20 hover:shadow-lg hover:border-brand-red/50 transition-all group">
+                <Shield className="h-6 w-6 text-[#39B37B] mx-auto mb-2" />
+                <div className="text-sm font-semibold text-white">ISO 27001</div>
+                <div className="text-xs text-gray-300">In Vorbereitung</div>
+                <Badge className="absolute -top-2 -right-2 bg-[#39B37B] text-white text-xs px-2 py-0.5">
+                  Q3 2025
                 </Badge>
               </Card>
             </div>
