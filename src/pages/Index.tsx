@@ -4,6 +4,7 @@ import { HeroSection } from '@/components/HeroSection';
 import { Footer } from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import { ComplianceJourney } from '@/components/ComplianceJourney';
+import { ComplianceAreas } from '@/components/ComplianceAreas';
 import { TrustPlatformFeatures } from '@/components/TrustPlatformFeatures';
 import { TransformationCTA } from '@/components/TransformationCTA';
 import { DACHCompliance } from '@/components/DACHCompliance';
@@ -95,8 +96,15 @@ const Index = () => {
         >
           <ComplianceJourney />
         </section>
-        
-        <section 
+
+        <section
+          className={`compliance-section ${sectionsVisible.has('compliance-areas') ? 'visible' : ''}`}
+          data-section-id="compliance-areas"
+        >
+          <ComplianceAreas />
+        </section>
+
+        <section
           className={`compliance-section ${sectionsVisible.has('transformation') ? 'visible' : ''}`}
           data-section-id="transformation"
         >
