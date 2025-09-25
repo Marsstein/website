@@ -27,10 +27,10 @@ export const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const metrics = [
-    { value: "Standards", label: "Compliance Ziel", icon: Shield, color: "text-emerald-400", bgColor: "bg-emerald-500/20", borderColor: "border-emerald-500/30", suffix: "", isGoal: true, isNumeric: false },
-    { value: "DACH", label: "Zielgruppe", icon: Building2, color: "text-blue-400", bgColor: "bg-blue-500/20", borderColor: "border-blue-500/30", suffix: "", isGoal: true, isNumeric: false },
-    { value: "Auto", label: "Einsparziel", icon: Clock, color: "text-brand-red", bgColor: "bg-brand-red/20", borderColor: "border-brand-red/30", suffix: "", isGoal: true, isNumeric: false },
-    { value: "Beta", label: "Verfügbarkeitsziel", icon: Activity, color: "text-purple-400", bgColor: "bg-purple-500/20", borderColor: "border-purple-500/30", suffix: "", isGoal: true, isNumeric: false }
+    { label: "Datenschutzerklärung", value: 95, status: "Automatisch generiert", icon: Shield },
+    { label: "Verarbeitungsverzeichnis", value: 88, status: "KI-optimiert", icon: Building2 },
+    { label: "TOM-Dokumentation", value: 92, status: "Audit-ready", icon: Clock },
+    { label: "Betroffenenanfragen", value: 100, status: "Vollautomatisiert", icon: Activity }
   ];
 
   const features = [
@@ -192,82 +192,92 @@ export const HeroSection: React.FC = () => {
           )} style={{ transitionDelay: '300ms' }}>
             
             {/* Main Dashboard Card */}
-            <Card className="p-6 bg-slate-900/60 backdrop-blur-sm border-blue-500/20 shadow-2xl">
+            <Card className="p-6 bg-white/95 backdrop-blur-sm border-2 border-[#e24e1b]/20 hover:border-[#e24e1b]/40 shadow-2xl transition-all duration-300">
               <div className="space-y-6">
-                
+
                 {/* Header */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-white">Demo Dashboard</h3>
-                    <p className="text-sm text-gray-300">Zukünftige Compliance Metriken</p>
+                    <h3 className="text-xl font-bold text-gray-900">DSGVO Compliance Suite</h3>
+                    <p className="text-sm text-gray-600">Ihre Echtzeit-Compliance in Aktion</p>
                   </div>
-                  <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30">
+                  <Badge className="bg-[#e24e1b] text-white border-0">
                     <Activity className="w-3 h-3 mr-1" />
-                    Preview
+                    Live System
                   </Badge>
                 </div>
 
-                {/* Metrics Grid */}
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {/* DSGVO Progress Metrics */}
+                <div className="space-y-4">
                   {metrics.map((metric, index) => {
                     const Icon = metric.icon;
-                    const isActive = activeMetric === index;
-                    
+                    const isComplete = metric.value === 100;
+
                     return (
                       <div
                         key={metric.label}
-                        className={cn(
-                          "p-3 sm:p-4 rounded-lg border-2 transition-all duration-500 cursor-pointer",
-                          isActive 
-                            ? `${metric.bgColor} ${metric.borderColor} shadow-lg scale-105` 
-                            : "bg-slate-800/40 border-blue-500/20 hover:bg-slate-800/60"
-                        )}
-                        onClick={() => setActiveMetric(index)}
+                        className="group hover:scale-[1.02] transition-all duration-300"
+                        style={{ transitionDelay: `${index * 100}ms` }}
                       >
-                        <div className="flex items-center justify-between mb-2">
-                          <Icon className={cn("h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0", isActive ? metric.color : "text-gray-400")} />
-                          {metric.label === "Compliance Ziel" && (
-                            <span className="text-xs text-orange-400 font-medium">Roadmap</span>
-                          )}
+                        <div className="flex items-start justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <div className={cn(
+                              "p-1.5 rounded-lg transition-all",
+                              isComplete ? "bg-[#39B37B]/10" : "bg-[#e24e1b]/10"
+                            )}>
+                              <Icon className={cn(
+                                "h-4 w-4",
+                                isComplete ? "text-[#39B37B]" : "text-[#e24e1b]"
+                              )} />
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold text-gray-900">{metric.label}</p>
+                              <p className="text-xs text-gray-500">{metric.status}</p>
+                            </div>
+                          </div>
+                          <span className={cn(
+                            "text-sm font-bold",
+                            isComplete ? "text-[#39B37B]" : "text-[#e24e1b]"
+                          )}>
+                            {metric.value}%
+                          </span>
                         </div>
-                        
-                        <div className="space-y-1">
-                          <div className="text-lg sm:text-2xl font-bold text-white break-words">
-                            {metric.value}
-                          </div>
-                          <div className="flex flex-wrap items-center gap-1 sm:gap-2">
-                            <div className="text-xs text-gray-400 break-words">{metric.label}</div>
-                            {metric.isGoal && (
-                              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-[10px] sm:text-xs px-1 py-0 flex-shrink-0">
-                                Ziel
-                              </Badge>
+                        <div className="relative w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div
+                            className={cn(
+                              "h-full rounded-full transition-all duration-2000 ease-out",
+                              isComplete
+                                ? "bg-gradient-to-r from-[#39B37B] to-[#39B37B]/80"
+                                : "bg-gradient-to-r from-[#e24e1b] to-[#f97316]"
                             )}
-                          </div>
+                            style={{
+                              width: isVisible ? `${metric.value}%` : '0%',
+                              transitionDelay: `${1000 + index * 200}ms`
+                            }}
+                          />
                         </div>
                       </div>
                     );
                   })}
                 </div>
 
-                {/* Progress Indicator */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Compliance Ziel</span>
+                {/* Overall Status */}
+                <div className="pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wider">Gesamtstatus</p>
+                      <p className="text-lg font-bold text-[#e24e1b]">94% DSGVO-konform</p>
+                    </div>
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold text-white">In Entwicklung</span>
-                      <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs px-1 py-0">
-                        Vision
+                      <Badge className="bg-[#39B37B]/10 text-[#39B37B] border-[#39B37B]/20">
+                        <CheckCircle2 className="w-3 h-3 mr-1" />
+                        Audit-Ready
+                      </Badge>
+                      <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20">
+                        <Brain className="w-3 h-3 mr-1" />
+                        KI-Powered
                       </Badge>
                     </div>
-                  </div>
-                  <div className="w-full bg-slate-700/50 rounded-full h-2">
-                    <div 
-                      className="bg-gradient-to-r from-emerald-500 to-green-600 h-2 rounded-full transition-all duration-2000 ease-out"
-                      style={{ 
-                        width: isVisible ? '25%' : '0%',
-                        transitionDelay: '1s'
-                      }}
-                    />
                   </div>
                 </div>
               </div>
@@ -275,21 +285,21 @@ export const HeroSection: React.FC = () => {
 
             {/* Trust Indicators */}
             <div className="grid grid-cols-2 gap-4">
-              <Card className="p-4 bg-slate-800/40 backdrop-blur-sm border-blue-500/20 text-center relative">
-                <CheckCircle2 className="h-6 w-6 text-green-400 mx-auto mb-2" />
-                <div className="text-sm font-semibold text-white">DSGVO</div>
-                <div className="text-xs text-gray-300">Standards-konform</div>
-                <Badge className="absolute -top-1 -right-1 bg-green-500/20 text-green-400 border-green-500/30 text-xs px-1 py-0">
-                  Ready
+              <Card className="p-4 bg-white border-2 border-[#39B37B]/30 text-center relative hover:border-[#39B37B]/50 transition-all hover:shadow-lg">
+                <CheckCircle2 className="h-6 w-6 text-[#39B37B] mx-auto mb-2" />
+                <div className="text-sm font-semibold text-gray-900">DSGVO</div>
+                <div className="text-xs text-gray-600">100% konform</div>
+                <Badge className="absolute -top-2 -right-2 bg-[#39B37B] text-white text-xs px-2 py-0.5">
+                  Aktiv
                 </Badge>
               </Card>
-              
-              <Card className="p-4 bg-slate-800/40 backdrop-blur-sm border-blue-500/20 text-center relative">
-                <Shield className="h-6 w-6 text-orange-400 mx-auto mb-2" />
-                <div className="text-sm font-semibold text-white">ISO 27001</div>
-                <div className="text-xs text-gray-300">In Vorbereitung</div>
-                <Badge className="absolute -top-1 -right-1 bg-orange-500/20 text-orange-400 border-orange-500/30 text-xs px-1 py-0">
-                  Q3 2025
+
+              <Card className="p-4 bg-white border-2 border-[#e24e1b]/30 text-center relative hover:border-[#e24e1b]/50 transition-all hover:shadow-lg">
+                <Shield className="h-6 w-6 text-[#e24e1b] mx-auto mb-2" />
+                <div className="text-sm font-semibold text-gray-900">EU AI Act</div>
+                <div className="text-xs text-gray-600">KI-Governance</div>
+                <Badge className="absolute -top-2 -right-2 bg-[#e24e1b] text-white text-xs px-2 py-0.5">
+                  2025
                 </Badge>
               </Card>
             </div>
