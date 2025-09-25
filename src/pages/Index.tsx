@@ -6,12 +6,7 @@ import SEOHead from '@/components/SEOHead';
 import { ComplianceJourney } from '@/components/ComplianceJourney';
 import { ComplianceAreas } from '@/components/ComplianceAreas';
 import { TrustPlatformFeatures } from '@/components/TrustPlatformFeatures';
-import { TransformationCTA } from '@/components/TransformationCTA';
-import { DACHCompliance } from '@/components/DACHCompliance';
-import { ISO27001Section } from '@/components/ISO27001Section';
-import { EUAIActSection } from '@/components/EUAIActSection';
 import { CTASection } from '@/components/CTASection';
-import { InteractiveShowcase } from '@/components/InteractiveShowcase';
 import { TrustSecurity } from '@/components/TrustSecurity';
 import { SmartFAQ } from '@/components/SmartFAQ';
 import { IntelligentNewsletter } from '@/components/IntelligentNewsletter';
@@ -105,41 +100,6 @@ const Index = () => {
         </section>
 
         <section
-          className={`compliance-section ${sectionsVisible.has('transformation') ? 'visible' : ''}`}
-          data-section-id="transformation"
-        >
-          <TransformationCTA />
-        </section>
-        
-        <section 
-          className={`compliance-section dach-section ${sectionsVisible.has('dach') ? 'visible' : ''}`}
-          data-section-id="dach"
-        >
-          <DACHCompliance />
-        </section>
-        
-        <section 
-          className={`compliance-section iso-section ${sectionsVisible.has('iso') ? 'visible' : ''}`}
-          data-section-id="iso"
-        >
-          <ISO27001Section />
-        </section>
-        
-        <section 
-          className={`compliance-section ai-section ${sectionsVisible.has('ai') ? 'visible' : ''}`}
-          data-section-id="ai"
-        >
-          <EUAIActSection />
-        </section>
-        
-        <section 
-          className={`compliance-section ${sectionsVisible.has('interactive') ? 'visible' : ''}`}
-          data-section-id="interactive"
-        >
-          <InteractiveShowcase />
-        </section>
-        
-        <section 
           className={`compliance-section ${sectionsVisible.has('trust') ? 'visible' : ''}`}
           data-section-id="trust"
         >
