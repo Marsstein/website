@@ -71,6 +71,23 @@ export default defineConfig({
     host: true,
     hmr: {
       overlay: false
+    },
+    headers: {
+      'Cache-Control': 'no-store'
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        configure: (proxy, options) => {
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            const cookies = req.headers.cookie;
+            if (cookies && cookies.length > 4096) {
+              proxyReq.removeHeader('cookie');
+            }
+          });
+        }
+      }
     }
   },
 

@@ -3,7 +3,8 @@ import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { Footer } from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
-import { ScrollTransformationNew } from '@/components/ScrollTransformationNew';
+import { ComplianceJourney } from '@/components/ComplianceJourney';
+import { TrustPlatformFeatures } from '@/components/TrustPlatformFeatures';
 import { TransformationCTA } from '@/components/TransformationCTA';
 import { DACHCompliance } from '@/components/DACHCompliance';
 import { ISO27001Section } from '@/components/ISO27001Section';
@@ -69,10 +70,10 @@ const Index = () => {
       <div className="compliance-homepage">
         <Header />
         <main>
-        <section 
+        <section
           className="compliance-section hero-section"
           data-section-id="hero"
-          style={{ 
+          style={{
             opacity: 1,
             transform: 'translateY(0)',
             transition: 'none'
@@ -80,12 +81,19 @@ const Index = () => {
         >
           <HeroSection />
         </section>
-        
-        <section 
+
+        <section
+          className={`compliance-section ${sectionsVisible.has('features') ? 'visible' : ''}`}
+          data-section-id="features"
+        >
+          <TrustPlatformFeatures />
+        </section>
+
+        <section
           className={`compliance-section ${sectionsVisible.has('scroll') ? 'visible' : ''}`}
           data-section-id="scroll"
         >
-          <ScrollTransformationNew />
+          <ComplianceJourney />
         </section>
         
         <section 
