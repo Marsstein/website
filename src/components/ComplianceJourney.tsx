@@ -199,46 +199,58 @@ export const ComplianceJourney = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="mt-8 p-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl border border-emerald-200"
+                        className="mt-8 p-8 relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#F5F6F8] via-white to-[#e24e1b]/5 border-2 border-[#e24e1b]/20 shadow-xl"
                       >
-                        <div className="text-center mb-4">
-                          <h4 className="text-xl font-bold text-gray-900 mb-2">
-                            Werden Sie Beta-Tester
-                          </h4>
-                          <p className="text-gray-600">
-                            Gestalten Sie die Zukunft der Compliance mit uns
-                          </p>
-                        </div>
+                        <div className="absolute top-0 right-0 w-40 h-40 bg-[#e24e1b]/10 rounded-full blur-3xl" />
+                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#39B37B]/10 rounded-full blur-3xl" />
 
-                        <div className="flex flex-wrap justify-center gap-3 mb-5">
-                          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 border border-blue-200">
-                            <Users className="w-4 h-4 text-blue-600" />
-                            <span className="text-sm font-medium text-blue-700">Exklusive Community</span>
+                        <div className="relative z-10">
+                          <div className="text-center mb-6">
+                            <Badge className="bg-gradient-to-r from-[#e24e1b] to-[#f97316] text-white border-0 mb-4">
+                              <Sparkles className="w-3 h-3 mr-1" />
+                              LIMITED BETA ACCESS
+                            </Badge>
+                            <h4 className="text-2xl font-bold bg-gradient-to-r from-[#232323] to-[#474747] bg-clip-text text-transparent mb-3">
+                              Werden Sie Beta-Tester
+                            </h4>
+                            <p className="text-[#474747] text-lg">
+                              Gestalten Sie die Zukunft der Compliance mit uns
+                            </p>
                           </div>
-                          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 border border-green-200">
-                            <Tag className="w-4 h-4 text-green-600" />
-                            <span className="text-sm font-medium text-green-700">50% Rabatt nach Beta</span>
-                          </div>
-                          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-100 border border-purple-200">
-                            <Sparkles className="w-4 h-4 text-purple-600" />
-                            <span className="text-sm font-medium text-purple-700">Kostenlos testen</span>
-                          </div>
-                        </div>
 
-                        <div className="flex gap-3">
-                          <Link
-                            to="/beta"
-                            className="flex-1 inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-md hover:shadow-lg group"
-                          >
-                            Jetzt Beta-Zugang sichern
-                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                          </Link>
-                          <Link
-                            to="/pricing"
-                            className="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all duration-200"
-                          >
-                            Preise ansehen
-                          </Link>
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#e24e1b]/10 hover:border-[#e24e1b]/30 transition-all duration-300 hover:shadow-lg">
+                              <Users className="w-5 h-5 text-[#e24e1b] mb-2" />
+                              <span className="block text-sm font-semibold text-[#232323]">Exklusive Community</span>
+                              <span className="text-xs text-[#474747]">Direkter Draht zum Team</span>
+                            </div>
+                            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#39B37B]/20 hover:border-[#39B37B]/40 transition-all duration-300 hover:shadow-lg">
+                              <Tag className="w-5 h-5 text-[#39B37B] mb-2" />
+                              <span className="block text-sm font-semibold text-[#232323]">50% Rabatt</span>
+                              <span className="text-xs text-[#474747]">Nach der Beta-Phase</span>
+                            </div>
+                            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#e24e1b]/10 hover:border-[#e24e1b]/30 transition-all duration-300 hover:shadow-lg">
+                              <Sparkles className="w-5 h-5 text-[#e24e1b] mb-2" />
+                              <span className="block text-sm font-semibold text-[#232323]">Kostenlos testen</span>
+                              <span className="text-xs text-[#474747]">Keine Kreditkarte nötig</span>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-col sm:flex-row gap-3">
+                            <Link
+                              to="/beta"
+                              className="flex-1 inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-xl hover:from-[#d63f14] hover:to-[#ea580c] transition-all duration-300 shadow-lg hover:shadow-xl group transform hover:scale-[1.02]"
+                            >
+                              Jetzt Beta-Zugang sichern
+                              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                            <Link
+                              to="/pricing"
+                              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-[#474747] bg-white/90 backdrop-blur-sm border-2 border-[#232323]/20 rounded-xl hover:bg-[#F5F6F8] hover:border-[#232323]/30 transition-all duration-300 shadow-md hover:shadow-lg"
+                            >
+                              Preise ansehen
+                            </Link>
+                          </div>
                         </div>
                       </motion.div>
                     )}

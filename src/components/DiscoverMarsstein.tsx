@@ -23,9 +23,9 @@ const features = [
     description: 'Von DSGVO über ISO 27001 bis zu branchenspezifischen Standards – verstehen und implementieren Sie jedes Framework mit Leichtigkeit.',
     link: '/wissen/compliance-frameworks',
     icon: Shield,
-    iconBg: 'bg-blue-100',
-    iconColor: 'text-blue-600',
-    hoverBg: 'hover:bg-blue-50',
+    iconBg: 'bg-[#e24e1b]/10',
+    iconColor: 'text-[#e24e1b]',
+    hoverBg: 'hover:bg-[#e24e1b]/5',
     highlight: 'DSGVO • ISO 27001 • SOC2'
   },
   {
@@ -34,9 +34,9 @@ const features = [
     description: 'Praktische Leitfäden, Checklisten und Schritt-für-Schritt Anleitungen die Ihre DSGVO-Compliance zum Kinderspiel machen.',
     link: '/wissen/dsgvo',
     icon: Scale,
-    iconBg: 'bg-purple-100',
-    iconColor: 'text-purple-600',
-    hoverBg: 'hover:bg-purple-50',
+    iconBg: 'bg-[#e24e1b]/10',
+    iconColor: 'text-[#e24e1b]',
+    hoverBg: 'hover:bg-[#e24e1b]/5',
     highlight: 'Leitfäden • Vorlagen • Praxis'
   },
   {
@@ -45,9 +45,9 @@ const features = [
     description: 'Ob E-Commerce, SaaS oder Gesundheitswesen – entdecken Sie spezifische Compliance-Lösungen für Ihre Branche.',
     link: '/wissen/branchen',
     icon: Building2,
-    iconBg: 'bg-emerald-100',
-    iconColor: 'text-emerald-600',
-    hoverBg: 'hover:bg-emerald-50',
+    iconBg: 'bg-[#e24e1b]/10',
+    iconColor: 'text-[#e24e1b]',
+    hoverBg: 'hover:bg-[#e24e1b]/5',
     highlight: 'E-Commerce • SaaS • Healthcare'
   },
   {
@@ -56,9 +56,9 @@ const features = [
     description: 'Erfahren Sie, warum wir Marsstein entwickelt haben und wie unsere Vision Compliance für immer verändern wird.',
     link: '/ueber-uns',
     icon: Users,
-    iconBg: 'bg-amber-100',
-    iconColor: 'text-amber-600',
-    hoverBg: 'hover:bg-amber-50',
+    iconBg: 'bg-[#e24e1b]/10',
+    iconColor: 'text-[#e24e1b]',
+    hoverBg: 'hover:bg-[#e24e1b]/5',
     highlight: 'Team • Vision • Werte'
   },
   {
@@ -67,9 +67,9 @@ const features = [
     description: 'Aktuelle Rechtsprechung, Best Practices und alles was Sie für erfolgreiche Compliance-Implementierung brauchen.',
     link: '/wissen',
     icon: BookOpen,
-    iconBg: 'bg-indigo-100',
-    iconColor: 'text-indigo-600',
-    hoverBg: 'hover:bg-indigo-50',
+    iconBg: 'bg-[#e24e1b]/10',
+    iconColor: 'text-[#e24e1b]',
+    hoverBg: 'hover:bg-[#e24e1b]/5',
     highlight: 'Guides • Updates • Ressourcen'
   },
   {
@@ -78,9 +78,9 @@ const features = [
     description: 'Haben Sie Fragen? Unser Expertenteam hilft Ihnen gerne bei allen Compliance-Herausforderungen und findet die perfekte Lösung für Ihr Unternehmen.',
     link: '/contact',
     icon: MessageCircle,
-    iconBg: 'bg-gradient-to-br from-blue-100 to-purple-100',
-    iconColor: 'text-blue-600',
-    hoverBg: 'hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50',
+    iconBg: 'bg-gradient-to-br from-[#e24e1b]/10 to-[#f97316]/10',
+    iconColor: 'text-[#e24e1b]',
+    hoverBg: 'hover:bg-gradient-to-br hover:from-[#e24e1b]/5 hover:to-[#f97316]/5',
     highlight: 'Support • Beratung • Demo',
     isSpecial: true
   }
@@ -128,7 +128,7 @@ export const DiscoverMarsstein = () => {
                   shadow-sm transition-all duration-300
                   hover:shadow-xl hover:-translate-y-1
                   ${feature.isSpecial
-                    ? 'bg-gradient-to-br from-blue-50 via-white to-purple-50 border-2 border-blue-200 hover:border-blue-400'
+                    ? 'bg-gradient-to-br from-[#e24e1b]/5 via-white to-[#39B37B]/5 border-2 border-[#e24e1b]/30 hover:border-[#e24e1b]/50'
                     : 'bg-white border border-gray-200 hover:border-gray-300'
                   }
                   ${feature.hoverBg}
@@ -146,7 +146,7 @@ export const DiscoverMarsstein = () => {
                     </div>
 
                     {/* Title & Subtitle */}
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#e24e1b] transition-colors">
                       {feature.title}
                     </h3>
                     <p className="text-sm font-medium text-gray-500 mb-4">
@@ -166,7 +166,7 @@ export const DiscoverMarsstein = () => {
                     </div>
 
                     {/* CTA with arrow */}
-                    <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 group-hover:text-blue-700 transition-colors">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-[#e24e1b] group-hover:text-[#d63f14] transition-colors">
                       <span>{feature.isSpecial ? 'Jetzt kontaktieren' : 'Mehr erfahren'}</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -174,7 +174,7 @@ export const DiscoverMarsstein = () => {
                     {/* Special badge for contact card */}
                     {feature.isSpecial && (
                       <div className="absolute -top-2 -right-2">
-                        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1">
+                        <div className="bg-gradient-to-r from-[#e24e1b] to-[#39B37B] text-white text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1">
                           <Sparkles className="w-3 h-3" />
                           <span>Persönlich</span>
                         </div>
