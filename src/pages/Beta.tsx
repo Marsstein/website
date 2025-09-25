@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { CheckCircle2, Rocket, Shield, Users, Zap } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
+import {
+  CheckCircle2,
+  Rocket,
+  FileCheck,
+  AlertCircle,
+  UserCheck,
+  ArrowRight,
+  Clock,
+  Shield
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Beta: React.FC = () => {
@@ -15,60 +23,119 @@ const Beta: React.FC = () => {
     email: '',
     company: '',
     companySize: '',
-    industry: '',
-    challenges: '',
-    phone: ''
+    challenges: [],
+    phone: '',
+    currentSolution: '',
+    priority: ''
   });
 
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email ||
+        !formData.company || !formData.companySize || !formData.priority) {
+      alert('Bitte füllen Sie alle Pflichtfelder aus.');
+      return;
+    }
+
     console.log('Beta form submission:', formData);
     setSubmitted(true);
   };
 
-  const benefits = [
+  const dsgvoChallenges = [
+    { id: 'verarbeitungsverzeichnis', label: 'Verarbeitungsverzeichnis erstellen & pflegen' },
+    { id: 'tom', label: 'Technische und organisatorische Maßnahmen (TOM)' },
+    { id: 'datenschutzerklaerung', label: 'Datenschutzerklärungen aktuell halten' },
+    { id: 'betroffenenanfragen', label: 'Betroffenenanfragen managen' },
+    { id: 'auftragsverarbeitung', label: 'Auftragsverarbeitungsverträge verwalten' },
+    { id: 'datenpannen', label: 'Datenpannen-Management' },
+    { id: 'schulungen', label: 'Mitarbeiterschulungen durchführen' },
+    { id: 'loeschkonzept', label: 'Löschkonzept umsetzen' }
+  ];
+
+  const features = [
     {
-      icon: <Zap className="h-5 w-5" />,
-      title: "Früher Zugang",
-      description: "Seien Sie unter den Ersten, die unsere innovative Compliance-Plattform nutzen"
+      icon: <FileCheck className="h-5 w-5" />,
+      title: "Verarbeitungsverzeichnis",
+      description: "Automatisiert erstellt und immer aktuell"
     },
     {
       icon: <Shield className="h-5 w-5" />,
-      title: "Kostenlose Nutzung",
-      description: "Vollständiger Zugriff während der Beta-Phase ohne Kosten"
+      title: "TOM-Dokumentation",
+      description: "Technische Maßnahmen vollständig dokumentiert"
     },
     {
-      icon: <Users className="h-5 w-5" />,
-      title: "Direkter Einfluss",
-      description: "Ihr Feedback formt die Zukunft unserer Plattform"
+      icon: <UserCheck className="h-5 w-5" />,
+      title: "Betroffenenrechte",
+      description: "Anfragen in unter 30 Minuten bearbeitet"
     },
     {
-      icon: <Rocket className="h-5 w-5" />,
-      title: "Premium Support",
-      description: "Persönliche Betreuung und schneller Support während der Beta"
+      icon: <AlertCircle className="h-5 w-5" />,
+      title: "Datenpannen-Workflow",
+      description: "72-Stunden-Frist automatisch eingehalten"
     }
   ];
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
-        <div className="container max-w-2xl mx-auto py-20 px-4">
+      <div className="min-h-screen bg-background">
+        <div className="container max-w-2xl mx-auto py-24 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center space-y-6"
+            className="text-center space-y-8"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/20">
-              <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-400" />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-50 dark:bg-green-950/20">
+              <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-500" />
             </div>
-            <h1 className="text-4xl font-bold">Vielen Dank für Ihre Anmeldung!</h1>
-            <p className="text-lg text-muted-foreground max-w-md mx-auto">
-              Wir haben Ihre Bewerbung für die Beta-Phase erhalten. Unser Team wird sich in Kürze bei Ihnen melden.
-            </p>
-            <Button onClick={() => window.location.href = '/'} size="lg">
+
+            <div className="space-y-3">
+              <h1 className="text-4xl font-bold text-foreground">
+                Vielen Dank für Ihre Anmeldung
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-md mx-auto">
+                Wir haben Ihre Bewerbung für das Beta-Programm erhalten und melden uns innerhalb von 24 Stunden bei Ihnen.
+              </p>
+            </div>
+
+            <Card className="max-w-md mx-auto border-muted">
+              <CardContent className="pt-6">
+                <h3 className="font-semibold mb-3">Ihre nächsten Schritte:</h3>
+                <div className="space-y-3 text-left">
+                  <div className="flex gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-muted-foreground mt-0.5" />
+                    <div className="text-sm">
+                      <p className="font-medium">Bestätigungs-E-Mail prüfen</p>
+                      <p className="text-muted-foreground">In den nächsten Minuten erhalten</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <Clock className="h-5 w-5 text-muted-foreground mt-0.5" />
+                    <div className="text-sm">
+                      <p className="font-medium">Onboarding-Termin</p>
+                      <p className="text-muted-foreground">Wir kontaktieren Sie binnen 24h</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <Rocket className="h-5 w-5 text-muted-foreground mt-0.5" />
+                    <div className="text-sm">
+                      <p className="font-medium">Start der Beta-Phase</p>
+                      <p className="text-muted-foreground">Sofort nach dem Onboarding</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Button
+              onClick={() => window.location.href = '/'}
+              size="lg"
+              variant="outline"
+            >
               Zur Startseite
             </Button>
           </motion.div>
@@ -78,103 +145,103 @@ const Beta: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
-      <div className="container max-w-6xl mx-auto py-12 px-4">
+    <div className="min-h-screen bg-background">
+      <div className="container max-w-7xl mx-auto py-16 px-4">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 text-primary text-sm font-medium mb-4">
             <Rocket className="h-4 w-4" />
-            BETA PROGRAMM
+            BETA-PROGRAMM
           </div>
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Werden Sie Beta-Tester
+
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+            DSGVO-Software im Beta-Test
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Gestalten Sie die Zukunft der Compliance-Automatisierung mit und erhalten Sie exklusiven,
-            kostenlosen Zugang zu unserer innovativen Plattform.
+
+          <p className="text-xl text-muted-foreground">
+            Testen Sie 3 Monate kostenlos unsere KI-gestützte DSGVO-Automatisierung
+            und sparen Sie 80% Ihrer Zeit bei der Datenschutz-Dokumentation.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="space-y-6"
+            className="lg:col-span-4 space-y-8"
           >
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Ihre Vorteile als Beta-Tester</h2>
-                <div className="space-y-4">
-                  {benefits.map((benefit, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                      className="flex gap-4"
-                    >
-                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                        {benefit.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">{benefit.title}</h3>
-                        <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-6">Was Sie erhalten</h2>
+              <div className="space-y-4">
+                {features.map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">{feature.title}</h3>
+                      <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
+            </div>
 
-              <Card className="bg-muted/50">
-                <CardContent className="pt-6">
-                  <h3 className="font-semibold mb-3">Was erwartet Sie?</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <span>3 Monate kostenlosen Vollzugriff auf alle Features</span>
+            <Card className="border-primary/20 bg-primary/5">
+              <CardContent className="pt-6">
+                <div className="space-y-3">
+                  <h3 className="font-semibold flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-primary" />
+                    Limitiertes Angebot
+                  </h3>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                      3 Monate kostenlos
                     </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Wöchentliche Updates mit neuen Funktionen</span>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                      Danach 50% Rabatt für immer
                     </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Direkter Draht zum Entwicklungsteam</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Exklusive Beta-Tester Community</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <span>50% Rabatt nach der Beta-Phase</span>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                      Nur noch 12 Plätze verfügbar
                     </li>
                   </ul>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+              </CardContent>
+            </Card>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-8"
           >
             <Card>
               <CardHeader>
-                <CardTitle>Jetzt für die Beta anmelden</CardTitle>
+                <CardTitle>Beta-Zugang anfordern</CardTitle>
                 <CardDescription>
-                  Füllen Sie das Formular aus und sichern Sie sich Ihren Platz im Beta-Programm
+                  Füllen Sie das Formular aus und starten Sie in 24 Stunden
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">Vorname *</Label>
                       <Input
@@ -197,108 +264,146 @@ const Beta: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email">E-Mail-Adresse *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                      placeholder="max.mustermann@firma.de"
-                    />
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="email">E-Mail *</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        required
+                        placeholder="max@firma.de"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Telefon</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+49 123 456789"
+                      />
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Telefonnummer</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+49 123 456789"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="company">Unternehmen *</Label>
-                    <Input
-                      id="company"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      required
-                      placeholder="Musterfirma GmbH"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="company">Unternehmen *</Label>
+                      <Input
+                        id="company"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        required
+                        placeholder="Musterfirma GmbH"
+                      />
+                    </div>
                     <div className="space-y-2">
                       <Label htmlFor="companySize">Unternehmensgröße *</Label>
-                      <Select
+                      <select
+                        id="companySize"
                         value={formData.companySize}
-                        onValueChange={(value) => setFormData({ ...formData, companySize: value })}
+                        onChange={(e) => setFormData({ ...formData, companySize: e.target.value })}
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         required
                       >
-                        <SelectTrigger id="companySize">
-                          <SelectValue placeholder="Wählen Sie..." />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1-10">1-10 Mitarbeiter</SelectItem>
-                          <SelectItem value="11-50">11-50 Mitarbeiter</SelectItem>
-                          <SelectItem value="51-200">51-200 Mitarbeiter</SelectItem>
-                          <SelectItem value="201-500">201-500 Mitarbeiter</SelectItem>
-                          <SelectItem value="500+">500+ Mitarbeiter</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="industry">Branche *</Label>
-                      <Select
-                        value={formData.industry}
-                        onValueChange={(value) => setFormData({ ...formData, industry: value })}
-                        required
-                      >
-                        <SelectTrigger id="industry">
-                          <SelectValue placeholder="Wählen Sie..." />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="tech">Technologie & IT</SelectItem>
-                          <SelectItem value="finance">Finanzdienstleistungen</SelectItem>
-                          <SelectItem value="health">Gesundheitswesen</SelectItem>
-                          <SelectItem value="retail">Handel & E-Commerce</SelectItem>
-                          <SelectItem value="manufacturing">Produktion & Industrie</SelectItem>
-                          <SelectItem value="consulting">Beratung & Dienstleistung</SelectItem>
-                          <SelectItem value="education">Bildung & Forschung</SelectItem>
-                          <SelectItem value="other">Andere</SelectItem>
-                        </SelectContent>
-                      </Select>
+                        <option value="">Bitte wählen</option>
+                        <option value="1-10">1-10 Mitarbeiter</option>
+                        <option value="11-50">11-50 Mitarbeiter</option>
+                        <option value="51-250">51-250 Mitarbeiter</option>
+                        <option value="251-1000">251-1000 Mitarbeiter</option>
+                        <option value="1000+">1000+ Mitarbeiter</option>
+                      </select>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="challenges">
-                      Welche Compliance-Herausforderungen möchten Sie lösen?
-                    </Label>
-                    <Textarea
-                      id="challenges"
-                      value={formData.challenges}
-                      onChange={(e) => setFormData({ ...formData, challenges: e.target.value })}
-                      placeholder="Beschreiben Sie kurz Ihre aktuellen Herausforderungen im Bereich Compliance..."
-                      rows={4}
-                    />
+                    <Label htmlFor="currentSolution">Wie managen Sie DSGVO aktuell?</Label>
+                    <select
+                      id="currentSolution"
+                      value={formData.currentSolution}
+                      onChange={(e) => setFormData({ ...formData, currentSolution: e.target.value })}
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <option value="">Bitte wählen</option>
+                      <option value="excel">Excel / Word</option>
+                      <option value="paper">Papierbasiert</option>
+                      <option value="software">Andere Software</option>
+                      <option value="external">Externer Datenschutzbeauftragter</option>
+                      <option value="none">Noch keine Lösung</option>
+                    </select>
                   </div>
 
-                  <div className="flex items-start gap-2">
-                    <input type="checkbox" id="consent" required className="mt-1" />
-                    <label htmlFor="consent" className="text-sm text-muted-foreground">
-                      Ich stimme zu, dass meine Daten für die Teilnahme am Beta-Programm verarbeitet werden.
-                      Die Daten werden vertraulich behandelt und gemäß unserer Datenschutzerklärung verarbeitet.
-                    </label>
+                  <div className="space-y-2">
+                    <Label>Ihre DSGVO-Herausforderungen</Label>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {dsgvoChallenges.map((challenge) => (
+                        <div key={challenge.id} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={challenge.id}
+                            onCheckedChange={(checked) => {
+                              if (checked) {
+                                setFormData({
+                                  ...formData,
+                                  challenges: [...formData.challenges, challenge.id]
+                                });
+                              } else {
+                                setFormData({
+                                  ...formData,
+                                  challenges: formData.challenges.filter(c => c !== challenge.id)
+                                });
+                              }
+                            }}
+                          />
+                          <label
+                            htmlFor={challenge.id}
+                            className="text-sm font-normal cursor-pointer"
+                          >
+                            {challenge.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <Button type="submit" className="w-full" size="lg">
-                    Jetzt für Beta anmelden
+                  <div className="space-y-2">
+                    <Label htmlFor="priority">Wann möchten Sie starten? *</Label>
+                    <select
+                      id="priority"
+                      value={formData.priority}
+                      onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      required
+                    >
+                      <option value="">Bitte wählen</option>
+                      <option value="immediate">Sofort</option>
+                      <option value="month">Diesen Monat</option>
+                      <option value="quarter">Dieses Quartal</option>
+                      <option value="exploring">Nur informieren</option>
+                    </select>
+                  </div>
+
+                  <div className="bg-muted/50 p-4 rounded-lg">
+                    <div className="flex items-start gap-2">
+                      <Checkbox id="consent" required className="mt-1" />
+                      <label htmlFor="consent" className="text-sm text-muted-foreground">
+                        Ich stimme der Verarbeitung meiner Daten gemäß der{' '}
+                        <a href="/datenschutz" className="text-primary hover:underline">
+                          Datenschutzerklärung
+                        </a>{' '}
+                        zu.
+                      </label>
+                    </div>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    size="lg"
+                  >
+                    Beta-Zugang anfordern
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </form>
               </CardContent>
@@ -307,14 +412,12 @@ const Beta: React.FC = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center py-8 border-t"
+          className="text-center mt-16 text-sm text-muted-foreground"
         >
-          <p className="text-sm text-muted-foreground">
-            Begrenzte Plätze verfügbar • Keine Kreditkarte erforderlich • Start: Q1 2025
-          </p>
+          Bereits 38 Unternehmen nutzen unsere DSGVO-Automatisierung erfolgreich
         </motion.div>
       </div>
     </div>

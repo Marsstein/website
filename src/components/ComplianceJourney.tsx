@@ -8,7 +8,10 @@ import {
   Clock,
   Shield,
   RefreshCw,
-  Target
+  Target,
+  Sparkles,
+  Users,
+  Tag
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
@@ -109,6 +112,7 @@ const complianceContent = [
         </div>
       </>
     ),
+    cta: true,
   },
 ];
 
@@ -189,37 +193,61 @@ export const ComplianceJourney = () => {
                         />
                       </div>
                     )}
+                    {item.cta && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                        className="mt-8 p-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl border border-emerald-200"
+                      >
+                        <div className="text-center mb-4">
+                          <h4 className="text-xl font-bold text-gray-900 mb-2">
+                            Werden Sie Beta-Tester
+                          </h4>
+                          <p className="text-gray-600">
+                            Gestalten Sie die Zukunft der Compliance mit uns
+                          </p>
+                        </div>
+
+                        <div className="flex flex-wrap justify-center gap-3 mb-5">
+                          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 border border-blue-200">
+                            <Users className="w-4 h-4 text-blue-600" />
+                            <span className="text-sm font-medium text-blue-700">Exklusive Community</span>
+                          </div>
+                          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 border border-green-200">
+                            <Tag className="w-4 h-4 text-green-600" />
+                            <span className="text-sm font-medium text-green-700">50% Rabatt nach Beta</span>
+                          </div>
+                          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-100 border border-purple-200">
+                            <Sparkles className="w-4 h-4 text-purple-600" />
+                            <span className="text-sm font-medium text-purple-700">Kostenlos testen</span>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-3">
+                          <Link
+                            to="/beta"
+                            className="flex-1 inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-md hover:shadow-lg group"
+                          >
+                            Jetzt Beta-Zugang sichern
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                          <Link
+                            to="/pricing"
+                            className="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all duration-200"
+                          >
+                            Preise ansehen
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
                   </div>
                 </motion.div>
               ))}
             </div>
           </TracingBeam>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-20 text-center"
-        >
-          <div className="inline-flex flex-col sm:flex-row gap-4">
-            <Link
-              to="/pricing"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl group"
-            >
-              Compliance-Revolution starten
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all duration-300"
-            >
-              Kostenlose Demo anfragen
-            </Link>
-          </div>
-          <p className="mt-4 text-sm text-gray-500">
-            Keine Kreditkarte erforderlich · Sofort einsatzbereit · DACH-optimiert
-          </p>
-        </motion.div>
       </div>
     </section>
   );
