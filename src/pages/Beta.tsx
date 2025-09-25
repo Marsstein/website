@@ -144,8 +144,8 @@ const Beta: React.FC = () => {
           </h1>
 
           <p className="text-xl text-muted-foreground">
-            Testen Sie 3 Monate kostenlos unsere KI-gestützte DSGVO-Automatisierung
-            und sparen Sie 80% Ihrer Zeit bei der Datenschutz-Dokumentation.
+            Testen Sie kostenlos unsere KI-gestützte DSGVO-Automatisierung
+            und sparen Sie Ihre wertvolle Zeit bei der Datenschutz-Dokumentation.
           </p>
         </motion.div>
 
@@ -393,14 +393,6 @@ const Beta: React.FC = () => {
             </Card>
           </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-12 text-sm text-muted-foreground"
-        >
-          Bereits 38 Unternehmen nutzen unsere DSGVO-Automatisierung erfolgreich
-        </motion.div>
       </div>
     </div>
   );

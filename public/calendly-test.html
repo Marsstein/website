@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendly Test</title>
+    <!-- Calendly Link-Widget CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <!-- Calendly Link-Widget JS -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            text-align: center;
+        }
+        .button {
+            background: #e24e1b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calendly Test Page</h1>
+
+    <p>Test 1: Link mit onclick</p>
+    <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marsstein-info/marsstein-intro'});return false;" class="button">
+        Termin buchen (Link)
+    </a>
+
+    <p>Test 2: Button mit onclick</p>
+    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marsstein-info/marsstein-intro'});" class="button">
+        Termin buchen (Button)
+    </button>
+
+    <p>Test 3: Inline Widget</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/marsstein-info/marsstein-intro" style="min-width:320px;height:630px;"></div>
+
+    <script>
+        window.addEventListener('load', function() {
+            console.log('Page loaded');
+            setTimeout(function() {
+                console.log('Calendly available:', typeof Calendly !== 'undefined');
+                if (typeof Calendly !== 'undefined') {
+                    console.log('Calendly functions:', Object.keys(Calendly));
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

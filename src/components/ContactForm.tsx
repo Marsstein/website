@@ -9,8 +9,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, MapPin, Clock, Monitor, Shield, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Monitor, Shield, Calendar, ExternalLink } from 'lucide-react';
 import { getEmailJS } from '@/utils/lazyImports';
+import { CalendlyButton } from '@/components/CalendlyButton';
 
 interface ContactFormProps {
   isDemoRequest?: boolean;
@@ -277,26 +278,8 @@ ${sanitizedData.message}
                 <span className="text-sm">Unverbindlich & kostenlos</span>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={() => {
-                try {
-                  if (typeof (window as any).Calendly !== 'undefined') {
-                    (window as any).Calendly.initPopupWidget({
-                      url: 'https://calendly.com/marsstein-info/marsstein-intro'
-                    });
-                  } else {
-                    window.open('https://calendly.com/marsstein-info/marsstein-intro', '_blank');
-                  }
-                } catch (error) {
-                  window.open('https://calendly.com/marsstein-info/marsstein-intro', '_blank');
-                }
-              }}
-              className="w-full px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity flex items-center justify-center"
-            >
-              <Calendar className="h-4 w-4 mr-2" />
-              Termin buchen
-            </button>
+            {/* Calendly Button Component */}
+            <CalendlyButton />
           </Card>
 
           {/* Contact Info */}
