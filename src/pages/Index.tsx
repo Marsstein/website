@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import { ComplianceJourney } from '@/components/ComplianceJourney';
 import { ComplianceAreas } from '@/components/ComplianceAreas';
+import { DiscoverMarsstein } from '@/components/DiscoverMarsstein';
 import { TrustPlatformFeatures } from '@/components/TrustPlatformFeatures';
 import { CTASection } from '@/components/CTASection';
 import { TrustSecurity } from '@/components/TrustSecurity';
@@ -97,6 +98,13 @@ const Index = () => {
           data-section-id="compliance-areas"
         >
           <ComplianceAreas />
+        </section>
+
+        <section
+          className={`compliance-section ${sectionsVisible.has('discover') ? 'visible' : ''}`}
+          data-section-id="discover"
+        >
+          <DiscoverMarsstein />
         </section>
 
         <section
