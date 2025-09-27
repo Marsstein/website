@@ -75,14 +75,14 @@ const PricingPage = () => {
         structuredData={structuredData}
       />
       
-      <div className="min-h-screen bg-gray-50 py-16">
+      <div className="min-h-screen bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-5xl font-bold text-[#232323] mb-4">
               Transparente Preise für jeden Bedarf
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-[#474747] max-w-3xl mx-auto">
               Wählen Sie das passende Paket für Ihre Compliance-Anforderungen. 
               Alle Preise verstehen sich zzgl. MwSt. 30 Tage kostenlos testen.
             </p>
@@ -95,24 +95,24 @@ const PricingPage = () => {
                 key={index}
                 className={`relative rounded-lg ${
                   plan.highlighted
-                    ? 'ring-2 ring-blue-600 shadow-xl'
-                    : 'border border-gray-200'
-                } bg-white p-8`}
+                    ? 'ring-2 ring-[#e24e1b] shadow-xl bg-white'
+                    : 'border border-gray-200 bg-[#F5F6F8]'
+                } p-8 transition-all hover:shadow-lg`}
               >
                 {plan.highlighted && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-[#e24e1b] text-white px-4 py-1 rounded-full text-sm font-medium">
                       Beliebt
                     </span>
                   </div>
                 )}
                 
                 <div className="text-center mb-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h2>
-                  <p className="text-gray-600 mb-4">{plan.description}</p>
-                  <div className="text-4xl font-bold text-gray-900">
+                  <h2 className="text-2xl font-semibold text-[#232323] mb-2">{plan.name}</h2>
+                  <p className="text-[#474747] mb-4">{plan.description}</p>
+                  <div className="text-4xl font-bold text-[#232323]">
                     {plan.price}
-                    <span className="text-lg text-gray-600 font-normal">{plan.period}</span>
+                    <span className="text-lg text-[#474747] font-normal">{plan.period}</span>
                   </div>
                 </div>
 
@@ -120,7 +120,7 @@ const PricingPage = () => {
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start">
                       <svg
-                        className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0"
+                        className="w-5 h-5 text-[#39B37B] mr-3 mt-0.5 flex-shrink-0"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -130,17 +130,17 @@ const PricingPage = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-[#474747]">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <Link
                   to={plan.name === 'Enterprise' ? '/contact' : '/signup'}
-                  className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors ${
+                  className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all ${
                     plan.highlighted
-                      ? 'bg-blue-600 text-white hover:bg-blue-700'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                      ? 'bg-[#e24e1b] text-white hover:bg-[#ea580c] shadow-md hover:shadow-lg'
+                      : 'bg-transparent border-2 border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white'
                   }`}
                 >
                   {plan.cta}
@@ -150,40 +150,40 @@ const PricingPage = () => {
           </div>
 
           {/* FAQ Section */}
-          <div className="bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          <div className="bg-[#F5F6F8] rounded-lg p-8">
+            <h2 className="text-4xl font-semibold text-[#232323] mb-6 text-center">
               Häufig gestellte Fragen
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-[#232323] mb-2">
                   Kann ich das Paket später wechseln?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-[#474747]">
                   Ja, Sie können jederzeit upgraden oder downgraden. Die Abrechnung erfolgt anteilig.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-[#232323] mb-2">
                   Gibt es eine Mindestlaufzeit?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-[#474747]">
                   Nein, alle Pakete sind monatlich kündbar. Bei Jahreszahlung gewähren wir 20% Rabatt.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-[#232323] mb-2">
                   Sind Schulungen enthalten?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-[#474747]">
                   Professional und Enterprise Pakete enthalten Onboarding-Schulungen. Weitere Trainings auf Anfrage.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-[#232323] mb-2">
                   Wie sicher sind meine Daten?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-[#474747]">
                   Wir hosten in deutschen Rechenzentren und sind ISO 27001 zertifiziert. Ihre Daten sind sicher.
                 </p>
               </div>
@@ -192,15 +192,15 @@ const PricingPage = () => {
 
           {/* CTA Section */}
           <div className="text-center mt-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-semibold text-[#232323] mb-4">
               Noch unsicher? Testen Sie kostenlos!
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-[#474747] mb-8">
               30 Tage unverbindlich alle Features testen. Keine Kreditkarte erforderlich.
             </p>
             <Link
               to="/signup"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-[#e24e1b] rounded-lg hover:bg-[#ea580c] shadow-lg hover:shadow-xl transition-all"
             >
               Kostenlos testen
             </Link>

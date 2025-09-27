@@ -348,7 +348,7 @@ export const ComplianceJourneyModern = () => {
                 </span>
               </Link>
               <Link
-                to="/pricing"
+                to="/preise"
                 className="inline-flex items-center justify-center px-8 py-4 text-gray-700 font-medium bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300"
               >
                 Preise ansehen

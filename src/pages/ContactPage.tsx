@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SEOHead from '../components/SEOHead';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 
+declare global {
+  interface Window {
+    Calendly: any;
+  }
+}
+
 const ContactPage = () => {
+  useEffect(() => {
+    // Load Calendly widget script
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -246,9 +266,23 @@ const ContactPage = () => {
                     <span className="font-medium">Unverbindlich & kostenlos</span>
                   </li>
                 </ul>
-                <button className="mt-8 w-full px-6 py-3 bg-[#e24e1b] text-white font-semibold rounded-lg hover:bg-[#f97316] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                  Termin vereinbaren
-                </button>
+
+                {/* Calendly popup button */}
+                <a
+                  href=""
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (window.Calendly) {
+                      window.Calendly.initPopupWidget({
+                        url: 'https://calendly.com/marsstein-info/marsstein-intro'
+                      });
+                    }
+                    return false;
+                  }}
+                  className="mt-8 w-full px-6 py-3 bg-[#e24e1b] text-white font-semibold rounded-lg hover:bg-[#f97316] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 inline-block text-center cursor-pointer"
+                >
+                  Termin buchen
+                </a>
               </div>
             </div>
           </div>

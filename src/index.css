@@ -8,6 +8,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Calendly popup fix - let Calendly handle positioning */
+.calendly-overlay {
+  z-index: 9999 !important;
+}
+
+.calendly-popup {
+  max-height: 95vh !important;
+  max-width: 95vw !important;
+}
+
+.calendly-popup-content {
+  max-height: calc(95vh - 30px) !important;
+}
+
+.calendly-close-overlay {
+  z-index: 10000 !important;
+}
+
 /* Performance optimizations to prevent flickers */
 @layer base {
   /* Global smooth scrolling */
@@ -940,5 +958,23 @@ html {
     opacity: 1 !important;
     transition: none !important;
   }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 6s ease infinite;
+  background-size: 300%;
+}
+
+.bg-300\% {
+  background-size: 300%;
 }
 

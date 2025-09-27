@@ -138,11 +138,11 @@ export const HeroSection: React.FC = () => {
                 </Button>
               </Link>
               
-              <Link to="/pricing">
+              <Link to="/preise">
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="px-8 py-4 text-lg border-2 border-gray-600 text-gray-300 hover:bg-brand-red/10 hover:border-brand-red/50 hover:text-white transition-all duration-300 group hover:scale-105 transform relative overflow-hidden"
+                  className="px-8 py-4 text-lg border-2 border-[#474747] text-[#232323] bg-white/90 hover:bg-[#e24e1b] hover:border-[#e24e1b] hover:text-white transition-all duration-300 group hover:scale-105 transform relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-brand-red/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10">Preise ansehen</span>

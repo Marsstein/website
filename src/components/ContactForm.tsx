@@ -9,9 +9,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, MapPin, Clock, Monitor, Shield, Calendar, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Monitor, Shield } from 'lucide-react';
 import { getEmailJS } from '@/utils/lazyImports';
-import { CalendlyButton } from '@/components/CalendlyButton';
+import { SimpleCalendlySection } from '@/components/SimpleCalendlySection';
 
 interface ContactFormProps {
   isDemoRequest?: boolean;
@@ -255,32 +255,10 @@ ${sanitizedData.message}
             </div>
           </div>
 
-          {/* Free Consultation Section */}
-          <Card className="p-6 mb-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-            <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-              <Calendar className="h-6 w-6 text-primary" />
-              Kostenlose Erstberatung
-            </h3>
-            <p className="text-muted-foreground mb-4">
-              Vereinbaren Sie ein unverbindliches Beratungsgespräch mit unseren Compliance-Experten.
-            </p>
-            <div className="space-y-3 mb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm">30 Minuten Expertengespräch</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm">Individuelle Lösungsvorschläge</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm">Unverbindlich & kostenlos</span>
-              </div>
-            </div>
-            {/* Calendly Button Component */}
-            <CalendlyButton />
-          </Card>
+          {/* Free Consultation Section with Calendly */}
+          {console.log('About to render SimpleCalendlySection')}
+          <SimpleCalendlySection />
+          {console.log('After SimpleCalendlySection render')}
 
           {/* Contact Info */}
           <div className="space-y-4">

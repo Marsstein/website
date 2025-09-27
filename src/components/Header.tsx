@@ -1,13 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu as LucideMenu } from 'lucide-react';
+import {
+  Menu as LucideMenu,
+  ChevronDown,
+  Shield,
+  Award,
+  BookOpen,
+  Building2,
+  DollarSign,
+  Users,
+  Mail,
+  FileCheck,
+  FileText,
+  AlertTriangle,
+  Bell,
+  Cloud,
+  Car,
+  Wrench,
+  Cookie,
+  Bot,
+  BarChart3,
+  Home,
+  X
+} from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { cn } from '@/lib/utils';
 
 export const Header: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openSections, setOpenSections] = useState<string[]>([]);
+
+  const toggleSection = (section: string) => {
+    setOpenSections(prev =>
+      prev.includes(section)
+        ? prev.filter(s => s !== section)
+        : [...prev, section]
+    );
+  };
+
+  const handleMobileNavClick = () => {
+    setMobileMenuOpen(false);
+  };
 
   const handleFeaturesClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -246,107 +284,347 @@ export const Header: React.FC = () => {
 
         {/* Mobile Menu */}
         <div className="md:hidden">
-          <Sheet>
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Navigation Menu öffnen">
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Navigation Menu öffnen"
+                className="relative hover:bg-accent transition-colors"
+              >
                 <LucideMenu className="h-5 w-5" />
+                <span className="absolute -top-1 -right-1 h-2 w-2 bg-primary rounded-full animate-pulse" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs">
+            <SheetContent side="right" className="w-full max-w-sm sm:max-w-md p-0 overflow-hidden">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between py-4 border-b">
-                  <img 
-                    src="/JLogoMarsstein.svg" 
-                    alt="Marsstein Logo" 
-                    className="h-6 w-auto"
-                    loading="lazy"
-                    decoding="async"
-                  />
+              <div className="flex flex-col h-full bg-gradient-to-b from-background to-muted/20">
+                <div className="flex items-center justify-between px-6 py-4 bg-background/95 backdrop-blur border-b">
+                  <Link to="/" onClick={handleMobileNavClick}>
+                    <img
+                      src="/JLogoMarsstein.svg"
+                      alt="Marsstein Logo"
+                      className="h-7 w-auto hover:scale-105 transition-transform"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </Link>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="hover:bg-accent transition-colors"
+                  >
+                    <X className="h-5 w-5" />
+                  </Button>
                 </div>
                 
-                <div className="flex-1 overflow-y-auto py-6">
-                  <div className="space-y-1">
-                    <div className="space-y-1">
-                      <div className="px-3 py-2 text-sm font-semibold text-muted-foreground">
-                        Regulierungen
-                      </div>
-                      <Link to="/eu-ai-act" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        EU AI Act
-                      </Link>
-                      <Link to="/dsgvo" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        DSGVO
-                      </Link>
-                      <Link to="/nis2-compliance" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        NIS2-Richtlinie
-                      </Link>
-                      <Link to="/hinweisgeberschutzgesetz" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        Hinweisgeberschutzgesetz
-                      </Link>
-                    </div>
+                <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-primary/10 scrollbar-track-transparent">
+                  <nav className="px-4 py-6 space-y-2">
+                    {/* Home Link */}
+                    <Link
+                      to="/"
+                      onClick={handleMobileNavClick}
+                      className={cn(
+                        "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
+                        location.pathname === '/'
+                          ? "bg-primary/10 text-primary"
+                          : "hover:bg-accent hover:translate-x-1"
+                      )}
+                    >
+                      <Home className="h-4 w-4" />
+                      <span>Startseite</span>
+                    </Link>
 
-                    <div className="pt-4 space-y-1">
-                      <div className="px-3 py-2 text-sm font-semibold text-muted-foreground">
-                        Zertifizierungen
-                      </div>
-                      <Link to="/iso-27001-zertifizierung" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        ISO 27001
-                      </Link>
-                      <Link to="/soc2-zertifizierung" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        SOC 2
-                      </Link>
-                      <Link to="/iso-27017-zertifizierung" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        ISO 27017
-                      </Link>
-                      <Link to="/iso-27018-zertifizierung" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        ISO 27018
-                      </Link>
-                      <Link to="/tisax-zertifizierung" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        TISAX®
-                      </Link>
-                    </div>
+                    {/* Regulierungen Section */}
+                    <Collapsible
+                      open={openSections.includes('regulations')}
+                      onOpenChange={() => toggleSection('regulations')}
+                    >
+                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
+                        <div className="flex items-center gap-3">
+                          <Shield className="h-4 w-4 text-primary" />
+                          <span className="font-medium">Regulierungen</span>
+                        </div>
+                        <ChevronDown className={cn(
+                          "h-4 w-4 transition-transform duration-200",
+                          openSections.includes('regulations') && "rotate-180"
+                        )} />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
+                        <Link
+                          to="/eu-ai-act"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Bot className="h-3.5 w-3.5" />
+                          EU AI Act
+                        </Link>
+                        <Link
+                          to="/dsgvo"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <FileCheck className="h-3.5 w-3.5" />
+                          DSGVO
+                        </Link>
+                        <Link
+                          to="/nis2-compliance"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <AlertTriangle className="h-3.5 w-3.5" />
+                          NIS2-Richtlinie
+                        </Link>
+                        <Link
+                          to="/hinweisgeberschutzgesetz"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Bell className="h-3.5 w-3.5" />
+                          Hinweisgeberschutzgesetz
+                        </Link>
+                      </CollapsibleContent>
+                    </Collapsible>
 
-                    <div className="pt-4 space-y-1">
-                      <div className="px-3 py-2 text-sm font-semibold text-muted-foreground">
-                        Wissen
-                      </div>
-                      <Link to="/wissen" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        Übersicht
-                      </Link>
-                      <Link to="/wissen/dsgvo" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        DSGVO
-                      </Link>
-                      <Link to="/wissen/compliance-frameworks" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        Frameworks
-                      </Link>
-                      <Link to="/wissen/rechtsprechung" className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">
-                        Rechtsprechungen
-                      </Link>
-                    </div>
+                    {/* Zertifizierungen Section */}
+                    <Collapsible
+                      open={openSections.includes('certifications')}
+                      onOpenChange={() => toggleSection('certifications')}
+                    >
+                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
+                        <div className="flex items-center gap-3">
+                          <Award className="h-4 w-4 text-primary" />
+                          <span className="font-medium">Zertifizierungen</span>
+                        </div>
+                        <ChevronDown className={cn(
+                          "h-4 w-4 transition-transform duration-200",
+                          openSections.includes('certifications') && "rotate-180"
+                        )} />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
+                        <Link
+                          to="/iso-27001-zertifizierung"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <FileText className="h-3.5 w-3.5" />
+                          ISO 27001
+                        </Link>
+                        <Link
+                          to="/soc2-zertifizierung"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <FileText className="h-3.5 w-3.5" />
+                          SOC 2
+                        </Link>
+                        <Link
+                          to="/iso-27017-zertifizierung"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Cloud className="h-3.5 w-3.5" />
+                          ISO 27017 Cloud Security
+                        </Link>
+                        <Link
+                          to="/iso-27018-zertifizierung"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Cloud className="h-3.5 w-3.5" />
+                          ISO 27018 Cloud Privacy
+                        </Link>
+                        <Link
+                          to="/tisax-zertifizierung"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Car className="h-3.5 w-3.5" />
+                          TISAX® Automotive
+                        </Link>
+                      </CollapsibleContent>
+                    </Collapsible>
 
-                    <div className="pt-4 space-y-1">
-                      <Link to="/branchen" className="block px-3 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-md transition-colors">
-                        Branchen
+                    {/* Tools Section */}
+                    <Collapsible
+                      open={openSections.includes('tools')}
+                      onOpenChange={() => toggleSection('tools')}
+                    >
+                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
+                        <div className="flex items-center gap-3">
+                          <Wrench className="h-4 w-4 text-primary" />
+                          <span className="font-medium">Tools</span>
+                        </div>
+                        <ChevronDown className={cn(
+                          "h-4 w-4 transition-transform duration-200",
+                          openSections.includes('tools') && "rotate-180"
+                        )} />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
+                        <Link
+                          to="/tools"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Wrench className="h-3.5 w-3.5" />
+                          Tools Übersicht
+                        </Link>
+                        <Link
+                          to="/tools/cookie-management"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Cookie className="h-3.5 w-3.5" />
+                          Cookie Management
+                        </Link>
+                        <Link
+                          to="/tools/whistleblower-system"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Bell className="h-3.5 w-3.5" />
+                          Hinweisgebersystem
+                        </Link>
+                        <Link
+                          to="/tools/compliance-ai-assistant"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Bot className="h-3.5 w-3.5" />
+                          AI Assistant
+                        </Link>
+                        <Link
+                          to="/tools/dsgvo-compliance-scorecard"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <BarChart3 className="h-3.5 w-3.5" />
+                          Compliance Scorecard
+                        </Link>
+                      </CollapsibleContent>
+                    </Collapsible>
+
+                    {/* Wissen Section */}
+                    <Collapsible
+                      open={openSections.includes('knowledge')}
+                      onOpenChange={() => toggleSection('knowledge')}
+                    >
+                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
+                        <div className="flex items-center gap-3">
+                          <BookOpen className="h-4 w-4 text-primary" />
+                          <span className="font-medium">Wissen</span>
+                        </div>
+                        <ChevronDown className={cn(
+                          "h-4 w-4 transition-transform duration-200",
+                          openSections.includes('knowledge') && "rotate-180"
+                        )} />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
+                        <Link
+                          to="/wissen"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <BookOpen className="h-3.5 w-3.5" />
+                          Übersicht
+                        </Link>
+                        <Link
+                          to="/wissen/dsgvo"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <FileCheck className="h-3.5 w-3.5" />
+                          DSGVO Guides
+                        </Link>
+                        <Link
+                          to="/wissen/compliance-frameworks"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <FileText className="h-3.5 w-3.5" />
+                          Frameworks
+                        </Link>
+                        <Link
+                          to="/wissen/rechtsprechung"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <FileText className="h-3.5 w-3.5" />
+                          Rechtsprechungen
+                        </Link>
+                      </CollapsibleContent>
+                    </Collapsible>
+
+                    {/* Direct Links */}
+                    <div className="pt-2 space-y-2">
+                      <Link
+                        to="/branchen"
+                        onClick={handleMobileNavClick}
+                        className={cn(
+                          "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
+                          location.pathname === '/branchen'
+                            ? "bg-primary/10 text-primary"
+                            : "hover:bg-accent hover:translate-x-1"
+                        )}
+                      >
+                        <Building2 className="h-4 w-4" />
+                        <span>Branchen</span>
                       </Link>
-                      <Link to="/preise" className="block px-3 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-md transition-colors">
-                        Preise
+                      <Link
+                        to="/preise"
+                        onClick={handleMobileNavClick}
+                        className={cn(
+                          "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
+                          location.pathname === '/preise'
+                            ? "bg-primary/10 text-primary"
+                            : "hover:bg-accent hover:translate-x-1"
+                        )}
+                      >
+                        <DollarSign className="h-4 w-4" />
+                        <span>Preise</span>
                       </Link>
-                      <Link to="/ueber-uns" className="block px-3 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-md transition-colors">
-                        Über uns
+                      <Link
+                        to="/ueber-uns"
+                        onClick={handleMobileNavClick}
+                        className={cn(
+                          "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
+                          location.pathname === '/ueber-uns'
+                            ? "bg-primary/10 text-primary"
+                            : "hover:bg-accent hover:translate-x-1"
+                        )}
+                      >
+                        <Users className="h-4 w-4" />
+                        <span>Über uns</span>
                       </Link>
-                      <Link to="/contact" className="block px-3 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-md transition-colors">
-                        Kontakt
+                      <Link
+                        to="/contact"
+                        onClick={handleMobileNavClick}
+                        className={cn(
+                          "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
+                          location.pathname === '/contact'
+                            ? "bg-primary/10 text-primary"
+                            : "hover:bg-accent hover:translate-x-1"
+                        )}
+                      >
+                        <Mail className="h-4 w-4" />
+                        <span>Kontakt</span>
                       </Link>
                     </div>
-                  </div>
+                  </nav>
                 </div>
 
-                <div className="border-t pt-4 space-y-3">
-                  <Button variant="ghost" className="w-full justify-center" aria-label="Anmelden">
+                <div className="border-t bg-background/95 backdrop-blur p-4 space-y-3">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-center border-2 hover:bg-accent transition-all"
+                    aria-label="Anmelden"
+                  >
                     Anmelden
                   </Button>
-                  <Link to="/beta" className="block">
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <Link to="/beta" className="block" onClick={handleMobileNavClick}>
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+                      <span className="mr-2">🚀</span>
                       Kostenlos testen
                     </Button>
                   </Link>
