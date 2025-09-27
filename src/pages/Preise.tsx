@@ -18,6 +18,7 @@ const Preise: React.FC = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   const [expandedCategories, setExpandedCategories] = useState<string[]>(['pflichtdokumente']);
   const [showOnlyDifferences, setShowOnlyDifferences] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<'starter' | 'professional' | 'enterprise'>('professional');
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -413,20 +414,57 @@ const Preise: React.FC = () => {
 
             <div className="relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
               <div className="p-4 sm:p-6 border-b border-gray-200">
-                <h2 className="text-lg sm:text-2xl font-bold text-[#232323]">
-                  Detaillierte Feature-Übersicht
-                </h2>
-                <p className="text-xs text-[#474747] mt-1 sm:hidden">Nach links/rechts wischen für alle Pakete</p>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <h2 className="text-lg sm:text-2xl font-bold text-[#232323]">
+                    Detaillierte Feature-Übersicht
+                  </h2>
+                  <div className="flex gap-2 sm:hidden">
+                    <button
+                      onClick={() => setSelectedPackage('starter')}
+                      className={cn(
+                        "px-3 py-1 rounded-lg text-xs font-medium transition-colors",
+                        selectedPackage === 'starter'
+                          ? "bg-[#e24e1b] text-white"
+                          : "bg-gray-100 text-[#474747]"
+                      )}
+                    >
+                      STARTER
+                    </button>
+                    <button
+                      onClick={() => setSelectedPackage('professional')}
+                      className={cn(
+                        "px-3 py-1 rounded-lg text-xs font-medium transition-colors",
+                        selectedPackage === 'professional'
+                          ? "bg-[#e24e1b] text-white"
+                          : "bg-gray-100 text-[#474747]"
+                      )}
+                    >
+                      PROFESSIONAL
+                    </button>
+                    <button
+                      onClick={() => setSelectedPackage('enterprise')}
+                      className={cn(
+                        "px-3 py-1 rounded-lg text-xs font-medium transition-colors",
+                        selectedPackage === 'enterprise'
+                          ? "bg-[#e24e1b] text-white"
+                          : "bg-gray-100 text-[#474747]"
+                      )}
+                    >
+                      ENTERPRISE
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[600px]">
+              {/* Desktop Table View */}
+              <div className="hidden sm:block overflow-x-auto">
+                <table className="w-full">
                   <thead className="border-b border-gray-200 bg-gray-50 sticky top-0 z-10">
                     <tr>
-                      <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs sm:text-sm font-bold text-[#e24e1b] sticky left-0 bg-gray-50 z-20">Features</th>
-                      <th className="px-3 sm:px-6 py-3 sm:py-4 text-center text-xs sm:text-sm font-bold text-[#232323] min-w-[100px]">STARTER</th>
-                      <th className="px-3 sm:px-6 py-3 sm:py-4 text-center text-xs sm:text-sm font-bold text-[#232323] bg-[#e24e1b]/5 min-w-[120px]">PROFESSIONAL</th>
-                      <th className="px-3 sm:px-6 py-3 sm:py-4 text-center text-xs sm:text-sm font-bold text-[#232323] min-w-[100px]">ENTERPRISE</th>
+                      <th className="px-6 py-4 text-left text-sm font-bold text-[#e24e1b]">Features</th>
+                      <th className="px-6 py-4 text-center text-sm font-bold text-[#232323]">STARTER</th>
+                      <th className="px-6 py-4 text-center text-sm font-bold text-[#232323] bg-[#e24e1b]/5">PROFESSIONAL</th>
+                      <th className="px-6 py-4 text-center text-sm font-bold text-[#232323]">ENTERPRISE</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -440,16 +478,15 @@ const Preise: React.FC = () => {
                             className="border-b border-gray-100 cursor-pointer hover:bg-gray-50 transition-colors"
                             onClick={() => toggleCategory(category.id)}
                           >
-                            <td className="px-3 sm:px-6 py-3 sm:py-4 font-semibold text-xs sm:text-base text-[#232323] flex items-center gap-1 sm:gap-2 sticky left-0 bg-white z-10">
+                            <td className="px-6 py-4 font-semibold text-[#232323] flex items-center gap-2">
                               <motion.div
                                 animate={{ rotate: isExpanded ? 180 : 0 }}
                                 transition={{ duration: 0.3 }}
                               >
-                                <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-[#474747]" />
+                                <ChevronDown className="h-5 w-5 text-[#474747]" />
                               </motion.div>
-                              <category.icon className="h-4 w-4 sm:h-5 sm:w-5 text-[#e24e1b]" />
-                              <span className="hidden sm:inline">{category.title}</span>
-                              <span className="sm:hidden">{category.title.split(' ')[0]}</span>
+                              <category.icon className="h-5 w-5 text-[#e24e1b]" />
+                              <span>{category.title}</span>
                               {filteredFeatures.length > 0 && (
                                 <Badge className="ml-auto bg-gray-100 text-[#474747] border-0">
                                   {filteredFeatures.length}
@@ -468,10 +505,10 @@ const Preise: React.FC = () => {
                                 transition={{ duration: 0.3, delay: idx * 0.05 }}
                                 className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors"
                               >
-                                <td className="px-3 sm:px-12 py-2 sm:py-3 text-xs sm:text-sm font-medium text-[#232323] sticky left-0 bg-white z-10">{feature.label}</td>
-                                <td className="px-3 sm:px-6 py-2 sm:py-3 text-center">{getValue(feature.starter)}</td>
-                                <td className="px-3 sm:px-6 py-2 sm:py-3 text-center bg-gray-50/50">{getValue(feature.professional)}</td>
-                                <td className="px-3 sm:px-6 py-2 sm:py-3 text-center">{getValue(feature.enterprise)}</td>
+                                <td className="px-12 py-3 text-sm font-medium text-[#232323]">{feature.label}</td>
+                                <td className="px-6 py-3 text-center">{getValue(feature.starter)}</td>
+                                <td className="px-6 py-3 text-center bg-gray-50/50">{getValue(feature.professional)}</td>
+                                <td className="px-6 py-3 text-center">{getValue(feature.enterprise)}</td>
                               </motion.tr>
                             ))}
                           </AnimatePresence>
@@ -480,6 +517,84 @@ const Preise: React.FC = () => {
                     })}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile Card View */}
+              <div className="sm:hidden">
+                <div className="space-y-4 p-4">
+                  {featureCategories.map((category) => {
+                    const isExpanded = expandedCategories.includes(category.id);
+                    const filteredFeatures = category.features.filter(shouldShowFeature);
+
+                    return (
+                      <div key={category.id} className="border border-gray-200 rounded-lg">
+                        <button
+                          onClick={() => toggleCategory(category.id)}
+                          className="w-full px-4 py-3 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors rounded-t-lg"
+                        >
+                          <div className="flex items-center gap-2">
+                            <category.icon className="h-5 w-5 text-[#e24e1b]" />
+                            <span className="font-semibold text-sm text-[#232323]">{category.title}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Badge className="bg-gray-100 text-[#474747] border-0 text-xs">
+                              {filteredFeatures.length}
+                            </Badge>
+                            <motion.div
+                              animate={{ rotate: isExpanded ? 180 : 0 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <ChevronDown className="h-5 w-5 text-[#474747]" />
+                            </motion.div>
+                          </div>
+                        </button>
+
+                        <AnimatePresence>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="p-4 space-y-3 bg-white rounded-b-lg">
+                                {filteredFeatures.map((feature, idx) => (
+                                  <div key={idx} className="border-b border-gray-100 last:border-0 pb-3 last:pb-0">
+                                    <h4 className="font-medium text-sm text-[#232323] mb-2">{feature.label}</h4>
+                                    <div className="grid grid-cols-3 gap-2 text-center">
+                                      <div className={cn(
+                                        "p-2 rounded",
+                                        selectedPackage === 'starter' ? "bg-[#e24e1b]/5 border border-[#e24e1b]/20" : "bg-gray-50"
+                                      )}>
+                                        <span className="text-xs text-gray-500 block mb-1">STARTER</span>
+                                        <div className="flex justify-center">{getValue(feature.starter)}</div>
+                                      </div>
+                                      <div className={cn(
+                                        "p-2 rounded",
+                                        selectedPackage === 'professional' ? "bg-[#e24e1b]/5 border border-[#e24e1b]/20" : "bg-gray-50"
+                                      )}>
+                                        <span className="text-xs text-gray-500 block mb-1">PROFESSIONAL</span>
+                                        <div className="flex justify-center">{getValue(feature.professional)}</div>
+                                      </div>
+                                      <div className={cn(
+                                        "p-2 rounded",
+                                        selectedPackage === 'enterprise' ? "bg-[#e24e1b]/5 border border-[#e24e1b]/20" : "bg-gray-50"
+                                      )}>
+                                        <span className="text-xs text-gray-500 block mb-1">ENTERPRISE</span>
+                                        <div className="flex justify-center">{getValue(feature.enterprise)}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </motion.div>
