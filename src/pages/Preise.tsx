@@ -574,7 +574,7 @@ const Preise: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200">
+                      className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200"
                     >
                       <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
                         <Shield className="h-5 w-5" />
