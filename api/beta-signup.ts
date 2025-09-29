@@ -5,7 +5,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const LOOPS_API_KEY = process.env.VITE_LOOPS_API_KEY;
+  const LOOPS_API_KEY = process.env.LOOPS_API_KEY || process.env.VITE_LOOPS_API_KEY;
 
   if (!LOOPS_API_KEY) {
     return res.status(500).json({ error: 'Loops API key not configured' });
@@ -24,6 +24,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       challenges
     } = req.body;
 
+    if (!email || !firstName || !company) {
+      return res.status(400).json({ error: 'Missing required fields: email, firstName, company' });
+    }
+
+    console.log('Creating contact for:', email);
+
     const contactResponse = await fetch('https://app.loops.so/api/v1/contacts/create', {
       method: 'POST',
       headers: {
@@ -33,22 +39,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: JSON.stringify({
         email,
         firstName,
-        lastName,
+        lastName: lastName || '',
         userGroup: 'beta_testers',
         source: 'beta_signup',
         company,
-        companySize,
+        companySize: companySize || '',
         phone: phone || '',
         currentSolution: currentSolution || '',
-        challengeLevel,
-        challenges
+        challengeLevel: challengeLevel || '',
+        challenges: challenges || ''
       })
     });
 
+    const contactResult = await contactResponse.json();
+    console.log('Contact creation response:', contactResponse.status, contactResult);
+
     if (!contactResponse.ok) {
-      const error = await contactResponse.json();
-      throw new Error(error.message || 'Failed to create contact');
+      console.error('Failed to create contact:', contactResult);
+      throw new Error(contactResult.message || 'Failed to create contact');
     }
+
+    console.log('Sending transactional email to:', email);
 
     const emailResponse = await fetch('https://app.loops.so/api/v1/transactional', {
       method: 'POST',
@@ -66,12 +77,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       })
     });
 
+    const emailResult = await emailResponse.json();
+    console.log('Email send response:', emailResponse.status, emailResult);
+
     if (!emailResponse.ok) {
-      const error = await emailResponse.json();
-      console.error('Email sending failed:', error);
+      console.error('Failed to send email:', emailResult);
+      return res.status(200).json({
+        success: true,
+        warning: 'Contact created but email failed to send',
+        emailError: emailResult
+      });
     }
 
-    return res.status(200).json({ success: true });
+    return res.status(200).json({
+      success: true,
+      message: 'Contact created and email sent successfully'
+    });
   } catch (error) {
     console.error('Beta signup error:', error);
     return res.status(500).json({
