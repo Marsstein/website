@@ -49,32 +49,27 @@ const Beta: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const formBody = new URLSearchParams({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        company: formData.company,
-        companySize: formData.companySize,
-        phone: formData.phone || '',
-        currentSolution: formData.currentSolution || '',
-        challengeLevel: formData.challengeLevel,
-        challenges: formData.challenges.join(', '),
-        userGroup: 'beta_testers',
-        source: 'beta_signup'
-      });
-
-      const loopsResponse = await fetch('https://app.loops.so/api/newsletter-form/cmg5h36i4046o0j0ir2p4arsk', {
+      const response = await fetch('/api/beta-signup', {
         method: 'POST',
-        body: formBody,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          company: formData.company,
+          companySize: formData.companySize,
+          phone: formData.phone || '',
+          currentSolution: formData.currentSolution || '',
+          challengeLevel: formData.challengeLevel,
+          challenges: formData.challenges.join(', ')
+        })
       });
 
-      const result = await loopsResponse.json();
-
-      if (!result.success) {
-        throw new Error(result.message || 'Anmeldung fehlgeschlagen');
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Anmeldung fehlgeschlagen');
       }
 
       setSubmitted(true);

@@ -133,15 +133,25 @@
         </mj-section>
 
         <!-- Closing -->
-        <mj-section padding="25px 30px 30px">
+        <mj-section padding="25px 30px 15px">
           <mj-column>
             <mj-text padding-bottom="15px">
               Bei Fragen kannst du jederzeit auf diese E-Mail antworten.
             </mj-text>
 
-            <mj-text padding-bottom="34px">
+            <mj-text padding-bottom="15px">
               Beste Grüße,<br/>
               <span class="bold">Das Marsstein Team</span>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Widerrufsrecht -->
+        <mj-section padding="0 30px 30px">
+          <mj-column>
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0 0 15px" />
+            <mj-text font-size="12px" color="#6B7280" padding-bottom="34px">
+              Du kannst deine Teilnahme am Beta-Programm jederzeit widerrufen. Antworte einfach auf diese E-Mail mit "Abmelden" oder kontaktiere uns unter info@marsstein.ai
             </mj-text>
           </mj-column>
         </mj-section>
