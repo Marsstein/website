@@ -49,17 +49,32 @@ const Beta: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/beta-signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ formData })
+      const formBody = new URLSearchParams({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        company: formData.company,
+        companySize: formData.companySize,
+        phone: formData.phone || '',
+        currentSolution: formData.currentSolution || '',
+        challengeLevel: formData.challengeLevel,
+        challenges: formData.challenges.join(', '),
+        userGroup: 'beta_testers',
+        source: 'beta_signup'
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Fehler bei der Anmeldung');
+      const loopsResponse = await fetch('https://app.loops.so/api/newsletter-form/cmg5h36i4046o0j0ir2p4arsk', {
+        method: 'POST',
+        body: formBody,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      });
+
+      const result = await loopsResponse.json();
+
+      if (!result.success) {
+        throw new Error(result.message || 'Anmeldung fehlgeschlagen');
       }
 
       setSubmitted(true);
