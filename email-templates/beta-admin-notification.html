@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neue Beta-Anmeldung - Admin Notification</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      background: #1F2937;
+      color: white;
+      padding: 25px 30px;
+      border-radius: 8px 8px 0 0;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .header p {
+      margin: 10px 0 0 0;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .content {
+      background: #ffffff;
+      padding: 30px;
+      border: 1px solid #e5e7eb;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-right: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-new {
+      background: #DBEAFE;
+      color: #1E40AF;
+    }
+    .badge-urgent {
+      background: #FEE2E2;
+      color: #991B1B;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .data-table th {
+      background: #F3F4F6;
+      text-align: left;
+      padding: 14px 16px;
+      font-weight: 600;
+      border-bottom: 2px solid #E5E7EB;
+      color: #374151;
+      width: 40%;
+    }
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #E5E7EB;
+      color: #1F2937;
+    }
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+    .data-table a {
+      color: #3B82F6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .data-table a:hover {
+      text-decoration: underline;
+    }
+    .priority {
+      padding: 20px;
+      background: #FEF3C7;
+      border-left: 4px solid #F59E0B;
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+    .priority strong {
+      color: #92400E;
+      font-size: 16px;
+    }
+    .action-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .action-button {
+      display: inline-block;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin: 10px 8px;
+      font-size: 14px;
+      transition: opacity 0.2s;
+    }
+    .action-button:hover {
+      opacity: 0.9;
+    }
+    .btn-email {
+      background: #10B981;
+      color: white;
+    }
+    .btn-calendar {
+      background: #3B82F6;
+      color: white;
+    }
+    h2 {
+      color: #1F2937;
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    h2:first-of-type {
+      margin-top: 10px;
+    }
+    .footer-note {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #E5E7EB;
+      font-size: 12px;
+      color: #6B7280;
+    }
+    .badges-container {
+      margin-bottom: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 Neue Beta-Anmeldung</h1>
+      <p>Sofort kontaktieren und onboarden!</p>
+    </div>
+
+    <div class="content">
+      <div class="badges-container">
+        <span class="badge badge-new">Neu</span>
+        <span class="badge badge-urgent">24h Deadline</span>
+      </div>
+
+      <h2>📊 Kontaktdaten</h2>
+      <table class="data-table">
+        <tr>
+          <th>Name</th>
+          <td><strong>{{firstName}} {{lastName}}</strong></td>
+        </tr>
+        <tr>
+          <th>E-Mail</th>
+          <td><a href="mailto:{{email}}">{{email}}</a></td>
+        </tr>
+        <tr>
+          <th>Telefon</th>
+          <td>{{phone}}</td>
+        </tr>
+        <tr>
+          <th>Unternehmen</th>
+          <td><strong>{{company}}</strong></td>
+        </tr>
+        <tr>
+          <th>Unternehmensgröße</th>
+          <td>{{companySize}}</td>
+        </tr>
+      </table>
+
+      <h2>🎯 Compliance-Status</h2>
+      <table class="data-table">
+        <tr>
+          <th>Aktuelle Lösung</th>
+          <td>{{currentSolution}}</td>
+        </tr>
+        <tr>
+          <th>Challenge-Level</th>
+          <td><strong>{{challengeLevel}}</strong></td>
+        </tr>
+        <tr>
+          <th>Hauptherausforderungen</th>
+          <td>{{challenges}}</td>
+        </tr>
+      </table>
+
+      <div class="priority">
+        <strong>⚡ Action Required:</strong><br>
+        Kontaktiere <strong>{{firstName}}</strong> innerhalb von 24 Stunden für das Onboarding-Gespräch!
+      </div>
+
+      <div class="action-buttons">
+        <a href="mailto:{{email}}?subject=Marsstein%20Beta%20Onboarding%20-%20{{company}}&body=Hallo%20{{firstName}}%2C%0D%0A%0D%0Avielen%20Dank%20f%C3%BCr%20deine%20Anmeldung%20zum%20Marsstein%20Beta-Programm!%0D%0A%0D%0ALass%20uns%20einen%20kurzen%20Call%20vereinbaren%2C%20um%20dich%20an%20Bord%20zu%20holen.%0D%0A%0D%0AWann%20passt%20es%20dir%20am%20besten%3F%0D%0A%0D%0ABeste%20Gr%C3%BC%C3%9Fe%2C%0D%0AJonas"
+           class="action-button btn-email">
+          📧 E-Mail senden
+        </a>
+        <a href="https://calendly.com/your-link"
+           class="action-button btn-calendar">
+          📅 Calendly öffnen
+        </a>
+      </div>
+
+      <div class="footer-note">
+        <p>
+          <strong>Quelle:</strong> Beta Landing Page (/beta)<br>
+          <strong>Zeitstempel:</strong> Automatisch von Loops generiert
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

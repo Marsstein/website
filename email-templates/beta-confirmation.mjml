@@ -1,0 +1,166 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" />
+      <mj-text line-height="1.6" font-size="16px" color="#374151" />
+    </mj-attributes>
+    <mj-style inline="inline">
+      .bold { font-weight: 600; }
+      .badge { background: #FEF3C7; color: #92400E; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#f9fafb" width="600px">
+    <mj-section background-color="#ffffff" padding="0">
+      <mj-column>
+        <!-- Header with gradient -->
+        <mj-section background-color="#FF6B35" padding="40px 30px" border-radius="8px 8px 0 0">
+          <mj-column>
+            <mj-text align="center" font-size="28px" font-weight="700" color="#ffffff">
+              🚀 Willkommen im Beta-Programm!
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Content -->
+        <mj-section padding="30px 30px 20px">
+          <mj-column>
+            <mj-text>
+              <span class="badge">BETA TESTER</span>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <mj-section padding="0 30px 20px">
+          <mj-column>
+            <mj-text>
+              Hallo <span class="bold">{DATA_VARIABLE:firstName}</span>,<br/><br/>
+              vielen Dank für deine Anmeldung zum Marsstein Beta-Programm! Wir freuen uns sehr, dass du Teil unserer exklusiven Beta-Community werden möchtest.
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Info Box -->
+        <mj-section padding="0 30px 25px">
+          <mj-column
+            width="100%"
+            padding="1px"
+            background-color="#FF6B35"
+            inner-background-color="#F3F4F6"
+            border-radius="8px"
+            inner-border-radius="8px">
+
+            <mj-text font-size="18px" color="#1F2937" padding-top="20px" padding-bottom="15px">
+              <span class="bold">📋 Deine Anmeldedaten</span>
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Name:</span> {DATA_VARIABLE:firstName} {DATA_VARIABLE:lastName}
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Unternehmen:</span> {DATA_VARIABLE:company}
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Größe:</span> {DATA_VARIABLE:companySize}
+            </mj-text>
+
+            <mj-text padding="0 20px 20px">
+              <span class="bold" style="color: #4B5563;">E-Mail:</span> {DATA_VARIABLE:email}
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Next Steps -->
+        <mj-section padding="0 30px">
+          <mj-column>
+            <mj-text font-size="20px" color="#1F2937" padding-bottom="15px">
+              <span class="bold">🎯 Deine nächsten Schritte:</span>
+            </mj-text>
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">Innerhalb von 24 Stunden</span> melden wir uns bei dir für ein kurzes Onboarding-Gespräch
+            </mj-text>
+
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0" />
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">Beta-Zugang</span> erhältst du direkt nach dem Onboarding
+            </mj-text>
+
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0" />
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">50% Rabatt</span> auf alle Pläne nach der Beta-Phase
+            </mj-text>
+
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0" />
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">Direkter Draht</span> zum Entwickler-Team via Slack/Discord
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Benefits -->
+        <mj-section padding="30px 30px 0">
+          <mj-column>
+            <mj-text font-size="20px" color="#1F2937" padding-bottom="15px">
+              <span class="bold">🎁 Deine Beta-Vorteile:</span>
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              ✨ Kostenloser Zugang während der gesamten Beta-Phase
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              🎯 Deine Features werden priorisiert umgesetzt
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              💬 Exklusiver Zugang zur Beta-Community
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              🎓 Persönliche 1:1 Schulungen
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              💰 50% Lifetime-Rabatt nach Beta-Phase
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Closing -->
+        <mj-section padding="25px 30px 30px">
+          <mj-column>
+            <mj-text padding-bottom="15px">
+              Bei Fragen kannst du jederzeit auf diese E-Mail antworten.
+            </mj-text>
+
+            <mj-text padding-bottom="34px">
+              Beste Grüße,<br/>
+              <span class="bold">Das Marsstein Team</span>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Footer -->
+        <mj-section padding="20px">
+          <mj-column>
+            <mj-text align="center" font-size="14px" color="#6B7280">
+              <span class="bold">Marsstein</span> - DSGVO Compliance Automatisierung
+            </mj-text>
+
+            <mj-text align="center" font-size="13px" color="#b8b8b8" padding-top="10px">
+              <a href="https://marsstein.ai" style="color: #FF6B35; text-decoration: none;">marsstein.ai</a> ·
+              <a href="https://marsstein.ai/datenschutz" class="link-nostyle">Datenschutz</a>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

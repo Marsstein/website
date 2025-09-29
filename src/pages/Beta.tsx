@@ -14,7 +14,8 @@ import {
   Star,
   Percent,
   Sparkles,
-  Gift
+  Gift,
+  Clock
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -32,19 +33,42 @@ const Beta: React.FC = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
 
-    // Validate required fields
     if (!formData.firstName || !formData.lastName || !formData.email ||
         !formData.company || !formData.companySize || !formData.challengeLevel) {
       alert('Bitte füllen Sie alle Pflichtfelder aus.');
       return;
     }
 
-    console.log('Beta form submission:', formData);
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/beta-signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ formData })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Fehler bei der Anmeldung');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Beta registration error:', err);
+      setError('Es gab einen Fehler bei der Anmeldung. Bitte versuchen Sie es erneut.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const dsgvoChallenges = [
@@ -380,12 +404,19 @@ const Beta: React.FC = () => {
                     </div>
                   </div>
 
+                  {error && (
+                    <div className="bg-destructive/10 text-destructive p-3 rounded-md text-sm">
+                      {error}
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
                     className="w-full"
                     size="lg"
+                    disabled={isSubmitting}
                   >
-                    Beta-Zugang anfordern
+                    {isSubmitting ? 'Wird gesendet...' : 'Beta-Zugang anfordern'}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </form>

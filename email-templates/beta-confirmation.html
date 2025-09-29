@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Willkommen im Marsstein Beta-Programm</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      background: linear-gradient(135deg, #FF6B35 0%, #FF8E53 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .content {
+      background: #ffffff;
+      padding: 30px;
+      border: 1px solid #e5e7eb;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+    }
+    .badge {
+      display: inline-block;
+      background: #FEF3C7;
+      color: #92400E;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .info-box {
+      background: #F3F4F6;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+      border-left: 4px solid #FF6B35;
+    }
+    .info-box h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #1F2937;
+      font-size: 18px;
+    }
+    .info-row {
+      margin: 10px 0;
+      padding: 8px 0;
+    }
+    .info-label {
+      font-weight: 600;
+      color: #4B5563;
+      display: inline-block;
+      width: 130px;
+    }
+    .info-value {
+      color: #1F2937;
+    }
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .checklist li {
+      padding: 12px 0;
+      border-bottom: 1px solid #E5E7EB;
+      position: relative;
+      padding-left: 30px;
+    }
+    .checklist li:before {
+      content: "✓";
+      color: #10B981;
+      font-weight: bold;
+      font-size: 18px;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+    .benefits-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .benefits-list li {
+      padding: 10px 0;
+      padding-left: 30px;
+      position: relative;
+    }
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #6B7280;
+      font-size: 14px;
+      background: #F9FAFB;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .footer a {
+      color: #FF6B35;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    h3 {
+      color: #1F2937;
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    p {
+      margin: 15px 0;
+      color: #374151;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 Willkommen im Beta-Programm!</h1>
+    </div>
+
+    <div class="content">
+      <span class="badge">Beta Tester</span>
+
+      <p>Hallo <strong>{{firstName}}</strong>,</p>
+
+      <p>vielen Dank für deine Anmeldung zum Marsstein Beta-Programm! Wir freuen uns sehr, dass du Teil unserer exklusiven Beta-Community werden möchtest.</p>
+
+      <div class="info-box">
+        <h3>📋 Deine Anmeldedaten</h3>
+        <div class="info-row">
+          <span class="info-label">Name:</span>
+          <span class="info-value">{{firstName}} {{lastName}}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Unternehmen:</span>
+          <span class="info-value">{{company}}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Größe:</span>
+          <span class="info-value">{{companySize}}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">E-Mail:</span>
+          <span class="info-value">{{email}}</span>
+        </div>
+      </div>
+
+      <h3>🎯 Deine nächsten Schritte:</h3>
+      <ul class="checklist">
+        <li><strong>Innerhalb von 24 Stunden</strong> melden wir uns bei dir für ein kurzes Onboarding-Gespräch</li>
+        <li><strong>Beta-Zugang</strong> erhältst du direkt nach dem Onboarding</li>
+        <li><strong>50% Rabatt</strong> auf alle Pläne nach der Beta-Phase</li>
+        <li><strong>Direkter Draht</strong> zum Entwickler-Team via Slack/Discord</li>
+      </ul>
+
+      <h3>🎁 Deine Beta-Vorteile:</h3>
+      <ul class="benefits-list">
+        <li>✨ Kostenloser Zugang während der gesamten Beta-Phase</li>
+        <li>🎯 Deine Features werden priorisiert umgesetzt</li>
+        <li>💬 Exklusiver Zugang zur Beta-Community</li>
+        <li>🎓 Persönliche 1:1 Schulungen</li>
+        <li>💰 50% Lifetime-Rabatt nach Beta-Phase</li>
+      </ul>
+
+      <p>Bei Fragen kannst du jederzeit auf diese E-Mail antworten.</p>
+
+      <p>Beste Grüße,<br>
+      <strong>Das Marsstein Team</strong></p>
+    </div>
+
+    <div class="footer">
+      <p><strong>Marsstein</strong> - DSGVO Compliance Automatisierung</p>
+      <p>
+        <a href="https://marsstein.ai">marsstein.ai</a> ·
+        <a href="https://marsstein.ai/datenschutz">Datenschutz</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
