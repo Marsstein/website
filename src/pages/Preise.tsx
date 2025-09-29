@@ -409,51 +409,31 @@ const Preise: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="relative"
+            className="relative -mx-4 sm:mx-0"
           >
-
-            <div className="relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
-              <div className="p-4 sm:p-6 border-b border-gray-200">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <h2 className="text-lg sm:text-2xl font-bold text-[#232323]">
-                    Detaillierte Feature-Übersicht
-                  </h2>
-                  <div className="flex gap-2 sm:hidden">
-                    <button
-                      onClick={() => setSelectedPackage('starter')}
-                      className={cn(
-                        "px-3 py-1 rounded-lg text-xs font-medium transition-colors",
-                        selectedPackage === 'starter'
-                          ? "bg-[#e24e1b] text-white"
-                          : "bg-gray-100 text-[#474747]"
-                      )}
-                    >
-                      STARTER
-                    </button>
-                    <button
-                      onClick={() => setSelectedPackage('professional')}
-                      className={cn(
-                        "px-3 py-1 rounded-lg text-xs font-medium transition-colors",
-                        selectedPackage === 'professional'
-                          ? "bg-[#e24e1b] text-white"
-                          : "bg-gray-100 text-[#474747]"
-                      )}
-                    >
-                      PROFESSIONAL
-                    </button>
-                    <button
-                      onClick={() => setSelectedPackage('enterprise')}
-                      className={cn(
-                        "px-3 py-1 rounded-lg text-xs font-medium transition-colors",
-                        selectedPackage === 'enterprise'
-                          ? "bg-[#e24e1b] text-white"
-                          : "bg-gray-100 text-[#474747]"
-                      )}
-                    >
-                      ENTERPRISE
-                    </button>
-                  </div>
+            <div className="sm:hidden sticky top-0 z-30 bg-white border-b-2 border-gray-200 shadow-md">
+              <div className="flex gap-1 p-2 bg-gray-50">
+                <div className="flex-1 text-center py-2">
+                  <div className="text-[10px] font-bold text-[#474747]">STARTER</div>
+                  <div className="text-xs text-[#232323] font-semibold">€69</div>
                 </div>
+                <div className="flex-1 text-center py-2 bg-[#e24e1b]/10 rounded-lg relative">
+                  <Star className="h-3 w-3 absolute top-1 right-1 text-[#e24e1b]" />
+                  <div className="text-[10px] font-bold text-[#e24e1b]">PRO</div>
+                  <div className="text-xs text-[#232323] font-semibold">€199</div>
+                </div>
+                <div className="flex-1 text-center py-2">
+                  <div className="text-[10px] font-bold text-[#474747]">ENTERPRISE</div>
+                  <div className="text-xs text-[#232323] font-semibold">€449</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative bg-white sm:rounded-2xl border-t sm:border border-gray-200 shadow-lg">
+              <div className="p-4 sm:p-6 border-b border-gray-200 hidden sm:block">
+                <h2 className="text-lg sm:text-2xl font-bold text-[#232323]">
+                  Detaillierte Feature-Übersicht
+                </h2>
               </div>
 
               {/* Desktop Table View */}
@@ -521,30 +501,30 @@ const Preise: React.FC = () => {
 
               {/* Mobile Card View */}
               <div className="sm:hidden">
-                <div className="space-y-4 p-4">
+                <div className="space-y-2 p-2">
                   {featureCategories.map((category) => {
                     const isExpanded = expandedCategories.includes(category.id);
                     const filteredFeatures = category.features.filter(shouldShowFeature);
 
                     return (
-                      <div key={category.id} className="border border-gray-200 rounded-lg">
+                      <div key={category.id} className="border border-gray-200 rounded-lg overflow-hidden">
                         <button
                           onClick={() => toggleCategory(category.id)}
-                          className="w-full px-4 py-3 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors rounded-t-lg"
+                          className="w-full px-3 py-2 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors"
                         >
-                          <div className="flex items-center gap-2">
-                            <category.icon className="h-5 w-5 text-[#e24e1b]" />
-                            <span className="font-semibold text-sm text-[#232323]">{category.title}</span>
+                          <div className="flex items-center gap-1.5">
+                            <category.icon className="h-4 w-4 text-[#e24e1b] flex-shrink-0" />
+                            <span className="font-semibold text-[10px] text-[#232323] text-left leading-tight">{category.title}</span>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <Badge className="bg-gray-100 text-[#474747] border-0 text-xs">
+                          <div className="flex items-center gap-1.5">
+                            <Badge className="bg-gray-100 text-[#474747] border-0 text-[9px] px-1.5 py-0.5">
                               {filteredFeatures.length}
                             </Badge>
                             <motion.div
                               animate={{ rotate: isExpanded ? 180 : 0 }}
                               transition={{ duration: 0.3 }}
                             >
-                              <ChevronDown className="h-5 w-5 text-[#474747]" />
+                              <ChevronDown className="h-4 w-4 text-[#474747]" />
                             </motion.div>
                           </div>
                         </button>
@@ -558,34 +538,40 @@ const Preise: React.FC = () => {
                               transition={{ duration: 0.3 }}
                               className="overflow-hidden"
                             >
-                              <div className="p-4 space-y-3 bg-white rounded-b-lg">
+                              <div className="bg-white">
                                 {filteredFeatures.map((feature, idx) => (
-                                  <div key={idx} className="border-b border-gray-100 last:border-0 pb-3 last:pb-0">
-                                    <h4 className="font-medium text-sm text-[#232323] mb-2">{feature.label}</h4>
-                                    <div className="grid grid-cols-3 gap-2 text-center">
-                                      <div className={cn(
-                                        "p-2 rounded",
-                                        selectedPackage === 'starter' ? "bg-[#e24e1b]/5 border border-[#e24e1b]/20" : "bg-gray-50"
-                                      )}>
-                                        <span className="text-xs text-gray-500 block mb-1">STARTER</span>
-                                        <div className="flex justify-center">{getValue(feature.starter)}</div>
+                                  <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: idx * 0.02 }}
+                                    className="border-b border-gray-100 last:border-0 px-2 py-2"
+                                  >
+                                    <div className="text-[10px] font-medium text-[#232323] mb-1.5 leading-tight">{feature.label}</div>
+                                    <div className="grid grid-cols-3 gap-0.5">
+                                      <div className="text-center p-1.5 bg-gray-50 rounded flex items-center justify-center min-h-[28px]">
+                                        {feature.starter === true && <Check className="h-4 w-4 text-[#39B37B]" />}
+                                        {feature.starter === false && <X className="h-3 w-3 text-gray-300" />}
+                                        {typeof feature.starter === 'string' && (
+                                          <span className="text-[9px] font-medium text-[#232323] leading-[1.2] break-words px-0.5">{feature.starter}</span>
+                                        )}
                                       </div>
-                                      <div className={cn(
-                                        "p-2 rounded",
-                                        selectedPackage === 'professional' ? "bg-[#e24e1b]/5 border border-[#e24e1b]/20" : "bg-gray-50"
-                                      )}>
-                                        <span className="text-xs text-gray-500 block mb-1">PROFESSIONAL</span>
-                                        <div className="flex justify-center">{getValue(feature.professional)}</div>
+                                      <div className="text-center p-1.5 bg-[#e24e1b]/5 rounded border border-[#e24e1b]/20 flex items-center justify-center min-h-[28px]">
+                                        {feature.professional === true && <Check className="h-4 w-4 text-[#39B37B]" />}
+                                        {feature.professional === false && <X className="h-3 w-3 text-gray-300" />}
+                                        {typeof feature.professional === 'string' && (
+                                          <span className="text-[9px] font-medium text-[#232323] leading-[1.2] break-words px-0.5">{feature.professional}</span>
+                                        )}
                                       </div>
-                                      <div className={cn(
-                                        "p-2 rounded",
-                                        selectedPackage === 'enterprise' ? "bg-[#e24e1b]/5 border border-[#e24e1b]/20" : "bg-gray-50"
-                                      )}>
-                                        <span className="text-xs text-gray-500 block mb-1">ENTERPRISE</span>
-                                        <div className="flex justify-center">{getValue(feature.enterprise)}</div>
+                                      <div className="text-center p-1.5 bg-gray-50 rounded flex items-center justify-center min-h-[28px]">
+                                        {feature.enterprise === true && <Check className="h-4 w-4 text-[#39B37B]" />}
+                                        {feature.enterprise === false && <X className="h-3 w-3 text-gray-300" />}
+                                        {typeof feature.enterprise === 'string' && (
+                                          <span className="text-[9px] font-medium text-[#232323] leading-[1.2] break-words px-0.5">{feature.enterprise}</span>
+                                        )}
                                       </div>
                                     </div>
-                                  </div>
+                                  </motion.div>
                                 ))}
                               </div>
                             </motion.div>
