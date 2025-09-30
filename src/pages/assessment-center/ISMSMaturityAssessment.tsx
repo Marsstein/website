@@ -49,8 +49,7 @@ import {
   KeyRound,
   Gauge,
   LineChart,
-  PieChart,
-  Trending
+  PieChart
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -886,7 +885,7 @@ const ISMSMaturityAssessment: React.FC = () => {
                 <Card className="border-blue-200 dark:border-blue-800">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
-                      <Trending className="h-5 w-5" />
+                      <TrendingUp className="h-5 w-5" />
                       Maturity Roadmap
                     </CardTitle>
                   </CardHeader>
