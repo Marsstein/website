@@ -10,7 +10,6 @@ import { TrustPlatformFeatures } from '@/components/TrustPlatformFeatures';
 import { CTASection } from '@/components/CTASection';
 import { TrustSecurity } from '@/components/TrustSecurity';
 import { SmartFAQ } from '@/components/SmartFAQ';
-import { IntelligentNewsletter } from '@/components/IntelligentNewsletter';
 
 const Index = () => {
   const [sectionsVisible, setSectionsVisible] = React.useState(new Set());
@@ -114,21 +113,14 @@ const Index = () => {
           <TrustSecurity />
         </section>
         
-        <section 
+        <section
           className={`compliance-section ${sectionsVisible.has('faq') ? 'visible' : ''}`}
           data-section-id="faq"
         >
           <SmartFAQ />
         </section>
-        
-        <section 
-          className={`compliance-section ${sectionsVisible.has('newsletter') ? 'visible' : ''}`}
-          data-section-id="newsletter"
-        >
-          <IntelligentNewsletter />
-        </section>
-        
-        <section 
+
+        <section
           className={`compliance-section ${sectionsVisible.has('cta') ? 'visible' : ''}`}
           data-section-id="cta"
         >

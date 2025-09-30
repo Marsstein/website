@@ -58,12 +58,21 @@ const AssessmentCenter = () => {
 
   const assessments = [
     {
-      title: "DSGVO Compliance Checklist",
-      description: "Umfassende Bewertung Ihrer DSGVO-Compliance mit detaillierten Handlungsempfehlungen",
+      title: "DSGVO Datenschutz Test",
+      description: "Kostenloser interaktiver Test zur Bewertung Ihrer DSGVO-Compliance mit personalisierter Handlungsempfehlung",
       icon: Shield,
-      url: "/assessment-center/dsgvo-compliance-checklist",
+      url: "/assessment-center/datenschutz-test",
       difficulty: "Mittel",
       color: "from-blue-500 to-cyan-500",
+      tags: ["DSGVO", "Datenschutz Test", "Compliance Check"]
+    },
+    {
+      title: "DSGVO Compliance Checklist",
+      description: "Umfassende Bewertung Ihrer DSGVO-Compliance mit detaillierten Handlungsempfehlungen",
+      icon: FileText,
+      url: "/assessment-center/dsgvo-compliance-checklist",
+      difficulty: "Mittel",
+      color: "from-slate-500 to-gray-500",
       tags: ["DSGVO", "Datenschutz", "EU-Recht"]
     },
     {
@@ -182,7 +191,7 @@ const AssessmentCenter = () => {
               className="grid grid-cols-2 gap-6 max-w-2xl mx-auto"
             >
               {[
-                { value: '5', label: 'Assessment Tools', sublabel: 'Verschiedene Bereiche', icon: Target, color: 'from-blue-500 to-cyan-500' },
+                { value: '6', label: 'Assessment Tools', sublabel: 'Verschiedene Bereiche', icon: Target, color: 'from-blue-500 to-cyan-500' },
                 { value: '100+', label: 'Kriterien geprüft', sublabel: 'Umfassende Analyse', icon: CheckCircle2, color: 'from-emerald-500 to-teal-500' }
               ].map((stat, index) => (
                 <motion.div

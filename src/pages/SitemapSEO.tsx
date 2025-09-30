@@ -41,12 +41,12 @@ const SitemapSEO = () => {
           priority: 'high',
           available: true 
         },
-        { 
-          title: 'Preise', 
-          url: '/pricing', 
-          description: 'Transparente Preisübersicht für alle Marsstein-Pakete. Vergleichen Sie unsere Starter-, Professional- und Enterprise-Lösungen mit detaillierten Feature-Listen und finden Sie das passende Paket für Ihr Unternehmen.', 
+        {
+          title: 'Preise',
+          url: '/preise',
+          description: 'Transparente Preisübersicht für alle Marsstein-Pakete. Vergleichen Sie unsere Starter-, Professional- und Enterprise-Lösungen mit detaillierten Feature-Listen und finden Sie das passende Paket für Ihr Unternehmen.',
           priority: 'high',
-          available: true 
+          available: true
         },
         { 
           title: 'Kontakt', 

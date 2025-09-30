@@ -14,6 +14,7 @@
 /eu-ai-act-compliance /eu-ai-act 301
 /tools/cookie-management-tool /tools/cookie-management 301
 /tools/whistleblower-system-tool /tools/whistleblower-system 301
+/pricing /preise 301
 
 # SPA Fallback - muss am Ende stehen
 /*    /index.html   200

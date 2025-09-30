@@ -255,10 +255,7 @@ ${sanitizedData.message}
             </div>
           </div>
 
-          {/* Free Consultation Section with Calendly */}
-          {console.log('About to render SimpleCalendlySection')}
           <SimpleCalendlySection />
-          {console.log('After SimpleCalendlySection render')}
 
           {/* Contact Info */}
           <div className="space-y-4">

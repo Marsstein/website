@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -79,6 +80,15 @@ interface AssessmentResult {
 }
 
 const ISO27001ReadinessCheck: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Assessment",
+    "name": "ISO 27001 Readiness Check",
+    "description": "Bewerten Sie Ihre Bereitschaft für eine ISO 27001 Zertifizierung und erhalten Sie einen detaillierten Readiness-Report",
+    "educationalLevel": "Professional",
+    "url": "https://marsstein.ai/assessment-center/iso-27001-readiness-check"
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -698,12 +708,20 @@ const ISO27001ReadinessCheck: React.FC = () => {
     };
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
-        <div className="pt-24 pb-16">
-          <div className="container px-4">
-            <div className="max-w-6xl mx-auto">
-              {/* Results Header */}
+      <>
+        <SEOHead
+          title="ISO 27001 Readiness Check – Zertifizierungs-Bereitschaft prüfen"
+          description="ISO 27001 Readiness Check: Bewerten Sie Ihre Bereitschaft für ISO 27001 Zertifizierung. ✓ ISMS-Bewertung ✓ Gap-Analyse ✓ Implementierungs-Roadmap. Jetzt testen!"
+          canonical="/assessment-center/iso-27001-readiness-check"
+          keywords="ISO 27001 Readiness, ISO 27001 Check, ISMS Bereitschaft, ISO 27001 Zertifizierung, Readiness Assessment"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
+          <div className="pt-24 pb-16">
+            <div className="container px-4">
+              <div className="max-w-6xl mx-auto">
+                {/* Results Header */}
               <motion.div
                 className="text-center mb-12"
                 initial={{ opacity: 0, y: 20 }}
@@ -934,12 +952,21 @@ const ISO27001ReadinessCheck: React.FC = () => {
         </div>
         <Footer />
       </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-      <Header />
+    <>
+      <SEOHead
+        title="ISO 27001 Readiness Check – Zertifizierungs-Bereitschaft prüfen"
+        description="ISO 27001 Readiness Check: Bewerten Sie Ihre Bereitschaft für ISO 27001 Zertifizierung. ✓ ISMS-Bewertung ✓ Gap-Analyse ✓ Implementierungs-Roadmap. Jetzt testen!"
+        canonical="/assessment-center/iso-27001-readiness-check"
+        keywords="ISO 27001 Readiness, ISO 27001 Check, ISMS Bereitschaft, ISO 27001 Zertifizierung, Readiness Assessment"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        <Header />
       
       <div className="pt-24 pb-16">
         <div className="container px-4">
@@ -1130,6 +1157,7 @@ const ISO27001ReadinessCheck: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

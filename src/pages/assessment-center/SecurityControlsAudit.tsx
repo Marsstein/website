@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -89,6 +90,15 @@ interface AssessmentResult {
 }
 
 const SecurityControlsAudit: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Assessment",
+    "name": "Security Controls Audit",
+    "description": "Führen Sie ein umfassendes Audit Ihrer Sicherheitskontrollen nach ISO 27001 Annex A durch",
+    "educationalLevel": "Professional",
+    "url": "https://marsstein.ai/assessment-center/security-controls-audit"
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -717,17 +727,25 @@ const SecurityControlsAudit: React.FC = () => {
     };
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
-        <div className="pt-24 pb-16">
-          <div className="container px-4">
-            <div className="max-w-6xl mx-auto">
-              {/* Results Header */}
-              <motion.div
-                className="text-center mb-12"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
+      <>
+        <SEOHead
+          title="Security Controls Audit – ISO 27001 Sicherheitskontrollen prüfen"
+          description="Security Controls Audit: Auditieren Sie Ihre ISO 27001 Sicherheitskontrollen systematisch. ✓ Annex A Controls ✓ Gap-Analyse ✓ Remediation-Plan. Jetzt testen!"
+          canonical="/assessment-center/security-controls-audit"
+          keywords="Security Controls Audit, ISO 27001 Controls, Sicherheitskontrollen, Annex A, Controls Assessment"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
+          <div className="pt-24 pb-16">
+            <div className="container px-4">
+              <div className="max-w-6xl mx-auto">
+                {/* Results Header */}
+                <motion.div
+                  className="text-center mb-12"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
                 <div className={cn(
                   "inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 mb-6",
                   getImplementationColor(result.overallImplementation)
@@ -1014,26 +1032,35 @@ const SecurityControlsAudit: React.FC = () => {
         </div>
         <Footer />
       </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-      <Header />
-      
-      <div className="pt-24 pb-16">
-        <div className="container px-4">
-          <div className="max-w-4xl mx-auto">
-            {/* Header */}
-            <motion.div
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red/10 text-brand-red border border-brand-red/20 mb-6">
-                <Eye className="h-4 w-4" />
-                <span className="text-sm font-medium">Security Controls Audit</span>
-              </div>
+    <>
+      <SEOHead
+        title="Security Controls Audit – ISO 27001 Sicherheitskontrollen prüfen"
+        description="Security Controls Audit: Auditieren Sie Ihre ISO 27001 Sicherheitskontrollen systematisch. ✓ Annex A Controls ✓ Gap-Analyse ✓ Remediation-Plan. Jetzt testen!"
+        canonical="/assessment-center/security-controls-audit"
+        keywords="Security Controls Audit, ISO 27001 Controls, Sicherheitskontrollen, Annex A, Controls Assessment"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        <Header />
+
+        <div className="pt-24 pb-16">
+          <div className="container px-4">
+            <div className="max-w-4xl mx-auto">
+              {/* Header */}
+              <motion.div
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red/10 text-brand-red border border-brand-red/20 mb-6">
+                  <Eye className="h-4 w-4" />
+                  <span className="text-sm font-medium">Security Controls Audit</span>
+                </div>
               
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Sicherheitskontrollen auditieren
@@ -1216,6 +1243,7 @@ const SecurityControlsAudit: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

@@ -60,7 +60,7 @@ const FinalChecks = () => {
         },
         {
           title: 'Preise',
-          url: '/pricing',
+          url: '/preise',
           description: 'Transparente Preisübersicht für alle Marsstein-Pakete. Vergleichen Sie unsere Starter-, Professional- und Enterprise-Lösungen mit detaillierten Feature-Listen und finden Sie das passende Paket für Ihr Unternehmen.',
           priority: 'high',
           available: true,

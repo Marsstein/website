@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Separator } from '@/components/ui/separator';
-import { Shield, Award, CheckCircle, Mail, FileText, ShieldCheck, Wrench, BookOpen } from 'lucide-react';
+import { Mail, FileText, ShieldCheck, Wrench, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setIsLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubscribed(true);
+    setIsLoading(false);
+
+    setTimeout(() => {
+      setIsSubscribed(false);
+      setEmail('');
+    }, 3000);
+  };
 
   // Echte existierende Links basierend auf Projekt-Analyse
   const regulierungLinks = [
@@ -21,8 +41,8 @@ export const Footer: React.FC = () => {
   ];
 
   const toolsLinks = [
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'AI Check', href: '/dashboard/ai-check' },
+    { label: 'Alle Tools', href: '/tools' },
+    { label: 'DSGVO Test', href: '/assessment-center/datenschutz-test' },
     { label: 'Cookie Management', href: '/tools/cookie-management' },
     { label: 'Assessment Center', href: '/assessment-center' }
   ];
@@ -33,11 +53,6 @@ export const Footer: React.FC = () => {
     { label: 'Krisenmanagement', href: '/wissen/krisenmanagement' }
   ];
 
-  const trustBadges = [
-    { icon: Shield, label: 'GDPR Compliant' },
-    { icon: Award, label: 'ISO 27001 Certified' },
-    { icon: CheckCircle, label: 'EU AI Act Approved' }
-  ];
 
   return (
     <footer className="relative bg-white overflow-hidden">
@@ -50,12 +65,54 @@ export const Footer: React.FC = () => {
       
       <div className="container px-4 relative z-10">
         <div className="py-16">
+          {/* Newsletter Section */}
+          <div className="backdrop-blur-xl bg-white/60 border border-white/40 rounded-2xl p-8 text-center shadow-[0_8px_32px_rgba(228,78,27,0.1)] mb-12">
+            {isSubscribed ? (
+              <div className="space-y-4">
+                <div className="flex items-center justify-center gap-2 text-green-600">
+                  <CheckCircle className="h-6 w-6" />
+                  <p className="font-semibold text-lg">Erfolgreich abonniert!</p>
+                </div>
+                <p className="text-sm text-[#474747]">Sie erhalten in Kürze eine Bestätigungs-E-Mail.</p>
+              </div>
+            ) : (
+              <>
+                <h3 className="font-semibold text-[#232323] mb-3 text-lg">COMPLIANCE NEWSLETTER</h3>
+                <p className="text-sm text-[#474747] mb-6">
+                  Wöchentliche Insights • Sofort-Alerts bei kritischen Änderungen • Experten-Guides
+                </p>
+                <form onSubmit={handleSubscribe} className="max-w-2xl mx-auto">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Input
+                      type="email"
+                      placeholder="Ihre E-Mail-Adresse"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="flex-1 h-11"
+                      required
+                    />
+                    <Button
+                      type="submit"
+                      disabled={isLoading}
+                      className="bg-gradient-to-r from-[#e24e1b] to-[#f97316] hover:from-[#f97316] hover:to-[#e24e1b] px-8 h-11 text-white font-medium transition-all duration-300"
+                    >
+                      {isLoading ? 'Lädt...' : 'Abonnieren'}
+                    </Button>
+                  </div>
+                  <p className="text-xs text-[#474747] mt-3">
+                    Kostenlos • DSGVO-konform • Jederzeit abmeldbar
+                  </p>
+                </form>
+              </>
+            )}
+          </div>
+
           {/* Logo Section from A1 */}
           <div className="mb-12 text-center">
             <Link to="/" className="inline-block mb-4">
-              <img 
-                src="/JLogoMarsstein.svg" 
-                alt="Marsstein Logo" 
+              <img
+                src="/JLogoMarsstein.svg"
+                alt="Marsstein Logo"
                 className="h-10 w-auto filter drop-shadow-[0_4px_20px_rgba(228,78,27,0.3)] hover:drop-shadow-[0_6px_30px_rgba(228,78,27,0.4)] transition-all duration-300"
               />
             </Link>
@@ -109,8 +166,8 @@ export const Footer: React.FC = () => {
                   info@marsstein.ai
                 </a>
               </div>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="bg-gradient-to-r from-[#e24e1b] to-[#f97316] hover:from-[#f97316] hover:to-[#e24e1b] px-8 py-3 rounded-xl text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 Kontakt aufnehmen
@@ -121,35 +178,22 @@ export const Footer: React.FC = () => {
 
         {/* Elegant Bottom with Legal Links */}
         <div className="border-t border-[#e24e1b]/10 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
-            {/* Copyright & Legal Links */}
-            <div className="flex flex-col md:flex-row items-center gap-4">
-              <div className="text-[#474747]">
-                © 2025 Marsstein • Compliance made simple
-              </div>
-              <div className="flex items-center gap-2">
-                <Link to="/agb" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
-                  AGB
-                </Link>
-                <span className="text-[#474747]">•</span>
-                <Link to="/impressum" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
-                  Impressum
-                </Link>
-                <span className="text-[#474747]">•</span>
-                <Link to="/datenschutz" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
-                  Datenschutz
-                </Link>
-              </div>
+          <div className="flex flex-col items-center justify-center gap-4 text-sm">
+            <div className="text-[#474747]">
+              © 2025 Marsstein • Compliance made simple
             </div>
-
-            {/* Trust Badges */}
-            <div className="flex items-center gap-4">
-              {trustBadges.map((badge, index) => (
-                <div key={index} className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
-                  <badge.icon className="h-4 w-4 text-[#e24e1b]" />
-                  <span className="text-[#474747] text-xs">{badge.label}</span>
-                </div>
-              ))}
+            <div className="flex items-center gap-2">
+              <Link to="/agb" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+                AGB
+              </Link>
+              <span className="text-[#474747]">•</span>
+              <Link to="/impressum" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+                Impressum
+              </Link>
+              <span className="text-[#474747]">•</span>
+              <Link to="/datenschutz" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+                Datenschutz
+              </Link>
             </div>
           </div>
         </div>

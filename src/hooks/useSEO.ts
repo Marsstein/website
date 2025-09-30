@@ -28,13 +28,13 @@ const routeSEOConfig: Record<string, SEOConfig> = {
     ogDescription: 'DSGVO-konforme Datenschutz-Automatisierung für deutsche Unternehmen. Vollautomatische Compliance-Überwachung und Dokumentation.',
     canonical: 'https://marsstein.ai/dsgvo'
   },
-  '/pricing': {
+  '/preise': {
     title: 'Preise & Pakete | DSGVO Compliance Software | Marsstein',
     description: 'Transparente Preise für DSGVO Compliance Software. Vom Starter-Paket bis Enterprise - passende Lösung für Ihr Unternehmen.',
     keywords: 'DSGVO Software Preise, Compliance Kosten, Datenschutz Software Pakete, Enterprise Compliance, Deutschland',
     ogTitle: 'Preise & Pakete | DSGVO Compliance Software',
     ogDescription: 'Transparente Preise für DSGVO Compliance Software. Vom Starter-Paket bis Enterprise. 30 Tage kostenlos testen.',
-    canonical: 'https://marsstein.ai/pricing'
+    canonical: 'https://marsstein.ai/preise'
   },
   '/contact': {
     title: 'Kontakt & Demo | DSGVO Compliance Beratung | Marsstein',

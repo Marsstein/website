@@ -9,10 +9,11 @@ import { Badge } from '@/components/ui/badge';
 import {
   Check, X, Star, Shield, Zap, ChevronDown, ChevronUp,
   Sparkles, FileText, UserCheck, Award, Bot, BarChart3,
-  Lock, Headphones, Globe, Heart, TrendingUp, Rocket
+  Lock, Headphones, Globe, Heart, TrendingUp, Rocket, Target
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { PackageFinder } from '@/components/PackageFinder';
 
 const Preise: React.FC = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
@@ -20,6 +21,7 @@ const Preise: React.FC = () => {
   const [showOnlyDifferences, setShowOnlyDifferences] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<'starter' | 'professional' | 'enterprise'>('professional');
   const [selectedSpecial, setSelectedSpecial] = useState<'kleinunternehmer' | 'neugruender' | 'gemeinnuetzig'>('kleinunternehmer');
+  const [showPackageFinder, setShowPackageFinder] = useState(false);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -29,6 +31,15 @@ const Preise: React.FC = () => {
     "brand": {
       "@type": "Brand",
       "name": "MARSSTEIN"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "offerCount": 3,
+      "lowPrice": 69,
+      "highPrice": 449,
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
     }
   };
 
@@ -264,14 +275,51 @@ const Preise: React.FC = () => {
               Wählen Sie das passende Paket für Ihre <span className="font-semibold text-[#e24e1b]">DSGVO-Compliance</span>.
               Monatlich kündbar, <span className="font-semibold text-[#232323]">keine versteckten Kosten</span>.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="mt-8"
+            >
+              <Button
+                onClick={() => setShowPackageFinder(!showPackageFinder)}
+                size="lg"
+                className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white hover:shadow-2xl transition-all duration-300 px-8 py-6 text-lg font-bold group"
+              >
+                <Target className="h-5 w-5 mr-2 group-hover:rotate-90 transition-transform duration-300" />
+                {showPackageFinder ? 'Alle Pakete anzeigen' : 'Finden Sie Ihr perfektes Paket in 60 Sekunden'}
+                <Sparkles className="h-5 w-5 ml-2 group-hover:scale-110 transition-transform duration-300" />
+              </Button>
+            </motion.div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center mb-8 sm:mb-16 gap-4 relative"
-          >
+          <AnimatePresence mode="wait">
+            {showPackageFinder ? (
+              <motion.div
+                key="finder"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.5 }}
+                className="mb-20"
+              >
+                <PackageFinder />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="packages"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                  className="flex flex-col sm:flex-row items-center justify-center mb-8 sm:mb-16 gap-4 relative"
+                >
             <div className="bg-white/80 backdrop-blur-md rounded-full p-1 border-2 border-[#e24e1b]/20 shadow-xl">
               <div className="flex items-center gap-2 sm:gap-4">
                 <button
@@ -313,9 +361,9 @@ const Preise: React.FC = () => {
                 2 Monate gratis!
               </motion.div>
             )}
-          </motion.div>
+                </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-20">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-20">
             {packages.map((pkg, index) => (
               <motion.div
                 key={pkg.name}
@@ -404,14 +452,14 @@ const Preise: React.FC = () => {
                 </Card>
               </motion.div>
             ))}
-          </div>
+                </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="relative -mx-4 sm:mx-0"
-          >
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                  className="relative -mx-4 sm:mx-0"
+                >
             <div className="sm:hidden sticky top-0 z-30 bg-white border-b-2 border-gray-200 shadow-md">
               <div className="flex gap-1 p-2 bg-gray-50">
                 <div className="flex-1 text-center py-2">
@@ -584,7 +632,10 @@ const Preise: React.FC = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 

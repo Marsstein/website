@@ -79,38 +79,38 @@ const About: React.FC = () => {
   const teamMembers = [
     {
       name: "Jayson Chen",
-      role: "Founder & CEO",
+      role: "Gründer & CEO",
       description: "Zertifizierter Datenschutzbeauftragter mit 10 Jahren Erfahrung (u. a. ZF Group). Baut aus Deep-Tech praxisnahe Compliance-Lösungen.",
       linkedin: "#",
       email: "jayson@marsstein.ai"
     },
     {
       name: "Jonas Krüger",
-      role: "Founding GTM (Marketing & Sales)",
+      role: "Chief Growth Officer (CGO)",
       description: "Unternehmer & Datenschutzexperte, 8+ Jahre B2B-Growth & SEO. Bringt komplexe Regulierung in klare, messbare Journeys.",
       linkedin: "#",
       email: "jonas@marsstein.ai"
     },
     {
       name: "Javier Ponzo",
-      role: "Founding Engineer (Full-Stack)",
+      role: "Full-Stack Developer",
       description: "Rails & React. Baut robuste SaaS-Automationen mit Security-Fokus.",
       linkedin: "#",
       email: "javier@marsstein.ai"
     },
     {
-      name: "Ilia Fazleev",
-      role: "Founding Tech Lead (Backend & Security)",
-      description: "18 Jahre Embedded/Safety (ZF, Porsche). Spezialisiert auf sichere, skalierbare Architekturen.",
+      name: "Manuel Szedlak",
+      role: "Chief Technology Officer (CTO)",
+      description: "Software-Ingenieur und Gründer von Implyt, mit Erfahrung bei Porsche, Ascon und Steinbeis. Experte in Full-Stack-Entwicklung, Automatisierung und skalierbaren KI-gesteuerten Systemen für industrielle Anwendungen.",
       linkedin: "#",
-      email: "ilia@marsstein.ai"
+      email: "manuel@marsstein.ai"
     },
     {
-      name: "Chenwei Zhang",
-      role: "Founding AI Engineer",
-      description: "Echtzeit-Inference, NN-Optimierung, Perception-Systeme. Übersetzt Forschung in verlässliche Produktfeatures.",
+      name: "Niklas Steppan",
+      role: "KI-Ingenieur",
+      description: "Hintergrund in Automotive-Mechatronik, jetzt fokussiert auf Robotik, KI und Raumfahrttechnologien an der HTWG Konstanz.",
       linkedin: "#",
-      email: "chenwei@marsstein.ai"
+      email: "niklas@marsstein.ai"
     }
   ];
 
@@ -168,22 +168,24 @@ const About: React.FC = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact?demo=true">
-                  <Button 
-                    size="lg" 
+                <Link to="/beta">
+                  <Button
+                    size="lg"
                     className="bg-white text-[#e24e1b] hover:bg-gray-100 px-8 py-3 font-semibold"
                   >
                     Demo buchen
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-2 border-white text-white hover:bg-white hover:text-[#e24e1b] px-8 py-3 font-semibold"
-                >
-                  Team kennenlernen
-                </Button>
+                <Link to="/contact">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-2 border-white bg-white/10 text-white hover:bg-white hover:text-[#e24e1b] px-8 py-3 font-semibold backdrop-blur-sm"
+                  >
+                    Team kennenlernen
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

@@ -70,7 +70,7 @@ const routeMapping = {
   'Home': '/home',
   'ContactPage': '/contact',
   'AcademyPage': '/academy',
-  'PricingPage': '/pricing',
+  'PricingPage': '/preise',
   'DashboardPage': '/dashboard',
   'About': '/ueber-uns',
   'ThankYou': '/thank-you',

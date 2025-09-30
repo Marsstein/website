@@ -3,7 +3,7 @@ const urlsToCache = [
   '/',
   '/dsgvo',
   '/eu-ai-act',
-  '/pricing',
+  '/preise',
   '/contact',
   '/academy',
   '/tools',

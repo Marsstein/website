@@ -11,8 +11,8 @@ const __dirname = path.dirname(__filename);
 const routes = [
   '/',
   '/contact',
-  '/academy', 
-  '/pricing',
+  '/academy',
+  '/preise',
   '/dashboard',
   '/ueber-uns',
   '/thank-you',

@@ -31,7 +31,7 @@ import { cn } from '@/lib/utils';
 import { Header } from '@/components/Header';
 
 export const Resources: React.FC = () => {
-  // Assessment Categories
+  // Assessment Categories - Updated 2025
   const assessmentCategories = [
     {
       id: 'dsgvo',
@@ -49,6 +49,13 @@ export const Resources: React.FC = () => {
           title: 'DSGVO-Compliance-Checkliste 2025',
           description: '47-Punkte Selbstaudit für vollständige DSGVO-Konformität',
           features: ['47 Prüfpunkte', 'Sofort-Bewertung', 'Handlungsempfehlungen', 'Excel & PDF']
+        },
+        {
+          id: 'datenschutz-test',
+          icon: BarChart3,
+          title: 'DSGVO Datenschutz Test',
+          description: 'Kostenloser interaktiver Test mit Compliance-Score und personalisierten Empfehlungen',
+          features: ['Interaktiver Test', 'Sofort-Score', 'Lücken-Analyse', 'Handlungsempfehlungen']
         },
         {
           id: 'datenschutz-readiness-assessment',
@@ -175,7 +182,7 @@ export const Resources: React.FC = () => {
   ];
 
   const stats = [
-    { label: 'Assessment-Tools', value: '15', icon: Download },
+    { label: 'Assessment-Tools', value: '16', icon: Download },
     { label: 'Kategorien', value: '4', icon: Users },
     { label: 'Frameworks', value: '8+', icon: Star },
     { label: 'Updates', value: '2025', icon: TrendingUp }

@@ -45,6 +45,11 @@
       "source": "/dsgvo-compliance",
       "destination": "/dsgvo",
       "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/preise",
+      "permanent": true
     }
   ],
   "rewrites": [

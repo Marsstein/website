@@ -71,7 +71,7 @@ const faqs: FAQ[] = [
     question: 'Welche Kostenersparnis ist das Ziel?',
     answer: 'Vision: Signifikante Kostenreduktion bei Compliance-Prozessen durch Automatisierung. Ziel: Deutliche Zeitersparnis bei Routine-Audits. Potenzial: Reduzierte externe Beratungskosten. Status: Konzeptstudien in Vorbereitung.',
     category: 'pricing',
-    relatedLink: { text: 'Potenzial-Rechner', href: '/pricing' }
+    relatedLink: { text: 'Potenzial-Rechner', href: '/preise' }
   },
   {
     id: '6',

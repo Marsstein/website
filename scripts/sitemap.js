@@ -10,6 +10,7 @@ const __dirname = path.dirname(__filename);
 const routes = [
   { url: '/', priority: '1.0', changefreq: 'daily' },
   { url: '/contact', priority: '0.8', changefreq: 'monthly' },
+  { url: '/preise', priority: '0.9', changefreq: 'weekly' },
 
   { url: '/dsgvo', priority: '0.9', changefreq: 'weekly' },
   { url: '/eu-ai-act', priority: '0.9', changefreq: 'weekly' },

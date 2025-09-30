@@ -181,66 +181,15 @@ export const TrustSecurity: React.FC = () => {
             <Shield className="w-4 h-4 mr-1" />
             Sicherheit & Vertrauen
           </Badge>
-          
+
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Enterprise-Grade <span className="text-primary">Sicherheit</span>
           </h2>
-          
+
           <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-            Ihre Daten sind bei uns in sicheren Händen. Mit höchsten Sicherheitsstandards 
+            Ihre Daten sind bei uns in sicheren Händen. Mit höchsten Sicherheitsstandards
             und europäischen Rechenzentren gewährleisten wir maximalen Schutz.
           </p>
-        </div>
-
-
-        {/* Compact Certifications */}
-        <div className="mb-8">
-          <Card className="p-6 bg-white/70 backdrop-blur-sm border-white/60 shadow-sm">
-            <div className="text-center space-y-4">
-              <h3 className="text-lg font-bold text-foreground mb-4">
-                Zertifizierungen & Standards
-              </h3>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {certifications.map((cert, index) => {
-                  const Icon = cert.icon;
-                  const statusStyle = statusColors[cert.status];
-                  
-                  return (
-                    <div
-                      key={cert.id}
-                      className="p-3 text-center bg-white/80 border border-gray-200/50 rounded-lg hover:shadow-sm transition-all duration-200"
-                    >
-                      <div className="p-2 rounded-lg bg-primary/10 w-fit mx-auto mb-2">
-                        <Icon className="h-5 w-5 text-primary" />
-                      </div>
-                      
-                      <h4 className="text-sm font-semibold text-card-foreground mb-1">
-                        {cert.name}
-                      </h4>
-                      
-                      <Badge 
-                        className={cn(
-                          "text-xs",
-                          statusStyle.bg,
-                          statusStyle.text,
-                          statusStyle.border
-                        )}
-                      >
-                        {statusLabels[cert.status]}
-                      </Badge>
-                      
-                      {cert.level && (
-                        <div className="text-xs text-muted-foreground mt-1">
-                          {cert.level}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </Card>
         </div>
 
         {/* Compact Trust Statement */}

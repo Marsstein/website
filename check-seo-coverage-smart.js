@@ -161,7 +161,7 @@ const allSEOPages = [...results.highPrioritySEO.withSEO, ...results.regularPages
 const routeMapping = {
   'Index': '/',
   'ContactPage': '/contact',
-  'PricingPage': '/pricing',
+  'PricingPage': '/preise',
   'AcademyPage': '/academy',
   'About': '/ueber-uns',
   'Impressum': '/impressum',

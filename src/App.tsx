@@ -43,6 +43,15 @@ const VendorAssessmentTemplate = lazy(() => import("./pages/resources/VendorAsse
 const AIRiskAssessment = lazy(() => import("./pages/assessment-center/AIRiskAssessment"));
 const AlgorithmicImpactAssessment = lazy(() => import("./pages/assessment-center/AlgorithmicImpactAssessment"));
 const AIGovernanceCheck = lazy(() => import("./pages/assessment-center/AIGovernanceCheck"));
+
+// ISO & Security Assessment Tools
+const ISMSMaturityAssessment = lazy(() => import("./pages/assessment-center/ISMSMaturityAssessment"));
+const ISO27001ReadinessCheck = lazy(() => import("./pages/assessment-center/ISO27001ReadinessCheck"));
+const NIS2ComplianceCheck = lazy(() => import("./pages/assessment-center/NIS2ComplianceCheck"));
+const SOC2ReadinessAssessment = lazy(() => import("./pages/assessment-center/SOC2ReadinessAssessment"));
+const SecurityControlsAudit = lazy(() => import("./pages/assessment-center/SecurityControlsAudit"));
+const DataProtectionTest = lazy(() => import("./pages/assessment-center/DataProtectionTest"));
+
 const DsgvoCompliance = lazy(() => import("./pages/DsgvoCompliance"));
 const Iso27001Compliance = lazy(() => import("./pages/Iso27001Compliance"));
 const EuAiActCompliance = lazy(() => import("./pages/EuAiActCompliance"));
@@ -189,7 +198,6 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/academy" element={<AcademyPage />} />
-                <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/preise" element={<Preise />} />
                 <Route path="/beta" element={<Beta />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
@@ -247,6 +255,7 @@ const App = () => (
                 {/* DSGVO Assessment Tools */}
                 <Route path="/assessment-center/dsgvo-compliance-checklist" element={<DSGVOComplianceChecklist />} />
                 <Route path="/assessment-center/datenschutz-readiness-assessment" element={<DataPrivacyReadinessAssessment />} />
+                <Route path="/assessment-center/datenschutz-test" element={<DataProtectionTest />} />
                 <Route path="/assessment-center/breach-response-checklist" element={<BreachResponseChecklist />} />
                 <Route path="/assessment-center/cookie-compliance-audit" element={<CookieComplianceAudit />} />
                 <Route path="/assessment-center/vendor-assessment-template" element={<VendorAssessmentTemplate />} />
@@ -255,6 +264,13 @@ const App = () => (
                 <Route path="/assessment-center/ai-risk-assessment" element={<AIRiskAssessment />} />
                 <Route path="/assessment-center/algorithmic-impact-assessment" element={<AlgorithmicImpactAssessment />} />
                 <Route path="/assessment-center/ai-governance-check" element={<AIGovernanceCheck />} />
+
+                {/* ISO & Security Assessment Tools */}
+                <Route path="/assessment-center/isms-maturity-assessment" element={<ISMSMaturityAssessment />} />
+                <Route path="/assessment-center/iso-27001-readiness-check" element={<ISO27001ReadinessCheck />} />
+                <Route path="/assessment-center/nis2-compliance-check" element={<NIS2ComplianceCheck />} />
+                <Route path="/assessment-center/soc2-readiness-assessment" element={<SOC2ReadinessAssessment />} />
+                <Route path="/assessment-center/security-controls-audit" element={<SecurityControlsAudit />} />
 
                 {/* Industry Routes */}
                 <Route path="/branchen" element={<Industries />} />

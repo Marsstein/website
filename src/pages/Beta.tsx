@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,9 +14,6 @@ import {
   ArrowRight,
   Users,
   Zap,
-  Star,
-  Percent,
-  Sparkles,
   Gift,
   Clock
 } from 'lucide-react';
@@ -92,163 +92,177 @@ const Beta: React.FC = () => {
     { id: 'loeschkonzept', label: 'Löschkonzept umsetzen' }
   ];
 
-
   if (submitted) {
     return (
-      <div className="min-h-screen bg-background">
-        <div className="container max-w-2xl mx-auto py-24 px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center space-y-8"
-          >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-50 dark:bg-green-950/20">
-              <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-500" />
-            </div>
-
-            <div className="space-y-3">
-              <h1 className="text-4xl font-bold text-foreground">
-                Vielen Dank für Ihre Anmeldung
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-md mx-auto">
-                Wir haben Ihre Bewerbung für das Beta-Programm erhalten und melden uns innerhalb von 24 Stunden bei Ihnen.
-              </p>
-            </div>
-
-            <Card className="max-w-md mx-auto border-muted">
-              <CardContent className="pt-6">
-                <h3 className="font-semibold mb-3">Ihre nächsten Schritte:</h3>
-                <div className="space-y-3 text-left">
-                  <div className="flex gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-muted-foreground mt-0.5" />
-                    <div className="text-sm">
-                      <p className="font-medium">Bestätigungs-E-Mail prüfen</p>
-                      <p className="text-muted-foreground">In den nächsten Minuten erhalten</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <Clock className="h-5 w-5 text-muted-foreground mt-0.5" />
-                    <div className="text-sm">
-                      <p className="font-medium">Onboarding-Termin</p>
-                      <p className="text-muted-foreground">Wir kontaktieren Sie binnen 24h</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <Rocket className="h-5 w-5 text-muted-foreground mt-0.5" />
-                    <div className="text-sm">
-                      <p className="font-medium">Start der Beta-Phase</p>
-                      <p className="text-muted-foreground">Sofort nach dem Onboarding</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Button
-              onClick={() => window.location.href = '/'}
-              size="lg"
-              variant="outline"
+      <>
+        <SEOHead
+          title="Anmeldung erfolgreich - Beta-Programm | Marsstein"
+          description="Vielen Dank für Ihre Anmeldung zum Beta-Programm. Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+          noindex={true}
+        />
+        <Header />
+        <div className="min-h-screen bg-background">
+          <div className="container max-w-2xl mx-auto py-24 px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center space-y-8"
             >
-              Zur Startseite
-            </Button>
-          </motion.div>
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-50 dark:bg-green-950/20">
+                <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-500" />
+              </div>
+
+              <div className="space-y-3">
+                <h1 className="text-4xl font-bold text-foreground">
+                  Vielen Dank für Ihre Anmeldung
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-md mx-auto">
+                  Wir haben Ihre Bewerbung für das Beta-Programm erhalten und melden uns innerhalb von 24 Stunden bei Ihnen.
+                </p>
+              </div>
+
+              <Card className="max-w-md mx-auto border-muted">
+                <CardContent className="pt-6">
+                  <h3 className="font-semibold mb-3">Ihre nächsten Schritte:</h3>
+                  <div className="space-y-3 text-left">
+                    <div className="flex gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-muted-foreground mt-0.5" />
+                      <div className="text-sm">
+                        <p className="font-medium">Bestätigungs-E-Mail prüfen</p>
+                        <p className="text-muted-foreground">In den nächsten Minuten erhalten</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-3">
+                      <Clock className="h-5 w-5 text-muted-foreground mt-0.5" />
+                      <div className="text-sm">
+                        <p className="font-medium">Onboarding-Termin</p>
+                        <p className="text-muted-foreground">Wir kontaktieren Sie binnen 24h</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-3">
+                      <Rocket className="h-5 w-5 text-muted-foreground mt-0.5" />
+                      <div className="text-sm">
+                        <p className="font-medium">Start der Beta-Phase</p>
+                        <p className="text-muted-foreground">Sofort nach dem Onboarding</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Button
+                onClick={() => window.location.href = '/'}
+                size="lg"
+                variant="outline"
+              >
+                Zur Startseite
+              </Button>
+            </motion.div>
+          </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container max-w-7xl mx-auto py-16 px-4">
+    <>
+      <SEOHead
+        title="Beta-Programm - Kostenlos DSGVO-Software testen | Marsstein"
+        description="Werden Sie Beta-Tester unserer KI-gestützten DSGVO-Automatisierung. Kostenlos testen, 50% Rabatt nach Beta-Phase und direkter Draht zum Team. Jetzt anmelden!"
+        canonical="/beta"
+      />
+      <Header />
+      <div className="min-h-screen bg-background">
+        <div className="container max-w-7xl mx-auto py-16 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12 max-w-3xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-2 text-primary text-sm font-medium mb-4">
+              <Rocket className="h-4 w-4" />
+              BETA-PROGRAMM
+            </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12 max-w-3xl mx-auto"
-        >
-          <div className="inline-flex items-center gap-2 text-primary text-sm font-medium mb-4">
-            <Rocket className="h-4 w-4" />
-            BETA-PROGRAMM
-          </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+              DSGVO-Software im Beta-Test
+            </h1>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-            DSGVO-Software im Beta-Test
-          </h1>
+            <p className="text-xl text-muted-foreground">
+              Testen Sie kostenlos unsere KI-gestützte DSGVO-Automatisierung
+              und sparen Sie Ihre wertvolle Zeit bei der Datenschutz-Dokumentation.
+            </p>
+          </motion.div>
 
-          <p className="text-xl text-muted-foreground">
-            Testen Sie kostenlos unsere KI-gestützte DSGVO-Automatisierung
-            und sparen Sie Ihre wertvolle Zeit bei der Datenschutz-Dokumentation.
-          </p>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-12"
+          >
+            <Card className="max-w-4xl mx-auto bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 border-brand-red/20">
+              <CardContent className="p-6 md:p-8">
+                <div className="text-center mb-6">
+                  <Badge className="bg-brand-red/10 text-brand-red border-brand-red/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-3">
+                    Limited Beta Access
+                  </Badge>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-2">Werden Sie Beta-Tester</h2>
+                  <p className="text-muted-foreground">Gestalten Sie die Zukunft der Compliance mit uns</p>
+                </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-12"
-        >
-          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 border-brand-red/20">
-            <CardContent className="p-6 md:p-8">
-              <div className="text-center mb-6">
-                <Badge className="bg-brand-red/10 text-brand-red border-brand-red/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-3">
-                  Limited Beta Access
-                </Badge>
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">Werden Sie Beta-Tester</h2>
-                <p className="text-muted-foreground">Gestalten Sie die Zukunft der Compliance mit uns</p>
-              </div>
+                <div className="grid md:grid-cols-3 gap-6 text-center">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="space-y-2"
+                  >
+                    <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-sm font-semibold">Exklusive Community</h3>
+                    <p className="text-xs text-muted-foreground">Direkter Draht zum Team</p>
+                  </motion.div>
 
-              <div className="grid md:grid-cols-3 gap-6 text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="space-y-2"
-                >
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-sm font-semibold">Exklusive Community</h3>
-                  <p className="text-xs text-muted-foreground">Direkter Draht zum Team</p>
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="space-y-2"
+                  >
+                    <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
+                      <Gift className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-sm font-semibold">50% Rabatt</h3>
+                    <p className="text-xs text-muted-foreground">Nach der Beta-Phase</p>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="space-y-2"
-                >
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
-                    <Gift className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-sm font-semibold">50% Rabatt</h3>
-                  <p className="text-xs text-muted-foreground">Nach der Beta-Phase</p>
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="space-y-2"
+                  >
+                    <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
+                      <Zap className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-sm font-semibold">Kostenlos testen</h3>
+                    <p className="text-xs text-muted-foreground">Keine Kreditkarte nötig</p>
+                  </motion.div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  className="space-y-2"
-                >
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-md">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-sm font-semibold">Kostenlos testen</h3>
-                  <p className="text-xs text-muted-foreground">Keine Kreditkarte nötig</p>
-                </motion.div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-5xl mx-auto"
-        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="max-w-5xl mx-auto"
+          >
             <Card className="shadow-lg">
               <CardHeader className="text-center pb-8">
                 <CardTitle className="text-2xl">Beta-Zugang anfordern</CardTitle>
@@ -433,9 +447,10 @@ const Beta: React.FC = () => {
               </CardContent>
             </Card>
           </motion.div>
-
+        </div>
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 

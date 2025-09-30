@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEOHead from '../../components/SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -100,6 +101,15 @@ interface AssessmentResult {
 }
 
 const NIS2ComplianceCheck: React.FC = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Assessment",
+    "name": "NIS2 Compliance Check",
+    "description": "Überprüfen Sie Ihre NIS2-Compliance und erhalten Sie einen detaillierten Bericht zu erforderlichen Maßnahmen",
+    "educationalLevel": "Professional",
+    "url": "https://marsstein.ai/assessment-center/nis2-compliance-check"
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -751,17 +761,25 @@ const NIS2ComplianceCheck: React.FC = () => {
     };
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <Header />
-        <div className="pt-24 pb-16">
-          <div className="container px-4">
-            <div className="max-w-6xl mx-auto">
-              {/* Results Header */}
-              <motion.div
-                className="text-center mb-12"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
+      <>
+        <SEOHead
+          title="NIS2 Compliance Check – NIS2-Richtlinien prüfen"
+          description="NIS2 Compliance Check: Überprüfen Sie Ihre NIS2-Compliance systematisch. ✓ Rechtliche Anforderungen ✓ Gap-Analyse ✓ Umsetzungsplan. Jetzt testen!"
+          canonical="/assessment-center/nis2-compliance-check"
+          keywords="NIS2 Compliance, NIS2 Check, NIS2-Richtlinie, Cybersecurity Compliance, NIS2 Assessment"
+          structuredData={structuredData}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <Header />
+          <div className="pt-24 pb-16">
+            <div className="container px-4">
+              <div className="max-w-6xl mx-auto">
+                {/* Results Header */}
+                <motion.div
+                  className="text-center mb-12"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
                 <div className={cn(
                   "inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 mb-6",
                   getComplianceColor(result.overallCompliance)
@@ -1046,26 +1064,35 @@ const NIS2ComplianceCheck: React.FC = () => {
         </div>
         <Footer />
       </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-      <Header />
-      
-      <div className="pt-24 pb-16">
-        <div className="container px-4">
-          <div className="max-w-4xl mx-auto">
-            {/* Header */}
-            <motion.div
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red/10 text-brand-red border border-brand-red/20 mb-6">
-                <ShieldCheck className="h-4 w-4" />
-                <span className="text-sm font-medium">NIS2 Compliance Check</span>
-              </div>
+    <>
+      <SEOHead
+        title="NIS2 Compliance Check – NIS2-Richtlinien prüfen"
+        description="NIS2 Compliance Check: Überprüfen Sie Ihre NIS2-Compliance systematisch. ✓ Rechtliche Anforderungen ✓ Gap-Analyse ✓ Umsetzungsplan. Jetzt testen!"
+        canonical="/assessment-center/nis2-compliance-check"
+        keywords="NIS2 Compliance, NIS2 Check, NIS2-Richtlinie, Cybersecurity Compliance, NIS2 Assessment"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        <Header />
+
+        <div className="pt-24 pb-16">
+          <div className="container px-4">
+            <div className="max-w-4xl mx-auto">
+              {/* Header */}
+              <motion.div
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red/10 text-brand-red border border-brand-red/20 mb-6">
+                  <ShieldCheck className="h-4 w-4" />
+                  <span className="text-sm font-medium">NIS2 Compliance Check</span>
+                </div>
               
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 NIS2-Richtlinien-Compliance bewerten
@@ -1248,6 +1275,7 @@ const NIS2ComplianceCheck: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 

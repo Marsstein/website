@@ -39,11 +39,11 @@ const routeConfigs = {
     keywords: 'SOC 2 Zertifizierung, Type II Audit, Trust Services, Cloud Compliance, SaaS Sicherheit',
     canonical: 'https://marsstein.ai/soc2-zertifizierung'
   },
-  '/pricing': {
+  '/preise': {
     title: 'Preise & Pakete | DSGVO Compliance Software | Marsstein',
     description: 'Transparente Preise für DSGVO Compliance Software. Vom Starter-Paket bis Enterprise - passende Lösung für Ihr Unternehmen.',
     keywords: 'DSGVO Software Preise, Compliance Kosten, Datenschutz Software Pakete, Enterprise Compliance, Deutschland',
-    canonical: 'https://marsstein.ai/pricing'
+    canonical: 'https://marsstein.ai/preise'
   },
   '/contact': {
     title: 'Kontakt & Demo | DSGVO Compliance Beratung | Marsstein',

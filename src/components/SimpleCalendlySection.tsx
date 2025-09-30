@@ -1,24 +1,6 @@
 import React from 'react';
 
 export const SimpleCalendlySection: React.FC = () => {
-  console.log('SimpleCalendlySection rendering');
-
-  React.useEffect(() => {
-    console.log('SimpleCalendlySection useEffect running');
-    // Inject Calendly inline widget script
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-    };
-  }, []);
-
   return (
     <div style={{
       backgroundColor: '#fff3e0',
@@ -62,21 +44,7 @@ export const SimpleCalendlySection: React.FC = () => {
         </li>
       </ul>
 
-      {/* Calendly inline widget - this should definitely work */}
-      <div
-        className="calendly-inline-widget"
-        data-url="https://calendly.com/marsstein-info/marsstein-intro?hide_event_type_details=1&hide_gdpr_banner=1"
-        style={{
-          minWidth: '320px',
-          height: '630px',
-          border: '1px solid #ddd',
-          borderRadius: '8px',
-          overflow: 'hidden'
-        }}
-      />
-
-      {/* Fallback button */}
-      <div style={{ marginTop: '16px', textAlign: 'center' }}>
+      <div style={{ textAlign: 'center' }}>
         <a
           href="https://calendly.com/marsstein-info/marsstein-intro"
           target="_blank"
@@ -98,7 +66,7 @@ export const SimpleCalendlySection: React.FC = () => {
             e.currentTarget.style.backgroundColor = '#e24e1b';
           }}
         >
-          Alternativ: Termin im Browser buchen →
+          Termin buchen
         </a>
       </div>
     </div>

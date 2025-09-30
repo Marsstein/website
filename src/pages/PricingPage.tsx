@@ -71,7 +71,7 @@ const PricingPage = () => {
       <SEOHead
         title="Preise & Pakete – Compliance Software"
         description="Transparente Preise für Marsstein Compliance Software. Wählen Sie das passende Paket für Ihre Compliance-Anforderungen. Jetzt 30 Tage kostenlos testen!"
-        canonical="/pricing"
+        canonical="/preise"
         structuredData={structuredData}
       />
       

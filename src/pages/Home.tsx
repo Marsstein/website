@@ -40,7 +40,7 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  to="/pricing"
+                  to="/preise"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   Jetzt starten
@@ -120,7 +120,7 @@ const Home = () => {
               Starten Sie noch heute mit unserer Compliance-Plattform und sparen Sie Zeit und Ressourcen.
             </p>
             <Link
-              to="/pricing"
+              to="/preise"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-blue-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
             >
               Kostenlos testen
