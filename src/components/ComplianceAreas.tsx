@@ -1,16 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const complianceAreas = [
-  { name: 'DSGVO', color: 'from-blue-500 to-blue-600' },
-  { name: 'ISO 27001', color: 'from-indigo-500 to-indigo-600' },
-  { name: 'EU AI Act', color: 'from-purple-500 to-purple-600' },
-  { name: 'SOC2', color: 'from-pink-500 to-pink-600' },
-  { name: 'TISAX', color: 'from-red-500 to-red-600' },
-  { name: 'NIS2', color: 'from-orange-500 to-orange-600' },
+  { name: 'DSGVO', color: 'from-blue-500 to-blue-600', link: '/dsgvo' },
+  { name: 'ISO 27001', color: 'from-indigo-500 to-indigo-600', link: '/iso-27001-zertifizierung' },
+  { name: 'EU AI Act', color: 'from-purple-500 to-purple-600', link: '/eu-ai-act' },
+  { name: 'SOC2', color: 'from-pink-500 to-pink-600', link: '/soc2-zertifizierung' },
+  { name: 'TISAX', color: 'from-red-500 to-red-600', link: '/tisax-zertifizierung' },
+  { name: 'NIS2', color: 'from-orange-500 to-orange-600', link: '/nis2-compliance' },
   { name: 'Data Act', color: 'from-amber-500 to-amber-600' },
-  { name: 'ISO 27701', color: 'from-teal-500 to-teal-600' },
+  { name: 'ISO 27017', color: 'from-teal-500 to-teal-600', link: '/iso-27017-zertifizierung' },
 ];
 
 export const ComplianceAreas = () => {
@@ -33,27 +34,37 @@ export const ComplianceAreas = () => {
         </motion.div>
 
         <div className="flex flex-wrap justify-center gap-4">
-          {complianceAreas.map((area, index) => (
-            <motion.div
-              key={area.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="relative group"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-r ${area.color} rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300`} />
-              <div className="relative px-6 py-3 bg-white border-2 border-gray-200 rounded-xl shadow-sm group-hover:shadow-lg group-hover:border-gray-300 transition-all duration-300">
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
-                  <span className="font-semibold text-gray-800 group-hover:text-gray-900">
-                    {area.name}
-                  </span>
+          {complianceAreas.map((area, index) => {
+            const content = (
+              <motion.div
+                key={area.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="relative group"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r ${area.color} rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300`} />
+                <div className="relative px-6 py-3 bg-white border-2 border-gray-200 rounded-xl shadow-sm group-hover:shadow-lg group-hover:border-gray-300 transition-all duration-300">
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
+                    <span className="font-semibold text-gray-800 group-hover:text-gray-900">
+                      {area.name}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+
+            return area.link ? (
+              <Link key={area.name} to={area.link}>
+                {content}
+              </Link>
+            ) : (
+              content
+            );
+          })}
         </div>
       </div>
     </section>

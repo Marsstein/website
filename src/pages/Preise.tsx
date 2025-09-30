@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import {
   Check, X, Star, Shield, Zap, ChevronDown, ChevronUp,
   Sparkles, FileText, UserCheck, Award, Bot, BarChart3,
-  Lock, Headphones, Globe
+  Lock, Headphones, Globe, Heart, TrendingUp, Rocket
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -19,6 +19,7 @@ const Preise: React.FC = () => {
   const [expandedCategories, setExpandedCategories] = useState<string[]>(['pflichtdokumente']);
   const [showOnlyDifferences, setShowOnlyDifferences] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<'starter' | 'professional' | 'enterprise'>('professional');
+  const [selectedSpecial, setSelectedSpecial] = useState<'kleinunternehmer' | 'neugruender' | 'gemeinnuetzig'>('kleinunternehmer');
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -604,187 +605,588 @@ const Preise: React.FC = () => {
               className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#e24e1b]/10 to-[#ea580c]/10 backdrop-blur-xl rounded-full mb-4 sm:mb-8 border border-[#e24e1b]/20 shadow-lg"
             >
               <Star className="h-4 w-4 sm:h-5 sm:w-5 text-[#e24e1b] animate-pulse" />
-              <span className="text-xs sm:text-sm font-bold text-[#e24e1b]">NEU: KLEINUNTERNEHMER-SPECIAL 2025</span>
+              <span className="text-xs sm:text-sm font-bold text-[#e24e1b]">NEU: MARSSTEIN SPECIALS 2025</span>
               <Star className="h-4 w-4 sm:h-5 sm:w-5 text-[#e24e1b] animate-pulse" style={{ animationDelay: '0.5s' }} />
             </motion.div>
 
-            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-[#e24e1b] via-[#232323] to-[#e24e1b] bg-clip-text text-transparent bg-300% animate-gradient">
-              MARSSTEIN
-              <br className="sm:hidden" />
-              <span className="text-xl sm:text-4xl md:text-6xl">KLEINUNTERNEHMER-SPECIAL</span>
-              <br />
-              2025
-            </h2>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="flex flex-wrap items-center justify-center mb-8 gap-3"
+            >
+              <div className="bg-white/80 backdrop-blur-md rounded-full p-1 border-2 border-[#e24e1b]/20 shadow-xl">
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <button
+                    onClick={() => setSelectedSpecial('kleinunternehmer')}
+                    className={cn(
+                      "px-3 sm:px-5 py-2 rounded-full transition-all duration-300 font-medium text-xs sm:text-sm flex items-center gap-1.5",
+                      selectedSpecial === 'kleinunternehmer'
+                        ? "bg-[#e24e1b] text-white shadow-lg"
+                        : "text-[#474747] hover:text-[#232323]"
+                    )}
+                  >
+                    <Shield className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">Kleinunternehmer</span>
+                    <span className="sm:hidden">Klein</span>
+                  </button>
+                  <button
+                    onClick={() => setSelectedSpecial('neugruender')}
+                    className={cn(
+                      "px-3 sm:px-5 py-2 rounded-full transition-all duration-300 font-medium text-xs sm:text-sm flex items-center gap-1.5",
+                      selectedSpecial === 'neugruender'
+                        ? "bg-[#e24e1b] text-white shadow-lg"
+                        : "text-[#474747] hover:text-[#232323]"
+                    )}
+                  >
+                    <Rocket className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">Neugründer</span>
+                    <span className="sm:hidden">Neu</span>
+                  </button>
+                  <button
+                    onClick={() => setSelectedSpecial('gemeinnuetzig')}
+                    className={cn(
+                      "px-3 sm:px-5 py-2 rounded-full transition-all duration-300 font-medium text-xs sm:text-sm flex items-center gap-1.5",
+                      selectedSpecial === 'gemeinnuetzig'
+                        ? "bg-[#e24e1b] text-white shadow-lg"
+                        : "text-[#474747] hover:text-[#232323]"
+                    )}
+                  >
+                    <Heart className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">Gemeinnützig</span>
+                    <span className="sm:hidden">NGO</span>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
 
-            <p className="text-base sm:text-xl md:text-2xl text-[#474747] italic px-4 sm:px-0">
-              "Datenschutz für alle - weil jedes Unternehmen Schutz verdient"
-            </p>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedSpecial}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-[#e24e1b] via-[#232323] to-[#e24e1b] bg-clip-text text-transparent bg-300% animate-gradient">
+                  MARSSTEIN
+                  <br className="sm:hidden" />
+                  <span className="text-xl sm:text-4xl md:text-6xl">
+                    {selectedSpecial === 'kleinunternehmer' && 'KLEINUNTERNEHMER-SPECIAL'}
+                    {selectedSpecial === 'neugruender' && 'NEUGRÜNDER-SPECIAL'}
+                    {selectedSpecial === 'gemeinnuetzig' && 'GEMEINNÜTZIG-SPECIAL'}
+                  </span>
+                  <br />
+                  2025
+                </h2>
+
+                <p className="text-base sm:text-xl md:text-2xl text-[#474747] italic px-4 sm:px-0">
+                  {selectedSpecial === 'kleinunternehmer' && '"Datenschutz für alle - weil jedes Unternehmen Schutz verdient"'}
+                  {selectedSpecial === 'neugruender' && '"Wir waren auch mal jung - Profi-Schutz zum Gründerpreis"'}
+                  {selectedSpecial === 'gemeinnuetzig' && '"Gemeinsam Gutes tun - Vollschutz zum Selbstkostenpreis"'}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative group"
-          >
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#e24e1b] via-[#ea580c] to-[#e24e1b] rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity animate-pulse" />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedSpecial}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.5 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#e24e1b] via-[#ea580c] to-[#e24e1b] rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity animate-pulse" />
 
-            <Card className="relative border-2 border-[#e24e1b]/50 shadow-2xl bg-white/95 backdrop-blur-md overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#e24e1b]/5 via-transparent to-[#003366]/5 pointer-events-none" />
+              <Card className="relative border-2 border-[#e24e1b]/50 shadow-2xl bg-white/95 backdrop-blur-md overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#e24e1b]/5 via-transparent to-[#003366]/5 pointer-events-none" />
 
-              <CardContent className="relative p-4 sm:p-8 md:p-12">
-                <div className="text-center mb-10">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#e24e1b] to-[#ea580c] rounded-full text-white text-sm font-bold mb-4 shadow-lg"
-                  >
-                    <Zap className="h-4 w-4 animate-pulse" />
-                    KLEIN-STARTER
-                    <Zap className="h-4 w-4 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                  </motion.div>
+                <CardContent className="relative p-4 sm:p-8 md:p-12">
+                  {selectedSpecial === 'kleinunternehmer' && (
+                    <>
+                      <div className="text-center mb-10">
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#e24e1b] to-[#ea580c] rounded-full text-white text-sm font-bold mb-4 shadow-lg"
+                        >
+                          <Zap className="h-4 w-4 animate-pulse" />
+                          KLEIN-STARTER
+                          <Zap className="h-4 w-4 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                        </motion.div>
 
-                  <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#232323] mb-3">
-                    Der absolute No-Brainer für Kleinunternehmen
-                  </h3>
+                        <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#232323] mb-3">
+                          Der absolute No-Brainer für Kleinunternehmen
+                        </h3>
 
-                  <div className="flex items-baseline justify-center mb-4">
-                    <span className="text-4xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#e24e1b] to-[#ea580c] bg-clip-text text-transparent">
-                      €29
-                    </span>
-                    <span className="text-xl text-[#232323] ml-2">/Monat</span>
-                  </div>
+                        <div className="flex items-baseline justify-center mb-4">
+                          <span className="text-4xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#e24e1b] to-[#ea580c] bg-clip-text text-transparent">
+                            €29
+                          </span>
+                          <span className="text-xl text-[#232323] ml-2">/Monat</span>
+                        </div>
 
-                  <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
-                    <span className="text-[#232323]">✓ Keine Einrichtungsgebühr</span>
-                    <span className="text-[#232323]">✓ Monatlich kündbar</span>
-                    <span className="text-[#232323]">✓ Keine versteckten Kosten</span>
-                  </div>
-                </div>
+                        <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
+                          <span className="text-[#232323]">✓ Keine Einrichtungsgebühr</span>
+                          <span className="text-[#232323]">✓ Monatlich kündbar</span>
+                          <span className="text-[#232323]">✓ Keine versteckten Kosten</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
 
-                <div className="border-t border-gray-200 pt-10">
-                  <h4 className="text-base sm:text-xl font-bold text-[#232323] mb-4 sm:mb-8 flex items-center justify-center gap-2">
-                    <Star className="h-5 w-5 text-[#e24e1b] animate-pulse" />
-                    WAS SIE BEKOMMEN:
-                    <Star className="h-5 w-5 text-[#e24e1b] animate-pulse" style={{ animationDelay: '0.5s' }} />
-                  </h4>
+                  {selectedSpecial === 'neugruender' && (
+                    <>
+                      <div className="text-center mb-10">
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#e24e1b] to-[#ea580c] rounded-full text-white text-sm font-bold mb-4 shadow-lg"
+                        >
+                          <Rocket className="h-4 w-4 animate-pulse" />
+                          NEUGRÜNDER-PROFESSIONAL
+                          <Rocket className="h-4 w-4 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                        </motion.div>
 
-                  <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 }}
-                      className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200"
-                    >
-                      <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
-                        <Shield className="h-5 w-5" />
-                        DSGVO-GRUNDSCHUTZ KOMPLETT
-                      </h5>
-                      <ul className="space-y-3">
-                        {[
-                          'Alle DSGVO-Pflichtdokumente fertig vorbereitet',
-                          'Datenschutzerklärung für Ihre Website (inkl. Updates)',
-                          'Cookie-Banner rechtssicher & abmahnsicher',
-                          'Verarbeitungsverzeichnis (Art. 30 DSGVO)',
-                          'TOMs (Technische & Organisatorische Maßnahmen)',
-                          'AVV-Verträge für alle gängigen Dienstleister',
-                          'Mitarbeiter-Verpflichtungen als Vorlage'
-                        ].map((item, idx) => (
-                          <motion.li
-                            key={idx}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3 + idx * 0.05 }}
-                            className="flex items-start gap-2"
-                          >
-                            <Check className="h-5 w-5 text-[#39B37B] mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-[#232323]">{item}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </motion.div>
+                        <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#232323] mb-3">
+                          Das €199 PROFESSIONAL-Paket zum halben Preis
+                        </h3>
 
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      <div className="bg-gradient-to-br from-white to-[#F5F6F8] p-6 rounded-xl border border-gray-100 mb-6">
-                        <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
-                          <Zap className="h-5 w-5" />
-                          MARSSTEIN KI-ASSISTENT
-                        </h5>
-                        <ul className="space-y-3">
-                          {[
-                            '50 KI-Anfragen/Monat für Ihre DSGVO-Fragen',
-                            '24/7 verfügbar - immer eine Antwort parat',
-                            'In einfacher Sprache - kein Juristendeutsch'
-                          ].map((item, idx) => (
-                            <motion.li
-                              key={idx}
-                              initial={{ opacity: 0, x: 10 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.5 + idx * 0.05 }}
-                              className="flex items-start gap-2"
-                            >
-                              <Check className="h-5 w-5 text-[#39B37B] mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-[#232323]">{item}</span>
-                            </motion.li>
-                          ))}
-                        </ul>
+                        <div className="flex items-baseline justify-center mb-4">
+                          <span className="text-4xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#e24e1b] to-[#ea580c] bg-clip-text text-transparent">
+                            €99
+                          </span>
+                          <span className="text-xl text-[#232323] ml-2">/Monat</span>
+                          <span className="text-sm text-[#474747] ml-2">für 2 Jahre</span>
+                        </div>
+
+                        <div className="flex flex-wrap items-center justify-center gap-3 text-sm mb-4">
+                          <span className="text-[#232323]">✓ 50% Gründerrabatt</span>
+                          <span className="text-[#232323]">✓ Monatlich kündbar</span>
+                          <span className="text-[#232323]">✓ Externer DSB inklusive</span>
+                        </div>
+
+                        <div className="bg-[#e24e1b]/10 rounded-lg p-4 border border-[#e24e1b]/20">
+                          <p className="text-sm text-[#232323] font-semibold">
+                            💪 UNSERE PHILOSOPHIE:
+                          </p>
+                          <p className="text-xs sm:text-sm text-[#474747] mt-2">
+                            "Die ersten zwei Jahre entscheiden über Erfolg oder Scheitern. Datenschutz-Abmahnungen gehören nicht zu den Herausforderungen, mit denen sich junge Unternehmen beschäftigen sollten. Wir übernehmen das - Sie konzentrieren sich aufs Wachstum."
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {selectedSpecial === 'gemeinnuetzig' && (
+                    <>
+                      <div className="text-center mb-10">
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#e24e1b] to-[#ea580c] rounded-full text-white text-sm font-bold mb-4 shadow-lg"
+                        >
+                          <Heart className="h-4 w-4 animate-pulse" />
+                          GEMEINNÜTZIG-STARTER
+                          <Heart className="h-4 w-4 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                        </motion.div>
+
+                        <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#232323] mb-3">
+                          Das komplette STARTER-Paket für Vereine & NGOs
+                        </h3>
+
+                        <div className="flex items-baseline justify-center mb-4">
+                          <span className="text-4xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#e24e1b] to-[#ea580c] bg-clip-text text-transparent">
+                            €15
+                          </span>
+                          <span className="text-xl text-[#232323] ml-2">/Monat</span>
+                          <span className="text-sm text-[#474747] ml-2 line-through">€69</span>
+                        </div>
+
+                        <div className="flex flex-wrap items-center justify-center gap-3 text-sm mb-4">
+                          <span className="text-[#232323]">✓ 78% Vereinsrabatt dauerhaft</span>
+                          <span className="text-[#232323]">✓ Monatlich kündbar</span>
+                          <span className="text-[#232323]">✓ Keine versteckten Kosten</span>
+                        </div>
+
+                        <div className="bg-[#e24e1b]/10 rounded-lg p-4 border border-[#e24e1b]/20">
+                          <p className="text-sm text-[#232323] font-semibold">
+                            🤝 UNSER VERSPRECHEN:
+                          </p>
+                          <p className="text-xs sm:text-sm text-[#474747] mt-2">
+                            "Wer sich für andere einsetzt, verdient unsere volle Unterstützung. Deshalb erhalten alle gemeinnützigen Organisationen unseren kompletten STARTER-Schutz zum Selbstkostenpreis."
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {selectedSpecial === 'kleinunternehmer' && (
+                    <div className="border-t border-gray-200 pt-10">
+                      <h4 className="text-base sm:text-xl font-bold text-[#232323] mb-4 sm:mb-8 flex items-center justify-center gap-2">
+                        <Star className="h-5 w-5 text-[#e24e1b] animate-pulse" />
+                        WAS SIE BEKOMMEN:
+                        <Star className="h-5 w-5 text-[#e24e1b] animate-pulse" style={{ animationDelay: '0.5s' }} />
+                      </h4>
+
+                      <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 }}
+                          className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200"
+                        >
+                          <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
+                            <Shield className="h-5 w-5" />
+                            DSGVO-GRUNDSCHUTZ KOMPLETT
+                          </h5>
+                          <ul className="space-y-3">
+                            {[
+                              'Alle DSGVO-Pflichtdokumente fertig vorbereitet',
+                              'Datenschutzerklärung für Ihre Website (inkl. Updates)',
+                              'Cookie-Banner rechtssicher & abmahnsicher',
+                              'Verarbeitungsverzeichnis (Art. 30 DSGVO)',
+                              'TOMs (Technische & Organisatorische Maßnahmen)',
+                              'AVV-Verträge für alle gängigen Dienstleister',
+                              'Mitarbeiter-Verpflichtungen als Vorlage'
+                            ].map((item, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Check className="h-5 w-5 text-[#39B37B] mt-0.5 flex-shrink-0" />
+                                <span className="text-sm text-[#232323]">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+
+                        <motion.div
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.4 }}
+                        >
+                          <div className="bg-gradient-to-br from-white to-[#F5F6F8] p-6 rounded-xl border border-gray-100 mb-6">
+                            <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
+                              <Zap className="h-5 w-5" />
+                              MARSSTEIN KI-ASSISTENT
+                            </h5>
+                            <ul className="space-y-3">
+                              {[
+                                '50 KI-Anfragen/Monat für Ihre DSGVO-Fragen',
+                                '24/7 verfügbar - immer eine Antwort parat',
+                                'In einfacher Sprache - kein Juristendeutsch'
+                              ].map((item, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <Check className="h-5 w-5 text-[#39B37B] mt-0.5 flex-shrink-0" />
+                                  <span className="text-sm text-[#232323]">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-white to-[#F5F6F8] p-6 rounded-xl border border-gray-100">
+                            <h5 className="text-sm sm:text-lg font-bold text-[#003366] mb-3 sm:mb-4 flex items-center gap-2">
+                              <Shield className="h-5 w-5" />
+                              COMPLIANCE-DASHBOARD
+                            </h5>
+                            <ul className="space-y-3">
+                              {[
+                                'Live Compliance-Score - Sehen Sie Ihren Status',
+                                'Einfache Checklisten - Schritt für Schritt',
+                                'Automatische Erinnerungen bei wichtigen Fristen',
+                                'Gesetzesänderungs-Alerts - immer aktuell'
+                              ].map((item, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <Check className="h-5 w-5 text-[#39B37B] mt-0.5 flex-shrink-0" />
+                                  <span className="text-sm text-[#232323]">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </motion.div>
                       </div>
 
-                      <div className="bg-gradient-to-br from-white to-[#F5F6F8] p-6 rounded-xl border border-gray-100">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="mt-12 text-center"
+                      >
+                        <Button
+                          size="lg"
+                          className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] hover:from-[#ea580c] hover:to-[#e24e1b] text-white px-12 py-6 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 group"
+                        >
+                          <Zap className="mr-2 h-6 w-6 group-hover:animate-pulse" />
+                          Jetzt KLEIN-STARTER sichern
+                        </Button>
+
+                        <p className="mt-4 text-sm text-[#474747]">
+                          Keine Kreditkarte erforderlich • 14 Tage kostenlos testen • Jederzeit kündbar
+                        </p>
+                      </motion.div>
+                    </div>
+                  )}
+
+                  {selectedSpecial === 'neugruender' && (
+                    <div className="border-t border-gray-200 pt-10">
+                      <h4 className="text-base sm:text-xl font-bold text-[#232323] mb-4 sm:mb-8 flex items-center justify-center gap-2">
+                        <Star className="h-5 w-5 text-[#e24e1b] animate-pulse" />
+                        WAS IHRE NEUGRÜNDUNG BEKOMMT:
+                        <Star className="h-5 w-5 text-[#e24e1b] animate-pulse" style={{ animationDelay: '0.5s' }} />
+                      </h4>
+
+                      <div className="grid md:grid-cols-2 gap-4 sm:gap-8 mb-6">
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 }}
+                          className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200"
+                        >
+                          <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
+                            <UserCheck className="h-5 w-5" />
+                            EXTERNER DATENSCHUTZBEAUFTRAGTER
+                          </h5>
+                          <ul className="space-y-3">
+                            {[
+                              'Zertifizierter DSB offiziell benannt',
+                              '€100.000 Haftungsübernahme inklusive',
+                              'DSB-Hotline während Geschäftszeiten',
+                              'Spart €3.000+/Monat Personalkosten'
+                            ].map((item, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Check className="h-5 w-5 text-[#39B37B] mt-0.5 flex-shrink-0" />
+                                <span className="text-sm text-[#232323]">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+
+                        <motion.div
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 }}
+                          className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200"
+                        >
+                          <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
+                            <Sparkles className="h-5 w-5" />
+                            ENTERPRISE-FEATURES
+                          </h5>
+                          <ul className="space-y-3">
+                            {[
+                              '10 Datenschutzerklärungen für Websites/Apps',
+                              '1.000 KI-Anfragen/Monat mit Firmen-Kontext',
+                              'API-Integration für Ihre Tools',
+                              'Dark Web Monitoring für Firmendaten',
+                              'Penetrationstest 1x jährlich'
+                            ].map((item, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Check className="h-5 w-5 text-[#39B37B] mt-0.5 flex-shrink-0" />
+                                <span className="text-sm text-[#232323]">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      </div>
+
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="bg-gradient-to-br from-white to-[#F5F6F8] p-6 rounded-xl border border-gray-100 mb-8"
+                      >
                         <h5 className="text-sm sm:text-lg font-bold text-[#003366] mb-3 sm:mb-4 flex items-center gap-2">
-                          <Shield className="h-5 w-5" />
-                          COMPLIANCE-DASHBOARD
+                          <TrendingUp className="h-5 w-5" />
+                          WACHSTUMS-BEREIT
                         </h5>
-                        <ul className="space-y-3">
+                        <ul className="grid sm:grid-cols-2 gap-3">
                           {[
-                            'Live Compliance-Score - Sehen Sie Ihren Status',
-                            'Einfache Checklisten - Schritt für Schritt',
-                            'Automatische Erinnerungen bei wichtigen Fristen',
-                            'Gesetzesänderungs-Alerts - immer aktuell'
+                            'Trust-Badge für mehr Conversions',
+                            'Incident-Response-Plan vorbereitet',
+                            'Automatische Dokumenten-Updates',
+                            'Notfall-Anwalt-Vermittlung inklusive'
                           ].map((item, idx) => (
-                            <motion.li
-                              key={idx}
-                              initial={{ opacity: 0, x: 10 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.6 + idx * 0.05 }}
-                              className="flex items-start gap-2"
-                            >
+                            <li key={idx} className="flex items-start gap-2">
                               <Check className="h-5 w-5 text-[#39B37B] mt-0.5 flex-shrink-0" />
                               <span className="text-sm text-[#232323]">{item}</span>
-                            </motion.li>
+                            </li>
                           ))}
                         </ul>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="bg-[#e24e1b]/10 rounded-lg p-4 border border-[#e24e1b]/20 mb-8"
+                      >
+                        <p className="text-sm text-[#232323] font-semibold mb-2">
+                          QUALIFIKATION:
+                        </p>
+                        <ul className="space-y-2">
+                          {[
+                            '✓ Gründung vor weniger als 24 Monaten',
+                            '✓ GmbH, UG, AG oder GbR',
+                            '✓ Handelsregisterauszug genügt'
+                          ].map((item, idx) => (
+                            <li key={idx} className="text-xs sm:text-sm text-[#474747]">{item}</li>
+                          ))}
+                        </ul>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="text-center"
+                      >
+                        <Button
+                          size="lg"
+                          className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] hover:from-[#ea580c] hover:to-[#e24e1b] text-white px-12 py-6 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 group"
+                        >
+                          <Rocket className="mr-2 h-6 w-6 group-hover:animate-pulse" />
+                          Jetzt mit Code NEUSTART99 durchstarten
+                        </Button>
+
+                        <p className="mt-4 text-sm text-[#474747]">
+                          14 Tage kostenlos testen • Keine Kreditkarte nötig • In 3 Minuten startklar
+                        </p>
+                      </motion.div>
+                    </div>
+                  )}
+
+                  {selectedSpecial === 'gemeinnuetzig' && (
+                    <div className="border-t border-gray-200 pt-10">
+                      <h4 className="text-base sm:text-xl font-bold text-[#232323] mb-4 sm:mb-8 flex items-center justify-center gap-2">
+                        <Star className="h-5 w-5 text-[#e24e1b] animate-pulse" />
+                        WAS IHR VEREIN BEKOMMT:
+                        <Star className="h-5 w-5 text-[#e24e1b] animate-pulse" style={{ animationDelay: '0.5s' }} />
+                      </h4>
+
+                      <div className="grid md:grid-cols-3 gap-4 sm:gap-6 mb-6">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2 }}
+                          className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200"
+                        >
+                          <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
+                            <Shield className="h-5 w-5" />
+                            KOMPLETTER DSGVO-SCHUTZ
+                          </h5>
+                          <ul className="space-y-2">
+                            {[
+                              'Alle DSGVO-Pflichtdokumente für Vereine',
+                              '2 Datenschutzerklärungen für Websites',
+                              'Mitgliederverwaltung DSGVO-konform',
+                              'Einwilligungen für Veranstaltungsfotos',
+                              'Spendendaten-Management Vorlagen',
+                              'Newsletter-Einwilligungen rechtssicher',
+                              'Ehrenamtlichen-Vereinbarungen'
+                            ].map((item, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Check className="h-4 w-4 text-[#39B37B] mt-0.5 flex-shrink-0" />
+                                <span className="text-xs text-[#232323]">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 }}
+                          className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200"
+                        >
+                          <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
+                            <Bot className="h-5 w-5" />
+                            MARS-AI ASSISTENT
+                          </h5>
+                          <ul className="space-y-2">
+                            {[
+                              '100 KI-Anfragen/Monat',
+                              'Speziell geschult auf Vereinsthemen',
+                              'Verständliche Antworten ohne Juristendeutsch'
+                            ].map((item, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Check className="h-4 w-4 text-[#39B37B] mt-0.5 flex-shrink-0" />
+                                <span className="text-xs text-[#232323]">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.4 }}
+                          className="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200"
+                        >
+                          <h5 className="text-sm sm:text-lg font-bold text-[#e24e1b] mb-3 sm:mb-4 flex items-center gap-2">
+                            <Award className="h-5 w-5" />
+                            MARSSTEIN-SIEGEL
+                          </h5>
+                          <ul className="space-y-2">
+                            {[
+                              '"DSGVO-VERIFIED" Siegel für Vertrauen',
+                              'Jährliches Audit inklusive',
+                              'Wichtig für Förderanträge & Spender'
+                            ].map((item, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Check className="h-4 w-4 text-[#39B37B] mt-0.5 flex-shrink-0" />
+                                <span className="text-xs text-[#232323]">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
                       </div>
-                    </motion.div>
-                  </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
-                    className="mt-12 text-center"
-                  >
-                    <Button
-                      size="lg"
-                      className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] hover:from-[#ea580c] hover:to-[#e24e1b] text-white px-12 py-6 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 group"
-                    >
-                      <Zap className="mr-2 h-6 w-6 group-hover:animate-pulse" />
-                      Jetzt KLEIN-STARTER sichern
-                    </Button>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="bg-[#e24e1b]/10 rounded-lg p-4 border border-[#e24e1b]/20 mb-8"
+                      >
+                        <p className="text-sm text-[#232323] font-semibold mb-2">
+                          EINFACHE QUALIFIKATION:
+                        </p>
+                        <ul className="space-y-2">
+                          {[
+                            '✓ Eingetragener e.V. oder anerkannte NGO',
+                            '✓ Gültiger Freistellungsbescheid',
+                            '✓ 24h Schnell-Verifikation'
+                          ].map((item, idx) => (
+                            <li key={idx} className="text-xs sm:text-sm text-[#474747]">{item}</li>
+                          ))}
+                        </ul>
+                      </motion.div>
 
-                    <p className="mt-4 text-sm text-[#474747]">
-                      Keine Kreditkarte erforderlich • 14 Tage kostenlos testen • Jederzeit kündbar
-                    </p>
-                  </motion.div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="text-center"
+                      >
+                        <Button
+                          size="lg"
+                          className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] hover:from-[#ea580c] hover:to-[#e24e1b] text-white px-12 py-6 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 group"
+                        >
+                          <Heart className="mr-2 h-6 w-6 group-hover:animate-pulse" />
+                          Jetzt mit Code GEMEIN2025 registrieren
+                        </Button>
+
+                        <p className="mt-4 text-sm text-[#474747]">
+                          Upload Freistellungsbescheid • Sofort starten • 30 Tage Geld-zurück-Garantie
+                        </p>
+                      </motion.div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
