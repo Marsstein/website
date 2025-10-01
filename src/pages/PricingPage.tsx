@@ -136,14 +136,14 @@ const PricingPage = () => {
                 </ul>
 
                 <Link
-                  to={plan.name === 'Enterprise' ? '/contact' : '/signup'}
+                  to={plan.name === 'Enterprise' ? '/contact' : plan.name === 'Professional' ? '/externer-datenschutzbeauftragter' : '/signup'}
                   className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all ${
                     plan.highlighted
                       ? 'bg-[#e24e1b] text-white hover:bg-[#ea580c] shadow-md hover:shadow-lg'
                       : 'bg-transparent border-2 border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white'
                   }`}
                 >
-                  {plan.cta}
+                  {plan.name === 'Professional' ? 'Jetzt DSB beauftragen' : plan.cta}
                 </Link>
               </div>
             ))}

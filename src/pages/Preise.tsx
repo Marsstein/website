@@ -443,9 +443,12 @@ const Preise: React.FC = () => {
                             ? "bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white hover:shadow-xl"
                             : "bg-white border-2 border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white"
                         )}
+                        asChild
                       >
-                        <span className="relative z-10">Paket wählen</span>
-                        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+                        <Link to={pkg.name === 'PROFESSIONAL' ? '/externer-datenschutzbeauftragter' : '/contact'}>
+                          <span className="relative z-10">{pkg.name === 'PROFESSIONAL' ? 'Jetzt DSB beauftragen' : 'Paket wählen'}</span>
+                          <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>

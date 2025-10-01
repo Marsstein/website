@@ -100,17 +100,17 @@ const ComplianceFrameworks: React.FC = () => {
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const categories = [
-    { id: 'all', name: 'Alle Frameworks', icon: Award, count: 14 },
+    { id: 'all', name: 'Alle Frameworks', icon: Award, count: 15 },
     { id: 'security', name: 'IT-Sicherheit', icon: Shield, count: 4 },
     { id: 'privacy', name: 'Datenschutz', icon: Lock, count: 5 },
     { id: 'industry', name: 'Branchenstandards', icon: Building2, count: 3 },
-    { id: 'ai', name: 'KI & Automation', icon: Brain, count: 2 }
+    { id: 'ai', name: 'KI & Automation', icon: Brain, count: 3 }
   ];
 
   const difficulties = [
-    { id: 'all', name: 'Alle Level', count: 14 },
+    { id: 'all', name: 'Alle Level', count: 15 },
     { id: 'beginner', name: 'Einsteiger', count: 3 },
-    { id: 'intermediate', name: 'Fortgeschritten', count: 8 },
+    { id: 'intermediate', name: 'Fortgeschritten', count: 9 },
     { id: 'expert', name: 'Experte', count: 3 }
   ];
 
@@ -250,6 +250,49 @@ const ComplianceFrameworks: React.FC = () => {
         riskCategories: '4',
         prohibitedUses: '8+',
         compliance: 'Mandatory'
+      }
+    },
+    {
+      id: 'eu-data-act',
+      title: 'EU Data Act',
+      subtitle: 'Data Access & Cloud Switching',
+      description: 'EU-Verordnung für Datenzugang und Cloud-Portabilität. Regelt Datenzugangsrechte für Connected Products, Cloud-Switching und B2B Data Sharing nach FRAND-Prinzipien.',
+      category: 'ai',
+      difficulty: 'intermediate',
+      readTime: '30 Min',
+      implementationTime: '3-6 Monate',
+      icon: Database,
+      color: 'from-blue-500 to-cyan-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
+      link: '/eu-data-act',
+      upcoming: true,
+      compliance: 89,
+      lastUpdated: '2025-01-26',
+      effectiveDate: '2025-09-12',
+      industries: ['IoT', 'Cloud Provider', 'Manufacturing', 'Smart Devices'],
+      benefits: [
+        'Datenzugangsrechte',
+        'Cloud-Unabhängigkeit',
+        'Neue Geschäftsmodelle',
+        'FRAND-Compliance'
+      ],
+      requirements: [
+        'User Data Access APIs',
+        'Cloud Switching (30 Tage)',
+        'FRAND B2B Sharing',
+        'Emergency Data Access'
+      ],
+      keyAreas: [
+        'Connected Product Data',
+        'Cloud Portability',
+        'B2B Data Sharing',
+        'Public Emergency Access',
+        'IoT Device Design'
+      ],
+      stats: {
+        effectiveDate: 'Sept 2025',
+        cloudDeadline: '2027',
+        marketSize: '100+ Mrd. €'
       }
     },
     {

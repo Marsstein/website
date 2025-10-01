@@ -100,7 +100,8 @@ import {
   CircleDot,
   Smartphone,
   Circle,
-  Server
+  Server,
+  XCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -1646,22 +1647,25 @@ const DsgvoGuide: React.FC = () => {
                                     </ul>
                                   </div>
                                   
-                                  <div>
-                                    <h4 className="font-medium text-blue-400 mb-2 text-sm">Verfahren:</h4>
-                                    <div className="space-y-2 text-sm text-slate-400">
-                                      <div className="flex items-center gap-2">
-                                        <Clock className="h-3 w-3" />
-                                        <span>Frist: {right.process.timeline}</span>
-                                      </div>
-                                      <div className="flex items-center gap-2">
-                                        <FileText className="h-3 w-3" />
-                                        <span>Form: {right.process.format}</span>
-                                      </div>
-                                      <div className="flex items-center gap-2">
-                                        <Euro className="h-3 w-3" />
-                                        <span>Kosten: {right.process.cost}</span>
+                                  {right.process && (
+                                    <div>
+                                      <h4 className="font-medium text-blue-400 mb-2 text-sm">Verfahren:</h4>
+                                      <div className="space-y-2 text-sm text-slate-400">
+                                        <div className="flex items-center gap-2">
+                                          <Clock className="h-3 w-3" />
+                                          <span>Frist: {right.process.timeline}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                          <FileText className="h-3 w-3" />
+                                          <span>Form: {right.process.format}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                          <Euro className="h-3 w-3" />
+                                          <span>Kosten: {right.process.cost}</span>
+                                        </div>
                                       </div>
                                     </div>
+                                  )}
                                     
                                     {right.exceptions && (
                                       <div className="mt-3">

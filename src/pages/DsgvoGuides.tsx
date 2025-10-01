@@ -6,11 +6,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { 
-  Shield, 
-  FileText, 
-  CheckCircle2, 
-  ArrowRight, 
+import {
+  Shield,
+  FileText,
+  CheckCircle2,
+  ArrowRight,
   Clock,
   Users,
   Star,
@@ -44,7 +44,10 @@ import {
   Rocket,
   Code,
   MonitorSpeaker,
-  Sparkles
+  Sparkles,
+  Calculator,
+  Euro,
+  XCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -526,9 +529,11 @@ const DsgvoGuides: React.FC = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <Play className="mr-2 h-5 w-5" />
-                  Mit Grundlagen starten
+                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300" asChild>
+                  <Link to="/assessment-center/datenschutz-test">
+                    <Target className="mr-2 h-5 w-5" />
+                    Wo stehe ich aktuell? Jetzt testen
+                  </Link>
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -833,12 +838,151 @@ const DsgvoGuides: React.FC = () => {
         </div>
       </section>
 
+      {/* Additional Resources Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-black mb-6">
+              <span className="text-white">Weitere</span>
+              <br />
+              <span className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Ressourcen
+              </span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Ergänzende Tools und Artikel für fundierte DSGVO-Entscheidungen
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+            >
+              <Card className="border-2 border-green-500/30 bg-slate-800/40 backdrop-blur-sm h-full hover:border-green-500/50 transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl">
+                      <Euro className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">Kosten transparent machen</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <Link to="/wissen/kosten/dsgvo-compliance-kosten" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
+                        <span className="text-slate-300 group-hover:text-white">Was kostet DSGVO-Compliance?</span>
+                        <ArrowRight className="h-5 w-5 text-green-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                    <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
+                        <span className="text-slate-300 group-hover:text-white">Externer DSB: Kosten-Vergleich</span>
+                        <ArrowRight className="h-5 w-5 text-green-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                    <Link to="/assessment-center/dsgvo-kosten-rechner" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-500/10 to-teal-500/10 rounded-lg border border-green-500/30 hover:border-green-500/50 transition-all">
+                        <span className="text-white font-semibold flex items-center gap-2">
+                          <Calculator className="h-4 w-4" />
+                          Kostenrechner
+                        </span>
+                        <ArrowRight className="h-5 w-5 text-green-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <Card className="border-2 border-orange-500/30 bg-slate-800/40 backdrop-blur-sm h-full hover:border-orange-500/50 transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl">
+                      <AlertTriangle className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">Häufige Probleme erkennen</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <Link to="/wissen/dsgvo-compliance-luecken" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
+                        <span className="text-slate-300 group-hover:text-white">7 Anzeichen für DSGVO-Lücken</span>
+                        <ArrowRight className="h-5 w-5 text-orange-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                    <Link to="/wissen/interner-dsb-scheitert" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
+                        <span className="text-slate-300 group-hover:text-white">Warum interne DSB scheitern</span>
+                        <ArrowRight className="h-5 w-5 text-orange-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                    <Link to="/wissen/dsgvo-software-vs-manuell" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
+                        <span className="text-slate-300 group-hover:text-white">Software vs. manuelle Lösung</span>
+                        <ArrowRight className="h-5 w-5 text-orange-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <Card className="border-2 border-blue-500/30 bg-slate-800/40 backdrop-blur-sm h-full hover:border-blue-500/50 transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl">
+                      <Target className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">Entscheidungshilfen</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <Link to="/ratgeber/datenschutzbeauftragter-auswahl" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
+                        <span className="text-slate-300 group-hover:text-white">DSB-Modell Auswahlratgeber</span>
+                        <ArrowRight className="h-5 w-5 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                    <Link to="/ratgeber/dsgvo-software-auswahlkriterien" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
+                        <span className="text-slate-300 group-hover:text-white">Software-Auswahlkriterien</span>
+                        <ArrowRight className="h-5 w-5 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                    <Link to="/ratgeber/sicherheitszertifizierung-auswahl" className="block group">
+                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
+                        <span className="text-slate-300 group-hover:text-white">Zertifizierung wählen</span>
+                        <ArrowRight className="h-5 w-5 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-indigo-900/10 to-blue-900/20" />
-        
+
         <div className="container mx-auto max-w-5xl relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -851,28 +995,31 @@ const DsgvoGuides: React.FC = () => {
                 DSGVO-Exzellenz?
               </span>
             </h2>
-            
+
             <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               Starten Sie mit unseren bewährten Leitfäden und werden Sie zum <span className="font-semibold text-blue-300">DSGVO-Experten</span>.
             </p>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-10 py-4 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-300"
+                  asChild
                 >
-                  <Rocket className="mr-3 h-6 w-6" />
-                  Jetzt starten mit Grundlagen
-                  <ArrowRight className="ml-3 h-6 w-6" />
+                  <Link to="/wissen/leitfaden/dsgvo-grundlagen">
+                    <Rocket className="mr-3 h-6 w-6" />
+                    Jetzt starten mit Grundlagen
+                    <ArrowRight className="ml-3 h-6 w-6" />
+                  </Link>
                 </Button>
               </motion.div>
-              
+
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button size="lg" variant="outline" className="border-2 border-blue-500/30 hover:border-blue-400 text-blue-300 hover:bg-blue-500/10 px-10 py-4 text-lg font-bold backdrop-blur-sm">
                   <Download className="mr-3 h-6 w-6" />

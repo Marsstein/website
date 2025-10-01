@@ -53,9 +53,10 @@ export const Resources: React.FC = () => {
         {
           id: 'datenschutz-test',
           icon: BarChart3,
-          title: 'DSGVO Datenschutz Test',
+          title: '⭐ DSGVO Datenschutz Test',
           description: 'Kostenloser interaktiver Test mit Compliance-Score und personalisierten Empfehlungen',
-          features: ['Interaktiver Test', 'Sofort-Score', 'Lücken-Analyse', 'Handlungsempfehlungen']
+          features: ['Interaktiver Test', 'Sofort-Score', 'Lücken-Analyse', 'Handlungsempfehlungen'],
+          featured: true
         },
         {
           id: 'datenschutz-readiness-assessment',
@@ -286,10 +287,23 @@ export const Resources: React.FC = () => {
                   {/* Category Assessments */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-8">
                     {category.assessments.map((assessment, assessmentIndex) => (
-                      <Card 
-                        key={assessment.id} 
-                        className="group relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-gray-200 dark:border-gray-700"
+                      <Card
+                        key={assessment.id}
+                        className={cn(
+                          "group relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1",
+                          (assessment as any).featured
+                            ? "border-2 border-brand-red ring-2 ring-brand-red/20 shadow-lg"
+                            : "border border-gray-200 dark:border-gray-700"
+                        )}
                       >
+                        {(assessment as any).featured && (
+                          <div className="absolute top-4 right-4 z-10">
+                            <Badge className="bg-brand-red text-white border-0 shadow-lg">
+                              <Star className="h-3 w-3 mr-1" />
+                              Featured
+                            </Badge>
+                          </div>
+                        )}
                         <CardContent className="p-6">
                           {/* Assessment Header */}
                           <div className="flex items-start gap-4 mb-4">

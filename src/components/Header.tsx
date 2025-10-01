@@ -89,6 +89,11 @@ export const Header: React.FC = () => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
+          <Link to="/eu-data-act" className="block w-full">
+            EU Data Act
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
           <Link to="/dsgvo" className="block w-full">
             DSGVO
           </Link>
@@ -359,6 +364,14 @@ export const Header: React.FC = () => {
                         >
                           <Bot className="h-3.5 w-3.5" />
                           EU AI Act
+                        </Link>
+                        <Link
+                          to="/eu-data-act"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <FileText className="h-3.5 w-3.5" />
+                          EU Data Act
                         </Link>
                         <Link
                           to="/dsgvo"

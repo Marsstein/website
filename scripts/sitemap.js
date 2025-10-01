@@ -11,6 +11,7 @@ const routes = [
   { url: '/', priority: '1.0', changefreq: 'daily' },
   { url: '/contact', priority: '0.8', changefreq: 'monthly' },
   { url: '/preise', priority: '0.9', changefreq: 'weekly' },
+  { url: '/externer-datenschutzbeauftragter', priority: '0.9', changefreq: 'weekly' },
 
   { url: '/dsgvo', priority: '0.9', changefreq: 'weekly' },
   { url: '/eu-ai-act', priority: '0.9', changefreq: 'weekly' },
@@ -44,6 +45,12 @@ const routes = [
   { url: '/assessment-center/ai-risk-assessment', priority: '0.6', changefreq: 'monthly' },
   { url: '/assessment-center/algorithmic-impact-assessment', priority: '0.6', changefreq: 'monthly' },
   { url: '/assessment-center/ai-governance-check', priority: '0.6', changefreq: 'monthly' },
+  { url: '/assessment-center/datenschutz-test', priority: '0.5', changefreq: 'monthly' },
+  { url: '/assessment-center/dsgvo-kosten-rechner', priority: '0.7', changefreq: 'weekly' },
+
+  { url: '/ratgeber/datenschutzbeauftragter-auswahl', priority: '0.7', changefreq: 'monthly' },
+  { url: '/ratgeber/sicherheitszertifizierung-auswahl', priority: '0.7', changefreq: 'monthly' },
+  { url: '/ratgeber/dsgvo-software-auswahlkriterien', priority: '0.7', changefreq: 'monthly' },
 
   { url: '/branchen', priority: '0.7', changefreq: 'weekly' },
   { url: '/branchen/gesundheitswesen', priority: '0.6', changefreq: 'monthly' },
@@ -76,7 +83,15 @@ const routes = [
   { url: '/wissen/leitfaden/verarbeitungsverzeichnis', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/leitfaden/betroffenenrechte', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/leitfaden/tom-massnahmen', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/leitfaden/dsfa-durchfuehrung', priority: '0.6', changefreq: 'monthly' }
+  { url: '/wissen/leitfaden/dsfa-durchfuehrung', priority: '0.6', changefreq: 'monthly' },
+
+  { url: '/wissen/kosten/dsgvo-compliance-kosten', priority: '0.7', changefreq: 'monthly' },
+  { url: '/wissen/kosten/externer-datenschutzbeauftragter-kosten', priority: '0.7', changefreq: 'monthly' },
+  { url: '/wissen/kosten/iso-27001-zertifizierung-kosten', priority: '0.7', changefreq: 'monthly' },
+
+  { url: '/wissen/dsgvo-compliance-luecken', priority: '0.6', changefreq: 'monthly' },
+  { url: '/wissen/interner-dsb-scheitert', priority: '0.6', changefreq: 'monthly' },
+  { url: '/wissen/dsgvo-software-vs-manuell', priority: '0.6', changefreq: 'monthly' }
 ];
 
 function generateSitemap() {

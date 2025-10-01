@@ -60,6 +60,7 @@ const Iso27017Compliance = lazy(() => import("./pages/Iso27017Compliance"));
 const Iso27018Compliance = lazy(() => import("./pages/Iso27018Compliance"));
 const TisaxCompliance = lazy(() => import("./pages/TisaxCompliance"));
 const Nis2Compliance = lazy(() => import("./pages/Nis2Compliance"));
+const DataActCompliance = lazy(() => import("./pages/DataActCompliance"));
 const HinweisgeberschutzCompliance = lazy(() => import("./pages/HinweisgeberschutzCompliance"));
 const GeldwaeschegesetzCompliance = lazy(() => import("./pages/GeldwaeschegesetzCompliance"));
 const Tools = lazy(() => import("./pages/Tools"));
@@ -73,6 +74,7 @@ const ComplianceAIAssistant = lazy(() => import("./pages/ComplianceAIAssistant")
 const Knowledge = lazy(() => import("./pages/Knowledge"));
 const DsgvoGuides = lazy(() => import("./pages/DsgvoGuides"));
 const ComplianceFrameworks = lazy(() => import("./pages/ComplianceFrameworks"));
+const ComplianceFrameworksGuide = lazy(() => import("./pages/wissen/ComplianceFrameworksGuide"));
 const RiskManagement = lazy(() => import("./pages/RiskManagement"));
 const Iso27001Guide = lazy(() => import("./pages/compliance/Iso27001Guide"));
 const Soc2Guide = lazy(() => import("./pages/compliance/Soc2Guide"));
@@ -175,6 +177,24 @@ const SitemapSEO = lazy(() => import("./pages/SitemapSEO"));
 const FinalChecks = lazy(() => import("./pages/FinalChecks"));
 const About = lazy(() => import("./pages/About"));
 
+// Ratgeber Pages (Buyer's Guides)
+const DatenschutzbeauftragterAuswahl = lazy(() => import("./pages/ratgeber/DatenschutzbeauftragterAuswahl"));
+const ZertifizierungAuswahlratgeber = lazy(() => import("./pages/ratgeber/ZertifizierungAuswahlratgeber"));
+const DsgvoSoftwareAuswahl = lazy(() => import("./pages/ratgeber/DsgvoSoftwareAuswahl"));
+
+// Wissen - Cost Pages
+const DsgvoComplianceKosten = lazy(() => import("./pages/wissen/DsgvoComplianceKosten"));
+const ExternerDsbKosten = lazy(() => import("./pages/wissen/ExternerDsbKosten"));
+const Iso27001Kosten = lazy(() => import("./pages/wissen/Iso27001Kosten"));
+
+// Wissen - Problem-Aware Articles
+const DsgvoComplianceLuecken = lazy(() => import("./pages/wissen/DsgvoComplianceLuecken"));
+const InternerDsbScheitert = lazy(() => import("./pages/wissen/InternerDsbScheitert"));
+const DsgvoSoftwareVsManuell = lazy(() => import("./pages/wissen/DsgvoSoftwareVsManuell"));
+
+// Assessment Center - Calculators
+const DsgvoKostenRechner = lazy(() => import("./pages/assessment-center/DsgvoKostenRechner"));
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -224,6 +244,7 @@ const App = () => (
                 {/* New Product URLs - Regulierungen */}
                 <Route path="/dsgvo" element={<DsgvoCompliance />} />
                 <Route path="/eu-ai-act" element={<EuAiActCompliance />} />
+                <Route path="/eu-data-act" element={<DataActCompliance />} />
                 <Route path="/nis2-compliance" element={<Nis2Compliance />} />
                 <Route path="/hinweisgeberschutzgesetz" element={<HinweisgeberschutzCompliance />} />
                 <Route path="/geldwaeschegesetz" element={<GeldwaeschegesetzCompliance />} />
@@ -273,6 +294,7 @@ const App = () => (
                 <Route path="/assessment-center/nis2-compliance-check" element={<NIS2ComplianceCheck />} />
                 <Route path="/assessment-center/soc2-readiness-assessment" element={<SOC2ReadinessAssessment />} />
                 <Route path="/assessment-center/security-controls-audit" element={<SecurityControlsAudit />} />
+                <Route path="/assessment-center/dsgvo-kosten-rechner" element={<DsgvoKostenRechner />} />
 
                 {/* Industry Routes */}
                 <Route path="/branchen" element={<Industries />} />
@@ -385,6 +407,21 @@ const App = () => (
                 <Route path="/wissen/ki-datenschutz/privacy-by-design-ai" element={<PrivacyByDesignAI />} />
                 <Route path="/wissen/ki-datenschutz/ki-einwilligungsmanagement" element={<KiEinwilligungsmanagement />} />
                 <Route path="/wissen/ki-datenschutz/automated-decision-making" element={<AutomatedDecisionMaking />} />
+
+                {/* Ratgeber/Buyer's Guide Routes */}
+                <Route path="/ratgeber/datenschutzbeauftragter-auswahl" element={<DatenschutzbeauftragterAuswahl />} />
+                <Route path="/ratgeber/sicherheitszertifizierung-auswahl" element={<ZertifizierungAuswahlratgeber />} />
+                <Route path="/ratgeber/dsgvo-software-auswahlkriterien" element={<DsgvoSoftwareAuswahl />} />
+
+                {/* Wissen - Cost Transparency Pages */}
+                <Route path="/wissen/kosten/dsgvo-compliance-kosten" element={<DsgvoComplianceKosten />} />
+                <Route path="/wissen/kosten/externer-datenschutzbeauftragter-kosten" element={<ExternerDsbKosten />} />
+                <Route path="/wissen/kosten/iso-27001-zertifizierung-kosten" element={<Iso27001Kosten />} />
+
+                {/* Wissen - Problem-Aware MoFu Articles */}
+                <Route path="/wissen/dsgvo-compliance-luecken" element={<DsgvoComplianceLuecken />} />
+                <Route path="/wissen/interner-dsb-scheitert" element={<InternerDsbScheitert />} />
+                <Route path="/wissen/dsgvo-software-vs-manuell" element={<DsgvoSoftwareVsManuell />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

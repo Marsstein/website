@@ -113,13 +113,17 @@ const DsgvoCompliance = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316] text-white px-8">
-                Kostenlose Demo starten
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316] text-white px-8" asChild>
+                <Link to="/externer-datenschutzbeauftragter">
+                  Jetzt DSB beauftragen
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="group">
-                <PlayCircle className="mr-2 h-5 w-5 group-hover:text-[#e24e1b]" />
-                Video ansehen (2 Min)
+              <Button size="lg" variant="outline" className="group" asChild>
+                <Link to="/assessment-center/datenschutz-test">
+                  <CheckSquare className="mr-2 h-5 w-5 group-hover:text-[#e24e1b]" />
+                  Kostenloser Datenschutz-Test
+                </Link>
               </Button>
             </div>
 

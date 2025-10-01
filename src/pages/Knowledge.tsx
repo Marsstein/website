@@ -6,11 +6,11 @@ import { Footer } from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { 
-  BookOpen, 
-  FileText, 
-  CheckCircle2, 
-  ArrowRight, 
+import {
+  BookOpen,
+  FileText,
+  CheckCircle2,
+  ArrowRight,
   Search,
   Filter,
   Clock,
@@ -39,7 +39,9 @@ import {
   FileCheck,
   Gavel,
   AlertOctagon,
-  ExternalLink
+  ExternalLink,
+  Calculator,
+  Euro
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -132,10 +134,11 @@ const Knowledge: React.FC = () => {
   ];
 
   const categories = [
-    { id: 'all', name: 'Alle Bereiche', icon: BookOpen, count: 24 },
+    { id: 'all', name: 'Alle Bereiche', icon: BookOpen, count: 31 },
     { id: 'dsgvo', name: 'DSGVO & Datenschutz', icon: Shield, count: 12 },
     { id: 'implementation', name: 'Implementierung', icon: Settings, count: 8 },
-    { id: 'crisis', name: 'Krisenmanagement', icon: AlertTriangle, count: 4 }
+    { id: 'crisis', name: 'Krisenmanagement', icon: AlertTriangle, count: 4 },
+    { id: 'planning', name: 'Kosten & Planung', icon: Calculator, count: 7 }
   ];
 
   const knowledgeAreas = [
@@ -248,6 +251,25 @@ const Knowledge: React.FC = () => {
         'Media Crisis Management',
         'Legal Damage Control'
       ]
+    },
+    {
+      id: 'cost-transparency',
+      title: 'Kosten & Entscheidungshilfen',
+      description: 'Transparente Kostenübersichten und interaktive Tools für fundierte Compliance-Entscheidungen',
+      icon: Calculator,
+      color: 'from-green-500 to-teal-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-green-900 to-slate-900',
+      category: 'planning',
+      guides: 7,
+      difficulty: 'Praktisch',
+      link: '/wissen/kosten/dsgvo-compliance-kosten',
+      popular: true,
+      featured: [
+        'DSGVO Compliance Kosten',
+        'Externer DSB Kosten-Vergleich',
+        'ISO 27001 Budget-Planung',
+        'Interaktiver Kostenrechner'
+      ]
     }
   ];
 
@@ -262,6 +284,7 @@ const Knowledge: React.FC = () => {
       case 'Fortgeschritten': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100';
       case 'Experte': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100';
       case 'Kritisch': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100 animate-pulse';
+      case 'Praktisch': return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100';
       default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100';
     }
   };
