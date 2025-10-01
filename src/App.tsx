@@ -73,6 +73,7 @@ const DsgvoComplianceScorecard = lazy(() => import("./pages/DsgvoComplianceScore
 const ComplianceAIAssistant = lazy(() => import("./pages/ComplianceAIAssistant"));
 const Knowledge = lazy(() => import("./pages/Knowledge"));
 const DsgvoGuides = lazy(() => import("./pages/DsgvoGuides"));
+const KostenGuides = lazy(() => import("./pages/KostenGuides"));
 const ComplianceFrameworks = lazy(() => import("./pages/ComplianceFrameworks"));
 const ComplianceFrameworksGuide = lazy(() => import("./pages/wissen/ComplianceFrameworksGuide"));
 const RiskManagement = lazy(() => import("./pages/RiskManagement"));
@@ -321,6 +322,7 @@ const App = () => (
                 {/* Knowledge/Wissen Routes */}
                 <Route path="/wissen" element={<Knowledge />} />
                 <Route path="/wissen/dsgvo" element={<DsgvoGuides />} />
+                <Route path="/wissen/kosten" element={<KostenGuides />} />
                 <Route path="/wissen/ki-datenschutz" element={<KiDatenschutz />} />
                 <Route path="/wissen/cybersecurity" element={<CrisisManagement />} />
                 <Route path="/wissen/zertifizierungen" element={<ComplianceFrameworks />} />

@@ -355,6 +355,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://marsstein.ai/wissen/kosten</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://marsstein.ai/wissen/compliance-frameworks</loc>
     <lastmod>2025-10-01</lastmod>
     <changefreq>monthly</changefreq>

@@ -262,7 +262,7 @@ const Knowledge: React.FC = () => {
       category: 'planning',
       guides: 7,
       difficulty: 'Praktisch',
-      link: '/wissen/kosten/dsgvo-compliance-kosten',
+      link: '/wissen/kosten',
       popular: true,
       featured: [
         'DSGVO Compliance Kosten',
