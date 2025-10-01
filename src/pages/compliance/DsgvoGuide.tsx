@@ -1664,23 +1664,22 @@ const DsgvoGuide: React.FC = () => {
                                           <span>Kosten: {right.process.cost}</span>
                                         </div>
                                       </div>
+
+                                      {right.exceptions && (
+                                        <div className="mt-3">
+                                          <h4 className="font-medium text-red-400 mb-2 text-sm">Ausnahmen:</h4>
+                                          <ul className="space-y-1">
+                                            {right.exceptions.map((exception) => (
+                                              <li key={exception} className="flex items-start gap-2 text-sm text-slate-400">
+                                                <X className="h-3 w-3 text-red-400 mt-0.5" />
+                                                <span>{exception}</span>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+                                      )}
                                     </div>
                                   )}
-                                    
-                                    {right.exceptions && (
-                                      <div className="mt-3">
-                                        <h4 className="font-medium text-red-400 mb-2 text-sm">Ausnahmen:</h4>
-                                        <ul className="space-y-1">
-                                          {right.exceptions.map((exception) => (
-                                            <li key={exception} className="flex items-start gap-2 text-sm text-slate-400">
-                                              <X className="h-3 w-3 text-red-400 mt-0.5" />
-                                              <span>{exception}</span>
-                                            </li>
-                                          ))}
-                                        </ul>
-                                      </div>
-                                    )}
-                                  </div>
                                 </div>
                                 
                                 {right.special && (
