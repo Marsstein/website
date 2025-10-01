@@ -31,6 +31,7 @@ export const Footer: React.FC = () => {
   const regulierungLinks = [
     { label: 'EU AI Act', href: '/eu-ai-act' },
     { label: 'DSGVO', href: '/dsgvo' },
+    { label: 'Externer Datenschutzbeauftragter', href: '/externer-datenschutzbeauftragter' },
     { label: 'NIS2 Compliance', href: '/nis2-compliance' }
   ];
 

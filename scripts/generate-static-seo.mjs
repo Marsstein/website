@@ -45,6 +45,12 @@ const routeConfigs = {
     keywords: 'DSGVO Software Preise, Compliance Kosten, Datenschutz Software Pakete, Enterprise Compliance, Deutschland',
     canonical: 'https://marsstein.ai/preise'
   },
+  '/externer-datenschutzbeauftragter': {
+    title: 'Externer Datenschutzbeauftragter ab 29€ | MARSSTEIN',
+    description: 'Zertifizierter externer Datenschutzbeauftragter ab 29€/Monat. Flexible Lösungen für kleine und große Unternehmen. ✓ Individuelle Beratung ✓ Zertifizierte Qualität',
+    keywords: 'Externer Datenschutzbeauftragter, DSB, DSGVO, Datenschutzbeauftragter, externe Datenschutzberatung, Datenschutz Experte',
+    canonical: 'https://marsstein.ai/externer-datenschutzbeauftragter'
+  },
   '/contact': {
     title: 'Kontakt & Demo | DSGVO Compliance Beratung | Marsstein',
     description: 'Vereinbaren Sie eine kostenlose Demo der Marsstein DSGVO Compliance Software. Persönliche Beratung für deutsche Unternehmen.',
