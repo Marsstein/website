@@ -124,7 +124,7 @@ const About: React.FC = () => {
       linkedin: "https://www.linkedin.com/in/niklas-steppan/",
       email: "niklas@marsstein.ai",
       image: niklasImage,
-      imagePosition: "center 45%"
+      imagePosition: "center 60%"
     }
   ];
 
