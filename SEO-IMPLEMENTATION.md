@@ -2,7 +2,7 @@
 
 ## Überblick
 
-Diese Dokumentation beschreibt, wie SEO in unserem React SPA (Single Page Application) Projekt implementiert ist und wie neue Seiten korrekt für SEO vorbereitet werden.
+Diese Dokumentaggtion beschreibt, wie SEO in unserem React SPA (Single Page Application) Projekt implementiert ist und wie neue Seiten korrekt für SEO vorbereitet werden.
 
 ## Technologie-Stack
 
