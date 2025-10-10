@@ -106,7 +106,8 @@ const About: React.FC = () => {
       description: "Javier führt das Engineering bei Marsstein AI und übersetzt Anforderungen aus Produkt, Recht und Sales in sichere, skalierbare, audit-fähige Software. Er setzt klare Architekturstandards (TypeScript/React/Node), etabliert CI/CD, Tests und Security-by-Design – damit das Team von 0→1→Scale verlässlich liefert.",
       linkedin: "https://www.linkedin.com/in/javierponzo/",
       email: "javier@marsstein.ai",
-      image: javierImage
+      image: javierImage,
+      imagePosition: "center 40%"
     },
     {
       name: "Manuel Szedlak",
@@ -122,7 +123,8 @@ const About: React.FC = () => {
       description: "Niklas überführt LLM-Prototypen in produktionsreife Features: Automatisierungen, Evaluationsframeworks und saubere Metriken. Mit Background in Automotive-Mechatronik und Vertiefung in Robotik/KI/Raumfahrt an der HTWG Konstanz schlägt er die Brücke zwischen Forschung und skalierbaren Services.",
       linkedin: "https://www.linkedin.com/in/niklas-steppan/",
       email: "niklas@marsstein.ai",
-      image: niklasImage
+      image: niklasImage,
+      imagePosition: "center 45%"
     }
   ];
 
@@ -369,7 +371,8 @@ const About: React.FC = () => {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        style={{ objectPosition: member.imagePosition || 'center' }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
