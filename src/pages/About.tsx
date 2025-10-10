@@ -80,36 +80,36 @@ const About: React.FC = () => {
     {
       name: "Jayson Chen",
       role: "Gründer & CEO",
-      description: "Zertifizierter Datenschutzbeauftragter mit 10 Jahren Erfahrung (u. a. ZF Group). Baut aus Deep-Tech praxisnahe Compliance-Lösungen.",
-      linkedin: "#",
+      description: "Jayson verbindet Technik und Regulatorik zu nutzbaren Produkten: schlanke Workflows von Onboarding bis Audit-Trail, priorisiert mit Blick auf Wirkung und Go-to-Market. Mit über zehn Jahren Projekterfahrung in Konzern- und Mittelstandsumfeldern (u. a. ZF Group) sorgt er für Tempo und Umsetzbarkeit; zusätzlich ist er als Datenschutzbeauftragter zertifiziert.",
+      linkedin: "https://www.linkedin.com/in/jayson-chen/",
       email: "jayson@marsstein.ai"
     },
     {
       name: "Jonas Krüger",
       role: "Chief Growth Officer (CGO)",
-      description: "Unternehmer & Datenschutzexperte, 8+ Jahre B2B-Growth & SEO. Bringt komplexe Regulierung in klare, messbare Journeys.",
-      linkedin: "#",
+      description: "Jonas macht komplexe Regulierung zu klaren, messbaren Customer Journeys und baut wiederholbare Akquisesysteme über SEO, Content, Outbound und Performance. Er verantwortet zugleich die Markenführung – Positionierung, Narrative, Designleitplanken und Kampagnen – für ein konsistentes Marsstein-Erlebnis entlang des gesamten Funnels.",
+      linkedin: "https://www.linkedin.com/in/jonas-kr%C3%BCger-676722267/",
       email: "jonas@marsstein.ai"
     },
     {
       name: "Javier Ponzo",
-      role: "Full-Stack Developer",
-      description: "Rails & React. Baut robuste SaaS-Automationen mit Security-Fokus.",
-      linkedin: "#",
+      role: "Tech Lead",
+      description: "Javier führt das Engineering bei Marsstein AI und übersetzt Anforderungen aus Produkt, Recht und Sales in sichere, skalierbare, audit-fähige Software. Er setzt klare Architekturstandards (TypeScript/React/Node), etabliert CI/CD, Tests und Security-by-Design – damit das Team von 0→1→Scale verlässlich liefert.",
+      linkedin: "https://www.linkedin.com/in/javierponzo/",
       email: "javier@marsstein.ai"
     },
     {
       name: "Manuel Szedlak",
       role: "Chief Technology Officer (CTO)",
-      description: "Software-Ingenieur und Gründer von Implyt, mit Erfahrung bei Porsche, Ascon und Steinbeis. Experte in Full-Stack-Entwicklung, Automatisierung und skalierbaren KI-gesteuerten Systemen für industrielle Anwendungen.",
-      linkedin: "#",
+      description: "Manuel skaliert die Marsstein-Plattform mit Fokus auf Robustheit und Geschwindigkeit. Als Gründer von Implyt, mit Stationen bei Porsche, Ascon und Steinbeis, etabliert er DevOps/SRE-Praktiken (CI/CD, Automatisierung, Observability) und KI-gestützte Systeme, die Entwicklung und Betrieb spürbar beschleunigen.",
+      linkedin: "https://www.linkedin.com/in/manuel-szedlak/",
       email: "manuel@marsstein.ai"
     },
     {
       name: "Niklas Steppan",
       role: "KI-Ingenieur",
-      description: "Hintergrund in Automotive-Mechatronik, jetzt fokussiert auf Robotik, KI und Raumfahrttechnologien an der HTWG Konstanz.",
-      linkedin: "#",
+      description: "Niklas überführt LLM-Prototypen in produktionsreife Features: Automatisierungen, Evaluationsframeworks und saubere Metriken. Mit Background in Automotive-Mechatronik und Vertiefung in Robotik/KI/Raumfahrt an der HTWG Konstanz schlägt er die Brücke zwischen Forschung und skalierbaren Services.",
+      linkedin: "https://www.linkedin.com/in/niklas-steppan/",
       email: "niklas@marsstein.ai"
     }
   ];
@@ -132,9 +132,9 @@ const About: React.FC = () => {
         {/* Hero Section */}
         <section className="relative py-20 px-4 overflow-hidden">
           <div className="absolute inset-0">
-            <img 
-              src="/src/assets/hero-about.png" 
-              alt="Marsstein Header" 
+            <img
+              src="/src/assets/marsstein-header-ueberuns.png"
+              alt="Marsstein Header"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[#e24e1b]/20 to-[#f97316]/20"></div>
