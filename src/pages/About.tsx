@@ -11,6 +11,7 @@ import jonasImage from '@/assets/team/jonas.png';
 import javierImage from '@/assets/team/javier.png';
 import manuelImage from '@/assets/team/manuel.png';
 import niklasImage from '@/assets/team/niklas.png';
+import teamGroupImage from '@/assets/team/team-group.png';
 import { 
   Shield, 
   Zap, 
@@ -259,32 +260,38 @@ const About: React.FC = () => {
               </AnimatedCard>
             </div>
 
-            {/* Vision & Mission */}
+            {/* Team Mission Statement */}
             <AnimatedCard delay={800}>
-              <div className="bg-white rounded-2xl p-12 shadow-lg">
-                <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                  Unsere Vision & Mission
-                </h3>
-                <div className="grid md:grid-cols-2 gap-12">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Target className="w-8 h-8 text-white" />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative h-[500px]">
+                  <img
+                    src={teamGroupImage}
+                    alt="Marsstein Team"
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/30 to-[#f97316]/20"></div>
+                </div>
+                <div className="absolute inset-0 flex items-end">
+                  <div className="w-full p-8 md:p-12">
+                    <div className="max-w-4xl mx-auto">
+                      <div className="inline-block mb-6">
+                        <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full border border-white/30">
+                          <Users className="w-5 h-5 text-white" />
+                          <span className="text-white font-semibold text-sm">Unser Team</span>
+                        </div>
+                      </div>
+                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                        Das Marsstein-Team verbindet{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e24e1b] to-[#f97316]">
+                          Produkt, Engineering, KI und Growth
+                        </span>
+                        {' '}zu einer klaren Mission
+                      </h3>
+                      <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
+                        Regulierung wird zu nutzbarer Software — sicher, audit-fähig und skalierbar.
+                      </p>
                     </div>
-                    <h4 className="text-2xl font-bold text-[#e24e1b] mb-4">Vision</h4>
-                    <p className="text-xl text-gray-700 italic">
-                      „Compliance, die sich einfach erledigt."
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Rocket className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="text-2xl font-bold text-blue-600 mb-4">Mission</h4>
-                    <p className="text-lg text-gray-700">
-                      Eine EU-/CH-gehostete, KI-native Plattform, die Richtlinien analysiert, 
-                      Lücken erklärt und Teams sicher zur Zertifizierung führt – 
-                      mit lückenloser Audit-Spur.
-                    </p>
                   </div>
                 </div>
               </div>
