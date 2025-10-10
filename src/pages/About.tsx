@@ -5,6 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import headerImage from '@/assets/marsstein-header-ueberuns.png';
 import { 
   Shield, 
   Zap, 
@@ -133,7 +134,7 @@ const About: React.FC = () => {
         <section className="relative py-20 px-4 overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/src/assets/marsstein-header-ueberuns.png"
+              src={headerImage}
               alt="Marsstein Header"
               className="w-full h-full object-cover"
             />
@@ -399,12 +400,16 @@ const About: React.FC = () => {
                       {member.description}
                     </p>
                     <div className="flex justify-center gap-3">
-                      <Button variant="ghost" size="sm" className="h-10 w-10 p-0">
-                        <Linkedin className="w-4 h-4 text-blue-600" />
-                      </Button>
-                      <Button variant="ghost" size="sm" className="h-10 w-10 p-0">
-                        <Mail className="w-4 h-4 text-gray-600" />
-                      </Button>
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                        <Button variant="ghost" size="sm" className="h-10 w-10 p-0">
+                          <Linkedin className="w-4 h-4 text-blue-600" />
+                        </Button>
+                      </a>
+                      <a href={`mailto:${member.email}`}>
+                        <Button variant="ghost" size="sm" className="h-10 w-10 p-0">
+                          <Mail className="w-4 h-4 text-gray-600" />
+                        </Button>
+                      </a>
                     </div>
                   </div>
                 </AnimatedCard>
