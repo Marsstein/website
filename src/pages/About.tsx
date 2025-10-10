@@ -259,43 +259,6 @@ const About: React.FC = () => {
                 </div>
               </AnimatedCard>
             </div>
-
-            {/* Team Mission Statement */}
-            <AnimatedCard delay={800}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <div className="relative h-[500px]">
-                  <img
-                    src={teamGroupImage}
-                    alt="Marsstein Team"
-                    className="w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/30 to-[#f97316]/20"></div>
-                </div>
-                <div className="absolute inset-0 flex items-end">
-                  <div className="w-full p-8 md:p-12">
-                    <div className="max-w-4xl mx-auto">
-                      <div className="inline-block mb-6">
-                        <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full border border-white/30">
-                          <Users className="w-5 h-5 text-white" />
-                          <span className="text-white font-semibold text-sm">Unser Team</span>
-                        </div>
-                      </div>
-                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                        Das Marsstein-Team verbindet{' '}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e24e1b] to-[#f97316]">
-                          Produkt, Engineering, KI und Growth
-                        </span>
-                        {' '}zu einer klaren Mission
-                      </h3>
-                      <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
-                        Regulierung wird zu nutzbarer Software — sicher, audit-fähig und skalierbar.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </AnimatedCard>
           </div>
         </section>
 
@@ -464,8 +427,49 @@ const About: React.FC = () => {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Team Mission Statement */}
         <section className="py-20 px-4 bg-white">
+          <div className="container mx-auto max-w-6xl">
+            <AnimatedCard delay={800}>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative h-[500px]">
+                  <img
+                    src={teamGroupImage}
+                    alt="Marsstein Team"
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/30 to-[#f97316]/20"></div>
+                </div>
+                <div className="absolute inset-0 flex items-end">
+                  <div className="w-full p-8 md:p-12">
+                    <div className="max-w-4xl mx-auto">
+                      <div className="inline-block mb-6">
+                        <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full border border-white/30">
+                          <Users className="w-5 h-5 text-white" />
+                          <span className="text-white font-semibold text-sm">Unser Team</span>
+                        </div>
+                      </div>
+                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                        Das Marsstein-Team verbindet{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e24e1b] to-[#f97316]">
+                          Produkt, Engineering, KI und Growth
+                        </span>
+                        {' '}zu einer klaren Mission
+                      </h3>
+                      <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
+                        Regulierung wird zu nutzbarer Software — sicher, audit-fähig und skalierbar.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedCard>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="py-20 px-4 bg-gray-50">
           <div className="container mx-auto max-w-6xl">
             <AnimatedCard className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
