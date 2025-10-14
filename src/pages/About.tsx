@@ -5,6 +5,13 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import headerImage from '@/assets/marsstein-header-ueberuns.png';
+import jaysonImage from '@/assets/team/jayson.png';
+import jonasImage from '@/assets/team/jonas.png';
+import javierImage from '@/assets/team/javier.png';
+import manuelImage from '@/assets/team/manuel.png';
+import niklasImage from '@/assets/team/niklas.png';
+import teamGroupImage from '@/assets/team/team-group.png';
 import { 
   Shield, 
   Zap, 
@@ -82,35 +89,42 @@ const About: React.FC = () => {
       role: "Gründer & CEO",
       description: "Jayson verbindet Technik und Regulatorik zu nutzbaren Produkten: schlanke Workflows von Onboarding bis Audit-Trail, priorisiert mit Blick auf Wirkung und Go-to-Market. Mit über zehn Jahren Projekterfahrung in Konzern- und Mittelstandsumfeldern (u. a. ZF Group) sorgt er für Tempo und Umsetzbarkeit; zusätzlich ist er als Datenschutzbeauftragter zertifiziert.",
       linkedin: "https://www.linkedin.com/in/jayson-chen/",
-      email: "jayson@marsstein.ai"
+      email: "jayson@marsstein.ai",
+      image: jaysonImage
     },
     {
       name: "Jonas Krüger",
       role: "Chief Growth Officer (CGO)",
       description: "Jonas macht komplexe Regulierung zu klaren, messbaren Customer Journeys und baut wiederholbare Akquisesysteme über SEO, Content, Outbound und Performance. Er verantwortet zugleich die Markenführung – Positionierung, Narrative, Designleitplanken und Kampagnen – für ein konsistentes Marsstein-Erlebnis entlang des gesamten Funnels.",
       linkedin: "https://www.linkedin.com/in/jonas-kr%C3%BCger-676722267/",
-      email: "jonas@marsstein.ai"
+      email: "jonas@marsstein.ai",
+      image: jonasImage
     },
     {
       name: "Javier Ponzo",
       role: "Tech Lead",
       description: "Javier führt das Engineering bei Marsstein AI und übersetzt Anforderungen aus Produkt, Recht und Sales in sichere, skalierbare, audit-fähige Software. Er setzt klare Architekturstandards (TypeScript/React/Node), etabliert CI/CD, Tests und Security-by-Design – damit das Team von 0→1→Scale verlässlich liefert.",
       linkedin: "https://www.linkedin.com/in/javierponzo/",
-      email: "javier@marsstein.ai"
+      email: "javier@marsstein.ai",
+      image: javierImage,
+      imagePosition: "center 40%"
     },
     {
       name: "Manuel Szedlak",
       role: "Chief Technology Officer (CTO)",
       description: "Manuel skaliert die Marsstein-Plattform mit Fokus auf Robustheit und Geschwindigkeit. Als Gründer von Implyt, mit Stationen bei Porsche, Ascon und Steinbeis, etabliert er DevOps/SRE-Praktiken (CI/CD, Automatisierung, Observability) und KI-gestützte Systeme, die Entwicklung und Betrieb spürbar beschleunigen.",
       linkedin: "https://www.linkedin.com/in/manuel-szedlak/",
-      email: "manuel@marsstein.ai"
+      email: "manuel@marsstein.ai",
+      image: manuelImage
     },
     {
       name: "Niklas Steppan",
       role: "KI-Ingenieur",
       description: "Niklas überführt LLM-Prototypen in produktionsreife Features: Automatisierungen, Evaluationsframeworks und saubere Metriken. Mit Background in Automotive-Mechatronik und Vertiefung in Robotik/KI/Raumfahrt an der HTWG Konstanz schlägt er die Brücke zwischen Forschung und skalierbaren Services.",
       linkedin: "https://www.linkedin.com/in/niklas-steppan/",
-      email: "niklas@marsstein.ai"
+      email: "niklas@marsstein.ai",
+      image: niklasImage,
+      imagePosition: "center 35%"
     }
   ];
 
@@ -133,7 +147,7 @@ const About: React.FC = () => {
         <section className="relative py-20 px-4 overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/src/assets/marsstein-header-ueberuns.png"
+              src={headerImage}
               alt="Marsstein Header"
               className="w-full h-full object-cover"
             />
@@ -247,37 +261,6 @@ const About: React.FC = () => {
                 </div>
               </AnimatedCard>
             </div>
-
-            {/* Vision & Mission */}
-            <AnimatedCard delay={800}>
-              <div className="bg-white rounded-2xl p-12 shadow-lg">
-                <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                  Unsere Vision & Mission
-                </h3>
-                <div className="grid md:grid-cols-2 gap-12">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Target className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="text-2xl font-bold text-[#e24e1b] mb-4">Vision</h4>
-                    <p className="text-xl text-gray-700 italic">
-                      „Compliance, die sich einfach erledigt."
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Rocket className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="text-2xl font-bold text-blue-600 mb-4">Mission</h4>
-                    <p className="text-lg text-gray-700">
-                      Eine EU-/CH-gehostete, KI-native Plattform, die Richtlinien analysiert, 
-                      Lücken erklärt und Teams sicher zur Zertifizierung führt – 
-                      mit lückenloser Audit-Spur.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </AnimatedCard>
           </div>
         </section>
 
@@ -383,28 +366,38 @@ const About: React.FC = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {teamMembers.map((member, index) => (
                 <AnimatedCard key={index} delay={index * 200}>
-                  <div className="bg-white p-8 rounded-2xl shadow-lg text-center h-full">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#e24e1b] to-[#f97316] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                      <span className="text-white font-bold text-xl">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col group hover:shadow-2xl transition-shadow duration-300">
+                    <div className="relative h-80 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        style={{ objectPosition: member.imagePosition || 'center' }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="text-[#e24e1b] font-semibold mb-4">
-                      {member.role}
-                    </p>
-                    <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                      {member.description}
-                    </p>
-                    <div className="flex justify-center gap-3">
-                      <Button variant="ghost" size="sm" className="h-10 w-10 p-0">
-                        <Linkedin className="w-4 h-4 text-blue-600" />
-                      </Button>
-                      <Button variant="ghost" size="sm" className="h-10 w-10 p-0">
-                        <Mail className="w-4 h-4 text-gray-600" />
-                      </Button>
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">
+                        {member.name}
+                      </h3>
+                      <p className="text-[#e24e1b] font-semibold mb-4 text-sm">
+                        {member.role}
+                      </p>
+                      <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-1">
+                        {member.description}
+                      </p>
+                      <div className="flex justify-center gap-3 pt-4 border-t border-gray-100">
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                          <Button variant="ghost" size="sm" className="h-10 w-10 p-0 hover:bg-blue-50">
+                            <Linkedin className="w-5 h-5 text-blue-600" />
+                          </Button>
+                        </a>
+                        <a href={`mailto:${member.email}`}>
+                          <Button variant="ghost" size="sm" className="h-10 w-10 p-0 hover:bg-orange-50">
+                            <Mail className="w-5 h-5 text-[#e24e1b]" />
+                          </Button>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </AnimatedCard>
@@ -437,8 +430,49 @@ const About: React.FC = () => {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Team Mission Statement */}
         <section className="py-20 px-4 bg-white">
+          <div className="container mx-auto max-w-6xl">
+            <AnimatedCard delay={800}>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative h-[500px]">
+                  <img
+                    src={teamGroupImage}
+                    alt="Marsstein Team"
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#e24e1b]/30 to-[#f97316]/20"></div>
+                </div>
+                <div className="absolute inset-0 flex items-end">
+                  <div className="w-full p-8 md:p-12">
+                    <div className="max-w-4xl mx-auto">
+                      <div className="inline-block mb-6">
+                        <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full border border-white/30">
+                          <Users className="w-5 h-5 text-white" />
+                          <span className="text-white font-semibold text-sm">Unser Team</span>
+                        </div>
+                      </div>
+                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                        Das Marsstein-Team verbindet{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e24e1b] to-[#f97316]">
+                          Produkt, Engineering, KI und Growth
+                        </span>
+                        {' '}zu einer klaren Mission
+                      </h3>
+                      <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
+                        Regulierung wird zu nutzbarer Software — sicher, audit-fähig und skalierbar.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedCard>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="py-20 px-4 bg-gray-50">
           <div className="container mx-auto max-w-6xl">
             <AnimatedCard className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
