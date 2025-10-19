@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -705,6 +705,24 @@ const WorkflowSection: React.FC = () => {
   );
 };
 
+const AnimatedSection = ({ children, className = "", id }: { children: React.ReactNode, className?: string, id?: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      id={id}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.6 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const Beta: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -761,20 +779,24 @@ const Beta: React.FC = () => {
     }
   };
 
-  const handleChallengeToggle = (challenge: string) => {
+  const handleInputChange = useCallback((field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData(prev => ({ ...prev, [field]: e.target.value }));
+  }, []);
+
+  const handleChallengeToggle = useCallback((challenge: string) => {
     setFormData(prev => ({
       ...prev,
       challenges: prev.challenges.includes(challenge)
         ? prev.challenges.filter(c => c !== challenge)
         : [...prev.challenges, challenge]
     }));
-  };
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleStep1Submit = (e: React.FormEvent) => {
+  const handleStep1Submit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (formData.firstName && formData.email && formData.company) {
       setFormStep(2);
@@ -782,25 +804,7 @@ const Beta: React.FC = () => {
         document.getElementById('step2-fields')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     }
-  };
-
-
-  const AnimatedSection = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-    return (
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.6 }}
-        className={className}
-      >
-        {children}
-      </motion.div>
-    );
-  };
+  }, [formData.firstName, formData.email, formData.company]);
 
   if (submitted) {
     return (
@@ -1026,7 +1030,7 @@ const Beta: React.FC = () => {
                   className="bg-white hover:bg-gray-100 text-[#e24e1b] text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 shadow-2xl shadow-black/20 font-bold w-full sm:w-auto"
                   onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  <span className="hidden sm:inline">Jetzt Beta-Zugang sichern - 47 Plätze</span>
+                  <span className="hidden sm:inline">Jetzt Beta-Zugang sichern</span>
                   <span className="sm:hidden">Beta-Zugang sichern</span>
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
@@ -1222,7 +1226,7 @@ const Beta: React.FC = () => {
                           <Input
                             id="firstName"
                             value={formData.firstName}
-                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                            onChange={handleInputChange('firstName')}
                             required
                             placeholder="Max"
                             autoFocus
@@ -1235,7 +1239,7 @@ const Beta: React.FC = () => {
                             id="email"
                             type="email"
                             value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            onChange={handleInputChange('email')}
                             required
                             placeholder="max@firma.de"
                           />
@@ -1246,7 +1250,7 @@ const Beta: React.FC = () => {
                           <Input
                             id="company"
                             value={formData.company}
-                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                            onChange={handleInputChange('company')}
                             required
                             placeholder="Musterfirma GmbH"
                           />
@@ -1272,7 +1276,7 @@ const Beta: React.FC = () => {
                             <Input
                               id="lastName"
                               value={formData.lastName}
-                              onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                              onChange={handleInputChange('lastName')}
                               placeholder="Mustermann"
                             />
                           </div>
@@ -1282,7 +1286,7 @@ const Beta: React.FC = () => {
                               id="phone"
                               type="tel"
                               value={formData.phone}
-                              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                              onChange={handleInputChange('phone')}
                               placeholder="+49 123 456789"
                             />
                           </div>
@@ -1293,7 +1297,7 @@ const Beta: React.FC = () => {
                           <select
                             id="companySize"
                             value={formData.companySize}
-                            onChange={(e) => setFormData({ ...formData, companySize: e.target.value })}
+                            onChange={handleInputChange('companySize')}
                             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                             required
                           >
@@ -1310,7 +1314,7 @@ const Beta: React.FC = () => {
                           <select
                             id="currentSolution"
                             value={formData.currentSolution}
-                            onChange={(e) => setFormData({ ...formData, currentSolution: e.target.value })}
+                            onChange={handleInputChange('currentSolution')}
                             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                           >
                             <option value="">Bitte wählen</option>
@@ -1353,7 +1357,7 @@ const Beta: React.FC = () => {
                           <select
                             id="challengeLevel"
                             value={formData.challengeLevel}
-                            onChange={(e) => setFormData({ ...formData, challengeLevel: e.target.value })}
+                            onChange={handleInputChange('challengeLevel')}
                             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                             required
                           >
