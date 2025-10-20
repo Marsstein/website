@@ -970,8 +970,8 @@ const Beta: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Beta-Programm - Kostenlos DSGVO-Software testen | Marsstein"
-        description="Werden Sie Beta-Tester unserer KI-gestützten DSGVO-Automatisierung. Kostenlos testen, 50% Rabatt nach Beta-Phase."
+        title="Schluss mit DSGVO-Chaos – Beta-Zugang sichern | Marsstein"
+        description="KI-gestützte DSGVO-Automatisierung. Kostenlos testen, 50% Launch-Rabatt sichern. Limitierte Beta-Plätze verfügbar."
         canonical="/beta"
       />
       <Header />
