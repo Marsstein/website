@@ -15,8 +15,8 @@ const SEOHead: React.FC<SEOProps> = ({
   title,
   description,
   canonical,
-  ogImage = '/og-image-marsstein.jpg',
-  ogImageAlt = 'Marsstein - Compliance und Datenschutz Lösungen',
+  ogImage = '/logomarsstein.png',
+  ogImageAlt = 'Marsstein - KI-gestützte DSGVO Automatisierung',
   ogType = 'website',
   structuredData
 }) => {
