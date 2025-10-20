@@ -973,6 +973,8 @@ const Beta: React.FC = () => {
         title="Schluss mit DSGVO-Chaos – Beta-Zugang sichern | Marsstein"
         description="KI-gestützte DSGVO-Automatisierung. Kostenlos testen, 50% Launch-Rabatt sichern. Limitierte Beta-Plätze verfügbar."
         canonical="/beta"
+        ogImage="/logomarsstein.png"
+        ogImageAlt="Marsstein Beta-Programm - DSGVO Automatisierung"
       />
       <Header />
 
