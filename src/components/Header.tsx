@@ -29,7 +29,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { cn } from '@/lib/utils';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export const Header: React.FC = () => {
   const location = useLocation();
@@ -284,7 +283,6 @@ export const Header: React.FC = () => {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-4">
-          <LanguageSwitcher />
           <Button variant="ghost" size="sm" aria-label="Anmelden">
             Anmelden
           </Button>
@@ -644,9 +642,6 @@ export const Header: React.FC = () => {
                 </div>
 
                 <div className="border-t bg-background/95 backdrop-blur p-4 space-y-3">
-                  <div className="flex justify-center mb-3">
-                    <LanguageSwitcher />
-                  </div>
                   <Button
                     variant="outline"
                     className="w-full justify-center border-2 hover:bg-accent transition-all"
