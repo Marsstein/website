@@ -1059,7 +1059,7 @@ export default function DsgvoB2BHerstellerChina() {
                   <div className="space-y-3">
                     <p><strong>Marsstein Preise für B2B-Hersteller:</strong></p>
                     <ul className="list-disc pl-6 space-y-3">
-                      <li><strong>Starter-Paket (kleine Hersteller, <50 EU-Kunden):</strong> €999 einmalig
+                      <li><strong>Starter-Paket (kleine Hersteller, &lt;50 EU-Kunden):</strong> €999 einmalig
                         <ul className="list-disc pl-6 mt-2">
                           <li>Art. 27 EU-Vertreter (12 Monate)</li>
                           <li>B2B Privacy Policy (Deutsch/Englisch)</li>

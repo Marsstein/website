@@ -840,7 +840,7 @@ export default function PiplGdprChina() {
                     <p><strong>PIPL-Datenlokalisierungspflicht gilt für:</strong></p>
                     <ul className="list-disc pl-6 space-y-2">
                       <li><strong>Critical Information Infrastructure Operators (CIIOs):</strong> Telekommunikation, Energie, Transport, Finanzen</li>
-                      <li><strong>Verarbeitung "großer Mengen" personenbezogener Daten:</strong> >1 Million Personen (unklare Schwelle)</li>
+                      <li><strong>Verarbeitung "großer Mengen" personenbezogener Daten:</strong> &gt;1 Million Personen (unklare Schwelle)</li>
                       <li><strong>Sensible personenbezogene Daten:</strong> Gesundheit, Biometrie, Finanzinformationen</li>
                     </ul>
                     <p><strong>Wenn Sie NICHT unter Datenlokalisierungspflicht fallen:</strong></p>
@@ -875,7 +875,7 @@ export default function PiplGdprChina() {
                       <li>Vertragliche Garantien für Datentransfer aus China ins Ausland (inkl. EU)</li>
                       <li>Erlassen vom CAC (Cyberspace Administration of China, 2023)</li>
                       <li>Keine Module – ein einheitlicher Vertrag</li>
-                      <li>Muss mit Security Assessment kombiniert werden (wenn >1 Mio. Personen)</li>
+                      <li>Muss mit Security Assessment kombiniert werden (wenn &gt;1 Mio. Personen)</li>
                     </ul>
                     <p><strong>Wichtige Unterschiede:</strong></p>
                     <table className="w-full border-collapse text-sm mt-4">
@@ -931,7 +931,7 @@ export default function PiplGdprChina() {
                       <li><strong>Tag 6-8: TIA + Security Assessment</strong>
                         <ul className="list-disc pl-6 mt-2">
                           <li>Transfer Impact Assessment für State Access Risk (GDPR)</li>
-                          <li>Security Assessment (wenn >1 Mio. Personen) (PIPL)</li>
+                          <li>Security Assessment (wenn &gt;1 Mio. Personen) (PIPL)</li>
                         </ul>
                       </li>
                       <li><strong>Tag 9-10: CAC Filing</strong> – China SCCs bei CAC einreichen (innerhalb 10 Tagen nach Vertragsschluss)</li>
@@ -962,7 +962,7 @@ export default function PiplGdprChina() {
                   <div className="space-y-3">
                     <p><strong>Marsstein Preise für Dual Compliance:</strong></p>
                     <ul className="list-disc pl-6 space-y-3">
-                      <li><strong>Starter-Paket (kleine Unternehmen, <100 Kunden):</strong> €4.999 einmalig
+                      <li><strong>Starter-Paket (kleine Unternehmen, &lt;100 Kunden):</strong> €4.999 einmalig
                         <ul className="list-disc pl-6 mt-2">
                           <li>EU-Vertreter (12 Monate)</li>
                           <li>Dual Privacy Policies (Chinesisch + Deutsch/Englisch)</li>
@@ -1138,10 +1138,10 @@ export default function PiplGdprChina() {
                               <SelectValue placeholder="Bitte wählen / 请选择" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="small"><100.000 Datensätze</SelectItem>
+                              <SelectItem value="small">&lt;100.000 Datensätze</SelectItem>
                               <SelectItem value="medium">100.000-1 Mio. Datensätze</SelectItem>
                               <SelectItem value="large">1 Mio.-10 Mio. Datensätze</SelectItem>
-                              <SelectItem value="xlarge">>10 Mio. Datensätze (CIIO-relevant)</SelectItem>
+                              <SelectItem value="xlarge">&gt;10 Mio. Datensätze (CIIO-relevant)</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>

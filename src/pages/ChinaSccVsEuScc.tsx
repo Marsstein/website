@@ -776,7 +776,7 @@ export default function ChinaSccVsEuScc() {
                           </ul>
                           <p className="mt-3"><strong>Rechtliche Anforderung:</strong></p>
                           <ul className="list-disc pl-6 space-y-1">
-                            <li>EU→China: China Standard Contract + PIPL-Einwilligung + CAC-Meldung (falls >1 Mio. Nutzer)</li>
+                            <li>EU→China: China Standard Contract + PIPL-Einwilligung + CAC-Meldung (falls &gt;1 Mio. Nutzer)</li>
                             <li>China→EU: EU SCCs Module 2 (C2P) + Transfer Impact Assessment</li>
                           </ul>
                           <p className="mt-3 text-[#e24e1b] font-semibold">→ Ohne beide SCCs: Compliance-Lücke in mindestens einer Richtung!</p>
@@ -900,7 +900,7 @@ export default function ChinaSccVsEuScc() {
                               <p className="font-semibold text-red-800 mb-1">Wann erforderlich?</p>
                               <ul className="list-disc pl-5 space-y-1 text-red-900">
                                 <li>Daten von ≥1.000.000 Personen (kumulativ seit 1.1. des Jahres)</li>
-                                <li>ODER Daten von ≥100.000 "sensitive personal information" (biometrische Daten, Gesundheitsdaten, Finanz, Kinder <14)</li>
+                                <li>ODER Daten von ≥100.000 "sensitive personal information" (biometrische Daten, Gesundheitsdaten, Finanz, Kinder &lt;14)</li>
                                 <li>ODER Critical Information Infrastructure Operators (CIIO)</li>
                               </ul>
                             </div>

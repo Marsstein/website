@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SEOHead from '../components/SEOHead';
+import SEOHead from '@/components/SEOHead';
 import { Header } from '@/components/zh/Header';
 import { Footer } from '@/components/zh/Footer';
 import { Button } from '@/components/ui/button';

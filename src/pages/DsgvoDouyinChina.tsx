@@ -1046,7 +1046,7 @@ THEN
                               <li><strong>Problem:</strong> Douyin hat keinen automatisierten EU-Löschprozess → Manuell!</li>
                               <li>Seller muss Anfrage an Douyin Account Manager weiterleiten (meist WeChat/DingTalk)</li>
                               <li>Douyin bestätigt Löschung nach 30 Tagen (manchmal länger, da China-interne Prozesse)</li>
-                              <li><strong>Risiko:</strong> Wenn Löschung >30 Tage dauert → Potenzieller DSGVO-Verstoß</li>
+                              <li><strong>Risiko:</strong> Wenn Löschung &gt;30 Tage dauert → Potenzieller DSGVO-Verstoß</li>
                             </ol>
                             <p className="text-xs text-slate-700 mt-2 font-semibold">
                               <strong>Marsstein-Lösung:</strong> Wir fungieren als EU-Vertreter und automatisieren die Weiterleitung von Löschanfragen an Douyin. Deadline-Tracking inklusive.
