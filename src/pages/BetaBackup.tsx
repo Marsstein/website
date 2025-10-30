@@ -19,9 +19,7 @@ import {
   Bell,
   Users,
   Mail,
-  Sparkles,
-  Copy,
-  Search
+  Sparkles
 } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect } from 'react';
@@ -733,10 +731,7 @@ const Beta: React.FC = () => {
     phone: '',
     company: '',
     companySize: '',
-    role: '',
     currentSolution: '',
-    biggestChallenge: '',
-    weeklyHours: '',
     challenges: [] as string[],
     challengeLevel: '',
     consent: false
@@ -1020,13 +1015,13 @@ const Beta: React.FC = () => {
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 px-2">
-                Versteht Ihre Arbeit. Spricht Ihre Sprache.<br className="hidden sm:inline" />
-                <span className="sm:hidden"> </span>Automatisiert den Rest.
+                Das Leben ist zu kurz für<br className="hidden sm:inline" />
+                <span className="sm:hidden"> </span>DSGVO-Bürokratie
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-                Dokumentation automatisiert. Mandanten übersichtlich. Fristen im Blick.<br className="hidden sm:inline" />
-                <span className="sm:hidden"> </span>Ihre Expertise bleibt unersetzlich – die Routine verschwindet.
+                Automatisieren Sie 80% Ihrer Compliance-Arbeit.<br className="hidden sm:inline" />
+                <span className="sm:hidden"> </span>Kostenlos testen. 50% Lifetime-Rabatt sichern.
               </p>
 
               <div className="flex flex-col items-center gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4">
@@ -1035,8 +1030,8 @@ const Beta: React.FC = () => {
                   className="bg-white hover:bg-gray-100 text-[#e24e1b] text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 shadow-2xl shadow-black/20 font-bold w-full sm:w-auto"
                   onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  <span className="hidden sm:inline">Jetzt als DSB kostenlos testen</span>
-                  <span className="sm:hidden">Als DSB testen</span>
+                  <span className="hidden sm:inline">Jetzt Beta-Zugang sichern</span>
+                  <span className="sm:hidden">Beta-Zugang sichern</span>
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
                 <p className="text-xs sm:text-sm text-white/80 text-center">
@@ -1069,7 +1064,7 @@ const Beta: React.FC = () => {
                 Das Problem
               </h2>
               <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-8 sm:mb-12 max-w-4xl mx-auto leading-tight px-4">
-                Gute DSBs sind rar. Ihre Zeit ist zu wertvoll für <span className="text-[#e24e1b]">Copy-Paste und Excel-Akrobatik</span>.
+                DSGVO war ein <span className="text-[#e24e1b]">Versprechen</span>, das niemand halten konnte.
               </p>
             </div>
 
@@ -1077,13 +1072,13 @@ const Beta: React.FC = () => {
               <div id="problem-1">
                 <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center h-full hover:shadow-xl transition-shadow">
                   <div className="w-14 h-14 sm:w-16 sm:h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                    <Copy className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
+                    <Clock className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
-                    80% Ihrer Arbeit ist Wiederholung
+                    Wochenlanger Dokumentationsaufwand
                   </h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Gleiches VVT, gleiche TOMs, gleiche Formulierungen – nur für jeden Mandanten neu getippt. Warum gibt es dafür kein System?
+                    Verarbeitungsverzeichnis, TOMs, Policies – manuell erstellen und ständig aktualisieren.
                   </p>
                 </div>
               </div>
@@ -1091,13 +1086,13 @@ const Beta: React.FC = () => {
               <div id="problem-2">
                 <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center h-full hover:shadow-xl transition-shadow">
                   <div className="w-14 h-14 sm:w-16 sm:h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                    <Search className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
+                    <FileText className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
-                    Wissen verstreut: Gesetze, Urteile, Best Practices
+                    Unvollständige Nachweise bei Audits
                   </h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Sie wissen, dass es eine Antwort gibt – aber war es in der DSK-Leitlinie, einem Blog oder einem Webinar? 30 Minuten Recherche für eine 2-Minuten-Antwort.
+                    Dokumentation verstreut, veraltet oder nicht prüfbar – ein Risiko bei jeder Kontrolle.
                   </p>
                 </div>
               </div>
@@ -1105,13 +1100,13 @@ const Beta: React.FC = () => {
               <div id="problem-3">
                 <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center h-full hover:shadow-xl transition-shadow">
                   <div className="w-14 h-14 sm:w-16 sm:h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                    <Users className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
+                    <Bot className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
-                    Multi-Client-Chaos bei externen DSBs
+                    Excel-Chaos, E-Mail-Fluten, teure Beratung
                   </h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    15 Mandanten, 15 Excel-Sheets, 200 E-Mails pro Woche. Welcher Kunde hatte nochmal welche TOM-Anforderung?
+                    Kein System, keine Automatisierung – nur manuelle Arbeit und hohe externe Kosten.
                   </p>
                 </div>
               </div>
@@ -1120,7 +1115,7 @@ const Beta: React.FC = () => {
             <div id="problem-impact">
               <div className="text-center px-4">
                 <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 max-w-3xl mx-auto leading-tight">
-                  Ihr Fachwissen ist unersetzlich. Die <span className="text-[#e24e1b]">Routine-Arbeit</span> nicht.
+                  Das wahre Bußgeld ist nicht das Geld – sondern die verlorene <span className="text-[#e24e1b]">Lebenszeit</span>.
                 </p>
               </div>
             </div>
@@ -1136,31 +1131,31 @@ const Beta: React.FC = () => {
                 <span className="text-[#e24e1b] text-sm font-semibold">Warum Marsstein?</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#232323] mb-4">
-                Der intelligente Assistent für Datenschutzbeauftragte
+                Compliance, die sich einfach erledigt
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  icon: <FileText className="w-8 h-8" />,
-                  title: "Geführte Dokumentenerstellung",
-                  description: "VVT, TOMs, Datenschutzerklärung – Schritt für Schritt ausgefüllt. Sie werden durch jeden Prozess geführt, kein Vorwissen nötig."
+                  icon: <Bot className="w-8 h-8" />,
+                  title: "Automatisierte Dokumente",
+                  description: "KI-basierte Dokumentenerstellung ersetzt Handarbeit und hält Inhalte konsistent."
+                },
+                {
+                  icon: <ClipboardList className="w-8 h-8" />,
+                  title: "Echtzeit-Audit-Trail",
+                  description: "Jede Änderung, Freigabe und jeder Kommentar wird lückenlos protokolliert."
                 },
                 {
                   icon: <Bell className="w-8 h-8" />,
-                  title: "Fristen, die Sie nie vergessen",
-                  description: "Löschfristen, AVV-Verlängerungen, Audit-Termine – automatische Erinnerungen halten Sie auf Kurs. Nie wieder etwas übersehen."
+                  title: "Automatische Gesetzesänderungen",
+                  description: "Neue Anforderungen fließen ein; Hinweise zeigen Handlungsbedarf."
                 },
                 {
-                  icon: <Sparkles className="w-8 h-8" />,
-                  title: "Gesetzesänderungen, die Sie verstehen",
-                  description: "DSGVO-Updates in klarer Sprache. Was ändert sich? Was müssen Sie tun? Praxis-Tipps statt Paragrafen-Wirrwarr."
-                },
-                {
-                  icon: <CheckCircle2 className="w-8 h-8" />,
-                  title: "Audit-Ready ohne Panik",
-                  description: "Vollständige Dokumentation, jederzeit prüfbar. Behörde kündigt sich an? Export mit einem Klick."
+                  icon: <Users className="w-8 h-8" />,
+                  title: "Intuitive Team-Workflows",
+                  description: "Klare Aufgaben, Zuständigkeiten und Fristen – ohne Juristensprache."
                 }
               ].map((feature, index) => (
                 <motion.div
@@ -1298,7 +1293,7 @@ const Beta: React.FC = () => {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="companySize">Größe des Unternehmens, das Sie betreuen *</Label>
+                          <Label htmlFor="companySize">Unternehmensgröße *</Label>
                           <select
                             id="companySize"
                             value={formData.companySize}
@@ -1315,23 +1310,6 @@ const Beta: React.FC = () => {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="role">Ihre Rolle *</Label>
-                          <select
-                            id="role"
-                            value={formData.role}
-                            onChange={handleInputChange('role')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            required
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="interner-dsb-haupt">Interner DSB (hauptberuflich)</option>
-                            <option value="interner-dsb-neben">Interner DSB (nebenberuflich)</option>
-                            <option value="externer-dsb">Externer DSB / Berater</option>
-                            <option value="verantwortlich">Datenschutz-Verantwortlicher (kein offizieller DSB)</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-2">
                           <Label htmlFor="currentSolution">Wie managen Sie DSGVO aktuell?</Label>
                           <select
                             id="currentSolution"
@@ -1340,26 +1318,25 @@ const Beta: React.FC = () => {
                             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                           >
                             <option value="">Bitte wählen</option>
-                            <option value="excel-word">Excel/Word/E-Mail</option>
-                            <option value="externe-beratung">Externe Beratung/Berater</option>
-                            <option value="andere-software">Andere Datenschutz-Software</option>
+                            <option value="excel">Excel/Word</option>
+                            <option value="externer-dsb">Externer Datenschutzbeauftragter</option>
+                            <option value="andere-software">Andere Software</option>
                             <option value="gar-nicht">Gar nicht / Ad-hoc</option>
-                            <option value="neu-dsb">Bin neu als DSB, noch keine Lösung</option>
                           </select>
                         </div>
 
                         <div className="space-y-3">
-                          <Label>Welche Aufgaben nehmen am meisten Zeit? (optional)</Label>
+                          <Label>Ihre DSGVO-Herausforderungen (optional)</Label>
                           <div className="grid md:grid-cols-2 gap-2">
                             {[
-                              'Verarbeitungsverzeichnis (VVT) pflegen',
-                              'TOMs dokumentieren',
-                              'AVVs mit Dienstleistern',
-                              'Betroffenenanfragen bearbeiten',
-                              'Datenschutzerklärung aktuell halten',
-                              'Mitarbeiter schulen',
-                              'Löschkonzept umsetzen',
-                              'Audit-Vorbereitung'
+                              'Verarbeitungsverzeichnis erstellen & pflegen',
+                              'Technische und organisatorische Maßnahmen (TOM)',
+                              'Datenschutzerklärungen aktuell halten',
+                              'Betroffenenanfragen managen',
+                              'Auftragsverarbeitungsverträge verwalten',
+                              'Datenpannen-Management',
+                              'Mitarbeiterschulungen durchführen',
+                              'Löschkonzept umsetzen'
                             ].map((challenge) => (
                               <div key={challenge} className="flex items-start gap-2">
                                 <Checkbox
@@ -1376,50 +1353,13 @@ const Beta: React.FC = () => {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="biggestChallenge">Ihre größte Herausforderung als DSB? *</Label>
-                          <select
-                            id="biggestChallenge"
-                            value={formData.biggestChallenge}
-                            onChange={handleInputChange('biggestChallenge')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            required
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="dokumentation">Dokumentation aktuell halten</option>
-                            <option value="fristen">Fristen & Termine im Blick behalten</option>
-                            <option value="gesetze">Gesetzesänderungen verfolgen</option>
-                            <option value="anfragen">Betroffenenanfragen effizient bearbeiten</option>
-                            <option value="wissen">Fachliches Wissen aufbauen</option>
-                            <option value="zeit">Zeitmanagement / zu viele Aufgaben</option>
-                            <option value="audit">Audit-Vorbereitung</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="weeklyHours">Wie viel Zeit verbringen Sie wöchentlich mit Datenschutz? *</Label>
-                          <select
-                            id="weeklyHours"
-                            value={formData.weeklyHours}
-                            onChange={handleInputChange('weeklyHours')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            required
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="0-5">0-5 Stunden (nebenberuflich)</option>
-                            <option value="5-10">5-10 Stunden</option>
-                            <option value="10-20">10-20 Stunden (halbe Stelle)</option>
-                            <option value="20-40">20-40 Stunden (Vollzeit DSB)</option>
-                            <option value="40+">40+ Stunden (überlastet)</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="challengeLevel">Wie herausfordernd ist DSGVO für Sie aktuell?</Label>
+                          <Label htmlFor="challengeLevel">Wie herausfordernd ist DSGVO für Sie aktuell? *</Label>
                           <select
                             id="challengeLevel"
                             value={formData.challengeLevel}
                             onChange={handleInputChange('challengeLevel')}
                             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                            required
                           >
                             <option value="">Bitte wählen</option>
                             <option value="sehr-herausfordernd">Sehr herausfordernd - nimmt viel Zeit in Anspruch</option>

@@ -19,6 +19,16 @@ const PageLoader = () => (
 const Index = lazy(() => import("./pages/Index"));
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
+
+// Chinese (Simplified) Pages
+const ZhHome = lazy(() => import("./pages/zh/Home"));
+const ZhPricing = lazy(() => import("./pages/zh/Pricing"));
+const ZhAbout = lazy(() => import("./pages/zh/About"));
+const ZhContact = lazy(() => import("./pages/zh/Contact"));
+const ZhGdpr = lazy(() => import("./pages/zh/GdprCompliance"));
+const ZhEuAiAct = lazy(() => import("./pages/zh/EuAiAct"));
+const ZhIso27001Guide = lazy(() => import("./pages/zh/Iso27001Guide"));
+const ChineseLayout = lazy(() => import("./components/layouts/ChineseLayout"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const Academy = lazy(() => import("./pages/Academy"));
 const AcademyPage = lazy(() => import("./pages/AcademyPage"));
@@ -31,6 +41,20 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const Beta = lazy(() => import("./pages/Beta"));
+const CnGdpr = lazy(() => import("./pages/CnGdpr"));
+const DsgvoAmazonSellersChina = lazy(() => import("./pages/DsgvoAmazonSellersChina"));
+const DsgvoTikTokShopChina = lazy(() => import("./pages/DsgvoTikTokShopChina"));
+const EuVertreterChina = lazy(() => import("./pages/EuVertreterChina"));
+const JointVentureChinaDatenschutz = lazy(() => import("./pages/JointVentureChinaDatenschutz"));
+const ChinaInvestitionenDsgvoScreening = lazy(() => import("./pages/ChinaInvestitionenDsgvoScreening"));
+const Artikel15DsgvoAuskunftsrechtChina = lazy(() => import("./pages/Artikel15DsgvoAuskunftsrechtChina"));
+const ChinaSccVsEuScc = lazy(() => import("./pages/ChinaSccVsEuScc"));
+const DeepseekDsgvo = lazy(() => import("./pages/DeepseekDsgvo"));
+const DsgvoWeChatAlipayChina = lazy(() => import("./pages/DsgvoWeChatAlipayChina"));
+const DsgvoDouyinChina = lazy(() => import("./pages/DsgvoDouyinChina"));
+const DsgvoB2BHerstellerChina = lazy(() => import("./pages/DsgvoB2BHerstellerChina"));
+const PiplGdprChina = lazy(() => import("./pages/PiplGdprChina"));
+const ChinaDsgvo = lazy(() => import("./pages/wissen/ChinaDsgvo"));
 
 const Resources = lazy(() => import("./pages/Resources").then(module => ({ default: module.Resources })));
 const DSGVOComplianceChecklist = lazy(() => import("./pages/resources/DSGVOComplianceChecklist").then(module => ({ default: module.DSGVOComplianceChecklist })));
@@ -218,11 +242,36 @@ const App = () => (
                 <Suspense fallback={<PageLoader />}>
                   <Routes>
                 <Route path="/" element={<Index />} />
+
+                {/* Chinese (Simplified) Routes - zh-CN */}
+                <Route path="/zh" element={<ChineseLayout />}>
+                  <Route index element={<ZhHome />} />
+                  <Route path="jiage" element={<ZhPricing />} />
+                  <Route path="guanyu-women" element={<ZhAbout />} />
+                  <Route path="lianxi" element={<ZhContact />} />
+                  <Route path="gdpr" element={<ZhGdpr />} />
+                  <Route path="ou-ai-fa" element={<ZhEuAiAct />} />
+                  <Route path="iso-27001-zhinan" element={<ZhIso27001Guide />} />
+                </Route>
+
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/academy" element={<AcademyPage />} />
                 <Route path="/preise" element={<Preise />} />
                 <Route path="/externer-datenschutzbeauftragter" element={<ExternerDatenschutzbeauftragter />} />
                 <Route path="/beta" element={<Beta />} />
+                <Route path="/dsgvo-china" element={<CnGdpr />} />
+                <Route path="/dsgvo-amazon-sellers-china" element={<DsgvoAmazonSellersChina />} />
+                <Route path="/dsgvo-tiktok-shop-china" element={<DsgvoTikTokShopChina />} />
+                <Route path="/eu-vertreter-china" element={<EuVertreterChina />} />
+                <Route path="/joint-venture-china-datenschutz" element={<JointVentureChinaDatenschutz />} />
+                <Route path="/china-investitionen-dsgvo-screening" element={<ChinaInvestitionenDsgvoScreening />} />
+                <Route path="/artikel-15-dsgvo-auskunftsrecht-china" element={<Artikel15DsgvoAuskunftsrechtChina />} />
+                <Route path="/china-scc-vs-eu-scc" element={<ChinaSccVsEuScc />} />
+                <Route path="/deepseek-dsgvo" element={<DeepseekDsgvo />} />
+                <Route path="/dsgvo-wechat-alipay-china" element={<DsgvoWeChatAlipayChina />} />
+                <Route path="/dsgvo-douyin-china" element={<DsgvoDouyinChina />} />
+                <Route path="/dsgvo-b2b-hersteller-china" element={<DsgvoB2BHerstellerChina />} />
+                <Route path="/pipl-gdpr-china" element={<PiplGdprChina />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/ueber-uns" element={<About />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
@@ -321,6 +370,7 @@ const App = () => (
 
                 {/* Knowledge/Wissen Routes */}
                 <Route path="/wissen" element={<Knowledge />} />
+                <Route path="/wissen/china" element={<ChinaDsgvo />} />
                 <Route path="/wissen/dsgvo" element={<DsgvoGuides />} />
                 <Route path="/wissen/kosten" element={<KostenGuides />} />
                 <Route path="/wissen/ki-datenschutz" element={<KiDatenschutz />} />

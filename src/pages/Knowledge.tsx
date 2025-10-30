@@ -134,7 +134,7 @@ const Knowledge: React.FC = () => {
   ];
 
   const categories = [
-    { id: 'all', name: 'Alle Bereiche', icon: BookOpen, count: 31 },
+    { id: 'all', name: 'Alle Bereiche', icon: BookOpen, count: 32 },
     { id: 'dsgvo', name: 'DSGVO & Datenschutz', icon: Shield, count: 12 },
     { id: 'implementation', name: 'Implementierung', icon: Settings, count: 8 },
     { id: 'crisis', name: 'Krisenmanagement', icon: AlertTriangle, count: 4 },
@@ -142,6 +142,25 @@ const Knowledge: React.FC = () => {
   ];
 
   const knowledgeAreas = [
+    {
+      id: 'china-dsgvo',
+      title: 'China & DSGVO',
+      description: '13 Praxisartikel für DSGVO-Compliance im China-Geschäft: E-Commerce, Social Media, Recht und Investment',
+      icon: Globe,
+      color: 'from-red-500 to-orange-600',
+      bgColor: 'bg-gradient-to-br from-slate-900 via-red-900 to-slate-900',
+      category: 'dsgvo',
+      guides: 13,
+      difficulty: 'Alle Level',
+      link: '/wissen/china',
+      popular: true,
+      featured: [
+        'Amazon Sellers & DSGVO',
+        'TikTok Shop China',
+        'DeepSeek AI Datenschutz',
+        'EU-Vertreter für China'
+      ]
+    },
     {
       id: 'dsgvo-guides',
       title: 'DSGVO-Leitfäden',
@@ -156,7 +175,7 @@ const Knowledge: React.FC = () => {
       popular: true,
       featured: [
         'DSGVO in 10 Minuten verstehen',
-        'DSGVO in 30 Tagen umsetzen', 
+        'DSGVO in 30 Tagen umsetzen',
         'Website DSGVO-konform gestalten',
         'Data Breach Notfallplan'
       ]

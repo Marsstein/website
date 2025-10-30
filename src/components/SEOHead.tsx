@@ -9,6 +9,7 @@ interface SEOProps {
   ogImageAlt?: string;
   ogType?: string;
   structuredData?: Record<string, unknown>;
+  noIndex?: boolean;
 }
 
 const SEOHead: React.FC<SEOProps> = ({
@@ -18,10 +19,15 @@ const SEOHead: React.FC<SEOProps> = ({
   ogImage = '/logomarsstein.png',
   ogImageAlt = 'Marsstein - KI-gestützte DSGVO Automatisierung',
   ogType = 'website',
-  structuredData
+  structuredData,
+  noIndex = false
 }) => {
   const siteUrl = 'https://marsstein.ai';
   const fullTitle = `${title} | Marsstein`;
+
+  // Auto-detect Chinese pages for noindex
+  const isChinesePage = canonical?.startsWith('/zh/') || false;
+  const shouldNoIndex = noIndex || isChinesePage;
   
   // Default organization structured data
   const defaultOrganizationData = {
@@ -59,7 +65,7 @@ const SEOHead: React.FC<SEOProps> = ({
       {/* Primary Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="robots" content="index,follow,max-image-preview:large" />
+      <meta name="robots" content={shouldNoIndex ? "noindex,nofollow" : "index,follow,max-image-preview:large"} />
       
       {/* Canonical URL */}
       {canonical && <link rel="canonical" href={`${siteUrl}${canonical}`} />}

@@ -19,7 +19,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       company,
       companySize,
       phone,
+      role,
       currentSolution,
+      biggestChallenge,
+      weeklyHours,
       challengeLevel,
       challenges
     } = req.body;
@@ -45,7 +48,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         company,
         companySize: companySize || '',
         phone: phone || '',
+        role: role || '',
         currentSolution: currentSolution || '',
+        biggestChallenge: biggestChallenge || '',
+        weeklyHours: weeklyHours || '',
         challengeLevel: challengeLevel || '',
         challenges: challenges || ''
       })
