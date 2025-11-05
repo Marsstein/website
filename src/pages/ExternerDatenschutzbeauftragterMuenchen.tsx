@@ -39,7 +39,13 @@ const ExternerDatenschutzbeauftragterMuenchen: React.FC = () => {
   const faqs = [
     {
       question: "Warum einen externen Datenschutzbeauftragten in München?",
-      answer: "Als Münchener Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig niedrigeren Kosten (ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in München."
+      answer: (<>
+        Als Münchener Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig{' '}
+        <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="text-[#e24e1b] hover:underline">
+          niedrigeren Kosten
+        </Link>
+        {' '}(ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in München.
+      </>)
     },
     {
       question: "Wie läuft die Beratung für Unternehmen in München ab?",
@@ -51,7 +57,12 @@ const ExternerDatenschutzbeauftragterMuenchen: React.FC = () => {
     },
     {
       question: "Was kostet ein externer DSB in München?",
-      answer: "Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für München."
+      answer: (<>
+        Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für München.{' '}
+        <Link to="/preise" className="text-[#e24e1b] hover:underline">
+          Alle Pakete im Überblick
+        </Link>.
+      </>)
     },
     {
       question: "Wie schnell können Sie in München starten?",
@@ -59,7 +70,13 @@ const ExternerDatenschutzbeauftragterMuenchen: React.FC = () => {
     },
     {
       question: "Kennen Sie die Datenschutz-Anforderungen in Bayern?",
-      answer: "Ja, wir kennen die Besonderheiten der BayLDA und haben bereits zahlreiche Unternehmen in der Region München erfolgreich DSGVO-konform aufgestellt."
+      answer: (<>
+        Ja, wir kennen die Besonderheiten der{' '}
+        <Link to="/dsgvo" className="text-[#e24e1b] hover:underline">
+          BayLDA
+        </Link>
+        {' '}und haben bereits zahlreiche Unternehmen in der Region München erfolgreich DSGVO-konform aufgestellt.
+      </>)
     }
   ];
 

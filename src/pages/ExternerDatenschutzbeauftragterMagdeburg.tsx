@@ -39,7 +39,13 @@ const ExternerDatenschutzbeauftragterMagdeburg: React.FC = () => {
   const faqs = [
     {
       question: "Warum einen externen Datenschutzbeauftragten in Magdeburg?",
-      answer: "Als Magdeburger Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig niedrigeren Kosten (ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Magdeburg."
+      answer: (<>
+        Als Magdeburger Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig{' '}
+        <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="text-[#e24e1b] hover:underline">
+          niedrigeren Kosten
+        </Link>
+        {' '}(ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Magdeburg.
+      </>)
     },
     {
       question: "Wie läuft die Beratung für Unternehmen in Magdeburg ab?",
@@ -51,7 +57,12 @@ const ExternerDatenschutzbeauftragterMagdeburg: React.FC = () => {
     },
     {
       question: "Was kostet ein externer DSB in Magdeburg?",
-      answer: "Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Magdeburg."
+      answer: (<>
+        Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Magdeburg.{' '}
+        <Link to="/preise" className="text-[#e24e1b] hover:underline">
+          Alle Pakete im Überblick
+        </Link>.
+      </>)
     },
     {
       question: "Wie schnell können Sie in Magdeburg starten?",
@@ -59,7 +70,13 @@ const ExternerDatenschutzbeauftragterMagdeburg: React.FC = () => {
     },
     {
       question: "Kennen Sie die Datenschutz-Anforderungen in Sachsen-Anhalt?",
-      answer: "Ja, wir kennen die Besonderheiten der LfD Sachsen-Anhalt und haben bereits zahlreiche Unternehmen in der Region Magdeburg erfolgreich DSGVO-konform aufgestellt."
+      answer: (<>
+        Ja, wir kennen die Besonderheiten der{' '}
+        <Link to="/dsgvo" className="text-[#e24e1b] hover:underline">
+          LfD Sachsen-Anhalt
+        </Link>
+        {' '}und haben bereits zahlreiche Unternehmen in der Region Magdeburg erfolgreich DSGVO-konform aufgestellt.
+      </>)
     }
   ];
 

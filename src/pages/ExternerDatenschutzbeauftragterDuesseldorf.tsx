@@ -39,7 +39,13 @@ const ExternerDatenschutzbeauftragterDuesseldorf: React.FC = () => {
   const faqs = [
     {
       question: "Warum einen externen Datenschutzbeauftragten in Düsseldorf?",
-      answer: "Als Düsseldorfer Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig niedrigeren Kosten (ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Düsseldorf."
+      answer: (<>
+        Als Düsseldorfer Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig{' '}
+        <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="text-[#e24e1b] hover:underline">
+          niedrigeren Kosten
+        </Link>
+        {' '}(ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Düsseldorf.
+      </>)
     },
     {
       question: "Wie läuft die Beratung für Unternehmen in Düsseldorf ab?",
@@ -51,7 +57,12 @@ const ExternerDatenschutzbeauftragterDuesseldorf: React.FC = () => {
     },
     {
       question: "Was kostet ein externer DSB in Düsseldorf?",
-      answer: "Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Düsseldorf."
+      answer: (<>
+        Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Düsseldorf.{' '}
+        <Link to="/preise" className="text-[#e24e1b] hover:underline">
+          Alle Pakete im Überblick
+        </Link>.
+      </>)
     },
     {
       question: "Wie schnell können Sie in Düsseldorf starten?",
@@ -59,7 +70,13 @@ const ExternerDatenschutzbeauftragterDuesseldorf: React.FC = () => {
     },
     {
       question: "Kennen Sie die Datenschutz-Anforderungen in Nordrhein-Westfalen?",
-      answer: "Ja, wir kennen die Besonderheiten der LDI NRW und haben bereits zahlreiche Unternehmen in der Region Düsseldorf erfolgreich DSGVO-konform aufgestellt."
+      answer: (<>
+        Ja, wir kennen die Besonderheiten der{' '}
+        <Link to="/dsgvo" className="text-[#e24e1b] hover:underline">
+          LDI NRW
+        </Link>
+        {' '}und haben bereits zahlreiche Unternehmen in der Region Düsseldorf erfolgreich DSGVO-konform aufgestellt.
+      </>)
     }
   ];
 

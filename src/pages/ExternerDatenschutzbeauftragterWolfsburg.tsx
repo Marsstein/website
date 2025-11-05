@@ -39,7 +39,13 @@ const ExternerDatenschutzbeauftragterWolfsburg: React.FC = () => {
   const faqs = [
     {
       question: "Warum einen externen Datenschutzbeauftragten in Wolfsburg?",
-      answer: "Als Wolfsburger Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig niedrigeren Kosten (ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Wolfsburg."
+      answer: (<>
+        Als Wolfsburger Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig{' '}
+        <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="text-[#e24e1b] hover:underline">
+          niedrigeren Kosten
+        </Link>
+        {' '}(ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Wolfsburg.
+      </>)
     },
     {
       question: "Wie läuft die Beratung für Unternehmen in Wolfsburg ab?",
@@ -51,7 +57,12 @@ const ExternerDatenschutzbeauftragterWolfsburg: React.FC = () => {
     },
     {
       question: "Was kostet ein externer DSB in Wolfsburg?",
-      answer: "Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Wolfsburg."
+      answer: (<>
+        Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Wolfsburg.{' '}
+        <Link to="/preise" className="text-[#e24e1b] hover:underline">
+          Alle Pakete im Überblick
+        </Link>.
+      </>)
     },
     {
       question: "Wie schnell können Sie in Wolfsburg starten?",
@@ -59,7 +70,13 @@ const ExternerDatenschutzbeauftragterWolfsburg: React.FC = () => {
     },
     {
       question: "Kennen Sie die Datenschutz-Anforderungen in Niedersachsen?",
-      answer: "Ja, wir kennen die Besonderheiten der LfD Niedersachsen und haben bereits zahlreiche Unternehmen in der Region Wolfsburg erfolgreich DSGVO-konform aufgestellt."
+      answer: (<>
+        Ja, wir kennen die Besonderheiten der{' '}
+        <Link to="/dsgvo" className="text-[#e24e1b] hover:underline">
+          LfD Niedersachsen
+        </Link>
+        {' '}und haben bereits zahlreiche Unternehmen in der Region Wolfsburg erfolgreich DSGVO-konform aufgestellt.
+      </>)
     }
   ];
 

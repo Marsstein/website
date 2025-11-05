@@ -39,7 +39,13 @@ const ExternerDatenschutzbeauftragterStuttgart: React.FC = () => {
   const faqs = [
     {
       question: "Warum einen externen Datenschutzbeauftragten in Stuttgart?",
-      answer: "Als Stuttgarter Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig niedrigeren Kosten (ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Stuttgart."
+      answer: (<>
+        Als Stuttgarter Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig{' '}
+        <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="text-[#e24e1b] hover:underline">
+          niedrigeren Kosten
+        </Link>
+        {' '}(ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Stuttgart.
+      </>)
     },
     {
       question: "Wie läuft die Beratung für Unternehmen in Stuttgart ab?",
@@ -51,7 +57,12 @@ const ExternerDatenschutzbeauftragterStuttgart: React.FC = () => {
     },
     {
       question: "Was kostet ein externer DSB in Stuttgart?",
-      answer: "Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Stuttgart."
+      answer: (<>
+        Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Stuttgart.{' '}
+        <Link to="/preise" className="text-[#e24e1b] hover:underline">
+          Alle Pakete im Überblick
+        </Link>.
+      </>)
     },
     {
       question: "Wie schnell können Sie in Stuttgart starten?",
@@ -59,7 +70,13 @@ const ExternerDatenschutzbeauftragterStuttgart: React.FC = () => {
     },
     {
       question: "Kennen Sie die Datenschutz-Anforderungen in Baden-Württemberg?",
-      answer: "Ja, wir kennen die Besonderheiten der LfDI Baden-Württemberg und haben bereits zahlreiche Unternehmen in der Region Stuttgart erfolgreich DSGVO-konform aufgestellt."
+      answer: (<>
+        Ja, wir kennen die Besonderheiten der{' '}
+        <Link to="/dsgvo" className="text-[#e24e1b] hover:underline">
+          LfDI Baden-Württemberg
+        </Link>
+        {' '}und haben bereits zahlreiche Unternehmen in der Region Stuttgart erfolgreich DSGVO-konform aufgestellt.
+      </>)
     }
   ];
 

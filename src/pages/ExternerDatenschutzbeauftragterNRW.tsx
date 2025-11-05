@@ -39,7 +39,13 @@ const ExternerDatenschutzbeauftragterNRW: React.FC = () => {
   const faqs = [
     {
       question: "Warum einen externen Datenschutzbeauftragten in NRW?",
-      answer: "Als NRWer Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig niedrigeren Kosten (ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in NRW."
+      answer: (<>
+        Als NRWer Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig{' '}
+        <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="text-[#e24e1b] hover:underline">
+          niedrigeren Kosten
+        </Link>
+        {' '}(ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in NRW.
+      </>)
     },
     {
       question: "Wie läuft die Beratung für Unternehmen in NRW ab?",
@@ -51,7 +57,12 @@ const ExternerDatenschutzbeauftragterNRW: React.FC = () => {
     },
     {
       question: "Was kostet ein externer DSB in NRW?",
-      answer: "Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für NRW."
+      answer: (<>
+        Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für NRW.{' '}
+        <Link to="/preise" className="text-[#e24e1b] hover:underline">
+          Alle Pakete im Überblick
+        </Link>.
+      </>)
     },
     {
       question: "Wie schnell können Sie in NRW starten?",
@@ -59,7 +70,13 @@ const ExternerDatenschutzbeauftragterNRW: React.FC = () => {
     },
     {
       question: "Kennen Sie die Datenschutz-Anforderungen in Nordrhein-Westfalen?",
-      answer: "Ja, wir kennen die Besonderheiten der LDI NRW und haben bereits zahlreiche Unternehmen in der Region NRW erfolgreich DSGVO-konform aufgestellt."
+      answer: (<>
+        Ja, wir kennen die Besonderheiten der{' '}
+        <Link to="/dsgvo" className="text-[#e24e1b] hover:underline">
+          LDI NRW
+        </Link>
+        {' '}und haben bereits zahlreiche Unternehmen in der Region NRW erfolgreich DSGVO-konform aufgestellt.
+      </>)
     }
   ];
 

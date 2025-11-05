@@ -39,7 +39,13 @@ const ExternerDatenschutzbeauftragterBremerhaven: React.FC = () => {
   const faqs = [
     {
       question: "Warum einen externen Datenschutzbeauftragten in Bremerhaven?",
-      answer: "Als Bremerhavener Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig niedrigeren Kosten (ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Bremerhaven."
+      answer: (<>
+        Als Bremerhavener Unternehmen profitieren Sie von regionaler Nähe bei gleichzeitig{' '}
+        <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="text-[#e24e1b] hover:underline">
+          niedrigeren Kosten
+        </Link>
+        {' '}(ab 29€/Monat) im Vergleich zu einem internen DSB. Wir kennen die lokalen Gegebenheiten und typischen Branchen in Bremerhaven.
+      </>)
     },
     {
       question: "Wie läuft die Beratung für Unternehmen in Bremerhaven ab?",
@@ -51,7 +57,12 @@ const ExternerDatenschutzbeauftragterBremerhaven: React.FC = () => {
     },
     {
       question: "Was kostet ein externer DSB in Bremerhaven?",
-      answer: "Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Bremerhaven."
+      answer: (<>
+        Ab 29€/Monat für kleine Unternehmen (bis 20 MA), 95€/Monat für mittlere Unternehmen (bis 50 MA). Alle Leistungen inklusive - keine regionalen Aufschläge für Bremerhaven.{' '}
+        <Link to="/preise" className="text-[#e24e1b] hover:underline">
+          Alle Pakete im Überblick
+        </Link>.
+      </>)
     },
     {
       question: "Wie schnell können Sie in Bremerhaven starten?",
@@ -59,7 +70,13 @@ const ExternerDatenschutzbeauftragterBremerhaven: React.FC = () => {
     },
     {
       question: "Kennen Sie die Datenschutz-Anforderungen in Bremen?",
-      answer: "Ja, wir kennen die Besonderheiten der LfDI Bremen und haben bereits zahlreiche Unternehmen in der Region Bremerhaven erfolgreich DSGVO-konform aufgestellt."
+      answer: (<>
+        Ja, wir kennen die Besonderheiten der{' '}
+        <Link to="/dsgvo" className="text-[#e24e1b] hover:underline">
+          LfDI Bremen
+        </Link>
+        {' '}und haben bereits zahlreiche Unternehmen in der Region Bremerhaven erfolgreich DSGVO-konform aufgestellt.
+      </>)
     }
   ];
 
