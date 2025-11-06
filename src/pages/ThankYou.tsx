@@ -61,14 +61,14 @@ export const ThankYou: React.FC = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/dashboard" className="flex-1 sm:flex-initial">
+                <a href="https://calendly.com/marsstein" target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial">
                   <Button size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-white">
                     <Monitor className="w-5 h-5 mr-2" />
                     {t('thank_you_view_demo')}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
-                </Link>
-                
+                </a>
+
                 <Link to="/" className="flex-1 sm:flex-initial">
                   <Button variant="outline" size="lg" className="w-full">
                     <Home className="w-5 h-5 mr-2" />
@@ -81,8 +81,8 @@ export const ThankYou: React.FC = () => {
             <div className="bg-primary/5 rounded-lg p-4 text-sm text-muted-foreground">
               <p>
                 <strong>{t('thank_you_contact_info')}:</strong><br />
-                📧 contact@marsstein.ai<br />
-                📞 +41 44 123 45 67<br />
+                📧 info@marsstein.ai<br />
+                📞 +49 89 45126670<br />
                 🕒 {t('thank_you_response_time')}
               </p>
             </div>
