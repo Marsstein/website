@@ -101,6 +101,8 @@ const translations = {
     pricing_custom_title: 'Need a custom solution?',
     pricing_custom_desc: 'Contact our sales team for a tailored enterprise solution.',
     pricing_contact_sales: 'Contact Sales',
+    pricing_beta_title: 'Beta Phase',
+    pricing_beta_description: 'We are currently in beta. Prices and features are subject to change. Get in touch to learn more about our early access program.',
 
     // Hero Section
     hero_headline: 'GDPR & ISO27001 Compliance Made Simple',
@@ -323,6 +325,8 @@ const translations = {
     pricing_custom_title: 'Individuelle Lösung benötigt?',
     pricing_custom_desc: 'Kontaktiere unser Sales-Team für eine maßgeschneiderte Enterprise-Lösung.',
     pricing_contact_sales: 'Sales kontaktieren',
+    pricing_beta_title: 'Beta-Phase',
+    pricing_beta_description: 'Wir befinden uns derzeit in der Beta-Phase. Preise und Funktionen können sich ändern. Kontaktiere uns, um mehr über unser Early Access Programm zu erfahren.',
 
     // Hero Section
     hero_headline: 'DSGVO & ISO27001 Compliance leicht gemacht',

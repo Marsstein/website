@@ -10,9 +10,9 @@ const __dirname = path.dirname(__filename);
 // SEO configurations for each route
 const routeConfigs = {
   '/': {
-    title: 'Marsstein | DSGVO Compliance & Datenschutz Automatisierung',
-    description: 'Revolutionieren Sie Ihr Compliance-Management mit Marsstein. Automatisierte DSGVO-, EU AI Act- und ISO 27001-Lösungen für deutsche Unternehmen.',
-    keywords: 'DSGVO, Compliance, Datenschutz, EU AI Act, ISO 27001, Automatisierung, Deutschland, DACH',
+    title: 'DSGVO-Automatisierung für Datenschutzbeauftragte | Marsstein',
+    description: 'Schluss mit DSGVO-Chaos: Automatisierte Compliance-Software für Datenschutzbeauftragte. VVT, TOMs, Fristen – alles an einem Ort. ✓ Jetzt testen',
+    keywords: 'DSGVO Automatisierung, Datenschutzbeauftragter Software, DSB Tool, VVT automatisch, TOMs Dokumentation, Compliance Software',
     canonical: 'https://marsstein.ai'
   },
   '/dsgvo': {
@@ -92,6 +92,18 @@ const routeConfigs = {
     description: 'Kostenlose Compliance-Ressourcen, Vorlagen und Checklisten. DSGVO-Templates, Audit-Checklisten und Best Practices.',
     keywords: 'Compliance Ressourcen, DSGVO Vorlagen, Checklisten, Templates, Best Practices, Kostenlos',
     canonical: 'https://marsstein.ai/resources'
+  },
+  '/wissen/leitfaden/datenschutzbeauftragter': {
+    title: 'Datenschutzbeauftragter: Aufgaben, Pflichten & ab wann Pflicht | DSGVO Leitfaden 2025',
+    description: 'Umfassender Leitfaden zum Datenschutzbeauftragten ✓ Aufgaben ✓ Ab wann Pflicht? ✓ 20 Mitarbeiter Regel ✓ Voraussetzungen ✓ Kosten ✓ Intern vs Extern ✓ Alle DSGVO Infos',
+    keywords: 'Datenschutzbeauftragter, DSB, DSGVO, Aufgaben Datenschutzbeauftragter, ab wann Datenschutzbeauftragter, 20 Mitarbeiter, Bestellung, Pflicht, Kosten, intern, extern',
+    canonical: 'https://marsstein.ai/wissen/leitfaden/datenschutzbeauftragter'
+  },
+  '/wissen/leitfaden/datenschutzbeauftragter-ausbildung': {
+    title: 'Datenschutzbeauftragter werden: Ausbildung, Zertifizierung & Gehalt 2025 | TÜV, DEKRA, GDD',
+    description: 'Umfassender Karriere-Guide ✓ Wie wird man Datenschutzbeauftragter? ✓ TÜV/DEKRA Zertifizierung ✓ Kosten & Dauer ✓ Gehalt (42.000-120.000 €) ✓ Quereinsteiger ✓ Online-Ausbildung ✓ Weiterbildung',
+    keywords: 'Datenschutzbeauftragter Ausbildung, TÜV Zertifizierung, DEKRA, GDD, Gehalt, Kosten, wie wird man DSB, Quereinsteiger, Online Kurs, Weiterbildung',
+    canonical: 'https://marsstein.ai/wissen/leitfaden/datenschutzbeauftragter-ausbildung'
   }
 };
 

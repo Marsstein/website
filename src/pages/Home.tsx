@@ -12,17 +12,17 @@ const Home = () => {
     "description": "Compliance-Plattform für DSGVO, ISO 27001, EU AI Act und mehr",
     "sameAs": [
       "https://www.linkedin.com/company/marsstein",
-      "https://twitter.com/marsstein"
+      "https://instagram.com/marsstein.ai"
     ]
   };
 
   return (
     <>
       <SEOHead
-        title="Compliance Software & Beratung für DSGVO, ISO 27001"
-        description="Marsstein Compliance Platform: KI-gestützte Lösungen für DSGVO, ISO 27001 & EU AI Act. ✓ Automatisiert ✓ Rechtssicher. Jetzt starten!"
+        title="DSGVO-Automatisierung für Datenschutzbeauftragte | Marsstein"
+        description="Schluss mit DSGVO-Chaos: Automatisierte Compliance-Software für Datenschutzbeauftragte. VVT, TOMs, Fristen – alles an einem Ort. ✓ Jetzt testen"
         canonical="/"
-        keywords="Compliance Software, DSGVO, ISO 27001, EU AI Act, Datenschutz, Compliance Management"
+        keywords="DSGVO Automatisierung, Datenschutzbeauftragter Software, DSB Tool, VVT automatisch, TOMs Dokumentation, Compliance Software"
         structuredData={structuredData}
       />
       
@@ -106,6 +106,34 @@ const Home = () => {
                   </Link>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* DSB Info Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-blue-100">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Brauchen Sie einen Datenschutzbeauftragten?
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Ab 20 Mitarbeitern, die personenbezogene Daten verarbeiten, benötigen Unternehmen in Deutschland einen <strong>Datenschutzbeauftragten (DSB)</strong>. Ein externer DSB übernimmt die DSGVO-Überwachung, berät bei Compliance-Fragen und ist Ihr Ansprechpartner bei Behördenanfragen.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/wissen/leitfaden/datenschutzbeauftragter"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                >
+                  Mehr über DSB-Aufgaben erfahren →
+                </Link>
+                <Link
+                  to="/externer-datenschutzbeauftragter"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Externen DSB beauftragen
+                </Link>
+              </div>
             </div>
           </div>
         </section>

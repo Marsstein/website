@@ -28,10 +28,10 @@
 
 /* Performance optimizations to prevent flickers */
 @layer base {
-  /* Global smooth scrolling */
+  /* Global smooth scrolling with offset for sticky header + TOC */
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 144px; /* 64px header + 60px TOC + 20px padding */
   }
   
   /* Optimize all elements for smooth rendering */

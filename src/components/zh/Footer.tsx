@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Separator } from '@/components/ui/separator';
-import { Mail, FileText, ShieldCheck, Wrench, BookOpen, CheckCircle } from 'lucide-react';
+import { Mail, FileText, ShieldCheck, Wrench, BookOpen, CheckCircle, Linkedin, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -112,9 +112,30 @@ export const Footer: React.FC = () => {
                 className="h-10 w-auto filter drop-shadow-[0_4px_20px_rgba(228,78,27,0.3)] hover:drop-shadow-[0_6px_30px_rgba(228,78,27,0.4)] transition-all duration-300"
               />
             </Link>
-            <p className="text-xl font-light tracking-wide text-[#232323]">
+            <p className="text-xl font-light tracking-wide text-[#232323] mb-4">
               让合规变得简单
             </p>
+
+            <div className="flex items-center justify-center gap-4">
+              <a
+                href="https://www.linkedin.com/company/marsstein"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gradient-to-br from-[#e24e1b]/10 to-[#f97316]/5 rounded-xl hover:from-[#e24e1b]/20 hover:to-[#f97316]/10 transition-all duration-300 hover:-translate-y-1 group"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5 text-[#e24e1b] group-hover:text-[#f97316] transition-colors" />
+              </a>
+              <a
+                href="https://instagram.com/marsstein.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gradient-to-br from-[#e24e1b]/10 to-[#f97316]/5 rounded-xl hover:from-[#e24e1b]/20 hover:to-[#f97316]/10 transition-all duration-300 hover:-translate-y-1 group"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5 text-[#e24e1b] group-hover:text-[#f97316] transition-colors" />
+              </a>
+            </div>
           </div>
 
           {/* Cards Grid */}

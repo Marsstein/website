@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import {
   Check, X, Star, Shield, Zap, ChevronDown, ChevronUp,
   Sparkles, FileText, UserCheck, Award, Bot, BarChart3,
-  Lock, Headphones, Globe, Heart, TrendingUp, Rocket, Target
+  Lock, Headphones, Globe, Heart, TrendingUp, Rocket, Target, Info, ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -103,6 +103,20 @@ const Preise: React.FC = () => {
       }
     }
   ];
+
+  const featureToLinkMap: Record<string, string> = {
+    'Verarbeitungsverzeichnis (Art. 30)': '/features#verarbeitungsverzeichnis-ropa',
+    'TOMs (Technische & Org. Maßnahmen)': '/features#avv-generator-tom-dokumentation',
+    'AVV-Verträge': '/features#avv-generator-tom-dokumentation',
+    'Betroffenenrechte-Prozesse': '/features#betroffenenanfragen-dsar',
+    'Externer DSB': '/externer-datenschutzbeauftragter',
+    'DSB-Haftungsübernahme': '/externer-datenschutzbeauftragter',
+    'DSB-Zertifikat': '/externer-datenschutzbeauftragter',
+    'DSB-Hotline': '/externer-datenschutzbeauftragter',
+    'MARS-AI COMPLIANCE ASSISTANT': '/features',
+    'Gesetzesänderungs-Alerts': '/features#automatische-compliance-updates',
+    'Automatische Policy-Updates': '/features#automatische-compliance-updates'
+  };
 
   const featureCategories = [
     {
@@ -270,11 +284,28 @@ const Preise: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-xl md:text-2xl text-[#474747] max-w-4xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-[#474747] max-w-4xl mx-auto leading-relaxed mb-8"
             >
               Wählen Sie das passende Paket für Ihre <span className="font-semibold text-[#e24e1b]">DSGVO-Compliance</span>.
               Monatlich kündbar, <span className="font-semibold text-[#232323]">keine versteckten Kosten</span>.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="inline-flex items-start gap-3 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 max-w-2xl mx-auto mb-8"
+            >
+              <Info className="h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <div className="text-left">
+                <p className="text-sm text-blue-900 dark:text-blue-100 font-semibold mb-1">
+                  Beta-Phase
+                </p>
+                <p className="text-sm text-blue-700 dark:text-blue-300">
+                  Wir befinden uns derzeit in der Beta-Phase. Preise und Funktionen können sich ändern. Kontaktieren Sie uns, um mehr über unser Early Access Programm zu erfahren.
+                </p>
+              </div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -537,7 +568,18 @@ const Preise: React.FC = () => {
                                 transition={{ duration: 0.3, delay: idx * 0.05 }}
                                 className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors"
                               >
-                                <td className="px-12 py-3 text-sm font-medium text-[#232323]">{feature.label}</td>
+                                <td className="px-12 py-3 text-sm font-medium text-[#232323]">
+                                  {featureToLinkMap[feature.label] ? (
+                                    <Link
+                                      to={featureToLinkMap[feature.label]}
+                                      className="text-[#e24e1b] hover:text-[#ea580c] hover:underline transition-colors"
+                                    >
+                                      {feature.label}
+                                    </Link>
+                                  ) : (
+                                    feature.label
+                                  )}
+                                </td>
                                 <td className="px-6 py-3 text-center">{getValue(feature.starter)}</td>
                                 <td className="px-6 py-3 text-center bg-gray-50/50">{getValue(feature.professional)}</td>
                                 <td className="px-6 py-3 text-center">{getValue(feature.enterprise)}</td>
@@ -599,7 +641,18 @@ const Preise: React.FC = () => {
                                     transition={{ delay: idx * 0.02 }}
                                     className="border-b border-gray-100 last:border-0 px-2 py-2"
                                   >
-                                    <div className="text-[10px] font-medium text-[#232323] mb-1.5 leading-tight">{feature.label}</div>
+                                    <div className="text-[10px] font-medium text-[#232323] mb-1.5 leading-tight">
+                                      {featureToLinkMap[feature.label] ? (
+                                        <Link
+                                          to={featureToLinkMap[feature.label]}
+                                          className="text-[#e24e1b] hover:text-[#ea580c] hover:underline transition-colors"
+                                        >
+                                          {feature.label}
+                                        </Link>
+                                      ) : (
+                                        feature.label
+                                      )}
+                                    </div>
                                     <div className="grid grid-cols-3 gap-0.5">
                                       <div className="text-center p-1.5 bg-gray-50 rounded flex items-center justify-center min-h-[28px]">
                                         {feature.starter === true && <Check className="h-4 w-4 text-[#39B37B]" />}
@@ -640,6 +693,65 @@ const Preise: React.FC = () => {
             )}
           </AnimatePresence>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mt-12 pb-8"
+        >
+          <Link to="/features">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white transition-all duration-300 px-8 py-6 text-lg font-semibold group"
+            >
+              <Zap className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+              Alle Features im Detail entdecken
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+          <p className="text-sm text-gray-500 mt-3">
+            Erfahren Sie mehr über ROPA, DSFA, DSAR-Management und weitere Module
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto mt-12 mb-8"
+        >
+          <div className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-xl p-8 shadow-lg">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-blue-600 rounded-lg">
+                <UserCheck className="h-6 w-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Warum brauche ich einen Datenschutzbeauftragten?
+                </h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Ab <strong>20 Mitarbeitern</strong>, die mit personenbezogenen Daten arbeiten, benötigen Sie nach DSGVO einen Datenschutzbeauftragten. Ein externer DSB bietet Ihnen <strong>unabhängige Beratung</strong>, überwacht Ihre DSGVO-Compliance und ist direkter Ansprechpartner bei Behördenanfragen – ohne die Kosten und den Kündigungsschutz eines internen Mitarbeiters.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link to="/wissen/leitfaden/datenschutzbeauftragter" className="text-sm">
+                    <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                      <FileText className="mr-2 h-4 w-4" />
+                      Mehr über DSB-Pflichten & Aufgaben
+                    </Button>
+                  </Link>
+                  <Link to="/externer-datenschutzbeauftragter" className="text-sm">
+                    <Button className="bg-blue-600 hover:bg-blue-700">
+                      Jetzt externen DSB beauftragen
+                      <ChevronRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       <section className="relative py-12 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-[#F5F6F8] via-white to-[#F5F6F8]">

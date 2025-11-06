@@ -79,6 +79,20 @@ const DSGVOWissen: React.FC = () => {
           readTime: '7 Min',
           level: 'Fortgeschritten',
           link: '/wissen/dsgvo/verantwortlichkeiten'
+        },
+        {
+          title: 'Der Datenschutzbeauftragte',
+          description: 'Pflichten, Aufgaben und Anforderungen an den DSB nach DSGVO',
+          readTime: '15 Min',
+          level: 'Praktisch',
+          link: '/wissen/leitfaden/datenschutzbeauftragter'
+        },
+        {
+          title: 'DSB Ausbildung & Qualifikation',
+          description: 'Wie wird man Datenschutzbeauftragter? Anforderungen und Zertifizierungen',
+          readTime: '12 Min',
+          level: 'Praktisch',
+          link: '/wissen/leitfaden/datenschutzbeauftragter-ausbildung'
         }
       ]
     },

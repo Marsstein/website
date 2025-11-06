@@ -142,7 +142,7 @@ ${sanitizedData.message}
       }, 1500);
 
     } catch (error) {
-      let errorMessage = '发送失败。请重试或直接联系我们。';
+      const errorMessage = '发送失败。请重试或直接联系我们。';
 
       toast({
         title: '错误',

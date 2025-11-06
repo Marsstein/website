@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Shield, Lock, UserCheck, Mail, Globe, Server, FileText, AlertTriangle } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -6,6 +7,10 @@ import { Footer } from '@/components/Footer';
 const Datenschutz: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Datenschutzerklärung | Marsstein GmbH</title>
+      </Helmet>
       <Header />
       <main className="py-16">
       <div className="container mx-auto px-4 max-w-4xl">

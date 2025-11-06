@@ -3,26 +3,22 @@ import { Button } from '@/components/ui/button';
 import {
   Menu as LucideMenu,
   ChevronDown,
-  Shield,
   Award,
   BookOpen,
   Building2,
-  DollarSign,
   Users,
   Mail,
   FileCheck,
   FileText,
   AlertTriangle,
   Bell,
-  Cloud,
-  Car,
   Wrench,
-  Cookie,
   Bot,
-  BarChart3,
   Home,
   X,
-  Globe
+  Globe,
+  Sparkles,
+  Layers
 } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -69,8 +65,8 @@ export const Header: React.FC = () => {
   };
 
   const navItems = [
-    { key: 'nav_regulations', href: '#' },
-    { key: 'nav_certifications', href: '#' },
+    { key: 'nav_product', href: '#' },
+    { key: 'nav_solutions', href: '#' },
     { key: 'nav_knowledge', href: '#' },
     { key: 'nav_industries', href: '/branchen' },
     { key: 'nav_pricing', href: '/preise' },
@@ -78,25 +74,53 @@ export const Header: React.FC = () => {
     { key: 'nav_contact', href: '/contact' },
   ];
 
-  const regulationsDropdown = (
+  const productDropdown = (
     <DropdownMenu>
-      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-        Regulierungen
+      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+        Produkt
+        <ChevronDown className="h-3 w-3" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Link to="/eu-ai-act" className="block w-full">
-            EU AI Act
+          <Link to="/features" className="block w-full">
+            Alle Features
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/eu-data-act" className="block w-full">
-            EU Data Act
+          <Link to="/beta" className="block w-full">
+            Beta testen
           </Link>
         </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/preise" className="block w-full">
+            Preise
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/externer-datenschutzbeauftragter" className="block w-full">
+            Externer DSB
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  const solutionsDropdown = (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+        Lösungen
+        <ChevronDown className="h-3 w-3" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Regulierungen</div>
         <DropdownMenuItem>
           <Link to="/dsgvo" className="block w-full">
             DSGVO
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/eu-ai-act" className="block w-full">
+            EU AI Act
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
@@ -107,6 +131,40 @@ export const Header: React.FC = () => {
         <DropdownMenuItem>
           <Link to="/hinweisgeberschutzgesetz" className="block w-full">
             Hinweisgeberschutzgesetz
+          </Link>
+        </DropdownMenuItem>
+        <div className="h-px bg-border my-1" />
+        <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Zertifizierungen</div>
+        <DropdownMenuItem>
+          <Link to="/iso-27001-zertifizierung" className="block w-full">
+            ISO 27001
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/soc2-zertifizierung" className="block w-full">
+            SOC 2
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/iso-27017-zertifizierung" className="block w-full">
+            ISO 27017
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/iso-27018-zertifizierung" className="block w-full">
+            ISO 27018
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/tisax-zertifizierung" className="block w-full">
+            TISAX®
+          </Link>
+        </DropdownMenuItem>
+        <div className="h-px bg-border my-1" />
+        <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Tools</div>
+        <DropdownMenuItem>
+          <Link to="/tools" className="block w-full">
+            Alle Tools
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -257,12 +315,10 @@ export const Header: React.FC = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
-            item.key === 'nav_regulations' ? (
-              <div key={item.key}>{regulationsDropdown}</div>
-            ) : item.key === 'nav_certifications' ? (
-              <div key={item.key}>{certificationsDropdown}</div>
-            ) : item.key === 'nav_tools' ? (
-              <div key={item.key}>{toolsDropdown}</div>
+            item.key === 'nav_product' ? (
+              <div key={item.key}>{productDropdown}</div>
+            ) : item.key === 'nav_solutions' ? (
+              <div key={item.key}>{solutionsDropdown}</div>
             ) : item.key === 'nav_knowledge' ? (
               <div key={item.key}>{knowledgeDropdown}</div>
             ) : (
@@ -347,179 +403,127 @@ export const Header: React.FC = () => {
                       <span>Startseite</span>
                     </Link>
 
-                    {/* Regulierungen Section */}
+                    {/* Produkt Section */}
                     <Collapsible
-                      open={openSections.includes('regulations')}
-                      onOpenChange={() => toggleSection('regulations')}
+                      open={openSections.includes('product')}
+                      onOpenChange={() => toggleSection('product')}
                     >
                       <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
                         <div className="flex items-center gap-3">
-                          <Shield className="h-4 w-4 text-primary" />
-                          <span className="font-medium">Regulierungen</span>
+                          <Sparkles className="h-4 w-4 text-primary" />
+                          <span className="font-medium">Produkt</span>
                         </div>
                         <ChevronDown className={cn(
                           "h-4 w-4 transition-transform duration-200",
-                          openSections.includes('regulations') && "rotate-180"
+                          openSections.includes('product') && "rotate-180"
                         )} />
                       </CollapsibleTrigger>
                       <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
                         <Link
-                          to="/eu-ai-act"
+                          to="/features"
                           onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
-                          <Bot className="h-3.5 w-3.5" />
-                          EU AI Act
+                          Alle Features
                         </Link>
                         <Link
-                          to="/eu-data-act"
+                          to="/beta"
                           onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
-                          <FileText className="h-3.5 w-3.5" />
-                          EU Data Act
+                          Beta testen
                         </Link>
+                        <Link
+                          to="/preise"
+                          onClick={handleMobileNavClick}
+                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          Preise
+                        </Link>
+                        <Link
+                          to="/externer-datenschutzbeauftragter"
+                          onClick={handleMobileNavClick}
+                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          Externer DSB
+                        </Link>
+                      </CollapsibleContent>
+                    </Collapsible>
+
+                    {/* Lösungen Section */}
+                    <Collapsible
+                      open={openSections.includes('solutions')}
+                      onOpenChange={() => toggleSection('solutions')}
+                    >
+                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
+                        <div className="flex items-center gap-3">
+                          <Layers className="h-4 w-4 text-primary" />
+                          <span className="font-medium">Lösungen</span>
+                        </div>
+                        <ChevronDown className={cn(
+                          "h-4 w-4 transition-transform duration-200",
+                          openSections.includes('solutions') && "rotate-180"
+                        )} />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
+                        <div className="pl-11 pr-4 py-2 text-xs font-semibold text-muted-foreground">Regulierungen</div>
                         <Link
                           to="/dsgvo"
                           onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
                           <FileCheck className="h-3.5 w-3.5" />
                           DSGVO
                         </Link>
                         <Link
+                          to="/eu-ai-act"
+                          onClick={handleMobileNavClick}
+                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          <Bot className="h-3.5 w-3.5" />
+                          EU AI Act
+                        </Link>
+                        <Link
                           to="/nis2-compliance"
                           onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
                           <AlertTriangle className="h-3.5 w-3.5" />
-                          NIS2-Richtlinie
+                          NIS2
                         </Link>
                         <Link
                           to="/hinweisgeberschutzgesetz"
                           onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
                           <Bell className="h-3.5 w-3.5" />
-                          Hinweisgeberschutzgesetz
+                          HinSchG
                         </Link>
-                      </CollapsibleContent>
-                    </Collapsible>
-
-                    {/* Zertifizierungen Section */}
-                    <Collapsible
-                      open={openSections.includes('certifications')}
-                      onOpenChange={() => toggleSection('certifications')}
-                    >
-                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
-                        <div className="flex items-center gap-3">
-                          <Award className="h-4 w-4 text-primary" />
-                          <span className="font-medium">Zertifizierungen</span>
-                        </div>
-                        <ChevronDown className={cn(
-                          "h-4 w-4 transition-transform duration-200",
-                          openSections.includes('certifications') && "rotate-180"
-                        )} />
-                      </CollapsibleTrigger>
-                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
+                        <div className="pl-11 pr-4 py-2 text-xs font-semibold text-muted-foreground mt-2">Zertifizierungen</div>
                         <Link
                           to="/iso-27001-zertifizierung"
                           onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
-                          <FileText className="h-3.5 w-3.5" />
+                          <Award className="h-3.5 w-3.5" />
                           ISO 27001
                         </Link>
                         <Link
                           to="/soc2-zertifizierung"
                           onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
-                          <FileText className="h-3.5 w-3.5" />
+                          <Award className="h-3.5 w-3.5" />
                           SOC 2
                         </Link>
-                        <Link
-                          to="/iso-27017-zertifizierung"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Cloud className="h-3.5 w-3.5" />
-                          ISO 27017 Cloud Security
-                        </Link>
-                        <Link
-                          to="/iso-27018-zertifizierung"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Cloud className="h-3.5 w-3.5" />
-                          ISO 27018 Cloud Privacy
-                        </Link>
-                        <Link
-                          to="/tisax-zertifizierung"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Car className="h-3.5 w-3.5" />
-                          TISAX® Automotive
-                        </Link>
-                      </CollapsibleContent>
-                    </Collapsible>
-
-                    {/* Tools Section */}
-                    <Collapsible
-                      open={openSections.includes('tools')}
-                      onOpenChange={() => toggleSection('tools')}
-                    >
-                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
-                        <div className="flex items-center gap-3">
-                          <Wrench className="h-4 w-4 text-primary" />
-                          <span className="font-medium">Tools</span>
-                        </div>
-                        <ChevronDown className={cn(
-                          "h-4 w-4 transition-transform duration-200",
-                          openSections.includes('tools') && "rotate-180"
-                        )} />
-                      </CollapsibleTrigger>
-                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
+                        <div className="pl-11 pr-4 py-2 text-xs font-semibold text-muted-foreground mt-2">Tools</div>
                         <Link
                           to="/tools"
                           onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
                           <Wrench className="h-3.5 w-3.5" />
-                          Tools Übersicht
-                        </Link>
-                        <Link
-                          to="/tools/cookie-management"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Cookie className="h-3.5 w-3.5" />
-                          Cookie Management
-                        </Link>
-                        <Link
-                          to="/tools/whistleblower-system"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Bell className="h-3.5 w-3.5" />
-                          Hinweisgebersystem
-                        </Link>
-                        <Link
-                          to="/tools/compliance-ai-assistant"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Bot className="h-3.5 w-3.5" />
-                          AI Assistant
-                        </Link>
-                        <Link
-                          to="/tools/dsgvo-compliance-scorecard"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <BarChart3 className="h-3.5 w-3.5" />
-                          Compliance Scorecard
+                          Alle Tools
                         </Link>
                       </CollapsibleContent>
                     </Collapsible>
@@ -599,19 +603,6 @@ export const Header: React.FC = () => {
                         <span>Branchen</span>
                       </Link>
                       <Link
-                        to="/preise"
-                        onClick={handleMobileNavClick}
-                        className={cn(
-                          "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
-                          location.pathname === '/preise'
-                            ? "bg-primary/10 text-primary"
-                            : "hover:bg-accent hover:translate-x-1"
-                        )}
-                      >
-                        <DollarSign className="h-4 w-4" />
-                        <span>Preise</span>
-                      </Link>
-                      <Link
                         to="/ueber-uns"
                         onClick={handleMobileNavClick}
                         className={cn(
@@ -651,7 +642,6 @@ export const Header: React.FC = () => {
                   </Button>
                   <Link to="/beta" className="block" onClick={handleMobileNavClick}>
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
-                      <span className="mr-2">🚀</span>
                       Kostenlos testen
                     </Button>
                   </Link>

@@ -126,7 +126,7 @@ export const PackageFinder: React.FC = () => {
 
   const calculateRecommendation = (): PackageRecommendation => {
     const reasons: string[] = [];
-    let scores = {
+    const scores = {
       'klein-starter': 0,
       'starter': 0,
       'professional': 0,

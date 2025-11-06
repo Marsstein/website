@@ -527,6 +527,12 @@ const DSGVO30Tage: React.FC = () => {
                   <strong>Quick Wins für Tag 1:</strong> {quickWins.join(' • ')}
                 </AlertDescription>
               </Alert>
+
+              <div className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                  <strong>Wichtig:</strong> <strong>Tag 24</strong> behandelt die Benennung eines Datenschutzbeauftragten. Prüfen Sie frühzeitig, ob Sie benennungspflichtig sind. → <Link to="/wissen/leitfaden/datenschutzbeauftragter" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold underline">Alles über DSB-Pflichten, Aufgaben & Benennungspflicht</Link>
+                </p>
+              </div>
             </motion.div>
 
             {/* Week Overview */}

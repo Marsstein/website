@@ -15,7 +15,6 @@ import {
   FileText,
   Clock,
   Bot,
-  ClipboardList,
   Bell,
   Users,
   Mail,
@@ -702,6 +701,45 @@ const WorkflowSection: React.FC = () => {
             ))}
           </div>
         </TracingBeam>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="max-w-3xl mx-auto mt-16 px-4"
+        >
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 sm:p-12 border-2 border-blue-200 shadow-xl text-center">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              So einfach will ich auch arbeiten
+            </h3>
+            <p className="text-gray-600 mb-8 text-lg">
+              Sichern Sie sich jetzt einen der letzten 13 Beta-Plätze und sparen Sie 50% – für immer.
+            </p>
+            <Button
+              size="lg"
+              onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#003366] hover:bg-[#004d99] text-white text-lg font-bold px-8 py-6 shadow-2xl"
+            >
+              Jetzt Beta-Zugang sichern
+              <Rocket className="ml-2 h-5 w-5" />
+            </Button>
+            <div className="mt-6 flex items-center justify-center gap-6 flex-wrap text-sm text-gray-600">
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-600" />
+                Kostenlose Beta-Phase
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-600" />
+                Keine Kreditkarte
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-600" />
+                Jederzeit kündbar
+              </span>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -728,30 +766,20 @@ const AnimatedSection = ({ children, className = "", id }: { children: React.Rea
 const Beta: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
-    lastName: '',
     email: '',
-    phone: '',
     company: '',
-    companySize: '',
-    role: '',
-    currentSolution: '',
-    biggestChallenge: '',
-    weeklyHours: '',
-    challenges: [] as string[],
-    challengeLevel: '',
     consent: false
   });
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [formStep, setFormStep] = useState<1 | 2>(1);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    if (!formData.email || !formData.firstName || !formData.company) {
+    if (!formData.email || !formData.firstName || !formData.company || !formData.consent) {
       setError('Bitte füllen Sie alle Pflichtfelder aus.');
       return;
     }
@@ -764,10 +792,7 @@ const Beta: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          challenges: formData.challenges.join(', ')
-        })
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
@@ -784,32 +809,13 @@ const Beta: React.FC = () => {
     }
   };
 
-  const handleInputChange = useCallback((field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = useCallback((field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
-  }, []);
-
-  const handleChallengeToggle = useCallback((challenge: string) => {
-    setFormData(prev => ({
-      ...prev,
-      challenges: prev.challenges.includes(challenge)
-        ? prev.challenges.filter(c => c !== challenge)
-        : [...prev.challenges, challenge]
-    }));
   }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleStep1Submit = useCallback((e: React.FormEvent) => {
-    e.preventDefault();
-    if (formData.firstName && formData.email && formData.company) {
-      setFormStep(2);
-      setTimeout(() => {
-        document.getElementById('step2-fields')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
-    }
-  }, [formData.firstName, formData.email, formData.company]);
 
   if (submitted) {
     return (
@@ -817,7 +823,7 @@ const Beta: React.FC = () => {
         <SEOHead
           title="Anmeldung erfolgreich - Beta-Programm | Marsstein"
           description="Vielen Dank für Ihre Anmeldung zum Beta-Programm."
-          noindex={true}
+          noIndex={true}
         />
         <Header />
         <div className="min-h-screen bg-background py-12">
@@ -1015,7 +1021,7 @@ const Beta: React.FC = () => {
                 <Rocket className="w-4 h-4 text-white" />
                 <span className="text-white text-sm font-semibold">BETA-PROGRAMM</span>
                 <Badge className="bg-[#e24e1b] text-white border-none ml-2">
-                  Limitierte Plätze
+                  Nur noch 13 Plätze verfügbar
                 </Badge>
               </div>
 
@@ -1119,9 +1125,42 @@ const Beta: React.FC = () => {
 
             <div id="problem-impact">
               <div className="text-center px-4">
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 max-w-3xl mx-auto leading-tight">
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 max-w-3xl mx-auto leading-tight mb-12">
                   Ihr Fachwissen ist unersetzlich. Die <span className="text-[#e24e1b]">Routine-Arbeit</span> nicht.
                 </p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="max-w-2xl mx-auto"
+                >
+                  <div className="bg-gradient-to-br from-[#e24e1b] to-[#f97316] rounded-2xl p-8 shadow-2xl">
+                    <Button
+                      size="lg"
+                      onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="w-full bg-white hover:bg-gray-100 text-[#e24e1b] text-lg font-bold py-6 shadow-xl"
+                    >
+                      Routine-Arbeit automatisieren – jetzt Beta testen
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                    <p className="text-white/90 text-sm mt-4 flex items-center justify-center gap-4 flex-wrap">
+                      <span className="flex items-center gap-1.5">
+                        <CheckCircle2 className="w-4 h-4" />
+                        3 Minuten Setup
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <CheckCircle2 className="w-4 h-4" />
+                        Keine Kreditkarte
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <CheckCircle2 className="w-4 h-4" />
+                        50% Lifetime-Rabatt
+                      </span>
+                    </p>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -1191,7 +1230,7 @@ const Beta: React.FC = () => {
           <div className="container px-4 mx-auto max-w-2xl">
             <div className="text-center mb-8">
               <Badge className="bg-white/20 text-white border-white/30 mb-4 text-sm px-4 py-2">
-                Limited Beta Access
+                Nur noch 13 Plätze verfügbar
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
                 Werden Sie Beta-Tester
@@ -1224,258 +1263,82 @@ const Beta: React.FC = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    {formStep === 1 ? (
-                      <form onSubmit={handleStep1Submit} className="space-y-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="firstName">Vorname *</Label>
-                          <Input
-                            id="firstName"
-                            value={formData.firstName}
-                            onChange={handleInputChange('firstName')}
-                            required
-                            placeholder="Max"
-                            autoFocus
-                          />
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="firstName">Vorname *</Label>
+                        <Input
+                          id="firstName"
+                          value={formData.firstName}
+                          onChange={handleInputChange('firstName')}
+                          required
+                          placeholder="Max"
+                          autoFocus
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="email">E-Mail *</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleInputChange('email')}
+                          required
+                          placeholder="max@firma.de"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="company">Unternehmen *</Label>
+                        <Input
+                          id="company"
+                          value={formData.company}
+                          onChange={handleInputChange('company')}
+                          required
+                          placeholder="Musterfirma GmbH"
+                        />
+                      </div>
+
+                      <div className="flex items-start gap-2 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                        <Checkbox
+                          id="consent"
+                          checked={formData.consent}
+                          onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
+                          required
+                        />
+                        <label htmlFor="consent" className="text-sm cursor-pointer leading-tight">
+                          Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz" className="text-[#e24e1b] underline">Datenschutzerklärung</a> zu.
+                        </label>
+                      </div>
+
+                      {error && (
+                        <div className="bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 p-4 rounded-lg text-sm border border-red-200 dark:border-red-800">
+                          {error}
                         </div>
+                      )}
 
-                        <div className="space-y-2">
-                          <Label htmlFor="email">E-Mail *</Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleInputChange('email')}
-                            required
-                            placeholder="max@firma.de"
-                          />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="company">Unternehmen *</Label>
-                          <Input
-                            id="company"
-                            value={formData.company}
-                            onChange={handleInputChange('company')}
-                            required
-                            placeholder="Musterfirma GmbH"
-                          />
-                        </div>
-
-                        <Button
-                          type="submit"
-                          className="w-full bg-[#e24e1b] hover:bg-[#c43e15] text-white py-3"
-                        >
-                          Weiter
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-
-                        <p className="text-xs text-center text-gray-500">
-                          Keine Kreditkarte erforderlich • Jederzeit kündbar
-                        </p>
-                      </form>
-                    ) : (
-                      <form onSubmit={handleSubmit} className="space-y-4" id="step2-fields">
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="lastName">Nachname (optional)</Label>
-                            <Input
-                              id="lastName"
-                              value={formData.lastName}
-                              onChange={handleInputChange('lastName')}
-                              placeholder="Mustermann"
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="phone">Telefon (optional)</Label>
-                            <Input
-                              id="phone"
-                              type="tel"
-                              value={formData.phone}
-                              onChange={handleInputChange('phone')}
-                              placeholder="+49 123 456789"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="companySize">Größe des Unternehmens, das Sie betreuen *</Label>
-                          <select
-                            id="companySize"
-                            value={formData.companySize}
-                            onChange={handleInputChange('companySize')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            required
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="1-10">1-10 Mitarbeiter</option>
-                            <option value="11-50">11-50 Mitarbeiter</option>
-                            <option value="51-250">51-250 Mitarbeiter</option>
-                            <option value="251+">251+ Mitarbeiter</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="role">Ihre Rolle *</Label>
-                          <select
-                            id="role"
-                            value={formData.role}
-                            onChange={handleInputChange('role')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            required
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="interner-dsb-haupt">Interner DSB (hauptberuflich)</option>
-                            <option value="interner-dsb-neben">Interner DSB (nebenberuflich)</option>
-                            <option value="externer-dsb">Externer DSB / Berater</option>
-                            <option value="verantwortlich">Datenschutz-Verantwortlicher (kein offizieller DSB)</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="currentSolution">Wie managen Sie DSGVO aktuell?</Label>
-                          <select
-                            id="currentSolution"
-                            value={formData.currentSolution}
-                            onChange={handleInputChange('currentSolution')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="excel-word">Excel/Word/E-Mail</option>
-                            <option value="externe-beratung">Externe Beratung/Berater</option>
-                            <option value="andere-software">Andere Datenschutz-Software</option>
-                            <option value="gar-nicht">Gar nicht / Ad-hoc</option>
-                            <option value="neu-dsb">Bin neu als DSB, noch keine Lösung</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-3">
-                          <Label>Welche Aufgaben nehmen am meisten Zeit? (optional)</Label>
-                          <div className="grid md:grid-cols-2 gap-2">
-                            {[
-                              'Verarbeitungsverzeichnis (VVT) pflegen',
-                              'TOMs dokumentieren',
-                              'AVVs mit Dienstleistern',
-                              'Betroffenenanfragen bearbeiten',
-                              'Datenschutzerklärung aktuell halten',
-                              'Mitarbeiter schulen',
-                              'Löschkonzept umsetzen',
-                              'Audit-Vorbereitung'
-                            ].map((challenge) => (
-                              <div key={challenge} className="flex items-start gap-2">
-                                <Checkbox
-                                  id={challenge}
-                                  checked={formData.challenges.includes(challenge)}
-                                  onCheckedChange={() => handleChallengeToggle(challenge)}
-                                />
-                                <label htmlFor={challenge} className="text-sm cursor-pointer leading-tight">
-                                  {challenge}
-                                </label>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="biggestChallenge">Ihre größte Herausforderung als DSB? *</Label>
-                          <select
-                            id="biggestChallenge"
-                            value={formData.biggestChallenge}
-                            onChange={handleInputChange('biggestChallenge')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            required
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="dokumentation">Dokumentation aktuell halten</option>
-                            <option value="fristen">Fristen & Termine im Blick behalten</option>
-                            <option value="gesetze">Gesetzesänderungen verfolgen</option>
-                            <option value="anfragen">Betroffenenanfragen effizient bearbeiten</option>
-                            <option value="wissen">Fachliches Wissen aufbauen</option>
-                            <option value="zeit">Zeitmanagement / zu viele Aufgaben</option>
-                            <option value="audit">Audit-Vorbereitung</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="weeklyHours">Wie viel Zeit verbringen Sie wöchentlich mit Datenschutz? *</Label>
-                          <select
-                            id="weeklyHours"
-                            value={formData.weeklyHours}
-                            onChange={handleInputChange('weeklyHours')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            required
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="0-5">0-5 Stunden (nebenberuflich)</option>
-                            <option value="5-10">5-10 Stunden</option>
-                            <option value="10-20">10-20 Stunden (halbe Stelle)</option>
-                            <option value="20-40">20-40 Stunden (Vollzeit DSB)</option>
-                            <option value="40+">40+ Stunden (überlastet)</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="challengeLevel">Wie herausfordernd ist DSGVO für Sie aktuell?</Label>
-                          <select
-                            id="challengeLevel"
-                            value={formData.challengeLevel}
-                            onChange={handleInputChange('challengeLevel')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                          >
-                            <option value="">Bitte wählen</option>
-                            <option value="sehr-herausfordernd">Sehr herausfordernd - nimmt viel Zeit in Anspruch</option>
-                            <option value="herausfordernd">Herausfordernd - es läuft, aber nicht optimal</option>
-                            <option value="neutral">Neutral - wir kommen zurecht</option>
-                            <option value="einfach">Einfach - gut im Griff</option>
-                          </select>
-                        </div>
-
-                        <div className="flex items-start gap-2 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                          <Checkbox
-                            id="consent"
-                            checked={formData.consent}
-                            onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
-                            required
-                          />
-                          <label htmlFor="consent" className="text-sm cursor-pointer leading-tight">
-                            Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz" className="text-[#e24e1b] underline">Datenschutzerklärung</a> zu.
-                          </label>
-                        </div>
-
-                        {error && (
-                          <div className="bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 p-4 rounded-lg text-sm border border-red-200 dark:border-red-800">
-                            {error}
-                          </div>
+                      <Button
+                        type="submit"
+                        className="w-full bg-[#e24e1b] hover:bg-[#c43e15] text-white py-3 text-lg font-bold"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Clock className="mr-2 h-5 w-5 animate-spin" />
+                            Wird gesendet...
+                          </>
+                        ) : (
+                          <>
+                            Beta-Zugang sichern – kostenlos starten
+                            <Rocket className="ml-2 h-5 w-5" />
+                          </>
                         )}
+                      </Button>
 
-                        <div className="flex gap-3">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            className="w-1/3"
-                            onClick={() => setFormStep(1)}
-                          >
-                            Zurück
-                          </Button>
-                          <Button
-                            type="submit"
-                            className="flex-1 bg-[#e24e1b] hover:bg-[#c43e15] text-white py-3"
-                            disabled={isSubmitting}
-                          >
-                            {isSubmitting ? (
-                              <>
-                                <Clock className="mr-2 h-4 w-4 animate-spin" />
-                                Wird gesendet...
-                              </>
-                            ) : (
-                              <>
-                                Beta-Zugang sichern
-                                <Rocket className="ml-2 h-4 w-4" />
-                              </>
-                            )}
-                          </Button>
-                        </div>
-                      </form>
-                    )}
+                      <p className="text-xs text-center text-gray-500">
+                        Keine Kreditkarte erforderlich • Jederzeit kündbar
+                      </p>
+                    </form>
                   </CardContent>
                 </Card>
 

@@ -1,7 +1,8 @@
 # START ROBOTS.TXT
 # ---------------------------
 User-agent: *
-Disallow:
+Disallow: /impressum
+Disallow: /datenschutz
 
 Sitemap: https://marsstein.ai/sitemap.xml
 # ---------------------------

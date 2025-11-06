@@ -21,369 +21,28 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import {
-  Shield,
   Globe,
-  FileText,
   CheckCircle,
-  Lock,
   Users,
   TrendingUp,
   AlertCircle,
-  Ban,
-  Zap,
   Award,
-  Download,
-  CheckCircle2,
-  Sparkles,
   Clock,
-  Bell,
   ArrowRight,
-  Tag,
   Send,
   Mail,
   Phone,
   MapPin,
   Calendar,
+  Building2,
+  Scale,
+  HeartHandshake,
 } from "lucide-react";
-
-const TypewriterText: React.FC<{ text: string; delay: number; isInView: boolean; speed?: number }> = ({
-  text,
-  delay,
-  isInView,
-  speed = 20
-}) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [showCursor, setShowCursor] = useState(true);
-
-  useEffect(() => {
-    if (!isInView) {
-      setDisplayedText("");
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      let i = 0;
-      const interval = setInterval(() => {
-        if (i <= text.length) {
-          setDisplayedText(text.slice(0, i));
-          i++;
-        } else {
-          clearInterval(interval);
-          setShowCursor(false);
-        }
-      }, speed);
-
-      return () => clearInterval(interval);
-    }, delay);
-
-    return () => clearTimeout(timeout);
-  }, [text, delay, isInView, speed]);
-
-  return (
-    <span className="relative font-mono">
-      {displayedText}
-      {showCursor && displayedText.length < text.length && (
-        <motion.span
-          animate={{ opacity: [1, 0] }}
-          transition={{ duration: 0.5, repeat: Infinity }}
-          className="inline-block w-0.5 h-4 bg-[#e24e1b] ml-0.5"
-        />
-      )}
-    </span>
-  );
-};
-
-const Confetti: React.FC<{ trigger: boolean }> = ({ trigger }) => {
-  const particles = Array.from({ length: 15 });
-
-  return (
-    <>
-      {trigger && particles.map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{
-            x: 0,
-            y: 0,
-            opacity: 1,
-            scale: 1
-          }}
-          animate={{
-            x: (Math.random() - 0.5) * 100,
-            y: -50 - Math.random() * 50,
-            opacity: 0,
-            scale: 0,
-            rotate: Math.random() * 360
-          }}
-          transition={{
-            duration: 0.8,
-            delay: i * 0.02,
-            ease: "easeOut"
-          }}
-          className="absolute w-2 h-2 rounded-full"
-          style={{
-            backgroundColor: ['#e24e1b', '#39B37B', '#FFD700'][i % 3]
-          }}
-        />
-      ))}
-    </>
-  );
-};
-
-const OnboardingAnimation: React.FC<{ isInView: boolean }> = ({ isInView }) => {
-  const [activeField, setActiveField] = useState(0);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [showAutofill, setShowAutofill] = useState(false);
-
-  const fields = [
-    { label: "公司名称 (Firmenname)", text: "深圳电子有限公司" },
-    { label: "地址 (Adresse)", text: "深圳市南山区科技园" },
-    { label: "行业 (Branche)", text: "电子商务 / E-Commerce" }
-  ];
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    const timeline = [
-      { delay: 100, action: () => setActiveField(0) },
-      { delay: 800, action: () => setActiveField(1) },
-      { delay: 1500, action: () => setActiveField(2) },
-      { delay: 2200, action: () => setShowSuccess(true) },
-      { delay: 2500, action: () => setShowAutofill(true) }
-    ];
-
-    const timeouts = timeline.map(({ delay, action }) =>
-      setTimeout(action, delay)
-    );
-
-    return () => timeouts.forEach(clearTimeout);
-  }, [isInView]);
-
-  return (
-    <div className="relative w-full rounded-xl bg-gradient-to-br from-orange-50 to-red-50 p-4 sm:p-6 md:p-8 border-2 border-[#e24e1b] overflow-visible min-h-[350px] sm:min-h-[400px]">
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(#e24e1b 1px, transparent 1px), linear-gradient(90deg, #e24e1b 1px, transparent 1px)',
-          backgroundSize: '20px 20px'
-        }} />
-      </div>
-
-      <div className="relative space-y-3 sm:space-y-4">
-        {fields.map((field, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-            transition={{ delay: i * 0.3, duration: 0.4 }}
-            className="space-y-1.5"
-          >
-            <div className="text-xs font-medium text-slate-900">{field.label}</div>
-            <div className={`h-10 bg-white rounded-lg border-2 transition-all duration-300 relative overflow-hidden ${
-              activeField === i ? 'border-[#e24e1b] shadow-lg shadow-orange-200' : 'border-orange-200'
-            }`}>
-              <div className="absolute inset-0 flex items-center px-3 text-sm text-slate-900">
-                {activeField >= i && (
-                  <TypewriterText
-                    text={field.text}
-                    delay={0}
-                    isInView={isInView && activeField >= i}
-                    speed={25}
-                  />
-                )}
-              </div>
-              {activeField === i && (
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#e24e1b] origin-left"
-                />
-              )}
-            </div>
-          </motion.div>
-        ))}
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={showSuccess ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.4 }}
-          className="pt-4 relative"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={showSuccess ? { scale: 1 } : { scale: 0 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-500 rounded-lg px-4 py-2"
-          >
-            <motion.div
-              animate={showSuccess ? { rotate: [0, 10, -10, 0] } : {}}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              <CheckCircle2 className="w-5 h-5 text-green-600" />
-            </motion.div>
-            <span className="text-sm font-bold text-green-700">基本数据已保存 (Grunddaten erfasst)</span>
-            <div className="absolute -top-2 -right-2">
-              <Confetti trigger={showSuccess} />
-            </div>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={showAutofill ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ duration: 0.5 }}
-          className="mt-4"
-        >
-          <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-4 border-2 border-orange-200">
-            <div className="flex items-start gap-3">
-              <motion.div
-                animate={showAutofill ? { rotate: 360 } : {}}
-                transition={{ duration: 1, ease: "linear" }}
-                className="w-8 h-8 rounded-full bg-[#e24e1b] flex items-center justify-center flex-shrink-0"
-              >
-                <Sparkles className="w-4 h-4 text-white" />
-              </motion.div>
-              <div className="flex-1">
-                <div className="font-bold text-gray-900 text-sm mb-2">自动填充 (Automatisch vorbefüllt):</div>
-                <div className="space-y-1">
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={showAutofill ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                    transition={{ delay: 0.1 }}
-                    className="flex items-center gap-2 text-xs text-gray-600"
-                  >
-                    <CheckCircle2 className="w-3 h-3 text-green-600" />
-                    <span>数据处理流程 (Verarbeitungsprozesse): 12 erkannt</span>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={showAutofill ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex items-center gap-2 text-xs text-gray-600"
-                  >
-                    <CheckCircle2 className="w-3 h-3 text-green-600" />
-                    <span>IT系统和工具 (IT-Systeme & Tools): 8 identifiziert</span>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={showAutofill ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                    transition={{ delay: 0.3 }}
-                    className="flex items-center gap-2 text-xs text-gray-600"
-                  >
-                    <CheckCircle2 className="w-3 h-3 text-green-600" />
-                    <span>公司信息已完成 (Unternehmensinformationen vervollständigt)</span>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-};
-
-const ThinkingDots: React.FC<{ isActive: boolean }> = ({ isActive }) => {
-  return (
-    <div className="flex gap-1">
-      {[0, 1, 2].map((i) => (
-        <motion.div
-          key={i}
-          animate={isActive ? {
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 1, 0.3]
-          } : {}}
-          transition={{
-            duration: 1,
-            repeat: Infinity,
-            delay: i * 0.2
-          }}
-          className="w-1.5 h-1.5 rounded-full bg-[#e24e1b]"
-        />
-      ))}
-    </div>
-  );
-};
-
-const GenerationAnimation: React.FC<{ isInView: boolean }> = ({ isInView }) => {
-  const [stage, setStage] = useState(0);
-
-  const sections = [
-    { title: "隐私政策 (Privacy Policy)", content: "根据DSGVO第13/14条...", delay: 0 },
-    { title: "处理活动记录 (RoPA)", content: "Art. 30 DSGVO - 数据处理活动...", delay: 800 },
-    { title: "标准合同条款 (SCCs)", content: "中国 ↔ 欧盟数据传输...", delay: 1600 }
-  ];
-
-  useEffect(() => {
-    if (!isInView) {
-      setStage(0);
-      return;
-    }
-
-    const timers = sections.map(({ delay }, i) =>
-      setTimeout(() => setStage(i + 1), delay)
-    );
-
-    return () => timers.forEach(clearTimeout);
-  }, [isInView]);
-
-  return (
-    <div className="relative w-full rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 p-4 sm:p-6 md:p-8 border-2 border-slate-200 min-h-[350px] sm:min-h-[400px]">
-      <div className="mb-4 flex items-center gap-2">
-        <div className="w-8 h-8 rounded-full bg-[#e24e1b] flex items-center justify-center">
-          <Sparkles className="w-4 h-4 text-white" />
-        </div>
-        <span className="font-bold text-slate-900">AI 正在工作 (KI arbeitet)</span>
-        <ThinkingDots isActive={isInView} />
-      </div>
-
-      <div className="space-y-4">
-        {sections.map((section, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 10 }}
-            animate={stage > i ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-            transition={{ duration: 0.4 }}
-            className="bg-white rounded-lg border-2 border-slate-200 p-4"
-          >
-            <div className="flex items-start justify-between gap-4 mb-2">
-              <h4 className="font-bold text-slate-900 text-sm">{section.title}</h4>
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={stage > i ? { scale: 1 } : { scale: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-              </motion.div>
-            </div>
-            <p className="text-xs text-slate-600">{section.content}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={stage === sections.length ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-6"
-      >
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border-2 border-green-500">
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0" />
-            <div>
-              <div className="font-bold text-green-800">文档已生成! (Dokument generiert!)</div>
-              <div className="text-sm text-green-700">立即可用 (Sofort einsatzbereit)</div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-};
+import teamGroupImage from "@/assets/team/team-group.png";
 
 export default function CnGdpr() {
   const [salesChannel, setSalesChannel] = useState("");
@@ -484,55 +143,60 @@ export default function CnGdpr() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mx-auto max-w-4xl text-center"
+              className="mx-auto max-w-5xl text-center"
             >
+              <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-8 border border-white/20">
+                <Building2 className="h-5 w-5 text-[#e24e1b]" />
+                <span className="text-sm font-semibold text-white">Ihr vertrauenswürdiger Partner in Deutschland</span>
+              </div>
+
               <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                DSGVO-Compliance für chinesische Unternehmen
+                Ihr deutscher Datenschutzpartner für den chinesischen Markt
               </h1>
-              <p className="mb-8 text-xl text-slate-300 lg:text-2xl">
-                Privacy Policy, Art. 27 EU-Vertreter, Verarbeitungsverzeichnis – alles automatisch generiert. Auf Mandarin geführt, EU-konform, ohne Anwalt.
+              <p className="mb-8 text-xl text-slate-300 lg:text-2xl leading-relaxed">
+                Rechtssichere DSGVO-Beratung zwischen Deutschland und China. Mit TÜV-zertifiziertem Datenschutzbeauftragten, persönlicher Betreuung auf Mandarin und Art. 27 EU-Vertreter-Service.
               </p>
 
               <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Button
                   size="lg"
-                  className="bg-[#e24e1b] text-white hover:bg-[#c43d0f]"
+                  className="bg-[#e24e1b] text-white hover:bg-[#c43d0f] shadow-xl"
                   asChild
                 >
-                  <a href="/beta">Kostenlosen DSGVO-Check starten</a>
+                  <a href="#contact">Kostenlose Erstberatung buchen</a>
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-slate-900" asChild>
-                  <a href="/beta">Demo buchen</a>
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-slate-900 backdrop-blur-sm" asChild>
+                  <a href="#team">Unser Team kennenlernen</a>
                 </Button>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-300">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-[#e24e1b]" />
-                  <span>Automatische Dokumentenerstellung</span>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <Building2 className="h-8 w-8 text-[#e24e1b] mx-auto mb-2" />
+                  <div className="text-sm font-semibold text-white">Deutschland</div>
+                  <div className="text-xs text-slate-300">Sitz in Konstanz</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-[#e24e1b]" />
-                  <span>Mandarin-Interface</span>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <Globe className="h-8 w-8 text-[#e24e1b] mx-auto mb-2" />
+                  <div className="text-sm font-semibold text-white">Mandarin</div>
+                  <div className="text-xs text-slate-300">Vollständige Betreuung</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-[#e24e1b]" />
-                  <span>Schnelle Implementierung</span>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <HeartHandshake className="h-8 w-8 text-[#e24e1b] mx-auto mb-2" />
+                  <div className="text-sm font-semibold text-white">Persönlich</div>
+                  <div className="text-xs text-slate-300">Direkte Betreuung</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-[#e24e1b]" />
-                  <span>EU-Hosting in Deutschland</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-[#e24e1b]" />
-                  <span>Art. 27 DSGVO-Vertreter inkl.</span>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <Scale className="h-8 w-8 text-[#e24e1b] mx-auto mb-2" />
+                  <div className="text-sm font-semibold text-white">Rechtssicher</div>
+                  <div className="text-xs text-slate-300">EU-konform</div>
                 </div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        <section className="py-20">
+        <section id="team" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -541,30 +205,121 @@ export default function CnGdpr() {
               transition={{ duration: 0.6 }}
               className="mx-auto max-w-6xl"
             >
-              <h2 className="mb-4 text-center text-3xl font-bold text-slate-900 lg:text-4xl">
-                Die vier größten DSGVO-Hürden für chinesische Unternehmen in Europa
-              </h2>
-              <p className="mb-12 text-center text-lg text-slate-600">
-                Verstehen Sie die rechtlichen Herausforderungen – und wie Marsstein sie automatisiert löst
-              </p>
+              <div className="relative rounded-3xl overflow-hidden mb-12 shadow-2xl">
+                <div className="absolute inset-0">
+                  <img
+                    src={teamGroupImage}
+                    alt="Marsstein Team"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/60 to-slate-900/40"></div>
+                </div>
+                <div className="relative z-10">
+                  <div className="w-full p-8 md:p-12">
+                    <div className="max-w-4xl mx-auto">
+                      <div className="inline-block mb-6">
+                        <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full border border-white/30">
+                          <Users className="w-5 h-5 text-white" />
+                          <span className="text-white font-semibold text-sm">Unser Team</span>
+                        </div>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                        Ihr{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e24e1b] to-[#f97316]">
+                          deutsch-chinesisches Expertenteam
+                        </span>
+                        {' '}für DSGVO-Compliance
+                      </h2>
+                      <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
+                        Wir verbinden deutsches Datenschutzrecht mit chinesischer Geschäftskultur – persönlich, rechtssicher und auf Augenhöhe.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 md:p-12 border-2 border-[#e24e1b]/20"
+              >
+                <div className="grid md:grid-cols-4 gap-8 text-center">
+                  <div>
+                    <div className="text-4xl font-bold text-[#e24e1b] mb-2">
+                      <Award className="w-12 h-12 mx-auto" />
+                    </div>
+                    <div className="text-gray-700 font-medium">TÜV-zertifizierter Datenschutzbeauftragter</div>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold text-[#e24e1b] mb-2">5</div>
+                    <div className="text-gray-700 font-medium">Experten im Team</div>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold text-[#e24e1b] mb-2">
+                      <Users className="w-12 h-12 mx-auto" />
+                    </div>
+                    <div className="text-gray-700 font-medium">Deutsch-Chinesisches Team</div>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold text-[#e24e1b] mb-2">
+                      <Building2 className="w-12 h-12 mx-auto" />
+                    </div>
+                    <div className="text-gray-700 font-medium">Sitz in Konstanz, Deutschland</div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mx-auto max-w-6xl"
+            >
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 bg-[#e24e1b]/10 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-[#e24e1b]/20">
+                  <Scale className="w-5 h-5 text-[#e24e1b]" />
+                  <span className="text-sm font-semibold text-[#e24e1b]">Unsere Expertise</span>
+                </div>
+                <h2 className="mb-4 text-3xl font-bold text-slate-900 lg:text-5xl">
+                  Rechtsgebiete im <span className="text-[#e24e1b]">deutsch-chinesischen Datenschutz</span>
+                </h2>
+                <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                  Wir beraten Sie zu allen relevanten Compliance-Anforderungen zwischen EU und China
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-red-100">
-                    <Users className="h-6 w-6 text-red-600" />
-                  </div>
-                  <h3 className="mb-3 text-xl font-bold text-slate-900">
-                    EU-Vertreter (Art. 27)
-                  </h3>
-                  <p className="text-slate-600">
-                    Wer EU-Kundendaten verarbeitet, braucht einen EU-Vertreter – sonst drohen Bußgelder und Plattformsperren.
-                  </p>
+                  <Card className="h-full border-2 border-gray-200 hover:border-[#e24e1b] transition-all duration-300">
+                    <CardContent className="pt-8 pb-8 px-6">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex-shrink-0">
+                          <Scale className="h-7 w-7 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-slate-900 mb-2">
+                            EU-Datenschutzrecht (DSGVO)
+                          </h3>
+                          <p className="text-sm text-slate-600 leading-relaxed">
+                            Vollständige DSGVO-Compliance für chinesische Unternehmen im EU-Markt: Art. 27 EU-Vertreter, Datenschutzerklärung, Verarbeitungsverzeichnis, TOM, Löschkonzept und Betroffenenrechte.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </motion.div>
 
                 <motion.div
@@ -572,17 +327,24 @@ export default function CnGdpr() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100">
-                    <Globe className="h-6 w-6 text-orange-600" />
-                  </div>
-                  <h3 className="mb-3 text-xl font-bold text-slate-900">
-                    Sprache & Komplexität
-                  </h3>
-                  <p className="text-slate-600">
-                    DSGVO-Texte gibt's meist nur DE/EN; Fehlübersetzungen bedeuten Rechtsrisiko und hohe Beratungskosten.
-                  </p>
+                  <Card className="h-full border-2 border-gray-200 hover:border-[#e24e1b] transition-all duration-300">
+                    <CardContent className="pt-8 pb-8 px-6">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex-shrink-0">
+                          <Globe className="h-7 w-7 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-slate-900 mb-2">
+                            EU AI Act Compliance
+                          </h3>
+                          <p className="text-sm text-slate-600 leading-relaxed">
+                            Beratung zur KI-Verordnung der EU: Risikoklassifizierung von KI-Systemen, Transparenzpflichten, Dokumentation und Konformitätsbewertung für KI-gestützte Produkte und Services.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </motion.div>
 
                 <motion.div
@@ -590,17 +352,24 @@ export default function CnGdpr() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-red-100">
-                    <AlertCircle className="h-6 w-6 text-red-600" />
-                  </div>
-                  <h3 className="mb-3 text-xl font-bold text-slate-900">
-                    Bußgelder
-                  </h3>
-                  <p className="text-slate-600">
-                    Strafen bis 4 % des weltweiten Umsatzes; schon formale Fehler im Verarbeitungsverzeichnis können teuer werden.
-                  </p>
+                  <Card className="h-full border-2 border-gray-200 hover:border-[#e24e1b] transition-all duration-300">
+                    <CardContent className="pt-8 pb-8 px-6">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex-shrink-0">
+                          <TrendingUp className="h-7 w-7 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-slate-900 mb-2">
+                            Internationaler Datentransfer
+                          </h3>
+                          <p className="text-sm text-slate-600 leading-relaxed">
+                            Standard Contractual Clauses (SCCs), Transfer Impact Assessment (TIA) und Binding Corporate Rules (BCRs) für rechtssichere Datentransfers zwischen China und EU.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </motion.div>
 
                 <motion.div
@@ -608,30 +377,173 @@ export default function CnGdpr() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                    <Lock className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <h3 className="mb-3 text-xl font-bold text-slate-900">
-                    PIPL vs. DSGVO
-                  </h3>
-                  <p className="text-slate-600">
-                    PIPL verlangt „separate consent", DSGVO SCC + Dokumentation – ohne Strategie: Grauzone.
-                  </p>
+                  <Card className="h-full border-2 border-gray-200 hover:border-[#e24e1b] transition-all duration-300">
+                    <CardContent className="pt-8 pb-8 px-6">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex-shrink-0">
+                          <CheckCircle className="h-7 w-7 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-slate-900 mb-2">
+                            E-Commerce Compliance
+                          </h3>
+                          <p className="text-sm text-slate-600 leading-relaxed">
+                            Spezifische Beratung für Amazon, TikTok Shop, Temu und eigene Online-Shops: Marketplace-Richtlinien, Cookie-Banner, Bestellprozesse und Kundendatenmanagement.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mx-auto max-w-6xl"
+            >
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 bg-[#e24e1b]/10 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-[#e24e1b]/20">
+                  <Award className="w-5 h-5 text-[#e24e1b]" />
+                  <span className="text-sm font-semibold text-[#e24e1b]">Unser Angebot</span>
+                </div>
+                <h2 className="mb-4 text-3xl font-bold text-slate-900 lg:text-5xl">
+                  Ihr <span className="text-[#e24e1b]">Full-Service Partner</span> für DSGVO-Compliance
+                </h2>
+                <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                  Wir sind die Brücke zwischen China und Deutschland – mit persönlicher Betreuung auf Mandarin und vollständiger DSGVO-Umsetzung
+                </p>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-3">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
+                  <Card className="h-full border-2 border-gray-200 hover:border-[#e24e1b] transition-all duration-300 hover:shadow-xl">
+                    <CardContent className="pt-8 pb-8 px-6">
+                      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#e24e1b] to-[#f97316]">
+                        <Scale className="h-8 w-8 text-white" />
+                      </div>
+                      <h3 className="mb-4 text-2xl font-bold text-slate-900">
+                        Art. 27 EU-Vertreter
+                      </h3>
+                      <p className="text-slate-600 mb-6 leading-relaxed">
+                        Wir übernehmen die gesetzlich vorgeschriebene Vertretung Ihres Unternehmens in der EU. Mit Sitz in Deutschland sind wir Ihr offizieller Ansprechpartner für Behörden und Betroffene.
+                      </p>
+                      <ul className="space-y-3">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">Gesetzeskonform nach Art. 27 DSGVO</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">Direkte Kommunikation auf Mandarin</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">Behördenkontakt & Dokumentation</span>
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <Card className="h-full border-2 border-gray-200 hover:border-[#e24e1b] transition-all duration-300 hover:shadow-xl">
+                    <CardContent className="pt-8 pb-8 px-6">
+                      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#e24e1b] to-[#f97316]">
+                        <CheckCircle className="h-8 w-8 text-white" />
+                      </div>
+                      <h3 className="mb-4 text-2xl font-bold text-slate-900">
+                        Vollständige DSGVO-Umsetzung
+                      </h3>
+                      <p className="text-slate-600 mb-6 leading-relaxed">
+                        Von der Erstberatung bis zur fertigen Dokumentation – wir setzen alle DSGVO-Anforderungen für Ihr Unternehmen um. Rechtssicher, praxisnah und verständlich erklärt.
+                      </p>
+                      <ul className="space-y-3">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">Datenschutzerklärung (Privacy Policy)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">Verarbeitungsverzeichnis (Art. 30)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">SCCs, TOM, Löschkonzept & mehr</span>
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  <Card className="h-full border-2 border-gray-200 hover:border-[#e24e1b] transition-all duration-300 hover:shadow-xl">
+                    <CardContent className="pt-8 pb-8 px-6">
+                      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#e24e1b] to-[#f97316]">
+                        <HeartHandshake className="h-8 w-8 text-white" />
+                      </div>
+                      <h3 className="mb-4 text-2xl font-bold text-slate-900">
+                        Deutsch-Chinesisches Team
+                      </h3>
+                      <p className="text-slate-600 mb-6 leading-relaxed">
+                        Unser bikulturelles Team versteht beide Welten. Wir übersetzen nicht nur Sprache, sondern auch Geschäftspraktiken, Rechtssysteme und kulturelle Unterschiede.
+                      </p>
+                      <ul className="space-y-3">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">Muttersprachler Deutsch & Mandarin</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">Verständnis für chinesische Geschäftskultur</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[#e24e1b] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-slate-700">PIPL & DSGVO Expertise</span>
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
                 </motion.div>
               </div>
 
-              <div className="mt-10 text-center">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white"
-                  asChild
-                >
-                  <a href="#solution">Erfahren Sie, wie wir diese Probleme lösen</a>
-                </Button>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="mt-12 text-center"
+              >
+                <a href="#contact">
+                  <Button size="lg" className="bg-gradient-to-r from-[#e24e1b] to-[#f97316] text-white hover:from-[#d63f14] hover:to-[#ea580c] shadow-lg hover:shadow-xl px-8">
+                    Kostenlose Erstberatung buchen
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </a>
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -643,275 +555,34 @@ export default function CnGdpr() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mx-auto max-w-6xl"
+              className="mx-auto max-w-5xl"
             >
-              <h2 className="mb-4 text-center text-3xl font-bold text-slate-900 lg:text-4xl">
-                So einfach geht DSGVO-Compliance mit Marsstein
-              </h2>
-              <p className="mb-12 text-center text-lg text-slate-600">
-                In drei einfachen Schritten zur vollständigen DSGVO-Compliance – auf Chinesisch geführt
-              </p>
-
-              <div className="space-y-16">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="grid gap-8 lg:grid-cols-2 items-center"
-                >
-                  <div>
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#e24e1b] px-4 py-2 text-white">
-                      <span className="text-sm font-bold">步骤 1 / Schritt 1</span>
-                    </div>
-                    <h3 className="mb-4 text-3xl font-bold text-slate-900">
-                      入职培训 (Onboarding)
-                    </h3>
-                    <p className="mb-6 text-lg text-slate-600">
-                      Unternehmensdaten einmal erfassen – der Rest wird automatisch vorbefüllt. Beantworten Sie einfache Fragen auf Chinesisch, unsere KI erkennt automatisch Ihre Verarbeitungsprozesse.
-                    </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">Mandarin-geführter Fragebogen</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">KI-gestützte Prozesserkennung</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">Automatische Vorbefüllung</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <OnboardingAnimation isInView={true} />
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="grid gap-8 lg:grid-cols-2 items-center"
-                >
-                  <div className="lg:order-2">
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#e24e1b] px-4 py-2 text-white">
-                      <span className="text-sm font-bold">步骤 2 / Schritt 2</span>
-                    </div>
-                    <h3 className="mb-4 text-3xl font-bold text-slate-900">
-                      自动生成 (Automatische Generierung)
-                    </h3>
-                    <p className="mb-6 text-lg text-slate-600">
-                      Experten-Vorlagen werden automatisch befüllt – sofort einsatzbereit. Alle DSGVO-Dokumente in Deutsch, Englisch und Chinesisch.
-                    </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">Privacy Policy (DE/EN/CN)</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">Verarbeitungsverzeichnis (Art. 30)</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">Standard Contractual Clauses (SCCs)</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="lg:order-1">
-                    <GenerationAnimation isInView={true} />
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="grid gap-8 lg:grid-cols-2 items-center"
-                >
-                  <div>
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#e24e1b] px-4 py-2 text-white">
-                      <span className="text-sm font-bold">步骤 3 / Schritt 3</span>
-                    </div>
-                    <h3 className="mb-4 text-3xl font-bold text-slate-900">
-                      完整文档 (Vollständige Dokumentation)
-                    </h3>
-                    <p className="mb-6 text-lg text-slate-600">
-                      Jederzeit audit-ready. Alle Ihre DSGVO-Dokumente werden automatisch aktuell gehalten und sind sofort verfügbar.
-                    </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">Art. 27 EU-Vertreter-Service</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">GDPR Verified Badge für Ihre Website</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                        <span className="text-slate-700">Automatische Updates bei Gesetzesänderungen</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="rounded-xl border-2 border-slate-200 bg-white p-6 shadow-sm">
-                      <div className="mb-6">
-                        <div className="mb-2 text-sm font-semibold text-slate-700">完整文档 (Vollständige Dokumentation)</div>
-                        <div className="text-xs text-slate-500">自动保持最新 • 随时可供审核 (Automatisch aktuell • Jederzeit audit-ready)</div>
-                      </div>
-                      <div className="space-y-3">
-                        {[
-                          { name: "处理活动记录 (Verarbeitungsverzeichnis)", ref: "Art. 30 DSGVO" },
-                          { name: "技术组织措施 (TOM-Dokumentation)", ref: "Art. 32 DSGVO" },
-                          { name: "隐私政策 (Datenschutzerklärung)", ref: "Art. 13/14 DSGVO" },
-                          { name: "删除概念 (Löschkonzept)", ref: "Art. 17 DSGVO" }
-                        ].map((doc, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3"
-                          >
-                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-100">
-                              <CheckCircle2 className="h-5 w-5 text-green-600" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="text-sm font-medium text-slate-900">{doc.name}</div>
-                              <div className="text-xs text-slate-500">{doc.ref}</div>
-                            </div>
-                            <div className="flex items-center gap-1 text-xs font-medium text-green-600">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                              Live
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                      <div className="mt-6 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 p-4 border border-blue-200">
-                        <div className="flex items-start gap-3">
-                          <Sparkles className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                          <div>
-                            <div className="font-semibold text-blue-900 text-sm mb-1">自动更新 (Automatische Aktualisierung)</div>
-                            <div className="text-xs text-blue-700">
-                              Gesetzesänderungen werden automatisch erkannt und in Ihre Dokumentation integriert. Sie werden sofort benachrichtigt, wenn Handlungsbedarf besteht.
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="mt-12 mx-auto max-w-4xl p-8 relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#F5F6F8] via-white to-[#e24e1b]/5 border-2 border-[#e24e1b]/20 shadow-xl"
-              >
-                <div className="absolute top-0 right-0 w-40 h-40 bg-[#e24e1b]/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#39B37B]/10 rounded-full blur-3xl" />
-
-                <div className="relative z-10">
-                  <div className="text-center mb-6">
-                    <Badge className="bg-gradient-to-r from-[#e24e1b] to-[#f97316] text-white border-0 mb-4">
-                      <Sparkles className="w-3 h-3 mr-1" />
-                      LIMITED BETA ACCESS
-                    </Badge>
-                    <h4 className="text-2xl font-bold bg-gradient-to-r from-[#232323] to-[#474747] bg-clip-text text-transparent mb-3">
-                      Werden Sie Beta-Tester
-                    </h4>
-                    <p className="text-[#474747] text-lg">
-                      Gestalten Sie die Zukunft der Compliance mit uns
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#e24e1b]/10 hover:border-[#e24e1b]/30 transition-all duration-300 hover:shadow-lg">
-                      <Users className="w-5 h-5 text-[#e24e1b] mb-2" />
-                      <span className="block text-sm font-semibold text-[#232323]">Exklusive Community</span>
-                      <span className="text-xs text-[#474747]">Direkter Draht zum Team</span>
-                    </div>
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#39B37B]/20 hover:border-[#39B37B]/40 transition-all duration-300 hover:shadow-lg">
-                      <Tag className="w-5 h-5 text-[#39B37B] mb-2" />
-                      <span className="block text-sm font-semibold text-[#232323]">50% Rabatt</span>
-                      <span className="text-xs text-[#474747]">Nach der Beta-Phase</span>
-                    </div>
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#e24e1b]/10 hover:border-[#e24e1b]/30 transition-all duration-300 hover:shadow-lg">
-                      <Sparkles className="w-5 h-5 text-[#e24e1b] mb-2" />
-                      <span className="block text-sm font-semibold text-[#232323]">Kostenlos testen</span>
-                      <span className="text-xs text-[#474747]">Keine Kreditkarte nötig</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <Link
-                      to="/beta"
-                      className="flex-1 inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-xl hover:from-[#d63f14] hover:to-[#ea580c] transition-all duration-300 shadow-lg hover:shadow-xl group transform hover:scale-[1.02]"
-                    >
-                      Jetzt Beta-Zugang sichern
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                      to="/preise"
-                      className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-[#474747] bg-white/90 backdrop-blur-sm border-2 border-[#232323]/20 rounded-xl hover:bg-[#F5F6F8] hover:border-[#232323]/30 transition-all duration-300 shadow-md hover:shadow-lg"
-                    >
-                      Preise ansehen
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="bg-slate-50 py-20">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mx-auto max-w-6xl"
-            >
-              <div className="text-center mb-12">
-                <h2 className="mb-4 text-3xl font-bold text-slate-900 lg:text-4xl">
-                  为什么选择 Marsstein? (Warum Marsstein?)
+              <div className="text-center mb-16">
+                <h2 className="mb-4 text-3xl font-bold text-slate-900 lg:text-5xl">
+                  Von der Erstberatung zur vollständigen <span className="text-[#e24e1b]">DSGVO-Compliance</span>
                 </h2>
-                <p className="text-lg text-slate-600">
-                  Compliance, die sich einfach erledigt
+                <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                  Transparent, persönlich und auf Mandarin – so begleiten wir Sie Schritt für Schritt
                 </p>
               </div>
 
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid md:grid-cols-3 gap-8">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  whileHover={{ y: -5 }}
+                  className="text-center"
                 >
-                  <Card className="border-2 border-gray-200 hover:border-[#e24e1b] transition-all h-full">
-                    <CardContent className="pt-6">
-                      <div className="w-16 h-16 mb-4 rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white">
-                        <FileText className="h-8 w-8" />
-                      </div>
-                      <h3 className="mb-3 text-xl font-bold text-slate-900">
-                        Automatisierte Dokumente
-                      </h3>
-                      <p className="text-slate-600">
-                        KI-basierte Dokumentenerstellung ersetzt Handarbeit und hält Inhalte konsistent – fertige Texte in Deutsch, Englisch und Chinesisch (DE/EN/中文).
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <div className="mb-6 mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                    1
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    Erstberatung
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Kostenlose 30-Minuten-Beratung auf Mandarin oder Deutsch. Wir analysieren Ihre Situation und erstellen einen maßgeschneiderten Plan.
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -919,21 +590,17 @@ export default function CnGdpr() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  whileHover={{ y: -5 }}
+                  className="text-center"
                 >
-                  <Card className="border-2 border-gray-200 hover:border-[#e24e1b] transition-all h-full">
-                    <CardContent className="pt-6">
-                      <div className="w-16 h-16 mb-4 rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white">
-                        <Clock className="h-8 w-8" />
-                      </div>
-                      <h3 className="mb-3 text-xl font-bold text-slate-900">
-                        Echtzeit-Audit-Trail
-                      </h3>
-                      <p className="text-slate-600">
-                        Jede Änderung, Freigabe und jeder Kommentar wird lückenlos protokolliert – Nachweise für Plattformen und Behörden per Klick.
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <div className="mb-6 mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                    2
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    Umsetzung
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Wir erstellen alle notwendigen Dokumente, übernehmen die EU-Vertretung und setzen alle DSGVO-Anforderungen vollständig um.
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -941,55 +608,29 @@ export default function CnGdpr() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  whileHover={{ y: -5 }}
+                  className="text-center"
                 >
-                  <Card className="border-2 border-gray-200 hover:border-[#e24e1b] transition-all h-full">
-                    <CardContent className="pt-6">
-                      <div className="w-16 h-16 mb-4 rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white">
-                        <Bell className="h-8 w-8" />
-                      </div>
-                      <h3 className="mb-3 text-xl font-bold text-slate-900">
-                        Automatische Gesetzesänderungen
-                      </h3>
-                      <p className="text-slate-600">
-                        Neue Anforderungen fließen automatisch ein; klare Hinweise zeigen Handlungsbedarf.
-                      </p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <Card className="border-2 border-gray-200 hover:border-[#e24e1b] transition-all h-full">
-                    <CardContent className="pt-6">
-                      <div className="w-16 h-16 mb-4 rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white">
-                        <Users className="h-8 w-8" />
-                      </div>
-                      <h3 className="mb-3 text-xl font-bold text-slate-900">
-                        Intuitive Team-Workflows
-                      </h3>
-                      <p className="text-slate-600">
-                        Klare Aufgaben, Zuständigkeiten und Fristen – ohne Juristensprache.
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <div className="mb-6 mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                    3
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    Laufende Betreuung
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Wir bleiben Ihr Ansprechpartner – für Updates, Fragen und neue Anforderungen. Direkt auf Mandarin erreichbar.
+                  </p>
                 </motion.div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        <section className="bg-slate-50 py-20">
+        <section id="contact" className="bg-white py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <Badge className="bg-gradient-to-r from-[#e24e1b] to-[#f97316] text-white border-0 mb-4">
                 <Send className="w-3 h-3 mr-1" />
-                联系我们 (Kontakt)
+                Kontakt
               </Badge>
               <h2 className="mb-4 text-3xl font-bold text-slate-900 lg:text-4xl">
                 Der EU-Markt wartet nicht – starten Sie jetzt compliant und sicher.
@@ -1037,13 +678,13 @@ export default function CnGdpr() {
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="companyName" className="text-slate-700 font-semibold">
-                          Firmenname (公司名称) <span className="text-[#e24e1b]">*</span>
+                          Firmenname <span className="text-[#e24e1b]">*</span>
                         </Label>
                         <Input
                           id="companyName"
                           value={formData.companyName}
                           onChange={handleInputChange}
-                          placeholder="z.B. 深圳电子有限公司"
+                          placeholder="z.B. Ihre Firma GmbH"
                           required
                           disabled={isSubmitting}
                           className="border-slate-300 focus:border-[#e24e1b]"
@@ -1052,7 +693,7 @@ export default function CnGdpr() {
 
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-slate-700 font-semibold">
-                          E-Mail (电子邮件) <span className="text-[#e24e1b]">*</span>
+                          E-Mail <span className="text-[#e24e1b]">*</span>
                         </Label>
                         <Input
                           id="email"
@@ -1069,7 +710,7 @@ export default function CnGdpr() {
 
                     <div className="space-y-2">
                       <Label htmlFor="phone" className="text-slate-700 font-semibold">
-                        Telefon (电话)
+                        Telefon
                       </Label>
                       <Input
                         id="phone"
@@ -1084,7 +725,7 @@ export default function CnGdpr() {
 
                     <div className="space-y-2">
                       <Label htmlFor="salesChannel" className="text-slate-700 font-semibold">
-                        Wie verkaufen Sie in die EU? (欧盟销售渠道) <span className="text-[#e24e1b]">*</span>
+                        Wie verkaufen Sie in die EU? <span className="text-[#e24e1b]">*</span>
                       </Label>
                       <Select value={salesChannel} onValueChange={setSalesChannel} required disabled={isSubmitting}>
                         <SelectTrigger className="border-slate-300 focus:border-[#e24e1b]">
@@ -1135,7 +776,7 @@ export default function CnGdpr() {
 
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-slate-700 font-semibold">
-                        Ihre Nachricht (您的信息)
+                        Ihre Nachricht
                       </Label>
                       <Textarea
                         id="message"

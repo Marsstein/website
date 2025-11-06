@@ -889,6 +889,40 @@ const DsgvoCompliance = () => {
             </Card>
           ))}
         </div>
+
+        <div className="mt-16 max-w-4xl mx-auto">
+          <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white">
+            <CardContent className="p-8">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-blue-600 rounded-lg">
+                  <Users className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    Professionelle Unterstützung durch Datenschutzbeauftragten
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Für umfassende DSGVO-Compliance empfehlen wir die Bestellung eines <strong>externen Datenschutzbeauftragten</strong>. Ein DSB unterstützt Sie bei der Implementierung, überwacht die Einhaltung und ist Ihr direkter Ansprechpartner bei Behördenanfragen.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button variant="outline" asChild className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                      <Link to="/wissen/leitfaden/datenschutzbeauftragter">
+                        <FileText className="mr-2 h-4 w-4" />
+                        Mehr über DSB-Aufgaben
+                      </Link>
+                    </Button>
+                    <Button asChild className="bg-blue-600 hover:bg-blue-700">
+                      <Link to="/externer-datenschutzbeauftragter">
+                        Externen DSB beauftragen
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </section>
   );

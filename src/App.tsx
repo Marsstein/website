@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SEOWrapper } from "@/components/SEOWrapper";
+import { Analytics } from "@vercel/analytics/react";
 // PageLoader component for Suspense fallback
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-screen">
@@ -41,6 +42,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const Beta = lazy(() => import("./pages/Beta"));
+const Features = lazy(() => import("./pages/Features"));
 const CnGdpr = lazy(() => import("./pages/CnGdpr"));
 const DsgvoAmazonSellersChina = lazy(() => import("./pages/DsgvoAmazonSellersChina"));
 const DsgvoTikTokShopChina = lazy(() => import("./pages/DsgvoTikTokShopChina"));
@@ -123,6 +125,8 @@ const VerarbeitungsverzeichnisGuide = lazy(() => import("./pages/guides/Verarbei
 const BetroffenenrechteGuide = lazy(() => import("./pages/guides/BetroffenenrechteGuide"));
 const TomMassnahmenGuide = lazy(() => import("./pages/guides/TomMassnahmenGuide"));
 const DsfaDurchfuehrungGuide = lazy(() => import("./pages/guides/DsfaDurchfuehrungGuide"));
+const DatenschutzbeauftragterGuide = lazy(() => import("./pages/wissen/leitfaden/datenschutzbeauftragter"));
+const DatenschutzbeauftragterAusbildung = lazy(() => import("./pages/wissen/leitfaden/datenschutzbeauftragter-ausbildung"));
 const CrisisManagement = lazy(() => import("./pages/CrisisManagement"));
 const DataBreach72hGuide = lazy(() => import("./pages/crisis/DataBreach72hGuide"));
 const SecurityIncidentGuide = lazy(() => import("./pages/crisis/SecurityIncidentGuide"));
@@ -174,6 +178,36 @@ const KiDatenschutz = lazy(() => import("./pages/KiDatenschutz"));
 // Pricing Page
 const Preise = lazy(() => import("./pages/Preise"));
 const ExternerDatenschutzbeauftragter = lazy(() => import("./pages/ExternerDatenschutzbeauftragter"));
+const ExternerDatenschutzbeauftragterOldenburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterOldenburg"));
+const ExternerDatenschutzbeauftragterHannover = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHannover"));
+const ExternerDatenschutzbeauftragterBremen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBremen"));
+const ExternerDatenschutzbeauftragterDuesseldorf = lazy(() => import("./pages/ExternerDatenschutzbeauftragterDuesseldorf"));
+const ExternerDatenschutzbeauftragterHamburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHamburg"));
+const ExternerDatenschutzbeauftragterHildesheim = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHildesheim"));
+const ExternerDatenschutzbeauftragterStuttgart = lazy(() => import("./pages/ExternerDatenschutzbeauftragterStuttgart"));
+const ExternerDatenschutzbeauftragterMuenchen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMuenchen"));
+const ExternerDatenschutzbeauftragterNuernberg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterNuernberg"));
+const ExternerDatenschutzbeauftragterKoeln = lazy(() => import("./pages/ExternerDatenschutzbeauftragterKoeln"));
+const ExternerDatenschutzbeauftragterWedemark = lazy(() => import("./pages/ExternerDatenschutzbeauftragterWedemark"));
+const ExternerDatenschutzbeauftragterOsnabrueck = lazy(() => import("./pages/ExternerDatenschutzbeauftragterOsnabrueck"));
+const ExternerDatenschutzbeauftragterLueneburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterLueneburg"));
+const ExternerDatenschutzbeauftragterDresden = lazy(() => import("./pages/ExternerDatenschutzbeauftragterDresden"));
+const ExternerDatenschutzbeauftragterDortmund = lazy(() => import("./pages/ExternerDatenschutzbeauftragterDortmund"));
+const ExternerDatenschutzbeauftragterNRW = lazy(() => import("./pages/ExternerDatenschutzbeauftragterNRW"));
+const ExternerDatenschutzbeauftragterBraunschweig = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBraunschweig"));
+const ExternerDatenschutzbeauftragterKarlsruhe = lazy(() => import("./pages/ExternerDatenschutzbeauftragterKarlsruhe"));
+const ExternerDatenschutzbeauftragterCelle = lazy(() => import("./pages/ExternerDatenschutzbeauftragterCelle"));
+const ExternerDatenschutzbeauftragterMagdeburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMagdeburg"));
+const ExternerDatenschutzbeauftragterFrankfurt = lazy(() => import("./pages/ExternerDatenschutzbeauftragterFrankfurt"));
+const ExternerDatenschutzbeauftragterUlm = lazy(() => import("./pages/ExternerDatenschutzbeauftragterUlm"));
+const ExternerDatenschutzbeauftragterHeidelberg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHeidelberg"));
+const ExternerDatenschutzbeauftragterLeipzig = lazy(() => import("./pages/ExternerDatenschutzbeauftragterLeipzig"));
+const ExternerDatenschutzbeauftragterBremerhaven = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBremerhaven"));
+const ExternerDatenschutzbeauftragterMannheim = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMannheim"));
+const ExternerDatenschutzbeauftragterWolfsburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterWolfsburg"));
+const ExternerDatenschutzbeauftragterBayern = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBayern"));
+const ExternerDatenschutzbeauftragterNiedersachsen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterNiedersachsen"));
+const ExternerDatenschutzbeauftragterMuenster = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMuenster"));
 const KiRisikoklassifizierung = lazy(() => import("./pages/ki/KiRisikoklassifizierung"));
 const KiAlgorithmicImpactAssessment = lazy(() => import("./pages/ki/AlgorithmicImpactAssessment"));
 const PrivacyPreservingAI = lazy(() => import("./pages/ki/PrivacyPreservingAI"));
@@ -236,6 +270,7 @@ const App = () => (
         <LanguageProvider>
           <TooltipProvider>
             <Toaster />
+            <Analytics />
             <BrowserRouter>
               <ScrollToTop />
               <SEOWrapper>
@@ -258,7 +293,38 @@ const App = () => (
                 <Route path="/academy" element={<AcademyPage />} />
                 <Route path="/preise" element={<Preise />} />
                 <Route path="/externer-datenschutzbeauftragter" element={<ExternerDatenschutzbeauftragter />} />
+                <Route path="/externer-datenschutzbeauftragter-oldenburg" element={<ExternerDatenschutzbeauftragterOldenburg />} />
+                <Route path="/externer-datenschutzbeauftragter-hannover" element={<ExternerDatenschutzbeauftragterHannover />} />
+                <Route path="/externer-datenschutzbeauftragter-bremen" element={<ExternerDatenschutzbeauftragterBremen />} />
+                <Route path="/externer-datenschutzbeauftragter-duesseldorf" element={<ExternerDatenschutzbeauftragterDuesseldorf />} />
+                <Route path="/externer-datenschutzbeauftragter-hamburg" element={<ExternerDatenschutzbeauftragterHamburg />} />
+                <Route path="/externer-datenschutzbeauftragter-hildesheim" element={<ExternerDatenschutzbeauftragterHildesheim />} />
+                <Route path="/externer-datenschutzbeauftragter-stuttgart" element={<ExternerDatenschutzbeauftragterStuttgart />} />
+                <Route path="/externer-datenschutzbeauftragter-muenchen" element={<ExternerDatenschutzbeauftragterMuenchen />} />
+                <Route path="/externer-datenschutzbeauftragter-nuernberg" element={<ExternerDatenschutzbeauftragterNuernberg />} />
+                <Route path="/externer-datenschutzbeauftragter-koeln" element={<ExternerDatenschutzbeauftragterKoeln />} />
+                <Route path="/externer-datenschutzbeauftragter-wedemark" element={<ExternerDatenschutzbeauftragterWedemark />} />
+                <Route path="/externer-datenschutzbeauftragter-osnabrueck" element={<ExternerDatenschutzbeauftragterOsnabrueck />} />
+                <Route path="/externer-datenschutzbeauftragter-lueneburg" element={<ExternerDatenschutzbeauftragterLueneburg />} />
+                <Route path="/externer-datenschutzbeauftragter-dresden" element={<ExternerDatenschutzbeauftragterDresden />} />
+                <Route path="/externer-datenschutzbeauftragter-dortmund" element={<ExternerDatenschutzbeauftragterDortmund />} />
+                <Route path="/externer-datenschutzbeauftragter-nrw" element={<ExternerDatenschutzbeauftragterNRW />} />
+                <Route path="/externer-datenschutzbeauftragter-braunschweig" element={<ExternerDatenschutzbeauftragterBraunschweig />} />
+                <Route path="/externer-datenschutzbeauftragter-karlsruhe" element={<ExternerDatenschutzbeauftragterKarlsruhe />} />
+                <Route path="/externer-datenschutzbeauftragter-celle" element={<ExternerDatenschutzbeauftragterCelle />} />
+                <Route path="/externer-datenschutzbeauftragter-magdeburg" element={<ExternerDatenschutzbeauftragterMagdeburg />} />
+                <Route path="/externer-datenschutzbeauftragter-frankfurt" element={<ExternerDatenschutzbeauftragterFrankfurt />} />
+                <Route path="/externer-datenschutzbeauftragter-ulm" element={<ExternerDatenschutzbeauftragterUlm />} />
+                <Route path="/externer-datenschutzbeauftragter-heidelberg" element={<ExternerDatenschutzbeauftragterHeidelberg />} />
+                <Route path="/externer-datenschutzbeauftragter-leipzig" element={<ExternerDatenschutzbeauftragterLeipzig />} />
+                <Route path="/externer-datenschutzbeauftragter-bremerhaven" element={<ExternerDatenschutzbeauftragterBremerhaven />} />
+                <Route path="/externer-datenschutzbeauftragter-mannheim" element={<ExternerDatenschutzbeauftragterMannheim />} />
+                <Route path="/externer-datenschutzbeauftragter-wolfsburg" element={<ExternerDatenschutzbeauftragterWolfsburg />} />
+                <Route path="/externer-datenschutzbeauftragter-bayern" element={<ExternerDatenschutzbeauftragterBayern />} />
+                <Route path="/externer-datenschutzbeauftragter-niedersachsen" element={<ExternerDatenschutzbeauftragterNiedersachsen />} />
+                <Route path="/externer-datenschutzbeauftragter-muenster" element={<ExternerDatenschutzbeauftragterMuenster />} />
                 <Route path="/beta" element={<Beta />} />
+                <Route path="/features" element={<Features />} />
                 <Route path="/dsgvo-china" element={<CnGdpr />} />
                 <Route path="/dsgvo-amazon-sellers-china" element={<DsgvoAmazonSellersChina />} />
                 <Route path="/dsgvo-tiktok-shop-china" element={<DsgvoTikTokShopChina />} />
@@ -402,6 +468,8 @@ const App = () => (
                 <Route path="/wissen/leitfaden/betroffenenrechte" element={<BetroffenenrechteGuide />} />
                 <Route path="/wissen/leitfaden/tom-massnahmen" element={<TomMassnahmenGuide />} />
                 <Route path="/wissen/leitfaden/dsfa-durchfuehrung" element={<DsfaDurchfuehrungGuide />} />
+                <Route path="/wissen/leitfaden/datenschutzbeauftragter" element={<DatenschutzbeauftragterGuide />} />
+                <Route path="/wissen/leitfaden/datenschutzbeauftragter-ausbildung" element={<DatenschutzbeauftragterAusbildung />} />
                 <Route path="/wissen/krisenmanagement" element={<CrisisManagement />} />
                 <Route path="/wissen/krisenmanagement/data-breach-72h" element={<DataBreach72hGuide />} />
                 <Route path="/wissen/krisenmanagement/security-incident" element={<SecurityIncidentGuide />} />

@@ -673,6 +673,12 @@ const DSGVOGrundlagen: React.FC = () => {
                     </CardContent>
                   </Card>
                 </div>
+
+                <div className="mt-6 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <strong>Tipp:</strong> Viele Unternehmen müssen einen <strong>Datenschutzbeauftragten (DSB)</strong> benennen, der die DSGVO-Umsetzung überwacht. → <Link to="/wissen/leitfaden/datenschutzbeauftragter" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold underline">Erfahren Sie mehr über Pflichten, Aufgaben und Benennungspflicht</Link>
+                  </p>
+                </div>
               </section>
 
               {/* Betroffenenrechte */}

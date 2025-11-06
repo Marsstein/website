@@ -1760,6 +1760,36 @@ const DataBreachNotfallGuide: React.FC = () => {
         </div>
       </div>
 
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
+            <CardContent className="p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="w-6 h-6 text-orange-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    Datenpannen automatisch managen
+                  </h3>
+                  <p className="text-gray-700 mb-4">
+                    Reagieren Sie bei Datenpannen sofort mit unserem automatischen Incident-Response-System. 72-Stunden-Frist einhalten, Meldungen erstellen und alle Beteiligten koordinieren.
+                  </p>
+                  <Button
+                    size="lg"
+                    className="bg-orange-600 hover:bg-orange-700 text-white"
+                    onClick={() => window.location.href = '/features'}
+                  >
+                    Incident-Management ansehen
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
