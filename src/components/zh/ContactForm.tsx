@@ -9,12 +9,36 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin, Clock, Monitor } from 'lucide-react';
-import { getEmailJS } from '@/utils/lazyImports';
 import { SimpleCalendlySection } from '@/components/zh/SimpleCalendlySection';
 
 interface ContactFormProps {
   isDemoRequest?: boolean;
 }
+
+const topicOptions = [
+  { value: 'dsgvo-compliance', label: 'GDPR合规' },
+  { value: 'datenschutzbeauftragter', label: '外部数据保护官' },
+  { value: 'datenschutz-audit', label: '数据保护审计' },
+  { value: 'data-breach', label: '数据泄露响应' },
+  { value: 'iso-27001', label: 'ISO 27001认证' },
+  { value: 'soc2', label: 'SOC 2合规' },
+  { value: 'tisax', label: 'TISAX认证' },
+  { value: 'nis2', label: 'NIS2合规' },
+  { value: 'ai-governance', label: 'AI治理与欧盟AI法案' },
+  { value: 'ai-risk', label: 'AI风险评估' },
+  { value: 'healthcare', label: '医疗保健合规' },
+  { value: 'fintech', label: '金融科技合规' },
+  { value: 'ecommerce', label: '电子商务数据保护' },
+  { value: 'saas', label: 'SaaS合规' },
+  { value: 'compliance-platform', label: '合规管理平台' },
+  { value: 'whistleblower', label: '举报人系统' },
+  { value: 'cookie-management', label: 'Cookie管理' },
+  { value: 'consulting', label: '合规咨询' },
+  { value: 'training', label: '团队培训' },
+  { value: 'demo', label: '申请演示' },
+  { value: 'partnership', label: '合作伙伴关系' },
+  { value: 'other', label: '其他' }
+];
 
 export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false }) => {
   const { toast } = useToast();
@@ -24,12 +48,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
 
   const [formData, setFormData] = useState({
     firstName: '',
-    lastName: '',
     email: '',
     phone: '',
     company: '',
-    jobTitle: '',
-    employees: '',
+    topic: '',
     message: isDemoRequest ? '我想申请您的合规管理平台演示。' : '',
     newsletter: false,
     privacy: false,
@@ -61,25 +83,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
     setIsLoading(true);
 
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS配置缺失。请检查您的.env.local文件。');
-      }
-
-      const emailjs = await getEmailJS();
-      emailjs.init(publicKey);
-
       const sanitizedData = {
         firstName: formData.firstName.trim().slice(0, 50),
-        lastName: formData.lastName.trim().slice(0, 50),
         email: formData.email.trim().toLowerCase(),
         phone: formData.phone.trim().slice(0, 20),
         company: formData.company.trim().slice(0, 100),
-        jobTitle: formData.jobTitle.trim().slice(0, 100),
-        employees: formData.employees,
+        topic: formData.topic,
         message: formData.message.trim().slice(0, 2000),
         isDemoRequest: formData.isDemoRequest,
         newsletter: formData.newsletter
@@ -92,29 +101,23 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
           description: '请输入有效的电子邮件地址。',
           variant: "destructive",
         });
+        setIsLoading(false);
         return;
       }
 
-      const templateParams = {
-        name: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
-        email: sanitizedData.email,
-        message: `
-联系详情:
-- 姓名: ${sanitizedData.firstName} ${sanitizedData.lastName}
-- 邮箱: ${sanitizedData.email}
-- 电话: ${sanitizedData.phone}
-- 公司: ${sanitizedData.company}
-- 职位: ${sanitizedData.jobTitle}
-- 员工数: ${sanitizedData.employees}
-- 演示请求: ${sanitizedData.isDemoRequest ? '是' : '否'}
-- 订阅通讯: ${sanitizedData.newsletter ? '是' : '否'}
+      const response = await fetch('/api/contact-submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sanitizedData)
+      });
 
-消息:
-${sanitizedData.message}
-        `,
-      };
+      const result = await response.json();
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      if (!response.ok) {
+        throw new Error(result.error || '发送失败');
+      }
 
       toast({
         title: '成功！',
@@ -125,12 +128,10 @@ ${sanitizedData.message}
 
       setFormData({
         firstName: '',
-        lastName: '',
         email: '',
         phone: '',
         company: '',
-        jobTitle: '',
-        employees: '',
+        topic: '',
         message: '',
         newsletter: false,
         privacy: false,
@@ -142,7 +143,15 @@ ${sanitizedData.message}
       }, 1500);
 
     } catch (error) {
-      const errorMessage = '发送失败。请重试或直接联系我们。';
+      if (import.meta.env.DEV) {
+        console.error('Contact form error:', error);
+      }
+
+      let errorMessage = '发送失败。请重试或直接联系我们。';
+
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
 
       toast({
         title: '错误',
@@ -232,8 +241,10 @@ ${sanitizedData.message}
           <h2 className="text-2xl font-bold mb-6">联系表单</h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Personal Info */}
-            <div className="grid md:grid-cols-2 gap-4">
+            {/* Contact Details */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">您的联系信息</h3>
+
               <div>
                 <Label htmlFor="firstName" className="text-sm font-medium">
                   名字 <span className="text-destructive">*</span>
@@ -242,27 +253,12 @@ ${sanitizedData.message}
                   id="firstName"
                   value={formData.firstName}
                   onChange={(e) => handleInputChange('firstName', e.target.value)}
-                  placeholder="张"
+                  placeholder="张三"
                   required
                   className="mt-1"
                 />
               </div>
-              <div>
-                <Label htmlFor="lastName" className="text-sm font-medium">
-                  姓氏 <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="lastName"
-                  value={formData.lastName}
-                  onChange={(e) => handleInputChange('lastName', e.target.value)}
-                  placeholder="三"
-                  required
-                  className="mt-1"
-                />
-              </div>
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="email" className="text-sm font-medium">
                   电子邮件 <span className="text-destructive">*</span>
@@ -277,6 +273,7 @@ ${sanitizedData.message}
                   className="mt-1"
                 />
               </div>
+
               <div>
                 <Label htmlFor="phone" className="text-sm font-medium">
                   电话
@@ -294,67 +291,61 @@ ${sanitizedData.message}
 
             {/* Company Info */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">公司信息</h3>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="company" className="text-sm font-medium">
-                    公司 <span className="text-destructive">*</span>
-                  </Label>
-                  <Input
-                    id="company"
-                    value={formData.company}
-                    onChange={(e) => handleInputChange('company', e.target.value)}
-                    placeholder="示例公司"
-                    required
-                    className="mt-1"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="jobTitle" className="text-sm font-medium">
-                    职位
-                  </Label>
-                  <Input
-                    id="jobTitle"
-                    value={formData.jobTitle}
-                    onChange={(e) => handleInputChange('jobTitle', e.target.value)}
-                    placeholder="总经理"
-                    className="mt-1"
-                  />
-                </div>
-              </div>
+              <h3 className="text-lg font-semibold">您的公司</h3>
 
               <div>
-                <Label htmlFor="employees" className="text-sm font-medium">
-                  员工数量
+                <Label htmlFor="company" className="text-sm font-medium">
+                  公司 <span className="text-destructive">*</span>
                 </Label>
-                <Select onValueChange={(value) => handleInputChange('employees', value)}>
-                  <SelectTrigger className="mt-1">
-                    <SelectValue placeholder="选择员工数量" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1-10">1-10</SelectItem>
-                    <SelectItem value="11-50">11-50</SelectItem>
-                    <SelectItem value="51-200">51-200</SelectItem>
-                    <SelectItem value="201-500">201-500</SelectItem>
-                    <SelectItem value="500+">500+</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  id="company"
+                  value={formData.company}
+                  onChange={(e) => handleInputChange('company', e.target.value)}
+                  placeholder="示例公司"
+                  required
+                  className="mt-1"
+                />
               </div>
             </div>
 
-            {/* Message */}
-            <div>
-              <Label htmlFor="message" className="text-sm font-medium">
-                消息
-              </Label>
-              <Textarea
-                id="message"
-                value={formData.message}
-                onChange={(e) => handleInputChange('message', e.target.value)}
-                placeholder="您想告诉我们什么？"
-                className="mt-1 min-h-[100px]"
-              />
+            {/* Topic */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">您的需求</h3>
+
+              <div>
+                <Label htmlFor="topic" className="text-sm font-medium">
+                  主题/兴趣 <span className="text-destructive">*</span>
+                </Label>
+                <Select
+                  value={formData.topic}
+                  onValueChange={(value) => handleInputChange('topic', value)}
+                  required
+                >
+                  <SelectTrigger className="mt-1">
+                    <SelectValue placeholder="请选择一个主题" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {topicOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="message" className="text-sm font-medium">
+                  消息
+                </Label>
+                <Textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  placeholder="您想告诉我们什么？"
+                  className="mt-1 min-h-[100px]"
+                />
+              </div>
             </div>
 
             {/* Checkboxes */}

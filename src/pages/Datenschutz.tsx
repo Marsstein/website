@@ -177,12 +177,11 @@ const Datenschutz: React.FC = () => {
             <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
               <h3 className="font-semibold text-blue-900 mb-2">Verarbeitete Daten im Kontaktformular:</h3>
               <ul className="list-disc list-inside text-blue-800 space-y-1">
-                <li>Vorname und Nachname</li>
+                <li>Vorname</li>
                 <li>E-Mail-Adresse</li>
                 <li>Telefonnummer (optional)</li>
                 <li>Firma/Unternehmen</li>
-                <li>Position/Jobtitel (optional)</li>
-                <li>Anzahl der Mitarbeiter (optional)</li>
+                <li>Thema/Interesse (optional)</li>
                 <li>Nachrichteninhalt</li>
                 <li>Newsletter-Anmeldung (optional)</li>
               </ul>
@@ -217,12 +216,16 @@ const Datenschutz: React.FC = () => {
           {/* Dienste und Provider */}
           <section>
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Eingesetzte Dienste und Diensteanbieter</h2>
-            
+
             <div className="space-y-4">
               <div className="border-l-4 border-gray-300 pl-4">
-                <h3 className="font-semibold text-gray-800">EmailJS</h3>
-                <p className="text-gray-600">Versand von E-Mails über Kontaktformular</p>
-                <p className="text-gray-600 text-sm">Anbieter: EmailJS, Datenschutzerklärung: https://www.emailjs.com/legal/privacy-policy/</p>
+                <h3 className="font-semibold text-gray-800">Loops.so</h3>
+                <p className="text-gray-600">E-Mail-Marketing-Plattform für Newsletter und Kontaktformular-Verarbeitung</p>
+                <p className="text-gray-600 text-sm mt-2">
+                  <strong>Anbieter:</strong> Loops Inc., USA<br />
+                  <strong>Datenschutzerklärung:</strong> <a href="https://loops.so/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://loops.so/privacy</a><br />
+                  <strong>Datenübermittlung:</strong> Ihre Kontaktdaten werden zur Verarbeitung an Loops.so in den USA übermittelt. Die Übermittlung erfolgt auf Grundlage von Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c) DSGVO).
+                </p>
               </div>
             </div>
           </section>

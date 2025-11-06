@@ -1,29 +1,115 @@
-import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { useToast } from '@/hooks/use-toast';
 
-declare global {
-  interface Window {
-    Calendly: any;
-  }
-}
+const topicOptions = [
+  { value: 'dsgvo-compliance', label: 'DSGVO-Compliance' },
+  { value: 'datenschutzbeauftragter', label: 'Externer Datenschutzbeauftragter' },
+  { value: 'demo', label: 'Demo anfordern' },
+  { value: 'partnership', label: 'Zusammenarbeit' },
+  { value: 'other', label: 'Sonstiges' }
+];
 
 const ContactPage = () => {
-  useEffect(() => {
-    // Load Calendly widget script
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
+  const { toast } = useToast();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    email: '',
+    phone: '',
+    company: '',
+    topic: '',
+    message: '',
+    newsletter: false,
+    privacy: false
+  });
 
-    return () => {
-      const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
-      if (existingScript) {
-        existingScript.remove();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.privacy) {
+      toast({
+        title: 'Fehler',
+        description: 'Bitte akzeptieren Sie die Datenschutzerklärung.',
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const sanitizedData = {
+        firstName: formData.firstName.trim().slice(0, 50),
+        email: formData.email.trim().toLowerCase(),
+        phone: formData.phone.trim().slice(0, 20),
+        company: formData.company.trim().slice(0, 100),
+        topic: formData.topic,
+        message: formData.message.trim().slice(0, 2000),
+        isDemoRequest: false,
+        newsletter: formData.newsletter
+      };
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(sanitizedData.email)) {
+        toast({
+          title: 'Fehler',
+          description: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
       }
-    };
-  }, []);
+
+      const response = await fetch('/api/contact-submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sanitizedData)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Fehler beim Senden');
+      }
+
+      toast({
+        title: 'Erfolgreich!',
+        description: 'Ihre Nachricht wurde gesendet. Wir melden uns in Kürze bei Ihnen.',
+      });
+
+      setFormData({
+        firstName: '',
+        email: '',
+        phone: '',
+        company: '',
+        topic: '',
+        message: '',
+        newsletter: false,
+        privacy: false
+      });
+
+      setTimeout(() => {
+        navigate('/thank-you');
+      }, 1500);
+
+    } catch (error) {
+      toast({
+        title: 'Fehler',
+        description: 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.',
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -48,11 +134,10 @@ const ContactPage = () => {
         title="Kontakt – Compliance-Experten erreichen"
         description="Kontaktieren Sie Marsstein für Compliance-Beratung. ✓ Kostenlose Erstberatung ✓ 24h Antwortzeit ✓ Experten für DSGVO & ISO 27001."
         canonical="/contact"
-        keywords="Compliance Beratung, DSGVO Experten, ISO 27001 Beratung, Kontakt"
       />
-      
+
       <Header />
-      
+
       <div className="min-h-screen bg-gradient-to-b from-white to-[#F5F6F8] pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -61,7 +146,7 @@ const ContactPage = () => {
               Sprechen Sie mit unseren <span className="text-[#e24e1b]">Experten</span>
             </h1>
             <p className="text-xl text-[#474747] max-w-3xl mx-auto leading-relaxed">
-              Wir helfen Ihnen bei allen Fragen rund um Compliance, Datenschutz und Informationssicherheit. 
+              Wir helfen Ihnen bei allen Fragen rund um Compliance, Datenschutz und Informationssicherheit.
               <span className="font-semibold">Kostenlose Erstberatung inklusive.</span>
             </p>
           </div>
@@ -72,32 +157,19 @@ const ContactPage = () => {
               <h2 className="text-3xl font-bold text-[#232323] mb-8">
                 Senden Sie uns eine Nachricht
               </h2>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-[#474747] mb-2">
-                      Vorname *
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e24e1b] focus:border-[#e24e1b] transition-all duration-200 font-inter"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-[#474747] mb-2">
-                      Nachname *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e24e1b] focus:border-[#e24e1b] transition-all duration-200 font-inter"
-                    />
-                  </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-[#474747] mb-2">
+                    Vorname *
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e24e1b] focus:border-[#e24e1b] transition-all duration-200 font-inter"
+                  />
                 </div>
 
                 <div>
@@ -107,40 +179,56 @@ const ContactPage = () => {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                     required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e24e1b] focus:border-[#e24e1b] transition-all duration-200 font-inter"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-[#474747] mb-2">
+                    Telefon
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e24e1b] focus:border-[#e24e1b] transition-all duration-200 font-inter"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-[#474747] mb-2">
-                    Unternehmen
+                    Unternehmen *
                   </label>
                   <input
                     type="text"
                     id="company"
-                    name="company"
+                    value={formData.company}
+                    onChange={(e) => setFormData({...formData, company: e.target.value})}
+                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e24e1b] focus:border-[#e24e1b] transition-all duration-200 font-inter"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="topic" className="block text-sm font-medium text-[#474747] mb-2">
-                    Thema *
+                    Thema/Interesse
                   </label>
                   <select
                     id="topic"
-                    name="topic"
-                    required
+                    value={formData.topic}
+                    onChange={(e) => setFormData({...formData, topic: e.target.value})}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e24e1b] focus:border-[#e24e1b] transition-all duration-200 font-inter"
                   >
-                    <option value="">Bitte wählen</option>
-                    <option value="dsgvo">DSGVO Compliance</option>
-                    <option value="iso27001">ISO 27001 Zertifizierung</option>
-                    <option value="ai-act">EU AI Act</option>
-                    <option value="demo">Produkt Demo</option>
-                    <option value="other">Sonstiges</option>
+                    <option value="">Bitte wählen Sie ein Thema aus</option>
+                    {topicOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -150,7 +238,8 @@ const ContactPage = () => {
                   </label>
                   <textarea
                     id="message"
-                    name="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
                     rows={5}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e24e1b] focus:border-[#e24e1b] transition-all duration-200 font-inter resize-none"
@@ -159,22 +248,37 @@ const ContactPage = () => {
 
                 <div className="flex items-start">
                   <input
-                    id="privacy"
-                    name="privacy"
+                    id="newsletter"
                     type="checkbox"
+                    checked={formData.newsletter}
+                    onChange={(e) => setFormData({...formData, newsletter: e.target.checked})}
+                    className="h-4 w-4 text-[#e24e1b] border-gray-300 rounded focus:ring-[#e24e1b] mt-1"
+                  />
+                  <label htmlFor="newsletter" className="ml-3 text-sm text-[#474747]">
+                    Ich möchte den Marsstein-Newsletter mit Compliance-News und Updates erhalten.
+                  </label>
+                </div>
+
+                <div className="flex items-start">
+                  <input
+                    id="privacy"
+                    type="checkbox"
+                    checked={formData.privacy}
+                    onChange={(e) => setFormData({...formData, privacy: e.target.checked})}
                     required
                     className="h-4 w-4 text-[#e24e1b] border-gray-300 rounded focus:ring-[#e24e1b] mt-1"
                   />
                   <label htmlFor="privacy" className="ml-3 text-sm text-[#474747]">
-                    Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu. *
+                    Ich habe die <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-[#e24e1b] hover:underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
                   </label>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 text-white bg-[#e24e1b] rounded-lg hover:bg-[#f97316] transition-all duration-300 font-semibold text-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-inter"
+                  disabled={isLoading}
+                  className="w-full px-8 py-4 text-white bg-[#e24e1b] rounded-lg hover:bg-[#f97316] transition-all duration-300 font-semibold text-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-inter disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Nachricht senden
+                  {isLoading ? 'Wird gesendet...' : 'Nachricht senden'}
                 </button>
               </form>
             </div>
@@ -185,7 +289,7 @@ const ContactPage = () => {
                 <h2 className="text-3xl font-bold text-[#232323] mb-8">
                   Direkter Kontakt
                 </h2>
-                
+
                 <div className="space-y-8">
                   <div className="flex items-start group">
                     <div className="p-3 bg-[#e24e1b]/10 rounded-lg group-hover:bg-[#e24e1b]/20 transition-all duration-300">
@@ -267,18 +371,10 @@ const ContactPage = () => {
                   </li>
                 </ul>
 
-                {/* Calendly popup button */}
                 <a
-                  href=""
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (window.Calendly) {
-                      window.Calendly.initPopupWidget({
-                        url: 'https://calendly.com/marsstein-info/marsstein-intro'
-                      });
-                    }
-                    return false;
-                  }}
+                  href="https://calendly.com/marsstein-info/marsstein-intro"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-8 w-full px-6 py-3 bg-[#e24e1b] text-white font-semibold rounded-lg hover:bg-[#f97316] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 inline-block text-center cursor-pointer"
                 >
                   Termin buchen
@@ -288,7 +384,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </>
   );
