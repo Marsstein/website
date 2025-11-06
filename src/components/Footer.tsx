@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Separator } from '@/components/ui/separator';
-import { Mail, FileText, ShieldCheck, Wrench, BookOpen, Linkedin, Instagram } from 'lucide-react';
+import { Mail, FileText, ShieldCheck, Wrench, BookOpen, Linkedin, Instagram, CheckCircle, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -11,20 +11,44 @@ export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubscribed(true);
-    setIsLoading(false);
+    setError(null);
 
-    setTimeout(() => {
-      setIsSubscribed(false);
+    try {
+      const response = await fetch('/api/newsletter-subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Anmeldung fehlgeschlagen');
+      }
+
+      setIsSubscribed(true);
       setEmail('');
-    }, 3000);
+
+      setTimeout(() => {
+        setIsSubscribed(false);
+      }, 5000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten');
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Echte existierende Links basierend auf Projekt-Analyse
@@ -75,6 +99,21 @@ export const Footer: React.FC = () => {
                   <p className="font-semibold text-lg">Erfolgreich abonniert!</p>
                 </div>
                 <p className="text-sm text-[#474747]">Sie erhalten in Kürze eine Bestätigungs-E-Mail.</p>
+              </div>
+            ) : error ? (
+              <div className="space-y-4">
+                <div className="flex items-center justify-center gap-2 text-red-600">
+                  <AlertCircle className="h-6 w-6" />
+                  <p className="font-semibold text-lg">Anmeldung fehlgeschlagen</p>
+                </div>
+                <p className="text-sm text-[#474747]">{error}</p>
+                <Button
+                  onClick={() => setError(null)}
+                  variant="outline"
+                  className="mt-4"
+                >
+                  Erneut versuchen
+                </Button>
               </div>
             ) : (
               <>

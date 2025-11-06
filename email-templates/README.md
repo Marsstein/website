@@ -4,9 +4,10 @@ Diese Dokumentation beschreibt alle E-Mail-Templates für das Marsstein Kontaktf
 
 ## 📋 Übersicht
 
-Das System verwendet **4 Email Templates**:
+Das System verwendet **5 Email Templates**:
 - 2 interne Benachrichtigungen (an Marsstein Team)
 - 2 Kundenbestätigungen (an Form-Absender)
+- 1 Newsletter-Bestätigung (an Newsletter-Abonnenten)
 
 ## 🔑 Template IDs
 
@@ -21,6 +22,10 @@ Das System verwendet **4 Email Templates**:
 |----------|----|---------|
 | **Customer Contact Confirmation** | `cmhndojpfik7h340itbqwhrbl` | ✅ Danke für Ihre Anfrage, {firstName}! |
 | **Customer Demo Confirmation** | `cmhndrbzagoww1q0iwkuk0lnw` | 🎯 {firstName}, Ihre Demo wartet auf Sie! |
+
+### Newsletter
+| Template | ID | Subject |
+|----------|----|---------| | **Newsletter Confirmation** | `cmi7k2l9r00j8wn0i8xqy3m5t` | ✅ Willkommen beim Marsstein Compliance Newsletter! |
 
 ## 📨 Template Dateien
 
@@ -72,6 +77,18 @@ Das System verwendet **4 Email Templates**:
 - Vorbereitungstipps für optimale Demo
 - Alternative: Manuelle Terminvereinbarung (4h Response)
 - Links zu Ressourcen zum Vorab-Informieren
+
+### 5. newsletter-confirmation.mjml
+**Zweck:** Bestätigung der Newsletter-Anmeldung
+**Empfänger:** Newsletter-Abonnent
+**Design:** Grüne Akzentfarbe (#10B981), freundlich und informativ
+**Inhalt:**
+- Erfolgsbestätigung mit Checkmark
+- Liste der Newsletter-Benefits (wöchentliche Insights, Sofort-Alerts, Experten-Guides, Templates)
+- Top-Ressourcen zum Starten (DSGVO 30-Tage Guide, EU AI Act, Assessment Center)
+- Calendly CTA für persönliche Beratung
+- Newsletter-Frequenz Info (1x pro Woche montags)
+- DSGVO-Hinweis und Abmelde-Link
 
 ## 🔧 Data Variables
 

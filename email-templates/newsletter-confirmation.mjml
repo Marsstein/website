@@ -1,0 +1,161 @@
+<mjml>
+  <mj-head>
+    <mj-title>Newsletter-Anmeldung bestätigt</mj-title>
+    <mj-font name="Inter" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+    <mj-attributes>
+      <mj-all font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" />
+      <mj-text font-size="16px" line-height="1.6" color="#374151" />
+      <mj-section padding="0" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#F9FAFB">
+    <!-- Header with Logo -->
+    <mj-section background-color="#ffffff" padding="40px 30px 30px">
+      <mj-column>
+        <mj-image
+          src="https://marsstein.ai/JLogoMarsstein.svg"
+          alt="Marsstein Logo"
+          width="140px"
+          align="center"
+          padding="0"
+        />
+      </mj-column>
+    </mj-section>
+
+    <!-- Success Hero Section -->
+    <mj-section background-color="#10B981" padding="40px 30px" border-radius="0">
+      <mj-column>
+        <mj-text align="center" font-size="48px" padding="0 0 15px 0">
+          ✅
+        </mj-text>
+        <mj-text align="center" font-size="28px" font-weight="700" color="#ffffff" padding="0">
+          Willkommen beim Compliance Newsletter!
+        </mj-text>
+        <mj-text align="center" font-size="16px" color="#ffffff" padding="15px 0 0 0">
+          Sie haben sich erfolgreich angemeldet.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Main Content -->
+    <mj-section background-color="#ffffff" padding="40px 30px">
+      <mj-column>
+        <mj-text font-size="18px" font-weight="600" color="#111827" padding="0 0 20px 0">
+          Danke für Ihr Interesse! 🎉
+        </mj-text>
+
+        <mj-text padding="0 0 20px 0">
+          Sie erhalten ab jetzt regelmäßig:
+        </mj-text>
+
+        <!-- Benefits List -->
+        <mj-text padding="0 0 10px 0">
+          <span style="color: #10B981; font-size: 18px;">✓</span> <strong>Wöchentliche Insights</strong> zu DSGVO, NIS2, EU AI Act & mehr
+        </mj-text>
+        <mj-text padding="0 0 10px 0">
+          <span style="color: #10B981; font-size: 18px;">✓</span> <strong>Sofort-Alerts</strong> bei kritischen Gesetzesänderungen
+        </mj-text>
+        <mj-text padding="0 0 10px 0">
+          <span style="color: #10B981; font-size: 18px;">✓</span> <strong>Experten-Guides</strong> für praktische Compliance-Umsetzung
+        </mj-text>
+        <mj-text padding="0 0 25px 0">
+          <span style="color: #10B981; font-size: 18px;">✓</span> <strong>Exklusive Templates</strong> & Checklisten für Ihr Unternehmen
+        </mj-text>
+
+        <mj-divider border-color="#E5E7EB" border-width="1px" padding="25px 0" />
+
+        <mj-text font-size="18px" font-weight="600" color="#111827" padding="0 0 20px 0">
+          🚀 Starten Sie jetzt mit unseren Top-Ressourcen
+        </mj-text>
+
+        <!-- Resource Cards -->
+        <mj-text padding="0 0 15px 0">
+          <a href="https://marsstein.ai/wissen/leitfaden/dsgvo-30-tage" style="display: block; padding: 15px; background-color: #F3F4F6; border-left: 4px solid #10B981; text-decoration: none; border-radius: 6px; margin-bottom: 12px;">
+            <span style="color: #111827; font-weight: 600; display: block; margin-bottom: 5px;">📋 DSGVO in 30 Tagen</span>
+            <span style="color: #6B7280; font-size: 14px;">Der komplette Schritt-für-Schritt Guide zur DSGVO-Compliance</span>
+          </a>
+        </mj-text>
+
+        <mj-text padding="0 0 15px 0">
+          <a href="https://marsstein.ai/eu-ai-act" style="display: block; padding: 15px; background-color: #F3F4F6; border-left: 4px solid #10B981; text-decoration: none; border-radius: 6px; margin-bottom: 12px;">
+            <span style="color: #111827; font-weight: 600; display: block; margin-bottom: 5px;">🤖 EU AI Act Guide</span>
+            <span style="color: #6B7280; font-size: 14px;">Alles zum neuen KI-Gesetz der EU</span>
+          </a>
+        </mj-text>
+
+        <mj-text padding="0 0 25px 0">
+          <a href="https://marsstein.ai/assessment-center" style="display: block; padding: 15px; background-color: #F3F4F6; border-left: 4px solid #10B981; text-decoration: none; border-radius: 6px;">
+            <span style="color: #111827; font-weight: 600; display: block; margin-bottom: 5px;">🎯 Compliance Assessment</span>
+            <span style="color: #6B7280; font-size: 14px;">Kostenloser Test: Wie compliant ist Ihr Unternehmen?</span>
+          </a>
+        </mj-text>
+
+        <mj-divider border-color="#E5E7EB" border-width="1px" padding="25px 0" />
+
+        <!-- CTA Section -->
+        <mj-text align="center" font-size="18px" font-weight="600" color="#111827" padding="0 0 20px 0">
+          Bereit für persönliche Beratung?
+        </mj-text>
+
+        <mj-button
+          background-color="#10B981"
+          color="#ffffff"
+          font-weight="600"
+          border-radius="8px"
+          padding="20px 0"
+          href="https://calendly.com/marsstein"
+          font-size="16px"
+        >
+          📅 Kostenloses Erstgespräch buchen
+        </mj-button>
+
+        <mj-text align="center" color="#6B7280" font-size="14px" padding="15px 0 0 0">
+          Oder schreiben Sie uns direkt: <a href="mailto:info@marsstein.ai" style="color: #10B981; text-decoration: none;">info@marsstein.ai</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Info Box -->
+    <mj-section background-color="#ffffff" padding="0 30px 40px">
+      <mj-column>
+        <mj-text
+          background-color="#DCFCE7"
+          border-radius="8px"
+          padding="20px"
+          color="#166534"
+          font-size="14px"
+        >
+          <strong>💡 Newsletter-Frequenz:</strong><br/>
+          Wir versenden 1x pro Woche (jeden Montag) sowie bei wichtigen Compliance-Updates.<br/><br/>
+          <strong>🔒 Datenschutz:</strong><br/>
+          Ihre E-Mail wird DSGVO-konform verarbeitet. Jederzeit mit einem Klick abmeldbar.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Footer -->
+    <mj-section background-color="#F3F4F6" padding="30px">
+      <mj-column>
+        <mj-text align="center" color="#6B7280" font-size="14px" padding="0 0 15px 0">
+          <strong>Marsstein</strong> • Compliance made simple
+        </mj-text>
+
+        <mj-social font-size="15px" icon-size="30px" mode="horizontal" padding="0 0 20px 0" align="center">
+          <mj-social-element name="linkedin" href="https://www.linkedin.com/company/marsstein" background-color="#10B981" />
+          <mj-social-element name="instagram" href="https://instagram.com/marsstein.ai" background-color="#10B981" />
+        </mj-social>
+
+        <mj-text align="center" color="#9CA3AF" font-size="12px" padding="0">
+          <a href="https://marsstein.ai/impressum" style="color: #9CA3AF; text-decoration: none;">Impressum</a> •
+          <a href="https://marsstein.ai/datenschutz" style="color: #9CA3AF; text-decoration: none;">Datenschutz</a> •
+          <a href="https://marsstein.ai/agb" style="color: #9CA3AF; text-decoration: none;">AGB</a>
+        </mj-text>
+
+        <mj-text align="center" color="#9CA3AF" font-size="11px" padding="15px 0 0 0">
+          Sie erhalten diese E-Mail, weil Sie sich für den Marsstein Newsletter angemeldet haben.<br/>
+          <a href="{{UNSUBSCRIBE_URL}}" style="color: #9CA3AF; text-decoration: underline;">Abmelden</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
