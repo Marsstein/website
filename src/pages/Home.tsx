@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
 import { Link } from 'react-router-dom';
+import {
+  useTracking,
+  useSectionTracking,
+  useScrollDepthTracking,
+  useExitIntentTracking
+} from '@/hooks/useTracking';
 
 const Home = () => {
+  const { trackButtonClick } = useTracking();
+
+  useScrollDepthTracking('homepage');
+  useExitIntentTracking({ page: 'homepage' });
+
+  const heroSectionRef = useSectionTracking('homepage_hero');
+  const featuresSectionRef = useSectionTracking('homepage_features');
+  const dsbSectionRef = useSectionTracking('homepage_dsb_info');
+  const ctaSectionRef = useSectionTracking('homepage_cta');
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -28,7 +43,7 @@ const Home = () => {
       
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         {/* Hero Section */}
-        <section className="relative overflow-hidden">
+        <section ref={heroSectionRef} id="hero-section" data-section="hero" className="relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
             <div className="text-center">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
@@ -41,12 +56,16 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/preise"
+                  onClick={() => trackButtonClick('homepage_cta_pricing', 'hero')}
+                  data-ph-capture="homepage-hero-pricing-cta"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   Jetzt starten
                 </Link>
                 <Link
                   to="/contact"
+                  onClick={() => trackButtonClick('homepage_cta_demo', 'hero')}
+                  data-ph-capture="homepage-hero-demo-cta"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   Demo anfragen
@@ -57,7 +76,7 @@ const Home = () => {
         </section>
 
         {/* Features Grid */}
-        <section className="py-16 bg-white">
+        <section ref={featuresSectionRef} id="features-section" data-section="features" className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               Unsere Compliance-Lösungen
@@ -100,6 +119,8 @@ const Home = () => {
                   <p className="text-gray-600 mb-4">{feature.description}</p>
                   <Link
                     to={feature.link}
+                    onClick={() => trackButtonClick('homepage_feature_link', 'features', { feature_name: feature.title })}
+                    data-ph-capture={`homepage-feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}
                     className="text-blue-600 font-medium hover:text-blue-700 inline-flex items-center"
                   >
                     Mehr erfahren →
@@ -111,7 +132,7 @@ const Home = () => {
         </section>
 
         {/* DSB Info Section */}
-        <section className="py-16 bg-gray-50">
+        <section ref={dsbSectionRef} id="dsb-section" data-section="dsb-info" className="py-16 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-blue-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -123,12 +144,16 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/wissen/leitfaden/datenschutzbeauftragter"
+                  onClick={() => trackButtonClick('homepage_dsb_learn_more', 'dsb-info')}
+                  data-ph-capture="homepage-dsb-learn-more"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
                 >
                   Mehr über DSB-Aufgaben erfahren →
                 </Link>
                 <Link
                   to="/externer-datenschutzbeauftragter"
+                  onClick={() => trackButtonClick('homepage_dsb_hire', 'dsb-info')}
+                  data-ph-capture="homepage-dsb-hire"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   Externen DSB beauftragen
@@ -139,7 +164,7 @@ const Home = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-blue-600">
+        <section ref={ctaSectionRef} id="cta-section" data-section="cta" className="py-16 bg-blue-600">
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-white mb-4">
               Bereit für automatisierte Compliance?
@@ -149,6 +174,8 @@ const Home = () => {
             </p>
             <Link
               to="/preise"
+              onClick={() => trackButtonClick('homepage_cta_pricing', 'footer-cta')}
+              data-ph-capture="homepage-footer-pricing-cta"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-blue-600 bg-white rounded-lg hover:bg-gray-100 transition-colors"
             >
               Kostenlos testen

@@ -465,13 +465,13 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Initialize language from localStorage or default to 'en'
+  // Initialize language from localStorage or default to 'de'
   const [language, setLanguage] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('marsstein-language');
-      return (saved === 'en' || saved === 'de') ? saved : 'en';
+      return (saved === 'en' || saved === 'de') ? saved : 'de';
     }
-    return 'en';
+    return 'de';
   });
 
   // Save language to localStorage whenever it changes

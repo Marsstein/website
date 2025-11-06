@@ -25,6 +25,16 @@ import {
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 import { TracingBeam } from '@/components/ui/tracing-beam';
+import {
+  useTracking,
+  useSectionTracking,
+  useScrollDepthTracking,
+  useFormTracking,
+  useExitIntentTracking,
+  usePathTracking,
+  useRageClickDetection
+} from '@/hooks/useTracking';
+import { identifyUser } from '@/lib/analytics';
 
 const TypewriterText: React.FC<{ text: string; delay: number; isInView: boolean; speed?: number }> = ({
   text,
@@ -660,7 +670,7 @@ const TracingBeamStep: React.FC<{ step: any; index: number }> = ({ step, index }
   );
 };
 
-const WorkflowSection: React.FC = () => {
+const WorkflowSection: React.FC<{ sectionRef?: React.RefObject<HTMLDivElement> }> = ({ sectionRef }) => {
   const steps = [
     {
       title: "Onboarding",
@@ -683,7 +693,7 @@ const WorkflowSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-b from-gray-50 to-white" data-section="workflow">
       <div className="container px-4 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#232323] mb-4">
@@ -718,7 +728,7 @@ const WorkflowSection: React.FC = () => {
             </p>
             <Button
               size="lg"
-              onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => handleCTAClick('workflow')}
               className="bg-[#003366] hover:bg-[#004d99] text-white text-lg font-bold px-8 py-6 shadow-2xl"
             >
               Jetzt Beta-Zugang sichern
@@ -764,6 +774,40 @@ const AnimatedSection = ({ children, className = "", id }: { children: React.Rea
 };
 
 const Beta: React.FC = () => {
+  const { trackButtonClick } = useTracking();
+  const { trackFormStart, trackFieldCompletion, trackFormSubmit } = useFormTracking('beta_signup');
+  const { trackSectionTransition } = usePathTracking();
+  const { detectRageClick } = useRageClickDetection();
+
+  useScrollDepthTracking('beta');
+  useExitIntentTracking({ page: 'beta', form_started: false });
+
+  const problemSectionRef = useSectionTracking('beta_problem_section');
+  const workflowSectionRef = useSectionTracking('beta_workflow_section');
+  const featuresSectionRef = useSectionTracking('beta_features_section');
+  const signupSectionRef = useSectionTracking('beta_signup_section');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            if (sectionId) {
+              trackSectionTransition(sectionId);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const sections = document.querySelectorAll('[data-section]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [trackSectionTransition]);
+
   const [formData, setFormData] = useState({
     firstName: '',
     email: '',
@@ -781,6 +825,7 @@ const Beta: React.FC = () => {
 
     if (!formData.email || !formData.firstName || !formData.company || !formData.consent) {
       setError('Bitte füllen Sie alle Pflichtfelder aus.');
+      trackFormSubmit(false, 'missing_required_fields');
       return;
     }
 
@@ -800,18 +845,35 @@ const Beta: React.FC = () => {
         throw new Error(errorData.error || 'Anmeldung fehlgeschlagen');
       }
 
+      identifyUser(formData.email, {
+        email: formData.email,
+        name: formData.firstName,
+        company: formData.company,
+        signup_source: 'beta_page',
+      });
+
+      trackFormSubmit(true);
       setSubmitted(true);
     } catch (err) {
       console.error('Beta registration error:', err);
-      setError('Es gab einen Fehler bei der Anmeldung. Bitte versuchen Sie es erneut.');
+      const errorMessage = 'Es gab einen Fehler bei der Anmeldung. Bitte versuchen Sie es erneut.';
+      setError(errorMessage);
+      trackFormSubmit(false, errorMessage);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleInputChange = useCallback((field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, [field]: e.target.value }));
-  }, []);
+    const value = e.target.value;
+    setFormData(prev => ({ ...prev, [field]: value }));
+    trackFieldCompletion(field, value);
+  }, [trackFieldCompletion]);
+
+  const handleCTAClick = (location: string) => {
+    trackButtonClick('beta_cta', location);
+    document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -990,7 +1052,11 @@ const Beta: React.FC = () => {
 
 
       <div className="min-h-screen bg-background">
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#e24e1b] via-[#f97316] to-[#e24e1b]">
+        <section
+          id="hero-section"
+          data-section="hero"
+          className="relative overflow-hidden bg-gradient-to-br from-[#e24e1b] via-[#f97316] to-[#e24e1b]"
+        >
           <div className="absolute inset-0">
             <motion.div
               className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"
@@ -1039,7 +1105,11 @@ const Beta: React.FC = () => {
                 <Button
                   size="lg"
                   className="bg-white hover:bg-gray-100 text-[#e24e1b] text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 shadow-2xl shadow-black/20 font-bold w-full sm:w-auto"
-                  onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => {
+                    handleCTAClick('hero');
+                    detectRageClick('hero-cta', 'Hero CTA Button');
+                  }}
+                  data-ph-capture="beta-hero-cta"
                 >
                   <span className="hidden sm:inline">Jetzt als DSB kostenlos testen</span>
                   <span className="sm:hidden">Als DSB testen</span>
@@ -1069,7 +1139,7 @@ const Beta: React.FC = () => {
         </section>
 
         <AnimatedSection className="py-12 sm:py-16 md:py-20 bg-gray-50">
-          <div className="container px-4 mx-auto max-w-6xl">
+          <div ref={problemSectionRef} className="container px-4 mx-auto max-w-6xl" data-section="problem">
             <div id="problem-section" className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8">
                 Das Problem
@@ -1139,7 +1209,7 @@ const Beta: React.FC = () => {
                   <div className="bg-gradient-to-br from-[#e24e1b] to-[#f97316] rounded-2xl p-8 shadow-2xl">
                     <Button
                       size="lg"
-                      onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => handleCTAClick('problem')}
                       className="w-full bg-white hover:bg-gray-100 text-[#e24e1b] text-lg font-bold py-6 shadow-xl"
                     >
                       Routine-Arbeit automatisieren – jetzt Beta testen
@@ -1166,10 +1236,10 @@ const Beta: React.FC = () => {
           </div>
         </AnimatedSection>
 
-        <WorkflowSection />
+        <WorkflowSection sectionRef={workflowSectionRef} />
 
         <AnimatedSection className="pt-8 pb-20 bg-white">
-          <div className="container px-4 mx-auto max-w-6xl">
+          <div ref={featuresSectionRef} className="container px-4 mx-auto max-w-6xl" data-section="features">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-[#e24e1b]/10 backdrop-blur-sm border border-[#e24e1b]/20 rounded-full px-4 py-2 mb-4">
                 <span className="text-[#e24e1b] text-sm font-semibold">Warum Marsstein?</span>
@@ -1227,7 +1297,7 @@ const Beta: React.FC = () => {
         </AnimatedSection>
 
         <AnimatedSection id="signup-form" className="py-20 bg-gradient-to-br from-[#e24e1b] via-[#f97316] to-[#e24e1b]">
-          <div className="container px-4 mx-auto max-w-2xl">
+          <div ref={signupSectionRef} className="container px-4 mx-auto max-w-2xl" data-section="signup">
             <div className="text-center mb-8">
               <Badge className="bg-white/20 text-white border-white/30 mb-4 text-sm px-4 py-2">
                 Nur noch 13 Plätze verfügbar
@@ -1270,6 +1340,7 @@ const Beta: React.FC = () => {
                           id="firstName"
                           value={formData.firstName}
                           onChange={handleInputChange('firstName')}
+                          onFocus={trackFormStart}
                           required
                           placeholder="Max"
                           autoFocus

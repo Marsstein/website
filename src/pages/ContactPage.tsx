@@ -299,7 +299,9 @@ const ContactPage = () => {
                     </div>
                     <div className="ml-4">
                       <h3 className="font-semibold text-[#232323] text-lg">E-Mail</h3>
-                      <p className="text-[#474747] font-medium">info@marsstein.ai</p>
+                      <a href="mailto:info@marsstein.ai" className="text-[#474747] font-medium hover:text-[#e24e1b] hover:underline transition-colors">
+                        info@marsstein.ai
+                      </a>
                       <p className="text-sm text-[#474747] opacity-80">Antwort innerhalb von 24 Stunden</p>
                     </div>
                   </div>
@@ -312,7 +314,9 @@ const ContactPage = () => {
                     </div>
                     <div className="ml-4">
                       <h3 className="font-semibold text-[#232323] text-lg">Telefon</h3>
-                      <p className="text-[#474747] font-medium">+4917670560292</p>
+                      <a href="tel:+4917670560292" className="text-[#474747] font-medium hover:text-[#e24e1b] hover:underline transition-colors">
+                        +49 176 70560292
+                      </a>
                       <p className="text-sm text-[#474747] opacity-80">Mo-Fr 9:00-18:00 Uhr</p>
                     </div>
                   </div>

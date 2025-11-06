@@ -220,18 +220,27 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
           <SimpleCalendlySection />
 
           {/* Contact Info */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <Mail className="h-5 w-5 text-primary" />
-              <span>info@marsstein.ai</span>
+          <div className="space-y-6">
+            <div>
+              <div className="flex items-center gap-3 mb-1">
+                <Mail className="h-5 w-5 text-primary" />
+                <span className="font-semibold">E-Mail</span>
+              </div>
+              <div className="ml-8">
+                <a href="mailto:info@marsstein.ai" className="hover:underline">info@marsstein.ai</a>
+                <p className="text-sm text-muted-foreground">Antwort innerhalb von 24 Stunden</p>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="h-5 w-5 text-primary" />
-              <span>{t('contact_address')}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Clock className="h-5 w-5 text-primary" />
-              <span>{t('contact_hours')}</span>
+
+            <div>
+              <div className="flex items-center gap-3 mb-1">
+                <Phone className="h-5 w-5 text-primary" />
+                <span className="font-semibold">Telefon</span>
+              </div>
+              <div className="ml-8">
+                <a href="tel:+4917670560292" className="hover:underline">+49 176 70560292</a>
+                <p className="text-sm text-muted-foreground">Mo-Fr 9:00-18:00 Uhr</p>
+              </div>
             </div>
           </div>
         </div>

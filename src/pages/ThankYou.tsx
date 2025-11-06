@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLanguage } from '@/hooks/useLanguage';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Monitor, ArrowRight, Home } from 'lucide-react';
@@ -7,8 +6,6 @@ import { Link } from 'react-router-dom';
 import SEOHead from '@/components/SEOHead';
 
 export const ThankYou: React.FC = () => {
-  const { t } = useLanguage();
-
   return (
     <>
       <SEOHead
@@ -25,46 +22,46 @@ export const ThankYou: React.FC = () => {
               <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
             <CardTitle className="text-3xl font-bold text-foreground mb-2">
-              {t('thank_you_title')}
+              Vielen Dank für Ihr Interesse!
             </CardTitle>
             <p className="text-lg text-muted-foreground">
-              {t('thank_you_subtitle')}
+              Wir haben Ihre Anfrage erhalten und werden Sie innerhalb von 24 Stunden kontaktieren.
             </p>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="bg-muted/50 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-foreground mb-2">
-                {t('thank_you_next_steps')}
+                Was passiert als nächstes?
               </h3>
               <ul className="text-left space-y-2 text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                  {t('thank_you_step_1')}
+                  Unsere Compliance-Experten werden Ihre Anfrage prüfen
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                  {t('thank_you_step_2')}
+                  Wir kontaktieren Sie innerhalb von 24 Stunden, um eine Beratung zu vereinbaren
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                  {t('thank_you_step_3')}
+                  Sie erhalten einen personalisierten Compliance-Assessment-Vorschlag
                 </li>
               </ul>
             </div>
 
             <div className="border-t pt-6">
               <h3 className="text-xl font-semibold text-foreground mb-4">
-                {t('thank_you_demo_question')}
+                Möchten Sie direkt einen Termin vereinbaren?
               </h3>
               <p className="text-muted-foreground mb-6">
-                {t('thank_you_demo_description')}
+                Buchen Sie jetzt einen persönlichen Beratungstermin mit unseren Compliance-Experten.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="https://calendly.com/marsstein" target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial">
                   <Button size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-white">
                     <Monitor className="w-5 h-5 mr-2" />
-                    {t('thank_you_view_demo')}
+                    Termin vereinbaren
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </a>
@@ -72,7 +69,7 @@ export const ThankYou: React.FC = () => {
                 <Link to="/" className="flex-1 sm:flex-initial">
                   <Button variant="outline" size="lg" className="w-full">
                     <Home className="w-5 h-5 mr-2" />
-                    {t('thank_you_back_home')}
+                    Zurück zur Startseite
                   </Button>
                 </Link>
               </div>
@@ -80,10 +77,10 @@ export const ThankYou: React.FC = () => {
 
             <div className="bg-primary/5 rounded-lg p-4 text-sm text-muted-foreground">
               <p>
-                <strong>{t('thank_you_contact_info')}:</strong><br />
-                📧 info@marsstein.ai<br />
-                📞 +49 89 45126670<br />
-                🕒 {t('thank_you_response_time')}
+                <strong>Benötigen Sie sofortige Hilfe?</strong><br />
+                📧 <a href="mailto:info@marsstein.ai" className="hover:underline">info@marsstein.ai</a><br />
+                📞 <a href="tel:+4989451266770" className="hover:underline">+49 89 45126670</a><br />
+                🕒 Antwortzeit: Innerhalb von 24 Stunden
               </p>
             </div>
           </CardContent>

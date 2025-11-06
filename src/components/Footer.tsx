@@ -223,7 +223,7 @@ export const Footer: React.FC = () => {
                 <div className="p-2 bg-[#e24e1b]/10 rounded-lg">
                   <Mail className="h-5 w-5 text-[#e24e1b]" />
                 </div>
-                <a href="mailto:info@marsstein.ai" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+                <a href="mailto:info@marsstein.ai" className="text-[#474747] hover:text-[#e24e1b] transition-colors hover:underline">
                   info@marsstein.ai
                 </a>
               </div>
