@@ -56,7 +56,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        transactionalId: 'cmi7k2l9r00j8wn0i8xqy3m5t',
+        transactionalId: 'cmhnh1zeujtoo0z0i7q52wcih',
         email,
         dataVariables: {
           email

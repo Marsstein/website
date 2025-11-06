@@ -25,7 +25,7 @@ Das System verwendet **5 Email Templates**:
 
 ### Newsletter
 | Template | ID | Subject |
-|----------|----|---------| | **Newsletter Confirmation** | `cmi7k2l9r00j8wn0i8xqy3m5t` | ✅ Willkommen beim Marsstein Compliance Newsletter! |
+|----------|----|---------| | **Newsletter Confirmation** | `cmhnh1zeujtoo0z0i7q52wcih` | ✅ Willkommen beim Marsstein Compliance Newsletter! |
 
 ## 📨 Template Dateien
 
