@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -719,32 +720,32 @@ const WorkflowSection: React.FC<{ sectionRef?: React.RefObject<HTMLDivElement> }
           transition={{ duration: 0.6, delay: 0.3 }}
           className="max-w-3xl mx-auto mt-16 px-4"
         >
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 sm:p-12 border-2 border-blue-200 shadow-xl text-center">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 sm:p-8 lg:p-12 border-2 border-blue-200 shadow-xl text-center">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 break-words">
               So einfach will ich auch arbeiten
             </h3>
-            <p className="text-gray-600 mb-8 text-lg">
+            <p className="text-gray-600 mb-6 sm:mb-8 text-base sm:text-lg break-words">
               Sichern Sie sich jetzt einen der letzten 13 Beta-Plätze und sparen Sie 50% – für immer.
             </p>
             <Button
               size="lg"
               onClick={() => handleCTAClick('workflow')}
-              className="bg-[#003366] hover:bg-[#004d99] text-white text-lg font-bold px-8 py-6 shadow-2xl"
+              className="bg-[#003366] hover:bg-[#004d99] text-white text-base sm:text-lg font-bold px-6 sm:px-8 py-4 sm:py-6 shadow-2xl w-full sm:w-auto whitespace-normal min-h-[56px] flex items-center justify-center mx-auto"
             >
-              Jetzt Beta-Zugang sichern
-              <Rocket className="ml-2 h-5 w-5" />
+              <span className="break-words text-center">Jetzt Beta-Zugang sichern</span>
+              <Rocket className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
             </Button>
-            <div className="mt-6 flex items-center justify-center gap-6 flex-wrap text-sm text-gray-600">
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-green-600" />
+            <div className="mt-6 flex items-center justify-center gap-4 sm:gap-6 flex-wrap text-xs sm:text-sm text-gray-600">
+              <span className="flex items-center gap-2 whitespace-nowrap">
+                <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
                 Kostenlose Beta-Phase
               </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-green-600" />
+              <span className="flex items-center gap-2 whitespace-nowrap">
+                <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
                 Keine Kreditkarte
               </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-green-600" />
+              <span className="flex items-center gap-2 whitespace-nowrap">
+                <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
                 Jederzeit kündbar
               </span>
             </div>
@@ -774,6 +775,7 @@ const AnimatedSection = ({ children, className = "", id }: { children: React.Rea
 };
 
 const Beta: React.FC = () => {
+  const navigate = useNavigate();
   const { trackButtonClick } = useTracking();
   const { trackFormStart, trackFieldCompletion, trackFormSubmit } = useFormTracking('beta_signup');
   const { trackSectionTransition } = usePathTracking();
@@ -815,7 +817,6 @@ const Beta: React.FC = () => {
     consent: false
   });
 
-  const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -853,7 +854,7 @@ const Beta: React.FC = () => {
       });
 
       trackFormSubmit(true);
-      setSubmitted(true);
+      navigate('/beta/thanks');
     } catch (err) {
       console.error('Beta registration error:', err);
       const errorMessage = 'Es gab einen Fehler bei der Anmeldung. Bitte versuchen Sie es erneut.';
@@ -878,167 +879,6 @@ const Beta: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  if (submitted) {
-    return (
-      <>
-        <SEOHead
-          title="Anmeldung erfolgreich - Beta-Programm | Marsstein"
-          description="Vielen Dank für Ihre Anmeldung zum Beta-Programm."
-          noIndex={true}
-        />
-        <Header />
-        <div className="min-h-screen bg-background py-12">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="container max-w-4xl mx-auto px-4"
-          >
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-50 dark:bg-green-950/20 mb-6">
-                <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-500" />
-              </div>
-
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Willkommen im Beta-Programm!
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                Wir melden uns innerhalb von 24 Stunden bei Ihnen.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <Card className="border-2 border-green-200 dark:border-green-800">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-green-600" />
-                    Ihre nächsten Schritte
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex gap-3">
-                      <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-950 flex items-center justify-center text-green-600 dark:text-green-400 font-bold text-sm">
-                          1
-                        </div>
-                      </div>
-                      <div>
-                        <p className="font-semibold">Bestätigungs-E-Mail</p>
-                        <p className="text-sm text-muted-foreground">In den nächsten Minuten</p>
-                      </div>
-                    </div>
-
-                    <div className="flex gap-3">
-                      <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold text-sm">
-                          2
-                        </div>
-                      </div>
-                      <div>
-                        <p className="font-semibold">Onboarding-Call</p>
-                        <p className="text-sm text-muted-foreground">Innerhalb 24h (15-20 Minuten)</p>
-                        <p className="text-xs text-muted-foreground mt-1">Wir zeigen Ihnen Marsstein und besprechen Ihre Anforderungen</p>
-                      </div>
-                    </div>
-
-                    <div className="flex gap-3">
-                      <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-sm">
-                          3
-                        </div>
-                      </div>
-                      <div>
-                        <p className="font-semibold">Beta-Zugang</p>
-                        <p className="text-sm text-muted-foreground">Direkt nach dem Call</p>
-                        <p className="text-xs text-muted-foreground mt-1">Persönlicher Zugang + Live-Demo Ihrer Daten</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 border-blue-200 dark:border-blue-800">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Rocket className="w-5 h-5 text-blue-600" />
-                    Bereiten Sie sich vor
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium">Prüfen Sie Ihr Postfach</p>
-                        <p className="text-sm text-muted-foreground">Bestätigungs-E-Mail sollte gleich ankommen</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium">Notieren Sie Ihre DSGVO-Fragen</p>
-                        <p className="text-sm text-muted-foreground">Was sind Ihre größten Herausforderungen?</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium">Halten Sie Beispiele bereit</p>
-                        <p className="text-sm text-muted-foreground">z.B. bestehende Verarbeitungsverzeichnisse</p>
-                      </div>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-
-            <Card className="bg-gradient-to-r from-[#003366]/5 to-[#e24e1b]/5 border-2 border-[#e24e1b]/20">
-              <CardContent className="pt-6">
-                <div className="text-center">
-                  <h3 className="text-xl font-bold mb-2">Ihre Beta-Vorteile</h3>
-                  <div className="grid sm:grid-cols-2 gap-4 mt-4">
-                    <div className="flex items-center gap-2 justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-[#39B37B]" />
-                      <span className="font-medium">Kostenlose Beta-Phase</span>
-                    </div>
-                    <div className="flex items-center gap-2 justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-[#39B37B]" />
-                      <span className="font-medium">50% Lifetime-Rabatt</span>
-                    </div>
-                    <div className="flex items-center gap-2 justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-[#39B37B]" />
-                      <span className="font-medium">Direkter Team-Support</span>
-                    </div>
-                    <div className="flex items-center gap-2 justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-[#39B37B]" />
-                      <span className="font-medium">Feature-Mitgestaltung</span>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Button onClick={() => window.location.href = '/'} size="lg" variant="outline">
-                Zur Startseite
-              </Button>
-              <Button
-                onClick={() => window.open('https://linktr.ee/marsstein', '_blank')}
-                size="lg"
-                className="bg-[#003366] hover:bg-[#004d99]"
-              >
-                <Mail className="mr-2 h-5 w-5" />
-                Kontakt aufnehmen
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-        <Footer />
-      </>
-    );
-  }
 
   return (
     <>
@@ -1091,45 +931,44 @@ const Beta: React.FC = () => {
                 </Badge>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 px-2">
-                Versteht Ihre Arbeit. Spricht Ihre Sprache.<br className="hidden sm:inline" />
-                <span className="sm:hidden"> </span>Automatisiert den Rest.
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 break-words">
+                Versteht Ihre Arbeit. Spricht Ihre Sprache.{' '}
+                Automatisiert den Rest.
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-                Dokumentation automatisiert. Mandanten übersichtlich. Fristen im Blick.<br className="hidden sm:inline" />
-                <span className="sm:hidden"> </span>Ihre Expertise bleibt unersetzlich – die Routine verschwindet.
+              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 break-words">
+                Dokumentation automatisiert. Mandanten übersichtlich. Fristen im Blick.{' '}
+                Ihre Expertise bleibt unersetzlich – die Routine verschwindet.
               </p>
 
-              <div className="flex flex-col items-center gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4">
+              <div className="flex flex-col items-center gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4 w-full max-w-md mx-auto">
                 <Button
                   size="lg"
-                  className="bg-white hover:bg-gray-100 text-[#e24e1b] text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 shadow-2xl shadow-black/20 font-bold w-full sm:w-auto"
+                  className="bg-white hover:bg-gray-100 text-[#e24e1b] text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 shadow-2xl shadow-black/20 font-bold w-full sm:w-auto whitespace-normal min-h-[56px] flex items-center justify-center"
                   onClick={() => {
                     handleCTAClick('hero');
                     detectRageClick('hero-cta', 'Hero CTA Button');
                   }}
                   data-ph-capture="beta-hero-cta"
                 >
-                  <span className="hidden sm:inline">Jetzt als DSB kostenlos testen</span>
-                  <span className="sm:hidden">Als DSB testen</span>
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  <span className="break-words text-center">Jetzt als DSB kostenlos testen</span>
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
                 </Button>
-                <p className="text-xs sm:text-sm text-white/80 text-center">
+                <p className="text-xs sm:text-sm text-white/80 text-center break-words">
                   Kostenlose Beta-Phase • 50% Lifetime-Rabatt
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-white/90 px-4">
-                <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-white/90 px-4 max-w-2xl mx-auto">
+                <div className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
                   <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                   <span>Keine Kreditkarte</span>
                 </div>
-                <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
                   <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                   <span>24h Onboarding</span>
                 </div>
-                <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
                   <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                   <span>Jederzeit kündbar</span>
                 </div>
@@ -1144,8 +983,8 @@ const Beta: React.FC = () => {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8">
                 Das Problem
               </h2>
-              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-8 sm:mb-12 max-w-4xl mx-auto leading-tight px-4">
-                Gute DSBs sind rar. Ihre Zeit ist zu wertvoll für <span className="text-[#e24e1b]">Copy-Paste und Excel-Akrobatik</span>.
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-8 sm:mb-12 max-w-4xl mx-auto leading-tight px-4 break-words">
+                Gute DSBs sind rar. Ihre Zeit ist zu wertvoll für <span className="text-[#e24e1b] break-words">Copy-Paste und Excel-Akrobatik</span>.
               </p>
             </div>
 
@@ -1155,10 +994,10 @@ const Beta: React.FC = () => {
                   <div className="w-14 h-14 sm:w-16 sm:h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
                     <Copy className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 break-words">
                     80% Ihrer Arbeit ist Wiederholung
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed break-words">
                     Gleiches VVT, gleiche TOMs, gleiche Formulierungen – nur für jeden Mandanten neu getippt. Warum gibt es dafür kein System?
                   </p>
                 </div>
@@ -1169,10 +1008,10 @@ const Beta: React.FC = () => {
                   <div className="w-14 h-14 sm:w-16 sm:h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
                     <Search className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 break-words">
                     Wissen verstreut: Gesetze, Urteile, Best Practices
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed break-words">
                     Sie wissen, dass es eine Antwort gibt – aber war es in der DSK-Leitlinie, einem Blog oder einem Webinar? 30 Minuten Recherche für eine 2-Minuten-Antwort.
                   </p>
                 </div>
@@ -1183,10 +1022,10 @@ const Beta: React.FC = () => {
                   <div className="w-14 h-14 sm:w-16 sm:h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
                     <Users className="w-7 h-7 sm:w-8 sm:h-8 text-[#e24e1b]" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 break-words">
                     Multi-Client-Chaos bei externen DSBs
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed break-words">
                     15 Mandanten, 15 Excel-Sheets, 200 E-Mails pro Woche. Welcher Kunde hatte nochmal welche TOM-Anforderung?
                   </p>
                 </div>
@@ -1195,8 +1034,8 @@ const Beta: React.FC = () => {
 
             <div id="problem-impact">
               <div className="text-center px-4">
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 max-w-3xl mx-auto leading-tight mb-12">
-                  Ihr Fachwissen ist unersetzlich. Die <span className="text-[#e24e1b]">Routine-Arbeit</span> nicht.
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 max-w-3xl mx-auto leading-tight mb-12 break-words">
+                  Ihr Fachwissen ist unersetzlich. Die <span className="text-[#e24e1b] break-words">Routine-Arbeit</span> nicht.
                 </p>
 
                 <motion.div
@@ -1206,26 +1045,26 @@ const Beta: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="max-w-2xl mx-auto"
                 >
-                  <div className="bg-gradient-to-br from-[#e24e1b] to-[#f97316] rounded-2xl p-8 shadow-2xl">
+                  <div className="bg-gradient-to-br from-[#e24e1b] to-[#f97316] rounded-2xl p-6 sm:p-8 shadow-2xl">
                     <Button
                       size="lg"
                       onClick={() => handleCTAClick('problem')}
-                      className="w-full bg-white hover:bg-gray-100 text-[#e24e1b] text-lg font-bold py-6 shadow-xl"
+                      className="w-full bg-white hover:bg-gray-100 text-[#e24e1b] text-base sm:text-lg font-bold py-4 sm:py-6 shadow-xl whitespace-normal min-h-[56px] flex items-center justify-center"
                     >
-                      Routine-Arbeit automatisieren – jetzt Beta testen
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      <span className="break-words text-center">Routine-Arbeit automatisieren – jetzt Beta testen</span>
+                      <ArrowRight className="ml-2 h-5 w-5 flex-shrink-0" />
                     </Button>
-                    <p className="text-white/90 text-sm mt-4 flex items-center justify-center gap-4 flex-wrap">
-                      <span className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-4 h-4" />
+                    <p className="text-white/90 text-xs sm:text-sm mt-4 flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+                      <span className="flex items-center gap-1.5 whitespace-nowrap">
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                         3 Minuten Setup
                       </span>
-                      <span className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-4 h-4" />
+                      <span className="flex items-center gap-1.5 whitespace-nowrap">
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                         Keine Kreditkarte
                       </span>
-                      <span className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-4 h-4" />
+                      <span className="flex items-center gap-1.5 whitespace-nowrap">
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                         50% Lifetime-Rabatt
                       </span>
                     </p>
@@ -1279,13 +1118,13 @@ const Beta: React.FC = () => {
                 >
                   <Card className="border-2 border-gray-200 hover:border-[#e24e1b] transition-all h-full">
                     <CardContent className="pt-6">
-                      <div className="w-16 h-16 mb-4 rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 mb-4 rounded-xl bg-gradient-to-br from-[#e24e1b] to-[#f97316] flex items-center justify-center text-white flex-shrink-0">
                         {feature.icon}
                       </div>
-                      <h3 className="text-lg font-bold text-[#232323] mb-2">
+                      <h3 className="text-base sm:text-lg font-bold text-[#232323] mb-2 break-words">
                         {feature.title}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600 break-words">
                         {feature.description}
                       </p>
                     </CardContent>
@@ -1309,17 +1148,17 @@ const Beta: React.FC = () => {
                 Gestalten Sie die Zukunft der Compliance mit uns
               </p>
 
-              <div className="flex flex-wrap justify-center gap-3">
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm border border-white/20">
-                  <Users className="w-4 h-4" />
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-white text-xs sm:text-sm border border-white/20 whitespace-nowrap">
+                  <Users className="w-4 h-4 flex-shrink-0" />
                   <span className="font-medium">Exklusive Community</span>
                 </div>
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm border border-white/20">
-                  <Badge className="bg-[#003366] text-white text-xs px-2 py-0.5 border-none">50%</Badge>
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-white text-xs sm:text-sm border border-white/20 whitespace-nowrap">
+                  <Badge className="bg-[#003366] text-white text-xs px-2 py-0.5 border-none flex-shrink-0">50%</Badge>
                   <span className="font-medium">Lifetime-Rabatt</span>
                 </div>
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm border border-white/20">
-                  <CheckCircle2 className="w-4 h-4" />
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-white text-xs sm:text-sm border border-white/20 whitespace-nowrap">
+                  <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                   <span className="font-medium">Kostenlos testen</span>
                 </div>
               </div>
@@ -1370,15 +1209,16 @@ const Beta: React.FC = () => {
                         />
                       </div>
 
-                      <div className="flex items-start gap-2 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                      <div className="flex items-start gap-2 bg-gray-50 dark:bg-gray-800 p-3 sm:p-4 rounded-lg">
                         <Checkbox
                           id="consent"
                           checked={formData.consent}
                           onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
                           required
+                          className="flex-shrink-0 mt-0.5"
                         />
-                        <label htmlFor="consent" className="text-sm cursor-pointer leading-tight">
-                          Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz" className="text-[#e24e1b] underline">Datenschutzerklärung</a> zu.
+                        <label htmlFor="consent" className="text-xs sm:text-sm cursor-pointer leading-tight break-words">
+                          Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz" className="text-[#e24e1b] underline break-words">Datenschutzerklärung</a> zu.
                         </label>
                       </div>
 
@@ -1390,18 +1230,18 @@ const Beta: React.FC = () => {
 
                       <Button
                         type="submit"
-                        className="w-full bg-[#e24e1b] hover:bg-[#c43e15] text-white py-3 text-lg font-bold"
+                        className="w-full bg-[#e24e1b] hover:bg-[#c43e15] text-white py-3 sm:py-4 text-base sm:text-lg font-bold whitespace-normal min-h-[48px] flex items-center justify-center"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
                           <>
-                            <Clock className="mr-2 h-5 w-5 animate-spin" />
-                            Wird gesendet...
+                            <Clock className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-spin flex-shrink-0" />
+                            <span className="break-words text-center">Wird gesendet...</span>
                           </>
                         ) : (
                           <>
-                            Beta-Zugang sichern – kostenlos starten
-                            <Rocket className="ml-2 h-5 w-5" />
+                            <span className="break-words text-center">Beta-Zugang sichern – kostenlos starten</span>
+                            <Rocket className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
                           </>
                         )}
                       </Button>
@@ -1414,26 +1254,26 @@ const Beta: React.FC = () => {
                 </Card>
 
               <div className="mt-6 sm:mt-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 sm:p-6">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
-                  <div className="flex flex-col items-center gap-1.5 sm:gap-2 flex-1">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 max-w-2xl mx-auto">
+                  <div className="flex flex-col items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-lg flex-shrink-0">
                       <span className="text-[#e24e1b] font-bold text-base sm:text-lg">1</span>
                     </div>
-                    <span className="text-white font-semibold text-sm sm:text-base text-center">E-Mail Bestätigung</span>
+                    <span className="text-white font-semibold text-xs sm:text-sm text-center break-words px-2">E-Mail Bestätigung</span>
                   </div>
-                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white hidden sm:block" />
-                  <div className="flex flex-col items-center gap-1.5 sm:gap-2 flex-1">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white hidden sm:block flex-shrink-0" />
+                  <div className="flex flex-col items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-lg flex-shrink-0">
                       <span className="text-[#e24e1b] font-bold text-base sm:text-lg">2</span>
                     </div>
-                    <span className="text-white font-semibold text-sm sm:text-base text-center">Call (24h)</span>
+                    <span className="text-white font-semibold text-xs sm:text-sm text-center break-words px-2">Call (24h)</span>
                   </div>
-                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white hidden sm:block" />
-                  <div className="flex flex-col items-center gap-1.5 sm:gap-2 flex-1">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white hidden sm:block flex-shrink-0" />
+                  <div className="flex flex-col items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-lg flex-shrink-0">
                       <span className="text-[#e24e1b] font-bold text-base sm:text-lg">3</span>
                     </div>
-                    <span className="text-white font-semibold text-sm sm:text-base text-center">Beta-Zugang</span>
+                    <span className="text-white font-semibold text-xs sm:text-sm text-center break-words px-2">Beta-Zugang</span>
                   </div>
                 </div>
               </div>

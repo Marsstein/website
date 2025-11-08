@@ -42,6 +42,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const Beta = lazy(() => import("./pages/Beta"));
+const BetaThanks = lazy(() => import("./pages/BetaThanks"));
 const Features = lazy(() => import("./pages/Features"));
 const CnGdpr = lazy(() => import("./pages/CnGdpr"));
 const DsgvoAmazonSellersChina = lazy(() => import("./pages/DsgvoAmazonSellersChina"));
@@ -324,6 +325,7 @@ const App = () => (
                 <Route path="/externer-datenschutzbeauftragter-niedersachsen" element={<ExternerDatenschutzbeauftragterNiedersachsen />} />
                 <Route path="/externer-datenschutzbeauftragter-muenster" element={<ExternerDatenschutzbeauftragterMuenster />} />
                 <Route path="/beta" element={<Beta />} />
+                <Route path="/beta/thanks" element={<BetaThanks />} />
                 <Route path="/features" element={<Features />} />
                 <Route path="/dsgvo-china" element={<CnGdpr />} />
                 <Route path="/dsgvo-amazon-sellers-china" element={<DsgvoAmazonSellersChina />} />
