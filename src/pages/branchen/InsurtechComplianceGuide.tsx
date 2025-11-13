@@ -112,7 +112,8 @@ import {
   PauseCircle,
   FileWarning,
   UserMinus,
-  Unlink
+  Unlink,
+  Plane
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
+import {
   Calendar,
   CheckCircle2,
   Clock,
@@ -31,7 +31,8 @@ import {
   Lightbulb,
   ListChecks,
   Rocket,
-  Timer
+  Timer,
+  Scale
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';

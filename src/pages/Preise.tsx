@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
-  Check, X, Star, Shield, Zap, ChevronDown, ChevronUp,
+  Check, X, Star, Shield, Zap, ChevronDown, ChevronUp, ChevronRight,
   Sparkles, FileText, UserCheck, Award, Bot, BarChart3,
   Lock, Headphones, Globe, Heart, TrendingUp, Rocket, Target, Info, ArrowRight
 } from 'lucide-react';
@@ -431,6 +431,9 @@ const Preise: React.FC = () => {
                           exit={{ opacity: 0, y: -10 }}
                           className="flex items-baseline justify-center mb-4"
                         >
+                          {pkg.name === 'ENTERPRISE' && (
+                            <span className="text-lg text-[#474747] mr-1">ab</span>
+                          )}
                           <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#232323]">
                             €{calculatePrice(pkg.basePrice, billingCycle)}
                           </span>

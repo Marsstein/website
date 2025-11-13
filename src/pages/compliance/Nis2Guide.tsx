@@ -196,6 +196,7 @@ import {
   Clock11,
   Clock12
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Nis2Guide = () => {
   const [activeSection, setActiveSection] = useState('overview');

@@ -101,7 +101,9 @@ import {
   Smartphone,
   Circle,
   Server,
-  XCircle
+  XCircle,
+  CheckSquare,
+  FileCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
