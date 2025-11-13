@@ -126,14 +126,14 @@ export const HeroSection: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link to="/assessment-center/datenschutz-test">
+              <Link to="/dsgvo-compliance-software">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-brand-red to-brand-red/90 hover:from-brand-red/90 hover:to-brand-red/80 text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105 transform relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <CheckCircle2 className="mr-2 h-5 w-5 relative z-10" />
-                  <span className="relative z-10">Compliance kostenlos testen</span>
+                  <span className="relative z-10">Kostenlos testen</span>
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 </Button>
               </Link>

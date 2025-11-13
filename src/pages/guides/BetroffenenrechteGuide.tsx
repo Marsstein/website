@@ -1414,7 +1414,7 @@ Max,max@...`}
                                 <CounterAnimation value={125} suffix="€" />
                               </div>
                               <div className="text-yellow-300 font-semibold mb-1">Kosten/Antrag</div>
-                              <div className="text-slate-400 text-sm">Je nach Komplexität</div>
+                              <div className="text-slate-400 text-sm">Je nach Komplexität. <Link to="/wissen/kosten/dsgvo-compliance-kosten" className="text-blue-400 hover:text-blue-300 underline">Gesamtkosten ansehen</Link></div>
                             </CardContent>
                           </Card>
                         </div>

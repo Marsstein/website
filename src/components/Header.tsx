@@ -69,7 +69,6 @@ export const Header: React.FC = () => {
     { key: 'nav_solutions', href: '#' },
     { key: 'nav_knowledge', href: '#' },
     { key: 'nav_industries', href: '/branchen' },
-    { key: 'nav_pricing', href: '/preise' },
     { key: 'nav_about', href: '/ueber-uns' },
     { key: 'nav_contact', href: '/contact' },
   ];
@@ -328,7 +327,6 @@ export const Header: React.FC = () => {
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.key === 'nav_industries' ? 'Branchen' :
-                 item.key === 'nav_pricing' ? 'Preise' :
                  item.key === 'nav_about' ? 'Über uns' :
                  item.key === 'nav_contact' ? 'Kontakt' :
                  item.key}
