@@ -19,10 +19,7 @@ const AgbSoftware: React.FC = () => {
 
           <div className="bg-white shadow-lg rounded-lg p-8 space-y-8">
             <div className="text-sm text-gray-600 mb-8">
-              <p className="font-semibold">Stand: 12. November 2025 (integrierte Fassung)</p>
-              <p className="mt-2 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
-                <strong>Hinweis (kein Rechtsrat):</strong> Dieses Vertragswerk ist eine praxisorientierte Musterbasis für B2B‑SaaS in Deutschland/EU. Eine finale rechtliche Prüfung durch eine/n Fachanwält:in für IT‑Recht wird dringend empfohlen. Platzhalter in <strong>[eckigen Klammern]</strong> bitte ausfüllen.
-              </p>
+              <p className="font-semibold">Stand: 12. November 2025</p>
             </div>
 
             <section id="inhaltsverzeichnis">
@@ -39,7 +36,6 @@ const AgbSoftware: React.FC = () => {
                   <li><a href="#anlage-4" className="hover:text-primary">Anlage 4: Liste der Sub-Prozessoren</a></li>
                   <li><a href="#anlage-5" className="hover:text-primary">Anlage 5: Acceptable-Use-Policy (AUP)</a></li>
                   <li><a href="#anlage-6" className="hover:text-primary">Anlage 6: Beta-/Early-Access-Bedingungen</a></li>
-                  <li><a href="#anlage-7" className="hover:text-primary">Anlage 7: EU Data Act Addendum</a></li>
                 </ol>
               </div>
             </section>
@@ -53,7 +49,7 @@ const AgbSoftware: React.FC = () => {
               <div className="space-y-6">
                 <div className="border-l-4 border-primary pl-4">
                   <p className="text-gray-700"><strong>zwischen</strong></p>
-                  <p className="text-gray-700"><strong>[Anbieter]</strong>: [Firmenname, Rechtsform (GmbH), Anschrift, HRB, USt-IdNr.], vertreten durch [vertretungsberechtigte Person] – „<strong>Anbieter</strong>" –</p>
+                  <p className="text-gray-700"><strong>Anbieter</strong>: Marsstein GmbH i.G., Bücklestraße 3, 78467 Konstanz, vertreten durch Geschäftsführer Zhihu Chen – „<strong>Anbieter</strong>" –</p>
                   <p className="text-gray-700"><strong>und</strong></p>
                   <p className="text-gray-700"><strong>[Kunde]</strong>: [Firma, Rechtsform, Anschrift] – „<strong>Kunde</strong>".</p>
                 </div>
@@ -100,7 +96,7 @@ const AgbSoftware: React.FC = () => {
                     <p>(2) <strong>Named-User/Seats</strong>: Die Nutzung erfolgt <strong>pro Named-User/Seat</strong>; je Seat darf nur <strong>eine</strong> natürliche Person gleichzeitig aktiv sein; Vertretungen sind zulässig, wenn keine <strong>gleichzeitige</strong> Nutzung erfolgt.</p>
                     <p>(3) <strong>Rechtskonformität</strong>: Der Kunde stellt sicher, dass Inhalte/Uploads <strong>rechtmäßig</strong> sind und über eine <strong>Rechtsgrundlage</strong> (z. B. Art. 6 DSGVO) verfügen; erforderliche <strong>Einwilligungen</strong> werden eingeholt.</p>
                     <p>(4) <strong>Mitwirkung</strong>: Der Kunde stellt erforderliche Informationen und eine <strong>Ansprechperson</strong> bereit und wirkt bei Analysen/Entstörungen mit.</p>
-                    <p>(5) <strong>Fehlermeldungen</strong>: Mängel/Störungen werden <strong>unverzüglich</strong> mit <strong>nachvollziehbarer Beschreibung</strong> (Screenshots, Zeitpunkt, URL, Nutzer) an <strong>[support@[domain]]</strong> bzw. das <strong>[Ticket‑Portal]</strong> gemeldet.</p>
+                    <p>(5) <strong>Fehlermeldungen</strong>: Mängel/Störungen werden <strong>unverzüglich</strong> mit <strong>nachvollziehbarer Beschreibung</strong> (Screenshots, Zeitpunkt, URL, Nutzer) an <strong>support@marsstein.ai</strong> gemeldet.</p>
                     <p>(6) <strong>Datensicherung</strong>: Zusätzlich zu Anbietersicherungen hält der Kunde – soweit geschäftlich/gesetzlich geboten – <strong>eigene Exporte/Backups</strong> vor.</p>
                     <p>(7) <strong>Schadsoftwarefreiheit</strong>: Dateien/Datenträger müssen <strong>frei von Schadcode</strong> sein; bei Verstoß <strong>Freistellung</strong> des Anbieters von Drittansprüchen; <strong>Mitverschulden</strong> des Kunden wird anspruchsmindernd berücksichtigt.</p>
                   </div>
@@ -165,7 +161,7 @@ const AgbSoftware: React.FC = () => {
                   <div className="space-y-2 text-gray-700 leading-relaxed">
                     <p>(1) Service-Level gemäß <strong>SLA (Anlage 1)</strong>: <strong>99,5 % Uptime/Monat</strong>, Support <strong>werktags 9–17 Uhr CET</strong>, <strong>P1‑Reaktionszeit 24 h</strong>, geplante Wartung <strong>mit 48 h Vorankündigung</strong>.</p>
                     <p>(2) Service-Credits sind ausschließlicher Rechtsbehelf bei SLA‑Unterschreitung.</p>
-                    <p>(3) <strong>Supportkanäle</strong>: <strong>[support@[domain]]</strong>, <strong>[Helpdesk‑URL]</strong>, optional <strong>[Notfall‑Hotline]</strong> für P1‑Fälle.</p>
+                    <p>(3) <strong>Supportkanäle</strong>: <strong>support@marsstein.ai</strong> für P1‑Fälle.</p>
                   </div>
                 </div>
 
@@ -194,7 +190,7 @@ const AgbSoftware: React.FC = () => {
                 <div id="12-subunternehmer">
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">12. Subunternehmer</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Einsatz gelisteter <strong>Sub‑Prozessoren</strong> ist vorab genehmigt. Änderungen: Information per E‑Mail/In‑App; <strong>Widerspruchsrecht</strong> innerhalb <strong>[30] Tagen</strong>; bei fortbestehendem Widerspruch Sonderkündigungsrecht des Kunden.
+                    Einsatz gelisteter <strong>Sub‑Prozessoren</strong> ist vorab genehmigt. Änderungen: Information per E‑Mail/In‑App; <strong>Widerspruchsrecht</strong> innerhalb <strong>30 Tagen</strong>; bei fortbestehendem Widerspruch Sonderkündigungsrecht des Kunden.
                   </p>
                 </div>
 
@@ -299,8 +295,7 @@ const AgbSoftware: React.FC = () => {
                 <div id="23-rangfolge">
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">23. Rangfolge</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    <strong>MSA/AGB</strong> {'>'} <strong>Order Form/Auftragsdokument</strong> {'>'} <strong>AVV/DPA (Anlage 2)</strong> {'>'} <strong>SLA (Anlage 1)</strong> {'>'} <strong>AUP (Anlage 5)</strong>.<br />
-                    Das <strong>EU Data Act Addendum (Anlage 7)</strong> hat <strong>nur insoweit Vorrang</strong>, wie dies zur <strong>Einhaltung des Data Act</strong> erforderlich ist.
+                    <strong>MSA/AGB</strong> {'>'} <strong>Order Form/Auftragsdokument</strong> {'>'} <strong>AVV/DPA (Anlage 2)</strong> {'>'} <strong>SLA (Anlage 1)</strong> {'>'} <strong>AUP (Anlage 5)</strong>.
                   </p>
                 </div>
 
@@ -331,8 +326,8 @@ const AgbSoftware: React.FC = () => {
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">2. Verfügbarkeit</h3>
                   <div className="text-gray-700 leading-relaxed space-y-2">
                     <p><strong>Ziel‑Uptime:</strong> <strong>99,5 %</strong> je <strong>Kalendermonat</strong>. <strong>Betriebszeit</strong>: 24×7.</p>
-                    <p><strong>Übergabepunkt:</strong> <strong>Routerausgang</strong> des <strong>[Hosting‑Providers]</strong> des Anbieters.</p>
-                    <p><strong>Messpunkt/Referenz:</strong> <strong>[Status‑Seite/Monitoring‑System]</strong>.</p>
+                    <p><strong>Übergabepunkt:</strong> <strong>Routerausgang</strong> des <strong>AWS</strong> des Anbieters.</p>
+                    <p><strong>Messpunkt/Referenz:</strong> <strong>status.marsstein.ai</strong>.</p>
                     <p><strong>Nicht‑Verfügbarkeit</strong> liegt vor, wenn der Haupt‑Funktionspfad {'>'} <strong>5 aufeinanderfolgende Minuten</strong> global nicht erreichbar ist.</p>
                     <p><strong>Formel:</strong> Verfügbarkeit = ([Betriebszeit – Ausfallzeit] / Betriebszeit) × 100.</p>
                     <p>Ausgenommen sind <strong>SLA‑Ausschlüsse</strong>.</p>
@@ -356,7 +351,7 @@ const AgbSoftware: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">4. Support & Reaktionszeiten</h3>
                   <div className="text-gray-700 leading-relaxed space-y-2">
-                    <p>Supportzeiten: <strong>werktags 9–17 Uhr CET</strong> via <strong>[Support‑E‑Mail/Helpdesk]</strong>.</p>
+                    <p>Supportzeiten: <strong>werktags 9–17 Uhr CET</strong> via <strong>support@marsstein.ai</strong>.</p>
                     <ul className="list-disc list-inside ml-4 space-y-1">
                       <li><strong>P1 (kritisch, Totalausfall):</strong> <strong>Reaktionszeit 24 Stunden</strong>.</li>
                       <li><strong>P2 (stark beeinträchtigt):</strong> <strong>2 Geschäftstage</strong>.</li>
@@ -426,7 +421,7 @@ const AgbSoftware: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">6. Unterauftragsverarbeiter</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Zulässig gemäß <strong>Anlage 4</strong> (genehmigte Liste). Änderungen werden vorab mitgeteilt; Kunde kann binnen <strong>[30] Tagen</strong> widersprechen; ggf. Sonderkündigung.
+                    Zulässig gemäß <strong>Anlage 4</strong> (genehmigte Liste). Änderungen werden vorab mitgeteilt; Kunde kann binnen <strong>30 Tagen</strong> widersprechen; ggf. Sonderkündigung.
                   </p>
                 </div>
 
@@ -523,17 +518,10 @@ const AgbSoftware: React.FC = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="px-4 py-2 border-b text-gray-700">[Cloud‑Provider]</td>
-                        <td className="px-4 py-2 border-b text-gray-700">Hosting</td>
-                        <td className="px-4 py-2 border-b text-gray-700">[EU‑Land]</td>
-                        <td className="px-4 py-2 border-b text-gray-700">EU</td>
-                        <td className="px-4 py-2 border-b text-gray-700">AVV</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2 border-b text-gray-700">[E‑Mail/Helpdesk]</td>
-                        <td className="px-4 py-2 border-b text-gray-700">Support</td>
-                        <td className="px-4 py-2 border-b text-gray-700">[EU]</td>
-                        <td className="px-4 py-2 border-b text-gray-700">EU</td>
+                        <td className="px-4 py-2 border-b text-gray-700">Amazon Web Services (AWS)</td>
+                        <td className="px-4 py-2 border-b text-gray-700">Hosting & Infrastructure</td>
+                        <td className="px-4 py-2 border-b text-gray-700">Deutschland</td>
+                        <td className="px-4 py-2 border-b text-gray-700">EU (Frankfurt)</td>
                         <td className="px-4 py-2 border-b text-gray-700">AVV</td>
                       </tr>
                       <tr>
@@ -580,92 +568,28 @@ const AgbSoftware: React.FC = () => {
               </ul>
             </section>
 
-            <section id="anlage-7" className="pt-8 border-t-2 border-gray-200">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <Globe className="w-7 h-7 text-primary" />
-                Anlage 7: EU Data Act Addendum (kurz)
-              </h2>
-
-              <div className="space-y-6">
-                <p className="text-gray-700 leading-relaxed">
-                  <strong>Version:</strong> [Datum einfügen] <strong>Bezug:</strong> Verordnung (EU) 2023/2854 („<strong>Data Act</strong>")<br />
-                  Dieses Addendum ergänzt den Hauptvertrag (MSA/AGB). <strong>Vorrang</strong> hat es <strong>nur</strong>, soweit dies zur <strong>Einhaltung des Data Act</strong> erforderlich ist; im Übrigen gelten MSA/AGB.
-                </p>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">1. Anwendungsbereich und Begriffe</h3>
-                  <div className="space-y-2 text-gray-700 leading-relaxed">
-                    <p>1.1 Dieses Addendum gilt für die Bereitstellung des <strong>[Produktname]</strong> als <strong>SaaS</strong> gegenüber Kunden in der EU.</p>
-                    <p>1.2 <strong>Exportierbare Daten</strong> sind alle beim Kunden anfallenden oder vom Kunden erzeugten Daten (einschl. Metadaten), soweit nach Data Act übertragbar; <strong>ausgenommen</strong> sind Geschäftsgeheimnisse des Anbieters und Informationen, deren Offenlegung den Dienst oder die Sicherheit gefährden würde.</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">2. Wechsel (Switch) und Exit</h3>
-                  <div className="space-y-2 text-gray-700 leading-relaxed">
-                    <p>2.1 <strong>Einleitung.</strong> Der Kunde kann mit <strong>[30–90] Tagen</strong> Vorlauf per Mitteilung an <strong>[Kontaktadresse]</strong> einen <strong>Wechsel</strong> zu einem anderen Anbieter oder einen <strong>Exit</strong> (ohne Wechsel) initiieren.</p>
-                    <p>2.2 <strong>Format & Schnittstellen.</strong> Der Anbieter stellt exportierbare Daten während der Übergangsphase in <strong>gängigen, maschinenlesbaren und interoperablen Formaten</strong> (mind. <strong>CSV/JSON</strong>, ggf. Dateien) über <strong>Self‑Service</strong> oder <strong>bereitgestellte Schnittstellen</strong> zur Verfügung.</p>
-                    <p>2.3 <strong>Übergangszeit & Abruf.</strong> Der Anbieter unterstützt den Wechsel <strong>bis zu 30 Tagen</strong> ab Mitteilung; auf begründete Anfrage kann die Unterstützung <strong>angemessen verlängert</strong> werden (max. <strong>7 Monate</strong>), soweit technisch erforderlich. Nach Abschluss der Unterstützung hat der Kunde <strong>weitere 30 Tage</strong> zum Datenabruf.</p>
-                    <p>2.4 <strong>Löschung.</strong> Nach Abschluss des Wechsels bzw. des Abrufs <strong>löscht</strong> der Anbieter exportierbare Daten gemäß Löschkonzept und bestätigt die Löschung, soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">3. Sicherheit und Kontinuität</h3>
-                  <div className="space-y-2 text-gray-700 leading-relaxed">
-                    <p>3.1 Während des Wechsels/Exits erbringt der Anbieter die vertraglichen Leistungen <strong>mit der gebotenen Sorgfalt</strong> fort und hält das <strong>Sicherheitsniveau</strong> aufrecht; bekannte Risiken einer Unterbrechung werden dem Kunden <strong>klar kommuniziert</strong>.</p>
-                    <p>3.2 Datenübertragungen erfolgen <strong>verschlüsselt</strong> und unter Anwendung der <strong>TOMs</strong> (Anlage 3).</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">4. Entgelte während des Wechsels</h3>
-                  <div className="space-y-2 text-gray-700 leading-relaxed">
-                    <p>4.1 <strong>Bis 12. Januar 2027</strong> werden etwaige <strong>Wechsel-/Exit‑Entgelte</strong> <strong>reduziert</strong> bzw. <strong>nicht berechnet</strong>, soweit und solange dies der Data Act verlangt. Danach dürfen angemessene, <strong>tatsächlich angefallene Aufwände</strong> für <strong>über den gesetzlichen Mindestumfang hinausgehende</strong> Unterstützungsleistungen berechnet werden (<strong>Stundensatz [€ …]</strong>); reine <strong>Daten‑Egress/-Exportgebühren</strong> werden nicht erhoben.</p>
-                    <p>4.2 Bereits vertraglich vereinbarte <strong>laufende Nutzungsentgelte</strong> bleiben unberührt.</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">5. Drittlandsbezug / Anbieterwechsel</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Wechsel zu Anbietern außerhalb der EU/EWR liegen in der <strong>Verantwortung des Kunden</strong> (insb. Datenschutz- und Exportkontroll‑Vorgaben). Der Anbieter unterstützt im <strong>angemessenen Umfang</strong> (Abschnitt 2/3), ohne eine rechtliche Bewertung der Zielumgebung zu schulden.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">6. Sonstiges</h3>
-                  <div className="space-y-2 text-gray-700 leading-relaxed">
-                    <p>6.1 Dieses Addendum begründet <strong>keine Rechte am Quellcode</strong>, keine Pflicht zur Offenlegung von <strong>Geschäftsgeheimnissen</strong> des Anbieters und keine Bereitstellung <strong>proprietärer interner Tools</strong>.</p>
-                    <p>6.2 Im Konfliktfall gehen <strong>zwingende Data‑Act‑Vorgaben</strong> den MSA/AGB vor; im Übrigen bleibt der Vertrag unverändert.</p>
-                    <p>6.3 <strong>Behördenzugriffe & Transparenz</strong>: Der Anbieter hält eine <strong>Policy</strong> zum Umgang mit behördlichen Zugriffsersuchen bereit (rechtliche Prüfung, Ablehnung unzulässiger Ersuchen, Benachrichtigung des Kunden soweit zulässig) und erstellt <strong>aggregierte Transparenzberichte</strong> über Ersuchen betreffend nicht‑personenbezogene Daten.</p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
             <section className="pt-8 border-t-2 border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Platzhalter-Checkliste (ausfüllen):</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Implementierungs-Checkliste:</h2>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">□</span>
-                  <span>Anbieter-Identität (Firma, HRB, USt‑IdNr., Anschrift, Vertretung)</span>
+                  <span className="text-green-600">✓</span>
+                  <span>Anbieter-Identität: Marsstein GmbH i.G., Bücklestraße 3, 78467 Konstanz, vertreten durch Geschäftsführer Zhihu Chen</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">□</span>
-                  <span>Gerichtsstand (Sitz des Anbieters)</span>
+                  <span className="text-green-600">✓</span>
+                  <span>Gerichtsstand: Konstanz</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">□</span>
-                  <span>Support‑Kontakt (E‑Mail/Helpdesk/Hotline) & <strong>Status‑Seite</strong></span>
+                  <span className="text-green-600">✓</span>
+                  <span>Support‑Kontakt: support@marsstein.ai | Status‑Seite: status.marsstein.ai</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">□</span>
-                  <span>Sub‑Prozessoren‑Tabelle (Anlage 4) oder URL</span>
+                  <span className="text-green-600">✓</span>
+                  <span>Sub‑Prozessoren: Amazon Web Services (AWS) - Deutschland/EU (Frankfurt)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary">□</span>
-                  <span>Data‑Act‑Angaben (Anlage 7: Produktname, Kontaktadresse, Vorlauf [30–90 Tage], Stundensatz)</span>
+                  <span className="text-green-600">✓</span>
+                  <span>Produktname: Marsstein Compliance Platform</span>
                 </li>
               </ul>
             </section>

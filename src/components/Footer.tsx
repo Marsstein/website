@@ -244,7 +244,7 @@ export const Footer: React.FC = () => {
               © 2025 Marsstein • Compliance made simple
             </div>
             <div className="flex items-center gap-2">
-              <Link to="/agb" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+              <Link to="/agb-software" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
                 AGB
               </Link>
               <span className="text-[#474747]">•</span>

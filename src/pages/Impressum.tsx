@@ -25,6 +25,7 @@ const Impressum: React.FC = () => {
                 <User className="w-5 h-5 text-gray-600 mt-1" />
                 <div>
                   <p className="text-gray-700">Marsstein GmbH i.G.</p>
+                  <p className="text-gray-700 mt-1">Geschäftsführer: Zhihu Chen</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
