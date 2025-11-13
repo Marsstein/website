@@ -41,6 +41,7 @@ const ThankYou = lazy(() => import("./pages/ThankYou"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
+const AgbSoftware = lazy(() => import("./pages/AgbSoftware"));
 const Beta = lazy(() => import("./pages/Beta"));
 const BetaThanks = lazy(() => import("./pages/BetaThanks"));
 const Features = lazy(() => import("./pages/Features"));
@@ -348,6 +349,7 @@ const App = () => (
                 <Route path="/final-checks" element={<FinalChecks />} />
                 <Route path="/impressum" element={<Impressum />} />
                 <Route path="/datenschutz" element={<Datenschutz />} />
+                <Route path="/agb-software" element={<AgbSoftware />} />
                 
                 {/* Legacy routes (keep for backwards compatibility) */}
                 <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
