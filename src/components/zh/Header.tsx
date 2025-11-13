@@ -278,7 +278,7 @@ export const Header: React.FC = () => {
           <Button variant="ghost" size="sm" aria-label="登录">
             登录
           </Button>
-          <Link to="/zh/beta">
+          <Link to="/zh/dsgvo-compliance-software">
             <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
               免费试用
             </Button>
@@ -633,7 +633,7 @@ export const Header: React.FC = () => {
                   >
                     登录
                   </Button>
-                  <Link to="/zh/beta" className="block" onClick={handleMobileNavClick}>
+                  <Link to="/zh/dsgvo-compliance-software" className="block" onClick={handleMobileNavClick}>
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
                       <span className="mr-2">🚀</span>
                       免费试用

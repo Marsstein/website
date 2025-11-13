@@ -203,10 +203,10 @@ export default function DeepseekDsgvo() {
                   <Send className="ml-2 h-5 w-5" />
                 </a>
                 <a
-                  href="/beta"
+                  href="/dsgvo-compliance-software"
                   className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-slate-900 shadow-lg transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
                 >
-                  Beta kostenlos testen
+                  Kostenlos testen
                 </a>
               </div>
             </motion.div>
@@ -602,7 +602,7 @@ export default function DeepseekDsgvo() {
                           htmlFor="betaAccess"
                           className="text-sm text-slate-700 cursor-pointer leading-relaxed"
                         >
-                          Ich möchte Marsstein kostenlos testen und erhalte 50% Rabatt nach der Beta-Phase
+                          Ich möchte Marsstein kostenlos testen und vom Early Bird Preis profitieren
                         </Label>
                       </div>
 

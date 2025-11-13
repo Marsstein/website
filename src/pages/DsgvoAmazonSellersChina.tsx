@@ -187,10 +187,10 @@ export default function DsgvoAmazonSellersChina() {
                   <Send className="ml-2 h-5 w-5" />
                 </a>
                 <a
-                  href="/beta"
+                  href="/dsgvo-compliance-software"
                   className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-slate-900 shadow-lg transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
                 >
-                  Beta kostenlos testen
+                  Kostenlos testen
                 </a>
               </div>
             </motion.div>
@@ -779,7 +779,7 @@ export default function DsgvoAmazonSellersChina() {
                           htmlFor="betaAccess"
                           className="text-sm text-slate-700 cursor-pointer leading-relaxed"
                         >
-                          Ich möchte Marsstein kostenlos testen und erhalte 50% Rabatt nach der Beta-Phase
+                          Ich möchte Marsstein kostenlos testen und vom Early Bird Preis profitieren
                         </Label>
                       </div>
 
@@ -1120,15 +1120,15 @@ export default function DsgvoAmazonSellersChina() {
               </h2>
 
               <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-                Werden Sie Beta-Tester und sichern Sie sich 50% Rabatt nach der Beta-Phase. Keine Kreditkarte erforderlich.
+                Sichern Sie sich jetzt den Early Bird Preis. Keine Kreditkarte erforderlich.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="/beta"
+                  href="/dsgvo-compliance-software"
                   className="inline-flex items-center justify-center rounded-lg bg-[#e24e1b] px-8 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#d63f14] focus:outline-none focus:ring-2 focus:ring-[#e24e1b] focus:ring-offset-2"
                 >
-                  Jetzt Beta-Zugang sichern
+                  Jetzt Early Bird Preis sichern
                   <CheckCircle className="ml-2 h-5 w-5" />
                 </a>
                 <a

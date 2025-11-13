@@ -87,8 +87,8 @@ export const Header: React.FC = () => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/beta" className="block w-full">
-            Beta testen
+          <Link to="/dsgvo-compliance-software" className="block w-full">
+            Software testen
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
@@ -342,7 +342,7 @@ export const Header: React.FC = () => {
           <Button variant="ghost" size="sm" aria-label="Anmelden">
             Anmelden
           </Button>
-          <Link to="/beta">
+          <Link to="/dsgvo-compliance-software">
             <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
               Kostenlos testen
             </Button>
@@ -427,11 +427,11 @@ export const Header: React.FC = () => {
                           Alle Features
                         </Link>
                         <Link
-                          to="/beta"
+                          to="/dsgvo-compliance-software"
                           onClick={handleMobileNavClick}
                           className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
-                          Beta testen
+                          Software testen
                         </Link>
                         <Link
                           to="/preise"
@@ -640,7 +640,7 @@ export const Header: React.FC = () => {
                   >
                     Anmelden
                   </Button>
-                  <Link to="/beta" className="block" onClick={handleMobileNavClick}>
+                  <Link to="/dsgvo-compliance-software" className="block" onClick={handleMobileNavClick}>
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
                       Kostenlos testen
                     </Button>

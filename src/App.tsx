@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -42,7 +42,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AgbSoftware = lazy(() => import("./pages/AgbSoftware"));
-const Beta = lazy(() => import("./pages/Beta"));
+const DsgvoComplianceSoftware = lazy(() => import("./pages/DsgvoComplianceSoftware"));
 const BetaThanks = lazy(() => import("./pages/BetaThanks"));
 const Features = lazy(() => import("./pages/Features"));
 const CnGdpr = lazy(() => import("./pages/CnGdpr"));
@@ -59,6 +59,7 @@ const DsgvoDouyinChina = lazy(() => import("./pages/DsgvoDouyinChina"));
 const DsgvoB2BHerstellerChina = lazy(() => import("./pages/DsgvoB2BHerstellerChina"));
 const PiplGdprChina = lazy(() => import("./pages/PiplGdprChina"));
 const ChinaDsgvo = lazy(() => import("./pages/wissen/ChinaDsgvo"));
+const DsgvoChecklist = lazy(() => import("./pages/DsgvoChecklist"));
 
 const Resources = lazy(() => import("./pages/Resources").then(module => ({ default: module.Resources })));
 const DSGVOComplianceChecklist = lazy(() => import("./pages/resources/DSGVOComplianceChecklist").then(module => ({ default: module.DSGVOComplianceChecklist })));
@@ -325,7 +326,8 @@ const App = () => (
                 <Route path="/externer-datenschutzbeauftragter-bayern" element={<ExternerDatenschutzbeauftragterBayern />} />
                 <Route path="/externer-datenschutzbeauftragter-niedersachsen" element={<ExternerDatenschutzbeauftragterNiedersachsen />} />
                 <Route path="/externer-datenschutzbeauftragter-muenster" element={<ExternerDatenschutzbeauftragterMuenster />} />
-                <Route path="/beta" element={<Beta />} />
+                <Route path="/dsgvo-compliance-software" element={<DsgvoComplianceSoftware />} />
+                <Route path="/beta" element={<Navigate to="/dsgvo-compliance-software" replace />} />
                 <Route path="/beta/thanks" element={<BetaThanks />} />
                 <Route path="/features" element={<Features />} />
                 <Route path="/dsgvo-china" element={<CnGdpr />} />
@@ -341,6 +343,7 @@ const App = () => (
                 <Route path="/dsgvo-douyin-china" element={<DsgvoDouyinChina />} />
                 <Route path="/dsgvo-b2b-hersteller-china" element={<DsgvoB2BHerstellerChina />} />
                 <Route path="/pipl-gdpr-china" element={<PiplGdprChina />} />
+                <Route path="/dsgvo-checkliste" element={<DsgvoChecklist />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/ueber-uns" element={<About />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />

@@ -62,9 +62,9 @@ const faqs: FAQ[] = [
   {
     id: '4',
     question: 'Wie soll die Implementierung ablaufen?',
-    answer: 'Geplante Implementierung: 2-4 Wochen für MVP-Features. Vision: KI-gestützte Datenanalyse und vorkonfigurierte Templates für schnelle erste Audits. Beta-Phase: Erprobung mit ausgewählten Partnern. Enterprise-Roadmap: Dedizierte Onboarding-Unterstützung.',
+    answer: 'Geplante Implementierung: 2-4 Wochen für MVP-Features. Vision: KI-gestützte Datenanalyse und vorkonfigurierte Templates für schnelle erste Audits. Early Bird Angebot: Erprobung mit ausgewählten Partnern. Enterprise-Roadmap: Dedizierte Onboarding-Unterstützung.',
     category: 'technical',
-    relatedLink: { text: 'Beta-Zugang anfragen', href: '/contact?demo=true' }
+    relatedLink: { text: 'Early Bird Zugang anfragen', href: '/contact?demo=true' }
   },
   {
     id: '5',

@@ -504,10 +504,10 @@ export default function CnGdpr() {
                   className="bg-[#e24e1b] text-white hover:bg-[#c43d0f]"
                   asChild
                 >
-                  <a href="/beta">Kostenlosen DSGVO-Check starten</a>
+                  <a href="/dsgvo-compliance-software">Kostenlosen DSGVO-Check starten</a>
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-slate-900" asChild>
-                  <a href="/beta">Demo buchen</a>
+                  <a href="/dsgvo-compliance-software">Demo buchen</a>
                 </Button>
               </div>
 
@@ -859,10 +859,10 @@ export default function CnGdpr() {
 
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Link
-                      to="/beta"
+                      to="/dsgvo-compliance-software"
                       className="flex-1 inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-xl hover:from-[#d63f14] hover:to-[#ea580c] transition-all duration-300 shadow-lg hover:shadow-xl group transform hover:scale-[1.02]"
                     >
-                      Jetzt Beta-Zugang sichern
+                      Jetzt Early Bird Preis sichern
                       <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
@@ -1162,7 +1162,7 @@ export default function CnGdpr() {
                         className="mt-1 border-slate-300 data-[state=checked]:bg-[#e24e1b] data-[state=checked]:border-[#e24e1b]"
                       />
                       <Label htmlFor="betaAccess" className="font-normal text-sm cursor-pointer leading-relaxed">
-                        Ich möchte den <strong>Beta-Zugang</strong> erhalten und die Plattform kostenlos testen
+                        Ich möchte die Plattform kostenlos testen und vom <strong>Early Bird Preis</strong> profitieren
                       </Label>
                     </div>
 
@@ -1281,7 +1281,7 @@ export default function CnGdpr() {
                       className="w-full bg-[#e24e1b] text-white hover:bg-[#c43d0f]"
                       asChild
                     >
-                      <a href="/beta">
+                      <a href="/dsgvo-compliance-software">
                         <Calendar className="w-4 h-4 mr-2" />
                         Termin buchen
                       </a>

@@ -798,7 +798,7 @@ export default function CnGdpr() {
                         className="mt-1 border-slate-300 data-[state=checked]:bg-[#e24e1b] data-[state=checked]:border-[#e24e1b]"
                       />
                       <Label htmlFor="betaAccess" className="font-normal text-sm cursor-pointer leading-relaxed">
-                        Ich möchte den <strong>Beta-Zugang</strong> erhalten und die Plattform kostenlos testen
+                        Ich möchte die Plattform kostenlos testen und vom <strong>Early Bird Preis</strong> profitieren
                       </Label>
                     </div>
 
@@ -917,7 +917,7 @@ export default function CnGdpr() {
                       className="w-full bg-[#e24e1b] text-white hover:bg-[#c43d0f]"
                       asChild
                     >
-                      <a href="/beta">
+                      <a href="/dsgvo-compliance-software">
                         <Calendar className="w-4 h-4 mr-2" />
                         Termin buchen
                       </a>

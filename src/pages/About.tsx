@@ -182,12 +182,12 @@ const About: React.FC = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/beta">
+                <Link to="/dsgvo-compliance-software">
                   <Button
                     size="lg"
                     className="bg-white text-[#e24e1b] hover:bg-gray-100 px-8 py-3 font-semibold"
                   >
-                    Demo buchen
+                    DSGVO-Software testen
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>

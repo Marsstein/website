@@ -1401,7 +1401,7 @@ const DsgvoCompliance = () => {
           <CardContent className="relative z-10 p-12 md:p-20 text-center space-y-8">
             <Badge className="bg-[#e24e1b] text-white px-6 py-2 text-base">
               <Sparkles className="h-4 w-4 mr-2" />
-              Beta-Phase Zugang
+              Early Bird Zugang
             </Badge>
             
             <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">

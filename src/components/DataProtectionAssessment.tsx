@@ -940,14 +940,14 @@ export const DataProtectionAssessment: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 mb-2.5 sm:mb-3">
               <a
-                href="/beta"
+                href="/dsgvo-compliance-software"
                 className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-xl border-2 border-[#e24e1b] bg-gradient-to-br from-[#e24e1b] to-[#ea580c] text-white hover:shadow-xl transition-all duration-300 group"
               >
                 <div className="text-2xl sm:text-3xl mb-1.5 sm:mb-2">🚀</div>
-                <div className="text-sm sm:text-lg font-bold mb-0.5 sm:mb-1">BETA</div>
-                <div className="text-xs opacity-90 mb-2 sm:mb-3">Kostenlos registrieren</div>
+                <div className="text-sm sm:text-lg font-bold mb-0.5 sm:mb-1">Early Bird</div>
+                <div className="text-xs opacity-90 mb-2 sm:mb-3">DSGVO-Compliance-Software</div>
                 <div className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 rounded-lg text-xs font-semibold group-hover:bg-white/30 transition-colors">
-                  Jetzt starten
+                  Kostenlos testen
                 </div>
               </a>
 

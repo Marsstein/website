@@ -299,10 +299,10 @@ const Preise: React.FC = () => {
               <Info className="h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
               <div className="text-left">
                 <p className="text-sm text-blue-900 dark:text-blue-100 font-semibold mb-1">
-                  Beta-Phase
+                  Early Bird Launch
                 </p>
                 <p className="text-sm text-blue-700 dark:text-blue-300">
-                  Wir befinden uns derzeit in der Beta-Phase. Preise und Funktionen können sich ändern. Kontaktieren Sie uns, um mehr über unser Early Access Programm zu erfahren.
+                  Sichern Sie sich jetzt den Early Bird Preis. Kontaktieren Sie uns für ein individuelles Angebot.
                 </p>
               </div>
             </motion.div>

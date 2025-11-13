@@ -14,11 +14,12 @@ import {
   Clock,
   Users,
   Building2,
-  Shield,
   FileText,
   Target,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Sparkles,
+  Rocket
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '@/components/SEOHead';
@@ -127,28 +128,32 @@ const DsgvoComplianceKosten: React.FC = () => {
 
   const savingStrategies = [
     {
+      strategy: 'KI-gestützte Compliance-Software',
+      saving: 'Bis zu 70% weniger Kosten',
+      description: 'Automatisierte Dokumentation, intelligente Prozesse und KI-Assistenz für DSBs',
+      difficulty: 'Sehr einfach',
+      isMarsstein: true
+    },
+    {
       strategy: 'Hybrid-Modell statt interner DSB',
       saving: '30.000 - 60.000€/Jahr',
       description: 'Externer DSB mit internem Koordinator kombinieren statt Vollzeit-DSB',
-      difficulty: 'Einfach'
-    },
-    {
-      strategy: 'Compliance-Software statt manuelle Prozesse',
-      saving: '10.000 - 30.000€/Jahr',
-      description: 'Automatisierte Dokumentation und Prozess-Management reduziert Zeitaufwand drastisch',
-      difficulty: 'Einfach'
+      difficulty: 'Einfach',
+      isMarsstein: false
     },
     {
       strategy: 'Standard-Templates nutzen',
       saving: '5.000 - 15.000€ einmalig',
       description: 'Bewährte Vorlagen statt alles von Grund auf neu zu erstellen',
-      difficulty: 'Sehr einfach'
+      difficulty: 'Sehr einfach',
+      isMarsstein: false
     },
     {
       strategy: 'Schulungen digital statt Präsenz',
       saving: '2.000 - 8.000€/Jahr',
       description: 'E-Learning-Plattformen statt teurer Präsenzschulungen',
-      difficulty: 'Einfach'
+      difficulty: 'Einfach',
+      isMarsstein: false
     }
   ];
 
@@ -171,7 +176,6 @@ const DsgvoComplianceKosten: React.FC = () => {
         title="DSGVO Compliance Kosten 2025 - Was kostet Datenschutz wirklich?"
         description="DSGVO Kosten transparent: Initial-Setup 8.000-46.000€, jährlich 5.100-38.000€ je nach Unternehmensgröße. Inkl. versteckter Kosten & Spar-Strategien."
         canonical="/wissen/kosten/dsgvo-compliance-kosten"
-        keywords="DSGVO Kosten, Datenschutz Kosten, DSB Kosten, Compliance Kosten, DSGVO Budget, Datenschutzbeauftragter Kosten"
       />
       <Header />
 
@@ -192,6 +196,38 @@ const DsgvoComplianceKosten: React.FC = () => {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 px-4 py-6"
+      >
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                <AlertTriangle className="h-8 w-8 text-white" />
+              </div>
+              <div className="text-white">
+                <div className="text-2xl font-black mb-1">Zu teuer? Zu aufwändig?</div>
+                <div className="text-white/90 text-lg">Es geht auch günstiger – mit KI-gestützter Automatisierung</div>
+              </div>
+            </div>
+            <Button
+              size="lg"
+              className="bg-white hover:bg-gray-100 text-orange-600 px-8 py-6 text-lg font-bold shadow-xl whitespace-nowrap"
+              asChild
+            >
+              <Link to="/dsgvo-compliance-software">
+                <Sparkles className="mr-2 h-5 w-5" />
+                DSGVO-Compliance-Software ansehen
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </motion.div>
 
       <motion.section
         initial={{ opacity: 0, y: 30 }}
@@ -219,9 +255,14 @@ const DsgvoComplianceKosten: React.FC = () => {
               </span>
             </h1>
 
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-6">
               Transparente Übersicht aller Kosten - von Initial-Setup über laufende Ausgaben bis zu versteckten Kostenfallen.
             </p>
+
+            <div className="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-lg px-6 py-3 text-orange-300">
+              <Rocket className="h-5 w-5" />
+              <span className="font-semibold">Hinweis: Mit unserer Software sparen Sie bis zu 70% dieser Kosten</span>
+            </div>
           </div>
 
           <div className="mb-12">
@@ -364,10 +405,10 @@ const DsgvoComplianceKosten: React.FC = () => {
           >
             <h2 className="text-4xl font-black text-white mb-4">
               <Target className="inline-block mr-3 text-green-400" />
-              4 Wege, Kosten zu senken
+              4 Wege, Kosten drastisch zu senken
             </h2>
             <p className="text-slate-300 mb-8 text-lg">
-              So sparen Sie bis zu 50% der DSGVO-Kosten ohne Compliance-Risiko:
+              So sparen Sie bis zu 70% der DSGVO-Kosten ohne Compliance-Risiko:
             </p>
 
             <div className="space-y-4">
@@ -378,20 +419,31 @@ const DsgvoComplianceKosten: React.FC = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <Card className="border border-slate-700/50 bg-slate-800/40 backdrop-blur-sm hover:border-green-500/50 transition-all duration-300">
+                  <Card className={`border ${strategy.isMarsstein ? 'border-2 border-blue-500/50 bg-gradient-to-r from-blue-900/40 to-indigo-900/40' : 'border-slate-700/50 bg-slate-800/40'} backdrop-blur-sm hover:border-green-500/50 transition-all duration-300`}>
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex items-center gap-4 flex-grow">
-                          <div className="p-2 bg-green-500/20 rounded-lg">
-                            <CheckCircle2 className="h-6 w-6 text-green-400" />
+                          <div className={`p-2 ${strategy.isMarsstein ? 'bg-blue-500/20' : 'bg-green-500/20'} rounded-lg`}>
+                            {strategy.isMarsstein ? (
+                              <Sparkles className="h-6 w-6 text-blue-400" />
+                            ) : (
+                              <CheckCircle2 className="h-6 w-6 text-green-400" />
+                            )}
                           </div>
                           <div className="flex-grow">
-                            <h4 className="text-lg font-bold text-white mb-1">{strategy.strategy}</h4>
+                            <div className="flex items-center gap-2 mb-1">
+                              <h4 className="text-lg font-bold text-white">{strategy.strategy}</h4>
+                              {strategy.isMarsstein && (
+                                <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/50 text-xs">
+                                  Empfohlen
+                                </Badge>
+                              )}
+                            </div>
                             <p className="text-slate-300 text-sm">{strategy.description}</p>
                           </div>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <div className="text-green-400 font-black text-xl mb-1">{strategy.saving}</div>
+                          <div className={`${strategy.isMarsstein ? 'text-blue-400' : 'text-green-400'} font-black text-xl mb-1`}>{strategy.saving}</div>
                           <Badge variant="outline" className="border-green-500/50 text-green-300 text-xs">
                             {strategy.difficulty}
                           </Badge>
@@ -410,22 +462,86 @@ const DsgvoComplianceKosten: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-slate-800/60 to-blue-900/20 backdrop-blur-sm">
-              <CardContent className="p-12">
-                <Calculator className="h-16 w-16 text-blue-400 mx-auto mb-6" />
-                <h3 className="text-3xl font-black text-white mb-4">
-                  Berechnen Sie Ihre individuellen Kosten
+            <Card className="border-2 border-orange-500/50 bg-gradient-to-br from-orange-900/40 via-red-900/30 to-orange-900/40 backdrop-blur-sm relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-orange-500/10" />
+              <CardContent className="p-12 relative z-10">
+                <div className="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                  <Sparkles className="h-5 w-5 text-orange-400" />
+                  <span className="text-sm font-semibold text-orange-300">Smarte Lösung</span>
+                </div>
+
+                <h3 className="text-4xl font-black text-white mb-4">
+                  Die günstigere Alternative: KI-gestützte Compliance
                 </h3>
-                <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
-                  Nutzen Sie unseren interaktiven Kostenrechner für eine präzise Kalkulation basierend auf Ihrer Unternehmenssituation.
+
+                <p className="text-slate-200 text-lg mb-6 max-w-2xl mx-auto leading-relaxed">
+                  Statt <span className="text-orange-400 font-bold">10.000 - 46.000€ Initial-Kosten</span> und{' '}
+                  <span className="text-orange-400 font-bold">5.000 - 38.000€ jährlich</span>:
                 </p>
-                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-4 text-lg font-semibold" asChild>
-                  <Link to="/assessment-center/dsgvo-kosten-rechner">
-                    <Calculator className="mr-2 h-5 w-5" />
-                    Zum Kostenrechner
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
+
+                <div className="grid md:grid-cols-3 gap-6 mb-8 max-w-4xl mx-auto">
+                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                    <Zap className="h-8 w-8 text-blue-400 mx-auto mb-3" />
+                    <div className="text-3xl font-black text-white mb-2">70%</div>
+                    <div className="text-slate-300 text-sm">weniger Kosten</div>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                    <Clock className="h-8 w-8 text-green-400 mx-auto mb-3" />
+                    <div className="text-3xl font-black text-white mb-2">24h</div>
+                    <div className="text-slate-300 text-sm">Setup-Zeit</div>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                    <CheckCircle2 className="h-8 w-8 text-purple-400 mx-auto mb-3" />
+                    <div className="text-3xl font-black text-white mb-2">100%</div>
+                    <div className="text-slate-300 text-sm">DSGVO-konform</div>
+                  </div>
+                </div>
+
+                <p className="text-slate-300 text-base mb-8 max-w-2xl mx-auto">
+                  Unsere KI-gestützte Software automatisiert 80% der Routine-Arbeit: VVT-Erstellung, TOM-Dokumentation,
+                  automatische Updates bei Gesetzesänderungen. DSBs sparen Zeit, Unternehmen sparen Geld.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-6 text-lg font-bold shadow-xl"
+                    asChild
+                  >
+                    <Link to="/dsgvo-compliance-software">
+                      <Rocket className="mr-2 h-5 w-5" />
+                      Compliance-Software kostenlos testen
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-white/20 bg-white/5 hover:bg-white/10 text-white px-8 py-6 text-lg font-semibold backdrop-blur-sm"
+                    asChild
+                  >
+                    <Link to="/assessment-center/dsgvo-kosten-rechner">
+                      <Calculator className="mr-2 h-5 w-5" />
+                      Kostenrechner
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="mt-8 flex items-center justify-center gap-6 text-sm text-slate-300">
+                  <span className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                    Keine Kreditkarte
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                    Early Bird Preis
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                    Jederzeit kündbar
+                  </span>
+                </div>
               </CardContent>
             </Card>
           </motion.div>

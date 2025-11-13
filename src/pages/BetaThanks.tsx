@@ -34,7 +34,7 @@ const ProgressIndicator: React.FC = () => {
         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-gray-300 flex items-center justify-center">
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-300"></div>
         </div>
-        <span className="text-sm sm:text-base font-medium text-gray-400">Beta-Zugang</span>
+        <span className="text-sm sm:text-base font-medium text-gray-400">Zugang</span>
       </div>
     </div>
   );
@@ -80,8 +80,8 @@ export const BetaThanks: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Geschafft! Ihr Beta-Platz ist gesichert – Marsstein"
-        description="Vielen Dank für Ihre Beta-Anmeldung. Buchen Sie jetzt Ihren Onboarding-Call und starten Sie in 24h."
+        title="Geschafft! Ihr Early Bird Preis ist gesichert – Marsstein"
+        description="Vielen Dank für Ihre Anmeldung. Buchen Sie jetzt Ihren Onboarding-Call und starten Sie in 24h."
         canonical="/beta/thanks"
         noIndex={true}
       />
@@ -107,11 +107,11 @@ export const BetaThanks: React.FC = () => {
               </motion.div>
 
               <CardTitle className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
-                🎉 Geschafft! Ihr Beta-Platz ist gesichert
+                🎉 Geschafft! Ihr Early Bird Preis ist gesichert
               </CardTitle>
 
               <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-                Einer der letzten 13 Beta-Plätze ist jetzt Ihrer.<br />
+                Sie profitieren jetzt vom Early Bird Preis.<br />
                 <span className="font-semibold text-foreground">Nächster Schritt: 15-Min-Call mit Jonas buchen</span>
               </p>
             </CardHeader>
@@ -216,7 +216,7 @@ export const BetaThanks: React.FC = () => {
                     </div>
                     <h4 className="font-bold text-foreground mb-1">Sofort starten</h4>
                     <p className="text-sm text-muted-foreground">
-                      Beta-Zugang aktiviert, erste Aufgaben direkt angelegt
+                      Zugang aktiviert, erste Aufgaben direkt angelegt
                     </p>
                   </div>
                 </div>
@@ -253,15 +253,15 @@ export const BetaThanks: React.FC = () => {
               </div>
 
               <div className="bg-gradient-to-r from-[#003366]/5 to-[#e24e1b]/5 border-2 border-[#e24e1b]/20 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-foreground mb-4 text-center">Ihre Beta-Vorteile</h3>
+                <h3 className="text-xl font-bold text-foreground mb-4 text-center">Ihre Early Bird Vorteile</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex items-center gap-2 justify-center">
                     <CheckCircle className="w-5 h-5 text-[#39B37B]" />
-                    <span className="font-medium">Kostenlose Beta-Phase</span>
+                    <span className="font-medium">Kostenlose Testphase</span>
                   </div>
                   <div className="flex items-center gap-2 justify-center">
                     <CheckCircle className="w-5 h-5 text-[#39B37B]" />
-                    <span className="font-medium">50% Lifetime-Rabatt</span>
+                    <span className="font-medium">Early Bird Preis</span>
                   </div>
                   <div className="flex items-center gap-2 justify-center">
                     <CheckCircle className="w-5 h-5 text-[#39B37B]" />

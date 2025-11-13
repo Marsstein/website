@@ -221,7 +221,7 @@ const Features: React.FC = () => {
   const faqs = [
     {
       question: "Was kosten DSGVO-Compliance-Lösungen mit ROPA-, DSFA- und Betroffenenanfragen-Modulen?",
-      answer: "Unsere Preise richten sich nach Unternehmensgröße und Anzahl der Mandanten. Beta-Tester erhalten 50% Lifetime-Rabatt. Kontaktieren Sie uns für ein individuelles Angebot."
+      answer: "Unsere Preise richten sich nach Unternehmensgröße und Anzahl der Mandanten. Sichern Sie sich jetzt den Early Bird Preis. Kontaktieren Sie uns für ein individuelles Angebot."
     },
     {
       question: "Wie wählt man DSGVO-Software, die das ROPA über mehrere Einheiten hinweg vereinfacht?",
@@ -245,7 +245,7 @@ const Features: React.FC = () => {
     },
     {
       question: "Wo kann man DSGVO-Plattformen mit DSFA-Risiko-Scorings kaufen?",
-      answer: "Marsstein bietet ein integriertes DSFA-Modul mit automatischem Risiko-Scoring. Melden Sie sich für den Beta-Zugang an und testen Sie alle Features kostenlos."
+      answer: "Marsstein bietet ein integriertes DSFA-Modul mit automatischem Risiko-Scoring. Melden Sie sich für den Early Bird Zugang an und testen Sie alle Features kostenlos."
     },
     {
       question: "Wie wählt man DSGVO-Tools für eine effiziente Verwaltung von DSARs?",
@@ -282,7 +282,7 @@ const Features: React.FC = () => {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "EUR",
-            "description": "Kostenlose Beta-Phase mit 50% Lifetime-Rabatt"
+            "description": "Early Bird Preis - Limitiertes Angebot"
           },
           "description": "KI-gestützte DSGVO-Compliance-Software mit automatisiertem ROPA/VVT, DSFA-Modul, DSAR-Management und Multi-Entity-Support",
           "featureList": [
@@ -346,7 +346,7 @@ const Features: React.FC = () => {
                 <Button
                   size="lg"
                   className="bg-[#e24e1b] hover:bg-[#c43e15] text-white text-lg px-8 py-6 shadow-2xl shadow-black/20 font-bold"
-                  onClick={() => window.location.href = '/beta'}
+                  onClick={() => window.location.href = '/dsgvo-compliance-software'}
                 >
                   Kostenlos testen
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -365,11 +365,11 @@ const Features: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/90">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4" />
-                  <span>Kostenlose Beta-Phase</span>
+                  <span>Kostenlose Testphase</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4" />
-                  <span>50% Lifetime-Rabatt</span>
+                  <span>Early Bird Preis</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4" />
@@ -491,7 +491,7 @@ const Features: React.FC = () => {
                     <Button
                       size="lg"
                       className="bg-[#e24e1b] hover:bg-[#c43e15] text-white"
-                      onClick={() => window.location.href = '/beta'}
+                      onClick={() => window.location.href = '/dsgvo-compliance-software'}
                     >
                       Jetzt kostenlos testen
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -579,14 +579,14 @@ const Features: React.FC = () => {
               Bereit für automatisierte DSGVO-Compliance?
             </h2>
             <p className="text-xl text-white/90 mb-8">
-              Werden Sie Beta-Tester und sichern Sie sich 50% Lifetime-Rabatt
+              Sichern Sie sich jetzt den Early Bird Preis
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button
                 size="lg"
                 className="bg-white hover:bg-gray-100 text-[#e24e1b] text-lg px-8 py-6 shadow-2xl shadow-black/20 font-bold"
-                onClick={() => window.location.href = '/beta'}
+                onClick={() => window.location.href = '/dsgvo-compliance-software'}
               >
                 Kostenlos testen
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -632,7 +632,7 @@ const Features: React.FC = () => {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => window.location.href = '/beta'}
+                onClick={() => window.location.href = '/dsgvo-compliance-software'}
               >
                 Persönliche Demo vereinbaren
               </Button>

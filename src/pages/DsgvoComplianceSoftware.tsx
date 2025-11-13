@@ -18,7 +18,6 @@ import {
   Bot,
   Bell,
   Users,
-  Mail,
   Sparkles,
   Copy,
   Search
@@ -698,7 +697,7 @@ const WorkflowSection: React.FC<{ sectionRef?: React.RefObject<HTMLDivElement> }
       <div className="container px-4 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#232323] mb-4">
-            So einfach geht Compliance mit Marsstein
+            So einfach geht DSGVO Compliance mit Marsstein
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             In drei einfachen Schritten zur vollständigen DSGVO-Compliance
@@ -725,20 +724,20 @@ const WorkflowSection: React.FC<{ sectionRef?: React.RefObject<HTMLDivElement> }
               So einfach will ich auch arbeiten
             </h3>
             <p className="text-gray-600 mb-6 sm:mb-8 text-base sm:text-lg break-words">
-              Sichern Sie sich jetzt einen der letzten 13 Beta-Plätze und sparen Sie 50% – für immer.
+              Sichern Sie sich jetzt den Early Bird Preis und starten Sie noch heute.
             </p>
             <Button
               size="lg"
               onClick={() => handleCTAClick('workflow')}
               className="bg-[#003366] hover:bg-[#004d99] text-white text-base sm:text-lg font-bold px-6 sm:px-8 py-4 sm:py-6 shadow-2xl w-full sm:w-auto whitespace-normal min-h-[56px] flex items-center justify-center mx-auto"
             >
-              <span className="break-words text-center">Jetzt Beta-Zugang sichern</span>
+              <span className="break-words text-center">Jetzt Early Bird Preis sichern</span>
               <Rocket className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
             </Button>
             <div className="mt-6 flex items-center justify-center gap-4 sm:gap-6 flex-wrap text-xs sm:text-sm text-gray-600">
               <span className="flex items-center gap-2 whitespace-nowrap">
                 <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                Kostenlose Beta-Phase
+                Kostenlose Testphase
               </span>
               <span className="flex items-center gap-2 whitespace-nowrap">
                 <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
@@ -774,20 +773,20 @@ const AnimatedSection = ({ children, className = "", id }: { children: React.Rea
   );
 };
 
-const Beta: React.FC = () => {
+const DsgvoComplianceSoftware: React.FC = () => {
   const navigate = useNavigate();
   const { trackButtonClick } = useTracking();
-  const { trackFormStart, trackFieldCompletion, trackFormSubmit } = useFormTracking('beta_signup');
+  const { trackFormStart, trackFieldCompletion, trackFormSubmit } = useFormTracking('earlybird_signup');
   const { trackSectionTransition } = usePathTracking();
   const { detectRageClick } = useRageClickDetection();
 
-  useScrollDepthTracking('beta');
-  useExitIntentTracking({ page: 'beta', form_started: false });
+  useScrollDepthTracking('dsgvo-compliance-software');
+  useExitIntentTracking({ page: 'dsgvo-compliance-software', form_started: false });
 
-  const problemSectionRef = useSectionTracking('beta_problem_section');
-  const workflowSectionRef = useSectionTracking('beta_workflow_section');
-  const featuresSectionRef = useSectionTracking('beta_features_section');
-  const signupSectionRef = useSectionTracking('beta_signup_section');
+  const problemSectionRef = useSectionTracking('earlybird_problem_section');
+  const workflowSectionRef = useSectionTracking('earlybird_workflow_section');
+  const featuresSectionRef = useSectionTracking('earlybird_features_section');
+  const signupSectionRef = useSectionTracking('earlybird_signup_section');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -872,7 +871,7 @@ const Beta: React.FC = () => {
   }, [trackFieldCompletion]);
 
   const handleCTAClick = (location: string) => {
-    trackButtonClick('beta_cta', location);
+    trackButtonClick('earlybird_cta', location);
     document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -883,9 +882,9 @@ const Beta: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Schluss mit DSGVO-Chaos – Beta-Zugang sichern | Marsstein"
-        description="KI-gestützte DSGVO-Automatisierung. Kostenlos testen, 50% Launch-Rabatt sichern. Limitierte Beta-Plätze verfügbar."
-        canonical="/beta"
+        title="DSGVO Compliance Software – Automatisiert & KI-gestützt | Marsstein"
+        description="Die KI-gestützte DSGVO-Compliance-Software für Datenschutzbeauftragte. Dokumentation automatisiert, Mandanten übersichtlich, Fristen im Blick. Jetzt Early Bird Preis sichern."
+        canonical="/dsgvo-compliance-software"
       />
       <Header />
 
@@ -925,15 +924,14 @@ const Beta: React.FC = () => {
             >
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
                 <Rocket className="w-4 h-4 text-white" />
-                <span className="text-white text-sm font-semibold">BETA-PROGRAMM</span>
+                <span className="text-white text-sm font-semibold">EARLY BIRD LAUNCH</span>
                 <Badge className="bg-[#e24e1b] text-white border-none ml-2">
-                  Nur noch 13 Plätze verfügbar
+                  Launch-Angebot
                 </Badge>
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 break-words">
-                Versteht Ihre Arbeit. Spricht Ihre Sprache.{' '}
-                Automatisiert den Rest.
+                Automatisierte DSGVO-Compliance-Software für Datenschutzbeauftragte
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 break-words">
@@ -949,13 +947,13 @@ const Beta: React.FC = () => {
                     handleCTAClick('hero');
                     detectRageClick('hero-cta', 'Hero CTA Button');
                   }}
-                  data-ph-capture="beta-hero-cta"
+                  data-ph-capture="earlybird-hero-cta"
                 >
                   <span className="break-words text-center">Jetzt als DSB kostenlos testen</span>
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
                 </Button>
                 <p className="text-xs sm:text-sm text-white/80 text-center break-words">
-                  Kostenlose Beta-Phase • 50% Lifetime-Rabatt
+                  Kostenlose Testphase • Early Bird Preis
                 </p>
               </div>
 
@@ -1051,7 +1049,7 @@ const Beta: React.FC = () => {
                       onClick={() => handleCTAClick('problem')}
                       className="w-full bg-white hover:bg-gray-100 text-[#e24e1b] text-base sm:text-lg font-bold py-4 sm:py-6 shadow-xl whitespace-normal min-h-[56px] flex items-center justify-center"
                     >
-                      <span className="break-words text-center">Routine-Arbeit automatisieren – jetzt Beta testen</span>
+                      <span className="break-words text-center">Routine-Arbeit automatisieren – jetzt kostenlos testen</span>
                       <ArrowRight className="ml-2 h-5 w-5 flex-shrink-0" />
                     </Button>
                     <p className="text-white/90 text-xs sm:text-sm mt-4 flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
@@ -1065,7 +1063,7 @@ const Beta: React.FC = () => {
                       </span>
                       <span className="flex items-center gap-1.5 whitespace-nowrap">
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
-                        50% Lifetime-Rabatt
+                        Early Bird Preis
                       </span>
                     </p>
                   </div>
@@ -1139,13 +1137,13 @@ const Beta: React.FC = () => {
           <div ref={signupSectionRef} className="container px-4 mx-auto max-w-2xl" data-section="signup">
             <div className="text-center mb-8">
               <Badge className="bg-white/20 text-white border-white/30 mb-4 text-sm px-4 py-2">
-                Nur noch 13 Plätze verfügbar
+                Launch-Angebot
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                Werden Sie Beta-Tester
+                Jetzt durchstarten
               </h2>
               <p className="text-lg text-white/90 mb-6">
-                Gestalten Sie die Zukunft der Compliance mit uns
+                Sichern Sie sich den Early Bird Preis
               </p>
 
               <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
@@ -1154,8 +1152,8 @@ const Beta: React.FC = () => {
                   <span className="font-medium">Exklusive Community</span>
                 </div>
                 <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-white text-xs sm:text-sm border border-white/20 whitespace-nowrap">
-                  <Badge className="bg-[#003366] text-white text-xs px-2 py-0.5 border-none flex-shrink-0">50%</Badge>
-                  <span className="font-medium">Lifetime-Rabatt</span>
+                  <Rocket className="w-4 h-4 flex-shrink-0" />
+                  <span className="font-medium">Early Bird Preis</span>
                 </div>
                 <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-white text-xs sm:text-sm border border-white/20 whitespace-nowrap">
                   <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
@@ -1166,9 +1164,9 @@ const Beta: React.FC = () => {
 
             <Card className="border-2 border-white/20">
                   <CardHeader>
-                    <CardTitle>Beta-Zugang anfordern</CardTitle>
+                    <CardTitle>Jetzt kostenlos starten</CardTitle>
                     <CardDescription>
-                      Starten Sie in 24 Stunden
+                      Setup in 24 Stunden
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -1240,7 +1238,7 @@ const Beta: React.FC = () => {
                           </>
                         ) : (
                           <>
-                            <span className="break-words text-center">Beta-Zugang sichern – kostenlos starten</span>
+                            <span className="break-words text-center">Jetzt Early Bird Preis sichern</span>
                             <Rocket className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
                           </>
                         )}
@@ -1273,7 +1271,7 @@ const Beta: React.FC = () => {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-lg flex-shrink-0">
                       <span className="text-[#e24e1b] font-bold text-base sm:text-lg">3</span>
                     </div>
-                    <span className="text-white font-semibold text-xs sm:text-sm text-center break-words px-2">Beta-Zugang</span>
+                    <span className="text-white font-semibold text-xs sm:text-sm text-center break-words px-2">Zugang</span>
                   </div>
                 </div>
               </div>
@@ -1286,4 +1284,4 @@ const Beta: React.FC = () => {
   );
 };
 
-export default Beta;
+export default DsgvoComplianceSoftware;

@@ -232,7 +232,7 @@ export const ComplianceJourney = () => {
 
                           <div className="flex flex-col sm:flex-row gap-3">
                             <Link
-                              to="/zh/beta"
+                              to="/zh/dsgvo-compliance-software"
                               className="flex-1 inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-xl hover:from-[#d63f14] hover:to-[#ea580c] transition-all duration-300 shadow-lg hover:shadow-xl group transform hover:scale-[1.02]"
                             >
                               立即获取测试访问权限

@@ -325,8 +325,8 @@ const translations = {
     pricing_custom_title: 'Individuelle Lösung benötigt?',
     pricing_custom_desc: 'Kontaktiere unser Sales-Team für eine maßgeschneiderte Enterprise-Lösung.',
     pricing_contact_sales: 'Sales kontaktieren',
-    pricing_beta_title: 'Beta-Phase',
-    pricing_beta_description: 'Wir befinden uns derzeit in der Beta-Phase. Preise und Funktionen können sich ändern. Kontaktiere uns, um mehr über unser Early Access Programm zu erfahren.',
+    pricing_beta_title: 'Early Bird Launch',
+    pricing_beta_description: 'Sichern Sie sich jetzt den Early Bird Preis. Kontaktieren Sie uns für ein individuelles Angebot.',
 
     // Hero Section
     hero_headline: 'DSGVO & ISO27001 Compliance leicht gemacht',

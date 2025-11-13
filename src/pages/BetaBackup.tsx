@@ -932,7 +932,7 @@ const Beta: React.FC = () => {
                     </div>
                     <div className="flex items-center gap-2 justify-center">
                       <CheckCircle2 className="w-5 h-5 text-[#39B37B]" />
-                      <span className="font-medium">50% Lifetime-Rabatt</span>
+                      <span className="font-medium">Early Bird Preis</span>
                     </div>
                     <div className="flex items-center gap-2 justify-center">
                       <CheckCircle2 className="w-5 h-5 text-[#39B37B]" />
@@ -1021,7 +1021,7 @@ const Beta: React.FC = () => {
 
               <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
                 Automatisieren Sie 80% Ihrer Compliance-Arbeit.<br className="hidden sm:inline" />
-                <span className="sm:hidden"> </span>Kostenlos testen. 50% Lifetime-Rabatt sichern.
+                <span className="sm:hidden"> </span>Kostenlos testen. Early Bird Preis sichern.
               </p>
 
               <div className="flex flex-col items-center gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4">
@@ -1030,12 +1030,12 @@ const Beta: React.FC = () => {
                   className="bg-white hover:bg-gray-100 text-[#e24e1b] text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 shadow-2xl shadow-black/20 font-bold w-full sm:w-auto"
                   onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  <span className="hidden sm:inline">Jetzt Beta-Zugang sichern</span>
+                  <span className="hidden sm:inline">Jetzt Early Bird Preis sichern</span>
                   <span className="sm:hidden">Beta-Zugang sichern</span>
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
                 <p className="text-xs sm:text-sm text-white/80 text-center">
-                  Kostenlose Beta-Phase • 50% Lifetime-Rabatt
+                  Kostenlose Beta-Phase • Early Bird Preis
                 </p>
               </div>
 

@@ -567,32 +567,6 @@ const AgbSoftware: React.FC = () => {
                 <li>Export der Beta‑Daten auf Anfrage jederzeit möglich; ansonsten gelten die allgemeinen Löschfristen.</li>
               </ul>
             </section>
-
-            <section className="pt-8 border-t-2 border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Implementierungs-Checkliste:</h2>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600">✓</span>
-                  <span>Anbieter-Identität: Marsstein GmbH i.G., Bücklestraße 3, 78467 Konstanz, vertreten durch Geschäftsführer Zhihu Chen</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600">✓</span>
-                  <span>Gerichtsstand: Konstanz</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600">✓</span>
-                  <span>Support‑Kontakt: support@marsstein.ai | Status‑Seite: status.marsstein.ai</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600">✓</span>
-                  <span>Sub‑Prozessoren: Amazon Web Services (AWS) - Deutschland/EU (Frankfurt)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600">✓</span>
-                  <span>Produktname: Marsstein Compliance Platform</span>
-                </li>
-              </ul>
-            </section>
           </div>
         </div>
       </main>
