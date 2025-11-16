@@ -91,6 +91,14 @@ const ISMSMaturityAssessment: React.FC = () => {
     "url": "https://marsstein.ai/assessment-center/isms-maturity-assessment"
   };
 
+  const maturityLabels = {
+    initial: 'Initial',
+    managed: 'Managed',
+    defined: 'Defined',
+    quantitatively_managed: 'Quantitatively Managed',
+    optimizing: 'Optimizing'
+  };
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
@@ -680,13 +688,6 @@ const ISMSMaturityAssessment: React.FC = () => {
 
   if (showResults && result) {
     const MaturityIcon = getMaturityIcon(result.overallMaturity);
-    const maturityLabels = {
-      initial: 'Initial',
-      managed: 'Managed',
-      defined: 'Defined', 
-      quantitatively_managed: 'Quantitatively Managed',
-      optimizing: 'Optimizing'
-    };
 
     return (
       <>
