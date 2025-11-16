@@ -1346,6 +1346,12 @@ const routeConfigs = {
     keywords: 'Verarbeitungsverzeichnis erstellen, VVT DSGVO, Art 30 DSGVO, ROPA erstellen, Verarbeitungstätigkeiten dokumentieren',
     canonical: 'https://marsstein.ai/wissen/leitfaden/verarbeitungsverzeichnis'
   },
+  '/wissen/leitfaden/loeschkonzept': {
+    title: 'Löschkonzept DSGVO erstellen 2025 – Muster, Vorlage & Anleitung | Marsstein',
+    description: 'Löschkonzept DSGVO: Schritt-für-Schritt Anleitung mit Muster & Vorlagen. ✓ Löschfristen-Tabelle ✓ Praxisbeispiele ✓ Automatisierung ✓ Rechtssicher. Jetzt erstellen!',
+    keywords: 'löschkonzept, löschkonzept dsgvo, löschkonzept dsgvo muster, dsgvo löschkonzept, löschkonzept muster, löschkonzept datenschutz, löschkonzept vorlage, datenschutz löschkonzept',
+    canonical: 'https://marsstein.ai/wissen/leitfaden/loeschkonzept'
+  },
   '/wissen/rechtsprechung/amazon-luxemburg-2021': {
     title: 'Amazon Luxemburg DSGVO-Strafe 2025: 746 Mio. € Bußgeld-Analyse',
     description: 'Amazon Luxemburg DSGVO-Bußgeld: 746 Mio. € wegen Tracking-Verstößen. ✓ Urteilsanalyse ✓ Rechtsfolgen ✓ Lessons Learned ✓ Compliance-Tipps. Jetzt verstehen!',
@@ -1435,6 +1441,18 @@ const routeConfigs = {
     description: 'DSGVO Software vs. manuelle Compliance: Effizienz, Kosten & ROI im Vergleich. ✓ Automatisierung ✓ Zeitersparnis ✓ Fehlerreduktion ✓ TCO. Jetzt vergleichen!',
     keywords: 'DSGVO Software vs manuell, Compliance Automatisierung, DSGVO Tool Vergleich, manuelle Datenschutz Compliance',
     canonical: 'https://marsstein.ai/wissen/dsgvo-software-vs-manuell'
+  },
+  '/wissen/dsgvo-vs-bdsg': {
+    title: 'DSGVO vs BDSG: Unterschiede, Zusammenspiel & Praxisleitfaden 2025',
+    description: 'DSGVO vs BDSG erklärt: Verstehen Sie das Zusammenspiel von EU-Datenschutz-Grundverordnung und Bundesdatenschutzgesetz. Unterschiede, Öffnungsklauseln & Praxisbeispiele für Unternehmen.',
+    keywords: 'DSGVO vs BDSG, DSGVO BDSG Unterschied, Bundesdatenschutzgesetz DSGVO, BDSG neu, Öffnungsklauseln DSGVO, § 26 BDSG, Beschäftigtendatenschutz, Datenschutzbeauftragter BDSG',
+    canonical: 'https://marsstein.ai/wissen/dsgvo-vs-bdsg'
+  },
+  '/wissen/branchen/datenschutz-personalwesen': {
+    title: 'Datenschutz im Personalwesen: BDSG § 26, Bewerbermanagement & Mitarbeiterdaten',
+    description: 'Datenschutz im Personalwesen meistern: BDSG § 26 Beschäftigtendatenschutz, DSGVO-konforme Bewerbermanagement, Personalakte, Arbeitszeiterfassung & Monitoring. ✓ Praxisleitfaden ✓ Checklisten ✓ TOM-Maßnahmen für HR.',
+    keywords: 'Datenschutz Personalwesen, BDSG § 26, Beschäftigtendatenschutz, Bewerbermanagement DSGVO, Personalakte Datenschutz, Arbeitszeiterfassung DSGVO, Mitarbeiter Monitoring, HR Compliance, Personalverwaltung Datenschutz',
+    canonical: 'https://marsstein.ai/wissen/branchen/datenschutz-personalwesen'
   },
   '/wissen/compliance-frameworks': {
     title: 'Compliance Frameworks 2025: DSGVO, ISO, NIS2, SOC2 im Überblick',

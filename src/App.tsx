@@ -45,6 +45,9 @@ const AgbSoftware = lazy(() => import("./pages/AgbSoftware"));
 const DsgvoComplianceSoftware = lazy(() => import("./pages/DsgvoComplianceSoftware"));
 const BetaThanks = lazy(() => import("./pages/BetaThanks"));
 const Features = lazy(() => import("./pages/Features"));
+const HumanInTheLoop = lazy(() => import("./pages/HumanInTheLoop"));
+const Datenschutzbeauftragter = lazy(() => import("./pages/Datenschutzbeauftragter"));
+const DatenschutzbeauftragterDetail = lazy(() => import("./pages/DatenschutzbeauftragterDetail"));
 const CnGdpr = lazy(() => import("./pages/CnGdpr"));
 const DsgvoAmazonSellersChina = lazy(() => import("./pages/DsgvoAmazonSellersChina"));
 const DsgvoTikTokShopChina = lazy(() => import("./pages/DsgvoTikTokShopChina"));
@@ -82,6 +85,8 @@ const SecurityControlsAudit = lazy(() => import("./pages/assessment-center/Secur
 const DataProtectionTest = lazy(() => import("./pages/assessment-center/DataProtectionTest"));
 
 const DsgvoCompliance = lazy(() => import("./pages/DsgvoCompliance"));
+const DsgvoAudit = lazy(() => import("./pages/DsgvoAudit"));
+const SiegelVerification = lazy(() => import("./pages/SiegelVerification"));
 const Iso27001Compliance = lazy(() => import("./pages/Iso27001Compliance"));
 const EuAiActCompliance = lazy(() => import("./pages/EuAiActCompliance"));
 const Soc2Compliance = lazy(() => import("./pages/Soc2Compliance"));
@@ -130,6 +135,7 @@ const TomMassnahmenGuide = lazy(() => import("./pages/guides/TomMassnahmenGuide"
 const DsfaDurchfuehrungGuide = lazy(() => import("./pages/guides/DsfaDurchfuehrungGuide"));
 const DatenschutzbeauftragterGuide = lazy(() => import("./pages/wissen/leitfaden/datenschutzbeauftragter"));
 const DatenschutzbeauftragterAusbildung = lazy(() => import("./pages/wissen/leitfaden/datenschutzbeauftragter-ausbildung"));
+const LoeschkonzeptGuide = lazy(() => import("./pages/wissen/leitfaden/loeschkonzept"));
 const CrisisManagement = lazy(() => import("./pages/CrisisManagement"));
 const DataBreach72hGuide = lazy(() => import("./pages/crisis/DataBreach72hGuide"));
 const SecurityIncidentGuide = lazy(() => import("./pages/crisis/SecurityIncidentGuide"));
@@ -173,6 +179,7 @@ const DatenschutzKindergarten = lazy(() => import("./pages/branchen/DatenschutzK
 const DsgvoVermieter = lazy(() => import("./pages/branchen/DsgvoVermieter"));
 const DsgvoVereineComprehensive = lazy(() => import("./pages/wissen/branchen/DsgvoVereineComprehensive"));
 const DatenschutzBetriebsrat = lazy(() => import("./pages/branchen/DatenschutzBetriebsrat"));
+const DatenschutzPersonalwesen = lazy(() => import("./pages/wissen/branchen/DatenschutzPersonalwesen"));
 const DatenschutzHomeofficeComprehensive = lazy(() => import("./pages/wissen/branchen/DatenschutzHomeofficeComprehensive"));
 
 // KI Datenschutz Pages
@@ -253,6 +260,7 @@ const Iso27001Kosten = lazy(() => import("./pages/wissen/Iso27001Kosten"));
 const DsgvoComplianceLuecken = lazy(() => import("./pages/wissen/DsgvoComplianceLuecken"));
 const InternerDsbScheitert = lazy(() => import("./pages/wissen/InternerDsbScheitert"));
 const DsgvoSoftwareVsManuell = lazy(() => import("./pages/wissen/DsgvoSoftwareVsManuell"));
+const DsgvoVsBdsg = lazy(() => import("./pages/wissen/DsgvoVsBdsg"));
 
 // Assessment Center - Calculators
 const DsgvoKostenRechner = lazy(() => import("./pages/assessment-center/DsgvoKostenRechner"));
@@ -330,6 +338,9 @@ const App = () => (
                 <Route path="/beta" element={<Navigate to="/dsgvo-compliance-software" replace />} />
                 <Route path="/beta/thanks" element={<BetaThanks />} />
                 <Route path="/features" element={<Features />} />
+                <Route path="/human-in-the-loop" element={<HumanInTheLoop />} />
+                <Route path="/datenschutzexperten" element={<Datenschutzbeauftragter />} />
+                <Route path="/datenschutzexperten/:slug" element={<DatenschutzbeauftragterDetail />} />
                 <Route path="/dsgvo-china" element={<CnGdpr />} />
                 <Route path="/dsgvo-amazon-sellers-china" element={<DsgvoAmazonSellersChina />} />
                 <Route path="/dsgvo-tiktok-shop-china" element={<DsgvoTikTokShopChina />} />
@@ -366,6 +377,8 @@ const App = () => (
                 {/* New structured routes */}
                 {/* New Product URLs - Regulierungen */}
                 <Route path="/dsgvo" element={<DsgvoCompliance />} />
+                <Route path="/dsgvo-audit" element={<DsgvoAudit />} />
+                <Route path="/dsgvo-audit/:sealLevel/:companySlug" element={<SiegelVerification />} />
                 <Route path="/eu-ai-act" element={<EuAiActCompliance />} />
                 <Route path="/eu-data-act" element={<DataActCompliance />} />
                 <Route path="/nis2-compliance" element={<Nis2Compliance />} />
@@ -477,6 +490,7 @@ const App = () => (
                 <Route path="/wissen/leitfaden/dsfa-durchfuehrung" element={<DsfaDurchfuehrungGuide />} />
                 <Route path="/wissen/leitfaden/datenschutzbeauftragter" element={<DatenschutzbeauftragterGuide />} />
                 <Route path="/wissen/leitfaden/datenschutzbeauftragter-ausbildung" element={<DatenschutzbeauftragterAusbildung />} />
+                <Route path="/wissen/leitfaden/loeschkonzept" element={<LoeschkonzeptGuide />} />
                 <Route path="/wissen/krisenmanagement" element={<CrisisManagement />} />
                 <Route path="/wissen/krisenmanagement/data-breach-72h" element={<DataBreach72hGuide />} />
                 <Route path="/wissen/krisenmanagement/security-incident" element={<SecurityIncidentGuide />} />
@@ -519,6 +533,7 @@ const App = () => (
                 <Route path="/wissen/branchen/dsgvo-vermieter" element={<DsgvoVermieter />} />
                 <Route path="/wissen/branchen/dsgvo-vereine" element={<DsgvoVereineComprehensive />} />
                 <Route path="/wissen/branchen/datenschutz-betriebsrat" element={<DatenschutzBetriebsrat />} />
+                <Route path="/wissen/branchen/datenschutz-personalwesen" element={<DatenschutzPersonalwesen />} />
                 <Route path="/wissen/branchen/datenschutz-homeoffice" element={<DatenschutzHomeofficeComprehensive />} />
                 
                 {/* KI Compliance Routes - now part of main structure */}
@@ -549,6 +564,7 @@ const App = () => (
                 <Route path="/wissen/dsgvo-compliance-luecken" element={<DsgvoComplianceLuecken />} />
                 <Route path="/wissen/interner-dsb-scheitert" element={<InternerDsbScheitert />} />
                 <Route path="/wissen/dsgvo-software-vs-manuell" element={<DsgvoSoftwareVsManuell />} />
+                <Route path="/wissen/dsgvo-vs-bdsg" element={<DsgvoVsBdsg />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

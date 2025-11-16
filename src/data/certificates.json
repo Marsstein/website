@@ -1,0 +1,81 @@
+{
+  "demo-unternehmen": {
+    "companyName": "Beispiel Kleinunternehmen GmbH",
+    "logo": null,
+    "sealType": "VERIFIED",
+    "issuedDate": "2025-01-15",
+    "expiryDate": "2026-01-15",
+    "certificateId": "MARS-VER-2025-001",
+    "website": "https://beispiel-verified.de",
+    "auditScope": [
+      "DSGVO Basis-Dokumentation",
+      "Datenschutzerklärung Website",
+      "Cookie-Banner Compliance",
+      "Verarbeitungsverzeichnis (Art. 30 DSGVO)",
+      "Technische & Organisatorische Maßnahmen (TOMs)",
+      "AVV-Verträge Standard-Dienstleister"
+    ],
+    "status": "active",
+    "auditDate": "2025-01-10",
+    "nextAudit": "2026-01-10",
+    "package": "STARTER"
+  },
+  "demo-mittelstand": {
+    "companyName": "Muster Mittelstand GmbH",
+    "logo": null,
+    "sealType": "CERTIFIED",
+    "issuedDate": "2025-01-15",
+    "expiryDate": "2025-07-15",
+    "certificateId": "MARS-CERT-2025-001",
+    "website": "https://muster-certified.de",
+    "auditScope": [
+      "Vollständige DSGVO-Dokumentation",
+      "Externer Datenschutzbeauftragter bestellt",
+      "Verarbeitungsverzeichnis erweitert",
+      "Betroffenenrechte-Prozesse dokumentiert",
+      "Datenpannen-Management etabliert",
+      "AVV-Verträge geprüft und optimiert",
+      "Mitarbeiter-Schulungskonzept",
+      "DSFA-Prozess implementiert",
+      "Cookie-Management professionell",
+      "E-Mail-Sicherheit & Verschlüsselung"
+    ],
+    "status": "active",
+    "auditDate": "2025-01-08",
+    "nextAudit": "2025-07-08",
+    "package": "PROFESSIONAL",
+    "dsbName": "Max Mustermann",
+    "dsbCertification": "TÜV zertifizierter Datenschutzbeauftragter"
+  },
+  "demo-enterprise": {
+    "companyName": "Enterprise Solutions AG",
+    "logo": null,
+    "sealType": "EXCELLENCE",
+    "issuedDate": "2025-01-15",
+    "expiryDate": "2025-04-15",
+    "certificateId": "MARS-EXC-2025-001",
+    "website": "https://enterprise-excellence.de",
+    "auditScope": [
+      "Premium DSGVO-Compliance vollständig",
+      "Multi-Standort Datenschutzkonzept",
+      "Internationale Datenübermittlungen geprüft",
+      "Risiko-Bewertung & Gap-Analyse durchgeführt",
+      "C-Level Compliance Briefing erfolgt",
+      "IT-Security Assessment bestanden",
+      "Penetrationstest durchgeführt",
+      "Dark Web Monitoring aktiv",
+      "Incident Response Plan etabliert",
+      "Compliance-Monitoring Dashboard",
+      "Dedizierter Audit-Manager zugewiesen",
+      "Erweiterte Betroffenenrechte-Automatisierung",
+      "Supply Chain Datenschutz-Prüfung"
+    ],
+    "status": "active",
+    "auditDate": "2025-01-05",
+    "nextAudit": "2025-04-05",
+    "package": "ENTERPRISE",
+    "dsbName": "Dr. Anna Schmidt",
+    "dsbCertification": "Fachanwältin für IT-Recht, TÜV DSB",
+    "auditManager": "Thomas Weber"
+  }
+}

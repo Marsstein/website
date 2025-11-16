@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 
+import { google } from 'googleapis';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const BASE_URL = 'https://marsstein.ai';
+const BATCH_SIZE = 100;
+const RATE_LIMIT_PER_DAY = 200;
+const STATUS_FILE = path.join(__dirname, '.indexing-status.json');
 
 const routes = [
   { url: '/', priority: '1.0', changefreq: 'daily' },
@@ -47,10 +53,6 @@ const routes = [
   { url: '/ueber-uns', priority: '0.8', changefreq: 'monthly' },
 
   { url: '/dsgvo', priority: '0.9', changefreq: 'weekly' },
-  { url: '/dsgvo-audit', priority: '0.9', changefreq: 'weekly' },
-  { url: '/dsgvo-audit/verified/demo-unternehmen', priority: '0.5', changefreq: 'monthly' },
-  { url: '/dsgvo-audit/certified/demo-mittelstand', priority: '0.5', changefreq: 'monthly' },
-  { url: '/dsgvo-audit/excellence/demo-enterprise', priority: '0.5', changefreq: 'monthly' },
   { url: '/eu-ai-act', priority: '0.9', changefreq: 'weekly' },
   { url: '/eu-data-act', priority: '0.8', changefreq: 'weekly' },
   { url: '/nis2-compliance', priority: '0.8', changefreq: 'weekly' },
@@ -58,6 +60,26 @@ const routes = [
   { url: '/geldwaeschegesetz', priority: '0.8', changefreq: 'weekly' },
   { url: '/dsg-ekd', priority: '0.7', changefreq: 'monthly' },
   { url: '/kdg', priority: '0.7', changefreq: 'monthly' },
+
+  { url: '/dsgvo-compliance', priority: '0.8', changefreq: 'weekly' },
+  { url: '/eu-ai-act-compliance', priority: '0.8', changefreq: 'weekly' },
+  { url: '/iso-27001-compliance', priority: '0.8', changefreq: 'weekly' },
+  { url: '/iso-27017-compliance', priority: '0.7', changefreq: 'weekly' },
+  { url: '/iso-27018-compliance', priority: '0.7', changefreq: 'weekly' },
+  { url: '/soc2-compliance', priority: '0.8', changefreq: 'weekly' },
+  { url: '/tisax-compliance', priority: '0.7', changefreq: 'weekly' },
+
+  { url: '/regulierung/dsgvo', priority: '0.8', changefreq: 'weekly' },
+  { url: '/regulierung/eu-ai-act', priority: '0.8', changefreq: 'weekly' },
+  { url: '/regulierung/nis2', priority: '0.7', changefreq: 'weekly' },
+  { url: '/regulierung/hinweisgeberschutzgesetz', priority: '0.7', changefreq: 'weekly' },
+  { url: '/regulierung/geldwaeschegesetz', priority: '0.7', changefreq: 'weekly' },
+
+  { url: '/zertifizierung/iso-27001', priority: '0.8', changefreq: 'weekly' },
+  { url: '/zertifizierung/iso-27017', priority: '0.7', changefreq: 'weekly' },
+  { url: '/zertifizierung/iso-27018', priority: '0.7', changefreq: 'weekly' },
+  { url: '/zertifizierung/soc2', priority: '0.8', changefreq: 'weekly' },
+  { url: '/zertifizierung/tisax', priority: '0.7', changefreq: 'weekly' },
 
   { url: '/iso-27001-zertifizierung', priority: '0.8', changefreq: 'weekly' },
   { url: '/soc2-zertifizierung', priority: '0.8', changefreq: 'weekly' },
@@ -127,6 +149,8 @@ const routes = [
   { url: '/tools', priority: '0.7', changefreq: 'weekly' },
   { url: '/tools/cookie-management', priority: '0.6', changefreq: 'monthly' },
   { url: '/tools/whistleblower-system', priority: '0.6', changefreq: 'monthly' },
+  { url: '/tools/cookie-management-tool', priority: '0.6', changefreq: 'monthly' },
+  { url: '/tools/whistleblower-system-tool', priority: '0.6', changefreq: 'monthly' },
   { url: '/tools/dsgvo-email-template-generator', priority: '0.5', changefreq: 'monthly' },
   { url: '/tools/dsgvo-compliance-scorecard', priority: '0.5', changefreq: 'monthly' },
   { url: '/tools/compliance-ai-assistant', priority: '0.5', changefreq: 'monthly' },
@@ -162,14 +186,12 @@ const routes = [
   { url: '/wissen/dsgvo-compliance-luecken', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/interner-dsb-scheitert', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/dsgvo-software-vs-manuell', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/dsgvo-vs-bdsg', priority: '0.8', changefreq: 'weekly' },
 
   { url: '/wissen/branchen/automotive-datenschutz', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/branchen/datenschutz-arztpraxis', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/branchen/datenschutz-betriebsrat', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/branchen/datenschutz-homeoffice', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/branchen/datenschutz-kindergarten', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/branchen/datenschutz-personalwesen', priority: '0.8', changefreq: 'weekly' },
   { url: '/wissen/branchen/datenschutz-pflege', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/branchen/dsgvo-vereine', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/branchen/dsgvo-vermieter', priority: '0.6', changefreq: 'monthly' },
@@ -221,38 +243,232 @@ const routes = [
   { url: '/wissen/rechtsprechung/whatsapp-irland-2021', priority: '0.6', changefreq: 'monthly' }
 ];
 
-function generateSitemap() {
-  console.log('🗺️ Generating XML sitemap for SEO...');
-
-  const baseUrl = 'https://marsstein.ai';
-  const currentDate = new Date().toISOString().split('T')[0];
-
-  let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
-
-  routes.forEach(route => {
-    sitemapXml += `
-  <url>
-    <loc>${baseUrl}${route.url}</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>
-  </url>`;
-  });
-
-  sitemapXml += `
-</urlset>`;
-
-  const distPath = path.join(__dirname, '..', 'dist');
-  const publicPath = path.join(__dirname, '..', 'public');
-  const distSitemapPath = path.join(distPath, 'sitemap.xml');
-  const publicSitemapPath = path.join(publicPath, 'sitemap.xml');
-
-  fs.writeFileSync(distSitemapPath, sitemapXml);
-  fs.writeFileSync(publicSitemapPath, sitemapXml);
-
-  console.log(`✅ Sitemap generated: ${routes.length} URLs`);
-  console.log(`📍 Locations: ${distSitemapPath} & ${publicSitemapPath}`);
+function loadStatus() {
+  if (fs.existsSync(STATUS_FILE)) {
+    return JSON.parse(fs.readFileSync(STATUS_FILE, 'utf8'));
+  }
+  return {
+    lastRun: null,
+    submitted: [],
+    failed: [],
+    totalSubmitted: 0
+  };
 }
 
-generateSitemap();
+function saveStatus(status) {
+  fs.writeFileSync(STATUS_FILE, JSON.stringify(status, null, 2));
+}
+
+async function getAuthClient() {
+  const keyFilePath = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH;
+
+  if (!keyFilePath) {
+    throw new Error('GOOGLE_SERVICE_ACCOUNT_KEY_PATH environment variable is not set');
+  }
+
+  if (!fs.existsSync(keyFilePath)) {
+    throw new Error(`Service account key file not found: ${keyFilePath}`);
+  }
+
+  const auth = new google.auth.GoogleAuth({
+    keyFile: keyFilePath,
+    scopes: ['https://www.googleapis.com/auth/indexing'],
+  });
+
+  return auth.getClient();
+}
+
+async function submitUrl(authClient, url, type = 'URL_UPDATED') {
+  const indexing = google.indexing({ version: 'v3', auth: authClient });
+
+  try {
+    const response = await indexing.urlNotifications.publish({
+      requestBody: {
+        url: url,
+        type: type,
+      },
+    });
+    return { success: true, url, response: response.data };
+  } catch (error) {
+    return { success: false, url, error: error.message };
+  }
+}
+
+async function getUrlStatus(authClient, url) {
+  const indexing = google.indexing({ version: 'v3', auth: authClient });
+
+  try {
+    const response = await indexing.urlNotifications.getMetadata({
+      url: url,
+    });
+    return { success: true, url, data: response.data };
+  } catch (error) {
+    return { success: false, url, error: error.message };
+  }
+}
+
+async function submitBatch(urls, action = 'update') {
+  console.log(`\n🚀 Starting Google Indexing API batch ${action}...`);
+  console.log(`📊 Total URLs to process: ${urls.length}`);
+
+  const authClient = await getAuthClient();
+  const status = loadStatus();
+  const today = new Date().toISOString().split('T')[0];
+
+  if (status.lastRun === today && status.totalSubmitted >= RATE_LIMIT_PER_DAY) {
+    console.log(`⚠️  Daily rate limit reached (${RATE_LIMIT_PER_DAY} URLs/day)`);
+    console.log(`📅 Please try again tomorrow`);
+    return;
+  }
+
+  const remainingQuota = status.lastRun === today
+    ? RATE_LIMIT_PER_DAY - status.totalSubmitted
+    : RATE_LIMIT_PER_DAY;
+
+  const urlsToProcess = urls.slice(0, Math.min(remainingQuota, BATCH_SIZE));
+
+  console.log(`\n📋 Processing ${urlsToProcess.length} URLs (Quota: ${remainingQuota}/${RATE_LIMIT_PER_DAY})`);
+
+  const results = {
+    success: [],
+    failed: [],
+  };
+
+  const type = action === 'delete' ? 'URL_DELETED' : 'URL_UPDATED';
+
+  for (let i = 0; i < urlsToProcess.length; i++) {
+    const route = urlsToProcess[i];
+    const fullUrl = `${BASE_URL}${route.url}`;
+
+    process.stdout.write(`\r⏳ Processing: ${i + 1}/${urlsToProcess.length} - ${route.url}`.padEnd(80));
+
+    const result = await submitUrl(authClient, fullUrl, type);
+
+    if (result.success) {
+      results.success.push(fullUrl);
+    } else {
+      results.failed.push({ url: fullUrl, error: result.error });
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+
+  console.log(`\n\n✅ Successfully submitted: ${results.success.length}`);
+  if (results.failed.length > 0) {
+    console.log(`❌ Failed: ${results.failed.length}`);
+    results.failed.forEach(f => console.log(`   - ${f.url}: ${f.error}`));
+  }
+
+  if (status.lastRun !== today) {
+    status.submitted = [];
+    status.totalSubmitted = 0;
+  }
+
+  status.lastRun = today;
+  status.submitted = [...status.submitted, ...results.success];
+  status.failed = results.failed;
+  status.totalSubmitted += results.success.length;
+
+  saveStatus(status);
+
+  console.log(`\n📊 Status saved. Total today: ${status.totalSubmitted}/${RATE_LIMIT_PER_DAY}`);
+
+  if (urlsToProcess.length < urls.length) {
+    console.log(`\n⏭️  Remaining URLs: ${urls.length - urlsToProcess.length}`);
+    console.log(`💡 Run again to continue processing`);
+  }
+}
+
+async function checkStatus(url) {
+  console.log(`\n🔍 Checking indexing status for: ${url}`);
+
+  const authClient = await getAuthClient();
+  const result = await getUrlStatus(authClient, url);
+
+  if (result.success) {
+    console.log(`\n✅ Status retrieved successfully:`);
+    console.log(JSON.stringify(result.data, null, 2));
+  } else {
+    console.log(`\n❌ Failed to get status: ${result.error}`);
+  }
+}
+
+async function submitHighPriority() {
+  const highPriorityRoutes = routes
+    .filter(r => parseFloat(r.priority) >= 0.8)
+    .sort((a, b) => parseFloat(b.priority) - parseFloat(a.priority));
+
+  console.log(`\n⭐ Submitting ${highPriorityRoutes.length} high-priority URLs (priority >= 0.8)`);
+  await submitBatch(highPriorityRoutes);
+}
+
+async function submitAll() {
+  const sortedRoutes = routes.sort((a, b) => parseFloat(b.priority) - parseFloat(a.priority));
+  await submitBatch(sortedRoutes);
+}
+
+async function deleteUrl(url) {
+  await submitBatch([{ url }], 'delete');
+}
+
+async function showStats() {
+  const status = loadStatus();
+
+  console.log('\n📊 Google Indexing API Statistics\n');
+  console.log(`Last run: ${status.lastRun || 'Never'}`);
+  console.log(`Total submitted today: ${status.totalSubmitted}/${RATE_LIMIT_PER_DAY}`);
+  console.log(`Successfully submitted (lifetime): ${status.submitted.length}`);
+  console.log(`Failed (last run): ${status.failed.length}`);
+
+  if (status.failed.length > 0) {
+    console.log('\n❌ Failed URLs:');
+    status.failed.forEach(f => console.log(`   - ${f.url}`));
+  }
+}
+
+const command = process.argv[2];
+const arg = process.argv[3];
+
+switch (command) {
+  case 'all':
+    await submitAll();
+    break;
+  case 'high-priority':
+    await submitHighPriority();
+    break;
+  case 'check':
+    if (!arg) {
+      console.log('Usage: npm run indexing:check <url>');
+      process.exit(1);
+    }
+    await checkStatus(arg);
+    break;
+  case 'delete':
+    if (!arg) {
+      console.log('Usage: npm run indexing:delete <url>');
+      process.exit(1);
+    }
+    await deleteUrl(arg);
+    break;
+  case 'stats':
+    await showStats();
+    break;
+  default:
+    console.log(`
+Google Indexing API Tool
+
+Usage:
+  npm run indexing:all            Submit all URLs (sorted by priority)
+  npm run indexing:high-priority  Submit only high-priority URLs (>= 0.8)
+  npm run indexing:check <url>    Check indexing status for a URL
+  npm run indexing:delete <url>   Delete URL from Google index
+  npm run indexing:stats          Show statistics
+
+Limits:
+  - 200 URLs per day
+  - 100 URLs per batch
+  - Automatic rate limiting
+
+Note: Requires GOOGLE_SERVICE_ACCOUNT_KEY_PATH environment variable
+    `);
+}

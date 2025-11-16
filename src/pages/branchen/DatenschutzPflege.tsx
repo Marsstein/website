@@ -2006,7 +2006,7 @@ const angehörigenApp = {
                           <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Basiswissen zur EU-Datenschutzverordnung</p>
                         </div>
                       </Link>
-                      <Link to="/services/datenschutzbeauftragter" className="group">
+                      <Link to="/datenschutzexperten" className="group">
                         <div className="p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-700 transition-colors">
                           <h4 className="font-medium text-red-600 dark:text-red-400 group-hover:underline">Externer DSB</h4>
                           <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Datenschutzbeauftragter für Pflegeeinrichtungen</p>

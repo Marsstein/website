@@ -107,6 +107,7 @@ const Preise: React.FC = () => {
   const featureToLinkMap: Record<string, string> = {
     'Verarbeitungsverzeichnis (Art. 30)': '/features#verarbeitungsverzeichnis-ropa',
     'TOMs (Technische & Org. Maßnahmen)': '/features#avv-generator-tom-dokumentation',
+    'Löschkonzept': '/wissen/leitfaden/loeschkonzept',
     'AVV-Verträge': '/features#avv-generator-tom-dokumentation',
     'Betroffenenrechte-Prozesse': '/features#betroffenenanfragen-dsar',
     'Externer DSB': '/externer-datenschutzbeauftragter',
@@ -231,10 +232,48 @@ const Preise: React.FC = () => {
            feature.professional !== feature.enterprise;
   };
 
-  const getValue = (value: any) => {
+  const getValue = (value: any, featureLabel?: string) => {
     if (value === true) return <Check className="h-5 w-5 text-[#39B37B] mx-auto" />;
     if (value === false) return <X className="h-4 w-4 text-gray-300 mx-auto" />;
+
+    if (featureLabel === 'DSGVO-Siegel') {
+      const sealLinks: Record<string, string> = {
+        '✅ VERIFIED': '/dsgvo-audit/verified/demo-unternehmen',
+        '✅ CERTIFIED': '/dsgvo-audit/certified/demo-mittelstand',
+        '✅ EXCELLENCE': '/dsgvo-audit/excellence/demo-enterprise'
+      };
+
+      const link = sealLinks[value];
+      if (link) {
+        return (
+          <Link to={link} className="text-sm font-medium text-[#e24e1b] hover:underline inline-flex items-center gap-1">
+            {value}
+          </Link>
+        );
+      }
+    }
+
     return <span className="text-sm font-medium text-[#232323]">{value}</span>;
+  };
+
+  const getMobileValue = (value: any, featureLabel?: string) => {
+    if (featureLabel === 'DSGVO-Siegel' && typeof value === 'string') {
+      const sealLinks: Record<string, string> = {
+        '✅ VERIFIED': '/dsgvo-audit/verified/demo-unternehmen',
+        '✅ CERTIFIED': '/dsgvo-audit/certified/demo-mittelstand',
+        '✅ EXCELLENCE': '/dsgvo-audit/excellence/demo-enterprise'
+      };
+
+      const link = sealLinks[value];
+      if (link) {
+        return (
+          <Link to={link} className="text-[9px] font-medium text-[#e24e1b] hover:underline leading-[1.2] break-words px-0.5">
+            {value}
+          </Link>
+        );
+      }
+    }
+    return null;
   };
 
   return (
@@ -583,9 +622,9 @@ const Preise: React.FC = () => {
                                     feature.label
                                   )}
                                 </td>
-                                <td className="px-6 py-3 text-center">{getValue(feature.starter)}</td>
-                                <td className="px-6 py-3 text-center bg-gray-50/50">{getValue(feature.professional)}</td>
-                                <td className="px-6 py-3 text-center">{getValue(feature.enterprise)}</td>
+                                <td className="px-6 py-3 text-center">{getValue(feature.starter, feature.label)}</td>
+                                <td className="px-6 py-3 text-center bg-gray-50/50">{getValue(feature.professional, feature.label)}</td>
+                                <td className="px-6 py-3 text-center">{getValue(feature.enterprise, feature.label)}</td>
                               </motion.tr>
                             ))}
                           </AnimatePresence>
@@ -661,6 +700,7 @@ const Preise: React.FC = () => {
                                         {feature.starter === true && <Check className="h-4 w-4 text-[#39B37B]" />}
                                         {feature.starter === false && <X className="h-3 w-3 text-gray-300" />}
                                         {typeof feature.starter === 'string' && (
+                                          getMobileValue(feature.starter, feature.label) ||
                                           <span className="text-[9px] font-medium text-[#232323] leading-[1.2] break-words px-0.5">{feature.starter}</span>
                                         )}
                                       </div>
@@ -668,6 +708,7 @@ const Preise: React.FC = () => {
                                         {feature.professional === true && <Check className="h-4 w-4 text-[#39B37B]" />}
                                         {feature.professional === false && <X className="h-3 w-3 text-gray-300" />}
                                         {typeof feature.professional === 'string' && (
+                                          getMobileValue(feature.professional, feature.label) ||
                                           <span className="text-[9px] font-medium text-[#232323] leading-[1.2] break-words px-0.5">{feature.professional}</span>
                                         )}
                                       </div>
@@ -675,6 +716,7 @@ const Preise: React.FC = () => {
                                         {feature.enterprise === true && <Check className="h-4 w-4 text-[#39B37B]" />}
                                         {feature.enterprise === false && <X className="h-3 w-3 text-gray-300" />}
                                         {typeof feature.enterprise === 'string' && (
+                                          getMobileValue(feature.enterprise, feature.label) ||
                                           <span className="text-[9px] font-medium text-[#232323] leading-[1.2] break-words px-0.5">{feature.enterprise}</span>
                                         )}
                                       </div>

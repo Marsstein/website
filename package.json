@@ -9,7 +9,12 @@
     "build:seo": "npm run build && node scripts/prerender.js && node scripts/sitemap.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "clean": "rm -rf dist node_modules/.cache"
+    "clean": "rm -rf dist node_modules/.cache",
+    "indexing:all": "node scripts/google-indexing.mjs all",
+    "indexing:high-priority": "node scripts/google-indexing.mjs high-priority",
+    "indexing:check": "node scripts/google-indexing.mjs check",
+    "indexing:delete": "node scripts/google-indexing.mjs delete",
+    "indexing:stats": "node scripts/google-indexing.mjs stats"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",
@@ -49,6 +54,7 @@
     "cmdk": "^1.0.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^11.18.2",
+    "googleapis": "^166.0.0",
     "input-otp": "^1.2.4",
     "loops": "^6.0.0",
     "lucide-react": "^0.462.0",

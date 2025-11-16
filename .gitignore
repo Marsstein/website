@@ -30,3 +30,7 @@ prerender.log
 .cache/
 dist/
 .vercel
+
+# Google Indexing API
+google-service-account.json
+scripts/.indexing-status.json

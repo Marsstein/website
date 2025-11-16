@@ -5,5 +5,8 @@ Disallow: /impressum
 Disallow: /datenschutz
 
 Sitemap: https://marsstein.ai/sitemap.xml
+
+# Crawl-delay to reduce server load
+Crawl-delay: 1
 # ---------------------------
 # END ROBOTS.TXT
