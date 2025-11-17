@@ -22,7 +22,8 @@ import {
   Clock,
   Star,
   Menu,
-  X
+  X,
+  Cookie
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -395,9 +396,7 @@ const KnowledgeMegaMenu = ({ onClose }: any) => (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
         <div className="lg:col-span-3">
-          <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">
-            Leitfäden
-          </h3>
+          <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">Leitfäden</h3>
           <div className="space-y-2">
             <SimpleLink title="DSGVO Grundlagen" href="/wissen/leitfaden/dsgvo-grundlagen" onClick={onClose} />
             <SimpleLink title="Website DSGVO" href="/wissen/leitfaden/website-dsgvo" onClick={onClose} />
@@ -662,135 +661,285 @@ const MobileAccordion = ({ label, isActive, onClick, children }: any) => (
 );
 
 const MobileProductMenu = ({ onClose }: any) => (
-  <div className="space-y-3">
-    <Link
-      to="/dsgvo-compliance-software"
-      className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
-      onClick={onClose}
-    >
-      <Zap className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-      <div>
-        <div className="font-medium text-sm">DSGVO Compliance Software</div>
-        <div className="text-xs text-muted-foreground">All-in-One Lösung</div>
+  <div className="space-y-4">
+    <div>
+      <div className="space-y-2">
+        <Link
+          to="/dsgvo-compliance-software"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">DSGVO Compliance Software</div>
+          <div className="text-xs text-muted-foreground">All-in-One Lösung für Datenschutz</div>
+        </Link>
+        <Link
+          to="/externer-datenschutzbeauftragter"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Externer Datenschutzbeauftragter</div>
+          <div className="text-xs text-muted-foreground">Zertifizierte Experten auf Abruf</div>
+        </Link>
+        <Link
+          to="/dsgvo-audit"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">DSGVO Audit & Siegel</div>
+          <div className="text-xs text-muted-foreground">Kostenlose Compliance-Prüfung</div>
+        </Link>
       </div>
-    </Link>
-    <Link
-      to="/externer-datenschutzbeauftragter"
-      className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
-      onClick={onClose}
-    >
-      <Users className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-      <div>
-        <div className="font-medium text-sm">Externer Datenschutzbeauftragter</div>
-        <div className="text-xs text-muted-foreground">DSB auf Abruf</div>
+    </div>
+
+    <div className="pt-4 border-t">
+      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
+        Features & Tools
+      </h4>
+      <div className="space-y-2">
+        <Link
+          to="/verarbeitungsverzeichnis"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Verarbeitungsverzeichnis (ROPA/VVT)</div>
+          <div className="text-xs text-muted-foreground">Automatisiert erstellen und pflegen</div>
+        </Link>
+        <Link
+          to="/multi-mandant"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Multi-Mandanten Verwaltung</div>
+          <div className="text-xs text-muted-foreground">Mehrere Unternehmen zentral verwalten</div>
+        </Link>
+        <Link
+          to="/expert-in-the-loop"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Expert in the Loop</div>
+          <div className="text-xs text-muted-foreground">KI mit Expertenvalidierung</div>
+        </Link>
+        <Link
+          to="/assessment-center"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Assessment Center</div>
+          <div className="text-xs text-muted-foreground">Kostenlose Compliance-Tests</div>
+        </Link>
       </div>
-    </Link>
-    <Link
-      to="/dsgvo-audit"
-      className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
-      onClick={onClose}
-    >
-      <FileCheck className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-      <div>
-        <div className="font-medium text-sm">DSGVO Audit & Siegel</div>
-        <div className="text-xs text-muted-foreground">Kostenloser Check</div>
-      </div>
-    </Link>
-    <Link
-      to="/features"
-      className="block py-2 text-sm text-primary hover:underline font-medium"
-      onClick={onClose}
-    >
-      Alle Features ansehen →
-    </Link>
+    </div>
+
+    <div className="pt-4 border-t space-y-2">
+      <Link
+        to="/preise"
+        className="block py-2 text-sm text-primary hover:underline font-medium"
+        onClick={onClose}
+      >
+        Preise ansehen →
+      </Link>
+      <Link
+        to="/features"
+        className="block py-2 text-sm text-primary hover:underline font-medium"
+        onClick={onClose}
+      >
+        Alle Features ansehen →
+      </Link>
+    </div>
   </div>
 );
 
 const MobileSolutionsMenu = ({ onClose }: any) => (
   <div className="space-y-4">
     <div>
-      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2">
+      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
         Regulierungen
       </h4>
-      <div className="space-y-1">
-        <Link to="/dsgvo" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          DSGVO
+      <div className="space-y-2">
+        <Link
+          to="/dsgvo"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">DSGVO</div>
+          <div className="text-xs text-muted-foreground">Datenschutz-Grundverordnung</div>
         </Link>
-        <Link to="/eu-ai-act" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          EU AI Act
+        <Link
+          to="/eu-ai-act"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">EU AI Act</div>
+          <div className="text-xs text-muted-foreground">KI-Verordnung der EU</div>
         </Link>
-        <Link to="/nis2-compliance" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          NIS2-Richtlinie
+        <Link
+          to="/nis2-compliance"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">NIS2-Richtlinie</div>
+          <div className="text-xs text-muted-foreground">Cybersecurity-Richtlinie</div>
+        </Link>
+        <Link
+          to="/hinweisgeberschutzgesetz"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Hinweisgeberschutzgesetz</div>
+          <div className="text-xs text-muted-foreground">Whistleblower-Schutz</div>
+        </Link>
+        <Link
+          to="/eu-data-act"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">EU Data Act</div>
+          <div className="text-xs text-muted-foreground">Daten-Governance</div>
+        </Link>
+        <Link
+          to="/geldwaeschegesetz"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Geldwäschegesetz</div>
+          <div className="text-xs text-muted-foreground">AML Compliance</div>
         </Link>
       </div>
     </div>
-    <div>
-      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2">
+
+    <div className="pt-4 border-t">
+      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
         Zertifizierungen
       </h4>
-      <div className="space-y-1">
-        <Link to="/iso-27001-zertifizierung" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          ISO 27001
+      <div className="space-y-2">
+        <Link
+          to="/iso-27001-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">ISO 27001</div>
+          <div className="text-xs text-muted-foreground">Informationssicherheits-Management</div>
         </Link>
-        <Link to="/soc2-zertifizierung" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          SOC 2
+        <Link
+          to="/soc2-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">SOC 2</div>
+          <div className="text-xs text-muted-foreground">Security & Compliance für SaaS</div>
         </Link>
-        <Link to="/tisax-zertifizierung" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          TISAX®
+        <Link
+          to="/iso-27017-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">ISO 27017</div>
+          <div className="text-xs text-muted-foreground">Cloud Security Controls</div>
+        </Link>
+        <Link
+          to="/iso-27018-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">ISO 27018</div>
+          <div className="text-xs text-muted-foreground">Cloud Privacy Controls</div>
+        </Link>
+        <Link
+          to="/tisax-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">TISAX®</div>
+          <div className="text-xs text-muted-foreground">Automotive Security</div>
         </Link>
       </div>
     </div>
-    <Link
-      to="/compliance-frameworks"
-      className="block py-2 text-sm text-primary hover:underline font-medium"
-      onClick={onClose}
-    >
-      Alle Compliance-Frameworks →
-    </Link>
   </div>
 );
 
 const MobileKnowledgeMenu = ({ onClose }: any) => (
-  <div className="space-y-4">
-    <div>
-      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2">
-        Beliebte Leitfäden
-      </h4>
-      <div className="space-y-1">
-        <Link to="/wissen/leitfaden/dsgvo-grundlagen" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          DSGVO Grundlagen
-        </Link>
-        <Link to="/wissen/leitfaden/dsgvo-30-tage" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          DSGVO in 30 Tagen
-        </Link>
-        <Link to="/wissen/leitfaden/verarbeitungsverzeichnis" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          Verarbeitungsverzeichnis
-        </Link>
-      </div>
-    </div>
-    <div>
-      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2">
-        Spezialthemen
-      </h4>
-      <div className="space-y-1">
-        <Link to="/wissen/china" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          China & DSGVO
-        </Link>
-        <Link to="/wissen/ki-datenschutz" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          KI & Datenschutz
-        </Link>
-        <Link to="/wissen/krisenmanagement" className="block py-2 text-sm hover:text-primary transition-colors" onClick={onClose}>
-          Krisenmanagement
-        </Link>
-      </div>
-    </div>
+  <div className="space-y-2">
     <Link
       to="/wissen"
-      className="block py-2 text-sm text-primary hover:underline font-medium"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
       onClick={onClose}
     >
-      Zum Knowledge Hub →
+      <div className="font-medium text-sm">Knowledge Hub</div>
+      <div className="text-xs text-muted-foreground">150+ Compliance Guides, Templates und Checklisten</div>
     </Link>
+
+    <Link
+      to="/wissen/dsgvo"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">DSGVO</div>
+    </Link>
+
+    <Link
+      to="/wissen/leitfaden"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Leitfäden</div>
+    </Link>
+
+    <Link
+      to="/wissen/ki-datenschutz"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">KI & Datenschutz</div>
+    </Link>
+
+    <Link
+      to="/wissen/branchen"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Branchen</div>
+    </Link>
+
+    <Link
+      to="/wissen/rechtsprechung"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Rechtsprechung</div>
+    </Link>
+
+    <Link
+      to="/wissen/china"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">China & DSGVO</div>
+    </Link>
+
+    <Link
+      to="/wissen/krisenmanagement"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Krisenmanagement</div>
+    </Link>
+
+    <div className="pt-4 border-t">
+      <Card className="p-4 bg-gradient-to-br from-blue-500/10 to-background border-blue-500/20">
+        <Badge className="mb-2" variant="secondary">
+          <Users className="h-3 w-3 mr-1" />
+          Experten
+        </Badge>
+        <h4 className="font-bold text-sm mb-1">Datenschutzexperten</h4>
+        <p className="text-xs text-muted-foreground mb-2">
+          Zertifizierte Datenschutzbeauftragte und Compliance-Experten
+        </p>
+        <Link to="/datenschutzexperten" className="text-xs text-primary hover:underline" onClick={onClose}>
+          Team kennenlernen →
+        </Link>
+      </Card>
+    </div>
   </div>
 );
 
