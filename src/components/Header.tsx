@@ -91,6 +91,11 @@ export const Header: React.FC = () => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
+          <Link to="/dsgvo-audit" className="block w-full">
+            DSGVO Audit
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
           <Link to="/preise" className="block w-full">
             Preise
           </Link>
@@ -295,6 +300,27 @@ export const Header: React.FC = () => {
     </DropdownMenu>
   );
 
+  const aboutDropdown = (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+        Über uns
+        <ChevronDown className="h-3 w-3" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>
+          <Link to="/ueber-uns" className="block w-full">
+            Über uns
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/datenschutzexperten" className="block w-full">
+            Datenschutzexperten
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
   return (
     <header className="sticky top-0 z-[100] w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
@@ -320,6 +346,8 @@ export const Header: React.FC = () => {
               <div key={item.key}>{solutionsDropdown}</div>
             ) : item.key === 'nav_knowledge' ? (
               <div key={item.key}>{knowledgeDropdown}</div>
+            ) : item.key === 'nav_about' ? (
+              <div key={item.key}>{aboutDropdown}</div>
             ) : (
               <Link
                 key={item.key}
@@ -327,7 +355,6 @@ export const Header: React.FC = () => {
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.key === 'nav_industries' ? 'Branchen' :
-                 item.key === 'nav_about' ? 'Über uns' :
                  item.key === 'nav_contact' ? 'Kontakt' :
                  item.key}
               </Link>
@@ -430,6 +457,13 @@ export const Header: React.FC = () => {
                           className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
                         >
                           Software testen
+                        </Link>
+                        <Link
+                          to="/dsgvo-audit"
+                          onClick={handleMobileNavClick}
+                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                        >
+                          DSGVO Audit
                         </Link>
                         <Link
                           to="/preise"
@@ -600,19 +634,40 @@ export const Header: React.FC = () => {
                         <Building2 className="h-4 w-4" />
                         <span>Branchen</span>
                       </Link>
-                      <Link
-                        to="/ueber-uns"
-                        onClick={handleMobileNavClick}
-                        className={cn(
-                          "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
-                          location.pathname === '/ueber-uns'
-                            ? "bg-primary/10 text-primary"
-                            : "hover:bg-accent hover:translate-x-1"
-                        )}
+
+                      {/* Über uns Section */}
+                      <Collapsible
+                        open={openSections.includes('about')}
+                        onOpenChange={() => toggleSection('about')}
                       >
-                        <Users className="h-4 w-4" />
-                        <span>Über uns</span>
-                      </Link>
+                        <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
+                          <div className="flex items-center gap-3">
+                            <Users className="h-4 w-4 text-primary" />
+                            <span className="font-medium">Über uns</span>
+                          </div>
+                          <ChevronDown className={cn(
+                            "h-4 w-4 transition-transform duration-200",
+                            openSections.includes('about') && "rotate-180"
+                          )} />
+                        </CollapsibleTrigger>
+                        <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
+                          <Link
+                            to="/ueber-uns"
+                            onClick={handleMobileNavClick}
+                            className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          >
+                            Über uns
+                          </Link>
+                          <Link
+                            to="/datenschutzexperten"
+                            onClick={handleMobileNavClick}
+                            className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
+                          >
+                            Datenschutzexperten
+                          </Link>
+                        </CollapsibleContent>
+                      </Collapsible>
+
                       <Link
                         to="/contact"
                         onClick={handleMobileNavClick}

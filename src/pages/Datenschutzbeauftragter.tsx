@@ -443,7 +443,7 @@ const Datenschutzbeauftragter = () => {
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
-                  <Link to="/human-in-the-loop">
+                  <Link to="/features/human-in-the-loop">
                     <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                       <Brain className="mr-2 h-5 w-5" />
                       Human-in-the-Loop entdecken

@@ -12,6 +12,7 @@ export default function DsgvoChecklist() {
           name="description"
           content="Interaktive DSGVO Compliance Checkliste zum Abhaken und als PDF Download. Stellen Sie sicher, dass Ihr Unternehmen alle Anforderungen der Datenschutz-Grundverordnung erfüllt."
         />
+        <meta name="robots" content="noindex, follow" />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">

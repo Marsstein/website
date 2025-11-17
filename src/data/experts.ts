@@ -25,6 +25,28 @@ export interface Expert {
 
 export const experts: Expert[] = [
   {
+    name: 'Jayson Chen',
+    company: 'Marsstein',
+    bio: 'Jayson verbindet Technik und Regulatorik zu nutzbaren Produkten: schlanke Workflows von Onboarding bis Audit-Trail, priorisiert mit Blick auf Wirkung und Go-to-Market. Mit über zehn Jahren Projekterfahrung in Konzern- und Mittelstandsumfeldern (u. a. ZF Group) sorgt er für Tempo und Umsetzbarkeit; zusätzlich ist er als Datenschutzbeauftragter zertifiziert.',
+    slug: 'jayson-chen',
+    avatar: '👨‍💼',
+
+    dsbSince: 2015,
+    aiQualified: true,
+
+    qualifications: ['CIPP/E', 'GDD-zertifiziert', 'Datenschutzbeauftragter'],
+    additionalEducation: 'Produktmanagement & Regulatorik',
+
+    industries: ['SaaS', 'Tech', 'Manufacturing', 'Automotive'],
+
+    location: 'Deutschland',
+    email: 'jayson@marsstein.ai',
+    languages: ['DE', 'EN', 'CN'],
+
+    availability: 'Sofort verfügbar'
+  },
+
+  {
     name: 'Dr. Sarah Weber',
     company: 'Weber Datenschutz',
     bio: 'Weber Datenschutz berät Krankenhäuser, MedTech-Startups und Pharmaunternehmen in allen Bereichen des Datenschutzrechts inkl. Bestellung als DSB. Die Spezialisierung auf Healthcare und die umfassende medizinische Ausbildung garantieren die bestmögliche Unterstützung bei medizinischen Digitalisierungsthemen.',

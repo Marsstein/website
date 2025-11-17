@@ -20,6 +20,7 @@ const PageLoader = () => (
 const Index = lazy(() => import("./pages/Index"));
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
+const HeroBanner = lazy(() => import("./pages/HeroBanner"));
 
 // Chinese (Simplified) Pages
 const ZhHome = lazy(() => import("./pages/zh/Home"));
@@ -288,6 +289,7 @@ const App = () => (
                 <Suspense fallback={<PageLoader />}>
                   <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/hero-banner" element={<HeroBanner />} />
 
                 {/* Chinese (Simplified) Routes - zh-CN */}
                 <Route path="/zh" element={<ChineseLayout />}>
@@ -338,7 +340,8 @@ const App = () => (
                 <Route path="/beta" element={<Navigate to="/dsgvo-compliance-software" replace />} />
                 <Route path="/beta/thanks" element={<BetaThanks />} />
                 <Route path="/features" element={<Features />} />
-                <Route path="/human-in-the-loop" element={<HumanInTheLoop />} />
+                <Route path="/features/human-in-the-loop" element={<HumanInTheLoop />} />
+                <Route path="/human-in-the-loop" element={<Navigate to="/features/human-in-the-loop" replace />} />
                 <Route path="/datenschutzexperten" element={<Datenschutzbeauftragter />} />
                 <Route path="/datenschutzexperten/:slug" element={<DatenschutzbeauftragterDetail />} />
                 <Route path="/dsgvo-china" element={<CnGdpr />} />

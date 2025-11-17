@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowRight, Check } from 'lucide-react';
 import {
   useTracking,
   useSectionTracking,
@@ -10,6 +12,33 @@ import {
 
 const Home = () => {
   const { trackButtonClick } = useTracking();
+  const [currentText, setCurrentText] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const rotatingTexts = ['DSGVO', 'ISO 27001', 'EU AI Act', 'NIS2'];
+
+  useEffect(() => {
+    const currentWord = rotatingTexts[currentText];
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayedText.length < currentWord.length) {
+          setDisplayedText(currentWord.slice(0, displayedText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (displayedText.length === 0) {
+          setIsDeleting(false);
+          setCurrentText((prev) => (prev + 1) % rotatingTexts.length);
+        } else {
+          setDisplayedText(displayedText.slice(0, -1));
+        }
+      }
+    }, isDeleting ? 50 : 150);
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, currentText]);
 
   useScrollDepthTracking('homepage');
   useExitIntentTracking({ page: 'homepage' });
@@ -43,24 +72,40 @@ const Home = () => {
       
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         {/* Hero Section */}
-        <section ref={heroSectionRef} id="hero-section" data-section="hero" className="relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-            <div className="text-center">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Compliance einfach gemacht
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Die All-in-One Compliance-Plattform für DSGVO, ISO 27001, EU AI Act und mehr. 
-                Automatisieren Sie Ihre Compliance-Prozesse mit KI-Unterstützung.
+        <section ref={heroSectionRef} id="hero-section" data-section="hero" className="bg-gradient-to-br from-gray-50 to-white py-20 lg:py-28">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="mb-8">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-4">
+                  Marsstein
+                </h1>
+                <div className="h-16 flex items-center justify-center">
+                  <p className="text-2xl sm:text-3xl text-gray-700">
+                    <span className="text-blue-600 font-semibold">{displayedText}</span>
+                    <span className="text-blue-600 animate-pulse">|</span>
+                    <span className="ml-2 text-gray-600">Compliance automatisiert</span>
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Die intelligente Compliance-Plattform für moderne Unternehmen.
+                Automatisieren Sie Ihre Compliance-Prozesse und konzentrieren Sie sich auf Ihr Kerngeschäft.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Link
                   to="/preise"
                   onClick={() => trackButtonClick('homepage_cta_pricing', 'hero')}
                   data-ph-capture="homepage-hero-pricing-cta"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
                 >
-                  Jetzt starten
+                  Kostenlos testen
+                  <ArrowRight className="ml-2" size={20} />
                 </Link>
                 <Link
                   to="/contact"
@@ -68,10 +113,25 @@ const Home = () => {
                   data-ph-capture="homepage-hero-demo-cta"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  Demo anfragen
+                  Demo vereinbaren
                 </Link>
               </div>
-            </div>
+
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+                <div className="flex items-center gap-2">
+                  <Check className="text-blue-600" size={18} />
+                  <span>14 Tage kostenlos</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="text-blue-600" size={18} />
+                  <span>Keine Kreditkarte</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="text-blue-600" size={18} />
+                  <span>Setup in 2 Minuten</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
