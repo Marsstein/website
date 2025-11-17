@@ -1,709 +1,935 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import {
-  Menu as LucideMenu,
-  ChevronDown,
   Award,
   BookOpen,
   Building2,
-  Users,
-  Mail,
   FileCheck,
-  FileText,
+  Bot,
   AlertTriangle,
   Bell,
-  Wrench,
-  Bot,
-  Home,
-  X,
-  Globe,
+  Shield,
+  ChevronRight,
+  ChevronDown,
   Sparkles,
-  Layers
+  Users,
+  FileText,
+  Wrench,
+  Database,
+  CheckCircle2,
+  Zap,
+  Target,
+  Clock,
+  Star,
+  Menu,
+  X,
+  Cookie
 } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
 export const Header: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openSections, setOpenSections] = useState<string[]>([]);
+  const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
 
-  const toggleSection = (section: string) => {
-    setOpenSections(prev =>
-      prev.includes(section)
-        ? prev.filter(s => s !== section)
-        : [...prev, section]
-    );
+  const toggleMenu = (menu: string) => {
+    setActiveMenu(activeMenu === menu ? null : menu);
   };
 
-  const handleMobileNavClick = () => {
-    setMobileMenuOpen(false);
+  const toggleMobileMenu = (menu: string) => {
+    setActiveMobileMenu(activeMobileMenu === menu ? null : menu);
   };
-
-  const handleFeaturesClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (location.pathname !== '/') {
-      // Navigate to home page first, then scroll to features
-      navigate('/');
-      setTimeout(() => {
-        const featuresElement = document.getElementById('features');
-        if (featuresElement) {
-          featuresElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      // Already on home page, just scroll to features
-      const featuresElement = document.getElementById('features');
-      if (featuresElement) {
-        featuresElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
-
-  const navItems = [
-    { key: 'nav_product', href: '#' },
-    { key: 'nav_solutions', href: '#' },
-    { key: 'nav_knowledge', href: '#' },
-    { key: 'nav_industries', href: '/branchen' },
-    { key: 'nav_about', href: '/ueber-uns' },
-    { key: 'nav_contact', href: '/contact' },
-  ];
-
-  const productDropdown = (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
-        Produkt
-        <ChevronDown className="h-3 w-3" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link to="/features" className="block w-full">
-            Alle Features
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/dsgvo-compliance-software" className="block w-full">
-            Software testen
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/dsgvo-audit" className="block w-full">
-            DSGVO Audit
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/preise" className="block w-full">
-            Preise
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/externer-datenschutzbeauftragter" className="block w-full">
-            Externer DSB
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-
-  const solutionsDropdown = (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
-        Lösungen
-        <ChevronDown className="h-3 w-3" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Regulierungen</div>
-        <DropdownMenuItem>
-          <Link to="/dsgvo" className="block w-full">
-            DSGVO
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/eu-ai-act" className="block w-full">
-            EU AI Act
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/nis2-compliance" className="block w-full">
-            NIS2-Richtlinie
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/hinweisgeberschutzgesetz" className="block w-full">
-            Hinweisgeberschutzgesetz
-          </Link>
-        </DropdownMenuItem>
-        <div className="h-px bg-border my-1" />
-        <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Zertifizierungen</div>
-        <DropdownMenuItem>
-          <Link to="/iso-27001-zertifizierung" className="block w-full">
-            ISO 27001
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/soc2-zertifizierung" className="block w-full">
-            SOC 2
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/iso-27017-zertifizierung" className="block w-full">
-            ISO 27017
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/iso-27018-zertifizierung" className="block w-full">
-            ISO 27018
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/tisax-zertifizierung" className="block w-full">
-            TISAX®
-          </Link>
-        </DropdownMenuItem>
-        <div className="h-px bg-border my-1" />
-        <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Tools</div>
-        <DropdownMenuItem>
-          <Link to="/tools" className="block w-full">
-            Alle Tools
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-
-  const certificationsDropdown = (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-        Zertifizierungen
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link to="/iso-27001-zertifizierung" className="block w-full">
-            ISO 27001
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/soc2-zertifizierung" className="block w-full">
-            SOC 2
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/iso-27017-zertifizierung" className="block w-full">
-            ISO 27017 Cloud Security
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/iso-27018-zertifizierung" className="block w-full">
-            ISO 27018 Cloud Privacy
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/tisax-zertifizierung" className="block w-full">
-            TISAX® Automotive Security
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-
-  const toolsDropdown = (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-        Tools
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link to="/tools" className="block w-full">
-            Tools Übersicht
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/tools/cookie-management" className="block w-full">
-            Cookie Management
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/tools/whistleblower-system" className="block w-full">
-            Hinweisgebersystem
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/tools/dsgvo-email-template-generator" className="block w-full">
-            DSGVO Email Templates
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/tools/compliance-ai-assistant" className="block w-full">
-            Compliance AI Assistant
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/tools/dsgvo-compliance-scorecard" className="block w-full">
-            DSGVO Compliance Scorecard
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-
-  const knowledgeDropdown = (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-        Wissen
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link to="/wissen" className="block w-full">
-            Übersicht
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/wissen/dsgvo" className="block w-full">
-            DSGVO
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/wissen/china" className="block w-full">
-            China & DSGVO
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/wissen/compliance-frameworks" className="block w-full">
-            Frameworks
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/wissen/rechtsprechung" className="block w-full">
-            Rechtsprechungen
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/wissen/risk-management" className="block w-full">
-            Risk Management
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/wissen/branchen" className="block w-full">
-            Branchen
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/wissen/krisenmanagement" className="block w-full">
-            Krisenmanagement
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-
-  const aboutDropdown = (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
-        Über uns
-        <ChevronDown className="h-3 w-3" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link to="/ueber-uns" className="block w-full">
-            Über uns
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/datenschutzexperten" className="block w-full">
-            Datenschutzexperten
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
 
   return (
-    <header className="sticky top-0 z-[100] w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between px-4">
-        {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img 
-            src="/JLogoMarsstein.svg" 
-            alt="Marsstein Logo" 
-            className="h-8 w-auto"
-            width="32"
-            height="32"
-            loading="eager"
-            decoding="async"
-          />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            item.key === 'nav_product' ? (
-              <div key={item.key}>{productDropdown}</div>
-            ) : item.key === 'nav_solutions' ? (
-              <div key={item.key}>{solutionsDropdown}</div>
-            ) : item.key === 'nav_knowledge' ? (
-              <div key={item.key}>{knowledgeDropdown}</div>
-            ) : item.key === 'nav_about' ? (
-              <div key={item.key}>{aboutDropdown}</div>
-            ) : (
-              <Link
-                key={item.key}
-                to={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item.key === 'nav_industries' ? 'Branchen' :
-                 item.key === 'nav_contact' ? 'Kontakt' :
-                 item.key}
+    <>
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="w-full">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center justify-between">
+              <Link to="/" className="flex items-center flex-shrink-0">
+                <img
+                  src="/JLogoMarsstein.svg"
+                  alt="Marsstein Logo"
+                  className="h-8 w-auto"
+                />
               </Link>
-            )
-          ))}
-        </nav>
 
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center space-x-4">
-          <Button variant="ghost" size="sm" aria-label="Anmelden">
-            Anmelden
-          </Button>
-          <Link to="/dsgvo-compliance-software">
-            <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              Kostenlos testen
-            </Button>
-          </Link>
-        </div>
+              <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+                <NavButton
+                  label="Produkt"
+                  isActive={activeMenu === 'product'}
+                  onClick={() => toggleMenu('product')}
+                />
+                <NavButton
+                  label="Lösungen"
+                  isActive={activeMenu === 'solutions'}
+                  onClick={() => toggleMenu('solutions')}
+                />
+                <NavButton
+                  label="Wissen"
+                  isActive={activeMenu === 'knowledge'}
+                  onClick={() => toggleMenu('knowledge')}
+                />
+                <Link
+                  to="/branchen"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Branchen
+                </Link>
+                <Link
+                  to="/ueber-uns"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Über uns
+                </Link>
+                <Link
+                  to="/contact"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Kontakt
+                </Link>
+              </nav>
 
-        {/* Mobile Menu */}
-        <div className="md:hidden">
-          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                aria-label="Navigation Menu öffnen"
-                className="relative hover:bg-accent transition-colors"
-              >
-                <LucideMenu className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 h-2 w-2 bg-primary rounded-full animate-pulse" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-sm sm:max-w-md p-0 overflow-hidden">
-              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="flex flex-col h-full bg-gradient-to-b from-background to-muted/20">
-                <div className="flex items-center justify-between px-6 py-4 bg-background/95 backdrop-blur border-b">
-                  <Link to="/" onClick={handleMobileNavClick}>
-                    <img
-                      src="/JLogoMarsstein.svg"
-                      alt="Marsstein Logo"
-                      className="h-7 w-auto hover:scale-105 transition-transform"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </Link>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="hover:bg-accent transition-colors"
-                  >
-                    <X className="h-5 w-5" />
+              <div className="flex items-center gap-3">
+                <Link to="/dsgvo-compliance-software" className="hidden lg:block">
+                  <Button size="sm">
+                    Kostenlos testen
                   </Button>
-                </div>
-                
-                <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-primary/10 scrollbar-track-transparent">
-                  <nav className="px-4 py-6 space-y-2">
-                    {/* Home Link */}
-                    <Link
-                      to="/"
-                      onClick={handleMobileNavClick}
-                      className={cn(
-                        "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
-                        location.pathname === '/'
-                          ? "bg-primary/10 text-primary"
-                          : "hover:bg-accent hover:translate-x-1"
-                      )}
-                    >
-                      <Home className="h-4 w-4" />
-                      <span>Startseite</span>
-                    </Link>
+                </Link>
 
-                    {/* Produkt Section */}
-                    <Collapsible
-                      open={openSections.includes('product')}
-                      onOpenChange={() => toggleSection('product')}
-                    >
-                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
-                        <div className="flex items-center gap-3">
-                          <Sparkles className="h-4 w-4 text-primary" />
-                          <span className="font-medium">Produkt</span>
-                        </div>
-                        <ChevronDown className={cn(
-                          "h-4 w-4 transition-transform duration-200",
-                          openSections.includes('product') && "rotate-180"
-                        )} />
-                      </CollapsibleTrigger>
-                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
-                        <Link
-                          to="/features"
-                          onClick={handleMobileNavClick}
-                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          Alle Features
-                        </Link>
-                        <Link
-                          to="/dsgvo-compliance-software"
-                          onClick={handleMobileNavClick}
-                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          Software testen
-                        </Link>
-                        <Link
-                          to="/dsgvo-audit"
-                          onClick={handleMobileNavClick}
-                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          DSGVO Audit
-                        </Link>
-                        <Link
-                          to="/preise"
-                          onClick={handleMobileNavClick}
-                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          Preise
-                        </Link>
-                        <Link
-                          to="/externer-datenschutzbeauftragter"
-                          onClick={handleMobileNavClick}
-                          className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          Externer DSB
-                        </Link>
-                      </CollapsibleContent>
-                    </Collapsible>
-
-                    {/* Lösungen Section */}
-                    <Collapsible
-                      open={openSections.includes('solutions')}
-                      onOpenChange={() => toggleSection('solutions')}
-                    >
-                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
-                        <div className="flex items-center gap-3">
-                          <Layers className="h-4 w-4 text-primary" />
-                          <span className="font-medium">Lösungen</span>
-                        </div>
-                        <ChevronDown className={cn(
-                          "h-4 w-4 transition-transform duration-200",
-                          openSections.includes('solutions') && "rotate-180"
-                        )} />
-                      </CollapsibleTrigger>
-                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
-                        <div className="pl-11 pr-4 py-2 text-xs font-semibold text-muted-foreground">Regulierungen</div>
-                        <Link
-                          to="/dsgvo"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <FileCheck className="h-3.5 w-3.5" />
-                          DSGVO
-                        </Link>
-                        <Link
-                          to="/eu-ai-act"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Bot className="h-3.5 w-3.5" />
-                          EU AI Act
-                        </Link>
-                        <Link
-                          to="/nis2-compliance"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <AlertTriangle className="h-3.5 w-3.5" />
-                          NIS2
-                        </Link>
-                        <Link
-                          to="/hinweisgeberschutzgesetz"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Bell className="h-3.5 w-3.5" />
-                          HinSchG
-                        </Link>
-                        <div className="pl-11 pr-4 py-2 text-xs font-semibold text-muted-foreground mt-2">Zertifizierungen</div>
-                        <Link
-                          to="/iso-27001-zertifizierung"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Award className="h-3.5 w-3.5" />
-                          ISO 27001
-                        </Link>
-                        <Link
-                          to="/soc2-zertifizierung"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Award className="h-3.5 w-3.5" />
-                          SOC 2
-                        </Link>
-                        <div className="pl-11 pr-4 py-2 text-xs font-semibold text-muted-foreground mt-2">Tools</div>
-                        <Link
-                          to="/tools"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-14 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Wrench className="h-3.5 w-3.5" />
-                          Alle Tools
-                        </Link>
-                      </CollapsibleContent>
-                    </Collapsible>
-
-                    {/* Wissen Section */}
-                    <Collapsible
-                      open={openSections.includes('knowledge')}
-                      onOpenChange={() => toggleSection('knowledge')}
-                    >
-                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
-                        <div className="flex items-center gap-3">
-                          <BookOpen className="h-4 w-4 text-primary" />
-                          <span className="font-medium">Wissen</span>
-                        </div>
-                        <ChevronDown className={cn(
-                          "h-4 w-4 transition-transform duration-200",
-                          openSections.includes('knowledge') && "rotate-180"
-                        )} />
-                      </CollapsibleTrigger>
-                      <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
-                        <Link
-                          to="/wissen"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <BookOpen className="h-3.5 w-3.5" />
-                          Übersicht
-                        </Link>
-                        <Link
-                          to="/wissen/dsgvo"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <FileCheck className="h-3.5 w-3.5" />
-                          DSGVO Guides
-                        </Link>
-                        <Link
-                          to="/wissen/china"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <Globe className="h-3.5 w-3.5" />
-                          China & DSGVO
-                        </Link>
-                        <Link
-                          to="/wissen/compliance-frameworks"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <FileText className="h-3.5 w-3.5" />
-                          Frameworks
-                        </Link>
-                        <Link
-                          to="/wissen/rechtsprechung"
-                          onClick={handleMobileNavClick}
-                          className="flex items-center gap-3 pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                        >
-                          <FileText className="h-3.5 w-3.5" />
-                          Rechtsprechungen
-                        </Link>
-                      </CollapsibleContent>
-                    </Collapsible>
-
-                    {/* Direct Links */}
-                    <div className="pt-2 space-y-2">
-                      <Link
-                        to="/branchen"
-                        onClick={handleMobileNavClick}
-                        className={cn(
-                          "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
-                          location.pathname === '/branchen'
-                            ? "bg-primary/10 text-primary"
-                            : "hover:bg-accent hover:translate-x-1"
-                        )}
-                      >
-                        <Building2 className="h-4 w-4" />
-                        <span>Branchen</span>
-                      </Link>
-
-                      {/* Über uns Section */}
-                      <Collapsible
-                        open={openSections.includes('about')}
-                        onOpenChange={() => toggleSection('about')}
-                      >
-                        <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-all group">
-                          <div className="flex items-center gap-3">
-                            <Users className="h-4 w-4 text-primary" />
-                            <span className="font-medium">Über uns</span>
-                          </div>
-                          <ChevronDown className={cn(
-                            "h-4 w-4 transition-transform duration-200",
-                            openSections.includes('about') && "rotate-180"
-                          )} />
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="mt-1 space-y-1 animate-in slide-in-from-top-1 duration-200">
-                          <Link
-                            to="/ueber-uns"
-                            onClick={handleMobileNavClick}
-                            className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                          >
-                            Über uns
-                          </Link>
-                          <Link
-                            to="/datenschutzexperten"
-                            onClick={handleMobileNavClick}
-                            className="block pl-11 pr-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md transition-all hover:translate-x-1"
-                          >
-                            Datenschutzexperten
-                          </Link>
-                        </CollapsibleContent>
-                      </Collapsible>
-
-                      <Link
-                        to="/contact"
-                        onClick={handleMobileNavClick}
-                        className={cn(
-                          "flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all",
-                          location.pathname === '/contact'
-                            ? "bg-primary/10 text-primary"
-                            : "hover:bg-accent hover:translate-x-1"
-                        )}
-                      >
-                        <Mail className="h-4 w-4" />
-                        <span>Kontakt</span>
-                      </Link>
-                    </div>
-                  </nav>
-                </div>
-
-                <div className="border-t bg-background/95 backdrop-blur p-4 space-y-3">
-                  <Button
-                    variant="outline"
-                    className="w-full justify-center border-2 hover:bg-accent transition-all"
-                    aria-label="Anmelden"
-                  >
-                    Anmelden
-                  </Button>
-                  <Link to="/dsgvo-compliance-software" className="block" onClick={handleMobileNavClick}>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
-                      Kostenlos testen
-                    </Button>
-                  </Link>
-                </div>
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </button>
               </div>
-            </SheetContent>
-          </Sheet>
+            </div>
+          </div>
         </div>
-      </div>
-    </header>
+
+        {activeMenu === 'product' && (
+          <ProductMegaMenu onClose={() => setActiveMenu(null)} />
+        )}
+        {activeMenu === 'solutions' && (
+          <SolutionsMegaMenu onClose={() => setActiveMenu(null)} />
+        )}
+        {activeMenu === 'knowledge' && (
+          <KnowledgeMegaMenu onClose={() => setActiveMenu(null)} />
+        )}
+      </header>
+
+      {mobileMenuOpen && (
+        <MobileMenu
+          activeMobileMenu={activeMobileMenu}
+          toggleMobileMenu={toggleMobileMenu}
+          onClose={() => setMobileMenuOpen(false)}
+        />
+      )}
+    </>
   );
 };
+
+const NavButton = ({ label, isActive, onClick }: any) => (
+  <button
+    onClick={onClick}
+    className={cn(
+      "flex items-center gap-1 text-sm font-medium transition-colors",
+      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+    )}
+  >
+    {label}
+    <ChevronRight className={cn(
+      "h-3 w-3 transition-transform",
+      isActive && "rotate-90"
+    )} />
+  </button>
+);
+
+const ProductMegaMenu = ({ onClose }: any) => (
+  <div className="absolute left-0 right-0 top-full bg-background border-t shadow-2xl animate-in fade-in slide-in-from-top-2 duration-300">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-8">
+          <div className="mb-8">
+            <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-5">
+              Produkte
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <ProductCard
+                icon={Zap}
+                title="DSGVO Compliance Software"
+                description="All-in-One Lösung für automatisierte DSGVO-Compliance."
+                href="/dsgvo-compliance-software"
+                badge="Beliebt"
+              />
+              <ProductCard
+                icon={Users}
+                title="Externer Datenschutzbeauftragter"
+                description="Professioneller DSB-Service auf Abruf."
+                href="/externer-datenschutzbeauftragter"
+              />
+              <ProductCard
+                icon={FileCheck}
+                title="DSGVO Audit & Siegel"
+                description="Compliance-Status prüfen und Siegel erhalten."
+                href="/dsgvo-audit"
+                badge="Kostenlos"
+              />
+            </div>
+          </div>
+
+          <div className="pt-6 border-t">
+            <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">
+              Features & Tools
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FeatureLink
+                icon={Database}
+                title="Verarbeitungsverzeichnis (ROPA/VVT)"
+                description="Automatisiert erstellen und pflegen"
+                href="/features#verarbeitungsverzeichnis-ropa"
+              />
+              <FeatureLink
+                icon={Users}
+                title="Multi-Mandanten Verwaltung"
+                description="Mehrere Unternehmen zentral verwalten"
+                href="/features#multi-mandanten-verwaltung"
+              />
+              <FeatureLink
+                icon={Sparkles}
+                title="Expert in the Loop"
+                description="KI mit Expertenvalidierung"
+                href="/features/human-in-the-loop"
+              />
+              <FeatureLink
+                icon={Target}
+                title="Assessment Center"
+                description="Kostenlose Compliance-Tests"
+                href="/assessment-center"
+              />
+            </div>
+            <Link
+              to="/features"
+              className="inline-flex items-center gap-1 text-sm text-primary hover:underline mt-5"
+            >
+              Alle Features ansehen
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="lg:col-span-4">
+          <Card className="p-6 bg-gradient-to-br from-primary/10 to-background border-primary/20">
+            <h4 className="font-bold text-lg mb-2">Kostenlos starten</h4>
+            <p className="text-sm text-muted-foreground mb-5">
+              DSGVO-Compliance in 30 Tagen erreichen
+            </p>
+            <Link to="/dsgvo-compliance-software" onClick={onClose}>
+              <Button className="w-full mb-3">
+                Demo starten
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link to="/preise" onClick={onClose}>
+              <Button variant="outline" className="w-full mb-4">
+                Preise ansehen
+              </Button>
+            </Link>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <CheckCircle2 className="h-3 w-3 text-green-500" />
+                <span>Keine Kreditkarte erforderlich</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <CheckCircle2 className="h-3 w-3 text-green-500" />
+                <span>Setup in unter 10 Minuten</span>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const SolutionsMegaMenu = ({ onClose }: any) => (
+  <div className="absolute left-0 right-0 top-full bg-background border-t shadow-2xl animate-in fade-in slide-in-from-top-2 duration-300">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-4">
+          <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">
+            Regulierungen
+          </h3>
+          <div className="space-y-2">
+            <SolutionLink
+              title="DSGVO"
+              description="Datenschutz-Grundverordnung"
+              href="/dsgvo"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="EU AI Act"
+              description="KI-Verordnung der EU"
+              href="/eu-ai-act"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="NIS2-Richtlinie"
+              description="Cybersecurity-Richtlinie"
+              href="/nis2-compliance"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="Hinweisgeberschutzgesetz"
+              description="Whistleblower-Schutz"
+              href="/hinweisgeberschutzgesetz"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="EU Data Act"
+              description="Daten-Governance"
+              href="/eu-data-act"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="Geldwäschegesetz"
+              description="AML Compliance"
+              href="/geldwaeschegesetz"
+              onClick={onClose}
+            />
+          </div>
+        </div>
+
+        <div className="lg:col-span-4">
+          <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">
+            Zertifizierungen
+          </h3>
+          <div className="space-y-2">
+            <SolutionLink
+              title="ISO 27001"
+              description="Informationssicherheits-Management"
+              href="/iso-27001-zertifizierung"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="SOC 2"
+              description="Security & Compliance für SaaS"
+              href="/soc2-zertifizierung"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="ISO 27017"
+              description="Cloud Security Controls"
+              href="/iso-27017-zertifizierung"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="ISO 27018"
+              description="Cloud Privacy Controls"
+              href="/iso-27018-zertifizierung"
+              onClick={onClose}
+            />
+            <SolutionLink
+              title="TISAX®"
+              description="Automotive Security"
+              href="/tisax-zertifizierung"
+              onClick={onClose}
+            />
+          </div>
+        </div>
+
+        <div className="lg:col-span-4 space-y-4">
+          <Card className="p-5 bg-gradient-to-br from-primary/10 to-background border-primary/20">
+            <h4 className="font-bold text-base mb-2">DSGVO Compliance Software</h4>
+            <p className="text-xs text-muted-foreground mb-4">
+              All-in-One Lösung für automatisierte Compliance
+            </p>
+            <Link to="/dsgvo-compliance-software" onClick={onClose}>
+              <Button className="w-full" size="sm">
+                Mehr erfahren
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </Card>
+
+          <Card className="p-5 bg-gradient-to-br from-green-500/10 to-background border-green-500/20">
+            <h4 className="font-bold text-base mb-2">DSGVO Audit & Siegel</h4>
+            <p className="text-xs text-muted-foreground mb-4">
+              Compliance-Status prüfen und Siegel erhalten
+            </p>
+            <Link to="/dsgvo-audit" onClick={onClose}>
+              <Button className="w-full" size="sm" variant="outline">
+                Jetzt starten
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const KnowledgeMegaMenu = ({ onClose }: any) => (
+  <div className="absolute left-0 right-0 top-full bg-background border-t shadow-2xl animate-in fade-in slide-in-from-top-2 duration-300">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-3">
+          <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">Leitfäden</h3>
+          <div className="space-y-2">
+            <SimpleLink title="DSGVO Grundlagen" href="/wissen/leitfaden/dsgvo-grundlagen" onClick={onClose} />
+            <SimpleLink title="Website DSGVO" href="/wissen/leitfaden/website-dsgvo" onClick={onClose} />
+            <SimpleLink title="DSGVO in 30 Tagen" href="/wissen/leitfaden/dsgvo-30-tage" onClick={onClose} />
+            <SimpleLink title="Verarbeitungsverzeichnis" href="/wissen/leitfaden/verarbeitungsverzeichnis" onClick={onClose} />
+            <SimpleLink title="TOM-Maßnahmen" href="/wissen/leitfaden/tom-massnahmen" onClick={onClose} />
+            <SimpleLink title="DSFA durchführen" href="/wissen/leitfaden/dsfa-durchfuehrung" onClick={onClose} />
+            <SimpleLink title="Betroffenenrechte" href="/wissen/leitfaden/betroffenenrechte" onClick={onClose} />
+          </div>
+        </div>
+
+        <div className="lg:col-span-3">
+          <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">
+            Branchen
+          </h3>
+          <div className="space-y-2">
+            <SimpleLink title="Gesundheitswesen" href="/wissen/branchen/gesundheitswesen-dsgvo" onClick={onClose} />
+            <SimpleLink title="Fintech" href="/wissen/branchen/fintech-compliance" onClick={onClose} />
+            <SimpleLink title="E-Commerce" href="/wissen/branchen/ecommerce-privacy" onClick={onClose} />
+            <SimpleLink title="SaaS" href="/wissen/branchen/saas-privacy-design" onClick={onClose} />
+            <SimpleLink title="Industrie 4.0" href="/wissen/branchen/industrie-40-datenschutz" onClick={onClose} />
+            <SimpleLink title="Automotive" href="/wissen/branchen/automotive-datenschutz" onClick={onClose} />
+            <SimpleLink title="Alle Branchen →" href="/wissen/branchen" onClick={onClose} />
+          </div>
+        </div>
+
+        <div className="lg:col-span-3">
+          <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">
+            Rechtsprechung
+          </h3>
+          <div className="space-y-2">
+            <SimpleLink title="Schrems II" href="/wissen/rechtsprechung/schrems-ii" onClick={onClose} />
+            <SimpleLink title="Meta Irland 2024" href="/wissen/rechtsprechung/meta-irland-2024" onClick={onClose} />
+            <SimpleLink title="Cookie Law" href="/wissen/rechtsprechung/cookie-law" onClick={onClose} />
+            <SimpleLink title="Google Fonts München" href="/wissen/rechtsprechung/google-fonts-muenchen" onClick={onClose} />
+            <SimpleLink title="Alle Urteile →" href="/wissen/rechtsprechung" onClick={onClose} />
+          </div>
+
+          <div className="mt-6">
+            <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">
+              Spezialthemen
+            </h3>
+            <div className="space-y-2">
+              <SimpleLink title="China & DSGVO" href="/wissen/china" onClick={onClose} />
+              <SimpleLink title="KI & Datenschutz" href="/wissen/ki-datenschutz" onClick={onClose} />
+              <SimpleLink title="Krisenmanagement" href="/wissen/krisenmanagement" onClick={onClose} />
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-3 space-y-4">
+          <Card className="p-5 bg-gradient-to-br from-blue-500/10 to-background border-blue-500/20">
+            <Badge className="mb-3" variant="secondary">
+              <Users className="h-3 w-3 mr-1" />
+              Experten
+            </Badge>
+            <h4 className="font-bold text-base mb-2">Datenschutzexperten</h4>
+            <p className="text-xs text-muted-foreground mb-3">
+              Zertifizierte Datenschutzbeauftragte und Compliance-Experten
+            </p>
+            <Link to="/datenschutzexperten" className="text-sm text-primary hover:underline" onClick={onClose}>
+              Team kennenlernen →
+            </Link>
+          </Card>
+
+          <Card className="p-5 bg-gradient-to-br from-primary/5 to-background border-primary/20">
+            <Badge className="mb-3" variant="secondary">
+              <Star className="h-3 w-3 mr-1" />
+              Beliebt
+            </Badge>
+            <h4 className="font-bold text-base mb-2">Knowledge Hub</h4>
+            <p className="text-xs text-muted-foreground mb-3">
+              150+ Compliance Guides, Templates und Checklisten
+            </p>
+            <Link to="/wissen" className="text-sm text-primary hover:underline" onClick={onClose}>
+              Jetzt entdecken →
+            </Link>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const ProductCard = ({ icon: Icon, title, description, href, badge }: any) => (
+  <Link
+    to={href}
+    className="group block p-5 rounded-lg hover:bg-muted/50 transition-all border border-transparent hover:border-primary/20"
+  >
+    <div className="flex items-start gap-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+        <Icon className="h-6 w-6 text-primary" />
+      </div>
+      <div className="flex-1">
+        <div className="flex items-center gap-2 mb-1">
+          <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+            {title}
+          </h4>
+          {badge && (
+            <Badge variant="secondary" className="text-xs">
+              {badge}
+            </Badge>
+          )}
+        </div>
+        <p className="text-xs text-muted-foreground">
+          {description}
+        </p>
+      </div>
+    </div>
+  </Link>
+);
+
+const SolutionLink = ({ title, description, href, onClick }: any) => (
+  <Link
+    to={href}
+    onClick={onClick}
+    className="block p-3 rounded-lg hover:bg-muted/50 transition-colors group"
+  >
+    <h4 className="font-medium text-sm mb-0.5 group-hover:text-primary transition-colors">
+      {title}
+    </h4>
+    <p className="text-xs text-muted-foreground">
+      {description}
+    </p>
+  </Link>
+);
+
+const SimpleLink = ({ title, href, onClick }: any) => {
+  const isViewAll = title.includes('Alle') || title.includes('→');
+
+  return (
+    <Link
+      to={href}
+      onClick={onClick}
+      className={cn(
+        "block py-2 text-sm transition-colors",
+        isViewAll
+          ? "text-primary hover:underline font-medium"
+          : "text-muted-foreground hover:text-primary"
+      )}
+    >
+      {title}
+    </Link>
+  );
+};
+
+const FeatureLink = ({ icon: Icon, title, description, href }: any) => (
+  <Link
+    to={href}
+    className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors group"
+  >
+    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+      <Icon className="h-4 w-4 text-primary" />
+    </div>
+    <div>
+      <h4 className="text-sm font-medium mb-0.5 group-hover:text-primary transition-colors">
+        {title}
+      </h4>
+      {description && (
+        <p className="text-xs text-muted-foreground">
+          {description}
+        </p>
+      )}
+    </div>
+  </Link>
+);
+
+const MobileMenu = ({ activeMobileMenu, toggleMobileMenu, onClose }: any) => (
+  <>
+    <div
+      className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
+      onClick={onClose}
+    />
+    <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-background border-l shadow-xl z-50 lg:hidden flex flex-col">
+      <div className="flex-1 overflow-y-auto">
+        <div className="p-6">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-xl font-semibold">Menü</h2>
+            <button
+              onClick={onClose}
+              className="p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+
+          <nav className="space-y-4">
+            <MobileAccordion
+              label="Produkt"
+              isActive={activeMobileMenu === 'product'}
+              onClick={() => toggleMobileMenu('product')}
+            >
+              <MobileProductMenu onClose={onClose} />
+            </MobileAccordion>
+
+            <MobileAccordion
+              label="Lösungen"
+              isActive={activeMobileMenu === 'solutions'}
+              onClick={() => toggleMobileMenu('solutions')}
+            >
+              <MobileSolutionsMenu onClose={onClose} />
+            </MobileAccordion>
+
+            <MobileAccordion
+              label="Wissen"
+              isActive={activeMobileMenu === 'knowledge'}
+              onClick={() => toggleMobileMenu('knowledge')}
+            >
+              <MobileKnowledgeMenu onClose={onClose} />
+            </MobileAccordion>
+
+            <Link
+              to="/branchen"
+              className="block py-3 text-base font-medium text-foreground border-b"
+              onClick={onClose}
+            >
+              Branchen
+            </Link>
+
+            <Link
+              to="/ueber-uns"
+              className="block py-3 text-base font-medium text-foreground border-b"
+              onClick={onClose}
+            >
+              Über uns
+            </Link>
+
+            <Link
+              to="/contact"
+              className="block py-3 text-base font-medium text-foreground border-b pb-3"
+              onClick={onClose}
+            >
+              Kontakt
+            </Link>
+          </nav>
+
+          <div className="mt-6">
+            <Link to="/dsgvo-compliance-software" onClick={onClose}>
+              <Button className="w-full text-base">
+                Kostenlos testen
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
+const MobileAccordion = ({ label, isActive, onClick, children }: any) => (
+  <div className="border-b pb-3">
+    <button
+      onClick={onClick}
+      className="flex items-center justify-between w-full py-3 text-base font-medium text-foreground"
+    >
+      {label}
+      <ChevronDown
+        className={cn(
+          "h-5 w-5 transition-transform",
+          isActive && "rotate-180"
+        )}
+      />
+    </button>
+    {isActive && (
+      <div className="mt-3 space-y-3 animate-in slide-in-from-top-2 duration-200">
+        {children}
+      </div>
+    )}
+  </div>
+);
+
+const MobileProductMenu = ({ onClose }: any) => (
+  <div className="space-y-4">
+    <div>
+      <div className="space-y-2">
+        <Link
+          to="/dsgvo-compliance-software"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">DSGVO Compliance Software</div>
+          <div className="text-xs text-muted-foreground">All-in-One Lösung für Datenschutz</div>
+        </Link>
+        <Link
+          to="/externer-datenschutzbeauftragter"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Externer Datenschutzbeauftragter</div>
+          <div className="text-xs text-muted-foreground">Zertifizierte Experten auf Abruf</div>
+        </Link>
+        <Link
+          to="/dsgvo-audit"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">DSGVO Audit & Siegel</div>
+          <div className="text-xs text-muted-foreground">Kostenlose Compliance-Prüfung</div>
+        </Link>
+      </div>
+    </div>
+
+    <div className="pt-4 border-t">
+      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
+        Features & Tools
+      </h4>
+      <div className="space-y-2">
+        <Link
+          to="/verarbeitungsverzeichnis"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Verarbeitungsverzeichnis (ROPA/VVT)</div>
+          <div className="text-xs text-muted-foreground">Automatisiert erstellen und pflegen</div>
+        </Link>
+        <Link
+          to="/multi-mandant"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Multi-Mandanten Verwaltung</div>
+          <div className="text-xs text-muted-foreground">Mehrere Unternehmen zentral verwalten</div>
+        </Link>
+        <Link
+          to="/expert-in-the-loop"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Expert in the Loop</div>
+          <div className="text-xs text-muted-foreground">KI mit Expertenvalidierung</div>
+        </Link>
+        <Link
+          to="/assessment-center"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Assessment Center</div>
+          <div className="text-xs text-muted-foreground">Kostenlose Compliance-Tests</div>
+        </Link>
+      </div>
+    </div>
+
+    <div className="pt-4 border-t space-y-2">
+      <Link
+        to="/preise"
+        className="block py-2 text-sm text-primary hover:underline font-medium"
+        onClick={onClose}
+      >
+        Preise ansehen →
+      </Link>
+      <Link
+        to="/features"
+        className="block py-2 text-sm text-primary hover:underline font-medium"
+        onClick={onClose}
+      >
+        Alle Features ansehen →
+      </Link>
+    </div>
+  </div>
+);
+
+const MobileSolutionsMenu = ({ onClose }: any) => (
+  <div className="space-y-4">
+    <div>
+      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
+        Regulierungen
+      </h4>
+      <div className="space-y-2">
+        <Link
+          to="/dsgvo"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">DSGVO</div>
+          <div className="text-xs text-muted-foreground">Datenschutz-Grundverordnung</div>
+        </Link>
+        <Link
+          to="/eu-ai-act"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">EU AI Act</div>
+          <div className="text-xs text-muted-foreground">KI-Verordnung der EU</div>
+        </Link>
+        <Link
+          to="/nis2-compliance"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">NIS2-Richtlinie</div>
+          <div className="text-xs text-muted-foreground">Cybersecurity-Richtlinie</div>
+        </Link>
+        <Link
+          to="/hinweisgeberschutzgesetz"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Hinweisgeberschutzgesetz</div>
+          <div className="text-xs text-muted-foreground">Whistleblower-Schutz</div>
+        </Link>
+        <Link
+          to="/eu-data-act"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">EU Data Act</div>
+          <div className="text-xs text-muted-foreground">Daten-Governance</div>
+        </Link>
+        <Link
+          to="/geldwaeschegesetz"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">Geldwäschegesetz</div>
+          <div className="text-xs text-muted-foreground">AML Compliance</div>
+        </Link>
+      </div>
+    </div>
+
+    <div className="pt-4 border-t">
+      <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
+        Zertifizierungen
+      </h4>
+      <div className="space-y-2">
+        <Link
+          to="/iso-27001-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">ISO 27001</div>
+          <div className="text-xs text-muted-foreground">Informationssicherheits-Management</div>
+        </Link>
+        <Link
+          to="/soc2-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">SOC 2</div>
+          <div className="text-xs text-muted-foreground">Security & Compliance für SaaS</div>
+        </Link>
+        <Link
+          to="/iso-27017-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">ISO 27017</div>
+          <div className="text-xs text-muted-foreground">Cloud Security Controls</div>
+        </Link>
+        <Link
+          to="/iso-27018-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">ISO 27018</div>
+          <div className="text-xs text-muted-foreground">Cloud Privacy Controls</div>
+        </Link>
+        <Link
+          to="/tisax-zertifizierung"
+          className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          onClick={onClose}
+        >
+          <div className="font-medium text-sm">TISAX®</div>
+          <div className="text-xs text-muted-foreground">Automotive Security</div>
+        </Link>
+      </div>
+    </div>
+  </div>
+);
+
+const MobileKnowledgeMenu = ({ onClose }: any) => (
+  <div className="space-y-2">
+    <Link
+      to="/wissen"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Knowledge Hub</div>
+      <div className="text-xs text-muted-foreground">150+ Compliance Guides, Templates und Checklisten</div>
+    </Link>
+
+    <Link
+      to="/wissen/dsgvo"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">DSGVO</div>
+    </Link>
+
+    <Link
+      to="/wissen/leitfaden"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Leitfäden</div>
+    </Link>
+
+    <Link
+      to="/wissen/ki-datenschutz"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">KI & Datenschutz</div>
+    </Link>
+
+    <Link
+      to="/wissen/branchen"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Branchen</div>
+    </Link>
+
+    <Link
+      to="/wissen/rechtsprechung"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Rechtsprechung</div>
+    </Link>
+
+    <Link
+      to="/wissen/china"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">China & DSGVO</div>
+    </Link>
+
+    <Link
+      to="/wissen/krisenmanagement"
+      className="block p-2 rounded-lg hover:bg-muted/50 transition-colors"
+      onClick={onClose}
+    >
+      <div className="font-medium text-sm">Krisenmanagement</div>
+    </Link>
+
+    <div className="pt-4 border-t">
+      <Card className="p-4 bg-gradient-to-br from-blue-500/10 to-background border-blue-500/20">
+        <Badge className="mb-2" variant="secondary">
+          <Users className="h-3 w-3 mr-1" />
+          Experten
+        </Badge>
+        <h4 className="font-bold text-sm mb-1">Datenschutzexperten</h4>
+        <p className="text-xs text-muted-foreground mb-2">
+          Zertifizierte Datenschutzbeauftragte und Compliance-Experten
+        </p>
+        <Link to="/datenschutzexperten" className="text-xs text-primary hover:underline" onClick={onClose}>
+          Team kennenlernen →
+        </Link>
+      </Card>
+    </div>
+  </div>
+);
