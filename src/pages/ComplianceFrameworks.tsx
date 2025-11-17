@@ -711,11 +711,11 @@ const ComplianceFrameworks: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900" style={{
+    <div className="min-h-screen bg-gradient-to-br from-[#F5F6F8] via-orange-50/20 to-[#F5F6F8]" style={{
       wordWrap: 'break-word',
       overflowWrap: 'break-word'
     }}>
-      <SEOHead 
+      <SEOHead
         title="Compliance Frameworks 2024 - ISO 27001, SOC 2, DSGVO Guide"
         description="Compliance Frameworks Übersicht 2024: ISO 27001 ✓ SOC 2 ✓ DSGVO ✓ NIS2. Vergleich, Zertifizierung & Umsetzung. Kostenloses Assessment starten!"
         canonical="/wissen/compliance-frameworks"
@@ -738,27 +738,26 @@ const ComplianceFrameworks: React.FC = () => {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/" className="text-[#474747] hover:text-[#e24e1b]">Home</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
+            <BreadcrumbSeparator className="text-[#474747]" />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/wissen">Wissen</BreadcrumbLink>
+              <BreadcrumbLink href="/wissen" className="text-[#474747] hover:text-[#e24e1b]">Wissen</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
+            <BreadcrumbSeparator className="text-[#474747]" />
             <BreadcrumbItem>
-              <BreadcrumbPage>Compliance Frameworks</BreadcrumbPage>
+              <BreadcrumbPage className="text-[#e24e1b] font-medium">Compliance Frameworks</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
       </div>
       
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         ref={heroRef}
-        className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white border-b border-stone-200"
         style={{ y }}
       >
-        <div className="absolute inset-0 bg-[url('/placeholder-1920x1080.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="relative container mx-auto max-w-7xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -766,28 +765,28 @@ const ComplianceFrameworks: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="p-3 bg-emerald-500 rounded-xl">
+              <div className="p-3 bg-[#e24e1b] rounded-xl shadow-sm">
                 <Award className="h-8 w-8 text-white" />
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
+              <h1 className="text-4xl md:text-6xl font-bold text-[#232323]">
                 Compliance Frameworks
               </h1>
             </div>
-            <p className="text-xl text-slate-300 mb-8 max-w-4xl mx-auto">
-              Umfassende Leitfäden zu internationalen Compliance-Standards, Zertifizierungen und regulatorischen Frameworks. 
+            <p className="text-xl text-[#474747] mb-8 max-w-4xl mx-auto leading-relaxed">
+              Umfassende Leitfäden zu internationalen Compliance-Standards, Zertifizierungen und regulatorischen Frameworks.
               Navigieren Sie mit fachkundiger Anleitung durch die komplexe Landschaft moderner Compliance-Anforderungen.
             </p>
-            
+
             <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
-              <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/20 text-emerald-300">
+              <Badge variant="outline" className="bg-orange-50 border-[#e24e1b] text-[#e24e1b]">
                 <Award className="h-4 w-4 mr-2" />
                 {frameworks.length} Frameworks
               </Badge>
-              <Badge variant="outline" className="bg-blue-500/10 border-blue-500/20 text-blue-300">
+              <Badge variant="outline" className="bg-blue-50 border-[#003366] text-[#003366]">
                 <Building2 className="h-4 w-4 mr-2" />
                 Alle Branchen
               </Badge>
-              <Badge variant="outline" className="bg-purple-500/10 border-purple-500/20 text-purple-300">
+              <Badge variant="outline" className="bg-stone-100 border-stone-400 text-[#474747]">
                 <Globe className="h-4 w-4 mr-2" />
                 International Standards
               </Badge>
@@ -803,25 +802,25 @@ const ComplianceFrameworks: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="lg:sticky lg:top-24 space-y-6">
               {/* Search */}
-              <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+              <Card className="bg-white border-stone-200 shadow-sm">
                 <CardContent className="p-6">
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#474747]" />
                     <input
                       type="text"
                       placeholder="Search frameworks..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-2 bg-[#F5F6F8] border border-stone-300 rounded-lg text-[#232323] placeholder-[#474747] focus:outline-none focus:ring-2 focus:ring-[#e24e1b] focus:border-transparent"
                     />
                   </div>
                 </CardContent>
               </Card>
 
               {/* Categories */}
-              <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+              <Card className="bg-white border-stone-200 shadow-sm">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Kategorien</h3>
+                  <h3 className="text-lg font-semibold text-[#232323] mb-4">Kategorien</h3>
                   <div className="space-y-2">
                     {categories.map((category) => {
                       const IconComponent = category.icon;
@@ -832,15 +831,15 @@ const ComplianceFrameworks: React.FC = () => {
                           className={cn(
                             "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
                             selectedCategory === category.id
-                              ? "bg-emerald-500/20 border border-emerald-500/50 text-emerald-300"
-                              : "border border-slate-700/50 text-slate-400 hover:bg-slate-700/50 hover:text-slate-300"
+                              ? "bg-orange-50 border border-[#e24e1b] text-[#e24e1b]"
+                              : "border border-stone-200 text-[#474747] hover:bg-[#F5F6F8] hover:text-[#232323]"
                           )}
                         >
                           <div className="flex items-center gap-3">
                             <IconComponent className="h-4 w-4" />
                             <span className="text-sm font-medium">{category.name}</span>
                           </div>
-                          <Badge variant="outline" className="text-xs">
+                          <Badge variant="outline" className="text-xs border-current">
                             {category.count}
                           </Badge>
                         </button>
@@ -851,9 +850,9 @@ const ComplianceFrameworks: React.FC = () => {
               </Card>
 
               {/* Difficulty */}
-              <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+              <Card className="bg-white border-stone-200 shadow-sm">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Schwierigkeit</h3>
+                  <h3 className="text-lg font-semibold text-[#232323] mb-4">Schwierigkeit</h3>
                   <div className="space-y-2">
                     {difficulties.map((difficulty) => (
                       <button
@@ -862,12 +861,12 @@ const ComplianceFrameworks: React.FC = () => {
                         className={cn(
                           "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
                           selectedDifficulty === difficulty.id
-                            ? "bg-emerald-500/20 border border-emerald-500/50 text-emerald-300"
-                            : "border border-slate-700/50 text-slate-400 hover:bg-slate-700/50 hover:text-slate-300"
+                            ? "bg-orange-50 border border-[#e24e1b] text-[#e24e1b]"
+                            : "border border-stone-200 text-[#474747] hover:bg-[#F5F6F8] hover:text-[#232323]"
                         )}
                       >
                         <span className="text-sm font-medium">{difficulty.name}</span>
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-xs border-current">
                           {difficulty.count}
                         </Badge>
                       </button>
@@ -877,14 +876,17 @@ const ComplianceFrameworks: React.FC = () => {
               </Card>
 
               {/* View Mode Toggle */}
-              <Card className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50">
+              <Card className="bg-white border-stone-200 shadow-sm">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Ansicht</h3>
+                  <h3 className="text-lg font-semibold text-[#232323] mb-4">Ansicht</h3>
                   <div className="flex gap-2">
                     <Button
                       variant={viewMode === 'grid' ? 'default' : 'outline'}
                       onClick={() => setViewMode('grid')}
-                      className="flex-1"
+                      className={cn(
+                        "flex-1",
+                        viewMode === 'grid' ? "bg-[#e24e1b] hover:bg-[#f97316] text-white" : "border-stone-300 text-[#474747] hover:bg-[#F5F6F8]"
+                      )}
                     >
                       <Grid className="h-4 w-4 mr-2" />
                       Grid
@@ -892,7 +894,10 @@ const ComplianceFrameworks: React.FC = () => {
                     <Button
                       variant={viewMode === 'list' ? 'default' : 'outline'}
                       onClick={() => setViewMode('list')}
-                      className="flex-1"
+                      className={cn(
+                        "flex-1",
+                        viewMode === 'list' ? "bg-[#e24e1b] hover:bg-[#f97316] text-white" : "border-stone-300 text-[#474747] hover:bg-[#F5F6F8]"
+                      )}
                     >
                       <List className="h-4 w-4 mr-2" />
                       List
@@ -908,10 +913,10 @@ const ComplianceFrameworks: React.FC = () => {
             {/* Results Header */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 gap-4">
               <div>
-                <h2 className="text-2xl font-bold text-white">
+                <h2 className="text-2xl font-bold text-[#232323]">
                   {filteredFrameworks.length} Framework{filteredFrameworks.length !== 1 ? 's' : ''} gefunden
                 </h2>
-                <p className="text-slate-400">
+                <p className="text-[#474747]">
                   {selectedCategory !== 'all' && `Kategorie: ${categories.find(c => c.id === selectedCategory)?.name} • `}
                   {selectedDifficulty !== 'all' && `Level: ${difficulties.find(d => d.id === selectedDifficulty)?.name}`}
                 </p>
@@ -937,8 +942,8 @@ const ComplianceFrameworks: React.FC = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <Card className={cn(
-                      "group relative overflow-hidden border-slate-700/50 hover:border-emerald-500/50 transition-all duration-300 hover:scale-105",
-                      framework.bgColor
+                      "group relative overflow-hidden bg-white border-l-4 border-stone-200 hover:border-l-[#e24e1b] transition-all duration-300 hover:shadow-lg",
+                      "hover:-translate-y-1"
                     )}>
                       <CardContent className={cn(
                         "p-6",
@@ -961,8 +966,8 @@ const ComplianceFrameworks: React.FC = () => {
                             </div>
                             {viewMode === 'list' && (
                               <div className="text-center">
-                                <h3 className="text-lg font-bold text-white">{framework.title}</h3>
-                                <p className="text-sm text-slate-400">{framework.subtitle}</p>
+                                <h3 className="text-lg font-bold text-[#232323]">{framework.title}</h3>
+                                <p className="text-sm text-[#e24e1b]">{framework.subtitle}</p>
                               </div>
                             )}
                           </div>
@@ -970,25 +975,25 @@ const ComplianceFrameworks: React.FC = () => {
                           {viewMode === 'grid' && (
                             <div className="flex flex-col items-end gap-2">
                               {framework.popular && (
-                                <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
+                                <Badge className="bg-yellow-50 text-yellow-700 border-yellow-200">
                                   <Star className="h-3 w-3 mr-1" />
                                   Beliebt
                                 </Badge>
                               )}
                               {framework.upcoming && (
-                                <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+                                <Badge className="bg-purple-50 text-purple-700 border-purple-200">
                                   <Calendar className="h-3 w-3 mr-1" />
                                   Upcoming
                                 </Badge>
                               )}
                               {framework.mandatory && (
-                                <Badge className="bg-red-500/20 text-red-300 border-red-500/30">
+                                <Badge className="bg-red-50 text-red-700 border-red-200">
                                   <AlertTriangle className="h-3 w-3 mr-1" />
                                   Mandatory
                                 </Badge>
                               )}
                               {framework.certification && (
-                                <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+                                <Badge className="bg-green-50 text-green-700 border-green-200">
                                   <BadgeCheck className="h-3 w-3 mr-1" />
                                   Zertifizierung
                                 </Badge>
@@ -1003,13 +1008,13 @@ const ComplianceFrameworks: React.FC = () => {
                         )}>
                           {viewMode === 'grid' && (
                             <>
-                              <h3 className="text-xl font-bold text-white mb-1">{framework.title}</h3>
-                              <p className="text-emerald-400 text-sm mb-3">{framework.subtitle}</p>
+                              <h3 className="text-xl font-bold text-[#232323] mb-1">{framework.title}</h3>
+                              <p className="text-[#e24e1b] text-sm mb-3">{framework.subtitle}</p>
                             </>
                           )}
-                          
+
                           <p className={cn(
-                            "text-slate-300 leading-relaxed",
+                            "text-[#474747] leading-relaxed",
                             viewMode === 'grid' ? "mb-4" : "mb-2"
                           )}>
                             {framework.description}
@@ -1019,25 +1024,25 @@ const ComplianceFrameworks: React.FC = () => {
                           {viewMode === 'list' && (
                             <div className="flex flex-wrap gap-2 mb-4">
                               {framework.popular && (
-                                <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
+                                <Badge className="bg-yellow-50 text-yellow-700 border-yellow-200">
                                   <Star className="h-3 w-3 mr-1" />
                                   Beliebt
                                 </Badge>
                               )}
                               {framework.upcoming && (
-                                <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+                                <Badge className="bg-purple-50 text-purple-700 border-purple-200">
                                   <Calendar className="h-3 w-3 mr-1" />
                                   Upcoming
                                 </Badge>
                               )}
                               {framework.mandatory && (
-                                <Badge className="bg-red-500/20 text-red-300 border-red-500/30">
+                                <Badge className="bg-red-50 text-red-700 border-red-200">
                                   <AlertTriangle className="h-3 w-3 mr-1" />
                                   Mandatory
                                 </Badge>
                               )}
                               {framework.certification && (
-                                <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+                                <Badge className="bg-green-50 text-green-700 border-green-200">
                                   <BadgeCheck className="h-3 w-3 mr-1" />
                                   Zertifizierung
                                 </Badge>
@@ -1047,74 +1052,66 @@ const ComplianceFrameworks: React.FC = () => {
 
                           {/* Stats */}
                           <div className={cn(
-                            "grid grid-cols-2 gap-4 mb-4",
-                            viewMode === 'list' ? "grid-cols-4" : ""
+                            "mb-4",
+                            viewMode === 'list' ? "grid grid-cols-2 gap-4" : ""
                           )}>
-                            <div className="bg-slate-800/50 rounded-lg p-3">
-                              <div className="flex items-center gap-2 mb-1">
-                                <Clock className="h-4 w-4 text-slate-400" />
-                                <span className="text-xs text-slate-400">Lesezeit</span>
-                              </div>
-                              <span className="text-sm font-medium text-white">{framework.readTime}</span>
-                            </div>
-                            <div className="bg-slate-800/50 rounded-lg p-3">
-                              <div className="flex items-center gap-2 mb-1">
-                                <Target className="h-4 w-4 text-slate-400" />
-                                <span className="text-xs text-slate-400">Umsetzung</span>
-                              </div>
-                              <span className="text-sm font-medium text-white">{framework.implementationTime}</span>
-                            </div>
                             {viewMode === 'list' && (
                               <>
-                                <div className="bg-slate-800/50 rounded-lg p-3">
+                                <div className="bg-[#F5F6F8] border border-stone-200 rounded-lg p-3">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <BarChart3 className="h-4 w-4 text-slate-400" />
-                                    <span className="text-xs text-slate-400">Compliance</span>
+                                    <Target className="h-4 w-4 text-[#474747]" />
+                                    <span className="text-xs text-[#474747]">Umsetzung</span>
                                   </div>
-                                  <span className="text-sm font-medium text-white">{framework.compliance}%</span>
+                                  <span className="text-sm font-medium text-[#232323]">{framework.implementationTime}</span>
                                 </div>
-                                <div className="bg-slate-800/50 rounded-lg p-3">
+                                <div className="bg-[#F5F6F8] border border-stone-200 rounded-lg p-3">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <CategoryIcon className="h-4 w-4 text-slate-400" />
-                                    <span className="text-xs text-slate-400">Kategorie</span>
+                                    <CategoryIcon className="h-4 w-4 text-[#474747]" />
+                                    <span className="text-xs text-[#474747]">Kategorie</span>
                                   </div>
-                                  <span className="text-sm font-medium text-white capitalize">
+                                  <span className="text-sm font-medium text-[#232323] capitalize">
                                     {categories.find(c => c.id === framework.category)?.name}
                                   </span>
                                 </div>
                               </>
                             )}
+                            {viewMode === 'grid' && (
+                              <div className="bg-[#F5F6F8] border border-stone-200 rounded-lg p-3">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <Target className="h-4 w-4 text-[#474747]" />
+                                  <span className="text-xs text-[#474747]">Umsetzungsdauer</span>
+                                </div>
+                                <span className="text-sm font-medium text-[#232323]">{framework.implementationTime}</span>
+                              </div>
+                            )}
                           </div>
 
-                          {/* Difficulty & Compliance Progress for grid view */}
+                          {/* Difficulty for grid view */}
                           {viewMode === 'grid' && (
-                            <div className="space-y-3 mb-4">
+                            <div className="mb-4">
                               <div className="flex items-center justify-between">
-                                <span className="text-sm text-slate-400">Schwierigkeit</span>
-                                <Badge className={getDifficultyColor(framework.difficulty)}>
+                                <span className="text-sm text-[#474747]">Schwierigkeit</span>
+                                <Badge className={cn(
+                                  framework.difficulty === 'beginner' ? 'bg-green-50 text-green-700 border-green-200' :
+                                  framework.difficulty === 'intermediate' ? 'bg-orange-50 text-[#e24e1b] border-orange-200' :
+                                  'bg-red-50 text-red-700 border-red-200'
+                                )}>
                                   {framework.difficulty === 'beginner' ? 'Einsteiger' :
                                    framework.difficulty === 'intermediate' ? 'Fortgeschritten' : 'Experte'}
                                 </Badge>
-                              </div>
-                              <div className="space-y-2">
-                                <div className="flex items-center justify-between">
-                                  <span className="text-sm text-slate-400">Compliance Status</span>
-                                  <span className="text-sm font-medium text-white">{framework.compliance}%</span>
-                                </div>
-                                <Progress value={framework.compliance} className="h-2" />
                               </div>
                             </div>
                           )}
 
                           {/* Industries */}
                           <div className="mb-4">
-                            <span className="text-sm text-slate-400 mb-2 block">Branchen:</span>
+                            <span className="text-sm text-[#474747] mb-2 block">Branchen:</span>
                             <div className="flex flex-wrap gap-1">
                               {framework.industries.slice(0, viewMode === 'list' ? 6 : 3).map((industry) => (
                                 <Badge
                                   key={industry}
                                   variant="outline"
-                                  className="text-xs bg-slate-700/50 text-slate-300 border-slate-600"
+                                  className="text-xs bg-stone-100 text-[#474747] border-stone-300"
                                 >
                                   {industry}
                                 </Badge>
@@ -1122,7 +1119,7 @@ const ComplianceFrameworks: React.FC = () => {
                               {framework.industries.length > (viewMode === 'list' ? 6 : 3) && (
                                 <Badge
                                   variant="outline"
-                                  className="text-xs bg-slate-700/50 text-slate-300 border-slate-600"
+                                  className="text-xs bg-stone-100 text-[#474747] border-stone-300"
                                 >
                                   +{framework.industries.length - (viewMode === 'list' ? 6 : 3)}
                                 </Badge>
@@ -1134,7 +1131,7 @@ const ComplianceFrameworks: React.FC = () => {
                           <Button
                             asChild
                             className={cn(
-                              "w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white",
+                              "w-full bg-[#e24e1b] hover:bg-[#f97316] text-white shadow-sm",
                               viewMode === 'list' ? "w-auto px-6" : ""
                             )}
                           >
@@ -1159,11 +1156,11 @@ const ComplianceFrameworks: React.FC = () => {
                 animate={{ opacity: 1 }}
                 className="text-center py-16"
               >
-                <div className="p-4 bg-slate-800/50 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Search className="h-6 w-6 text-slate-400" />
+                <div className="p-4 bg-orange-50 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Search className="h-6 w-6 text-[#e24e1b]" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Keine Frameworks gefunden</h3>
-                <p className="text-slate-400 mb-4">
+                <h3 className="text-xl font-semibold text-[#232323] mb-2">Keine Frameworks gefunden</h3>
+                <p className="text-[#474747] mb-4">
                   Versuchen Sie andere Suchbegriffe oder Filter.
                 </p>
                 <Button
@@ -1172,7 +1169,7 @@ const ComplianceFrameworks: React.FC = () => {
                     setSelectedCategory('all');
                     setSelectedDifficulty('all');
                   }}
-                  variant="outline"
+                  className="bg-[#e24e1b] hover:bg-[#f97316] text-white"
                 >
                   Filter zurücksetzen
                 </Button>

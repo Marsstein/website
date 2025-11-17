@@ -1,144 +1,59 @@
-import React, { useState, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  BookOpen, 
-  FileText, 
-  CheckCircle2, 
-  ArrowRight, 
+import {
+  BookOpen,
+  ArrowRight,
   Search,
-  Filter,
-  Clock,
-  Users,
   Star,
-  Download,
-  Eye,
-  Calendar,
-  Shield,
-  Zap,
-  Target,
-  AlertTriangle,
-  Lightbulb,
-  Bookmark,
-  TrendingUp,
-  Award,
-  Brain,
-  Scale,
-  Lock,
-  Database,
-  Globe,
-  Settings,
-  Code,
   Building2,
-  UserCheck,
-  FileCheck,
-  Gavel,
-  AlertOctagon,
-  ExternalLink,
   Heart,
-  ShoppingCart,
-  Cloud,
-  Factory,
-  Car,
-  Apple,
-  Truck,
-  Stethoscope,
   CreditCard,
   Cpu,
-  Leaf,
-  Pill,
+  Factory,
   Briefcase,
+  Brain,
+  ShoppingCart,
+  Cloud,
   GraduationCap,
+  Stethoscope,
+  Pill,
   Home,
   Plane,
+  Truck,
+  Shield,
   Hammer,
-  Baby
+  Baby,
+  Users,
+  Zap
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from '@/components/ui/breadcrumb';
 
 const BranchenWissen: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedComplexity, setSelectedComplexity] = useState('all');
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Branchen-spezifische Compliance Guides",
     "description": "Spezialisiertes DSGVO & Compliance-Wissen für verschiedene Branchen: Healthcare, FinTech, E-Commerce, Industrie 4.0 und mehr.",
-    "url": "https://marsstein.ai/wissen/branchen",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@id": "https://marsstein.ai/",
-            "name": "Home"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@id": "https://marsstein.ai/wissen",
-            "name": "Wissen"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "item": {
-            "@id": "https://marsstein.ai/wissen/branchen",
-            "name": "Branchen"
-          }
-        }
-      ]
-    },
-    "mainEntity": {
-      "@type": "ItemList",
-      "numberOfItems": 24,
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@type": "Article",
-            "name": "Healthcare DSGVO Compliance",
-            "description": "DSGVO-konforme Datenverarbeitung in Kliniken, Praxen und MedTech"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@type": "Article",
-            "name": "FinTech Compliance Strategie",
-            "description": "Compliance-Ansätze für FinTech-Startups und digitale Finanzdienstleister"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "item": {
-            "@type": "Article",
-            "name": "E-Commerce Privacy Excellence",
-            "description": "Best Practices für datenschutzfreundliches E-Commerce und Online-Marketing"
-          }
-        }
-      ]
-    }
+    "url": "https://marsstein.ai/wissen/branchen"
   };
 
   const categories = [
@@ -151,584 +66,375 @@ const BranchenWissen: React.FC = () => {
   ];
 
   const complexityLevels = [
-    { id: 'all', name: 'Alle Level', color: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100' },
-    { id: 'basic', name: 'Grundlagen', color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' },
-    { id: 'intermediate', name: 'Fortgeschritten', color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100' },
-    { id: 'expert', name: 'Experte', color: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100' }
+    { id: 'all', name: 'Alle Level' },
+    { id: 'basic', name: 'Grundlagen' },
+    { id: 'intermediate', name: 'Fortgeschritten' },
+    { id: 'expert', name: 'Experte' }
   ];
 
   const branchenWissen = [
     {
       id: 'healthcare-dsgvo',
-      title: 'Gesundheitswesen DSGVO Compliance',
-      description: 'Umfassender Leitfaden für DSGVO-konforme Datenverarbeitung in Kliniken, Praxen und MedTech',
+      title: 'Gesundheitswesen DSGVO',
+      subtitle: 'DSGVO-konforme Datenverarbeitung',
+      description: 'Umfassender Leitfaden für DSGVO-konforme Datenverarbeitung in Kliniken, Praxen und MedTech mit speziellem Fokus auf Art. 9 DSGVO.',
       icon: Heart,
       category: 'healthcare',
       complexity: 'expert',
       color: 'from-red-500 to-pink-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-red-900 to-slate-900',
       readTime: '45 Min',
-      lastUpdated: '2024-01-15',
       popular: true,
       link: '/wissen/branchen/gesundheitswesen-dsgvo',
-      highlights: [
-        'Art. 9 DSGVO für Gesundheitsdaten',
-        'Einwilligungsmanagement für Patienten',
-        'TOM für medizinische Geräte',
-        'Datenschutz-Folgenabschätzung im Healthcare'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001'],
+      industries: ['Kliniken', 'Arztpraxen', 'MedTech'],
       tags: ['Patientendaten', 'Medizinprodukte', 'Telemedizin']
     },
     {
       id: 'healthcare-ai-compliance',
-      title: 'Healthcare AI Compliance Guide',
-      description: 'EU AI Act Compliance für medizinische KI-Systeme und algorithmische Fairness',
+      title: 'Healthcare AI Compliance',
+      subtitle: 'EU AI Act für medizinische KI',
+      description: 'EU AI Act Compliance für medizinische KI-Systeme, Diagnosealgorithmen und algorithmische Fairness in der Gesundheitsbranche.',
       icon: Brain,
       category: 'healthcare',
-      difficulty: 'Expert',
+      complexity: 'expert',
       color: 'from-blue-500 to-purple-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
       readTime: '50 Min',
-      lastUpdated: '2024-01-15',
       popular: true,
       link: '/wissen/branchen/healthcare-ai-compliance',
-      highlights: [
-        'EU AI Act für Hochrisiko-KI im Gesundheitswesen',
-        'Bias-Monitoring und algorithmische Fairness',
-        'Human-in-the-Loop für medizinische Entscheidungen',
-        'KI-Governance und Risikomanagementsysteme'
-      ],
-      frameworks: ['EU AI Act', 'DSGVO', 'ISO 27001'],
-      tags: ['KI-Systeme', 'Algorithmic Bias', 'Medical AI', 'Human Oversight']
+      industries: ['Medical AI', 'Diagnostik', 'KI-Systeme'],
+      tags: ['KI-Systeme', 'Bias', 'Medical AI']
     },
     {
       id: 'edtech-privacy',
-      title: 'EdTech Privacy Compliance Guide',
-      description: 'COPPA und FERPA Compliance für Bildungsplattformen und altersgerechtes Consent Management',
+      title: 'EdTech Privacy Compliance',
+      subtitle: 'COPPA & FERPA für Bildung',
+      description: 'COPPA und FERPA Compliance für Bildungsplattformen mit altersgerechtem Consent Management und Datenschutz für Schülerdaten.',
       icon: GraduationCap,
-      category: 'education',
-      difficulty: 'Expert',
+      category: 'services',
+      complexity: 'expert',
       color: 'from-green-500 to-teal-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-green-900 to-slate-900',
       readTime: '40 Min',
-      lastUpdated: '2024-01-15',
       popular: true,
       link: '/wissen/branchen/edtech-privacy',
-      highlights: [
-        'COPPA-konforme Plattformen für Kinder unter 13',
-        'FERPA Compliance für Bildungseinrichtungen',
-        'Altersgerechtes Consent Management',
-        'Sichere EdTech-Plattformen und Datenschutz'
-      ],
-      frameworks: ['COPPA', 'FERPA', 'DSGVO'],
-      tags: ['Bildung', 'Kinderschutz', 'Consent Management', 'EdTech Sicherheit']
+      industries: ['EdTech', 'E-Learning', 'Schulen'],
+      tags: ['Bildung', 'Kinderschutz', 'Consent']
     },
     {
       id: 'fintech-compliance',
-      title: 'FinTech Compliance Strategie',
-      description: 'Strategische Compliance-Ansätze für FinTech-Startups und digitale Finanzdienstleister',
+      title: 'FinTech Compliance',
+      subtitle: 'Digitale Finanzdienstleister',
+      description: 'Strategische Compliance-Ansätze für FinTech-Startups, Payment Processing, Open Banking und Crypto-Asset Regulierung.',
       icon: CreditCard,
       category: 'finance',
       complexity: 'expert',
       color: 'from-blue-500 to-indigo-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
       readTime: '60 Min',
-      lastUpdated: '2024-01-10',
       popular: true,
       link: '/wissen/branchen/fintech-compliance',
-      highlights: [
-        'PCI DSS für Payment Processing',
-        'Open Banking API Sicherheit',
-        'KYC/AML Datenverarbeitung',
-        'Crypto-Asset Regulierung'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001', 'PCI DSS'],
-      tags: ['Payment', 'Open Banking', 'KYC', 'Blockchain']
+      industries: ['Payment', 'Banking', 'Crypto'],
+      tags: ['Payment', 'Open Banking', 'KYC']
     },
     {
       id: 'insurtech-compliance',
-      title: 'InsurTech Compliance Excellence',
-      description: 'Digitale Transformation der Versicherungsbranche mit DSGVO, IDD und AI Act Compliance',
+      title: 'InsurTech Compliance',
+      subtitle: 'Digitale Versicherungen',
+      description: 'Digitale Transformation der Versicherungsbranche mit DSGVO, IDD und AI Act Compliance für moderne InsurTech-Lösungen.',
       icon: Shield,
       category: 'finance',
       complexity: 'expert',
       color: 'from-blue-600 to-indigo-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
       readTime: '55 Min',
-      lastUpdated: '2024-01-18',
-      popular: true,
       link: '/wissen/branchen/insurtech-compliance',
-      highlights: [
-        'DSGVO für Gesundheits- und Telematikdaten',
-        'IDD-konforme digitale Beratung',
-        'KI-basierte Risikobewertung und AI Act',
-        'Compliance-konforme Customer Journey'
-      ],
-      frameworks: ['DSGVO', 'IDD', 'AI Act', 'DORA'],
-      tags: ['Versicherung', 'Telematik', 'KI-Bewertung', 'Digital Advisory']
+      industries: ['Versicherung', 'Telematik', 'KI'],
+      tags: ['Versicherung', 'Telematik', 'KI-Bewertung']
     },
     {
       id: 'ecommerce-privacy',
-      title: 'E-Commerce Privacy Excellence',
-      description: 'Best Practices für datenschutzfreundliches E-Commerce und Online-Marketing',
+      title: 'E-Commerce Privacy',
+      subtitle: 'Datenschutzfreundlicher Online-Handel',
+      description: 'Best Practices für datenschutzfreundliches E-Commerce, Cookie-Management und DSGVO-konforme Produktempfehlungen.',
       icon: ShoppingCart,
       category: 'technology',
       complexity: 'intermediate',
       color: 'from-emerald-500 to-teal-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900',
       readTime: '35 Min',
-      lastUpdated: '2024-01-20',
       link: '/wissen/branchen/ecommerce-privacy',
-      highlights: [
-        'Cookie-freies E-Commerce Tracking',
-        'Consent Management für Online-Shops',
-        'DSGVO-konforme Produktempfehlungen',
-        'Cross-Border Data Transfers'
-      ],
-      frameworks: ['DSGVO', 'ePrivacy'],
-      tags: ['Cookies', 'Tracking', 'Personalisierung', 'Marketing']
+      industries: ['E-Commerce', 'Retail', 'Online-Shops'],
+      tags: ['Cookies', 'Tracking', 'Personalisierung']
     },
     {
       id: 'saas-privacy-design',
       title: 'SaaS Privacy by Design',
-      description: 'Implementierung von Privacy by Design Prinzipien in SaaS-Architekturen',
+      subtitle: 'Privacy-First SaaS Architektur',
+      description: 'Implementierung von Privacy by Design Prinzipien in SaaS-Architekturen mit Multi-Tenant Datenisolation.',
       icon: Cloud,
       category: 'technology',
       complexity: 'expert',
       color: 'from-purple-500 to-pink-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
       readTime: '50 Min',
-      lastUpdated: '2024-01-12',
       link: '/wissen/branchen/saas-privacy-design',
-      highlights: [
-        'Multi-Tenant Datenisolation',
-        'API Security & Rate Limiting',
-        'Data Residency Controls',
-        'Tenant-spezifische Löschung'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001', 'SOC 2'],
-      tags: ['Multi-Tenant', 'API', 'Cloud', 'Architektur']
+      industries: ['SaaS', 'Cloud', 'Software'],
+      tags: ['Multi-Tenant', 'API', 'Cloud']
     },
     {
       id: 'manufacturing-iot',
       title: 'Industrie 4.0 Datenschutz',
-      description: 'Datenschutz und Cybersecurity für vernetzte Produktionsanlagen und IoT',
+      subtitle: 'IoT & vernetzte Produktion',
+      description: 'Datenschutz und Cybersecurity für vernetzte Produktionsanlagen, IoT-Devices und Predictive Maintenance.',
       icon: Factory,
       category: 'manufacturing',
       complexity: 'expert',
       color: 'from-orange-500 to-red-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900',
       readTime: '40 Min',
-      lastUpdated: '2024-01-08',
       link: '/wissen/branchen/industrie-40-datenschutz',
-      highlights: [
-        'OT/IT Convergence Security',
-        'IoT Device Management',
-        'Predictive Maintenance Privacy',
-        'Supply Chain Data Protection'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001', 'IEC 62443'],
-      tags: ['IoT', 'OT Security', 'Predictive Analytics', 'Supply Chain']
+      industries: ['Industrie 4.0', 'IoT', 'Produktion'],
+      tags: ['IoT', 'OT Security', 'Predictive Analytics']
     },
     {
       id: 'production-data-protection',
       title: 'Produktion & Datenschutz',
-      description: 'DSGVO-Compliance für Produktionsbetriebe und klassische Fertigung',
+      subtitle: 'Klassische Fertigung',
+      description: 'DSGVO-Compliance für Produktionsbetriebe, Maschinendatenerfassung und Qualitätssicherung in der Fertigung.',
       icon: Hammer,
       category: 'manufacturing',
       complexity: 'intermediate',
       color: 'from-gray-500 to-slate-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900',
       readTime: '45 Min',
-      lastUpdated: '2024-01-25',
       link: '/wissen/branchen/produktion',
-      highlights: [
-        'Maschinendatenerfassung (MDE)',
-        'Qualitätsdaten & Prüfprotokolle',
-        'Mitarbeiterdatenschutz in der Fertigung',
-        'Lieferketten-Datenaustausch'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001', 'ISO 9001'],
-      tags: ['Fertigung', 'MDE', 'Qualitätssicherung', 'Mitarbeiterdaten']
+      industries: ['Fertigung', 'Produktion', 'MDE'],
+      tags: ['Fertigung', 'MDE', 'Qualitätssicherung']
     },
     {
       id: 'automotive-connected',
       title: 'Connected Cars & Datenschutz',
-      description: 'Datenschutz-Compliance für vernetzte Fahrzeuge und Automotive-Services',
-      icon: Car,
+      subtitle: 'Automotive Services',
+      description: 'Datenschutz-Compliance für vernetzte Fahrzeuge, V2X Communication und Over-the-Air Updates.',
+      icon: Factory,
       category: 'manufacturing',
       complexity: 'expert',
       color: 'from-blue-600 to-indigo-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
       readTime: '45 Min',
-      lastUpdated: '2024-01-18',
       link: '/wissen/branchen/automotive-datenschutz',
-      highlights: [
-        'Fahrzeugdaten-Kategorisierung',
-        'V2X Communication Privacy',
-        'OTA Update Security',
-        'Driver Behavior Analytics'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001', 'UN-R155'],
-      tags: ['Connected Cars', 'V2X', 'OTA', 'Telematics']
-    },
-    {
-      id: 'healthcare-ai',
-      title: 'KI im Gesundheitswesen',
-      description: 'EU AI Act Compliance für medizinische KI-Systeme und Diagnosealgorithmen',
-      icon: Stethoscope,
-      category: 'healthcare',
-      complexity: 'expert',
-      color: 'from-red-500 to-rose-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-red-900 to-slate-900',
-      readTime: '55 Min',
-      lastUpdated: '2024-01-22',
-      featured: true,
-      link: '/wissen/branchen/healthcare-ai-compliance',
-      highlights: [
-        'High-Risk AI System Classification',
-        'Medical Device Regulation (MDR)',
-        'Clinical Trial Data Protection',
-        'AI Bias in Medical Diagnosis'
-      ],
-      frameworks: ['EU AI Act', 'DSGVO', 'MDR'],
-      tags: ['Medical AI', 'Diagnosis', 'Clinical Trials', 'MDR']
+      industries: ['Automotive', 'Connected Cars', 'V2X'],
+      tags: ['Connected Cars', 'V2X', 'OTA']
     },
     {
       id: 'energy-smart-grid',
       title: 'Smart Grid Compliance',
-      description: 'Datenschutz und Cybersecurity für intelligente Energienetze und Smart Meter',
+      subtitle: 'Intelligente Energienetze',
+      description: 'Datenschutz und Cybersecurity für intelligente Energienetze, Smart Meter und Critical Infrastructure.',
       icon: Zap,
       category: 'services',
       complexity: 'expert',
       color: 'from-yellow-500 to-orange-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-yellow-900 to-slate-900',
       readTime: '40 Min',
-      lastUpdated: '2024-01-14',
       link: '/wissen/branchen/smart-grid-compliance',
-      highlights: [
-        'Smart Meter Datenverarbeitung',
-        'Grid Optimization Algorithms',
-        'Energy Trading Platforms',
-        'Critical Infrastructure Protection'
-      ],
-      frameworks: ['DSGVO', 'NIS2', 'ISO 27001'],
-      tags: ['Smart Meter', 'Grid', 'Energy Trading', 'KRITIS']
+      industries: ['Energie', 'Smart Grid', 'KRITIS'],
+      tags: ['Smart Meter', 'Grid', 'KRITIS']
     },
     {
       id: 'pharma-clinical',
       title: 'Pharma & Clinical Research',
-      description: 'Compliance-Framework für pharmazeutische Forschung und klinische Studien',
+      subtitle: 'Klinische Studien & Forschung',
+      description: 'Compliance-Framework für pharmazeutische Forschung, klinische Studien und Pharmacovigilance.',
       icon: Pill,
       category: 'healthcare',
       complexity: 'expert',
       color: 'from-indigo-500 to-purple-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900',
       readTime: '50 Min',
-      lastUpdated: '2024-01-16',
       link: '/wissen/branchen/pharma-compliance',
-      highlights: [
-        'GCP Compliance für Clinical Trials',
-        'Pharmacovigilance Data Processing',
-        'Real-World Evidence (RWE)',
-        'Drug Safety Surveillance'
-      ],
-      frameworks: ['DSGVO', 'GCP', 'ISO 27001'],
-      tags: ['Clinical Trials', 'Pharmacovigilance', 'GCP', 'Drug Safety']
-    },
-    {
-      id: 'edtech-student-privacy',
-      title: 'EdTech & Student Privacy',
-      description: 'Datenschutz in Bildungstechnologie und Online-Lernplattformen',
-      icon: GraduationCap,
-      category: 'services',
-      complexity: 'intermediate',
-      color: 'from-green-500 to-emerald-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-green-900 to-slate-900',
-      readTime: '30 Min',
-      lastUpdated: '2024-01-19',
-      link: '/wissen/branchen/edtech-privacy',
-      highlights: [
-        'Student Data Privacy Rights',
-        'Age Verification for Children',
-        'Learning Analytics Ethics',
-        'Cross-Border Education Data'
-      ],
-      frameworks: ['DSGVO', 'COPPA'],
-      tags: ['Student Data', 'Learning Analytics', 'Age Verification', 'COPPA']
+      industries: ['Pharma', 'Clinical Trials', 'Forschung'],
+      tags: ['Clinical Trials', 'Pharmacovigilance', 'GCP']
     },
     {
       id: 'proptech-compliance',
       title: 'PropTech & Smart Buildings',
-      description: 'Compliance für Immobilien-Technologie und intelligente Gebäudesysteme',
+      subtitle: 'Immobilien-Technologie',
+      description: 'Compliance für Immobilien-Technologie, Smart Home Systeme und intelligente Gebäudeautomation.',
       icon: Home,
       category: 'technology',
       complexity: 'intermediate',
       color: 'from-cyan-500 to-blue-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900',
       readTime: '35 Min',
-      lastUpdated: '2024-01-11',
       link: '/wissen/branchen/proptech-compliance',
-      highlights: [
-        'Smart Home Data Privacy',
-        'Building Automation Security',
-        'Tenant Data Protection',
-        'IoT Sensors in Buildings'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001'],
-      tags: ['Smart Buildings', 'IoT', 'Tenant Data', 'Building Automation']
+      industries: ['PropTech', 'Smart Buildings', 'Immobilien'],
+      tags: ['Smart Buildings', 'IoT', 'Tenant Data']
     },
     {
       id: 'travel-tourism',
       title: 'Travel & Tourism Tech',
-      description: 'Datenschutz-Compliance für Reise- und Tourismusplattformen',
+      subtitle: 'Reise- und Tourismusplattformen',
+      description: 'Datenschutz-Compliance für Reise- und Tourismusplattformen mit Booking-Systemen und Location Tracking.',
       icon: Plane,
       category: 'services',
       complexity: 'intermediate',
       color: 'from-teal-500 to-cyan-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900',
       readTime: '30 Min',
-      lastUpdated: '2024-01-13',
       link: '/wissen/branchen/travel-compliance',
-      highlights: [
-        'Booking Platform Privacy',
-        'Location Tracking Ethics',
-        'Cross-Border Data Flows',
-        'Customer Review Management'
-      ],
-      frameworks: ['DSGVO', 'PCI DSS'],
-      tags: ['Booking', 'Location', 'Travel Data', 'Reviews']
-    },
-    {
-      id: 'agtech-farming',
-      title: 'AgTech & Precision Farming',
-      description: 'Datenschutz und Technologie-Compliance in der modernen Landwirtschaft',
-      icon: Leaf,
-      category: 'manufacturing',
-      complexity: 'intermediate',
-      color: 'from-green-600 to-emerald-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-green-900 to-slate-900',
-      readTime: '35 Min',
-      lastUpdated: '2024-01-17',
-      link: '/wissen/branchen/agtech-compliance',
-      highlights: [
-        'Farm Data Ownership Rights',
-        'Precision Agriculture IoT',
-        'Supply Chain Traceability',
-        'Agricultural AI Systems'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001'],
-      tags: ['Farm Data', 'Precision Agriculture', 'Supply Chain', 'Agricultural AI']
+      industries: ['Travel', 'Tourism', 'Booking'],
+      tags: ['Booking', 'Location', 'Travel Data']
     },
     {
       id: 'logistics-supply-chain',
       title: 'Smart Logistics & Supply Chain',
-      description: 'Compliance für intelligente Logistik und Supply Chain Management',
+      subtitle: 'Intelligente Logistik',
+      description: 'Compliance für intelligente Logistik, Fleet Management und Supply Chain Datenverarbeitung.',
       icon: Truck,
       category: 'services',
       complexity: 'intermediate',
       color: 'from-indigo-600 to-purple-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900',
       readTime: '40 Min',
-      lastUpdated: '2024-01-21',
       link: '/wissen/branchen/logistics-compliance',
-      highlights: [
-        'Fleet Management Data',
-        'Route Optimization Privacy',
-        'Warehouse Automation',
-        'Cross-Border Shipping Data'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001'],
-      tags: ['Fleet Management', 'Route Optimization', 'Warehouse', 'Shipping']
-    },
-    {
-      id: 'insurtech-compliance',
-      title: 'InsurTech Innovation',
-      description: 'Digitale Transformation und Compliance in der Versicherungsbranche',
-      icon: Shield,
-      category: 'finance',
-      complexity: 'expert',
-      color: 'from-blue-500 to-indigo-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
-      readTime: '45 Min',
-      lastUpdated: '2024-01-09',
-      link: '/wissen/branchen/insurtech-compliance',
-      highlights: [
-        'Telematics Insurance Data',
-        'AI-powered Underwriting',
-        'Claims Processing Automation',
-        'Usage-Based Insurance (UBI)'
-      ],
-      frameworks: ['DSGVO', 'Solvency II', 'ISO 27001'],
-      tags: ['Telematics', 'Underwriting', 'Claims', 'UBI']
+      industries: ['Logistik', 'Supply Chain', 'Fleet'],
+      tags: ['Fleet Management', 'Route Optimization', 'Warehouse']
     },
     {
       id: 'datenschutz-pflege',
       title: 'Datenschutz Pflege',
-      description: 'DSGVO-Compliance für Pflegeeinrichtungen und ambulante Pflegedienste',
+      subtitle: 'Pflegeeinrichtungen & Ambulante Dienste',
+      description: 'DSGVO-Compliance für Pflegeeinrichtungen, ambulante Pflegedienste und Pflegedokumentation.',
       icon: Heart,
       category: 'healthcare',
       complexity: 'intermediate',
       color: 'from-red-600 to-pink-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-red-900 to-slate-900',
       readTime: '35 Min',
-      lastUpdated: '2024-01-25',
       link: '/wissen/branchen/datenschutz-pflege',
-      highlights: [
-        'Pflegedokumentation DSGVO-konform',
-        'Einwilligungsmanagement für Bewohner',
-        'Angehörigen-Kommunikation',
-        'Vitaldaten-Monitoring'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001'],
-      tags: ['Pflegedokumentation', 'Bewohnerdaten', 'Einwilligung', 'Vitaldaten']
+      industries: ['Pflege', 'Seniorenheime', 'Ambulante Dienste'],
+      tags: ['Pflegedokumentation', 'Bewohnerdaten', 'Vitaldaten']
     },
     {
       id: 'datenschutz-arztpraxis',
       title: 'Datenschutz Arztpraxis',
-      description: 'DSGVO-konforme Verarbeitung von Patientendaten in Arztpraxen',
+      subtitle: 'Patientendaten in Arztpraxen',
+      description: 'DSGVO-konforme Verarbeitung von Patientendaten in Arztpraxen mit ePA und Telemedizin.',
       icon: Stethoscope,
       category: 'healthcare',
       complexity: 'intermediate',
       color: 'from-blue-600 to-cyan-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
       readTime: '40 Min',
-      lastUpdated: '2024-01-25',
       link: '/wissen/branchen/datenschutz-arztpraxis',
-      highlights: [
-        'Elektronische Patientenakte (ePA)',
-        'Telemedizin DSGVO-konform',
-        'Praxismanagement-Software',
-        'Art. 9 DSGVO Gesundheitsdaten'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001'],
-      tags: ['Patientenakten', 'Telemedizin', 'Gesundheitsdaten', 'PVS']
+      industries: ['Arztpraxen', 'Ambulant', 'Telemedizin'],
+      tags: ['Patientenakten', 'Telemedizin', 'Gesundheitsdaten']
     },
     {
       id: 'datenschutz-kindergarten',
       title: 'Datenschutz Kindergarten',
-      description: 'DSGVO-Compliance für Kindergärten, Kitas und Vorschulen',
+      subtitle: 'Kitas & Vorschulen',
+      description: 'DSGVO-Compliance für Kindergärten, Kitas und Vorschulen mit Kinderdatenschutz und Eltern-Einwilligungen.',
       icon: Baby,
       category: 'services',
       complexity: 'basic',
       color: 'from-green-600 to-emerald-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-green-900 to-slate-900',
       readTime: '25 Min',
-      lastUpdated: '2024-01-25',
       link: '/wissen/branchen/datenschutz-kindergarten',
-      highlights: [
-        'Kinderdatenschutz Art. 8 DSGVO',
-        'Eltern-Einwilligungen',
-        'Foto- und Videoaufnahmen',
-        'Entwicklungsberichte'
-      ],
-      frameworks: ['DSGVO'],
-      tags: ['Kinderdaten', 'Eltern-Einwilligung', 'Fotos', 'Entwicklung']
+      industries: ['Kindergarten', 'Kita', 'Vorschule'],
+      tags: ['Kinderdaten', 'Eltern-Einwilligung', 'Fotos']
     },
     {
       id: 'dsgvo-vermieter',
       title: 'DSGVO für Vermieter',
-      description: 'Rechtssichere Verarbeitung von Mieter- und Bewerberdaten',
+      subtitle: 'Mieter- & Bewerberdaten',
+      description: 'Rechtssichere Verarbeitung von Mieter- und Bewerberdaten mit DSGVO-konformem Bewerbungsverfahren.',
       icon: Home,
       category: 'services',
       complexity: 'basic',
       color: 'from-indigo-600 to-purple-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900',
       readTime: '30 Min',
-      lastUpdated: '2024-01-25',
       link: '/wissen/branchen/dsgvo-vermieter',
-      highlights: [
-        'Bewerbungsverfahren DSGVO-konform',
-        'Mieterdaten-Verwaltung',
-        'Videoüberwachung im Haus',
-        'Schufa-Auskunft rechtssicher'
-      ],
-      frameworks: ['DSGVO'],
-      tags: ['Mieterdaten', 'Bewerbungen', 'Videoüberwachung', 'Schufa']
+      industries: ['Immobilien', 'Vermietung', 'Hausverwaltung'],
+      tags: ['Mieterdaten', 'Bewerbungen', 'Videoüberwachung']
     },
     {
       id: 'dsgvo-vereine',
       title: 'DSGVO für Vereine',
-      description: 'Datenschutz-Compliance für Sportvereine und ehrenamtliche Organisationen',
+      subtitle: 'Sportvereine & Ehrenamt',
+      description: 'Datenschutz-Compliance für Sportvereine, ehrenamtliche Organisationen und Mitgliederdaten-Verwaltung.',
       icon: Users,
       category: 'services',
       complexity: 'basic',
       color: 'from-emerald-600 to-teal-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900',
       readTime: '25 Min',
-      lastUpdated: '2024-01-25',
       link: '/wissen/branchen/dsgvo-vereine',
-      highlights: [
-        'Mitgliederdaten-Verwaltung',
-        'Vereinsregister DSGVO-konform',
-        'Veranstaltungsfotos',
-        'Ehrenamtlichen-Datenschutz'
-      ],
-      frameworks: ['DSGVO'],
-      tags: ['Mitgliederdaten', 'Vereinsregister', 'Fotos', 'Ehrenamt']
+      industries: ['Sportvereine', 'Ehrenamt', 'NGOs'],
+      tags: ['Mitgliederdaten', 'Vereinsregister', 'Fotos']
     },
     {
       id: 'datenschutz-betriebsrat',
       title: 'Datenschutz Betriebsrat',
-      description: 'DSGVO-Compliance für Betriebsräte und Mitbestimmungsorgane',
+      subtitle: 'Mitbestimmungsorgane',
+      description: 'DSGVO-Compliance für Betriebsräte, Mitbestimmungsorgane und Betriebsvereinbarungen.',
       icon: Briefcase,
       category: 'services',
       complexity: 'intermediate',
       color: 'from-blue-600 to-indigo-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900',
       readTime: '30 Min',
-      lastUpdated: '2024-01-25',
       link: '/wissen/branchen/datenschutz-betriebsrat',
-      highlights: [
-        'Mitarbeiterdaten im BR',
-        'Betriebsvereinbarungen DSGVO',
-        'Mitbestimmung bei Überwachung',
-        '§ 26 BDSG Beschäftigtendaten'
-      ],
-      frameworks: ['DSGVO', 'BDSG'],
-      tags: ['Mitarbeiterdaten', 'Betriebsvereinbarung', 'Mitbestimmung', 'BDSG']
+      industries: ['Betriebsrat', 'Mitbestimmung', 'HR'],
+      tags: ['Mitarbeiterdaten', 'Betriebsvereinbarung', 'Mitbestimmung']
+    },
+    {
+      id: 'datenschutz-personalwesen',
+      title: 'Datenschutz Personalwesen',
+      subtitle: 'HR & Mitarbeiterdaten',
+      description: 'DSGVO-konforme Personalverwaltung, Bewerbermanagement und Beschäftigtendatenschutz.',
+      icon: Briefcase,
+      category: 'services',
+      complexity: 'intermediate',
+      color: 'from-purple-600 to-pink-600',
+      readTime: '35 Min',
+      link: '/wissen/branchen/datenschutz-personalwesen',
+      industries: ['HR', 'Personalwesen', 'Recruiting'],
+      tags: ['Bewerberdaten', 'Mitarbeiterdaten', 'BDSG']
     },
     {
       id: 'datenschutz-homeoffice',
       title: 'Datenschutz Homeoffice',
-      description: 'DSGVO-konforme Heimarbeit und sicherer Umgang mit Firmendaten',
+      subtitle: 'Remote Work & BYOD',
+      description: 'DSGVO-konforme Heimarbeit, sichere Homeoffice-Arbeitsplätze und BYOD-Politik.',
       icon: Home,
       category: 'technology',
       complexity: 'intermediate',
       color: 'from-purple-600 to-pink-600',
-      bgColor: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
       readTime: '30 Min',
-      lastUpdated: '2024-01-25',
       link: '/wissen/branchen/datenschutz-homeoffice',
-      highlights: [
-        'Sichere Homeoffice-Arbeitsplätze',
-        'VPN und Netzwerk-Sicherheit',
-        'Datenzugriff kontrollieren',
-        'BYOD-Politik DSGVO-konform'
-      ],
-      frameworks: ['DSGVO', 'ISO 27001'],
-      tags: ['Homeoffice', 'VPN', 'BYOD', 'Remote Work']
+      industries: ['Remote Work', 'Homeoffice', 'Mobile'],
+      tags: ['Homeoffice', 'VPN', 'BYOD']
     }
   ];
 
   const filteredGuides = branchenWissen.filter(guide => {
     const categoryMatch = selectedCategory === 'all' || guide.category === selectedCategory;
     const complexityMatch = selectedComplexity === 'all' || guide.complexity === selectedComplexity;
-    return categoryMatch && complexityMatch;
+    const searchMatch = searchTerm === '' ||
+      guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      guide.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      guide.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    return categoryMatch && complexityMatch && searchMatch;
   });
 
-  const getComplexityColor = (complexity: string) => {
+  const getDifficultyBadge = (complexity: string) => {
     switch (complexity) {
-      case 'basic': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100';
-      case 'intermediate': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100';
-      case 'expert': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100';
+      case 'basic':
+        return 'bg-green-50 text-green-700 border-green-200';
+      case 'intermediate':
+        return 'bg-orange-50 text-[#e24e1b] border-orange-200';
+      case 'expert':
+        return 'bg-red-50 text-red-700 border-red-200';
+      default:
+        return 'bg-stone-100 text-[#474747] border-stone-300';
+    }
+  };
+
+  const getDifficultyLabel = (complexity: string) => {
+    switch (complexity) {
+      case 'basic': return 'Grundlagen';
+      case 'intermediate': return 'Fortgeschritten';
+      case 'expert': return 'Experte';
+      default: return complexity;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-[#F5F6F8] via-orange-50/20 to-[#F5F6F8]">
       <SEOHead
         title="Branchen-Compliance Guides: DSGVO für Healthcare, FinTech, E-Commerce"
         description="Branchenspezifische DSGVO & Compliance-Leitfäden für Healthcare, FinTech, E-Commerce, Industrie 4.0, EdTech & mehr. ✓ Praxiserprobte Lösungen ✓ Expert Guides"
@@ -736,488 +442,261 @@ const BranchenWissen: React.FC = () => {
         structuredData={structuredData}
       />
       <Header />
-      
-      {/* Animated Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-teal-500/10 to-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-full blur-3xl animate-spin-slow" />
+
+      <div className="container px-4 py-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/" className="text-[#474747] hover:text-[#e24e1b]">
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator className="text-[#474747]" />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/wissen" className="text-[#474747] hover:text-[#e24e1b]">
+                Wissen
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator className="text-[#474747]" />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="text-[#e24e1b] font-medium">
+                Branchen
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       </div>
 
-      {/* Hero Section */}
-      <motion.section 
-        ref={heroRef}
-        style={{ y, opacity }}
-        className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      <motion.section
+        className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white border-b border-stone-200"
       >
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <motion.div 
+        <div className="relative container mx-auto max-w-7xl text-center">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-20"
           >
-            <motion.div 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-3 px-6 py-3 bg-emerald-500/10 backdrop-blur-sm rounded-full mb-8 border border-emerald-500/20"
-            >
-              <Building2 className="h-5 w-5 text-emerald-400 animate-spin-slow" />
-              <span className="text-sm font-semibold text-emerald-300">Branchen-Wissen</span>
-              <Brain className="h-5 w-5 text-teal-400 animate-pulse" />
-            </motion.div>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8"
-            >
-              <span className="text-white">Branchen</span>
-              <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Compliance
-              </span>
-              <br />
-              <span className="text-white">Expertise</span>
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12"
-            >
-              Spezialisiertes <span className="font-semibold text-emerald-300">Compliance-Wissen</span> für Ihre Branche.
-              Von Healthcare bis FinTech - <span className="font-semibold text-teal-300">praxiserprobte Leitfäden</span> 
-              für branchenspezifische Herausforderungen.
-            </motion.p>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="p-3 bg-[#e24e1b] rounded-xl shadow-sm">
+                <Building2 className="h-8 w-8 text-white" />
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold text-[#232323]">
+                Branchen-Wissen
+              </h1>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <Building2 className="mr-2 h-5 w-5" />
-                  Branche auswählen
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="border-2 border-emerald-500/30 hover:border-emerald-400 text-emerald-300 hover:bg-emerald-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
-                  <Search className="mr-2 h-5 w-5" />
-                  Wissen durchsuchen
-                </Button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+            <p className="text-xl text-[#474747] mb-8 max-w-4xl mx-auto leading-relaxed">
+              Spezialisierte DSGVO & Compliance-Leitfäden für Ihre Branche. Von Healthcare bis FinTech - praxiserprobte Lösungen für branchenspezifische Herausforderungen.
+            </p>
 
-          {/* Stats */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
-          >
-            {[
-              { value: '15+', label: 'Branchen-Guides', sublabel: 'Spezialisierte Leitfäden', icon: FileText, color: 'from-emerald-500 to-teal-500' },
-              { value: '200+', label: 'Compliance-Tipps', sublabel: 'Praxiserprobte Lösungen', icon: Lightbulb, color: 'from-teal-500 to-cyan-500' },
-              { value: '95%', label: 'Branchenabdeckung', sublabel: 'Major Industries', icon: Target, color: 'from-cyan-500 to-blue-500' },
-              { value: '24/7', label: 'Expert Support', sublabel: 'Branchen-Experten', icon: Users, color: 'from-blue-500 to-indigo-500' }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 + index * 0.1, duration: 0.6 }}
-                className="relative group"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
-                <div className="relative bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:transform hover:scale-105 transition-all duration-300">
-                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${stat.color} mb-4`}>
-                    <stat.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-sm font-semibold text-slate-200 mb-1">{stat.label}</div>
-                  <div className="text-xs text-slate-400">{stat.sublabel}</div>
-                </div>
-              </motion.div>
-            ))}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+              <Badge variant="outline" className="bg-orange-50 border-[#e24e1b] text-[#e24e1b]">
+                <BookOpen className="h-4 w-4 mr-2" />
+                24 Branchen-Guides
+              </Badge>
+              <Badge variant="outline" className="bg-orange-50 border-[#e24e1b] text-[#e24e1b]">
+                <Building2 className="h-4 w-4 mr-2" />
+                6 Hauptbranchen
+              </Badge>
+              <Badge variant="outline" className="bg-orange-50 border-[#e24e1b] text-[#e24e1b]">
+                <Star className="h-4 w-4 mr-2" />
+                Praxiserprobt
+              </Badge>
+            </div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Filter Section */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-7xl">
-          <div className="bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">
-            <div className="grid lg:grid-cols-2 gap-6">
-              {/* Category Filter */}
-              <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-3">Branche</h3>
-                <div className="flex flex-wrap gap-2">
-                  {categories.map((category) => (
-                    <motion.button
-                      key={category.id}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setSelectedCategory(category.id)}
-                      className={cn(
-                        "flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300",
-                        selectedCategory === category.id
-                          ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg"
-                          : "bg-slate-700/50 text-slate-300 hover:bg-slate-600/50"
-                      )}
-                    >
-                      <category.icon className="h-4 w-4" />
-                      <span className="text-sm">{category.name}</span>
-                      <Badge className="bg-slate-600 text-slate-200 border-0 text-xs">
-                        {category.count}
-                      </Badge>
-                    </motion.button>
-                  ))}
-                </div>
-              </div>
+      <div className="container mx-auto max-w-7xl px-4 py-8">
+        <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="lg:col-span-1">
+            <div className="lg:sticky lg:top-24 space-y-6">
+              <Card className="bg-white border-stone-200 shadow-sm">
+                <CardContent className="p-6">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#474747]" />
+                    <input
+                      type="text"
+                      placeholder="Branchen durchsuchen..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2 bg-[#F5F6F8] border border-stone-300 rounded-lg text-[#232323] placeholder-[#474747] focus:outline-none focus:ring-2 focus:ring-[#e24e1b] focus:border-transparent"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
 
-              {/* Complexity Filter */}
-              <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-3">Komplexität</h3>
-                <div className="flex flex-wrap gap-2">
-                  {complexityLevels.map((level) => (
-                    <motion.button
-                      key={level.id}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setSelectedComplexity(level.id)}
-                      className={cn(
-                        "px-4 py-2 rounded-lg font-medium transition-all duration-300",
-                        selectedComplexity === level.id
-                          ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg"
-                          : "bg-slate-700/50 text-slate-300 hover:bg-slate-600/50"
-                      )}
-                    >
-                      <span className="text-sm">{level.name}</span>
-                    </motion.button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Knowledge Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {filteredGuides.map((guide, index) => (
-              <motion.div
-                key={guide.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -10 }}
-                className="group relative"
-              >
-                {/* Glow Effect */}
-                <div className={cn(
-                  "absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-500 -z-10",
-                  `bg-gradient-to-r ${guide.color}`,
-                  "opacity-0 group-hover:opacity-30"
-                )} />
-                
-                <Card className="relative h-full border-2 border-slate-700/50 transition-all duration-500 group-hover:shadow-2xl group-hover:border-slate-600/50 overflow-hidden">
-                  {/* Background Gradient */}
-                  <div className={cn("absolute inset-0", guide.bgColor)} />
-                  
-                  <CardContent className="relative p-8 h-full flex flex-col">
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-6">
-                      <motion.div 
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
+              <Card className="bg-white border-stone-200 shadow-sm">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-[#232323] mb-4">Branche</h3>
+                  <div className="space-y-2">
+                    {categories.map((category) => (
+                      <button
+                        key={category.id}
+                        onClick={() => setSelectedCategory(category.id)}
                         className={cn(
-                          "p-4 rounded-2xl bg-gradient-to-r shadow-lg",
-                          guide.color
+                          "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
+                          selectedCategory === category.id
+                            ? "bg-orange-50 border border-[#e24e1b] text-[#e24e1b]"
+                            : "border border-stone-200 text-[#474747] hover:bg-[#F5F6F8] hover:text-[#232323]"
                         )}
                       >
-                        <guide.icon className="h-8 w-8 text-white" />
-                      </motion.div>
-                      <div className="flex flex-col gap-2 items-end">
-                        {guide.popular && (
-                          <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
-                            <Star className="h-3 w-3 mr-1" />
-                            Beliebt
-                          </Badge>
+                        <div className="flex items-center gap-3">
+                          <category.icon className="h-4 w-4" />
+                          <span className="text-sm font-medium">{category.name}</span>
+                        </div>
+                        <Badge variant="outline" className="text-xs border-current">
+                          {category.count}
+                        </Badge>
+                      </button>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white border-stone-200 shadow-sm">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-[#232323] mb-4">Schwierigkeit</h3>
+                  <div className="space-y-2">
+                    {complexityLevels.map((level) => (
+                      <button
+                        key={level.id}
+                        onClick={() => setSelectedComplexity(level.id)}
+                        className={cn(
+                          "w-full p-3 rounded-lg transition-all duration-200 text-sm font-medium",
+                          selectedComplexity === level.id
+                            ? "bg-orange-50 border border-[#e24e1b] text-[#e24e1b]"
+                            : "border border-stone-200 text-[#474747] hover:bg-[#F5F6F8] hover:text-[#232323]"
                         )}
-                        {guide.featured && (
-                          <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
-                            <Award className="h-3 w-3 mr-1" />
-                            Featured
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="mb-6 flex-grow">
-                      <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-emerald-300 transition-colors">{guide.title}</h3>
-                      <p className="text-slate-300 mb-6 leading-relaxed">
-                        {guide.description}
-                      </p>
-                      
-                      {/* Meta Information */}
-                      <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-slate-800/60 rounded-xl backdrop-blur-sm">
-                        <div className="text-center">
-                          <div className="text-sm font-bold text-emerald-400">{guide.readTime}</div>
-                          <div className="text-xs text-slate-400">Lesezeit</div>
-                        </div>
-                        <div className="text-center">
-                          <Badge className={getComplexityColor(guide.complexity)}>
-                            {guide.complexity === 'basic' ? 'Grundlagen' :
-                             guide.complexity === 'intermediate' ? 'Fortgeschritten' : 'Experte'}
-                          </Badge>
-                        </div>
-                      </div>
-
-                      {/* Frameworks */}
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-slate-300 mb-2">Frameworks:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {guide.frameworks.map((framework, idx) => (
-                            <Badge key={idx} className="bg-slate-700 text-slate-200 border-0 text-xs">
-                              {framework}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Highlights */}
-                      <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-slate-300 mb-3">Key Topics:</h4>
-                        <div className="space-y-2">
-                          {guide.highlights.slice(0, 3).map((highlight, idx) => (
-                            <motion.div 
-                              key={idx}
-                              initial={{ opacity: 0, x: -20 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ delay: idx * 0.1, duration: 0.4 }}
-                              className="flex items-center gap-2"
-                            >
-                              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                              <span className="text-sm text-slate-300">{highlight}</span>
-                            </motion.div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Tags */}
-                      <div className="mb-6">
-                        <div className="flex flex-wrap gap-2">
-                          {guide.tags.slice(0, 3).map((tag, idx) => (
-                            <Badge key={idx} variant="outline" className="text-xs border-slate-600 text-slate-400">
-                              {tag}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <motion.div 
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="mt-auto"
-                    >
-                      <Button asChild className={cn(
-                        "w-full bg-gradient-to-r text-white border-0 font-semibold py-3 shadow-lg hover:shadow-xl transition-all duration-300",
-                        guide.color
-                      )}>
-                        <Link to={guide.link} className="flex items-center justify-center gap-2">
-                          <span>Leitfaden lesen</span>
-                          <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                          <ExternalLink className="h-4 w-4 opacity-60" />
-                        </Link>
-                      </Button>
-                    </motion.div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+                      >
+                        {level.name}
+                      </button>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Quick Access Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 via-emerald-900/30 to-slate-800/50" />
-        
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Branchen-Highlights
-              </span>
-            </h2>
-            <p className="text-xl md:text-2xl text-slate-300">
-              Die gefragtesten Compliance-Leitfäden für Ihren Sektor
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Healthcare DSGVO",
-                description: "Patientendaten rechtssicher verarbeiten",
-                icon: Heart,
-                link: "/wissen/branchen/gesundheitswesen-dsgvo",
-                color: "from-red-500 to-pink-500",
-                complexity: "Expert",
-                readTime: "45 Min"
-              },
-              {
-                title: "Healthcare AI Compliance",
-                description: "EU AI Act für medizinische KI-Systeme",
-                icon: Brain,
-                link: "/wissen/branchen/healthcare-ai-compliance",
-                color: "from-blue-500 to-purple-500",
-                complexity: "Expert",
-                readTime: "50 Min"
-              },
-              {
-                title: "EdTech Privacy",
-                description: "COPPA & FERPA für Bildungsplattformen",
-                icon: GraduationCap,
-                link: "/wissen/branchen/edtech-privacy",
-                color: "from-green-500 to-teal-500",
-                complexity: "Expert",
-                readTime: "40 Min"
-              },
-              {
-                title: "FinTech Compliance",
-                description: "Payment und Banking-Innovationen absichern",
-                icon: CreditCard,
-                link: "/wissen/branchen/fintech-compliance",
-                color: "from-blue-500 to-indigo-500",
-                complexity: "Expert",
-                readTime: "60 Min"
-              },
-              {
-                title: "E-Commerce Privacy",
-                description: "Online-Shop datenschutzfreundlich gestalten",
-                icon: ShoppingCart,
-                link: "/wissen/branchen/ecommerce-privacy",
-                color: "from-emerald-500 to-teal-500",
-                complexity: "Fortgeschritten",
-                readTime: "35 Min"
-              }
-            ].map((highlight, index) => (
+          <div className="lg:col-span-3">
+            {filteredGuides.length === 0 ? (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                whileHover={{ y: -5 }}
-                className="group"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-16"
               >
-                <Card className="h-full bg-slate-800/80 backdrop-blur-sm border-2 border-slate-700/50 hover:shadow-xl transition-all duration-300">
-                  <CardContent className="p-8">
-                    <div className={cn(
-                      "inline-flex p-4 rounded-2xl bg-gradient-to-r mb-6 shadow-lg",
-                      highlight.color
-                    )}>
-                      <highlight.icon className="h-8 w-8 text-white" />
-                    </div>
-                    
-                    <h3 className="text-xl font-bold mb-3 text-white">{highlight.title}</h3>
-                    <p className="text-slate-300 mb-6">{highlight.description}</p>
-                    
-                    <div className="flex items-center gap-4 mb-6">
-                      <Badge className="bg-slate-700 text-slate-200">
-                        <Clock className="h-3 w-3 mr-1" />
-                        {highlight.readTime}
-                      </Badge>
-                      <Badge className={getComplexityColor(highlight.complexity.toLowerCase())}>
-                        {highlight.complexity}
-                      </Badge>
-                    </div>
-                    
-                    <Button asChild className={cn(
-                      "w-full bg-gradient-to-r text-white",
-                      highlight.color
-                    )}>
-                      <Link to={highlight.link}>
-                        Jetzt lesen
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                <div className="p-4 bg-orange-50 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Search className="h-6 w-6 text-[#e24e1b]" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#232323] mb-2">
+                  Keine Ergebnisse gefunden
+                </h3>
+                <p className="text-[#474747] mb-4">
+                  Versuchen Sie andere Suchbegriffe oder Filter.
+                </p>
+                <Button
+                  onClick={() => {
+                    setSelectedCategory('all');
+                    setSelectedComplexity('all');
+                    setSearchTerm('');
+                  }}
+                  className="bg-[#e24e1b] hover:bg-[#f97316] text-white"
+                >
+                  Filter zurücksetzen
+                </Button>
               </motion.div>
-            ))}
+            ) : (
+              <div className="grid md:grid-cols-2 gap-6">
+                {filteredGuides.map((guide, index) => {
+                  const IconComponent = guide.icon;
+                  return (
+                    <motion.div
+                      key={guide.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <Card className={cn(
+                        "group relative overflow-hidden bg-white border-l-4 border-stone-200 hover:border-l-[#e24e1b] transition-all duration-300 hover:shadow-lg",
+                        "hover:-translate-y-1 h-full"
+                      )}>
+                        <CardContent className="p-6 flex flex-col h-full">
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-center gap-3">
+                              <div className={cn("p-3 rounded-xl bg-gradient-to-r", guide.color)}>
+                                <IconComponent className="h-6 w-6 text-white" />
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col items-end gap-2">
+                              {guide.popular && (
+                                <Badge className="bg-yellow-50 text-yellow-700 border-yellow-200">
+                                  <Star className="h-3 w-3 mr-1" />
+                                  Beliebt
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+
+                          <h3 className="text-xl font-bold text-[#232323] mb-1">{guide.title}</h3>
+                          <p className="text-[#e24e1b] text-sm mb-3">{guide.subtitle}</p>
+
+                          <p className="text-[#474747] leading-relaxed mb-4 flex-grow">
+                            {guide.description}
+                          </p>
+
+                          <div className="bg-[#F5F6F8] border border-stone-200 rounded-lg p-3 mb-4">
+                            <div className="flex items-center gap-2 mb-1">
+                              <BookOpen className="h-4 w-4 text-[#474747]" />
+                              <span className="text-xs text-[#474747]">Lesezeit</span>
+                            </div>
+                            <span className="text-sm font-medium text-[#232323]">{guide.readTime}</span>
+                          </div>
+
+                          <div className="mb-4">
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm text-[#474747]">Schwierigkeit</span>
+                              <Badge variant="outline" className={getDifficultyBadge(guide.complexity)}>
+                                {getDifficultyLabel(guide.complexity)}
+                              </Badge>
+                            </div>
+                          </div>
+
+                          <div className="mb-4">
+                            <span className="text-sm text-[#474747] mb-2 block">Branchen:</span>
+                            <div className="flex flex-wrap gap-1">
+                              {guide.industries.slice(0, 3).map((industry) => (
+                                <Badge
+                                  key={industry}
+                                  variant="outline"
+                                  className="text-xs bg-stone-100 text-[#474747] border-stone-300"
+                                >
+                                  {industry}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+
+                          <Button
+                            asChild
+                            className="w-full bg-[#e24e1b] hover:bg-[#f97316] text-white shadow-sm mt-auto"
+                          >
+                            <Link to={guide.link}>
+                              <BookOpen className="h-4 w-4 mr-2" />
+                              Details ansehen
+                              <ArrowRight className="h-4 w-4 ml-2" />
+                            </Link>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-teal-900/10 to-emerald-900/20" />
-        
-        <div className="container mx-auto max-w-5xl relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h2 className="text-4xl md:text-6xl font-black mb-6">
-              <span className="text-white">Bereit für</span>
-              <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Branchen-Expertise?
-              </span>
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Nutzen Sie unser spezialisiertes <span className="font-semibold text-emerald-300">Branchen-Wissen</span> 
-              für Ihre erfolgreiche Compliance-Strategie.
-            </p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-10 py-4 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-300"
-                >
-                  <Building2 className="mr-3 h-6 w-6" />
-                  Alle Branchen-Leitfäden
-                  <ArrowRight className="ml-3 h-6 w-6" />
-                </Button>
-              </motion.div>
-              
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="border-2 border-emerald-500/30 hover:border-emerald-400 text-emerald-300 hover:bg-emerald-500/10 px-10 py-4 text-lg font-bold backdrop-blur-sm">
-                  <Download className="mr-3 h-6 w-6" />
-                  Branche anfragen
-                </Button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      </div>
 
       <Footer />
     </div>

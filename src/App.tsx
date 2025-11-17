@@ -110,7 +110,7 @@ const DsgvoGuides = lazy(() => import("./pages/DsgvoGuides"));
 const KostenGuides = lazy(() => import("./pages/KostenGuides"));
 const ComplianceFrameworks = lazy(() => import("./pages/ComplianceFrameworks"));
 const ComplianceFrameworksGuide = lazy(() => import("./pages/wissen/ComplianceFrameworksGuide"));
-const RiskManagement = lazy(() => import("./pages/RiskManagement"));
+const RiskManagement = lazy(() => import("./pages/wissen/risk-management"));
 const Iso27001Guide = lazy(() => import("./pages/compliance/Iso27001Guide"));
 const Soc2Guide = lazy(() => import("./pages/compliance/Soc2Guide"));
 const EuAiActGuide = lazy(() => import("./pages/compliance/EuAiActGuide"));
@@ -136,7 +136,7 @@ const DsfaDurchfuehrungGuide = lazy(() => import("./pages/guides/DsfaDurchfuehru
 const DatenschutzbeauftragterGuide = lazy(() => import("./pages/wissen/leitfaden/datenschutzbeauftragter"));
 const DatenschutzbeauftragterAusbildung = lazy(() => import("./pages/wissen/leitfaden/datenschutzbeauftragter-ausbildung"));
 const LoeschkonzeptGuide = lazy(() => import("./pages/wissen/leitfaden/loeschkonzept"));
-const CrisisManagement = lazy(() => import("./pages/CrisisManagement"));
+const CrisisManagement = lazy(() => import("./pages/wissen/krisenmanagement"));
 const DataBreach72hGuide = lazy(() => import("./pages/crisis/DataBreach72hGuide"));
 const SecurityIncidentGuide = lazy(() => import("./pages/crisis/SecurityIncidentGuide"));
 const CommunicationTemplatesGuide = lazy(() => import("./pages/crisis/CommunicationTemplatesGuide"));
@@ -158,27 +158,27 @@ const GoogleFontsMunichCase = lazy(() => import("./pages/legal/GoogleFontsMunich
 
 // Branchen Wissen Pages
 const BranchenWissen = lazy(() => import("./pages/BranchenWissen"));
-const HealthcareDsgvoGuide = lazy(() => import("./pages/branchen/HealthcareDsgvoGuide"));
-const HealthcareAiComplianceGuide = lazy(() => import("./pages/branchen/HealthcareAiComplianceGuide"));
-const EdtechPrivacyGuide = lazy(() => import("./pages/branchen/EdtechPrivacyGuide"));
-const FintechComplianceGuide = lazy(() => import("./pages/branchen/FintechComplianceGuide"));
-const EcommercePrivacyGuide = lazy(() => import("./pages/branchen/EcommercePrivacyGuide"));
-const SaasPrivacyDesignGuide = lazy(() => import("./pages/branchen/SaasPrivacyDesignGuide"));
-const Industrie40DatenschutzGuide = lazy(() => import("./pages/branchen/Industrie40DatenschutzGuide"));
-const AutomotiveDatenschutz = lazy(() => import("./pages/branchen/AutomotiveDatenschutz"));
-const SmartGridComplianceGuide = lazy(() => import("./pages/branchen/SmartGridComplianceGuide"));
-const PharmaComplianceGuide = lazy(() => import("./pages/branchen/PharmaComplianceGuide"));
-const ProduktionDatenschutzGuide = lazy(() => import("./pages/branchen/ProduktionDatenschutzGuide"));
-const TravelComplianceGuide = lazy(() => import("./pages/branchen/TravelComplianceGuide"));
-const InsurtechComplianceGuide = lazy(() => import("./pages/branchen/InsurtechComplianceGuide"));
-const PropTechCompliance = lazy(() => import("./pages/branchen/PropTechCompliance"));
-const LogisticsCompliance = lazy(() => import("./pages/branchen/LogisticsCompliance"));
-const DatenschutzPflege = lazy(() => import("./pages/branchen/DatenschutzPflege"));
-const DatenschutzArztpraxis = lazy(() => import("./pages/branchen/DatenschutzArztpraxis"));
-const DatenschutzKindergarten = lazy(() => import("./pages/branchen/DatenschutzKindergarten"));
-const DsgvoVermieter = lazy(() => import("./pages/branchen/DsgvoVermieter"));
+const HealthcareDsgvoGuide = lazy(() => import("./pages/wissen/branchen/HealthcareDsgvoGuide"));
+const HealthcareAiComplianceGuide = lazy(() => import("./pages/wissen/branchen/HealthcareAiComplianceGuide"));
+const EdtechPrivacyGuide = lazy(() => import("./pages/wissen/branchen/EdtechPrivacyGuide"));
+const FintechComplianceGuide = lazy(() => import("./pages/wissen/branchen/FintechComplianceGuide"));
+const EcommercePrivacyGuide = lazy(() => import("./pages/wissen/branchen/EcommercePrivacyGuide"));
+const SaasPrivacyDesignGuide = lazy(() => import("./pages/wissen/branchen/SaasPrivacyDesignGuide"));
+const Industrie40DatenschutzGuide = lazy(() => import("./pages/wissen/branchen/Industrie40DatenschutzGuide"));
+const AutomotiveDatenschutz = lazy(() => import("./pages/wissen/branchen/AutomotiveDatenschutz"));
+const SmartGridComplianceGuide = lazy(() => import("./pages/wissen/branchen/SmartGridComplianceGuide"));
+const PharmaComplianceGuide = lazy(() => import("./pages/wissen/branchen/PharmaComplianceGuide"));
+const ProduktionDatenschutzGuide = lazy(() => import("./pages/wissen/branchen/ProduktionDatenschutzGuide"));
+const TravelComplianceGuide = lazy(() => import("./pages/wissen/branchen/TravelComplianceGuide"));
+const InsurtechComplianceGuide = lazy(() => import("./pages/wissen/branchen/InsurtechComplianceGuide"));
+const PropTechCompliance = lazy(() => import("./pages/wissen/branchen/PropTechCompliance"));
+const LogisticsCompliance = lazy(() => import("./pages/wissen/branchen/LogisticsCompliance"));
+const DatenschutzPflege = lazy(() => import("./pages/wissen/branchen/DatenschutzPflege"));
+const DatenschutzArztpraxis = lazy(() => import("./pages/wissen/branchen/DatenschutzArztpraxis"));
+const DatenschutzKindergarten = lazy(() => import("./pages/wissen/branchen/DatenschutzKindergarten"));
+const DsgvoVermieter = lazy(() => import("./pages/wissen/branchen/DsgvoVermieter"));
 const DsgvoVereineComprehensive = lazy(() => import("./pages/wissen/branchen/DsgvoVereineComprehensive"));
-const DatenschutzBetriebsrat = lazy(() => import("./pages/branchen/DatenschutzBetriebsrat"));
+const DatenschutzBetriebsrat = lazy(() => import("./pages/wissen/branchen/DatenschutzBetriebsrat"));
 const DatenschutzPersonalwesen = lazy(() => import("./pages/wissen/branchen/DatenschutzPersonalwesen"));
 const DatenschutzHomeofficeComprehensive = lazy(() => import("./pages/wissen/branchen/DatenschutzHomeofficeComprehensive"));
 
@@ -261,6 +261,9 @@ const DsgvoComplianceLuecken = lazy(() => import("./pages/wissen/DsgvoCompliance
 const InternerDsbScheitert = lazy(() => import("./pages/wissen/InternerDsbScheitert"));
 const DsgvoSoftwareVsManuell = lazy(() => import("./pages/wissen/DsgvoSoftwareVsManuell"));
 const DsgvoVsBdsg = lazy(() => import("./pages/wissen/DsgvoVsBdsg"));
+const MegaMenuDemo = lazy(() => import("./pages/MegaMenuDemo"));
+const MegaMenuVariants = lazy(() => import("./pages/MegaMenuVariants"));
+const VantaStyleMenu = lazy(() => import("./pages/VantaStyleMenu"));
 
 // Assessment Center - Calculators
 const DsgvoKostenRechner = lazy(() => import("./pages/assessment-center/DsgvoKostenRechner"));
@@ -566,6 +569,11 @@ const App = () => (
                 <Route path="/wissen/interner-dsb-scheitert" element={<InternerDsbScheitert />} />
                 <Route path="/wissen/dsgvo-software-vs-manuell" element={<DsgvoSoftwareVsManuell />} />
                 <Route path="/wissen/dsgvo-vs-bdsg" element={<DsgvoVsBdsg />} />
+
+                {/* Demo Pages */}
+                <Route path="/megamenu" element={<MegaMenuDemo />} />
+                <Route path="/megamenu-variants" element={<MegaMenuVariants />} />
+                <Route path="/vanta-menu" element={<VantaStyleMenu />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

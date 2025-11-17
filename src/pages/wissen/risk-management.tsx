@@ -3,11 +3,18 @@ import SEOHead from '../../components/SEOHead';
 import { motion } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import {
   Target,
   Shield,
   AlertTriangle,
@@ -35,13 +42,16 @@ import {
   Zap,
   LineChart,
   Calendar,
-  Search
+  Search,
+  Star,
+  BookOpen
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const RiskManagement: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('identification');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -100,248 +110,363 @@ const RiskManagement: React.FC = () => {
     ]
   };
 
-  const topics = {
-    identification: {
-      title: 'Risikoidentifikation',
+  const categories = [
+    { id: 'all', name: 'Alle Themen', icon: Target, count: 24 },
+    { id: 'identification', name: 'Identifikation', icon: Search, count: 4 },
+    { id: 'assessment', name: 'Bewertung', icon: BarChart3, count: 4 },
+    { id: 'treatment', name: 'Behandlung', icon: Shield, count: 4 },
+    { id: 'monitoring', name: 'Monitoring', icon: Activity, count: 4 },
+    { id: 'compliance', name: 'Compliance', icon: Scale, count: 4 },
+    { id: 'tools', name: 'Tools', icon: Settings, count: 4 }
+  ];
+
+  const riskArticles = [
+    {
+      id: 'risk-assessment',
+      title: 'Risk Assessment Grundlagen',
+      subtitle: 'Systematische Risikoidentifikation',
+      description: 'Lernen Sie, wie Sie Compliance-Risiken systematisch identifizieren und dokumentieren. Mit praktischen Methoden und Templates für Ihr Risk Register.',
+      category: 'identification',
       icon: Search,
-      articles: [
-        {
-          title: 'Risk Assessment Grundlagen',
-          description: 'Systematische Identifikation von Compliance-Risiken',
-          readTime: '10 Min',
-          level: 'Einsteiger',
-          link: '/wissen/leitfaden/risk-assessment'
-        },
-        {
-          title: 'Bedrohungsmodellierung',
-          description: 'STRIDE, DREAD und andere Threat Modeling Methoden',
-          readTime: '14 Min',
-          level: 'Fortgeschritten',
-          link: '/wissen/risk-management/threat-modeling'
-        },
-        {
-          title: 'Vulnerabilities scannen',
-          description: 'Technische und organisatorische Schwachstellen finden',
-          readTime: '12 Min',
-          level: 'Technisch',
-          link: '/wissen/risk-management/vulnerability-scanning'
-        },
-        {
-          title: 'Risk Register aufbauen',
-          description: 'Zentrale Dokumentation aller identifizierten Risiken',
-          readTime: '8 Min',
-          level: 'Praktisch',
-          link: '/wissen/risk-management/risk-register'
-        }
-      ]
+      color: 'from-orange-500 to-red-500',
+      difficulty: 'Einsteiger',
+      readTime: '10 Min',
+      link: '/wissen/leitfaden/risk-assessment',
+      popular: true,
+      tags: ['ISO 31000', 'Risk Register', 'Compliance']
     },
-    assessment: {
-      title: 'Risikobewertung',
+    {
+      id: 'threat-modeling',
+      title: 'Bedrohungsmodellierung',
+      subtitle: 'STRIDE & DREAD Methoden',
+      description: 'Professionelle Threat Modeling Ansätze für systematische Bedrohungsanalyse. Inkl. STRIDE, DREAD und Attack Trees.',
+      category: 'identification',
+      icon: AlertTriangle,
+      color: 'from-red-500 to-pink-500',
+      difficulty: 'Fortgeschritten',
+      readTime: '14 Min',
+      link: '/wissen/risk-management/threat-modeling',
+      tags: ['STRIDE', 'DREAD', 'Security']
+    },
+    {
+      id: 'vulnerability-scanning',
+      title: 'Vulnerability Scanning',
+      subtitle: 'Schwachstellen identifizieren',
+      description: 'Technische und organisatorische Schwachstellen systematisch aufdecken und priorisieren. Mit Tool-Empfehlungen.',
+      category: 'identification',
+      icon: Eye,
+      color: 'from-blue-500 to-indigo-500',
+      difficulty: 'Technisch',
+      readTime: '12 Min',
+      link: '/wissen/risk-management/vulnerability-scanning',
+      tags: ['Security', 'Testing', 'Tools']
+    },
+    {
+      id: 'risk-register',
+      title: 'Risk Register aufbauen',
+      subtitle: 'Zentrale Risikodokumentation',
+      description: 'Erstellen und pflegen Sie ein zentrales Risk Register. Mit Excel-Templates und Best Practices aus der Praxis.',
+      category: 'identification',
+      icon: FileText,
+      color: 'from-green-500 to-emerald-500',
+      difficulty: 'Praktisch',
+      readTime: '8 Min',
+      link: '/wissen/risk-management/risk-register',
+      tags: ['Dokumentation', 'Templates', 'Praxis']
+    },
+    {
+      id: 'risikomatrix',
+      title: 'Risikomatrix erstellen',
+      subtitle: 'Wahrscheinlichkeit vs. Impact',
+      description: 'Bewerten Sie Risiken nach Eintrittswahrscheinlichkeit und Schadenshöhe. Mit praktischen Bewertungsskalen.',
+      category: 'assessment',
       icon: BarChart3,
-      articles: [
-        {
-          title: 'Risikomatrix erstellen',
-          description: 'Eintrittswahrscheinlichkeit vs. Schadenshöhe bewerten',
-          readTime: '10 Min',
-          level: 'Fortgeschritten',
-          link: '/wissen/risk-management/risikomatrix'
-        },
-        {
-          title: 'Quantitative Risikoanalyse',
-          description: 'Monetäre Bewertung von Risiken (ALE, SLE, ARO)',
-          readTime: '16 Min',
-          level: 'Experte',
-          link: '/wissen/risk-management/quantitative-analyse'
-        },
-        {
-          title: 'Qualitative Bewertung',
-          description: 'Risiken ohne Zahlen sinnvoll einschätzen',
-          readTime: '8 Min',
-          level: 'Praktisch',
-          link: '/wissen/risk-management/qualitative-bewertung'
-        },
-        {
-          title: 'Risk Scoring Modelle',
-          description: 'CVSS, FAIR und andere Scoring-Systeme',
-          readTime: '12 Min',
-          level: 'Fortgeschritten',
-          link: '/wissen/risk-management/risk-scoring'
-        }
-      ]
+      color: 'from-orange-500 to-red-500',
+      difficulty: 'Fortgeschritten',
+      readTime: '10 Min',
+      link: '/wissen/risk-management/risikomatrix',
+      popular: true,
+      tags: ['Bewertung', 'Matrix', 'Methodik']
     },
-    treatment: {
-      title: 'Risikobehandlung',
-      icon: Shield,
-      articles: [
-        {
-          title: 'Risikostrategie wählen',
-          description: 'Vermeiden, Mindern, Transferieren oder Akzeptieren',
-          readTime: '10 Min',
-          level: 'Fortgeschritten',
-          link: '/wissen/risk-management/risikostrategie'
-        },
-        {
-          title: 'Controls implementieren',
-          description: 'Wirksame Maßnahmen zur Risikominderung',
-          readTime: '14 Min',
-          level: 'Praktisch',
-          link: '/wissen/risk-management/controls'
-        },
-        {
-          title: 'Versicherungen & Transfer',
-          description: 'Cyber-Versicherungen und Risikotransfer',
-          readTime: '12 Min',
-          level: 'Fortgeschritten',
-          link: '/wissen/risk-management/versicherungen'
-        },
-        {
-          title: 'Restrisiko managen',
-          description: 'Umgang mit verbleibendem Risiko',
-          readTime: '8 Min',
-          level: 'Praktisch',
-          link: '/wissen/risk-management/restrisiko'
-        }
-      ]
+    {
+      id: 'quantitative-analyse',
+      title: 'Quantitative Risikoanalyse',
+      subtitle: 'Monetäre Risikobewertung',
+      description: 'Berechnen Sie ALE, SLE und ARO für fundierte Business Cases. Mit Excel-Rechner und Beispielen.',
+      category: 'assessment',
+      icon: TrendingUp,
+      color: 'from-blue-500 to-cyan-500',
+      difficulty: 'Experte',
+      readTime: '16 Min',
+      link: '/wissen/risk-management/quantitative-analyse',
+      tags: ['ALE', 'ROI', 'Business Case']
     },
-    monitoring: {
-      title: 'Monitoring & KPIs',
-      icon: Activity,
-      articles: [
-        {
-          title: 'Risk KPIs definieren',
-          description: 'Key Risk Indicators für kontinuierliches Monitoring',
-          readTime: '12 Min',
-          level: 'Fortgeschritten',
-          link: '/wissen/risk-management/risk-kpis'
-        },
-        {
-          title: 'Risk Dashboard aufbauen',
-          description: 'Visualisierung der Risikolage in Echtzeit',
-          readTime: '10 Min',
-          level: 'Technisch',
-          link: '/wissen/risk-management/risk-dashboard'
-        },
-        {
-          title: 'Frühwarnsysteme',
-          description: 'Proaktive Risikoerkennung implementieren',
-          readTime: '14 Min',
-          level: 'Experte',
-          link: '/wissen/risk-management/fruehwarnung'
-        },
-        {
-          title: 'Risk Reporting',
-          description: 'Effektive Kommunikation an Management',
-          readTime: '8 Min',
-          level: 'Praktisch',
-          link: '/wissen/risk-management/reporting'
-        }
-      ]
-    },
-    compliance: {
-      title: 'Compliance-Risiken',
+    {
+      id: 'qualitative-bewertung',
+      title: 'Qualitative Bewertung',
+      subtitle: 'Risiken ohne Zahlen',
+      description: 'Sinnvolle Risikobewertung auch ohne exakte Zahlen. Methoden für schnelle und pragmatische Einschätzungen.',
+      category: 'assessment',
       icon: Scale,
-      articles: [
-        {
-          title: 'DSFA durchführen',
-          description: 'Datenschutz-Folgenabschätzung nach DSGVO',
-          readTime: '18 Min',
-          level: 'Experte',
-          link: '/wissen/leitfaden/dsfa-durchfuehrung'
-        },
-        {
-          title: 'ISO 31000 umsetzen',
-          description: 'Internationaler Standard für Risikomanagement',
-          readTime: '15 Min',
-          level: 'Fortgeschritten',
-          link: '/wissen/risk-management/iso31000'
-        },
-        {
-          title: 'Compliance Risk Assessment',
-          description: 'Rechtliche und regulatorische Risiken bewerten',
-          readTime: '12 Min',
-          level: 'Fortgeschritten',
-          link: '/wissen/risk-management/compliance-risk'
-        },
-        {
-          title: 'Third-Party Risk',
-          description: 'Risiken durch Lieferanten und Partner',
-          readTime: '10 Min',
-          level: 'Praktisch',
-          link: '/wissen/risk-management/third-party'
-        }
-      ]
+      color: 'from-purple-500 to-pink-500',
+      difficulty: 'Praktisch',
+      readTime: '8 Min',
+      link: '/wissen/risk-management/qualitative-bewertung',
+      tags: ['Methodik', 'Quick Assessment', 'Praxis']
+    },
+    {
+      id: 'risk-scoring',
+      title: 'Risk Scoring Modelle',
+      subtitle: 'CVSS, FAIR & Co.',
+      description: 'Standardisierte Scoring-Systeme für objektive Risikobewertung. Von CVSS bis FAIR Framework.',
+      category: 'assessment',
+      icon: Gauge,
+      color: 'from-green-500 to-teal-500',
+      difficulty: 'Fortgeschritten',
+      readTime: '12 Min',
+      link: '/wissen/risk-management/risk-scoring',
+      tags: ['CVSS', 'FAIR', 'Standards']
+    },
+    {
+      id: 'risikostrategie',
+      title: 'Risikostrategie wählen',
+      subtitle: 'Die 4 Behandlungsoptionen',
+      description: 'Vermeiden, Mindern, Transferieren oder Akzeptieren - wählen Sie die richtige Strategie für jedes Risiko.',
+      category: 'treatment',
+      icon: Target,
+      color: 'from-orange-500 to-red-500',
+      difficulty: 'Fortgeschritten',
+      readTime: '10 Min',
+      link: '/wissen/risk-management/risikostrategie',
+      popular: true,
+      tags: ['Strategie', 'Entscheidung', 'Methodik']
+    },
+    {
+      id: 'controls',
+      title: 'Controls implementieren',
+      subtitle: 'Wirksame Schutzmaßnahmen',
+      description: 'Von präventiven bis zu detektiven Controls - implementieren Sie effektive Risikominderungsmaßnahmen.',
+      category: 'treatment',
+      icon: Shield,
+      color: 'from-blue-500 to-indigo-500',
+      difficulty: 'Praktisch',
+      readTime: '14 Min',
+      link: '/wissen/risk-management/controls',
+      tags: ['TOM', 'Security', 'Implementation']
+    },
+    {
+      id: 'versicherungen',
+      title: 'Cyber-Versicherungen',
+      subtitle: 'Risikotransfer nutzen',
+      description: 'Cyber-Versicherungen richtig nutzen. Was wird abgedeckt, was nicht und wie Sie die beste Police finden.',
+      category: 'treatment',
+      icon: Building2,
+      color: 'from-purple-500 to-pink-500',
+      difficulty: 'Fortgeschritten',
+      readTime: '12 Min',
+      link: '/wissen/risk-management/versicherungen',
+      tags: ['Versicherung', 'Transfer', 'Cyber']
+    },
+    {
+      id: 'restrisiko',
+      title: 'Restrisiko managen',
+      subtitle: 'Verbleibendes Risiko',
+      description: 'Professioneller Umgang mit Restrisiko. Dokumentation, Akzeptanz und kontinuierliche Überwachung.',
+      category: 'treatment',
+      icon: AlertOctagon,
+      color: 'from-red-500 to-orange-500',
+      difficulty: 'Praktisch',
+      readTime: '8 Min',
+      link: '/wissen/risk-management/restrisiko',
+      tags: ['Restrisiko', 'Akzeptanz', 'Dokumentation']
+    },
+    {
+      id: 'risk-kpis',
+      title: 'Risk KPIs definieren',
+      subtitle: 'Key Risk Indicators',
+      description: 'Die wichtigsten KPIs für kontinuierliches Risk Monitoring. Mit Dashboard-Templates und Metriken.',
+      category: 'monitoring',
+      icon: Activity,
+      color: 'from-green-500 to-emerald-500',
+      difficulty: 'Fortgeschritten',
+      readTime: '12 Min',
+      link: '/wissen/risk-management/risk-kpis',
+      popular: true,
+      tags: ['KPI', 'Metrics', 'Dashboard']
+    },
+    {
+      id: 'risk-dashboard',
+      title: 'Risk Dashboard aufbauen',
+      subtitle: 'Echtzeit-Visualisierung',
+      description: 'Erstellen Sie ein aussagekräftiges Risk Dashboard. Mit Tool-Empfehlungen und Best Practices.',
+      category: 'monitoring',
+      icon: LineChart,
+      color: 'from-blue-500 to-cyan-500',
+      difficulty: 'Technisch',
+      readTime: '10 Min',
+      link: '/wissen/risk-management/risk-dashboard',
+      tags: ['Dashboard', 'Visualisierung', 'Tools']
+    },
+    {
+      id: 'fruehwarnung',
+      title: 'Frühwarnsysteme',
+      subtitle: 'Proaktive Risikoerkennung',
+      description: 'Implementieren Sie effektive Frühwarnsysteme für proaktives Risk Management. Mit Beispielen und Patterns.',
+      category: 'monitoring',
+      icon: AlertTriangle,
+      color: 'from-orange-500 to-red-500',
+      difficulty: 'Experte',
+      readTime: '14 Min',
+      link: '/wissen/risk-management/fruehwarnung',
+      tags: ['Early Warning', 'Automation', 'Monitoring']
+    },
+    {
+      id: 'reporting',
+      title: 'Risk Reporting',
+      subtitle: 'Management-Kommunikation',
+      description: 'Effektive Risikokommunikation an Management und Stakeholder. Mit Report-Templates.',
+      category: 'monitoring',
+      icon: FileText,
+      color: 'from-purple-500 to-pink-500',
+      difficulty: 'Praktisch',
+      readTime: '8 Min',
+      link: '/wissen/risk-management/reporting',
+      tags: ['Reporting', 'Communication', 'Management']
+    },
+    {
+      id: 'dsfa',
+      title: 'DSFA durchführen',
+      subtitle: 'Datenschutz-Folgenabschätzung',
+      description: 'Vollständiger Leitfaden zur DSFA nach Art. 35 DSGVO. Mit Vorlagen, Checklisten und Praxisbeispielen.',
+      category: 'compliance',
+      icon: ShieldCheck,
+      color: 'from-blue-500 to-indigo-500',
+      difficulty: 'Experte',
+      readTime: '18 Min',
+      link: '/wissen/leitfaden/dsfa-durchfuehrung',
+      popular: true,
+      certification: true,
+      tags: ['DSGVO', 'DSFA', 'Art. 35']
+    },
+    {
+      id: 'iso31000',
+      title: 'ISO 31000 umsetzen',
+      subtitle: 'Internationaler Standard',
+      description: 'ISO 31000 Risikomanagement-Standard in der Praxis. Von der Planung bis zur Zertifizierung.',
+      category: 'compliance',
+      icon: CheckCircle2,
+      color: 'from-green-500 to-teal-500',
+      difficulty: 'Fortgeschritten',
+      readTime: '15 Min',
+      link: '/wissen/risk-management/iso31000',
+      certification: true,
+      tags: ['ISO 31000', 'Standard', 'Zertifizierung']
+    },
+    {
+      id: 'compliance-risk',
+      title: 'Compliance Risk Assessment',
+      subtitle: 'Rechtliche Risiken',
+      description: 'Bewertung von rechtlichen und regulatorischen Risiken. Mit Compliance-Matrix und Legal-Checklisten.',
+      category: 'compliance',
+      icon: Scale,
+      color: 'from-purple-500 to-pink-500',
+      difficulty: 'Fortgeschritten',
+      readTime: '12 Min',
+      link: '/wissen/risk-management/compliance-risk',
+      tags: ['Legal', 'Regulatory', 'Compliance']
+    },
+    {
+      id: 'third-party',
+      title: 'Third-Party Risk',
+      subtitle: 'Lieferanten & Partner',
+      description: 'Systematisches Third-Party Risk Management. Von der Bewertung bis zur laufenden Überwachung.',
+      category: 'compliance',
+      icon: Users,
+      color: 'from-orange-500 to-red-500',
+      difficulty: 'Praktisch',
+      readTime: '10 Min',
+      link: '/wissen/risk-management/third-party',
+      tags: ['Vendor', 'Third-Party', 'Supply Chain']
+    },
+    {
+      id: 'risk-assessment-tool',
+      title: 'Risk Assessment Tool',
+      subtitle: 'Interaktive Risikoanalyse',
+      description: 'Nutzen Sie unser kostenloses Online-Tool für professionelle Risk Assessments. Mit automatischer Report-Generierung.',
+      category: 'tools',
+      icon: Gauge,
+      color: 'from-red-500 to-pink-500',
+      difficulty: 'Praktisch',
+      readTime: '5 Min',
+      link: '/tools/risk-assessment',
+      tags: ['Tool', 'Online', 'Kostenlos']
+    },
+    {
+      id: 'dsfa-generator',
+      title: 'DSFA Generator',
+      subtitle: 'Automatisierte DSFA',
+      description: 'Erstellen Sie vollständige Datenschutz-Folgenabschätzungen mit unserem interaktiven Generator.',
+      category: 'tools',
+      icon: Zap,
+      color: 'from-blue-500 to-cyan-500',
+      difficulty: 'Praktisch',
+      readTime: '5 Min',
+      link: '/tools/dsfa-generator',
+      tags: ['DSFA', 'Generator', 'Automation']
+    },
+    {
+      id: 'risk-templates',
+      title: 'Risk Templates',
+      subtitle: 'Vorlagen & Checklisten',
+      description: 'Professionelle Excel- und Word-Vorlagen für Risk Register, Reports und Assessments.',
+      category: 'tools',
+      icon: Download,
+      color: 'from-green-500 to-emerald-500',
+      difficulty: 'Praktisch',
+      readTime: '3 Min',
+      link: '/vorlagen/risk-management',
+      tags: ['Templates', 'Download', 'Excel']
+    },
+    {
+      id: 'compliance-check',
+      title: 'Compliance Risk Check',
+      subtitle: 'Kostenlose Analyse',
+      description: 'Prüfen Sie Ihre Compliance-Risiken mit unserem kostenlosen Online-Assessment in nur 10 Minuten.',
+      category: 'tools',
+      icon: ShieldCheck,
+      color: 'from-purple-500 to-pink-500',
+      difficulty: 'Einsteiger',
+      readTime: '10 Min',
+      link: '/assessment-center/compliance-risk-check',
+      popular: true,
+      tags: ['Assessment', 'Kostenlos', 'Quick Check']
+    }
+  ];
+
+  const filteredArticles = riskArticles.filter(article => {
+    const matchesCategory = activeCategory === 'all' || article.category === activeCategory;
+    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         article.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchesCategory && matchesSearch;
+  });
+
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'Einsteiger':
+        return 'bg-green-50 text-green-700 border-green-200';
+      case 'Praktisch':
+        return 'bg-blue-50 text-blue-700 border-blue-200';
+      case 'Fortgeschritten':
+        return 'bg-orange-50 text-[#e24e1b] border-orange-200';
+      case 'Experte':
+        return 'bg-red-50 text-red-700 border-red-200';
+      case 'Technisch':
+        return 'bg-purple-50 text-purple-700 border-purple-200';
+      default:
+        return 'bg-stone-100 text-[#474747] border-stone-300';
     }
   };
-
-  const riskProcess = [
-    {
-      step: 1,
-      title: 'Kontext etablieren',
-      description: 'Scope, Kriterien und Ziele definieren',
-      icon: Target
-    },
-    {
-      step: 2,
-      title: 'Risiken identifizieren',
-      description: 'Systematisch alle Risiken erfassen',
-      icon: Search
-    },
-    {
-      step: 3,
-      title: 'Risiken analysieren',
-      description: 'Wahrscheinlichkeit und Impact bewerten',
-      icon: BarChart3
-    },
-    {
-      step: 4,
-      title: 'Risiken evaluieren',
-      description: 'Priorisierung und Handlungsbedarf',
-      icon: Scale
-    },
-    {
-      step: 5,
-      title: 'Risiken behandeln',
-      description: 'Maßnahmen planen und umsetzen',
-      icon: Shield
-    },
-    {
-      step: 6,
-      title: 'Überwachen & Review',
-      description: 'Kontinuierliche Verbesserung',
-      icon: Activity
-    }
-  ];
-
-  const quickTools = [
-    {
-      title: 'Risk Assessment Tool',
-      description: 'Interaktives Tool für Ihre Risikoanalyse',
-      icon: Gauge,
-      link: '/tools/risk-assessment',
-      color: 'from-red-500 to-red-600'
-    },
-    {
-      title: 'DSFA Generator',
-      description: 'Datenschutz-Folgenabschätzung erstellen',
-      icon: FileText,
-      link: '/tools/dsfa-generator',
-      color: 'from-blue-500 to-blue-600'
-    },
-    {
-      title: 'Risk Templates',
-      description: 'Vorlagen für Risk Register & Reports',
-      icon: Download,
-      link: '/vorlagen/risk-management',
-      color: 'from-green-500 to-green-600'
-    },
-    {
-      title: 'Compliance Check',
-      description: 'Prüfen Sie Ihre Compliance-Risiken',
-      icon: ShieldCheck,
-      link: '/assessment-center/compliance-risk-check',
-      color: 'from-purple-500 to-purple-600'
-    }
-  ];
 
   return (
     <>
@@ -379,387 +504,262 @@ const RiskManagement: React.FC = () => {
           }
         ]}
       />
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F6F8] via-orange-50/20 to-[#F5F6F8]">
         <Header />
-        
-        {/* Hero Section */}
-        <section className="pt-24 pb-12 px-4">
-          <div className="container mx-auto max-w-7xl">
-            <motion.div
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              {/* Breadcrumbs */}
-              <nav aria-label="Breadcrumb" className="mb-6">
-                <ol className="flex items-center justify-center space-x-2 text-sm">
-                  <li>
-                    <Link to="/" className="text-gray-500 hover:text-brand-red transition-colors">Home</Link>
-                  </li>
-                  <li className="text-gray-400">/</li>
-                  <li>
-                    <Link to="/wissen" className="text-gray-500 hover:text-brand-red transition-colors">Wissen</Link>
-                  </li>
-                  <li className="text-gray-400">/</li>
-                  <li className="text-brand-red" aria-current="page">Risk Management</li>
-                </ol>
-              </nav>
-              
-              <Badge className="mb-4 px-4 py-1" variant="outline">
-                <Target className="h-3 w-3 mr-1" />
-                Risk Management Wissenszentrum
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                Risk Management für Compliance-Risiken
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6">
-                Systematische Identifikation, Bewertung und Behandlung von Compliance-Risiken 
-                nach ISO 31000. Mit praktischen Vorlagen, Tools und KPI-Dashboards.
-              </p>
-              
-              {/* Meta information */}
-              <div className="flex items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
-                <span className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
-                  25 Min. Lesezeit
-                </span>
-                <span className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  Aktualisiert: Januar 2025
-                </span>
-                <span className="flex items-center gap-1">
-                  <Users className="h-4 w-4" />
-                  Für Risk Manager & Compliance
-                </span>
+
+        <div className="container px-4 py-4">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/" className="text-[#474747] hover:text-[#e24e1b]">
+                  Home
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="text-[#474747]" />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/wissen" className="text-[#474747] hover:text-[#e24e1b]">
+                  Wissen
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="text-[#474747]" />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-[#e24e1b] font-medium">
+                  Risk Management
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+
+        <motion.section
+          className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white border-b border-stone-200"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="relative container mx-auto max-w-7xl text-center">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="p-3 bg-[#e24e1b] rounded-xl shadow-sm">
+                <Target className="h-8 w-8 text-white" />
               </div>
-            </motion.div>
+              <h1 className="text-4xl md:text-6xl font-bold text-[#232323]">
+                Risk Management
+              </h1>
+            </div>
 
-            {/* Risk Management Process */}
-            <motion.div
-              className="mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <Card className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20">
-                <CardHeader>
-                  <CardTitle className="text-xl flex items-center gap-2">
-                    <LineChart className="h-5 w-5" />
-                    Der Risk Management Prozess
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-6 gap-4">
-                    {riskProcess.map((phase, index) => {
-                      const Icon = phase.icon;
-                      return (
-                        <div key={index} className="text-center">
-                          <div className="relative">
-                            <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
-                              <Icon className="h-8 w-8 text-red-600" />
-                            </div>
-                            {index < riskProcess.length - 1 && (
-                              <div className="hidden md:block absolute top-8 left-[60%] w-full h-0.5 bg-red-200 dark:bg-red-800" />
+            <p className="text-xl text-[#474747] mb-8 max-w-4xl mx-auto leading-relaxed">
+              Systematische Identifikation, Bewertung und Behandlung von Compliance-Risiken
+              nach ISO 31000. Mit praktischen Vorlagen, Tools und KPI-Dashboards.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+              <Badge variant="outline" className="bg-orange-50 border-[#e24e1b] text-[#e24e1b]">
+                <FileText className="h-4 w-4 mr-2" />
+                24 Leitfäden
+              </Badge>
+              <Badge variant="outline" className="bg-orange-50 border-[#e24e1b] text-[#e24e1b]">
+                <Users className="h-4 w-4 mr-2" />
+                Für Risk Manager
+              </Badge>
+              <Badge variant="outline" className="bg-orange-50 border-[#e24e1b] text-[#e24e1b]">
+                <Calendar className="h-4 w-4 mr-2" />
+                Januar 2025
+              </Badge>
+            </div>
+          </div>
+        </motion.section>
+
+        <div className="container mx-auto max-w-7xl px-4 py-8">
+          <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
+            <div className="lg:col-span-1">
+              <div className="lg:sticky lg:top-24 space-y-6">
+                <Card className="bg-white border-stone-200 shadow-sm">
+                  <CardContent className="p-6">
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#474747]" />
+                      <input
+                        type="text"
+                        placeholder="Suchen..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2 bg-[#F5F6F8] border border-stone-300 rounded-lg text-[#232323] placeholder-[#474747] focus:outline-none focus:ring-2 focus:ring-[#e24e1b] focus:border-transparent"
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white border-stone-200 shadow-sm">
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-semibold text-[#232323] mb-4">Kategorien</h3>
+                    <div className="space-y-2">
+                      {categories.map((category) => {
+                        const Icon = category.icon;
+                        const isSelected = activeCategory === category.id;
+                        return (
+                          <button
+                            key={category.id}
+                            onClick={() => setActiveCategory(category.id)}
+                            className={cn(
+                              "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
+                              isSelected
+                                ? "bg-orange-50 border border-[#e24e1b] text-[#e24e1b]"
+                                : "border border-stone-200 text-[#474747] hover:bg-[#F5F6F8] hover:text-[#232323]"
                             )}
-                          </div>
-                          <div className="bg-white dark:bg-gray-800 rounded-lg p-2">
-                            <div className="text-xs font-semibold text-red-600 mb-1">
-                              Schritt {phase.step}
+                          >
+                            <div className="flex items-center gap-3">
+                              <Icon className="h-4 w-4" />
+                              <span className="text-sm font-medium">{category.name}</span>
                             </div>
-                            <h4 className="font-semibold text-sm mb-1">{phase.title}</h4>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">
-                              {phase.description}
-                            </p>
-                          </div>
-                        </div>
-                      );
-                    })}
+                            <Badge variant="outline" className="text-xs border-current">
+                              {category.count}
+                            </Badge>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-[#e24e1b] to-[#f97316] text-white border-0 shadow-lg">
+                  <CardContent className="p-6">
+                    <Lightbulb className="h-8 w-8 mb-3" />
+                    <h3 className="text-lg font-semibold mb-2">Quick Start</h3>
+                    <p className="text-sm text-white/90 mb-4">
+                      Starten Sie mit unserem kostenlosen Risk Assessment Tool
+                    </p>
+                    <Button
+                      asChild
+                      className="w-full bg-white text-[#e24e1b] hover:bg-white/90"
+                    >
+                      <Link to="/tools/risk-assessment">
+                        Tool starten
+                        <ArrowRight className="h-4 w-4 ml-2" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            <div className="lg:col-span-3">
+              {filteredArticles.length === 0 ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-center py-16"
+                >
+                  <div className="p-4 bg-orange-50 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <Search className="h-6 w-6 text-[#e24e1b]" />
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Quick Tools */}
-            <motion.div
-              className="grid md:grid-cols-4 gap-4 mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              {quickTools.map((tool, index) => {
-                const Icon = tool.icon;
-                return (
-                  <Link key={index} to={tool.link}>
-                    <Card className="h-full hover:shadow-lg transition-all group cursor-pointer">
-                      <CardContent className="p-6">
-                        <div className={cn(
-                          "w-12 h-12 rounded-lg bg-gradient-to-br flex items-center justify-center mb-4",
-                          tool.color
-                        )}>
-                          <Icon className="h-6 w-6 text-white" />
-                        </div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-brand-red transition-colors">
-                          {tool.title}
-                        </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {tool.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                );
-              })}
-            </motion.div>
-
-            {/* Topics Tabs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid grid-cols-2 md:grid-cols-5 mb-8">
-                  {Object.entries(topics).map(([key, topic]) => {
-                    const Icon = topic.icon;
+                  <h3 className="text-xl font-semibold text-[#232323] mb-2">
+                    Keine Ergebnisse gefunden
+                  </h3>
+                  <p className="text-[#474747] mb-4">
+                    Versuchen Sie andere Suchbegriffe oder Filter.
+                  </p>
+                  <Button
+                    onClick={() => {
+                      setSearchQuery('');
+                      setActiveCategory('all');
+                    }}
+                    className="bg-[#e24e1b] hover:bg-[#f97316] text-white"
+                  >
+                    Filter zurücksetzen
+                  </Button>
+                </motion.div>
+              ) : (
+                <div className="grid md:grid-cols-2 gap-6">
+                  {filteredArticles.map((article, index) => {
+                    const Icon = article.icon;
                     return (
-                      <TabsTrigger key={key} value={key} className="flex items-center gap-2">
-                        <Icon className="h-4 w-4" />
-                        <span className="hidden sm:inline">{topic.title}</span>
-                      </TabsTrigger>
+                      <motion.div
+                        key={article.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <Card className={cn(
+                          "group relative overflow-hidden bg-white border-l-4 border-stone-200 hover:border-l-[#e24e1b] transition-all duration-300 hover:shadow-lg",
+                          "hover:-translate-y-1 h-full"
+                        )}>
+                          <CardContent className="p-6 flex flex-col h-full">
+                            <div className="flex items-start justify-between mb-4">
+                              <div className="flex items-center gap-3">
+                                <div className={cn("p-3 rounded-xl bg-gradient-to-r", article.color)}>
+                                  <Icon className="h-6 w-6 text-white" />
+                                </div>
+                              </div>
+
+                              <div className="flex flex-col items-end gap-2">
+                                {article.popular && (
+                                  <Badge className="bg-yellow-50 text-yellow-700 border-yellow-200">
+                                    <Star className="h-3 w-3 mr-1" />
+                                    Beliebt
+                                  </Badge>
+                                )}
+                                {article.certification && (
+                                  <Badge className="bg-green-50 text-green-700 border-green-200">
+                                    <CheckCircle2 className="h-3 w-3 mr-1" />
+                                    Standard
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+
+                            <h3 className="text-xl font-bold text-[#232323] mb-1">{article.title}</h3>
+                            <p className="text-[#e24e1b] text-sm mb-3">{article.subtitle}</p>
+
+                            <p className="text-[#474747] leading-relaxed mb-4 flex-grow">
+                              {article.description}
+                            </p>
+
+                            <div className="bg-[#F5F6F8] border border-stone-200 rounded-lg p-3 mb-4">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <Clock className="h-4 w-4 text-[#474747]" />
+                                  <span className="text-sm font-medium text-[#232323]">{article.readTime}</span>
+                                </div>
+                                <Badge className={getDifficultyColor(article.difficulty)}>
+                                  {article.difficulty}
+                                </Badge>
+                              </div>
+                            </div>
+
+                            <div className="mb-4">
+                              <div className="flex flex-wrap gap-1">
+                                {article.tags.slice(0, 3).map((tag) => (
+                                  <Badge
+                                    key={tag}
+                                    variant="outline"
+                                    className="text-xs bg-stone-100 text-[#474747] border-stone-300"
+                                  >
+                                    {tag}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+
+                            <Button
+                              asChild
+                              className="w-full bg-[#e24e1b] hover:bg-[#f97316] text-white shadow-sm mt-auto"
+                            >
+                              <Link to={article.link}>
+                                <BookOpen className="h-4 w-4 mr-2" />
+                                Details ansehen
+                                <ArrowRight className="h-4 w-4 ml-2" />
+                              </Link>
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
                     );
                   })}
-                </TabsList>
-
-                {Object.entries(topics).map(([key, topic]) => (
-                  <TabsContent key={key} value={key}>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {topic.articles.map((article, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <Card className="h-full hover:shadow-lg transition-all group">
-                            <CardHeader>
-                              <div className="flex items-start justify-between mb-2">
-                                <CardTitle className="text-lg group-hover:text-brand-red transition-colors">
-                                  {article.title}
-                                </CardTitle>
-                                <Badge variant="outline">{article.level}</Badge>
-                              </div>
-                              <CardDescription>{article.description}</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                  <Clock className="h-4 w-4" />
-                                  {article.readTime}
-                                </div>
-                                <Link to={article.link}>
-                                  <Button variant="ghost" size="sm" className="group-hover:text-brand-red">
-                                    Lesen
-                                    <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                  </Button>
-                                </Link>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </TabsContent>
-                ))}
-              </Tabs>
-            </motion.div>
-
-            {/* Risk Stats */}
-            <motion.div
-              className="mt-16 grid md:grid-cols-4 gap-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <AlertTriangle className="h-8 w-8 text-orange-600 mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">73%</div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    der Unternehmen haben kein formales Risk Management
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <TrendingUp className="h-8 w-8 text-green-600 mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">5x ROI</div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    durch proaktives Risikomanagement
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <Shield className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">-45%</div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    weniger Incidents durch Risk Management
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <Brain className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">24/7</div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Kontinuierliches Monitoring erforderlich
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* FAQ Section */}
-            <motion.div
-              className="mt-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Häufig gestellte Fragen zum Risk Management</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="border-b pb-6">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      Was ist Risk Management im Compliance-Kontext?
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Risk Management ist der systematische Prozess zur Identifikation, Bewertung und Behandlung von Compliance-Risiken. 
-                      Es umfasst die kontinuierliche Überwachung von Datenschutz-, Sicherheits- und regulatorischen Risiken nach Standards wie ISO 31000.
-                    </p>
-                  </div>
-                  <div className="border-b pb-6">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      Wann ist eine DSFA (Datenschutz-Folgenabschätzung) erforderlich?
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Eine DSFA ist nach Art. 35 DSGVO erforderlich, wenn eine Datenverarbeitung voraussichtlich ein hohes Risiko für die Rechte 
-                      und Freiheiten natürlicher Personen zur Folge hat. Dies betrifft insbesondere neue Technologien, umfangreiche Verarbeitungen 
-                      oder systematische Überwachung.
-                    </p>
-                  </div>
-                  <div className="pb-6">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      Wie oft sollte ein Risk Assessment durchgeführt werden?
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Risk Assessments sollten mindestens jährlich sowie bei wesentlichen Änderungen durchgeführt werden. 
-                      Bei kritischen Systemen oder hohen Risiken empfiehlt sich eine quartalsweise oder sogar kontinuierliche Bewertung.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Related Content */}
-            <motion.div
-              className="mt-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle>Weiterführende Ressourcen</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <Link to="/wissen/leitfaden/dsfa-durchfuehrung" className="group">
-                      <Card className="h-full hover:shadow-lg transition-all">
-                        <CardContent className="p-4">
-                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-brand-red transition-colors">
-                            DSFA-Leitfaden
-                          </h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Schritt-für-Schritt Anleitung zur Datenschutz-Folgenabschätzung
-                          </p>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                    <Link to="/wissen/compliance-frameworks" className="group">
-                      <Card className="h-full hover:shadow-lg transition-all">
-                        <CardContent className="p-4">
-                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-brand-red transition-colors">
-                            Compliance Frameworks
-                          </h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Übersicht über ISO 27001, SOC2 und andere Standards
-                          </p>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                    <Link to="/assessment-center" className="group">
-                      <Card className="h-full hover:shadow-lg transition-all">
-                        <CardContent className="p-4">
-                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-brand-red transition-colors">
-                            Assessment Center
-                          </h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Kostenlose Risk Assessment Tools und Checklisten
-                          </p>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              className="mt-8 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Card className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 text-white p-8">
-                <h2 className="text-2xl font-bold mb-4">
-                  Bauen Sie ein robustes Risk Management auf
-                </h2>
-                <p className="text-lg mb-6 opacity-90">
-                  Unsere Experten unterstützen Sie bei der Implementierung
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/assessment-center/compliance-risk-check">
-                    <Button 
-                      size="lg" 
-                      variant="secondary"
-                      className="bg-white text-gray-900 hover:bg-gray-100"
-                    >
-                      Risk Assessment starten
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
-                  <Link to="/kontakt">
-                    <Button 
-                      size="lg" 
-                      variant="outline"
-                      className="border-white text-white hover:bg-white hover:text-gray-900"
-                    >
-                      Risk Management Workshop
-                      <ExternalLink className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
                 </div>
-              </Card>
-            </motion.div>
+              )}
+            </div>
           </div>
-        </section>
-        
+        </div>
+
         <Footer />
       </div>
     </>

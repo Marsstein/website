@@ -1772,12 +1772,12 @@ const telemedicineSession = {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <Link to="/wissen/rechtsprechung/meta-irland-2024" className="block group">
-                      <div className="p-4 bg-red-50 rounded-lg border border-red-200 hover:border-red-300 transition-colors group-hover:shadow-md">
-                        <Gavel className="h-5 w-5 text-red-600 mb-2" />
-                        <div className="font-medium">Meta Ireland Urteil</div>
-                        <div className="text-sm text-gray-600">1,2 Mrd. € Bußgeld-Analyse</div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <Link to="/assessment-center/data-protection-test" className="block group">
+                      <div className="p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-300 transition-colors group-hover:shadow-md">
+                        <CheckCircle2 className="h-5 w-5 text-green-600 mb-2" />
+                        <div className="font-medium">DSGVO Assessment</div>
+                        <div className="text-sm text-gray-600">Compliance-Status prüfen</div>
                       </div>
                     </Link>
                     <Link to="/wissen/compliance/eu-ai-act" className="block group">
@@ -1785,13 +1785,6 @@ const telemedicineSession = {
                         <Brain className="h-5 w-5 text-purple-600 mb-2" />
                         <div className="font-medium">EU AI Act Guide</div>
                         <div className="text-sm text-gray-600">KI-Compliance für Healthcare</div>
-                      </div>
-                    </Link>
-                    <Link to="/wissen/krisenmanagement/data-breach-72h" className="block group">
-                      <div className="p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors group-hover:shadow-md">
-                        <Timer className="h-5 w-5 text-orange-600 mb-2" />
-                        <div className="font-medium">Data Breach Response</div>
-                        <div className="text-sm text-gray-600">72h Notfall-Leitfaden</div>
                       </div>
                     </Link>
                     <Link to="/branchen/gesundheitswesen" className="block group">

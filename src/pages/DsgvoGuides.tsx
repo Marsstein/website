@@ -430,7 +430,7 @@ const DsgvoGuides: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-[#F5F6F8] via-orange-50/20 to-[#F5F6F8]">
       <SEOHead 
         title="DSGVO Leitfäden 2024 - Datenschutz richtig umsetzen"
         description="DSGVO Leitfäden & Guides 2024: Grundlagen ✓ Website-Compliance ✓ Verarbeitungsverzeichnis ✓ Datenpanne-Management. Praxisnah erklärt. Jetzt durchstarten!"
@@ -452,17 +452,17 @@ const DsgvoGuides: React.FC = () => {
       {/* Breadcrumb Navigation */}
       <div className="container px-4 py-4">
         <Breadcrumb>
-          <BreadcrumbList>
+          <BreadcrumbList className="text-[#474747]">
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/" className="hover:text-[#e24e1b] transition-colors">Home</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
+            <BreadcrumbSeparator className="text-[#e24e1b]" />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/wissen">Wissen</BreadcrumbLink>
+              <BreadcrumbLink href="/wissen" className="hover:text-[#e24e1b] transition-colors">Wissen</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
+            <BreadcrumbSeparator className="text-[#e24e1b]" />
             <BreadcrumbItem>
-              <BreadcrumbPage>DSGVO Leitfäden</BreadcrumbPage>
+              <BreadcrumbPage className="text-[#232323] font-semibold">DSGVO Leitfäden</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -470,9 +470,9 @@ const DsgvoGuides: React.FC = () => {
       
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-full blur-3xl animate-spin-slow" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-[#e24e1b]/5 to-[#f97316]/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-[#f97316]/5 to-[#e24e1b]/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#e24e1b]/3 to-[#f97316]/3 rounded-full blur-3xl animate-spin-slow" />
       </div>
 
       {/* Hero Section */}
@@ -488,37 +488,37 @@ const DsgvoGuides: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-3 px-6 py-3 bg-blue-500/10 backdrop-blur-sm rounded-full mb-8 border border-blue-500/20"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-[#e24e1b]/10 backdrop-blur-sm rounded-full mb-8 border border-[#e24e1b]/20"
             >
-              <Shield className="h-5 w-5 text-blue-400 animate-pulse" />
-              <span className="text-sm font-semibold text-blue-300">DSGVO-Leitfäden</span>
-              <FileText className="h-5 w-5 text-indigo-400 animate-bounce" />
+              <Shield className="h-5 w-5 text-[#e24e1b]" />
+              <span className="text-sm font-semibold text-[#232323]">DSGVO-Leitfäden</span>
+              <FileText className="h-5 w-5 text-[#f97316]" />
             </motion.div>
             
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8"
             >
-              <span className="text-white">DSGVO</span>
+              <span className="text-[#232323]">DSGVO</span>
               <br />
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#e24e1b] via-[#f97316] to-[#e24e1b] bg-clip-text text-transparent">
                 Leitfäden
               </span>
             </motion.h1>
             
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12"
+              className="text-xl md:text-2xl text-[#474747] max-w-4xl mx-auto leading-relaxed mb-12"
             >
-              Praxiserprobte <span className="font-semibold text-blue-300">Schritt-für-Schritt Anleitungen</span> 
+              Praxiserprobte <span className="font-semibold text-[#e24e1b]">Schritt-für-Schritt Anleitungen</span>
               für erfolgreiche DSGVO-Implementierung - von Grundlagen bis Expertenwissen.
             </motion.p>
 
@@ -529,7 +529,7 @@ const DsgvoGuides: React.FC = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300" asChild>
+                <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316] text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300" asChild>
                   <Link to="/assessment-center/datenschutz-test">
                     <Target className="mr-2 h-5 w-5" />
                     Wo stehe ich aktuell? Jetzt testen
@@ -537,7 +537,7 @@ const DsgvoGuides: React.FC = () => {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="border-2 border-blue-500/30 hover:border-blue-400 text-blue-300 hover:bg-blue-500/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
+                <Button size="lg" variant="outline" className="border-2 border-[#e24e1b] hover:border-[#f97316] text-[#232323] hover:bg-[#e24e1b]/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm">
                   <Download className="mr-2 h-5 w-5" />
                   Alle PDFs herunterladen
                 </Button>
@@ -546,14 +546,14 @@ const DsgvoGuides: React.FC = () => {
           </motion.div>
 
           {/* Hero Stats */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
             className="flex justify-center max-w-5xl mx-auto"
           >
             {[
-              { value: '10', label: 'Detaillierte Leitfäden', sublabel: 'Von Basics bis Expert', icon: FileText, color: 'from-blue-500 to-indigo-500' }
+              { value: '10', label: 'Detaillierte Leitfäden', sublabel: 'Von Basics bis Expert', icon: FileText, color: 'from-[#e24e1b] to-[#f97316]' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -563,13 +563,13 @@ const DsgvoGuides: React.FC = () => {
                 className="relative group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
-                <div className="relative bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:transform hover:scale-105 transition-all duration-300">
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-[#e24e1b]/20 hover:border-[#e24e1b] hover:transform hover:scale-105 transition-all duration-300">
                   <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${stat.color} mb-4`}>
                     <stat.icon className="h-6 w-6 text-white" />
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-sm font-semibold text-slate-200 mb-1">{stat.label}</div>
-                  <div className="text-xs text-slate-400">{stat.sublabel}</div>
+                  <div className="text-2xl md:text-3xl font-bold text-[#232323] mb-1">{stat.value}</div>
+                  <div className="text-sm font-semibold text-[#232323] mb-1">{stat.label}</div>
+                  <div className="text-xs text-[#474747]">{stat.sublabel}</div>
                 </div>
               </motion.div>
             ))}
@@ -588,8 +588,8 @@ const DsgvoGuides: React.FC = () => {
           >
             {/* Difficulty Filter */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <Target className="h-5 w-5 text-blue-400" />
+              <h3 className="text-lg font-semibold text-[#232323] mb-4 flex items-center gap-2">
+                <Target className="h-5 w-5 text-[#e24e1b]" />
                 Schwierigkeitsgrad
               </h3>
               <div className="flex flex-wrap gap-3">
@@ -605,12 +605,12 @@ const DsgvoGuides: React.FC = () => {
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-300 backdrop-blur-sm border",
                       selectedDifficulty === difficulty.id
-                        ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-blue-500 shadow-lg"
-                        : "bg-slate-800/60 text-slate-300 border-slate-700/50 hover:border-blue-500/50 hover:text-blue-300"
+                        ? "bg-[#e24e1b] text-white border-[#e24e1b] shadow-lg"
+                        : "bg-white text-[#474747] border-gray-200 hover:border-[#e24e1b] hover:text-[#e24e1b]"
                     )}
                   >
                     <span>{difficulty.name}</span>
-                    <Badge className="bg-slate-700 text-slate-200 border-0 text-xs">
+                    <Badge className="bg-gray-100 text-[#474747] border-0 text-xs">
                       {difficulty.count}
                     </Badge>
                   </motion.button>
@@ -620,8 +620,8 @@ const DsgvoGuides: React.FC = () => {
 
             {/* Topic Filter */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <Filter className="h-5 w-5 text-blue-400" />
+              <h3 className="text-lg font-semibold text-[#232323] mb-4 flex items-center gap-2">
+                <Filter className="h-5 w-5 text-[#e24e1b]" />
                 Themenbereich
               </h3>
               <div className="flex flex-wrap gap-3">
@@ -637,8 +637,8 @@ const DsgvoGuides: React.FC = () => {
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-300 backdrop-blur-sm border",
                       selectedTopic === topic.id
-                        ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-indigo-500 shadow-lg"
-                        : "bg-slate-800/60 text-slate-300 border-slate-700/50 hover:border-indigo-500/50 hover:text-indigo-300"
+                        ? "bg-[#e24e1b] text-white border-[#e24e1b] shadow-lg"
+                        : "bg-white text-[#474747] border-gray-200 hover:border-[#e24e1b] hover:text-[#e24e1b]"
                     )}
                   >
                     <topic.icon className="h-4 w-4" />
@@ -665,15 +665,9 @@ const DsgvoGuides: React.FC = () => {
                 className="group relative"
               >
                 {/* Glow Effect */}
-                <div className={cn(
-                  "absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-500 -z-10",
-                  `bg-gradient-to-r ${guide.color}`,
-                  "opacity-0 group-hover:opacity-30"
-                )} />
-                
-                <Card className="relative h-full border-2 border-slate-700/50 transition-all duration-500 group-hover:shadow-2xl group-hover:border-slate-600/50 overflow-hidden">
-                  {/* Background Gradient */}
-                  <div className={cn("absolute inset-0", guide.bgColor)} />
+                <div className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-500 -z-10 bg-[#e24e1b]/10 opacity-0 group-hover:opacity-30" />
+
+                <Card className="relative h-full border-l-4 border-transparent hover:border-[#e24e1b] transition-all duration-500 hover:shadow-xl bg-white overflow-hidden">
                   
                   <CardContent className="relative p-8 h-full flex flex-col">
                     {/* Header */}
@@ -681,59 +675,57 @@ const DsgvoGuides: React.FC = () => {
                       <div className="flex-grow">
                         <div className="flex items-center gap-3 mb-4">
                           {guide.featured && (
-                            <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
+                            <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/30">
                               <Star className="h-3 w-3 mr-1" />
                               Featured
                             </Badge>
                           )}
                           {guide.popular && (
-                            <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                            <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/30">
                               <TrendingUp className="h-3 w-3 mr-1" />
                               Beliebt
                             </Badge>
                           )}
                           {guide.urgent && (
-                            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 animate-pulse">
+                            <Badge className="bg-red-500/10 text-red-600 border-red-500/30 animate-pulse">
                               <AlertOctagon className="h-3 w-3 mr-1" />
                               Urgent
                             </Badge>
                           )}
                         </div>
-                        <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-blue-300 transition-colors">{guide.title}</h3>
-                        <p className="text-lg text-blue-300 mb-3">{guide.subtitle}</p>
-                        <p className="text-slate-300 leading-relaxed">
+                        <h3 className="text-2xl font-bold mb-2 text-[#232323] group-hover:text-[#e24e1b] transition-colors">{guide.title}</h3>
+                        <p className="text-lg text-[#e24e1b] mb-3">{guide.subtitle}</p>
+                        <p className="text-[#474747] leading-relaxed">
                           {guide.description}
                         </p>
                       </div>
                     </div>
 
                     {/* Was Sie erreichen */}
-                    <div className="mb-6 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl border border-white/10">
-                      <h4 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-yellow-400" />
+                    <div className="mb-6 p-4 bg-[#e24e1b]/5 rounded-xl border border-[#e24e1b]/20">
+                      <h4 className="text-sm font-bold text-[#232323] mb-3 flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-[#e24e1b]" />
                         Was Sie erreichen
                       </h4>
                       <div className="space-y-2">
                         {guide.achievements?.map((achievement, idx) => (
                           <div key={idx} className="flex items-start gap-3">
-                            <div className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 ${
-                              idx === 0 ? 'bg-blue-400' : idx === 1 ? 'bg-purple-400' : 'bg-emerald-400'
-                            }`}></div>
-                            <p className="text-sm text-slate-200">{achievement}</p>
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#e24e1b] mt-1.5 flex-shrink-0"></div>
+                            <p className="text-sm text-[#474747]">{achievement}</p>
                           </div>
                         )) || (
                           <>
                             <div className="flex items-start gap-3">
-                              <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></div>
-                              <p className="text-sm text-slate-200">DSGVO-konforme Prozesse</p>
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#e24e1b] mt-1.5 flex-shrink-0"></div>
+                              <p className="text-sm text-[#474747]">DSGVO-konforme Prozesse</p>
                             </div>
                             <div className="flex items-start gap-3">
-                              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></div>
-                              <p className="text-sm text-slate-200">Rechtssichere Dokumentation</p>
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#e24e1b] mt-1.5 flex-shrink-0"></div>
+                              <p className="text-sm text-[#474747]">Rechtssichere Dokumentation</p>
                             </div>
                             <div className="flex items-start gap-3">
-                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0"></div>
-                              <p className="text-sm text-slate-200">Audit-ready in {guide.difficulty === 'beginner' ? '7 Tagen' : '30 Tagen'}</p>
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#e24e1b] mt-1.5 flex-shrink-0"></div>
+                              <p className="text-sm text-[#474747]">Audit-ready in {guide.difficulty === 'beginner' ? '7 Tagen' : '30 Tagen'}</p>
                             </div>
                           </>
                         )}
@@ -742,25 +734,25 @@ const DsgvoGuides: React.FC = () => {
 
                     {/* Chapters Preview */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
-                        <BookOpen className="h-4 w-4" />
+                      <h4 className="text-sm font-semibold text-[#232323] mb-3 flex items-center gap-2">
+                        <BookOpen className="h-4 w-4 text-[#e24e1b]" />
                         Kapitel Übersicht:
                       </h4>
                       <div className="space-y-2">
                         {guide.chapters.slice(0, 3).map((chapter, idx) => (
-                          <motion.div 
+                          <motion.div
                             key={idx}
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: idx * 0.1, duration: 0.4 }}
                             className="flex items-center gap-2"
                           >
-                            <CheckCircle2 className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                            <span className="text-sm text-slate-300">{chapter}</span>
+                            <CheckCircle2 className="w-4 h-4 text-[#e24e1b] flex-shrink-0" />
+                            <span className="text-sm text-[#474747]">{chapter}</span>
                           </motion.div>
                         ))}
                         {guide.chapters.length > 3 && (
-                          <div className="text-sm text-slate-400 ml-6">
+                          <div className="text-sm text-[#474747] ml-6">
                             +{guide.chapters.length - 3} weitere Kapitel
                           </div>
                         )}
@@ -769,21 +761,21 @@ const DsgvoGuides: React.FC = () => {
 
                     {/* Key Takeaways */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
-                        <Target className="h-4 w-4" />
+                      <h4 className="text-sm font-semibold text-[#232323] mb-3 flex items-center gap-2">
+                        <Target className="h-4 w-4 text-[#e24e1b]" />
                         Key Takeaways:
                       </h4>
                       <div className="space-y-2">
                         {guide.keyTakeaways.map((takeaway, idx) => (
-                          <motion.div 
+                          <motion.div
                             key={idx}
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: idx * 0.1, duration: 0.4 }}
                             className="flex items-center gap-2"
                           >
-                            <Zap className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-                            <span className="text-sm text-slate-300">{takeaway}</span>
+                            <Zap className="w-4 h-4 text-[#e24e1b] flex-shrink-0" />
+                            <span className="text-sm text-[#474747]">{takeaway}</span>
                           </motion.div>
                         ))}
                       </div>
@@ -793,8 +785,8 @@ const DsgvoGuides: React.FC = () => {
                     {guide.popular && (
                       <div className="mb-6">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-sm text-slate-300">Community Progress</span>
-                          <span className="text-sm text-blue-400">78% abgeschlossen</span>
+                          <span className="text-sm text-[#474747]">Community Progress</span>
+                          <span className="text-sm text-[#e24e1b]">78% abgeschlossen</span>
                         </div>
                         <Progress value={78} className="h-2" />
                       </div>
@@ -802,31 +794,28 @@ const DsgvoGuides: React.FC = () => {
 
                     {/* CTA */}
                     <div className="mt-auto flex gap-3">
-                      <motion.div 
+                      <motion.div
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className="flex-grow"
                       >
-                        <Button asChild className={cn(
-                          "w-full bg-gradient-to-r text-white border-0 font-semibold py-3 shadow-lg hover:shadow-xl transition-all duration-300",
-                          guide.color
-                        )}>
+                        <Button asChild className="w-full bg-[#e24e1b] hover:bg-[#f97316] text-white border-0 font-semibold py-3 shadow-lg hover:shadow-xl transition-all duration-300">
                           <Link to={guide.link} className="flex items-center justify-center gap-2">
                             <span>Leitfaden lesen</span>
                             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                           </Link>
                         </Button>
                       </motion.div>
-                      
+
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button variant="outline" size="sm" className="px-3 border-slate-600 text-slate-300 hover:bg-slate-700">
+                        <Button variant="outline" size="sm" className="px-3 border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b]/10">
                           <Bookmark className="h-4 w-4" />
                         </Button>
                       </motion.div>
                     </div>
 
                     {/* Last Updated */}
-                    <div className="mt-4 text-xs text-slate-400 flex items-center gap-2">
+                    <div className="mt-4 text-xs text-[#474747] flex items-center gap-2">
                       <Calendar className="h-3 w-3" />
                       Zuletzt aktualisiert: {new Date(guide.lastUpdated).toLocaleDateString('de-DE')}
                     </div>
@@ -848,13 +837,13 @@ const DsgvoGuides: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-black mb-6">
-              <span className="text-white">Weitere</span>
+              <span className="text-[#232323]">Weitere</span>
               <br />
-              <span className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#e24e1b] via-[#f97316] to-[#e24e1b] bg-clip-text text-transparent">
                 Ressourcen
               </span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-[#474747] max-w-3xl mx-auto">
               Ergänzende Tools und Artikel für fundierte DSGVO-Entscheidungen
             </p>
           </motion.div>
@@ -865,34 +854,34 @@ const DsgvoGuides: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              <Card className="border-2 border-green-500/30 bg-slate-800/40 backdrop-blur-sm h-full hover:border-green-500/50 transition-all duration-300">
+              <Card className="border-l-4 border-[#e24e1b] bg-white h-full hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl">
+                    <div className="p-3 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-xl">
                       <Euro className="h-6 w-6 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Kosten transparent machen</h3>
+                    <h3 className="text-2xl font-bold text-[#232323]">Kosten transparent machen</h3>
                   </div>
                   <div className="space-y-4">
                     <Link to="/wissen/kosten/dsgvo-compliance-kosten" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
-                        <span className="text-slate-300 group-hover:text-white">Was kostet DSGVO-Compliance?</span>
-                        <ArrowRight className="h-5 w-5 text-green-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-[#e24e1b]/5 transition-all">
+                        <span className="text-[#474747] group-hover:text-[#232323]">Was kostet DSGVO-Compliance?</span>
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                     <Link to="/wissen/kosten/externer-datenschutzbeauftragter-kosten" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
-                        <span className="text-slate-300 group-hover:text-white">Externer DSB: Kosten-Vergleich</span>
-                        <ArrowRight className="h-5 w-5 text-green-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-[#e24e1b]/5 transition-all">
+                        <span className="text-[#474747] group-hover:text-[#232323]">Externer DSB: Kosten-Vergleich</span>
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                     <Link to="/assessment-center/dsgvo-kosten-rechner" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-500/10 to-teal-500/10 rounded-lg border border-green-500/30 hover:border-green-500/50 transition-all">
-                        <span className="text-white font-semibold flex items-center gap-2">
+                      <div className="flex items-center justify-between p-4 bg-[#e24e1b]/10 rounded-lg border border-[#e24e1b]/30 hover:border-[#e24e1b] transition-all">
+                        <span className="text-[#232323] font-semibold flex items-center gap-2">
                           <Calculator className="h-4 w-4" />
                           Kostenrechner
                         </span>
-                        <ArrowRight className="h-5 w-5 text-green-400 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                   </div>
@@ -905,31 +894,31 @@ const DsgvoGuides: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <Card className="border-2 border-orange-500/30 bg-slate-800/40 backdrop-blur-sm h-full hover:border-orange-500/50 transition-all duration-300">
+              <Card className="border-l-4 border-[#e24e1b] bg-white h-full hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl">
+                    <div className="p-3 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-xl">
                       <AlertTriangle className="h-6 w-6 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Häufige Probleme erkennen</h3>
+                    <h3 className="text-2xl font-bold text-[#232323]">Häufige Probleme erkennen</h3>
                   </div>
                   <div className="space-y-4">
                     <Link to="/wissen/dsgvo-compliance-luecken" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
-                        <span className="text-slate-300 group-hover:text-white">7 Anzeichen für DSGVO-Lücken</span>
-                        <ArrowRight className="h-5 w-5 text-orange-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-[#e24e1b]/5 transition-all">
+                        <span className="text-[#474747] group-hover:text-[#232323]">7 Anzeichen für DSGVO-Lücken</span>
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                     <Link to="/wissen/interner-dsb-scheitert" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
-                        <span className="text-slate-300 group-hover:text-white">Warum interne DSB scheitern</span>
-                        <ArrowRight className="h-5 w-5 text-orange-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-[#e24e1b]/5 transition-all">
+                        <span className="text-[#474747] group-hover:text-[#232323]">Warum interne DSB scheitern</span>
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                     <Link to="/wissen/dsgvo-software-vs-manuell" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
-                        <span className="text-slate-300 group-hover:text-white">Software vs. manuelle Lösung</span>
-                        <ArrowRight className="h-5 w-5 text-orange-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-[#e24e1b]/5 transition-all">
+                        <span className="text-[#474747] group-hover:text-[#232323]">Software vs. manuelle Lösung</span>
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                   </div>
@@ -942,31 +931,31 @@ const DsgvoGuides: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <Card className="border-2 border-blue-500/30 bg-slate-800/40 backdrop-blur-sm h-full hover:border-blue-500/50 transition-all duration-300">
+              <Card className="border-l-4 border-[#e24e1b] bg-white h-full hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl">
+                    <div className="p-3 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-xl">
                       <Target className="h-6 w-6 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Entscheidungshilfen</h3>
+                    <h3 className="text-2xl font-bold text-[#232323]">Entscheidungshilfen</h3>
                   </div>
                   <div className="space-y-4">
                     <Link to="/ratgeber/datenschutzbeauftragter-auswahl" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
-                        <span className="text-slate-300 group-hover:text-white">DSB-Modell Auswahlratgeber</span>
-                        <ArrowRight className="h-5 w-5 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-[#e24e1b]/5 transition-all">
+                        <span className="text-[#474747] group-hover:text-[#232323]">DSB-Modell Auswahlratgeber</span>
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                     <Link to="/ratgeber/dsgvo-software-auswahlkriterien" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
-                        <span className="text-slate-300 group-hover:text-white">Software-Auswahlkriterien</span>
-                        <ArrowRight className="h-5 w-5 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-[#e24e1b]/5 transition-all">
+                        <span className="text-[#474747] group-hover:text-[#232323]">Software-Auswahlkriterien</span>
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                     <Link to="/ratgeber/sicherheitszertifizierung-auswahl" className="block group">
-                      <div className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-all">
-                        <span className="text-slate-300 group-hover:text-white">Zertifizierung wählen</span>
-                        <ArrowRight className="h-5 w-5 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-[#e24e1b]/5 transition-all">
+                        <span className="text-[#474747] group-hover:text-[#232323]">Zertifizierung wählen</span>
+                        <ArrowRight className="h-5 w-5 text-[#e24e1b] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                   </div>
@@ -979,7 +968,7 @@ const DsgvoGuides: React.FC = () => {
 
       {/* CTA Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-indigo-900/10 to-blue-900/20" />
+        <div className="absolute inset-0 bg-[#e24e1b]/5" />
 
         <div className="container mx-auto max-w-5xl relative z-10">
           <motion.div
@@ -989,15 +978,15 @@ const DsgvoGuides: React.FC = () => {
             className="text-center"
           >
             <h2 className="text-4xl md:text-6xl font-black mb-6">
-              <span className="text-white">Bereit für</span>
+              <span className="text-[#232323]">Bereit für</span>
               <br />
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#e24e1b] via-[#f97316] to-[#e24e1b] bg-clip-text text-transparent">
                 DSGVO-Exzellenz?
               </span>
             </h2>
 
-            <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Starten Sie mit unseren bewährten Leitfäden und werden Sie zum <span className="font-semibold text-blue-300">DSGVO-Experten</span>.
+            <p className="text-xl md:text-2xl text-[#474747] mb-12 max-w-3xl mx-auto leading-relaxed">
+              Starten Sie mit unseren bewährten Leitfäden und werden Sie zum <span className="font-semibold text-[#e24e1b]">DSGVO-Experten</span>.
             </p>
 
             <motion.div
@@ -1009,7 +998,7 @@ const DsgvoGuides: React.FC = () => {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-10 py-4 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-300"
+                  className="bg-[#e24e1b] hover:bg-[#f97316] text-white px-10 py-4 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-300"
                   asChild
                 >
                   <Link to="/wissen/leitfaden/dsgvo-grundlagen">
@@ -1021,7 +1010,7 @@ const DsgvoGuides: React.FC = () => {
               </motion.div>
 
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="border-2 border-blue-500/30 hover:border-blue-400 text-blue-300 hover:bg-blue-500/10 px-10 py-4 text-lg font-bold backdrop-blur-sm">
+                <Button size="lg" variant="outline" className="border-2 border-[#e24e1b] hover:border-[#f97316] text-[#232323] hover:bg-[#e24e1b]/10 px-10 py-4 text-lg font-bold backdrop-blur-sm">
                   <Download className="mr-3 h-6 w-6" />
                   PDF Bundle herunterladen
                 </Button>
