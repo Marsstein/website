@@ -20,7 +20,6 @@ const PageLoader = () => (
 const Index = lazy(() => import("./pages/Index"));
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
-const HeroBanner = lazy(() => import("./pages/HeroBanner"));
 
 // Chinese (Simplified) Pages
 const ZhHome = lazy(() => import("./pages/zh/Home"));
@@ -289,7 +288,6 @@ const App = () => (
                 <Suspense fallback={<PageLoader />}>
                   <Routes>
                 <Route path="/" element={<Index />} />
-                <Route path="/hero-banner" element={<HeroBanner />} />
 
                 {/* Chinese (Simplified) Routes - zh-CN */}
                 <Route path="/zh" element={<ChineseLayout />}>

@@ -261,7 +261,7 @@ const HumanInTheLoop = () => {
         title="Human-in-the-Loop DSGVO Review | KI + Experten-Validierung | Marsstein"
         description="KI-Effizienz trifft menschliche Expertise: Ihre DSGVO-Dokumente automatisiert erstellt und von zertifizierten Datenschutzexperten geprüft. 50+ Spezialisten aus 15+ Branchen."
         keywords="Human-in-the-Loop, DSGVO Experten, Datenschutz Review, KI DSGVO, Expert Validation, Compliance Audit, CIPP/E Zertifizierung"
-        canonical="https://marsstein.com/human-in-the-loop"
+        canonical="https://marsstein.ai/human-in-the-loop"
       />
 
       <Header />

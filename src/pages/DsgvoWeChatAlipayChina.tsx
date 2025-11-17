@@ -118,13 +118,13 @@ export default function DsgvoWeChatAlipayChina() {
           name="keywords"
           content="WeChat Pay DSGVO, Alipay GDPR, chinesische Payment Provider, PCI-DSS Compliance, EU-Vertreter Payment, chinesische Touristen Europa, Zahlungsdienstleister China, Finanzdaten DSGVO, Payment Compliance"
         />
-        <link rel="canonical" href="https://marsstein.com/dsgvo-wechat-alipay-china" />
+        <link rel="canonical" href="https://marsstein.ai/dsgvo-wechat-alipay-china" />
         <meta property="og:title" content="DSGVO-Compliance für WeChat Pay & Alipay in Europa" />
         <meta
           property="og:description"
           content="PCI-DSS + GDPR Compliance für chinesische Payment Provider. 30+ Mio. chinesische Touristen, €26 Mrd. Ausgaben. Rechtssichere Integration in 48 Stunden."
         />
-        <meta property="og:url" content="https://marsstein.com/dsgvo-wechat-alipay-china" />
+        <meta property="og:url" content="https://marsstein.ai/dsgvo-wechat-alipay-china" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="DSGVO-Compliance für WeChat Pay & Alipay" />

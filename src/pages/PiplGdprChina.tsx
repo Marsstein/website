@@ -117,13 +117,13 @@ export default function PiplGdprChina() {
           name="keywords"
           content="PIPL GDPR Compliance, China EU Datenschutz, Personal Information Protection Law, Dual Compliance China, Cross-Border Data Transfer, PIPL vs GDPR, China Datenschutz, EU China Business"
         />
-        <link rel="canonical" href="https://marsstein.com/pipl-gdpr-china" />
+        <link rel="canonical" href="https://marsstein.ai/pipl-gdpr-china" />
         <meta property="og:title" content="PIPL + GDPR Dual Compliance | China & EU Datenschutz" />
         <meta
           property="og:description"
           content="PIPL (China) + GDPR (EU) gleichzeitig erfüllen. Dual Compliance für chinesische Unternehmen mit EU-Kunden. Rechtssicher in 7 Tagen."
         />
-        <meta property="og:url" content="https://marsstein.com/pipl-gdpr-china" />
+        <meta property="og:url" content="https://marsstein.ai/pipl-gdpr-china" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="PIPL + GDPR Dual Compliance für China-EU Business" />

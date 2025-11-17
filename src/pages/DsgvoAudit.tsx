@@ -678,11 +678,11 @@ const DsgvoAudit: React.FC = () => {
                 <AlertCircle className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg font-semibold text-[#232323] mb-2">
-                    Siegel-Verifizierung auf marsstein.com
+                    Siegel-Verifizierung auf marsstein.ai
                   </h3>
                   <p className="text-[#474747] text-sm leading-relaxed mb-4">
                     Jedes MARSSTEIN-Siegel ist mit einem einzigartigen Verifizierungslink versehen. Besucher Ihrer Website können
-                    auf das Siegel klicken und werden zu einer offiziellen Zertifikatsseite auf marsstein.com weitergeleitet.
+                    auf das Siegel klicken und werden zu einer offiziellen Zertifikatsseite auf marsstein.ai weitergeleitet.
                   </p>
                   <div className="bg-white rounded-lg p-4 border border-blue-200">
                     <p className="text-xs font-mono text-gray-700 mb-2">Beispiel-URLs:</p>
@@ -693,7 +693,7 @@ const DsgvoAudit: React.FC = () => {
                           to="/dsgvo-audit/verified/demo-unternehmen"
                           className="text-[#e24e1b] hover:underline font-mono"
                         >
-                          marsstein.com/dsgvo-audit/verified/demo-unternehmen
+                          marsstein.ai/dsgvo-audit/verified/demo-unternehmen
                         </Link>
                       </li>
                       <li className="flex items-center gap-2">
@@ -702,7 +702,7 @@ const DsgvoAudit: React.FC = () => {
                           to="/dsgvo-audit/certified/demo-mittelstand"
                           className="text-[#e24e1b] hover:underline font-mono"
                         >
-                          marsstein.com/dsgvo-audit/certified/demo-mittelstand
+                          marsstein.ai/dsgvo-audit/certified/demo-mittelstand
                         </Link>
                       </li>
                       <li className="flex items-center gap-2">
@@ -711,7 +711,7 @@ const DsgvoAudit: React.FC = () => {
                           to="/dsgvo-audit/excellence/demo-enterprise"
                           className="text-[#e24e1b] hover:underline font-mono"
                         >
-                          marsstein.com/dsgvo-audit/excellence/demo-enterprise
+                          marsstein.ai/dsgvo-audit/excellence/demo-enterprise
                         </Link>
                       </li>
                     </ul>

@@ -118,13 +118,13 @@ export default function DsgvoDouyinChina() {
           name="keywords"
           content="Douyin DSGVO, Douyin Global Shopping, Cross-Border E-Commerce China, TikTok Shop GDPR, Livestream Commerce Datenschutz, PIPL GDPR Compliance, ByteDance Datenschutz, China EU E-Commerce"
         />
-        <link rel="canonical" href="https://marsstein.com/dsgvo-douyin-china" />
+        <link rel="canonical" href="https://marsstein.ai/dsgvo-douyin-china" />
         <meta property="og:title" content="DSGVO für Douyin Cross-Border E-Commerce | China → EU" />
         <meta
           property="og:description"
           content="DSGVO + PIPL Dual Compliance für chinesische Douyin-Verkäufer. 600+ Mio. Users, Livestream-Commerce. EU-Expansion rechtssicher in 48 Stunden."
         />
-        <meta property="og:url" content="https://marsstein.com/dsgvo-douyin-china" />
+        <meta property="og:url" content="https://marsstein.ai/dsgvo-douyin-china" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="DSGVO für Douyin Cross-Border E-Commerce" />

@@ -118,13 +118,13 @@ export default function DsgvoB2BHerstellerChina() {
           name="keywords"
           content="B2B DSGVO China, Alibaba GDPR, Made-in-China Datenschutz, B2B Großhandel EU, chinesische Hersteller DSGVO, Wholesale Compliance, B2B Kundendaten, Lieferanten Datenschutz"
         />
-        <link rel="canonical" href="https://marsstein.com/dsgvo-b2b-hersteller-china" />
+        <link rel="canonical" href="https://marsstein.ai/dsgvo-b2b-hersteller-china" />
         <meta property="og:title" content="DSGVO für B2B-Hersteller aus China | Wholesale Compliance" />
         <meta
           property="og:description"
           content="Auch B2B-Daten unterliegen der DSGVO. Alibaba, Made-in-China, Global Sources – EU-Vertreter, AVVs, Privacy Policies in 48 Stunden."
         />
-        <meta property="og:url" content="https://marsstein.com/dsgvo-b2b-hersteller-china" />
+        <meta property="og:url" content="https://marsstein.ai/dsgvo-b2b-hersteller-china" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="DSGVO für B2B-Hersteller aus China" />

@@ -1,3 +1,5 @@
+import jaysonImage from '@/assets/team/jayson.png';
+
 export interface Expert {
   name: string;
   company?: string;
@@ -5,6 +7,7 @@ export interface Expert {
 
   slug: string;
   avatar: string;
+  image?: string;
 
   dsbSince: number;
   aiQualified: boolean;
@@ -27,17 +30,18 @@ export const experts: Expert[] = [
   {
     name: 'Jayson Chen',
     company: 'Marsstein',
-    bio: 'Jayson verbindet Technik und Regulatorik zu nutzbaren Produkten: schlanke Workflows von Onboarding bis Audit-Trail, priorisiert mit Blick auf Wirkung und Go-to-Market. Mit über zehn Jahren Projekterfahrung in Konzern- und Mittelstandsumfeldern (u. a. ZF Group) sorgt er für Tempo und Umsetzbarkeit; zusätzlich ist er als Datenschutzbeauftragter zertifiziert.',
+    bio: 'Mit über zehn Jahren Erfahrung in der Automotive-Branche (u. a. ZF Group) verbindet Jayson tiefes Branchenwissen mit modernster Datenschutz-Expertise. Er versteht die spezifischen Herausforderungen von Produktionsunternehmen und Zulieferern – von vernetzten Fahrzeugsystemen über TISAX-Compliance bis zur sicheren Datenverarbeitung in globalen Lieferketten. Als TÜV zertifizierter Datenschutzbeauftragter übersetzt er komplexe DSGVO-Anforderungen in praktikable Workflows: von der Risikoanalyse über technische Maßnahmen bis zum audit-fähigen Dokumentationsmanagement.',
     slug: 'jayson-chen',
     avatar: '👨‍💼',
+    image: jaysonImage,
 
-    dsbSince: 2015,
+    dsbSince: 2025,
     aiQualified: true,
 
-    qualifications: ['CIPP/E', 'GDD-zertifiziert', 'Datenschutzbeauftragter'],
-    additionalEducation: 'Produktmanagement & Regulatorik',
+    qualifications: ['TÜV-zertifiziert', 'Datenschutzbeauftragter'],
+    additionalEducation: 'Automotive Engineering, Produktmanagement & Regulatorik',
 
-    industries: ['SaaS', 'Tech', 'Manufacturing', 'Automotive'],
+    industries: ['Automotive', 'Manufacturing', 'SaaS', 'Tech'],
 
     location: 'Deutschland',
     email: 'jayson@marsstein.ai',
@@ -47,7 +51,7 @@ export const experts: Expert[] = [
   },
 
   {
-    name: 'Dr. Sarah Weber',
+    name: 'Dr. Sarah Weber (Beispiel)',
     company: 'Weber Datenschutz',
     bio: 'Weber Datenschutz berät Krankenhäuser, MedTech-Startups und Pharmaunternehmen in allen Bereichen des Datenschutzrechts inkl. Bestellung als DSB. Die Spezialisierung auf Healthcare und die umfassende medizinische Ausbildung garantieren die bestmögliche Unterstützung bei medizinischen Digitalisierungsthemen.',
     slug: 'sarah-weber',
@@ -63,7 +67,7 @@ export const experts: Expert[] = [
 
     location: 'Hamburg',
     phone: '+49 40 1234567',
-    email: 'sarah.weber@marsstein.com',
+    email: 'sarah.weber@marsstein.ai',
     website: 'https://weber-datenschutz.de',
     languages: ['DE', 'EN'],
 
@@ -71,7 +75,7 @@ export const experts: Expert[] = [
   },
 
   {
-    name: 'Maximilian Schmidt',
+    name: 'Maximilian Schmidt (Beispiel)',
     company: 'Schmidt Datenschutz & Compliance',
     bio: 'Schmidt Datenschutz berät FinTech-Startups und etablierte Banken in allen Bereichen des Datenschutzrechts inkl. Bestellung als DSB. Die Spezialisierung auf Finanzdienstleister und BaFin-Anforderungen garantiert die bestmögliche Unterstützung bei Payment-Systemen und Open Banking.',
     slug: 'maximilian-schmidt',
@@ -87,14 +91,14 @@ export const experts: Expert[] = [
 
     location: 'Frankfurt am Main',
     phone: '+49 69 9876543',
-    email: 'maximilian.schmidt@marsstein.com',
+    email: 'maximilian.schmidt@marsstein.ai',
     languages: ['DE', 'EN', 'FR'],
 
     availability: 'Ab Q2 2025'
   },
 
   {
-    name: 'Laura Hoffmann',
+    name: 'Laura Hoffmann (Beispiel)',
     company: 'Hoffmann E-Commerce Datenschutz',
     bio: 'Hoffmann E-Commerce Datenschutz berät Online-Shops und Marketplace-Anbieter in allen Bereichen des Datenschutzrechts inkl. Bestellung als DSB. Die Spezialisierung auf Digital Marketing und Cookie-Management garantiert die bestmögliche Unterstützung bei datenschutzkonformem Tracking.',
     slug: 'laura-hoffmann',
@@ -109,7 +113,7 @@ export const experts: Expert[] = [
     industries: ['E-Commerce', 'Retail', 'Marketing'],
 
     location: 'München',
-    email: 'laura.hoffmann@marsstein.com',
+    email: 'laura.hoffmann@marsstein.ai',
     website: 'https://hoffmann-datenschutz.de',
     languages: ['DE', 'EN'],
 
@@ -117,7 +121,7 @@ export const experts: Expert[] = [
   },
 
   {
-    name: 'Thomas Becker',
+    name: 'Thomas Becker (Beispiel)',
     company: 'Becker Cloud & SaaS Compliance',
     bio: 'Becker Cloud Compliance berät SaaS-Anbieter und Cloud-Plattformen in allen Bereichen des Datenschutzrechts inkl. Bestellung als DSB. Die technische Expertise und Erfahrung mit AWS, Azure und GCP garantiert die bestmögliche Unterstützung bei Cloud-nativen Architekturen.',
     slug: 'thomas-becker',
@@ -133,14 +137,14 @@ export const experts: Expert[] = [
 
     location: 'Berlin',
     phone: '+49 30 5555666',
-    email: 'thomas.becker@marsstein.com',
+    email: 'thomas.becker@marsstein.ai',
     languages: ['DE', 'EN'],
 
     availability: 'Sofort verfügbar'
   },
 
   {
-    name: 'Prof. Dr. Anna Müller',
+    name: 'Prof. Dr. Anna Müller (Beispiel)',
     company: 'Müller Industrie 4.0 Datenschutz',
     bio: 'Müller Industrie Datenschutz berät Produktionsunternehmen und Automotive-Zulieferer in allen Bereichen des Datenschutzrechts inkl. Bestellung als DSB. Die akademische Expertise und TISAX-Zertifizierung garantiert die bestmögliche Unterstützung bei IoT und vernetzten Produktionsanlagen.',
     slug: 'anna-mueller',
@@ -155,14 +159,14 @@ export const experts: Expert[] = [
     industries: ['Manufacturing', 'Automotive', 'IoT', 'Industrie 4.0'],
 
     location: 'Stuttgart',
-    email: 'anna.mueller@marsstein.com',
+    email: 'anna.mueller@marsstein.ai',
     languages: ['DE', 'EN', 'IT'],
 
     availability: 'Ab März 2025'
   },
 
   {
-    name: 'Dr. Johannes Lehmann',
+    name: 'Dr. Johannes Lehmann (Beispiel)',
     company: 'Kanzlei Lehmann - IT-Recht & Datenschutz',
     bio: 'Kanzlei Lehmann berät Unternehmen in allen Bereichen des Datenschutzrechts inkl. Bestellung als DSB. Die juristische Expertise als Fachanwalt für IT-Recht und Erfahrung in der Vertretung vor Aufsichtsbehörden garantiert die bestmögliche Unterstützung bei rechtlich komplexen Fragestellungen und Bußgeldverfahren.',
     slug: 'johannes-lehmann',
@@ -178,7 +182,7 @@ export const experts: Expert[] = [
 
     location: 'Köln',
     phone: '+49 221 7777888',
-    email: 'johannes.lehmann@marsstein.com',
+    email: 'johannes.lehmann@marsstein.ai',
     website: 'https://kanzlei-lehmann.de',
     languages: ['DE', 'EN'],
 

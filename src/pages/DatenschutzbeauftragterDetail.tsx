@@ -59,7 +59,7 @@ const DatenschutzbeauftragterDetail = () => {
       "credentialCategory": "Certification",
       "name": cert
     })),
-    "url": `https://marsstein.com/datenschutzexperten/${expert.slug}`,
+    "url": `https://marsstein.ai/datenschutzexperten/${expert.slug}`,
     "address": expert.location ? {
       "@type": "PostalAddress",
       "addressLocality": expert.location,
@@ -73,7 +73,7 @@ const DatenschutzbeauftragterDetail = () => {
         title={`${expert.name} – Datenschutzexperte ${expert.company ? `bei ${expert.company}` : ''} | Marsstein`}
         description={expert.bio}
         keywords={`${expert.name}, Datenschutzexperte, ${expert.industries.join(', ')}, ${expert.qualifications.join(', ')}`}
-        canonical={`https://marsstein.com/datenschutzexperten/${expert.slug}`}
+        canonical={`https://marsstein.ai/datenschutzexperten/${expert.slug}`}
       />
 
       <Helmet>
@@ -105,7 +105,17 @@ const DatenschutzbeauftragterDetail = () => {
                     transition={{ duration: 0.6 }}
                   >
                     <div className="flex items-start gap-6 mb-6">
-                      <div className="text-7xl">{expert.avatar}</div>
+                      {expert.image ? (
+                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden flex-shrink-0">
+                          <img
+                            src={expert.image}
+                            alt={expert.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="text-7xl">{expert.avatar}</div>
+                      )}
                       <div className="flex-1">
                         <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-3">
                           {expert.name}
@@ -191,13 +201,21 @@ const DatenschutzbeauftragterDetail = () => {
 
                       <div className="pt-4 space-y-2">
                         <Link to="/contact" className="block">
-                          <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-90">
+                          <Button className={
+                            expert.company === 'Marsstein'
+                              ? "w-full bg-gradient-to-r from-[#e24e1b] to-[#f97316] hover:opacity-90"
+                              : "w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-90"
+                          }>
                             <Mail className="mr-2 h-4 w-4" />
                             Anfrage senden
                           </Button>
                         </Link>
                         <Link to="/contact" className="block">
-                          <Button variant="outline" className="w-full">
+                          <Button variant="outline" className={
+                            expert.company === 'Marsstein'
+                              ? "w-full border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b]/10"
+                              : "w-full"
+                          }>
                             <Calendar className="mr-2 h-4 w-4" />
                             Beratung buchen
                           </Button>
@@ -217,7 +235,9 @@ const DatenschutzbeauftragterDetail = () => {
               <div className="grid md:grid-cols-2 gap-12">
                 <div>
                   <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
-                    <Briefcase className="h-6 w-6 text-blue-600" />
+                    <Briefcase className={
+                      expert.company === 'Marsstein' ? "h-6 w-6 text-[#e24e1b]" : "h-6 w-6 text-blue-600"
+                    } />
                     Branchen-Expertise
                   </h2>
                   <div className="flex flex-wrap gap-2 mb-8">
@@ -229,13 +249,19 @@ const DatenschutzbeauftragterDetail = () => {
                   </div>
 
                   <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2 mt-8">
-                    <Award className="h-6 w-6 text-blue-600" />
+                    <Award className={
+                      expert.company === 'Marsstein' ? "h-6 w-6 text-[#e24e1b]" : "h-6 w-6 text-blue-600"
+                    } />
                     Qualifikationen
                   </h2>
                   <div className="grid gap-3">
                     {expert.qualifications.map((qual, idx) => (
                       <div key={idx} className="flex items-center gap-3 p-3 bg-muted rounded-lg">
-                        <div className="p-2 bg-blue-600 rounded">
+                        <div className={
+                          expert.company === 'Marsstein'
+                            ? "p-2 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded"
+                            : "p-2 bg-blue-600 rounded"
+                        }>
                           <Award className="h-4 w-4 text-white" />
                         </div>
                         <span className="font-medium">{qual}</span>
@@ -255,28 +281,44 @@ const DatenschutzbeauftragterDetail = () => {
 
                 <div>
                   <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
-                    <Shield className="h-6 w-6 text-blue-600" />
+                    <Shield className={
+                      expert.company === 'Marsstein' ? "h-6 w-6 text-[#e24e1b]" : "h-6 w-6 text-blue-600"
+                    } />
                     Über {expert.name.split(' ')[0]}
                   </h2>
 
-                  <Card className="bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
+                  <Card className={
+                    expert.company === 'Marsstein'
+                      ? "bg-orange-50 dark:bg-orange-950 border-[#e24e1b] dark:border-[#f97316]"
+                      : "bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800"
+                  }>
                     <CardContent className="p-6">
                       <div className="space-y-4">
                         <div className="flex items-start gap-3">
-                          <div className="p-2 bg-blue-600 rounded">
+                          <div className={
+                            expert.company === 'Marsstein'
+                              ? "p-2 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded"
+                              : "p-2 bg-blue-600 rounded"
+                          }>
                             <Shield className="h-5 w-5 text-white" />
                           </div>
                           <div>
                             <div className="font-medium mb-1">Datenschutzbeauftragter seit {expert.dsbSince}</div>
                             <div className="text-sm text-muted-foreground">
-                              Über {new Date().getFullYear() - expert.dsbSince} Jahre Erfahrung im Datenschutz
+                              {expert.dsbSince === new Date().getFullYear()
+                                ? "Neu als zertifizierter Datenschutzbeauftragter"
+                                : `Über ${new Date().getFullYear() - expert.dsbSince} Jahre Erfahrung im Datenschutz`}
                             </div>
                           </div>
                         </div>
 
                         {expert.aiQualified && (
                           <div className="flex items-start gap-3">
-                            <div className="p-2 bg-purple-600 rounded">
+                            <div className={
+                              expert.company === 'Marsstein'
+                                ? "p-2 bg-purple-600 rounded"
+                                : "p-2 bg-purple-600 rounded"
+                            }>
                               <Brain className="h-5 w-5 text-white" />
                             </div>
                             <div>
@@ -289,7 +331,11 @@ const DatenschutzbeauftragterDetail = () => {
                         )}
 
                         <div className="flex items-start gap-3">
-                          <div className="p-2 bg-blue-600 rounded">
+                          <div className={
+                            expert.company === 'Marsstein'
+                              ? "p-2 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded"
+                              : "p-2 bg-blue-600 rounded"
+                          }>
                             <Briefcase className="h-5 w-5 text-white" />
                           </div>
                           <div>
@@ -301,7 +347,11 @@ const DatenschutzbeauftragterDetail = () => {
                         </div>
 
                         <div className="flex items-start gap-3">
-                          <div className="p-2 bg-blue-600 rounded">
+                          <div className={
+                            expert.company === 'Marsstein'
+                              ? "p-2 bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded"
+                              : "p-2 bg-blue-600 rounded"
+                          }>
                             <Globe className="h-5 w-5 text-white" />
                           </div>
                           <div>
@@ -331,7 +381,17 @@ const DatenschutzbeauftragterDetail = () => {
                   {relatedExperts.map((relatedExpert) => (
                     <Card key={relatedExpert.slug} className="hover:shadow-lg transition-all">
                       <CardHeader>
-                        <div className="text-4xl mb-3">{relatedExpert.avatar}</div>
+                        {relatedExpert.image ? (
+                          <div className="w-16 h-16 rounded-full overflow-hidden mb-3 mx-auto">
+                            <img
+                              src={relatedExpert.image}
+                              alt={relatedExpert.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ) : (
+                          <div className="text-4xl mb-3">{relatedExpert.avatar}</div>
+                        )}
                         <CardTitle className="text-lg">{relatedExpert.name}</CardTitle>
                         {relatedExpert.company && (
                           <p className="text-sm text-muted-foreground font-medium">

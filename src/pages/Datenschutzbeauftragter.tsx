@@ -46,16 +46,21 @@ const Datenschutzbeauftragter = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndustry, setSelectedIndustry] = useState<string>('all');
   const [selectedCertification, setSelectedCertification] = useState<string>('all');
-  const [selectedBundesland, setSelectedBundesland] = useState<string>('all');
+  const [selectedLocation, setSelectedLocation] = useState<string>('all');
 
   const industries = [
     { id: 'all', label: 'Alle Branchen', icon: Globe },
-    { id: 'healthcare', label: 'Healthcare', icon: Heart },
-    { id: 'fintech', label: 'FinTech', icon: TrendingUp },
-    { id: 'ecommerce', label: 'E-Commerce', icon: ShoppingCart },
-    { id: 'saas', label: 'SaaS/Cloud', icon: Code },
-    { id: 'manufacturing', label: 'Manufacturing', icon: Factory },
-    { id: 'legal', label: 'Legal/Consulting', icon: Scale },
+    { id: 'Automotive', label: 'Automotive', icon: Factory },
+    { id: 'Manufacturing', label: 'Manufacturing', icon: Factory },
+    { id: 'Healthcare', label: 'Healthcare', icon: Heart },
+    { id: 'MedTech', label: 'MedTech', icon: Heart },
+    { id: 'FinTech', label: 'FinTech', icon: TrendingUp },
+    { id: 'Banking', label: 'Banking', icon: TrendingUp },
+    { id: 'E-Commerce', label: 'E-Commerce', icon: ShoppingCart },
+    { id: 'SaaS', label: 'SaaS', icon: Code },
+    { id: 'Cloud', label: 'Cloud', icon: Code },
+    { id: 'Tech', label: 'Tech', icon: Code },
+    { id: 'Legal', label: 'Legal', icon: Scale },
   ];
 
   const certifications = [
@@ -66,24 +71,15 @@ const Datenschutzbeauftragter = () => {
     { id: 'Jurist', label: 'Jurist/Rechtsanwalt' },
   ];
 
-  const bundeslaender = [
-    { id: 'all', label: 'Alle Bundesländer' },
-    { id: 'Baden-Württemberg', label: 'Baden-Württemberg' },
-    { id: 'Bayern', label: 'Bayern' },
-    { id: 'Berlin', label: 'Berlin' },
-    { id: 'Brandenburg', label: 'Brandenburg' },
-    { id: 'Bremen', label: 'Bremen' },
+  const locations = [
+    { id: 'all', label: 'Alle Standorte' },
+    { id: 'Deutschland', label: 'Deutschland' },
     { id: 'Hamburg', label: 'Hamburg' },
-    { id: 'Hessen', label: 'Hessen' },
-    { id: 'Mecklenburg-Vorpommern', label: 'Mecklenburg-Vorpommern' },
-    { id: 'Niedersachsen', label: 'Niedersachsen' },
-    { id: 'Nordrhein-Westfalen', label: 'Nordrhein-Westfalen' },
-    { id: 'Rheinland-Pfalz', label: 'Rheinland-Pfalz' },
-    { id: 'Saarland', label: 'Saarland' },
-    { id: 'Sachsen', label: 'Sachsen' },
-    { id: 'Sachsen-Anhalt', label: 'Sachsen-Anhalt' },
-    { id: 'Schleswig-Holstein', label: 'Schleswig-Holstein' },
-    { id: 'Thüringen', label: 'Thüringen' },
+    { id: 'München', label: 'München' },
+    { id: 'Berlin', label: 'Berlin' },
+    { id: 'Frankfurt', label: 'Frankfurt am Main' },
+    { id: 'Köln', label: 'Köln' },
+    { id: 'Stuttgart', label: 'Stuttgart' },
   ];
 
   const filteredExperts = useMemo(() => {
@@ -91,20 +87,21 @@ const Datenschutzbeauftragter = () => {
       const matchesSearch = searchQuery === '' ||
         expert.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         expert.bio.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        expert.industries.some(ind => ind.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (expert.company && expert.company.toLowerCase().includes(searchQuery.toLowerCase()));
 
       const matchesIndustry = selectedIndustry === 'all' ||
-        expert.industries.some(ind => ind.toLowerCase().includes(selectedIndustry.toLowerCase()));
+        expert.industries.some(ind => ind === selectedIndustry);
 
       const matchesCertification = selectedCertification === 'all' ||
-        expert.qualifications.some(qual => qual.includes(selectedCertification));
+        expert.qualifications.some(qual => qual.toLowerCase().includes(selectedCertification.toLowerCase()));
 
-      const matchesBundesland = selectedBundesland === 'all' ||
-        expert.location.includes(selectedBundesland);
+      const matchesLocation = selectedLocation === 'all' ||
+        expert.location.toLowerCase().includes(selectedLocation.toLowerCase());
 
-      return matchesSearch && matchesIndustry && matchesCertification && matchesBundesland;
+      return matchesSearch && matchesIndustry && matchesCertification && matchesLocation;
     });
-  }, [searchQuery, selectedIndustry, selectedCertification, selectedBundesland]);
+  }, [searchQuery, selectedIndustry, selectedCertification, selectedLocation]);
 
 
   const getIndustryIcon = (industryId: string) => {
@@ -118,13 +115,13 @@ const Datenschutzbeauftragter = () => {
         title="Datenschutzexperten finden – 50+ Zertifizierte DSB Experten | Marsstein"
         description="Finden Sie den passenden Datenschutzexperten für Ihr Unternehmen. CIPP/E-zertifiziert ✓ Branchenexpertise ✓ DSGVO-Compliance ✓ Human-in-the-Loop Reviews."
         keywords="Datenschutzexperten, externer DSB, DSGVO Experte, CIPP/E, Datenschutz Berater, Datenschutzbeauftragte"
-        canonical="https://marsstein.com/datenschutzexperten"
+        canonical="https://marsstein.ai/datenschutzexperten"
       />
 
       <Header />
 
       <main>
-        <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-20 md:py-32">
+        <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-20 md:py-32">
           <div className="container px-4 relative z-10">
             <div className="max-w-5xl mx-auto text-center">
               <motion.div
@@ -132,21 +129,20 @@ const Datenschutzbeauftragter = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <Badge className="mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-0 px-4 py-2 text-sm">
+                <Badge className="mb-6 bg-gradient-to-r from-[#e24e1b] to-[#f97316] text-white border-0 px-4 py-2 text-sm">
                   <Shield className="h-4 w-4 mr-2 inline" />
                   Zertifizierte Datenschutzexperten
                 </Badge>
 
                 <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 tracking-tight">
                   Finden Sie Ihren<br />
-                  <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-[#e24e1b] to-[#f97316] bg-clip-text text-transparent">
                     Datenschutzexperten
                   </span>
                 </h1>
 
                 <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-                  {experts.length}+ zertifizierte Experten für externe DSB-Services, Human-in-the-Loop Reviews
-                  und DSGVO-Compliance Beratung.
+                  Zertifizierte Datenschutzexperten mit Branchenspezialisierung – für externe DSB-Mandate, KI-gestützte Reviews und maßgeschneiderte DSGVO-Beratung.
                 </p>
 
                 <div className="max-w-2xl mx-auto">
@@ -157,7 +153,7 @@ const Datenschutzbeauftragter = () => {
                       placeholder="Suchen Sie nach Name, Branche oder Expertise..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-12 pr-4 py-6 text-lg border-2 focus:border-blue-500"
+                      className="pl-12 pr-4 py-6 text-lg border-2 focus:border-[#e24e1b]"
                     />
                   </div>
                 </div>
@@ -186,7 +182,11 @@ const Datenschutzbeauftragter = () => {
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Branche wählen" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent
+                    position="popper"
+                    sideOffset={5}
+                    onOpenAutoFocus={(e) => e.preventDefault()}
+                  >
                     {industries.map((industry) => (
                       <SelectItem key={industry.id} value={industry.id}>
                         {industry.label}
@@ -199,7 +199,11 @@ const Datenschutzbeauftragter = () => {
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Qualifikation wählen" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent
+                    position="popper"
+                    sideOffset={5}
+                    onOpenAutoFocus={(e) => e.preventDefault()}
+                  >
                     {certifications.map((cert) => (
                       <SelectItem key={cert.id} value={cert.id}>
                         {cert.label}
@@ -208,14 +212,18 @@ const Datenschutzbeauftragter = () => {
                   </SelectContent>
                 </Select>
 
-                <Select value={selectedBundesland} onValueChange={setSelectedBundesland}>
+                <Select value={selectedLocation} onValueChange={setSelectedLocation}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Bundesland wählen" />
+                    <SelectValue placeholder="Standort wählen" />
                   </SelectTrigger>
-                  <SelectContent>
-                    {bundeslaender.map((land) => (
-                      <SelectItem key={land.id} value={land.id}>
-                        {land.label}
+                  <SelectContent
+                    position="popper"
+                    sideOffset={5}
+                    onOpenAutoFocus={(e) => e.preventDefault()}
+                  >
+                    {locations.map((loc) => (
+                      <SelectItem key={loc.id} value={loc.id}>
+                        {loc.label}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -227,7 +235,7 @@ const Datenschutzbeauftragter = () => {
                   onClick={() => {
                     setSelectedIndustry('all');
                     setSelectedCertification('all');
-                    setSelectedBundesland('all');
+                    setSelectedLocation('all');
                     setSearchQuery('');
                   }}
                 >
@@ -264,12 +272,22 @@ const Datenschutzbeauftragter = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-200 dark:hover:border-blue-800 group">
+                    <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 group hover:border-[#e24e1b] dark:hover:border-[#f97316]">
                       <CardHeader>
                         <div className="flex items-start gap-4 mb-4">
-                          <div className="text-5xl">{expert.avatar}</div>
+                          {expert.image ? (
+                            <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                              <img
+                                src={expert.image}
+                                alt={expert.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          ) : (
+                            <div className="text-5xl">{expert.avatar}</div>
+                          )}
                           <div className="flex-1">
-                            <CardTitle className="text-xl mb-2 group-hover:text-blue-600 transition-colors">
+                            <CardTitle className="text-xl mb-2 transition-colors group-hover:text-[#e24e1b]">
                               {expert.name}
                             </CardTitle>
                             {expert.company && (
@@ -336,7 +354,7 @@ const Datenschutzbeauftragter = () => {
 
                       <CardContent className="pt-0">
                         <Link to={`/datenschutzexperten/${expert.slug}`}>
-                          <Button className="w-full group-hover:bg-blue-600 transition-all">
+                          <Button className="w-full transition-all bg-gradient-to-r from-[#e24e1b] to-[#f97316] hover:opacity-90">
                             Profil ansehen
                             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                           </Button>
@@ -395,10 +413,10 @@ const Datenschutzbeauftragter = () => {
                     description: 'CIPP/E, GDD und weitere anerkannte Qualifikationen.'
                   }
                 ].map((benefit, index) => (
-                  <Card key={index} className="border-2 hover:border-blue-200 dark:hover:border-blue-800 transition-all">
+                  <Card key={index} className="border-2 hover:border-[#e24e1b] dark:hover:border-[#f97316] transition-all">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg">
+                        <div className="p-3 bg-gradient-to-br from-[#e24e1b] to-[#f97316] rounded-lg">
                           <benefit.icon className="h-6 w-6 text-white" />
                         </div>
                         <div>
@@ -418,7 +436,7 @@ const Datenschutzbeauftragter = () => {
           </div>
         </section>
 
-        <section className="py-20 md:py-32 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white relative overflow-hidden">
+        <section className="py-20 md:py-32 bg-gradient-to-br from-[#e24e1b] via-[#f97316] to-[#ea580c] text-white relative overflow-hidden">
           <div className="container px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <motion.div
@@ -431,20 +449,20 @@ const Datenschutzbeauftragter = () => {
                 <h2 className="text-3xl md:text-5xl font-bold mb-6">
                   Bereit für DSGVO-Compliance?
                 </h2>
-                <p className="text-xl mb-8 text-blue-100">
+                <p className="text-xl mb-8 text-orange-100">
                   Finden Sie den perfekten Datenschutzbeauftragten für Ihr Unternehmen.
                   Kostenlose Erstberatung inklusive.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8">
+                    <Button size="lg" className="bg-white text-[#e24e1b] hover:bg-gray-100 px-8">
                       Jetzt Anfrage senden
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
                   <Link to="/features/human-in-the-loop">
-                    <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                    <Button size="lg" className="bg-white/20 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-[#e24e1b] transition-all">
                       <Brain className="mr-2 h-5 w-5" />
                       Human-in-the-Loop entdecken
                     </Button>

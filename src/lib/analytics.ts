@@ -15,7 +15,7 @@ export const initializePostHog = () => {
       capture_pageleave: true,
       autocapture: {
         dom_event_allowlist: ['click', 'change', 'submit'],
-        url_allowlist: ['marsstein.com/beta', 'marsstein.com/', 'marsstein.ai/', 'marsstein.ai'],
+        url_allowlist: ['marsstein.ai/beta', 'marsstein.ai/', 'marsstein.ai'],
         element_allowlist: ['button', 'a', 'input', 'select', 'textarea', 'label'],
         css_selector_allowlist: ['[data-ph-capture]'],
       },
