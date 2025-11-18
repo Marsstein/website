@@ -86,7 +86,7 @@ import {
   Laptop,
   Cloud,
   ChevronUp
-} from 'lucide-react';
+, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
@@ -2013,42 +2013,35 @@ compliance:
               </section>
             </div>
 
-            {/* Quick Links */}
+                        {/* Quick Links */}
             <Card className="mt-12">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <ArrowRight className="h-5 w-5 text-gray-600" />
+                  <ExternalLink className="h-5 w-5 text-gray-600" />
                   Weiterführende Ressourcen
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <Link to="/wissen/compliance/dsgvo" className="block">
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 hover:border-blue-300 transition-colors">
-                      <Shield className="h-5 w-5 text-blue-600 mb-2" />
-                      <div className="font-medium">DSGVO Compliance</div>
-                      <div className="text-sm text-gray-600">Umfassender DSGVO-Leitfaden</div>
-                    </div>
-                  </Link>
-                  <Link to="/wissen/branchen/automotive-datenschutz" className="block">
-                    <div className="p-4 bg-cyan-50 rounded-lg border border-cyan-200 hover:border-cyan-300 transition-colors">
-                      <Cloud className="h-5 w-5 text-cyan-600 mb-2" />
-                      <div className="font-medium">Automotive Datenschutz</div>
-                      <div className="text-sm text-gray-600">Connected Cars & DSGVO</div>
-                    </div>
-                  </Link>
-                  <Link to="/wissen/krisenmanagement" className="block">
-                    <div className="p-4 bg-red-50 rounded-lg border border-red-200 hover:border-red-300 transition-colors">
-                      <AlertTriangle className="h-5 w-5 text-red-600 mb-2" />
-                      <div className="font-medium">Krisenmanagement</div>
-                      <div className="text-sm text-gray-600">Data Breach Response</div>
-                    </div>
-                  </Link>
-                  <Link to="/industries/manufacturing" className="block">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Link to="/assessment-center/isms-maturity-assessment" className="block">
                     <div className="p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-300 transition-colors">
-                      <Factory className="h-5 w-5 text-green-600 mb-2" />
-                      <div className="font-medium">Manufacturing Solutions</div>
-                      <div className="text-sm text-gray-600">Unsere Produktlösungen</div>
+                      <CheckCircle2 className="h-5 w-5 text-green-600 mb-2" />
+                      <div className="font-medium">ISMS Maturity Assessment</div>
+                      <div className="text-sm text-gray-600">Bewerten Sie Ihre Informationssicherheit</div>
+                    </div>
+                  </Link>
+                  <Link to="/branchen/produktion" className="block">
+                    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
+                      <Factory className="h-5 w-5 text-gray-600 mb-2" />
+                      <div className="font-medium">Produktions-Lösungen</div>
+                      <div className="text-sm text-gray-600">Smart Factory Compliance</div>
+                    </div>
+                  </Link>
+                  <Link to="/wissen/compliance/iso-27001" className="block">
+                    <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors">
+                      <Shield className="h-5 w-5 text-purple-600 mb-2" />
+                      <div className="font-medium">ISO 27001</div>
+                      <div className="text-sm text-gray-600">Informationssicherheits-Management</div>
                     </div>
                   </Link>
                 </div>

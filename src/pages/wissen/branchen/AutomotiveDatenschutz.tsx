@@ -78,7 +78,7 @@ import {
   User,
   ShoppingCart,
   ChevronUp
-} from 'lucide-react';
+, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -1786,7 +1786,7 @@ const AutomotiveDatenschutz = () => {
               </Card>
             </div>
 
-            {/* Quick Links */}
+                        {/* Quick Links */}
             <Card className="mt-12">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -1795,33 +1795,26 @@ const AutomotiveDatenschutz = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <Link to="/wissen/branchen/industrie-40-datenschutz" className="block">
-                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors">
-                      <Gauge className="h-5 w-5 text-orange-600 mb-2" />
-                      <div className="font-medium">Industrie 4.0</div>
-                      <div className="text-sm text-gray-600">Smart Factory & IoT</div>
-                    </div>
-                  </Link>
-                  <Link to="/wissen/branchen/smart-grid-compliance" className="block">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Link to="/assessment-center/data-protection-test" className="block">
                     <div className="p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-300 transition-colors">
-                      <Wifi className="h-5 w-5 text-green-600 mb-2" />
-                      <div className="font-medium">Smart Grid</div>
-                      <div className="text-sm text-gray-600">Energie & Datenschutz</div>
+                      <CheckCircle2 className="h-5 w-5 text-green-600 mb-2" />
+                      <div className="font-medium">Datenschutz-Assessment</div>
+                      <div className="text-sm text-gray-600">Prüfen Sie Ihre Automotive-Compliance</div>
                     </div>
                   </Link>
-                  <Link to="/wissen/compliance/dsgvo" className="block">
+                  <Link to="/branchen/automotive" className="block">
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 hover:border-blue-300 transition-colors">
+                      <Car className="h-5 w-5 text-blue-600 mb-2" />
+                      <div className="font-medium">Automotive Solutions</div>
+                      <div className="text-sm text-gray-600">Connected Car Compliance-Lösungen</div>
+                    </div>
+                  </Link>
+                  <Link to="/wissen/compliance/tisax" className="block">
                     <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors">
                       <Shield className="h-5 w-5 text-purple-600 mb-2" />
-                      <div className="font-medium">DSGVO Guide</div>
-                      <div className="text-sm text-gray-600">Compliance Leitfaden</div>
-                    </div>
-                  </Link>
-                  <Link to="/wissen/technologie/ki" className="block">
-                    <div className="p-4 bg-red-50 rounded-lg border border-red-200 hover:border-red-300 transition-colors">
-                      <BrainCircuit className="h-5 w-5 text-red-600 mb-2" />
-                      <div className="font-medium">KI & Datenschutz</div>
-                      <div className="text-sm text-gray-600">AI Act & DSGVO</div>
+                      <div className="font-medium">TISAX Zertifizierung</div>
+                      <div className="text-sm text-gray-600">Automotive-spezifische Informationssicherheit</div>
                     </div>
                   </Link>
                 </div>

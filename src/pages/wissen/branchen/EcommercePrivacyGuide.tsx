@@ -83,7 +83,7 @@ import {
   Microscope,
   Syringe,
   Pulse
-} from 'lucide-react';
+, ShoppingCart , ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -1605,7 +1605,7 @@ const EcommercePrivacyGuide = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
+                        {/* Quick Links */}
             <Card className="mt-12">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -1614,33 +1614,26 @@ const EcommercePrivacyGuide = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <Link to="/wissen/rechtsprechung/cookie-law" className="block">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Link to="/assessment-center/cookie-compliance-audit" className="block">
+                    <div className="p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-300 transition-colors">
+                      <Cookie className="h-5 w-5 text-green-600 mb-2" />
+                      <div className="font-medium">Cookie Compliance Audit</div>
+                      <div className="text-sm text-gray-600">Prüfen Sie Ihre Cookie-Einstellungen kostenlos</div>
+                    </div>
+                  </Link>
+                  <Link to="/branchen/e-commerce" className="block">
                     <div className="p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors">
-                      <Gavel className="h-5 w-5 text-orange-600 mb-2" />
-                      <div className="font-medium">Cookie Law Updates</div>
-                      <div className="text-sm text-gray-600">Aktuelle Rechtsprechung zu Cookies</div>
+                      <ShoppingCart className="h-5 w-5 text-orange-600 mb-2" />
+                      <div className="font-medium">E-Commerce Solutions</div>
+                      <div className="text-sm text-gray-600">Compliance für Online-Shops</div>
                     </div>
                   </Link>
                   <Link to="/wissen/compliance/dsgvo" className="block">
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 hover:border-blue-300 transition-colors">
-                      <Shield className="h-5 w-5 text-blue-600 mb-2" />
-                      <div className="font-medium">DSGVO Guide</div>
-                      <div className="text-sm text-gray-600">Umfassender DSGVO-Leitfaden</div>
-                    </div>
-                  </Link>
-                  <Link to="/wissen/branchen/fintech-compliance" className="block">
                     <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors">
-                      <CreditCard className="h-5 w-5 text-purple-600 mb-2" />
-                      <div className="font-medium">FinTech Compliance</div>
-                      <div className="text-sm text-gray-600">Payment & Banking Compliance</div>
-                    </div>
-                  </Link>
-                  <Link to="/wissen/krisenmanagement" className="block">
-                    <div className="p-4 bg-red-50 rounded-lg border border-red-200 hover:border-red-300 transition-colors">
-                      <AlertOctagon className="h-5 w-5 text-red-600 mb-2" />
-                      <div className="font-medium">Krisenmanagement</div>
-                      <div className="text-sm text-gray-600">Data Breach Response</div>
+                      <Shield className="h-5 w-5 text-purple-600 mb-2" />
+                      <div className="font-medium">DSGVO Compliance</div>
+                      <div className="text-sm text-gray-600">Umfassender DSGVO-Leitfaden</div>
                     </div>
                   </Link>
                 </div>

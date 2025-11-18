@@ -68,11 +68,12 @@ export const Footer: React.FC = () => {
   const toolsLinks = [
     { label: 'Alle Tools', href: '/tools' },
     { label: 'DSGVO Test', href: '/assessment-center/datenschutz-test' },
-    { label: 'Cookie Management', href: '/tools/cookie-management' },
+    { label: 'DSGVO Compliance Tool', href: '/dsgvo-compliance-software' },
     { label: 'Assessment Center', href: '/assessment-center' }
   ];
 
   const wissenLinks = [
+    { label: 'Knowledge Hub', href: '/wissen' },
     { label: 'DSGVO Leitfäden', href: '/wissen/dsgvo' },
     { label: 'KI Compliance', href: '/wissen/ki-datenschutz' },
     { label: 'Krisenmanagement', href: '/wissen/krisenmanagement' }

@@ -22,7 +22,8 @@ import {
   Zap,
   ChevronDown,
   Plus,
-  Minus
+  Minus,
+  UserCheck
 } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { useState } from 'react';
@@ -215,6 +216,30 @@ const Features: React.FC = () => {
         "Standardisierung über Einheiten hinweg",
         "Zeitersparnis bei Routine-Verträgen"
       ]
+    },
+    {
+      id: "human-in-the-loop",
+      icon: <UserCheck className="w-8 h-8" />,
+      title: "Human-in-the-Loop: KI + Experten-Validierung",
+      subtitle: "99.9% Genauigkeit durch Experten-Review",
+      color: "#f97316",
+      description: "Kombinieren Sie KI-Geschwindigkeit mit menschlicher Expertise. Ihre Dokumente werden KI-generiert und dann von zertifizierten Datenschutzexperten validiert.",
+      benefits: [
+        "Von 95% auf 99.9% Genauigkeit in 24-48h",
+        "50+ zertifizierte Experten (CIPP/E, CIPM)",
+        "Smart Matching nach Branche & Komplexität",
+        "Branchenspezifische Validierung",
+        "Audit-ready Dokumentation",
+        "70-80% günstiger als reine Anwalts-Erstellung"
+      ],
+      useCases: [
+        "Hochrisiko-Branchen (FinTech, Healthcare)",
+        "Audit & Zertifizierung (ISO 27001)",
+        "Komplexe Verarbeitungen (KI-Systeme)",
+        "Due Diligence & Behördenprüfungen"
+      ],
+      guideLink: "/human-in-the-loop",
+      guideText: "Human-in-the-Loop: Wie es funktioniert"
     }
   ];
 
@@ -291,7 +316,8 @@ const Features: React.FC = () => {
             "DSFA-Modul mit Risiko-Scoring",
             "Multi-Client Management für externe DSBs",
             "Automatische Compliance-Updates",
-            "AVV-Generator und TOM-Dokumentation"
+            "AVV-Generator und TOM-Dokumentation",
+            "Human-in-the-Loop: KI + Experten-Validierung"
           ],
           "aggregateRating": {
             "@type": "AggregateRating",

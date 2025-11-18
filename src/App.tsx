@@ -261,9 +261,6 @@ const DsgvoComplianceLuecken = lazy(() => import("./pages/wissen/DsgvoCompliance
 const InternerDsbScheitert = lazy(() => import("./pages/wissen/InternerDsbScheitert"));
 const DsgvoSoftwareVsManuell = lazy(() => import("./pages/wissen/DsgvoSoftwareVsManuell"));
 const DsgvoVsBdsg = lazy(() => import("./pages/wissen/DsgvoVsBdsg"));
-const MegaMenuDemo = lazy(() => import("./pages/MegaMenuDemo"));
-const MegaMenuVariants = lazy(() => import("./pages/MegaMenuVariants"));
-const VantaStyleMenu = lazy(() => import("./pages/VantaStyleMenu"));
 
 // Assessment Center - Calculators
 const DsgvoKostenRechner = lazy(() => import("./pages/assessment-center/DsgvoKostenRechner"));
@@ -571,9 +568,6 @@ const App = () => (
                 <Route path="/wissen/dsgvo-vs-bdsg" element={<DsgvoVsBdsg />} />
 
                 {/* Demo Pages */}
-                <Route path="/megamenu" element={<MegaMenuDemo />} />
-                <Route path="/megamenu-variants" element={<MegaMenuVariants />} />
-                <Route path="/vanta-menu" element={<VantaStyleMenu />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
