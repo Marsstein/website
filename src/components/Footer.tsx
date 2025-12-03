@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Separator } from '@/components/ui/separator';
-import { Mail, FileText, ShieldCheck, Wrench, BookOpen } from 'lucide-react';
+import { Mail, FileText, ShieldCheck, Wrench, BookOpen, Linkedin, Instagram, CheckCircle, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -11,20 +11,44 @@ export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubscribed(true);
-    setIsLoading(false);
+    setError(null);
 
-    setTimeout(() => {
-      setIsSubscribed(false);
+    try {
+      const response = await fetch('/api/newsletter-subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Anmeldung fehlgeschlagen');
+      }
+
+      setIsSubscribed(true);
       setEmail('');
-    }, 3000);
+
+      setTimeout(() => {
+        setIsSubscribed(false);
+      }, 5000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten');
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Echte existierende Links basierend auf Projekt-Analyse
@@ -44,11 +68,12 @@ export const Footer: React.FC = () => {
   const toolsLinks = [
     { label: 'Alle Tools', href: '/tools' },
     { label: 'DSGVO Test', href: '/assessment-center/datenschutz-test' },
-    { label: 'Cookie Management', href: '/tools/cookie-management' },
+    { label: 'DSGVO Compliance Tool', href: '/dsgvo-compliance-software' },
     { label: 'Assessment Center', href: '/assessment-center' }
   ];
 
   const wissenLinks = [
+    { label: 'Knowledge Hub', href: '/wissen' },
     { label: 'DSGVO Leitfäden', href: '/wissen/dsgvo' },
     { label: 'KI Compliance', href: '/wissen/ki-datenschutz' },
     { label: 'Krisenmanagement', href: '/wissen/krisenmanagement' }
@@ -75,6 +100,21 @@ export const Footer: React.FC = () => {
                   <p className="font-semibold text-lg">Erfolgreich abonniert!</p>
                 </div>
                 <p className="text-sm text-[#474747]">Sie erhalten in Kürze eine Bestätigungs-E-Mail.</p>
+              </div>
+            ) : error ? (
+              <div className="space-y-4">
+                <div className="flex items-center justify-center gap-2 text-red-600">
+                  <AlertCircle className="h-6 w-6" />
+                  <p className="font-semibold text-lg">Anmeldung fehlgeschlagen</p>
+                </div>
+                <p className="text-sm text-[#474747]">{error}</p>
+                <Button
+                  onClick={() => setError(null)}
+                  variant="outline"
+                  className="mt-4"
+                >
+                  Erneut versuchen
+                </Button>
               </div>
             ) : (
               <>
@@ -117,9 +157,30 @@ export const Footer: React.FC = () => {
                 className="h-10 w-auto filter drop-shadow-[0_4px_20px_rgba(228,78,27,0.3)] hover:drop-shadow-[0_6px_30px_rgba(228,78,27,0.4)] transition-all duration-300"
               />
             </Link>
-            <p className="text-xl font-light tracking-wide text-[#232323]">
+            <p className="text-xl font-light tracking-wide text-[#232323] mb-4">
               Compliance made simple
             </p>
+
+            <div className="flex items-center justify-center gap-4">
+              <a
+                href="https://www.linkedin.com/company/marsstein"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gradient-to-br from-[#e24e1b]/10 to-[#f97316]/5 rounded-xl hover:from-[#e24e1b]/20 hover:to-[#f97316]/10 transition-all duration-300 hover:-translate-y-1 group"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5 text-[#e24e1b] group-hover:text-[#f97316] transition-colors" />
+              </a>
+              <a
+                href="https://instagram.com/marsstein.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gradient-to-br from-[#e24e1b]/10 to-[#f97316]/5 rounded-xl hover:from-[#e24e1b]/20 hover:to-[#f97316]/10 transition-all duration-300 hover:-translate-y-1 group"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5 text-[#e24e1b] group-hover:text-[#f97316] transition-colors" />
+              </a>
+            </div>
           </div>
 
           {/* Frosted Glass Cards Grid from A2 */}
@@ -163,7 +224,7 @@ export const Footer: React.FC = () => {
                 <div className="p-2 bg-[#e24e1b]/10 rounded-lg">
                   <Mail className="h-5 w-5 text-[#e24e1b]" />
                 </div>
-                <a href="mailto:info@marsstein.ai" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+                <a href="mailto:info@marsstein.ai" className="text-[#474747] hover:text-[#e24e1b] transition-colors hover:underline">
                   info@marsstein.ai
                 </a>
               </div>
@@ -184,7 +245,7 @@ export const Footer: React.FC = () => {
               © 2025 Marsstein • Compliance made simple
             </div>
             <div className="flex items-center gap-2">
-              <Link to="/agb" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
+              <Link to="/agb-software" className="text-[#474747] hover:text-[#e24e1b] transition-colors">
                 AGB
               </Link>
               <span className="text-[#474747]">•</span>

@@ -38,7 +38,7 @@ const faqs: FAQ[] = [
   {
     id: '1',
     question: 'Wie soll die KI-gestützte Compliance-Automatisierung funktionieren?',
-    answer: 'Unsere Vision: KI, die Datenflüsse und Prozesse analysiert. Das Ziel ist die automatische Identifikation von Compliance-Lücken und Standards-konforme Empfehlungen. Status: Beta-Phase mit ausgewählten Partnern zur Entwicklung des Machine Learning Algorithmus.',
+    answer: 'Unsere Vision: KI, die Datenflüsse und Prozesse analysiert. Das Ziel ist die automatische Identifikation von Compliance-Lücken und Standards-konforme Empfehlungen. Status: Early Bird Angebot mit ausgewählten Partnern zur Entwicklung des Machine Learning Algorithmus.',
     category: 'technical',
     relatedLink: { text: 'KI-Roadmap entdecken', href: '/tools/compliance-ai-assistant' },
     isPopular: true
@@ -62,9 +62,9 @@ const faqs: FAQ[] = [
   {
     id: '4',
     question: 'Wie soll die Implementierung ablaufen?',
-    answer: 'Geplante Implementierung: 2-4 Wochen für MVP-Features. Vision: KI-gestützte Datenanalyse und vorkonfigurierte Templates für schnelle erste Audits. Beta-Phase: Erprobung mit ausgewählten Partnern. Enterprise-Roadmap: Dedizierte Onboarding-Unterstützung.',
+    answer: 'Geplante Implementierung: 2-4 Wochen für MVP-Features. Vision: KI-gestützte Datenanalyse und vorkonfigurierte Templates für schnelle erste Audits. Early Bird Angebot: Erprobung mit ausgewählten Partnern. Enterprise-Roadmap: Dedizierte Onboarding-Unterstützung.',
     category: 'technical',
-    relatedLink: { text: 'Beta-Zugang anfragen', href: '/contact?demo=true' }
+    relatedLink: { text: 'Early Bird Zugang anfragen', href: '/contact?demo=true' }
   },
   {
     id: '5',

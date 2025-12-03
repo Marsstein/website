@@ -1,0 +1,134 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" />
+      <mj-text line-height="1.6" font-size="16px" color="#374151" />
+    </mj-attributes>
+    <mj-style inline="inline">
+      .bold { font-weight: 600; }
+      .badge { background: #DBEAFE; color: #1E40AF; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; }
+      .badge-urgent { background: #FEE2E2; color: #991B1B; }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#f9fafb" width="600px">
+    <mj-section background-color="#ffffff" padding="0">
+      <mj-column>
+        <!-- Header -->
+        <mj-section background-color="#1F2937" padding="30px" border-radius="8px 8px 0 0">
+          <mj-column>
+            <mj-text align="center" font-size="24px" font-weight="700" color="#ffffff">
+              📩 Neue Kontaktanfrage
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Alert Badge -->
+        <mj-section padding="25px 30px 15px">
+          <mj-column>
+            <mj-text>
+              <span class="badge badge-urgent">NEUE ANFRAGE</span>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Contact Info Box -->
+        <mj-section padding="0 30px 25px">
+          <mj-column
+            width="100%"
+            padding="1px"
+            background-color="#FF6B35"
+            inner-background-color="#F3F4F6"
+            border-radius="8px"
+            inner-border-radius="8px">
+
+            <mj-text font-size="18px" color="#1F2937" padding-top="20px" padding-bottom="15px">
+              <span class="bold">👤 Kontaktdaten</span>
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Name:</span> {DATA_VARIABLE:firstName}
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">E-Mail:</span> <a href="mailto:{DATA_VARIABLE:email}" style="color: #FF6B35; text-decoration: none;">{DATA_VARIABLE:email}</a>
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Telefon:</span> {DATA_VARIABLE:phone}
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Unternehmen:</span> {DATA_VARIABLE:company}
+            </mj-text>
+
+            <mj-text padding="0 20px 20px">
+              <span class="bold" style="color: #4B5563;">Thema:</span> {DATA_VARIABLE:topic}
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Message Box -->
+        <mj-section padding="0 30px 25px">
+          <mj-column>
+            <mj-text font-size="18px" color="#1F2937" padding-bottom="10px">
+              <span class="bold">💬 Nachricht</span>
+            </mj-text>
+            <mj-text padding="15px" background-color="#F9FAFB" border-left="4px solid #FF6B35" css-class="message-box">
+              {DATA_VARIABLE:message}
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Newsletter Opt-in -->
+        <mj-section padding="0 30px 25px">
+          <mj-column>
+            <mj-text font-size="14px" color="#6B7280">
+              <span class="bold">Newsletter:</span> {DATA_VARIABLE:newsletter}
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Action Items -->
+        <mj-section padding="0 30px 25px">
+          <mj-column>
+            <mj-text font-size="18px" color="#1F2937" padding-bottom="15px">
+              <span class="bold">⚡ Nächste Schritte</span>
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              1️⃣ Anfrage in CRM eintragen
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              2️⃣ Innerhalb von 24h antworten
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              3️⃣ Calendly-Link für Erstgespräch teilen
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Quick Actions -->
+        <mj-section padding="0 30px 30px">
+          <mj-column>
+            <mj-button background-color="#FF6B35" color="#ffffff" font-size="16px" font-weight="600" border-radius="8px" padding="15px 30px" href="mailto:{DATA_VARIABLE:email}">
+              📧 Direkt antworten
+            </mj-button>
+          </mj-column>
+        </mj-section>
+
+        <!-- Footer -->
+        <mj-section padding="20px" background-color="#F9FAFB">
+          <mj-column>
+            <mj-text align="center" font-size="12px" color="#6B7280">
+              Diese E-Mail wurde automatisch über das Marsstein Kontaktformular generiert
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

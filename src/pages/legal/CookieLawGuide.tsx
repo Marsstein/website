@@ -60,7 +60,8 @@ import {
   Trash2,
   List,
   ChevronRight,
-  Home
+  Home,
+  Scale
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';

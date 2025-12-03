@@ -165,7 +165,7 @@ const Tools: React.FC = () => {
       complexity: 'basic',
       color: 'from-blue-500 to-indigo-600',
       link: '/tools/dsgvo-email-template-generator',
-      stats: 'Beta-Zugang',
+      stats: 'Early Bird Zugang',
       setupTime: '2 Min',
       roi: 'Abmahnungen vermeiden'
     },

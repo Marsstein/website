@@ -378,7 +378,7 @@ const ExternerDatenschutzbeauftragter: React.FC = () => {
               Vorteile externer Datenschutzbeauftragter
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              DSGVO wird immer komplexer. Ohne Expertise wird's teuer. Wir haben die Lösung.
+              DSGVO wird immer komplexer. Ohne Expertise wird's teuer. Wir haben die Lösung. → <Link to="/wissen/leitfaden/datenschutzbeauftragter" className="text-[#e24e1b] hover:text-[#ea580c] font-semibold underline">Mehr über Datenschutzbeauftragte erfahren</Link>
             </p>
           </motion.div>
 
@@ -421,7 +421,7 @@ const ExternerDatenschutzbeauftragter: React.FC = () => {
               Ihre Datenschutzexperten von MARSSTEIN
             </h3>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Bei der Benennung Ihres externen Datenschutzbeauftragten werden Ihnen qualifizierte Datenschutzberater zur Seite gestellt.
+              Bei der Benennung Ihres externen Datenschutzbeauftragten werden Ihnen qualifizierte Datenschutzberater zur Seite gestellt. → <Link to="/wissen/leitfaden/datenschutzbeauftragter-ausbildung" className="text-[#e24e1b] hover:text-[#ea580c] font-semibold underline">DSB werden: Ausbildung & Karriere</Link>
             </p>
           </motion.div>
 
@@ -559,9 +559,17 @@ const ExternerDatenschutzbeauftragter: React.FC = () => {
                   <p className="text-gray-700 leading-relaxed mb-4">
                     <span className="font-semibold text-[#232323]">Vereinfacht:</span> Jedes Unternehmen in Deutschland mit <span className="font-semibold text-[#e24e1b]">20+ Mitarbeitern</span>, die Zugriff auf personenbezogene Daten haben, benötigt nach EU-DSGVO einen DSB.
                   </p>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed mb-4">
                     Aber: Die Mitarbeiterzahl ist nicht das einzige Kriterium. Auch beim Umgang mit <span className="font-semibold text-[#232323]">sensiblen Kundendaten</span> (z.B. Gesundheitsdaten) wird ein DSB vorgeschrieben - unabhängig von der Unternehmensgröße.
                   </p>
+                  <Link
+                    to="/wissen/leitfaden/datenschutzbeauftragter#wer-braucht"
+                    className="inline-flex items-center gap-2 text-[#e24e1b] hover:text-[#ea580c] font-semibold group"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    <span className="underline">Detaillierte Benennungspflicht-Kriterien</span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>
@@ -684,7 +692,7 @@ const ExternerDatenschutzbeauftragter: React.FC = () => {
                   <p className="text-gray-700 leading-relaxed mb-4">
                     Ein externer Datenschutzbeauftragter wird konsultiert bei:
                   </p>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 mb-4">
                     {[
                       'Einführung kritischer IT-Systeme',
                       'Datenverlust durch Cyberangriffe',
@@ -698,6 +706,14 @@ const ExternerDatenschutzbeauftragter: React.FC = () => {
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    to="/wissen/leitfaden/datenschutzbeauftragter#aufgaben"
+                    className="inline-flex items-center gap-2 text-[#e24e1b] hover:text-[#ea580c] font-semibold text-sm group"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    <span className="underline">Vollständige Aufgabenliste ansehen</span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>

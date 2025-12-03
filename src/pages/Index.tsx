@@ -49,7 +49,8 @@ const Index = () => {
     "url": "https://marsstein.ai",
     "logo": "https://marsstein.ai/logomarsstein.png",
     "sameAs": [
-      "https://www.linkedin.com/company/marsstein"
+      "https://www.linkedin.com/company/marsstein",
+      "https://instagram.com/marsstein.ai"
     ],
     "description": "Marsstein ist Ihr Partner für Compliance, Datenschutz und KI-Governance. Wir unterstützen Sie bei DSGVO, ISO 27001, NIS2 und EU AI Act."
   };

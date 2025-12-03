@@ -1,0 +1,257 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" />
+      <mj-text line-height="1.6" font-size="16px" color="#374151" />
+    </mj-attributes>
+    <mj-style inline="inline">
+      .bold { font-weight: 600; }
+      .badge { background: #DCFCE7; color: #166534; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#f9fafb" width="600px">
+    <mj-section background-color="#ffffff" padding="0">
+      <mj-column>
+        <!-- Header with gradient -->
+        <mj-section background-color="#10B981" padding="40px 30px" border-radius="8px 8px 0 0">
+          <mj-column>
+            <mj-text align="center" font-size="28px" font-weight="700" color="#ffffff">
+              🎯 Demo-Anfrage erhalten!
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Confirmation Badge -->
+        <mj-section padding="30px 30px 20px">
+          <mj-column>
+            <mj-text>
+              <span class="badge">DEMO BESTÄTIGUNG</span>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Content -->
+        <mj-section padding="0 30px 20px">
+          <mj-column>
+            <mj-text>
+              Hallo <span class="bold">{DATA_VARIABLE:firstName}</span>,<br/><br/>
+              vielen Dank für Ihr Interesse an einer Demo unserer Compliance-Management-Plattform! Wir freuen uns sehr, Ihnen Marsstein persönlich vorstellen zu dürfen.
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Calendly CTA - Primary -->
+        <mj-section padding="0 30px 30px">
+          <mj-column
+            width="100%"
+            background-color="#DCFCE7"
+            border-radius="8px"
+            padding="25px">
+            <mj-text align="center" color="#166534" font-size="20px" padding="0 0 15px 0">
+              <span class="bold">🚀 Jetzt Ihren Demo-Termin buchen!</span>
+            </mj-text>
+            <mj-text align="center" color="#166534" font-size="14px" padding="0 0 15px 0">
+              Sichern Sie sich direkt einen passenden Zeitslot in unserem Kalender:
+            </mj-text>
+            <mj-button background-color="#10B981" color="#ffffff" font-size="18px" font-weight="700" border-radius="8px" padding="16px 40px" href="https://calendly.com/marsstein">
+              📅 Demo-Termin vereinbaren
+            </mj-button>
+          </mj-column>
+        </mj-section>
+
+        <!-- Info Box with submitted data -->
+        <mj-section padding="0 30px 25px">
+          <mj-column
+            width="100%"
+            padding="1px"
+            background-color="#10B981"
+            inner-background-color="#F3F4F6"
+            border-radius="8px"
+            inner-border-radius="8px">
+
+            <mj-text font-size="18px" color="#1F2937" padding-top="20px" padding-bottom="15px">
+              <span class="bold">📋 Ihre Demo-Anfrage</span>
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Name:</span> {DATA_VARIABLE:firstName}
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">E-Mail:</span> {DATA_VARIABLE:email}
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Unternehmen:</span> {DATA_VARIABLE:company}
+            </mj-text>
+
+            <mj-text padding="0 20px 10px">
+              <span class="bold" style="color: #4B5563;">Thema:</span> {DATA_VARIABLE:topic}
+            </mj-text>
+
+            <mj-text padding="0 20px 20px">
+              <span class="bold" style="color: #4B5563;">Ihre Nachricht:</span><br/>
+              {DATA_VARIABLE:message}
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- What to expect in demo -->
+        <mj-section padding="0 30px">
+          <mj-column>
+            <mj-text font-size="20px" color="#1F2937" padding-bottom="15px">
+              <span class="bold">🎯 Was Sie in der Demo erwartet:</span>
+            </mj-text>
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">Live-Demonstration</span> der Plattform (30-45 Minuten)
+            </mj-text>
+
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0" />
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">Ihre spezifischen Use Cases</span> im Detail besprochen
+            </mj-text>
+
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0" />
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">KI-Automatisierung</span> in Aktion erleben
+            </mj-text>
+
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0" />
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">Q&A Session</span> für alle Ihre Fragen
+            </mj-text>
+
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0" />
+
+            <mj-text padding="12px 0">
+              ✓ <span class="bold">Individuelles Angebot</span> basierend auf Ihren Anforderungen
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Platform Highlights -->
+        <mj-section padding="30px 30px 0">
+          <mj-column>
+            <mj-text font-size="20px" color="#1F2937" padding-bottom="15px">
+              <span class="bold">✨ Platform-Highlights</span>
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              🤖 <span class="bold">KI-Assistent</span> - Beantwortet alle DSGVO-Fragen in Sekunden
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              📋 <span class="bold">Auto-Dokumentation</span> - Verarbeitungsverzeichnis automatisch erstellen
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              ⚡ <span class="bold">Risiko-Scanner</span> - Compliance-Lücken sofort identifizieren
+            </mj-text>
+
+            <mj:text padding="8px 0">
+              🎯 <span class="bold">Smart Workflows</span> - DSFA, TOM, Data Breach Management
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              🔒 <span class="bold">EU-Hosting</span> - Alle Daten bleiben in Deutschland
+            </mj-text>
+
+            <mj-text padding="8px 0">
+              📊 <span class="bold">Compliance Dashboard</span> - Voller Überblick auf einen Blick
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Alternative: Manual Scheduling -->
+        <mj-section padding="25px 30px 15px">
+          <mj-column>
+            <mj-text font-size="18px" color="#1F2937" padding-bottom="15px">
+              <span class="bold">💬 Lieber persönlich abstimmen?</span>
+            </mj-text>
+            <mj-text padding-bottom="10px">
+              Kein Problem! Unser Team meldet sich innerhalb von 4 Stunden (während Geschäftszeiten) bei Ihnen, um einen individuellen Termin zu vereinbaren.
+            </mj-text>
+            <mj-text>
+              Sie können uns auch direkt erreichen:<br/>
+              📧 <a href="mailto:info@marsstein.ai" style="color: #10B981; text-decoration: none;">info@marsstein.ai</a>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Preparation Tips -->
+        <mj-section padding="25px 30px 15px">
+          <mj-column
+            width="100%"
+            background-color="#FEF3C7"
+            border-radius="8px"
+            padding="20px">
+            <mj-text color="#92400E" font-size="16px" padding="0">
+              <span class="bold">💡 Tipp zur Vorbereitung:</span><br/>
+              Überlegen Sie sich vorab:<br/>
+              • Welche Compliance-Anforderungen haben Sie aktuell?<br/>
+              • Welche Prozesse nehmen am meisten Zeit in Anspruch?<br/>
+              • Gibt es spezielle Branchen-Anforderungen?
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Resources -->
+        <mj-section padding="25px 30px 15px">
+          <mj-column>
+            <mj-text font-size="18px" color="#1F2937" padding-bottom="15px">
+              <span class="bold">📚 Schon mal reinschnuppern?</span>
+            </mj-text>
+            <mj-text padding-bottom="10px">
+              Bis zur Demo empfehlen wir:
+            </mj-text>
+            <mj-text padding="5px 0">
+              • <a href="https://marsstein.ai/dsgvo" style="color: #10B981; text-decoration: none;">DSGVO-Compliance Leitfaden</a>
+            </mj-text>
+            <mj-text padding="5px 0">
+              • <a href="https://marsstein.ai/iso-27001-zertifizierung" style="color: #10B981; text-decoration: none;">ISO 27001 Zertifizierungs-Guide</a>
+            </mj-text>
+            <mj-text padding="5px 0">
+              • <a href="https://marsstein.ai/eu-ai-act" style="color: #10B981; text-decoration: none;">EU AI Act - Was Sie wissen müssen</a>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Closing -->
+        <mj-section padding="25px 30px 15px">
+          <mj-column>
+            <mj-text padding-bottom="15px">
+              Wir freuen uns darauf, Sie kennenzulernen und Ihnen zu zeigen, wie Marsstein Ihre Compliance-Prozesse revolutionieren kann!
+            </mj-text>
+
+            <mj-text padding-bottom="15px">
+              Beste Grüße,<br/>
+              <span class="bold">Das Marsstein Team</span>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <!-- Footer -->
+        <mj-section padding="20px" background-color="#F9FAFB">
+          <mj-column>
+            <mj-divider border-width="1px" border-color="#E5E7EB" padding="0 0 15px" />
+            <mj-text align="center" font-size="14px" color="#6B7280">
+              <span class="bold">Marsstein</span> - DSGVO Compliance Automatisierung mit KI
+            </mj-text>
+
+            <mj-text align="center" font-size="13px" color="#9CA3AF" padding-top="10px">
+              <a href="https://marsstein.ai" style="color: #10B981; text-decoration: none;">marsstein.ai</a> ·
+              <a href="https://marsstein.ai/datenschutz" style="color: #9CA3AF; text-decoration: none;">Datenschutz</a> ·
+              <a href="https://marsstein.ai/impressum" style="color: #9CA3AF; text-decoration: none;">Impressum</a>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

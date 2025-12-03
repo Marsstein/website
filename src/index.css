@@ -28,18 +28,14 @@
 
 /* Performance optimizations to prevent flickers */
 @layer base {
-  /* Global smooth scrolling */
+  /* Global smooth scrolling with offset for sticky header + TOC */
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 144px; /* 64px header + 60px TOC + 20px padding */
   }
   
-  /* Optimize all elements for smooth rendering */
+  /* Optimize text rendering only - removed transform to fix Radix portals */
   * {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -61,7 +57,6 @@
   /* Prevent layout shifts during animations */
   [data-component-id] {
     contain: layout style;
-    transform: translate3d(0, 0, 0);
   }
   
   /* GPU acceleration for transformed elements */
@@ -81,16 +76,13 @@
   
   /* Smooth section transitions */
   .smooth-section {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
     will-change: transform, opacity;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   /* Optimize motion components */
   [data-framer-component-type] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    will-change: transform, opacity;
   }
   
   /* Immediate load sections - no animation */
@@ -101,27 +93,23 @@
   
   /* Ultra-smooth content loading - 60fps optimized */
   [data-component-id] {
-    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    transform: translateZ(0);
   }
   
   /* Parallax optimization - instant response */
   .smooth-parallax {
     will-change: transform;
     transition: transform 0.1s linear;
-    transform: translateZ(0);
   }
   
   /* Butter-smooth card transitions */
   .transition-all {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    transform: translateZ(0);
   }
   
   /* Force GPU acceleration for all motion elements */
   [class*="motion"] {
-    transform: translateZ(0);
     will-change: transform, opacity;
   }
   
@@ -835,29 +823,21 @@
 
 .smooth-section {
   will-change: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 .smooth-parallax {
   will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
 /* Precharged animation optimizations */
 .transformation-card {
   will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
   perspective: 1000px;
   contain: layout style paint;
 }
 
 .progress-bar {
   will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 /* Mobile-specific performance optimizations */
@@ -890,8 +870,6 @@ html {
 
 /* Optimized animation performance */
 .gpu-accelerate {
-  transform: translateZ(0);
-  backface-visibility: hidden;
   perspective: 1000px;
 }
 

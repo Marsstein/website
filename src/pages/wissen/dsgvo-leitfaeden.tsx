@@ -276,35 +276,55 @@ const DSGVOLeitfaeden: React.FC = () => {
         keywords="DSGVO Leitfäden, DSGVO Anleitung, DSGVO How-To, DSGVO Praxis, DSGVO Umsetzung, Datenschutz Leitfaden"
         structuredData={structuredData}
       />
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F6F8] via-orange-50/20 to-[#F5F6F8]">
         <Header />
-        
+
+        {/* Breadcrumb */}
+        <div className="container mx-auto max-w-7xl px-4 py-4">
+          <nav aria-label="Breadcrumb">
+            <ol className="flex items-center space-x-2 text-sm">
+              <li><Link to="/wissen" className="text-[#474747] hover:text-[#e24e1b] transition-colors">Wissen</Link></li>
+              <li><span className="mx-2 text-[#474747]">/</span></li>
+              <li className="text-[#e24e1b] font-medium">DSGVO Leitfäden</li>
+            </ol>
+          </nav>
+        </div>
+
         {/* Hero Section */}
-        <section className="pt-24 pb-12 px-4" aria-labelledby="main-heading">
+        <section className="bg-white border-b border-stone-200 pt-20 pb-16 px-4" aria-labelledby="main-heading">
           <div className="container mx-auto max-w-7xl">
             <motion.div
               className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <nav aria-label="Breadcrumb" className="mb-4">
-                <ol className="flex items-center justify-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-                  <li><Link to="/wissen" className="hover:text-brand-red transition-colors">Wissen</Link></li>
-                  <li><span className="mx-2">/</span></li>
-                  <li className="text-gray-900 dark:text-white font-medium">DSGVO Leitfäden</li>
-                </ol>
-              </nav>
-              <Badge className="mb-4 px-4 py-1" variant="outline">
-                <BookOpen className="h-3 w-3 mr-1" />
-                20+ Praxis-Leitfäden
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                DSGVO Leitfäden: Praktische Anleitungen für Ihre Compliance
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Über 20 praxiserprobte Schritt-für-Schritt-Anleitungen für Ihre DSGVO-Compliance. 
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="p-3 bg-[#e24e1b] rounded-xl shadow-sm">
+                  <BookOpen className="h-8 w-8 text-white" />
+                </div>
+                <h1 className="text-4xl md:text-6xl font-bold text-[#232323]">
+                  DSGVO Leitfäden
+                </h1>
+              </div>
+              <p className="text-xl text-[#474747] mb-8 max-w-4xl mx-auto leading-relaxed">
+                Über 20 praxiserprobte Schritt-für-Schritt-Anleitungen für Ihre DSGVO-Compliance.
                 Von Einsteiger-Guides bis zu Experten-Themen – mit Vorlagen und Checklisten.
               </p>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <Badge variant="outline" className="bg-orange-50 border-[#e24e1b] text-[#e24e1b]">
+                  <BookOpen className="h-4 w-4 mr-2" />
+                  20+ Praxis-Leitfäden
+                </Badge>
+                <Badge variant="outline" className="bg-blue-50 border-[#003366] text-[#003366]">
+                  <CheckCircle2 className="h-4 w-4 mr-2" />
+                  Mit Vorlagen & Checklisten
+                </Badge>
+                <Badge variant="outline" className="bg-stone-100 border-stone-400 text-[#474747]">
+                  <Target className="h-4 w-4 mr-2" />
+                  Für alle Levels
+                </Badge>
+              </div>
             </motion.div>
 
             {/* Featured Guide */}
@@ -314,17 +334,16 @@ const DSGVOLeitfaeden: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <Card className="bg-gradient-to-r from-blue-600 to-blue-700 text-white overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32" />
+              <Card className="bg-white border-l-4 border-[#e24e1b] shadow-lg overflow-hidden">
                 <CardContent className="p-8 relative">
                   <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="flex-1">
-                      <Badge className="mb-3 bg-white/20 text-white border-white/30">
+                      <Badge className="mb-3 bg-orange-50 text-[#e24e1b] border-[#e24e1b]">
                         Featured Guide
                       </Badge>
-                      <h2 className="text-2xl font-bold mb-2" id="main-heading">{featuredGuide.title}</h2>
-                      <p className="text-blue-100 mb-4">{featuredGuide.description}</p>
-                      <div className="flex flex-wrap gap-4 text-sm">
+                      <h2 className="text-2xl font-bold mb-2 text-[#232323]" id="main-heading">{featuredGuide.title}</h2>
+                      <p className="text-[#474747] mb-4">{featuredGuide.description}</p>
+                      <div className="flex flex-wrap gap-4 text-sm text-[#474747]">
                         <span className="flex items-center gap-1">
                           <FileText className="h-4 w-4" />
                           {featuredGuide.stats.pages} Seiten
@@ -344,7 +363,7 @@ const DSGVOLeitfaeden: React.FC = () => {
                       </div>
                     </div>
                     <Link to={featuredGuide.link}>
-                      <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-50">
+                      <Button size="lg" className="bg-[#e24e1b] hover:bg-[#f97316] text-white shadow-sm">
                         Guide herunterladen
                         <Download className="ml-2 h-5 w-5" />
                       </Button>
@@ -353,14 +372,17 @@ const DSGVOLeitfaeden: React.FC = () => {
                 </CardContent>
               </Card>
             </motion.div>
+          </div>
+        </section>
 
-            {/* Category Tabs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
+        {/* Category Tabs */}
+        <section className="container mx-auto max-w-7xl px-4 py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
                 <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-8">
                   {Object.entries(categories).map(([key, category]) => {
                     const Icon = category.icon;
@@ -376,7 +398,7 @@ const DSGVOLeitfaeden: React.FC = () => {
                 {Object.entries(guides).map(([key, categoryGuides]) => (
                   <TabsContent key={key} value={key}>
                     <div className="mb-6">
-                      <p className="text-gray-600 dark:text-gray-400">
+                      <p className="text-[#474747]">
                         {categories[key as keyof typeof categories].description}
                       </p>
                     </div>
@@ -391,64 +413,67 @@ const DSGVOLeitfaeden: React.FC = () => {
                             transition={{ delay: index * 0.1 }}
                           >
                             <Card className={cn(
-                              "h-full hover:shadow-lg transition-all group",
-                              guide.urgent && "border-red-200 dark:border-red-800",
-                              guide.popular && "border-blue-200 dark:border-blue-800"
+                              "h-full bg-white border-l-4 border-stone-200 hover:border-l-[#e24e1b] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group",
+                              guide.urgent && "border-l-red-500",
+                              guide.popular && "border-l-[#e24e1b]"
                             )}>
                               <CardHeader>
                                 <div className="flex items-start justify-between mb-2">
                                   <div className="flex items-start gap-3">
                                     <div className={cn(
                                       "w-10 h-10 rounded-lg flex items-center justify-center",
-                                      guide.urgent ? "bg-red-100 dark:bg-red-900" : "bg-gray-100 dark:bg-gray-800"
+                                      guide.urgent ? "bg-red-50" : "bg-[#F5F6F8]"
                                     )}>
                                       <Icon className={cn(
                                         "h-5 w-5",
-                                        guide.urgent ? "text-red-600 dark:text-red-400" : "text-gray-600 dark:text-gray-400"
+                                        guide.urgent ? "text-red-600" : "text-[#474747]"
                                       )} />
                                     </div>
                                     <div className="flex-1">
-                                      <CardTitle className="text-lg group-hover:text-brand-red transition-colors">
+                                      <CardTitle className="text-lg text-[#232323] group-hover:text-[#e24e1b] transition-colors">
                                         {guide.title}
                                       </CardTitle>
                                       {guide.popular && (
-                                        <Badge variant="secondary" className="mt-1">
+                                        <Badge className="mt-1 bg-yellow-50 text-yellow-700 border-yellow-200">
                                           Beliebt
                                         </Badge>
                                       )}
                                       {guide.tool && (
-                                        <Badge variant="outline" className="mt-1">
+                                        <Badge variant="outline" className="mt-1 border-[#e24e1b] text-[#e24e1b]">
                                           Interaktives Tool
                                         </Badge>
                                       )}
                                     </div>
                                   </div>
-                                  <Badge variant="outline">{guide.difficulty}</Badge>
+                                  <Badge className={cn(
+                                    guide.difficulty === 'Einsteiger' ? 'bg-green-50 text-green-700 border-green-200' :
+                                    guide.difficulty === 'Fortgeschritten' ? 'bg-orange-50 text-[#e24e1b] border-orange-200' :
+                                    'bg-red-50 text-red-700 border-red-200'
+                                  )}>{guide.difficulty}</Badge>
                                 </div>
-                                <CardDescription>{guide.description}</CardDescription>
+                                <CardDescription className="text-[#474747]">{guide.description}</CardDescription>
                               </CardHeader>
                               <CardContent>
                                 <div className="space-y-3">
-                                  <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                                  <div className="flex items-center gap-4 text-sm text-[#474747]">
                                     <span className="flex items-center gap-1">
                                       <Clock className="h-4 w-4" />
                                       {guide.readTime}
                                     </span>
                                   </div>
-                                  
+
                                   <div className="space-y-1">
                                     {guide.highlights.map((highlight, idx) => (
-                                      <div key={idx} className="flex items-center gap-2 text-sm">
-                                        <CheckCircle2 className="h-3 w-3 text-green-500 flex-shrink-0" />
+                                      <div key={idx} className="flex items-center gap-2 text-sm text-[#474747]">
+                                        <CheckCircle2 className="h-3 w-3 text-green-600 flex-shrink-0" />
                                         <span>{highlight}</span>
                                       </div>
                                     ))}
                                   </div>
 
                                   <Link to={guide.link}>
-                                    <Button 
-                                      variant="ghost" 
-                                      className="w-full justify-between group-hover:text-brand-red mt-4"
+                                    <Button
+                                      className="w-full justify-between bg-[#e24e1b] hover:bg-[#f97316] text-white shadow-sm mt-4"
                                     >
                                       Leitfaden öffnen
                                       <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -468,7 +493,7 @@ const DSGVOLeitfaeden: React.FC = () => {
 
             {/* Quick Access */}
             <section aria-label="Weitere DSGVO-Ressourcen" className="mt-16">
-            <h2 className="text-2xl font-bold text-center mb-8 text-gray-900 dark:text-white">
+            <h2 className="text-2xl font-bold text-center mb-8 text-[#232323]">
               Weitere hilfreiche DSGVO-Ressourcen
             </h2>
             <motion.div
@@ -477,14 +502,16 @@ const DSGVOLeitfaeden: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <Card className="text-center">
+              <Card className="text-center bg-white border-l-4 border-stone-200 hover:border-l-[#e24e1b] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <CardContent className="p-6">
-                  <FileText className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2 text-lg">Vorlagen-Sammlung</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#F5F6F8] flex items-center justify-center mx-auto mb-4">
+                    <FileText className="h-6 w-6 text-[#474747]" />
+                  </div>
+                  <h3 className="font-semibold mb-2 text-lg text-[#232323]">Vorlagen-Sammlung</h3>
+                  <p className="text-sm text-[#474747] mb-4 leading-relaxed">
                     Über 50 DSGVO-Vorlagen zum Download
                   </p>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" className="border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white" asChild>
                     <Link to="/vorlagen/dsgvo">
                       Zu den Vorlagen
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -493,14 +520,16 @@ const DSGVOLeitfaeden: React.FC = () => {
                 </CardContent>
               </Card>
 
-              <Card className="text-center">
+              <Card className="text-center bg-white border-l-4 border-stone-200 hover:border-l-[#e24e1b] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <CardContent className="p-6">
-                  <CheckCircle2 className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2 text-lg">DSGVO-Checkliste</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#F5F6F8] flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 className="h-6 w-6 text-[#474747]" />
+                  </div>
+                  <h3 className="font-semibold mb-2 text-lg text-[#232323]">DSGVO-Checkliste</h3>
+                  <p className="text-sm text-[#474747] mb-4 leading-relaxed">
                     Interaktive Checkliste mit 100+ Punkten
                   </p>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" className="border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white" asChild>
                     <Link to="/assessment-center/dsgvo-compliance-checklist">
                       Checkliste starten
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -509,14 +538,16 @@ const DSGVOLeitfaeden: React.FC = () => {
                 </CardContent>
               </Card>
 
-              <Card className="text-center">
+              <Card className="text-center bg-white border-l-4 border-stone-200 hover:border-l-[#e24e1b] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <CardContent className="p-6">
-                  <Users className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2 text-lg">Experten-Support</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#F5F6F8] flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-6 w-6 text-[#474747]" />
+                  </div>
+                  <h3 className="font-semibold mb-2 text-lg text-[#232323]">Experten-Support</h3>
+                  <p className="text-sm text-[#474747] mb-4 leading-relaxed">
                     Persönliche Beratung für komplexe Fälle
                   </p>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" className="border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white" asChild>
                     <Link to="/contact">
                       Beratung anfragen
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -534,26 +565,25 @@ const DSGVOLeitfaeden: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <Card className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 text-white p-8">
-                <h2 className="text-2xl font-bold mb-4">
+              <Card className="bg-white border-l-4 border-[#e24e1b] shadow-lg p-8">
+                <h2 className="text-2xl font-bold mb-4 text-[#232323]">
                   Maßgeschneiderte DSGVO-Leitfäden für Ihr Unternehmen
                 </h2>
-                <p className="text-lg mb-6 opacity-90">
+                <p className="text-lg mb-6 text-[#474747] leading-relaxed">
                   Wir erstellen maßgeschneiderte DSGVO-Leitfäden für Ihre spezifischen Anforderungen
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    size="lg" 
-                    variant="secondary"
-                    className="bg-white text-gray-900 hover:bg-gray-100"
+                  <Button
+                    size="lg"
+                    className="bg-[#e24e1b] hover:bg-[#f97316] text-white shadow-sm"
                   >
                     Individuellen Leitfaden anfragen
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-gray-900"
+                    className="border-[#e24e1b] text-[#e24e1b] hover:bg-[#e24e1b] hover:text-white"
                   >
                     Workshop buchen
                     <ExternalLink className="ml-2 h-5 w-5" />

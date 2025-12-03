@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHog Setup - Beta Analytics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e24e1b 0%, #f97316 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .step {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #e24e1b;
+        }
+
+        .step h3 {
+            color: #e24e1b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            background: #e24e1b;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #e24e1b;
+        }
+
+        button {
+            background: linear-gradient(135deg, #e24e1b 0%, #f97316 100%);
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+
+        .result.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #e24e1b;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .link {
+            color: #e24e1b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .insights-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .insights-list li {
+            padding: 10px;
+            background: white;
+            margin: 8px 0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .insights-list li::before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 PostHog Setup</h1>
+            <p>Automatisches Setup für Beta Page Analytics</p>
+        </div>
+
+        <div class="content">
+            <div class="step">
+                <h3>
+                    <span class="step-number">1</span>
+                    Hol dir deinen Personal API Key
+                </h3>
+                <p>Gehe zu <a href="https://eu.posthog.com/settings/user-api-keys" target="_blank" class="link">PostHog API Keys</a> und erstelle einen neuen Key.</p>
+                <input type="password" id="apiKey" placeholder="phx_...">
+            </div>
+
+            <div class="step">
+                <h3>
+                    <span class="step-number">2</span>
+                    Setup starten
+                </h3>
+                <p>Klicke auf den Button unten um automatisch zu erstellen:</p>
+                <ul class="insights-list">
+                    <li>Beta Signup Conversion Funnel (5 Steps)</li>
+                    <li>Scroll Depth Distribution Chart</li>
+                    <li>CTA Click Performance Chart</li>
+                    <li>Form Field Drop-off Analysis</li>
+                    <li>Beta Conversion Rate Trend</li>
+                    <li>Analytics Dashboard mit allen Insights</li>
+                </ul>
+                <button id="setupBtn" onclick="runSetup()">🎯 Setup starten</button>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Setup läuft... Dies kann 10-20 Sekunden dauern.</p>
+            </div>
+
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://eu.i.posthog.com/api';
+        const PROJECT_API_KEY = 'phc_VD40IEcKzwwg3HK9j3jBoeOB9E7nZBsDS9FF01SEYwY';
+
+        async function posthogRequest(endpoint, method = 'GET', body = null, apiKey = null) {
+            const url = `${API_URL}${endpoint}`;
+            const headers = {
+                'Authorization': `Bearer ${apiKey || PROJECT_API_KEY}`,
+                'Content-Type': 'application/json',
+            };
+
+            const options = { method, headers };
+            if (body) {
+                options.body = JSON.stringify(body);
+            }
+
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                const error = await response.text();
+                throw new Error(`API Error: ${response.status} - ${error}`);
+            }
+            return response.json();
+        }
+
+        async function runSetup() {
+            const apiKey = document.getElementById('apiKey').value;
+            const resultDiv = document.getElementById('result');
+            const loadingDiv = document.getElementById('loading');
+            const setupBtn = document.getElementById('setupBtn');
+
+            if (!apiKey) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '❌ Bitte gib deinen API Key ein.';
+                return;
+            }
+
+            setupBtn.disabled = true;
+            loadingDiv.classList.add('active');
+            resultDiv.style.display = 'none';
+
+            try {
+                // Get Project ID
+                const projects = await posthogRequest('/projects/', 'GET', null, apiKey);
+                const projectId = projects.results[0].id;
+
+                // Create Funnel
+                const funnel = await posthogRequest(`/projects/${projectId}/insights/`, 'POST', {
+                    name: '🎯 Beta Signup Conversion Funnel',
+                    description: 'Track user journey from page view to beta signup',
+                    filters: {
+                        insight: 'FUNNELS',
+                        events: [
+                            {
+                                id: '$pageview',
+                                name: '$pageview',
+                                type: 'events',
+                                order: 0,
+                                properties: [{ key: '$current_url', value: '/beta', operator: 'icontains', type: 'event' }]
+                            },
+                            {
+                                id: 'section_viewed',
+                                name: 'section_viewed',
+                                type: 'events',
+                                order: 1,
+                                properties: [{ key: 'section', value: 'beta_problem_section', operator: 'exact', type: 'event' }]
+                            },
+                            {
+                                id: 'section_viewed',
+                                name: 'section_viewed',
+                                type: 'events',
+                                order: 2,
+                                properties: [{ key: 'section', value: 'beta_signup_section', operator: 'exact', type: 'event' }]
+                            },
+                            {
+                                id: 'form_started',
+                                name: 'form_started',
+                                type: 'events',
+                                order: 3,
+                                properties: [{ key: 'form_name', value: 'beta_signup', operator: 'exact', type: 'event' }]
+                            },
+                            {
+                                id: 'form_submitted',
+                                name: 'form_submitted',
+                                type: 'events',
+                                order: 4,
+                                properties: [{ key: 'form_name', value: 'beta_signup', operator: 'exact', type: 'event' }]
+                            }
+                        ],
+                        funnel_window_interval: 30,
+                        funnel_window_interval_unit: 'minute',
+                        date_from: '-30d',
+                        funnel_viz_type: 'steps'
+                    }
+                }, apiKey);
+
+                // Create Insights
+                const insights = [
+                    {
+                        name: '📊 Beta Scroll Depth',
+                        filters: {
+                            insight: 'TRENDS',
+                            events: [{ id: 'scroll_depth', name: 'scroll_depth', type: 'events', properties: [{ key: 'page', value: 'beta', operator: 'exact', type: 'event' }] }],
+                            breakdown: 'depth_percentage',
+                            breakdown_type: 'event',
+                            date_from: '-30d',
+                            display: 'ActionsBar'
+                        }
+                    },
+                    {
+                        name: '🎯 CTA Click Performance',
+                        filters: {
+                            insight: 'TRENDS',
+                            events: [{ id: 'button_click', name: 'button_click', type: 'events', properties: [{ key: 'button_name', value: 'beta_cta', operator: 'exact', type: 'event' }] }],
+                            breakdown: 'location',
+                            breakdown_type: 'event',
+                            date_from: '-30d',
+                            display: 'ActionsBar'
+                        }
+                    },
+                    {
+                        name: '📝 Form Field Drop-off',
+                        filters: {
+                            insight: 'TRENDS',
+                            events: [{ id: 'form_field_completed', name: 'form_field_completed', type: 'events', properties: [{ key: 'form_name', value: 'beta_signup', operator: 'exact', type: 'event' }] }],
+                            breakdown: 'field',
+                            breakdown_type: 'event',
+                            date_from: '-30d',
+                            display: 'ActionsBar'
+                        }
+                    }
+                ];
+
+                const createdInsights = [];
+                for (const insight of insights) {
+                    const created = await posthogRequest(`/projects/${projectId}/insights/`, 'POST', insight, apiKey);
+                    createdInsights.push(created);
+                }
+
+                // Create Dashboard
+                const dashboard = await posthogRequest(`/projects/${projectId}/dashboards/`, 'POST', {
+                    name: '📊 Beta Page Analytics',
+                    description: 'Complete analytics dashboard for beta signup page',
+                    pinned: true,
+                    tiles: [funnel, ...createdInsights].map((insight, index) => ({
+                        insight: insight.id,
+                        layouts: {
+                            sm: { x: 0, y: index * 6, w: 6, h: 5 }
+                        }
+                    }))
+                }, apiKey);
+
+                loadingDiv.classList.remove('active');
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = `
+                    <h3>✅ Setup erfolgreich abgeschlossen!</h3>
+                    <p style="margin: 15px 0;">Folgende Ressourcen wurden erstellt:</p>
+                    <ul class="insights-list">
+                        <li>Conversion Funnel (ID: ${funnel.id})</li>
+                        <li>${createdInsights.length} Insights erstellt</li>
+                        <li>Analytics Dashboard (ID: ${dashboard.id})</li>
+                    </ul>
+                    <a href="https://eu.posthog.com/project/${projectId}/dashboard/${dashboard.id}"
+                       target="_blank"
+                       class="link"
+                       style="display: block; text-align: center; margin-top: 20px; font-size: 16px;">
+                        🔗 Dashboard in PostHog öffnen
+                    </a>
+                `;
+
+            } catch (error) {
+                loadingDiv.classList.remove('active');
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ Fehler beim Setup</h3>
+                    <p style="margin: 10px 0;">${error.message}</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; font-weight: bold;">Fehlerdetails anzeigen</summary>
+                        <div class="code">${error.stack}</div>
+                    </details>
+                `;
+            } finally {
+                setupBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

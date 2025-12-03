@@ -432,6 +432,44 @@ const SaaS: React.FC = () => {
           </div>
         </section>
 
+        {/* Knowledge Resources Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="container px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  SaaS Compliance Deep Dives
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300">
+                  Enterprise-ready Compliance-Wissen für SaaS-Unternehmen und Plattformen
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Link to="/wissen/branchen/saas-privacy-design">
+                  <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-r from-purple-500 to-cyan-600 text-white">
+                        <Cloud className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">SaaS Privacy by Design</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          Multi-Tenant Architektur, SOC 2 Type II und Enterprise-Readiness für SaaS-Plattformen
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-purple-600">
+                          <span>Zum Guide</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-purple-600 to-cyan-600">
           <div className="container px-4">
@@ -440,14 +478,14 @@ const SaaS: React.FC = () => {
                 Zukunftssichere SaaS Compliance
               </h2>
               <p className="text-xl mb-8 text-white/90">
-                Entwickeln Sie Enterprise-Ready SaaS-Produkte mit DSGVO, EU AI Act 
+                Entwickeln Sie Enterprise-Ready SaaS-Produkte mit DSGVO, EU AI Act
                 und SOC 2 Compliance von Anfang an.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact?demo=true&industry=saas">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="bg-white text-purple-600 hover:bg-gray-100 group"
                   >
                     <Cloud className="mr-2 h-5 w-5" />
@@ -455,6 +493,23 @@ const SaaS: React.FC = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
+                <Link to="/wissen/branchen/saas-privacy-design">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-transparent text-white border-white hover:bg-white/10"
+                  >
+                    <FileCheck className="mr-2 h-5 w-5" />
+                    SaaS Privacy Guide
+                  </Button>
+                </Link>
+              </div>
+
+              <div className="mt-8 flex items-center justify-center gap-2 text-white/80">
+                <Sparkles className="h-4 w-4" />
+                <span className="text-sm">
+                  Enterprise-Ready Compliance für skalierbare SaaS-Plattformen
+                </span>
               </div>
             </div>
           </div>

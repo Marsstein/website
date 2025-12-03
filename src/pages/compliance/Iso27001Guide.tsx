@@ -2026,8 +2026,13 @@ const Iso27001Guide: React.FC = () => {
                                     ))}
                                   </ul>
                                 </div>
+                                <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                                  <p className="text-sm text-slate-300 leading-relaxed">
+                                    <strong className="text-blue-300">Tipp:</strong> Ein <strong>Datenschutzbeauftragter (DSB)</strong> koordiniert oft die Schnittstelle zwischen ISO 27001 und DSGVO-Compliance. → <Link to="/wissen/leitfaden/datenschutzbeauftragter" className="text-blue-400 hover:text-blue-300 font-semibold underline">Mehr über DSB-Aufgaben</Link>
+                                  </p>
+                                </div>
                               </div>
-                              
+
                               <div className="space-y-4">
                                 <h4 className="text-lg font-bold text-white flex items-center gap-2">
                                   <Network className="h-5 w-5 text-emerald-400" />

@@ -1,11 +1,16 @@
 import React from 'react';
-import { Mail, MapPin, User, Building } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { Mail, MapPin, User } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 const Impressum: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Impressum | Marsstein GmbH</title>
+      </Helmet>
       <Header />
       <main className="py-16">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -20,6 +25,7 @@ const Impressum: React.FC = () => {
                 <User className="w-5 h-5 text-gray-600 mt-1" />
                 <div>
                   <p className="text-gray-700">Marsstein GmbH i.G.</p>
+                  <p className="text-gray-700 mt-1">Geschäftsführer: Zhihu Chen</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">

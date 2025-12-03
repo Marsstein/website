@@ -101,6 +101,8 @@ const translations = {
     pricing_custom_title: 'Need a custom solution?',
     pricing_custom_desc: 'Contact our sales team for a tailored enterprise solution.',
     pricing_contact_sales: 'Contact Sales',
+    pricing_beta_title: 'Beta Phase',
+    pricing_beta_description: 'We are currently in beta. Prices and features are subject to change. Get in touch to learn more about our early access program.',
 
     // Hero Section
     hero_headline: 'GDPR & ISO27001 Compliance Made Simple',
@@ -323,6 +325,8 @@ const translations = {
     pricing_custom_title: 'Individuelle Lösung benötigt?',
     pricing_custom_desc: 'Kontaktiere unser Sales-Team für eine maßgeschneiderte Enterprise-Lösung.',
     pricing_contact_sales: 'Sales kontaktieren',
+    pricing_beta_title: 'Early Bird Launch',
+    pricing_beta_description: 'Sichern Sie sich jetzt den Early Bird Preis. Kontaktieren Sie uns für ein individuelles Angebot.',
 
     // Hero Section
     hero_headline: 'DSGVO & ISO27001 Compliance leicht gemacht',
@@ -405,9 +409,9 @@ const translations = {
     thank_you_step_1: 'Unsere Compliance-Experten werden Ihre Anfrage prüfen',
     thank_you_step_2: 'Wir kontaktieren Sie innerhalb von 24 Stunden, um eine Beratung zu vereinbaren',
     thank_you_step_3: 'Sie erhalten einen personalisierten Compliance-Assessment-Vorschlag',
-    thank_you_demo_question: 'Möchten Sie eine Demo unseres Dashboards sehen?',
-    thank_you_demo_description: 'Erleben Sie unsere Compliance-Management-Plattform mit einer interaktiven Demo mit echten Compliance-Szenarien.',
-    thank_you_view_demo: 'Interaktive Demo ansehen',
+    thank_you_demo_question: 'Möchten Sie direkt einen Termin vereinbaren?',
+    thank_you_demo_description: 'Buchen Sie jetzt einen persönlichen Beratungstermin mit unseren Compliance-Experten.',
+    thank_you_view_demo: 'Termin vereinbaren',
     thank_you_back_home: 'Zurück zur Startseite',
     thank_you_contact_info: 'Benötigen Sie sofortige Hilfe?',
     thank_you_response_time: 'Antwortzeit: Innerhalb von 24 Stunden',
@@ -461,13 +465,13 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Initialize language from localStorage or default to 'en'
+  // Initialize language from localStorage or default to 'de'
   const [language, setLanguage] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('marsstein-language');
-      return (saved === 'en' || saved === 'de') ? saved : 'en';
+      return (saved === 'en' || saved === 'de') ? saved : 'de';
     }
-    return 'en';
+    return 'de';
   });
 
   // Save language to localStorage whenever it changes

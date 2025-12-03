@@ -10,12 +10,36 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin, Clock, Monitor, Shield } from 'lucide-react';
-import { getEmailJS } from '@/utils/lazyImports';
 import { SimpleCalendlySection } from '@/components/SimpleCalendlySection';
 
 interface ContactFormProps {
   isDemoRequest?: boolean;
 }
+
+const topicOptions = [
+  { value: 'dsgvo-compliance', label: 'DSGVO-Compliance' },
+  { value: 'datenschutzbeauftragter', label: 'Externer Datenschutzbeauftragter' },
+  { value: 'datenschutz-audit', label: 'Datenschutz-Audit' },
+  { value: 'data-breach', label: 'Data Breach Response' },
+  { value: 'iso-27001', label: 'ISO 27001 Zertifizierung' },
+  { value: 'soc2', label: 'SOC 2 Compliance' },
+  { value: 'tisax', label: 'TISAX Zertifizierung' },
+  { value: 'nis2', label: 'NIS2-Compliance' },
+  { value: 'ai-governance', label: 'KI-Governance & EU AI Act' },
+  { value: 'ai-risk', label: 'AI Risk Assessment' },
+  { value: 'healthcare', label: 'Healthcare Compliance' },
+  { value: 'fintech', label: 'FinTech Compliance' },
+  { value: 'ecommerce', label: 'E-Commerce Datenschutz' },
+  { value: 'saas', label: 'SaaS Compliance' },
+  { value: 'compliance-platform', label: 'Compliance Management Platform' },
+  { value: 'whistleblower', label: 'Whistleblower-System' },
+  { value: 'cookie-management', label: 'Cookie-Management' },
+  { value: 'consulting', label: 'Compliance-Beratung' },
+  { value: 'training', label: 'Team-Schulungen' },
+  { value: 'demo', label: 'Demo anfordern' },
+  { value: 'partnership', label: 'Partnerschaft' },
+  { value: 'other', label: 'Sonstiges' }
+];
 
 export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false }) => {
   const { t } = useLanguage();
@@ -26,12 +50,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
 
   const [formData, setFormData] = useState({
     firstName: '',
-    lastName: '',
     email: '',
     phone: '',
     company: '',
-    jobTitle: '',
-    employees: '',
+    topic: '',
     message: isDemoRequest ? 'I would like to request a demo of your compliance management platform.' : '',
     newsletter: false,
     privacy: false,
@@ -39,7 +61,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
   });  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Rate limiting: prevent multiple submissions within 30 seconds
     const now = Date.now();
     if (lastSubmissionTime && now - lastSubmissionTime < 30000) {
       toast({
@@ -59,46 +80,20 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
       return;
     }
 
-
     setIsLoading(true);
 
     try {
-      // EmailJS configuration - these values come from your .env.local file
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-      // Development only logging
-      if (import.meta.env.DEV) {
-        console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey ? 'Set' : 'Missing' });
-      }
-
-      if (!serviceId || !templateId || !publicKey) {
-        if (import.meta.env.DEV) {
-          console.error('EmailJS configuration missing:', { serviceId, templateId, publicKey });
-        }
-        throw new Error('EmailJS configuration is missing. Please check your .env.local file.');
-      }
-
-      // Lazy load and initialize EmailJS
-      const emailjs = await getEmailJS();
-      emailjs.init(publicKey);
-
-      // Input sanitization and validation
       const sanitizedData = {
         firstName: formData.firstName.trim().slice(0, 50),
-        lastName: formData.lastName.trim().slice(0, 50),
         email: formData.email.trim().toLowerCase(),
         phone: formData.phone.trim().slice(0, 20),
         company: formData.company.trim().slice(0, 100),
-        jobTitle: formData.jobTitle.trim().slice(0, 100),
-        employees: formData.employees,
+        topic: formData.topic,
         message: formData.message.trim().slice(0, 2000),
         isDemoRequest: formData.isDemoRequest,
         newsletter: formData.newsletter
       };
 
-      // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(sanitizedData.email)) {
         toast({
@@ -106,36 +101,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({ isDemoRequest = false 
           description: 'Please enter a valid email address.',
           variant: "destructive",
         });
+        setIsLoading(false);
         return;
       }
 
-      // Prepare the email template parameters with sanitized data
-      const templateParams = {
-        name: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
-        email: sanitizedData.email,
-        message: `
-Contact Details:
-- Name: ${sanitizedData.firstName} ${sanitizedData.lastName}
-- Email: ${sanitizedData.email}
-- Phone: ${sanitizedData.phone}
-- Company: ${sanitizedData.company}
-- Job Title: ${sanitizedData.jobTitle}
-- Employees: ${sanitizedData.employees}
-- Demo Request: ${sanitizedData.isDemoRequest ? 'YES' : 'NO'}
-- Newsletter: ${sanitizedData.newsletter ? 'YES' : 'NO'}
+      const response = await fetch('/api/contact-submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sanitizedData)
+      });
 
-Message:
-${sanitizedData.message}
-        `,
-      };
+      const result = await response.json();
 
-      // Send email using EmailJS
-      if (import.meta.env.DEV) {
-        console.log('Sending email with params:', templateParams);
-      }
-      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      if (import.meta.env.DEV) {
-        console.log('EmailJS result:', result);
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
       }
 
       toast({
@@ -143,52 +124,33 @@ ${sanitizedData.message}
         description: t('contact_success_message'),
       });
 
-      // Update last submission time
       setLastSubmissionTime(Date.now());
 
-      // Reset form
       setFormData({
         firstName: '',
-        lastName: '',
         email: '',
         phone: '',
         company: '',
-        jobTitle: '',
-        employees: '',
+        topic: '',
         message: '',
         newsletter: false,
         privacy: false,
         isDemoRequest: false
       });
 
-      // Navigate to thank you page after successful submission
       setTimeout(() => {
         navigate('/thank-you');
-      }, 1500); // Short delay to show the success toast
+      }, 1500);
 
     } catch (error) {
       if (import.meta.env.DEV) {
-        console.error('Full error details:', error);
-        if (error && typeof error === 'object') {
-          console.error('Error message:', (error as any).message);
-          console.error('Error status:', (error as any).status);
-          console.error('Error text:', (error as any).text);
-        }
+        console.error('Contact form error:', error);
       }
 
       let errorMessage = 'Failed to send message. Please try again or contact us directly.';
 
-      if (error && typeof error === 'object') {
-        const err = error as any;
-        if (err.status === 400) {
-          errorMessage = 'Invalid template parameters. Please check the form data.';
-        } else if (err.status === 401) {
-          errorMessage = 'EmailJS authentication failed. Please check your public key.';
-        } else if (err.status === 404) {
-          errorMessage = 'EmailJS service or template not found. Please check your service ID and template ID.';
-        } else if (err.text) {
-          errorMessage = `EmailJS error: ${err.text}`;
-        }
+      if (error instanceof Error) {
+        errorMessage = error.message;
       }
 
       toast({
@@ -258,18 +220,27 @@ ${sanitizedData.message}
           <SimpleCalendlySection />
 
           {/* Contact Info */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <Mail className="h-5 w-5 text-primary" />
-              <span>info@marsstein.ai</span>
+          <div className="space-y-6">
+            <div>
+              <div className="flex items-center gap-3 mb-1">
+                <Mail className="h-5 w-5 text-primary" />
+                <span className="font-semibold">E-Mail</span>
+              </div>
+              <div className="ml-8">
+                <a href="mailto:info@marsstein.ai" className="hover:underline">info@marsstein.ai</a>
+                <p className="text-sm text-muted-foreground">Antwort innerhalb von 24 Stunden</p>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="h-5 w-5 text-primary" />
-              <span>{t('contact_address')}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Clock className="h-5 w-5 text-primary" />
-              <span>{t('contact_hours')}</span>
+
+            <div>
+              <div className="flex items-center gap-3 mb-1">
+                <Phone className="h-5 w-5 text-primary" />
+                <span className="font-semibold">Telefon</span>
+              </div>
+              <div className="ml-8">
+                <a href="tel:+4917670560292" className="hover:underline">+49 176 70560292</a>
+                <p className="text-sm text-muted-foreground">Mo-Fr 9:00-18:00 Uhr</p>
+              </div>
             </div>
           </div>
         </div>
@@ -279,11 +250,13 @@ ${sanitizedData.message}
           <h2 className="text-2xl font-bold mb-6">{t('contact_form_title')}</h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Personal Info */}
-            <div className="grid md:grid-cols-2 gap-4">
+            {/* Contact Details */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Ihre Kontaktdaten</h3>
+
               <div>
                 <Label htmlFor="firstName" className="text-sm font-medium">
-                  {t('contact_first_name')} <span className="text-destructive">*</span>
+                  Vorname <span className="text-destructive">*</span>
                 </Label>
                 <Input
                   id="firstName"
@@ -294,25 +267,10 @@ ${sanitizedData.message}
                   className="mt-1"
                 />
               </div>
-              <div>
-                <Label htmlFor="lastName" className="text-sm font-medium">
-                  {t('contact_last_name')} <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="lastName"
-                  value={formData.lastName}
-                  onChange={(e) => handleInputChange('lastName', e.target.value)}
-                  placeholder="Mustermann"
-                  required
-                  className="mt-1"
-                />
-              </div>
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="email" className="text-sm font-medium">
-                  {t('contact_email')} <span className="text-destructive">*</span>
+                  E-Mail <span className="text-destructive">*</span>
                 </Label>
                 <Input
                   id="email"
@@ -324,9 +282,10 @@ ${sanitizedData.message}
                   className="mt-1"
                 />
               </div>
+
               <div>
                 <Label htmlFor="phone" className="text-sm font-medium">
-                  {t('contact_phone')}
+                  Telefon
                 </Label>
                 <Input
                   id="phone"
@@ -341,67 +300,61 @@ ${sanitizedData.message}
 
             {/* Company Info */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">{t('contact_company_info')}</h3>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="company" className="text-sm font-medium">
-                    {t('contact_company')} <span className="text-destructive">*</span>
-                  </Label>
-                  <Input
-                    id="company"
-                    value={formData.company}
-                    onChange={(e) => handleInputChange('company', e.target.value)}
-                    placeholder="Musterfirma GmbH"
-                    required
-                    className="mt-1"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="jobTitle" className="text-sm font-medium">
-                    {t('contact_job_title')}
-                  </Label>
-                  <Input
-                    id="jobTitle"
-                    value={formData.jobTitle}
-                    onChange={(e) => handleInputChange('jobTitle', e.target.value)}
-                    placeholder="Geschäftsführer"
-                    className="mt-1"
-                  />
-                </div>
-              </div>
+              <h3 className="text-lg font-semibold">Ihr Unternehmen</h3>
 
               <div>
-                <Label htmlFor="employees" className="text-sm font-medium">
-                  {t('contact_employees')}
+                <Label htmlFor="company" className="text-sm font-medium">
+                  Firma <span className="text-destructive">*</span>
                 </Label>
-                <Select onValueChange={(value) => handleInputChange('employees', value)}>
-                  <SelectTrigger className="mt-1">
-                    <SelectValue placeholder={t('contact_employees_placeholder')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1-10">1-10</SelectItem>
-                    <SelectItem value="11-50">11-50</SelectItem>
-                    <SelectItem value="51-200">51-200</SelectItem>
-                    <SelectItem value="201-500">201-500</SelectItem>
-                    <SelectItem value="500+">500+</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  id="company"
+                  value={formData.company}
+                  onChange={(e) => handleInputChange('company', e.target.value)}
+                  placeholder="Musterfirma GmbH"
+                  required
+                  className="mt-1"
+                />
               </div>
             </div>
 
-            {/* Message */}
-            <div>
-              <Label htmlFor="message" className="text-sm font-medium">
-                {t('contact_message')}
-              </Label>
-              <Textarea
-                id="message"
-                value={formData.message}
-                onChange={(e) => handleInputChange('message', e.target.value)}
-                placeholder={t('contact_message_placeholder')}
-                className="mt-1 min-h-[100px]"
-              />
+            {/* Topic */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Ihr Anliegen</h3>
+
+              <div>
+                <Label htmlFor="topic" className="text-sm font-medium">
+                  Thema/Interesse <span className="text-destructive">*</span>
+                </Label>
+                <Select
+                  value={formData.topic}
+                  onValueChange={(value) => handleInputChange('topic', value)}
+                  required
+                >
+                  <SelectTrigger className="mt-1">
+                    <SelectValue placeholder="Bitte wählen Sie ein Thema aus" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {topicOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="message" className="text-sm font-medium">
+                  Nachricht
+                </Label>
+                <Textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  placeholder="Ihre Nachricht an uns..."
+                  className="mt-1 min-h-[100px]"
+                />
+              </div>
             </div>
 
             {/* Checkboxes */}

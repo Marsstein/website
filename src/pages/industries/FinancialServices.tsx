@@ -411,6 +411,64 @@ const FinancialServices: React.FC = () => {
           </div>
         </section>
 
+        {/* Knowledge Resources Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="container px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  FinTech Compliance Deep Dives
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300">
+                  Spezialisiertes Wissen für Finanzdienstleister und FinTech-Unternehmen
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Link to="/wissen/branchen/fintech-compliance">
+                  <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+                        <Building2 className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">FinTech Compliance Strategie</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          Umfassender Guide zu DSGVO, KI-Transparenz und regulatorischen Anforderungen
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-blue-600">
+                          <span>Zum Guide</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+
+                <Link to="/wissen/branchen/insurtech-compliance">
+                  <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+                        <Shield className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">InsurTech Compliance</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          Compliance-Anforderungen für digitale Versicherungsprodukte
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-indigo-600">
+                          <span>Zum Guide</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
           <div className="container px-4">
@@ -419,19 +477,29 @@ const FinancialServices: React.FC = () => {
                 Zukunftssichere FinTech Compliance
               </h2>
               <p className="text-xl mb-8 text-white/90">
-                Entwickeln Sie vertrauensvolle Finanzprodukte mit DSGVO, EU AI Act 
+                Entwickeln Sie vertrauensvolle Finanzprodukte mit DSGVO, EU AI Act
                 und ISO 27001 Compliance von Anfang an.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact?demo=true&industry=financial">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="bg-white text-blue-600 hover:bg-gray-100 group"
                   >
                     <Building2 className="mr-2 h-5 w-5" />
                     FinTech Beratung
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <Link to="/wissen/branchen/fintech-compliance">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-transparent text-white border-white hover:bg-white/10"
+                  >
+                    <FileCheck className="mr-2 h-5 w-5" />
+                    FinTech Compliance Guide
                   </Button>
                 </Link>
               </div>

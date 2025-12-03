@@ -41,8 +41,7 @@ export default defineConfig({
           ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-accordion'],
           motion: ['framer-motion', '@react-spring/web'],
           utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
-          charts: ['recharts'],
-          forms: ['@emailjs/browser']
+          charts: ['recharts']
         }
       },
     },

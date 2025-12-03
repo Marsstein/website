@@ -196,6 +196,7 @@ import {
   Clock11,
   Clock12
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Nis2Guide = () => {
   const [activeSection, setActiveSection] = useState('overview');
@@ -2018,6 +2019,12 @@ const Nis2Guide = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                  <p className="text-sm text-slate-300 leading-relaxed">
+                    <strong className="text-purple-300">Hinweis:</strong> Viele Unternehmen integrieren ihren <strong>Datenschutzbeauftragten (DSB)</strong> in die NIS2-Governance-Struktur, da sich Datenschutz und Informationssicherheit stark überschneiden. → <Link to="/wissen/leitfaden/datenschutzbeauftragter" className="text-purple-400 hover:text-purple-300 font-semibold underline">Mehr über DSB-Rolle in IT-Sicherheit</Link>
+                  </p>
                 </div>
               </CardContent>
             </Card>

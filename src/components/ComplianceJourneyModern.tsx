@@ -305,7 +305,7 @@ export const ComplianceJourneyModern = () => {
                 <Zap className="w-8 h-8 text-blue-600" />
               </motion.div>
               <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                Werden Sie Beta-Tester
+                Jetzt durchstarten
               </h3>
               <p className="text-gray-600">
                 Gestalten Sie die Zukunft der Compliance mit uns
@@ -338,12 +338,12 @@ export const ComplianceJourneyModern = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/beta"
+                to="/dsgvo-compliance-software"
                 className="group relative inline-flex items-center justify-center px-8 py-4 text-white font-medium rounded-xl overflow-hidden transition-all duration-300 hover:scale-105"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:scale-110" />
                 <span className="relative flex items-center gap-2">
-                  Jetzt Beta-Zugang sichern
+                  Jetzt Early Bird Preis sichern
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>

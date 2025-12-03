@@ -432,6 +432,44 @@ const ECommerce: React.FC = () => {
           </div>
         </section>
 
+        {/* Knowledge Resources Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="container px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  E-Commerce Compliance Deep Dives
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300">
+                  Spezialisiertes Wissen für zukunftssichere Online-Shops und Marktplätze
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Link to="/wissen/branchen/ecommerce-privacy">
+                  <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-r from-green-500 to-teal-600 text-white">
+                        <ShoppingCart className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">E-Commerce Privacy Excellence</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          Umfassender Guide zu Cookie-Compliance, Conversion-Optimierung und DSGVO-konformem E-Commerce
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-green-600">
+                          <span>Zum Guide</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-green-600 to-teal-600">
           <div className="container px-4">
@@ -440,14 +478,14 @@ const ECommerce: React.FC = () => {
                 Zukunftssichere E-Commerce Compliance
               </h2>
               <p className="text-xl mb-8 text-white/90">
-                Entwickeln Sie vertrauensvolle Shopping-Erlebnisse mit DSGVO, EU AI Act 
+                Entwickeln Sie vertrauensvolle Shopping-Erlebnisse mit DSGVO, EU AI Act
                 und ISO 27001 Compliance von Anfang an.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact?demo=true&industry=ecommerce">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="bg-white text-green-600 hover:bg-gray-100 group"
                   >
                     <ShoppingCart className="mr-2 h-5 w-5" />
@@ -455,6 +493,23 @@ const ECommerce: React.FC = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
+                <Link to="/wissen/branchen/ecommerce-privacy">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-transparent text-white border-white hover:bg-white/10"
+                  >
+                    <Cookie className="mr-2 h-5 w-5" />
+                    E-Commerce Privacy Guide
+                  </Button>
+                </Link>
+              </div>
+
+              <div className="mt-8 flex items-center justify-center gap-2 text-white/80">
+                <Sparkles className="h-4 w-4" />
+                <span className="text-sm">
+                  Conversion-optimierte Compliance für Online-Handel
+                </span>
               </div>
             </div>
           </div>

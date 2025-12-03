@@ -2,12 +2,13 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SEOWrapper } from "@/components/SEOWrapper";
+import { Analytics } from "@vercel/analytics/react";
 // PageLoader component for Suspense fallback
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-screen">
@@ -19,6 +20,16 @@ const PageLoader = () => (
 const Index = lazy(() => import("./pages/Index"));
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
+
+// Chinese (Simplified) Pages
+const ZhHome = lazy(() => import("./pages/zh/Home"));
+const ZhPricing = lazy(() => import("./pages/zh/Pricing"));
+const ZhAbout = lazy(() => import("./pages/zh/About"));
+const ZhContact = lazy(() => import("./pages/zh/Contact"));
+const ZhGdpr = lazy(() => import("./pages/zh/GdprCompliance"));
+const ZhEuAiAct = lazy(() => import("./pages/zh/EuAiAct"));
+const ZhIso27001Guide = lazy(() => import("./pages/zh/Iso27001Guide"));
+const ChineseLayout = lazy(() => import("./components/layouts/ChineseLayout"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const Academy = lazy(() => import("./pages/Academy"));
 const AcademyPage = lazy(() => import("./pages/AcademyPage"));
@@ -30,7 +41,28 @@ const ThankYou = lazy(() => import("./pages/ThankYou"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
-const Beta = lazy(() => import("./pages/Beta"));
+const AgbSoftware = lazy(() => import("./pages/AgbSoftware"));
+const DsgvoComplianceSoftware = lazy(() => import("./pages/DsgvoComplianceSoftware"));
+const BetaThanks = lazy(() => import("./pages/BetaThanks"));
+const Features = lazy(() => import("./pages/Features"));
+const HumanInTheLoop = lazy(() => import("./pages/HumanInTheLoop"));
+const Datenschutzbeauftragter = lazy(() => import("./pages/Datenschutzbeauftragter"));
+const DatenschutzbeauftragterDetail = lazy(() => import("./pages/DatenschutzbeauftragterDetail"));
+const CnGdpr = lazy(() => import("./pages/CnGdpr"));
+const DsgvoAmazonSellersChina = lazy(() => import("./pages/DsgvoAmazonSellersChina"));
+const DsgvoTikTokShopChina = lazy(() => import("./pages/DsgvoTikTokShopChina"));
+const EuVertreterChina = lazy(() => import("./pages/EuVertreterChina"));
+const JointVentureChinaDatenschutz = lazy(() => import("./pages/JointVentureChinaDatenschutz"));
+const ChinaInvestitionenDsgvoScreening = lazy(() => import("./pages/ChinaInvestitionenDsgvoScreening"));
+const Artikel15DsgvoAuskunftsrechtChina = lazy(() => import("./pages/Artikel15DsgvoAuskunftsrechtChina"));
+const ChinaSccVsEuScc = lazy(() => import("./pages/ChinaSccVsEuScc"));
+const DeepseekDsgvo = lazy(() => import("./pages/DeepseekDsgvo"));
+const DsgvoWeChatAlipayChina = lazy(() => import("./pages/DsgvoWeChatAlipayChina"));
+const DsgvoDouyinChina = lazy(() => import("./pages/DsgvoDouyinChina"));
+const DsgvoB2BHerstellerChina = lazy(() => import("./pages/DsgvoB2BHerstellerChina"));
+const PiplGdprChina = lazy(() => import("./pages/PiplGdprChina"));
+const ChinaDsgvo = lazy(() => import("./pages/wissen/ChinaDsgvo"));
+const DsgvoChecklist = lazy(() => import("./pages/DsgvoChecklist"));
 
 const Resources = lazy(() => import("./pages/Resources").then(module => ({ default: module.Resources })));
 const DSGVOComplianceChecklist = lazy(() => import("./pages/resources/DSGVOComplianceChecklist").then(module => ({ default: module.DSGVOComplianceChecklist })));
@@ -53,6 +85,8 @@ const SecurityControlsAudit = lazy(() => import("./pages/assessment-center/Secur
 const DataProtectionTest = lazy(() => import("./pages/assessment-center/DataProtectionTest"));
 
 const DsgvoCompliance = lazy(() => import("./pages/DsgvoCompliance"));
+const DsgvoAudit = lazy(() => import("./pages/DsgvoAudit"));
+const SiegelVerification = lazy(() => import("./pages/SiegelVerification"));
 const Iso27001Compliance = lazy(() => import("./pages/Iso27001Compliance"));
 const EuAiActCompliance = lazy(() => import("./pages/EuAiActCompliance"));
 const Soc2Compliance = lazy(() => import("./pages/Soc2Compliance"));
@@ -76,7 +110,7 @@ const DsgvoGuides = lazy(() => import("./pages/DsgvoGuides"));
 const KostenGuides = lazy(() => import("./pages/KostenGuides"));
 const ComplianceFrameworks = lazy(() => import("./pages/ComplianceFrameworks"));
 const ComplianceFrameworksGuide = lazy(() => import("./pages/wissen/ComplianceFrameworksGuide"));
-const RiskManagement = lazy(() => import("./pages/RiskManagement"));
+const RiskManagement = lazy(() => import("./pages/wissen/risk-management"));
 const Iso27001Guide = lazy(() => import("./pages/compliance/Iso27001Guide"));
 const Soc2Guide = lazy(() => import("./pages/compliance/Soc2Guide"));
 const EuAiActGuide = lazy(() => import("./pages/compliance/EuAiActGuide"));
@@ -99,7 +133,10 @@ const VerarbeitungsverzeichnisGuide = lazy(() => import("./pages/guides/Verarbei
 const BetroffenenrechteGuide = lazy(() => import("./pages/guides/BetroffenenrechteGuide"));
 const TomMassnahmenGuide = lazy(() => import("./pages/guides/TomMassnahmenGuide"));
 const DsfaDurchfuehrungGuide = lazy(() => import("./pages/guides/DsfaDurchfuehrungGuide"));
-const CrisisManagement = lazy(() => import("./pages/CrisisManagement"));
+const DatenschutzbeauftragterGuide = lazy(() => import("./pages/wissen/leitfaden/datenschutzbeauftragter"));
+const DatenschutzbeauftragterAusbildung = lazy(() => import("./pages/wissen/leitfaden/datenschutzbeauftragter-ausbildung"));
+const LoeschkonzeptGuide = lazy(() => import("./pages/wissen/leitfaden/loeschkonzept"));
+const CrisisManagement = lazy(() => import("./pages/wissen/krisenmanagement"));
 const DataBreach72hGuide = lazy(() => import("./pages/crisis/DataBreach72hGuide"));
 const SecurityIncidentGuide = lazy(() => import("./pages/crisis/SecurityIncidentGuide"));
 const CommunicationTemplatesGuide = lazy(() => import("./pages/crisis/CommunicationTemplatesGuide"));
@@ -121,27 +158,28 @@ const GoogleFontsMunichCase = lazy(() => import("./pages/legal/GoogleFontsMunich
 
 // Branchen Wissen Pages
 const BranchenWissen = lazy(() => import("./pages/BranchenWissen"));
-const HealthcareDsgvoGuide = lazy(() => import("./pages/branchen/HealthcareDsgvoGuide"));
-const HealthcareAiComplianceGuide = lazy(() => import("./pages/branchen/HealthcareAiComplianceGuide"));
-const EdtechPrivacyGuide = lazy(() => import("./pages/branchen/EdtechPrivacyGuide"));
-const FintechComplianceGuide = lazy(() => import("./pages/branchen/FintechComplianceGuide"));
-const EcommercePrivacyGuide = lazy(() => import("./pages/branchen/EcommercePrivacyGuide"));
-const SaasPrivacyDesignGuide = lazy(() => import("./pages/branchen/SaasPrivacyDesignGuide"));
-const Industrie40DatenschutzGuide = lazy(() => import("./pages/branchen/Industrie40DatenschutzGuide"));
-const AutomotiveDatenschutz = lazy(() => import("./pages/branchen/AutomotiveDatenschutz"));
-const SmartGridComplianceGuide = lazy(() => import("./pages/branchen/SmartGridComplianceGuide"));
-const PharmaComplianceGuide = lazy(() => import("./pages/branchen/PharmaComplianceGuide"));
-const ProduktionDatenschutzGuide = lazy(() => import("./pages/branchen/ProduktionDatenschutzGuide"));
-const TravelComplianceGuide = lazy(() => import("./pages/branchen/TravelComplianceGuide"));
-const InsurtechComplianceGuide = lazy(() => import("./pages/branchen/InsurtechComplianceGuide"));
-const PropTechCompliance = lazy(() => import("./pages/branchen/PropTechCompliance"));
-const LogisticsCompliance = lazy(() => import("./pages/branchen/LogisticsCompliance"));
-const DatenschutzPflege = lazy(() => import("./pages/branchen/DatenschutzPflege"));
-const DatenschutzArztpraxis = lazy(() => import("./pages/branchen/DatenschutzArztpraxis"));
-const DatenschutzKindergarten = lazy(() => import("./pages/branchen/DatenschutzKindergarten"));
-const DsgvoVermieter = lazy(() => import("./pages/branchen/DsgvoVermieter"));
+const HealthcareDsgvoGuide = lazy(() => import("./pages/wissen/branchen/HealthcareDsgvoGuide"));
+const HealthcareAiComplianceGuide = lazy(() => import("./pages/wissen/branchen/HealthcareAiComplianceGuide"));
+const EdtechPrivacyGuide = lazy(() => import("./pages/wissen/branchen/EdtechPrivacyGuide"));
+const FintechComplianceGuide = lazy(() => import("./pages/wissen/branchen/FintechComplianceGuide"));
+const EcommercePrivacyGuide = lazy(() => import("./pages/wissen/branchen/EcommercePrivacyGuide"));
+const SaasPrivacyDesignGuide = lazy(() => import("./pages/wissen/branchen/SaasPrivacyDesignGuide"));
+const Industrie40DatenschutzGuide = lazy(() => import("./pages/wissen/branchen/Industrie40DatenschutzGuide"));
+const AutomotiveDatenschutz = lazy(() => import("./pages/wissen/branchen/AutomotiveDatenschutz"));
+const SmartGridComplianceGuide = lazy(() => import("./pages/wissen/branchen/SmartGridComplianceGuide"));
+const PharmaComplianceGuide = lazy(() => import("./pages/wissen/branchen/PharmaComplianceGuide"));
+const ProduktionDatenschutzGuide = lazy(() => import("./pages/wissen/branchen/ProduktionDatenschutzGuide"));
+const TravelComplianceGuide = lazy(() => import("./pages/wissen/branchen/TravelComplianceGuide"));
+const InsurtechComplianceGuide = lazy(() => import("./pages/wissen/branchen/InsurtechComplianceGuide"));
+const PropTechCompliance = lazy(() => import("./pages/wissen/branchen/PropTechCompliance"));
+const LogisticsCompliance = lazy(() => import("./pages/wissen/branchen/LogisticsCompliance"));
+const DatenschutzPflege = lazy(() => import("./pages/wissen/branchen/DatenschutzPflege"));
+const DatenschutzArztpraxis = lazy(() => import("./pages/wissen/branchen/DatenschutzArztpraxis"));
+const DatenschutzKindergarten = lazy(() => import("./pages/wissen/branchen/DatenschutzKindergarten"));
+const DsgvoVermieter = lazy(() => import("./pages/wissen/branchen/DsgvoVermieter"));
 const DsgvoVereineComprehensive = lazy(() => import("./pages/wissen/branchen/DsgvoVereineComprehensive"));
-const DatenschutzBetriebsrat = lazy(() => import("./pages/branchen/DatenschutzBetriebsrat"));
+const DatenschutzBetriebsrat = lazy(() => import("./pages/wissen/branchen/DatenschutzBetriebsrat"));
+const DatenschutzPersonalwesen = lazy(() => import("./pages/wissen/branchen/DatenschutzPersonalwesen"));
 const DatenschutzHomeofficeComprehensive = lazy(() => import("./pages/wissen/branchen/DatenschutzHomeofficeComprehensive"));
 
 // KI Datenschutz Pages
@@ -150,6 +188,36 @@ const KiDatenschutz = lazy(() => import("./pages/KiDatenschutz"));
 // Pricing Page
 const Preise = lazy(() => import("./pages/Preise"));
 const ExternerDatenschutzbeauftragter = lazy(() => import("./pages/ExternerDatenschutzbeauftragter"));
+const ExternerDatenschutzbeauftragterOldenburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterOldenburg"));
+const ExternerDatenschutzbeauftragterHannover = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHannover"));
+const ExternerDatenschutzbeauftragterBremen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBremen"));
+const ExternerDatenschutzbeauftragterDuesseldorf = lazy(() => import("./pages/ExternerDatenschutzbeauftragterDuesseldorf"));
+const ExternerDatenschutzbeauftragterHamburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHamburg"));
+const ExternerDatenschutzbeauftragterHildesheim = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHildesheim"));
+const ExternerDatenschutzbeauftragterStuttgart = lazy(() => import("./pages/ExternerDatenschutzbeauftragterStuttgart"));
+const ExternerDatenschutzbeauftragterMuenchen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMuenchen"));
+const ExternerDatenschutzbeauftragterNuernberg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterNuernberg"));
+const ExternerDatenschutzbeauftragterKoeln = lazy(() => import("./pages/ExternerDatenschutzbeauftragterKoeln"));
+const ExternerDatenschutzbeauftragterWedemark = lazy(() => import("./pages/ExternerDatenschutzbeauftragterWedemark"));
+const ExternerDatenschutzbeauftragterOsnabrueck = lazy(() => import("./pages/ExternerDatenschutzbeauftragterOsnabrueck"));
+const ExternerDatenschutzbeauftragterLueneburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterLueneburg"));
+const ExternerDatenschutzbeauftragterDresden = lazy(() => import("./pages/ExternerDatenschutzbeauftragterDresden"));
+const ExternerDatenschutzbeauftragterDortmund = lazy(() => import("./pages/ExternerDatenschutzbeauftragterDortmund"));
+const ExternerDatenschutzbeauftragterNRW = lazy(() => import("./pages/ExternerDatenschutzbeauftragterNRW"));
+const ExternerDatenschutzbeauftragterBraunschweig = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBraunschweig"));
+const ExternerDatenschutzbeauftragterKarlsruhe = lazy(() => import("./pages/ExternerDatenschutzbeauftragterKarlsruhe"));
+const ExternerDatenschutzbeauftragterCelle = lazy(() => import("./pages/ExternerDatenschutzbeauftragterCelle"));
+const ExternerDatenschutzbeauftragterMagdeburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMagdeburg"));
+const ExternerDatenschutzbeauftragterFrankfurt = lazy(() => import("./pages/ExternerDatenschutzbeauftragterFrankfurt"));
+const ExternerDatenschutzbeauftragterUlm = lazy(() => import("./pages/ExternerDatenschutzbeauftragterUlm"));
+const ExternerDatenschutzbeauftragterHeidelberg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHeidelberg"));
+const ExternerDatenschutzbeauftragterLeipzig = lazy(() => import("./pages/ExternerDatenschutzbeauftragterLeipzig"));
+const ExternerDatenschutzbeauftragterBremerhaven = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBremerhaven"));
+const ExternerDatenschutzbeauftragterMannheim = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMannheim"));
+const ExternerDatenschutzbeauftragterWolfsburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterWolfsburg"));
+const ExternerDatenschutzbeauftragterBayern = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBayern"));
+const ExternerDatenschutzbeauftragterNiedersachsen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterNiedersachsen"));
+const ExternerDatenschutzbeauftragterMuenster = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMuenster"));
 const KiRisikoklassifizierung = lazy(() => import("./pages/ki/KiRisikoklassifizierung"));
 const KiAlgorithmicImpactAssessment = lazy(() => import("./pages/ki/AlgorithmicImpactAssessment"));
 const PrivacyPreservingAI = lazy(() => import("./pages/ki/PrivacyPreservingAI"));
@@ -192,6 +260,7 @@ const Iso27001Kosten = lazy(() => import("./pages/wissen/Iso27001Kosten"));
 const DsgvoComplianceLuecken = lazy(() => import("./pages/wissen/DsgvoComplianceLuecken"));
 const InternerDsbScheitert = lazy(() => import("./pages/wissen/InternerDsbScheitert"));
 const DsgvoSoftwareVsManuell = lazy(() => import("./pages/wissen/DsgvoSoftwareVsManuell"));
+const DsgvoVsBdsg = lazy(() => import("./pages/wissen/DsgvoVsBdsg"));
 
 // Assessment Center - Calculators
 const DsgvoKostenRechner = lazy(() => import("./pages/assessment-center/DsgvoKostenRechner"));
@@ -212,17 +281,81 @@ const App = () => (
         <LanguageProvider>
           <TooltipProvider>
             <Toaster />
+            <Analytics />
             <BrowserRouter>
               <ScrollToTop />
               <SEOWrapper>
                 <Suspense fallback={<PageLoader />}>
                   <Routes>
                 <Route path="/" element={<Index />} />
+
+                {/* Chinese (Simplified) Routes - zh-CN */}
+                <Route path="/zh" element={<ChineseLayout />}>
+                  <Route index element={<ZhHome />} />
+                  <Route path="jiage" element={<ZhPricing />} />
+                  <Route path="guanyu-women" element={<ZhAbout />} />
+                  <Route path="lianxi" element={<ZhContact />} />
+                  <Route path="gdpr" element={<ZhGdpr />} />
+                  <Route path="ou-ai-fa" element={<ZhEuAiAct />} />
+                  <Route path="iso-27001-zhinan" element={<ZhIso27001Guide />} />
+                </Route>
+
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/academy" element={<AcademyPage />} />
                 <Route path="/preise" element={<Preise />} />
                 <Route path="/externer-datenschutzbeauftragter" element={<ExternerDatenschutzbeauftragter />} />
-                <Route path="/beta" element={<Beta />} />
+                <Route path="/externer-datenschutzbeauftragter-oldenburg" element={<ExternerDatenschutzbeauftragterOldenburg />} />
+                <Route path="/externer-datenschutzbeauftragter-hannover" element={<ExternerDatenschutzbeauftragterHannover />} />
+                <Route path="/externer-datenschutzbeauftragter-bremen" element={<ExternerDatenschutzbeauftragterBremen />} />
+                <Route path="/externer-datenschutzbeauftragter-duesseldorf" element={<ExternerDatenschutzbeauftragterDuesseldorf />} />
+                <Route path="/externer-datenschutzbeauftragter-hamburg" element={<ExternerDatenschutzbeauftragterHamburg />} />
+                <Route path="/externer-datenschutzbeauftragter-hildesheim" element={<ExternerDatenschutzbeauftragterHildesheim />} />
+                <Route path="/externer-datenschutzbeauftragter-stuttgart" element={<ExternerDatenschutzbeauftragterStuttgart />} />
+                <Route path="/externer-datenschutzbeauftragter-muenchen" element={<ExternerDatenschutzbeauftragterMuenchen />} />
+                <Route path="/externer-datenschutzbeauftragter-nuernberg" element={<ExternerDatenschutzbeauftragterNuernberg />} />
+                <Route path="/externer-datenschutzbeauftragter-koeln" element={<ExternerDatenschutzbeauftragterKoeln />} />
+                <Route path="/externer-datenschutzbeauftragter-wedemark" element={<ExternerDatenschutzbeauftragterWedemark />} />
+                <Route path="/externer-datenschutzbeauftragter-osnabrueck" element={<ExternerDatenschutzbeauftragterOsnabrueck />} />
+                <Route path="/externer-datenschutzbeauftragter-lueneburg" element={<ExternerDatenschutzbeauftragterLueneburg />} />
+                <Route path="/externer-datenschutzbeauftragter-dresden" element={<ExternerDatenschutzbeauftragterDresden />} />
+                <Route path="/externer-datenschutzbeauftragter-dortmund" element={<ExternerDatenschutzbeauftragterDortmund />} />
+                <Route path="/externer-datenschutzbeauftragter-nrw" element={<ExternerDatenschutzbeauftragterNRW />} />
+                <Route path="/externer-datenschutzbeauftragter-braunschweig" element={<ExternerDatenschutzbeauftragterBraunschweig />} />
+                <Route path="/externer-datenschutzbeauftragter-karlsruhe" element={<ExternerDatenschutzbeauftragterKarlsruhe />} />
+                <Route path="/externer-datenschutzbeauftragter-celle" element={<ExternerDatenschutzbeauftragterCelle />} />
+                <Route path="/externer-datenschutzbeauftragter-magdeburg" element={<ExternerDatenschutzbeauftragterMagdeburg />} />
+                <Route path="/externer-datenschutzbeauftragter-frankfurt" element={<ExternerDatenschutzbeauftragterFrankfurt />} />
+                <Route path="/externer-datenschutzbeauftragter-ulm" element={<ExternerDatenschutzbeauftragterUlm />} />
+                <Route path="/externer-datenschutzbeauftragter-heidelberg" element={<ExternerDatenschutzbeauftragterHeidelberg />} />
+                <Route path="/externer-datenschutzbeauftragter-leipzig" element={<ExternerDatenschutzbeauftragterLeipzig />} />
+                <Route path="/externer-datenschutzbeauftragter-bremerhaven" element={<ExternerDatenschutzbeauftragterBremerhaven />} />
+                <Route path="/externer-datenschutzbeauftragter-mannheim" element={<ExternerDatenschutzbeauftragterMannheim />} />
+                <Route path="/externer-datenschutzbeauftragter-wolfsburg" element={<ExternerDatenschutzbeauftragterWolfsburg />} />
+                <Route path="/externer-datenschutzbeauftragter-bayern" element={<ExternerDatenschutzbeauftragterBayern />} />
+                <Route path="/externer-datenschutzbeauftragter-niedersachsen" element={<ExternerDatenschutzbeauftragterNiedersachsen />} />
+                <Route path="/externer-datenschutzbeauftragter-muenster" element={<ExternerDatenschutzbeauftragterMuenster />} />
+                <Route path="/dsgvo-compliance-software" element={<DsgvoComplianceSoftware />} />
+                <Route path="/beta" element={<Navigate to="/dsgvo-compliance-software" replace />} />
+                <Route path="/beta/thanks" element={<BetaThanks />} />
+                <Route path="/features" element={<Features />} />
+                <Route path="/features/human-in-the-loop" element={<HumanInTheLoop />} />
+                <Route path="/human-in-the-loop" element={<Navigate to="/features/human-in-the-loop" replace />} />
+                <Route path="/datenschutzexperten" element={<Datenschutzbeauftragter />} />
+                <Route path="/datenschutzexperten/:slug" element={<DatenschutzbeauftragterDetail />} />
+                <Route path="/dsgvo-china" element={<CnGdpr />} />
+                <Route path="/dsgvo-amazon-sellers-china" element={<DsgvoAmazonSellersChina />} />
+                <Route path="/dsgvo-tiktok-shop-china" element={<DsgvoTikTokShopChina />} />
+                <Route path="/eu-vertreter-china" element={<EuVertreterChina />} />
+                <Route path="/joint-venture-china-datenschutz" element={<JointVentureChinaDatenschutz />} />
+                <Route path="/china-investitionen-dsgvo-screening" element={<ChinaInvestitionenDsgvoScreening />} />
+                <Route path="/artikel-15-dsgvo-auskunftsrecht-china" element={<Artikel15DsgvoAuskunftsrechtChina />} />
+                <Route path="/china-scc-vs-eu-scc" element={<ChinaSccVsEuScc />} />
+                <Route path="/deepseek-dsgvo" element={<DeepseekDsgvo />} />
+                <Route path="/dsgvo-wechat-alipay-china" element={<DsgvoWeChatAlipayChina />} />
+                <Route path="/dsgvo-douyin-china" element={<DsgvoDouyinChina />} />
+                <Route path="/dsgvo-b2b-hersteller-china" element={<DsgvoB2BHerstellerChina />} />
+                <Route path="/pipl-gdpr-china" element={<PiplGdprChina />} />
+                <Route path="/dsgvo-checkliste" element={<DsgvoChecklist />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/ueber-uns" element={<About />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
@@ -231,6 +364,7 @@ const App = () => (
                 <Route path="/final-checks" element={<FinalChecks />} />
                 <Route path="/impressum" element={<Impressum />} />
                 <Route path="/datenschutz" element={<Datenschutz />} />
+                <Route path="/agb-software" element={<AgbSoftware />} />
                 
                 {/* Legacy routes (keep for backwards compatibility) */}
                 <Route path="/dsgvo-compliance" element={<DsgvoCompliance />} />
@@ -244,6 +378,8 @@ const App = () => (
                 {/* New structured routes */}
                 {/* New Product URLs - Regulierungen */}
                 <Route path="/dsgvo" element={<DsgvoCompliance />} />
+                <Route path="/dsgvo-audit" element={<DsgvoAudit />} />
+                <Route path="/dsgvo-audit/:sealLevel/:companySlug" element={<SiegelVerification />} />
                 <Route path="/eu-ai-act" element={<EuAiActCompliance />} />
                 <Route path="/eu-data-act" element={<DataActCompliance />} />
                 <Route path="/nis2-compliance" element={<Nis2Compliance />} />
@@ -321,6 +457,7 @@ const App = () => (
 
                 {/* Knowledge/Wissen Routes */}
                 <Route path="/wissen" element={<Knowledge />} />
+                <Route path="/wissen/china" element={<ChinaDsgvo />} />
                 <Route path="/wissen/dsgvo" element={<DsgvoGuides />} />
                 <Route path="/wissen/kosten" element={<KostenGuides />} />
                 <Route path="/wissen/ki-datenschutz" element={<KiDatenschutz />} />
@@ -352,6 +489,9 @@ const App = () => (
                 <Route path="/wissen/leitfaden/betroffenenrechte" element={<BetroffenenrechteGuide />} />
                 <Route path="/wissen/leitfaden/tom-massnahmen" element={<TomMassnahmenGuide />} />
                 <Route path="/wissen/leitfaden/dsfa-durchfuehrung" element={<DsfaDurchfuehrungGuide />} />
+                <Route path="/wissen/leitfaden/datenschutzbeauftragter" element={<DatenschutzbeauftragterGuide />} />
+                <Route path="/wissen/leitfaden/datenschutzbeauftragter-ausbildung" element={<DatenschutzbeauftragterAusbildung />} />
+                <Route path="/wissen/leitfaden/loeschkonzept" element={<LoeschkonzeptGuide />} />
                 <Route path="/wissen/krisenmanagement" element={<CrisisManagement />} />
                 <Route path="/wissen/krisenmanagement/data-breach-72h" element={<DataBreach72hGuide />} />
                 <Route path="/wissen/krisenmanagement/security-incident" element={<SecurityIncidentGuide />} />
@@ -394,6 +534,7 @@ const App = () => (
                 <Route path="/wissen/branchen/dsgvo-vermieter" element={<DsgvoVermieter />} />
                 <Route path="/wissen/branchen/dsgvo-vereine" element={<DsgvoVereineComprehensive />} />
                 <Route path="/wissen/branchen/datenschutz-betriebsrat" element={<DatenschutzBetriebsrat />} />
+                <Route path="/wissen/branchen/datenschutz-personalwesen" element={<DatenschutzPersonalwesen />} />
                 <Route path="/wissen/branchen/datenschutz-homeoffice" element={<DatenschutzHomeofficeComprehensive />} />
                 
                 {/* KI Compliance Routes - now part of main structure */}
@@ -424,6 +565,9 @@ const App = () => (
                 <Route path="/wissen/dsgvo-compliance-luecken" element={<DsgvoComplianceLuecken />} />
                 <Route path="/wissen/interner-dsb-scheitert" element={<InternerDsbScheitert />} />
                 <Route path="/wissen/dsgvo-software-vs-manuell" element={<DsgvoSoftwareVsManuell />} />
+                <Route path="/wissen/dsgvo-vs-bdsg" element={<DsgvoVsBdsg />} />
+
+                {/* Demo Pages */}
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

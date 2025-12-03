@@ -213,7 +213,7 @@ const DsgvoKostenRechner: React.FC = () => {
             </h1>
 
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Berechnen Sie Ihre individuellen DSGVO-Compliance-Kosten basierend auf Ihrer Unternehmenssituation.
+              Berechnen Sie Ihre individuellen DSGVO-Compliance-Kosten basierend auf Ihrer Unternehmenssituation. Eine <Link to="/wissen/kosten/dsgvo-compliance-kosten" className="text-blue-400 hover:text-blue-300 underline font-semibold">detaillierte Aufschlüsselung aller DSGVO-Kosten</Link> inkl. versteckter Kostenfallen und Einsparpotenziale finden Sie in unserem Kostenguide.
             </p>
           </div>
 

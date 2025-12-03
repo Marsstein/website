@@ -136,7 +136,7 @@ export const TrustIndicators: React.FC = () => {
               Compliance-Teams
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Standards-konforme Entwicklung, transparente Roadmap und ehrliche Beta-Phase
+              Standards-konforme Entwicklung, transparente Roadmap und ehrliche Early Bird Angebot
             </p>
           </div>
 

@@ -1,10 +1,9 @@
-import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Check, Star } from 'lucide-react';
+import { Check, Star, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const PricingContent = () => {
@@ -53,6 +52,18 @@ const PricingContent = () => {
         <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
           {t('pricing_subtitle')}
         </p>
+
+        <div className="inline-flex items-start gap-3 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 max-w-2xl mx-auto">
+          <Info className="h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+          <div className="text-left">
+            <p className="text-sm text-blue-900 dark:text-blue-100 font-medium mb-1">
+              {t('pricing_beta_title')}
+            </p>
+            <p className="text-sm text-blue-700 dark:text-blue-300">
+              {t('pricing_beta_description')}
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Pricing Cards */}

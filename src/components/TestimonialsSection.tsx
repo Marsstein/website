@@ -39,7 +39,7 @@ export const TestimonialsSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
-            <span className="text-sm font-medium">🚧 Beta-Phase</span>
+            <span className="text-sm font-medium">🚧 Early Bird Angebot</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             Die Zukunft von Compliance

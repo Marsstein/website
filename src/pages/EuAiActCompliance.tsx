@@ -3560,7 +3560,7 @@ class AIActKillSwitch:
               },
               {
                 question: "Wie unterscheidet sich der AI Act von der DSGVO?",
-                answer: "Während die DSGVO Datenschutz regelt, fokussiert der AI Act auf KI-Systeme und deren Risiken. Beide gelten parallel - Sie brauchen sowohl DSGVO- als auch AI Act-Compliance. Viele Anforderungen überschneiden sich, aber der AI Act hat zusätzliche technische Anforderungen wie CE-Kennzeichnung."
+                answer: <>Während die DSGVO Datenschutz regelt, fokussiert der AI Act auf KI-Systeme und deren Risiken. Beide gelten parallel - Sie brauchen sowohl DSGVO- als auch AI Act-Compliance. Viele Anforderungen überschneiden sich, aber der AI Act hat zusätzliche technische Anforderungen wie CE-Kennzeichnung. Einen <Link to="/wissen/kosten/dsgvo-compliance-kosten" className="text-[#FF5C00] hover:text-[#E64A00] underline font-semibold">vollständigen Kostenüberblick für beide Frameworks</Link> finden Sie in unserer Kostenanalyse.</>
               },
               {
                 question: "Was kostet AI Act Non-Compliance wirklich?",

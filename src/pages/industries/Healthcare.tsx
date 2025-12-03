@@ -437,6 +437,104 @@ const Healthcare: React.FC = () => {
           </div>
         </section>
 
+        {/* Knowledge Resources Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="container px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Detaillierte Healthcare Compliance Guides
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300">
+                  Vertiefen Sie Ihr Wissen mit unseren spezialisierten Fachartikeln
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Link to="/wissen/branchen/gesundheitswesen-dsgvo">
+                  <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+                        <Lock className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">DSGVO im Gesundheitswesen</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          Umfassender Guide zu Art. 9 DSGVO, Einwilligungsmanagement und TOMs für Healthcare
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-blue-600">
+                          <span>Zum Guide</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+
+                <Link to="/wissen/branchen/healthcare-ai-compliance">
+                  <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-r from-green-500 to-teal-600 text-white">
+                        <Brain className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">Healthcare AI Compliance</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          EU AI Act für medizinische KI-Systeme: Risikoklassifizierung und Anforderungen
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-green-600">
+                          <span>Zum Guide</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+
+                <Link to="/wissen/branchen/datenschutz-arztpraxis">
+                  <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-r from-red-500 to-pink-600 text-white">
+                        <Stethoscope className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">Datenschutz in der Arztpraxis</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          Praktischer Leitfaden für niedergelassene Ärzte und Praxismanager
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-red-600">
+                          <span>Zum Guide</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+
+                <Link to="/wissen/branchen/datenschutz-pflege">
+                  <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 text-white">
+                        <Heart className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">Datenschutz in der Pflege</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          Compliance-Anforderungen für Pflegeeinrichtungen und ambulante Dienste
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-purple-600">
+                          <span>Zum Guide</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-red-600 to-pink-600">
           <div className="container px-4">
@@ -460,14 +558,16 @@ const Healthcare: React.FC = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="bg-transparent text-white border-white hover:bg-white/10"
-                >
-                  <FileCheck className="mr-2 h-5 w-5" />
-                  Healthcare Compliance Guide
-                </Button>
+                <Link to="/wissen/branchen/gesundheitswesen-dsgvo">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-transparent text-white border-white hover:bg-white/10"
+                  >
+                    <FileCheck className="mr-2 h-5 w-5" />
+                    Healthcare Compliance Guide
+                  </Button>
+                </Link>
               </div>
 
               <div className="mt-8 flex items-center justify-center gap-2 text-white/80">

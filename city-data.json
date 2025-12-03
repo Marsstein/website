@@ -1,0 +1,512 @@
+[
+  {
+    "cityName": "Oldenburg",
+    "citySlug": "oldenburg",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "53.1435",
+    "longitude": "8.2146",
+    "industries": [
+      { "name": "Logistik & Transport", "description": "Fuhrparkverwaltung, Lieferketten-Tracking, Kundendaten" },
+      { "name": "Windenergie & Technik", "description": "Anlagendaten, Mitarbeitererfassung, Projektdokumentation" },
+      { "name": "IT-Dienstleister", "description": "Auftragsverarbeitung, Cloud-Services, Kundenprojekte" },
+      { "name": "Einzelhandel", "description": "Kundenkarten, E-Commerce, Kassensysteme" },
+      { "name": "Gesundheitswesen", "description": "Praxisverwaltung, Patientendaten, Abrechnungssysteme" },
+      { "name": "Produktionsbetriebe", "description": "Mitarbeiterdaten, Qualitätsmanagement, Lieferantenverwaltung" }
+    ],
+    "nearbyCity": "Delmenhorst, Cloppenburg"
+  },
+  {
+    "cityName": "Hannover",
+    "citySlug": "hannover",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "52.3759",
+    "longitude": "9.7320",
+    "industries": [
+      { "name": "Versicherungen & Finanzen", "description": "Kundenverträge, Versicherungsdaten, Finanzberatung" },
+      { "name": "IT & Software", "description": "Cloud-Lösungen, Softwareentwicklung, IT-Consulting" },
+      { "name": "Automotive", "description": "Zulieferer, Produktionsdaten, Supply Chain Management" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Kundendaten, Zahlungsabwicklung" },
+      { "name": "Messe & Events", "description": "Teilnehmerdaten, Ticketing-Systeme, Marketing" },
+      { "name": "Öffentliche Verwaltung", "description": "Bürgerdaten, Verwaltungssysteme, E-Government" }
+    ],
+    "nearbyCity": "Hildesheim, Celle"
+  },
+  {
+    "cityName": "Bremen",
+    "citySlug": "bremen",
+    "state": "Bremen",
+    "stateAuthority": "LfDI Bremen",
+    "latitude": "53.0793",
+    "longitude": "8.8017",
+    "industries": [
+      { "name": "Hafen & Logistik", "description": "Containertracking, Zolldaten, Frachtdokumente" },
+      { "name": "Luft- & Raumfahrt", "description": "Mitarbeiterdaten, Projektdokumentation, Zulieferer" },
+      { "name": "Automotive", "description": "Produktionsdaten, Zulieferermanagement, Qualitätssicherung" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Kundendaten, Warenwirtschaft" },
+      { "name": "IT-Dienstleister", "description": "Cloud-Services, Softwareentwicklung, Hosting" },
+      { "name": "Gesundheitswesen", "description": "Krankenhäuser, Praxen, medizinische Forschung" }
+    ],
+    "nearbyCity": "Bremerhaven, Oldenburg"
+  },
+  {
+    "cityName": "Düsseldorf",
+    "citySlug": "duesseldorf",
+    "state": "Nordrhein-Westfalen",
+    "stateAuthority": "LDI NRW",
+    "latitude": "51.2277",
+    "longitude": "6.7735",
+    "industries": [
+      { "name": "Finanzdienstleister", "description": "Banken, Vermögensverwaltung, Versicherungen" },
+      { "name": "Mode & Handel", "description": "E-Commerce, Kundendaten, Supply Chain" },
+      { "name": "Werbeagenturen", "description": "Kundendaten, Kampagnen-Tracking, Marketing-Automation" },
+      { "name": "Beratung & Consulting", "description": "Mandantendaten, Projektdokumentation, CRM" },
+      { "name": "IT & Telekommunikation", "description": "Cloud-Services, SaaS, IT-Consulting" },
+      { "name": "Immobilien", "description": "Mieterdaten, Objektverwaltung, Makler-CRM" }
+    ],
+    "nearbyCity": "Köln, Essen"
+  },
+  {
+    "cityName": "Hamburg",
+    "citySlug": "hamburg",
+    "state": "Hamburg",
+    "stateAuthority": "HmbBfDI",
+    "latitude": "53.5511",
+    "longitude": "9.9937",
+    "industries": [
+      { "name": "Hafen & Logistik", "description": "Containertracking, Frachtdokumente, Zolldaten" },
+      { "name": "Handelsunternehmen", "description": "Import/Export, Kundendaten, E-Commerce" },
+      { "name": "Medien & Verlage", "description": "Abonnentendaten, Content-Management, Werbevermarktung" },
+      { "name": "Finanzdienstleister", "description": "Banken, Versicherungen, Fintech" },
+      { "name": "Luftfahrt", "description": "Fluggesellschaften, Passagierdaten, Wartung" },
+      { "name": "Maritime Wirtschaft", "description": "Reedereien, Schiffbau, Hafenlogistik" }
+    ],
+    "nearbyCity": "Lüneburg, Wedemark"
+  },
+  {
+    "cityName": "Hildesheim",
+    "citySlug": "hildesheim",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "52.1500",
+    "longitude": "9.9500",
+    "industries": [
+      { "name": "Maschinenbau", "description": "Produktionsdaten, Zulieferer, Qualitätsmanagement" },
+      { "name": "IT-Dienstleister", "description": "Softwareentwicklung, IT-Support, Cloud-Services" },
+      { "name": "Einzelhandel", "description": "Kundendaten, E-Commerce, Kassensysteme" },
+      { "name": "Bildungseinrichtungen", "description": "Studierendendaten, E-Learning, Verwaltung" },
+      { "name": "Gesundheitswesen", "description": "Kliniken, Praxen, Patientendaten" },
+      { "name": "Handwerk", "description": "Kundenverwaltung, Auftragsabwicklung, Rechnungswesen" }
+    ],
+    "nearbyCity": "Hannover, Braunschweig"
+  },
+  {
+    "cityName": "Stuttgart",
+    "citySlug": "stuttgart",
+    "state": "Baden-Württemberg",
+    "stateAuthority": "LfDI Baden-Württemberg",
+    "latitude": "48.7758",
+    "longitude": "9.1829",
+    "industries": [
+      { "name": "Automotive", "description": "Fahrzeugproduktion, Zulieferer, Entwicklung" },
+      { "name": "Maschinenbau", "description": "Produktionsdaten, Anlagensteuerung, Wartung" },
+      { "name": "IT & Software", "description": "Industrie 4.0, IoT-Lösungen, Softwareentwicklung" },
+      { "name": "Finanzdienstleister", "description": "Banken, Versicherungen, Vermögensverwaltung" },
+      { "name": "Medizintechnik", "description": "Medizingeräte, Forschung, Patientendaten" },
+      { "name": "Elektroindustrie", "description": "Energietechnik, Automatisierung, Smart Systems" }
+    ],
+    "nearbyCity": "Karlsruhe, Heidelberg"
+  },
+  {
+    "cityName": "München",
+    "citySlug": "muenchen",
+    "state": "Bayern",
+    "stateAuthority": "BayLDA",
+    "latitude": "48.1351",
+    "longitude": "11.5820",
+    "industries": [
+      { "name": "IT & Software", "description": "Softwareentwicklung, Cloud-Services, IT-Consulting" },
+      { "name": "Finanzdienstleister", "description": "Banken, Versicherungen, Fintech" },
+      { "name": "Automotive", "description": "Fahrzeugbau, Zulieferer, E-Mobilität" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Automatisierung, Robotik" },
+      { "name": "Versicherungen", "description": "Versicherungsverträge, Schadensabwicklung, Kundenservice" },
+      { "name": "Medizintechnik", "description": "Medizingeräte, Forschung, Diagnostik" }
+    ],
+    "nearbyCity": "Nürnberg, Ulm"
+  },
+  {
+    "cityName": "Nürnberg",
+    "citySlug": "nuernberg",
+    "state": "Bayern",
+    "stateAuthority": "BayLDA",
+    "latitude": "49.4521",
+    "longitude": "11.0767",
+    "industries": [
+      { "name": "Industrieproduktion", "description": "Maschinenbau, Elektronik, Fertigungstechnik" },
+      { "name": "IT & Telekommunikation", "description": "Softwareentwicklung, IT-Services, Telekommunikation" },
+      { "name": "Logistik & Transport", "description": "Distributionszentren, Spedition, Lagerhaltung" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Kundendaten, Warenwirtschaft" },
+      { "name": "Medizintechnik", "description": "Medizinprodukte, Forschung, Healthcare-IT" },
+      { "name": "Energie & Umwelt", "description": "Energieversorgung, Umwelttechnik, Smart Grid" }
+    ],
+    "nearbyCity": "München, Leipzig"
+  },
+  {
+    "cityName": "Köln",
+    "citySlug": "koeln",
+    "state": "Nordrhein-Westfalen",
+    "stateAuthority": "LDI NRW",
+    "latitude": "50.9375",
+    "longitude": "6.9603",
+    "industries": [
+      { "name": "Medien & TV", "description": "TV-Produktion, Rundfunk, Streamingdienste" },
+      { "name": "Versicherungen", "description": "Versicherungsverträge, Schadensregulierung, Kundenservice" },
+      { "name": "Logistik", "description": "Distributionszentren, Paketdienste, Spedition" },
+      { "name": "Chemie & Pharma", "description": "Produktion, Forschung, Qualitätskontrolle" },
+      { "name": "IT-Dienstleister", "description": "Softwareentwicklung, IT-Consulting, Cloud-Services" },
+      { "name": "Handel", "description": "Groß- und Einzelhandel, E-Commerce, Warenwirtschaft" }
+    ],
+    "nearbyCity": "Düsseldorf, Dortmund"
+  },
+  {
+    "cityName": "Wedemark",
+    "citySlug": "wedemark",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "52.5333",
+    "longitude": "9.7333",
+    "industries": [
+      { "name": "Mittelständische Betriebe", "description": "Handwerk, Produktion, Dienstleistungen" },
+      { "name": "IT-Dienstleister", "description": "Softwareentwicklung, IT-Support, Hosting" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Logistik, Kundendaten" },
+      { "name": "Handwerk", "description": "Kundenverwaltung, Auftragsabwicklung, Rechnungswesen" },
+      { "name": "Gesundheitswesen", "description": "Arztpraxen, Pflegedienste, Therapieeinrichtungen" },
+      { "name": "Beratungsunternehmen", "description": "Unternehmensberatung, Steuerberatung, Rechtsberatung" }
+    ],
+    "nearbyCity": "Hannover, Celle"
+  },
+  {
+    "cityName": "Osnabrück",
+    "citySlug": "osnabrueck",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "52.2799",
+    "longitude": "8.0472",
+    "industries": [
+      { "name": "Stahl & Metall", "description": "Produktion, Verarbeitung, Qualitätssicherung" },
+      { "name": "Papierindustrie", "description": "Papierherstellung, Verpackung, Logistik" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Sondermaschinen, Automatisierung" },
+      { "name": "Handel & Logistik", "description": "Warenwirtschaft, Transport, E-Commerce" },
+      { "name": "IT-Dienstleister", "description": "Softwareentwicklung, IT-Consulting, Cloud-Services" },
+      { "name": "Gesundheitswesen", "description": "Krankenhäuser, Kliniken, Pflegeeinrichtungen" }
+    ],
+    "nearbyCity": "Münster, Oldenburg"
+  },
+  {
+    "cityName": "Lüneburg",
+    "citySlug": "lueneburg",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "53.2515",
+    "longitude": "10.4141",
+    "industries": [
+      { "name": "Bildungseinrichtungen", "description": "Universitäten, Schulen, E-Learning" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Kundendaten, Warenwirtschaft" },
+      { "name": "Tourismus & Gastronomie", "description": "Hotels, Gästeverwaltung, Buchungssysteme" },
+      { "name": "IT-Dienstleister", "description": "Softwareentwicklung, IT-Support, Hosting" },
+      { "name": "Gesundheitswesen", "description": "Kliniken, Arztpraxen, Gesundheits-IT" },
+      { "name": "Öffentliche Verwaltung", "description": "Kommunalverwaltung, E-Government, Bürgerdienste" }
+    ],
+    "nearbyCity": "Hamburg, Celle"
+  },
+  {
+    "cityName": "Dresden",
+    "citySlug": "dresden",
+    "state": "Sachsen",
+    "stateAuthority": "SächsDSB",
+    "latitude": "51.0504",
+    "longitude": "13.7373",
+    "industries": [
+      { "name": "Mikroelektronik & Halbleiter", "description": "Chip-Produktion, Forschung, Qualitätskontrolle" },
+      { "name": "IT & Software", "description": "Softwareentwicklung, IT-Services, Start-ups" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Automatisierung, Robotik" },
+      { "name": "Gesundheitswesen", "description": "Universitätskliniken, Forschung, Medizintechnik" },
+      { "name": "Tourismus & Kultur", "description": "Hotels, Museen, Event-Management" },
+      { "name": "Öffentliche Verwaltung", "description": "Stadtverwaltung, E-Government, Bürgerdienste" }
+    ],
+    "nearbyCity": "Leipzig, Chemnitz"
+  },
+  {
+    "cityName": "Dortmund",
+    "citySlug": "dortmund",
+    "state": "Nordrhein-Westfalen",
+    "stateAuthority": "LDI NRW",
+    "latitude": "51.5136",
+    "longitude": "7.4653",
+    "industries": [
+      { "name": "Logistik & Transport", "description": "Distributionszentren, Spedition, Lagerhaltung" },
+      { "name": "IT & Technologie", "description": "Softwareentwicklung, IT-Services, Start-ups" },
+      { "name": "Versicherungen", "description": "Versicherungsverträge, Schadensabwicklung, Kundenservice" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Kundendaten, Warenwirtschaft" },
+      { "name": "Gesundheitswesen", "description": "Krankenhäuser, Kliniken, Reha-Einrichtungen" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Automatisierung, Wartung" }
+    ],
+    "nearbyCity": "Köln, Düsseldorf"
+  },
+  {
+    "cityName": "NRW",
+    "citySlug": "nrw",
+    "state": "Nordrhein-Westfalen",
+    "stateAuthority": "LDI NRW",
+    "latitude": "51.4332",
+    "longitude": "7.6616",
+    "industries": [
+      { "name": "Industrie & Produktion", "description": "Maschinenbau, Chemie, Stahlindustrie" },
+      { "name": "IT & Digitalisierung", "description": "Softwareentwicklung, IT-Services, Digital Business" },
+      { "name": "Logistik & Transport", "description": "Distributionszentren, Spedition, Intralogistik" },
+      { "name": "Handel & E-Commerce", "description": "Online-Handel, Warenwirtschaft, Retail" },
+      { "name": "Finanz- & Versicherungen", "description": "Banken, Versicherungen, Fintech" },
+      { "name": "Gesundheitswesen", "description": "Krankenhäuser, Kliniken, Pflege" }
+    ],
+    "nearbyCity": "Köln, Düsseldorf, Dortmund"
+  },
+  {
+    "cityName": "Braunschweig",
+    "citySlug": "braunschweig",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "52.2689",
+    "longitude": "10.5268",
+    "industries": [
+      { "name": "Automotive", "description": "Fahrzeugbau, Zulieferer, Forschung & Entwicklung" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Sondermaschinen, Automatisierung" },
+      { "name": "Forschung & Entwicklung", "description": "Institute, Labore, Technologietransfer" },
+      { "name": "IT-Dienstleister", "description": "Softwareentwicklung, IT-Consulting, Cloud-Services" },
+      { "name": "Handel & Logistik", "description": "Warenwirtschaft, Transport, E-Commerce" },
+      { "name": "Gesundheitswesen", "description": "Kliniken, Forschung, medizinische Versorgung" }
+    ],
+    "nearbyCity": "Hannover, Wolfsburg"
+  },
+  {
+    "cityName": "Karlsruhe",
+    "citySlug": "karlsruhe",
+    "state": "Baden-Württemberg",
+    "stateAuthority": "LfDI Baden-Württemberg",
+    "latitude": "49.0069",
+    "longitude": "8.4037",
+    "industries": [
+      { "name": "IT & Software", "description": "Softwareentwicklung, IT-Services, Start-ups" },
+      { "name": "Energiewirtschaft", "description": "Energieversorgung, Smart Grid, Erneuerbare Energien" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Automatisierung, Robotik" },
+      { "name": "Forschung & Entwicklung", "description": "KIT, Institute, Technologietransfer" },
+      { "name": "Öffentliche Verwaltung", "description": "Behörden, E-Government, Verwaltungs-IT" },
+      { "name": "Medien & Verlage", "description": "Verlage, Druckereien, Digital Publishing" }
+    ],
+    "nearbyCity": "Stuttgart, Heidelberg"
+  },
+  {
+    "cityName": "Celle",
+    "citySlug": "celle",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "52.6240",
+    "longitude": "10.0807",
+    "industries": [
+      { "name": "Energiewirtschaft", "description": "Erdöl, Erdgas, Energieversorgung" },
+      { "name": "Handel & Logistik", "description": "Warenwirtschaft, Transport, E-Commerce" },
+      { "name": "Handwerk", "description": "Kundenverwaltung, Auftragsabwicklung, Rechnungswesen" },
+      { "name": "IT-Dienstleister", "description": "Softwareentwicklung, IT-Support, Hosting" },
+      { "name": "Gesundheitswesen", "description": "Kliniken, Arztpraxen, Pflegeeinrichtungen" },
+      { "name": "Tourismus & Gastronomie", "description": "Hotels, Restaurants, Gästeverwaltung" }
+    ],
+    "nearbyCity": "Hannover, Lüneburg"
+  },
+  {
+    "cityName": "Magdeburg",
+    "citySlug": "magdeburg",
+    "state": "Sachsen-Anhalt",
+    "stateAuthority": "LfD Sachsen-Anhalt",
+    "latitude": "52.1205",
+    "longitude": "11.6276",
+    "industries": [
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Sondermaschinen, Automatisierung" },
+      { "name": "Logistik & Transport", "description": "Distributionszentren, Spedition, Lagerhaltung" },
+      { "name": "Erneuerbare Energien", "description": "Windkraft, Solar, Energiespeicher" },
+      { "name": "IT-Dienstleister", "description": "Softwareentwicklung, IT-Consulting, Cloud-Services" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Kundendaten, Warenwirtschaft" },
+      { "name": "Öffentliche Verwaltung", "description": "Landesverwaltung, E-Government, Bürgerdienste" }
+    ],
+    "nearbyCity": "Braunschweig, Halle"
+  },
+  {
+    "cityName": "Frankfurt",
+    "citySlug": "frankfurt",
+    "state": "Hessen",
+    "stateAuthority": "HBDI",
+    "latitude": "50.1109",
+    "longitude": "8.6821",
+    "industries": [
+      { "name": "Finanzdienstleister", "description": "Banken, Börse, Asset Management" },
+      { "name": "Versicherungen", "description": "Versicherungsverträge, Rückversicherung, Kundenservice" },
+      { "name": "IT & Fintech", "description": "Banking-Software, Payment, Blockchain" },
+      { "name": "Logistik & Transport", "description": "Flughafen, Cargo, Spedition" },
+      { "name": "Beratung & Consulting", "description": "Unternehmensberatung, Wirtschaftsprüfung, Legal Services" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Marktplätze, Retail" }
+    ],
+    "nearbyCity": "Darmstadt, Offenbach"
+  },
+  {
+    "cityName": "Ulm",
+    "citySlug": "ulm",
+    "state": "Baden-Württemberg",
+    "stateAuthority": "LfDI Baden-Württemberg",
+    "latitude": "48.3984",
+    "longitude": "9.9916",
+    "industries": [
+      { "name": "Pharma & Biotechnologie", "description": "Arzneimittelforschung, Produktion, Qualitätskontrolle" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Automatisierung, Sondermaschinen" },
+      { "name": "IT & Software", "description": "Softwareentwicklung, IT-Services, Start-ups" },
+      { "name": "Energiewirtschaft", "description": "Energieversorgung, Smart Grid, Erneuerbare Energien" },
+      { "name": "Gesundheitswesen", "description": "Universitätsklinikum, Forschung, Medizintechnik" },
+      { "name": "Handel & Logistik", "description": "Warenwirtschaft, Transport, E-Commerce" }
+    ],
+    "nearbyCity": "München, Stuttgart"
+  },
+  {
+    "cityName": "Heidelberg",
+    "citySlug": "heidelberg",
+    "state": "Baden-Württemberg",
+    "stateAuthority": "LfDI Baden-Württemberg",
+    "latitude": "49.3988",
+    "longitude": "8.6724",
+    "industries": [
+      { "name": "Forschung & Wissenschaft", "description": "Universität, Institute, Labore" },
+      { "name": "Biotechnologie & Pharma", "description": "Medikamentenforschung, Diagnostik, Labortechnik" },
+      { "name": "Medizintechnik", "description": "Medizingeräte, Healthcare-IT, Diagnostik" },
+      { "name": "IT & Software", "description": "Softwareentwicklung, IT-Services, Start-ups" },
+      { "name": "Verlage & Medien", "description": "Wissenschaftsverlage, Digital Publishing, Content Management" },
+      { "name": "Tourismus & Kultur", "description": "Hotels, Tourismus-Management, Event-Organisation" }
+    ],
+    "nearbyCity": "Karlsruhe, Stuttgart"
+  },
+  {
+    "cityName": "Leipzig",
+    "citySlug": "leipzig",
+    "state": "Sachsen",
+    "stateAuthority": "SächsDSB",
+    "latitude": "51.3397",
+    "longitude": "12.3731",
+    "industries": [
+      { "name": "Logistik & Transport", "description": "DHL Hub, Distributionszentren, Spedition" },
+      { "name": "Automotive", "description": "Fahrzeugproduktion, Zulieferer, E-Mobilität" },
+      { "name": "IT & Start-ups", "description": "Softwareentwicklung, Digital Business, Tech-Start-ups" },
+      { "name": "Medien & Verlage", "description": "Verlage, Medienproduktion, Digital Publishing" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Marktplätze, Retail" },
+      { "name": "Gesundheitswesen", "description": "Universitätskliniken, Forschung, Biotechnologie" }
+    ],
+    "nearbyCity": "Dresden, Halle"
+  },
+  {
+    "cityName": "Bremerhaven",
+    "citySlug": "bremerhaven",
+    "state": "Bremen",
+    "stateAuthority": "LfDI Bremen",
+    "latitude": "53.5396",
+    "longitude": "8.5809",
+    "industries": [
+      { "name": "Hafen & Logistik", "description": "Containerumschlag, Seehafenlogistik, Zolldaten" },
+      { "name": "Fischerei & Lebensmittel", "description": "Fischverarbeitung, Lebensmittelindustrie, Qualitätskontrolle" },
+      { "name": "Windenergie", "description": "Offshore-Windparks, Wartung, Projektmanagement" },
+      { "name": "Maritime Wirtschaft", "description": "Schiffbau, Reedereien, Schiffstechnik" },
+      { "name": "Handel & E-Commerce", "description": "Import/Export, Online-Shops, Warenwirtschaft" },
+      { "name": "Forschung", "description": "Meeresforschung, Klimaforschung, Institute" }
+    ],
+    "nearbyCity": "Bremen, Oldenburg"
+  },
+  {
+    "cityName": "Mannheim",
+    "citySlug": "mannheim",
+    "state": "Baden-Württemberg",
+    "stateAuthority": "LfDI Baden-Württemberg",
+    "latitude": "49.4875",
+    "longitude": "8.4660",
+    "industries": [
+      { "name": "Chemie & Pharma", "description": "Chemieproduktion, Pharmazeutika, Forschung" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Automatisierung, Sondermaschinen" },
+      { "name": "IT & Software", "description": "Softwareentwicklung, IT-Services, ERP-Systeme" },
+      { "name": "Handel & Logistik", "description": "Hafen, Distributionszentren, Warenwirtschaft" },
+      { "name": "Energie & Versorgung", "description": "Energieversorgung, Stadtwerke, Smart Grid" },
+      { "name": "Versicherungen", "description": "Versicherungsverträge, Kundenservice, Schadenregulierung" }
+    ],
+    "nearbyCity": "Heidelberg, Karlsruhe"
+  },
+  {
+    "cityName": "Wolfsburg",
+    "citySlug": "wolfsburg",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "52.4227",
+    "longitude": "10.7865",
+    "industries": [
+      { "name": "Automotive", "description": "Fahrzeugproduktion, Entwicklung, Zulieferer" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Robotik, Automatisierung" },
+      { "name": "IT & Software", "description": "Automotive-IT, Softwareentwicklung, Digitalisierung" },
+      { "name": "Logistik", "description": "Intralogistik, Supply Chain Management, Transport" },
+      { "name": "Dienstleistungen", "description": "Unternehmensdienstleistungen, Facility Management, Catering" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Kundendaten, Warenwirtschaft" }
+    ],
+    "nearbyCity": "Braunschweig, Hannover"
+  },
+  {
+    "cityName": "Bayern",
+    "citySlug": "bayern",
+    "state": "Bayern",
+    "stateAuthority": "BayLDA",
+    "latitude": "48.7904",
+    "longitude": "11.4979",
+    "industries": [
+      { "name": "Automotive & Mobilität", "description": "Fahrzeugbau, Zulieferer, E-Mobilität" },
+      { "name": "IT & Hightech", "description": "Softwareentwicklung, Halbleiter, IT-Services" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Automatisierung, Robotik" },
+      { "name": "Tourismus & Gastronomie", "description": "Hotels, Gastronomie, Tourismus-Management" },
+      { "name": "Finanz- & Versicherungen", "description": "Banken, Versicherungen, Fintech" },
+      { "name": "Gesundheitswesen", "description": "Kliniken, Medizintechnik, Pharma" }
+    ],
+    "nearbyCity": "München, Nürnberg, Augsburg"
+  },
+  {
+    "cityName": "Niedersachsen",
+    "citySlug": "niedersachsen",
+    "state": "Niedersachsen",
+    "stateAuthority": "LfD Niedersachsen",
+    "latitude": "52.6367",
+    "longitude": "9.8451",
+    "industries": [
+      { "name": "Automotive", "description": "Fahrzeugbau, Zulieferer, E-Mobilität" },
+      { "name": "Landwirtschaft & Ernährung", "description": "Agrarwirtschaft, Lebensmittelproduktion, Qualitätskontrolle" },
+      { "name": "Energie & Windkraft", "description": "Windenergie, Energieversorgung, Offshore" },
+      { "name": "Logistik & Hafen", "description": "Seehäfen, Transport, Distributionszentren" },
+      { "name": "IT & Digitalisierung", "description": "Softwareentwicklung, IT-Services, Digital Business" },
+      { "name": "Maschinenbau", "description": "Produktionsanlagen, Automatisierung, Sondermaschinen" }
+    ],
+    "nearbyCity": "Hannover, Oldenburg, Braunschweig"
+  },
+  {
+    "cityName": "Münster",
+    "citySlug": "muenster",
+    "state": "Nordrhein-Westfalen",
+    "stateAuthority": "LDI NRW",
+    "latitude": "51.9607",
+    "longitude": "7.6261",
+    "industries": [
+      { "name": "Bildung & Forschung", "description": "Universität, Forschungseinrichtungen, E-Learning" },
+      { "name": "Gesundheitswesen", "description": "Universitätskliniken, Medizinforschung, Pflege" },
+      { "name": "Versicherungen", "description": "Versicherungsverträge, Kundenservice, Schadenregulierung" },
+      { "name": "IT & Software", "description": "Softwareentwicklung, IT-Consulting, Start-ups" },
+      { "name": "Öffentliche Verwaltung", "description": "Kommunalverwaltung, E-Government, Bürgerdienste" },
+      { "name": "Handel & E-Commerce", "description": "Online-Shops, Kundendaten, Warenwirtschaft" }
+    ],
+    "nearbyCity": "Osnabrück, Dortmund"
+  }
+]

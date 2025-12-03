@@ -208,13 +208,13 @@ export const ComplianceJourney = () => {
                           <div className="text-center mb-6">
                             <Badge className="bg-gradient-to-r from-[#e24e1b] to-[#f97316] text-white border-0 mb-4">
                               <Sparkles className="w-3 h-3 mr-1" />
-                              LIMITED BETA ACCESS
+                              EARLY BIRD LAUNCH
                             </Badge>
                             <h4 className="text-2xl font-bold bg-gradient-to-r from-[#232323] to-[#474747] bg-clip-text text-transparent mb-3">
-                              Werden Sie Beta-Tester
+                              Jetzt durchstarten
                             </h4>
                             <p className="text-[#474747] text-lg">
-                              Gestalten Sie die Zukunft der Compliance mit uns
+                              Sichern Sie sich den Early Bird Preis
                             </p>
                           </div>
 
@@ -226,8 +226,8 @@ export const ComplianceJourney = () => {
                             </div>
                             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#39B37B]/20 hover:border-[#39B37B]/40 transition-all duration-300 hover:shadow-lg">
                               <Tag className="w-5 h-5 text-[#39B37B] mb-2" />
-                              <span className="block text-sm font-semibold text-[#232323]">50% Rabatt</span>
-                              <span className="text-xs text-[#474747]">Nach der Beta-Phase</span>
+                              <span className="block text-sm font-semibold text-[#232323]">Early Bird Preis</span>
+                              <span className="text-xs text-[#474747]">Limitiertes Angebot</span>
                             </div>
                             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-[#e24e1b]/10 hover:border-[#e24e1b]/30 transition-all duration-300 hover:shadow-lg">
                               <Sparkles className="w-5 h-5 text-[#e24e1b] mb-2" />
@@ -238,10 +238,10 @@ export const ComplianceJourney = () => {
 
                           <div className="flex flex-col sm:flex-row gap-3">
                             <Link
-                              to="/beta"
+                              to="/dsgvo-compliance-software"
                               className="flex-1 inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-[#e24e1b] to-[#f97316] rounded-xl hover:from-[#d63f14] hover:to-[#ea580c] transition-all duration-300 shadow-lg hover:shadow-xl group transform hover:scale-[1.02]"
                             >
-                              Jetzt Beta-Zugang sichern
+                              Jetzt Early Bird Preis sichern
                               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Link>
                             <Link

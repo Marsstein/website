@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
+import {
   Code,
   Shield,
   Globe,
@@ -34,7 +34,9 @@ import {
   Lock,
   Car,
   Heart,
-  CreditCard
+  CreditCard,
+  Cloud,
+  Brain
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
