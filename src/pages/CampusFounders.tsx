@@ -65,8 +65,8 @@ const CampusFounders: React.FC = () => {
 
   const features = [
     { icon: FileText, title: 'Guided Document Creation', desc: 'Records of Processing, TOMs, Privacy Policy – filled in step by step. No prior knowledge needed.' },
-    { icon: Bot, title: 'Mars-AI Agent', desc: 'Your autonomous compliance partner: completes tasks automatically and answers questions in real-time.' },
-    { icon: Award, title: 'GDPR Audit & Certification', desc: 'Marsstein seal for demonstrable compliance – build trust with customers & investors.' },
+    { icon: Bot, title: 'Mars-AI Agent', desc: 'Your digital DPO for expert questions and autonomous task completion – available 24/7.' },
+    { icon: Award, title: 'GDPR Audit & Certification', desc: 'System audit with DPO review and official Marsstein seal – build trust with customers & investors.' },
     { icon: Bell, title: 'Understand Legal Changes', desc: 'GDPR updates in plain language. What\'s changing? What do you need to do? Practical tips instead of legal jargon.' }
   ];
 
@@ -278,7 +278,7 @@ const CampusFounders: React.FC = () => {
                       <div className="w-6 h-6 rounded-full bg-[#e24e1b] flex items-center justify-center flex-shrink-0">
                         <Check className="w-4 h-4 text-white" />
                       </div>
-                      <span className="font-medium">Cancel Monthly</span>
+                      <span className="font-medium">GDPR Audit + Certificate</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-6 h-6 rounded-full bg-[#e24e1b] flex items-center justify-center flex-shrink-0">
@@ -337,8 +337,8 @@ const CampusFounders: React.FC = () => {
                   },
                   {
                     icon: Bot,
-                    title: "Mars-AI Assistant",
-                    desc: "Your digital DPO for all expert questions (1000 queries/month).",
+                    title: "Mars-AI Agent",
+                    desc: "Your digital DPO for expert questions and autonomous task completion.",
                     detail: "Available 24/7, legally compliant answers."
                   },
                   {
@@ -348,10 +348,10 @@ const CampusFounders: React.FC = () => {
                     detail: "Incl. risk assessment for US providers."
                   },
                   {
-                    icon: Users,
-                    title: "Employee Training",
-                    desc: "Awareness training & confidentiality agreements.",
-                    detail: "Demonstrable compliance for your team."
+                    icon: Award,
+                    title: "GDPR Audit & Certification",
+                    desc: "System audit with DPO review and official Marsstein seal.",
+                    detail: "Demonstrate compliance to customers & investors."
                   },
                   {
                     icon: Bell,
@@ -493,9 +493,9 @@ const CampusFounders: React.FC = () => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="faq-2">
-                <AccordionTrigger>What happens after the 14 days?</AccordionTrigger>
+                <AccordionTrigger>How does the GDPR Audit work?</AccordionTrigger>
                 <AccordionContent>
-                  Nothing happens automatically. We'll send you an email. If you want to continue, you enter your payment details then. If not, the trial ends automatically.
+                  Our System Audit includes four steps: (1) Kick-off & data collection in the first week, (2) Document review by our Data Protection Officer in the second week, (3) Feedback & remediation support over 3-5 days, and (4) Certification with official Marsstein seal. The entire process takes 2-3 weeks and results in a CERTIFIED seal you can display to customers and investors.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="faq-3">
