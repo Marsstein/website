@@ -43,6 +43,7 @@ const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AgbSoftware = lazy(() => import("./pages/AgbSoftware"));
 const DsgvoComplianceSoftware = lazy(() => import("./pages/DsgvoComplianceSoftware"));
+const StartupHeilbronn = lazy(() => import("./pages/StartupHeilbronn"));
 const BetaThanks = lazy(() => import("./pages/BetaThanks"));
 const Features = lazy(() => import("./pages/Features"));
 const HumanInTheLoop = lazy(() => import("./pages/HumanInTheLoop"));
@@ -335,6 +336,7 @@ const App = () => (
                 <Route path="/externer-datenschutzbeauftragter-niedersachsen" element={<ExternerDatenschutzbeauftragterNiedersachsen />} />
                 <Route path="/externer-datenschutzbeauftragter-muenster" element={<ExternerDatenschutzbeauftragterMuenster />} />
                 <Route path="/dsgvo-compliance-software" element={<DsgvoComplianceSoftware />} />
+                <Route path="/startup-heilbronn" element={<StartupHeilbronn />} />
                 <Route path="/beta" element={<Navigate to="/dsgvo-compliance-software" replace />} />
                 <Route path="/beta/thanks" element={<BetaThanks />} />
                 <Route path="/features" element={<Features />} />

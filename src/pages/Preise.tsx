@@ -114,7 +114,7 @@ const Preise: React.FC = () => {
     'DSB-Haftungsübernahme': '/externer-datenschutzbeauftragter',
     'DSB-Zertifikat': '/externer-datenschutzbeauftragter',
     'DSB-Hotline': '/externer-datenschutzbeauftragter',
-    'MARS-AI COMPLIANCE ASSISTANT': '/features',
+    'MARS-AI COMPLIANCE AGENT': '/features',
     'Gesetzesänderungs-Alerts': '/features#automatische-compliance-updates',
     'Automatische Policy-Updates': '/features#automatische-compliance-updates'
   };
@@ -145,7 +145,7 @@ const Preise: React.FC = () => {
       icon: UserCheck,
       features: [
         { label: 'Externer DSB', starter: false, professional: true, enterprise: true },
-        { label: 'DSB-Haftungsübernahme', starter: false, professional: '€100.000', enterprise: '€250.000' },
+        { label: 'DSB-Haftungsübernahme', starter: false, professional: true, enterprise: true },
         { label: 'DSB-Zertifikat', starter: false, professional: true, enterprise: true },
         { label: 'DSB-Hotline', starter: false, professional: 'Geschäftszeiten', enterprise: '24/7' }
       ]
@@ -163,14 +163,15 @@ const Preise: React.FC = () => {
     },
     {
       id: 'ai',
-      title: 'MARS-AI COMPLIANCE ASSISTANT',
+      title: 'MARS-AI COMPLIANCE AGENT',
       icon: Bot,
       features: [
         { label: 'KI-Anfragen pro Monat', starter: '100', professional: '1.000', enterprise: 'Unbegrenzt' },
         { label: 'Allgemeine DSGVO-Informationen', starter: true, professional: true, enterprise: true },
         { label: 'Kennt Ihre Unternehmensdaten', starter: false, professional: true, enterprise: true },
         { label: 'Individuelle Compliance-Analyse', starter: false, professional: true, enterprise: true },
-        { label: 'Dokumenten-Prüfassistent', starter: 'Basis', professional: 'Erweitert', enterprise: 'Premium' }
+        { label: 'MCP', starter: false, professional: false, enterprise: true },
+        { label: 'API Zugang', starter: false, professional: false, enterprise: true }
       ]
     },
     {
