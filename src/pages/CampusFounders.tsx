@@ -1,13 +1,8 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import teamGroupImage from '@/assets/team/team-group.png';
@@ -15,7 +10,6 @@ import {
   Rocket,
   ArrowRight,
   FileText,
-  Clock,
   Bot,
   Bell,
   Users,
@@ -23,7 +17,6 @@ import {
   Building2,
   Shield,
   Check,
-  Lock,
   Award,
   UserCheck
 } from 'lucide-react';
@@ -32,11 +25,8 @@ import {
   useTracking,
   useSectionTracking,
   useScrollDepthTracking,
-  useFormTracking,
   useExitIntentTracking,
-  usePathTracking,
 } from '@/hooks/useTracking';
-import { identifyUser } from '@/lib/analytics';
 
 const AnimatedSection = ({ children, className = "", id }: { children: React.ReactNode, className?: string, id?: string }) => {
   const ref = useRef(null);
@@ -56,90 +46,21 @@ const AnimatedSection = ({ children, className = "", id }: { children: React.Rea
   );
 };
 
-const StartupHeilbronn: React.FC = () => {
-  const navigate = useNavigate();
+const CampusFounders: React.FC = () => {
   const { trackButtonClick } = useTracking();
-  const { trackFormStart, trackFieldCompletion, trackFormSubmit } = useFormTracking('startup_heilbronn_signup');
-  const { trackSectionTransition } = usePathTracking();
 
-  useScrollDepthTracking('startup-heilbronn');
-  useExitIntentTracking({ page: 'startup-heilbronn', form_started: false });
+  useScrollDepthTracking('campus-founders');
+  useExitIntentTracking({ page: 'campus-founders', form_started: false });
 
-  const signupSectionRef = useSectionTracking('startup_heilbronn_signup_section');
+  const signupSectionRef = useSectionTracking('campus_founders_signup_section');
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [formData, setFormData] = useState({
-    firstName: '',
-    email: '',
-    company: '',
-    consent: false
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-
-    if (!formData.email || !formData.firstName || !formData.company || !formData.consent) {
-      setError('Please fill in all required fields.');
-      trackFormSubmit(false, 'missing_required_fields');
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch('/api/beta-signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          source: 'startup-heilbronn',
-          offer: 'professional-29-heilbronn-special'
-        })
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Registration failed');
-      }
-
-      identifyUser(formData.email, {
-        email: formData.email,
-        name: formData.firstName,
-        company: formData.company,
-        signup_source: 'startup_heilbronn',
-        offer: 'professional-29-heilbronn-special'
-      });
-
-      trackFormSubmit(true);
-      navigate('/beta/thanks');
-    } catch (err) {
-      console.error('Startup Heilbronn registration error:', err);
-      const errorMessage = 'There was an error during registration. Please try again.';
-      setError(errorMessage);
-      trackFormSubmit(false, errorMessage);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleInputChange = useCallback((field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setFormData(prev => ({ ...prev, [field]: value }));
-    trackFieldCompletion(field, value);
-  }, [trackFieldCompletion]);
-
   const handleCTAClick = (location: string) => {
-    trackButtonClick('startup_heilbronn_cta', location);
-    document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' });
+    trackButtonClick('campus_founders_cta', location);
+    window.location.href = '/contact';
   };
 
   const features = [
@@ -152,9 +73,9 @@ const StartupHeilbronn: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Heilbronn Startup Special: GDPR Professional Package for €29"
-        description="Exclusive for Heilbronn founders: The complete Marsstein Professional Package (worth €199) for only €29/month. Campus Founders Community Offer."
-        canonical="/startup-heilbronn"
+        title="Campus Founders Special: GDPR Professional Package for €29"
+        description="Exclusive for Campus Founders members: The complete Marsstein Professional Package (worth €199) for only €29/month. Campus Founders Community Offer."
+        canonical="/campus-founders"
       />
       <Header />
 
@@ -208,7 +129,7 @@ const StartupHeilbronn: React.FC = () => {
               >
                 Professional GDPR Protection for <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e24e1b] to-[#ff8c61]">
-                  Heilbronn Visionaries
+                  Campus Founders
                 </span>
               </motion.h1>
 
@@ -373,7 +294,7 @@ const StartupHeilbronn: React.FC = () => {
                   >
                     Claim Deal Now
                   </Button>
-                  <p className="mt-4 text-xs text-white/40">Limited to 50 spots in 2025.</p>
+                  <p className="mt-4 text-xs text-white/40">Exclusive for Campus Founders members</p>
                 </div>
               </div>
             </div>
@@ -523,123 +444,38 @@ const StartupHeilbronn: React.FC = () => {
           </div>
         </AnimatedSection>
 
-        {/* Signup Form Section */}
+        {/* CTA Section */}
         <AnimatedSection id="signup-form" className="py-24 bg-[#003366] relative overflow-hidden">
            {/* Decorative elements */}
            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#e24e1b]/20 rounded-full blur-[100px] pointer-events-none" />
            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-400/10 rounded-full blur-[100px] pointer-events-none" />
 
           <div ref={signupSectionRef} className="container px-4 mx-auto max-w-xl relative z-10" data-section="signup">
-            <div className="text-center mb-10">
+            <div className="text-center">
               <Badge className="bg-[#e24e1b] hover:bg-[#e24e1b] text-white border-none mb-4 px-4 py-1 text-sm shadow-lg">
-                Limited Time Only
+                Exclusive for Campus Founders
               </Badge>
               <h2 className="text-4xl font-bold text-white mb-4">
-                Claim Your Offer
+                Ready to Get Started?
               </h2>
-              <p className="text-white/80">
-                Start your 14-day free trial now.<br />
-                No credit card required. Trial ends automatically.
+              <p className="text-white/80 mb-8">
+                Contact us to claim your exclusive Campus Founders offer.<br />
+                €29/month instead of €199 – available only for Campus Founders members.
+              </p>
+
+              <Button
+                size="lg"
+                className="bg-[#e24e1b] hover:bg-[#c43e15] text-white text-lg px-12 py-7 shadow-[0_0_30px_rgba(226,78,27,0.4)] hover:shadow-[0_0_50px_rgba(226,78,27,0.6)] font-bold rounded-xl group transition-all duration-300"
+                onClick={() => handleCTAClick('cta_section')}
+              >
+                <span className="mr-2">Contact Us</span>
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+
+              <p className="text-center text-white/40 text-xs mt-6">
+                €29/month plus VAT • Cancel monthly • No minimum term
               </p>
             </div>
-
-            <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
-              <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName" className="text-gray-700 font-medium">First Name</Label>
-                      <Input
-                        id="firstName"
-                        value={formData.firstName}
-                        onChange={handleInputChange('firstName')}
-                        onFocus={trackFormStart}
-                        required
-                        placeholder="Max"
-                        className="bg-gray-50 border-gray-200 focus:border-[#003366] focus:ring-[#003366]"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="company" className="text-gray-700 font-medium">Startup Name</Label>
-                      <Input
-                        id="company"
-                        value={formData.company}
-                        onChange={handleInputChange('company')}
-                        required
-                        placeholder="Future GmbH"
-                        className="bg-gray-50 border-gray-200 focus:border-[#003366] focus:ring-[#003366]"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-700 font-medium">Business Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange('email')}
-                      required
-                      placeholder="max@startup.com"
-                      className="bg-gray-50 border-gray-200 focus:border-[#003366] focus:ring-[#003366]"
-                    />
-                  </div>
-
-                  <div className="bg-blue-50/50 p-4 rounded-lg border border-blue-100">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-600">Package: Professional (Heilbronn)</span>
-                      <span className="text-sm font-bold text-[#e24e1b] line-through">€199</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-gray-900">Your Price:</span>
-                      <span className="text-xl font-bold text-[#003366]">€29 <span className="text-xs font-normal text-gray-500">/month</span></span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Checkbox
-                      id="consent"
-                      checked={formData.consent}
-                      onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
-                      required
-                      className="mt-1 data-[state=checked]:bg-[#e24e1b] data-[state=checked]:border-[#e24e1b]"
-                    />
-                    <label htmlFor="consent" className="text-xs text-gray-500 leading-snug cursor-pointer">
-                      I agree to the processing of my data according to the <a href="/privacy" className="text-[#003366] underline hover:text-[#e24e1b]">Privacy Policy</a>. I confirm that my startup is part of the Heilbronn startup ecosystem (e.g., Campus Founders).
-                    </label>
-                  </div>
-
-                  {error && (
-                    <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm flex items-center gap-2">
-                      <Lock className="w-4 h-4" />
-                      {error}
-                    </div>
-                  )}
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-[#e24e1b] hover:bg-[#c43e15] text-white py-6 text-lg font-bold transition-all duration-300 shadow-lg hover:shadow-xl"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Clock className="mr-2 h-5 w-5 animate-spin" />
-                        Processing...
-                      </>
-                    ) : (
-                      <>
-                        Start 14-Day Free Trial
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
-            <p className="text-center text-white/40 text-xs mt-6">
-              After trial: €29/month plus VAT • Cancel monthly • No minimum term
-            </p>
           </div>
         </AnimatedSection>
 
@@ -663,9 +499,9 @@ const StartupHeilbronn: React.FC = () => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="faq-3">
-                <AccordionTrigger>Who qualifies as a "Heilbronn Startup"?</AccordionTrigger>
+                <AccordionTrigger>Who qualifies for this offer?</AccordionTrigger>
                 <AccordionContent>
-                  We're not strict about this. If you founded in the Heilbronn area (including the district) or have a connection to the ecosystem (e.g., Campus Founders), you're welcome.
+                  This offer is exclusively available to Campus Founders members. If you're part of the Campus Founders community in Heilbronn, you qualify for the special €29/month rate.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="faq-4">
@@ -684,4 +520,4 @@ const StartupHeilbronn: React.FC = () => {
   );
 };
 
-export default StartupHeilbronn;
+export default CampusFounders;
