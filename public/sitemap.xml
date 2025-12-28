@@ -31,12 +31,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/beta</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://marsstein.ai/ueber-uns</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -427,28 +421,10 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/compliance/dsg-ekd-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://marsstein.ai/compliance/kdg</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/compliance/kdg-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/compliance/iso-27001-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://marsstein.ai/dsgvo-china</loc>
@@ -655,18 +631,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/branchen/gesundheitswesen-dsgvo</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/healthcare-ai-compliance</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://marsstein.ai/branchen/finanzdienstleister</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -679,12 +643,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/branchen/saas</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://marsstein.ai/branchen/saas-unternehmen</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -692,12 +650,6 @@
   </url>
   <url>
     <loc>https://marsstein.ai/branchen/produktion</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/produktion-datenschutz-guide</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -725,54 +677,6 @@
     <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/logistics-compliance</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/insurtech-compliance</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/proptech-compliance</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/travel-compliance</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/edtech-privacy</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/dsgvo-vereine</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/datenschutz-homeoffice</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/branchen/pharma-compliance-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://marsstein.ai/tools</loc>
@@ -823,192 +727,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/guides/dsgvo-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/eu-ai-act-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/nis2-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/soc2-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/tisax-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/geldwaeschegesetz-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/iso-27017-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/iso-27018-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/data-breach-notfall-leitfaden</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/dsgvo</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/eu-ai-act</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/nis2</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/soc2</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/tisax</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/geldwaeschegesetz</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/iso-27017</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/guides/iso-27018</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/ki-risikoklassifizierung</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/privacy-by-design-ai</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/explainable-ai-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/financial-ai-compliance</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/hr-ai-compliance</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/algorithmic-impact-assessment-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/data-minimization-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/federated-learning-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/model-privacy-attacks</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/ki/privacy-preserving-ai</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/crisis-management</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/crisis/security-incident-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/legal/cookie-law-guide</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/legal/meta-irland-case</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://marsstein.ai/wissen</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -1027,12 +745,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://marsstein.ai/wissen/cybersecurity</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -1046,12 +758,6 @@
   </url>
   <url>
     <loc>https://marsstein.ai/wissen/ki-datenschutz</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/ki-compliance</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -1205,78 +911,6 @@
     <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/artikel-15-dsgvo-auskunftsrecht-china</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/dsgvo-amazon-sellers-china</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/dsgvo-tiktok-shop-china</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/deepseek-dsgvo</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/eu-vertreter-china</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/joint-venture-china-datenschutz</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/china-investitionen-dsgvo-screening</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/china-scc-vs-eu-scc</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/dsgvo-wechat-alipay-china</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/dsgvo-douyin-china</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/dsgvo-b2b-hersteller-china</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/wissen/china-dsgvo/pipl-gdpr-china</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://marsstein.ai/wissen/branchen/automotive-datenschutz</loc>
@@ -1589,17 +1223,5 @@
     <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/resources</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://marsstein.ai/academy</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>

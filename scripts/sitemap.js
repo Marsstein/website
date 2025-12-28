@@ -14,7 +14,6 @@ const routes = [
   { url: '/preise', priority: '0.9', changefreq: 'weekly' },
   { url: '/features', priority: '0.9', changefreq: 'weekly' },
   { url: '/features/human-in-the-loop', priority: '0.8', changefreq: 'weekly' },
-  { url: '/beta', priority: '0.8', changefreq: 'weekly' },
   { url: '/ueber-uns', priority: '0.8', changefreq: 'monthly' },
   { url: '/datenschutzexperten', priority: '0.8', changefreq: 'weekly' },
   { url: '/campus-founders', priority: '0.7', changefreq: 'monthly' },
@@ -88,10 +87,7 @@ const routes = [
   { url: '/compliance/tisax', priority: '0.6', changefreq: 'monthly' },
   { url: '/compliance/dsgvo', priority: '0.7', changefreq: 'monthly' },
   { url: '/compliance/dsg-ekd', priority: '0.6', changefreq: 'monthly' },
-  { url: '/compliance/dsg-ekd-guide', priority: '0.6', changefreq: 'monthly' },
   { url: '/compliance/kdg', priority: '0.6', changefreq: 'monthly' },
-  { url: '/compliance/kdg-guide', priority: '0.6', changefreq: 'monthly' },
-  { url: '/compliance/iso-27001-guide', priority: '0.7', changefreq: 'monthly' },
 
   // === CHINA DSGVO ===
   { url: '/dsgvo-china', priority: '0.8', changefreq: 'weekly' },
@@ -134,26 +130,14 @@ const routes = [
   // === BRANCHEN ===
   { url: '/branchen', priority: '0.7', changefreq: 'weekly' },
   { url: '/branchen/gesundheitswesen', priority: '0.6', changefreq: 'monthly' },
-  { url: '/branchen/gesundheitswesen-dsgvo', priority: '0.6', changefreq: 'monthly' },
-  { url: '/branchen/healthcare-ai-compliance', priority: '0.6', changefreq: 'monthly' },
   { url: '/branchen/finanzdienstleister', priority: '0.6', changefreq: 'monthly' },
   { url: '/branchen/e-commerce', priority: '0.6', changefreq: 'monthly' },
-  { url: '/branchen/saas', priority: '0.6', changefreq: 'monthly' },
   { url: '/branchen/saas-unternehmen', priority: '0.6', changefreq: 'monthly' },
   { url: '/branchen/produktion', priority: '0.6', changefreq: 'monthly' },
-  { url: '/branchen/produktion-datenschutz-guide', priority: '0.6', changefreq: 'monthly' },
   { url: '/branchen/automotive', priority: '0.6', changefreq: 'monthly' },
   { url: '/branchen/energie', priority: '0.6', changefreq: 'monthly' },
   { url: '/branchen/lebensmittel', priority: '0.5', changefreq: 'monthly' },
   { url: '/branchen/logistik', priority: '0.5', changefreq: 'monthly' },
-  { url: '/branchen/logistics-compliance', priority: '0.5', changefreq: 'monthly' },
-  { url: '/branchen/insurtech-compliance', priority: '0.6', changefreq: 'monthly' },
-  { url: '/branchen/proptech-compliance', priority: '0.6', changefreq: 'monthly' },
-  { url: '/branchen/travel-compliance', priority: '0.5', changefreq: 'monthly' },
-  { url: '/branchen/edtech-privacy', priority: '0.5', changefreq: 'monthly' },
-  { url: '/branchen/dsgvo-vereine', priority: '0.6', changefreq: 'monthly' },
-  { url: '/branchen/datenschutz-homeoffice', priority: '0.6', changefreq: 'monthly' },
-  { url: '/branchen/pharma-compliance-guide', priority: '0.6', changefreq: 'monthly' },
 
   // === TOOLS ===
   { url: '/tools', priority: '0.7', changefreq: 'weekly' },
@@ -165,54 +149,13 @@ const routes = [
   { url: '/tools/dsgvo-compliance-scorecard', priority: '0.5', changefreq: 'monthly' },
   { url: '/tools/compliance-ai-assistant', priority: '0.6', changefreq: 'monthly' },
 
-  // === GUIDES ===
-  { url: '/guides/dsgvo-leitfaden', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/eu-ai-act-leitfaden', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/nis2-leitfaden', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/soc2-leitfaden', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/tisax-leitfaden', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/geldwaeschegesetz-leitfaden', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/iso-27017-leitfaden', priority: '0.6', changefreq: 'monthly' },
-  { url: '/guides/iso-27018-leitfaden', priority: '0.6', changefreq: 'monthly' },
-  { url: '/guides/data-breach-notfall-leitfaden', priority: '0.6', changefreq: 'monthly' },
-  { url: '/guides/dsgvo', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/eu-ai-act', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/nis2', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/soc2', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/tisax', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/geldwaeschegesetz', priority: '0.7', changefreq: 'monthly' },
-  { url: '/guides/iso-27017', priority: '0.6', changefreq: 'monthly' },
-  { url: '/guides/iso-27018', priority: '0.6', changefreq: 'monthly' },
-
-  // === KI COMPLIANCE ===
-  { url: '/ki/ki-risikoklassifizierung', priority: '0.7', changefreq: 'monthly' },
-  { url: '/ki/privacy-by-design-ai', priority: '0.6', changefreq: 'monthly' },
-  { url: '/ki/explainable-ai-guide', priority: '0.6', changefreq: 'monthly' },
-  { url: '/ki/financial-ai-compliance', priority: '0.6', changefreq: 'monthly' },
-  { url: '/ki/hr-ai-compliance', priority: '0.6', changefreq: 'monthly' },
-  { url: '/ki/algorithmic-impact-assessment-guide', priority: '0.6', changefreq: 'monthly' },
-  { url: '/ki/data-minimization-guide', priority: '0.6', changefreq: 'monthly' },
-  { url: '/ki/federated-learning-guide', priority: '0.6', changefreq: 'monthly' },
-  { url: '/ki/model-privacy-attacks', priority: '0.6', changefreq: 'monthly' },
-  { url: '/ki/privacy-preserving-ai', priority: '0.6', changefreq: 'monthly' },
-
-  // === CRISIS MANAGEMENT ===
-  { url: '/crisis-management', priority: '0.7', changefreq: 'monthly' },
-  { url: '/crisis/security-incident-guide', priority: '0.6', changefreq: 'monthly' },
-
-  // === LEGAL ===
-  { url: '/legal/cookie-law-guide', priority: '0.6', changefreq: 'monthly' },
-  { url: '/legal/meta-irland-case', priority: '0.5', changefreq: 'monthly' },
-
   // === WISSEN (Hauptseiten) ===
   { url: '/wissen', priority: '0.8', changefreq: 'weekly' },
   { url: '/wissen/branchen', priority: '0.7', changefreq: 'weekly' },
   { url: '/wissen/china', priority: '0.7', changefreq: 'weekly' },
-  { url: '/wissen/china-dsgvo', priority: '0.7', changefreq: 'weekly' },
   { url: '/wissen/cybersecurity', priority: '0.7', changefreq: 'weekly' },
   { url: '/wissen/dsgvo', priority: '0.7', changefreq: 'weekly' },
   { url: '/wissen/ki-datenschutz', priority: '0.7', changefreq: 'weekly' },
-  { url: '/wissen/ki-compliance', priority: '0.7', changefreq: 'weekly' },
   { url: '/wissen/krisenmanagement', priority: '0.7', changefreq: 'weekly' },
   { url: '/wissen/rechtsprechung', priority: '0.7', changefreq: 'weekly' },
   { url: '/wissen/risk-management', priority: '0.7', changefreq: 'weekly' },
@@ -244,20 +187,6 @@ const routes = [
   { url: '/wissen/interner-dsb-scheitert', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/dsgvo-software-vs-manuell', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/dsgvo-vs-bdsg', priority: '0.8', changefreq: 'weekly' },
-
-  // === WISSEN CHINA ===
-  { url: '/wissen/china-dsgvo/artikel-15-dsgvo-auskunftsrecht-china', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/dsgvo-amazon-sellers-china', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/dsgvo-tiktok-shop-china', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/deepseek-dsgvo', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/eu-vertreter-china', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/joint-venture-china-datenschutz', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/china-investitionen-dsgvo-screening', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/china-scc-vs-eu-scc', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/dsgvo-wechat-alipay-china', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/dsgvo-douyin-china', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/dsgvo-b2b-hersteller-china', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/china-dsgvo/pipl-gdpr-china', priority: '0.6', changefreq: 'monthly' },
 
   // === WISSEN BRANCHEN ===
   { url: '/wissen/branchen/automotive-datenschutz', priority: '0.6', changefreq: 'monthly' },
@@ -317,13 +246,12 @@ const routes = [
   { url: '/wissen/rechtsprechung/meta-irland-2024', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/rechtsprechung/planet49-cookie', priority: '0.6', changefreq: 'monthly' },
   { url: '/wissen/rechtsprechung/schrems-ii', priority: '0.6', changefreq: 'monthly' },
-  { url: '/wissen/rechtsprechung/whatsapp-irland-2021', priority: '0.6', changefreq: 'monthly' },
-
-  // === RESOURCES & ACADEMY ===
-  { url: '/resources', priority: '0.6', changefreq: 'monthly' },
-  { url: '/academy', priority: '0.7', changefreq: 'monthly' }
+  { url: '/wissen/rechtsprechung/whatsapp-irland-2021', priority: '0.6', changefreq: 'monthly' }
 
   // === NOINDEX SEITEN (NICHT in Sitemap) ===
+  // /resources - entfernt (404)
+  // /academy - entfernt
+  // /beta - entfernt
   // /impressum - noindex
   // /datenschutz - noindex
   // /agb-software - noindex
