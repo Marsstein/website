@@ -1723,6 +1723,654 @@ const routeConfigs = {
     description: 'TISAX-Leitfaden: Kompletter Guide zum TISAX-Assessment. ✓ VDA ISA ✓ Assessment Levels ✓ Controls ✓ Automotive Security ✓ Zertifizierung. Jetzt TISAX-compliant!',
     keywords: 'TISAX Leitfaden, TISAX Assessment Guide, VDA ISA, Automotive Security, TISAX Zertifizierung',
     canonical: 'https://marsstein.ai/guides/tisax'
+  },
+
+  // === NEWLY ADDED ROUTES ===
+
+  // Human-in-the-Loop
+  '/features/human-in-the-loop': {
+    title: 'Human-in-the-Loop DSGVO Review | KI + Experten-Validierung | Marsstein',
+    description: 'KI-Effizienz trifft menschliche Expertise: Ihre DSGVO-Dokumente automatisiert erstellt und von zertifizierten Datenschutzexperten geprüft. 50+ Spezialisten aus 15+ Branchen.',
+    keywords: 'Human-in-the-Loop, DSGVO Review, KI Experten, Datenschutz Validierung, Experten Review',
+    canonical: 'https://marsstein.ai/features/human-in-the-loop'
+  },
+  '/human-in-the-loop': {
+    title: 'Human-in-the-Loop DSGVO Review | KI + Experten-Validierung | Marsstein',
+    description: 'KI-Effizienz trifft menschliche Expertise: Ihre DSGVO-Dokumente automatisiert erstellt und von zertifizierten Datenschutzexperten geprüft. 50+ Spezialisten aus 15+ Branchen.',
+    keywords: 'Human-in-the-Loop, DSGVO Review, KI Experten, Datenschutz Validierung, Experten Review',
+    canonical: 'https://marsstein.ai/features/human-in-the-loop'
+  },
+
+  // Datenschutzexperten
+  '/datenschutzexperten': {
+    title: 'Datenschutzexperten finden – 50+ Zertifizierte DSB Experten | Marsstein',
+    description: 'Finden Sie den passenden Datenschutzexperten für Ihr Unternehmen. CIPP/E-zertifiziert ✓ Branchenexpertise ✓ DSGVO-Compliance ✓ Human-in-the-Loop Reviews.',
+    keywords: 'Datenschutzexperten, DSB Experten, CIPP/E, Datenschutzbeauftragter, DSGVO Experten',
+    canonical: 'https://marsstein.ai/datenschutzexperten'
+  },
+
+  // Campus Founders
+  '/campus-founders': {
+    title: 'Campus Founders Special: GDPR Professional Package für €29 | Marsstein',
+    description: 'Exklusiv für Campus Founders: Das komplette Marsstein Professional Package (Wert €199) für nur €29/Monat. Campus Founders Community Angebot.',
+    keywords: 'Campus Founders, Startup DSGVO, GDPR Package, Startup Datenschutz, Heilbronn Startup',
+    canonical: 'https://marsstein.ai/campus-founders'
+  },
+
+  // About / Über uns
+  '/ueber-uns': {
+    title: 'Über uns - Marsstein | Life\'s too short for regs.',
+    description: 'Lernen Sie das Marsstein-Team kennen. Wir machen EU-Compliance so einfach wie das Speichern einer Datei – mit KI-gestützter GDPR-, ISO 27001- und AI Act-Unterstützung.',
+    keywords: 'Marsstein Team, Über uns, Compliance Startup, DSGVO Automatisierung, Konstanz',
+    canonical: 'https://marsstein.ai/ueber-uns'
+  },
+
+  // Assessment Center
+  '/assessment-center': {
+    title: 'Assessment Center – Compliance & Risiko Bewertungen | Marsstein',
+    description: 'Interaktives Assessment Center für DSGVO, ISO 27001, SOC 2 und KI-Risiko Bewertungen. ✓ Professionelle Tools ✓ Detaillierte Analysen ✓ Handlungsempfehlungen.',
+    keywords: 'Compliance Assessment, DSGVO Check, ISO 27001 Readiness, Risikobewertung, Compliance Tools',
+    canonical: 'https://marsstein.ai/assessment-center'
+  },
+  '/assessment-center/breach-response-checklist': {
+    title: 'Breach Response Checklist – 72-Stunden DSGVO Notfallplan | Marsstein',
+    description: 'Notfall-Checkliste für Datenpannen: Schritt-für-Schritt in 72h. Meldepflichten, Kommunikation, Schadensbegrenzung. ✓ DSGVO-konform ✓ Sofort einsetzbar.',
+    keywords: 'Data Breach Checklist, Datenpanne Notfallplan, 72 Stunden Meldepflicht, DSGVO Breach Response',
+    canonical: 'https://marsstein.ai/assessment-center/breach-response-checklist'
+  },
+  '/assessment-center/cookie-compliance-audit': {
+    title: 'Cookie Compliance Audit – DSGVO Cookie-Scanner & Analyse | Marsstein',
+    description: 'Detaillierte Cookie-Compliance Überprüfung: Cookie-Scanner, Einwilligungsprozesse, TCF 2.2. ✓ Automatische Analyse ✓ DSGVO-konform ✓ Sofortige Ergebnisse.',
+    keywords: 'Cookie Audit, Cookie Compliance, TCF 2.2, Cookie Scanner, DSGVO Cookie Banner',
+    canonical: 'https://marsstein.ai/assessment-center/cookie-compliance-audit'
+  },
+  '/assessment-center/datenschutz-readiness-assessment': {
+    title: 'Datenschutz Readiness Assessment – DSGVO-Bereitschaft prüfen | Marsstein',
+    description: 'Bewerten Sie Ihre Datenschutz-Bereitschaft interaktiv. Analysieren Sie Prozesse, Dokumentation & TOMs für optimalen Datenschutz. ✓ Kostenlos ✓ Sofortige Auswertung.',
+    keywords: 'Datenschutz Assessment, DSGVO Readiness, Compliance Check, Datenschutz Analyse',
+    canonical: 'https://marsstein.ai/assessment-center/datenschutz-readiness-assessment'
+  },
+  '/assessment-center/vendor-assessment-template': {
+    title: 'Vendor Assessment Template – Lieferanten DSGVO-Bewertung | Marsstein',
+    description: 'Strukturierte Lieferanten-Bewertung: Datenschutz, IT-Sicherheit, Compliance systematisch prüfen. ✓ Bewertungsmatrix ✓ Risiko-Scoring ✓ Vorlagen.',
+    keywords: 'Vendor Assessment, Lieferanten Bewertung, Third Party Risk, Auftragsverarbeiter Prüfung',
+    canonical: 'https://marsstein.ai/assessment-center/vendor-assessment-template'
+  },
+
+  // Tools
+  '/tools': {
+    title: 'Tools – Compliance-Werkzeuge & Automatisierung | Marsstein',
+    description: 'Compliance-Tools Suite: DSGVO-Check, Cookie-Scanner, Whistleblower-System, KI-Assistent. ✓ Automatisierung ✓ Rechtssicher ✓ Enterprise-ready.',
+    keywords: 'Compliance Tools, DSGVO Tools, Cookie Scanner, Whistleblower System, Compliance Automatisierung',
+    canonical: 'https://marsstein.ai/tools'
+  },
+  '/tools/compliance-ai-assistant': {
+    title: 'AI Assistant – Compliance-Berater mit KI-Power | Marsstein',
+    description: 'Compliance AI Assistant: KI-gestützter Berater für DSGVO, ISO 27001, EU AI Act. ✓ 24/7 verfügbar ✓ Voice AI ✓ Instant Antworten.',
+    keywords: 'Compliance AI, KI Berater, DSGVO Chatbot, AI Assistant, Compliance Automatisierung',
+    canonical: 'https://marsstein.ai/tools/compliance-ai-assistant'
+  },
+  '/tools/cookie-management-tool': {
+    title: 'Cookie Management – DSGVO-konforme Cookie-Banner | Marsstein',
+    description: 'Cookie Management Tool: DSGVO-konforme Cookie-Banner, Consent-Verwaltung, TCF 2.2, Google Consent Mode v2. ✓ Rechtssicher ✓ Conversion-optimiert.',
+    keywords: 'Cookie Management, Cookie Banner, Consent Management, TCF 2.2, Google Consent Mode',
+    canonical: 'https://marsstein.ai/tools/cookie-management-tool'
+  },
+  '/tools/dsgvo-email-template-generator': {
+    title: 'DSGVO E-Mail Templates – Rechtssichere Vorlagen | Marsstein',
+    description: 'DSGVO E-Mail Template Generator: Rechtssichere Vorlagen für Auskunftsersuchen, Löschanfragen, Betroffenenrechte. ✓ Anwaltlich geprüft ✓ Sofort einsetzbar.',
+    keywords: 'DSGVO E-Mail Vorlagen, Auskunftsersuchen Template, Löschanfrage Vorlage, Betroffenenrechte',
+    canonical: 'https://marsstein.ai/tools/dsgvo-email-template-generator'
+  },
+  '/tools/whistleblower-system-tool': {
+    title: 'Whistleblower System – HinSchG-konformes Meldesystem | Marsstein',
+    description: 'Digitales Whistleblower-System nach HinSchG: Anonyme Meldungen, Fallmanagement, Compliance. ✓ Rechtssicher ✓ DSGVO-konform.',
+    keywords: 'Whistleblower System, HinSchG, Hinweisgebersystem, anonyme Meldung, Meldekanal',
+    canonical: 'https://marsstein.ai/tools/whistleblower-system-tool'
+  },
+
+  // Beta & Thank You
+  '/beta': {
+    title: 'Schluss mit DSGVO-Chaos – Beta-Zugang sichern | Marsstein',
+    description: 'KI-gestützte DSGVO-Automatisierung. Kostenlos testen, 50% Launch-Rabatt sichern. Limitierte Beta-Plätze verfügbar.',
+    keywords: 'Marsstein Beta, DSGVO Software Beta, Compliance Beta, Early Access',
+    canonical: 'https://marsstein.ai/beta'
+  },
+  '/beta/thanks': {
+    title: 'Beta-Anmeldung erfolgreich | Marsstein',
+    description: 'Vielen Dank für Ihre Beta-Anmeldung. Wir melden uns in Kürze mit Ihrem Zugang.',
+    keywords: 'Beta Bestätigung, Anmeldung erfolgreich',
+    canonical: 'https://marsstein.ai/beta/thanks'
+  },
+  '/thank-you': {
+    title: 'Danke – Ihre Anfrage wurde erfolgreich übermittelt | Marsstein',
+    description: 'Vielen Dank für Ihre Anfrage. Unser Compliance-Team meldet sich innerhalb von 24 Stunden bei Ihnen.',
+    keywords: 'Danke, Anfrage erfolgreich, Kontakt bestätigt',
+    canonical: 'https://marsstein.ai/thank-you'
+  },
+
+  // DSGVO Audit
+  '/dsgvo-audit': {
+    title: 'DSGVO Audit & Zertifizierung - Professionelle Datenschutzprüfung | Marsstein',
+    description: 'DSGVO Audit ✓ Professionelle Zertifizierung in 3 Stufen ✓ Von Self-Assessment bis Voll-Audit ✓ Offizielles Marsstein-Siegel.',
+    keywords: 'DSGVO Audit, Datenschutz Zertifizierung, DSGVO Prüfung, Compliance Audit, Datenschutz Siegel',
+    canonical: 'https://marsstein.ai/dsgvo-audit'
+  },
+
+  // Ratgeber
+  '/ratgeber/datenschutzbeauftragter-auswahl': {
+    title: 'Datenschutzbeauftragter Auswahl: Interner vs. Externer DSB Vergleich 2025 | Marsstein',
+    description: 'Interner DSB, externer Freiberufler, Kanzlei oder Hybrid? Kostenvergleich, Entscheidungsbaum und Checkliste für die richtige DSB-Wahl.',
+    keywords: 'DSB Auswahl, interner Datenschutzbeauftragter, externer DSB, DSB Vergleich, DSB Kosten',
+    canonical: 'https://marsstein.ai/ratgeber/datenschutzbeauftragter-auswahl'
+  },
+  '/ratgeber/dsgvo-software-auswahlkriterien': {
+    title: 'DSGVO-Software Auswahlkriterien: 15 essenzielle Features im Vergleich 2025 | Marsstein',
+    description: 'Worauf Sie bei DSGVO-Compliance-Software wirklich achten müssen: Kaufratgeber mit Checkliste, Kostenvergleich und Marktübersicht.',
+    keywords: 'DSGVO Software Vergleich, Compliance Software Auswahl, Datenschutz Software, DSGVO Tool Vergleich',
+    canonical: 'https://marsstein.ai/ratgeber/dsgvo-software-auswahlkriterien'
+  },
+  '/ratgeber/sicherheitszertifizierung-auswahl': {
+    title: 'Sicherheitszertifizierung Vergleich: ISO 27001, SOC 2, TISAX Entscheidungshilfe 2025 | Marsstein',
+    description: 'ISO 27001, SOC 2, TISAX, ISO 27017/27018 oder NIS2? Objektiver Vergleich mit Kosten, Dauer und Branchen-Empfehlungen.',
+    keywords: 'Zertifizierung Vergleich, ISO 27001 vs SOC 2, TISAX Vergleich, Sicherheitszertifizierung',
+    canonical: 'https://marsstein.ai/ratgeber/sicherheitszertifizierung-auswahl'
+  },
+
+  // China DSGVO Routes
+  '/dsgvo-china': {
+    title: 'DSGVO & China – Datenschutz für EU-China-Geschäfte | Marsstein',
+    description: 'DSGVO + PIPL Dual Compliance für Unternehmen mit China-Bezug. E-Commerce, Social Media, Investment. Rechtssichere EU-China-Expansion.',
+    keywords: 'DSGVO China, PIPL, China Datenschutz, EU China Compliance, Cross-Border Datentransfer',
+    canonical: 'https://marsstein.ai/dsgvo-china'
+  },
+  '/wissen/china': {
+    title: 'DSGVO & Datenschutz China – Praxisguide für Unternehmen | Marsstein',
+    description: '12 Praxisartikel zu DSGVO-Compliance im China-Geschäft: E-Commerce, Social Media, rechtliche Grundlagen und Investment. ✓ Amazon ✓ TikTok ✓ DeepSeek ✓ EU-Vertreter',
+    keywords: 'DSGVO China Guide, PIPL Compliance, China E-Commerce DSGVO, EU-Vertreter China',
+    canonical: 'https://marsstein.ai/wissen/china'
+  },
+  '/artikel-15-dsgvo-auskunftsrecht-china': {
+    title: 'Art. 15 DSGVO Auskunftsrecht: Chinas Tech-Riesen versagen systematisch | Marsstein',
+    description: 'TikTok, WeChat, AliExpress ignorieren DSGVO Auskunftsrechte. Noyb klagt gegen 6 chinesische Firmen. Art. 15 GDPR-Compliance für China-Unternehmen.',
+    keywords: 'Art. 15 DSGVO, Auskunftsrecht China, TikTok DSGVO, noyb China, DSGVO Klage China',
+    canonical: 'https://marsstein.ai/artikel-15-dsgvo-auskunftsrecht-china'
+  },
+  '/china-investitionen-dsgvo-screening': {
+    title: 'China Investitions-Screening: DSGVO Due Diligence für M&A | Marsstein',
+    description: 'DSGVO Due Diligence für Investitionen in chinesische Unternehmen. EU-China Investitionsabkommen 2025, FDI-Screening, Compliance-Audits bei M&A.',
+    keywords: 'China Investment Screening, DSGVO Due Diligence, M&A Datenschutz, FDI Screening China',
+    canonical: 'https://marsstein.ai/china-investitionen-dsgvo-screening'
+  },
+  '/china-scc-vs-eu-scc': {
+    title: 'China SCCs vs. EU SCCs: Kritische Unterschiede bei Standard Contractual Clauses | Marsstein',
+    description: 'China Standard Contract (2023) vs. EU Standard Contractual Clauses (2021). 8 konfliktträchtige Unterschiede für bidirektionale Datentransfers EU↔China.',
+    keywords: 'China SCC, EU SCC Vergleich, Standard Contractual Clauses, Datentransfer China EU',
+    canonical: 'https://marsstein.ai/china-scc-vs-eu-scc'
+  },
+  '/deepseek-dsgvo': {
+    title: 'DeepSeek DSGVO: Chinesische KI unter EU-Datenschutz-Beobachtung 2025 | Marsstein',
+    description: 'DeepSeek AI GDPR Compliance-Risiken. Chinesische KI-Modelle vs. ChatGPT/Claude Datenschutz. Art. 22, 35 DSGVO für AI.',
+    keywords: 'DeepSeek DSGVO, China AI GDPR, DeepSeek Datenschutz, KI Compliance China',
+    canonical: 'https://marsstein.ai/deepseek-dsgvo'
+  },
+  '/dsgvo-amazon-sellers-china': {
+    title: 'Amazon Sellers & DSGVO: Compliance für Amazon-Händler mit China-Lieferanten | Marsstein',
+    description: 'Compliance-Anforderungen für Amazon-Händler mit China-Lieferanten und chinesischen FBA-Lagern. DSGVO-konforme Lieferkette.',
+    keywords: 'Amazon Seller DSGVO, China Lieferanten Datenschutz, FBA DSGVO, Amazon Händler Compliance',
+    canonical: 'https://marsstein.ai/dsgvo-amazon-sellers-china'
+  },
+  '/dsgvo-b2b-hersteller-china': {
+    title: 'B2B Hersteller & DSGVO: Compliance für B2B-Unternehmen mit China | Marsstein',
+    description: 'DSGVO-Compliance für B2B-Unternehmen mit chinesischen Herstellern und Lieferanten. Datentransfer, AVV, SCCs.',
+    keywords: 'B2B DSGVO China, Hersteller Datenschutz, Lieferanten DSGVO, Manufacturing Compliance China',
+    canonical: 'https://marsstein.ai/dsgvo-b2b-hersteller-china'
+  },
+  '/dsgvo-douyin-china': {
+    title: 'DSGVO für Douyin Cross-Border E-Commerce | Chinesische Verkäufer in Europa | Marsstein',
+    description: 'DSGVO + PIPL Dual Compliance für Douyin Global Shopping Verkäufer. 600+ Mio. Daily Active Users. Livestream-Commerce, TikTok Shop Integration.',
+    keywords: 'Douyin DSGVO, Cross-Border E-Commerce, Douyin Europa, Livestream Commerce DSGVO',
+    canonical: 'https://marsstein.ai/dsgvo-douyin-china'
+  },
+  '/dsgvo-tiktok-shop-china': {
+    title: 'TikTok Shop & DSGVO: Datenschutz für TikTok Seller | Marsstein',
+    description: 'Datenschutz-Anforderungen für TikTok Shop Seller mit China-Bezug. DSGVO-konforme Social Commerce Strategie.',
+    keywords: 'TikTok Shop DSGVO, TikTok Seller Datenschutz, Social Commerce DSGVO, TikTok Compliance',
+    canonical: 'https://marsstein.ai/dsgvo-tiktok-shop-china'
+  },
+  '/dsgvo-wechat-alipay-china': {
+    title: 'WeChat & Alipay Datenschutz: Payment & Kommunikation | Marsstein',
+    description: 'DSGVO-konforme Nutzung von WeChat und Alipay für europäische Unternehmen. Payment, Marketing, Kundenkommunikation.',
+    keywords: 'WeChat DSGVO, Alipay Datenschutz, China Payment DSGVO, WeChat Business Europa',
+    canonical: 'https://marsstein.ai/dsgvo-wechat-alipay-china'
+  },
+  '/eu-vertreter-china': {
+    title: 'Art. 27 EU-Vertreter für chinesische Unternehmen - DSGVO-Pflicht | Marsstein',
+    description: 'Art. 27 DSGVO EU-Vertreter für Unternehmen aus China. Gesetzliche Pflicht für EU-Geschäfte. Automatisch, günstig, rechtssicher.',
+    keywords: 'EU Vertreter China, Art. 27 DSGVO, GDPR Representative, China EU Vertreter',
+    canonical: 'https://marsstein.ai/eu-vertreter-china'
+  },
+  '/joint-venture-china-datenschutz': {
+    title: 'Joint Venture China: DSGVO & PIPL Datenschutz-Lösung | Marsstein',
+    description: 'DSGVO & PIPL-Compliance für deutsch-chinesische Joint Ventures. Lösen Sie den Konflikt zwischen EU-Datenschutz und China CSL.',
+    keywords: 'Joint Venture China Datenschutz, DSGVO PIPL, deutsch-chinesisch JV, Data Segregation',
+    canonical: 'https://marsstein.ai/joint-venture-china-datenschutz'
+  },
+  '/pipl-gdpr-china': {
+    title: 'PIPL + GDPR Dual Compliance | Chinesische Unternehmen in China & EU | Marsstein',
+    description: 'PIPL (China) + GDPR (EU) gleichzeitig erfüllen. Für chinesische Unternehmen mit EU-Kunden. Dual Compliance, SCCs, TIA, EU-Vertreter.',
+    keywords: 'PIPL GDPR, Dual Compliance, China EU Datenschutz, PIPL Compliance, China DSGVO',
+    canonical: 'https://marsstein.ai/pipl-gdpr-china'
+  },
+
+  // Wissen Routes
+  '/wissen/kosten': {
+    title: 'DSGVO-Compliance Kosten 2025: Software vs. DSB - Vollständiger Kostenvergleich | Marsstein',
+    description: 'DSGVO-Kosten im Vergleich: Compliance-Software (ab 200€/Monat) vs. ext. DSB (2.400-90.000€/Jahr). Inkl. ROPA, DSFA & Betroffenenanfragen-Module.',
+    keywords: 'DSGVO Kosten, Compliance Software Kosten, DSB Kosten, Datenschutz Budget',
+    canonical: 'https://marsstein.ai/wissen/kosten'
+  },
+  '/wissen/ki-datenschutz': {
+    title: 'KI Compliance – EU AI Act & Datenschutz Guide | Marsstein',
+    description: 'KI-Compliance Wissen: EU AI Act, algorithmische Transparenz, Bias-Vermeidung, ethische KI. ✓ Praxisguides ✓ Checklisten ✓ Expertenrat.',
+    keywords: 'KI Datenschutz, EU AI Act, KI Compliance, algorithmische Transparenz, AI Ethics',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz'
+  },
+  '/wissen/krisenmanagement': {
+    title: 'Krisenmanagement Datenschutz – DSGVO Notfallpläne 72h | Marsstein',
+    description: 'DSGVO-Notfallpläne für Datenschutzverletzungen: 72h Data Breach Response, Behördenprüfungen & Compliance-Krisen.',
+    keywords: 'Krisenmanagement DSGVO, Data Breach Response, Notfallplan Datenschutz, 72 Stunden Meldepflicht',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement'
+  },
+  '/wissen/zertifizierungen': {
+    title: 'Sicherheitszertifizierungen – ISO 27001, SOC 2, TISAX Übersicht | Marsstein',
+    description: 'Übersicht aller wichtigen Sicherheitszertifizierungen: ISO 27001, SOC 2, TISAX, ISO 27017/27018. Vergleich, Kosten, Anforderungen.',
+    keywords: 'Sicherheitszertifizierungen, ISO 27001, SOC 2, TISAX, Zertifizierung Übersicht',
+    canonical: 'https://marsstein.ai/wissen/zertifizierungen'
+  },
+  '/wissen/branchen': {
+    title: 'Branchen-Compliance – DSGVO nach Industrie | Marsstein',
+    description: 'Branchenspezifische DSGVO-Guides: Healthcare, Automotive, FinTech, E-Commerce und mehr. Spezialisierte Compliance-Lösungen.',
+    keywords: 'Branchen DSGVO, Healthcare Compliance, Automotive Datenschutz, FinTech DSGVO',
+    canonical: 'https://marsstein.ai/wissen/branchen'
+  },
+
+  // Wissen Branchen Sub-Routes
+  '/wissen/branchen/automotive-datenschutz': {
+    title: 'Datenschutz Automobilindustrie – DSGVO Guide für Connected Cars 2024 | Marsstein',
+    description: 'DSGVO für Automobilindustrie: ✓ Connected Car Datenschutz ✓ Fahrzeugdaten sicher ✓ Telematik & GPS ✓ OTA-Updates konform.',
+    keywords: 'Automotive Datenschutz, Connected Car DSGVO, Fahrzeugdaten, Telematik Datenschutz',
+    canonical: 'https://marsstein.ai/wissen/branchen/automotive-datenschutz'
+  },
+  '/wissen/branchen/datenschutz-arztpraxis': {
+    title: 'Datenschutz Arztpraxis DSGVO – Praxis-Guide für Ärzte 2024 | Marsstein',
+    description: 'DSGVO für Arztpraxen: ✓ Patientendaten sicher verwalten ✓ Einwilligungen korrekt ✓ TOM-Checklisten ✓ Schweigepflicht digital.',
+    keywords: 'Arztpraxis Datenschutz, Praxis DSGVO, Patientendaten, ärztliche Schweigepflicht',
+    canonical: 'https://marsstein.ai/wissen/branchen/datenschutz-arztpraxis'
+  },
+  '/wissen/branchen/datenschutz-betriebsrat': {
+    title: 'Datenschutz Betriebsrat – BetrVG & DSGVO Compliance Guide 2024 | Marsstein',
+    description: 'DSGVO für Betriebsräte: ✓ Mitbestimmungsrechte DSGVO-konform ✓ Mitarbeiterdaten schützen ✓ Arbeitsschutz & Datenschutz.',
+    keywords: 'Betriebsrat Datenschutz, BetrVG DSGVO, Mitbestimmung Datenschutz, Arbeitnehmer Datenschutz',
+    canonical: 'https://marsstein.ai/wissen/branchen/datenschutz-betriebsrat'
+  },
+  '/wissen/branchen/datenschutz-kindergarten': {
+    title: 'Datenschutz Kindergarten DSGVO – Kita-Guide 2024 | Marsstein',
+    description: 'DSGVO für Kindergärten: ✓ Kinderdaten schützen ✓ Foto-Einwilligungen ✓ Elternkommunikation ✓ Praktische Checklisten.',
+    keywords: 'Kindergarten Datenschutz, Kita DSGVO, Kinderdaten, Foto Einwilligung Kinder',
+    canonical: 'https://marsstein.ai/wissen/branchen/datenschutz-kindergarten'
+  },
+  '/wissen/branchen/datenschutz-pflege': {
+    title: 'Datenschutz Pflege DSGVO – Praxis-Guide für Pflegeheime 2024 | Marsstein',
+    description: 'DSGVO für Pflegeeinrichtungen: ✓ Bewohnerdaten sicher verwalten ✓ Digitale Pflegedokumentation ✓ Einwilligung bei Demenz.',
+    keywords: 'Pflege Datenschutz, Pflegeheim DSGVO, Bewohnerdaten, Pflegedokumentation',
+    canonical: 'https://marsstein.ai/wissen/branchen/datenschutz-pflege'
+  },
+  '/wissen/branchen/dsgvo-vermieter': {
+    title: 'DSGVO Vermieter – Datenschutz Immobilien Guide 2024 | Marsstein',
+    description: 'DSGVO für Vermieter: ✓ Mieterdaten sicher verwalten ✓ Datenschutzerklärung ✓ TOM-Checklisten ✓ Bußgelder vermeiden.',
+    keywords: 'Vermieter DSGVO, Immobilien Datenschutz, Mieterdaten, Hausverwaltung DSGVO',
+    canonical: 'https://marsstein.ai/wissen/branchen/dsgvo-vermieter'
+  },
+  '/wissen/branchen/smart-grid-compliance': {
+    title: 'Smart Grid Datenschutz & Compliance Guide | Marsstein',
+    description: 'DSGVO & Sicherheit für Smart Meter und intelligente Stromnetze. Energiedaten-Schutz, Verbraucherprivacy und regulatorische Compliance.',
+    keywords: 'Smart Grid Datenschutz, Smart Meter DSGVO, Energiedaten, Stromnetze Compliance',
+    canonical: 'https://marsstein.ai/wissen/branchen/smart-grid-compliance'
+  },
+  '/wissen/branchen/ecommerce-privacy': {
+    title: 'E-Commerce Privacy – DSGVO für Online-Shops | Marsstein',
+    description: 'DSGVO-Compliance für E-Commerce: Cookie-Banner, Kundendatenschutz, Tracking, Bezahlsysteme. Rechtssichere Online-Shops.',
+    keywords: 'E-Commerce DSGVO, Online Shop Datenschutz, Cookie Banner Shop, Tracking DSGVO',
+    canonical: 'https://marsstein.ai/wissen/branchen/ecommerce-privacy'
+  },
+  '/wissen/branchen/fintech-compliance': {
+    title: 'FinTech Compliance – DSGVO & BaFin-Anforderungen | Marsstein',
+    description: 'FinTech DSGVO-Compliance: BaFin, MaRisk, PSD2, KYC. Datenschutz für Finanzunternehmen und Zahlungsdienstleister.',
+    keywords: 'FinTech DSGVO, BaFin Datenschutz, PSD2 Compliance, KYC DSGVO',
+    canonical: 'https://marsstein.ai/wissen/branchen/fintech-compliance'
+  },
+  '/wissen/branchen/saas-privacy-design': {
+    title: 'SaaS Privacy Design – Datenschutz für Cloud-Software | Marsstein',
+    description: 'Privacy by Design für SaaS: Multi-Tenant DSGVO, Data Residency, SOC 2 Type II. Enterprise-ready Datenschutz-Architektur.',
+    keywords: 'SaaS Privacy, Privacy by Design, Multi-Tenant DSGVO, Cloud Datenschutz',
+    canonical: 'https://marsstein.ai/wissen/branchen/saas-privacy-design'
+  },
+
+  // Wissen Leitfaden Routes
+  '/wissen/leitfaden/data-breach-notfall': {
+    title: 'Data Breach Notfall-Leitfaden – 72h DSGVO Meldepflicht | Marsstein',
+    description: 'Schritt-für-Schritt Anleitung für Datenpannen: Was tun in den ersten 72 Stunden? Meldepflicht, Dokumentation, Kommunikation.',
+    keywords: 'Data Breach Notfall, 72 Stunden Meldepflicht, Datenpanne Anleitung, DSGVO Breach',
+    canonical: 'https://marsstein.ai/wissen/leitfaden/data-breach-notfall'
+  },
+  '/wissen/leitfaden/datenschutzbeauftragter': {
+    title: 'Datenschutzbeauftragter Leitfaden – DSB Aufgaben & Pflichten | Marsstein',
+    description: 'Vollständiger DSB-Leitfaden: Bestellpflicht, Aufgaben, Qualifikation, intern vs. extern. Alles zum Datenschutzbeauftragten.',
+    keywords: 'Datenschutzbeauftragter Leitfaden, DSB Aufgaben, DSB Pflichten, Bestellpflicht DSB',
+    canonical: 'https://marsstein.ai/wissen/leitfaden/datenschutzbeauftragter'
+  },
+  '/wissen/leitfaden/datenschutzbeauftragter-ausbildung': {
+    title: 'Datenschutzbeauftragter Ausbildung – Zertifizierung & Qualifikation | Marsstein',
+    description: 'DSB-Ausbildung: Anforderungen, Zertifizierungen (GDD, TÜV, DEKRA), Kosten, Dauer. Der komplette Guide zur DSB-Qualifikation.',
+    keywords: 'DSB Ausbildung, Datenschutzbeauftragter Zertifizierung, GDD Zertifikat, DSB Qualifikation',
+    canonical: 'https://marsstein.ai/wissen/leitfaden/datenschutzbeauftragter-ausbildung'
+  },
+  '/wissen/leitfaden/loeschkonzept': {
+    title: 'Löschkonzept DSGVO – Aufbewahrungsfristen & Löschpflichten | Marsstein',
+    description: 'DSGVO-konformes Löschkonzept erstellen: Aufbewahrungsfristen, Löschregeln, Dokumentation. Mit Vorlagen und Checklisten.',
+    keywords: 'Löschkonzept DSGVO, Aufbewahrungsfristen, Löschpflicht, Datenlöschung',
+    canonical: 'https://marsstein.ai/wissen/leitfaden/loeschkonzept'
+  },
+
+  // Wissen Rechtsprechung
+  '/wissen/rechtsprechung/cookie-law': {
+    title: 'Cookie-Urteile – BGH, EuGH & Datenschutzbehörden | Marsstein',
+    description: 'Wichtige Cookie-Urteile: Planet49, TCF 2.0, Google Analytics. Rechtsprechung zu Cookie-Consent und Tracking.',
+    keywords: 'Cookie Urteile, Planet49, Cookie Consent Urteil, TCF Rechtsprechung',
+    canonical: 'https://marsstein.ai/wissen/rechtsprechung/cookie-law'
+  },
+  '/wissen/rechtsprechung/google-fonts-muenchen': {
+    title: 'Google Fonts Urteil München – 100€ Schadensersatz pro Verstoß | Marsstein',
+    description: 'LG München Google Fonts Urteil: 100€ Schadensersatz für unrechtmäßige IP-Übermittlung. Wie Sie sich schützen.',
+    keywords: 'Google Fonts Urteil, LG München, Schadensersatz DSGVO, Abmahnung Google Fonts',
+    canonical: 'https://marsstein.ai/wissen/rechtsprechung/google-fonts-muenchen'
+  },
+  '/wissen/rechtsprechung/meta-irland-2024': {
+    title: 'Meta Irland Urteil 2024 – 1,2 Mrd. € Bußgeld | Marsstein',
+    description: 'Meta/Facebook Rekord-Bußgeld 2024: 1,2 Milliarden Euro wegen EU-US Datentransfer. Auswirkungen und Learnings.',
+    keywords: 'Meta Urteil 2024, Facebook Bußgeld, EU US Datentransfer, DPC Irland',
+    canonical: 'https://marsstein.ai/wissen/rechtsprechung/meta-irland-2024'
+  },
+  '/wissen/rechtsprechung/planet49-cookie': {
+    title: 'Planet49 Cookie-Urteil – BGH & EuGH Entscheidung | Marsstein',
+    description: 'Planet49 Urteil: Opt-in-Pflicht für Cookies, vorangekreuzte Checkboxen unwirksam. Die Grundlage für Cookie-Consent.',
+    keywords: 'Planet49 Urteil, Cookie Einwilligung, BGH Cookie, EuGH Cookies',
+    canonical: 'https://marsstein.ai/wissen/rechtsprechung/planet49-cookie'
+  },
+  '/wissen/rechtsprechung/whatsapp-irland-2021': {
+    title: 'WhatsApp Irland Bußgeld 2021 – 225 Mio. € | Marsstein',
+    description: 'WhatsApp Bußgeld 225 Millionen Euro: Transparenzpflichten, Informationspflichten. Was Unternehmen lernen können.',
+    keywords: 'WhatsApp Bußgeld, DPC Irland, Transparenzpflicht DSGVO, Informationspflicht',
+    canonical: 'https://marsstein.ai/wissen/rechtsprechung/whatsapp-irland-2021'
+  },
+
+  // Wissen KI-Datenschutz Sub-Routes
+  '/wissen/ki-datenschutz/algorithmic-impact-assessment': {
+    title: 'Algorithmic Impact Assessment – KI-Folgenabschätzung | Marsstein',
+    description: 'Algorithmic Impact Assessment durchführen: Systematische Bewertung von KI-Systemen nach EU AI Act und DSGVO Art. 35.',
+    keywords: 'Algorithmic Impact Assessment, KI Folgenabschätzung, AI Impact, DSFA KI',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/algorithmic-impact-assessment'
+  },
+  '/wissen/ki-datenschutz/automated-decision-making': {
+    title: 'Automated Decision Making DSGVO Art. 22 – Rechte & Pflichten | Marsstein',
+    description: 'Automatisierte Entscheidungen nach Art. 22 DSGVO: Wann erlaubt? Informationspflichten, Widerspruchsrecht, Human in the Loop.',
+    keywords: 'Art 22 DSGVO, automatisierte Entscheidung, Profiling DSGVO, ADM Compliance',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/automated-decision-making'
+  },
+  '/wissen/ki-datenschutz/data-minimization': {
+    title: 'Data Minimization für KI – Datenminimierung bei ML | Marsstein',
+    description: 'Datenminimierung bei Machine Learning: DSGVO-konforme Trainingsdaten, synthetische Daten, Differential Privacy.',
+    keywords: 'Data Minimization AI, Datenminimierung ML, DSGVO Trainingsdaten, Privacy ML',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/data-minimization'
+  },
+  '/wissen/ki-datenschutz/explainable-ai': {
+    title: 'Explainable AI – Transparente & erklärbare KI | Marsstein',
+    description: 'Explainable AI (XAI): Transparenzanforderungen, LIME, SHAP, Modell-Interpretierbarkeit für DSGVO und EU AI Act.',
+    keywords: 'Explainable AI, XAI, erklärbare KI, Transparenz AI, LIME SHAP',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/explainable-ai'
+  },
+  '/wissen/ki-datenschutz/federated-learning': {
+    title: 'Federated Learning – Privacy-Preserving Machine Learning | Marsstein',
+    description: 'Federated Learning für DSGVO-Compliance: Dezentrales ML ohne Datenübertragung, Privacy-Preserving AI.',
+    keywords: 'Federated Learning, dezentrales ML, Privacy AI, DSGVO ML',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/federated-learning'
+  },
+  '/wissen/ki-datenschutz/financial-ai-compliance': {
+    title: 'Financial AI Compliance – KI im Finanzsektor | Marsstein',
+    description: 'KI-Compliance für Finanzdienstleister: BaFin, EU AI Act, algorithmisches Trading, Robo-Advisory, Credit Scoring.',
+    keywords: 'Financial AI, KI Finanzsektor, BaFin AI, Robo Advisory Compliance',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/financial-ai-compliance'
+  },
+  '/wissen/ki-datenschutz/hr-ai-compliance': {
+    title: 'HR AI Compliance – KI im Personalwesen | Marsstein',
+    description: 'KI im HR rechtssicher einsetzen: Recruiting AI, Bewerbermanagement, Performance Analytics. EU AI Act Hochrisiko-Systeme.',
+    keywords: 'HR AI, Recruiting KI, Bewerbermanagement AI, HR Analytics DSGVO',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/hr-ai-compliance'
+  },
+  '/wissen/ki-datenschutz/ki-einwilligungsmanagement': {
+    title: 'KI Einwilligungsmanagement – Consent für AI-Systeme | Marsstein',
+    description: 'Einwilligung für KI-Verarbeitung: Wann erforderlich? Informationspflichten, Widerruf, besondere Kategorien.',
+    keywords: 'KI Einwilligung, AI Consent, DSGVO Einwilligung KI, Consent Management AI',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/ki-einwilligungsmanagement'
+  },
+  '/wissen/ki-datenschutz/model-privacy-attacks': {
+    title: 'Model Privacy Attacks – Angriffe auf ML-Modelle | Marsstein',
+    description: 'Privacy-Risiken bei ML-Modellen: Model Inversion, Membership Inference, Data Extraction. Schutzmaßnahmen.',
+    keywords: 'Model Privacy Attacks, ML Security, Model Inversion, Membership Inference',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/model-privacy-attacks'
+  },
+  '/wissen/ki-datenschutz/privacy-by-design-ai': {
+    title: 'Privacy by Design für AI – DSGVO-konforme KI-Entwicklung | Marsstein',
+    description: 'Privacy by Design bei KI-Systemen: Von Anfang an datenschutzkonform entwickeln. Checklisten und Best Practices.',
+    keywords: 'Privacy by Design AI, DSGVO KI Entwicklung, PbD AI, datenschutzkonforme KI',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/privacy-by-design-ai'
+  },
+  '/wissen/ki-datenschutz/privacy-preserving-ai': {
+    title: 'Privacy Preserving AI – Datenschutzfreundliche KI | Marsstein',
+    description: 'Privacy Preserving Machine Learning: Differential Privacy, Secure Multi-Party Computation, Homomorphe Verschlüsselung.',
+    keywords: 'Privacy Preserving AI, Differential Privacy, SMPC, homomorphe Verschlüsselung',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/privacy-preserving-ai'
+  },
+  '/wissen/ki-datenschutz/risikoklassifizierung': {
+    title: 'KI Risikoklassifizierung – EU AI Act Risikostufen | Marsstein',
+    description: 'EU AI Act Risikoklassifizierung: Verboten, Hochrisiko, Limited Risk, Minimal Risk. Welche Kategorie gilt für Ihr KI-System?',
+    keywords: 'KI Risikoklassifizierung, EU AI Act Risikostufen, High Risk AI, AI Act Klassifizierung',
+    canonical: 'https://marsstein.ai/wissen/ki-datenschutz/risikoklassifizierung'
+  },
+
+  // Wissen Krisenmanagement Sub-Routes
+  '/wissen/krisenmanagement/business-continuity': {
+    title: 'Business Continuity Datenschutz – BCM & DSGVO | Marsstein',
+    description: 'Business Continuity Management DSGVO-konform: Notfallpläne, Daten-Backup, Disaster Recovery mit Datenschutz.',
+    keywords: 'Business Continuity DSGVO, BCM Datenschutz, Disaster Recovery, Notfallplan',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement/business-continuity'
+  },
+  '/wissen/krisenmanagement/communication-templates': {
+    title: 'Krisen-Kommunikation Vorlagen – Datenpanne & Breach | Marsstein',
+    description: 'Vorlagen für Krisenkommunikation bei Datenschutzvorfällen: Behördenmeldung, Betroffeneninformation, Pressemitteilung.',
+    keywords: 'Krisenkommunikation Vorlagen, Data Breach Kommunikation, Betroffeneninformation',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement/communication-templates'
+  },
+  '/wissen/krisenmanagement/compliance-audit-emergency': {
+    title: 'Compliance Audit Notfall – Behördenprüfung vorbereiten | Marsstein',
+    description: 'Behördenprüfung steht an? Notfall-Checkliste für Datenschutz-Audits: Dokumentation, Interviews, häufige Mängel.',
+    keywords: 'Compliance Audit Notfall, Behördenprüfung DSGVO, Audit Vorbereitung, DSB Audit',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement/compliance-audit-emergency'
+  },
+  '/wissen/krisenmanagement/data-breach-72h': {
+    title: 'Data Breach 72h – Notfallplan Meldepflicht | Marsstein',
+    description: '72-Stunden-Meldepflicht bei Datenpannen: Schritt-für-Schritt Anleitung für die ersten kritischen Stunden.',
+    keywords: 'Data Breach 72h, Meldepflicht, Datenpanne Notfall, DSGVO Meldung',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement/data-breach-72h'
+  },
+  '/wissen/krisenmanagement/gdpr-fine-response': {
+    title: 'DSGVO Bußgeld Response – Umgang mit Strafen | Marsstein',
+    description: 'Bußgeldbescheid erhalten? Handlungsoptionen: Einspruch, Verhandlung, Compliance-Programm, Schadensbegrenzung.',
+    keywords: 'DSGVO Bußgeld, Bußgeldbescheid, Einspruch Datenschutz, Strafe DSGVO',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement/gdpr-fine-response'
+  },
+  '/wissen/krisenmanagement/media-crisis': {
+    title: 'Media Crisis Datenschutz – PR bei Datenpannen | Marsstein',
+    description: 'Medienkrisen bei Datenschutzvorfällen managen: PR-Strategie, Pressemitteilungen, Reputationsmanagement.',
+    keywords: 'Media Crisis Datenschutz, PR Datenpanne, Reputationsmanagement, Pressemitteilung Breach',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement/media-crisis'
+  },
+  '/wissen/krisenmanagement/security-incident': {
+    title: 'Security Incident Response – IT-Sicherheitsvorfall | Marsstein',
+    description: 'Security Incident Response Plan: Erkennung, Eindämmung, Analyse, Wiederherstellung. DSGVO-konforme Incident Response.',
+    keywords: 'Security Incident Response, IT Sicherheitsvorfall, Incident Management, SIRP',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement/security-incident'
+  },
+  '/wissen/krisenmanagement/vendor-data-breach': {
+    title: 'Vendor Data Breach – Datenpanne beim Auftragsverarbeiter | Marsstein',
+    description: 'Auftragsverarbeiter hat Datenpanne? Ihre Pflichten, Meldewege, Haftung. Notfallplan für Vendor Breaches.',
+    keywords: 'Vendor Data Breach, Auftragsverarbeiter Datenpanne, Third Party Breach, AVV Breach',
+    canonical: 'https://marsstein.ai/wissen/krisenmanagement/vendor-data-breach'
+  },
+
+  // Branchen Additional Routes
+  '/branchen/saas-unternehmen': {
+    title: 'SaaS-Unternehmen – Multi-Tenant DSGVO & SOC 2 | Marsstein',
+    description: 'SaaS Compliance: Multi-Tenant DSGVO, SOC 2 Type II, EU AI Act für Enterprise SaaS. ✓ API-Security ✓ Global Compliance.',
+    keywords: 'SaaS Compliance, Multi-Tenant DSGVO, SOC 2, Enterprise SaaS, API Security',
+    canonical: 'https://marsstein.ai/branchen/saas-unternehmen'
+  },
+
+  // Compliance Guide Redirects/Routes
+  '/compliance/dsgvo': {
+    title: 'DSGVO Compliance – Datenschutz-Grundverordnung Guide | Marsstein',
+    description: 'Vollständiger DSGVO-Compliance Guide: Alle Anforderungen, Rechtsgrundlagen, TOMs, Betroffenenrechte. Schritt für Schritt compliant.',
+    keywords: 'DSGVO Compliance, GDPR Guide, Datenschutz Grundverordnung, DSGVO Anforderungen',
+    canonical: 'https://marsstein.ai/dsgvo'
+  },
+  '/compliance/eu-ai-act': {
+    title: 'EU AI Act Compliance – KI-Verordnung umsetzen | Marsstein',
+    description: 'EU AI Act Compliance Guide: Risikoklassifizierung, Anforderungen, Fristen. KI-Systeme rechtssicher betreiben.',
+    keywords: 'EU AI Act Compliance, KI Verordnung, AI Act Guide, Künstliche Intelligenz Gesetz',
+    canonical: 'https://marsstein.ai/eu-ai-act'
+  },
+  '/compliance/iso-27001': {
+    title: 'ISO 27001 Compliance – ISMS Zertifizierung Guide | Marsstein',
+    description: 'ISO 27001 Compliance: ISMS aufbauen, Kontrollen implementieren, Audit bestehen. Der komplette Zertifizierungs-Guide.',
+    keywords: 'ISO 27001 Compliance, ISMS, Informationssicherheit, ISO Zertifizierung',
+    canonical: 'https://marsstein.ai/iso-27001-zertifizierung'
+  },
+  '/compliance/nis2': {
+    title: 'NIS2 Compliance – Cybersecurity-Richtlinie umsetzen | Marsstein',
+    description: 'NIS2 Richtlinie erfüllen: Risikomanagement, Meldepflichten, Sicherheitsmaßnahmen für KRITIS und wichtige Einrichtungen.',
+    keywords: 'NIS2 Compliance, Cybersecurity Richtlinie, KRITIS, NIS2 Umsetzung',
+    canonical: 'https://marsstein.ai/nis2-compliance'
+  },
+  '/compliance/soc-2': {
+    title: 'SOC 2 Compliance – Trust Services Criteria | Marsstein',
+    description: 'SOC 2 Type I & II Compliance: Security, Availability, Confidentiality, Processing Integrity, Privacy. Audit-Vorbereitung.',
+    keywords: 'SOC 2 Compliance, Trust Services, SOC 2 Type II, AICPA SOC',
+    canonical: 'https://marsstein.ai/soc2-zertifizierung'
+  },
+  '/compliance/tisax': {
+    title: 'TISAX Compliance – Automotive Security Zertifizierung | Marsstein',
+    description: 'TISAX Assessment bestehen: VDA ISA, Assessment Levels, Prüfungsprozess. Für Automobilzulieferer.',
+    keywords: 'TISAX Compliance, VDA ISA, Automotive Security, TISAX Zertifizierung',
+    canonical: 'https://marsstein.ai/tisax-zertifizierung'
+  },
+  '/compliance/geldwaeschegesetz': {
+    title: 'Geldwäschegesetz Compliance – AML-Anforderungen | Marsstein',
+    description: 'GwG-Compliance: KYC, Risikomanagement, Verdachtsmeldungen, Geldwäschebeauftragter. Für Verpflichtete nach GwG.',
+    keywords: 'GwG Compliance, Geldwäschegesetz, AML, KYC, Geldwäschebeauftragter',
+    canonical: 'https://marsstein.ai/geldwaeschegesetz'
+  },
+  '/compliance/hinweisgeberschutzgesetz': {
+    title: 'Hinweisgeberschutzgesetz Compliance – HinSchG Anforderungen | Marsstein',
+    description: 'HinSchG-Compliance: Interne Meldestelle, Meldekanäle, Whistleblower-Schutz. Pflichten für Unternehmen ab 50 MA.',
+    keywords: 'HinSchG Compliance, Hinweisgeberschutz, Whistleblower, Meldestelle',
+    canonical: 'https://marsstein.ai/hinweisgeberschutzgesetz'
+  },
+  '/compliance/iso-27017': {
+    title: 'ISO 27017 Compliance – Cloud Security Controls | Marsstein',
+    description: 'ISO 27017 Cloud Security: Zusätzliche Controls für Cloud-Dienste, AWS/Azure/GCP Compliance.',
+    keywords: 'ISO 27017 Compliance, Cloud Security, Cloud Controls, ISO 27017 Zertifizierung',
+    canonical: 'https://marsstein.ai/iso-27017-zertifizierung'
+  },
+  '/compliance/iso-27018': {
+    title: 'ISO 27018 Compliance – Cloud Privacy | Marsstein',
+    description: 'ISO 27018 Cloud Privacy: PII-Schutz in der Cloud, DSGVO-Alignment, Cloud-Datenschutz.',
+    keywords: 'ISO 27018 Compliance, Cloud Privacy, PII Protection, Cloud Datenschutz',
+    canonical: 'https://marsstein.ai/iso-27018-zertifizierung'
+  },
+
+  // Zertifizierung Routes
+  '/zertifizierung/iso-27001': {
+    title: 'ISO 27001 Zertifizierung – ISMS Aufbau & Audit | Marsstein',
+    description: 'ISO 27001 Zertifizierung erreichen: ISMS implementieren, Gap-Analyse, Audit-Vorbereitung, Zertifikat erhalten.',
+    keywords: 'ISO 27001 Zertifizierung, ISMS Aufbau, ISO Audit, Informationssicherheit Zertifikat',
+    canonical: 'https://marsstein.ai/iso-27001-zertifizierung'
+  },
+  '/zertifizierung/iso-27017': {
+    title: 'ISO 27017 Zertifizierung – Cloud Security Standard | Marsstein',
+    description: 'ISO 27017 Zertifizierung für Cloud-Anbieter: Zusätzliche Controls, Cloud-spezifische Anforderungen.',
+    keywords: 'ISO 27017 Zertifizierung, Cloud Security Zertifikat, ISO Cloud',
+    canonical: 'https://marsstein.ai/iso-27017-zertifizierung'
+  },
+  '/zertifizierung/iso-27018': {
+    title: 'ISO 27018 Zertifizierung – Cloud Privacy Standard | Marsstein',
+    description: 'ISO 27018 Zertifizierung für Cloud-Datenschutz: PII-Schutz, Privacy Controls, DSGVO-Alignment.',
+    keywords: 'ISO 27018 Zertifizierung, Cloud Privacy Zertifikat, PII Schutz',
+    canonical: 'https://marsstein.ai/iso-27018-zertifizierung'
+  },
+  '/zertifizierung/soc2': {
+    title: 'SOC 2 Zertifizierung – Type I & II Audit | Marsstein',
+    description: 'SOC 2 Zertifizierung erreichen: Trust Services Criteria, Readiness Assessment, Type I & II Audit.',
+    keywords: 'SOC 2 Zertifizierung, SOC 2 Audit, Type II, Trust Services',
+    canonical: 'https://marsstein.ai/soc2-zertifizierung'
+  },
+  '/zertifizierung/tisax': {
+    title: 'TISAX Zertifizierung – Automotive Assessment | Marsstein',
+    description: 'TISAX Zertifizierung für Automobilindustrie: VDA ISA, Assessment Levels, ENX-Registrierung.',
+    keywords: 'TISAX Zertifizierung, VDA ISA, Automotive Assessment, ENX',
+    canonical: 'https://marsstein.ai/tisax-zertifizierung'
+  },
+
+  // Regulierung Routes (Redirects to main pages)
+  '/regulierung/dsgvo': {
+    title: 'DSGVO – Datenschutz-Grundverordnung | Marsstein',
+    description: 'DSGVO-Compliance für Unternehmen: Anforderungen, Umsetzung, Automatisierung. Die EU-Datenschutzverordnung verstehen.',
+    keywords: 'DSGVO, Datenschutz Grundverordnung, GDPR, EU Datenschutz',
+    canonical: 'https://marsstein.ai/dsgvo'
+  },
+  '/regulierung/eu-ai-act': {
+    title: 'EU AI Act – Künstliche Intelligenz Verordnung | Marsstein',
+    description: 'EU AI Act verstehen: Risikoklassifizierung, Anforderungen, Fristen. Die KI-Regulierung der EU.',
+    keywords: 'EU AI Act, KI Verordnung, Künstliche Intelligenz Gesetz, AI Regulierung',
+    canonical: 'https://marsstein.ai/eu-ai-act'
+  },
+  '/regulierung/nis2': {
+    title: 'NIS2 Richtlinie – Cybersecurity in der EU | Marsstein',
+    description: 'NIS2 Richtlinie verstehen: Betroffene Unternehmen, Anforderungen, Umsetzungsfristen.',
+    keywords: 'NIS2 Richtlinie, Cybersecurity EU, KRITIS, NIS2 Anforderungen',
+    canonical: 'https://marsstein.ai/nis2-compliance'
+  },
+  '/regulierung/geldwaeschegesetz': {
+    title: 'Geldwäschegesetz (GwG) – AML-Compliance | Marsstein',
+    description: 'Geldwäschegesetz verstehen: Verpflichtete, KYC-Anforderungen, Risikomanagement, Meldepflichten.',
+    keywords: 'Geldwäschegesetz, GwG, AML, Anti-Geldwäsche, KYC',
+    canonical: 'https://marsstein.ai/geldwaeschegesetz'
+  },
+  '/regulierung/hinweisgeberschutzgesetz': {
+    title: 'Hinweisgeberschutzgesetz (HinSchG) – Whistleblower-Schutz | Marsstein',
+    description: 'Hinweisgeberschutzgesetz verstehen: Pflichten, Meldestellen, Whistleblower-Rechte.',
+    keywords: 'Hinweisgeberschutzgesetz, HinSchG, Whistleblower, Meldestelle',
+    canonical: 'https://marsstein.ai/hinweisgeberschutzgesetz'
   }
 };
 
