@@ -1,0 +1,3864 @@
+[
+  {
+    "id": 0,
+    "route": "/",
+    "title": "Compliance & Datenschutz Lösungen für Unternehmen",
+    "description": "Marsstein - Ihr Partner für DSGVO, ISO 27001, NIS2 & EU AI Act Compliance. Automatisierte Lösungen für Datenschutz und KI-Governance. Jetzt beraten lassen!",
+    "keywords": [
+      "DSGVO Automatisierung",
+      "Datenschutzbeauftragter Software",
+      "DSB Tool",
+      "VVT automatisch",
+      "TOMs Dokumentation",
+      "Compliance Software"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 1,
+    "route": "/eu-ai-act",
+    "title": "EU AI Act Compliance",
+    "description": "EU AI Act Compliance einfach gemacht: Risikoklassifizierung, CE-Kennzeichnung & Konformität. ✓ Automatisierte Prozesse ✓ Rechtssicher. Jetzt beraten lassen!",
+    "keywords": [
+      "EU AI Act",
+      "KI-Regulierung",
+      "AI Compliance",
+      "Künstliche Intelligenz Gesetz",
+      "KI-Verordnung"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 2,
+    "route": "/iso-27001-zertifizierung",
+    "title": "ISO 27001 Zertifizierung",
+    "description": "ISO 27001 Zertifizierung meistern: ISMS-Implementierung, Gap-Analyse & Audit-Vorbereitung. ✓ Schritt-für-Schritt ✓ Praxisnah. Jetzt starten!",
+    "keywords": [
+      "ISO 27001",
+      "ISMS",
+      "Informationssicherheit",
+      "ISO 27001 Zertifizierung",
+      "IT-Sicherheit"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 3,
+    "route": "/nis2-compliance",
+    "title": "NIS-2 Compliance",
+    "description": "NIS-2 Richtlinie sicher erfüllen: Risikomanagement, Meldepflichten & Sicherheitsmaßnahmen. ✓ KRITIS-konform ✓ Automatisiert. Jetzt beraten lassen!",
+    "keywords": [
+      "NIS-2",
+      "NIS2 Richtlinie",
+      "Cybersecurity Compliance",
+      "KRITIS",
+      "Network Information Security"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 4,
+    "route": "/hinweisgeberschutzgesetz",
+    "title": "Hinweisgeberschutz",
+    "description": "Hinweisgebersystem rechtssicher umsetzen: ✓ Digitale Meldestelle ✓ 100% anonym ✓ HinSchG-konform. Schützen Sie Whistleblower. Jetzt einrichten!",
+    "keywords": [
+      "Hinweisgeberschutz",
+      "HinSchG",
+      "Whistleblower System",
+      "Hinweisgebersystem",
+      "Meldestelle"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 5,
+    "route": "/geldwaeschegesetz",
+    "title": "Geldwäschegesetz (GwG)",
+    "description": "GwG-Compliance leicht gemacht: KYC-Prüfung, Risikomanagement & Verdachtsmeldungen. ✓ KI-gestützt ✓ BaFin-konform. Jetzt digitalisieren!",
+    "keywords": [
+      "Geldwäschegesetz",
+      "GwG",
+      "AML Compliance",
+      "Anti-Geldwäsche",
+      "KYC Prüfung"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 6,
+    "route": "/soc2-zertifizierung",
+    "title": "SOC 2 Zertifizierung",
+    "description": "SOC 2 Type II Compliance für SaaS-Anbieter: 5 Trust Principles meistern. ✓ Audit-ready ✓ Automatisiert ✓ Kundenvertrauen. Jetzt vorbereiten!",
+    "keywords": [
+      "SOC 2",
+      "Trust Services",
+      "SOC 2 Type II",
+      "SaaS Security",
+      "Audit"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 7,
+    "route": "/tisax",
+    "title": "TISAX",
+    "description": "TISAX-Zertifizierung für die Automobilindustrie: VDA ISA konform werden. ✓ Assessment-Level 2&3 ✓ ENX-Zugang. Jetzt vorbereiten!",
+    "keywords": [
+      "TISAX",
+      "VDA ISA",
+      "Automotive Security",
+      "TISAX Zertifizierung",
+      "Automobilindustrie"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 8,
+    "route": "/iso-27017",
+    "title": "ISO 27017",
+    "description": "ISO 27017 Zertifizierung für Cloud-Services: Spezifische Controls für AWS, Azure & GCP. ✓ Multi-Cloud ✓ Compliance. Jetzt beraten lassen!",
+    "keywords": [
+      "ISO 27017",
+      "Cloud Security",
+      "Cloud Zertifizierung",
+      "ISO 27017 Controls",
+      "Cloud Compliance"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 9,
+    "route": "/iso-27018",
+    "title": "ISO 27018",
+    "description": "ISO 27018 Privacy-Zertifizierung: PII-Schutz in der Cloud nach DSGVO. ✓ Public Cloud Privacy ✓ Compliance. Jetzt zertifizieren!",
+    "keywords": [
+      "ISO 27018",
+      "Cloud Privacy",
+      "Cloud Datenschutz",
+      "PII Protection",
+      "ISO 27018 Zertifizierung"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 10,
+    "route": "/eu-data-act",
+    "title": "EU Data Act",
+    "description": "EU Data Act 2025: Datenzugangsrechte für IoT, Cloud-Switching & B2B Data Sharing. ✓ Connected Products ✓ FRAND. Jetzt compliant werden!",
+    "keywords": [
+      "EU Data Act",
+      "Datenzugang",
+      "Cloud Switching",
+      "Connected Products",
+      "IoT Data Sharing",
+      "FRAND"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 11,
+    "route": "/features",
+    "title": "DSGVO-Compliance-Software: ROPA, DSFA & DSAR-Management",
+    "description": "Vollständige DSGVO-Compliance-Lösung mit automatisiertem Verarbeitungsverzeichnis (ROPA/VVT), DSFA-Modul mit Risiko-Scoring, Betroffenenanfragen-Management und Multi-Entity-Support für externe DSBs. Jetzt kostenlos testen.",
+    "keywords": [
+      "dsgvo compliance software",
+      "ropa software",
+      "verarbeitungsverzeichnis automatisiert",
+      "dsar management",
+      "betroffenenanfragen tool",
+      "dsfa software",
+      "datenschutz folgenabschätzung",
+      "multi entity dsgvo",
+      "externe dsb software",
+      "avv generator",
+      "dsgvo automatisierung"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 12,
+    "route": "/preise",
+    "title": "Preise & Pakete",
+    "description": "Transparente Preise für Marsstein Compliance Software. Wählen Sie das passende Paket für Ihre Compliance-Anforderungen. Jetzt 30 Tage kostenlos testen!",
+    "keywords": [
+      "Compliance Software Preise",
+      "DSGVO Software Kosten",
+      "ISO 27001 Software Preis"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 13,
+    "route": "/tools/dsgvo-compliance-scorecard",
+    "title": "DSGVO Scorecard",
+    "description": "DSGVO Compliance Scorecard: Bewerten Sie Ihren Datenschutz-Status interaktiv. Gap-Analyse, Benchmarking, Handlungsempfehlungen. ✓ 15 Min Assessment. Jetzt bewerten!",
+    "keywords": [
+      "DSGVO Scorecard",
+      "Compliance Assessment",
+      "DSGVO Bewertung",
+      "Gap-Analyse",
+      "Datenschutz Status"
+    ],
+    "category": "Tools"
+  },
+  {
+    "id": 14,
+    "route": "/compliance/dsg-ekd",
+    "title": "DSG-EKD 2025: Datenschutz evangelische Kirche",
+    "description": "DSG-EKD verstehen & umsetzen: Datenschutzgesetz der evangelischen Kirche. ✓ Kirchliches Datenschutzrecht ✓ Anforderungen ✓ DSGVO-Bezug ✓ Umsetzung. Jetzt compliant!",
+    "keywords": [
+      "DSG-EKD",
+      "Datenschutzgesetz evangelische Kirche",
+      "kirchlicher Datenschutz EKD",
+      "DSG-EKD Compliance"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 15,
+    "route": "/compliance/dsg-ekd-guide",
+    "title": "DSG-EKD Umsetzungs-Leitfaden 2025: Schritt-für-Schritt zur Compliance",
+    "description": "DSG-EKD umsetzen: Praktischer Leitfaden für evangelische Einrichtungen. ✓ Umsetzungsschritte ✓ Verarbeitungsverzeichnis ✓ TOM ✓ Schulungen. Jetzt starten!",
+    "keywords": [
+      "DSG-EKD Leitfaden",
+      "DSG-EKD umsetzen",
+      "evangelischer Datenschutz Anleitung",
+      "EKD Datenschutz implementieren"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 16,
+    "route": "/compliance/kdg",
+    "title": "KDG 2025: Kirchliches Datenschutzgesetz katholisch",
+    "description": "KDG verstehen & umsetzen: Kirchliches Datenschutzgesetz der katholischen Kirche. ✓ Kirchenrecht ✓ Anforderungen ✓ DSGVO-Bezug ✓ Compliance. Jetzt umsetzen!",
+    "keywords": [
+      "KDG",
+      "Kirchliches Datenschutzgesetz katholisch",
+      "KDG Compliance",
+      "katholischer Datenschutz"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 17,
+    "route": "/compliance/kdg-guide",
+    "title": "KDG Umsetzungs-Leitfaden 2025: Schritt-für-Schritt zur Compliance",
+    "description": "KDG umsetzen: Praktischer Leitfaden für katholische Einrichtungen. ✓ Umsetzungsschritte ✓ Verarbeitungsverzeichnis ✓ TOM ✓ Schulungen. Jetzt starten!",
+    "keywords": [
+      "KDG Leitfaden",
+      "KDG umsetzen",
+      "katholischer Datenschutz Anleitung",
+      "KDG implementieren"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 18,
+    "route": "/compliance/iso-27001-guide",
+    "title": "ISO 27001 Implementierungs-Leitfaden 2025: ISMS Schritt-für-Schritt",
+    "description": "ISO 27001 implementieren: Vollständiger Leitfaden zum Informationssicherheits-Management. ✓ ISMS aufbauen ✓ Controls ✓ Zertifizierung ✓ Audit. Jetzt umsetzen!",
+    "keywords": [
+      "ISO 27001 Leitfaden",
+      "ISMS implementieren",
+      "ISO 27001 umsetzen",
+      "Informationssicherheit Managementsystem"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 19,
+    "route": "/branchen",
+    "title": "Branchen",
+    "description": "Branchenspezifische Compliance: Healthcare, FinTech, E-Commerce & mehr. ✓ Maßgeschneidert ✓ Best Practices ✓ Expertenwissen. Jetzt entdecken!",
+    "keywords": [
+      "Branchenlösungen",
+      "Healthcare Compliance",
+      "FinTech Compliance",
+      "E-Commerce DSGVO",
+      "Industrie Compliance"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 20,
+    "route": "/branchen/saas",
+    "title": "SaaS-Unternehmen",
+    "description": "SaaS Compliance: Multi-Tenant DSGVO, SOC 2 Type II, EU AI Act für Enterprise SaaS. ✓ API-Security ✓ Global Compliance. Jetzt Enterprise-ready werden!",
+    "keywords": [
+      "SaaS Compliance",
+      "Multi-Tenant DSGVO",
+      "SOC 2 Type II",
+      "Enterprise SaaS",
+      "SaaS Security"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 21,
+    "route": "/branchen/e-commerce",
+    "title": "E-Commerce",
+    "description": "E-Commerce DSGVO: Cookie-Banner, Kundendatenschutz, Cross-Border-Handel. ✓ Abmahnsicher ✓ Conversion-optimiert. Jetzt compliant werden!",
+    "keywords": [
+      "E-Commerce DSGVO",
+      "Cookie Compliance",
+      "Online Shop Datenschutz",
+      "E-Commerce Compliance",
+      "Cookie Banner"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 22,
+    "route": "/branchen/logistik",
+    "title": "Logistik",
+    "description": "Transport & Logistik Compliance: GPS-Tracking DSGVO, Supply Chain Security, Fahrerdatenschutz. ✓ Sendungsverfolgung ✓ Fleet Management. Jetzt compliant!",
+    "keywords": [
+      "Logistik DSGVO",
+      "GPS Tracking Datenschutz",
+      "Supply Chain Security",
+      "Transport Compliance"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 23,
+    "route": "/branchen/energie",
+    "title": "Energie",
+    "description": "Energiesektor Compliance: KRITIS-Anforderungen, Smart Grid DSGVO, NIS2 kritische Infrastrukturen. ✓ Netzbetreiber-Expertise ✓ Smart Meter. Jetzt sicher!",
+    "keywords": [
+      "KRITIS Compliance",
+      "Smart Grid DSGVO",
+      "Energiesektor NIS2",
+      "Smart Meter Datenschutz"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 24,
+    "route": "/branchen/gesundheitswesen",
+    "title": "Gesundheitswesen",
+    "description": "Healthcare Compliance: Patientendatenschutz nach DSGVO Art. 9, E-Health-Gesetz, Telemedizin. ✓ Spezialwissen ✓ Praxiserprobt. Jetzt beraten lassen!",
+    "keywords": [
+      "Healthcare Compliance",
+      "Gesundheitsdaten DSGVO",
+      "E-Health",
+      "Telemedizin Datenschutz",
+      "Krankenhaus IT"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 25,
+    "route": "/branchen/gesundheitswesen-dsgvo",
+    "title": "Gesundheitswesen DSGVO",
+    "description": "DSGVO im Gesundheitswesen: Patientendatenschutz, Schweigepflicht, Forschung, eHealth. ✓ Praxisnahe Lösungen ✓ Rechtssicherheit ✓ Compliance-Checklisten.",
+    "keywords": [
+      "DSGVO Gesundheitswesen",
+      "Patientendatenschutz",
+      "Schweigepflicht DSGVO",
+      "eHealth Datenschutz",
+      "medizinische Forschung DSGVO",
+      "Gesundheitsdaten Art. 9"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 26,
+    "route": "/branchen/healthcare-ai-compliance",
+    "title": "Healthcare AI Compliance",
+    "description": "Healthcare AI Compliance: Medizinische KI, EU AI Act, FDA-Regularien, Patientensicherheit. ✓ Risikobewertung ✓ Zulassung ✓ Post-Market Surveillance.",
+    "keywords": [
+      "Healthcare AI Compliance",
+      "Medizinische KI",
+      "EU AI Act Healthcare",
+      "FDA AI Regularien",
+      "MDR Software",
+      "Patientensicherheit KI"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 27,
+    "route": "/branchen/automotive",
+    "title": "Automotive",
+    "description": "Automotive Compliance: TISAX-Zertifizierung, Connected Car DSGVO, Autonomous Vehicle AI Act. ✓ VDA-Standards ✓ Cyber Security. Jetzt automotive-ready!",
+    "keywords": [
+      "TISAX Zertifizierung",
+      "Automotive DSGVO",
+      "Connected Car",
+      "Autonomous Vehicle",
+      "VDA Standards"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 28,
+    "route": "/branchen/finanzdienstleister",
+    "title": "Finanzdienstleister",
+    "description": "FinTech Compliance: MaRisk, BAIT, PSD2 & DSGVO für Banken und Versicherungen. ✓ BaFin-konform ✓ Expertenwissen. Jetzt beraten lassen!",
+    "keywords": [
+      "FinTech Compliance",
+      "BaFin Anforderungen",
+      "MaRisk",
+      "BAIT",
+      "PSD2 Compliance",
+      "Banken DSGVO"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 29,
+    "route": "/branchen/lebensmittel",
+    "title": "Lebensmittel",
+    "description": "Food Industry Compliance: HACCP-Integration, Rückverfolgbarkeit DSGVO, Lebensmittelsicherheit. ✓ Farm-to-Fork ✓ Traceability. Jetzt food-safe!",
+    "keywords": [
+      "HACCP Compliance",
+      "Lebensmittel DSGVO",
+      "Food Traceability",
+      "Rückverfolgbarkeit",
+      "Lebensmittelsicherheit"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 30,
+    "route": "/branchen/produktion",
+    "title": "Produktion",
+    "description": "Manufacturing Compliance: Industrie 4.0, IoT-Sicherheit, Smart Factory DSGVO, OT-Security. ✓ Produktionsschutz ✓ Supply Chain Security. Jetzt beraten lassen!",
+    "keywords": [
+      "Industrie 4.0 Compliance",
+      "Manufacturing DSGVO",
+      "IoT Sicherheit",
+      "OT Security",
+      "Smart Factory"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 31,
+    "route": "/branchen/insurtech-compliance",
+    "title": "InsurTech Compliance 2024 - DSGVO, AI Act & IDD Guide",
+    "description": "InsurTech Compliance Guide 2024: DSGVO für Versicherungen ✓ AI Act Anforderungen ✓ IDD-Konformität. Praktische Checklisten & Sofortmaßnahmen. Jetzt starten!",
+    "keywords": [
+      "InsurTech Compliance",
+      "DSGVO Versicherung",
+      "IDD Richtlinie",
+      "AI Act InsurTech",
+      "Solvency II",
+      "DORA Compliance",
+      "digitale Versicherung Datenschutz"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 32,
+    "route": "/branchen/proptech-compliance",
+    "title": "PropTech Compliance DSGVO - Smart Building Datenschutz",
+    "description": "PropTech DSGVO-Guide: ✓ Smart Buildings ✓ IoT-Sicherheit ✓ Mieterdaten. Praxisleitfaden für digitale Immobilien. Jetzt lesen!",
+    "keywords": [
+      "PropTech Compliance",
+      "Smart Building DSGVO",
+      "IoT Immobilien",
+      "Mieterdaten Datenschutz",
+      "PropTech Datenschutz",
+      "Smart Home DSGVO",
+      "Gebäudeautomation Compliance"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 33,
+    "route": "/branchen/travel-compliance",
+    "title": "Travel Compliance DSGVO - Datenschutz für Reiseplattformen",
+    "description": "DSGVO-konforme Lösungen für Travel & Tourism: ✓ Buchungsdaten ✓ Location Tracking ✓ Payment Compliance. Jetzt Guide lesen!",
+    "keywords": [
+      "Travel Compliance",
+      "DSGVO Reisebranche",
+      "Tourism DSGVO",
+      "Buchungsplattform Datenschutz",
+      "Location Tracking DSGVO",
+      "Payment Compliance Travel",
+      "PCI DSS Tourism",
+      "Cross-Border Data Transfer"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 34,
+    "route": "/branchen/edtech-privacy",
+    "title": "EdTech Privacy",
+    "description": "EdTech Datenschutz: Schülerdaten, COPPA/FERPA, Lernplattformen, digitale Bildung. ✓ Consent Management ✓ Age Verification ✓ Data Minimization.",
+    "keywords": [
+      "EdTech Privacy",
+      "Bildungssektor Datenschutz",
+      "COPPA FERPA",
+      "Schülerdaten DSGVO",
+      "Lernplattformen Datenschutz",
+      "Age Verification"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 35,
+    "route": "/wissen",
+    "title": "Wissen",
+    "description": "Compliance-Wissensdatenbank: DSGVO, ISO 27001, EU AI Act Guides. ✓ Best Practices ✓ Vorlagen ✓ Aktuelle Informationen. Jetzt Wissen erweitern!",
+    "keywords": [
+      "Compliance Wissen",
+      "DSGVO Guide",
+      "ISO 27001 Wissen",
+      "EU AI Act Guide",
+      "Compliance Best Practices"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 36,
+    "route": "/wissen/dsgvo",
+    "title": "DSGVO Wissen",
+    "description": "DSGVO-Wissen kompakt: Grundlagen, Betroffenenrechte, Verarbeitungsverzeichnis, TOMs. ✓ Praxisnahe Guides ✓ Vorlagen ✓ Aktuelle Rechtsprechung. Jetzt lernen!",
+    "keywords": [
+      "DSGVO Wissen",
+      "GDPR Guide",
+      "Datenschutz Kompendium",
+      "DSGVO Grundlagen",
+      "Betroffenenrechte"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 37,
+    "route": "/wissen/dsgvo-leitfaeden",
+    "title": "DSGVO Leitfäden 2024: Praktische Anleitungen",
+    "description": "Praktische DSGVO-Leitfäden mit Schritt-für-Schritt-Anleitungen. ✓ In 30 Tagen compliant ✓ Vorlagen & Checklisten ✓ Für Einsteiger bis Experten. Jetzt starten!",
+    "keywords": [
+      "DSGVO Leitfäden",
+      "DSGVO Anleitung",
+      "DSGVO How-To",
+      "DSGVO Praxis",
+      "DSGVO Umsetzung",
+      "Datenschutz Leitfaden"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 38,
+    "route": "/wissen/compliance-frameworks",
+    "title": "Compliance Frameworks 2025: DSGVO, ISO, NIS2, SOC2 im Überblick",
+    "description": "Compliance Frameworks verstehen: DSGVO, ISO 27001, NIS2, SOC2, TISAX im Vergleich. ✓ Anforderungen ✓ Überschneidungen ✓ Multi-Framework-Strategie. Jetzt optimieren!",
+    "keywords": [
+      "Compliance Frameworks",
+      "DSGVO ISO 27001 Vergleich",
+      "Multi-Framework Compliance",
+      "Datenschutz Sicherheit Standards"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 39,
+    "route": "/wissen/ki-compliance",
+    "title": "KI-Compliance 2025: EU AI Act, DSGVO & ethische KI-Governance",
+    "description": "KI-Compliance umsetzen: EU AI Act, DSGVO-Anforderungen & Ethik-Guidelines für KI-Systeme. ✓ Risikomanagement ✓ Transparenz ✓ Bias-Vermeidung. Jetzt compliant!",
+    "keywords": [
+      "KI-Compliance",
+      "EU AI Act Compliance",
+      "KI DSGVO",
+      "AI Governance",
+      "Algorithmen Compliance"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 40,
+    "route": "/wissen/cybersecurity",
+    "title": "Cybersecurity 2025: IT-Sicherheit, Bedrohungen & Best Practices",
+    "description": "Cybersecurity umsetzen: IT-Sicherheit, Bedrohungsabwehr & Security-Best-Practices. ✓ Threat Intelligence ✓ Zero Trust ✓ Incident Response ✓ ISMS. Jetzt sichern!",
+    "keywords": [
+      "Cybersecurity",
+      "IT-Sicherheit",
+      "Cyber Threats",
+      "Security Best Practices",
+      "Informationssicherheit"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 41,
+    "route": "/wissen/risk-management",
+    "title": "Risk Management 2025: Datenschutz & IT-Sicherheitsrisiken managen",
+    "description": "Risk Management: Datenschutz- & IT-Sicherheitsrisiken identifizieren, bewerten & mitigieren. ✓ DSFA ✓ TIA ✓ ISO 31000 ✓ Controls. Jetzt Risiken managen!",
+    "keywords": [
+      "Risk Management",
+      "Risikomanagement Datenschutz",
+      "IT-Sicherheitsrisiken",
+      "DSFA",
+      "Threat and Impact Assessment"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 42,
+    "route": "/wissen/china-dsgvo",
+    "title": "China DSGVO 2025: Datenschutz für China-Geschäfte",
+    "description": "China DSGVO-Compliance: Datenschutz für China-Geschäfte, PIPL, EU-Vertreter & Datentransfers. ✓ PIPL vs. DSGVO ✓ SCCs ✓ Legal Requirements. Jetzt compliant!",
+    "keywords": [
+      "China DSGVO",
+      "PIPL China",
+      "Datenschutz China Deutschland",
+      "EU-Vertreter China",
+      "China Datentransfer"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 43,
+    "route": "/wissen/kosten/dsgvo-compliance-kosten",
+    "title": "DSGVO Compliance Kosten 2025: Realistische Budgetplanung",
+    "description": "DSGVO Compliance Kosten: Reale Budgets für Datenschutz-Compliance. ✓ Software ✓ Beratung ✓ DSB ✓ Schulungen ✓ ROI-Analyse. Jetzt kalkulieren!",
+    "keywords": [
+      "DSGVO Compliance Kosten",
+      "Datenschutz Budget",
+      "DSGVO Implementierungskosten",
+      "Datenschutz ROI"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 44,
+    "route": "/wissen/kosten/externer-datenschutzbeauftragter-kosten",
+    "title": "Externer Datenschutzbeauftragter Kosten 2025: Preise & Vergleich",
+    "description": "Externer DSB Kosten: Preise, Modelle & Budgetplanung für externe Datenschutzbeauftragte. ✓ Ab 29€/Monat ✓ Preisvergleich ✓ ROI ✓ Intern vs. Extern. Jetzt vergleichen!",
+    "keywords": [
+      "Externer Datenschutzbeauftragter Kosten",
+      "DSB Preise",
+      "externer DSB Preis",
+      "Datenschutzbeauftragter Budget"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 45,
+    "route": "/wissen/kosten/iso-27001-zertifizierung-kosten",
+    "title": "ISO 27001 Zertifizierung Kosten 2025: Budgetplanung & ROI-Analyse",
+    "description": "ISO 27001 Zertifizierung Kosten: Realistische Budgets für ISMS-Implementierung & Audit. ✓ Beratung ✓ Software ✓ Zertifizierung ✓ ROI. Jetzt kalkulieren!",
+    "keywords": [
+      "ISO 27001 Zertifizierung Kosten",
+      "ISMS Implementierung Kosten",
+      "ISO 27001 Budget",
+      "Zertifizierungskosten"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 46,
+    "route": "/wissen/dsgvo-compliance-luecken",
+    "title": "DSGVO Compliance-Lücken 2025: Top 15 Fehler & wie Sie sie vermeiden",
+    "description": "DSGVO Compliance-Lücken erkennen & schließen: Häufigste Fehler in der Datenschutz-Umsetzung. ✓ Gap-Analyse ✓ Quick Fixes ✓ Best Practices. Jetzt optimieren!",
+    "keywords": [
+      "DSGVO Compliance Lücken",
+      "Datenschutz Fehler",
+      "GDPR Gaps",
+      "DSGVO Schwachstellen",
+      "Compliance Audit"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 47,
+    "route": "/wissen/interner-dsb-scheitert",
+    "title": "Interner DSB scheitert 2025: 10 Gründe & die externe Alternative",
+    "description": "Warum interne Datenschutzbeauftragte scheitern: Ressourcen, Interessenkonflikte & Lösungen. ✓ Häufigste Gründe ✓ Externe Alternative ✓ Erfolgsmodelle. Jetzt verstehen!",
+    "keywords": [
+      "Interner Datenschutzbeauftragter scheitert",
+      "DSB Probleme",
+      "interner vs externer DSB",
+      "Datenschutzbeauftragter Herausforderungen"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 48,
+    "route": "/wissen/dsgvo-software-vs-manuell",
+    "title": "DSGVO Software vs. Manuell 2025: Kosten-Nutzen-Vergleich",
+    "description": "DSGVO Software vs. manuelle Compliance: Effizienz, Kosten & ROI im Vergleich. ✓ Automatisierung ✓ Zeitersparnis ✓ Fehlerreduktion ✓ TCO. Jetzt vergleichen!",
+    "keywords": [
+      "DSGVO Software vs manuell",
+      "Compliance Automatisierung",
+      "DSGVO Tool Vergleich",
+      "manuelle Datenschutz Compliance"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 49,
+    "route": "/wissen/leitfaden/dsgvo-grundlagen",
+    "title": "DSGVO-Grundlagen 2025: Datenschutz-Grundverordnung einfach erklärt",
+    "description": "DSGVO-Basics verstehen: Grundprinzipien, Anwendungsbereich & Rechtsgrundlagen erklärt. ✓ Art. 5 DSGVO ✓ Rechtmäßigkeit ✓ Transparenz ✓ Zweckbindung. Jetzt lernen!",
+    "keywords": [
+      "DSGVO Grundlagen",
+      "Datenschutz Grundverordnung Basics",
+      "DSGVO einfach erklärt",
+      "GDPR Basics",
+      "DSGVO Einführung"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 50,
+    "route": "/wissen/leitfaden/website-dsgvo",
+    "title": "Website DSGVO 2025: Datenschutz für Webseiten rechtssicher umsetzen",
+    "description": "Website DSGVO-konform: Datenschutzerklärung, Cookie-Banner, Tracking & Formulare rechtssicher. ✓ Impressum ✓ TTDSG ✓ Consent ✓ Plugins. Jetzt compliant!",
+    "keywords": [
+      "Website DSGVO",
+      "Datenschutz Website",
+      "DSGVO Webseite",
+      "Website Datenschutzerklärung",
+      "Cookie Banner DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 51,
+    "route": "/wissen/leitfaden/dsfa-durchfuehrung",
+    "title": "DSFA durchführen 2025: Datenschutz-Folgenabschätzung Step-by-Step",
+    "description": "Datenschutz-Folgenabschätzung durchführen: Wann erforderlich, Ablauf & Dokumentation. ✓ Art. 35 DSGVO ✓ Risikobewertung ✓ Schwellwertanalyse ✓ Template. Jetzt umsetzen!",
+    "keywords": [
+      "DSFA durchführen",
+      "Datenschutz Folgenabschätzung Guide",
+      "DPIA durchführen",
+      "Art 35 DSGVO",
+      "DSFA Anleitung"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 52,
+    "route": "/wissen/leitfaden/betroffenenrechte",
+    "title": "Betroffenenrechte",
+    "description": "Betroffenenrechte nach DSGVO professionell managen: Auskunft, Löschung, Berichtigung, Datenportabilität. ✓ Prozesse ✓ Fristen ✓ Vorlagen. Jetzt rechtssicher umsetzen!",
+    "keywords": [
+      "betroffenenrechte dsgvo",
+      "auskunftsrecht",
+      "recht auf löschung",
+      "datenportabilität",
+      "dsgvo betroffenenanfragen"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 53,
+    "route": "/wissen/leitfaden/tom-massnahmen",
+    "title": "TOM-Maßnahmen DSGVO 2025: Technische & Organisatorische Maßnahmen",
+    "description": "TOM-Maßnahmen umsetzen: Technische & organisatorische Sicherheitsmaßnahmen nach Art. 32 DSGVO. ✓ Verschlüsselung ✓ Zugangskontrolle ✓ Backup ✓ Schulungen. Jetzt sichern!",
+    "keywords": [
+      "TOM Maßnahmen DSGVO",
+      "Technische organisatorische Maßnahmen",
+      "Art 32 DSGVO",
+      "TOM Katalog",
+      "Security Measures GDPR"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 54,
+    "route": "/wissen/leitfaden/dsgvo-30-tage",
+    "title": "DSGVO in 30 Tagen 2025: Schnellstart-Guide zur Compliance in 4 Wochen",
+    "description": "DSGVO in 30 Tagen umsetzen: Schritt-für-Schritt-Plan zur Basis-Compliance. ✓ Woche 1-4 ✓ Quick Wins ✓ Priorisierung ✓ Checklisten. Jetzt starten!",
+    "keywords": [
+      "DSGVO in 30 Tagen",
+      "DSGVO Schnellstart",
+      "DSGVO 4 Wochen Plan",
+      "Quick GDPR Compliance",
+      "DSGVO Crash Course"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 55,
+    "route": "/wissen/leitfaden/verarbeitungsverzeichnis",
+    "title": "Verarbeitungsverzeichnis erstellen 2025: VVT nach Art. 30 DSGVO",
+    "description": "Verarbeitungsverzeichnis (VVT) erstellen: Aufbau, Pflichtangaben & Dokumentation nach Art. 30 DSGVO. ✓ ROPA ✓ Template ✓ Automatisierung ✓ Updates. Jetzt aufbauen!",
+    "keywords": [
+      "Verarbeitungsverzeichnis erstellen",
+      "VVT DSGVO",
+      "Art 30 DSGVO",
+      "ROPA erstellen",
+      "Verarbeitungstätigkeiten dokumentieren"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 56,
+    "route": "/wissen/rechtsprechung/amazon-luxemburg-2021",
+    "title": "Amazon Luxemburg DSGVO-Strafe 2025: 746 Mio. € Bußgeld-Analyse",
+    "description": "Amazon Luxemburg DSGVO-Bußgeld: 746 Mio. € wegen Tracking-Verstößen. ✓ Urteilsanalyse ✓ Rechtsfolgen ✓ Lessons Learned ✓ Compliance-Tipps. Jetzt verstehen!",
+    "keywords": [
+      "Amazon DSGVO Strafe",
+      "Luxemburg Bußgeld 746 Millionen",
+      "Amazon Tracking Verstoß",
+      "DSGVO Rechtsprechung Amazon"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 57,
+    "route": "/wissen/rechtsprechung/facebook-fanpage",
+    "title": "Facebook Fanpage DSGVO-Urteil 2025: Gemeinsame Verantwortlichkeit",
+    "description": "Facebook Fanpage EuGH-Urteil: Seitenbetreiber sind gemeinsam verantwortlich. ✓ C-210/16 ✓ Joint Controllership ✓ Pflichten ✓ Konsequenzen. Jetzt rechtssicher!",
+    "keywords": [
+      "Facebook Fanpage Urteil",
+      "Gemeinsame Verantwortlichkeit DSGVO",
+      "EuGH C-210/16",
+      "Facebook Page Insights DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 58,
+    "route": "/wissen/rechtsprechung/schrems-ii",
+    "title": "Schrems II Urteil 2025: Privacy Shield ungültig",
+    "description": "Schrems II EuGH-Urteil: Privacy Shield für ungültig erklärt. ✓ C-311/18 ✓ US-Datentransfers ✓ SCCs ✓ Zusatzmaßnahmen ✓ Compliance-Pflichten. Jetzt anpassen!",
+    "keywords": [
+      "Schrems II Urteil",
+      "Privacy Shield ungültig",
+      "EuGH C-311/18",
+      "US Datentransfer DSGVO",
+      "Standard Contractual Clauses"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 59,
+    "route": "/wissen/rechtsprechung/google-analytics-austria",
+    "title": "Google Analytics Österreich 2025: DSB erklärt GA rechtswidrig",
+    "description": "Google Analytics Österreich-Bescheid: Datenschutzbehörde erklärt GA rechtswidrig. ✓ US-Transfer ✓ Schrems II ✓ Alternativen ✓ Compliance. Jetzt umstellen!",
+    "keywords": [
+      "Google Analytics Österreich Urteil",
+      "GA rechtswidrig DSB",
+      "Google Analytics DSGVO Verstoß",
+      "Analytics Alternative"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 60,
+    "route": "/assessment-center/dsgvo-kosten-rechner",
+    "title": "DSGVO-Kosten-Rechner 2025: Compliance-Kosten kalkulieren",
+    "description": "DSGVO-Kosten berechnen: DSB, Software, Schulungen & Audit-Kosten kalkulieren. ✓ Transparent ✓ ROI-Analyse ✓ Budget-Planung ✓ Kostenvergleich. Jetzt berechnen!",
+    "keywords": [
+      "DSGVO Kosten Rechner",
+      "Datenschutz Kosten Kalkulator",
+      "DSGVO Budget Rechner",
+      "Compliance Kosten berechnen",
+      "DSB Kosten"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 61,
+    "route": "/assessment-center/ai-risk-assessment",
+    "title": "AI Risk Assessment 2025: KI-Risikobewertung nach EU AI Act durchführen",
+    "description": "KI-Risikobewertung Tool: Risk Classification, High-Risk AI Detection & Mitigation Planning. ✓ EU AI Act ✓ Risk Matrix ✓ Impact Analysis. Jetzt bewerten!",
+    "keywords": [
+      "AI Risk Assessment",
+      "KI Risikobewertung",
+      "AI Risk Classification",
+      "High Risk AI Assessment",
+      "EU AI Act Risk Assessment"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 62,
+    "route": "/assessment-center/datenschutz-test",
+    "title": "Datenschutz-Test 2025: DSGVO-Wissen & Compliance-Level prüfen",
+    "description": "Datenschutz-Wissenstest durchführen: DSGVO-Kenntnisse, Mitarbeiter-Awareness & Compliance-Gaps identifizieren. ✓ E-Learning ✓ Zertifikat ✓ Schulung. Jetzt testen!",
+    "keywords": [
+      "Datenschutz Test",
+      "DSGVO Wissenstest",
+      "Datenschutz Quiz",
+      "DSGVO Kenntnisse Test",
+      "Data Protection Test"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 63,
+    "route": "/assessment-center/nis2-compliance-check",
+    "title": "NIS2 Compliance Check 2025: KRITIS Cybersecurity-Readiness prüfen",
+    "description": "NIS2-Compliance bewerten: Betroffenheit, Security Requirements & Incident Response. ✓ KRITIS ✓ Wichtige Einrichtungen ✓ Meldepflichten ✓ Cyber-Resilienz. Jetzt checken!",
+    "keywords": [
+      "NIS2 Compliance Check",
+      "NIS2 Readiness Assessment",
+      "KRITIS Cybersecurity Check",
+      "NIS2 Requirements Assessment"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 64,
+    "route": "/assessment-center/soc2-readiness-assessment",
+    "title": "SOC 2 Readiness Assessment 2025: Type I & II Audit-Vorbereitung",
+    "description": "SOC 2 Readiness prüfen: Trust Service Criteria Gap-Analyse & Pre-Audit Check. ✓ Security ✓ Availability ✓ Confidentiality ✓ Processing Integrity. Jetzt ready werden!",
+    "keywords": [
+      "SOC 2 Readiness Assessment",
+      "SOC 2 Gap Analysis",
+      "Trust Service Criteria Check",
+      "SOC 2 Pre Audit",
+      "SOC 2 Preparation"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 65,
+    "route": "/assessment-center/security-controls-audit",
+    "title": "Security Controls Audit 2025: IT-Sicherheitskontrollen systematisch prüfen",
+    "description": "Security Controls Audit durchführen: Technical, Administrative & Physical Controls prüfen. ✓ CIS Controls ✓ NIST CSF ✓ ISO 27002 ✓ SOC 2. Jetzt auditieren!",
+    "keywords": [
+      "Security Controls Audit",
+      "IT Sicherheitskontrollen Prüfung",
+      "Security Controls Assessment",
+      "Control Effectiveness Testing"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 66,
+    "route": "/assessment-center/algorithmic-impact-assessment",
+    "title": "Algorithmic Impact Assessment Tool 2025: KI-Folgenabschätzung durchführen",
+    "description": "Algorithmic Impact Assessment Tool: Bias Detection, Fairness Testing & Impact Evaluation. ✓ EU AI Act ✓ DSGVO Art. 35 ✓ Algorithm Audit. Jetzt bewerten!",
+    "keywords": [
+      "Algorithmic Impact Assessment Tool",
+      "Algorithm Audit Tool",
+      "AI Bias Detection",
+      "Fairness Assessment",
+      "Algorithm Impact Evaluation"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 67,
+    "route": "/assessment-center/ai-governance-check",
+    "title": "AI Governance Check 2025: KI-Governance-Framework & Compliance-Assessment",
+    "description": "AI Governance bewerten: Governance Framework, Risk Controls & EU AI Act Readiness. ✓ AI Ethics ✓ Model Governance ✓ Oversight ✓ Accountability. Jetzt prüfen!",
+    "keywords": [
+      "AI Governance Check",
+      "KI Governance Assessment",
+      "AI Risk Governance",
+      "Machine Learning Governance",
+      "EU AI Act Governance"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 68,
+    "route": "/assessment-center/isms-maturity-assessment",
+    "title": "ISMS Maturity Assessment 2025: Information Security Reifegradmessung",
+    "description": "ISMS-Reifegrad messen: Maturity Level 1-5, Process Assessment & Improvement Roadmap. ✓ ISO 27001 ✓ Security Governance ✓ Best Practices. Jetzt bewerten!",
+    "keywords": [
+      "ISMS Maturity Assessment",
+      "Information Security Reifegrad",
+      "ISMS Maturity Model",
+      "Security Maturity Level",
+      "ISO 27001 Maturity"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 69,
+    "route": "/assessment-center/iso-27001-readiness-check",
+    "title": "ISO 27001 Readiness Check 2025: Gap-Analyse & Zertifizierungs-Vorbereitung",
+    "description": "ISO 27001 Readiness Assessment: Controls-Gap-Analyse, Documentation Check & Audit-Vorbereitung. ✓ Anhang A ✓ ISMS ✓ Risk Assessment ✓ Certification. Jetzt prüfen!",
+    "keywords": [
+      "ISO 27001 Readiness Check",
+      "ISO 27001 Gap Analyse",
+      "ISMS Readiness Assessment",
+      "ISO 27001 Vorbereitung",
+      "Certification Readiness"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 70,
+    "route": "/assessment-center/dsgvo-compliance-checklist",
+    "title": "DSGVO-Compliance-Checklist 2025: Vollständige Prüfliste",
+    "description": "Komplette DSGVO-Checkliste: Alle Compliance-Anforderungen systematisch prüfen. ✓ VVT ✓ TOM ✓ AVV ✓ Betroffenenrechte ✓ Dokumentation. Jetzt kostenlos testen!",
+    "keywords": [
+      "DSGVO Compliance Checklist",
+      "DSGVO Checkliste",
+      "Datenschutz Prüfliste",
+      "GDPR Checklist",
+      "DSGVO Anforderungen Check"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 71,
+    "route": "/guides/dsgvo-leitfaden",
+    "title": "DSGVO Leitfaden 2024",
+    "description": "Kompletter DSGVO-Leitfaden für Unternehmen: Alle Pflichten, Rechtsgrundlagen & Praxis-Tipps. ✓ Schritt-für-Schritt ✓ Mit Checklisten ✓ Rechtssicher. Jetzt lesen!",
+    "keywords": [
+      "DSGVO Leitfaden",
+      "DSGVO Guide",
+      "Datenschutz-Grundverordnung",
+      "DSGVO Anleitung",
+      "DSGVO für Unternehmen",
+      "DSGVO umsetzen"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 72,
+    "route": "/guides/eu-ai-act-leitfaden",
+    "title": "EU AI Act Leitfaden 2025",
+    "description": "EU AI Act Guide: Verstehen Sie die KI-Verordnung & erfüllen Sie alle Pflichten. ✓ Risikoklassen ✓ Compliance-Anforderungen ✓ Praxis-Beispiele. Jetzt starten!",
+    "keywords": [
+      "EU AI Act Leitfaden",
+      "KI-Verordnung Guide",
+      "AI Act Deutschland",
+      "Künstliche Intelligenz Gesetz",
+      "EU AI Act umsetzen"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 73,
+    "route": "/guides/nis2-leitfaden",
+    "title": "NIS-2 Leitfaden 2024",
+    "description": "NIS-2 Richtlinie umsetzen: Pflichten für betroffene Unternehmen, Meldepflichten & Sicherheitsmaßnahmen. ✓ KRITIS ✓ Praxisnah ✓ Fristgerecht. Jetzt compliant werden!",
+    "keywords": [
+      "NIS-2 Leitfaden",
+      "NIS2 Guide",
+      "NIS-2 Umsetzung",
+      "Cybersecurity Richtlinie",
+      "NIS2 Pflichten",
+      "KRITIS Compliance"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 74,
+    "route": "/guides/soc2-leitfaden",
+    "title": "SOC 2 Leitfaden",
+    "description": "SOC 2 Type II Zertifizierung meistern: 5 Trust Principles, Audit-Vorbereitung & Best Practices. ✓ SaaS-optimiert ✓ AICPA-konform ✓ Schritt-für-Schritt. Jetzt vorbereiten!",
+    "keywords": [
+      "SOC 2 Leitfaden",
+      "SOC 2 Guide",
+      "Trust Services",
+      "SOC 2 Type II",
+      "SaaS Compliance",
+      "SOC 2 Audit"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 75,
+    "route": "/guides/tisax-leitfaden",
+    "title": "TISAX Leitfaden",
+    "description": "TISAX-Zertifizierung erfolgreich bestehen: VDA ISA Assessment, Schutzbedarfsfeststellung & ENX-Portal. ✓ Automotive ✓ Level 2/3 ✓ Praxisnah. Jetzt vorbereiten!",
+    "keywords": [
+      "TISAX Leitfaden",
+      "TISAX Guide",
+      "VDA ISA",
+      "TISAX Zertifizierung",
+      "Automotive Security",
+      "TISAX Assessment"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 76,
+    "route": "/kontakt",
+    "title": "Kontakt",
+    "description": "Kontaktieren Sie unsere Compliance-Experten für DSGVO, EU AI Act, ISO 27001 & NIS-2. ✓ Kostenlose Erstberatung ✓ Schnelle Antwort ✓ Individuelle Lösung. Jetzt Termin buchen!",
+    "keywords": [
+      "Compliance Beratung Kontakt",
+      "DSGVO Berater",
+      "Datenschutz Experte",
+      "ISO 27001 Beratung",
+      "Compliance Anfrage"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 77,
+    "route": "/wissen/rechtsprechung",
+    "title": "DSGVO-Rechtsprechung 2024",
+    "description": "Aktuelle DSGVO-Urteile, Gerichtsentscheidungen & Bußgelder: EuGH, BVerwG & Aufsichtsbehörden. ✓ Praxisrelevant ✓ Analyse ✓ Handlungsempfehlungen. Jetzt informieren!",
+    "keywords": [
+      "DSGVO Rechtsprechung",
+      "DSGVO Urteile",
+      "Datenschutz Gerichtsurteile",
+      "DSGVO Bußgelder",
+      "EuGH Datenschutz"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 78,
+    "route": "/resources",
+    "title": "DSGVO-Ressourcen 2025: Templates, Checklisten & Tools",
+    "description": "DSGVO-Ressourcen: Kostenlose Templates, Checklisten, Guides & Tools für Datenschutz-Compliance. ✓ ROPA-Vorlagen ✓ DSFA-Templates ✓ Checklisten. Jetzt herunterladen!",
+    "keywords": [
+      "DSGVO Ressourcen",
+      "Datenschutz Templates",
+      "DSGVO Checklisten",
+      "GDPR Resources",
+      "Compliance Tools kostenlos"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 79,
+    "route": "/academy",
+    "title": "Marsstein Academy 2025: DSGVO & Compliance-Schulungen für Teams",
+    "description": "Marsstein Academy: Professionelle Schulungen zu DSGVO, Datenschutz & Compliance. ✓ Zertifikate ✓ E-Learning ✓ Live-Webinare ✓ Für Teams. Jetzt weiterbilden!",
+    "keywords": [
+      "DSGVO Schulung",
+      "Datenschutz Training",
+      "Compliance Academy",
+      "GDPR E-Learning",
+      "Datenschutzschulung Online"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 80,
+    "route": "/crisis-management",
+    "title": "Crisis Management 2025: Datenpannen & IT-Sicherheitsvorfälle managen",
+    "description": "Crisis Management: Datenpannen, Cyberangriffe & IT-Sicherheitsvorfälle professionell managen. ✓ Incident Response ✓ BCM ✓ Krisenkommunikation. Jetzt vorbereiten!",
+    "keywords": [
+      "Crisis Management",
+      "Datenpanne Krisenmanagement",
+      "IT-Sicherheitsvorfall Response",
+      "Business Continuity Management"
+    ],
+    "category": "Krisenmanagement"
+  },
+  {
+    "id": 81,
+    "route": "/crisis/security-incident-guide",
+    "title": "Security Incident Response 2025: Notfallplan für IT-Sicherheitsvorfälle",
+    "description": "Security Incident Response: Notfallplan für IT-Sicherheitsvorfälle & Cyberangriffe. ✓ Incident Response Plan ✓ CERT ✓ Forensik ✓ Recovery. Jetzt vorbereiten!",
+    "keywords": [
+      "Security Incident Response",
+      "IT-Sicherheitsvorfall",
+      "Incident Response Plan",
+      "Cyber Incident Management",
+      "CERT"
+    ],
+    "category": "Krisenmanagement"
+  },
+  {
+    "id": 82,
+    "route": "/guides/data-breach-notfall-leitfaden",
+    "title": "Data Breach Notfall-Leitfaden",
+    "description": "Datenpanne-Notfallplan: 72-Stunden-Meldepflicht nach Art. 33 DSGVO erfüllen. ✓ Checkliste ✓ Muster-Meldung ✓ Rechtssicher ✓ Schritt-für-Schritt. Jetzt vorbereiten!",
+    "keywords": [
+      "Data Breach Leitfaden",
+      "Datenpanne Meldung",
+      "72 Stunden Regel",
+      "DSGVO Art. 33",
+      "Datenschutzvorfall melden"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 83,
+    "route": "/branchen/dsgvo-vereine",
+    "title": "DSGVO für Vereine 2025: Datenschutz im Ehrenamt rechtssicher umsetzen",
+    "description": "DSGVO für Vereine: Datenschutz im Ehrenamt praktisch umsetzen. ✓ Mitgliederdaten ✓ Einwilligungen ✓ Website ✓ Fotos ✓ DSB-Pflicht ✓ Kostenlos. Jetzt compliant!",
+    "keywords": [
+      "DSGVO Vereine",
+      "Datenschutz Ehrenamt",
+      "Vereinsdatenschutz",
+      "Mitgliederdaten DSGVO",
+      "Verein Datenschutzbeauftragter"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 84,
+    "route": "/branchen/datenschutz-homeoffice",
+    "title": "Datenschutz Homeoffice 2025: Remote Work DSGVO-konform umsetzen",
+    "description": "Datenschutz im Homeoffice: Remote Work rechtssicher gestalten. ✓ Home-Office-Policy ✓ VPN ✓ Endpoint Security ✓ BYOD ✓ Verhaltensregeln. Jetzt compliant!",
+    "keywords": [
+      "Datenschutz Homeoffice",
+      "Remote Work DSGVO",
+      "Home Office Datenschutzrichtlinie",
+      "Mobile Working Compliance"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 85,
+    "route": "/branchen/logistics-compliance",
+    "title": "Logistics Compliance 2025: Datenschutz & Supply Chain Compliance",
+    "description": "Logistics Compliance: Datenschutz & Compliance in Logistik & Supply Chain. ✓ Tracking-Daten ✓ DSGVO ✓ Lieferketten-Transparenz ✓ NIS2. Jetzt compliant!",
+    "keywords": [
+      "Logistics Compliance",
+      "Datenschutz Logistik",
+      "Supply Chain DSGVO",
+      "Tracking Datenschutz",
+      "Lieferketten Compliance"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 86,
+    "route": "/branchen/pharma-compliance-guide",
+    "title": "Pharma Compliance 2025: DSGVO, GxP & Datenschutz in der Pharma",
+    "description": "Pharma Compliance: Datenschutz & GxP-Anforderungen in der pharmazeutischen Industrie. ✓ Clinical Trials ✓ Patientendaten ✓ DSGVO ✓ FDA. Jetzt compliant!",
+    "keywords": [
+      "Pharma Compliance",
+      "Datenschutz Pharma",
+      "GxP DSGVO",
+      "Clinical Trial Data Protection",
+      "Pharmaceutical Data Compliance"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 87,
+    "route": "/branchen/produktion-datenschutz-guide",
+    "title": "Produktion Datenschutz 2025: DSGVO in Manufacturing & Industrie 4.0",
+    "description": "Produktion Datenschutz: DSGVO in Manufacturing, Industrie 4.0 & Smart Factory. ✓ IoT-Daten ✓ Mitarbeiterdaten ✓ Lieferanten ✓ TISAX. Jetzt compliant!",
+    "keywords": [
+      "Produktion Datenschutz",
+      "Manufacturing DSGVO",
+      "Industrie 4.0 Datenschutz",
+      "Smart Factory Privacy",
+      "Produktionsdaten DSGVO"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 88,
+    "route": "/ki/ki-risikoklassifizierung",
+    "title": "KI-Risikoklassifizierung 2025: EU AI Act Risk Levels verstehen",
+    "description": "KI-Risikoklassifizierung nach EU AI Act: Minimal, Limited, High-Risk & Unacceptable Risk. ✓ Klassifizierung ✓ Anforderungen ✓ Compliance-Pflichten. Jetzt klassifizieren!",
+    "keywords": [
+      "KI Risikoklassifizierung",
+      "EU AI Act Risk Levels",
+      "High-Risk KI-System",
+      "AI Risk Assessment",
+      "KI Klassifikation"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 89,
+    "route": "/ki/privacy-by-design-ai",
+    "title": "Privacy by Design AI 2025: Datenschutz in KI-Systeme einbauen",
+    "description": "Privacy by Design für KI: Datenschutz von Anfang an in ML-Systeme integrieren. ✓ DSGVO Art. 25 ✓ PbD-Prinzipien ✓ Technical Measures ✓ Best Practices. Jetzt einbauen!",
+    "keywords": [
+      "Privacy by Design AI",
+      "PbD Machine Learning",
+      "DSGVO Art 25 KI",
+      "Datenschutz durch Technikgestaltung AI"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 90,
+    "route": "/ki/explainable-ai-guide",
+    "title": "Explainable AI 2025: XAI & Transparenz für DSGVO-konforme KI-Systeme",
+    "description": "Explainable AI umsetzen: Transparenz & Erklärbarkeit für KI-Entscheidungen nach DSGVO Art. 22. ✓ XAI-Methoden ✓ LIME ✓ SHAP ✓ Interpretierbarkeit. Jetzt transparent!",
+    "keywords": [
+      "Explainable AI",
+      "XAI DSGVO",
+      "KI Transparenz Art 22",
+      "Interpretable Machine Learning",
+      "AI Explainability"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 91,
+    "route": "/ki/financial-ai-compliance",
+    "title": "Financial AI Compliance 2025: KI im Banking rechtssicher einsetzen",
+    "description": "Financial AI Compliance: KI-Systeme im Banking & Finance rechtssicher nutzen. ✓ BaFin-Anforderungen ✓ EU AI Act ✓ DSGVO ✓ Explainability. Jetzt compliant!",
+    "keywords": [
+      "Financial AI Compliance",
+      "KI Banking BaFin",
+      "AI Finance DSGVO",
+      "Algorithmic Trading Compliance",
+      "FinTech AI Regulation"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 92,
+    "route": "/wissen/china-dsgvo/artikel-15-dsgvo-auskunftsrecht-china",
+    "title": "Art. 15 DSGVO Auskunftsrecht China 2025: DSAR für China-Daten",
+    "description": "Art. 15 DSGVO Auskunftsrecht bei China-Transfers: Data Subject Rights, Cross-Border DSARs & PIPL Art. 44-48. ✓ Betroffenenrechte ✓ China-EU. Jetzt umsetzen!",
+    "keywords": [
+      "Artikel 15 DSGVO China",
+      "Auskunftsrecht Cross Border China",
+      "DSAR China Datentransfer",
+      "Betroffenenrechte PIPL"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 93,
+    "route": "/wissen/china-dsgvo/dsgvo-amazon-sellers-china",
+    "title": "Amazon Sellers China DSGVO 2025: E-Commerce Compliance für China-Händler",
+    "description": "Amazon FBA China DSGVO-konform: Seller Data, Customer Data Protection & Cross-Border E-Commerce. ✓ Amazon EU ✓ China Fulfillment ✓ Marketplace. Jetzt compliant!",
+    "keywords": [
+      "Amazon Sellers China DSGVO",
+      "Amazon FBA China Datenschutz",
+      "China Händler DSGVO",
+      "E-Commerce China GDPR"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 94,
+    "route": "/wissen/china-dsgvo/dsgvo-tiktok-shop-china",
+    "title": "TikTok Shop China DSGVO 2025: Social Commerce Datenschutz",
+    "description": "TikTok Shop DSGVO-Compliance: Social Commerce China-EU, Kundendaten & Cross-Border E-Commerce. ✓ TikTok Shopping ✓ PIPL ✓ Payment Data. Jetzt rechtssicher verkaufen!",
+    "keywords": [
+      "TikTok Shop DSGVO",
+      "TikTok Shopping China Datenschutz",
+      "Social Commerce China GDPR",
+      "TikTok E-Commerce DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 95,
+    "route": "/wissen/china-dsgvo/deepseek-dsgvo",
+    "title": "DeepSeek DSGVO 2025: Chinesische KI-Suchmaschine & Datenschutz",
+    "description": "DeepSeek DSGVO-Compliance: Chinese AI Search Engine, Data Processing & EU-China AI. ✓ AI Act ✓ PIPL ✓ Search Data Protection. Jetzt KI-compliant!",
+    "keywords": [
+      "DeepSeek DSGVO",
+      "DeepSeek AI Datenschutz",
+      "Chinese AI Search GDPR",
+      "DeepSeek Europe Compliance"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 96,
+    "route": "/wissen/china-dsgvo/eu-vertreter-china",
+    "title": "EU-Vertreter für chinesische Unternehmen 2025: Art. 27 DSGVO",
+    "description": "EU-Vertreter (Art. 27 DSGVO) für China-Geschäft: Vertretungspflicht, Aufgaben & Haftung. ✓ EU Representative ✓ PIPL meets GDPR ✓ Compliance. Jetzt EU-Vertreter bestellen!",
+    "keywords": [
+      "EU Vertreter China",
+      "Art 27 DSGVO China",
+      "EU Representative China",
+      "DSGVO Vertreter chinesische Unternehmen",
+      "GDPR Representative"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 97,
+    "route": "/wissen/china-dsgvo/joint-venture-china-datenschutz",
+    "title": "Joint Venture China Datenschutz 2025: DSGVO & PIPL Compliance",
+    "description": "Joint Venture China datenschutzkonform: DSGVO-PIPL-Dual-Compliance, Cross-Border-Transfers & Data Localization. ✓ EU-China JV ✓ SCCs ✓ PIPL Art. 38. Jetzt compliant!",
+    "keywords": [
+      "Joint Venture China Datenschutz",
+      "DSGVO PIPL Compliance",
+      "China JV Data Protection",
+      "EU China Joint Venture DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 98,
+    "route": "/wissen/china-dsgvo/china-investitionen-dsgvo-screening",
+    "title": "China-Investitionen DSGVO-Screening 2025: Due Diligence & Compliance",
+    "description": "China-Investitionen DSGVO-compliant: M&A Due Diligence, Data Transfer Impact Assessment & Privacy Risks. ✓ PIPL ✓ Cross-Border ✓ SCCs. Jetzt screenen!",
+    "keywords": [
+      "China Investitionen DSGVO",
+      "M&A Due Diligence China",
+      "China Investment Screening DSGVO",
+      "Cross Border Data Transfer China"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 99,
+    "route": "/wissen/china-dsgvo/china-scc-vs-eu-scc",
+    "title": "China SCC vs EU SCC 2025: Standard Contractual Clauses im Vergleich",
+    "description": "China SCCs vs EU SCCs vergleichen: PIPL Standard Contracts vs DSGVO Standardvertragsklauseln. ✓ Cross-Border Transfers ✓ Unterschiede ✓ Dual Compliance. Jetzt verstehen!",
+    "keywords": [
+      "China SCC vs EU SCC",
+      "PIPL Standard Contracts",
+      "Cross Border Data Transfer China EU",
+      "DSGVO China Standardvertragsklauseln"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 100,
+    "route": "/wissen/china-dsgvo/dsgvo-wechat-alipay-china",
+    "title": "WeChat & Alipay DSGVO-Compliance 2025: Payment Processing China",
+    "description": "WeChat Pay & Alipay DSGVO-konform nutzen: Datentransfers, User Consent & Payment Data Protection. ✓ PIPL ✓ Cross-Border ✓ E-Commerce China. Jetzt compliant!",
+    "keywords": [
+      "WeChat DSGVO",
+      "Alipay Datenschutz",
+      "WeChat Pay DSGVO Compliance",
+      "China Payment DSGVO",
+      "Alipay GDPR"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 101,
+    "route": "/wissen/china-dsgvo/dsgvo-douyin-china",
+    "title": "Douyin (TikTok China) DSGVO 2025: Social Media Compliance China",
+    "description": "Douyin DSGVO-konform nutzen: TikTok China vs Global, Datentransfers & Marketing Compliance. ✓ PIPL ✓ Content Marketing ✓ Cross-Border. Jetzt rechtssicher!",
+    "keywords": [
+      "Douyin DSGVO",
+      "TikTok China Datenschutz",
+      "Douyin GDPR Compliance",
+      "TikTok China vs Global DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 102,
+    "route": "/wissen/china-dsgvo/dsgvo-b2b-hersteller-china",
+    "title": "DSGVO B2B Hersteller China 2025: Supply Chain Data Compliance",
+    "description": "B2B-Hersteller China DSGVO-konform: Lieferantendaten, Kontaktdaten-Transfers & Business Contacts. ✓ PIPL ✓ SCCs ✓ Procurement. Jetzt Supply Chain compliant!",
+    "keywords": [
+      "DSGVO B2B China Hersteller",
+      "Supply Chain Datenschutz China",
+      "B2B Data Transfer China",
+      "Lieferanten DSGVO China"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 103,
+    "route": "/wissen/china-dsgvo/pipl-gdpr-china",
+    "title": "PIPL vs GDPR 2025: Chinas Datenschutzgesetz vs EU DSGVO im Vergleich",
+    "description": "PIPL & GDPR vergleichen: Gemeinsamkeiten, Unterschiede & Dual Compliance Strategy. ✓ Personal Information Protection Law ✓ Cross-Border Rules ✓ Enforcement. Jetzt verstehen!",
+    "keywords": [
+      "PIPL vs GDPR",
+      "China Datenschutzgesetz DSGVO Vergleich",
+      "Personal Information Protection Law",
+      "PIPL GDPR Unterschiede"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 104,
+    "route": "/legal/cookie-law-guide",
+    "title": "Cookie-Richtlinie 2025: ePrivacy & DSGVO-konforme Cookie-Banner",
+    "description": "Cookie-Richtlinie verstehen & umsetzen: ePrivacy, DSGVO, TCF 2.2 & Cookie-Consent. ✓ Cookie-Banner ✓ Consent Management ✓ Planet49 ✓ Rechtssicher. Jetzt compliant!",
+    "keywords": [
+      "Cookie Richtlinie",
+      "ePrivacy Verordnung",
+      "Cookie Banner DSGVO",
+      "Consent Management Platform",
+      "Cookie Compliance"
+    ],
+    "category": "Rechtsfälle"
+  },
+  {
+    "id": 105,
+    "route": "/legal/meta-irland-case",
+    "title": "Meta Ireland Case 2025: 1,2 Mrd. € DSGVO-Bußgeld analysiert",
+    "description": "Meta-Urteil Irland: Höchstes DSGVO-Bußgeld (€1,2 Mrd.) wegen Schrems II & Datentransfers. ✓ Standard Contractual Clauses ✓ US-Transfers ✓ Lessons Learned. Jetzt verstehen!",
+    "keywords": [
+      "Meta Ireland DSGVO Bußgeld",
+      "Meta 1.2 Milliarden Strafe",
+      "Schrems II Meta",
+      "DSGVO Datentransfer USA",
+      "Meta Facebook Irland"
+    ],
+    "category": "Rechtsfälle"
+  },
+  {
+    "id": 106,
+    "route": "/ki/hr-ai-compliance",
+    "title": "HR AI Compliance 2025: KI-Recruiting & People Analytics rechtssicher",
+    "description": "HR AI Compliance: KI im Recruiting & HR rechtssicher einsetzen. ✓ EU AI Act High-Risk ✓ Bewerberdatenschutz ✓ Bias-Vermeidung ✓ Transparenz. Jetzt compliant!",
+    "keywords": [
+      "HR AI Compliance",
+      "KI Recruiting DSGVO",
+      "AI Bewerbermanagement",
+      "People Analytics Datenschutz",
+      "HR Tech Compliance"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 107,
+    "route": "/ki/algorithmic-impact-assessment-guide",
+    "title": "Algorithmic Impact Assessment",
+    "description": "Algorithmic Impact Assessment professionell durchführen: Gesellschaftliche Auswirkungen bewerten, Bias erkennen & Fairness sicherstellen. ✓ Framework ✓ Tools ✓ Praxis. Jetzt starten!",
+    "keywords": [
+      "Algorithmic Impact Assessment",
+      "AIA Guide",
+      "Algorithm Assessment",
+      "Bias Detection",
+      "Fairness Testing",
+      "Social Impact AI"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 108,
+    "route": "/ki/data-minimization-guide",
+    "title": "Data Minimization KI 2025: Datenminimierung in ML-Systemen umsetzen",
+    "description": "Data Minimization in KI: Datenminimierung für Machine Learning nach DSGVO Art. 5. ✓ Privacy-Preserving ML ✓ Feature Selection ✓ Synthetic Data. Jetzt minimieren!",
+    "keywords": [
+      "Data Minimization KI",
+      "Datenminimierung Machine Learning",
+      "DSGVO Art 5 KI",
+      "Privacy-Preserving ML",
+      "Datensparsamkeit AI"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 109,
+    "route": "/ki/federated-learning-guide",
+    "title": "Federated Learning 2025: Privacy-First ML ohne Daten-Zentralisierung",
+    "description": "Federated Learning: Dezentrales Machine Learning für maximalen Datenschutz. ✓ FL-Architektur ✓ Privacy Guarantees ✓ DSGVO-Compliance ✓ Use Cases. Jetzt dezentral!",
+    "keywords": [
+      "Federated Learning",
+      "FL Privacy",
+      "Dezentrales Machine Learning",
+      "Privacy-Preserving AI",
+      "Federated ML DSGVO"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 110,
+    "route": "/ki/model-privacy-attacks",
+    "title": "Model Privacy Attacks 2025: ML-Modelle vor Angriffen schützen",
+    "description": "Model Privacy Attacks abwehren: ML-Modelle vor Membership Inference, Model Inversion & Extraction schützen. ✓ Attack Vectors ✓ Defenses ✓ Privacy Risks. Jetzt absichern!",
+    "keywords": [
+      "Model Privacy Attacks",
+      "ML Model Security",
+      "Membership Inference Attack",
+      "Model Inversion",
+      "AI Privacy Risks"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 111,
+    "route": "/ki/privacy-preserving-ai",
+    "title": "Privacy-Preserving AI 2025: Datenschutz-KI-Technologien im Überblick",
+    "description": "Privacy-Preserving AI: Technologien für datenschutzfreundliche KI-Systeme. ✓ Differential Privacy ✓ Homomorphic Encryption ✓ Secure MPC ✓ Federated Learning. Jetzt schützen!",
+    "keywords": [
+      "Privacy-Preserving AI",
+      "Differential Privacy",
+      "Homomorphic Encryption ML",
+      "Secure Multi-Party Computation",
+      "PETs AI"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 112,
+    "route": "/guides/geldwaeschegesetz-leitfaden",
+    "title": "Geldwäschegesetz (GwG) Leitfaden",
+    "description": "Geldwäschegesetz-Guide: KYC-Prozesse, Risikomanagement, Verdachtsmeldungen & BaFin-Anforderungen. ✓ AML-Praxis ✓ Compliance-Checklisten ✓ Rechtssicher. Jetzt umsetzen!",
+    "keywords": [
+      "Geldwäschegesetz Leitfaden",
+      "GwG Guide",
+      "AML Compliance",
+      "KYC Prozesse",
+      "BaFin GwG",
+      "Anti-Geldwäsche Anleitung"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 113,
+    "route": "/guides/iso-27017-leitfaden",
+    "title": "ISO 27017 Leitfaden",
+    "description": "ISO 27017 Cloud-Security umsetzen: Cloud-spezifische Controls, CSP-Anforderungen & Multi-Cloud-Governance. ✓ AWS/Azure/GCP ✓ Praxisnah ✓ Zertifizierung. Jetzt starten!",
+    "keywords": [
+      "ISO 27017 Leitfaden",
+      "ISO 27017 Guide",
+      "Cloud Security Standard",
+      "Cloud Controls",
+      "CSP Compliance",
+      "Multi-Cloud Security"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 114,
+    "route": "/guides/iso-27018-leitfaden",
+    "title": "ISO 27018 Leitfaden",
+    "description": "ISO 27018 Cloud-Privacy meistern: PII-Schutz in Public Clouds, DSGVO-Alignment & Privacy Controls. ✓ Cloud-Datenschutz ✓ Best Practices ✓ Zertifizierung. Jetzt umsetzen!",
+    "keywords": [
+      "ISO 27018 Leitfaden",
+      "ISO 27018 Guide",
+      "Cloud Privacy",
+      "PII Protection Cloud",
+      "Public Cloud Datenschutz",
+      "Cloud DSGVO"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 115,
+    "route": "/tools/whistleblower-system",
+    "title": "Whistleblower-System",
+    "description": "Digitales Whistleblower-System implementieren: ✓ 100% anonym ✓ HinSchG-konform ✓ End-to-End verschlüsselt ✓ Fallmanagement. Schützen Sie Hinweisgeber. Jetzt einrichten!",
+    "keywords": [
+      "Whistleblower System",
+      "Hinweisgebersystem digital",
+      "HinSchG Software",
+      "Hinweisgeberstelle",
+      "Whistleblower Tool",
+      "Anonyme Meldestelle"
+    ],
+    "category": "Tools"
+  },
+  {
+    "id": 116,
+    "route": "/tools/cookie-management",
+    "title": "Cookie-Management-Tool",
+    "description": "Cookie-Consent-Management-Plattform: TCF 2.2, Google Consent Mode V2, IAB-konform. ✓ Conversion-optimiert ✓ Rechtssicher ✓ Performance. Jetzt integrieren!",
+    "keywords": [
+      "Cookie Management Tool",
+      "Consent Management Platform",
+      "Cookie Banner Software",
+      "TCF 2.2",
+      "Google Consent Mode",
+      "CMP Tool"
+    ],
+    "category": "Tools"
+  },
+  {
+    "id": 117,
+    "route": "/compliance-dashboard",
+    "title": "Compliance Dashboard",
+    "description": "Zentrales Compliance-Dashboard: Echtzeit-Status, KPI-Tracking, Audit-Reports & Risk-Heatmaps für DSGVO, ISO 27001 & mehr. ✓ Multi-Entity ✓ Automatisiert. Jetzt testen!",
+    "keywords": [
+      "Compliance Dashboard",
+      "GRC Dashboard",
+      "Compliance Reporting",
+      "Risk Dashboard",
+      "Audit Dashboard",
+      "Compliance KPIs"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 118,
+    "route": "/risk-management-platform",
+    "title": "Risk Management Platform",
+    "description": "Enterprise Risk Management: Risiko-Register, Controls-Mapping, Issue-Tracking & Audit-Management. ✓ ISO 31000 ✓ Three-Lines-Model ✓ Integration. Jetzt implementieren!",
+    "keywords": [
+      "Risk Management Platform",
+      "GRC Software",
+      "Enterprise Risk Management",
+      "Risk Register",
+      "Controls Management",
+      "Audit Management"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 119,
+    "route": "/externer-datenschutzbeauftragter",
+    "title": "Externer Datenschutzbeauftragter ab 29€ | MARSSTEIN",
+    "description": "Zertifizierter externer Datenschutzbeauftragter ab 29€/Monat. Flexible Lösungen für kleine und große Unternehmen. ✓ Individuelle Beratung ✓ Zertifizierte Qualität",
+    "keywords": [
+      "externer datenschutzbeauftragter",
+      "dsb",
+      "dsgvo",
+      "datenschutzberatung"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 120,
+    "route": "/externer-datenschutzbeauftragter-bayern",
+    "title": "Externer Datenschutzbeauftragter Bayern 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Bayern gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Bayern & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter bayern",
+      "dsb bayern",
+      "dsgvo bayern",
+      "datenschutzbeauftragter bayern"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 121,
+    "route": "/externer-datenschutzbeauftragter-braunschweig",
+    "title": "Externer Datenschutzbeauftragter Braunschweig 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Braunschweig gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Braunschweig & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter braunschweig",
+      "dsb braunschweig",
+      "dsgvo braunschweig",
+      "datenschutzbeauftragter braunschweig"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 122,
+    "route": "/externer-datenschutzbeauftragter-bremen",
+    "title": "Externer Datenschutzbeauftragter Bremen 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Bremen gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Bremen & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter bremen",
+      "dsb bremen",
+      "dsgvo bremen",
+      "datenschutzbeauftragter bremen"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 123,
+    "route": "/externer-datenschutzbeauftragter-bremerhaven",
+    "title": "Externer Datenschutzbeauftragter Bremerhaven 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Bremerhaven gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Bremerhaven & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter bremerhaven",
+      "dsb bremerhaven",
+      "dsgvo bremerhaven",
+      "datenschutzbeauftragter bremerhaven"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 124,
+    "route": "/externer-datenschutzbeauftragter-celle",
+    "title": "Externer Datenschutzbeauftragter Celle 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Celle gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Celle & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter celle",
+      "dsb celle",
+      "dsgvo celle",
+      "datenschutzbeauftragter celle"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 125,
+    "route": "/externer-datenschutzbeauftragter-dortmund",
+    "title": "Externer Datenschutzbeauftragter Dortmund 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Dortmund gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Dortmund & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter dortmund",
+      "dsb dortmund",
+      "dsgvo dortmund",
+      "datenschutzbeauftragter dortmund"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 126,
+    "route": "/externer-datenschutzbeauftragter-dresden",
+    "title": "Externer Datenschutzbeauftragter Dresden 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Dresden gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Dresden & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter dresden",
+      "dsb dresden",
+      "dsgvo dresden",
+      "datenschutzbeauftragter dresden"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 127,
+    "route": "/externer-datenschutzbeauftragter-duesseldorf",
+    "title": "Externer Datenschutzbeauftragter Düsseldorf 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Düsseldorf gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Düsseldorf & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter duesseldorf",
+      "dsb duesseldorf",
+      "dsgvo duesseldorf",
+      "datenschutzbeauftragter duesseldorf"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 128,
+    "route": "/externer-datenschutzbeauftragter-frankfurt",
+    "title": "Externer Datenschutzbeauftragter Frankfurt 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Frankfurt gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Frankfurt & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter frankfurt",
+      "dsb frankfurt",
+      "dsgvo frankfurt",
+      "datenschutzbeauftragter frankfurt"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 129,
+    "route": "/externer-datenschutzbeauftragter-hamburg",
+    "title": "Externer Datenschutzbeauftragter Hamburg 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Hamburg gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Hamburg & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter hamburg",
+      "dsb hamburg",
+      "dsgvo hamburg",
+      "datenschutzbeauftragter hamburg"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 130,
+    "route": "/externer-datenschutzbeauftragter-hannover",
+    "title": "Externer Datenschutzbeauftragter Hannover 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Hannover gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Hannover & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter hannover",
+      "dsb hannover",
+      "dsgvo hannover",
+      "datenschutzbeauftragter hannover"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 131,
+    "route": "/externer-datenschutzbeauftragter-heidelberg",
+    "title": "Externer Datenschutzbeauftragter Heidelberg 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Heidelberg gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Heidelberg & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter heidelberg",
+      "dsb heidelberg",
+      "dsgvo heidelberg",
+      "datenschutzbeauftragter heidelberg"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 132,
+    "route": "/externer-datenschutzbeauftragter-hildesheim",
+    "title": "Externer Datenschutzbeauftragter Hildesheim 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Hildesheim gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Hildesheim & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter hildesheim",
+      "dsb hildesheim",
+      "dsgvo hildesheim",
+      "datenschutzbeauftragter hildesheim"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 133,
+    "route": "/externer-datenschutzbeauftragter-karlsruhe",
+    "title": "Externer Datenschutzbeauftragter Karlsruhe 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Karlsruhe gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Karlsruhe & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter karlsruhe",
+      "dsb karlsruhe",
+      "dsgvo karlsruhe",
+      "datenschutzbeauftragter karlsruhe"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 134,
+    "route": "/externer-datenschutzbeauftragter-koeln",
+    "title": "Externer Datenschutzbeauftragter Köln 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Köln gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Köln & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter koeln",
+      "dsb koeln",
+      "dsgvo koeln",
+      "datenschutzbeauftragter koeln"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 135,
+    "route": "/externer-datenschutzbeauftragter-leipzig",
+    "title": "Externer Datenschutzbeauftragter Leipzig 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Leipzig gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Leipzig & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter leipzig",
+      "dsb leipzig",
+      "dsgvo leipzig",
+      "datenschutzbeauftragter leipzig"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 136,
+    "route": "/externer-datenschutzbeauftragter-lueneburg",
+    "title": "Externer Datenschutzbeauftragter Lüneburg 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Lüneburg gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Lüneburg & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter lueneburg",
+      "dsb lueneburg",
+      "dsgvo lueneburg",
+      "datenschutzbeauftragter lueneburg"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 137,
+    "route": "/externer-datenschutzbeauftragter-magdeburg",
+    "title": "Externer Datenschutzbeauftragter Magdeburg 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Magdeburg gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Magdeburg & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter magdeburg",
+      "dsb magdeburg",
+      "dsgvo magdeburg",
+      "datenschutzbeauftragter magdeburg"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 138,
+    "route": "/externer-datenschutzbeauftragter-mannheim",
+    "title": "Externer Datenschutzbeauftragter Mannheim 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Mannheim gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Mannheim & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter mannheim",
+      "dsb mannheim",
+      "dsgvo mannheim",
+      "datenschutzbeauftragter mannheim"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 139,
+    "route": "/externer-datenschutzbeauftragter-muenchen",
+    "title": "Externer Datenschutzbeauftragter München 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in München gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in München & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter muenchen",
+      "dsb muenchen",
+      "dsgvo muenchen",
+      "datenschutzbeauftragter muenchen"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 140,
+    "route": "/externer-datenschutzbeauftragter-muenster",
+    "title": "Externer Datenschutzbeauftragter Münster 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Münster gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Münster & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter muenster",
+      "dsb muenster",
+      "dsgvo muenster",
+      "datenschutzbeauftragter muenster"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 141,
+    "route": "/externer-datenschutzbeauftragter-niedersachsen",
+    "title": "Externer Datenschutzbeauftragter Niedersachsen 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Niedersachsen gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Niedersachsen & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter niedersachsen",
+      "dsb niedersachsen",
+      "dsgvo niedersachsen",
+      "datenschutzbeauftragter niedersachsen"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 142,
+    "route": "/externer-datenschutzbeauftragter-nrw",
+    "title": "Externer Datenschutzbeauftragter NRW 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in NRW gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in NRW & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter nrw",
+      "dsb nrw",
+      "dsgvo nrw",
+      "datenschutzbeauftragter nrw"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 143,
+    "route": "/externer-datenschutzbeauftragter-nuernberg",
+    "title": "Externer Datenschutzbeauftragter Nürnberg 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Nürnberg gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Nürnberg & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter nuernberg",
+      "dsb nuernberg",
+      "dsgvo nuernberg",
+      "datenschutzbeauftragter nuernberg"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 144,
+    "route": "/externer-datenschutzbeauftragter-oldenburg",
+    "title": "Externer Datenschutzbeauftragter Oldenburg 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Oldenburg gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Oldenburg & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter oldenburg",
+      "dsb oldenburg",
+      "dsgvo oldenburg",
+      "datenschutzbeauftragter oldenburg"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 145,
+    "route": "/externer-datenschutzbeauftragter-osnabrueck",
+    "title": "Externer Datenschutzbeauftragter Osnabrück 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Osnabrück gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Osnabrück & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter osnabrueck",
+      "dsb osnabrueck",
+      "dsgvo osnabrueck",
+      "datenschutzbeauftragter osnabrueck"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 146,
+    "route": "/externer-datenschutzbeauftragter-stuttgart",
+    "title": "Externer Datenschutzbeauftragter Stuttgart 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Stuttgart gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Stuttgart & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter stuttgart",
+      "dsb stuttgart",
+      "dsgvo stuttgart",
+      "datenschutzbeauftragter stuttgart"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 147,
+    "route": "/externer-datenschutzbeauftragter-ulm",
+    "title": "Externer Datenschutzbeauftragter Ulm 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Ulm gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Ulm & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter ulm",
+      "dsb ulm",
+      "dsgvo ulm",
+      "datenschutzbeauftragter ulm"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 148,
+    "route": "/externer-datenschutzbeauftragter-wedemark",
+    "title": "Externer Datenschutzbeauftragter Wedemark 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Wedemark gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Wedemark & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter wedemark",
+      "dsb wedemark",
+      "dsgvo wedemark",
+      "datenschutzbeauftragter wedemark"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 149,
+    "route": "/externer-datenschutzbeauftragter-wolfsburg",
+    "title": "Externer Datenschutzbeauftragter Wolfsburg 2025 | Ab 29€/Monat",
+    "description": "Externer Datenschutzbeauftragter in Wolfsburg gesucht? ✓ Zertifizierte DSGVO-Experten ✓ Digitale Beratung mit 24h Support ✓ Ab 29€/Monat ✓ Für Unternehmen in Wolfsburg & Umgebung",
+    "keywords": [
+      "externer datenschutzbeauftragter wolfsburg",
+      "dsb wolfsburg",
+      "dsgvo wolfsburg",
+      "datenschutzbeauftragter wolfsburg"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 150,
+    "route": "/guides/dsgvo",
+    "title": "DSGVO-Leitfaden 2025: Kompletter Guide zur Datenschutz-Grundverordnung",
+    "description": "DSGVO-Leitfaden: Vollständiger Guide zur Datenschutz-Grundverordnung. ✓ Alle Artikel ✓ Umsetzung ✓ Pflichten ✓ Sanktionen ✓ Best Practices ✓ Updates. Jetzt compliant!",
+    "keywords": [
+      "DSGVO Leitfaden",
+      "Datenschutz-Grundverordnung Guide",
+      "GDPR Compliance Guide",
+      "DSGVO umsetzen",
+      "DSGVO Anforderungen"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 151,
+    "route": "/guides/eu-ai-act",
+    "title": "EU AI Act Leitfaden 2025: KI-Verordnung verstehen & rechtssicher umsetzen",
+    "description": "EU AI Act Leitfaden: Kompletter Guide zur KI-Verordnung. ✓ Risikoklassen ✓ High-Risk AI ✓ Compliance-Pflichten ✓ Strafen ✓ Implementierung. Jetzt KI rechtssicher!",
+    "keywords": [
+      "EU AI Act Leitfaden",
+      "KI-Verordnung Guide",
+      "AI Act Compliance",
+      "High-Risk KI-System",
+      "EU Artificial Intelligence Act"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 152,
+    "route": "/guides/nis2",
+    "title": "NIS2-Leitfaden 2025: NIS2-Richtlinie verstehen & umsetzen",
+    "description": "NIS2-Leitfaden: Kompletter Guide zur NIS2-Richtlinie. ✓ Anwendungsbereich ✓ Pflichten ✓ Cybersecurity-Maßnahmen ✓ Meldepflichten ✓ Sanktionen. Jetzt NIS2-compliant!",
+    "keywords": [
+      "NIS2 Leitfaden",
+      "NIS2-Richtlinie Guide",
+      "NIS2 Compliance",
+      "Network Information Security",
+      "NIS2 Umsetzung"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 153,
+    "route": "/guides/soc2",
+    "title": "SOC 2 Leitfaden 2025: SOC 2-Zertifizierung erreichen",
+    "description": "SOC 2 Leitfaden: Kompletter Guide zur SOC 2-Zertifizierung. ✓ Trust Service Criteria ✓ Type I/II ✓ Controls ✓ Audit ✓ Report. Jetzt SOC 2-zertifiziert!",
+    "keywords": [
+      "SOC 2 Leitfaden",
+      "SOC 2 Zertifizierung Guide",
+      "Trust Service Criteria",
+      "SOC 2 Type II",
+      "AICPA SOC 2"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 154,
+    "route": "/guides/tisax",
+    "title": "TISAX-Leitfaden 2025: TISAX-Assessment erfolgreich bestehen",
+    "description": "TISAX-Leitfaden: Kompletter Guide zum TISAX-Assessment. ✓ VDA ISA ✓ Assessment Levels ✓ Controls ✓ Automotive Security ✓ Zertifizierung. Jetzt TISAX-compliant!",
+    "keywords": [
+      "TISAX Leitfaden",
+      "TISAX Assessment Guide",
+      "VDA ISA",
+      "Automotive Security",
+      "TISAX Zertifizierung"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 155,
+    "route": "/guides/geldwaeschegesetz",
+    "title": "Geldwäschegesetz-Leitfaden 2025: GwG & AML-Compliance umsetzen",
+    "description": "Geldwäschegesetz-Leitfaden: Kompletter Guide zu GwG & Anti-Money-Laundering. ✓ Sorgfaltspflichten ✓ Verdachtsmeldungen ✓ KYC ✓ Sanktionen. Jetzt AML-compliant!",
+    "keywords": [
+      "Geldwäschegesetz Leitfaden",
+      "GwG Compliance",
+      "Anti-Money-Laundering Guide",
+      "AML Pflichten",
+      "KYC Deutschland"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 156,
+    "route": "/guides/iso-27017",
+    "title": "ISO 27017 Leitfaden 2025: Cloud-Security-Standard implementieren",
+    "description": "ISO 27017 Leitfaden: Cloud-Security nach ISO 27017 umsetzen. ✓ Cloud Controls ✓ Shared Responsibility ✓ CSP-Audit ✓ Zertifizierung ✓ Best Practices. Jetzt Cloud sichern!",
+    "keywords": [
+      "ISO 27017 Leitfaden",
+      "Cloud Security Standard",
+      "ISO 27017 Implementierung",
+      "Cloud Controls Guide",
+      "CSP Security"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 157,
+    "route": "/guides/iso-27018",
+    "title": "ISO 27018 Leitfaden 2025: Cloud-Privacy-Standard implementieren",
+    "description": "ISO 27018 Leitfaden: Cloud-Privacy nach ISO 27018 umsetzen. ✓ PII Protection ✓ Cloud Privacy Controls ✓ DSGVO-Konformität ✓ Zertifizierung. Jetzt Privacy sichern!",
+    "keywords": [
+      "ISO 27018 Leitfaden",
+      "Cloud Privacy Standard",
+      "ISO 27018 Implementierung",
+      "PII Protection Cloud",
+      "Cloud DSGVO"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 158,
+    "route": "/branchen/pharma-compliance",
+    "title": "Pharma Compliance 2025: DSGVO, GxP & Arzneimittel-Regulierung",
+    "description": "Pharma-Compliance umfassend: DSGVO + GxP + AMG-Anforderungen für Pharmaunternehmen. ✓ Patientendaten ✓ Clinical Trials ✓ Pharmacovigilance ✓ Data Integrity. Jetzt compliant!",
+    "keywords": [
+      "Pharma Compliance",
+      "Pharma DSGVO",
+      "GxP Compliance",
+      "Arzneimittel Datenschutz",
+      "Clinical Trial DSGVO",
+      "Pharmacovigilance"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 159,
+    "route": "/branchen/produktion-datenschutz",
+    "title": "Datenschutz Produktion 2025: Industrie 4.0, IoT & Mitarbeiter-Tracking",
+    "description": "Produktions-DSGVO: Sensordaten, Mitarbeiter-Tracking & vernetzte Maschinen rechtssicher nutzen. ✓ IoT Security ✓ Maschinendaten ✓ Zeiterfassung ✓ Industrie 4.0. Jetzt compliant produzieren!",
+    "keywords": [
+      "Datenschutz Produktion",
+      "Industrie 4.0 DSGVO",
+      "IoT Datenschutz Produktion",
+      "Mitarbeiter Tracking DSGVO",
+      "Maschinendaten Datenschutz"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 160,
+    "route": "/contact",
+    "title": "Kontakt",
+    "description": "Kontaktieren Sie Marsstein für DSGVO-Beratung, externe DSB-Services & Compliance-Lösungen. ✓ Kostenlose Erstberatung ✓ 24h Antwortzeit ✓ Deutschland. Jetzt Kontakt aufnehmen!",
+    "keywords": [
+      "Marsstein Kontakt",
+      "DSGVO Beratung Kontakt",
+      "externer Datenschutzbeauftragter anfragen",
+      "Compliance Beratung"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 161,
+    "route": "/dashboard",
+    "title": "Marsstein Dashboard: DSGVO-Compliance in Echtzeit überwachen",
+    "description": "Marsstein Dashboard: Compliance-Status in Echtzeit überwachen. ✓ KPIs ✓ Aufgaben ✓ Fristen ✓ Reports ✓ Multi-Entity ✓ Automatisierung. Jetzt testen!",
+    "keywords": [
+      "DSGVO Dashboard",
+      "Compliance Dashboard",
+      "Datenschutz Monitoring",
+      "GDPR Compliance Tracking",
+      "Real-time Compliance"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 162,
+    "route": "/risk-management",
+    "title": "Risk Management 2025: Datenschutz- & IT-Sicherheitsrisiken managen",
+    "description": "Risk Management: Datenschutz- & IT-Sicherheitsrisiken identifizieren, bewerten & mitigieren. ✓ Risikobewertung ✓ DSFA ✓ TIA ✓ ISO 31000. Jetzt Risiken managen!",
+    "keywords": [
+      "Risk Management Datenschutz",
+      "IT-Sicherheitsrisiken",
+      "Risikomanagement DSGVO",
+      "DSFA",
+      "Threat Impact Assessment"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 163,
+    "route": "/rechtsprechung",
+    "title": "DSGVO-Rechtsprechung 2025: Urteile, Bußgelder & Präzedenzfälle",
+    "description": "DSGVO-Rechtsprechung: Wichtige Urteile, Bußgelder & Präzedenzfälle zu Datenschutz & Privacy. ✓ EuGH ✓ Aufsichtsbehörden ✓ Case Law ✓ Analysen. Jetzt informieren!",
+    "keywords": [
+      "DSGVO Rechtsprechung",
+      "GDPR Case Law",
+      "Datenschutz Urteile",
+      "DSGVO Bußgelder",
+      "EuGH Datenschutz"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 164,
+    "route": "/ki/algorithmic-impact-assessment",
+    "title": "Algorithmic Impact Assessment 2025: KI-Folgenabschätzung nach EU AI Act",
+    "description": "Algorithmic Impact Assessment durchführen: KI-Systeme bewerten nach EU AI Act & DSGVO. ✓ AIA-Methodik ✓ Bias-Analyse ✓ Transparenz ✓ Risiken. Jetzt bewerten!",
+    "keywords": [
+      "Algorithmic Impact Assessment",
+      "AIA KI",
+      "EU AI Act Folgenabschätzung",
+      "KI Risikobewertung",
+      "Algorithm Assessment"
+    ],
+    "category": "KI & AI Act"
+  },
+  {
+    "id": 165,
+    "route": "/guides/data-breach-notfall-guide",
+    "title": "Data Breach Notfallplan 2025: Datenpanne melden & managen (Art. 33)",
+    "description": "Data Breach Notfallplan: Datenpannen erkennen, melden & managen nach Art. 33 DSGVO. ✓ 72h-Frist ✓ Meldepflicht ✓ Dokumentation ✓ Krisenmanagement. Jetzt vorbereiten!",
+    "keywords": [
+      "Data Breach Notfallplan",
+      "Datenpanne melden Art 33",
+      "DSGVO Datenschutzvorfall",
+      "72 Stunden Meldepflicht",
+      "Breach Notification"
+    ],
+    "category": "Guides"
+  },
+  {
+    "id": 166,
+    "route": "/cookie-management-tool-product",
+    "title": "Cookie-Management-Tool 2025: DSGVO & TCF 2.2 Consent Management Platform",
+    "description": "Cookie Consent Management Platform: TCF 2.2, Google Consent Mode V2 & IAB-konform. ✓ CMP ✓ TTDSG-compliant ✓ Conversion-optimiert ✓ Performance. Jetzt integrieren!",
+    "keywords": [
+      "Cookie Management Tool",
+      "Consent Management Platform",
+      "CMP Tool",
+      "TCF 2.2",
+      "Google Consent Mode",
+      "Cookie Banner Tool"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 167,
+    "route": "/whistleblower-system-tool",
+    "title": "Whistleblower-System 2025: Digitale Hinweisgeberstelle nach HinSchG",
+    "description": "Hinweisgebersystem digital implementieren: 100% anonym, verschlüsselt & HinSchG-konform. ✓ Anonyme Meldestelle ✓ Fallmanagement ✓ Compliance ✓ EU-Richtlinie. Jetzt einrichten!",
+    "keywords": [
+      "Whistleblower System",
+      "Hinweisgebersystem",
+      "HinSchG Software",
+      "Hinweisgeberstelle digital",
+      "Whistleblowing Tool",
+      "Anonyme Meldestelle"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 168,
+    "route": "/whistleblower-system-tool-product",
+    "title": "Whistleblower-System Produkt: HinSchG-konforme Hinweisgeber-Software",
+    "description": "Whistleblower-Software kaufen: End-to-End verschlüsselt, DSGVO-konform & einfache Integration. ✓ Anonym ✓ Mehrsprachig ✓ Fallmanagement ✓ Audit-Trail. Jetzt implementieren!",
+    "keywords": [
+      "Whistleblower Software Produkt",
+      "Hinweisgebersystem kaufen",
+      "HinSchG Tool",
+      "Whistleblowing Platform",
+      "Hinweisgeber Software"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 169,
+    "route": "/final-checks",
+    "title": "Final Checks 2025: DSGVO-Compliance vor Go-Live validieren",
+    "description": "Final Checks: DSGVO-Compliance vor Launch validieren. ✓ Pre-Launch-Audit ✓ Checklisten ✓ Gap-Analyse ✓ Quick Fixes ✓ Go/No-Go. Jetzt validieren!",
+    "keywords": [
+      "DSGVO Final Checks",
+      "Pre-Launch Compliance Audit",
+      "GDPR Go-Live Check",
+      "Datenschutz Validierung Launch"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 170,
+    "route": "/wissen/dsgvo-leitfaeden/betroffenenrechte",
+    "title": "Betroffenenrechte DSGVO 2025: Art. 15-22 komplett erklärt",
+    "description": "Alle Betroffenenrechte (Art. 15-22 DSGVO): Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch. ✓ DSARs ✓ Fristen ✓ Muster. Jetzt umsetzen!",
+    "keywords": [
+      "Betroffenenrechte DSGVO",
+      "Art 15 bis 22 DSGVO",
+      "Data Subject Rights",
+      "DSAR Management",
+      "Auskunftsrecht Löschrecht"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 171,
+    "route": "/about",
+    "title": "Über Marsstein 2025: DSGVO-Software Made in Germany | Unser Team",
+    "description": "Marsstein Team: KI-gestützte DSGVO-Compliance-Software aus Deutschland. ✓ Made in Germany ✓ TÜV-zertifiziert ✓ Datenschutz-Experten ✓ Multi-Entity-Support. Jetzt kennenlernen!",
+    "keywords": [
+      "Über Marsstein",
+      "Marsstein Team",
+      "DSGVO Software Deutschland",
+      "Datenschutz Software Hersteller",
+      "Made in Germany Compliance"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 172,
+    "route": "/industries",
+    "title": "Branchen & Industries 2025: DSGVO-Lösungen nach Branche",
+    "description": "DSGVO-Compliance für alle Branchen: SaaS, E-Commerce, Healthcare, FinTech, Manufacturing & mehr. ✓ Branchenspezifisch ✓ Best Practices ✓ Compliance-Blueprints. Jetzt entdecken!",
+    "keywords": [
+      "DSGVO Branchen",
+      "Industry Specific GDPR",
+      "Branchenlösungen Datenschutz",
+      "DSGVO nach Branche",
+      "Compliance Branchen"
+    ],
+    "category": "Industrien"
+  },
+  {
+    "id": 173,
+    "route": "/sitemap-seo",
+    "title": "Sitemap | Marsstein DSGVO & Compliance Software",
+    "description": "Marsstein Sitemap: Alle DSGVO-Guides, Compliance-Tools, Assessment-Center & Branchen-Lösungen im Überblick. ✓ Vollständig ✓ Strukturiert ✓ SEO-optimiert. Jetzt navigieren!",
+    "keywords": [
+      "Marsstein Sitemap",
+      "DSGVO Seiten Übersicht",
+      "Compliance Tools Sitemap",
+      "Datenschutz Guides Index"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 174,
+    "route": "/not-found",
+    "title": "404",
+    "description": "Die gesuchte Seite wurde nicht gefunden. Entdecken Sie unsere DSGVO-Compliance-Lösungen, Guides & Tools auf der Startseite. ✓ DSGVO Software ✓ Compliance Tools. Zur Startseite!",
+    "keywords": [
+      "404",
+      "Seite nicht gefunden",
+      "Marsstein 404",
+      "DSGVO Software Sitemap"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 175,
+    "route": "/dsgvo-compliance-software",
+    "title": "DSGVO-Compliance-Software 2025: Automatisierte Datenschutz-Plattform",
+    "description": "DSGVO-Compliance-Software: KI-gestützte Automatisierung für ROPA, DSFA & DSAR. ✓ Multi-Entity ✓ Externe DSBs ✓ Real-time Updates ✓ Ab 29€/Monat. Jetzt testen!",
+    "keywords": [
+      "DSGVO Compliance Software",
+      "Datenschutz Management Tool",
+      "GDPR Software",
+      "ROPA Automatisierung",
+      "DSAR Management"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 176,
+    "route": "/wissen/leitfaden/loeschkonzept",
+    "title": "Löschkonzept DSGVO",
+    "description": "DSGVO-konformes Löschkonzept erstellen: Aufbewahrungsfristen, Löschregeln, Dokumentation. Mit Vorlagen und Checklisten.",
+    "keywords": [
+      "Löschkonzept DSGVO",
+      "Aufbewahrungsfristen",
+      "Löschpflicht",
+      "Datenlöschung"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 177,
+    "route": "/wissen/dsgvo-vs-bdsg",
+    "title": "DSGVO vs BDSG: Unterschiede, Zusammenspiel & Praxisleitfaden 2025",
+    "description": "DSGVO vs BDSG erklärt: Verstehen Sie das Zusammenspiel von EU-Datenschutz-Grundverordnung und Bundesdatenschutzgesetz. Unterschiede, Öffnungsklauseln & Praxisbeispiele für Unternehmen.",
+    "keywords": [
+      "DSGVO vs BDSG",
+      "DSGVO BDSG Unterschied",
+      "Bundesdatenschutzgesetz DSGVO",
+      "BDSG neu",
+      "Öffnungsklauseln DSGVO",
+      "§ 26 BDSG",
+      "Beschäftigtendatenschutz",
+      "Datenschutzbeauftragter BDSG"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 178,
+    "route": "/wissen/branchen/datenschutz-personalwesen",
+    "title": "Datenschutz im Personalwesen: BDSG § 26, Bewerbermanagement & Mitarbeiterdaten",
+    "description": "Datenschutz im Personalwesen meistern: BDSG § 26 Beschäftigtendatenschutz, DSGVO-konforme Bewerbermanagement, Personalakte, Arbeitszeiterfassung & Monitoring. ✓ Praxisleitfaden ✓ Checklisten ✓ TOM-Maßnahmen für HR.",
+    "keywords": [
+      "Datenschutz Personalwesen",
+      "BDSG § 26",
+      "Beschäftigtendatenschutz",
+      "Bewerbermanagement DSGVO",
+      "Personalakte Datenschutz",
+      "Arbeitszeiterfassung DSGVO",
+      "Mitarbeiter Monitoring",
+      "HR Compliance",
+      "Personalverwaltung Datenschutz"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 179,
+    "route": "/legal/meta-ireland-case",
+    "title": "Meta Ireland DSGVO-Bußgeld 2025: 1,2 Mrd. € Strafe-Analyse",
+    "description": "Meta Ireland DSGVO-Strafe: 1,2 Mrd. € wegen unrechtmäßiger Datentransfers in die USA. ✓ Schrems II ✓ Rechtsfolgen ✓ Compliance-Tipps. Jetzt verstehen!",
+    "keywords": [
+      "Meta Ireland DSGVO Strafe",
+      "Facebook Bußgeld 1",
+      "2 Milliarden",
+      "Meta Datentransfer USA",
+      "DSGVO Rechtsprechung Meta"
+    ],
+    "category": "Rechtsfälle"
+  },
+  {
+    "id": 180,
+    "route": "/cookie-management-tool",
+    "title": "Cookie Management Tool 2025: DSGVO-konforme Consent-Verwaltung",
+    "description": "Cookie Management Tool: DSGVO-konforme Cookie-Banner & Consent Management. ✓ TCF 2.2 ✓ ePrivacy ✓ CMP ✓ Analytics ✓ A/B-Testing. Jetzt rechtssicher!",
+    "keywords": [
+      "Cookie Management Tool",
+      "Consent Management Platform",
+      "Cookie Banner DSGVO",
+      "CMP TCF 2.2",
+      "Cookie Compliance Software"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 181,
+    "route": "/sitemap",
+    "title": "Sitemap",
+    "description": "Marsstein Sitemap: Übersicht aller Seiten, Guides, Tools & Ressourcen zu DSGVO, Datenschutz & Compliance. ✓ 250+ Seiten ✓ Navigation ✓ Schnellzugriff. Jetzt entdecken!",
+    "keywords": [
+      "Marsstein Sitemap",
+      "DSGVO Ressourcen Übersicht",
+      "Compliance Sitemap",
+      "Datenschutz Navigation"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 182,
+    "route": "/whistleblower-system",
+    "title": "Whistleblower-System 2025: Hinweisgeberschutzgesetz-konforme Plattform",
+    "description": "Whistleblower-System: DSGVO- & HinSchG-konforme Hinweisgebersysteme. ✓ Anonymität ✓ Verschlüsselung ✓ Meldestelle ✓ Dokumentation ✓ Rechtssicher. Jetzt umsetzen!",
+    "keywords": [
+      "Whistleblower System",
+      "Hinweisgeberschutzgesetz Software",
+      "HinSchG Plattform",
+      "Whistleblowing Tool DSGVO"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 183,
+    "route": "/whistleblower-system-product",
+    "title": "Whistleblower-System Product 2025: Sichere Hinweisgeber-Plattform",
+    "description": "Whistleblower-System: Sichere, verschlüsselte Hinweisgeber-Plattform nach HinSchG. ✓ End-to-End-Verschlüsselung ✓ Anonymität ✓ DSGVO ✓ Made in Germany. Jetzt testen!",
+    "keywords": [
+      "Whistleblower System Produkt",
+      "Hinweisgebersystem kaufen",
+      "HinSchG Software",
+      "Secure Whistleblowing Platform"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 184,
+    "route": "/features/human-in-the-loop",
+    "title": "Human-in-the-Loop DSGVO Review | KI + Experten-Validierung",
+    "description": "KI-Effizienz trifft menschliche Expertise: Ihre DSGVO-Dokumente automatisiert erstellt und von zertifizierten Datenschutzexperten geprüft. 50+ Spezialisten aus 15+ Branchen.",
+    "keywords": [
+      "Human-in-the-Loop",
+      "DSGVO Review",
+      "KI Experten",
+      "Datenschutz Validierung",
+      "Experten Review"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 185,
+    "route": "/human-in-the-loop",
+    "title": "Human-in-the-Loop DSGVO Review | KI + Experten-Validierung",
+    "description": "KI-Effizienz trifft menschliche Expertise: Ihre DSGVO-Dokumente automatisiert erstellt und von zertifizierten Datenschutzexperten geprüft. 50+ Spezialisten aus 15+ Branchen.",
+    "keywords": [
+      "Human-in-the-Loop",
+      "DSGVO Review",
+      "KI Experten",
+      "Datenschutz Validierung",
+      "Experten Review"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 186,
+    "route": "/datenschutzexperten",
+    "title": "Datenschutzexperten finden",
+    "description": "Finden Sie den passenden Datenschutzexperten für Ihr Unternehmen. CIPP/E-zertifiziert ✓ Branchenexpertise ✓ DSGVO-Compliance ✓ Human-in-the-Loop Reviews.",
+    "keywords": [
+      "Datenschutzexperten",
+      "DSB Experten",
+      "CIPP/E",
+      "Datenschutzbeauftragter",
+      "DSGVO Experten"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 187,
+    "route": "/campus-founders",
+    "title": "Campus Founders Special: GDPR Professional Package für €29",
+    "description": "Exklusiv für Campus Founders: Das komplette Marsstein Professional Package (Wert €199) für nur €29/Monat. Campus Founders Community Angebot.",
+    "keywords": [
+      "Campus Founders",
+      "Startup DSGVO",
+      "GDPR Package",
+      "Startup Datenschutz",
+      "Heilbronn Startup"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 188,
+    "route": "/ueber-uns",
+    "title": "Über uns - Marsstein | Life\\",
+    "description": "Lernen Sie das Marsstein-Team kennen. Wir machen EU-Compliance so einfach wie das Speichern einer Datei – mit KI-gestützter GDPR-, ISO 27001- und AI Act-Unterstützung.",
+    "keywords": [
+      "Marsstein Team",
+      "Über uns",
+      "Compliance Startup",
+      "DSGVO Automatisierung",
+      "Konstanz"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 189,
+    "route": "/assessment-center",
+    "title": "Assessment Center",
+    "description": "Interaktives Assessment Center für DSGVO, ISO 27001, SOC 2 und KI-Risiko Bewertungen. ✓ Professionelle Tools ✓ Detaillierte Analysen ✓ Handlungsempfehlungen.",
+    "keywords": [
+      "Compliance Assessment",
+      "DSGVO Check",
+      "ISO 27001 Readiness",
+      "Risikobewertung",
+      "Compliance Tools"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 190,
+    "route": "/assessment-center/breach-response-checklist",
+    "title": "Breach Response Checklist",
+    "description": "Notfall-Checkliste für Datenpannen: Schritt-für-Schritt in 72h. Meldepflichten, Kommunikation, Schadensbegrenzung. ✓ DSGVO-konform ✓ Sofort einsetzbar.",
+    "keywords": [
+      "Data Breach Checklist",
+      "Datenpanne Notfallplan",
+      "72 Stunden Meldepflicht",
+      "DSGVO Breach Response"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 191,
+    "route": "/assessment-center/cookie-compliance-audit",
+    "title": "Cookie Compliance Audit",
+    "description": "Detaillierte Cookie-Compliance Überprüfung: Cookie-Scanner, Einwilligungsprozesse, TCF 2.2. ✓ Automatische Analyse ✓ DSGVO-konform ✓ Sofortige Ergebnisse.",
+    "keywords": [
+      "Cookie Audit",
+      "Cookie Compliance",
+      "TCF 2.2",
+      "Cookie Scanner",
+      "DSGVO Cookie Banner"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 192,
+    "route": "/assessment-center/datenschutz-readiness-assessment",
+    "title": "Datenschutz Readiness Assessment",
+    "description": "Bewerten Sie Ihre Datenschutz-Bereitschaft interaktiv. Analysieren Sie Prozesse, Dokumentation & TOMs für optimalen Datenschutz. ✓ Kostenlos ✓ Sofortige Auswertung.",
+    "keywords": [
+      "Datenschutz Assessment",
+      "DSGVO Readiness",
+      "Compliance Check",
+      "Datenschutz Analyse"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 193,
+    "route": "/assessment-center/vendor-assessment-template",
+    "title": "Vendor Assessment Template",
+    "description": "Strukturierte Lieferanten-Bewertung: Datenschutz, IT-Sicherheit, Compliance systematisch prüfen. ✓ Bewertungsmatrix ✓ Risiko-Scoring ✓ Vorlagen.",
+    "keywords": [
+      "Vendor Assessment",
+      "Lieferanten Bewertung",
+      "Third Party Risk",
+      "Auftragsverarbeiter Prüfung"
+    ],
+    "category": "Assessment"
+  },
+  {
+    "id": 194,
+    "route": "/tools",
+    "title": "Tools",
+    "description": "Compliance-Tools Suite: DSGVO-Check, Cookie-Scanner, Whistleblower-System, KI-Assistent. ✓ Automatisierung ✓ Rechtssicher ✓ Enterprise-ready.",
+    "keywords": [
+      "Compliance Tools",
+      "DSGVO Tools",
+      "Cookie Scanner",
+      "Whistleblower System",
+      "Compliance Automatisierung"
+    ],
+    "category": "Tools"
+  },
+  {
+    "id": 195,
+    "route": "/tools/compliance-ai-assistant",
+    "title": "AI Assistant",
+    "description": "Compliance AI Assistant: KI-gestützter Berater für DSGVO, ISO 27001, EU AI Act. ✓ 24/7 verfügbar ✓ Voice AI ✓ Instant Antworten.",
+    "keywords": [
+      "Compliance AI",
+      "KI Berater",
+      "DSGVO Chatbot",
+      "AI Assistant",
+      "Compliance Automatisierung"
+    ],
+    "category": "Tools"
+  },
+  {
+    "id": 196,
+    "route": "/tools/cookie-management-tool",
+    "title": "Cookie Management",
+    "description": "Cookie Management Tool: DSGVO-konforme Cookie-Banner, Consent-Verwaltung, TCF 2.2, Google Consent Mode v2. ✓ Rechtssicher ✓ Conversion-optimiert.",
+    "keywords": [
+      "Cookie Management",
+      "Cookie Banner",
+      "Consent Management",
+      "TCF 2.2",
+      "Google Consent Mode"
+    ],
+    "category": "Tools"
+  },
+  {
+    "id": 197,
+    "route": "/tools/dsgvo-email-template-generator",
+    "title": "DSGVO E-Mail Templates",
+    "description": "DSGVO E-Mail Template Generator: Rechtssichere Vorlagen für Auskunftsersuchen, Löschanfragen, Betroffenenrechte. ✓ Anwaltlich geprüft ✓ Sofort einsetzbar.",
+    "keywords": [
+      "DSGVO E-Mail Vorlagen",
+      "Auskunftsersuchen Template",
+      "Löschanfrage Vorlage",
+      "Betroffenenrechte"
+    ],
+    "category": "Tools"
+  },
+  {
+    "id": 198,
+    "route": "/tools/whistleblower-system-tool",
+    "title": "Whistleblower System",
+    "description": "Digitales Whistleblower-System nach HinSchG: Anonyme Meldungen, Fallmanagement, Compliance. ✓ Rechtssicher ✓ DSGVO-konform.",
+    "keywords": [
+      "Whistleblower System",
+      "HinSchG",
+      "Hinweisgebersystem",
+      "anonyme Meldung",
+      "Meldekanal"
+    ],
+    "category": "Tools"
+  },
+  {
+    "id": 199,
+    "route": "/beta",
+    "title": "Schluss mit DSGVO-Chaos",
+    "description": "KI-gestützte DSGVO-Automatisierung. Kostenlos testen, 50% Launch-Rabatt sichern. Limitierte Beta-Plätze verfügbar.",
+    "keywords": [
+      "Marsstein Beta",
+      "DSGVO Software Beta",
+      "Compliance Beta",
+      "Early Access"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 200,
+    "route": "/beta/thanks",
+    "title": "Beta-Anmeldung erfolgreich",
+    "description": "Vielen Dank für Ihre Beta-Anmeldung. Wir melden uns in Kürze mit Ihrem Zugang.",
+    "keywords": [
+      "Beta Bestätigung",
+      "Anmeldung erfolgreich"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 201,
+    "route": "/thank-you",
+    "title": "Danke",
+    "description": "Vielen Dank für Ihre Anfrage. Unser Compliance-Team meldet sich innerhalb von 24 Stunden bei Ihnen.",
+    "keywords": [
+      "Danke",
+      "Anfrage erfolgreich",
+      "Kontakt bestätigt"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 202,
+    "route": "/dsgvo-audit",
+    "title": "DSGVO Audit & Zertifizierung - Professionelle Datenschutzprüfung",
+    "description": "DSGVO Audit ✓ Professionelle Zertifizierung in 3 Stufen ✓ Von Self-Assessment bis Voll-Audit ✓ Offizielles Marsstein-Siegel.",
+    "keywords": [
+      "DSGVO Audit",
+      "Datenschutz Zertifizierung",
+      "DSGVO Prüfung",
+      "Compliance Audit",
+      "Datenschutz Siegel"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 203,
+    "route": "/ratgeber/datenschutzbeauftragter-auswahl",
+    "title": "Datenschutzbeauftragter Auswahl: Interner vs. Externer DSB Vergleich 2025",
+    "description": "Interner DSB, externer Freiberufler, Kanzlei oder Hybrid? Kostenvergleich, Entscheidungsbaum und Checkliste für die richtige DSB-Wahl.",
+    "keywords": [
+      "DSB Auswahl",
+      "interner Datenschutzbeauftragter",
+      "externer DSB",
+      "DSB Vergleich",
+      "DSB Kosten"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 204,
+    "route": "/ratgeber/dsgvo-software-auswahlkriterien",
+    "title": "DSGVO-Software Auswahlkriterien: 15 essenzielle Features im Vergleich 2025",
+    "description": "Worauf Sie bei DSGVO-Compliance-Software wirklich achten müssen: Kaufratgeber mit Checkliste, Kostenvergleich und Marktübersicht.",
+    "keywords": [
+      "DSGVO Software Vergleich",
+      "Compliance Software Auswahl",
+      "Datenschutz Software",
+      "DSGVO Tool Vergleich"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 205,
+    "route": "/ratgeber/sicherheitszertifizierung-auswahl",
+    "title": "Sicherheitszertifizierung Vergleich: ISO 27001, SOC 2, TISAX Entscheidungshilfe 2025",
+    "description": "ISO 27001, SOC 2, TISAX, ISO 27017/27018 oder NIS2? Objektiver Vergleich mit Kosten, Dauer und Branchen-Empfehlungen.",
+    "keywords": [
+      "Zertifizierung Vergleich",
+      "ISO 27001 vs SOC 2",
+      "TISAX Vergleich",
+      "Sicherheitszertifizierung"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 206,
+    "route": "/dsgvo-china",
+    "title": "DSGVO & China",
+    "description": "DSGVO + PIPL Dual Compliance für Unternehmen mit China-Bezug. E-Commerce, Social Media, Investment. Rechtssichere EU-China-Expansion.",
+    "keywords": [
+      "DSGVO China",
+      "PIPL",
+      "China Datenschutz",
+      "EU China Compliance",
+      "Cross-Border Datentransfer"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 207,
+    "route": "/wissen/china",
+    "title": "DSGVO & Datenschutz China",
+    "description": "12 Praxisartikel zu DSGVO-Compliance im China-Geschäft: E-Commerce, Social Media, rechtliche Grundlagen und Investment. ✓ Amazon ✓ TikTok ✓ DeepSeek ✓ EU-Vertreter",
+    "keywords": [
+      "DSGVO China Guide",
+      "PIPL Compliance",
+      "China E-Commerce DSGVO",
+      "EU-Vertreter China"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 208,
+    "route": "/artikel-15-dsgvo-auskunftsrecht-china",
+    "title": "Art. 15 DSGVO Auskunftsrecht: Chinas Tech-Riesen versagen systematisch",
+    "description": "TikTok, WeChat, AliExpress ignorieren DSGVO Auskunftsrechte. Noyb klagt gegen 6 chinesische Firmen. Art. 15 GDPR-Compliance für China-Unternehmen.",
+    "keywords": [
+      "Art. 15 DSGVO",
+      "Auskunftsrecht China",
+      "TikTok DSGVO",
+      "noyb China",
+      "DSGVO Klage China"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 209,
+    "route": "/china-investitionen-dsgvo-screening",
+    "title": "China Investitions-Screening: DSGVO Due Diligence für M&A",
+    "description": "DSGVO Due Diligence für Investitionen in chinesische Unternehmen. EU-China Investitionsabkommen 2025, FDI-Screening, Compliance-Audits bei M&A.",
+    "keywords": [
+      "China Investment Screening",
+      "DSGVO Due Diligence",
+      "M&A Datenschutz",
+      "FDI Screening China"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 210,
+    "route": "/china-scc-vs-eu-scc",
+    "title": "China SCCs vs. EU SCCs: Kritische Unterschiede bei Standard Contractual Clauses",
+    "description": "China Standard Contract (2023) vs. EU Standard Contractual Clauses (2021). 8 konfliktträchtige Unterschiede für bidirektionale Datentransfers EU↔China.",
+    "keywords": [
+      "China SCC",
+      "EU SCC Vergleich",
+      "Standard Contractual Clauses",
+      "Datentransfer China EU"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 211,
+    "route": "/deepseek-dsgvo",
+    "title": "DeepSeek DSGVO: Chinesische KI unter EU-Datenschutz-Beobachtung 2025",
+    "description": "DeepSeek AI GDPR Compliance-Risiken. Chinesische KI-Modelle vs. ChatGPT/Claude Datenschutz. Art. 22, 35 DSGVO für AI.",
+    "keywords": [
+      "DeepSeek DSGVO",
+      "China AI GDPR",
+      "DeepSeek Datenschutz",
+      "KI Compliance China"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 212,
+    "route": "/dsgvo-amazon-sellers-china",
+    "title": "Amazon Sellers & DSGVO: Compliance für Amazon-Händler mit China-Lieferanten",
+    "description": "Compliance-Anforderungen für Amazon-Händler mit China-Lieferanten und chinesischen FBA-Lagern. DSGVO-konforme Lieferkette.",
+    "keywords": [
+      "Amazon Seller DSGVO",
+      "China Lieferanten Datenschutz",
+      "FBA DSGVO",
+      "Amazon Händler Compliance"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 213,
+    "route": "/dsgvo-b2b-hersteller-china",
+    "title": "B2B Hersteller & DSGVO: Compliance für B2B-Unternehmen mit China",
+    "description": "DSGVO-Compliance für B2B-Unternehmen mit chinesischen Herstellern und Lieferanten. Datentransfer, AVV, SCCs.",
+    "keywords": [
+      "B2B DSGVO China",
+      "Hersteller Datenschutz",
+      "Lieferanten DSGVO",
+      "Manufacturing Compliance China"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 214,
+    "route": "/dsgvo-douyin-china",
+    "title": "DSGVO für Douyin Cross-Border E-Commerce | Chinesische Verkäufer in Europa",
+    "description": "DSGVO + PIPL Dual Compliance für Douyin Global Shopping Verkäufer. 600+ Mio. Daily Active Users. Livestream-Commerce, TikTok Shop Integration.",
+    "keywords": [
+      "Douyin DSGVO",
+      "Cross-Border E-Commerce",
+      "Douyin Europa",
+      "Livestream Commerce DSGVO"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 215,
+    "route": "/dsgvo-tiktok-shop-china",
+    "title": "TikTok Shop & DSGVO: Datenschutz für TikTok Seller",
+    "description": "Datenschutz-Anforderungen für TikTok Shop Seller mit China-Bezug. DSGVO-konforme Social Commerce Strategie.",
+    "keywords": [
+      "TikTok Shop DSGVO",
+      "TikTok Seller Datenschutz",
+      "Social Commerce DSGVO",
+      "TikTok Compliance"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 216,
+    "route": "/dsgvo-wechat-alipay-china",
+    "title": "WeChat & Alipay Datenschutz: Payment & Kommunikation",
+    "description": "DSGVO-konforme Nutzung von WeChat und Alipay für europäische Unternehmen. Payment, Marketing, Kundenkommunikation.",
+    "keywords": [
+      "WeChat DSGVO",
+      "Alipay Datenschutz",
+      "China Payment DSGVO",
+      "WeChat Business Europa"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 217,
+    "route": "/eu-vertreter-china",
+    "title": "Art. 27 EU-Vertreter für chinesische Unternehmen - DSGVO-Pflicht",
+    "description": "Art. 27 DSGVO EU-Vertreter für Unternehmen aus China. Gesetzliche Pflicht für EU-Geschäfte. Automatisch, günstig, rechtssicher.",
+    "keywords": [
+      "EU Vertreter China",
+      "Art. 27 DSGVO",
+      "GDPR Representative",
+      "China EU Vertreter"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 218,
+    "route": "/joint-venture-china-datenschutz",
+    "title": "Joint Venture China: DSGVO & PIPL Datenschutz-Lösung",
+    "description": "DSGVO & PIPL-Compliance für deutsch-chinesische Joint Ventures. Lösen Sie den Konflikt zwischen EU-Datenschutz und China CSL.",
+    "keywords": [
+      "Joint Venture China Datenschutz",
+      "DSGVO PIPL",
+      "deutsch-chinesisch JV",
+      "Data Segregation"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 219,
+    "route": "/pipl-gdpr-china",
+    "title": "PIPL + GDPR Dual Compliance | Chinesische Unternehmen in China & EU",
+    "description": "PIPL (China) + GDPR (EU) gleichzeitig erfüllen. Für chinesische Unternehmen mit EU-Kunden. Dual Compliance, SCCs, TIA, EU-Vertreter.",
+    "keywords": [
+      "PIPL GDPR",
+      "Dual Compliance",
+      "China EU Datenschutz",
+      "PIPL Compliance",
+      "China DSGVO"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 220,
+    "route": "/wissen/kosten",
+    "title": "DSGVO-Compliance Kosten 2025: Software vs. DSB - Vollständiger Kostenvergleich",
+    "description": "DSGVO-Kosten im Vergleich: Compliance-Software (ab 200€/Monat) vs. ext. DSB (2.400-90.000€/Jahr). Inkl. ROPA, DSFA & Betroffenenanfragen-Module.",
+    "keywords": [
+      "DSGVO Kosten",
+      "Compliance Software Kosten",
+      "DSB Kosten",
+      "Datenschutz Budget"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 221,
+    "route": "/wissen/ki-datenschutz",
+    "title": "KI Compliance",
+    "description": "KI-Compliance Wissen: EU AI Act, algorithmische Transparenz, Bias-Vermeidung, ethische KI. ✓ Praxisguides ✓ Checklisten ✓ Expertenrat.",
+    "keywords": [
+      "KI Datenschutz",
+      "EU AI Act",
+      "KI Compliance",
+      "algorithmische Transparenz",
+      "AI Ethics"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 222,
+    "route": "/wissen/krisenmanagement",
+    "title": "Krisenmanagement Datenschutz",
+    "description": "DSGVO-Notfallpläne für Datenschutzverletzungen: 72h Data Breach Response, Behördenprüfungen & Compliance-Krisen.",
+    "keywords": [
+      "Krisenmanagement DSGVO",
+      "Data Breach Response",
+      "Notfallplan Datenschutz",
+      "72 Stunden Meldepflicht"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 223,
+    "route": "/wissen/zertifizierungen",
+    "title": "Sicherheitszertifizierungen",
+    "description": "Übersicht aller wichtigen Sicherheitszertifizierungen: ISO 27001, SOC 2, TISAX, ISO 27017/27018. Vergleich, Kosten, Anforderungen.",
+    "keywords": [
+      "Sicherheitszertifizierungen",
+      "ISO 27001",
+      "SOC 2",
+      "TISAX",
+      "Zertifizierung Übersicht"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 224,
+    "route": "/wissen/branchen",
+    "title": "Branchen-Compliance",
+    "description": "Branchenspezifische DSGVO-Guides: Healthcare, Automotive, FinTech, E-Commerce und mehr. Spezialisierte Compliance-Lösungen.",
+    "keywords": [
+      "Branchen DSGVO",
+      "Healthcare Compliance",
+      "Automotive Datenschutz",
+      "FinTech DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 225,
+    "route": "/wissen/branchen/automotive-datenschutz",
+    "title": "Datenschutz Automobilindustrie",
+    "description": "DSGVO für Automobilindustrie: ✓ Connected Car Datenschutz ✓ Fahrzeugdaten sicher ✓ Telematik & GPS ✓ OTA-Updates konform.",
+    "keywords": [
+      "Automotive Datenschutz",
+      "Connected Car DSGVO",
+      "Fahrzeugdaten",
+      "Telematik Datenschutz"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 226,
+    "route": "/wissen/branchen/datenschutz-arztpraxis",
+    "title": "Datenschutz Arztpraxis DSGVO",
+    "description": "DSGVO für Arztpraxen: ✓ Patientendaten sicher verwalten ✓ Einwilligungen korrekt ✓ TOM-Checklisten ✓ Schweigepflicht digital.",
+    "keywords": [
+      "Arztpraxis Datenschutz",
+      "Praxis DSGVO",
+      "Patientendaten",
+      "ärztliche Schweigepflicht"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 227,
+    "route": "/wissen/branchen/datenschutz-betriebsrat",
+    "title": "Datenschutz Betriebsrat",
+    "description": "DSGVO für Betriebsräte: ✓ Mitbestimmungsrechte DSGVO-konform ✓ Mitarbeiterdaten schützen ✓ Arbeitsschutz & Datenschutz.",
+    "keywords": [
+      "Betriebsrat Datenschutz",
+      "BetrVG DSGVO",
+      "Mitbestimmung Datenschutz",
+      "Arbeitnehmer Datenschutz"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 228,
+    "route": "/wissen/branchen/datenschutz-kindergarten",
+    "title": "Datenschutz Kindergarten DSGVO",
+    "description": "DSGVO für Kindergärten: ✓ Kinderdaten schützen ✓ Foto-Einwilligungen ✓ Elternkommunikation ✓ Praktische Checklisten.",
+    "keywords": [
+      "Kindergarten Datenschutz",
+      "Kita DSGVO",
+      "Kinderdaten",
+      "Foto Einwilligung Kinder"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 229,
+    "route": "/wissen/branchen/datenschutz-pflege",
+    "title": "Datenschutz Pflege DSGVO",
+    "description": "DSGVO für Pflegeeinrichtungen: ✓ Bewohnerdaten sicher verwalten ✓ Digitale Pflegedokumentation ✓ Einwilligung bei Demenz.",
+    "keywords": [
+      "Pflege Datenschutz",
+      "Pflegeheim DSGVO",
+      "Bewohnerdaten",
+      "Pflegedokumentation"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 230,
+    "route": "/wissen/branchen/dsgvo-vermieter",
+    "title": "DSGVO Vermieter",
+    "description": "DSGVO für Vermieter: ✓ Mieterdaten sicher verwalten ✓ Datenschutzerklärung ✓ TOM-Checklisten ✓ Bußgelder vermeiden.",
+    "keywords": [
+      "Vermieter DSGVO",
+      "Immobilien Datenschutz",
+      "Mieterdaten",
+      "Hausverwaltung DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 231,
+    "route": "/wissen/branchen/smart-grid-compliance",
+    "title": "Smart Grid Datenschutz & Compliance Guide",
+    "description": "DSGVO & Sicherheit für Smart Meter und intelligente Stromnetze. Energiedaten-Schutz, Verbraucherprivacy und regulatorische Compliance.",
+    "keywords": [
+      "Smart Grid Datenschutz",
+      "Smart Meter DSGVO",
+      "Energiedaten",
+      "Stromnetze Compliance"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 232,
+    "route": "/wissen/branchen/ecommerce-privacy",
+    "title": "E-Commerce Privacy",
+    "description": "DSGVO-Compliance für E-Commerce: Cookie-Banner, Kundendatenschutz, Tracking, Bezahlsysteme. Rechtssichere Online-Shops.",
+    "keywords": [
+      "E-Commerce DSGVO",
+      "Online Shop Datenschutz",
+      "Cookie Banner Shop",
+      "Tracking DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 233,
+    "route": "/wissen/branchen/fintech-compliance",
+    "title": "FinTech Compliance",
+    "description": "FinTech DSGVO-Compliance: BaFin, MaRisk, PSD2, KYC. Datenschutz für Finanzunternehmen und Zahlungsdienstleister.",
+    "keywords": [
+      "FinTech DSGVO",
+      "BaFin Datenschutz",
+      "PSD2 Compliance",
+      "KYC DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 234,
+    "route": "/wissen/branchen/saas-privacy-design",
+    "title": "SaaS Privacy Design",
+    "description": "Privacy by Design für SaaS: Multi-Tenant DSGVO, Data Residency, SOC 2 Type II. Enterprise-ready Datenschutz-Architektur.",
+    "keywords": [
+      "SaaS Privacy",
+      "Privacy by Design",
+      "Multi-Tenant DSGVO",
+      "Cloud Datenschutz"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 235,
+    "route": "/wissen/leitfaden/data-breach-notfall",
+    "title": "Data Breach Notfall-Leitfaden",
+    "description": "Schritt-für-Schritt Anleitung für Datenpannen: Was tun in den ersten 72 Stunden? Meldepflicht, Dokumentation, Kommunikation.",
+    "keywords": [
+      "Data Breach Notfall",
+      "72 Stunden Meldepflicht",
+      "Datenpanne Anleitung",
+      "DSGVO Breach"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 236,
+    "route": "/wissen/leitfaden/datenschutzbeauftragter",
+    "title": "Datenschutzbeauftragter Leitfaden",
+    "description": "Vollständiger DSB-Leitfaden: Bestellpflicht, Aufgaben, Qualifikation, intern vs. extern. Alles zum Datenschutzbeauftragten.",
+    "keywords": [
+      "Datenschutzbeauftragter Leitfaden",
+      "DSB Aufgaben",
+      "DSB Pflichten",
+      "Bestellpflicht DSB"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 237,
+    "route": "/wissen/leitfaden/datenschutzbeauftragter-ausbildung",
+    "title": "Datenschutzbeauftragter Ausbildung",
+    "description": "DSB-Ausbildung: Anforderungen, Zertifizierungen (GDD, TÜV, DEKRA), Kosten, Dauer. Der komplette Guide zur DSB-Qualifikation.",
+    "keywords": [
+      "DSB Ausbildung",
+      "Datenschutzbeauftragter Zertifizierung",
+      "GDD Zertifikat",
+      "DSB Qualifikation"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 238,
+    "route": "/wissen/rechtsprechung/cookie-law",
+    "title": "Cookie-Urteile",
+    "description": "Wichtige Cookie-Urteile: Planet49, TCF 2.0, Google Analytics. Rechtsprechung zu Cookie-Consent und Tracking.",
+    "keywords": [
+      "Cookie Urteile",
+      "Planet49",
+      "Cookie Consent Urteil",
+      "TCF Rechtsprechung"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 239,
+    "route": "/wissen/rechtsprechung/google-fonts-muenchen",
+    "title": "Google Fonts Urteil München",
+    "description": "LG München Google Fonts Urteil: 100€ Schadensersatz für unrechtmäßige IP-Übermittlung. Wie Sie sich schützen.",
+    "keywords": [
+      "Google Fonts Urteil",
+      "LG München",
+      "Schadensersatz DSGVO",
+      "Abmahnung Google Fonts"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 240,
+    "route": "/wissen/rechtsprechung/meta-irland-2024",
+    "title": "Meta Irland Urteil 2024",
+    "description": "Meta/Facebook Rekord-Bußgeld 2024: 1,2 Milliarden Euro wegen EU-US Datentransfer. Auswirkungen und Learnings.",
+    "keywords": [
+      "Meta Urteil 2024",
+      "Facebook Bußgeld",
+      "EU US Datentransfer",
+      "DPC Irland"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 241,
+    "route": "/wissen/rechtsprechung/planet49-cookie",
+    "title": "Planet49 Cookie-Urteil",
+    "description": "Planet49 Urteil: Opt-in-Pflicht für Cookies, vorangekreuzte Checkboxen unwirksam. Die Grundlage für Cookie-Consent.",
+    "keywords": [
+      "Planet49 Urteil",
+      "Cookie Einwilligung",
+      "BGH Cookie",
+      "EuGH Cookies"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 242,
+    "route": "/wissen/rechtsprechung/whatsapp-irland-2021",
+    "title": "WhatsApp Irland Bußgeld 2021",
+    "description": "WhatsApp Bußgeld 225 Millionen Euro: Transparenzpflichten, Informationspflichten. Was Unternehmen lernen können.",
+    "keywords": [
+      "WhatsApp Bußgeld",
+      "DPC Irland",
+      "Transparenzpflicht DSGVO",
+      "Informationspflicht"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 243,
+    "route": "/wissen/ki-datenschutz/algorithmic-impact-assessment",
+    "title": "Algorithmic Impact Assessment",
+    "description": "Algorithmic Impact Assessment durchführen: Systematische Bewertung von KI-Systemen nach EU AI Act und DSGVO Art. 35.",
+    "keywords": [
+      "Algorithmic Impact Assessment",
+      "KI Folgenabschätzung",
+      "AI Impact",
+      "DSFA KI"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 244,
+    "route": "/wissen/ki-datenschutz/automated-decision-making",
+    "title": "Automated Decision Making DSGVO Art. 22",
+    "description": "Automatisierte Entscheidungen nach Art. 22 DSGVO: Wann erlaubt? Informationspflichten, Widerspruchsrecht, Human in the Loop.",
+    "keywords": [
+      "Art 22 DSGVO",
+      "automatisierte Entscheidung",
+      "Profiling DSGVO",
+      "ADM Compliance"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 245,
+    "route": "/wissen/ki-datenschutz/data-minimization",
+    "title": "Data Minimization für KI",
+    "description": "Datenminimierung bei Machine Learning: DSGVO-konforme Trainingsdaten, synthetische Daten, Differential Privacy.",
+    "keywords": [
+      "Data Minimization AI",
+      "Datenminimierung ML",
+      "DSGVO Trainingsdaten",
+      "Privacy ML"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 246,
+    "route": "/wissen/ki-datenschutz/explainable-ai",
+    "title": "Explainable AI",
+    "description": "Explainable AI (XAI): Transparenzanforderungen, LIME, SHAP, Modell-Interpretierbarkeit für DSGVO und EU AI Act.",
+    "keywords": [
+      "Explainable AI",
+      "XAI",
+      "erklärbare KI",
+      "Transparenz AI",
+      "LIME SHAP"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 247,
+    "route": "/wissen/ki-datenschutz/federated-learning",
+    "title": "Federated Learning",
+    "description": "Federated Learning für DSGVO-Compliance: Dezentrales ML ohne Datenübertragung, Privacy-Preserving AI.",
+    "keywords": [
+      "Federated Learning",
+      "dezentrales ML",
+      "Privacy AI",
+      "DSGVO ML"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 248,
+    "route": "/wissen/ki-datenschutz/financial-ai-compliance",
+    "title": "Financial AI Compliance",
+    "description": "KI-Compliance für Finanzdienstleister: BaFin, EU AI Act, algorithmisches Trading, Robo-Advisory, Credit Scoring.",
+    "keywords": [
+      "Financial AI",
+      "KI Finanzsektor",
+      "BaFin AI",
+      "Robo Advisory Compliance"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 249,
+    "route": "/wissen/ki-datenschutz/hr-ai-compliance",
+    "title": "HR AI Compliance",
+    "description": "KI im HR rechtssicher einsetzen: Recruiting AI, Bewerbermanagement, Performance Analytics. EU AI Act Hochrisiko-Systeme.",
+    "keywords": [
+      "HR AI",
+      "Recruiting KI",
+      "Bewerbermanagement AI",
+      "HR Analytics DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 250,
+    "route": "/wissen/ki-datenschutz/ki-einwilligungsmanagement",
+    "title": "KI Einwilligungsmanagement",
+    "description": "Einwilligung für KI-Verarbeitung: Wann erforderlich? Informationspflichten, Widerruf, besondere Kategorien.",
+    "keywords": [
+      "KI Einwilligung",
+      "AI Consent",
+      "DSGVO Einwilligung KI",
+      "Consent Management AI"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 251,
+    "route": "/wissen/ki-datenschutz/model-privacy-attacks",
+    "title": "Model Privacy Attacks",
+    "description": "Privacy-Risiken bei ML-Modellen: Model Inversion, Membership Inference, Data Extraction. Schutzmaßnahmen.",
+    "keywords": [
+      "Model Privacy Attacks",
+      "ML Security",
+      "Model Inversion",
+      "Membership Inference"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 252,
+    "route": "/wissen/ki-datenschutz/privacy-by-design-ai",
+    "title": "Privacy by Design für AI",
+    "description": "Privacy by Design bei KI-Systemen: Von Anfang an datenschutzkonform entwickeln. Checklisten und Best Practices.",
+    "keywords": [
+      "Privacy by Design AI",
+      "DSGVO KI Entwicklung",
+      "PbD AI",
+      "datenschutzkonforme KI"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 253,
+    "route": "/wissen/ki-datenschutz/privacy-preserving-ai",
+    "title": "Privacy Preserving AI",
+    "description": "Privacy Preserving Machine Learning: Differential Privacy, Secure Multi-Party Computation, Homomorphe Verschlüsselung.",
+    "keywords": [
+      "Privacy Preserving AI",
+      "Differential Privacy",
+      "SMPC",
+      "homomorphe Verschlüsselung"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 254,
+    "route": "/wissen/ki-datenschutz/risikoklassifizierung",
+    "title": "KI Risikoklassifizierung",
+    "description": "EU AI Act Risikoklassifizierung: Verboten, Hochrisiko, Limited Risk, Minimal Risk. Welche Kategorie gilt für Ihr KI-System?",
+    "keywords": [
+      "KI Risikoklassifizierung",
+      "EU AI Act Risikostufen",
+      "High Risk AI",
+      "AI Act Klassifizierung"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 255,
+    "route": "/wissen/krisenmanagement/business-continuity",
+    "title": "Business Continuity Datenschutz",
+    "description": "Business Continuity Management DSGVO-konform: Notfallpläne, Daten-Backup, Disaster Recovery mit Datenschutz.",
+    "keywords": [
+      "Business Continuity DSGVO",
+      "BCM Datenschutz",
+      "Disaster Recovery",
+      "Notfallplan"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 256,
+    "route": "/wissen/krisenmanagement/communication-templates",
+    "title": "Krisen-Kommunikation Vorlagen",
+    "description": "Vorlagen für Krisenkommunikation bei Datenschutzvorfällen: Behördenmeldung, Betroffeneninformation, Pressemitteilung.",
+    "keywords": [
+      "Krisenkommunikation Vorlagen",
+      "Data Breach Kommunikation",
+      "Betroffeneninformation"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 257,
+    "route": "/wissen/krisenmanagement/compliance-audit-emergency",
+    "title": "Compliance Audit Notfall",
+    "description": "Behördenprüfung steht an? Notfall-Checkliste für Datenschutz-Audits: Dokumentation, Interviews, häufige Mängel.",
+    "keywords": [
+      "Compliance Audit Notfall",
+      "Behördenprüfung DSGVO",
+      "Audit Vorbereitung",
+      "DSB Audit"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 258,
+    "route": "/wissen/krisenmanagement/data-breach-72h",
+    "title": "Data Breach 72h",
+    "description": "72-Stunden-Meldepflicht bei Datenpannen: Schritt-für-Schritt Anleitung für die ersten kritischen Stunden.",
+    "keywords": [
+      "Data Breach 72h",
+      "Meldepflicht",
+      "Datenpanne Notfall",
+      "DSGVO Meldung"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 259,
+    "route": "/wissen/krisenmanagement/gdpr-fine-response",
+    "title": "DSGVO Bußgeld Response",
+    "description": "Bußgeldbescheid erhalten? Handlungsoptionen: Einspruch, Verhandlung, Compliance-Programm, Schadensbegrenzung.",
+    "keywords": [
+      "DSGVO Bußgeld",
+      "Bußgeldbescheid",
+      "Einspruch Datenschutz",
+      "Strafe DSGVO"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 260,
+    "route": "/wissen/krisenmanagement/media-crisis",
+    "title": "Media Crisis Datenschutz",
+    "description": "Medienkrisen bei Datenschutzvorfällen managen: PR-Strategie, Pressemitteilungen, Reputationsmanagement.",
+    "keywords": [
+      "Media Crisis Datenschutz",
+      "PR Datenpanne",
+      "Reputationsmanagement",
+      "Pressemitteilung Breach"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 261,
+    "route": "/wissen/krisenmanagement/security-incident",
+    "title": "Security Incident Response",
+    "description": "Security Incident Response Plan: Erkennung, Eindämmung, Analyse, Wiederherstellung. DSGVO-konforme Incident Response.",
+    "keywords": [
+      "Security Incident Response",
+      "IT Sicherheitsvorfall",
+      "Incident Management",
+      "SIRP"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 262,
+    "route": "/wissen/krisenmanagement/vendor-data-breach",
+    "title": "Vendor Data Breach",
+    "description": "Auftragsverarbeiter hat Datenpanne? Ihre Pflichten, Meldewege, Haftung. Notfallplan für Vendor Breaches.",
+    "keywords": [
+      "Vendor Data Breach",
+      "Auftragsverarbeiter Datenpanne",
+      "Third Party Breach",
+      "AVV Breach"
+    ],
+    "category": "Wissen"
+  },
+  {
+    "id": 263,
+    "route": "/branchen/saas-unternehmen",
+    "title": "SaaS-Unternehmen",
+    "description": "SaaS Compliance: Multi-Tenant DSGVO, SOC 2 Type II, EU AI Act für Enterprise SaaS. ✓ API-Security ✓ Global Compliance.",
+    "keywords": [
+      "SaaS Compliance",
+      "Multi-Tenant DSGVO",
+      "SOC 2",
+      "Enterprise SaaS",
+      "API Security"
+    ],
+    "category": "Branchen"
+  },
+  {
+    "id": 264,
+    "route": "/compliance/dsgvo",
+    "title": "DSGVO Compliance",
+    "description": "Vollständiger DSGVO-Compliance Guide: Alle Anforderungen, Rechtsgrundlagen, TOMs, Betroffenenrechte. Schritt für Schritt compliant.",
+    "keywords": [
+      "DSGVO Compliance",
+      "GDPR Guide",
+      "Datenschutz Grundverordnung",
+      "DSGVO Anforderungen"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 265,
+    "route": "/compliance/eu-ai-act",
+    "title": "EU AI Act Compliance",
+    "description": "EU AI Act Compliance Guide: Risikoklassifizierung, Anforderungen, Fristen. KI-Systeme rechtssicher betreiben.",
+    "keywords": [
+      "EU AI Act Compliance",
+      "KI Verordnung",
+      "AI Act Guide",
+      "Künstliche Intelligenz Gesetz"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 266,
+    "route": "/compliance/iso-27001",
+    "title": "ISO 27001 Compliance",
+    "description": "ISO 27001 Compliance: ISMS aufbauen, Kontrollen implementieren, Audit bestehen. Der komplette Zertifizierungs-Guide.",
+    "keywords": [
+      "ISO 27001 Compliance",
+      "ISMS",
+      "Informationssicherheit",
+      "ISO Zertifizierung"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 267,
+    "route": "/compliance/nis2",
+    "title": "NIS2 Compliance",
+    "description": "NIS2 Richtlinie erfüllen: Risikomanagement, Meldepflichten, Sicherheitsmaßnahmen für KRITIS und wichtige Einrichtungen.",
+    "keywords": [
+      "NIS2 Compliance",
+      "Cybersecurity Richtlinie",
+      "KRITIS",
+      "NIS2 Umsetzung"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 268,
+    "route": "/compliance/soc-2",
+    "title": "SOC 2 Compliance",
+    "description": "SOC 2 Type I & II Compliance: Security, Availability, Confidentiality, Processing Integrity, Privacy. Audit-Vorbereitung.",
+    "keywords": [
+      "SOC 2 Compliance",
+      "Trust Services",
+      "SOC 2 Type II",
+      "AICPA SOC"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 269,
+    "route": "/compliance/tisax",
+    "title": "TISAX Compliance",
+    "description": "TISAX Assessment bestehen: VDA ISA, Assessment Levels, Prüfungsprozess. Für Automobilzulieferer.",
+    "keywords": [
+      "TISAX Compliance",
+      "VDA ISA",
+      "Automotive Security",
+      "TISAX Zertifizierung"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 270,
+    "route": "/compliance/geldwaeschegesetz",
+    "title": "Geldwäschegesetz Compliance",
+    "description": "GwG-Compliance: KYC, Risikomanagement, Verdachtsmeldungen, Geldwäschebeauftragter. Für Verpflichtete nach GwG.",
+    "keywords": [
+      "GwG Compliance",
+      "Geldwäschegesetz",
+      "AML",
+      "KYC",
+      "Geldwäschebeauftragter"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 271,
+    "route": "/compliance/hinweisgeberschutzgesetz",
+    "title": "Hinweisgeberschutzgesetz Compliance",
+    "description": "HinSchG-Compliance: Interne Meldestelle, Meldekanäle, Whistleblower-Schutz. Pflichten für Unternehmen ab 50 MA.",
+    "keywords": [
+      "HinSchG Compliance",
+      "Hinweisgeberschutz",
+      "Whistleblower",
+      "Meldestelle"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 272,
+    "route": "/compliance/iso-27017",
+    "title": "ISO 27017 Compliance",
+    "description": "ISO 27017 Cloud Security: Zusätzliche Controls für Cloud-Dienste, AWS/Azure/GCP Compliance.",
+    "keywords": [
+      "ISO 27017 Compliance",
+      "Cloud Security",
+      "Cloud Controls",
+      "ISO 27017 Zertifizierung"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 273,
+    "route": "/compliance/iso-27018",
+    "title": "ISO 27018 Compliance",
+    "description": "ISO 27018 Cloud Privacy: PII-Schutz in der Cloud, DSGVO-Alignment, Cloud-Datenschutz.",
+    "keywords": [
+      "ISO 27018 Compliance",
+      "Cloud Privacy",
+      "PII Protection",
+      "Cloud Datenschutz"
+    ],
+    "category": "Compliance"
+  },
+  {
+    "id": 274,
+    "route": "/zertifizierung/iso-27001",
+    "title": "ISO 27001 Zertifizierung",
+    "description": "ISO 27001 Zertifizierung erreichen: ISMS implementieren, Gap-Analyse, Audit-Vorbereitung, Zertifikat erhalten.",
+    "keywords": [
+      "ISO 27001 Zertifizierung",
+      "ISMS Aufbau",
+      "ISO Audit",
+      "Informationssicherheit Zertifikat"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 275,
+    "route": "/zertifizierung/iso-27017",
+    "title": "ISO 27017 Zertifizierung",
+    "description": "ISO 27017 Zertifizierung für Cloud-Anbieter: Zusätzliche Controls, Cloud-spezifische Anforderungen.",
+    "keywords": [
+      "ISO 27017 Zertifizierung",
+      "Cloud Security Zertifikat",
+      "ISO Cloud"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 276,
+    "route": "/zertifizierung/iso-27018",
+    "title": "ISO 27018 Zertifizierung",
+    "description": "ISO 27018 Zertifizierung für Cloud-Datenschutz: PII-Schutz, Privacy Controls, DSGVO-Alignment.",
+    "keywords": [
+      "ISO 27018 Zertifizierung",
+      "Cloud Privacy Zertifikat",
+      "PII Schutz"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 277,
+    "route": "/zertifizierung/soc2",
+    "title": "SOC 2 Zertifizierung",
+    "description": "SOC 2 Zertifizierung erreichen: Trust Services Criteria, Readiness Assessment, Type I & II Audit.",
+    "keywords": [
+      "SOC 2 Zertifizierung",
+      "SOC 2 Audit",
+      "Type II",
+      "Trust Services"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 278,
+    "route": "/zertifizierung/tisax",
+    "title": "TISAX Zertifizierung",
+    "description": "TISAX Zertifizierung für Automobilindustrie: VDA ISA, Assessment Levels, ENX-Registrierung.",
+    "keywords": [
+      "TISAX Zertifizierung",
+      "VDA ISA",
+      "Automotive Assessment",
+      "ENX"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 279,
+    "route": "/regulierung/dsgvo",
+    "title": "DSGVO",
+    "description": "DSGVO-Compliance für Unternehmen: Anforderungen, Umsetzung, Automatisierung. Die EU-Datenschutzverordnung verstehen.",
+    "keywords": [
+      "DSGVO",
+      "Datenschutz Grundverordnung",
+      "GDPR",
+      "EU Datenschutz"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 280,
+    "route": "/regulierung/eu-ai-act",
+    "title": "EU AI Act",
+    "description": "EU AI Act verstehen: Risikoklassifizierung, Anforderungen, Fristen. Die KI-Regulierung der EU.",
+    "keywords": [
+      "EU AI Act",
+      "KI Verordnung",
+      "Künstliche Intelligenz Gesetz",
+      "AI Regulierung"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 281,
+    "route": "/regulierung/nis2",
+    "title": "NIS2 Richtlinie",
+    "description": "NIS2 Richtlinie verstehen: Betroffene Unternehmen, Anforderungen, Umsetzungsfristen.",
+    "keywords": [
+      "NIS2 Richtlinie",
+      "Cybersecurity EU",
+      "KRITIS",
+      "NIS2 Anforderungen"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 282,
+    "route": "/regulierung/geldwaeschegesetz",
+    "title": "Geldwäschegesetz (GwG)",
+    "description": "Geldwäschegesetz verstehen: Verpflichtete, KYC-Anforderungen, Risikomanagement, Meldepflichten.",
+    "keywords": [
+      "Geldwäschegesetz",
+      "GwG",
+      "AML",
+      "Anti-Geldwäsche",
+      "KYC"
+    ],
+    "category": "Allgemein"
+  },
+  {
+    "id": 283,
+    "route": "/regulierung/hinweisgeberschutzgesetz",
+    "title": "Hinweisgeberschutzgesetz (HinSchG)",
+    "description": "Hinweisgeberschutzgesetz verstehen: Pflichten, Meldestellen, Whistleblower-Rechte.",
+    "keywords": [
+      "Hinweisgeberschutzgesetz",
+      "HinSchG",
+      "Whistleblower",
+      "Meldestelle"
+    ],
+    "category": "Allgemein"
+  }
+]

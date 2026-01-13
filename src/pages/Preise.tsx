@@ -7,21 +7,41 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
-  Check, X, Star, Shield, Zap, ChevronDown, ChevronUp, ChevronRight,
+  Check, X, Star, Shield, Zap, ChevronDown, ChevronRight,
   Sparkles, FileText, UserCheck, Award, Bot, BarChart3,
-  Lock, Headphones, Globe, Heart, TrendingUp, Rocket, Target, Info, ArrowRight
+  Headphones, Heart, TrendingUp, Rocket, Target, Info, ArrowRight,
+  Building2, Users
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { PackageFinder } from '@/components/PackageFinder';
 
 const Preise: React.FC = () => {
+  const [audienceType, setAudienceType] = useState<'unternehmen' | 'dsb'>('unternehmen');
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   const [expandedCategories, setExpandedCategories] = useState<string[]>(['pflichtdokumente']);
   const [showOnlyDifferences, setShowOnlyDifferences] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<'starter' | 'professional' | 'enterprise'>('professional');
   const [selectedSpecial, setSelectedSpecial] = useState<'kleinunternehmer' | 'neugruender' | 'gemeinnuetzig'>('kleinunternehmer');
   const [showPackageFinder, setShowPackageFinder] = useState(false);
+
+  // Zielgruppen-spezifisches Messaging
+  const audienceContent = {
+    unternehmen: {
+      badge: 'Für Unternehmen',
+      headline: 'DSGVO-Compliance ohne eigenes Team',
+      subheadline: 'Externer Datenschutzbeauftragter + Software in einem Paket',
+      description: 'Wählen Sie das passende Paket für Ihre DSGVO-Compliance. Monatlich kündbar, keine versteckten Kosten.',
+      packageFinderText: 'Finden Sie Ihr perfektes Paket in 60 Sekunden',
+    },
+    dsb: {
+      badge: 'Für Datenschutzbeauftragte',
+      headline: 'Ihre Expertise bleibt unersetzlich',
+      subheadline: 'Die Routine-Arbeit verschwindet – automatisiert durch KI',
+      description: 'Multi-Mandanten-Management, automatisierte Dokumentation und KI-Unterstützung für Ihre tägliche Arbeit.',
+      packageFinderText: 'Finden Sie das richtige Tool für Ihre Mandanten',
+    }
+  };
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -57,54 +77,124 @@ const Preise: React.FC = () => {
     return (monthly - yearlyMonthly) * 12;
   };
 
-  const packages = [
-    {
-      name: 'STARTER',
-      basePrice: '69',
-      color: 'from-[#474747] to-[#232323]',
-      popular: false,
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      features: {
-        highlights: [
-          'Alle DSGVO-Pflichtdokumente',
-          '100 KI-Anfragen/Monat',
-          'DSGVO-Siegel VERIFIED'
-        ]
-      }
-    },
-    {
-      name: 'PROFESSIONAL',
-      basePrice: '199',
-      color: 'from-[#e24e1b] to-[#ea580c]',
-      popular: true,
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      features: {
-        highlights: [
-          'Externer Datenschutzbeauftragter',
-          '€100.000 DSB-Haftung',
-          '1.000 KI-Anfragen/Monat',
-          'API-Integration'
-        ]
-      }
-    },
-    {
-      name: 'ENTERPRISE',
-      basePrice: '449',
-      color: 'from-[#003366] to-[#1F1F24]',
-      popular: false,
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      features: {
-        highlights: [
-          '24/7 DSB-Hotline',
-          '€250.000 DSB-Haftung',
-          'Unbegrenzte KI-Anfragen',
-          'Dedizierter Success Manager'
-        ]
-      }
+  // Zielgruppen-spezifische Paket-Konfiguration
+  const getPackages = (audience: 'unternehmen' | 'dsb') => {
+    if (audience === 'unternehmen') {
+      return [
+        {
+          name: 'STARTER',
+          basePrice: '69',
+          color: 'from-[#474747] to-[#232323]',
+          popular: false,
+          subtitle: 'Für kleine Unternehmen',
+          features: {
+            highlights: [
+              'Alle DSGVO-Pflichtdokumente',
+              'MARS-AI Compliance Chat',
+              'DSGVO-Siegel VERIFIED',
+              'E-Mail Support'
+            ]
+          },
+          cta: 'Paket wählen',
+          ctaLink: '/contact'
+        },
+        {
+          name: 'PROFESSIONAL',
+          basePrice: '199',
+          color: 'from-[#e24e1b] to-[#ea580c]',
+          popular: true,
+          subtitle: 'Komplettpaket mit externem DSB',
+          features: {
+            highlights: [
+              'Externer Datenschutzbeauftragter',
+              'Lawyer-in-the-Loop',
+              'Datenschutzmanagement Einrichtung',
+              'Halbjährliche Audits'
+            ]
+          },
+          cta: 'Jetzt DSB beauftragen',
+          ctaLink: '/externer-datenschutzbeauftragter'
+        },
+        {
+          name: 'ENTERPRISE',
+          basePrice: '449',
+          color: 'from-[#003366] to-[#1F1F24]',
+          popular: false,
+          subtitle: 'Für Konzerne & kritische Daten',
+          features: {
+            highlights: [
+              '24/7 DSB-Hotline',
+              'Multi-Standort Support',
+              'Quartalsweise Voll-Audits',
+              'Dedizierter Success Manager'
+            ]
+          },
+          cta: 'Beratung anfragen',
+          ctaLink: '/contact'
+        }
+      ];
+    } else {
+      // DSB-Perspektive
+      return [
+        {
+          name: 'INTERN',
+          basePrice: '49',
+          color: 'from-[#474747] to-[#232323]',
+          popular: false,
+          subtitle: 'Für interne Datenschutzbeauftragte',
+          features: {
+            highlights: [
+              '1 Unternehmen',
+              'Automatisiertes ROPA/VVT',
+              '200 KI-Anfragen/Monat',
+              'DSAR-Management'
+            ]
+          },
+          cta: 'Kostenlos testen',
+          ctaLink: '/dsgvo-compliance-software'
+        },
+        {
+          name: 'PROFESSIONAL',
+          basePrice: '149',
+          color: 'from-[#e24e1b] to-[#ea580c]',
+          popular: true,
+          subtitle: 'Für externe DSBs',
+          features: {
+            highlights: [
+              'Bis zu 25 Mandanten',
+              'Multi-Client Dashboard',
+              '1.000 KI-Anfragen/Monat',
+              'MARSSTEIN Netzwerk & Kundenvermittlung'
+            ]
+          },
+          cta: 'Jetzt starten',
+          ctaLink: '/dsgvo-compliance-software'
+        },
+        {
+          name: 'AGENCY',
+          basePrice: '349',
+          color: 'from-[#003366] to-[#1F1F24]',
+          popular: false,
+          subtitle: 'Für DSB-Kanzleien',
+          features: {
+            highlights: [
+              'Unbegrenzte Mandanten',
+              'Team-Verwaltung',
+              'Unbegrenzte KI-Anfragen',
+              'Priorisierte Kundenvermittlung'
+            ]
+          },
+          cta: 'Demo anfragen',
+          ctaLink: '/contact'
+        }
+      ];
     }
-  ];
+  };
+
+  const packages = getPackages(audienceType);
 
   const featureToLinkMap: Record<string, string> = {
+    'Lawyer-in-the-Loop': '/features/human-in-the-loop',
     'Verarbeitungsverzeichnis (Art. 30)': '/features#verarbeitungsverzeichnis-ropa',
     'TOMs (Technische & Org. Maßnahmen)': '/features#avv-generator-tom-dokumentation',
     'Löschkonzept': '/wissen/leitfaden/loeschkonzept',
@@ -119,35 +209,37 @@ const Preise: React.FC = () => {
     'Automatische Policy-Updates': '/features#automatische-compliance-updates'
   };
 
-  const featureCategories = [
+  // Feature-Kategorien für Unternehmen
+  const featureCategoriesUnternehmen = [
     {
       id: 'pflichtdokumente',
       title: 'PFLICHTDOKUMENTE',
       icon: FileText,
       features: [
+        { label: 'Lawyer-in-the-Loop', starter: false, professional: true, enterprise: true },
         { label: 'Verarbeitungsverzeichnis (Art. 30)', starter: true, professional: true, enterprise: true },
         { label: 'TOMs (Technische & Org. Maßnahmen)', starter: true, professional: true, enterprise: true },
         { label: 'Löschkonzept', starter: true, professional: true, enterprise: true },
-        { label: 'Datenschutz-Handbuch', starter: true, professional: true, enterprise: true },
-        { label: 'Datenschutzerklärung Website', starter: '2', professional: '10', enterprise: 'Unbegrenzt' },
+        { label: 'Datenschutzerklärung Website', starter: '1', professional: '10', enterprise: 'Unbegrenzt' },
         { label: 'Datenschutzerklärung App', starter: '1', professional: '5', enterprise: 'Unbegrenzt' },
         { label: 'Cookie-Banner & Policy', starter: true, professional: true, enterprise: true },
         { label: 'AVV-Verträge', starter: true, professional: true, enterprise: true },
         { label: 'Datenpannen-Management', starter: true, professional: true, enterprise: true },
         { label: 'Mitarbeiter-Verpflichtungen', starter: true, professional: true, enterprise: true },
         { label: 'Betroffenenrechte-Prozesse', starter: true, professional: true, enterprise: true },
-        { label: 'DSGVO-konforme E-Mail-Signaturen', starter: true, professional: true, enterprise: true }
+        { label: 'DSGVO-konforme E-Mail-Signaturen', starter: true, professional: true, enterprise: true },
+        { label: 'DSFA', starter: false, professional: true, enterprise: true }
       ]
     },
     {
       id: 'dsb',
-      title: 'DATENSCHUTZBEAUFTRAGTER',
+      title: 'DATENSCHUTZBEAUFTRAGTER (Optional)',
       icon: UserCheck,
       features: [
         { label: 'Externer DSB', starter: false, professional: true, enterprise: true },
+        { label: 'Einrichtung des Datenschutzmanagement Systems', starter: false, professional: true, enterprise: true },
         { label: 'DSB-Haftungsübernahme', starter: false, professional: true, enterprise: true },
-        { label: 'DSB-Zertifikat', starter: false, professional: true, enterprise: true },
-        { label: 'DSB-Hotline', starter: false, professional: 'Geschäftszeiten', enterprise: '24/7' }
+        { label: 'DSB-Zertifikat', starter: false, professional: true, enterprise: true }
       ]
     },
     {
@@ -166,10 +258,11 @@ const Preise: React.FC = () => {
       title: 'MARS-AI COMPLIANCE AGENT',
       icon: Bot,
       features: [
-        { label: 'KI-Anfragen pro Monat', starter: '100', professional: '1.000', enterprise: 'Unbegrenzt' },
         { label: 'Allgemeine DSGVO-Informationen', starter: true, professional: true, enterprise: true },
         { label: 'Kennt Ihre Unternehmensdaten', starter: false, professional: true, enterprise: true },
         { label: 'Individuelle Compliance-Analyse', starter: false, professional: true, enterprise: true },
+        { label: 'Multi-Standort Support', starter: false, professional: true, enterprise: true },
+        { label: 'Persönliche Workflows', starter: false, professional: true, enterprise: true },
         { label: 'MCP', starter: false, professional: false, enterprise: true },
         { label: 'API Zugang', starter: false, professional: false, enterprise: true }
       ]
@@ -185,22 +278,8 @@ const Preise: React.FC = () => {
         { label: 'Gesetzesänderungs-Alerts', starter: true, professional: true, enterprise: true },
         { label: 'Automatische Policy-Updates', starter: false, professional: true, enterprise: true },
         { label: 'Compliance-Reports', starter: 'Monatlich', professional: 'Wöchentlich', enterprise: 'Täglich' },
-        { label: 'Export-Formate', starter: 'PDF', professional: 'PDF, Excel', enterprise: 'PDF, Excel, API' }
-      ]
-    },
-    {
-      id: 'security',
-      title: 'SECURITY & MONITORING',
-      icon: Lock,
-      features: [
-        { label: 'Penetrationstest', starter: false, professional: '1x/Jahr', enterprise: '2x/Jahr' },
-        { label: 'SSL/TLS-Überwachung', starter: 'Basis', professional: 'Erweitert', enterprise: 'Premium' },
-        { label: 'Phishing-Simulation', starter: '1x/Jahr', professional: 'Halbjährlich', enterprise: 'Quartalsweise' },
-        { label: 'Passwort-Leak-Check', starter: 'Basis (5 Accounts)', professional: 'Erweitert (50 Accounts)', enterprise: 'Unlimited + Monitoring' },
-        { label: 'Email Breach Monitor', starter: '3 E-Mails', professional: '25 E-Mails', enterprise: 'Unbegrenzt' },
-        { label: 'Dark Web Monitoring', starter: false, professional: 'Firmendaten', enterprise: '+ Executive Protection' },
-        { label: 'Vulnerability Scan', starter: false, professional: 'Monatlich', enterprise: 'Wöchentlich' },
-        { label: 'Cookie-Scanner', starter: 'Monatlich', professional: 'Wöchentlich', enterprise: 'Täglich' }
+        { label: 'Export-Formate', starter: 'PDF', professional: 'PDF, Excel', enterprise: 'PDF, Excel, API' },
+        { label: 'E-Mail Integration', starter: false, professional: true, enterprise: true }
       ]
     },
     {
@@ -213,10 +292,97 @@ const Preise: React.FC = () => {
         { label: 'Reaktionszeit', starter: '48h', professional: '24h', enterprise: '4h' },
         { label: 'Priority Support', starter: false, professional: false, enterprise: true },
         { label: 'Dedizierter Success Manager', starter: false, professional: false, enterprise: true },
-        { label: 'Onboarding-Session', starter: 'Self-Service', professional: '2h Assisted', enterprise: '8h Full-Service' }
+        { label: 'Onboarding-Session', starter: 'Self-Service', professional: 'Begleitet', enterprise: 'Begleitet' }
       ]
     }
   ];
+
+  // Feature-Kategorien für Datenschutzbeauftragte
+  const featureCategoriesDSB = [
+    {
+      id: 'mandanten',
+      title: 'UNTERNEHMEN & MANDANTEN',
+      icon: Users,
+      features: [
+        { label: 'Unternehmen / Mandanten', starter: '1 Unternehmen', professional: 'Bis zu 25', enterprise: 'Unbegrenzt' },
+        { label: 'Zentrales Dashboard', starter: true, professional: true, enterprise: true },
+        { label: 'Multi-Client Übersicht', starter: false, professional: true, enterprise: true },
+        { label: 'Getrennte Dokumentation', starter: true, professional: true, enterprise: true },
+        { label: 'Mandanten-übergreifende Suche', starter: false, professional: true, enterprise: true },
+        { label: 'White-Label Reports', starter: false, professional: true, enterprise: true },
+        { label: 'Team-Mitglieder', starter: '1', professional: '3', enterprise: 'Unbegrenzt' }
+      ]
+    },
+    {
+      id: 'dokumentation',
+      title: 'AUTOMATISIERTE DOKUMENTATION',
+      icon: FileText,
+      features: [
+        { label: 'Verarbeitungsverzeichnis (ROPA/VVT)', starter: true, professional: true, enterprise: true },
+        { label: 'Automatische Vorbefüllung', starter: true, professional: true, enterprise: true },
+        { label: 'TOM-Dokumentation', starter: true, professional: true, enterprise: true },
+        { label: 'AVV-Generator', starter: true, professional: true, enterprise: true },
+        { label: 'DSFA-Modul mit Risiko-Scoring', starter: false, professional: true, enterprise: true },
+        { label: 'Löschkonzept-Generator', starter: false, professional: true, enterprise: true },
+        { label: 'Custom Templates', starter: false, professional: false, enterprise: true },
+        { label: 'Persönliche Workflows', starter: false, professional: true, enterprise: true }
+      ]
+    },
+    {
+      id: 'betroffene',
+      title: 'BETROFFENENANFRAGEN (DSAR)',
+      icon: UserCheck,
+      features: [
+        { label: 'DSAR-Management', starter: true, professional: true, enterprise: true },
+        { label: 'Automatisches Fristenmanagement', starter: true, professional: true, enterprise: true },
+        { label: 'Antwort-Vorlagen Art. 15-22', starter: true, professional: true, enterprise: true },
+        { label: 'E-Mail-Integration', starter: false, professional: true, enterprise: true },
+        { label: 'Automatische Benachrichtigungen', starter: false, professional: true, enterprise: true },
+        { label: 'Audit-Trail', starter: false, professional: true, enterprise: true }
+      ]
+    },
+    {
+      id: 'ai',
+      title: 'KI-UNTERSTÜTZUNG',
+      icon: Bot,
+      features: [
+        { label: 'KI-Anfragen pro Monat', starter: '200', professional: '1.000', enterprise: 'Unbegrenzt' },
+        { label: 'DSGVO-Recherche', starter: true, professional: true, enterprise: true },
+        { label: 'Mandanten-Kontext', starter: false, professional: true, enterprise: true },
+        { label: 'Dokument-Analyse', starter: false, professional: true, enterprise: true },
+        { label: 'Gesetzesänderungs-Alerts', starter: true, professional: true, enterprise: true },
+        { label: 'API-Zugang', starter: false, professional: false, enterprise: true }
+      ]
+    },
+    {
+      id: 'netzwerk',
+      title: 'MARSSTEIN NETZWERK',
+      icon: Users,
+      features: [
+        { label: 'Experten-Verzeichnis Listung', starter: false, professional: true, enterprise: true },
+        { label: 'Human-in-the-Loop Aufträge', starter: false, professional: true, enterprise: true },
+        { label: 'Neue Mandanten über DSB-Verzeichnis', starter: false, professional: true, enterprise: true },
+        { label: 'Priorisierte Vermittlung', starter: false, professional: false, enterprise: true },
+        { label: 'Branchenspezifisches Matching', starter: false, professional: true, enterprise: true },
+        { label: 'Netzwerk-Events & Webinare', starter: false, professional: true, enterprise: true }
+      ]
+    },
+    {
+      id: 'support',
+      title: 'SUPPORT & ONBOARDING',
+      icon: Headphones,
+      features: [
+        { label: 'E-Mail Support', starter: true, professional: true, enterprise: true },
+        { label: 'Telefon Support', starter: false, professional: true, enterprise: true },
+        { label: 'Reaktionszeit', starter: '48h', professional: '24h', enterprise: '4h' },
+        { label: 'Onboarding-Session', starter: 'Self-Service', professional: '1h Call', enterprise: 'Dedicated Setup' },
+        { label: 'Daten-Migration', starter: false, professional: 'Assisted', enterprise: 'Full-Service' }
+      ]
+    }
+  ];
+
+  // Dynamische Feature-Kategorien basierend auf Zielgruppe
+  const featureCategories = audienceType === 'unternehmen' ? featureCategoriesUnternehmen : featureCategoriesDSB;
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategories(prev =>
@@ -296,6 +462,44 @@ const Preise: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
+            {/* Zielgruppen-Toggle */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="mb-8"
+            >
+              <p className="text-sm text-[#474747] mb-3 font-medium">Ich bin...</p>
+              <div className="inline-flex bg-white/80 backdrop-blur-md rounded-2xl p-1.5 border-2 border-[#e24e1b]/20 shadow-xl">
+                <button
+                  onClick={() => setAudienceType('unternehmen')}
+                  className={cn(
+                    "flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-300 font-medium",
+                    audienceType === 'unternehmen'
+                      ? "bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white shadow-lg"
+                      : "text-[#474747] hover:text-[#232323] hover:bg-gray-100"
+                  )}
+                >
+                  <Building2 className="h-5 w-5" />
+                  <span className="hidden sm:inline">Unternehmen</span>
+                  <span className="sm:hidden">Firma</span>
+                </button>
+                <button
+                  onClick={() => setAudienceType('dsb')}
+                  className={cn(
+                    "flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-300 font-medium",
+                    audienceType === 'dsb'
+                      ? "bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white shadow-lg"
+                      : "text-[#474747] hover:text-[#232323] hover:bg-gray-100"
+                  )}
+                >
+                  <Users className="h-5 w-5" />
+                  <span className="hidden sm:inline">Datenschutzbeauftragter</span>
+                  <span className="sm:hidden">DSB</span>
+                </button>
+              </div>
+            </motion.div>
+
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -303,32 +507,37 @@ const Preise: React.FC = () => {
               className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[#e24e1b]/10 to-[#ea580c]/10 backdrop-blur-sm rounded-full mb-8 border border-[#e24e1b]/20"
             >
               <Sparkles className="h-5 w-5 text-[#e24e1b] animate-pulse" />
-              <span className="text-sm font-semibold text-[#e24e1b]">Transparente Preise</span>
+              <span className="text-sm font-semibold text-[#e24e1b]">{audienceContent[audienceType].badge}</span>
               <Shield className="h-5 w-5 text-[#e24e1b] animate-pulse" style={{ animationDelay: '0.5s' }} />
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#232323] via-[#e24e1b] to-[#232323] bg-clip-text text-transparent bg-300% animate-gradient"
-            >
-              <span>MARSSTEIN</span>
-              <br />
-              <span>DSGVO-Compliance</span>
-              <br />
-              <span>Pakete</span>
-            </motion.h1>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={audienceType}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.h1
+                  className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-[#232323] via-[#e24e1b] to-[#232323] bg-clip-text text-transparent bg-300% animate-gradient"
+                >
+                  {audienceContent[audienceType].headline}
+                </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-xl md:text-2xl text-[#474747] max-w-4xl mx-auto leading-relaxed mb-8"
-            >
-              Wählen Sie das passende Paket für Ihre <span className="font-semibold text-[#e24e1b]">DSGVO-Compliance</span>.
-              Monatlich kündbar, <span className="font-semibold text-[#232323]">keine versteckten Kosten</span>.
-            </motion.p>
+                <motion.p
+                  className="text-xl md:text-2xl text-[#e24e1b] font-semibold max-w-3xl mx-auto mb-4"
+                >
+                  {audienceContent[audienceType].subheadline}
+                </motion.p>
+
+                <motion.p
+                  className="text-lg md:text-xl text-[#474747] max-w-4xl mx-auto leading-relaxed mb-8"
+                >
+                  {audienceContent[audienceType].description}
+                </motion.p>
+              </motion.div>
+            </AnimatePresence>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -359,7 +568,7 @@ const Preise: React.FC = () => {
                 className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white hover:shadow-2xl transition-all duration-300 px-8 py-6 text-lg font-bold group"
               >
                 <Target className="h-5 w-5 mr-2 group-hover:rotate-90 transition-transform duration-300" />
-                {showPackageFinder ? 'Alle Pakete anzeigen' : 'Finden Sie Ihr perfektes Paket in 60 Sekunden'}
+                {showPackageFinder ? 'Alle Pakete anzeigen' : audienceContent[audienceType].packageFinderText}
                 <Sparkles className="h-5 w-5 ml-2 group-hover:scale-110 transition-transform duration-300" />
               </Button>
             </motion.div>
@@ -414,11 +623,12 @@ const Preise: React.FC = () => {
                   )}
                 >
                   Jährlich
-                  {billingCycle === 'yearly' && (
-                    <Badge className="absolute -top-3 -right-3 bg-[#39B37B] text-white border-0 animate-bounce">
-                      20% sparen
-                    </Badge>
-                  )}
+                  <Badge className={cn(
+                    "absolute -top-3 -right-3 bg-[#39B37B] text-white border-0",
+                    billingCycle === 'yearly' && "animate-bounce"
+                  )}>
+                    -20%
+                  </Badge>
                 </button>
               </div>
             </div>
@@ -462,7 +672,10 @@ const Preise: React.FC = () => {
 
                   <CardContent className="relative p-4 sm:p-6 lg:p-8">
                     <div className="text-center mb-8">
-                      <h3 className="text-xl sm:text-2xl font-bold text-[#232323] mb-2">{pkg.name}</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#232323] mb-1">{pkg.name}</h3>
+                      {'subtitle' in pkg && (
+                        <p className="text-sm text-[#474747] mb-3">{pkg.subtitle}</p>
+                      )}
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={billingCycle}
@@ -471,7 +684,7 @@ const Preise: React.FC = () => {
                           exit={{ opacity: 0, y: -10 }}
                           className="flex items-baseline justify-center mb-4"
                         >
-                          {pkg.name === 'ENTERPRISE' && (
+                          {(pkg.name === 'ENTERPRISE' || pkg.name === 'AGENCY') && (
                             <span className="text-lg text-[#474747] mr-1">ab</span>
                           )}
                           <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#232323]">
@@ -519,8 +732,8 @@ const Preise: React.FC = () => {
                         )}
                         asChild
                       >
-                        <Link to={pkg.name === 'PROFESSIONAL' ? '/externer-datenschutzbeauftragter' : '/contact'}>
-                          <span className="relative z-10">{pkg.name === 'PROFESSIONAL' ? 'Jetzt DSB beauftragen' : 'Paket wählen'}</span>
+                        <Link to={'ctaLink' in pkg ? pkg.ctaLink : '/contact'}>
+                          <span className="relative z-10">{'cta' in pkg ? pkg.cta : 'Paket wählen'}</span>
                           <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
                         </Link>
                       </Button>
@@ -539,19 +752,28 @@ const Preise: React.FC = () => {
                 >
             <div className="sm:hidden sticky top-0 z-30 bg-white border-b-2 border-gray-200 shadow-md">
               <div className="flex gap-1 p-2 bg-gray-50">
-                <div className="flex-1 text-center py-2">
-                  <div className="text-[10px] font-bold text-[#474747]">STARTER</div>
-                  <div className="text-xs text-[#232323] font-semibold">€69</div>
-                </div>
-                <div className="flex-1 text-center py-2 bg-[#e24e1b]/10 rounded-lg relative">
-                  <Star className="h-3 w-3 absolute top-1 right-1 text-[#e24e1b]" />
-                  <div className="text-[10px] font-bold text-[#e24e1b]">PRO</div>
-                  <div className="text-xs text-[#232323] font-semibold">€199</div>
-                </div>
-                <div className="flex-1 text-center py-2">
-                  <div className="text-[10px] font-bold text-[#474747]">ENTERPRISE</div>
-                  <div className="text-xs text-[#232323] font-semibold">€449</div>
-                </div>
+                {packages.map((pkg) => (
+                  <div
+                    key={pkg.name}
+                    className={cn(
+                      "flex-1 text-center py-2",
+                      pkg.popular && "bg-[#e24e1b]/10 rounded-lg relative"
+                    )}
+                  >
+                    {pkg.popular && (
+                      <Star className="h-3 w-3 absolute top-1 right-1 text-[#e24e1b]" />
+                    )}
+                    <div className={cn(
+                      "text-[10px] font-bold",
+                      pkg.popular ? "text-[#e24e1b]" : "text-[#474747]"
+                    )}>
+                      {pkg.name.substring(0, 3).toUpperCase()}
+                    </div>
+                    <div className="text-xs text-[#232323] font-semibold">
+                      €{calculatePrice(pkg.basePrice, billingCycle)}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -800,6 +1022,8 @@ const Preise: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Specials-Sektion nur für Unternehmen anzeigen */}
+      {audienceType === 'unternehmen' && (
       <section className="relative py-12 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-[#F5F6F8] via-white to-[#F5F6F8]">
         <div className="absolute inset-0 bg-gradient-to-t from-[#e24e1b]/5 to-transparent pointer-events-none" />
 
@@ -1401,6 +1625,105 @@ const Preise: React.FC = () => {
           </AnimatePresence>
         </div>
       </section>
+      )}
+
+      {/* DSB-spezifische Vorteile-Sektion */}
+      {audienceType === 'dsb' && (
+        <section className="relative py-12 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-[#F5F6F8] via-white to-[#F5F6F8]">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#e24e1b]/5 to-transparent pointer-events-none" />
+
+          <div className="container mx-auto max-w-5xl relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#e24e1b]/10 to-[#ea580c]/10 backdrop-blur-xl rounded-full mb-4 sm:mb-8 border border-[#e24e1b]/20 shadow-lg"
+              >
+                <Rocket className="h-4 w-4 sm:h-5 sm:w-5 text-[#e24e1b] animate-pulse" />
+                <span className="text-xs sm:text-sm font-bold text-[#e24e1b]">EXKLUSIV FÜR DSBs</span>
+                <Rocket className="h-4 w-4 sm:h-5 sm:w-5 text-[#e24e1b] animate-pulse" style={{ animationDelay: '0.5s' }} />
+              </motion.div>
+
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-[#e24e1b] via-[#232323] to-[#e24e1b] bg-clip-text text-transparent bg-300% animate-gradient">
+                Warum DSBs MARSSTEIN lieben
+              </h2>
+
+              <p className="text-base sm:text-xl text-[#474747] max-w-2xl mx-auto">
+                Entwickelt von DSBs für DSBs – wir verstehen Ihre täglichen Herausforderungen
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+              {[
+                {
+                  icon: <TrendingUp className="h-8 w-8" />,
+                  title: "Mehr Mandanten, weniger Aufwand",
+                  description: "Automatisierte Dokumentation spart Ihnen 10+ Stunden pro Woche. Zeit, die Sie in neue Mandanten investieren können."
+                },
+                {
+                  icon: <Shield className="h-8 w-8" />,
+                  title: "Audit-ready in Minuten",
+                  description: "Vollständige Dokumentation auf Knopfdruck. Behördenanfragen beantworten Sie mit einem Klick."
+                },
+                {
+                  icon: <Bot className="h-8 w-8" />,
+                  title: "KI, die Ihre Arbeit kennt",
+                  description: "Unser KI-Agent kennt Ihre Mandanten und gibt Ihnen sofort die richtigen Antworten – keine endlose Recherche mehr."
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <Card className="h-full border-2 border-gray-200 hover:border-[#e24e1b]/50 transition-all hover:shadow-xl">
+                    <CardContent className="p-6 sm:p-8 text-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#e24e1b] to-[#ea580c] rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-bold text-[#232323] mb-3">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-[#474747]">
+                        {item.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="mt-12 text-center"
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white hover:shadow-2xl transition-all duration-300 px-8 py-6 text-lg font-bold"
+                asChild
+              >
+                <Link to="/dsgvo-compliance-software">
+                  <Rocket className="h-5 w-5 mr-2" />
+                  Jetzt kostenlos testen
+                  <ArrowRight className="h-5 w-5 ml-2" />
+                </Link>
+              </Button>
+              <p className="mt-4 text-sm text-[#474747]">
+                Keine Kreditkarte erforderlich • Setup in 5 Minuten
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>

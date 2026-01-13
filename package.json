@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-static-seo.mjs",
+    "build": "node scripts/generate-search-index.mjs && vite build && node scripts/generate-static-seo.mjs",
     "build:seo": "npm run build && node scripts/prerender.js && node scripts/sitemap.js",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -54,6 +54,7 @@
     "cmdk": "^1.0.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^11.18.2",
+    "fuse.js": "^7.1.0",
     "googleapis": "^166.0.0",
     "input-otp": "^1.2.4",
     "loops": "^6.0.0",

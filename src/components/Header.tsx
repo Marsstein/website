@@ -23,17 +23,20 @@ import {
   Star,
   Menu,
   X,
-  Cookie
+  Cookie,
+  Search
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { SearchCommand } from '@/components/SearchCommand';
 
 export const Header: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const toggleMenu = (menu: string) => {
     setActiveMenu(activeMenu === menu ? null : menu);
@@ -94,11 +97,29 @@ export const Header: React.FC = () => {
               </nav>
 
               <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setSearchOpen(true)}
+                  className="hidden lg:flex items-center gap-2 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground border rounded-md hover:bg-muted/50 transition-colors"
+                >
+                  <Search className="h-4 w-4" />
+                  <span>Suche</span>
+                  <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+                    <span className="text-xs">⌘</span>K
+                  </kbd>
+                </button>
+
                 <Link to="/dsgvo-compliance-software" className="hidden lg:block">
                   <Button size="sm">
                     Kostenlos testen
                   </Button>
                 </Link>
+
+                <button
+                  onClick={() => setSearchOpen(true)}
+                  className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Search className="h-5 w-5" />
+                </button>
 
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -127,8 +148,11 @@ export const Header: React.FC = () => {
           activeMobileMenu={activeMobileMenu}
           toggleMobileMenu={toggleMobileMenu}
           onClose={() => setMobileMenuOpen(false)}
+          onSearchOpen={() => setSearchOpen(true)}
         />
       )}
+
+      <SearchCommand open={searchOpen} onOpenChange={setSearchOpen} />
     </>
   );
 };
@@ -547,7 +571,7 @@ const FeatureLink = ({ icon: Icon, title, description, href }: any) => (
   </Link>
 );
 
-const MobileMenu = ({ activeMobileMenu, toggleMobileMenu, onClose }: any) => (
+const MobileMenu = ({ activeMobileMenu, toggleMobileMenu, onClose, onSearchOpen }: any) => (
   <>
     <div
       className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
@@ -556,7 +580,7 @@ const MobileMenu = ({ activeMobileMenu, toggleMobileMenu, onClose }: any) => (
     <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-background border-l shadow-xl z-50 lg:hidden flex flex-col">
       <div className="flex-1 overflow-y-auto">
         <div className="p-6">
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-semibold">Menü</h2>
             <button
               onClick={onClose}
@@ -565,6 +589,17 @@ const MobileMenu = ({ activeMobileMenu, toggleMobileMenu, onClose }: any) => (
               <X className="h-5 w-5" />
             </button>
           </div>
+
+          <button
+            onClick={() => {
+              onClose();
+              onSearchOpen();
+            }}
+            className="w-full flex items-center gap-3 px-4 py-3 mb-6 text-sm text-muted-foreground border rounded-lg hover:bg-muted/50 transition-colors"
+          >
+            <Search className="h-5 w-5" />
+            <span>Seiten durchsuchen...</span>
+          </button>
 
           <nav className="space-y-4">
             <MobileAccordion
