@@ -190,6 +190,7 @@ const KiDatenschutz = lazy(() => import("./pages/KiDatenschutz"));
 const Preise = lazy(() => import("./pages/Preise"));
 const ExternerDatenschutzbeauftragter = lazy(() => import("./pages/ExternerDatenschutzbeauftragter"));
 const ExternerDatenschutzbeauftragterOldenburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterOldenburg"));
+const ExternerDatenschutzbeauftragterKonstanz = lazy(() => import("./pages/ExternerDatenschutzbeauftragterKonstanz"));
 const ExternerDatenschutzbeauftragterHannover = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHannover"));
 const ExternerDatenschutzbeauftragterBremen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBremen"));
 const ExternerDatenschutzbeauftragterDuesseldorf = lazy(() => import("./pages/ExternerDatenschutzbeauftragterDuesseldorf"));
@@ -306,6 +307,7 @@ const App = () => (
                 <Route path="/preise" element={<Preise />} />
                 <Route path="/externer-datenschutzbeauftragter" element={<ExternerDatenschutzbeauftragter />} />
                 <Route path="/externer-datenschutzbeauftragter-oldenburg" element={<ExternerDatenschutzbeauftragterOldenburg />} />
+                <Route path="/externer-datenschutzbeauftragter-konstanz" element={<ExternerDatenschutzbeauftragterKonstanz />} />
                 <Route path="/externer-datenschutzbeauftragter-hannover" element={<ExternerDatenschutzbeauftragterHannover />} />
                 <Route path="/externer-datenschutzbeauftragter-bremen" element={<ExternerDatenschutzbeauftragterBremen />} />
                 <Route path="/externer-datenschutzbeauftragter-duesseldorf" element={<ExternerDatenschutzbeauftragterDuesseldorf />} />
