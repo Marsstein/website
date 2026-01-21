@@ -32,35 +32,51 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
 
-    console.log('Creating contact for:', email);
+    console.log('Creating/updating contact for:', email);
 
-    const contactResponse = await fetch('https://app.loops.so/api/v1/contacts/create', {
+    const contactData = {
+      email,
+      firstName,
+      userGroup: isDemoRequest ? 'demo_requests' : 'contact_inquiries',
+      source: 'contact_form',
+      company,
+      phone: phone || '',
+      topic: topic || '',
+      message: message || '',
+      isDemoRequest: isDemoRequest || false,
+      newsletter: newsletter || false,
+      subscribed: newsletter || false
+    };
+
+    let contactResponse = await fetch('https://app.loops.so/api/v1/contacts/create', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${LOOPS_API_KEY}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        email,
-        firstName,
-        userGroup: isDemoRequest ? 'demo_requests' : 'contact_inquiries',
-        source: 'contact_form',
-        company,
-        phone: phone || '',
-        topic: topic || '',
-        message: message || '',
-        isDemoRequest: isDemoRequest || false,
-        newsletter: newsletter || false,
-        subscribed: newsletter || false
-      })
+      body: JSON.stringify(contactData)
     });
 
-    const contactResult = await contactResponse.json();
+    let contactResult = await contactResponse.json();
     console.log('Contact creation response:', contactResponse.status, contactResult);
 
+    if (contactResponse.status === 409) {
+      console.log('Contact exists, updating instead...');
+      contactResponse = await fetch('https://app.loops.so/api/v1/contacts/update', {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${LOOPS_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactData)
+      });
+      contactResult = await contactResponse.json();
+      console.log('Contact update response:', contactResponse.status, contactResult);
+    }
+
     if (!contactResponse.ok) {
-      console.error('Failed to create contact:', contactResult);
-      throw new Error(contactResult.message || 'Failed to create contact');
+      console.error('Failed to create/update contact:', contactResult);
+      throw new Error(contactResult.message || 'Failed to create/update contact');
     }
 
     console.log('Sending emails to:', email);

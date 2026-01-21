@@ -1,0 +1,90 @@
+.slide-container-v2 {
+    font-family: sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.slide-v2 {
+    width: 1600px;
+    height: 900px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-v2 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+.diagram-v2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box-v2 {
+    background-color: #3a3a3a;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 20px 40px;
+    font-size: 24px;
+    text-align: center;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.gdpr-v2 {
+    background-color: #007bff;
+    border-color: #0056b3;
+}
+
+.iso-v2 {
+    background-color: #28a745;
+    border-color: #1e7e34;
+}
+
+.tisax-v2 {
+    background-color: #ffc107;
+    border-color: #d39e00;
+    color: #000;
+}
+
+.ai-act-v2 {
+    background-color: #dc3545;
+    border-color: #b02a37;
+}
+
+.line-v2 {
+    width: 2px;
+    height: 50px;
+    background-color: #fff;
+}
+
+.horizontal-v2 {
+    width: 100px;
+    height: 2px;
+}
+
+.branch-container-v2 {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.branch-v2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}

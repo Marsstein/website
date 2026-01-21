@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.v3-slide-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    background: #111;
+}
+
+.v3-slide {
+    width: 1600px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    color: #FFFFFF;
+    overflow: hidden;
+    position: relative;
+}
+
+.v3-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at top left, rgba(226, 78, 27, 0.1), transparent 30%),
+                      radial-gradient(circle at bottom right, rgba(57, 179, 123, 0.1), transparent 30%);
+}
+
+.v3-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #e24e1b, #f97316, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.v3-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 60px;
+}
+
+.v3-diagram {
+    display: flex;
+    align-items: center;
+    width: 1000px;
+    justify-content: space-between;
+}
+
+.v3-node {
+    width: 200px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.v3-node:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.v3-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    color: #e24e1b;
+}
+
+.v3-node.iso .v3-icon { color: #39B37B; }
+.v3-node.ai-act .v3-icon { color: #f97316; }
+.v3-node.tisax .v3-icon { color: #3b82f6; }
+
+
+.v3-node-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.v-node-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.v3-connectors {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.v3-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.v3-branch {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

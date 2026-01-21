@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+    --brand-red: #e24e1b;
+    --brand-green: #39B37B;
+    --brand-light: #F5F6F8;
+    --brand-stone: #474747;
+    --brand-charcoal: #232323;
+}
+
+.v25-slide-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #eef2f9;
+}
+
+.v25-slide {
+    width: 1600px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    box-sizing: border-box;
+    background-color: var(--brand-light);
+    border-radius: 20px;
+}
+
+.v25-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.v25-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--brand-charcoal);
+}
+.v25-subtitle {
+    font-size: 1.25rem;
+    color: var(--brand-stone);
+}
+
+.v25-gantt-chart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.v25-row {
+    display: grid;
+    grid-template-columns: 250px 1fr 1fr 1fr;
+    border-bottom: 1px solid #dde3ed;
+}
+.v25-row.header > div {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: var(--brand-stone);
+    padding: 16px;
+    text-align: center;
+}
+.v25-row.header > div:first-child {
+    text-align: left;
+}
+
+.v25-task-name {
+    font-weight: 500;
+    padding: 24px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.v25-task-name svg {
+    flex-shrink: 0;
+}
+
+.v25-bar-cell {
+    padding: 24px 16px;
+    position: relative;
+}
+
+.v25-bar {
+    height: 24px;
+    border-radius: 4px;
+}
+.v25-bar.gdpr { background: var(--brand-red); }
+.v25-bar.iso { background: var(--brand-green); }
+.v25-bar.ai-act { background: #f97316; }
+.v25-bar.tisax { background: #3b82f6; }
+
+.v25-dep-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #cbd5e1;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.v25-dep-line::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: -6px;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 7px solid #cbd5e1;
+}

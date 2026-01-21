@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SEOHead from '../components/SEOHead';
 import { Header } from '@/components/Header';
@@ -6,13 +6,112 @@ import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { useToast } from '@/hooks/use-toast';
 import {
   Check, Shield, Star, ChevronRight, Phone,
-  FileText, UserCheck, Clock, AlertTriangle, Cpu, Users
+  FileText, UserCheck, Clock, AlertTriangle, Cpu, Users, Mail, Send
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ExternerDatenschutzbeauftragterKonstanz: React.FC = () => {
+    const { toast } = useToast();
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+    const [formData, setFormData] = useState({
+      firstName: '',
+      email: '',
+      phone: '',
+      company: '',
+      message: '',
+      privacy: false
+    });
+
+    const handleInputChange = (field: string, value: string | boolean) => {
+      setFormData(prev => ({ ...prev, [field]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+
+      if (!formData.privacy) {
+        toast({
+          title: 'Fehler',
+          description: 'Bitte akzeptieren Sie die Datenschutzbestimmungen.',
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setIsLoading(true);
+
+      try {
+        const sanitizedData = {
+          firstName: formData.firstName.trim().slice(0, 50),
+          email: formData.email.trim().toLowerCase(),
+          phone: formData.phone.trim().slice(0, 20),
+          company: formData.company.trim().slice(0, 100),
+          topic: 'datenschutzbeauftragter',
+          message: `[Anfrage von Konstanz-Seite] ${formData.message.trim().slice(0, 2000)}`,
+          isDemoRequest: false,
+          newsletter: false
+        };
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(sanitizedData.email)) {
+          toast({
+            title: 'Fehler',
+            description: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+            variant: "destructive",
+          });
+          setIsLoading(false);
+          return;
+        }
+
+        const response = await fetch('/api/contact-submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sanitizedData)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Fehler beim Senden');
+        }
+
+        toast({
+          title: 'Erfolgreich gesendet!',
+          description: 'Wir melden uns innerhalb von 24 Stunden bei Ihnen.',
+        });
+
+        setFormData({
+          firstName: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+          privacy: false
+        });
+
+        setTimeout(() => {
+          navigate('/thank-you');
+        }, 1500);
+
+      } catch (error) {
+        toast({
+          title: 'Fehler',
+          description: 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.',
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     const faqs = [
     {
       question: "Warum einen externen Datenschutzbeauftragten in Konstanz?",
@@ -327,9 +426,6 @@ const ExternerDatenschutzbeauftragterKonstanz: React.FC = () => {
                     <li className="flex items-start gap-2"><Check className="h-5 w-5 text-[#39B37B] mt-0.5" /><span className="text-sm">E-Mail & Chat Support</span></li>
                   </ul>
                 </CardContent>
-                <div className="p-8 pt-0">
-                  <Button variant="outline" className="w-full border-2 border-gray-300" asChild><Link to="/preise">Plattform entdecken</Link></Button>
-                </div>
               </Card>
             </motion.div>
             {/* PROFESSIONAL PACKAGE - Highlighted */}
@@ -350,9 +446,6 @@ const ExternerDatenschutzbeauftragterKonstanz: React.FC = () => {
                      <li className="flex items-start gap-2"><Check className="h-5 w-5 text-[#39B37B] mt-0.5" /><span className="text-sm">Offizielles DSB-Zertifikat</span></li>
                   </ul>
                 </CardContent>
-                <div className="p-8 pt-0">
-                   <Button className="w-full bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white" asChild><Link to="/contact">Jetzt DSB anfragen</Link></Button>
-                </div>
               </Card>
             </motion.div>
             {/* ENTERPRISE PACKAGE */}
@@ -370,9 +463,6 @@ const ExternerDatenschutzbeauftragterKonstanz: React.FC = () => {
                     <li className="flex items-start gap-2"><Check className="h-5 w-5 text-[#39B37B] mt-0.5" /><span className="text-sm">Priority Support & Schulungen</span></li>
                   </ul>
                 </CardContent>
-                <div className="p-8 pt-0">
-                  <Button variant="outline" className="w-full border-2 border-gray-300" asChild><Link to="/contact">Beratung anfragen</Link></Button>
-                </div>
               </Card>
             </motion.div>
           </div>
@@ -383,7 +473,185 @@ const ExternerDatenschutzbeauftragterKonstanz: React.FC = () => {
           </motion.div>
         </div>
       </section>
-      
+
+      {/* CTA CONTACT FORM SECTION */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column - Info */}
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+              <Badge className="bg-[#e24e1b]/10 text-[#e24e1b] border-[#e24e1b]/20 mb-4">Kostenlose Erstberatung</Badge>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#232323] mb-4">
+                Lassen Sie sich unverbindlich beraten
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                Erfahren Sie in einem persönlichen Gespräch, wie wir Ihr Unternehmen in Konstanz DSGVO-konform aufstellen können.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#e24e1b]/10 rounded-lg p-2">
+                    <Clock className="h-5 w-5 text-[#e24e1b]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#232323]">Schnelle Reaktion</h3>
+                    <p className="text-gray-600 text-sm">Antwort innerhalb von 24 Stunden</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#e24e1b]/10 rounded-lg p-2">
+                    <Shield className="h-5 w-5 text-[#e24e1b]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#232323]">Unverbindlich & Kostenfrei</h3>
+                    <p className="text-gray-600 text-sm">Erste Analyse ohne Verpflichtungen</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#e24e1b]/10 rounded-lg p-2">
+                    <UserCheck className="h-5 w-5 text-[#e24e1b]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#232323]">Regionale Expertise</h3>
+                    <p className="text-gray-600 text-sm">Kenntnis des LfDI Baden-Württemberg</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-gray-200">
+                <p className="text-sm text-gray-600 mb-3">Oder kontaktieren Sie uns direkt:</p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a href="mailto:info@marsstein.ai" className="flex items-center gap-2 text-[#e24e1b] hover:underline">
+                    <Mail className="h-4 w-4" />
+                    info@marsstein.ai
+                  </a>
+                  <a href="tel:+4917670560292" className="flex items-center gap-2 text-[#e24e1b] hover:underline">
+                    <Phone className="h-4 w-4" />
+                    +49 176 70560292
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Form */}
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+              <Card className="border-2 border-gray-200 shadow-xl">
+                <CardContent className="p-8">
+                  <h3 className="text-xl font-bold text-[#232323] mb-6">Jetzt Beratung anfragen</h3>
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="firstName" className="text-sm font-medium">
+                          Vorname <span className="text-red-500">*</span>
+                        </Label>
+                        <Input
+                          id="firstName"
+                          value={formData.firstName}
+                          onChange={(e) => handleInputChange('firstName', e.target.value)}
+                          placeholder="Max"
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="company" className="text-sm font-medium">
+                          Firma <span className="text-red-500">*</span>
+                        </Label>
+                        <Input
+                          id="company"
+                          value={formData.company}
+                          onChange={(e) => handleInputChange('company', e.target.value)}
+                          placeholder="Musterfirma GmbH"
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="email" className="text-sm font-medium">
+                        E-Mail <span className="text-red-500">*</span>
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        placeholder="max@firma.de"
+                        required
+                        className="mt-1"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="phone" className="text-sm font-medium">
+                        Telefon
+                      </Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                        placeholder="+49 XXX XXXXXXXX"
+                        className="mt-1"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="message" className="text-sm font-medium">
+                        Ihre Nachricht
+                      </Label>
+                      <Textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
+                        placeholder="Beschreiben Sie kurz Ihr Anliegen..."
+                        className="mt-1 min-h-[80px]"
+                      />
+                    </div>
+
+                    <div className="flex items-start space-x-2">
+                      <Checkbox
+                        id="privacy"
+                        checked={formData.privacy}
+                        onCheckedChange={(checked) => handleInputChange('privacy', checked as boolean)}
+                        required
+                      />
+                      <Label htmlFor="privacy" className="text-xs leading-4 text-gray-600">
+                        Ich akzeptiere die <Link to="/datenschutzerklaerung" className="text-[#e24e1b] hover:underline">Datenschutzbestimmungen</Link> und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu. <span className="text-red-500">*</span>
+                      </Label>
+                    </div>
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white hover:shadow-xl font-semibold"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        'Wird gesendet...'
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          Kostenlose Beratung anfragen
+                        </>
+                      )}
+                    </Button>
+
+                    <p className="text-xs text-center text-gray-500">
+                      Unverbindlich & kostenfrei • Antwort innerhalb von 24h
+                    </p>
+                  </form>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* 6. FAQ SECTION */}
       <section className="py-20 bg-white">
         <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
