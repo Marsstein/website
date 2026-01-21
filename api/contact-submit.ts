@@ -20,7 +20,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       topic,
       message,
       isDemoRequest,
-      newsletter
+      newsletter,
+      userGroup: customUserGroup,
+      source: customSource
     } = req.body;
 
     if (!email || !firstName || !company || !message) {
@@ -34,11 +36,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     console.log('Creating/updating contact for:', email);
 
+    const defaultUserGroup = isDemoRequest ? 'demo_requests' : 'contact_inquiries';
     const contactData = {
       email,
       firstName,
-      userGroup: isDemoRequest ? 'demo_requests' : 'contact_inquiries',
-      source: 'contact_form',
+      userGroup: customUserGroup || defaultUserGroup,
+      source: customSource || 'contact_form',
       company,
       phone: phone || '',
       topic: topic || '',

@@ -60,7 +60,9 @@ const ExternerDatenschutzbeauftragterKonstanz: React.FC = () => {
             ? `[Anfrage von Konstanz-Seite] ${userMessage.slice(0, 2000)}`
             : '[Anfrage von Konstanz-Seite] Interesse an externem DSB-Paket',
           isDemoRequest: false,
-          newsletter: false
+          newsletter: false,
+          userGroup: 'dsb_inquiries',
+          source: 'landing_page_konstanz'
         };
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
