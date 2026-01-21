@@ -51,6 +51,7 @@ const routes = [
   { url: '/externer-datenschutzbeauftragter-bayern', priority: '0.8', changefreq: 'weekly' },
   { url: '/externer-datenschutzbeauftragter-niedersachsen', priority: '0.8', changefreq: 'weekly' },
   { url: '/externer-datenschutzbeauftragter-muenster', priority: '0.7', changefreq: 'weekly' },
+  { url: '/externer-datenschutzbeauftragter-konstanz', priority: '0.8', changefreq: 'weekly' },
 
   // === REGULIERUNGEN (Hauptseiten) ===
   { url: '/dsgvo', priority: '0.9', changefreq: 'weekly' },

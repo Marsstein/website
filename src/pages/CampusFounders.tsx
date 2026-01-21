@@ -18,7 +18,10 @@ import {
   Shield,
   Check,
   Award,
-  UserCheck
+  UserCheck,
+  Gift,
+  Calendar,
+  Mail
 } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import {
@@ -301,104 +304,6 @@ const CampusFounders: React.FC = () => {
           </div>
         </AnimatedSection>
 
-        {/* Detailed Feature Matrix */}
-        <AnimatedSection className="py-24 bg-white relative">
-          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
-
-          <div className="container px-4 mx-auto max-w-5xl relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#003366] mb-6 max-w-3xl mx-auto leading-tight">
-                The Professional Package covers all GDPR requirements. <span className="text-[#e24e1b]">No hidden modules, no extra charges.</span>
-              </h2>
-            </div>
-
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-              {/* Table Header (Hidden on mobile) */}
-              <div className="hidden md:grid grid-cols-12 gap-4 bg-gray-50/80 p-6 border-b border-gray-100 text-sm font-bold text-gray-500 uppercase tracking-wider">
-                <div className="col-span-5">Feature</div>
-                <div className="col-span-5">Details</div>
-                <div className="col-span-2 text-center">Status</div>
-              </div>
-
-              {/* Table Rows */}
-              <div className="divide-y divide-gray-100">
-                {[
-                  {
-                    icon: FileText,
-                    title: "Automated Documentation",
-                    desc: "Records of Processing, TOMs, Deletion Concept & Risk Analyses automatically created.",
-                    detail: "Fully complies with Art. 30 & 32 GDPR."
-                  },
-                  {
-                    icon: Shield,
-                    title: "Website Scanner & Protection",
-                    desc: "Crawler finds trackers & updates privacy policy.",
-                    detail: "Incl. Cookie Banner (CMP) & Legal Notice."
-                  },
-                  {
-                    icon: Bot,
-                    title: "Mars-AI Agent",
-                    desc: "Your digital DPO for expert questions and autonomous task completion.",
-                    detail: "Available 24/7, legally compliant answers."
-                  },
-                  {
-                    icon: UserCheck,
-                    title: "DPA & Vendor Management",
-                    desc: "Management of all service providers (AWS, Google, etc.).",
-                    detail: "Incl. risk assessment for US providers."
-                  },
-                  {
-                    icon: Award,
-                    title: "GDPR Audit & Certification",
-                    desc: "System audit with DPO review and official Marsstein seal.",
-                    detail: "Demonstrate compliance to customers & investors."
-                  },
-                  {
-                    icon: Bell,
-                    title: "Updates & Alerts",
-                    desc: "Automatic notification of legal changes.",
-                    detail: "Always up-to-date (e.g., AI Act, ePrivacy)."
-                  }
-                ].map((feature, idx) => (
-                  <div key={idx} className="grid md:grid-cols-12 gap-4 p-6 items-center hover:bg-blue-50/30 transition-colors group">
-                    {/* Icon & Title */}
-                    <div className="col-span-12 md:col-span-5 flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-[#003366]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#003366] group-hover:text-white transition-all duration-300">
-                        <feature.icon className="w-5 h-5 text-[#003366] group-hover:text-white" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 text-lg">{feature.title}</h3>
-                        <p className="text-gray-500 text-sm md:hidden mt-1">{feature.desc}</p>
-                      </div>
-                    </div>
-
-                    {/* Description (Desktop) */}
-                    <div className="hidden md:block col-span-5">
-                      <p className="text-gray-700 font-medium">{feature.desc}</p>
-                      <p className="text-gray-400 text-sm mt-1">{feature.detail}</p>
-                    </div>
-
-                    {/* Status Badge */}
-                    <div className="col-span-12 md:col-span-2 flex md:justify-center items-center mt-2 md:mt-0">
-                      <div className="inline-flex items-center gap-1.5 bg-[#e24e1b]/10 text-[#e24e1b] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
-                        <Check className="w-3 h-3" />
-                        Included
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Bottom Callout */}
-              <div className="bg-gray-50 p-6 text-center border-t border-gray-100">
-                <p className="text-sm text-gray-500">
-                  Additionally, you get access to our <strong>Template Library</strong> and <strong>Email Support</strong>.
-                </p>
-              </div>
-            </div>
-          </div>
-        </AnimatedSection>
-
         {/* Team Mission Statement */}
         <AnimatedSection className="py-24 bg-white">
           <div className="container px-4 mx-auto max-w-6xl">
@@ -438,6 +343,124 @@ const CampusFounders: React.FC = () => {
                       </p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* Case Study Program Section */}
+        <AnimatedSection className="py-24 bg-gradient-to-br from-[#003366] to-[#001a33] relative overflow-hidden">
+          {/* Background Effects */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#e24e1b]/10 rounded-full blur-[100px]"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.2, 0.4, 0.2],
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-blue-400/10 rounded-full blur-[80px]"
+              animate={{
+                scale: [1.2, 1, 1.2],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+
+          <div className="container px-4 mx-auto max-w-5xl relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#e24e1b]/20 backdrop-blur-md border border-[#e24e1b]/30 rounded-full px-5 py-2 mb-6">
+                <Gift className="w-5 h-5 text-[#e24e1b]" />
+                <span className="text-white font-semibold text-sm">EXCLUSIVE: CASE STUDY PROGRAM</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                5 Free Spots for
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e24e1b] to-[#ff8c61]"> Your Success Story</span>
+              </h2>
+              <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                We're giving away <strong className="text-white">5 full Professional subscriptions</strong> as case studies.
+                You become compliant for free – we tell your success story.
+              </p>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                {/* Left: What you get */}
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-6">What you get:</h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-[#e24e1b] flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-white/90"><strong className="text-white">12 months Professional access</strong> – completely free</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-[#e24e1b] flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-white/90"><strong className="text-white">Personal onboarding</strong> with our team</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-[#e24e1b] flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-white/90"><strong className="text-white">GDPR certificate</strong> for investors & customers</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-[#e24e1b] flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-white/90"><strong className="text-white">Priority support</strong> throughout the entire period</span>
+                    </li>
+                  </ul>
+
+                  <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/10">
+                    <p className="text-white/70 text-sm">
+                      <strong className="text-white">Who we're looking for:</strong> Exciting startups with real compliance challenges – whether SaaS, HealthTech, FinTech, or B2B. You have a product that's growing and need GDPR security for the next step? That's exactly what we're here for.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right: CTA */}
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                  <div className="text-center mb-6">
+                    <div className="text-6xl font-bold text-white mb-2">5</div>
+                    <p className="text-white/60 text-sm uppercase tracking-wider">Spots available</p>
+                  </div>
+
+                  <p className="text-white/80 text-center mb-8">
+                    Apply now as a case study partner and become part of our success story in the Heilbronn startup ecosystem.
+                  </p>
+
+                  <div className="space-y-4">
+                    <Button
+                      size="lg"
+                      className="w-full bg-gradient-to-r from-[#e24e1b] to-[#ea580c] text-white hover:shadow-xl font-bold text-lg px-8 py-6"
+                      asChild
+                    >
+                      <a href="https://calendly.com/marsstein-info/marsstein-intro" target="_blank" rel="noopener noreferrer">
+                        <Calendar className="mr-2 h-5 w-5" />Intro Call (15 Min) – Apply Now
+                      </a>
+                    </Button>
+                    <Button
+                      size="lg"
+                      className="w-full bg-white text-[#003366] hover:bg-gray-100 font-semibold text-base px-6 py-6"
+                      asChild
+                    >
+                      <a href="mailto:info@marsstein.ai?subject=Case%20Study%20Application%20-%20Campus%20Founders&body=Hi%20Marsstein%20Team%2C%0A%0AI%20would%20like%20to%20apply%20for%20the%20Case%20Study%20Program.%0A%0AStartup%3A%20%0AIndustry%3A%20%0ABrief%20Description%3A%20%0A%0ABest%20regards">
+                        <Mail className="mr-2 h-5 w-5" />Apply via Email
+                      </a>
+                    </Button>
+                  </div>
+
+                  <p className="text-center text-white/40 text-xs mt-6">
+                    Application deadline: While spots last
+                  </p>
                 </div>
               </div>
             </div>
