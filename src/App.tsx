@@ -47,13 +47,6 @@ const CampusFounders = lazy(() => import("./pages/CampusFounders"));
 const BetaThanks = lazy(() => import("./pages/BetaThanks"));
 const Features = lazy(() => import("./pages/Features"));
 const HumanInTheLoop = lazy(() => import("./pages/HumanInTheLoop"));
-const FrameworkDeck = lazy(() => import("./pages/FrameworkDeck"));
-const GrowthPlanDeck = lazy(() => import("./pages/GrowthPlanDeckV2"));
-const GrowthPlan2 = lazy(() => import("./pages/GrowthPlan2"));
-const AttractionDeck = lazy(() => import("./pages/AttractionDeck"));
-const CompetitionDeck = lazy(() => import("./pages/CompetitionDeck"));
-const FunktionDeck = lazy(() => import("./pages/FunktionDeck"));
-const TamDeck = lazy(() => import("./pages/TamDeck"));
 const Datenschutzbeauftragter = lazy(() => import("./pages/Datenschutzbeauftragter"));
 const DatenschutzbeauftragterDetail = lazy(() => import("./pages/DatenschutzbeauftragterDetail"));
 const CnGdpr = lazy(() => import("./pages/CnGdpr"));
@@ -350,13 +343,6 @@ const App = () => (
                 <Route path="/beta/thanks" element={<BetaThanks />} />
                 <Route path="/features" element={<Features />} />
                 <Route path="/features/human-in-the-loop" element={<HumanInTheLoop />} />
-            <Route path="/frameworkdeck" element={<FrameworkDeck />} />
-            <Route path="/growthplan" element={<GrowthPlanDeck />} />
-            <Route path="/growthplan2" element={<GrowthPlan2 />} />
-            <Route path="/tamdeck" element={<TamDeck />} />
-            <Route path="/attraction" element={<AttractionDeck />} />
-            <Route path="/competition" element={<CompetitionDeck />} />
-            <Route path="/funktion" element={<FunktionDeck />} />
                 <Route path="/human-in-the-loop" element={<Navigate to="/features/human-in-the-loop" replace />} />
                 <Route path="/datenschutzexperten" element={<Datenschutzbeauftragter />} />
                 <Route path="/datenschutzexperten/:slug" element={<DatenschutzbeauftragterDetail />} />
