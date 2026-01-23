@@ -644,6 +644,306 @@ const cityConfigs = {
     ],
     regionText: 'Unternehmen in Wedemark und der Region Hannover stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa bei IT-Unternehmen, im Handel oder Gesundheitswesen.',
     regionBranchen: 'IT, Handel, Handwerk, Gesundheit'
+  },
+  // === NEUE STÄDTE (für interne Verlinkung) ===
+  augsburg: {
+    name: 'Augsburg',
+    slug: 'augsburg',
+    bundesland: 'Bayern',
+    aufsicht: 'BayLDA',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '48.3705', lng: '10.8978' },
+    branchen: [
+      { title: 'Maschinenbau', desc: 'Industrieproduktion, Robotik, Automation', link: '/branchen/produktion' },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, IT-Dienstleister', link: '/branchen/saas-unternehmen' },
+      { title: 'Luft- & Raumfahrt', desc: 'Airbus, Zulieferer, MRO', link: null },
+      { title: 'Textil & Mode', desc: 'Textilproduktion, Handel', link: '/branchen/e-commerce' },
+      { title: 'Logistik', desc: 'Speditionen, Lagerhaltung', link: '/branchen/logistik' },
+      { title: 'Gesundheitswesen', desc: 'Universitätsklinikum, Praxen', link: '/branchen/gesundheitswesen' }
+    ],
+    nachbarStaedte: [
+      { name: 'München', slug: 'muenchen' },
+      { name: 'Nürnberg', slug: 'nuernberg' },
+      { name: 'Ulm', slug: 'ulm' }
+    ],
+    regionText: 'Unternehmen in Augsburg und Bayerisch-Schwaben stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa im Maschinenbau, in der Luft- und Raumfahrt oder bei IT-Dienstleistern.',
+    regionBranchen: 'Maschinenbau, Luft- & Raumfahrt, IT, Textil'
+  },
+  berlin: {
+    name: 'Berlin',
+    slug: 'berlin',
+    bundesland: 'Berlin',
+    aufsicht: 'BlnBDI',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '52.5200', lng: '13.4050' },
+    branchen: [
+      { title: 'IT & Start-ups', desc: 'Tech-Szene, SaaS, Venture Capital', link: '/branchen/saas-unternehmen' },
+      { title: 'Medien & Kreativwirtschaft', desc: 'Verlage, Agenturen, Gaming', link: null },
+      { title: 'E-Commerce', desc: 'Online-Handel, Marktplätze', link: '/branchen/e-commerce' },
+      { title: 'Fintech', desc: 'Digital Banking, Payment, Blockchain', link: '/branchen/finanzdienstleister' },
+      { title: 'Gesundheitswesen', desc: 'Charité, Biotech, Digital Health', link: '/branchen/gesundheitswesen' },
+      { title: 'Tourismus', desc: 'Hotels, Veranstaltungen, Kultur', link: '/branchen/tourismus' }
+    ],
+    nachbarStaedte: [
+      { name: 'Dresden', slug: 'dresden' },
+      { name: 'Leipzig', slug: 'leipzig' },
+      { name: 'Magdeburg', slug: 'magdeburg' }
+    ],
+    regionText: 'Unternehmen in Berlin stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa in der Start-up-Szene, bei Tech-Unternehmen oder in der Kreativwirtschaft.',
+    regionBranchen: 'IT & Start-ups, Medien, E-Commerce, Fintech'
+  },
+  bielefeld: {
+    name: 'Bielefeld',
+    slug: 'bielefeld',
+    bundesland: 'Nordrhein-Westfalen',
+    aufsicht: 'LDI NRW',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '52.0302', lng: '8.5325' },
+    branchen: [
+      { title: 'Maschinenbau', desc: 'Industrieproduktion, Anlagenbau', link: '/branchen/produktion' },
+      { title: 'Lebensmittel', desc: 'Dr. Oetker, Produktion, Handel', link: null },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, IT-Dienstleister', link: '/branchen/saas-unternehmen' },
+      { title: 'Handel & E-Commerce', desc: 'Einzelhandel, Online-Shops', link: '/branchen/e-commerce' },
+      { title: 'Gesundheitswesen', desc: 'Kliniken, Pflegeeinrichtungen', link: '/branchen/gesundheitswesen' },
+      { title: 'Textil & Mode', desc: 'Bekleidungsindustrie, Handel', link: '/branchen/e-commerce' }
+    ],
+    nachbarStaedte: [
+      { name: 'Münster', slug: 'muenster' },
+      { name: 'Dortmund', slug: 'dortmund' },
+      { name: 'Hannover', slug: 'hannover' }
+    ],
+    regionText: 'Unternehmen in Bielefeld und Ostwestfalen-Lippe stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa im Maschinenbau, in der Lebensmittelindustrie oder bei IT-Unternehmen.',
+    regionBranchen: 'Maschinenbau, Lebensmittel, IT, Handel'
+  },
+  bonn: {
+    name: 'Bonn',
+    slug: 'bonn',
+    bundesland: 'Nordrhein-Westfalen',
+    aufsicht: 'LDI NRW',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '50.7374', lng: '7.0982' },
+    branchen: [
+      { title: 'Öffentlicher Sektor', desc: 'Bundesbehörden, Ministerien, NGOs', link: null },
+      { title: 'Telekommunikation', desc: 'Deutsche Telekom, IT-Services', link: '/branchen/saas-unternehmen' },
+      { title: 'Logistik', desc: 'Deutsche Post/DHL, Speditionen', link: '/branchen/logistik' },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, Cybersecurity', link: '/branchen/saas-unternehmen' },
+      { title: 'Gesundheitswesen', desc: 'Universitätsklinikum, Forschung', link: '/branchen/gesundheitswesen' },
+      { title: 'Bildung & Forschung', desc: 'Universität, Institute', link: null }
+    ],
+    nachbarStaedte: [
+      { name: 'Köln', slug: 'koeln' },
+      { name: 'Düsseldorf', slug: 'duesseldorf' },
+      { name: 'Frankfurt', slug: 'frankfurt' }
+    ],
+    regionText: 'Unternehmen in Bonn und der Bundesstadt stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa bei Bundesbehörden, Telekommunikationsunternehmen oder in der Logistik.',
+    regionBranchen: 'Öffentlicher Sektor, Telekommunikation, Logistik, IT'
+  },
+  chemnitz: {
+    name: 'Chemnitz',
+    slug: 'chemnitz',
+    bundesland: 'Sachsen',
+    aufsicht: 'SächsDSB',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '50.8278', lng: '12.9214' },
+    branchen: [
+      { title: 'Automotive', desc: 'VW-Motorenwerk, Zulieferer', link: '/branchen/automotive' },
+      { title: 'Maschinenbau', desc: 'Werkzeugmaschinen, Automation', link: '/branchen/produktion' },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, Start-ups', link: '/branchen/saas-unternehmen' },
+      { title: 'Textil & Industrie', desc: 'Technische Textilien, Produktion', link: '/branchen/produktion' },
+      { title: 'Forschung', desc: 'TU Chemnitz, Fraunhofer', link: null },
+      { title: 'Gesundheitswesen', desc: 'Klinikum, Praxen', link: '/branchen/gesundheitswesen' }
+    ],
+    nachbarStaedte: [
+      { name: 'Dresden', slug: 'dresden' },
+      { name: 'Leipzig', slug: 'leipzig' },
+      { name: 'Magdeburg', slug: 'magdeburg' }
+    ],
+    regionText: 'Unternehmen in Chemnitz und Südwestsachsen stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa im Automotive-Bereich, Maschinenbau oder bei IT-Unternehmen.',
+    regionBranchen: 'Automotive, Maschinenbau, IT, Textil'
+  },
+  cuxhaven: {
+    name: 'Cuxhaven',
+    slug: 'cuxhaven',
+    bundesland: 'Niedersachsen',
+    aufsicht: 'LfD Niedersachsen',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '53.8617', lng: '8.6942' },
+    branchen: [
+      { title: 'Windenergie', desc: 'Offshore-Windparks, Service', link: '/branchen/energie' },
+      { title: 'Hafen & Logistik', desc: 'Seehafen, Automotive-Umschlag', link: '/branchen/logistik' },
+      { title: 'Fischerei', desc: 'Fischverarbeitung, Handel', link: null },
+      { title: 'Tourismus', desc: 'Nordsee, Hotels, Ferienwohnungen', link: '/branchen/tourismus' },
+      { title: 'Gesundheitswesen', desc: 'Kliniken, Reha-Einrichtungen', link: '/branchen/gesundheitswesen' },
+      { title: 'Handel', desc: 'Einzelhandel, regionale Händler', link: '/branchen/e-commerce' }
+    ],
+    nachbarStaedte: [
+      { name: 'Bremerhaven', slug: 'bremerhaven' },
+      { name: 'Bremen', slug: 'bremen' },
+      { name: 'Hamburg', slug: 'hamburg' }
+    ],
+    regionText: 'Unternehmen in Cuxhaven und an der Nordseeküste stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa in der Windenergie, im Hafenbetrieb oder Tourismus.',
+    regionBranchen: 'Windenergie, Hafen & Logistik, Tourismus, Fischerei'
+  },
+  darmstadt: {
+    name: 'Darmstadt',
+    slug: 'darmstadt',
+    bundesland: 'Hessen',
+    aufsicht: 'HBDI',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '49.8728', lng: '8.6512' },
+    branchen: [
+      { title: 'Pharma & Chemie', desc: 'Merck, Forschung, Produktion', link: '/wissen/branchen/pharma-compliance' },
+      { title: 'IT & Software', desc: 'Software AG, Tech-Unternehmen', link: '/branchen/saas-unternehmen' },
+      { title: 'Raumfahrt', desc: 'ESA/ESOC, Satellitenbetrieb', link: null },
+      { title: 'Forschung', desc: 'TU Darmstadt, GSI, Fraunhofer', link: null },
+      { title: 'Maschinenbau', desc: 'Industrieproduktion, Automation', link: '/branchen/produktion' },
+      { title: 'Gesundheitswesen', desc: 'Kliniken, Medizintechnik', link: '/branchen/gesundheitswesen' }
+    ],
+    nachbarStaedte: [
+      { name: 'Frankfurt', slug: 'frankfurt' },
+      { name: 'Mannheim', slug: 'mannheim' },
+      { name: 'Heidelberg', slug: 'heidelberg' }
+    ],
+    regionText: 'Unternehmen in Darmstadt und der Wissenschaftsstadt stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa in der Pharmabranche, IT oder Raumfahrt.',
+    regionBranchen: 'Pharma & Chemie, IT, Raumfahrt, Forschung'
+  },
+  essen: {
+    name: 'Essen',
+    slug: 'essen',
+    bundesland: 'Nordrhein-Westfalen',
+    aufsicht: 'LDI NRW',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '51.4556', lng: '7.0116' },
+    branchen: [
+      { title: 'Energie', desc: 'RWE, E.ON, Energieversorger', link: '/branchen/energie' },
+      { title: 'Handel & E-Commerce', desc: 'Aldi, Einzelhandel, Online', link: '/branchen/e-commerce' },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, Digitalisierung', link: '/branchen/saas-unternehmen' },
+      { title: 'Immobilien', desc: 'Thyssenkrupp, Property Management', link: null },
+      { title: 'Gesundheitswesen', desc: 'Universitätsklinikum, Kliniken', link: '/branchen/gesundheitswesen' },
+      { title: 'Logistik', desc: 'Speditionen, Distribution', link: '/branchen/logistik' }
+    ],
+    nachbarStaedte: [
+      { name: 'Dortmund', slug: 'dortmund' },
+      { name: 'Düsseldorf', slug: 'duesseldorf' },
+      { name: 'Köln', slug: 'koeln' }
+    ],
+    regionText: 'Unternehmen in Essen und dem Ruhrgebiet stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa in der Energiewirtschaft, im Handel oder bei IT-Unternehmen.',
+    regionBranchen: 'Energie, Handel, IT, Immobilien'
+  },
+  halle: {
+    name: 'Halle',
+    slug: 'halle',
+    bundesland: 'Sachsen-Anhalt',
+    aufsicht: 'LfD Sachsen-Anhalt',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '51.4969', lng: '11.9688' },
+    branchen: [
+      { title: 'Chemie', desc: 'Chemiepark, Forschung, Produktion', link: '/wissen/branchen/pharma-compliance' },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, Start-ups', link: '/branchen/saas-unternehmen' },
+      { title: 'Forschung & Wissenschaft', desc: 'MLU, Fraunhofer, Leopoldina', link: null },
+      { title: 'Gesundheitswesen', desc: 'Universitätsklinikum, Praxen', link: '/branchen/gesundheitswesen' },
+      { title: 'Handel', desc: 'Einzelhandel, regionale Händler', link: '/branchen/e-commerce' },
+      { title: 'Logistik', desc: 'Speditionen, Zentrallager', link: '/branchen/logistik' }
+    ],
+    nachbarStaedte: [
+      { name: 'Leipzig', slug: 'leipzig' },
+      { name: 'Magdeburg', slug: 'magdeburg' },
+      { name: 'Dresden', slug: 'dresden' }
+    ],
+    regionText: 'Unternehmen in Halle und Mitteldeutschland stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa in der Chemieindustrie, Forschung oder bei IT-Unternehmen.',
+    regionBranchen: 'Chemie, IT, Forschung, Gesundheit'
+  },
+  luebeck: {
+    name: 'Lübeck',
+    slug: 'luebeck',
+    bundesland: 'Schleswig-Holstein',
+    aufsicht: 'ULD Schleswig-Holstein',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '53.8655', lng: '10.6866' },
+    branchen: [
+      { title: 'Medizintechnik', desc: 'Dräger, Medizinprodukte', link: '/branchen/gesundheitswesen' },
+      { title: 'Lebensmittel', desc: 'Marzipan, Produktion, Handel', link: null },
+      { title: 'Logistik & Hafen', desc: 'Ostseehafen, Fährbetrieb', link: '/branchen/logistik' },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, IT-Dienstleister', link: '/branchen/saas-unternehmen' },
+      { title: 'Tourismus', desc: 'UNESCO-Welterbe, Hotels', link: '/branchen/tourismus' },
+      { title: 'Gesundheitswesen', desc: 'UKSH, Kliniken', link: '/branchen/gesundheitswesen' }
+    ],
+    nachbarStaedte: [
+      { name: 'Hamburg', slug: 'hamburg' },
+      { name: 'Bremen', slug: 'bremen' },
+      { name: 'Hannover', slug: 'hannover' }
+    ],
+    regionText: 'Unternehmen in Lübeck und der Hansestadt stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa in der Medizintechnik, im Hafenbetrieb oder Tourismus.',
+    regionBranchen: 'Medizintechnik, Logistik, Tourismus, Lebensmittel'
+  },
+  mainz: {
+    name: 'Mainz',
+    slug: 'mainz',
+    bundesland: 'Rheinland-Pfalz',
+    aufsicht: 'LfDI Rheinland-Pfalz',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '49.9929', lng: '8.2473' },
+    branchen: [
+      { title: 'Pharma & Biotechnologie', desc: 'BioNTech, Forschung, Produktion', link: '/wissen/branchen/pharma-compliance' },
+      { title: 'Medien & TV', desc: 'ZDF, SWR, Produktionsfirmen', link: null },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, Start-ups', link: '/branchen/saas-unternehmen' },
+      { title: 'Finanzdienstleister', desc: 'Banken, Versicherungen', link: '/branchen/finanzdienstleister' },
+      { title: 'Gesundheitswesen', desc: 'Universitätsmedizin, Kliniken', link: '/branchen/gesundheitswesen' },
+      { title: 'Tourismus & Wein', desc: 'Weinbau, Hotels, Gastronomie', link: '/branchen/tourismus' }
+    ],
+    nachbarStaedte: [
+      { name: 'Frankfurt', slug: 'frankfurt' },
+      { name: 'Mannheim', slug: 'mannheim' },
+      { name: 'Heidelberg', slug: 'heidelberg' }
+    ],
+    regionText: 'Unternehmen in Mainz und der Landeshauptstadt stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa in der Pharmabranche, bei Medienunternehmen oder in der IT.',
+    regionBranchen: 'Pharma & Biotech, Medien, IT, Finanzen'
+  },
+  wiesbaden: {
+    name: 'Wiesbaden',
+    slug: 'wiesbaden',
+    bundesland: 'Hessen',
+    aufsicht: 'HBDI',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '50.0782', lng: '8.2398' },
+    branchen: [
+      { title: 'Versicherungen', desc: 'R+V, DBV, Versicherungskonzerne', link: '/branchen/finanzdienstleister' },
+      { title: 'IT & Software', desc: 'Softwareentwicklung, IT-Dienstleister', link: '/branchen/saas-unternehmen' },
+      { title: 'Öffentlicher Sektor', desc: 'Landesregierung, Behörden', link: null },
+      { title: 'Gesundheitswesen', desc: 'Kliniken, Kurbetrieb, Wellness', link: '/branchen/gesundheitswesen' },
+      { title: 'Finanzdienstleister', desc: 'Banken, Vermögensverwaltung', link: '/branchen/finanzdienstleister' },
+      { title: 'Tourismus', desc: 'Kurstadt, Hotels, Gastronomie', link: '/branchen/tourismus' }
+    ],
+    nachbarStaedte: [
+      { name: 'Frankfurt', slug: 'frankfurt' },
+      { name: 'Mainz', slug: 'mainz' },
+      { name: 'Darmstadt', slug: 'darmstadt' }
+    ],
+    regionText: 'Unternehmen in Wiesbaden und der Landeshauptstadt stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa bei Versicherungen, im öffentlichen Sektor oder in der IT.',
+    regionBranchen: 'Versicherungen, IT, Öffentlicher Sektor, Finanzen'
+  },
+  wuerzburg: {
+    name: 'Würzburg',
+    slug: 'wuerzburg',
+    bundesland: 'Bayern',
+    aufsicht: 'BayLDA',
+    aufsichtLink: '/dsgvo',
+    geo: { lat: '49.7913', lng: '9.9534' },
+    branchen: [
+      { title: 'IT & Software', desc: 'Softwareentwicklung, IT-Dienstleister', link: '/branchen/saas-unternehmen' },
+      { title: 'Maschinenbau', desc: 'Industrieproduktion, Druckmaschinen', link: '/branchen/produktion' },
+      { title: 'Gesundheitswesen', desc: 'Universitätsklinikum, Forschung', link: '/branchen/gesundheitswesen' },
+      { title: 'Forschung & Wissenschaft', desc: 'Universität, Fraunhofer', link: null },
+      { title: 'Tourismus & Wein', desc: 'Weinbau, Hotels, Gastronomie', link: '/branchen/tourismus' },
+      { title: 'Handel', desc: 'Einzelhandel, regionale Händler', link: '/branchen/e-commerce' }
+    ],
+    nachbarStaedte: [
+      { name: 'Nürnberg', slug: 'nuernberg' },
+      { name: 'Frankfurt', slug: 'frankfurt' },
+      { name: 'Mannheim', slug: 'mannheim' }
+    ],
+    regionText: 'Unternehmen in Würzburg und Unterfranken stehen häufig vor besonderen Datenschutz-Herausforderungen – etwa bei IT-Unternehmen, im Maschinenbau oder Gesundheitswesen.',
+    regionBranchen: 'IT, Maschinenbau, Gesundheit, Forschung'
   }
 };
 

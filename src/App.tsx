@@ -220,6 +220,19 @@ const ExternerDatenschutzbeauftragterWolfsburg = lazy(() => import("./pages/Exte
 const ExternerDatenschutzbeauftragterBayern = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBayern"));
 const ExternerDatenschutzbeauftragterNiedersachsen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterNiedersachsen"));
 const ExternerDatenschutzbeauftragterMuenster = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMuenster"));
+const ExternerDatenschutzbeauftragterAugsburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterAugsburg"));
+const ExternerDatenschutzbeauftragterBerlin = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBerlin"));
+const ExternerDatenschutzbeauftragterBielefeld = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBielefeld"));
+const ExternerDatenschutzbeauftragterBonn = lazy(() => import("./pages/ExternerDatenschutzbeauftragterBonn"));
+const ExternerDatenschutzbeauftragterChemnitz = lazy(() => import("./pages/ExternerDatenschutzbeauftragterChemnitz"));
+const ExternerDatenschutzbeauftragterCuxhaven = lazy(() => import("./pages/ExternerDatenschutzbeauftragterCuxhaven"));
+const ExternerDatenschutzbeauftragterDarmstadt = lazy(() => import("./pages/ExternerDatenschutzbeauftragterDarmstadt"));
+const ExternerDatenschutzbeauftragterEssen = lazy(() => import("./pages/ExternerDatenschutzbeauftragterEssen"));
+const ExternerDatenschutzbeauftragterHalle = lazy(() => import("./pages/ExternerDatenschutzbeauftragterHalle"));
+const ExternerDatenschutzbeauftragterLuebeck = lazy(() => import("./pages/ExternerDatenschutzbeauftragterLuebeck"));
+const ExternerDatenschutzbeauftragterMainz = lazy(() => import("./pages/ExternerDatenschutzbeauftragterMainz"));
+const ExternerDatenschutzbeauftragterWiesbaden = lazy(() => import("./pages/ExternerDatenschutzbeauftragterWiesbaden"));
+const ExternerDatenschutzbeauftragterWuerzburg = lazy(() => import("./pages/ExternerDatenschutzbeauftragterWuerzburg"));
 const KiRisikoklassifizierung = lazy(() => import("./pages/ki/KiRisikoklassifizierung"));
 const KiAlgorithmicImpactAssessment = lazy(() => import("./pages/ki/AlgorithmicImpactAssessment"));
 const PrivacyPreservingAI = lazy(() => import("./pages/ki/PrivacyPreservingAI"));
@@ -337,6 +350,19 @@ const App = () => (
                 <Route path="/externer-datenschutzbeauftragter-bayern" element={<ExternerDatenschutzbeauftragterBayern />} />
                 <Route path="/externer-datenschutzbeauftragter-niedersachsen" element={<ExternerDatenschutzbeauftragterNiedersachsen />} />
                 <Route path="/externer-datenschutzbeauftragter-muenster" element={<ExternerDatenschutzbeauftragterMuenster />} />
+                <Route path="/externer-datenschutzbeauftragter-augsburg" element={<ExternerDatenschutzbeauftragterAugsburg />} />
+                <Route path="/externer-datenschutzbeauftragter-berlin" element={<ExternerDatenschutzbeauftragterBerlin />} />
+                <Route path="/externer-datenschutzbeauftragter-bielefeld" element={<ExternerDatenschutzbeauftragterBielefeld />} />
+                <Route path="/externer-datenschutzbeauftragter-bonn" element={<ExternerDatenschutzbeauftragterBonn />} />
+                <Route path="/externer-datenschutzbeauftragter-chemnitz" element={<ExternerDatenschutzbeauftragterChemnitz />} />
+                <Route path="/externer-datenschutzbeauftragter-cuxhaven" element={<ExternerDatenschutzbeauftragterCuxhaven />} />
+                <Route path="/externer-datenschutzbeauftragter-darmstadt" element={<ExternerDatenschutzbeauftragterDarmstadt />} />
+                <Route path="/externer-datenschutzbeauftragter-essen" element={<ExternerDatenschutzbeauftragterEssen />} />
+                <Route path="/externer-datenschutzbeauftragter-halle" element={<ExternerDatenschutzbeauftragterHalle />} />
+                <Route path="/externer-datenschutzbeauftragter-luebeck" element={<ExternerDatenschutzbeauftragterLuebeck />} />
+                <Route path="/externer-datenschutzbeauftragter-mainz" element={<ExternerDatenschutzbeauftragterMainz />} />
+                <Route path="/externer-datenschutzbeauftragter-wiesbaden" element={<ExternerDatenschutzbeauftragterWiesbaden />} />
+                <Route path="/externer-datenschutzbeauftragter-wuerzburg" element={<ExternerDatenschutzbeauftragterWuerzburg />} />
                 <Route path="/dsgvo-compliance-software" element={<DsgvoComplianceSoftware />} />
                 <Route path="/campus-founders" element={<CampusFounders />} />
                 <Route path="/beta" element={<Navigate to="/dsgvo-compliance-software" replace />} />
