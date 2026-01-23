@@ -773,7 +773,7 @@ const ExternerDatenschutzbeauftragterKonstanz: React.FC = () => {
               <h3 className="text-xl font-bold text-[#232323] mb-4">Externer Datenschutzbeauftragter in Baden-Württemberg</h3>
               <p className="text-gray-600 mb-6">Auch für Unternehmen in diesen Städten verfügbar</p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link to="/externer-datenschutzbeauftragter-freiburg" className="px-4 py-2 bg-gray-100 hover:bg-[#e24e1b]/10 hover:text-[#e24e1b] rounded-lg text-sm font-medium transition-colors">Externer DSB Freiburg</Link>
+                <Link to="/externer-datenschutzbeauftragter-heidelberg" className="px-4 py-2 bg-gray-100 hover:bg-[#e24e1b]/10 hover:text-[#e24e1b] rounded-lg text-sm font-medium transition-colors">Externer DSB Heidelberg</Link>
                 <Link to="/externer-datenschutzbeauftragter-ulm" className="px-4 py-2 bg-gray-100 hover:bg-[#e24e1b]/10 hover:text-[#e24e1b] rounded-lg text-sm font-medium transition-colors">Externer DSB Ulm</Link>
                 <Link to="/externer-datenschutzbeauftragter-stuttgart" className="px-4 py-2 bg-gray-100 hover:bg-[#e24e1b]/10 hover:text-[#e24e1b] rounded-lg text-sm font-medium transition-colors">Externer DSB Stuttgart</Link>
                 <Link to="/externer-datenschutzbeauftragter-karlsruhe" className="px-4 py-2 bg-gray-100 hover:bg-[#e24e1b]/10 hover:text-[#e24e1b] rounded-lg text-sm font-medium transition-colors">Externer DSB Karlsruhe</Link>
